@@ -3,7 +3,10 @@ module DoxAletheia.Manual_Prefixes
 
 let manual_match_content =
     [|
-
+       "https://tmp.moonythm.dev/", "tmoon"
+       "https://www.w3.org/2003/05/xpath-datatypes#", "xdt"
+       "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/", "LCPW_OverlayStormwaterInfrastructure_D_WM"
+       "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/", "ArcGISRuntime" 
        "http://aims.fao.org/aos/agrontology#", "agrontology"
        "http://eulersharp.sourceforge.net/2003/03swap/coding#", "swap_coding"
        "http://eulersharp.sourceforge.net/2003/03swap/computer#", "swap_computer"
@@ -358,4 +361,4 @@ let manual_match_content =
 
        |]
 
-    |> Array.map (fun (namespace_name, preferred_prefix) -> $"""    "{namespace_name}", "{preferred_prefix}" """)
+    |> Array.map (fun (namespace_name, preferred_prefix) -> Some( namespace_name, preferred_prefix))

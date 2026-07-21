@@ -34685,17 +34685,6 @@ module dicom =
     ///   <see href="http://purl.org/healthcarevocab/v1#TransferSyntaxUID"></see>
     /// </summary>
     let TransferSyntaxUID = _prefix "TransferSyntaxUID"
-
-    /// <summary>
-    ///   <see href="http://purl.org/healthcarevocab/v1#VerifyingObserverIdentificationCodeSequence"></see>
-    /// </summary>
-    let VerifyingObserverIdentificationCodeSequence =
-        _prefix "VerifyingObserverIdentificationCodeSequence"
-
-    /// <summary>
-    ///   <see href="http://purl.org/healthcarevocab/v1#Tag.0040.A088"></see>
-    /// </summary>
-    let ``Tag.0040.A088`` = _prefix "Tag.0040.A088"
     /// <summary>
     ///   <see href="http://purl.org/healthcarevocab/v1#Tag.0008.0201"></see>
     /// </summary>
@@ -36093,6 +36082,17 @@ module dicom =
     ///   <see href="http://purl.org/healthcarevocab/v1#VerifyingObserverName"></see>
     /// </summary>
     let VerifyingObserverName = _prefix "VerifyingObserverName"
+    /// <summary>
+    ///   <see href="http://purl.org/healthcarevocab/v1#Tag.0040.A088"></see>
+    /// </summary>
+    let ``Tag.0040.A088`` = _prefix "Tag.0040.A088"
+
+    /// <summary>
+    ///   <see href="http://purl.org/healthcarevocab/v1#VerifyingObserverIdentificationCodeSequence"></see>
+    /// </summary>
+    let VerifyingObserverIdentificationCodeSequence =
+        _prefix "VerifyingObserverIdentificationCodeSequence"
+
     /// <summary>
     ///   <see href="http://purl.org/healthcarevocab/v1#Tag.0040.A112"></see>
     /// </summary>

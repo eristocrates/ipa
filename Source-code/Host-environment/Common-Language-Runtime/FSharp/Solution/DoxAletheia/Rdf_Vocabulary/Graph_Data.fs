@@ -48,7 +48,10 @@ open Fabulous.AST
 open Fantomas.Core.SyntaxOak
 
 open type Fabulous.AST.Ast
+
 open Namespace_Prefixes
+open VDS.RDF.Query.Patterns
+open VDS.RDF.Query.Builder
 
 
 [<CLIMutable>]
@@ -77,6 +80,10 @@ type Formula =
       triples: HashSet<Rdf_Triple>
 
      }
+    member this.as_graph_pattern(pattern_builder: TriplePatternBuilder) : ITriplePattern array =
+        this.triples
+        |> Seq.toArray
+        |> Array.map (fun rdf_triple -> pattern_builder |> rdf_triple.as_ITriplePattern)
 
     static member from_subject subject_term =
 
@@ -155,6 +162,16 @@ type Formula =
 
 
         }
+
+    member this.add_formulas(formulas: Formula list) =
+        let triples_from_formulas =
+            formulas
+            |> List.collect (fun formula -> formula.triples |> Seq.toList)
+            |> HashSet.ofSeq
+
+        { this with triples = HashSet.union this.triples triples_from_formulas }
+
+
 
     member this.add_subjects subject_terms =
         { this with subjects = this.subjects |> Array.append subject_terms }

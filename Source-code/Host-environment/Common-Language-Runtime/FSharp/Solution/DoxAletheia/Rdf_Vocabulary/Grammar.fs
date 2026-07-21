@@ -42,11 +42,16 @@ open FSharp.HashCollections
 open Interval_Range
 
 
+open VDS.RDF.Query
 
 
 
-
-
+open FSharp.Data.Adaptive
+open VDS.RDF
+open VDS.RDF.Nodes
+open VDS.RDF.Query.Builder
+open VDS.RDF.Query.Patterns
+open FSharp.Data
 
 
 
@@ -2074,9 +2079,47 @@ type IRIREF =
     | SkolemIRIREF of Skolem_IRI
     | IRIREF of IRI
     | RelativeReference of Relative_Reference
+    
+    static let [<Literal>] prefix_file_path_ = @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Namespace_Prefixes\namespace_prefixes.json"
+    static member from_UriNode(uri_node: UriNode) =
+        
+        
+            
+        let global_prefix_declarations = 
+            JsonProvider<prefix_file_path_>.Load(prefix_file_path_).Mappings
+            |> Array.map (fun Mapping -> Mapping.NamespaceName, Mapping.PrefixLabel)
+    
+        let namespace_names =
+            global_prefix_declarations
+            |> Array.map (fun ((namespace_name: string), prefix_label) -> namespace_name)
+            |> Array.sortBy (fun namespace_name -> namespace_name.Length)
+            |> Array.rev
+
+        let maybe_namespace_name =
+            namespace_names
+            |> Array.tryPick (fun namespace_name ->
+                let term_is_namespaced = uri_node.Uri.OriginalString.StartsWith(namespace_name)
+
+                if term_is_namespaced then
+                    Some namespace_name
+                else
+                    None)
+
+        match maybe_namespace_name with
+        | Some namespace_name ->
+            Namespaced_IRI.parse namespace_name uri_node.Uri.OriginalString[namespace_name.Length ..]
+            |> NamespacedName
+        | None -> IRIREF.parse uri_node.Uri.OriginalString
+
+
     member this.as_subject = IRIREFSubject this
     member this.as_predicate = IRIREFPredicate this
     member this.as_object = IRIREFObject this
+    member this.as_uri: Uri = new Uri(this.as_raw_string)
+    member this.as_inode = new UriNode(this.as_uri) :> INode
+
+    member this.as_pattern_item(pattern_builder: TriplePatternBuilder) =
+        pattern_builder.PatternItemFactory.CreateNodeMatchPattern(this.as_inode)
 
     static member parser: Parser<IRIREF, Code_Point, unit, ReadableMemory<Code_Point>> =
         parser {
@@ -2111,7 +2154,12 @@ type IRIREF =
         | NamespacedName namespaced_iri -> namespaced_iri.as_raw_string
         | RelativeReference relative_ref -> relative_ref.as_raw_string
 
-    member this.as_rendered_string = "<" + this.as_raw_string + ">"
+    member this.canonical_form = "<" + this.as_raw_string + ">"
+
+    member this.as_rendered_string (prefix_delimiter: string) (prefix_map: Map<string, string>) =
+        match this with
+        | NamespacedName namespaced_iri -> namespaced_iri.as_prefixed_name prefix_delimiter prefix_map
+        | _ -> this.canonical_form
 
 and Namespaced_IRI =
     | NamespacedIRI of IRIREF * Local_Name
@@ -2140,7 +2188,12 @@ and Namespaced_IRI =
             | "http://www.w3.org/1999/02/22-rdf-syntax-ns#", "type" -> "a"
             | _ -> sprintf "%s%s%s" prefix_label delimiter this.local_name.as_raw_string
         with
-        | err -> failwithf "%s failed with error %s" this.as_raw_string err.Message
+        | err ->
+            failwithf
+                " namespace iri %s expanded name %s failed with error %s"
+                this.namespace_iriref.as_raw_string
+                this.as_raw_string
+                err.Message
 
     member this.as_curie(prefix_map: Map<string, string>) = this.as_prefixed_name ":" prefix_map
 
@@ -2192,9 +2245,7 @@ and Skolem_IRI =
 
     member this.as_raw_string =
         match this with
-        | SkolemIRI (well_known_stem, uuid) ->
-            well_known_stem.as_rendered_string
-            + uuid.ToString("N")
+        | SkolemIRI (well_known_stem, uuid) -> well_known_stem.as_raw_string + uuid.ToString("N")
 
     member this.as_rendered_string = "<" + this.as_raw_string + ">"
 
@@ -2298,9 +2349,16 @@ and PN_LOCAL =
 and Blank_Node =
     | BlankNodeIdentifier of identifier: string
     | BlankNodePropertyList of identifier: string * predicateObjectList: PredicateObjectList
+    static member from_BlankNode(blank_node: BlankNode) =
+        BlankNodeIdentifier blank_node.InternalID
 
     member this.as_subject = BlankNodeSubject this
     member this.as_object = BlankNodeObject this
+
+    member this.as_inode = new BlankNode(this.as_raw_string) :> INode
+
+    member this.as_pattern_item(pattern_builder: TriplePatternBuilder) =
+        pattern_builder.PatternItemFactory.CreateNodeMatchPattern(this.as_inode)
 
     member this.as_raw_string =
         match this with
@@ -2322,6 +2380,45 @@ and Rdf_Literal =
         region: Region_Subtag *
         base_direction: Initial_Text_Direction
 
+    member this.as_inode =
+        match this with
+        | SimpleLiteral lexical_form -> new LiteralNode(lexical_form) :> INode
+        | LongLiteral lexical_form -> new LiteralNode(lexical_form) :> INode
+        | DatatypedLiteral (lexical_form, datatype) -> new LiteralNode(lexical_form, datatype.as_uri, false) :> INode
+        | LanguageString (lexical_form, language) ->
+            new LiteralNode(lexical_form, this.language_tag.Value.ToString(), false) :> INode
+        | RegionString (lexical_form, language, region) ->
+            new LiteralNode(
+                lexical_form,
+                this.language_tag.Value.ToString()
+                + "-"
+                + this.region_tag.Value.ToString(),
+                false
+            )
+            :> INode
+        | DirectedLanguageString (lexical_form, language, base_direction) ->
+            new LiteralNode(lexical_form, this.language_tag.Value.ToString(), false) :> INode
+        | DirectedRegionString (lexical_form, language, region, base_direction) ->
+            new LiteralNode(
+                lexical_form,
+                this.language_tag.Value.ToString()
+                + "-"
+                + this.region_tag.Value.ToString(),
+                false
+            )
+            :> INode
+
+    static member from_LiteralNode(literal_node: LiteralNode) =
+        match literal_node.Value, literal_node.DataType, literal_node.Language with
+        // TODO find a way to retrieve Language and region tags fr
+        | lexical_form, null, "en" -> LanguageString(lexical_form, Language_Tag.en)
+        | lexical_form, null, "en-US" -> RegionString(lexical_form, Language_Tag.en, Region_Subtag.US)
+        | lexical_form, datatype_uri, "" -> DatatypedLiteral(lexical_form, IRIREF.parse datatype_uri.OriginalString)
+        | lexical_form, _, _ -> lexical_form |> SimpleLiteral
+
+    member this.as_pattern_item(pattern_builder: TriplePatternBuilder) =
+        pattern_builder.PatternItemFactory.CreateNodeMatchPattern(this.as_inode)
+
     member this.lexical_form =
         match this with
         | SimpleLiteral lexical_form -> lexical_form
@@ -2332,7 +2429,7 @@ and Rdf_Literal =
         | DirectedLanguageString (lexical_form, language, base_direction) -> lexical_form
         | DirectedRegionString (lexical_form, language, region, base_direction) -> lexical_form
 
-    member this.datatype =
+    member this.datatype: IRIREF =
         match this with
         | SimpleLiteral lexical_form -> IRIREF.parse "http://www.w3.org/2001/XMLSchema#string"
         | LongLiteral lexical_form -> IRIREF.parse "http://www.w3.org/2001/XMLSchema#string"
@@ -2346,7 +2443,7 @@ and Rdf_Literal =
         | DirectedRegionString (lexical_form, language, region, base_direction) ->
             IRIREF.parse "http://www.w3.org/1999/02/22-rdf-syntax-ns#dirLangString"
 
-    member this.language_tag =
+    member this.language_tag: Language_Tag option =
         match this with
         | SimpleLiteral lexical_form -> None
         | LongLiteral lexical_form -> None
@@ -2356,7 +2453,7 @@ and Rdf_Literal =
         | DirectedLanguageString (lexical_form, language, base_direction) -> Some language
         | DirectedRegionString (lexical_form, language, region, base_direction) -> Some language
 
-    member this.region_tag(literal: Rdf_Literal) =
+    member this.region_tag: Region_Subtag option =
         match this with
         | SimpleLiteral lexical_form -> None
         | LongLiteral lexical_form -> None
@@ -2366,7 +2463,7 @@ and Rdf_Literal =
         | DirectedLanguageString (lexical_form, language, base_direction) -> None
         | DirectedRegionString (lexical_form, language, region, base_direction) -> Some region
 
-    member this.base_direction(literal: Rdf_Literal) =
+    member this.base_direction =
         match this with
         | SimpleLiteral lexical_form -> None
         | LongLiteral lexical_form -> None
@@ -2390,47 +2487,104 @@ and Initial_Text_Direction =
 and Rdf_Subject =
     | IRIREFSubject of IRIREF
     | BlankNodeSubject of Blank_Node
+    | VariableSubject of Rdf_Variable
     member this.as_rendered_string (prefix_delimiter: string) (prefix_map: Map<string, string>) =
         match this with
-        | IRIREFSubject (NamespacedName namespaced_iri) -> namespaced_iri.as_prefixed_name prefix_delimiter prefix_map
-        | IRIREFSubject iriref -> iriref.as_rendered_string
+        | IRIREFSubject iriref -> iriref.as_rendered_string prefix_delimiter prefix_map
         | BlankNodeSubject blank_node -> blank_node.as_raw_string
+        | VariableSubject rdf_variable -> rdf_variable.as_rendered_string
 
     member this.maybe_predicate =
         match this with
-        | IRIREFSubject iriref -> Some iriref.as_subject
+        | IRIREFSubject iriref -> Some iriref.as_predicate
         | BlankNodeSubject blank_node -> None
+        | VariableSubject rdf_variable -> Some(VariablePredicate rdf_variable)
 
     member this.as_object =
 
         match this with
         | IRIREFSubject iriref -> iriref.as_object
         | BlankNodeSubject blank_node -> blank_node.as_object
+        | VariableSubject rdf_variable -> VariableObject rdf_variable
+
+    member this.as_inode =
+        match this with
+        | IRIREFSubject iriref -> iriref.as_inode
+        | BlankNodeSubject blank_node -> blank_node.as_inode
+        | VariableSubject rdf_variable -> rdf_variable.as_inode
+
+    static member from_inode(inode: INode) =
+        match inode.NodeType with
+        | NodeType.Uri ->
+            inode :?> UriNode
+            |> IRIREF.from_UriNode
+            |> IRIREFSubject
+        | NodeType.Blank ->
+            inode :?> BlankNode
+            |> Blank_Node.from_BlankNode
+            |> BlankNodeSubject
+        | NodeType.Variable ->
+            inode :?> VariableNode
+            |> Rdf_Variable.question_from_VariableNode
+            |> VariableSubject
+
+    member this.as_pattern_item(pattern_builder: TriplePatternBuilder) : PatternItem =
+        match this with
+        | VariableSubject rdf_variable -> pattern_builder |> rdf_variable.as_pattern_item
+        | _ -> pattern_builder.PatternItemFactory.CreateNodeMatchPattern(this.as_inode)
+
+
 
     member this.as_raw_string =
         match this with
         | IRIREFSubject iriref -> iriref.as_raw_string
         | BlankNodeSubject blank_node -> blank_node.as_raw_string
+        | VariableSubject rdf_variable -> rdf_variable.as_raw_string
 
 
 and Rdf_Predicate =
     | IRIREFPredicate of IRIREF
+    | VariablePredicate of Rdf_Variable
     member this.as_subject =
         match this with
         | IRIREFPredicate iriref -> iriref.as_subject
+        | VariablePredicate rdf_variable -> VariableSubject rdf_variable
 
     member this.as_object =
         match this with
         | IRIREFPredicate iriref -> iriref.as_object
+        | VariablePredicate rdf_variable -> VariableObject rdf_variable
+
+    member this.as_inode =
+        match this with
+        | IRIREFPredicate iriref -> iriref.as_inode
+        | VariablePredicate rdf_variable -> rdf_variable.as_inode
+
+    static member from_inode(inode: INode) =
+        match inode.NodeType with
+        | NodeType.Uri ->
+            inode :?> UriNode
+            |> IRIREF.from_UriNode
+            |> IRIREFPredicate
+        | NodeType.Variable ->
+            inode :?> VariableNode
+            |> Rdf_Variable.question_from_VariableNode
+            |> VariablePredicate
+
+    member this.as_pattern_item(pattern_builder: TriplePatternBuilder) =
+        match this with
+        | VariablePredicate rdf_variable -> pattern_builder |> rdf_variable.as_pattern_item
+        | _ -> pattern_builder.PatternItemFactory.CreateNodeMatchPattern(this.as_inode)
 
     member this.as_rendered_string (prefix_delimiter: string) (prefix_map: Map<string, string>) =
         match this with
-        | IRIREFPredicate (NamespacedName namespaced_iri) -> namespaced_iri.as_prefixed_name prefix_delimiter prefix_map
-        | IRIREFPredicate iriref -> iriref.as_rendered_string
+        | IRIREFPredicate iriref -> iriref.as_rendered_string prefix_delimiter prefix_map
+        | VariablePredicate rdf_variable -> rdf_variable.as_rendered_string
 
     member this.as_raw_string =
         match this with
         | IRIREFPredicate iriref -> iriref.as_raw_string
+        | VariablePredicate rdf_variable -> rdf_variable.as_raw_string
 
 
 and Rdf_Object =
@@ -2438,13 +2592,45 @@ and Rdf_Object =
     | BlankNodeObject of Blank_Node
     | LiteralObject of Rdf_Literal
     | TripleTermObject of Triple_Term
+    | VariableObject of Rdf_Variable
+    member this.as_inode =
+        match this with
+        | IRIREFObject iriref -> iriref.as_inode
+        | BlankNodeObject blank_node -> blank_node.as_inode
+        | LiteralObject rdf_literal -> rdf_literal.as_inode
+        | TripleTermObject triple_term -> triple_term.as_inode
+        | VariableObject rdf_variable -> rdf_variable.as_inode
+
+    static member from_inode(inode: INode) =
+        match inode.NodeType with
+        | NodeType.Uri ->
+            inode :?> UriNode
+            |> IRIREF.from_UriNode
+            |> IRIREFObject
+        | NodeType.Blank ->
+            inode :?> BlankNode
+            |> Blank_Node.from_BlankNode
+            |> BlankNodeObject
+        | NodeType.Literal ->
+            inode :?> LiteralNode
+            |> Rdf_Literal.from_LiteralNode
+            |> LiteralObject
+        | NodeType.Triple ->
+            inode :?> TripleNode
+            |> Triple_Term.from_TripleNode
+            |> TripleTermObject
+        | NodeType.Variable ->
+            inode :?> VariableNode
+            |> Rdf_Variable.question_from_VariableNode
+            |> VariableObject
+
     member this.maybe_subject =
         match this with
         | IRIREFObject iriref -> Some iriref.as_subject
         | BlankNodeObject blank_node -> Some blank_node.as_subject
         | LiteralObject rdf_literal -> None
-        // TODO figure out howto incorporate reified triple subjects
         | TripleTermObject triple_term -> None
+        | VariableObject rdf_variable -> Some(VariableSubject rdf_variable)
 
     member this.maybe_predicate =
         match this with
@@ -2452,6 +2638,7 @@ and Rdf_Object =
         | BlankNodeObject blank_node -> None
         | LiteralObject rdf_literal -> None
         | TripleTermObject triple_term -> None
+        | VariableObject rdf_variable -> Some(VariablePredicate rdf_variable)
 
     member this.as_raw_string =
         match this with
@@ -2464,19 +2651,18 @@ and Rdf_Object =
                 triple_term.ttSubject.as_raw_string
                 triple_term.ttPredicate.as_raw_string
                 triple_term.ttObject.as_raw_string
+        | VariableObject rdf_variable -> rdf_variable.as_raw_string
 
     member this.as_rendered_string (prefix_delimiter: string) (prefix_map: Map<string, string>) =
         match this with
-        | IRIREFObject (NamespacedName namespaced_iri) -> namespaced_iri.as_prefixed_name prefix_delimiter prefix_map
-        | IRIREFObject iriref -> iriref.as_rendered_string
+        | IRIREFObject iriref -> iriref.as_rendered_string prefix_delimiter prefix_map
         | BlankNodeObject blank_node -> blank_node.as_raw_string
         | LiteralObject rdf_literal ->
             match rdf_literal with
             | SimpleLiteral lexical_form -> sprintf "%s" lexical_form
             | LongLiteral lexical_form -> sprintf "%s" lexical_form
-            | DatatypedLiteral (lexical_form, (NamespacedName datatype_iri)) ->
-                sprintf "%s^^%s" lexical_form (datatype_iri.as_prefixed_name prefix_delimiter prefix_map)
-            | DatatypedLiteral (lexical_form, datatype) -> sprintf "%s^^%s" lexical_form datatype.as_rendered_string
+            | DatatypedLiteral (lexical_form, datatype_iri) ->
+                sprintf "%s^^%s" lexical_form (datatype_iri.as_rendered_string prefix_delimiter prefix_map)
             | LanguageString (lexical_form, language) -> sprintf "%s@%s" lexical_form (language.ToString())
             | RegionString (lexical_form, language, region) ->
                 sprintf "%s@%s-%s" lexical_form (language.ToString()) (region.ToString())
@@ -2496,6 +2682,12 @@ and Rdf_Object =
                 (triple_term.ttSubject.as_rendered_string prefix_delimiter prefix_map)
                 (triple_term.ttPredicate.as_rendered_string prefix_delimiter prefix_map)
                 (triple_term.ttObject.as_rendered_string prefix_delimiter prefix_map)
+        | VariableObject rdf_variable -> rdf_variable.as_rendered_string
+
+    member this.as_pattern_item(pattern_builder: TriplePatternBuilder) =
+        match this with
+        | VariableObject rdf_variable -> pattern_builder |> rdf_variable.as_pattern_item
+        | _ -> pattern_builder.PatternItemFactory.CreateNodeMatchPattern(this.as_inode)
 
 and PredicateObjectList =
     {
@@ -2531,6 +2723,10 @@ and Triple_Term =
     | TripleTerm of Rdf_Triple
     member this.as_object = TripleTermObject this
 
+    member this.triple: Rdf_Triple =
+        match this with
+        | TripleTerm triple -> triple
+
     member this.ttSubject: Rdf_Subject =
         match this with
         | TripleTerm triple -> triple.curSubject
@@ -2542,6 +2738,34 @@ and Triple_Term =
     member this.ttObject: Rdf_Object =
         match this with
         | TripleTerm triple -> triple.curObject
+
+    member this.as_inode = new TripleNode(this.triple.as_Triple)
+
+    static member from_TripleNode(triple_node: TripleNode) =
+        triple_node.Triple
+        |> Rdf_Triple.from_Triple
+        |> TripleTerm
+
+    member this.as_pattern_item(pattern_builder: TriplePatternBuilder) =
+        pattern_builder.PatternItemFactory.CreateNodeMatchPattern(this.as_inode)
+
+    member this.as_raw_string =
+        sprintf "%s %s %s" this.ttSubject.as_raw_string this.ttPredicate.as_raw_string this.ttObject.as_raw_string
+
+    member this.as_rendered_string (prefix_delimiter: string) (prefix_map: Map<string, string>) =
+        let rendered_subject =
+            prefix_map
+            |> this.ttSubject.as_rendered_string prefix_delimiter
+
+        let rendered_predicate =
+            prefix_map
+            |> this.ttPredicate.as_rendered_string prefix_delimiter
+
+        let rendered_object =
+            prefix_map
+            |> this.ttObject.as_rendered_string prefix_delimiter
+
+        sprintf "%s %s %s" rendered_subject rendered_predicate rendered_object
 
 and Rdf_Triple =
     { curSubject: Rdf_Subject
@@ -2556,6 +2780,22 @@ and Rdf_Triple =
         this.curObject.as_rendered_string prefix_delimiter prefix_map
 
     member this.as_object = this |> TripleTerm |> TripleTermObject
+
+    member this.as_Triple =
+        new Triple(this.curSubject.as_inode, this.curPredicate.as_inode, this.curObject.as_inode)
+
+    static member from_Triple(triple: Triple) =
+        { curSubject = Rdf_Subject.from_inode triple.Subject
+          curPredicate = Rdf_Predicate.from_inode triple.Predicate
+          curObject = Rdf_Object.from_inode triple.Object }
+
+    member this.as_ITriplePattern(pattern_builder: TriplePatternBuilder) =
+        TriplePattern(
+            this.curSubject.as_pattern_item pattern_builder,
+            this.curPredicate.as_pattern_item pattern_builder,
+            this.curObject.as_pattern_item pattern_builder
+        )
+        :> ITriplePattern
 
     member this.verticies =
         [| SubjectVertex this.curSubject
@@ -2594,7 +2834,7 @@ and Rdf_Triple =
                     }
 
                 )))
-        |> HashSet.ofSeq
+        |> FSharp.HashCollections.HashSet.ofSeq
 
     static member set_from_subjects_predicateObjectLists
         (rdf_subjects: Rdf_Subject array)
@@ -2622,7 +2862,173 @@ and Rdf_Triple =
 
 
         )
-        |> HashSet.ofSeq
+        |> FSharp.HashCollections.HashSet.ofSeq
+
+and Rdf_Term =
+    | IRIRdfTerm of IRIREF
+    | BlankRdfTerm of Blank_Node
+    | LiteralRdfTerm of Rdf_Literal
+    | TripleRdfTerm of Triple_Term
+    | VariableRdfTerm of Rdf_Variable
+    // TODO figure out a way to "ingest" as formula
+    | GraphLiteralRdfTerm of Triple seq
+    static member from_inode(inode: INode) =
+        match inode.NodeType with
+        | NodeType.Uri ->
+            inode :?> UriNode
+            |> IRIREF.from_UriNode
+            |> IRIRdfTerm
+        | NodeType.Blank ->
+            inode :?> BlankNode
+            |> Blank_Node.from_BlankNode
+            |> BlankRdfTerm
+        | NodeType.Literal ->
+            inode :?> LiteralNode
+            |> Rdf_Literal.from_LiteralNode
+            |> LiteralRdfTerm
+        | NodeType.GraphLiteral ->
+            let graph_literal_node = inode :?> GraphLiteralNode
+
+            graph_literal_node.SubGraph.Triples.Asserted
+            |> GraphLiteralRdfTerm
+        | NodeType.Triple ->
+            inode :?> TripleNode
+            |> Triple_Term.from_TripleNode
+            |> TripleRdfTerm
+        | NodeType.Variable ->
+            inode :?> VariableNode
+            |> Rdf_Variable.question_from_VariableNode
+            |> VariableRdfTerm
+
+
+    member this.maybe_subject =
+        match this with
+        | IRIRdfTerm iri -> Some iri.as_subject
+        | BlankRdfTerm blank_node -> Some blank_node.as_subject
+        | LiteralRdfTerm rdf_literal -> None
+        | TripleRdfTerm triple_term -> None
+        | GraphLiteralRdfTerm _ -> None
+
+    member this.maybe_predicate =
+        match this with
+        | IRIRdfTerm iri -> Some iri.as_predicate
+        | BlankRdfTerm blank_node -> None
+        | LiteralRdfTerm rdf_literal -> None
+        | TripleRdfTerm triple_term -> None
+        | GraphLiteralRdfTerm _ -> None
+
+    member this.as_object =
+        match this with
+        | IRIRdfTerm iri -> iri.as_object
+        | BlankRdfTerm blank_node -> blank_node.as_object
+        | LiteralRdfTerm rdf_literal -> rdf_literal.as_object
+        | TripleRdfTerm triple_term -> triple_term.as_object
+
+    member this.as_raw_string =
+        match this with
+        | IRIRdfTerm iri -> iri.as_raw_string
+        | BlankRdfTerm blank_node -> blank_node.as_raw_string
+        | LiteralRdfTerm rdf_literal -> rdf_literal.lexical_form
+        | TripleRdfTerm triple_term -> triple_term.as_raw_string
+
+    member this.as_rendered_string (prefix_delimiter: string) (prefix_map: Map<string, string>) =
+        match this with
+        | IRIRdfTerm iri -> iri.as_rendered_string prefix_delimiter prefix_map
+        | BlankRdfTerm blank_node -> blank_node.as_rendered_string
+        | LiteralRdfTerm rdf_literal -> rdf_literal.lexical_form
+        | TripleRdfTerm triple_term -> triple_term.as_rendered_string prefix_delimiter prefix_map
+
+
+
+
+and [<CustomEquality; CustomComparison>] Rdf_Variable =
+    | QuestionVariable of identity: Guid * identifier: string * binding_cell: cval<Rdf_Term option>
+    | DollarVariable of identity: Guid * identifier: string * binding_cell: cval<Rdf_Term option>
+    member this.as_inode = new VariableNode(this.as_raw_string) :> INode
+
+    member this.as_pattern_item(pattern_builder: TriplePatternBuilder) =
+        pattern_builder.PatternItemFactory.CreateVariablePattern(this.as_raw_string)
+
+    member this.as_sparql_variable = new SparqlVariable(this.as_raw_string)
+
+    member private this.identity =
+        match this with
+        | QuestionVariable (identity, _, _) -> identity
+
+        | DollarVariable (identity, _, _) -> identity
+
+    member private this.binding_cell =
+        match this with
+        | QuestionVariable (_, _, binding_cell) -> binding_cell
+
+        | DollarVariable (_, _, binding_cell) -> binding_cell
+
+    member this.as_raw_string =
+        match this with
+        | QuestionVariable (_, identifier, _) -> identifier
+
+        | DollarVariable (_, identifier, _) -> identifier
+
+    member this.as_rendered_string =
+        match this with
+        | QuestionVariable (_, identifier, _) -> $"?{identifier}"
+
+        | DollarVariable (_, identifier, _) -> $"${identifier}"
+
+    /// Read-only adaptive view of the current binding.
+    member this.binding: aval<Rdf_Term option> = this.binding_cell :> aval<Rdf_Term option>
+
+    member this.bind(rdf_term: Rdf_Term) =
+        transact (fun () -> this.binding_cell.Value <- Some rdf_term)
+
+    member this.unbind() =
+        transact (fun () -> this.binding_cell.Value <- None)
+
+    member this.maybe_term = this.binding |> AVal.force
+    member this.as_subject = Rdf_Subject.VariableSubject this
+
+    member this.as_predicate = Rdf_Predicate.VariablePredicate this
+
+    member this.as_object = Rdf_Object.VariableObject this
+
+    static member question(identifier: string) =
+        if String.IsNullOrWhiteSpace(identifier) then
+            invalidArg (nameof identifier) "An RDF variable identifier cannot be empty."
+
+        let binding_cell = cval (None: Rdf_Term option)
+
+        QuestionVariable(Guid.NewGuid(), identifier, binding_cell)
+
+    static member dollar(identifier: string) =
+        if String.IsNullOrWhiteSpace(identifier) then
+            invalidArg (nameof identifier) "An RDF variable identifier cannot be empty."
+
+        let binding_cell = cval (None: Rdf_Term option)
+
+        DollarVariable(Guid.NewGuid(), identifier, binding_cell)
+
+    static member dollar_from_VariableNode(variable_node: VariableNode) =
+        Rdf_Variable.dollar variable_node.VariableName
+
+    static member question_from_VariableNode(variable_node: VariableNode) =
+        Rdf_Variable.question variable_node.VariableName
+
+    override this.Equals(other: obj) =
+        match other with
+        | :? Rdf_Variable as other_variable -> this.identity = other_variable.identity
+
+        | _ -> false
+
+    override this.GetHashCode() = this.identity.GetHashCode()
+
+    interface IComparable with
+        member this.CompareTo(other: obj) =
+            match other with
+            | :? Rdf_Variable as other_variable -> compare this.identity other_variable.identity
+
+            | _ -> invalidArg (nameof other) "An Rdf_Variable can only be compared with another Rdf_Variable."
+
+
 
 and Vertex =
     | SubjectVertex of Rdf_Subject

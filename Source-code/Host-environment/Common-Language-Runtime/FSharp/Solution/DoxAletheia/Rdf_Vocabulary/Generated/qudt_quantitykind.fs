@@ -844,13 +844,6 @@ module qudt_quantitykind =
     /// Applicable units are those of quantitykind:MolarEnergy
     /// <see href="http://qudt.org/vocab/quantitykind/ChemicalPotential"></see></summary>
     let ``_/ChemicalPotential`` = _prefix "/ChemicalPotential"
-
-    /// <summary>
-    /// Applicable units are those of quantitykind:Mass
-    /// <see href="http://qudt.org/vocab/quantitykind/ElectricPropulsionPropellantMass"></see></summary>
-    let ``_/ElectricPropulsionPropellantMass`` =
-        _prefix "/ElectricPropulsionPropellantMass"
-
     /// <summary>
     /// Applicable units are those of quantitykind:MolarEnergy
     /// <see href="http://qudt.org/vocab/quantitykind/MolarEnergy"></see></summary>
@@ -1494,6 +1487,13 @@ module qudt_quantitykind =
     /// Applicable units are those of quantitykind:Power
     /// <see href="http://qudt.org/vocab/quantitykind/Power"></see></summary>
     let ``_/Power`` = _prefix "/Power"
+
+    /// <summary>
+    /// Applicable units are those of quantitykind:Mass
+    /// <see href="http://qudt.org/vocab/quantitykind/ElectricPropulsionPropellantMass"></see></summary>
+    let ``_/ElectricPropulsionPropellantMass`` =
+        _prefix "/ElectricPropulsionPropellantMass"
+
     /// <summary>
     /// Applicable units are those of quantitykind:Mass
     /// <see href="http://qudt.org/vocab/quantitykind/PropellantMass"></see></summary>

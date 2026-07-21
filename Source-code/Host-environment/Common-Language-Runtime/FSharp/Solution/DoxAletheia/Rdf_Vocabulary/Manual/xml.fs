@@ -1,8 +1,8 @@
-namespace https.www.w3.org.XML._1998.namespace_.hash
+namespace http.www.w3.org.XML._1998.namespace_.hash
 
 open DoxAletheia
 
-/// https://www.w3.org/XML/1998/namespace
+/// http://www.w3.org/XML/1998/namespace
 module xml =
 
     let _namespace_name = "http://www.w3.org/XML/1998/namespace#"

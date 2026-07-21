@@ -36,6 +36,7 @@
   </ItemGroup>
 	
 	<ItemGroup>
+		<PackageReference Include="FSharp.Data.Adaptive" Version="1.2.26" />
 		<PackageReference Include="Unquote" Version="7.0.1" />
 		<PackageReference Include="FSharp.Json" Version="0.4.1" />
 		<PackageReference Include="FSharp.Data.Json" Version="1.0.0" />
@@ -64,6 +65,7 @@
 		<PackageReference Include="BitFaster.Caching" Version="2.6.0" />
 		<PackageReference Include="CommunityToolkit.HighPerformance" Version="8.4.2" />
 		<PackageReference Include="FSharp.UMX" Version="1.1.0" />
+		
 		<PackageReference Include="Rubjerg.Graphviz" Version="3.0.5" />
 
 		

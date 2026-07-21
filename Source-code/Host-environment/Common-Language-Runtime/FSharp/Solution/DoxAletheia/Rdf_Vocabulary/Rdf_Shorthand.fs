@@ -7,20 +7,22 @@ open System.Globalization
 open System.Xml
 
 
-
+// variable instantiation
+let (!?) (identifier: string) = Rdf_Variable.question identifier
+let (!%) (identifier: string) = Rdf_Variable.dollar identifier
 
 
 
 
 // lexical adders
 
-let (^@) lexical_form language_tag =
+let (.*@) lexical_form language_tag =
     LanguageString(lexical_form, language_tag)
 
-let (^@@) lexical_form (language_tag, region_subtag) =
+let (.*@@) lexical_form (language_tag, region_subtag) =
     RegionString(lexical_form, language_tag, region_subtag)
 
-let (^^) lexical_form datatype =
+let (.*^) lexical_form datatype =
     DatatypedLiteral(lexical_form, datatype)
 // TODO consider something for long string literals
 
@@ -112,6 +114,7 @@ let inline (->=) (predicate: ^PredicateType when ^PredicateType: (member as_pred
         [| Literal.autotyped value_object
            |> Rdf_Object.LiteralObject |]
 
+
 let inline (->=|) (predicate: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate)) value_objects =
     let objects =
         value_objects
@@ -161,16 +164,16 @@ let inline (-->=) (draft: Formula) literal =
     |> Formula.materialize_triples
 
 let inline (-->^) (draft: Formula) (lexical_form: string) (datatype: IRIREF) =
-    draft.add_literal (lexical_form ^^ datatype)
+    draft.add_literal (lexical_form .*^ datatype)
     |> Formula.materialize_triples
 
 let inline (-->@) (draft: Formula) (lexical_form: string) (language_tag: Language_Tag) =
-    lexical_form ^@ language_tag
+    lexical_form .*@ language_tag
     |> draft.add_literal
     |> Formula.materialize_triples
 
 let inline (-->@@) (draft: Formula) (lexical_form: string) (language_tag: Language_Tag) (region_subtag: Region_Subtag) =
-    lexical_form ^@@ (language_tag, region_subtag)
+    lexical_form .*@@ (language_tag, region_subtag)
     |> draft.add_literal
     |> Formula.materialize_triples
 
@@ -181,13 +184,13 @@ let inline (-->=|) (draft: Formula) literals =
 
 let inline (-->^|) (draft: Formula) (lexical_forms: string list) (datatype: IRIREF) =
     lexical_forms
-    |> List.map (fun lexical_form -> lexical_form ^^ datatype)
+    |> List.map (fun lexical_form -> lexical_form .*^ datatype)
     |> draft.add_literals
     |> Formula.materialize_triples
 
 let inline (-->@|) (draft: Formula) (lexical_forms: string list) (language_tag: Language_Tag) =
     lexical_forms
-    |> List.map (fun lexical_form -> lexical_form ^@ language_tag)
+    |> List.map (fun lexical_form -> lexical_form .*@ language_tag)
     |> draft.add_literals
     |> Formula.materialize_triples
 
@@ -198,7 +201,7 @@ let inline (-->@@|)
     (region_subtag: Region_Subtag)
     =
     lexical_forms
-    |> List.map (fun lexical_form -> lexical_form ^@@ (language_tag, region_subtag))
+    |> List.map (fun lexical_form -> lexical_form .*@@ (language_tag, region_subtag))
     |> draft.add_literals
     |> Formula.materialize_triples
 
@@ -211,4 +214,11 @@ let inline (-->|) (draft: Formula) (object_terms: ^ObjectType list when ^ObjectT
     |> List.toArray
     |> Array.Parallel.map (fun object_term -> object_term.as_object)
     |> draft.add_objects
+    |> Formula.materialize_triples
+
+/// formulas
+
+let inline (-*|) (draft: Formula) (formula_list: Formula list) =
+    formula_list
+    |> draft.add_formulas
     |> Formula.materialize_triples

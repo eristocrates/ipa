@@ -1,0 +1,1532 @@
+{
+  "@graph": [
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Stormwater_Pond",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "2"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Stormwater Pond",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Media_Points",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "21"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Media Points",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/MapServer",
+      "@type": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/Esri.ArcGISRuntime.Mapping.ArcGISMapImageLayer"
+      ],
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/brightness": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/contrast": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/current_version": "10.81",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/export_tile_cache_compact_v2allowed": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/export_tiles_allowed": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/gamma": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:ID",
+        "@value": "AkkM8jgyQnKwhGKarBP5OQ"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_identify_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_time_filtering_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/map_name": "Layers",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_export_tiles_count": {
+        "@type": "xsd:int",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_image_height": {
+        "@type": "xsd:int",
+        "@value": "4096"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_image_width": {
+        "@type": "xsd:int",
+        "@value": "4096"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_record_count": {
+        "@type": "xsd:int",
+        "@value": "3000"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "LCPW OverlayStormwaterInfrastructure D WM",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/refresh_interval": {
+        "@type": "xsd:duration",
+        "@value": "PT0S"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/service_description": "This map service layer (image layer) contains storm-water inventory for unincorporated Leon County that has been developed from a variety of sources. It contains FDOT and Leon County inventory features as well as some private connections. It falls into roughly 4 categories.\n\n1 – That which was produced by LCPW vendors.\n- Limitations with this set include bad geometry – meaning either not snapped or incorrect feature types. Table data present but not assessed.\n\n2 – Drawn in by TLCGIS staff according to as-built documents (typically areas with more complex sub-surface drainage conditions).\n- Very good geometry with somewhat less robust attribute data.\n\n3 – Drawn in by TLCGIS staff using a combination of Google Street View, 2018 DEM/Hillshade, various aerial imagery data and other data sources such as drainage easements. These reflect areas of relatively simple drainage conditions such as culverts, MES, headwalls, Spillways, etc.\n- Primary limitation being there is very little attribute data and also includes disconnected surface features that need as-builts to complete.\n\n4 – Drawn in by TLCGIS staff that represent neighborhood drainage conditions.\n- These are exclusively geometry with no real attribute data. Mostly this is mostly culverts and associated end sections where identifiable.\n\nAll data is drawn in direction of flow. Guess work has been mitigated by using Google Street View, over 10 years of various aerial imagery and DEM results to carefully place features in their actual locations. The vendor data uses GPS and is less well positioned. Any locations where unincorporated data from as-builts intersects with COTSW inventory has not been drawn in but rather connected to (snapped) to the COTSW data. *If you are a Leon County Engineer and you need access to COTSW inventory data that can be arranged. COTSW data will however not be included in the Public Works or DSEM web mapping applications.\n",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/single_fused_map_cache": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/source": {
+        "@type": "xsd:anyURI",
+        "@value": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/MapServer"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/sublayer": [
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Private_Point"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Ditch"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Bridge"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Culvert_Cross_Drain"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Pollution_Control_Box"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Ditch_Point"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Media_Points"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Outfall_Drainage_Area_MOF"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/End_Point"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Damage"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Junction_Fixed"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Non-Drainage_Network"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Debris_Trap"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Inlet"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Generic_Storm_Asset"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Drainage_Network"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Interference"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Outfall_Drainage_Area_MS4"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Stormwater_Pond_Discharge"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Stormwater_Pond_-_Top_of_Bank"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Bridge_Point"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Connectivity"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Stormwater_Pond"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Outfall_Drainage_Area"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Conduit"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Outfall"
+        },
+        {
+          "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Media_Points_Without_Photos"
+        }
+      ],
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/supports_dynamic_layers": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/supports_time_filtering": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Private_Point",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "10"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Private Point",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Ditch_Point",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "13"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Ditch Point",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Stormwater_Pond_-_Top_of_Bank",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "17"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Stormwater Pond - Top of Bank",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Connectivity",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "7"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Connectivity",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Outfall_Drainage_Area",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "19"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Outfall Drainage Area",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Ditch",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "14"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Ditch",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Bridge",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "16"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Bridge",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Interference",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "25"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Interference",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Damage",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "22"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Damage",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Drainage_Network",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Drainage Network",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/End_Point",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "3"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "End Point",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Culvert_Cross_Drain",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "12"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Culvert Cross Drain",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Generic_Storm_Asset",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "8"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Generic Storm Asset",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Pollution_Control_Box",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "26"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Pollution Control Box",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Outfall",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Outfall",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Junction_Fixed",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "6"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Junction Fixed",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Non-Drainage_Network",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "23"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Non-Drainage Network",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Stormwater_Pond_Discharge",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "9"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Stormwater Pond Discharge",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Debris_Trap",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "5"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Debris Trap",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Media_Points_Without_Photos",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "24"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Media Points Without Photos",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Inlet",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "4"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Inlet",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Bridge_Point",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "15"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Bridge Point",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Outfall_Drainage_Area_MOF",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "20"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Outfall Drainage Area MOF",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Conduit",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "11"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Conduit",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/Outfall_Drainage_Area_MS4",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/can_change_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/default_visibility": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/id": {
+        "@type": "xsd:long",
+        "@value": "18"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_popup_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/is_visible": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/labels_enabled": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/load_status": "Loaded",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/max_scale": {
+        "@type": "xsd:double",
+        "@value": "0"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/min_scale": {
+        "@type": "xsd:double",
+        "@value": "577790.554289"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/name": "Outfall Drainage Area MS4",
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/opacity": {
+        "@type": "xsd:double",
+        "@value": "1"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/scale_symbols": {
+        "@type": "xsd:boolean",
+        "@value": "false"
+      },
+      "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/show_in_legend": {
+        "@type": "xsd:boolean",
+        "@value": "true"
+      }
+    },
+    {
+      "@id": "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/Esri.ArcGISRuntime.Mapping.ArcGISMapImageLayer",
+      "@type": "http://www.w3.org/2002/07/owl#Class"
+    }
+  ],
+  "@context": {
+    "rdf": {
+      "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "@prefix": true
+    },
+    "rdfs": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#",
+      "@prefix": true
+    },
+    "xsd": {
+      "@id": "http://www.w3.org/2001/XMLSchema#",
+      "@prefix": true
+    }
+  }
+}

@@ -4800,6 +4800,11 @@ module ifc =
         _prefix "rotationalStiffnessX_IfcBoundaryNodeCondition"
 
     /// <summary>
+    ///   <see href="https://w3id.org/ifc/IFC4_ADD1#mapUnit_IfcProjectedCRS"></see>
+    /// </summary>
+    let mapUnit_IfcProjectedCRS = _prefix "mapUnit_IfcProjectedCRS"
+
+    /// <summary>
     ///   <see href="https://w3id.org/ifc/IFC4_ADD1#translationalStiffnessX_IfcBoundaryNodeCondition"></see>
     /// </summary>
     let translationalStiffnessX_IfcBoundaryNodeCondition =
@@ -10868,10 +10873,6 @@ module ifc =
     ///   <see href="https://w3id.org/ifc/IFC4_ADD1#predefinedType_IfcProjectOrder"></see>
     /// </summary>
     let predefinedType_IfcProjectOrder = _prefix "predefinedType_IfcProjectOrder"
-    /// <summary>
-    ///   <see href="https://w3id.org/ifc/IFC4_ADD1#mapUnit_IfcProjectedCRS"></see>
-    /// </summary>
-    let mapUnit_IfcProjectedCRS = _prefix "mapUnit_IfcProjectedCRS"
     /// <summary>
     ///   <see href="https://w3id.org/ifc/IFC4_ADD1#mapZone_IfcProjectedCRS"></see>
     /// </summary>

@@ -49,6 +49,19 @@ open Fantomas.Core.SyntaxOak
 open type Fabulous.AST.Ast
 
 open FSharp.Json
+open FSharp.Data
+
+
+// TODO commit to an actual Namespace_IRI type with embedded mapping
+[<Literal>]
+let prefix_file_path =
+    @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Namespace_Prefixes\namespace_prefixes.json"
+
+let namespace_prefixes = JsonProvider<prefix_file_path>.Load prefix_file_path
+
+let global_prefix_declarations = 
+    JsonProvider<prefix_file_path>.Load(prefix_file_path).Mappings
+    |> Array.map (fun Mapping -> Mapping.NamespaceName, Mapping.PrefixLabel)
 
 
 
@@ -174,7 +187,7 @@ module IGraph =
 
     let map_prefixes (graph: IGraph) =
         global_prefix_declarations
-        |> Array.Parallel.iter (fun (namespace_name, prefix_label) ->
+        |> Array.Parallel.iter (fun ((namespace_name:string), prefix_label) ->
 
             let uri_nodes =
                 graph.AllNodes
@@ -558,17 +571,17 @@ module Dot =
 
     let prefix_delimiter = ":"
 
-    let vertex_dot (vertex: Vertex) =
+    let vertex_dot (vertex: Vertex) (global_prefix_map:Map<string, string>) =
         vertex.as_rendered_string prefix_delimiter global_prefix_map
 
-    let edge_dot (edge: Edge) =
+    let edge_dot (edge: Edge) (global_prefix_map:Map<string, string>) =
         edge.as_rendered_string prefix_delimiter global_prefix_map
 
-    let yog_options: Dot.Options<Vertex, Edge> =
+    let yog_options(global_prefix_map:Map<string, string>): Dot.Options<Vertex, Edge> =
         {
 
-          NodeLabel = (fun _ vertex -> vertex_dot vertex)
-          EdgeLabel = (fun edge -> edge_dot edge)
+          NodeLabel = (fun _ vertex -> vertex_dot vertex global_prefix_map)
+          EdgeLabel = (fun edge -> edge_dot edge global_prefix_map)
           HighlightedSourceNodes = Set.empty
           HighlightedSinkNodes = Set.empty
           HighlightedNodes = Set.empty
@@ -579,22 +592,22 @@ module Dot =
         }
 
 
-    let write_yograph (parent_directory: string) (stem: string) (yograph: YoGraph) =
+    let write_yograph (parent_directory: string) (stem: string) (global_prefix_map:Map<string, string>)(yograph: YoGraph) =
         let file_path = syntax.file_path parent_directory stem
-        Dot.writeFile file_path yog_options yograph
+        Dot.writeFile file_path (yog_options global_prefix_map) yograph
 
-    let write_quik_graph (parent_directory: string) (stem: string) (quik_graph: Quik_Graph) =
+    let write_quik_graph (parent_directory: string) (stem: string) (global_prefix_map:Map<string, string>)(quik_graph: Quik_Graph) =
         let dot_graph = new GraphvizAlgorithm<Vertex, Quik_Edge>(quik_graph)
 
         dot_graph.FormatVertex.Add (fun args ->
 
-            args.VertexFormat.Label <- (vertex_dot args.Vertex)
+            args.VertexFormat.Label <- (vertex_dot args.Vertex global_prefix_map)
 
         )
 
         dot_graph.FormatEdge.Add (fun args ->
 
-            args.EdgeFormat.Label.Value <- (edge_dot args.Edge.Tag)
+            args.EdgeFormat.Label.Value <- (edge_dot args.Edge.Tag global_prefix_map)
 
         )
 
@@ -603,22 +616,22 @@ module Dot =
         dot_graph.Generate(new FileDotEngine(), (syntax.file_path parent_directory stem))
         |> ignore
 
-    let write_draft_from_yograph (parent_directory: string) (stem: string) (draft: Formula) =
+    let write_draft_from_yograph (parent_directory: string) (stem: string) (global_prefix_map:Map<string, string>) (draft: Formula) =
         { triples = draft.triples }
         |> YoGraph.from_rdf_graph
-        |> write_yograph parent_directory $"{stem}.yog"
+        |> write_yograph parent_directory $"{stem}.yog" global_prefix_map
 
-    let write_draft_from_quik_graph (parent_directory: string) (stem: string) (draft: Formula) =
+    let write_draft_from_quik_graph (parent_directory: string) (stem: string) (global_prefix_map:Map<string, string>) (draft: Formula) =
         { triples = draft.triples }
         |> Quik_Graph.from_rdf_graph
-        |> write_quik_graph parent_directory $"{stem}.quik"
+        |> write_quik_graph parent_directory $"{stem}.quik" global_prefix_map
 
-    let write_draft (parent_directory: string) (stem: string) (draft: Formula) =
+    let write_draft (parent_directory: string) (stem: string) (global_prefix_map:Map<string, string>)(draft: Formula) =
         draft
-        |> write_draft_from_yograph parent_directory stem
+        |> write_draft_from_yograph parent_directory stem global_prefix_map
 
         draft
-        |> write_draft_from_quik_graph parent_directory stem
+        |> write_draft_from_quik_graph parent_directory stem global_prefix_map
 
 module Mermaid =
 
@@ -628,18 +641,18 @@ module Mermaid =
 
     let prefix_delimiter = ":"
 
-    let vertex_mmd (vertex: Vertex) =
+    let vertex_mmd (vertex: Vertex)(global_prefix_map:Map<string, string>) =
         vertex.as_rendered_string prefix_delimiter global_prefix_map
 
-    let edge_mmd (edge: Edge) =
+    let edge_mmd (edge: Edge) (global_prefix_map:Map<string, string>)=
         edge.as_rendered_string prefix_delimiter global_prefix_map
 
-    let options: Mermaid.Options<Vertex, Edge> =
+    let options (global_prefix_map:Map<string, string>): Mermaid.Options<Vertex, Edge> =
         {
 
           Direction = "LR"
-          NodeLabel = (fun vertex_id vertex -> vertex_mmd vertex)
-          EdgeLabel = (fun edge -> edge_mmd edge)
+          NodeLabel = (fun vertex_id vertex -> vertex_mmd vertex global_prefix_map)
+          EdgeLabel = (fun edge -> edge_mmd edge global_prefix_map)
           HighlightedEdges = Set.empty
           HighlightedNodes = Set.empty
           HighlightedSinkNodes = Set.empty
@@ -647,14 +660,14 @@ module Mermaid =
 
         }
 
-    let write_yograph (parent_directory: string) (stem: string) yograph =
+    let write_yograph (parent_directory: string) (stem: string) (global_prefix_map:Map<string, string>) yograph =
         let file_path = syntax.file_path parent_directory stem
-        Mermaid.writeFile file_path options yograph
+        Mermaid.writeFile file_path (options global_prefix_map) yograph
 
-    let write_draft (parent_directory: string) (stem: string) (draft: Formula) =
+    let write_draft (parent_directory: string) (stem: string) (global_prefix_map:Map<string, string>)(draft: Formula) =
         { triples = draft.triples }
         |> YoGraph.from_rdf_graph
-        |> write_yograph parent_directory stem
+        |> write_yograph parent_directory stem global_prefix_map
 
 
 
@@ -665,25 +678,25 @@ module d2 =
 
     let prefix_delimiter = "\\:"
 
-    let vertex_d2 (vertex: Vertex) =
+    let vertex_d2 (vertex: Vertex) (global_prefix_map:Map<string, string>)=
         vertex.as_rendered_string prefix_delimiter global_prefix_map
 
-    let edge_d2 (edge: Edge) =
+    let edge_d2 (edge: Edge) (global_prefix_map:Map<string, string>)=
         edge.as_rendered_string prefix_delimiter global_prefix_map
 
-    let graph_lines (rdf_graph: Rdf_Graph) =
+    let graph_lines (global_prefix_map:Map<string, string>) (rdf_graph: Rdf_Graph) =
         rdf_graph.triples
         |> Array.ofSeq
         |> Array.Parallel.map (fun triple ->
             SubjectVertex triple.curSubject, ObjectVertex triple.curObject, PredicateEdge triple.curPredicate)
         |> Array.Parallel.map (fun (in_vertex, out_vertex, out_edge) ->
-            sprintf "%s -> %s : %s" (vertex_d2 in_vertex) (vertex_d2 out_vertex) (edge_d2 out_edge))
+            sprintf "%s -> %s : %s" (vertex_d2 in_vertex global_prefix_map) (vertex_d2 out_vertex global_prefix_map) (edge_d2 out_edge global_prefix_map))
 
-    let graph_text (rdf_graph: Rdf_Graph) =
-        rdf_graph |> graph_lines |> String.concat "\n"
+    let graph_text (global_prefix_map:Map<string, string>)(rdf_graph: Rdf_Graph) =
+        rdf_graph |> graph_lines global_prefix_map|> String.concat "\n"
 
-    let write_draft (parent_directory: string) (stem: string) (draft: Formula) =
-        let file_text = { triples = draft.triples } |> graph_text
+    let write_draft (parent_directory: string) (stem: string) (global_prefix_map:Map<string, string>)(draft: Formula) =
+        let file_text = { triples = draft.triples } |> graph_text global_prefix_map
 
         let file_path = syntax.file_path parent_directory stem
         File.WriteAllText(file_path, file_text)
@@ -714,12 +727,12 @@ module Formula =
     let to_igraph (draft: Formula) =
         draft |> to_rdf_graph |> IGraph.from_rdf_graph
 
-let write_draft parent_directory stem draft =
+let write_draft  parent_directory stem (global_prefix_map:Map<string, string>) draft =
     Turtle.write_draft parent_directory stem draft
-    Dot.write_draft parent_directory stem draft
+    Dot.write_draft parent_directory stem global_prefix_map draft
     ddot.it.write_draft parent_directory stem draft
-    Mermaid.write_draft parent_directory stem draft
-    d2.write_draft parent_directory stem draft
+    Mermaid.write_draft parent_directory stem global_prefix_map draft
+    d2.write_draft parent_directory stem global_prefix_map draft
     JsonLd.write_draft parent_directory stem draft
     JsonRq.write_draft parent_directory stem draft
     Force_Graph_2D.write_draft parent_directory stem draft

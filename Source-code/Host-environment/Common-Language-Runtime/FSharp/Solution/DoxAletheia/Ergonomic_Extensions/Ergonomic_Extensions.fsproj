@@ -7,6 +7,8 @@
 
   <ItemGroup>
 	  
+	  <Compile Include="HtmlErgonomics.fs" />
+	  
 	  <Compile Include="XmlErgonomics.fs" />
 	  
 	  <Compile Include="JsonErgonomics.fs" />
@@ -59,6 +61,7 @@
 	  <PackageReference Include="FsHttp" Version="15.0.3" />
 	  <PackageReference Include="FsHttp.NewtonsoftJson" Version="15.0.3" />
 	  <PackageReference Include="FsHttp.FSharpData" Version="15.0.3" />
+	  <PackageReference Include="HtmlToOpenXml.dll" Version="3.4.1" />
   </ItemGroup>    
   
 

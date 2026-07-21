@@ -8,6 +8,7 @@
     <Project Path="C:/Repositories/eristocrates/ipa/Source-code/Host-environment/Common-Language-Runtime/FSharp/Solution/DoxAletheia/ParserCombinator/ParserCombinator.fsproj" Id="e311cc13-c24c-4f0e-9cb6-dbcf1bb9d0e3"></Project>
     <Project Path="C:/Repositories/eristocrates/ipa/Source-code/Host-environment/Common-Language-Runtime/FSharp/Solution/DoxAletheia/Tests/Tests.fsproj" Id="921fba36-60bb-44a7-bf18-6d865ef89f01"></Project>
     <Project Path="C:/Repositories/eristocrates/ipa/Source-code/Host-environment/Common-Language-Runtime/FSharp/Solution/DoxAletheia/Unicodepoint/Unicodepoint.fsproj" Id="2e3a442d-8cfb-479f-82a4-09c01a4bab93"></Project>
+    <Project Path="Namespace_Prefixes/Namespace_Prefixes.fsproj" Id="463f46b0-533d-40e8-952b-2e535d439636" />
     <Project Path="Rdf_Registry/Rdf_Registry.fsproj" Id="32ab4044-a671-437f-ace3-12ec1de6ddc7" />
     <Project Path="Rdf_Vocabulary/Rdf_Vocabulary.fsproj" Id="b5f5caf3-8b44-40c9-83ee-d1cf54e82d1c" />
 </Solution>

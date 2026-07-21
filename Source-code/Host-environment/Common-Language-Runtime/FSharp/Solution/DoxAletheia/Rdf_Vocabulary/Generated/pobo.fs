@@ -2,7 +2,7 @@ namespace http.purl.obolibrary.org.obo.slash
 
 open DoxAletheia
 
-module cdao =
+module pobo =
     let _namespace_name = "http://purl.obolibrary.org/obo/"
 
     let _prefix local_name =
@@ -5200,10 +5200,6 @@ module cdao =
     /// </summary>
     let OBI_0000973 = _prefix "OBI_0000973"
     /// <summary>
-    ///   <see href="http://purl.obolibrary.org/obo/OBI_0001343"></see>
-    /// </summary>
-    let OBI_0001343 = _prefix "OBI_0001343"
-    /// <summary>
     ///   <see href="http://purl.obolibrary.org/obo/OBI_0000694"></see>
     /// </summary>
     let OBI_0000694 = _prefix "OBI_0000694"
@@ -8187,6 +8183,10 @@ module cdao =
     ///   <see href="http://purl.obolibrary.org/obo/OBI_0001342"></see>
     /// </summary>
     let OBI_0001342 = _prefix "OBI_0001342"
+    /// <summary>
+    ///   <see href="http://purl.obolibrary.org/obo/OBI_0001343"></see>
+    /// </summary>
+    let OBI_0001343 = _prefix "OBI_0001343"
     /// <summary>
     ///   <see href="http://purl.obolibrary.org/obo/OBI_0001344"></see>
     /// </summary>

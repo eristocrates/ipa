@@ -9,7 +9,7 @@ open Swensen.Unquote.Assertions
 
 open https.www.w3.org._2003._05.xpath_datatypes.hash
 open https.www.w3.org._2001.XMLSchema_instance.hash
-open https.www.w3.org.XML._1998.namespace_.hash
+open http.www.w3.org.XML._1998.namespace_.hash
 open http.www.w3.org._2001.XMLSchema.hash
 open http.www.w3.org._2006.time.hash
 open https.www.w3.org._2001.XMLSchema_instance.hash
