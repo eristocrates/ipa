@@ -1,97 +1,89 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix ceon: <http://w3id.org/CEON/>.
 @prefix ceon-plan: <http://w3id.org/CEON/ontology/plan/>.
-@prefix ceon-processODP: <http://w3id.org/CEON/ontology/processODP/>.
-@prefix cpa: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-ceon-plan: dcterms:contributor "Eva Blomqvist";
-           dcterms:created "2025-06-19"^^xsd:date;
-           dcterms:creator "Huanyu Li";
-           dcterms:description "The Plan module of CEON (Circular Economy Ontology Network).";
-           dcterms:issued "2025-06-30"^^xsd:date;
-           dcterms:license "https://creativecommons.org/licenses/by/4.0/";
-           dcterms:publisher "Onto-DESIDE";
-           dcterms:title "Circular Economy Ontology Network (CEON) - Plan Module";
-           vann:preferredNamespacePrefix "ceon-plan";
-           vann:preferredNamespaceUri "https://w3id.org/CEON/ontology/plan/";
-           cpa:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: T8-2.",
-                                  "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: T8-2.";
-           a owl:Ontology;
+ceon-plan: <http://purl.org/dc/terms/contributor> "Eva Blomqvist";
+           <http://purl.org/dc/terms/created> "2025-06-19"^^xsd:date;
+           <http://purl.org/dc/terms/creator> "Huanyu Li";
+           <http://purl.org/dc/terms/description> "The Plan module of CEON (Circular Economy Ontology Network).";
+           <http://purl.org/dc/terms/issued> "2025-06-30"^^xsd:date;
+           <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by/4.0/";
+           <http://purl.org/dc/terms/publisher> "Onto-DESIDE";
+           <http://purl.org/dc/terms/title> "Circular Economy Ontology Network (CEON) - Plan Module";
+           <http://purl.org/vocab/vann/preferredNamespacePrefix> "ceon-plan";
+           <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/CEON/ontology/plan/";
+           <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: T8-2.",
+                                                                                                     "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: T8-2.";
+           a <http://www.w3.org/2002/07/owl#Ontology>;
            rdfs:seeAlso <https://github.com/LiUSemWeb/CEON>;
-           owl:imports <http://w3id.org/CEON/ontology/processODP/0.5/>;
-           owl:versionIRI <http://w3id.org/CEON/ontology/plan/0.1/>;
-           owl:versionInfo 0.1.
-ceon-plan:Description a owl:Class;
+           <http://www.w3.org/2002/07/owl#imports> <http://w3id.org/CEON/ontology/processODP/0.5/>;
+           <http://www.w3.org/2002/07/owl#versionIRI> <http://w3id.org/CEON/ontology/plan/0.1/>;
+           <http://www.w3.org/2002/07/owl#versionInfo> 0.1.
+ceon-plan:Description a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment """A Description is a SocialObject that represents a conceptualization. 
 For example, a Plan is a Description of some actions to be executed by agents in a certain way, with certain parameters etc. Descriptions 'define' or 'use' concepts, and can be 'satisfied' by situations.""";
                       rdfs:label "Description".
-ceon-plan:Plan a owl:Class;
+ceon-plan:Plan a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "A Description having an explicit goal, to be achieved by executing the plan.";
                rdfs:label "Plan";
-               rdfs:subClassOf [owl:someValuesFrom ceon-plan:Plan ; 
-                                owl:onProperty ceon-processODP:hasPart ; 
-                                a owl:Restriction],
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ceon-plan:Plan ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/CEON/ontology/processODP/hasPart> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
                                ceon-plan:Description.
-ceon-plan:PlanExecution a owl:Class;
+ceon-plan:PlanExecution a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:comment "Plan executions are situations that proactively satisfy a plan. Subplan executions are proper parts of the whole plan execution.";
                         rdfs:label "Plan Execution";
-                        rdfs:subClassOf [owl:someValuesFrom ceon-plan:Plan ; 
-                                         owl:onProperty ceon-plan:satisfiesPlan ; 
-                                         a owl:Restriction],
-                                        ceon-processODP:Situation,
-                                        [owl:someValuesFrom ceon-processODP:Process ; 
-                                         owl:onProperty ceon-processODP:isSettingFor ; 
-                                         a owl:Restriction],
-                                        [owl:someValuesFrom ceon-plan:PlanExecution ; 
-                                         owl:onProperty ceon-processODP:hasPart ; 
-                                         a owl:Restriction],
-                                        [owl:someValuesFrom ceon-processODP:Situation ; 
-                                         owl:onProperty ceon-plan:followsExecution ; 
-                                         a owl:Restriction],
-                                        [owl:someValuesFrom ceon-processODP:Situation ; 
-                                         owl:onProperty ceon-plan:precedesExecution ; 
-                                         a owl:Restriction],
-                                        [owl:unionOf ([owl:someValuesFrom ceon-processODP:TimeInterval ; 
-                                                      owl:onProperty ceon-processODP:duringTime ; 
-                                                      a owl:Restriction]
-                                                      [owl:someValuesFrom xsd:dateTime ; 
-                                                      owl:onProperty ceon-processODP:occursAtTime ; 
-                                                      a owl:Restriction]) ; 
-                                         a owl:Class].
-ceon-plan:followsExecution a owl:ObjectProperty;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ceon-plan:Plan ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> ceon-plan:satisfiesPlan ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        <http://w3id.org/CEON/ontology/processODP/Situation>,
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://w3id.org/CEON/ontology/processODP/Process> ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/CEON/ontology/processODP/isSettingFor> ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> ceon-plan:PlanExecution ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/CEON/ontology/processODP/hasPart> ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://w3id.org/CEON/ontology/processODP/Situation> ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> ceon-plan:followsExecution ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://w3id.org/CEON/ontology/processODP/Situation> ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> ceon-plan:precedesExecution ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> <http://w3id.org/CEON/ontology/processODP/TimeInterval> ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/CEON/ontology/processODP/duringTime> ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:dateTime ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/CEON/ontology/processODP/occursAtTime> ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                         a <http://www.w3.org/2002/07/owl#Class>].
+ceon-plan:followsExecution a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                            rdfs:comment "The situation after the execution takes place, i.e. the state of affairs after the process event, such as the product being assembled, or the material being recycled.";
                            rdfs:domain ceon-plan:PlanExecution;
                            rdfs:label "follows execution";
-                           rdfs:subPropertyOf ceon-processODP:isSettingFor.
-ceon-plan:hasPlanExecution a owl:ObjectProperty;
+                           rdfs:subPropertyOf <http://w3id.org/CEON/ontology/processODP/isSettingFor>.
+ceon-plan:hasPlanExecution a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                            rdfs:comment "A plan can have specific executions.";
                            rdfs:domain ceon-plan:Plan;
                            rdfs:label "has plan exeution";
                            rdfs:range ceon-plan:PlanExecution;
-                           rdfs:subPropertyOf owl:topObjectProperty.
-ceon-plan:occursAtTime a owl:DatatypeProperty;
+                           rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+ceon-plan:occursAtTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                        rdfs:comment "Represents the time at which something takes place.";
                        rdfs:domain ceon-plan:PlanExecution;
                        rdfs:label "occurs at time";
                        rdfs:range xsd:dateTime.
-ceon-plan:precedesExecution a owl:ObjectProperty;
+ceon-plan:precedesExecution a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                             rdfs:comment "The situation before the process event takes place, i.e. the state of affairs before the execution, such as the state of the set of components before they are assembled into a product item, or the material state before being recycled.";
                             rdfs:domain ceon-plan:PlanExecution;
                             rdfs:label "precedes execution";
-                            rdfs:subPropertyOf ceon-processODP:isSettingFor.
-ceon-plan:satisfiesPlan a owl:ObjectProperty;
+                            rdfs:subPropertyOf <http://w3id.org/CEON/ontology/processODP/isSettingFor>.
+ceon-plan:satisfiesPlan a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "A relation between a Situation and a Description, e.g. the execution of a Plan satisfies that plan.";
-                        rdfs:domain ceon-processODP:Situation;
+                        rdfs:domain <http://w3id.org/CEON/ontology/processODP/Situation>;
                         rdfs:label "satisfies plan";
                         rdfs:range ceon-plan:Description;
-                        rdfs:subPropertyOf owl:topObjectProperty.
-ceon-processODP:hasInput a owl:ObjectProperty.
-ceon-processODP:hasOutput a owl:ObjectProperty.
-ceon-processODP:occursAtTime a owl:DatatypeProperty.
+                        rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+<http://w3id.org/CEON/ontology/processODP/hasInput> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://w3id.org/CEON/ontology/processODP/hasOutput> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://w3id.org/CEON/ontology/processODP/occursAtTime> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.

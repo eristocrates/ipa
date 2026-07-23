@@ -2,366 +2,360 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix coll: <http://purl.org/co/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix swrl: <http://www.w3.org/2003/11/swrl#>.
-@prefix swrlb: <http://www.w3.org/2003/11/swrlb#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-([swrl:argument2 <urn:swrl#value> ; 
- swrl:argument1 <urn:swrl#i> ; 
- swrl:propertyPredicate coll:index ; 
- a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#value> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#i> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:index ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
 _:B1656de753be9deb84e4e6e779d31a760 a rdf:List.
-([swrl:argument2 <urn:swrl#nextR> ; 
- swrl:argument1 <urn:swrl#next> ; 
- swrl:propertyPredicate coll:index ; 
- a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#nextR> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#next> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:index ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
 _:B30692b647d33bb84499d382ebdef2117 a rdf:List.
-_:B34dc902335b51e7401f192a6ce9d3a2a a swrl:Imp;
-                                    swrl:body ([swrl:argument2 <urn:swrl#x> ; 
-                                               swrl:argument1 <urn:swrl#x> ; 
-                                               swrl:propertyPredicate coll:followedBy ; 
-                                               a swrl:IndividualPropertyAtom]);
-                                    swrl:head ([swrl:argument1 <urn:swrl#x> ; 
-                                               swrl:propertyPredicate <http://www.essepuntato.it/2009/10/error/hasError> ; 
-                                               swrl:argument2 "A list item cannot be followed by itself" ; 
-                                               a swrl:DatavaluedPropertyAtom]).
-_:B3544ad2960b070417832478d445ef6bd a swrl:AtomList.
-_:B4415b949e9fc000e919e87147168fffc a swrl:AtomList.
-([swrl:argument1 <urn:swrl#l> ; 
- swrl:argument2 <urn:swrl#i> ; 
- swrl:propertyPredicate coll:lastItem ; 
- a swrl:IndividualPropertyAtom]
- [swrl:argument2 <urn:swrl#value> ; 
- swrl:argument1 <urn:swrl#l> ; 
- swrl:propertyPredicate coll:size ; 
- a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
-([swrl:argument1 <urn:swrl#li1> ; 
- swrl:argument2 <urn:swrl#l> ; 
- swrl:propertyPredicate coll:itemOf ; 
- a swrl:IndividualPropertyAtom]
- [swrl:argument1 <urn:swrl#li2> ; 
- swrl:argument2 <urn:swrl#l> ; 
- swrl:propertyPredicate coll:itemOf ; 
- a swrl:IndividualPropertyAtom]
- [swrl:argument2 <urn:swrl#r1> ; 
- swrl:argument1 <urn:swrl#li1> ; 
- swrl:propertyPredicate coll:index ; 
- a swrl:DatavaluedPropertyAtom]
- [swrl:argument2 <urn:swrl#r2> ; 
- swrl:argument1 <urn:swrl#li2> ; 
- swrl:propertyPredicate coll:index ; 
- a swrl:DatavaluedPropertyAtom]
- [swrl:arguments (<urn:swrl#r2>
-                 <urn:swrl#r1>
-                 1 ) ; 
- swrl:builtin swrlb:add ; 
- a swrl:BuiltinAtom]) a swrl:AtomList.
-([swrl:argument2 <urn:swrl#li2> ; 
- swrl:argument1 <urn:swrl#li1> ; 
- swrl:propertyPredicate coll:nextItem ; 
- a swrl:IndividualPropertyAtom]) a swrl:AtomList.
-([swrl:argument2 <urn:swrl#x> ; 
- swrl:argument1 <urn:swrl#x> ; 
- swrl:propertyPredicate coll:precededBy ; 
- a swrl:IndividualPropertyAtom]) a swrl:AtomList.
-_:B53a7805f9f2f9ec8aa98cd29686e957a a swrl:AtomList.
-([swrl:argument1 <urn:swrl#list> ; 
- swrl:argument2 <urn:swrl#last> ; 
- swrl:propertyPredicate coll:lastItem ; 
- a swrl:IndividualPropertyAtom]
- [swrl:argument2 <urn:swrl#r> ; 
- swrl:argument1 <urn:swrl#last> ; 
- swrl:propertyPredicate coll:index ; 
- a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
-([swrl:argument2 <urn:swrl#l> ; 
- swrl:argument1 <urn:swrl#i> ; 
- swrl:propertyPredicate coll:itemOf ; 
- a swrl:IndividualPropertyAtom]
- [swrl:argument2 <urn:swrl#value> ; 
- swrl:argument1 <urn:swrl#i> ; 
- swrl:propertyPredicate coll:index ; 
- a swrl:DatavaluedPropertyAtom]
- [swrl:argument2 <urn:swrl#value> ; 
- swrl:argument1 <urn:swrl#l> ; 
- swrl:propertyPredicate coll:size ; 
- a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
-() a swrl:AtomList.
-_:B720cb2881ed77a7686dd1cb9eb296adf a swrl:Imp;
-                                    swrl:body ();
-                                    swrl:head ([swrl:argument1 <urn:swrl#x> ; 
-                                               swrl:propertyPredicate <http://www.essepuntato.it/2009/10/error/hasError> ; 
-                                               swrl:argument2 "A list item cannot be preceded by itself" ; 
-                                               a swrl:DatavaluedPropertyAtom]).
-_:B74825045e845494f672d34bc4b24f269 a swrl:AtomList.
+_:B34dc902335b51e7401f192a6ce9d3a2a a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#x> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#x> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:followedBy ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]);
+                                    <http://www.w3.org/2003/11/swrl#head> ([<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#x> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.essepuntato.it/2009/10/error/hasError> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> "A list item cannot be followed by itself" ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]).
+_:B3544ad2960b070417832478d445ef6bd a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B4415b949e9fc000e919e87147168fffc a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#l> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#i> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:lastItem ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#value> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#l> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:size ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#li1> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#l> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:itemOf ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#li2> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#l> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:itemOf ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#r1> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#li1> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:index ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#r2> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#li2> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:index ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#arguments> (<urn:swrl#r2>
+                                             <urn:swrl#r1>
+                                             1 ) ; 
+ <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#add> ; 
+ a <http://www.w3.org/2003/11/swrl#BuiltinAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#li2> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#li1> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:nextItem ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#x> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#x> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:precededBy ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B53a7805f9f2f9ec8aa98cd29686e957a a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#list> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#last> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:lastItem ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#r> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#last> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:index ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#l> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#i> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:itemOf ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#value> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#i> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:index ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#value> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#l> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:size ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B720cb2881ed77a7686dd1cb9eb296adf a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ();
+                                    <http://www.w3.org/2003/11/swrl#head> ([<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#x> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.essepuntato.it/2009/10/error/hasError> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> "A list item cannot be preceded by itself" ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]).
+_:B74825045e845494f672d34bc4b24f269 a <http://www.w3.org/2003/11/swrl#AtomList>.
 _:B75a2a8a73eaa41849206e77a5bb08324 a rdf:List.
-([swrl:argument2 <urn:swrl#li> ; 
- swrl:argument1 <urn:swrl#l> ; 
- swrl:propertyPredicate coll:firstItem ; 
- a swrl:IndividualPropertyAtom]) a swrl:AtomList.
-([swrl:argument1 <urn:swrl#l> ; 
- swrl:argument2 <urn:swrl#i> ; 
- swrl:propertyPredicate coll:lastItem ; 
- a swrl:IndividualPropertyAtom]) a swrl:AtomList.
-_:B91f431c8bff9f9c71a96262c56732c78 a swrl:AtomList.
-_:B98540a2650d70bb488eeab231216bc3f a swrl:Imp;
-                                    swrl:body ();
-                                    swrl:head ().
-([swrl:argument2 <urn:swrl#r> ; 
- swrl:argument1 <urn:swrl#list> ; 
- swrl:propertyPredicate coll:size ; 
- a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
-_:Ba347bce62deced3eea03ee62c172e04e a swrl:AtomList.
-_:Babdf76bdcfdfac7d84e34dbebb734842 a swrl:Imp;
-                                    swrl:body ();
-                                    swrl:head ().
-_:Badcb2ab55d527d76d7a3958a0376d4d5 a swrl:AtomList.
-() a swrl:AtomList.
-_:Bc5ae3463d67d20cce81758f5aaa1a11e a swrl:Imp;
-                                    swrl:body ([swrl:argument2 <urn:swrl#next> ; 
-                                               swrl:argument1 <urn:swrl#current> ; 
-                                               swrl:propertyPredicate coll:nextItem ; 
-                                               a swrl:IndividualPropertyAtom]
-                                               [swrl:argument2 <urn:swrl#r> ; 
-                                               swrl:argument1 <urn:swrl#current> ; 
-                                               swrl:propertyPredicate coll:index ; 
-                                               a swrl:DatavaluedPropertyAtom]
-                                               [swrl:arguments (<urn:swrl#nextR>
-                                                               <urn:swrl#r>
-                                                               1 ) ; 
-                                               swrl:builtin swrlb:add ; 
-                                               a swrl:BuiltinAtom]);
-                                    swrl:head ().
+([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#li> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#l> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:firstItem ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#l> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#i> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:lastItem ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B91f431c8bff9f9c71a96262c56732c78 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B98540a2650d70bb488eeab231216bc3f a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ();
+                                    <http://www.w3.org/2003/11/swrl#head> ().
+([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#r> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#list> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:size ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Ba347bce62deced3eea03ee62c172e04e a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Babdf76bdcfdfac7d84e34dbebb734842 a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ();
+                                    <http://www.w3.org/2003/11/swrl#head> ().
+_:Badcb2ab55d527d76d7a3958a0376d4d5 a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bc5ae3463d67d20cce81758f5aaa1a11e a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#next> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#current> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:nextItem ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#r> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#current> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:index ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#arguments> (<urn:swrl#nextR>
+                                                                                                                       <urn:swrl#r>
+                                                                                                                       1 ) ; 
+                                                                           <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#add> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#BuiltinAtom>]);
+                                    <http://www.w3.org/2003/11/swrl#head> ().
 () a rdf:List.
-_:Bc8b19c13f166fd05a00fac92b1911889 a swrl:Imp;
-                                    swrl:body ([swrl:argument1 <urn:swrl#li> ; 
-                                               swrl:argument2 <urn:swrl#l> ; 
-                                               swrl:propertyPredicate coll:itemOf ; 
-                                               a swrl:IndividualPropertyAtom]
-                                               [swrl:argument1 <urn:swrl#li> ; 
-                                               swrl:propertyPredicate coll:index ; 
-                                               swrl:argument2 "1" ; 
-                                               a swrl:DatavaluedPropertyAtom]);
-                                    swrl:head ().
-_:Bc94d188a8c35410247e1592f8398eca0 a swrl:AtomList.
-_:Bc95dd3bb05af9ac16c93c520b1f1c6a2 a swrl:AtomList.
-_:Bd7eec0a30866e941de6b5a658fc4e22f a swrl:AtomList.
+_:Bc8b19c13f166fd05a00fac92b1911889 a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ([<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#li> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#l> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:itemOf ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#li> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> coll:index ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> "1" ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]);
+                                    <http://www.w3.org/2003/11/swrl#head> ().
+_:Bc94d188a8c35410247e1592f8398eca0 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bc95dd3bb05af9ac16c93c520b1f1c6a2 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bd7eec0a30866e941de6b5a658fc4e22f a <http://www.w3.org/2003/11/swrl#AtomList>.
 _:Bda3666745852f3860bca1abab8ecc98e a rdf:List.
-_:Bddb368258c605b807fde065cecebf466 a swrl:Imp;
-                                    swrl:body ();
-                                    swrl:head ().
-() a swrl:AtomList.
-() a swrl:AtomList.
-_:Be7fcef66d0d1678ec3b053f3b187f636 a swrl:AtomList.
-() a swrl:AtomList.
+_:Bddb368258c605b807fde065cecebf466 a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ();
+                                    <http://www.w3.org/2003/11/swrl#head> ().
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Be7fcef66d0d1678ec3b053f3b187f636 a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
 () a rdf:List.
-_:Bfb54c1849dfbda06570d002dbef1268d a swrl:Imp;
-                                    swrl:body ();
-                                    swrl:head ().
-_:Bfe2c1f4fa417a11dbf4a485ff2c0d21b a owl:Class;
-                                    rdfs:subClassOf [owl:intersectionOf (coll:List
-                                                                         [owl:someValuesFrom coll:Item ; 
-                                                                         owl:onProperty coll:firstItem ; 
-                                                                         a owl:Restriction]
-                                                                         [owl:someValuesFrom coll:Item ; 
-                                                                         owl:onProperty coll:lastItem ; 
-                                                                         a owl:Restriction]) ; 
-                                                     a owl:Class];
-                                    owl:intersectionOf (coll:List
-                                                        [owl:someValuesFrom coll:ListItem ; 
-                                                        owl:onProperty coll:item ; 
-                                                        a owl:Restriction]).
-<http://purl.org/co> dc11:contributor "Silvio Peroni",
-                                      "Paolo Ciccarese",
-                                      "Marco Ocana";
-                     dc11:creator <http://www.paolociccarese.info/>;
-                     dc11:date "March 19, 2012";
-                     dc11:format "application/rdf+xml";
-                     dc11:language "en";
-                     dc11:title """The Collections Ontology
+_:Bfb54c1849dfbda06570d002dbef1268d a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ();
+                                    <http://www.w3.org/2003/11/swrl#head> ().
+_:Bfe2c1f4fa417a11dbf4a485ff2c0d21b a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> (coll:List
+                                                                                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> coll:Item ; 
+                                                                                                     <http://www.w3.org/2002/07/owl#onProperty> coll:firstItem ; 
+                                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> coll:Item ; 
+                                                                                                     <http://www.w3.org/2002/07/owl#onProperty> coll:lastItem ; 
+                                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                     a <http://www.w3.org/2002/07/owl#Class>];
+                                    <http://www.w3.org/2002/07/owl#intersectionOf> (coll:List
+                                                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> coll:ListItem ; 
+                                                                                    <http://www.w3.org/2002/07/owl#onProperty> coll:item ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]).
+<http://purl.org/co> <http://purl.org/dc/elements/1.1/contributor> "Silvio Peroni",
+                                                                   "Paolo Ciccarese",
+                                                                   "Marco Ocana";
+                     <http://purl.org/dc/elements/1.1/creator> <http://www.paolociccarese.info/>;
+                     <http://purl.org/dc/elements/1.1/date> "March 19, 2012";
+                     <http://purl.org/dc/elements/1.1/format> "application/rdf+xml";
+                     <http://purl.org/dc/elements/1.1/language> "en";
+                     <http://purl.org/dc/elements/1.1/title> """The Collections Ontology
 (CO)"""@en;
-                     a owl:Ontology;
-                     owl:imports <http://www.essepuntato.it/2009/10/error>;
-                     owl:versionInfo "2.0".
-coll:Bag a owl:Class;
+                     a <http://www.w3.org/2002/07/owl#Ontology>;
+                     <http://www.w3.org/2002/07/owl#imports> <http://www.essepuntato.it/2009/10/error>;
+                     <http://www.w3.org/2002/07/owl#versionInfo> "2.0".
+coll:Bag a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "Collection that can have a number of copies of each object"@en;
          rdfs:label "bag"@en;
          rdfs:subClassOf coll:Collection;
-         owl:disjointWith coll:Set.
-coll:Collection a owl:Class;
+         <http://www.w3.org/2002/07/owl#disjointWith> coll:Set.
+coll:Collection a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "A group of objects that can be considered as a whole."@en;
                 rdfs:label "collection"@en;
-                rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
-                                 owl:onProperty coll:size ; 
-                                 a owl:Restriction],
-                                [owl:allValuesFrom owl:Thing ; 
-                                 owl:onProperty coll:element ; 
-                                 a owl:Restriction],
-                                owl:Thing;
-                owl:disjointWith coll:Item.
-coll:Item a owl:Class;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> coll:size ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#allValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> coll:element ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                <http://www.w3.org/2002/07/owl#Thing>;
+                <http://www.w3.org/2002/07/owl#disjointWith> coll:Item.
+coll:Item a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "Element belonging to a bag"@en;
           rdfs:label "item"@en;
-          rdfs:subClassOf [owl:someValuesFrom coll:Bag ; 
-                           owl:onProperty [owl:inverseOf coll:item] ; 
-                           a owl:Restriction],
-                          owl:Thing.
-coll:List a owl:Class;
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> coll:Bag ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> [<http://www.w3.org/2002/07/owl#inverseOf> coll:item] ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          <http://www.w3.org/2002/07/owl#Thing>.
+coll:List a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "An ordered array of items, that can be present in multiple copies"@en;
           rdfs:label "list"@en;
-          rdfs:subClassOf [owl:intersectionOf (coll:Bag
-                                               [owl:allValuesFrom coll:ListItem ; 
-                                               owl:onProperty coll:item ; 
-                                               a owl:Restriction]) ; 
-                           a owl:Class],
-                          [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
-                           owl:onProperty coll:firstItem ; 
-                           a owl:Restriction],
-                          [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
-                           owl:onProperty coll:lastItem ; 
-                           a owl:Restriction].
-coll:ListItem a owl:Class;
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> (coll:Bag
+                                                                           [<http://www.w3.org/2002/07/owl#allValuesFrom> coll:ListItem ; 
+                                                                           <http://www.w3.org/2002/07/owl#onProperty> coll:item ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                           a <http://www.w3.org/2002/07/owl#Class>],
+                          [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> coll:firstItem ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> coll:lastItem ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>].
+coll:ListItem a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "element belonging to a list"@en;
               rdfs:label "list item"@en;
-              rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
-                               owl:onProperty coll:index ; 
-                               a owl:Restriction],
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> coll:index ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
                               coll:Item.
-coll:Set a owl:Class;
+coll:Set a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "A collection that cannot contain duplicate elements."@en;
          rdfs:label "set"@en;
          rdfs:subClassOf coll:Collection.
-coll:element a owl:ObjectProperty;
+coll:element a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "The link to the members of a collection"@en;
              rdfs:domain coll:Collection;
              rdfs:label "has element"@en;
-             owl:propertyChainAxiom (coll:item
-                                     coll:itemContent).
-coll:elementOf a owl:ObjectProperty;
+             <http://www.w3.org/2002/07/owl#propertyChainAxiom> (coll:item
+                                                                 coll:itemContent).
+coll:elementOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment "The link to a collection in which the object is member."@en;
                rdfs:label "is element of"@en;
-               owl:inverseOf coll:element.
-coll:firstItem a owl:FunctionalProperty,
-                 owl:ObjectProperty;
+               <http://www.w3.org/2002/07/owl#inverseOf> coll:element.
+coll:firstItem a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                 <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment "The link to the first item of the list."@en;
                rdfs:domain coll:List;
                rdfs:label "has first item"@en;
-               rdfs:range [owl:intersectionOf (coll:ListItem
-                                               [owl:cardinality "0"^^xsd:nonNegativeInteger ; 
-                                               owl:onProperty coll:previousItem ; 
-                                               a owl:Restriction]
-                                               [owl:hasValue "1"^^xsd:positiveInteger ; 
-                                               owl:onProperty coll:index ; 
-                                               a owl:Restriction]) ; 
-                           a owl:Class];
+               rdfs:range [<http://www.w3.org/2002/07/owl#intersectionOf> (coll:ListItem
+                                                                           [<http://www.w3.org/2002/07/owl#cardinality> "0"^^xsd:nonNegativeInteger ; 
+                                                                           <http://www.w3.org/2002/07/owl#onProperty> coll:previousItem ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                           [<http://www.w3.org/2002/07/owl#hasValue> "1"^^xsd:positiveInteger ; 
+                                                                           <http://www.w3.org/2002/07/owl#onProperty> coll:index ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                           a <http://www.w3.org/2002/07/owl#Class>];
                rdfs:subPropertyOf coll:item.
-coll:firstItemOf a owl:ObjectProperty;
+coll:firstItemOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "The link to a list in which the item is first item."@en;
                  rdfs:label "is first item of"@en;
                  rdfs:subPropertyOf coll:itemOf;
-                 owl:inverseOf coll:firstItem.
-coll:followedBy dc11:description "Given the list (I[1], I[2], ... , I[i-1], I[i], I[i+1], ... , I[n-1], I[n]), the item I[i] is followed by I[i+1], ... , I[n-1] and I[n]."@en;
-                a owl:TransitiveProperty,
-                  owl:ObjectProperty;
+                 <http://www.w3.org/2002/07/owl#inverseOf> coll:firstItem.
+coll:followedBy <http://purl.org/dc/elements/1.1/description> "Given the list (I[1], I[2], ... , I[i-1], I[i], I[i+1], ... , I[n-1], I[n]), the item I[i] is followed by I[i+1], ... , I[n-1] and I[n]."@en;
+                a <http://www.w3.org/2002/07/owl#TransitiveProperty>,
+                  <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "The link to the following item in a list."@en;
                 rdfs:domain coll:ListItem;
                 rdfs:label "is followed by"@en;
                 rdfs:range coll:ListItem.
-coll:index a owl:DatatypeProperty;
+coll:index a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
            rdfs:comment "A number identifying the position, starting from 1, of a particular list item within a list."@en;
            rdfs:domain coll:ListItem;
            rdfs:label "has index"@en;
            rdfs:range xsd:positiveInteger.
-coll:item a owl:ObjectProperty;
+coll:item a <http://www.w3.org/2002/07/owl#ObjectProperty>;
           rdfs:comment "The link to every item of the bag"@en;
           rdfs:domain coll:Bag;
           rdfs:label "has item"@en;
           rdfs:range coll:Item;
-          owl:propertyChainAxiom (coll:item
-                                  coll:nextItem).
-coll:itemContent a owl:FunctionalProperty,
-                   owl:ObjectProperty;
+          <http://www.w3.org/2002/07/owl#propertyChainAxiom> (coll:item
+                                                              coll:nextItem).
+coll:itemContent a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "The link to the actual resource to which the item refers."@en;
                  rdfs:domain coll:Item;
                  rdfs:label "has item content"@en;
-                 rdfs:range [owl:complementOf coll:Item ; 
-                             a owl:Class].
-coll:itemContentOf a owl:ObjectProperty;
+                 rdfs:range [<http://www.w3.org/2002/07/owl#complementOf> coll:Item ; 
+                             a <http://www.w3.org/2002/07/owl#Class>].
+coll:itemContentOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "The link to the item that refers to the resource."@en;
                    rdfs:label "is item content of"@en;
-                   owl:inverseOf coll:itemContent.
-coll:itemOf a owl:ObjectProperty;
+                   <http://www.w3.org/2002/07/owl#inverseOf> coll:itemContent.
+coll:itemOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:comment "The link to a bag in which the item is member."@en;
             rdfs:label "is item of"@en;
-            owl:inverseOf coll:item.
-coll:lastItem a owl:FunctionalProperty,
-                owl:ObjectProperty;
+            <http://www.w3.org/2002/07/owl#inverseOf> coll:item.
+coll:lastItem a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "The link to the last item of the list."@en;
               rdfs:domain coll:List;
               rdfs:label "has last item"@en;
-              rdfs:range [owl:intersectionOf (coll:ListItem
-                                              [owl:cardinality "0"^^xsd:nonNegativeInteger ; 
-                                              owl:onProperty coll:nextItem ; 
-                                              a owl:Restriction]) ; 
-                          a owl:Class];
+              rdfs:range [<http://www.w3.org/2002/07/owl#intersectionOf> (coll:ListItem
+                                                                          [<http://www.w3.org/2002/07/owl#cardinality> "0"^^xsd:nonNegativeInteger ; 
+                                                                          <http://www.w3.org/2002/07/owl#onProperty> coll:nextItem ; 
+                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                          a <http://www.w3.org/2002/07/owl#Class>];
               rdfs:subPropertyOf coll:item.
-coll:lastItemOf a owl:ObjectProperty;
+coll:lastItemOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "The link to a list in which the item is last item."@en;
                 rdfs:label "is last item of"@en;
                 rdfs:subPropertyOf coll:itemOf;
-                owl:inverseOf coll:lastItem.
-coll:nextItem dc11:description "Given the list (I[1], I[2], ... , I[i-1], I[i], I[i+1], ... , I[n-1], I[n]), the next item of I[i] is I[i+1]."@en;
-              a owl:FunctionalProperty,
-                owl:ObjectProperty;
+                <http://www.w3.org/2002/07/owl#inverseOf> coll:lastItem.
+coll:nextItem <http://purl.org/dc/elements/1.1/description> "Given the list (I[1], I[2], ... , I[i-1], I[i], I[i+1], ... , I[n-1], I[n]), the next item of I[i] is I[i+1]."@en;
+              a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "The link to the next item in a list."@en;
               rdfs:label "has next item"@en;
               rdfs:subPropertyOf coll:followedBy.
-coll:precededBy dc11:description "Given the list (I[1], I[2], ... , I[i-1], I[i], I[i+1], ... , I[n-1], I[n]), the item I[i] is preceded by I[i-1], ... , I[2] and I[1]."@en;
-                a owl:TransitiveProperty,
-                  owl:ObjectProperty;
+coll:precededBy <http://purl.org/dc/elements/1.1/description> "Given the list (I[1], I[2], ... , I[i-1], I[i], I[i+1], ... , I[n-1], I[n]), the item I[i] is preceded by I[i-1], ... , I[2] and I[1]."@en;
+                a <http://www.w3.org/2002/07/owl#TransitiveProperty>,
+                  <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "The link to the preceding item in a list."@en;
                 rdfs:label "is preceded by"@en;
-                owl:inverseOf coll:followedBy.
-coll:previousItem dc11:description "Given the list (I[1], I[2], ... , I[i-1], I[i], I[i+1], ... , I[n-1], I[n]), the previous item of I[i] is I[i-1]."@en;
-                  a owl:FunctionalProperty,
-                    owl:ObjectProperty;
+                <http://www.w3.org/2002/07/owl#inverseOf> coll:followedBy.
+coll:previousItem <http://purl.org/dc/elements/1.1/description> "Given the list (I[1], I[2], ... , I[i-1], I[i], I[i+1], ... , I[n-1], I[n]), the previous item of I[i] is I[i-1]."@en;
+                  a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                    <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "The link to the previous item in a list."@en;
                   rdfs:label "has previous item"@en;
                   rdfs:subPropertyOf coll:precededBy;
-                  owl:inverseOf coll:nextItem.
-coll:size dc11:description """CO defines the size of a collection as the sum of the number of times entities that are part of the collection appear in it. This means that co:size considers how much each entity is involved by a particular collection, i.e.:
+                  <http://www.w3.org/2002/07/owl#inverseOf> coll:nextItem.
+coll:size <http://purl.org/dc/elements/1.1/description> """CO defines the size of a collection as the sum of the number of times entities that are part of the collection appear in it. This means that co:size considers how much each entity is involved by a particular collection, i.e.:
 - the size of the set {a, b, c} is three
 - the size of the bag [a, a, b, b, b, c] is five
 - the size of the list (a, b, c, b, a, b, c, c) is seven"""@en;
-          a owl:DatatypeProperty;
+          a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
           rdfs:comment "The number of item belonging to a collection."@en;
           rdfs:domain coll:Collection;
           rdfs:label "has size"@en;
           rdfs:range xsd:nonNegativeInteger.
-dc11:contributor a owl:AnnotationProperty.
-dc11:creator a owl:AnnotationProperty.
-dc11:date a owl:AnnotationProperty.
-dc11:description a owl:AnnotationProperty.
-dc11:format a owl:AnnotationProperty.
-dc11:language a owl:AnnotationProperty.
-dc11:publisher a owl:AnnotationProperty.
-dc11:title a owl:AnnotationProperty.
-<http://www.essepuntato.it/2009/10/error/hasError> a owl:DatatypeProperty.
-owl:Thing a owl:Class.
-<urn:swrl#current> a swrl:Variable.
-<urn:swrl#i> a swrl:Variable.
-<urn:swrl#l> a swrl:Variable.
-<urn:swrl#last> a swrl:Variable.
-<urn:swrl#li> a swrl:Variable.
-<urn:swrl#li1> a swrl:Variable.
-<urn:swrl#li2> a swrl:Variable.
-<urn:swrl#list> a swrl:Variable.
-<urn:swrl#next> a swrl:Variable.
-<urn:swrl#nextR> a swrl:Variable.
-<urn:swrl#r> a swrl:Variable.
-<urn:swrl#r1> a swrl:Variable.
-<urn:swrl#r2> a swrl:Variable.
-<urn:swrl#value> a swrl:Variable.
-<urn:swrl#x> a swrl:Variable.
+<http://purl.org/dc/elements/1.1/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/date> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/format> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/language> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.essepuntato.it/2009/10/error/hasError> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.w3.org/2002/07/owl#Thing> a <http://www.w3.org/2002/07/owl#Class>.
+<urn:swrl#current> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#i> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#l> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#last> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#li> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#li1> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#li2> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#list> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#next> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#nextR> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#r> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#r1> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#r2> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#value> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#x> a <http://www.w3.org/2003/11/swrl#Variable>.

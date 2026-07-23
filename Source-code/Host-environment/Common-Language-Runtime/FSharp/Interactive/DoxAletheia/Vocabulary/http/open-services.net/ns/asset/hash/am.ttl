@@ -2,17 +2,14 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix am: <http://open-services.net/ns/asset#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
 
-am: dcterms:description """
+am: <http://purl.org/dc/terms/description> """
 			All vocabulary URIs defined in the OSLC
 			Asset Management (Asset) namespace.
 		"""^^rdf:XMLLiteral;
-    dcterms:title """The OSLC Asset Management(Asset) Vocabulary
+    <http://purl.org/dc/terms/title> """The OSLC Asset Management(Asset) Vocabulary
 		""";
-    a owl:Ontology;
+    a <http://www.w3.org/2002/07/owl#Ontology>;
     rdfs:label "Asset Management(Asset)";
     rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetHome>,
                  <http://open-services.net/bin/view/Main/AssetMgSpecificationV2>,

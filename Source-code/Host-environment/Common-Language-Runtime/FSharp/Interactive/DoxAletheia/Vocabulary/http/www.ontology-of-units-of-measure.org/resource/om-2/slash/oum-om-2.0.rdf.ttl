@@ -15,9 +15,6 @@
 @prefix ombibo: <http://www.wurvoc.org/bibliography/om-2/>.
 @prefix : <http://www.ontology-of-units-of-measure.org/resource/om-2/>.
 @prefix oum: <http://www.ontology-of-units-of-measure.org/resource/om-2/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix w3: <http://www.w3.org/>.
 
 dc:creator a owl:AnnotationProperty.
 dc:date a owl:AnnotationProperty.

@@ -1,302 +1,289 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix wiki: <http://en.wikipedia.org/wiki/>.
-@prefix qb: <http://purl.org/linked-data/cube#>.
-@prefix bibo: <http://purl.org/ontology/bibo/>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix html: <http://www.w3.org/1999/xhtml/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix ci: <https://privatealpha.com/ontology/content-inventory/1#>.
-@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xhv: <http://www.w3.org/1999/xhtml/vocab#>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-<https://doriantaylor.com/person/dorian-taylor#me> foaf:name "Dorian Taylor"@en.
+<https://doriantaylor.com/person/dorian-taylor#me> <http://xmlns.com/foaf/0.1/name> "Dorian Taylor"@en.
 <https://privatealpha.com/ontology/content-inventory/1> <https://privatealpha.com/ontology/content-inventory/external> <http://www.w3.org/TR/vocab-data-cube/#ref_qb_DataSet>,
                                                                                                                        <http://www.w3.org/TR/vocab-data-cube/>,
                                                                                                                        <http://publishing-statistical-data.googlecode.com/svn/trunk/specs/src/main/html/cube.html#ref_qb_Observation>,
                                                                                                                        <http://publishing-statistical-data.googlecode.com/svn/trunk/specs/src/main/html/cube.html#ref_qb_MeasureProperty>,
                                                                                                                        <http://publishing-statistical-data.googlecode.com/svn/trunk/specs/src/main/html/cube.html#ref_qb_DimensionProperty>,
                                                                                                                        <http://publishing-statistical-data.googlecode.com/svn/trunk/specs/src/main/html/cube.html#ref_qb_DataStructureDefinition>,
-                                                                                                                       wiki:Standard_deviation,
-                                                                                                                       wiki:Mean,
-                                                                                                                       wiki:Five-number_summary.
-ci: dcterms:created "2012-01-23T11:52:00-08:00"^^xsd:dateTime;
-    dcterms:creator <https://doriantaylor.com/person/dorian-taylor#me>,
-                    <http://doriantaylor.com/person/dorian-taylor#me>;
-    dcterms:modified "2012-12-11T22:22:00-08:00"^^xsd:dateTime,
-                     "2018-10-06T16:23:52Z"^^xsd:dateTime,
-                     "2017-04-06T15:24:00-07:00"^^xsd:dateTime,
-                     "2014-02-06T14:10:00-08:00"^^xsd:dateTime,
-                     "2015-02-03T14:39:00-08:00"^^xsd:dateTime;
-    dcterms:title "A Content Inventory Vocabulary"@en;
-    bibo:uri ci:;
-    vann:preferredNamespacePrefix "ci";
-    a owl:Ontology,
-      bibo:Webpage;
-    xhv:license <http://creativecommons.org/licenses/by/2.5/ca/>;
+                                                                                                                       <http://en.wikipedia.org/wiki/Standard_deviation>,
+                                                                                                                       <http://en.wikipedia.org/wiki/Mean>,
+                                                                                                                       <http://en.wikipedia.org/wiki/Five-number_summary>.
+ci: <http://purl.org/dc/terms/created> "2012-01-23T11:52:00-08:00"^^xsd:dateTime;
+    <http://purl.org/dc/terms/creator> <https://doriantaylor.com/person/dorian-taylor#me>,
+                                       <http://doriantaylor.com/person/dorian-taylor#me>;
+    <http://purl.org/dc/terms/modified> "2012-12-11T22:22:00-08:00"^^xsd:dateTime,
+                                        "2018-10-06T16:23:52Z"^^xsd:dateTime,
+                                        "2017-04-06T15:24:00-07:00"^^xsd:dateTime,
+                                        "2014-02-06T14:10:00-08:00"^^xsd:dateTime,
+                                        "2015-02-03T14:39:00-08:00"^^xsd:dateTime;
+    <http://purl.org/dc/terms/title> "A Content Inventory Vocabulary"@en;
+    <http://purl.org/ontology/bibo/uri> ci:;
+    <http://purl.org/vocab/vann/preferredNamespacePrefix> "ci";
+    a <http://www.w3.org/2002/07/owl#Ontology>,
+      <http://purl.org/ontology/bibo/Webpage>;
+    <http://www.w3.org/1999/xhtml/vocab#license> <http://creativecommons.org/licenses/by/2.5/ca/>;
     rdfs:comment "This vocabulary defines a number of concepts peculiar to content strategy which are not accounted for by other vocabularies."@en;
     rdfs:isDefinedBy ci:;
-    owl:imports dcterms:,
-                bibo:,
-                foaf:,
-                event:,
-                qb:;
-    owl:versionInfo "0.6";
+    <http://www.w3.org/2002/07/owl#imports> <http://purl.org/dc/terms/>,
+                                            <http://purl.org/ontology/bibo/>,
+                                            <http://xmlns.com/foaf/0.1/>,
+                                            <http://purl.org/NET/c4dm/event.owl#>,
+                                            <http://purl.org/linked-data/cube#>;
+    <http://www.w3.org/2002/07/owl#versionInfo> "0.6";
     <https://privatealpha.com/ontology/content-inventory/external> <http://vocab.org/frbr/extended>,
-                                                                   qb:,
+                                                                   <http://purl.org/linked-data/cube#>,
                                                                    <https://doriantaylor.com/person/dorian-taylor#me>,
-                                                                   wiki:Content_strategy,
-                                                                   bibo:,
+                                                                   <http://en.wikipedia.org/wiki/Content_strategy>,
+                                                                   <http://purl.org/ontology/bibo/>,
                                                                    <http://vocab.org/frbr/core>,
-                                                                   event:,
+                                                                   <http://purl.org/NET/c4dm/event.owl#>,
                                                                    <http://creativecommons.org/licenses/by/2.5/ca/>,
-                                                                   foaf:,
-                                                                   dcterms:,
+                                                                   <http://xmlns.com/foaf/0.1/>,
+                                                                   <http://purl.org/dc/terms/>,
                                                                    <http://doriantaylor.com/person/dorian-taylor#me>.
-ci:Action a owl:Class;
+ci:Action a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "An action, as its name implies, is meant to represent something a person or other agent ought to do to a document."@en;
           rdfs:isDefinedBy ci:;
           rdfs:label "Action";
-          rdfs:subClassOf event:Event;
-          <https://privatealpha.com/ontology/content-inventory/external> event:Event.
-ci:Merge a owl:Class;
+          rdfs:subClassOf <http://purl.org/NET/c4dm/event.owl#Event>;
+          <https://privatealpha.com/ontology/content-inventory/external> <http://purl.org/NET/c4dm/event.owl#Event>.
+ci:Merge a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "In order to merge a document, we must define the target to which it ought to be merged. This class is identical to an Action, save for such a property."@en;
          rdfs:isDefinedBy ci:;
          rdfs:label "Merge";
          rdfs:subClassOf ci:Action.
-ci:action a owl:ObjectProperty;
+ci:action a <http://www.w3.org/2002/07/owl#ObjectProperty>;
           rdfs:comment "use this to signal an action to take with the document in question."@en;
-          rdfs:domain foaf:Document;
+          rdfs:domain <http://xmlns.com/foaf/0.1/Document>;
           rdfs:isDefinedBy ci:;
           rdfs:label "action";
           rdfs:range ci:Action;
-          rdfs:subPropertyOf event:factor_of;
-          <https://privatealpha.com/ontology/content-inventory/external> foaf:Document,
-                                                                         event:factor_of.
-ci:alias a owl:ObjectProperty;
+          rdfs:subPropertyOf <http://purl.org/NET/c4dm/event.owl#factor_of>;
+          <https://privatealpha.com/ontology/content-inventory/external> <http://xmlns.com/foaf/0.1/Document>,
+                                                                         <http://purl.org/NET/c4dm/event.owl#factor_of>.
+ci:alias a <http://www.w3.org/2002/07/owl#ObjectProperty>;
          rdfs:comment "This is an alternate URI for the subject resource. It is simply meant to annotate a resource with another address. It differs from owl:sameAs in that it does not imply that <a> = <b> as well as <b> = <a>."@en;
          rdfs:isDefinedBy ci:;
          rdfs:label "alias".
-ci:assumes a owl:ObjectProperty;
+ci:assumes a <http://www.w3.org/2002/07/owl#ObjectProperty>;
            rdfs:comment "The document assumes the audience is familiar with this concept, and may not mention it explicitly."@en;
-           rdfs:domain foaf:Document;
+           rdfs:domain <http://xmlns.com/foaf/0.1/Document>;
            rdfs:isDefinedBy ci:;
            rdfs:label "assumes";
-           rdfs:range skos:Concept;
-           rdfs:seeAlso dcterms:educationLevel;
-           rdfs:subPropertyOf dcterms:references;
-           <https://privatealpha.com/ontology/content-inventory/external> foaf:Document,
-                                                                          dcterms:educationLevel,
-                                                                          dcterms:references,
-                                                                          skos:Concept.
-ci:block a qb:MeasureProperty;
+           rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>;
+           rdfs:seeAlso <http://purl.org/dc/terms/educationLevel>;
+           rdfs:subPropertyOf <http://purl.org/dc/terms/references>;
+           <https://privatealpha.com/ontology/content-inventory/external> <http://xmlns.com/foaf/0.1/Document>,
+                                                                          <http://purl.org/dc/terms/educationLevel>,
+                                                                          <http://purl.org/dc/terms/references>,
+                                                                          <http://www.w3.org/2004/02/skos/core#Concept>.
+ci:block a <http://purl.org/linked-data/cube#MeasureProperty>;
          rdfs:comment "A block count is conceptually similar to a word or section count, though it counts the total of elements in the document considered to be text blocks, such as paragraphs, tables, lists and figures. It is suited for document types that have no concept of (semantic) sections, such as HTML. The purpose of this measurement is to provide a sort of ratio to the word count, to glean how well-proportioned the document is."@en;
-         rdfs:domain qb:Observation;
+         rdfs:domain <http://purl.org/linked-data/cube#Observation>;
          rdfs:isDefinedBy ci:;
          rdfs:label "blocks";
          rdfs:range xsd:nonNegativeInteger;
          <https://privatealpha.com/ontology/content-inventory/external> xsd:nonNegativeInteger,
-                                                                        qb:Observation.
-ci:canonical a owl:ObjectProperty,
-               owl:FunctionalProperty;
+                                                                        <http://purl.org/linked-data/cube#Observation>.
+ci:canonical a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+               <http://www.w3.org/2002/07/owl#FunctionalProperty>;
              rdfs:comment "This is the canonical URI of the subject resource, i.e., the one you always want to publish in content or redirect Web requests to."@en;
              rdfs:isDefinedBy ci:;
              rdfs:label "canonical";
-             rdfs:subPropertyOf owl:sameAs;
-             <https://privatealpha.com/ontology/content-inventory/external> owl:sameAs.
-ci:canonical-slug a owl:FunctionalProperty,
-                    owl:DatatypeProperty;
+             rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#sameAs>;
+             <https://privatealpha.com/ontology/content-inventory/external> <http://www.w3.org/2002/07/owl#sameAs>.
+ci:canonical-slug a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                    <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment "This is the canonical slug associated with the resource, and should be populated with the slug which is actually in use."@en;
                   rdfs:isDefinedBy ci:;
                   rdfs:label "canonical-slug";
                   rdfs:range xsd:string;
                   rdfs:subPropertyOf ci:slug;
                   <https://privatealpha.com/ontology/content-inventory/external> xsd:string.
-ci:characters a qb:MeasureProperty;
+ci:characters a <http://purl.org/linked-data/cube#MeasureProperty>;
               rdfs:comment "This indicates the number of characters in a document, with punctuation and the XPath normalize-space function applied. Note this is characters, not bytes."@en;
-              rdfs:domain qb:Observation;
+              rdfs:domain <http://purl.org/linked-data/cube#Observation>;
               rdfs:isDefinedBy ci:;
               rdfs:label "characters";
               rdfs:range xsd:nonNegativeInteger;
               rdfs:seeAlso <http://www.w3.org/TR/xpath/#function-normalize-space>;
               <https://privatealpha.com/ontology/content-inventory/external> <http://www.w3.org/TR/xpath/#function-normalize-space>,
                                                                              xsd:nonNegativeInteger,
-                                                                             qb:Observation.
-ci:desired-outcome a owl:ObjectProperty;
+                                                                             <http://purl.org/linked-data/cube#Observation>.
+ci:desired-outcome a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "This property is intended to indicate what the document is supposed to do—what material effect it is supposed to produce. It is intentionally open-ended, and as such can point to something like a skos:Concept, another document, or a literal string of text describing the outcome."@en;
-                   rdfs:domain foaf:Document;
+                   rdfs:domain <http://xmlns.com/foaf/0.1/Document>;
                    rdfs:isDefinedBy ci:;
                    rdfs:label "desired-outcome";
-                   rdfs:subPropertyOf dcterms:type;
-                   <https://privatealpha.com/ontology/content-inventory/external> foaf:Document,
-                                                                                  dcterms:type.
-ci:document a qb:DimensionProperty;
+                   rdfs:subPropertyOf <http://purl.org/dc/terms/type>;
+                   <https://privatealpha.com/ontology/content-inventory/external> <http://xmlns.com/foaf/0.1/Document>,
+                                                                                  <http://purl.org/dc/terms/type>.
+ci:document a <http://purl.org/linked-data/cube#DimensionProperty>;
             rdfs:comment "Document Reference"@en;
-            rdfs:domain qb:Observation;
+            rdfs:domain <http://purl.org/linked-data/cube#Observation>;
             rdfs:isDefinedBy ci:;
             rdfs:label "document";
-            rdfs:range foaf:Document;
-            <https://privatealpha.com/ontology/content-inventory/external> foaf:Document,
-                                                                           qb:Observation.
-ci:embed a owl:ObjectProperty;
+            rdfs:range <http://xmlns.com/foaf/0.1/Document>;
+            <https://privatealpha.com/ontology/content-inventory/external> <http://xmlns.com/foaf/0.1/Document>,
+                                                                           <http://purl.org/linked-data/cube#Observation>.
+ci:embed a <http://www.w3.org/2002/07/owl#ObjectProperty>;
          rdfs:comment "This property specifies an embedded resource which is visible in the subject's user interface."@en;
-         rdfs:domain foaf:Document;
+         rdfs:domain <http://xmlns.com/foaf/0.1/Document>;
          rdfs:isDefinedBy ci:;
          rdfs:label "embed";
-         rdfs:subPropertyOf dcterms:hasPart;
-         <https://privatealpha.com/ontology/content-inventory/external> foaf:Document,
-                                                                        dcterms:hasPart.
-ci:empty a bibo:DocumentStatus;
+         rdfs:subPropertyOf <http://purl.org/dc/terms/hasPart>;
+         <https://privatealpha.com/ontology/content-inventory/external> <http://xmlns.com/foaf/0.1/Document>,
+                                                                        <http://purl.org/dc/terms/hasPart>.
+ci:empty a <http://purl.org/ontology/bibo/DocumentStatus>;
          rdfs:comment "The document contains no content."@en;
          rdfs:isDefinedBy ci:;
          rdfs:label "empty".
-ci:high-quartile a qb:MeasureProperty;
+ci:high-quartile a <http://purl.org/linked-data/cube#MeasureProperty>;
                  rdfs:comment "Third Quartile"@en;
-                 rdfs:domain qb:Observation;
+                 rdfs:domain <http://purl.org/linked-data/cube#Observation>;
                  rdfs:isDefinedBy ci:;
                  rdfs:label "high-quartile";
                  rdfs:range xsd:number;
-                 rdfs:seeAlso wiki:Quartile;
+                 rdfs:seeAlso <http://en.wikipedia.org/wiki/Quartile>;
                  <https://privatealpha.com/ontology/content-inventory/external> xsd:number,
-                                                                                qb:Observation,
-                                                                                wiki:Quartile.
-ci:incomplete a bibo:DocumentStatus;
+                                                                                <http://purl.org/linked-data/cube#Observation>,
+                                                                                <http://en.wikipedia.org/wiki/Quartile>.
+ci:incomplete a <http://purl.org/ontology/bibo/DocumentStatus>;
               rdfs:comment "The document has been started, but is clearly not finished."@en;
               rdfs:isDefinedBy ci:;
               rdfs:label "incomplete".
-ci:incorrect a bibo:DocumentStatus;
+ci:incorrect a <http://purl.org/ontology/bibo/DocumentStatus>;
              rdfs:comment "The content of this document is factually wrong."@en;
              rdfs:isDefinedBy ci:;
              rdfs:label "incorrect".
-ci:indegree a qb:MeasureProperty;
+ci:indegree a <http://purl.org/linked-data/cube#MeasureProperty>;
             rdfs:comment "The number of links pointing at the specified resource."@en;
-            rdfs:domain qb:Observation;
+            rdfs:domain <http://purl.org/linked-data/cube#Observation>;
             rdfs:isDefinedBy ci:;
             rdfs:label "indegree";
             rdfs:range xsd:number;
             rdfs:seeAlso <http://en.wikipedia.org/wiki/Directed_graph#Indegree_and_outdegree>;
             <https://privatealpha.com/ontology/content-inventory/external> xsd:number,
                                                                            <http://en.wikipedia.org/wiki/Directed_graph#Indegree_and_outdegree>,
-                                                                           qb:Observation.
-ci:introduces a owl:ObjectProperty;
+                                                                           <http://purl.org/linked-data/cube#Observation>.
+ci:introduces a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "The document defines, describes, or otherwise introduces the audience to this concept."@en;
-              rdfs:domain foaf:Document;
+              rdfs:domain <http://xmlns.com/foaf/0.1/Document>;
               rdfs:isDefinedBy ci:;
               rdfs:label "introduces";
-              rdfs:range skos:Concept;
+              rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>;
               rdfs:subPropertyOf ci:mentions;
-              <https://privatealpha.com/ontology/content-inventory/external> foaf:Document,
-                                                                             skos:Concept.
+              <https://privatealpha.com/ontology/content-inventory/external> <http://xmlns.com/foaf/0.1/Document>,
+                                                                             <http://www.w3.org/2004/02/skos/core#Concept>.
 ci:keep a ci:Action;
         rdfs:comment "Keep this document to which this is associated; make no changes to it at this time."@en;
         rdfs:isDefinedBy ci:;
         rdfs:label "keep".
-ci:landing a bibo:DocumentStatus;
+ci:landing a <http://purl.org/ontology/bibo/DocumentStatus>;
            rdfs:comment "The resource is a landing page from some other medium (e.g. e-mail, television, billboard). This status is a hint to automated systems which would otherwise orphan or retire a landing page with no inbound links."@en;
            rdfs:isDefinedBy ci:;
            rdfs:label "landing".
-ci:link a owl:ObjectProperty;
+ci:link a <http://www.w3.org/2002/07/owl#ObjectProperty>;
         rdfs:comment "This property specifies a linked resource which is visible in the subject's user interface."@en;
-        rdfs:domain foaf:Document;
+        rdfs:domain <http://xmlns.com/foaf/0.1/Document>;
         rdfs:isDefinedBy ci:;
         rdfs:label "link";
-        rdfs:subPropertyOf dcterms:references;
-        <https://privatealpha.com/ontology/content-inventory/external> foaf:Document,
-                                                                       dcterms:references.
-ci:low-quartile a qb:MeasureProperty;
+        rdfs:subPropertyOf <http://purl.org/dc/terms/references>;
+        <https://privatealpha.com/ontology/content-inventory/external> <http://xmlns.com/foaf/0.1/Document>,
+                                                                       <http://purl.org/dc/terms/references>.
+ci:low-quartile a <http://purl.org/linked-data/cube#MeasureProperty>;
                 rdfs:comment "Equivalent to the bottom quarter, or 25th percentile, of the observed data."@en;
-                rdfs:domain qb:Observation;
+                rdfs:domain <http://purl.org/linked-data/cube#Observation>;
                 rdfs:isDefinedBy ci:;
                 rdfs:label "low-quartile";
                 rdfs:range xsd:number;
-                rdfs:seeAlso wiki:Quartile;
-                <https://privatealpha.com/ontology/content-inventory/external> qb:Observation,
+                rdfs:seeAlso <http://en.wikipedia.org/wiki/Quartile>;
+                <https://privatealpha.com/ontology/content-inventory/external> <http://purl.org/linked-data/cube#Observation>,
                                                                                xsd:number,
-                                                                               wiki:Quartile.
-ci:max a qb:MeasureProperty;
+                                                                               <http://en.wikipedia.org/wiki/Quartile>.
+ci:max a <http://purl.org/linked-data/cube#MeasureProperty>;
        rdfs:comment "Maximum"@en;
-       rdfs:domain qb:Observation;
+       rdfs:domain <http://purl.org/linked-data/cube#Observation>;
        rdfs:isDefinedBy ci:;
        rdfs:label "max";
        rdfs:range xsd:number;
-       rdfs:seeAlso wiki:Sample_maximum;
-       <https://privatealpha.com/ontology/content-inventory/external> qb:Observation,
+       rdfs:seeAlso <http://en.wikipedia.org/wiki/Sample_maximum>;
+       <https://privatealpha.com/ontology/content-inventory/external> <http://purl.org/linked-data/cube#Observation>,
                                                                       xsd:number,
-                                                                      wiki:Sample_maximum.
-ci:mean a qb:MeasureProperty;
+                                                                      <http://en.wikipedia.org/wiki/Sample_maximum>.
+ci:mean a <http://purl.org/linked-data/cube#MeasureProperty>;
         rdfs:comment "Mean"@en;
-        rdfs:domain qb:Observation;
+        rdfs:domain <http://purl.org/linked-data/cube#Observation>;
         rdfs:isDefinedBy ci:;
         rdfs:label "mean";
         rdfs:range xsd:number;
-        rdfs:seeAlso wiki:Sample_minimum;
+        rdfs:seeAlso <http://en.wikipedia.org/wiki/Sample_minimum>;
         <https://privatealpha.com/ontology/content-inventory/external> xsd:number,
-                                                                       qb:Observation,
-                                                                       wiki:Sample_minimum.
-ci:median a qb:MeasureProperty;
+                                                                       <http://purl.org/linked-data/cube#Observation>,
+                                                                       <http://en.wikipedia.org/wiki/Sample_minimum>.
+ci:median a <http://purl.org/linked-data/cube#MeasureProperty>;
           rdfs:comment "The median of a population "@en;
-          rdfs:domain qb:Observation;
+          rdfs:domain <http://purl.org/linked-data/cube#Observation>;
           rdfs:isDefinedBy ci:;
           rdfs:label "median";
           rdfs:range xsd:number;
-          rdfs:seeAlso wiki:Median;
-          <https://privatealpha.com/ontology/content-inventory/external> qb:Observation,
+          rdfs:seeAlso <http://en.wikipedia.org/wiki/Median>;
+          <https://privatealpha.com/ontology/content-inventory/external> <http://purl.org/linked-data/cube#Observation>,
                                                                          xsd:number,
-                                                                         wiki:Median.
-ci:mentions a owl:ObjectProperty;
+                                                                         <http://en.wikipedia.org/wiki/Median>.
+ci:mentions a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:comment "The document explicitly mentions this concept."@en;
-            rdfs:domain foaf:Document;
+            rdfs:domain <http://xmlns.com/foaf/0.1/Document>;
             rdfs:isDefinedBy ci:;
             rdfs:label "mentions";
-            rdfs:range skos:Concept;
-            rdfs:subPropertyOf dcterms:references;
-            <https://privatealpha.com/ontology/content-inventory/external> dcterms:references,
-                                                                           foaf:Document,
-                                                                           skos:Concept.
-ci:min a qb:MeasureProperty;
+            rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>;
+            rdfs:subPropertyOf <http://purl.org/dc/terms/references>;
+            <https://privatealpha.com/ontology/content-inventory/external> <http://purl.org/dc/terms/references>,
+                                                                           <http://xmlns.com/foaf/0.1/Document>,
+                                                                           <http://www.w3.org/2004/02/skos/core#Concept>.
+ci:min a <http://purl.org/linked-data/cube#MeasureProperty>;
        rdfs:comment "The smallest observation in the sample."@en;
-       rdfs:domain qb:Observation;
+       rdfs:domain <http://purl.org/linked-data/cube#Observation>;
        rdfs:isDefinedBy ci:;
        rdfs:label "min";
        rdfs:range xsd:number;
-       rdfs:seeAlso wiki:Sample_minimum;
-       <https://privatealpha.com/ontology/content-inventory/external> qb:Observation,
-                                                                      wiki:Sample_minimum,
+       rdfs:seeAlso <http://en.wikipedia.org/wiki/Sample_minimum>;
+       <https://privatealpha.com/ontology/content-inventory/external> <http://purl.org/linked-data/cube#Observation>,
+                                                                      <http://en.wikipedia.org/wiki/Sample_minimum>,
                                                                       xsd:number.
-ci:non-audience a owl:ObjectProperty;
+ci:non-audience a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "This property complements dct:audience insofar as enabling the author or editor to designate a set of entities who are explicitly not the intended audience of the document."@en;
-                rdfs:domain foaf:Document;
+                rdfs:domain <http://xmlns.com/foaf/0.1/Document>;
                 rdfs:isDefinedBy ci:;
                 rdfs:label "non-audience";
-                rdfs:range dcterms:AgentClass;
-                rdfs:seeAlso dcterms:audience;
-                <https://privatealpha.com/ontology/content-inventory/external> dcterms:AgentClass,
-                                                                               foaf:Document,
-                                                                               dcterms:audience.
-ci:obsolete a bibo:DocumentStatus;
+                rdfs:range <http://purl.org/dc/terms/AgentClass>;
+                rdfs:seeAlso <http://purl.org/dc/terms/audience>;
+                <https://privatealpha.com/ontology/content-inventory/external> <http://purl.org/dc/terms/AgentClass>,
+                                                                               <http://xmlns.com/foaf/0.1/Document>,
+                                                                               <http://purl.org/dc/terms/audience>.
+ci:obsolete a <http://purl.org/ontology/bibo/DocumentStatus>;
             rdfs:comment "The content of this document was correct and relevant at one point, but external circumstances have caused it to lapse in relevance or factual accuracy."@en;
             rdfs:isDefinedBy ci:;
             rdfs:label "obsolete".
-ci:orphan a bibo:DocumentStatus;
+ci:orphan a <http://purl.org/ontology/bibo/DocumentStatus>;
           rdfs:comment "The resource is not explicitly pending or removed from publication, however it has managed to be disconnected from the rest of the site: There is no path to it from a landing page, and it is not a landing page on its own. That is to say that the resource either has no inbound links, or if it does, those links are from other resources that are in the same situation. Documents which are only linked from retired documents are also considered orphans."@en;
           rdfs:isDefinedBy ci:;
           rdfs:label "orphan".
-ci:outdegree a qb:MeasureProperty;
+ci:outdegree a <http://purl.org/linked-data/cube#MeasureProperty>;
              rdfs:comment "The number of links emanating from the specified resource."@en;
-             rdfs:domain qb:Observation;
+             rdfs:domain <http://purl.org/linked-data/cube#Observation>;
              rdfs:isDefinedBy ci:;
              rdfs:label "outdegree";
              rdfs:range xsd:number;
              rdfs:seeAlso <http://en.wikipedia.org/wiki/Directed_graph#Indegree_and_outdegree>;
              <https://privatealpha.com/ontology/content-inventory/external> xsd:number,
                                                                             <http://en.wikipedia.org/wiki/Directed_graph#Indegree_and_outdegree>,
-                                                                            qb:Observation.
+                                                                            <http://purl.org/linked-data/cube#Observation>.
 ci:proofread a ci:Action;
              rdfs:comment "Proofread this document."@en;
              rdfs:isDefinedBy ci:;
@@ -305,7 +292,7 @@ ci:retire a ci:Action;
           rdfs:comment "Remove all references to this document and consign it to the archive."@en;
           rdfs:isDefinedBy ci:;
           rdfs:label "retire".
-ci:retired a bibo:DocumentStatus;
+ci:retired a <http://purl.org/ontology/bibo/DocumentStatus>;
            rdfs:comment "The document has been explicitly retired by an editor or curator, but still exists in the archive."@en;
            rdfs:isDefinedBy ci:;
            rdfs:label "retired".
@@ -317,25 +304,25 @@ ci:rewrite a ci:Action;
            rdfs:comment "Rewrite this document from scratch."@en;
            rdfs:isDefinedBy ci:;
            rdfs:label "rewrite".
-ci:sd a qb:MeasureProperty;
+ci:sd a <http://purl.org/linked-data/cube#MeasureProperty>;
       rdfs:comment "Standard Deviation"@en;
-      rdfs:domain qb:Observation;
+      rdfs:domain <http://purl.org/linked-data/cube#Observation>;
       rdfs:isDefinedBy ci:;
       rdfs:label "sd";
       rdfs:range xsd:number;
-      rdfs:seeAlso wiki:Sample_minimum;
+      rdfs:seeAlso <http://en.wikipedia.org/wiki/Sample_minimum>;
       <https://privatealpha.com/ontology/content-inventory/external> xsd:number,
-                                                                     wiki:Sample_minimum,
-                                                                     qb:Observation.
-ci:sections a qb:MeasureProperty;
+                                                                     <http://en.wikipedia.org/wiki/Sample_minimum>,
+                                                                     <http://purl.org/linked-data/cube#Observation>.
+ci:sections a <http://purl.org/linked-data/cube#MeasureProperty>;
             rdfs:comment "For document types that have a concrete representation of sections, this property may be used to capture their sum."@en;
-            rdfs:domain foaf:Document;
+            rdfs:domain <http://xmlns.com/foaf/0.1/Document>;
             rdfs:isDefinedBy ci:;
             rdfs:label "sections";
             rdfs:range xsd:nonNegativeInteger;
-            <https://privatealpha.com/ontology/content-inventory/external> foaf:Document,
+            <https://privatealpha.com/ontology/content-inventory/external> <http://xmlns.com/foaf/0.1/Document>,
                                                                            xsd:nonNegativeInteger.
-ci:slug a owl:DatatypeProperty;
+ci:slug a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
         rdfs:comment "The slug is a text token which represents either the full path or terminal path segment of an HTTP(S) URL by which a resource can be located. This property is mainly for the purpose of archiving old or alternative URL paths in a content inventory, for such tasks as generating URL rewriting maps."@en;
         rdfs:isDefinedBy ci:;
         rdfs:label "slug";
@@ -345,18 +332,18 @@ ci:split a ci:Action;
          rdfs:comment "Split this document into multiple pieces."@en;
          rdfs:isDefinedBy ci:;
          rdfs:label "split".
-ci:target a owl:ObjectProperty;
+ci:target a <http://www.w3.org/2002/07/owl#ObjectProperty>;
           rdfs:comment "Specify the URI of the target resource into which this document should be merged."@en;
           rdfs:domain ci:Merge;
           rdfs:isDefinedBy ci:;
           rdfs:label "target";
-          rdfs:range foaf:Document;
-          <https://privatealpha.com/ontology/content-inventory/external> foaf:Document.
+          rdfs:range <http://xmlns.com/foaf/0.1/Document>;
+          <https://privatealpha.com/ontology/content-inventory/external> <http://xmlns.com/foaf/0.1/Document>.
 ci:tentative-merge a ci:Merge;
                    rdfs:comment "Merge this document into some other document, though unspecified at this time as to which."@en;
                    rdfs:isDefinedBy ci:;
                    rdfs:label "tentative-merge".
-ci:unavailable a bibo:DocumentStatus;
+ci:unavailable a <http://purl.org/ontology/bibo/DocumentStatus>;
                rdfs:comment "The resource at the subject address is unavailable for reasons other than explicit retirement, e.g. HTTP 404 or 403, or going out of print."@en;
                rdfs:isDefinedBy ci:;
                rdfs:label "unavailable".
@@ -364,38 +351,38 @@ ci:update-metadata a ci:Action;
                    rdfs:comment "Update the metadata of this document, such as keywords, audience, etc."@en;
                    rdfs:isDefinedBy ci:;
                    rdfs:label "update-metadata".
-ci:words a qb:MeasureProperty;
+ci:words a <http://purl.org/linked-data/cube#MeasureProperty>;
          rdfs:comment "This indicates the number of words in a document, similar to the familiar function in a word processor. The exact method of counting words may vary by document type, language etc., and is thus out of scope from this document."@en;
-         rdfs:domain qb:Observation;
+         rdfs:domain <http://purl.org/linked-data/cube#Observation>;
          rdfs:isDefinedBy ci:;
          rdfs:label "words";
          rdfs:range xsd:nonNegativeInteger;
          <https://privatealpha.com/ontology/content-inventory/external> xsd:nonNegativeInteger,
-                                                                        qb:Observation.
-ci:words-and-blocks qb:component [a qb:ComponentSpecification ; 
-                                  qb:measure ci:sections],
-                                 [a qb:ComponentSpecification ; 
-                                  qb:dimension ci:document],
-                                 [a qb:ComponentSpecification ; 
-                                  qb:measure ci:high-quartile],
-                                 [a qb:ComponentSpecification ; 
-                                  qb:measure ci:words],
-                                 [a qb:ComponentSpecification ; 
-                                  qb:measure ci:sd],
-                                 [a qb:ComponentSpecification ; 
-                                  qb:measure ci:min],
-                                 [a qb:ComponentSpecification ; 
-                                  qb:measure ci:max],
-                                 [a qb:ComponentSpecification ; 
-                                  qb:measure ci:median],
-                                 [a qb:ComponentSpecification ; 
-                                  qb:measure ci:mean],
-                                 [a qb:ComponentSpecification ; 
-                                  qb:measure ci:characters],
-                                 [a qb:ComponentSpecification ; 
-                                  qb:measure ci:low-quartile],
-                                 [a qb:ComponentSpecification ; 
-                                  qb:measure ci:blocks];
-                    a qb:DataStructureDefinition;
+                                                                        <http://purl.org/linked-data/cube#Observation>.
+ci:words-and-blocks <http://purl.org/linked-data/cube#component> [a <http://purl.org/linked-data/cube#ComponentSpecification> ; 
+                                                                  <http://purl.org/linked-data/cube#measure> ci:sections],
+                                                                 [a <http://purl.org/linked-data/cube#ComponentSpecification> ; 
+                                                                  <http://purl.org/linked-data/cube#dimension> ci:document],
+                                                                 [a <http://purl.org/linked-data/cube#ComponentSpecification> ; 
+                                                                  <http://purl.org/linked-data/cube#measure> ci:high-quartile],
+                                                                 [a <http://purl.org/linked-data/cube#ComponentSpecification> ; 
+                                                                  <http://purl.org/linked-data/cube#measure> ci:words],
+                                                                 [a <http://purl.org/linked-data/cube#ComponentSpecification> ; 
+                                                                  <http://purl.org/linked-data/cube#measure> ci:sd],
+                                                                 [a <http://purl.org/linked-data/cube#ComponentSpecification> ; 
+                                                                  <http://purl.org/linked-data/cube#measure> ci:min],
+                                                                 [a <http://purl.org/linked-data/cube#ComponentSpecification> ; 
+                                                                  <http://purl.org/linked-data/cube#measure> ci:max],
+                                                                 [a <http://purl.org/linked-data/cube#ComponentSpecification> ; 
+                                                                  <http://purl.org/linked-data/cube#measure> ci:median],
+                                                                 [a <http://purl.org/linked-data/cube#ComponentSpecification> ; 
+                                                                  <http://purl.org/linked-data/cube#measure> ci:mean],
+                                                                 [a <http://purl.org/linked-data/cube#ComponentSpecification> ; 
+                                                                  <http://purl.org/linked-data/cube#measure> ci:characters],
+                                                                 [a <http://purl.org/linked-data/cube#ComponentSpecification> ; 
+                                                                  <http://purl.org/linked-data/cube#measure> ci:low-quartile],
+                                                                 [a <http://purl.org/linked-data/cube#ComponentSpecification> ; 
+                                                                  <http://purl.org/linked-data/cube#measure> ci:blocks];
+                    a <http://purl.org/linked-data/cube#DataStructureDefinition>;
                     rdfs:comment "A set of descriptive statistics pertaining to the number of words per block of text in a given document."@en;
                     rdfs:label "words-and-blocks".

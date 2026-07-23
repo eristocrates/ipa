@@ -1,382 +1,364 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix wiki: <http://en.wikipedia.org/wiki/>.
-@prefix eunis: <http://eunis.eea.europa.eu/rdf/species-schema.rdf#>.
-@prefix txn: <http://lod.taxonconcept.org/ontology/txn.owl#>.
-@prefix biol: <http://purl.org/NET/biol/ns#>.
-@prefix eol: <http://purl.org/biodiversity/eol/>.
 @prefix taxon: <http://purl.org/biodiversity/taxon/>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix dwc: <http://rs.tdwg.org/dwc/terms/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix bio2rdf: <http://bio2rdf.org/>.
-@prefix planet: <http://dbpedia.org/>.
-@prefix dbpedia-owl: <http://dbpedia.org/ontology/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix wlo: <http://purl.org/ontology/wo/>.
-@prefix uniprot: <http://purl.uniprot.org/core/>.
-@prefix freebase: <http://rdf.freebase.com/ns/>.
-@prefix geospecies: <http://rdf.geospecies.org/ont/geospecies#>.
 
-bio2rdf:uniprot_resource:Taxon a owl:Class.
-dbpedia-owl:Species a owl:Class.
-eunis:SpeciesSynonym a owl:Class.
-eunis:authority a owl:DatatypeProperty.
-eunis:scientificName a owl:DatatypeProperty.
-<http://lod.taxonconcept.org/ontology/people.owl#Peter_J_DeVries> a foaf:Person.
-txn:TaxonConcept_Knowledge_Base_Project a foaf:Organization.
-txn:authority a owl:DatatypeProperty.
-txn:scientificName a owl:DatatypeProperty.
-biol:Taxonomy a owl:Class.
-biol:authority a owl:DatatypeProperty.
-eol:Taxon a owl:Class.
-eol:authority a owl:DatatypeProperty.
-eol:scientificName a owl:DatatypeProperty.
-taxon: dcterms:creator <http://lod.taxonconcept.org/ontology/people.owl#Peter_J_DeVries>;
-       dcterms:description "Version 0.18 This is the initial vocabulary for Mapping the various taxon classes on the Linked Open Data Cloud"@en;
-       dcterms:issued "2012-05-27";
-       dcterms:modified "2013-03-18";
-       dcterms:publisher txn:TaxonConcept_Knowledge_Base_Project;
-       dcterms:title "TaxonMap Ontology"@en;
-       vann:preferredNamespacePrefix "taxon";
-       vann:preferredNamespaceUri "http://purl.org/biodiversity/taxon/";
-       a owl:Ontology;
+<http://bio2rdf.org/uniprot_resource:Taxon> a <http://www.w3.org/2002/07/owl#Class>.
+<http://dbpedia.org/ontology/Species> a <http://www.w3.org/2002/07/owl#Class>.
+<http://eunis.eea.europa.eu/rdf/species-schema.rdf#SpeciesSynonym> a <http://www.w3.org/2002/07/owl#Class>.
+<http://eunis.eea.europa.eu/rdf/species-schema.rdf#authority> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://eunis.eea.europa.eu/rdf/species-schema.rdf#scientificName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://lod.taxonconcept.org/ontology/people.owl#Peter_J_DeVries> a <http://xmlns.com/foaf/0.1/Person>.
+<http://lod.taxonconcept.org/ontology/txn.owl#TaxonConcept_Knowledge_Base_Project> a <http://xmlns.com/foaf/0.1/Organization>.
+<http://lod.taxonconcept.org/ontology/txn.owl#authority> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://lod.taxonconcept.org/ontology/txn.owl#scientificName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/NET/biol/ns#Taxonomy> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/NET/biol/ns#authority> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/biodiversity/eol/Taxon> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/biodiversity/eol/authority> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/biodiversity/eol/scientificName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+taxon: <http://purl.org/dc/terms/creator> <http://lod.taxonconcept.org/ontology/people.owl#Peter_J_DeVries>;
+       <http://purl.org/dc/terms/description> "Version 0.18 This is the initial vocabulary for Mapping the various taxon classes on the Linked Open Data Cloud"@en;
+       <http://purl.org/dc/terms/issued> "2012-05-27";
+       <http://purl.org/dc/terms/modified> "2013-03-18";
+       <http://purl.org/dc/terms/publisher> <http://lod.taxonconcept.org/ontology/txn.owl#TaxonConcept_Knowledge_Base_Project>;
+       <http://purl.org/dc/terms/title> "TaxonMap Ontology"@en;
+       <http://purl.org/vocab/vann/preferredNamespacePrefix> "taxon";
+       <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/biodiversity/taxon/";
+       a <http://www.w3.org/2002/07/owl#Ontology>;
        rdfs:comment "Version 0.18 Added those taxon classes I know about, and data type properties for scientific name and authority"@en;
        rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
        rdfs:label "TaxonMap Ontology"@en;
-       owl:versionInfo 0.17.
-taxon:Amphibian a owl:Class;
+       <http://www.w3.org/2002/07/owl#versionInfo> 0.17.
+taxon:Amphibian a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                 rdfs:label "Amphibian";
                 rdfs:subClassOf taxon:Tetrapod.
-taxon:Animal a owl:Class;
+taxon:Animal a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
              rdfs:label "Animal";
              rdfs:subClassOf taxon:Eukaryote;
-             foaf:page <http://species.wikimedia.org/wiki/Animalia>,
-                       wiki:Animal,
-                       <http://eol.org/pages/1/overview>.
-taxon:Arachnid a owl:Class;
+             <http://xmlns.com/foaf/0.1/page> <http://species.wikimedia.org/wiki/Animalia>,
+                                              <http://en.wikipedia.org/wiki/Animal>,
+                                              <http://eol.org/pages/1/overview>.
+taxon:Arachnid a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                rdfs:label "Arachnid";
                rdfs:subClassOf taxon:Arthropod.
-taxon:Archaea a owl:Class;
+taxon:Archaea a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
               rdfs:label "Archaea";
               rdfs:subClassOf taxon:BiologicalOrganism.
-taxon:Armoured_fish a owl:Class;
+taxon:Armoured_fish a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                     rdfs:label "Armoured_fish";
                     rdfs:subClassOf taxon:Fish.
-taxon:Arthropod a owl:Class;
+taxon:Arthropod a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                 rdfs:label "Arthropod";
                 rdfs:subClassOf taxon:Animal.
-taxon:Bacteria a owl:Class;
+taxon:Bacteria a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                rdfs:label "Bacteria";
                rdfs:subClassOf taxon:BiologicalOrganism.
-taxon:BiologicalOrganism a owl:Class;
+taxon:BiologicalOrganism a <http://www.w3.org/2002/07/owl#Class>;
                          rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                          rdfs:label "BiologicalOrganism".
-taxon:Bird a owl:Class;
+taxon:Bird a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
            rdfs:label "Bird";
            rdfs:subClassOf taxon:Tetrapod.
-taxon:Cartilaginous_fish a owl:Class;
+taxon:Cartilaginous_fish a <http://www.w3.org/2002/07/owl#Class>;
                          rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                          rdfs:label "Cartilaginous Fish";
                          rdfs:subClassOf taxon:Fish.
-taxon:Cephalochordate a owl:Class;
+taxon:Cephalochordate a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                       rdfs:label "Cephalochordate";
                       rdfs:subClassOf taxon:Chordate.
-taxon:Chordate a owl:Class;
+taxon:Chordate a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                rdfs:label "Chordate";
                rdfs:subClassOf taxon:Animal.
-taxon:ClubMoss a owl:Class;
+taxon:ClubMoss a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                rdfs:label "ClubMoss";
                rdfs:subClassOf taxon:Plant.
-taxon:Conifer a owl:Class;
+taxon:Conifer a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
               rdfs:label "Conifer";
               rdfs:subClassOf taxon:Plant.
-taxon:Crustacean a owl:Class;
+taxon:Crustacean a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                  rdfs:label "Crustacean";
                  rdfs:subClassOf taxon:Arthropod.
-taxon:Cycad a owl:Class;
+taxon:Cycad a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
             rdfs:label "Cycad";
             rdfs:subClassOf taxon:Plant.
-taxon:DataObject a owl:Class;
+taxon:DataObject a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                  rdfs:label "DataObject"@en.
-taxon:Dinosauria a owl:Class;
+taxon:Dinosauria a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "Dinosaurs";
                  rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                  rdfs:label "Dinosauria";
                  rdfs:subClassOf taxon:Tetrapod.
-taxon:Eukaryote a owl:Class;
+taxon:Eukaryote a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                 rdfs:label "Eukaryote";
                 rdfs:subClassOf taxon:BiologicalOrganism;
-                foaf:page <http://tolweb.org/Eukaryotes/3>,
-                          <http://species.wikimedia.org/wiki/Eukaryota>,
-                          wiki:Eukaryote,
-                          <http://eol.org/pages/2908256/overview>.
-taxon:Fern a owl:Class;
+                <http://xmlns.com/foaf/0.1/page> <http://tolweb.org/Eukaryotes/3>,
+                                                 <http://species.wikimedia.org/wiki/Eukaryota>,
+                                                 <http://en.wikipedia.org/wiki/Eukaryote>,
+                                                 <http://eol.org/pages/2908256/overview>.
+taxon:Fern a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
            rdfs:label "Fern";
            rdfs:subClassOf taxon:Plant.
-taxon:Fish a owl:Class;
+taxon:Fish a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
            rdfs:label "Fish";
            rdfs:subClassOf taxon:Chordate.
-taxon:FloweringPlant a owl:Class;
+taxon:FloweringPlant a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                      rdfs:label "FloweringPlant";
                      rdfs:subClassOf taxon:Plant.
-taxon:Fungus a owl:Class;
+taxon:Fungus a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
              rdfs:label "Fungus";
              rdfs:subClassOf taxon:Eukaryote.
-taxon:Ginkgo a owl:Class;
+taxon:Ginkgo a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
              rdfs:label "Ginkgo";
              rdfs:subClassOf taxon:Plant.
-taxon:Gnetophytes a owl:Class;
+taxon:Gnetophytes a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                   rdfs:label "Gnetophytes";
                   rdfs:subClassOf taxon:Plant.
-taxon:GreenAlga a owl:Class;
+taxon:GreenAlga a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                 rdfs:label "GreenAlga";
                 rdfs:subClassOf taxon:Plant.
-taxon:Image a owl:Class;
+taxon:Image a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
             rdfs:label "Image";
-            rdfs:subClassOf foaf:Image.
-taxon:Insect a owl:Class;
+            rdfs:subClassOf <http://xmlns.com/foaf/0.1/Image>.
+taxon:Insect a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
              rdfs:label "Insect";
              rdfs:subClassOf taxon:Arthropod.
-taxon:Jawless_fish a owl:Class;
+taxon:Jawless_fish a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                    rdfs:label "Jawless fish";
                    rdfs:subClassOf taxon:Fish.
-taxon:Lobe_Finned_fish a owl:Class;
+taxon:Lobe_Finned_fish a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                        rdfs:label "Lobe Finned Fish";
                        rdfs:subClassOf taxon:Fish.
-taxon:Lungfish a owl:Class;
+taxon:Lungfish a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                rdfs:label "Lungfish";
                rdfs:subClassOf taxon:Fish.
-taxon:Mammal a owl:Class;
+taxon:Mammal a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
              rdfs:label "Mammal";
              rdfs:subClassOf taxon:Tetrapod.
-taxon:MapImage a owl:Class;
+taxon:MapImage a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                rdfs:label "MapImage";
-               rdfs:subClassOf foaf:Image.
-taxon:Microbial_Eukaryote a owl:Class;
+               rdfs:subClassOf <http://xmlns.com/foaf/0.1/Image>.
+taxon:Microbial_Eukaryote a <http://www.w3.org/2002/07/owl#Class>;
                           rdfs:comment "a polyphyletic group";
                           rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                           rdfs:label "Microbial Eukaryote";
                           rdfs:subClassOf taxon:Eukaryote.
-taxon:ModernReptile a owl:Class;
+taxon:ModernReptile a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "The class of recently extant reptiles including Crocodiles, Turtles, Snakes and Lizards";
                     rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                     rdfs:label "Modern Reptile";
                     rdfs:subClassOf taxon:Tetrapod.
-taxon:Mollusca a owl:Class;
+taxon:Mollusca a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                rdfs:label "Mollusca";
                rdfs:subClassOf taxon:Animal.
-taxon:Moss a owl:Class;
+taxon:Moss a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
            rdfs:label "Moss";
            rdfs:subClassOf taxon:Plant.
-taxon:Plant a owl:Class;
+taxon:Plant a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
             rdfs:label "Viridiplantae",
                        "Plant";
             rdfs:subClassOf taxon:Eukaryote.
-taxon:Ray_Fined_fish a owl:Class;
+taxon:Ray_Fined_fish a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                      rdfs:label "Ray Fined Fish";
                      rdfs:subClassOf taxon:Fish.
-taxon:Red_algae a owl:Class;
+taxon:Red_algae a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                 rdfs:label "Red algae";
                 rdfs:subClassOf taxon:Eukaryote.
-taxon:Taxon a owl:Class;
+taxon:Taxon a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment """A proposed superclass for all the known LOD classes for a \"taxon\"""";
             rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
             rdfs:label "Taxon";
-            rdfs:seeAlso dwc:Taxon,
-                         uniprot:Taxon,
-                         wlo:Species,
-                         eol:Taxon,
-                         eunis:SpeciesSynonym,
+            rdfs:seeAlso <http://rs.tdwg.org/dwc/terms/Taxon>,
+                         <http://purl.uniprot.org/core/Taxon>,
+                         <http://purl.org/ontology/wo/Species>,
+                         <http://purl.org/biodiversity/eol/Taxon>,
+                         <http://eunis.eea.europa.eu/rdf/species-schema.rdf#SpeciesSynonym>,
                          taxon:TaxonConcept,
                          <http://rdfdata.eionet.europa.eu/itis/ontology/Taxon>,
-                         biol:Taxonomy,
-                         geospecies:TaxonConcept,
-                         freebase:biology.organism_classification,
-                         dbpedia-owl:Species,
-                         bio2rdf:uniprot_resource:Taxon.
-taxon:TaxonConcept a owl:Class.
-taxon:TaxonName a owl:Class;
+                         <http://purl.org/NET/biol/ns#Taxonomy>,
+                         <http://rdf.geospecies.org/ont/geospecies#TaxonConcept>,
+                         <http://rdf.freebase.com/ns/biology.organism_classification>,
+                         <http://dbpedia.org/ontology/Species>,
+                         <http://bio2rdf.org/uniprot_resource:Taxon>.
+taxon:TaxonConcept a <http://www.w3.org/2002/07/owl#Class>.
+taxon:TaxonName a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "A proposed superclass for all the known LOD classes a taxon name";
                 rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                 rdfs:label "TaxonName".
-taxon:TaxonNameID a owl:Class;
+taxon:TaxonNameID a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                   rdfs:label "TaxonNameID".
-taxon:TaxonRank a owl:Class;
+taxon:TaxonRank a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "A proposed superclass for all the known LOD classes of a Taxon Rank";
                 rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                 rdfs:label "TaxonRank".
-taxon:Tetrapod a owl:Class;
+taxon:Tetrapod a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                rdfs:label "Tetrapod";
                rdfs:subClassOf taxon:Chordate.
-taxon:Tunicate a owl:Class;
+taxon:Tunicate a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                rdfs:label "Tunicate";
                rdfs:subClassOf taxon:Chordate.
-taxon:Unclassified_Chordate a owl:Class;
+taxon:Unclassified_Chordate a <http://www.w3.org/2002/07/owl#Class>;
                             rdfs:comment "a polyphyletic group";
                             rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                             rdfs:label "Unclassified Chordate";
                             rdfs:subClassOf taxon:Chordate.
-taxon:authority a owl:DatatypeProperty;
+taxon:authority a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                 rdfs:comment "The author and year of the species description publication i.e (Baker 1899)";
                 rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                 rdfs:label "authority".
-taxon:binomial a owl:DatatypeProperty;
+taxon:binomial a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment "a scientific name consisting of genus, epithet i.e. Felis silvestris";
                rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                rdfs:label "binomial";
                rdfs:subPropertyOf taxon:scientificName.
-taxon:canonicalFormID a owl:ObjectProperty;
+taxon:canonicalFormID a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "The URI ID for the canonical form of the name i.e. Puma concolor or Felidae, for name to name mapping";
                       rdfs:domain taxon:TaxonNameID;
                       rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                       rdfs:label "canonicalFormID";
                       rdfs:range taxon:TaxonNameID;
                       rdfs:subPropertyOf taxon:relatedTaxonNameID.
-taxon:canonicalFormID_Of a owl:ObjectProperty;
+taxon:canonicalFormID_Of a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:comment "The URI ID for the scientific name with authorship form of the name i.e. Puma concolor Linnaeus 1758, for name to name mapping";
                          rdfs:domain taxon:TaxonNameID;
                          rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                          rdfs:label "canonicalFormID Of";
                          rdfs:range taxon:TaxonNameID;
                          rdfs:subPropertyOf taxon:relatedTaxonNameID_Of.
-taxon:commonName a owl:DatatypeProperty;
+taxon:commonName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:comment """The common name for a taxon i.e. \"Wolf\"""";
                  rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                  rdfs:label "commonName".
-taxon:dbClass a owl:ObjectProperty;
+taxon:dbClass a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
               rdfs:label "dbClass"@en;
-              rdfs:range dbpedia-owl:Species.
-taxon:dbFamily a owl:ObjectProperty;
+              rdfs:range <http://dbpedia.org/ontology/Species>.
+taxon:dbFamily a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                rdfs:label "dbFamily"@en;
-               rdfs:range dbpedia-owl:Species.
-taxon:dbGenus a owl:ObjectProperty;
+               rdfs:range <http://dbpedia.org/ontology/Species>.
+taxon:dbGenus a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
               rdfs:label "dbGenus"@en;
-              rdfs:range dbpedia-owl:Species.
-taxon:dbKingdom a owl:ObjectProperty;
+              rdfs:range <http://dbpedia.org/ontology/Species>.
+taxon:dbKingdom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                 rdfs:label "dbKingdom"@en;
-                rdfs:range dbpedia-owl:Species.
-taxon:dbOrder a owl:ObjectProperty;
+                rdfs:range <http://dbpedia.org/ontology/Species>.
+taxon:dbOrder a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
               rdfs:label "dbOrder"@en;
-              rdfs:range dbpedia-owl:Species.
-taxon:dbPhylum a owl:ObjectProperty;
+              rdfs:range <http://dbpedia.org/ontology/Species>.
+taxon:dbPhylum a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                rdfs:label "dbPhylum"@en;
-               rdfs:range dbpedia-owl:Species.
-taxon:dbSpecies a owl:ObjectProperty;
+               rdfs:range <http://dbpedia.org/ontology/Species>.
+taxon:dbSpecies a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                 rdfs:label "dbSpecies"@en;
-                rdfs:range dbpedia-owl:Species.
-taxon:monomial a owl:DatatypeProperty;
+                rdfs:range <http://dbpedia.org/ontology/Species>.
+taxon:monomial a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment "a one word scientific name i.e. Felidae, Mammalia, Metazoa";
                rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                rdfs:label "monomial";
                rdfs:subPropertyOf taxon:scientificName.
-taxon:relatedTaxonNameID a owl:ObjectProperty;
+taxon:relatedTaxonNameID a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:comment "The URI to a URI of a related name";
                          rdfs:domain taxon:TaxonNameID;
                          rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                          rdfs:label "relatedTaxonNameID";
                          rdfs:range taxon:TaxonNameID.
-taxon:relatedTaxonNameID_Of a owl:ObjectProperty;
+taxon:relatedTaxonNameID_Of a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                             rdfs:comment "The URI to a URI of a related name";
                             rdfs:domain taxon:TaxonNameID;
                             rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                             rdfs:label "relatedTaxonNameID_ Of";
                             rdfs:range taxon:TaxonNameID;
-                            owl:inverseOf taxon:relatedName.
-taxon:scientificName a owl:DatatypeProperty;
+                            <http://www.w3.org/2002/07/owl#inverseOf> taxon:relatedName.
+taxon:scientificName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:comment "The scientific name without the authority string i.e. Felidae or Puma concolor";
                      rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                      rdfs:label "scientificName".
-taxon:trinomial a owl:DatatypeProperty;
+taxon:trinomial a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                 rdfs:comment "a scientific name consisting of genus epithet and subepithet i.e. Felis silvestris lybica";
                 rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                 rdfs:label "trinomial";
                 rdfs:subPropertyOf taxon:scientificName.
-taxon:uniprotClass a owl:ObjectProperty;
+taxon:uniprotClass a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                    rdfs:label "uniprotClass"@en;
-                   rdfs:range uniprot:Taxon.
-taxon:uniprotFamily a owl:ObjectProperty;
+                   rdfs:range <http://purl.uniprot.org/core/Taxon>.
+taxon:uniprotFamily a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                     rdfs:label "uniprotFamily"@en;
-                    rdfs:range uniprot:Taxon.
-taxon:uniprotGenus a owl:ObjectProperty;
+                    rdfs:range <http://purl.uniprot.org/core/Taxon>.
+taxon:uniprotGenus a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                    rdfs:label "uniprotGenus"@en;
-                   rdfs:range uniprot:Taxon.
-taxon:uniprotKingdom a owl:ObjectProperty;
+                   rdfs:range <http://purl.uniprot.org/core/Taxon>.
+taxon:uniprotKingdom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                      rdfs:label "uniprotKingdom"@en;
-                     rdfs:range uniprot:Taxon.
-taxon:uniprotOrder a owl:ObjectProperty;
+                     rdfs:range <http://purl.uniprot.org/core/Taxon>.
+taxon:uniprotOrder a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                    rdfs:label "uniprotOrder"@en;
-                   rdfs:range uniprot:Taxon.
-taxon:uniprotPhylum a owl:ObjectProperty;
+                   rdfs:range <http://purl.uniprot.org/core/Taxon>.
+taxon:uniprotPhylum a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                     rdfs:label "uniprotPhylum"@en;
-                    rdfs:range uniprot:Taxon.
-taxon:uniprotSpecies a owl:ObjectProperty;
+                    rdfs:range <http://purl.uniprot.org/core/Taxon>.
+taxon:uniprotSpecies a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:isDefinedBy <http://lod.taxonconcept.org/ontology/taxon.owl>;
                      rdfs:label "uniprotSpecies"@en;
-                     rdfs:range uniprot:Taxon.
-dcterms:creator a owl:AnnotationProperty.
-dcterms:publisher a owl:AnnotationProperty.
-wlo:Species a owl:Class.
-uniprot:Taxon a owl:Class.
-uniprot:scientificName a owl:DatatypeProperty.
-freebase:biology.organism_classification a owl:Class.
-geospecies:TaxonConcept a owl:Class.
-<http://rdfdata.eionet.europa.eu/itis/ontology/Taxon> a owl:Class.
-dwc:Taxon a owl:Class.
-foaf:Image a owl:Class.
-foaf:Organization a owl:Class.
-foaf:Person a owl:Class.
+                     rdfs:range <http://purl.uniprot.org/core/Taxon>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/ontology/wo/Species> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.uniprot.org/core/Taxon> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.uniprot.org/core/scientificName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://rdf.freebase.com/ns/biology.organism_classification> a <http://www.w3.org/2002/07/owl#Class>.
+<http://rdf.geospecies.org/ont/geospecies#TaxonConcept> a <http://www.w3.org/2002/07/owl#Class>.
+<http://rdfdata.eionet.europa.eu/itis/ontology/Taxon> a <http://www.w3.org/2002/07/owl#Class>.
+<http://rs.tdwg.org/dwc/terms/Taxon> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/Image> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/Organization> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/Person> a <http://www.w3.org/2002/07/owl#Class>.

@@ -1,431 +1,422 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix chebi: <http://purl.obolibrary.org/obo/CHEBI_>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix w3id: <https://w3id.org/>.
-@prefix core: <https://w3id.org/mdo/core/>.
 @prefix mdo-struc: <https://w3id.org/mdo/structure/>.
-@prefix pobo: <http://purl.obolibrary.org/obo/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-<http://emmo.info/domains/emmo-material.owl#EMMO_4207e895_8b83_4318_996a_72cfb32acd94> a owl:Class.
-chebi:33250 a owl:Class;
-            rdfs:label "Atom";
-            rdfs:subClassOf [owl:onDataRange xsd:string ; 
-                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                             owl:onProperty <http://purl.obolibrary.org/obo/chebi/formula> ; 
-                             a owl:Restriction].
-<http://purl.obolibrary.org/obo/chebi/formula> a owl:DatatypeProperty.
-dcterms:contributor a owl:AnnotationProperty.
-dcterms:created a owl:AnnotationProperty.
-dcterms:creator a owl:AnnotationProperty.
-dcterms:license a owl:AnnotationProperty.
-dcterms:title a owl:AnnotationProperty.
-vann:preferredNamespacePrefix a owl:AnnotationProperty.
-vann:preferredNamespaceUri a owl:AnnotationProperty.
+<http://emmo.info/domains/emmo-material.owl#EMMO_4207e895_8b83_4318_996a_72cfb32acd94> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.obolibrary.org/obo/CHEBI_33250> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:label "Atom";
+                                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                                              <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                              <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/chebi/formula> ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>].
+<http://purl.obolibrary.org/obo/chebi/formula> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
 rdf:List a rdfs:Datatype.
-core:Structure a owl:Class;
-               rdfs:subClassOf [owl:intersectionOf ([owl:allValuesFrom mdo-struc:SpaceGroup ; 
-                                                    owl:onProperty mdo-struc:hasSpaceGroup ; 
-                                                    a owl:Restriction]
-                                                    [owl:onClass mdo-struc:SpaceGroup ; 
-                                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                                    owl:onProperty mdo-struc:hasSpaceGroup ; 
-                                                    a owl:Restriction]) ; 
-                                a owl:Class],
-                               [owl:intersectionOf ([owl:allValuesFrom mdo-struc:Composition ; 
-                                                    owl:onProperty mdo-struc:hasComposition ; 
-                                                    a owl:Restriction]
-                                                    [owl:onClass mdo-struc:Composition ; 
-                                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                                    owl:onProperty mdo-struc:hasComposition ; 
-                                                    a owl:Restriction]) ; 
-                                a owl:Class],
-                               [owl:intersectionOf ([owl:someValuesFrom mdo-struc:Occupancy ; 
-                                                    owl:onProperty mdo-struc:hasOccupancy ; 
-                                                    a owl:Restriction]
-                                                    [owl:allValuesFrom mdo-struc:Occupancy ; 
-                                                    owl:onProperty mdo-struc:hasOccupancy ; 
-                                                    a owl:Restriction]) ; 
-                                a owl:Class],
-                               [owl:intersectionOf ([owl:someValuesFrom mdo-struc:Basis ; 
-                                                    owl:onProperty mdo-struc:hasBasis ; 
-                                                    a owl:Restriction]
-                                                    [owl:allValuesFrom mdo-struc:Basis ; 
-                                                    owl:onProperty mdo-struc:hasBasis ; 
-                                                    a owl:Restriction]
-                                                    [owl:allValuesFrom mdo-struc:Lattice ; 
-                                                    owl:onProperty mdo-struc:hasLattice ; 
-                                                    a owl:Restriction]) ; 
-                                a owl:Class].
-mdo-struc: dcterms:contributor "Patrick Lambrix",
-                               "Rickard Armiento";
-           dcterms:created "2019-11-07";
-           dcterms:creator "Huanyu Li";
-           dcterms:license "https://github.com/huanyu-li/Materials-Design-Ontology/blob/master/LICENSE";
-           dcterms:title "Materials Design Ontology - Structure Module"@en;
-           vann:preferredNamespacePrefix "structure";
-           vann:preferredNamespaceUri "https://w3id.org/mdo/structure/1.0/";
-           a owl:Ontology;
+<https://w3id.org/mdo/core/Structure> a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#allValuesFrom> mdo-struc:SpaceGroup ; 
+                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasSpaceGroup ; 
+                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                       [<http://www.w3.org/2002/07/owl#onClass> mdo-struc:SpaceGroup ; 
+                                                                                                       <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasSpaceGroup ; 
+                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                       a <http://www.w3.org/2002/07/owl#Class>],
+                                                      [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#allValuesFrom> mdo-struc:Composition ; 
+                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasComposition ; 
+                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                       [<http://www.w3.org/2002/07/owl#onClass> mdo-struc:Composition ; 
+                                                                                                       <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasComposition ; 
+                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                       a <http://www.w3.org/2002/07/owl#Class>],
+                                                      [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> mdo-struc:Occupancy ; 
+                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasOccupancy ; 
+                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                       [<http://www.w3.org/2002/07/owl#allValuesFrom> mdo-struc:Occupancy ; 
+                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasOccupancy ; 
+                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                       a <http://www.w3.org/2002/07/owl#Class>],
+                                                      [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> mdo-struc:Basis ; 
+                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasBasis ; 
+                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                       [<http://www.w3.org/2002/07/owl#allValuesFrom> mdo-struc:Basis ; 
+                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasBasis ; 
+                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                       [<http://www.w3.org/2002/07/owl#allValuesFrom> mdo-struc:Lattice ; 
+                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasLattice ; 
+                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                       a <http://www.w3.org/2002/07/owl#Class>].
+mdo-struc: <http://purl.org/dc/terms/contributor> "Patrick Lambrix",
+                                                  "Rickard Armiento";
+           <http://purl.org/dc/terms/created> "2019-11-07";
+           <http://purl.org/dc/terms/creator> "Huanyu Li";
+           <http://purl.org/dc/terms/license> "https://github.com/huanyu-li/Materials-Design-Ontology/blob/master/LICENSE";
+           <http://purl.org/dc/terms/title> "Materials Design Ontology - Structure Module"@en;
+           <http://purl.org/vocab/vann/preferredNamespacePrefix> "structure";
+           <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/mdo/structure/1.0/";
+           a <http://www.w3.org/2002/07/owl#Ontology>;
            rdfs:comment "This is the structure module in Materials Design Ontology."@en;
            rdfs:seeAlso "https://github.com/huanyu-li/Materials-Design-Ontology";
-           owl:imports <https://w3id.org/mdo/core/1.0/>;
-           owl:versionIRI <https://w3id.org/mdo/structure/1.0/>;
-           owl:versionInfo "1.0".
-mdo-struc:AngleTriple a owl:Class;
+           <http://www.w3.org/2002/07/owl#imports> <https://w3id.org/mdo/core/1.0/>;
+           <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/mdo/structure/1.0/>;
+           <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mdo-struc:AngleTriple a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "A angle triple is a vector of three angles which represent the angles among three bases in a cell."@en;
                       rdfs:label "Angle Triple"@en;
-                      rdfs:subClassOf [owl:onDataRange xsd:double ; 
-                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                       owl:onProperty mdo-struc:Angle_gamma ; 
-                                       a owl:Restriction],
-                                      [owl:onDataRange xsd:double ; 
-                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                       owl:onProperty mdo-struc:Angle_beta ; 
-                                       a owl:Restriction],
-                                      [owl:onDataRange xsd:double ; 
-                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                       owl:onProperty mdo-struc:Angle_alpha ; 
-                                       a owl:Restriction].
-mdo-struc:Angle_alpha a owl:DatatypeProperty;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> xsd:double ; 
+                                       <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:Angle_gamma ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onDataRange> xsd:double ; 
+                                       <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:Angle_beta ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onDataRange> xsd:double ; 
+                                       <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:Angle_alpha ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>].
+mdo-struc:Angle_alpha a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "Angle_alpha represents that an angle triple has the alpha angle's value in a double."@en;
                       rdfs:domain mdo-struc:AngleTriple;
                       rdfs:label "Angle_alpha"@en;
                       rdfs:range xsd:double.
-mdo-struc:Angle_beta a owl:DatatypeProperty;
+mdo-struc:Angle_beta a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:comment "Angle_beta represents that an angle triple has the beta angle's value in a double."@en;
                      rdfs:domain mdo-struc:AngleTriple;
                      rdfs:label "Angle_beta"@en;
                      rdfs:range xsd:double.
-mdo-struc:Angle_gamma a owl:DatatypeProperty;
+mdo-struc:Angle_gamma a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "Angle_gamma represents that an angle triple has the gamma angle's value in a double."@en;
                       rdfs:domain mdo-struc:AngleTriple;
                       rdfs:label "Angle_gamma"@en;
                       rdfs:range xsd:double.
-mdo-struc:AnonymousFormula a owl:DatatypeProperty;
+mdo-struc:AnonymousFormula a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "AnonymousFormula represents that a composition has the anonymous formula in a string."@en;
                            rdfs:domain mdo-struc:Composition;
                            rdfs:label "anonymous formula"@en;
                            rdfs:range xsd:string.
-mdo-struc:AxisVectors a owl:Class;
+mdo-struc:AxisVectors a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "An axis-vectors is the three vectors which represent the bases of cell."@en;
                       rdfs:label "Axis Vectors"@en;
-                      rdfs:subClassOf [owl:intersectionOf ([owl:onClass mdo-struc:CoordinateVector ; 
-                                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                                           owl:onProperty mdo-struc:has_a_axisVector ; 
-                                                           a owl:Restriction]
-                                                           [owl:onClass mdo-struc:CoordinateVector ; 
-                                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                                           owl:onProperty mdo-struc:has_b_axisVector ; 
-                                                           a owl:Restriction]
-                                                           [owl:onClass mdo-struc:CoordinateVector ; 
-                                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                                           owl:onProperty mdo-struc:has_c_axisVector ; 
-                                                           a owl:Restriction]) ; 
-                                       a owl:Class].
-mdo-struc:Basis a owl:Class;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onClass> mdo-struc:CoordinateVector ; 
+                                                                                       <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                       <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:has_a_axisVector ; 
+                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                       [<http://www.w3.org/2002/07/owl#onClass> mdo-struc:CoordinateVector ; 
+                                                                                       <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                       <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:has_b_axisVector ; 
+                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                       [<http://www.w3.org/2002/07/owl#onClass> mdo-struc:CoordinateVector ; 
+                                                                                       <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                       <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:has_c_axisVector ; 
+                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                       a <http://www.w3.org/2002/07/owl#Class>].
+mdo-struc:Basis a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "A basis defines a spatial unit used to express fractional coordinates."@en;
                 rdfs:label "Basis"@en;
-                rdfs:subClassOf [owl:unionOf ([owl:intersectionOf ([owl:onClass mdo-struc:AngleTriple ; 
-                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                                                  owl:onProperty mdo-struc:hasAngleVector ; 
-                                                                  a owl:Restriction]
-                                                                  [owl:onClass mdo-struc:LengthTriple ; 
-                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                                                  owl:onProperty mdo-struc:hasLengthVector ; 
-                                                                  a owl:Restriction]) ; 
-                                              a owl:Class]
-                                              [owl:onClass mdo-struc:AxisVectors ; 
-                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                              owl:onProperty mdo-struc:hasAxisVectors ; 
-                                              a owl:Restriction]) ; 
-                                 a owl:Class].
-mdo-struc:Composition a owl:Class;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onClass> mdo-struc:AngleTriple ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasAngleVector ; 
+                                                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                          [<http://www.w3.org/2002/07/owl#onClass> mdo-struc:LengthTriple ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasLengthVector ; 
+                                                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                          a <http://www.w3.org/2002/07/owl#Class>]
+                                                                          [<http://www.w3.org/2002/07/owl#onClass> mdo-struc:AxisVectors ; 
+                                                                          <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                          <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasAxisVectors ; 
+                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>].
+mdo-struc:Composition a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "A composition is used to represent what chemical elements composing a structure and the ratio of the chemical elements."@en;
                       rdfs:label "Composition"@en.
-mdo-struc:CoordinateVector a owl:Class;
+mdo-struc:CoordinateVector a <http://www.w3.org/2002/07/owl#Class>;
                            rdfs:comment "A coordinate vector is the coordinates of a point in space."@en;
                            rdfs:label "Coordinate Vector"@en;
-                           rdfs:subClassOf [owl:onDataRange xsd:double ; 
-                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                            owl:onProperty mdo-struc:Z_axisCoordinate ; 
-                                            a owl:Restriction],
-                                           [owl:onDataRange xsd:double ; 
-                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                            owl:onProperty mdo-struc:Y_axisCoordinate ; 
-                                            a owl:Restriction],
-                                           [owl:onDataRange xsd:double ; 
-                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                            owl:onProperty mdo-struc:X_axisCoordinate ; 
-                                            a owl:Restriction].
-mdo-struc:DescriptiveFormula a owl:DatatypeProperty;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> xsd:double ; 
+                                            <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:Z_axisCoordinate ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#onDataRange> xsd:double ; 
+                                            <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:Y_axisCoordinate ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#onDataRange> xsd:double ; 
+                                            <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:X_axisCoordinate ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>].
+mdo-struc:DescriptiveFormula a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                              rdfs:comment "DescriptiveFormula represents that a composition has the descriptive formula in a string."@en;
                              rdfs:domain mdo-struc:Composition;
                              rdfs:label "descriptive formula"@en;
                              rdfs:range xsd:string.
-mdo-struc:ElementRatio a owl:DatatypeProperty;
+mdo-struc:ElementRatio a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                        rdfs:comment "ElementRatio represents that a species has the ratio in a double."@en;
                        rdfs:domain mdo-struc:Species;
                        rdfs:label "element ratio"@en;
                        rdfs:range xsd:double.
-mdo-struc:HillFormula a owl:DatatypeProperty;
+mdo-struc:HillFormula a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "HillFormula represents that a composition has the hill formula in a string."@en;
                       rdfs:domain mdo-struc:Composition;
                       rdfs:label "hill formula"@en;
                       rdfs:range xsd:string.
-mdo-struc:Lattice a owl:Class;
+mdo-struc:Lattice a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "A lattice defines a peroidic arrangement of one or more atoms."@en;
                   rdfs:label "Lattice"@en;
-                  rdfs:subClassOf [owl:unionOf ([owl:intersectionOf ([owl:onClass mdo-struc:AngleTriple ; 
-                                                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                                                    owl:onProperty mdo-struc:hasAngleVector ; 
-                                                                    a owl:Restriction]
-                                                                    [owl:onClass mdo-struc:LengthTriple ; 
-                                                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                                                    owl:onProperty mdo-struc:hasLengthVector ; 
-                                                                    a owl:Restriction]) ; 
-                                                a owl:Class]
-                                                [owl:onClass mdo-struc:AxisVectors ; 
-                                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                                owl:onProperty mdo-struc:hasAxisVectors ; 
-                                                a owl:Restriction]) ; 
-                                   a owl:Class].
-mdo-struc:LatticeType a owl:DatatypeProperty;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onClass> mdo-struc:AngleTriple ; 
+                                                                                                                            <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                            <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasAngleVector ; 
+                                                                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                            [<http://www.w3.org/2002/07/owl#onClass> mdo-struc:LengthTriple ; 
+                                                                                                                            <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                            <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasLengthVector ; 
+                                                                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                            a <http://www.w3.org/2002/07/owl#Class>]
+                                                                            [<http://www.w3.org/2002/07/owl#onClass> mdo-struc:AxisVectors ; 
+                                                                            <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                            <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasAxisVectors ; 
+                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>].
+mdo-struc:LatticeType a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "LatticeType represents that a lattice has the type in a string."@en;
                       rdfs:domain mdo-struc:Lattice;
                       rdfs:label "lattice type"@en;
                       rdfs:range xsd:string.
-mdo-struc:LatticeVolume a owl:DatatypeProperty;
+mdo-struc:LatticeVolume a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                         rdfs:comment "LatticeVolume represents that a lattice has the volume in a double."@en;
                         rdfs:domain mdo-struc:Lattice;
                         rdfs:label "lattice volume"@en;
                         rdfs:range xsd:double.
-mdo-struc:LengthTriple a owl:Class;
+mdo-struc:LengthTriple a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:comment "A length triple defines the three parameters (a, b, c) that represent the lengths in three axes respectively."@en;
                        rdfs:label "Length Triple"@en;
-                       rdfs:subClassOf [owl:onDataRange xsd:double ; 
-                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                        owl:onProperty mdo-struc:Length_c ; 
-                                        a owl:Restriction],
-                                       [owl:onDataRange xsd:double ; 
-                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                        owl:onProperty mdo-struc:Length_b ; 
-                                        a owl:Restriction],
-                                       [owl:onDataRange xsd:double ; 
-                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                        owl:onProperty mdo-struc:Length_a ; 
-                                        a owl:Restriction].
-mdo-struc:Length_a a owl:DatatypeProperty;
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> xsd:double ; 
+                                        <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:Length_c ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onDataRange> xsd:double ; 
+                                        <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:Length_b ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onDataRange> xsd:double ; 
+                                        <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:Length_a ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>].
+mdo-struc:Length_a a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:comment "Length_a represents that a length triple has the 'a' value in a double."@en;
                    rdfs:domain mdo-struc:LengthTriple;
                    rdfs:label "Length_a"@en;
                    rdfs:range xsd:double.
-mdo-struc:Length_b a owl:DatatypeProperty;
+mdo-struc:Length_b a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:comment "Length_b represents that a length triple has the 'b' value in a double."@en;
                    rdfs:domain mdo-struc:LengthTriple;
                    rdfs:label "Length_b"@en;
                    rdfs:range xsd:double.
-mdo-struc:Length_c a owl:DatatypeProperty;
+mdo-struc:Length_c a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:comment "Length_c represents that a length triple has the 'c' value in a double."@en;
                    rdfs:domain mdo-struc:LengthTriple;
                    rdfs:label "Length_c"@en;
                    rdfs:range xsd:double.
-mdo-struc:Occupancy a owl:Class;
+mdo-struc:Occupancy a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "An occupancy ties a specific species to a site."@en;
                     rdfs:label "Occupancy"@en;
-                    rdfs:subClassOf [owl:intersectionOf ([owl:someValuesFrom mdo-struc:Species ; 
-                                                         owl:onProperty mdo-struc:hasSpecies ; 
-                                                         a owl:Restriction]
-                                                         [owl:allValuesFrom mdo-struc:Species ; 
-                                                         owl:onProperty mdo-struc:hasSpecies ; 
-                                                         a owl:Restriction]) ; 
-                                     a owl:Class],
-                                    [owl:intersectionOf ([owl:someValuesFrom mdo-struc:Site ; 
-                                                         owl:onProperty mdo-struc:hasSite ; 
-                                                         a owl:Restriction]
-                                                         [owl:allValuesFrom mdo-struc:Site ; 
-                                                         owl:onProperty mdo-struc:hasSite ; 
-                                                         a owl:Restriction]) ; 
-                                     a owl:Class].
-mdo-struc:PointGroup a owl:Class;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> mdo-struc:Species ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasSpecies ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                     [<http://www.w3.org/2002/07/owl#allValuesFrom> mdo-struc:Species ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasSpecies ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                     a <http://www.w3.org/2002/07/owl#Class>],
+                                    [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> mdo-struc:Site ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasSite ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                     [<http://www.w3.org/2002/07/owl#allValuesFrom> mdo-struc:Site ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasSite ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                     a <http://www.w3.org/2002/07/owl#Class>].
+mdo-struc:PointGroup a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:comment "A group of linear mappings of vector space, which is corresonpond to the group of motions in point space determining the symmetry of the macroscopic crystal, is called the point group of the crystal, furthermore of the crystal structure, and is also called the point group of its space group."@en;
                      rdfs:label "Point Group"@en;
                      rdfs:seeAlso "International Tables for Crystallography, Volume A, Fourth, revised edition, Section 8.1.5."@en;
-                     rdfs:subClassOf [owl:onDataRange xsd:string ; 
-                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                      owl:onProperty mdo-struc:PointGroupHMName ; 
-                                      a owl:Restriction].
-mdo-struc:PointGroupHMName a owl:DatatypeProperty;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                      <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:PointGroupHMName ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>].
+mdo-struc:PointGroupHMName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "PointGroupHMName represents that a point group has the Hermann-Mauguin in a string."@en;
                            rdfs:domain mdo-struc:PointGroup;
                            rdfs:label "point group Hermann-Mauguin name"@en;
                            rdfs:range xsd:string.
-mdo-struc:ReducedFormula a owl:DatatypeProperty;
+mdo-struc:ReducedFormula a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                          rdfs:comment "ReducedFormula represents that a composition has the reduced formula in a string."@en;
                          rdfs:domain mdo-struc:Composition;
                          rdfs:label "reduced formula"@en;
                          rdfs:range xsd:string.
-mdo-struc:Site a owl:Class;
+mdo-struc:Site a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "A site is a point in a lattice."@en;
                rdfs:label "Site"@en;
-               rdfs:subClassOf [owl:intersectionOf ([owl:allValuesFrom mdo-struc:CoordinateVector ; 
-                                                    owl:onProperty mdo-struc:hasFractionalCoordinates ; 
-                                                    a owl:Restriction]
-                                                    [owl:onClass mdo-struc:CoordinateVector ; 
-                                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                                    owl:onProperty mdo-struc:hasFractionalCoordinates ; 
-                                                    a owl:Restriction]) ; 
-                                a owl:Class],
-                               [owl:intersectionOf ([owl:allValuesFrom mdo-struc:CoordinateVector ; 
-                                                    owl:onProperty mdo-struc:hasCartesianCoordinates ; 
-                                                    a owl:Restriction]
-                                                    [owl:onClass mdo-struc:CoordinateVector ; 
-                                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                                    owl:onProperty mdo-struc:hasCartesianCoordinates ; 
-                                                    a owl:Restriction]) ; 
-                                a owl:Class].
-mdo-struc:SpaceGroup a owl:Class;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#allValuesFrom> mdo-struc:CoordinateVector ; 
+                                                                                <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasFractionalCoordinates ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                [<http://www.w3.org/2002/07/owl#onClass> mdo-struc:CoordinateVector ; 
+                                                                                <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasFractionalCoordinates ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>],
+                               [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#allValuesFrom> mdo-struc:CoordinateVector ; 
+                                                                                <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasCartesianCoordinates ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                [<http://www.w3.org/2002/07/owl#onClass> mdo-struc:CoordinateVector ; 
+                                                                                <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasCartesianCoordinates ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>].
+mdo-struc:SpaceGroup a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:comment "A space group is the symmetry group of a three-dimensional crystal pattern is called its space group."@en;
                      rdfs:label "Space Group"@en;
                      rdfs:seeAlso "International Tables for Crystallography, Volume !, Fourth, revised edition, Section 8.1.5."@en;
-                     rdfs:subClassOf [owl:onDataRange xsd:string ; 
-                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                      owl:onProperty mdo-struc:SpaceGroupSymbol ; 
-                                      a owl:Restriction],
-                                     [owl:onDataRange xsd:integer ; 
-                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                      owl:onProperty mdo-struc:SpaceGroupID ; 
-                                      a owl:Restriction],
-                                     [owl:intersectionOf ([owl:someValuesFrom mdo-struc:PointGroup ; 
-                                                          owl:onProperty mdo-struc:hasPointGroup ; 
-                                                          a owl:Restriction]
-                                                          [owl:allValuesFrom mdo-struc:PointGroup ; 
-                                                          owl:onProperty mdo-struc:hasPointGroup ; 
-                                                          a owl:Restriction]) ; 
-                                      a owl:Class].
-mdo-struc:SpaceGroupID a owl:DatatypeProperty;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                      <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:SpaceGroupSymbol ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#onDataRange> xsd:integer ; 
+                                      <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:SpaceGroupID ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> mdo-struc:PointGroup ; 
+                                                                                      <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasPointGroup ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                      [<http://www.w3.org/2002/07/owl#allValuesFrom> mdo-struc:PointGroup ; 
+                                                                                      <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasPointGroup ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                      a <http://www.w3.org/2002/07/owl#Class>].
+mdo-struc:SpaceGroupID a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                        rdfs:comment "SpaceGroupID represents that a space group has the unique ID in an integer."@en;
                        rdfs:domain mdo-struc:SpaceGroup;
                        rdfs:label "space group ID"@en;
                        rdfs:range xsd:integer.
-mdo-struc:SpaceGroupSymbol a owl:DatatypeProperty;
+mdo-struc:SpaceGroupSymbol a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "SpaceGroupSymbol represents that a space group has the symbol in a string."@en;
                            rdfs:domain mdo-struc:SpaceGroup;
                            rdfs:label "space group symbol"@en;
                            rdfs:range xsd:string.
-mdo-struc:Species a owl:Class;
+mdo-struc:Species a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "A species is the combination of atoms on each site."@en;
                   rdfs:label "Species"@en;
-                  rdfs:subClassOf [owl:onClass chebi:33250 ; 
-                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                   owl:onProperty mdo-struc:hasElement ; 
-                                   a owl:Restriction].
-mdo-struc:X_axisCoordinate a owl:DatatypeProperty;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> <http://purl.obolibrary.org/obo/CHEBI_33250> ; 
+                                   <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> mdo-struc:hasElement ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>].
+mdo-struc:X_axisCoordinate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "X_axisCoordinate represents that a coordinate vector has the value of a coordinate in a double in X axis."@en;
                            rdfs:domain mdo-struc:CoordinateVector;
                            rdfs:label "X_axis coordinate"@en;
                            rdfs:range xsd:double.
-mdo-struc:Y_axisCoordinate a owl:DatatypeProperty;
+mdo-struc:Y_axisCoordinate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "Y_axisCoordinate represents that a coordinate vector has the value of a coordinate in a double in Y axis."@en;
                            rdfs:domain mdo-struc:CoordinateVector;
                            rdfs:label "Y_axis coordinate"@en;
                            rdfs:range xsd:double.
-mdo-struc:Z_axisCoordinate a owl:DatatypeProperty;
+mdo-struc:Z_axisCoordinate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "Z_axisCoordinate represents that a coordinate vector has the value of a coordinate in a double in Z axis."@en;
                            rdfs:domain mdo-struc:CoordinateVector;
                            rdfs:label "Z_axis coordinate"@en;
                            rdfs:range xsd:double.
-mdo-struc:hasAngleVector a owl:ObjectProperty;
+mdo-struc:hasAngleVector a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:comment "hasAngleVector represents the relationship between a basis or a lattice and an angle triple it has."@en;
-                         rdfs:domain [owl:unionOf (mdo-struc:Basis
-                                                   mdo-struc:Lattice) ; 
-                                      a owl:Class];
+                         rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (mdo-struc:Basis
+                                                                               mdo-struc:Lattice) ; 
+                                      a <http://www.w3.org/2002/07/owl#Class>];
                          rdfs:label "has angle vector"@en;
                          rdfs:range mdo-struc:AngleTriple.
-mdo-struc:hasAxisVectors a owl:ObjectProperty;
+mdo-struc:hasAxisVectors a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:comment "hasAxisVectors represents the relationship between a basis or a lattice and a axis-vectors it has."@en;
-                         rdfs:domain [owl:unionOf (mdo-struc:Basis
-                                                   mdo-struc:Lattice) ; 
-                                      a owl:Class];
+                         rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (mdo-struc:Basis
+                                                                               mdo-struc:Lattice) ; 
+                                      a <http://www.w3.org/2002/07/owl#Class>];
                          rdfs:label "has axis vectors"@en;
                          rdfs:range mdo-struc:AxisVectors.
-mdo-struc:hasBasis a owl:ObjectProperty;
+mdo-struc:hasBasis a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "hasBasis represents the relationship between a structure and the bases it has."@en;
-                   rdfs:domain core:Structure;
+                   rdfs:domain <https://w3id.org/mdo/core/Structure>;
                    rdfs:label "has basis"@en;
                    rdfs:range mdo-struc:Basis.
-mdo-struc:hasCartesianCoordinates a owl:ObjectProperty;
+mdo-struc:hasCartesianCoordinates a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                   rdfs:comment "hasCartesianCoordinates represents the relationship between a site and coordinates in cartesian format it has."@en;
                                   rdfs:domain mdo-struc:Site;
                                   rdfs:label "has cartesian coordinates"@en;
                                   rdfs:range mdo-struc:CoordinateVector.
-mdo-struc:hasComposition a owl:ObjectProperty;
+mdo-struc:hasComposition a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:comment "hasComposition represents the relationship between a structure and a a composition it has."@en;
-                         rdfs:domain core:Structure;
+                         rdfs:domain <https://w3id.org/mdo/core/Structure>;
                          rdfs:label "has composition"@en;
                          rdfs:range mdo-struc:Composition.
-mdo-struc:hasElement a owl:ObjectProperty;
+mdo-struc:hasElement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "hasElement represents the relationship between a species and atoms it has."@en;
                      rdfs:domain mdo-struc:Species;
                      rdfs:label "has element"@en;
-                     rdfs:range chebi:33250.
-mdo-struc:hasFractionalCoordinates a owl:ObjectProperty;
+                     rdfs:range <http://purl.obolibrary.org/obo/CHEBI_33250>.
+mdo-struc:hasFractionalCoordinates a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                    rdfs:comment "hasFractionalCoordinates represents the relationship between a site and coordinates in fractional format it has."@en;
                                    rdfs:domain mdo-struc:Site;
                                    rdfs:label "has fractional coordinates"@en;
                                    rdfs:range mdo-struc:CoordinateVector.
-mdo-struc:hasLattice a owl:ObjectProperty;
+mdo-struc:hasLattice a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "hasLattice represents the relationship between a structure and lattices in it has."@en;
-                     rdfs:domain core:Structure;
+                     rdfs:domain <https://w3id.org/mdo/core/Structure>;
                      rdfs:label "has lattice"@en;
                      rdfs:range mdo-struc:Lattice.
-mdo-struc:hasLengthVector a owl:ObjectProperty;
+mdo-struc:hasLengthVector a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                           rdfs:comment "hasLengthVector represents the relationship between a basis or a lattice and a length triple it has."@en;
-                          rdfs:domain [owl:unionOf (mdo-struc:Basis
-                                                    mdo-struc:Lattice) ; 
-                                       a owl:Class];
+                          rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (mdo-struc:Basis
+                                                                                mdo-struc:Lattice) ; 
+                                       a <http://www.w3.org/2002/07/owl#Class>];
                           rdfs:label "has length vector"@en;
                           rdfs:range mdo-struc:LengthTriple.
-mdo-struc:hasOccupancy a owl:ObjectProperty;
+mdo-struc:hasOccupancy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "hasOccupancy represents the relationship between a structure and occupancies it has."@en;
-                       rdfs:domain core:Structure;
+                       rdfs:domain <https://w3id.org/mdo/core/Structure>;
                        rdfs:label "has occupancy"@en;
                        rdfs:range mdo-struc:Occupancy.
-mdo-struc:hasPointGroup a owl:ObjectProperty;
+mdo-struc:hasPointGroup a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "hasPointGroup represents the relationship between a space group and point groups it corresponds to."@en;
                         rdfs:domain mdo-struc:SpaceGroup;
                         rdfs:label "has point group"@en;
                         rdfs:range mdo-struc:PointGroup.
-mdo-struc:hasSite a owl:ObjectProperty;
+mdo-struc:hasSite a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "hasSite represents the relationship between an occupancy and sites it ties."@en;
                   rdfs:domain mdo-struc:Occupancy;
                   rdfs:label "has site"@en;
                   rdfs:range mdo-struc:Site.
-mdo-struc:hasSpaceGroup a owl:ObjectProperty;
+mdo-struc:hasSpaceGroup a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "hasSpaceGroup represents the relationship between a structure and a space group it corresponds to."@en;
-                        rdfs:domain core:Structure;
+                        rdfs:domain <https://w3id.org/mdo/core/Structure>;
                         rdfs:label "has space group"@en;
                         rdfs:range mdo-struc:SpaceGroup.
-mdo-struc:hasSpecies a owl:ObjectProperty;
+mdo-struc:hasSpecies a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "hasSpecies represents the relationship between an occupancy and species it ties."@en;
                      rdfs:domain mdo-struc:Occupancy;
                      rdfs:label "has species"@en;
                      rdfs:range mdo-struc:Species.
-mdo-struc:has_a_axisVector a owl:ObjectProperty;
+mdo-struc:has_a_axisVector a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                            rdfs:comment "has_a_axisVector represents the relationship between an axis-vectors and a coordinate vector to define the coordiantes of the translation vector (a)."@en;
                            rdfs:domain mdo-struc:AxisVectors;
                            rdfs:label "has a_axis vector"@en;
                            rdfs:range mdo-struc:CoordinateVector.
-mdo-struc:has_b_axisVector a owl:ObjectProperty;
+mdo-struc:has_b_axisVector a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                            rdfs:comment "has_b_axisVector represents the relationship between an axis-vectors and a coordinate vector to define the coordiantes of the translation vector (b)."@en;
                            rdfs:domain mdo-struc:AxisVectors;
                            rdfs:label "has b_axis vector"@en;
                            rdfs:range mdo-struc:CoordinateVector.
-mdo-struc:has_c_axisVector a owl:ObjectProperty;
+mdo-struc:has_c_axisVector a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                            rdfs:comment "has_c_axisVector represents the relationship between an axis-vectors and a coordinate vector to define the coordiantes of the translation vector (c)."@en;
                            rdfs:domain mdo-struc:AxisVectors;
                            rdfs:label "has c_axis vector"@en;

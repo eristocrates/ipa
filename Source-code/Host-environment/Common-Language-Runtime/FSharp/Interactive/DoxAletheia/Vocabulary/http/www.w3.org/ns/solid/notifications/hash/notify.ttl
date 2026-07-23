@@ -8,9 +8,6 @@
 @prefix dc: <http://purl.org/dc/terms/>.
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 @prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 
 notify: dc:issued "2022-12-31"^^xsd:date;
         dc:license <https://creativecommons.org/publicdomain/zero/1.0/>;

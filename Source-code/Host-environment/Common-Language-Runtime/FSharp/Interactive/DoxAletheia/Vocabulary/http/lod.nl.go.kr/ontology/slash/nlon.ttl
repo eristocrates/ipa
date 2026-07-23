@@ -2,320 +2,303 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix nlon: <http://lod.nl.go.kr/ontology/>.
-@prefix dcam: <http://purl.org/dc/dcam/>.
-@prefix bibo: <http://purl.org/ontology/bibo/>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix voaf: <http://purl.org/vocommons/voaf#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix org: <http://www.w3.org/ns/org#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix ccrel: <http://creativecommons.org/ns#>.
-@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
-@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
-@prefix wgspos: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 
-_:B0d93b976f4400422a6613d7b670fc10f a foaf:Person;
-                                    org:memberOf <http://lod.nl.go.kr/library/011001>;
-                                    foaf:mbox <mailto:sulhui@korea.kr>;
-                                    foaf:name "박설희"@ko.
-<http://listinc.kr/id/listinc> a org:Organization,
-                                 foaf:Organization;
-                               foaf:homepage <http://li-st.com/>,
-                                             <http://listinc.kr/>;
-                               foaf:mbox <mailto:hello@listinc.kr>,
-                                         <mailto:hello@li-st.com>;
-                               foaf:member <http://listinc.kr/id/member/joyhong>,
-                                           <http://listinc.kr/id/member/wonseok.oh>;
-                               foaf:name "LiST Inc."@en,
-                                         "주식회사 리스트"@ko.
-<http://listinc.kr/id/member/joyhong> a foaf:Person;
-                                      org:memberOf <http://listinc.kr/id/listinc>;
-                                      foaf:mbox <mailto:joyhong@listinc.kr>,
-                                                <mailto:joyhong@li-st.com>;
-                                      foaf:name "허홍수"@ko,
-                                                "JoyHong"@en.
-<http://listinc.kr/id/member/wonseok.oh> a foaf:Person;
-                                         org:memberOf <http://listinc.kr/id/listinc>;
-                                         foaf:mbox <mailto:wonseok.oh@listinc.kr>,
-                                                   <mailto:wonseok.oh@li-st.com>;
-                                         foaf:name "오원석"@ko,
-                                                   "Wonseok Oh"@en.
-<http://lod.nl.go.kr/library/011001> a org:Organization,
-                                       foaf:Organization;
-                                     foaf:homepage <http://www.nl.go.kr/>;
-                                     foaf:member _:B0d93b976f4400422a6613d7b670fc10f;
-                                     foaf:name "국립중앙도서관"@ko,
-                                               "National Library of Korea"@en.
-nlon: ccrel:license <http://creativecommons.org/licenses/by/4.0/>;
-      dc11:contributor "National Library of Korea and LiST Inc.",
-                       "박설희 (sulhui@korea.kr)";
-      dc11:creator "JoyHong (joyhong@li-st.com)",
-                   "Wonseok Oh (wonseok.oh@li-st.com)";
-      dc11:rights "Copyright © 2015 National Library of Korea. Some rights reserved.";
-      dcterms:contributor <http://lod.nl.go.kr/library/011001>,
-                          _:B0d93b976f4400422a6613d7b670fc10f,
-                          <http://listinc.kr/id/listinc>;
-      dcterms:creator <http://listinc.kr/id/member/joyhong>,
-                      <http://listinc.kr/id/member/wonseok.oh>;
-      dcterms:description """이 자료는 국립중앙도서관이 관리, 보존하고 있는 서지 정보와 주제명, 저자명 데이터를 대상으로 기존의 (KOR)MARC 형태 또는 DBMS 형태의 데이터를 RDF로 형식으로 변환하여 웹상에 Linked Open Data 형식으로 발행하고 있는 <a href=\"http://lod.nl.go.kr/home\">국립중앙도서관 LOD</a>에서 사용하고 있는 명세서입니다.""";
-      dcterms:issued "2015-09-08"^^xsd:date;
-      dcterms:modified "2015-11-23"^^xsd:date;
-      dcterms:publisher <http://lod.nl.go.kr/library/011001>;
-      dcterms:title "National Library of Korea Ontology";
-      vann:preferredNamespacePrefix "nlon";
-      vann:preferredNamespaceUri "http://lod.nl.go.kr/ontology/";
-      a voaf:Vocabulary,
-        owl:Ontology;
+_:B0d93b976f4400422a6613d7b670fc10f a <http://xmlns.com/foaf/0.1/Person>;
+                                    <http://www.w3.org/ns/org#memberOf> <http://lod.nl.go.kr/library/011001>;
+                                    <http://xmlns.com/foaf/0.1/mbox> <mailto:sulhui@korea.kr>;
+                                    <http://xmlns.com/foaf/0.1/name> "박설희"@ko.
+<http://listinc.kr/id/listinc> a <http://www.w3.org/ns/org#Organization>,
+                                 <http://xmlns.com/foaf/0.1/Organization>;
+                               <http://xmlns.com/foaf/0.1/homepage> <http://li-st.com/>,
+                                                                    <http://listinc.kr/>;
+                               <http://xmlns.com/foaf/0.1/mbox> <mailto:hello@listinc.kr>,
+                                                                <mailto:hello@li-st.com>;
+                               <http://xmlns.com/foaf/0.1/member> <http://listinc.kr/id/member/joyhong>,
+                                                                  <http://listinc.kr/id/member/wonseok.oh>;
+                               <http://xmlns.com/foaf/0.1/name> "LiST Inc."@en,
+                                                                "주식회사 리스트"@ko.
+<http://listinc.kr/id/member/joyhong> a <http://xmlns.com/foaf/0.1/Person>;
+                                      <http://www.w3.org/ns/org#memberOf> <http://listinc.kr/id/listinc>;
+                                      <http://xmlns.com/foaf/0.1/mbox> <mailto:joyhong@listinc.kr>,
+                                                                       <mailto:joyhong@li-st.com>;
+                                      <http://xmlns.com/foaf/0.1/name> "허홍수"@ko,
+                                                                       "JoyHong"@en.
+<http://listinc.kr/id/member/wonseok.oh> a <http://xmlns.com/foaf/0.1/Person>;
+                                         <http://www.w3.org/ns/org#memberOf> <http://listinc.kr/id/listinc>;
+                                         <http://xmlns.com/foaf/0.1/mbox> <mailto:wonseok.oh@listinc.kr>,
+                                                                          <mailto:wonseok.oh@li-st.com>;
+                                         <http://xmlns.com/foaf/0.1/name> "오원석"@ko,
+                                                                          "Wonseok Oh"@en.
+<http://lod.nl.go.kr/library/011001> a <http://www.w3.org/ns/org#Organization>,
+                                       <http://xmlns.com/foaf/0.1/Organization>;
+                                     <http://xmlns.com/foaf/0.1/homepage> <http://www.nl.go.kr/>;
+                                     <http://xmlns.com/foaf/0.1/member> _:B0d93b976f4400422a6613d7b670fc10f;
+                                     <http://xmlns.com/foaf/0.1/name> "국립중앙도서관"@ko,
+                                                                      "National Library of Korea"@en.
+nlon: <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/4.0/>;
+      <http://purl.org/dc/elements/1.1/contributor> "National Library of Korea and LiST Inc.",
+                                                    "박설희 (sulhui@korea.kr)";
+      <http://purl.org/dc/elements/1.1/creator> "JoyHong (joyhong@li-st.com)",
+                                                "Wonseok Oh (wonseok.oh@li-st.com)";
+      <http://purl.org/dc/elements/1.1/rights> "Copyright © 2015 National Library of Korea. Some rights reserved.";
+      <http://purl.org/dc/terms/contributor> <http://lod.nl.go.kr/library/011001>,
+                                             _:B0d93b976f4400422a6613d7b670fc10f,
+                                             <http://listinc.kr/id/listinc>;
+      <http://purl.org/dc/terms/creator> <http://listinc.kr/id/member/joyhong>,
+                                         <http://listinc.kr/id/member/wonseok.oh>;
+      <http://purl.org/dc/terms/description> """이 자료는 국립중앙도서관이 관리, 보존하고 있는 서지 정보와 주제명, 저자명 데이터를 대상으로 기존의 (KOR)MARC 형태 또는 DBMS 형태의 데이터를 RDF로 형식으로 변환하여 웹상에 Linked Open Data 형식으로 발행하고 있는 <a href=\"http://lod.nl.go.kr/home\">국립중앙도서관 LOD</a>에서 사용하고 있는 명세서입니다.""";
+      <http://purl.org/dc/terms/issued> "2015-09-08"^^xsd:date;
+      <http://purl.org/dc/terms/modified> "2015-11-23"^^xsd:date;
+      <http://purl.org/dc/terms/publisher> <http://lod.nl.go.kr/library/011001>;
+      <http://purl.org/dc/terms/title> "National Library of Korea Ontology";
+      <http://purl.org/vocab/vann/preferredNamespacePrefix> "nlon";
+      <http://purl.org/vocab/vann/preferredNamespaceUri> "http://lod.nl.go.kr/ontology/";
+      a <http://purl.org/vocommons/voaf#Vocabulary>,
+        <http://www.w3.org/2002/07/owl#Ontology>;
       rdfs:comment "This specification describes National Library of Korea Ontology vocaburaries using W3C's RDF and OWL technology.";
-      owl:imports dc11:,
-                  <http://www.w3.org/2004/02/skos/core>,
-                  bibo:,
-                  dcam:,
-                  dcmitype:,
-                  foaf:;
-      owl:versionInfo "NLK 2015".
-nlon:AlternativeMaterial a owl:Class;
+      <http://www.w3.org/2002/07/owl#imports> <http://purl.org/dc/elements/1.1/>,
+                                              <http://www.w3.org/2004/02/skos/core>,
+                                              <http://purl.org/ontology/bibo/>,
+                                              <http://purl.org/dc/dcam/>,
+                                              <http://purl.org/dc/dcmitype/>,
+                                              <http://xmlns.com/foaf/0.1/>;
+      <http://www.w3.org/2002/07/owl#versionInfo> "NLK 2015".
+nlon:AlternativeMaterial a <http://www.w3.org/2002/07/owl#Class>;
                          rdfs:isDefinedBy nlon:;
                          rdfs:label "장애인대체자료"@ko,
                                     "Alternative material"@en;
-                         rdfs:subClassOf bibo:Document;
-                         status:term_status "stable".
-nlon:Archives a owl:Class;
+                         rdfs:subClassOf <http://purl.org/ontology/bibo/Document>;
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:Archives a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:isDefinedBy nlon:;
               rdfs:label "Archives"@en,
                          "해외수집기록물"@ko;
-              rdfs:subClassOf bibo:Document;
-              status:term_status "stable".
-nlon:Author a owl:Class;
+              rdfs:subClassOf <http://purl.org/ontology/bibo/Document>;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:Author a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:isDefinedBy nlon:;
             rdfs:label "author"@en,
                        "저자"@ko;
-            rdfs:subClassOf foaf:Person;
-            status:term_status "stable".
-nlon:Book a owl:Class;
+            rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person>;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:Book a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:isDefinedBy nlon:;
           rdfs:label "Book"@en,
                      "도서"@ko;
           rdfs:subClassOf nlon:OfflineMaterial;
-          status:term_status "stable".
-nlon:Classification a owl:Class;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:Classification a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:isDefinedBy nlon:;
                     rdfs:label "Classification"@en,
                                "분류"@ko;
-                    status:term_status "stable".
-nlon:ComplexDocument a owl:Class;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:ComplexDocument a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:isDefinedBy nlon:;
                      rdfs:label "복합자료"@ko,
                                 "Complex document"@en;
-                     rdfs:subClassOf bibo:Document;
-                     status:term_status "stable".
-nlon:Concept a owl:Class;
+                     rdfs:subClassOf <http://purl.org/ontology/bibo/Document>;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:Concept a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:isDefinedBy nlon:;
-             rdfs:subClassOf skos:Concept;
-             status:term_status "stable".
-nlon:ContinuousDataType a owl:Class;
+             rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:ContinuousDataType a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:comment "연속간행물에서 사용하는 연속자료 구분 부가정보"@ko;
                         rdfs:isDefinedBy nlon:;
                         rdfs:label "Continuous data type"@en,
                                    "연속자료구분"@ko;
                         rdfs:subClassOf nlon:Classification;
-                        status:term_status "stable".
-nlon:Country a owl:Class;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:Country a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:isDefinedBy nlon:;
              rdfs:label "Country"@en,
                         "국가"@ko;
-             rdfs:subClassOf owl:Thing;
-             status:term_status "stable".
-nlon:DataType a owl:Class;
+             rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:DataType a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "공통 대상에서 사용하는 자료 구분 부가정보"@ko;
               rdfs:isDefinedBy nlon:;
               rdfs:label "Data type"@en,
                          "자료구분"@ko;
               rdfs:subClassOf nlon:Classification;
-              status:term_status "stable".
-nlon:ElectronicDocument a owl:Class;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:ElectronicDocument a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:isDefinedBy nlon:;
                         rdfs:label "Electronic document"@en,
                                    "전자자료"@ko;
-                        rdfs:subClassOf bibo:Document;
-                        status:term_status "stable".
-nlon:Government a owl:Class;
+                        rdfs:subClassOf <http://purl.org/ontology/bibo/Document>;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:Government a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:isDefinedBy nlon:;
                 rdfs:label "Government"@en,
                            "정부기관"@ko;
-                rdfs:subClassOf foaf:Organization;
-                status:term_status "stable".
-nlon:Librarian a owl:Class;
+                rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:Librarian a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:isDefinedBy nlon:;
                rdfs:label "사서"@ko,
                           "librarian"@en;
-               rdfs:subClassOf foaf:Person;
-               status:term_status "stable".
-nlon:Library a owl:Class;
+               rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:Library a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:isDefinedBy nlon:;
              rdfs:label "도서관"@ko,
                         "Library"@en;
-             rdfs:subClassOf foaf:Organization;
-             status:term_status "stable".
-nlon:Location a owl:Class;
+             rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:Location a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "지역";
               rdfs:isDefinedBy nlon:;
               rdfs:label "Location";
-              rdfs:subClassOf wgspos:SpatialThing;
-              status:term_status "stable".
-nlon:NonBook a owl:Class;
+              rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:NonBook a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:isDefinedBy nlon:;
              rdfs:label "Non book"@en,
                         "비도서"@ko;
              rdfs:subClassOf nlon:OfflineMaterial;
-             status:term_status "stable".
-nlon:OfflineMaterial a owl:Class;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:OfflineMaterial a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:isDefinedBy nlon:;
                      rdfs:label "Offline material"@en,
                                 "오프라인 자료"@ko;
-                     status:term_status "stable".
-nlon:OldBook a owl:Class;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:OldBook a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:isDefinedBy nlon:;
              rdfs:label "고서"@ko,
                         "Old book"@en;
-             rdfs:subClassOf bibo:Document;
-             status:term_status "stable".
-nlon:OnlineMaterial a owl:Class;
+             rdfs:subClassOf <http://purl.org/ontology/bibo/Document>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:OnlineMaterial a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:isDefinedBy nlon:;
                     rdfs:label "Online material"@en,
                                "온라인 자료"@ko;
-                    rdfs:subClassOf owl:Thing;
-                    status:term_status "stable".
-nlon:OnlineMaterialType a owl:Class;
+                    rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:OnlineMaterialType a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:isDefinedBy nlon:;
                         rdfs:label "Online material type"@en,
                                    "온라인자료 유형"@ko;
                         rdfs:subClassOf nlon:Classification;
-                        status:term_status "stable".
-nlon:PublicationFrequencyType a owl:Class;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:PublicationFrequencyType a <http://www.w3.org/2002/07/owl#Class>;
                               rdfs:comment "연속간행물에서 사용하는 간행빈도 구분 부가정보(008태그 18자리)"@ko;
                               rdfs:isDefinedBy nlon:;
                               rdfs:label "Publication frequency type"@en,
                                          "간행빈도구분"@ko;
                               rdfs:subClassOf nlon:Classification;
-                              status:term_status "stable".
-nlon:PublicationStatusType a owl:Class;
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:PublicationStatusType a <http://www.w3.org/2002/07/owl#Class>;
                            rdfs:comment "연속간행물에서 사용하는 간행상태 구분 부가정보(008태그 6자리)"@ko;
                            rdfs:isDefinedBy nlon:;
                            rdfs:label "Publication status type"@en,
                                       "간행상태구분"@ko;
                            rdfs:subClassOf nlon:Classification;
-                           status:term_status "stable".
-nlon:Score a owl:Class;
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:Score a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:isDefinedBy nlon:;
            rdfs:label "Score"@en,
                       "악보"@ko;
-           rdfs:subClassOf bibo:Document;
-           status:term_status "stable".
-nlon:University a owl:Class;
+           rdfs:subClassOf <http://purl.org/ontology/bibo/Document>;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:University a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:isDefinedBy nlon:;
                 rdfs:label "대학"@ko,
                            "University"@en;
-                rdfs:subClassOf foaf:Organization;
-                status:term_status "stable".
-nlon:abbreviatedTitle a owl:DatatypeProperty;
+                rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:abbreviatedTitle a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "색인작성이나 식별을 목적으로 축약된 해당자료의 표제를 기술한다. 등록표제(222 필드)에 기초하여 ISSN 센터가 부여하는 축약표제를 말한다. 기타 축약 표제는 목록작성기관에서 제공한다. 여기에는 초록 및 색인 작성도 포함된다. 약어 표제는 이 필드를 제공하는 기관에 의해 작성될 수 있으며 잡지기사에서 채택될 수도 있다."@ko;
-                      rdfs:domain bibo:Collection;
+                      rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                       rdfs:isDefinedBy nlon:;
                       rdfs:label "축약표제"@ko,
                                  "abbreviated title"@en;
                       rdfs:range xsd:string;
-                      status:term_status "stable".
-nlon:antecedentSource a owl:DatatypeProperty;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:antecedentSource a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:isDefinedBy nlon:;
                       rdfs:label "원시자료의 정보원"@ko,
                                  "antecedent source"@en;
-                      status:term_status "stable".
-nlon:audienceNote a owl:DatatypeProperty;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:audienceNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment """당자료가 특수한 이용자층을 고려하여 간행된 경우, 그 이용대상자를 기술한다.
 이용 대상자에 대한 코드정보는 008/22(이용대상자 수준)에 기술하고, 접근제한에 관한 주기는 506(이용제한주기) 필드에 기술한다. 
 (주의: 전자자료나 시각 자료 레코드에서 읽기 수준과 흥미 연령 및 흥미 수준 정보가 521 필드에 기술될 경우, 008/22 필드는 관심 연령 수준이나 학년에 기준을 둔 관심 수준 정보를 기초로 부호화한다.) 접근 제한을 포함하는 주기는 506(이용제한주기) 필드에 기술한다."""@ko;
-                  rdfs:domain [owl:unionOf (bibo:Document
-                                            bibo:Collection) ; 
-                               a owl:Class];
+                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                        <http://purl.org/ontology/bibo/Collection>) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>];
                   rdfs:isDefinedBy nlon:;
                   rdfs:label "이용대상자 주기"@ko,
                              "audience note"@en;
                   rdfs:range rdfs:Literal;
-                  rdfs:subPropertyOf dcterms:description;
-                  status:term_status "stable".
-nlon:authenticationCode a owl:DatatypeProperty;
-                        rdfs:domain [owl:unionOf (bibo:Document
-                                                  bibo:Collection) ; 
-                                     a owl:Class];
+                  rdfs:subPropertyOf <http://purl.org/dc/terms/description>;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:authenticationCode a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                              <http://purl.org/ontology/bibo/Collection>) ; 
+                                     a <http://www.w3.org/2002/07/owl#Class>];
                         rdfs:isDefinedBy nlon:;
                         rdfs:label "검증부호"@ko,
                                    "authentication code"@en;
                         rdfs:range rdfs:Literal;
-                        status:term_status "stable".
-nlon:awardedFrom a owl:ObjectProperty;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:awardedFrom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "학위수여대학과 대학원을 기술한다."@ko;
-                 rdfs:domain bibo:Thesis;
+                 rdfs:domain <http://purl.org/ontology/bibo/Thesis>;
                  rdfs:isDefinedBy nlon:;
                  rdfs:label "awarded from"@en,
                             "학위수여 기관"@ko;
-                 rdfs:range foaf:Organization;
-                 status:term_status "stable".
-nlon:awardsNote a owl:DatatypeProperty;
+                 rdfs:range <http://xmlns.com/foaf/0.1/Organization>;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:awardsNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                 rdfs:comment "수상내역을 기술한다."@ko;
-                rdfs:domain [owl:unionOf (bibo:Document
-                                          bibo:Collection) ; 
-                             a owl:Class];
+                rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                      <http://purl.org/ontology/bibo/Collection>) ; 
+                             a <http://www.w3.org/2002/07/owl#Class>];
                 rdfs:isDefinedBy nlon:;
                 rdfs:label "수상 주기"@ko,
                            "awards note"@en;
                 rdfs:range rdfs:Literal;
-                rdfs:subPropertyOf dcterms:description;
-                status:term_status "stable".
-nlon:bibliography a owl:DatatypeProperty;
+                rdfs:subPropertyOf <http://purl.org/dc/terms/description>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:bibliography a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment "주기의 전체설명을 해당 면수와 함께 기술한다."@ko;
-                  rdfs:domain [owl:unionOf (bibo:Document
-                                            bibo:Collection) ; 
-                               a owl:Class];
+                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                        <http://purl.org/ontology/bibo/Collection>) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>];
                   rdfs:isDefinedBy nlon:;
                   rdfs:label "서지 등 주기"@ko,
                              "bibliography"@en;
                   rdfs:range rdfs:Literal;
-                  rdfs:subPropertyOf dcterms:description;
-                  status:term_status "stable".
-nlon:biographicalNote a owl:DatatypeProperty;
+                  rdfs:subPropertyOf <http://purl.org/dc/terms/description>;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:biographicalNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "기술대상 자료의 저자명 표목으로 채택된 개인의 전기적 정보나 단체 또는 사건에 대한 역사적인 정보를 기술한다."@ko;
-                      rdfs:domain [owl:unionOf (bibo:Document
-                                                bibo:Collection) ; 
-                                   a owl:Class];
+                      rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                            <http://purl.org/ontology/bibo/Collection>) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>];
                       rdfs:isDefinedBy nlon:;
                       rdfs:label "biographical note"@en,
                                  "전기 또는 역사 관련 주기"@ko;
                       rdfs:range xsd:string;
-                      status:term_status "stable".
-nlon:birthYear a owl:DatatypeProperty;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:birthYear a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment "생년"@ko;
-               rdfs:domain foaf:Person;
+               rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                rdfs:isDefinedBy nlon:;
                rdfs:label "출생연도"@ko,
                           "birth year"@en;
                rdfs:range xsd:int;
-               status:term_status "stable".
-nlon:cip a owl:DatatypeProperty;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:cip a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
          rdfs:comment "한 레코드에 하나의 제어번호를 부여한다. 제어번호의 구조는 자료구분부호 3자리, 연도 4자리, 일련번호 6자리로 구성한다. 출판예정도서목록(CIP) 레코드는 CIP를 자료구분부호로 사용한다. CIP 레코드는 자료의 물리적 형태와 관계없이 연도별로 일련번호를 부여한다."@ko;
-         rdfs:domain bibo:Document;
+         rdfs:domain <http://purl.org/ontology/bibo/Document>;
          rdfs:isDefinedBy nlon:;
          rdfs:label "출판시도서목록 제어번호"@ko,
                     "CIP system control number"@en;
          rdfs:range rdfs:Literal;
-         status:term_status "stable".
-nlon:citationReferenceNote a owl:DatatypeProperty;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:citationReferenceNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment """이 필드는 자료의 서평 및 발행된 서지 기술에 대한 인용사항이나 참고문헌 주기를 기술하며 자료가 어디에서 인용되고, 서평 기사를 수록하고 있는지를 상술하는데 적용된다. 인용사항이나 참고문헌은 간략한 형태 즉, 일반적으로 인식할 수 있는 약자 등으로 기술된다. 실제 발행된 기술의 내용은 510 필드에 기술되지 않고, 520(요약 등 주기) 필드에 기술된다.
 
 도서와 녹음자료의 경우, 자료의 출판된 기술사항(예, 간략하고 표준화된 형식으로 기술된 희귀자료 기술) 또는 서평(전문 저술에 관한 비평)에 대한 참고문헌을 주기한다.
@@ -325,986 +308,986 @@ nlon:citationReferenceNote a owl:DatatypeProperty;
 집합물로 다루어지는 인쇄물이 아닌 시청각자료나 그래픽 자료인 경우, 이 필드는 작품 또는 작품집에 대한 기술을 수록하고 있는 참고자료들을 기술한다.
 
 복합자료의 경우, 기술된 자료의 초록, 인용, 기술, 색인을 수록한 참고문헌을 기술한다."""@ko;
-                           rdfs:domain [owl:unionOf (bibo:Document
-                                                     bibo:Collection) ; 
-                                        a owl:Class];
+                           rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                                 <http://purl.org/ontology/bibo/Collection>) ; 
+                                        a <http://www.w3.org/2002/07/owl#Class>];
                            rdfs:isDefinedBy nlon:;
                            rdfs:label "인용 참고 주기"@ko,
                                       "citation reference note"@en;
                            rdfs:range rdfs:Literal;
-                           rdfs:subPropertyOf dcterms:description;
-                           status:term_status "stable".
-nlon:classificationNumber a owl:DatatypeProperty;
+                           rdfs:subPropertyOf <http://purl.org/dc/terms/description>;
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:classificationNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                           rdfs:isDefinedBy nlon:;
                           rdfs:label "분류기호"@ko,
                                      "classification number"@en;
-                          status:term_status "stable".
-nlon:classificationNumberOfLC a owl:DatatypeProperty;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:classificationNumberOfLC a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                               rdfs:comment "청구기호상의 분류기호를 기술한다."@ko;
-                              rdfs:domain [owl:unionOf (bibo:Document
-                                                        bibo:Collection) ; 
-                                           a owl:Class];
+                              rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                                    <http://purl.org/ontology/bibo/Collection>) ; 
+                                           a <http://www.w3.org/2002/07/owl#Class>];
                               rdfs:isDefinedBy nlon:;
                               rdfs:label "미국국회도서관 청구기호 분류기호"@ko,
                                          "Library of Congress Call Number - Classification Number"@en;
                               rdfs:range rdfs:Literal;
                               rdfs:subPropertyOf nlon:classificationNumber;
-                              status:term_status "stable".
-nlon:classificationNumberOfNLK a owl:DatatypeProperty;
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:classificationNumberOfNLK a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                rdfs:comment "국립중앙도서관 청구기호상의 분류기호를 기술한다. 적용 분류표는 KDC, DDC, KDCP, 조선총독부 신서부·양서부·고서부분류표 등이 있다. 여기에 기술된 분류기호는 분류기호 검색을 위하여 적용분류표에 해당하는 분류기호 필드(KDC는 056, DDC는 082, 그 외는 085)에 다시 기술한다."@ko;
-                               rdfs:domain [owl:unionOf (bibo:Document
-                                                         bibo:Collection) ; 
-                                            a owl:Class];
+                               rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                                     <http://purl.org/ontology/bibo/Collection>) ; 
+                                            a <http://www.w3.org/2002/07/owl#Class>];
                                rdfs:isDefinedBy nlon:;
                                rdfs:label "국립중앙도서관 청구기호 분류기호"@ko,
                                           "National Library of Korea Call Number - Classification Number"@en;
                                rdfs:range rdfs:Literal;
                                rdfs:subPropertyOf nlon:classificationNumber;
-                               status:term_status "stable".
-nlon:confirmDate a owl:DatatypeProperty;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:confirmDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:isDefinedBy nlon:;
                  rdfs:label "확인 날짜"@ko,
                             "confirm date"@en;
                  rdfs:range xsd:dateTime;
-                 rdfs:subPropertyOf dc11:date;
-                 status:term_status "stable".
-nlon:confirmedBy a owl:ObjectProperty;
+                 rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:confirmedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:isDefinedBy nlon:;
                  rdfs:label "confirmed by"@en;
-                 rdfs:range foaf:Person;
+                 rdfs:range <http://xmlns.com/foaf/0.1/Person>;
                  rdfs:subPropertyOf nlon:managedBy;
-                 status:term_status "stable".
-nlon:create a owl:ObjectProperty;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:create a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:isDefinedBy nlon:;
             rdfs:label "저작하다"@ko,
                        "create"@en;
-            rdfs:range bibo:Document;
-            status:term_status "stable".
-nlon:currentPublicationFrequency a owl:DatatypeProperty;
+            rdfs:range <http://purl.org/ontology/bibo/Document>;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:currentPublicationFrequency a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                  rdfs:comment "현행 출판물의 간행빈도를 기술한다."@ko;
-                                 rdfs:domain bibo:Collection;
+                                 rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                                  rdfs:isDefinedBy nlon:;
                                  rdfs:label "current publication frequency"@en,
                                             "현재 간행빈도"@ko;
                                  rdfs:range xsd:string;
-                                 status:term_status "stable".
-nlon:dateLinked a owl:DatatypeProperty;
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:dateLinked a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                 rdfs:isDefinedBy nlon:;
                 rdfs:label "date linked"@en,
                            "링크 생성 일시"@ko;
-                rdfs:subPropertyOf dc11:date;
-                status:term_status "stable".
-nlon:dateOfClosed a owl:DatatypeProperty;
+                rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:dateOfClosed a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:isDefinedBy nlon:;
                   rdfs:label "date of closed"@en,
                              "휴관일"@ko;
                   rdfs:range xsd:string;
-                  status:term_status "stable".
-nlon:dateOfCurrentPublicationFrequency a owl:DatatypeProperty;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:dateOfCurrentPublicationFrequency a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                        rdfs:comment "현재 간행빈도가 창간호의 간행빈도와 같지 않을 경우 현재 간행빈도 시작 연·월을 기술한다. 이전의 간행빈도는 321 필드에 기술한다."@ko;
-                                       rdfs:domain bibo:Collection;
+                                       rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                                        rdfs:isDefinedBy nlon:;
                                        rdfs:label "현재 간행빈도 시작 연월"@ko,
                                                   "date of current publication frequency"@en;
                                        rdfs:range xsd:string;
-                                       status:term_status "stable".
-nlon:dateOfDistribute a owl:DatatypeProperty;
+                                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:dateOfDistribute a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "배포년"@ko;
-                      rdfs:domain [owl:unionOf (bibo:Document
-                                                bibo:Collection) ; 
-                                   a owl:Class];
+                      rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                            <http://purl.org/ontology/bibo/Collection>) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>];
                       rdfs:isDefinedBy nlon:;
                       rdfs:label "date of distribute"@en,
                                  "배포년"@ko;
-                      status:term_status "stable".
-nlon:dateOfFormerPublicationFrequency a owl:DatatypeProperty;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:dateOfFormerPublicationFrequency a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                       rdfs:comment "이전의 간행빈도에 해당하는 연·월을 기술한다."@ko;
-                                      rdfs:domain bibo:Collection;
+                                      rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                                       rdfs:isDefinedBy nlon:;
                                       rdfs:label "이전 간행빈도 시행 연월"@ko,
                                                  "date of former publication frequency"@en;
-                                      status:term_status "stable".
-nlon:dateOfManufacture a owl:DatatypeProperty;
+                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:dateOfManufacture a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                        rdfs:comment "제작년 또는 인쇄년을 기술한다. 발행년 식별기호인 ▾c에 제작년 또는 인쇄년을 기술한 경우에는 식별기호 ▾g에는 기술하지 않는다."@ko;
-                       rdfs:domain [owl:unionOf (bibo:Document
-                                                 bibo:Collection) ; 
-                                    a owl:Class];
+                       rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                             <http://purl.org/ontology/bibo/Collection>) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>];
                        rdfs:isDefinedBy nlon:;
                        rdfs:label "date of manufacture"@en,
                                   "제작년"@ko;
-                       status:term_status "stable".
-nlon:dateOfOpening a owl:DatatypeProperty;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:dateOfOpening a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:isDefinedBy nlon:;
                    rdfs:label "date of opening"@en,
                               "개관일"@ko;
                    rdfs:range xsd:string;
-                   status:term_status "stable".
-nlon:dateOfPublicationSequentialDesignation a owl:DatatypeProperty;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:dateOfPublicationSequentialDesignation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                             rdfs:comment """이 식별기호에는 창간 권호차와 연월차 뒤에 종간 권호차와 연월차를 기술하되 현재 계속 간행중인 경우에는 창간권·연차 뒤에 짧은 붙임표( - )를 표시한다. 권호차표시는 권차, 판차, 호수, 총서번호 또는 발행처가 관례에 따라 부여한 다른 순차적인 명칭을 기술한다. 연월차는 간행빈도에 따라 \"연·월·일\"이나 \"연과 월 또는 계절\", \"연\"으로 구성된다. 권호차와 연월차가 둘 다 나타나 있는 경우 연월차는 권호차 뒤에 원괄호로 묶어 기술한다."""@ko;
-                                            rdfs:domain bibo:Collection;
+                                            rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                                             rdfs:isDefinedBy nlon:;
                                             rdfs:label "권,연차 또는 발행년 표시"@ko,
                                                        "date of publication sequential designation"@en;
                                             rdfs:range xsd:string;
-                                            status:term_status "stable".
-nlon:datePublished a owl:DatatypeProperty;
+                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:datePublished a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:isDefinedBy nlon:;
                    rdfs:label "트리플 발행 일시"@ko,
                               "date published"@en;
-                   rdfs:subPropertyOf dc11:date;
-                   status:term_status "stable".
-nlon:dateSequentialDesignation a owl:DatatypeProperty;
+                   rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:dateSequentialDesignation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                rdfs:comment "기술되는 변경 전 표제와 관련된 권·연차를 기술한다."@ko;
-                               rdfs:domain bibo:Collection;
+                               rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                                rdfs:isDefinedBy nlon:;
                                rdfs:label "표제변동 권연차표시"@ko,
                                           "date sequential designation"@en;
                                rdfs:range xsd:string;
-                               status:term_status "stable".
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
 nlon:ddc a rdf:Property;
          rdfs:comment "듀이십진분류기호를 기술한다. 동일자료에 둘 이상의 분류기호가 부여된 경우에는 청구기호를 구성하는 식별기호(첫번째 ▾a 및 ▾b) 뒤에 ▾a를 반복하여 두 번째 이하 분류기호를 기술한다."@ko;
          rdfs:isDefinedBy nlon:;
          rdfs:label "듀이십진분류기호"@ko,
                     "Dewey Decimal Classification Number"@en;
-         status:term_status "stable".
-nlon:ddcn a owl:ObjectProperty;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:ddcn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
           rdfs:isDefinedBy nlon:;
           rdfs:label "듀이십진분류기호"@ko,
                      "ddc"@en;
-          rdfs:range skos:Concept;
-          status:term_status "stable".
-nlon:deathYear a owl:DatatypeProperty;
+          rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:deathYear a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment "몰년"@ko;
-               rdfs:domain foaf:Person;
+               rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                rdfs:isDefinedBy nlon:;
                rdfs:label "사망연도"@ko,
                           "death year"@en;
                rdfs:range xsd:int;
-               status:term_status "stable".
-nlon:degreeYear a owl:DatatypeProperty;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:degreeYear a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                 rdfs:comment "학위수여연월을 기술한다. 학위논문은 학위청구연도와 학위수여연도가 다른 경우, 학위수여연도를 008/06(발행년 유형) s(단일연도), 260 필드의 발행연도에도 동일하게 적용한다. 학위청구연도가 명확하게 구별되지 않는 경우에는 최근 연도를 적용한다."@ko;
-                rdfs:domain bibo:Thesis;
+                rdfs:domain <http://purl.org/ontology/bibo/Thesis>;
                 rdfs:isDefinedBy nlon:;
                 rdfs:label "학위수여연도"@ko,
                            "degree year"@en;
                 rdfs:range rdfs:Literal;
-                status:term_status "stable".
-nlon:department a owl:DatatypeProperty;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:department a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                 rdfs:comment "논문에 나타나 있는 학과 또는 전공을 기술한다."@ko;
-                rdfs:domain bibo:Thesis;
+                rdfs:domain <http://purl.org/ontology/bibo/Thesis>;
                 rdfs:isDefinedBy nlon:;
                 rdfs:label "학과, 전공"@ko,
                            "department"@en;
                 rdfs:range rdfs:Literal;
-                status:term_status "stable".
-nlon:distributionPlace a owl:DatatypeProperty;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:distributionPlace a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                        rdfs:comment "배포지"@ko;
-                       rdfs:domain [owl:unionOf (bibo:Document
-                                                 bibo:Collection) ; 
-                                    a owl:Class];
+                       rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                             <http://purl.org/ontology/bibo/Collection>) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>];
                        rdfs:isDefinedBy nlon:;
                        rdfs:label "distribution place"@en,
                                   "배포지"@ko;
                        rdfs:range rdfs:Literal;
-                       status:term_status "stable".
-nlon:distributor a owl:DatatypeProperty;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:distributor a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:comment "배포처"@ko;
-                 rdfs:domain [owl:unionOf (bibo:Document
-                                           bibo:Collection) ; 
-                              a owl:Class];
+                 rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                       <http://purl.org/ontology/bibo/Collection>) ; 
+                              a <http://www.w3.org/2002/07/owl#Class>];
                  rdfs:isDefinedBy nlon:;
                  rdfs:label "distributor"@en,
                             "배포처"@ko;
                  rdfs:range xsd:string;
-                 status:term_status "stable".
-nlon:editionOfDDC a owl:DatatypeProperty;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:editionOfDDC a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment "분류에 적용한 DDC분류표의 판을 분류기호 뒤에 기술한다. 한 자료에 하나 이상의 분류기호가 서로 판이 다른 경우, 필드를 반복하여 독립된 필드에 기술한다."@ko;
-                  rdfs:domain [owl:unionOf (bibo:Document
-                                            bibo:Collection) ; 
-                               a owl:Class];
+                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                        <http://purl.org/ontology/bibo/Collection>) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>];
                   rdfs:isDefinedBy nlon:;
                   rdfs:label "듀이십진분류기호 판표시"@ko,
                              "edition of DDC"@en;
                   rdfs:range rdfs:Literal;
-                  status:term_status "stable".
-nlon:editionOfKDC a owl:DatatypeProperty;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:editionOfKDC a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment "분류에 적용한 KDC분류표의 판을 분류기호 뒤에 기술한다. 적용된 분류표의 판이 달라 발생하는 2개 이상의 분류기호의 경우에는 056 필드를 반복하여 기술한다."@ko;
-                  rdfs:domain [owl:unionOf (bibo:Document
-                                            bibo:Collection) ; 
-                               a owl:Class];
+                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                        <http://purl.org/ontology/bibo/Collection>) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>];
                   rdfs:isDefinedBy nlon:;
                   rdfs:label "한국십진분류기호 판표시"@ko,
                              "edition of KDC"@en;
                   rdfs:range rdfs:Literal;
-                  status:term_status "stable".
-nlon:exhibition a owl:DatatypeProperty;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:exhibition a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                 rdfs:comment "전시내용을 기술한다."@ko;
                 rdfs:isDefinedBy nlon:;
                 rdfs:label "전시"@ko,
                            "exhibition"@en;
-                status:term_status "stable".
-nlon:fax a owl:DatatypeProperty;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:fax a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
          rdfs:isDefinedBy nlon:;
          rdfs:label "fax"@en,
                     "팩스번호"@ko;
          rdfs:range xsd:string;
-         status:term_status "stable".
-nlon:formerPublicationFrequency a owl:DatatypeProperty;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:formerPublicationFrequency a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                 rdfs:comment "이전 간행빈도를 기술한다."@ko;
-                                rdfs:domain bibo:Collection;
+                                rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                                 rdfs:isDefinedBy nlon:;
                                 rdfs:label "이전 간행빈도"@ko,
                                            "former publication frequency"@en;
                                 rdfs:range xsd:string;
-                                status:term_status "stable".
-nlon:formerTitle a owl:DatatypeProperty;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:formerTitle a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:comment "권차 또는 권차명 표시를 제외한 본표제, 별표제 또는 관제를 포함하는 본표제를 기술한다. 본표제가 반복되는 경우에는 식별기호(▾a)를 반복한다. 두 번째 이하의 식별기호(▾a)는 245 필드에서 직접 부출 되지 않고 740 필드에 자동생성을 위한 용도로 사용된다. 또한 이 식별기호에는 종합 표제가 없는 집서의 경우, 독립된 저작의 첫 번째 표제(동일하거나 다른 저자/작곡가)를 기술한다."@ko;
-                 rdfs:domain bibo:Collection;
+                 rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                  rdfs:isDefinedBy nlon:;
                  rdfs:label "변경전 표제"@ko,
                             "former title"@en;
                  rdfs:range xsd:string;
-                 status:term_status "stable".
-nlon:formerTitleComplexityNote a owl:DatatypeProperty;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:formerTitleComplexityNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                rdfs:comment "변경전 표제 설명주기에 관한 사항을 기술한다."@ko;
-                               rdfs:domain bibo:Collection;
+                               rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                                rdfs:isDefinedBy nlon:;
                                rdfs:label "변경전 표제 설명주기"@ko,
                                           "former title complexity note"@en;
                                rdfs:range xsd:string;
-                               status:term_status "stable".
-nlon:genre a owl:DatatypeProperty;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:genre a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
            rdfs:isDefinedBy nlon:;
            rdfs:label "장르"@ko,
                       "genre"@en;
            rdfs:range xsd:string;
-           status:term_status "stable".
-nlon:gpo a owl:DatatypeProperty;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:gpo a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
          rdfs:comment """GPO자료번호를 기술한다. 마이크로필름인 경우에는 GPO자료번호 뒤에 \"MF\"를 원괄호로 묶어 기술한다."""@ko;
-         rdfs:domain [owl:unionOf (bibo:Document
-                                   bibo:Collection) ; 
-                      a owl:Class];
+         rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                               <http://purl.org/ontology/bibo/Collection>) ; 
+                      a <http://www.w3.org/2002/07/owl#Class>];
          rdfs:isDefinedBy nlon:;
          rdfs:label "미국정부간행물번호"@ko,
                     "gpo"@en;
          rdfs:range xsd:string;
-         status:term_status "stable".
-nlon:gprn a owl:DatatypeProperty;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:gprn a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
           rdfs:comment """한국정부간행물 발간등록번호(GPRN: Government Publications Registration Number)를 기술한다. 마이크로필름인 경우에는 GPRN 자료번호 뒤에 \"MF\"를 원 괄호에 넣어 기술한다."""@ko;
-          rdfs:domain [owl:unionOf (bibo:Document
-                                    bibo:Collection) ; 
-                       a owl:Class];
+          rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                <http://purl.org/ontology/bibo/Collection>) ; 
+                       a <http://www.w3.org/2002/07/owl#Class>];
           rdfs:isDefinedBy nlon:;
           rdfs:label "한국정부간행물 발간등록번호"@ko,
                      "gprn"@en;
           rdfs:range xsd:string;
-          status:term_status "stable".
-nlon:headingOfOriginalLanguage a owl:DatatypeProperty;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:headingOfOriginalLanguage a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                rdfs:comment "식별기호 ▾a는 관련 레코드 100(기본표목-개인명) 필드, 110(기본표목-단체명) 필드, 111(기본표목-회의명) 필드의 기본표목 데이터를 포함한다. 하지만 식별기호에서는 1XX 필드에서 사용하는 개별적인 이름의 요소나 통일표제는 기술되지 않는다."@ko;
                                rdfs:isDefinedBy nlon:;
                                rdfs:label "원저 기본표목"@ko,
                                           "heading of original language"@en;
-                               status:term_status "stable".
-nlon:headingOfTranslation a owl:DatatypeProperty;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:headingOfTranslation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                           rdfs:comment "식별기호 ▾a는 관련 레코드 100(기본표목-개인명) 필드, 110(기본표목-단체명) 필드, 111(기본표목-회의명) 필드의 기본표목 데이터를 포함한다. 하지만 식별기호에서는 1XX 필드에서 사용하는 개별적인 이름의 요소나 통일표제는 기술되지 않는다."@ko;
                           rdfs:isDefinedBy nlon:;
                           rdfs:label "번역저 기본표목"@ko,
                                      "heading of translation"@en;
-                          status:term_status "stable".
-nlon:holdingInstitution a owl:DatatypeProperty;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:holdingInstitution a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                         rdfs:comment """자료를 소장하고 있는 기관명에 대한 KORMARC의 부호를 기술한다. 관련 KORMARC 부호는 국립중앙도서관에서 제공하는 \"부속서 7. 한국도서관부호표\"의 부호를 적용한다."""@ko;
-                        rdfs:domain [owl:unionOf (bibo:Document
-                                                  bibo:Collection) ; 
-                                     a owl:Class];
+                        rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                              <http://purl.org/ontology/bibo/Collection>) ; 
+                                     a <http://www.w3.org/2002/07/owl#Class>];
                         rdfs:isDefinedBy nlon:;
                         rdfs:label "소장기관"@ko,
                                    "holding institution"@en;
                         rdfs:range rdfs:Literal;
-                        status:term_status "stable".
-nlon:holdingItemNote a owl:DatatypeProperty;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:holdingItemNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:comment "해당기관 소장본의 낙장(落張), 배접(褙接), 보사(補寫), 인문(印文), 장서기(藏書記), 지어(識語), 묵서(墨書)나 열람용 복제본 여부, 소장 원본·복제본의 청구기호 등 소장본 관련 로컬정보를 기술한다."@ko;
-                     rdfs:domain [owl:unionOf (bibo:Document
-                                               bibo:Collection) ; 
-                                  a owl:Class];
+                     rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                           <http://purl.org/ontology/bibo/Collection>) ; 
+                                  a <http://www.w3.org/2002/07/owl#Class>];
                      rdfs:isDefinedBy nlon:;
                      rdfs:label "소장본 주기"@ko,
                                 "holding item note"@en;
                      rdfs:range rdfs:Literal;
-                     rdfs:subPropertyOf dcterms:description;
-                     status:term_status "stable".
-nlon:inputDate a owl:DatatypeProperty;
+                     rdfs:subPropertyOf <http://purl.org/dc/terms/description>;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:inputDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:isDefinedBy nlon:;
                rdfs:label "입력 날짜"@ko,
                           "input date"@en;
                rdfs:range xsd:dateTime;
-               rdfs:subPropertyOf dc11:date;
-               status:term_status "stable".
-nlon:inputedBy a owl:ObjectProperty;
+               rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:inputedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:isDefinedBy nlon:;
                rdfs:label "inputed by"@en;
-               rdfs:range foaf:Person;
+               rdfs:range <http://xmlns.com/foaf/0.1/Person>;
                rdfs:subPropertyOf nlon:managedBy;
-               status:term_status "stable".
-nlon:isClosed a owl:DatatypeProperty;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:isClosed a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:domain nlon:Library;
               rdfs:isDefinedBy nlon:;
               rdfs:label "is closed"@en,
                          "폐관여부"@ko;
               rdfs:range xsd:boolean;
-              status:term_status "stable".
-nlon:isGeographicAreaOf a owl:ObjectProperty;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:isGeographicAreaOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "7자리의 지역구분부호를 기술한다. 해당 자료와 관련된 지역구분부호가 둘 이상일 경우에는 식별기호를 반복하여 기술한다."@ko;
                         rdfs:domain nlon:Location;
                         rdfs:isDefinedBy nlon:;
                         rdfs:label "is geographic area of"@en;
-                        rdfs:range [owl:unionOf (bibo:Document
-                                                 bibo:Collection) ; 
-                                    a owl:Class];
-                        status:term_status "stable".
-nlon:isSubjectOf a owl:ObjectProperty;
+                        rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                             <http://purl.org/ontology/bibo/Collection>) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>];
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:isSubjectOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:isDefinedBy nlon:;
                  rdfs:label "is subject of"@en;
-                 status:term_status "stable".
-nlon:issuingBodyNote a owl:DatatypeProperty;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:issuingBodyNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:comment "발행처주기에 관한 사항을 기술한다."@ko;
-                     rdfs:domain bibo:Collection;
+                     rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                      rdfs:isDefinedBy nlon:;
                      rdfs:label "발행처주기"@ko,
                                 "issuing body note"@en;
                      rdfs:range xsd:string;
-                     status:term_status "stable".
-nlon:itemNumber a owl:DatatypeProperty;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:itemNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                 rdfs:isDefinedBy nlon:;
                 rdfs:label "item number"@en,
                            "도서기호"@ko;
-                status:term_status "stable".
-nlon:itemNumberOfDDC a owl:DatatypeProperty;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:itemNumberOfDDC a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:comment "청구기호 중 도서기호를 기술한다. 이 식별기호에는 자료(또는 세트) 기호를 기술할 수도 있다."@ko;
-                     rdfs:domain [owl:unionOf (bibo:Document
-                                               bibo:Collection) ; 
-                                  a owl:Class];
+                     rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                           <http://purl.org/ontology/bibo/Collection>) ; 
+                                  a <http://www.w3.org/2002/07/owl#Class>];
                      rdfs:isDefinedBy nlon:;
                      rdfs:label "듀이십진분류기호 도서기호"@ko,
                                 "item number of DDC"@en;
                      rdfs:range rdfs:Literal;
                      rdfs:subPropertyOf nlon:itemNumber;
-                     status:term_status "stable".
-nlon:itemNumberOfLC a owl:DatatypeProperty;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:itemNumberOfLC a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "청구기호상의 도서기호를 기술한다."@ko;
-                    rdfs:domain [owl:unionOf (bibo:Document
-                                              bibo:Collection) ; 
-                                 a owl:Class];
+                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                          <http://purl.org/ontology/bibo/Collection>) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>];
                     rdfs:isDefinedBy nlon:;
                     rdfs:label "미국국회도서관 청구기호 도서기호"@ko,
                                "item number of LC"@en;
                     rdfs:range rdfs:Literal;
                     rdfs:subPropertyOf nlon:itemNumber;
-                    status:term_status "stable".
-nlon:itemNumberOfNLK a owl:DatatypeProperty;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:itemNumberOfNLK a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:comment "국립중앙도서관 청구기호상의 도서기호를 기술한다. 적용 도서기호는 국립중앙도서관 동양서 저자기호표, 카터-샌본저자기호표(Cutter-Sanborn Three-Author Table), 수입순기호 등이 있다."@ko;
-                     rdfs:domain [owl:unionOf (bibo:Document
-                                               bibo:Collection) ; 
-                                  a owl:Class];
+                     rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                           <http://purl.org/ontology/bibo/Collection>) ; 
+                                  a <http://www.w3.org/2002/07/owl#Class>];
                      rdfs:isDefinedBy nlon:;
                      rdfs:label "국립중앙도서관 청구기호 도서기호"@ko,
                                 "item number of NLK"@en;
                      rdfs:range rdfs:Literal;
                      rdfs:subPropertyOf nlon:itemNumber;
-                     status:term_status "stable".
-nlon:itemNumberOfOtherNumber a owl:DatatypeProperty;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:itemNumberOfOtherNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                              rdfs:comment "청구 기호 중 도서기호를 기술한다."@ko;
-                             rdfs:domain [owl:unionOf (bibo:Document
-                                                       bibo:Collection) ; 
-                                          a owl:Class];
+                             rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                                   <http://purl.org/ontology/bibo/Collection>) ; 
+                                          a <http://www.w3.org/2002/07/owl#Class>];
                              rdfs:isDefinedBy nlon:;
                              rdfs:label "다른 분류기호 도서기호"@ko,
                                         "item number of other number"@en;
                              rdfs:range rdfs:Literal;
                              rdfs:subPropertyOf nlon:itemNumber;
-                             status:term_status "stable".
-nlon:itermNumberOfKDC a owl:DatatypeProperty;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:itermNumberOfKDC a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "청구기호 중 도서기호를 기술한다. 이 식별기호에는 자료(또는 세트) 기호를 기술할 수도 있다."@ko;
-                      rdfs:domain [owl:unionOf (bibo:Document
-                                                bibo:Collection) ; 
-                                   a owl:Class];
+                      rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                            <http://purl.org/ontology/bibo/Collection>) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>];
                       rdfs:isDefinedBy nlon:;
                       rdfs:label "한국십진분류기호 도서기호"@ko,
                                  "iterm number of KDC"@en;
                       rdfs:range rdfs:Literal;
                       rdfs:subPropertyOf nlon:itemNumber;
-                      status:term_status "stable".
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
 nlon:kdc a rdf:Property;
          rdfs:comment "KDC 분류기호를 기술한다. 복수주제를 다룬 자료로서 분류기호가 2개 이상 부여되는 경우에는 식별기호 ▾a를 반복하여 기술한다."@ko;
          rdfs:isDefinedBy nlon:;
          rdfs:label "한국십진분류기호"@ko,
                     "Korean Decimal Classification Number"@en;
-         status:term_status "stable".
-nlon:kdcn a owl:ObjectProperty;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:kdcn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
           rdfs:isDefinedBy nlon:;
           rdfs:label "kdc"@en,
                      "한국십진분류기호"@ko;
-          rdfs:range skos:Concept;
-          status:term_status "stable".
-nlon:keyTitle a owl:DatatypeProperty;
+          rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:keyTitle a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:comment "등록표제는 022(ISSN) 필드에 기록된 국제표준연속간행물번호(ISSN)와 관련되어 연속간행물에 부여되는 표제이다. 이 표제는 한 편의 연속간행물에서 그대로 옮겨온 표제정보로 작성되거나, 필요한 경우 유일성을 갖도록 하는 한정어로 구성된다. 등록표제는 국가센터에 의해 부여된 데이터요소이며 ISSN 네트워크에 연결된 국가센터에서 부여한다."@ko;
-              rdfs:domain bibo:Collection;
+              rdfs:domain <http://purl.org/ontology/bibo/Collection>;
               rdfs:isDefinedBy nlon:;
               rdfs:label "등록표제"@ko,
                          "key title"@en;
               rdfs:range xsd:string;
-              status:term_status "stable".
-nlon:keyword a owl:DatatypeProperty;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:keyword a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
              rdfs:isDefinedBy nlon:;
              rdfs:label "키워드"@ko,
                         "keyword"@en;
-             status:term_status "stable".
-nlon:languageNote a owl:DatatypeProperty;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:languageNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment "해당자료에 사용된 언어에 관한 사항을 문장으로 기술한다. 이 필드는 또한 해당자료에 기재된 알파벳, 문자 또는 다른 기호 체계를 기술하는 데 사용한다. 언어부호(부호)는 008/35-37(언어)과 041(언어부호) 필드에 기술한다."@ko;
-                  rdfs:domain [owl:unionOf (bibo:Document
-                                            bibo:Collection) ; 
-                               a owl:Class];
+                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                        <http://purl.org/ontology/bibo/Collection>) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>];
                   rdfs:isDefinedBy nlon:;
                   rdfs:label "언어주기"@ko,
                              "language note"@en;
                   rdfs:range rdfs:Literal;
-                  rdfs:subPropertyOf dcterms:description;
-                  status:term_status "stable".
-nlon:libraryType a owl:DatatypeProperty;
+                  rdfs:subPropertyOf <http://purl.org/dc/terms/description>;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:libraryType a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:domain nlon:Library;
                  rdfs:isDefinedBy nlon:;
                  rdfs:label "library type"@en,
                             "관종구분"@ko;
                  rdfs:range xsd:string;
-                 status:term_status "stable".
-nlon:linkingEntryComplexityNote a owl:DatatypeProperty;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:linkingEntryComplexityNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                 rdfs:comment "해당자료와 관련 있는 서명 및 관련 있는 기술사항을 기술한다."@ko;
-                                rdfs:domain [owl:unionOf (bibo:Document
-                                                          bibo:Collection) ; 
-                                             a owl:Class];
+                                rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                                      <http://purl.org/ontology/bibo/Collection>) ; 
+                                             a <http://www.w3.org/2002/07/owl#Class>];
                                 rdfs:isDefinedBy nlon:;
                                 rdfs:label "연관저록 설명 주기"@ko,
                                            "linking entry complexity note"@en;
                                 rdfs:range rdfs:Literal;
-                                rdfs:subPropertyOf dcterms:description;
-                                status:term_status "stable".
-nlon:localHolding a owl:DatatypeProperty;
+                                rdfs:subPropertyOf <http://purl.org/dc/terms/description>;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:localHolding a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment """이 필드는 각 로컬도서관에서 도서관부호와 소장자료의 등록번호, 권·연차기호, 복본기호, 별치기호 등을 기술한다.
 
 도서관에 따라 소장사항은 049 필드나 090 필드가 아닌 다른 로컬필드(092, 093 필드 등) 또는 소장 MARC의 필드(852 필드 등)를 사용할 수 있다. KORMARC에서 표시기호에 사용된 숫자 \"9\"는 대체로 로컬 도서관에서 사용하여 내용을 기술하였음을 의미한다. 049 필드는 MARC21이나 다른 나라의 MARC와는 다른 형식이다."""@ko;
-                  rdfs:domain [owl:unionOf (bibo:Collection
-                                            bibo:Document) ; 
-                               a owl:Class];
+                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Collection>
+                                                                        <http://purl.org/ontology/bibo/Document>) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>];
                   rdfs:isDefinedBy nlon:;
                   rdfs:label "소장사항"@ko,
                              "local holding"@en;
                   rdfs:range xsd:string;
-                  status:term_status "stable".
-nlon:locationNote a owl:DatatypeProperty;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:locationNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment "기술대상 자료의 원본이나 복제본이 타기관에 소장되어 있는 경우, 그 원본이나 복제본의 소장처를 기술한다. 이 필드는 원본이나 복제본이 기술된 자료와 다른 곳에 있을 경우에만 기술한다."@ko;
-                  rdfs:domain [owl:unionOf (bibo:Document
-                                            bibo:Collection) ; 
-                               a owl:Class];
+                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                        <http://purl.org/ontology/bibo/Collection>) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>];
                   rdfs:isDefinedBy nlon:;
                   rdfs:label "원본/복제본 소재 주기"@ko,
                              "Location of Originals/Duplicates Note"@en;
                   rdfs:range rdfs:Literal;
-                  rdfs:subPropertyOf dcterms:description;
-                  status:term_status "stable".
-nlon:mainEntryHeading a owl:DatatypeProperty;
+                  rdfs:subPropertyOf <http://purl.org/dc/terms/description>;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:mainEntryHeading a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "식별기호 ▾a는 관련 레코드 100(기본표목-개인명) 필드, 110(기본표목-단체명) 필드, 111(기본표목-회의명) 필드의 기본표목 데이터를 포함한다. 하지만 식별기호에서는 1XX 필드에서 사용하는 개별적인 이름의 요소나 통일표제는 기술되지 않는다."@ko;
-                      rdfs:domain bibo:Collection;
+                      rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                       rdfs:isDefinedBy nlon:;
                       rdfs:label "상위총서 기본표목"@ko,
                                  "main entry heading"@en;
                       rdfs:range xsd:string;
-                      status:term_status "stable".
-nlon:managedBy a owl:ObjectProperty;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:managedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:isDefinedBy nlon:;
                rdfs:label "managed by"@en;
-               rdfs:range foaf:Person;
-               status:term_status "stable".
-nlon:manufacturer a owl:DatatypeProperty;
+               rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:manufacturer a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment "제작처"@ko;
-                  rdfs:domain [owl:unionOf (bibo:Document
-                                            bibo:Collection) ; 
-                               a owl:Class];
+                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                        <http://purl.org/ontology/bibo/Collection>) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>];
                   rdfs:isDefinedBy nlon:;
                   rdfs:label "manufacturer"@en,
                              "제작처"@ko;
                   rdfs:range xsd:string;
-                  status:term_status "stable".
-nlon:manufacturingPlace a owl:DatatypeProperty;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:manufacturingPlace a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                         rdfs:comment "제작지"@ko;
-                        rdfs:domain [owl:unionOf (bibo:Document
-                                                  bibo:Collection) ; 
-                                     a owl:Class];
+                        rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                              <http://purl.org/ontology/bibo/Collection>) ; 
+                                     a <http://www.w3.org/2002/07/owl#Class>];
                         rdfs:isDefinedBy nlon:;
                         rdfs:label "manufacturing place"@en,
                                    "제작지"@ko;
                         rdfs:range rdfs:Literal;
-                        status:term_status "stable".
-nlon:medium a owl:DatatypeProperty;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:medium a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
             rdfs:comment "인쇄자료 이외의 각종 형태자료의 자료종별성격을 나타내는 매체 표시를 기술한다. ISBD 원칙에 따라 매체표시는 항상 각괄호([ ])로 묶어 기술한다. 종합표제 대신 개별저작의 표제를 기술할 경우에는 첫 번째 표제 다음에 기재한다. 식별기호 ▾a가 반복될 경우에는 첫 번째 식별기호 ▾a 다음에 기술한다."@ko;
             rdfs:isDefinedBy nlon:;
             rdfs:label "자료형태"@ko,
                        "medium"@en;
-            status:term_status "stable".
-nlon:meetingInformation a owl:DatatypeProperty;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:meetingInformation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                         rdfs:isDefinedBy nlon:;
                         rdfs:label "meeting information"@en,
                                    "회의 정보"@ko;
-                        status:term_status "stable".
-nlon:modificationDate a owl:DatatypeProperty;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:modificationDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:isDefinedBy nlon:;
                       rdfs:label "수정 날짜"@ko,
                                  "modification date"@en;
                       rdfs:range xsd:dateTime;
-                      rdfs:subPropertyOf dc11:date;
-                      status:term_status "stable".
-nlon:modifiedBy a owl:ObjectProperty;
+                      rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:modifiedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:isDefinedBy nlon:;
                 rdfs:label "modified by"@en;
-                rdfs:range foaf:Person;
+                rdfs:range <http://xmlns.com/foaf/0.1/Person>;
                 rdfs:subPropertyOf nlon:managedBy;
-                status:term_status "stable".
-nlon:municipalLevel a owl:ObjectProperty;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:municipalLevel a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:domain nlon:Location;
                     rdfs:isDefinedBy nlon:;
                     rdfs:label "municipal level"@en,
                                "시군구 레벨"@ko;
-                    status:term_status "stable".
-nlon:numberMark a owl:DatatypeProperty;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:numberMark a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                 rdfs:isDefinedBy nlon:;
                 rdfs:label "숫자부호"@ko,
                            "number mark"@en;
                 rdfs:range xsd:string;
-                status:term_status "stable".
-nlon:numberingPeculiaritiesNote a owl:DatatypeProperty;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:numberingPeculiaritiesNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                 rdfs:comment "식별기호 ▾a는 특수하거나 예외적인 권차를 기술한다. 식별기호 ▾a 아래 기술하는 특수하거나 예외적인 권차의 유형들은 다음과 같다."@ko;
-                                rdfs:domain bibo:Collection;
+                                rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                                 rdfs:isDefinedBy nlon:;
                                 rdfs:label "특수한 권차표시주기"@ko,
                                            "numbering peculiarities note"@en;
                                 rdfs:range xsd:string;
-                                status:term_status "stable".
-nlon:openingYear a owl:DatatypeProperty;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:openingYear a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:isDefinedBy nlon:;
                  rdfs:label "opening year"@en,
                             "개관연도"@ko;
                  rdfs:range xsd:integer;
-                 status:term_status "stable".
-nlon:originalVersionNote a owl:DatatypeProperty;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:originalVersionNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                          rdfs:comment "해당자료가 영인, 복사, 마이크로형태 등에 의한 복제물이고 복제본을 중심으로 서지정보를 기술한 경우, 그 원본에 관한 사항을 기술한다."@ko;
-                         rdfs:domain [owl:unionOf (bibo:Document
-                                                   bibo:Collection) ; 
-                                      a owl:Class];
+                         rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                               <http://purl.org/ontology/bibo/Collection>) ; 
+                                      a <http://www.w3.org/2002/07/owl#Class>];
                          rdfs:isDefinedBy nlon:;
                          rdfs:label "원본주기"@ko,
                                     "original version note"@en;
                          rdfs:range rdfs:Literal;
-                         rdfs:subPropertyOf dcterms:description;
-                         status:term_status "stable".
-nlon:otherNumber a owl:DatatypeProperty;
+                         rdfs:subPropertyOf <http://purl.org/dc/terms/description>;
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:otherNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:comment "제1지시기호에 정의된 분류기호를 기술한다. 복수주제를 다룬 자료로서 분류기호가 2개 이상 부여되는 경우에는 식별기호 ▾a를 반복하여 기술한다."@ko;
-                 rdfs:domain [owl:unionOf (bibo:Document
-                                           bibo:Collection) ; 
-                              a owl:Class];
+                 rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                       <http://purl.org/ontology/bibo/Collection>) ; 
+                              a <http://www.w3.org/2002/07/owl#Class>];
                  rdfs:isDefinedBy nlon:;
                  rdfs:label "기타 분류기호"@ko,
                             "Other Classification Number"@en;
                  rdfs:range rdfs:Literal;
-                 status:term_status "stable".
-nlon:physicalFormAvailableNote a owl:DatatypeProperty;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:physicalFormAvailableNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                rdfs:comment "이용가능한 다른 형태자료에 대하여 기술한다. 또한 다른 식별기호에 해당하지 않는 설명도 포함한다."@ko;
-                               rdfs:domain [owl:unionOf (bibo:Document
-                                                         bibo:Collection) ; 
-                                            a owl:Class];
+                               rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                                     <http://purl.org/ontology/bibo/Collection>) ; 
+                                            a <http://www.w3.org/2002/07/owl#Class>];
                                rdfs:isDefinedBy nlon:;
                                rdfs:label "이용가능한 다른 형태자료 주기"@ko,
                                           "physical form available note"@en;
                                rdfs:range rdfs:Literal;
-                               rdfs:subPropertyOf dcterms:description;
-                               status:term_status "stable".
-nlon:producer a owl:DatatypeProperty;
+                               rdfs:subPropertyOf <http://purl.org/dc/terms/description>;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:producer a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:comment "생산처"@ko;
-              rdfs:domain [owl:unionOf (bibo:Document
-                                        bibo:Collection) ; 
-                           a owl:Class];
+              rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                    <http://purl.org/ontology/bibo/Collection>) ; 
+                           a <http://www.w3.org/2002/07/owl#Class>];
               rdfs:isDefinedBy nlon:;
               rdfs:label "producer"@en,
                          "생산처"@ko;
               rdfs:range xsd:string;
-              status:term_status "stable".
-nlon:productionPlace a owl:DatatypeProperty;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:productionPlace a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:comment "생산지"@ko;
-                     rdfs:domain [owl:unionOf (bibo:Document
-                                               bibo:Collection) ; 
-                                  a owl:Class];
+                     rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                           <http://purl.org/ontology/bibo/Collection>) ; 
+                                  a <http://www.w3.org/2002/07/owl#Class>];
                      rdfs:isDefinedBy nlon:;
                      rdfs:label "production place"@en,
                                 "생산지"@ko;
                      rdfs:range rdfs:Literal;
-                     status:term_status "stable".
-nlon:projection a owl:DatatypeProperty;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:projection a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                 rdfs:comment "전체 도법표시를 기술한다. ISBD의 원칙에 따라 ▾b는 쌍반점(;)을 앞세워 기술한다."@ko;
                 rdfs:isDefinedBy nlon:;
                 rdfs:label "도법"@ko,
                            "projection"@en;
-                status:term_status "stable".
-nlon:provincialLevel a owl:ObjectProperty;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:provincialLevel a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:domain nlon:Location;
                      rdfs:isDefinedBy nlon:;
                      rdfs:label "provincial level"@en,
                                 "광역시도 레벨"@ko;
-                     status:term_status "stable".
-nlon:publicationPlace a owl:DatatypeProperty;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:publicationPlace a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "발행지"@ko;
-                      rdfs:domain [owl:unionOf (bibo:Document
-                                                bibo:Collection) ; 
-                                   a owl:Class];
+                      rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                            <http://purl.org/ontology/bibo/Collection>) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>];
                       rdfs:isDefinedBy nlon:;
                       rdfs:label "발행지"@ko,
                                  "publication place"@en;
                       rdfs:range rdfs:Literal;
-                      status:term_status "stable".
-nlon:publish a owl:ObjectProperty;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:publish a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:isDefinedBy nlon:;
              rdfs:label "발행"@ko,
                         "publish"@en;
-             rdfs:range bibo:Document;
-             status:term_status "stable".
-nlon:publishedIn a owl:ObjectProperty;
-                 rdfs:domain bibo:Document;
+             rdfs:range <http://purl.org/ontology/bibo/Document>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:publishedIn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain <http://purl.org/ontology/bibo/Document>;
                  rdfs:isDefinedBy nlon:;
                  rdfs:label "published in"@en,
                             "발행되다"@ko;
-                 status:term_status "stable".
-nlon:rank a owl:DatatypeProperty;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:rank a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
           rdfs:isDefinedBy nlon:;
           rdfs:label "rank"@en,
                      "등급"@ko;
           rdfs:range xsd:string;
-          status:term_status "stable".
-nlon:relatedParts a owl:DatatypeProperty;
-                  rdfs:domain bibo:Collection;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:relatedParts a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                   rdfs:isDefinedBy nlon:;
                   rdfs:label "상위총서 관계표시"@ko,
                              "related parts"@en;
                   rdfs:range xsd:string;
-                  status:term_status "stable".
-nlon:relationshipInformation a owl:DatatypeProperty;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:relationshipInformation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                              rdfs:isDefinedBy nlon:;
                              rdfs:label "관계 정보"@ko,
                                         "relationship information"@en;
-                             status:term_status "stable".
-nlon:remainderOfTitle a owl:DatatypeProperty;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:remainderOfTitle a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "서지레코드의 표제와 책임표시사항을 기술한다. 이 필드는 본표제를 구성하며 또한 자료유형표시, 표제의 나머지 부분, 기타 표제 관련 정보, 표제지 상의 나머지 부분 전기(轉記)/책임표시로 구성된다. 표제에는 별표제, 편차/권차, 권제/편제가 포함된다."@ko;
-                      rdfs:domain bibo:Collection;
+                      rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                       rdfs:isDefinedBy nlon:;
                       rdfs:label "표제 관련정보"@ko,
                                  "remainder of title"@en;
                       rdfs:range xsd:string;
-                      status:term_status "stable".
-nlon:reproductionDate a owl:DatatypeProperty;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:reproductionDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "복제물이 만들어진 일자를 기술한다. 연속간행물일 경우 시작일과 종료일을 기술한다."@ko;
-                      rdfs:domain [owl:unionOf (bibo:Document
-                                                bibo:Collection) ; 
-                                   a owl:Class];
+                      rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                            <http://purl.org/ontology/bibo/Collection>) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>];
                       rdfs:isDefinedBy nlon:;
                       rdfs:label "복제일자"@ko,
                                  "reproduction date"@en;
                       rdfs:range rdfs:Literal;
                       rdfs:subPropertyOf nlon:reproductionNote;
-                      status:term_status "stable".
-nlon:reproductionInstitution a owl:DatatypeProperty;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:reproductionInstitution a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                              rdfs:comment "복제기관을 기술한다. 만약에 동일한 복제물에 대하여 복제기관이 하나 이상일 경우 반복하여 기술할 수 있다."@ko;
-                             rdfs:domain [owl:unionOf (bibo:Document
-                                                       bibo:Collection) ; 
-                                          a owl:Class];
+                             rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                                   <http://purl.org/ontology/bibo/Collection>) ; 
+                                          a <http://www.w3.org/2002/07/owl#Class>];
                              rdfs:isDefinedBy nlon:;
                              rdfs:label "복제기관"@ko,
                                         "reproduction institution"@en;
                              rdfs:range rdfs:Literal;
                              rdfs:subPropertyOf nlon:reproductionNote;
-                             status:term_status "stable".
-nlon:reproductionNote a owl:DatatypeProperty;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:reproductionNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment """해당자료가 영인, 복사, 마이크로형태 등에 의한 복제물이고 그 원본을 중심으로 서지정보를 기술한 경우, 복제에 관한 사항을 기술한다.
 
 이 필드에는 원본이 복제된 사항을 기술한다. 서지 레코드를 원본을 중심으로 기술하고 복제와 관련된 정보는 533 필드에 주기로 기술한다. 목록작성기관에서 기술부에 원본을 반영할 것을 선택한 경우, 복제본에 관한 정보를 반영하는 데 사용된다.
 
 복합 자료의 경우, 기관에서 복제물만을 소장할 때, 이 필드에는 복제된 기록물 단위로 기술하고 기술부는 관례에 따라 원본을 기준으로 작성한다. 이 필드는 보통 원본을 소장하고 있는 기관을 나타내는 535(원본/복제본 소재주기) 필드와 관련하여 사용한다."""@ko;
-                      rdfs:domain [owl:unionOf (bibo:Document
-                                                bibo:Collection) ; 
-                                   a owl:Class];
+                      rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                            <http://purl.org/ontology/bibo/Collection>) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>];
                       rdfs:isDefinedBy nlon:;
                       rdfs:label "복제주기"@ko,
                                  "reproduction note"@en;
                       rdfs:range rdfs:Literal;
-                      rdfs:subPropertyOf dcterms:description;
-                      status:term_status "stable".
-nlon:reproductionPlace a owl:DatatypeProperty;
+                      rdfs:subPropertyOf <http://purl.org/dc/terms/description>;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:reproductionPlace a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                        rdfs:comment "복제물이 만들어진 장소의 명칭을 기술한다. 복제장소가 한 곳 이상일 때에는 반복하여 기술할 수 있다."@ko;
-                       rdfs:domain [owl:unionOf (bibo:Document
-                                                 bibo:Collection) ; 
-                                    a owl:Class];
+                       rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                             <http://purl.org/ontology/bibo/Collection>) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>];
                        rdfs:isDefinedBy nlon:;
                        rdfs:label "복제장소"@ko,
                                   "reproduction place"@en;
                        rdfs:range rdfs:Literal;
                        rdfs:subPropertyOf nlon:reproductionNote;
-                       status:term_status "stable".
-nlon:restriction a owl:DatatypeProperty;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:restriction a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:comment """자료를 이용하는데 제한이 있는 경우, 그 접근제한에 관한 내용을 기술한다. 출판된 저작의 경우, 이 필드에 배포 제한사항에 대한 정보를 기술한다.
 
 출판물에 접근하는 것을 제한한다는 의미가 아니라 출판물이 특정 이용자층을 대상으로 만들어졌을 경우, 이는 521(이용대상자 주기) 필드에 기술한다. 자료를 접근한 이후 자료를 이용하거나 복제하는 데 대한 제한 내용은 540(이용과 복제 제한에 관한 주기) 필드에 기술한다.
 
 계속자료(serial)의 경우에는 모든 호수에 대해 제한이 적용되는 경우 사용한다"""@ko;
-                 rdfs:domain [owl:unionOf (bibo:Document
-                                           bibo:Collection) ; 
-                              a owl:Class];
+                 rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                       <http://purl.org/ontology/bibo/Collection>) ; 
+                              a <http://www.w3.org/2002/07/owl#Class>];
                  rdfs:isDefinedBy nlon:;
                  rdfs:label "이용제한사항"@ko,
                             "restriction"@en;
                  rdfs:range rdfs:Literal;
-                 rdfs:subPropertyOf dcterms:description;
-                 status:term_status "stable".
-nlon:scale a owl:DatatypeProperty;
+                 rdfs:subPropertyOf <http://purl.org/dc/terms/description>;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:scale a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
            rdfs:comment "축척이나 그에 상당하는 축척내용을 기술한다. 수직축척이나 지형모형 또는 다른 삼차원자료의 수직확장표시도 이 식별기호에 기술한다."@ko;
            rdfs:isDefinedBy nlon:;
            rdfs:label "축척"@ko,
                       "scale"@en;
-           status:term_status "stable".
-nlon:sourceOfInformation a owl:DatatypeProperty;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:sourceOfInformation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                          rdfs:comment "창간호나 종간호를 소장하지 않아 권·연차를 다른 정보원으로부터 채기한 경우 (제1지시기호가 1) 그 정보원을 참조(Cf.)와 함께 기술한다."@ko;
-                         rdfs:domain bibo:Collection;
+                         rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                          rdfs:isDefinedBy nlon:;
                          rdfs:label "확인자료명"@ko,
                                     "source of information"@en;
                          rdfs:range xsd:string;
-                         status:term_status "stable".
-nlon:sourceOfOtherNumber a owl:DatatypeProperty;
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:sourceOfOtherNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                          rdfs:comment "식별기호 ▾a(분류기호)의 적용 분류표와 판표시를 분류기호 뒤에 기술하되, 분류표는 제1지시기호가 b/(그 외의 분류표)인 경우에만 기술한다. 적용된 분류표의 판이 달라 발생하는 2개 이상의 분류기호의 경우에는 필드를 반복하여 기술하는 것이 바람직하다."@ko;
-                         rdfs:domain [owl:unionOf (bibo:Document
-                                                   bibo:Collection) ; 
-                                      a owl:Class];
+                         rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                               <http://purl.org/ontology/bibo/Collection>) ; 
+                                      a <http://www.w3.org/2002/07/owl#Class>];
                          rdfs:isDefinedBy nlon:;
                          rdfs:label "분류기호 정보원"@ko,
                                     "source of other number"@en;
                          rdfs:range rdfs:Literal;
-                         status:term_status "stable".
-nlon:strn a owl:DatatypeProperty;
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:strn a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
           rdfs:comment "해당자료의 표준기술보고서번호를 기술한다."@ko;
-          rdfs:domain bibo:Document;
+          rdfs:domain <http://purl.org/ontology/bibo/Document>;
           rdfs:isDefinedBy nlon:;
           rdfs:label "표준기술보고서번호"@ko,
                      "Standard Technical Report Number"@en;
           rdfs:range rdfs:Literal;
-          status:term_status "stable".
-nlon:subseriesEntryHeading a owl:DatatypeProperty;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:subseriesEntryHeading a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "식별기호 ▾a는 관련 레코드 100(기본표목-개인명) 필드, 110(기본표목-단체명) 필드, 111(기본표목-회의명) 필드의 기본표목 데이터를 포함한다. 하지만 식별기호에서는 1XX 필드에서 사용하는 개별적인 이름의 요소나 통일표제는 기술되지 않는다."@ko;
                            rdfs:isDefinedBy nlon:;
                            rdfs:label "하위총서저록 기본표목"@ko,
                                       "subseries entry heading"@en;
-                           status:term_status "stable".
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
 nlon:subtitle a rdf:Property;
               rdfs:isDefinedBy nlon:;
               rdfs:label "부제목"@ko,
                          "subtitle"@en;
-              rdfs:subPropertyOf dcterms:title;
-              status:term_status "stable".
-nlon:summerOpenTime a owl:DatatypeProperty;
+              rdfs:subPropertyOf <http://purl.org/dc/terms/title>;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:summerOpenTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:domain nlon:Library;
                     rdfs:isDefinedBy nlon:;
                     rdfs:label "summer open time"@en,
                                "하절기 개관시간"@ko;
                     rdfs:range xsd:string;
-                    status:term_status "stable".
-nlon:supplementNote a owl:DatatypeProperty;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:supplementNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "부록주기를 기술한다. 식별기호 ▾a는 이 주기의 전체 내용을 기술한다."@ko;
-                    rdfs:domain [owl:unionOf (bibo:Document
-                                              bibo:Collection) ; 
-                                 a owl:Class];
+                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                          <http://purl.org/ontology/bibo/Collection>) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>];
                     rdfs:isDefinedBy nlon:;
                     rdfs:label "부록주기"@ko,
                                "supplement note"@en;
                     rdfs:range rdfs:Literal;
-                    rdfs:subPropertyOf dcterms:description;
-                    status:term_status "stable".
-nlon:titleOfAdditionalPhysicalForm a owl:DatatypeProperty;
+                    rdfs:subPropertyOf <http://purl.org/dc/terms/description>;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:titleOfAdditionalPhysicalForm a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                    rdfs:comment "식별기호 ▾t는 관련 레코드의 245(표제와 책임표시사항) 필드 또는 130(기본표목-통일표제) 필드의 식별기호 ▾a, ▾f, ▾g, ▾k, ▾n, ▾p로부터 표제정보를 기술한다. 표제의 개별적인 구성요소들은 별도의 식별기호로 부호화되지 않는다."@ko;
                                    rdfs:isDefinedBy nlon:;
                                    rdfs:label "기타형태저록 표제"@ko,
                                               "title of additional physical form"@en;
-                                   status:term_status "stable".
-nlon:titleOfConstituentUnit a owl:DatatypeProperty;
+                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:titleOfConstituentUnit a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                             rdfs:comment "식별기호 ▾t는 관련 레코드의 245(표제와 책임표시사항) 필드 또는 130(기본표목-통일표제) 필드의 식별기호 ▾a, ▾f, ▾g, ▾k, ▾n, ▾p로부터 표제정보를 기술한다. 표제의 개별적인 구성요소들은 별도의 식별기호로 부호화되지 않는다."@ko;
                             rdfs:isDefinedBy nlon:;
                             rdfs:label "구성단위저록 표제"@ko,
                                        "title of constituent unit"@en;
-                            status:term_status "stable".
-nlon:titleOfHostItem a owl:DatatypeProperty;
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:titleOfHostItem a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:comment "식별기호 ▾t는 관련 레코드의 245(표제와 책임표시사항) 필드 또는 130(기본표목-통일표제) 필드의 식별기호 ▾a, ▾f, ▾g, ▾k, ▾n, ▾p로부터 표제정보를 기술한다. 표제의 개별적인 구성요소들은 별도의 식별기호로 부호화되지 않는다."@ko;
                      rdfs:isDefinedBy nlon:;
                      rdfs:label "기본자료저록 표제"@ko,
                                 "title of host item"@en;
-                     status:term_status "stable".
-nlon:titleOfMainSeries a owl:DatatypeProperty;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:titleOfMainSeries a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                        rdfs:comment "식별기호 ▾t는 관련 레코드의 245(표제와 책임표시사항) 필드 또는 130(기본표목-통일표제) 필드의 식별기호 ▾a, ▾f, ▾g, ▾k, ▾n, ▾p로부터 표제정보를 기술한다. 표제의 개별적인 구성요소들은 별도의 식별기호로 부호화되지 않는다."@ko;
-                       rdfs:domain [owl:unionOf (bibo:Document
-                                                 bibo:Collection) ; 
-                                    a owl:Class];
+                       rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                             <http://purl.org/ontology/bibo/Collection>) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>];
                        rdfs:isDefinedBy nlon:;
                        rdfs:label "상위총서표제"@ko,
                                   "title of main series"@en;
                        rdfs:range xsd:string;
-                       status:term_status "stable".
-nlon:titleOfOriginalLanguage a owl:DatatypeProperty;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:titleOfOriginalLanguage a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                              rdfs:comment "식별기호 ▾t는 관련 레코드의 245(표제와 책임표시사항) 필드 또는 130(기본표목-통일표제) 필드의 식별기호 ▾a, ▾f, ▾g, ▾k, ▾n, ▾p로부터 표제정보를 기술한다. 표제의 개별적인 구성요소들은 별도의 식별기호로 부호화되지 않는다."@ko;
                              rdfs:isDefinedBy nlon:;
                              rdfs:label "원저표제"@ko,
                                         "title of original language"@en;
                              rdfs:range xsd:string;
-                             status:term_status "stable".
-nlon:titleOfOtherEdition a owl:DatatypeProperty;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:titleOfOtherEdition a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                          rdfs:comment "식별기호 ▾t는 관련 레코드의 245(표제와 책임표시사항) 필드 또는 130(기본표목-통일표제) 필드의 식별기호 ▾a, ▾f, ▾g, ▾k, ▾n, ▾p로부터 표제정보를 기술한다. 표제의 개별적인 구성요소들은 별도의 식별기호로 부호화되지 않는다."@ko;
                          rdfs:isDefinedBy nlon:;
                          rdfs:label "이판저록 표제"@ko,
                                     "title of other edition"@en;
-                         status:term_status "stable".
-nlon:titleOfPreceding a owl:DatatypeProperty;
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:titleOfPreceding a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "식별기호 ▾t는 관련 레코드의 245(표제와 책임표시사항) 필드 또는 130(기본표목-통일표제) 필드의 식별기호 ▾a, ▾f, ▾g, ▾k, ▾n, ▾p로부터 표제정보를 기술한다. 표제의 개별적인 구성요소들은 별도의 식별기호로 부호화되지 않는다."@ko;
                       rdfs:isDefinedBy nlon:;
                       rdfs:label "선행저록 표제"@ko,
                                  "title of preceding"@en;
-                      status:term_status "stable".
-nlon:titleOfSeries a owl:DatatypeProperty;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:titleOfSeries a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:comment """이 필드에는 총서사항과 총서표제의 부출표목이 같은 경우에 총서사항을 기술한다. 이 필드는 총서사항이자 총서부출표목이다. 440 필드가 있는 경우, 이에 대응하는 830 필드는 440 필드와 중복되기 때문에 사용되지 않는다.
 
 총서사항은 매체 표시(식별기호 ▾h)를 포함하지 않으므로, 총서부출표목에 매체 표시가 필요한 경우, 490 필드가 총서부출표목에 대응하는 8XX 필드와 함께 총서사항에 사용된다."""@ko;
-                   rdfs:domain [owl:unionOf (bibo:Document
-                                             bibo:Collection) ; 
-                                a owl:Class];
+                   rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                         <http://purl.org/ontology/bibo/Collection>) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>];
                    rdfs:isDefinedBy nlon:;
                    rdfs:label "총서표제"@ko,
                               "title of series"@en;
                    rdfs:range xsd:string;
-                   status:term_status "stable".
-nlon:titleOfSubSeries a owl:DatatypeProperty;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:titleOfSubSeries a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "식별기호 ▾t는 관련 레코드의 245(표제와 책임표시사항) 필드 또는 130(기본표목-통일표제) 필드의 식별기호 ▾a, ▾f, ▾g, ▾k, ▾n, ▾p로부터 표제정보를 기술한다. 표제의 개별적인 구성요소들은 별도의 식별기호로 부호화되지 않는다."@ko;
                       rdfs:isDefinedBy nlon:;
                       rdfs:label "하위총서표제"@ko,
                                  "title of sub series"@en;
-                      status:term_status "stable".
-nlon:titleOfSucceeding a owl:DatatypeProperty;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:titleOfSucceeding a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                        rdfs:comment "식별기호 ▾t는 관련 레코드의 245(표제와 책임표시사항) 필드 또는 130(기본표목-통일표제) 필드의 식별기호 ▾a, ▾f, ▾g, ▾k, ▾n, ▾p로부터 표제정보를 기술한다. 표제의 개별적인 구성요소들은 별도의 식별기호로 부호화되지 않는다."@ko;
                        rdfs:isDefinedBy nlon:;
                        rdfs:label "후속저록 표제"@ko,
                                   "title of succeeding"@en;
-                       status:term_status "stable".
-nlon:titleOfSupplement a owl:DatatypeProperty;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:titleOfSupplement a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                        rdfs:comment "식별기호 ▾t는 관련 레코드의 245(표제와 책임표시사항) 필드 또는 130(기본표목-통일표제) 필드의 식별기호 ▾a, ▾f, ▾g, ▾k, ▾n, ▾p로부터 표제정보를 기술한다. 표제의 개별적인 구성요소들은 별도의 식별기호로 부호화되지 않는다."@ko;
                        rdfs:isDefinedBy nlon:;
                        rdfs:label "보유판 및 특별호저록 표제"@ko,
                                   "title of supplement"@en;
-                       status:term_status "stable".
-nlon:titleOfSupplementParent a owl:DatatypeProperty;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:titleOfSupplementParent a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                              rdfs:comment "식별기호 ▾t는 관련 레코드의 245(표제와 책임표시사항) 필드 또는 130(기본표목-통일표제) 필드의 식별기호 ▾a, ▾f, ▾g, ▾k, ▾n, ▾p로부터 표제정보를 기술한다. 표제의 개별적인 구성요소들은 별도의 식별기호로 부호화되지 않는다."@ko;
                              rdfs:isDefinedBy nlon:;
                              rdfs:label "모체레코드저록 표제"@ko,
                                         "title of supplement parent"@en;
-                             status:term_status "stable".
-nlon:titleOfTranslation a owl:DatatypeProperty;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:titleOfTranslation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                         rdfs:comment "식별기호 ▾t는 관련 레코드의 245(표제와 책임표시사항) 필드 또는 130(기본표목-통일표제) 필드의 식별기호 ▾a, ▾f, ▾g, ▾k, ▾n, ▾p로부터 표제정보를 기술한다. 표제의 개별적인 구성요소들은 별도의 식별기호로 부호화되지 않는다."@ko;
                         rdfs:isDefinedBy nlon:;
                         rdfs:label "번역저록 표제"@ko,
                                    "title of translation"@en;
                         rdfs:range xsd:string;
-                        status:term_status "stable".
-nlon:typeOfContinuousData a owl:ObjectProperty;
-                          rdfs:domain bibo:Collection;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:typeOfContinuousData a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                           rdfs:isDefinedBy nlon:;
                           rdfs:label "type of continuous data"@en,
                                      "연속자료유형"@ko;
                           rdfs:range nlon:ContinuousDataType;
-                          status:term_status "stable".
-nlon:typeOfData a owl:ObjectProperty;
-                rdfs:domain [owl:unionOf (bibo:Document
-                                          bibo:Collection) ; 
-                             a owl:Class];
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:typeOfData a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                      <http://purl.org/ontology/bibo/Collection>) ; 
+                             a <http://www.w3.org/2002/07/owl#Class>];
                 rdfs:isDefinedBy nlon:;
                 rdfs:label "type of data"@en,
                            "자료유형"@ko;
                 rdfs:range nlon:DataType;
-                status:term_status "stable".
-nlon:typeOfPublicationFrequency a owl:ObjectProperty;
-                                rdfs:domain bibo:Collection;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:typeOfPublicationFrequency a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                                 rdfs:isDefinedBy nlon:;
                                 rdfs:label "type of publication frequency"@en,
                                            "간행빈도유형"@ko;
                                 rdfs:range nlon:PublicationFrequencyType;
-                                status:term_status "stable".
-nlon:typeOfPublicationStatus a owl:ObjectProperty;
-                             rdfs:domain bibo:Collection;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:typeOfPublicationStatus a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                              rdfs:isDefinedBy nlon:;
                              rdfs:label "type of publication status"@en,
                                         "간행상태유형"@ko;
                              rdfs:range nlon:PublicationStatusType;
-                             status:term_status "stable".
-nlon:typeOfResource a owl:ObjectProperty;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:typeOfResource a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:domain nlon:OnlineMaterial;
                     rdfs:isDefinedBy nlon:;
                     rdfs:label "type of resource"@en,
                                "콘텐츠유형"@ko;
                     rdfs:range nlon:OnlineMaterialType;
-                    status:term_status "stable".
-nlon:uci a owl:DatatypeProperty;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:uci a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
          rdfs:comment "한국형 URN 식별 체계";
          rdfs:isDefinedBy nlon:;
          rdfs:label "Universal Content Identifier"@en,
                     "국가디지털콘텐츠식별체계"@ko;
-         status:term_status "stable".
-nlon:uniformTitleOfSeries a owl:DatatypeProperty;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:uniformTitleOfSeries a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                           rdfs:comment "이 필드는 총서의 부출표목이 서명일 경우를 나타낸다. 830 필드는 보통 총서와 관련된 필드 490 필드의 총서사항이나 500 필드의 일반주기로 판단될 수 있다. 복제물의 경우 533(복제주기) 필드의 ▾f(복제 총서사항)에 기술된 것을 근거로 기술할 수 있다."@ko;
                           rdfs:isDefinedBy nlon:;
                           rdfs:label "통일표제"@ko,
                                      "uniform title of series"@en;
                           rdfs:range xsd:string;
-                          status:term_status "stable".
-nlon:useAndReproductionNote a owl:DatatypeProperty;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:useAndReproductionNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                             rdfs:comment "이용과 복제에 관한 사항을 기술한다. 이 사항은 법적인 효력을 가지고 있거나 공식적인 제한규정을 의미하는 것이다."@ko;
-                            rdfs:domain [owl:unionOf (bibo:Document
-                                                      bibo:Collection) ; 
-                                         a owl:Class];
+                            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://purl.org/ontology/bibo/Document>
+                                                                                  <http://purl.org/ontology/bibo/Collection>) ; 
+                                         a <http://www.w3.org/2002/07/owl#Class>];
                             rdfs:isDefinedBy nlon:;
                             rdfs:label "이용과 복제 제한에 관한 주기"@ko,
                                        "use and reproduction note"@en;
                             rdfs:range rdfs:Literal;
-                            rdfs:subPropertyOf dcterms:description;
-                            status:term_status "stable".
-nlon:volumeOfNLK a owl:DatatypeProperty;
+                            rdfs:subPropertyOf <http://purl.org/dc/terms/description>;
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:volumeOfNLK a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:comment "국립중앙도서관 청구기호상의 권·연차기호를 기술한다. 권·연차가 연속된 경우에는 처음 권·연차와 마지막 권·연차를 붙임표( - )로 연결한다. 단, 현재 계속 간행중인 경우에는 처음 권·연차 뒤에 붙임표( - )까지만 입력한다"@ko;
-                 rdfs:domain bibo:Document;
+                 rdfs:domain <http://purl.org/ontology/bibo/Document>;
                  rdfs:isDefinedBy nlon:;
                  rdfs:label "volume of NLK"@en,
                             "국립중앙도서관 청구기호 권연차기호"@ko;
                  rdfs:range rdfs:Literal;
-                 rdfs:subPropertyOf bibo:volume;
-                 status:term_status "stable".
-nlon:volumeOfSeries a owl:DatatypeProperty;
+                 rdfs:subPropertyOf <http://purl.org/ontology/bibo/volume>;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:volumeOfSeries a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "총서에 주어진 권차 또는 차례를 나타내는 명칭을 기술한다."@ko;
-                    rdfs:domain bibo:Collection;
+                    rdfs:domain <http://purl.org/ontology/bibo/Collection>;
                     rdfs:isDefinedBy nlon:;
                     rdfs:label "volume of series"@en,
                                "총서번호"@ko;
                     rdfs:range xsd:string;
-                    status:term_status "stable".
-nlon:winterOpenTime a owl:DatatypeProperty;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+nlon:winterOpenTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:domain nlon:Library;
                     rdfs:isDefinedBy nlon:;
                     rdfs:label "winter open time"@en,
                                "동절기 개관시간"@ko;
                     rdfs:range xsd:string;
-                    status:term_status "stable".
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
 <http://lod.nl.go.kr/resource/book> a nlon:OnlineMaterialType;
                                     rdfs:label "일반도서"@ko,
                                                "book".
@@ -1389,7 +1372,7 @@ nlon:winterOpenTime a owl:DatatypeProperty;
 <http://lod.nl.go.kr/resource/marketResearchReport> a nlon:OnlineMaterialType;
                                                     rdfs:label "시장 조사 보고서"@ko,
                                                                "market research report".
-<http://lod.nl.go.kr/resource/master> a bibo:ThesisDegree;
+<http://lod.nl.go.kr/resource/master> a <http://purl.org/ontology/bibo/ThesisDegree>;
                                       rdfs:comment "masters degree";
                                       rdfs:label "master".
 <http://lod.nl.go.kr/resource/newspaper> a nlon:OnlineMaterialType;
@@ -1503,17 +1486,17 @@ nlon:winterOpenTime a owl:DatatypeProperty;
 <http://lod.nl.go.kr/resource/workingPaper> a nlon:OnlineMaterialType;
                                             rdfs:label "조사 보고서"@ko,
                                                        "working paper".
-event:Event rdfs:subClassOf owl:Thing.
-bibo:Collection a owl:Class;
-                rdfs:subClassOf owl:Thing.
-bibo:Document a owl:Class;
-              rdfs:subClassOf owl:Thing.
-bibo:DocumentStatus rdfs:subClassOf owl:Thing.
-bibo:Event rdfs:subClassOf owl:Thing.
-bibo:ThesisDegree rdfs:subClassOf owl:Thing.
-wgspos:SpatialThing rdfs:subClassOf owl:Thing.
-skos:Collection rdfs:subClassOf owl:Thing.
-skos:Concept rdfs:subClassOf owl:Thing.
-skos:ConceptScheme rdfs:subClassOf owl:Thing.
-foaf:Agent rdfs:subClassOf owl:Thing.
-foaf:Project rdfs:subClassOf owl:Thing.
+<http://purl.org/NET/c4dm/event.owl#Event> rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+<http://purl.org/ontology/bibo/Collection> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+<http://purl.org/ontology/bibo/Document> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+<http://purl.org/ontology/bibo/DocumentStatus> rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+<http://purl.org/ontology/bibo/Event> rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+<http://purl.org/ontology/bibo/ThesisDegree> rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+<http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+<http://www.w3.org/2004/02/skos/core#Collection> rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+<http://www.w3.org/2004/02/skos/core#Concept> rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+<http://www.w3.org/2004/02/skos/core#ConceptScheme> rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+<http://xmlns.com/foaf/0.1/Agent> rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+<http://xmlns.com/foaf/0.1/Project> rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.

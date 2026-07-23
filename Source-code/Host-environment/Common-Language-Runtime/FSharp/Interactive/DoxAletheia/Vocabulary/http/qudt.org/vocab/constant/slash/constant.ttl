@@ -14,12 +14,6 @@
 @prefix sou: <http://qudt.org/vocab/sou/>.
 @prefix unit: <http://qudt.org/vocab/unit/>.
 @prefix vaem: <http://www.linkedmodel.org/schema/vaem#>.
-@prefix qk: <http://qudt.org/vocab/quantitykind/>.
-@prefix planet: <http://dbpedia.org/>.
-@prefix resource: <http://dbpedia.org/resource/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix qudt_dimensionvector: <http://qudt.org/vocab/dimensionvector>.
-@prefix qudt_quantitykind: <http://qudt.org/vocab/quantitykind>.
 
 <http://qudt.org/3.1.10/vocab/constant> vaem:hasGraphMetadata vaem:GMD_QUDT-CONSTANTS;
                                         a owl:Ontology;
@@ -33,49 +27,49 @@ constant:AlphaParticleElectronMassRatio qudt:hasQuantityKind quantitykind:Dimens
                                         a qudt:PhysicalConstant;
                                         rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                         rdfs:label "Alpha particle-electron mass ratio"@en;
-                                        skos:closeMatch resource:Alpha_particle.
+                                        skos:closeMatch <http://dbpedia.org/resource/Alpha_particle>.
 constant:AlphaParticleMass qudt:hasQuantityKind quantitykind:Mass;
                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                            qudt:quantityValue constant:Value_AlphaParticleMass;
                            a qudt:PhysicalConstant;
                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                            rdfs:label "Alpha particle mass"@en;
-                           skos:closeMatch resource:Alpha_particle.
+                           skos:closeMatch <http://dbpedia.org/resource/Alpha_particle>.
 constant:AlphaParticleMassEnergyEquivalent qudt:hasQuantityKind quantitykind:Energy;
                                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                            qudt:quantityValue constant:Value_AlphaParticleMassEnergyEquivalent;
                                            a qudt:PhysicalConstant;
                                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                            rdfs:label "alpha particle mass energy equivalent"@en;
-                                           skos:closeMatch resource:Alpha_particle.
+                                           skos:closeMatch <http://dbpedia.org/resource/Alpha_particle>.
 constant:AlphaParticleMassEnergyEquivalentInMeV qudt:hasQuantityKind quantitykind:Energy;
                                                 qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                 qudt:quantityValue constant:Value_AlphaParticleMassEnergyEquivalentInMeV;
                                                 a qudt:PhysicalConstant;
                                                 rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                 rdfs:label "Alpha particle mass energy equivalent in Me V"@en;
-                                                skos:closeMatch resource:Alpha_particle.
+                                                skos:closeMatch <http://dbpedia.org/resource/Alpha_particle>.
 constant:AlphaParticleMassInAtomicMassUnit qudt:hasQuantityKind quantitykind:Mass;
                                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                            qudt:quantityValue constant:Value_AlphaParticleMassInAtomicMassUnit;
                                            a qudt:PhysicalConstant;
                                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                            rdfs:label "alpha particle mass in atomic mass unit"@en;
-                                           skos:closeMatch resource:Alpha_particle.
+                                           skos:closeMatch <http://dbpedia.org/resource/Alpha_particle>.
 constant:AlphaParticleMolarMass qudt:hasQuantityKind quantitykind:MolarMass;
                                 qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                 qudt:quantityValue constant:Value_AlphaParticleMolarMass;
                                 a qudt:PhysicalConstant;
                                 rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                 rdfs:label "alpha particle molar mass"@en;
-                                skos:closeMatch resource:Alpha_particle.
+                                skos:closeMatch <http://dbpedia.org/resource/Alpha_particle>.
 constant:AlphaParticleProtonMassRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                       qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                       qudt:quantityValue constant:Value_AlphaParticleProtonMassRatio;
                                       a qudt:PhysicalConstant;
                                       rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                       rdfs:label "alpha particle-proton mass ratio"@en;
-                                      skos:closeMatch resource:Alpha_particle.
+                                      skos:closeMatch <http://dbpedia.org/resource/Alpha_particle>.
 constant:AngstromStar qudt:hasQuantityKind quantitykind:Length;
                       qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                       qudt:quantityValue constant:Value_AngstromStar;
@@ -104,35 +98,35 @@ constant:AtomicMassConstantEnergyEquivalent qudt:hasQuantityKind quantitykind:En
                                             a qudt:PhysicalConstant;
                                             rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                             rdfs:label "atomic mass constant energy equivalent"@en;
-                                            skos:closeMatch resource:Atomic_mass_constant.
+                                            skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_constant>.
 constant:AtomicMassConstantEnergyEquivalentInMeV qudt:hasQuantityKind quantitykind:Energy;
                                                  qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                  qudt:quantityValue constant:Value_AtomicMassConstantEnergyEquivalentInMeV;
                                                  a qudt:PhysicalConstant;
                                                  rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                  rdfs:label "atomic mass constant energy equivalent in MeV"@en;
-                                                 skos:closeMatch resource:Atomic_mass_constant.
+                                                 skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_constant>.
 constant:AtomicMassUnitElectronVoltRelationship qudt:hasQuantityKind quantitykind:Energy;
                                                 qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                 qudt:quantityValue constant:Value_AtomicMassUnitElectronVoltRelationship;
                                                 a qudt:PhysicalConstant;
                                                 rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                 rdfs:label "atomic mass unit-electron volt relationship"@en;
-                                                skos:closeMatch resource:Electron_volt.
+                                                skos:closeMatch <http://dbpedia.org/resource/Electron_volt>.
 constant:AtomicMassUnitHartreeRelationship qudt:hasQuantityKind quantitykind:Energy;
                                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                            qudt:quantityValue constant:Value_AtomicMassUnitHartreeRelationship;
                                            a qudt:PhysicalConstant;
                                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                            rdfs:label "atomic mass unit-hartree relationship"@en;
-                                           skos:closeMatch resource:Atomic_mass_unit.
+                                           skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:AtomicMassUnitHertzRelationship qudt:hasQuantityKind quantitykind:Frequency;
                                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                          qudt:quantityValue constant:Value_AtomicMassUnitHertzRelationship;
                                          a qudt:PhysicalConstant;
                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                          rdfs:label "atomic mass unit-hertz relationship"@en;
-                                         skos:closeMatch resource:Atomic_mass_unit.
+                                         skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:AtomicMassUnitInverseMeterRelationship qudt:hasQuantityKind quantitykind:InverseLength;
                                                 qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                 qudt:quantityValue constant:Value_AtomicMassUnitInverseMeterRelationship;
@@ -140,49 +134,49 @@ constant:AtomicMassUnitInverseMeterRelationship qudt:hasQuantityKind quantitykin
                                                 rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                 rdfs:label "atomic mass unit-inverse meter relationship"@en-us,
                                                            "atomic mass unit-inverse metre relationship"@en;
-                                                skos:closeMatch resource:Atomic_mass_unit.
+                                                skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:AtomicMassUnitJouleRelationship qudt:hasQuantityKind quantitykind:Energy;
                                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                          qudt:quantityValue constant:Value_AtomicMassUnitJouleRelationship;
                                          a qudt:PhysicalConstant;
                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                          rdfs:label "atomic mass unit-joule relationship"@en;
-                                         skos:closeMatch resource:Atomic_mass_unit.
+                                         skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:AtomicMassUnitKelvinRelationship qudt:hasQuantityKind quantitykind:ThermodynamicTemperature;
                                           qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                           qudt:quantityValue constant:Value_AtomicMassUnitKelvinRelationship;
                                           a qudt:PhysicalConstant;
                                           rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                           rdfs:label "atomic mass unit-kelvin relationship"@en;
-                                          skos:closeMatch resource:Atomic_mass_unit.
+                                          skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:AtomicMassUnitKilogramRelationship qudt:hasQuantityKind quantitykind:Mass;
                                             qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                             qudt:quantityValue constant:Value_AtomicMassUnitKilogramRelationship;
                                             a qudt:PhysicalConstant;
                                             rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                             rdfs:label "atomic mass unit-kilogram relationship"@en;
-                                            skos:closeMatch resource:Atomic_mass_unit.
+                                            skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:AtomicUnitOf1stHyperpolarizablity qudt:hasQuantityKind quantitykind:CubicElectricDipoleMomentPerSquareEnergy;
                                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                            qudt:quantityValue constant:Value_AtomicUnitOf1stHyperpolarizability;
                                            a qudt:PhysicalConstant;
                                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                            rdfs:label "atomic unit of 1st hyperpolarizablity"@en;
-                                           skos:closeMatch resource:Atomic_units.
+                                           skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOf2ndHyperpolarizablity qudt:hasQuantityKind quantitykind:QuarticElectricDipoleMomentPerCubicEnergy;
                                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                            qudt:quantityValue constant:Value_AtomicUnitOf2ndHyperpolarizability;
                                            a qudt:PhysicalConstant;
                                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                            rdfs:label "atomic unit of 2nd hyperpolarizablity"@en;
-                                           skos:closeMatch resource:Atomic_units.
+                                           skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfAction qudt:hasQuantityKind quantitykind:Action;
                             qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                             qudt:quantityValue constant:Value_AtomicUnitOfAction;
                             a qudt:PhysicalConstant;
                             rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                             rdfs:label "atomic unit of action"@en;
-                            skos:closeMatch resource:Atomic_units.
+                            skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfCharge qudt:exactMatch constant:ElementaryCharge;
                             qudt:hasQuantityKind quantitykind:ElectricCharge;
                             qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
@@ -190,119 +184,119 @@ constant:AtomicUnitOfCharge qudt:exactMatch constant:ElementaryCharge;
                             a qudt:PhysicalConstant;
                             rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                             rdfs:label "atomic unit of charge"@en;
-                            skos:closeMatch resource:Atomic_units.
+                            skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfChargeDensity qudt:hasQuantityKind quantitykind:ElectricChargeVolumeDensity;
                                    qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                    qudt:quantityValue constant:Value_AtomicUnitOfChargeDensity;
                                    a qudt:PhysicalConstant;
                                    rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                    rdfs:label "atomic unit of charge density"@en;
-                                   skos:closeMatch resource:Atomic_units.
+                                   skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfCurrent qudt:hasQuantityKind quantitykind:ElectricCurrent;
                              qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                              qudt:quantityValue constant:Value_AtomicUnitOfCurrent;
                              a qudt:PhysicalConstant;
                              rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                              rdfs:label "atomic unit of current"@en;
-                             skos:closeMatch resource:Atomic_units.
+                             skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfElectricDipoleMoment qudt:hasQuantityKind quantitykind:ElectricDipoleMoment;
                                           qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                           qudt:quantityValue constant:Value_AtomicUnitOfElectricDipoleMoment;
                                           a qudt:PhysicalConstant;
                                           rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                           rdfs:label "atomic unit of electric dipole mom."@en;
-                                          skos:closeMatch resource:Atomic_units.
+                                          skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfElectricField qudt:hasQuantityKind quantitykind:ElectricFieldStrength;
                                    qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                    qudt:quantityValue constant:Value_AtomicUnitOfElectricField;
                                    a qudt:PhysicalConstant;
                                    rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                    rdfs:label "atomic unit of electric field"@en;
-                                   skos:closeMatch resource:Atomic_units.
+                                   skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfElectricFieldGradient qudt:hasQuantityKind quantitykind:EnergyPerAreaElectricCharge;
                                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                            qudt:quantityValue constant:Value_AtomicUnitOfElectricFieldGradient;
                                            a qudt:PhysicalConstant;
                                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                            rdfs:label "atomic unit of electric field gradient"@en;
-                                           skos:closeMatch resource:Atomic_units.
+                                           skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfElectricPolarizablity qudt:hasQuantityKind quantitykind:Polarizability;
                                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                            qudt:quantityValue constant:Value_AtomicUnitOfElectricPolarizability;
                                            a qudt:PhysicalConstant;
                                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                            rdfs:label "atomic unit of electric polarizablity"@en;
-                                           skos:closeMatch resource:Atomic_units.
+                                           skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfElectricPotential qudt:hasQuantityKind quantitykind:EnergyPerElectricCharge;
                                        qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                        qudt:quantityValue constant:Value_AtomicUnitOfElectricPotential;
                                        a qudt:PhysicalConstant;
                                        rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                        rdfs:label "atomic unit of electric potential"@en;
-                                       skos:closeMatch resource:Atomic_units.
+                                       skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfElectricQuadrupoleMoment qudt:hasQuantityKind quantitykind:ElectricQuadrupoleMoment;
                                               qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                               qudt:quantityValue constant:Value_AtomicUnitOfElectricQuadrupoleMoment;
                                               a qudt:PhysicalConstant;
                                               rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                               rdfs:label "atomic unit of electric quadrupole moment"@en;
-                                              skos:closeMatch resource:Atomic_units.
+                                              skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfEnergy qudt:hasQuantityKind quantitykind:Energy;
                             qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                             qudt:quantityValue constant:Value_AtomicUnitOfEnergy;
                             a qudt:PhysicalConstant;
                             rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                             rdfs:label "atomic unit of energy"@en;
-                            skos:closeMatch resource:Atomic_units.
+                            skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfForce qudt:hasQuantityKind quantitykind:Force;
                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                            qudt:quantityValue constant:Value_AtomicUnitOfForce;
                            a qudt:PhysicalConstant;
                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                            rdfs:label "atomic unit of force"@en;
-                           skos:closeMatch resource:Atomic_units.
+                           skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfLength qudt:hasQuantityKind quantitykind:Length;
                             qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                             qudt:quantityValue constant:Value_AtomicUnitOfLength;
                             a qudt:PhysicalConstant;
                             rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                             rdfs:label "atomic unit of length"@en;
-                            skos:closeMatch resource:Atomic_units.
+                            skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfMagneticDipoleMoment qudt:hasQuantityKind quantitykind:MagneticDipoleMoment;
                                           qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                           qudt:quantityValue constant:Value_AtomicUnitOfMagneticDipoleMoment;
                                           a qudt:PhysicalConstant;
                                           rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                           rdfs:label "atomic unit of magnetic dipole moment"@en;
-                                          skos:closeMatch resource:Atomic_units.
+                                          skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfMagneticFluxDensity qudt:hasQuantityKind quantitykind:MagneticFluxDensity;
                                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                          qudt:quantityValue constant:Value_AtomicUnitOfMagneticFluxDensity;
                                          a qudt:PhysicalConstant;
                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                          rdfs:label "atomic unit of magnetic flux density"@en;
-                                         skos:closeMatch resource:Atomic_units.
+                                         skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfMagnetizability qudt:hasQuantityKind quantitykind:EnergyPerSquareMagneticFluxDensity;
                                      qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                      qudt:quantityValue constant:Value_AtomicUnitOfMagnetizability;
                                      a qudt:PhysicalConstant;
                                      rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                      rdfs:label "atomic unit of magnetizability"@en;
-                                     skos:closeMatch resource:Atomic_units.
+                                     skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfMass qudt:hasQuantityKind quantitykind:Mass;
                           qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                           qudt:quantityValue constant:Value_AtomicUnitOfMass;
                           a qudt:PhysicalConstant;
                           rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                           rdfs:label "atomic unit of mass"@en;
-                          skos:closeMatch resource:Atomic_units.
+                          skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfMomentum qudt:hasQuantityKind quantitykind:LinearMomentum;
                               qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                               qudt:quantityValue constant:Value_AtomicUnitOfMomentum;
                               a qudt:PhysicalConstant;
                               rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                               rdfs:label "atomic unit of momentum"@en;
-                              skos:closeMatch resource:Atomic_units.
+                              skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfPermittivity qudt:exactConstant true;
                                   qudt:hasQuantityKind quantitykind:Permittivity;
                                   qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
@@ -310,21 +304,21 @@ constant:AtomicUnitOfPermittivity qudt:exactConstant true;
                                   a qudt:PhysicalConstant;
                                   rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                   rdfs:label "atomic unit of permittivity"@en;
-                                  skos:closeMatch resource:Atomic_units.
+                                  skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfTime qudt:hasQuantityKind quantitykind:Time;
                           qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                           qudt:quantityValue constant:Value_AtomicUnitOfTime;
                           a qudt:PhysicalConstant;
                           rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                           rdfs:label "atomic unit of time"@en;
-                          skos:closeMatch resource:Atomic_units.
+                          skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AtomicUnitOfVelocity qudt:hasQuantityKind quantitykind:LinearVelocity;
                               qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                               qudt:quantityValue constant:Value_AtomicUnitOfVelocity;
                               a qudt:PhysicalConstant;
                               rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                               rdfs:label "atomic unit of velocity"@en;
-                              skos:closeMatch resource:Atomic_units.
+                              skos:closeMatch <http://dbpedia.org/resource/Atomic_units>.
 constant:AvogadroConstant dcterms:description """
   The $\\textit{Avogadro Constant}$ is defined as the ratio of the number of constituent particles N in
    a sample to the amount of substance $n$ through the relationship $NA = N/n$. 
@@ -371,14 +365,14 @@ constant:BohrMagnetonInEVPerT qudt:hasQuantityKind quantitykind:MagneticDipoleMo
                               a qudt:PhysicalConstant;
                               rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                               rdfs:label "Bohr magneton in eV per T"@en;
-                              skos:closeMatch resource:Bohr_magneton.
+                              skos:closeMatch <http://dbpedia.org/resource/Bohr_magneton>.
 constant:BohrMagnetonInHzPerT qudt:hasQuantityKind quantitykind:ElectricChargePerMass;
                               qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                               qudt:quantityValue constant:Value_BohrMagnetonInHzPerT;
                               a qudt:PhysicalConstant;
                               rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                               rdfs:label "Bohr magneton in Hz perT"@en;
-                              skos:closeMatch resource:Bohr_magneton.
+                              skos:closeMatch <http://dbpedia.org/resource/Bohr_magneton>.
 constant:BohrMagnetonInInverseMetersPerTesla qudt:hasQuantityKind quantitykind:MagneticReluctivity;
                                              qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                              qudt:quantityValue constant:Value_BohrMagnetonInInverseMetersPerTesla;
@@ -386,14 +380,14 @@ constant:BohrMagnetonInInverseMetersPerTesla qudt:hasQuantityKind quantitykind:M
                                              rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                              rdfs:label "Bohr magneton in inverse meters per tesla"@en-us,
                                                         "Bohr magneton in inverse metres per tesla"@en;
-                                             skos:closeMatch resource:Bohr_magneton.
+                                             skos:closeMatch <http://dbpedia.org/resource/Bohr_magneton>.
 constant:BohrMagnetonInKPerT qudt:hasQuantityKind quantitykind:TemperaturePerMagneticFluxDensity;
                              qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                              qudt:quantityValue constant:Value_BohrMagnetonInKPerT;
                              a qudt:PhysicalConstant;
                              rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                              rdfs:label "Bohr magneton in K per T"@en;
-                             skos:closeMatch resource:Bohr_magneton.
+                             skos:closeMatch <http://dbpedia.org/resource/Bohr_magneton>.
 constant:BohrRadius dcterms:description """
   The $\\textit{Bohr Radius}$ is a physical constant, approximately equal to the most probable distance
    between the proton and electron in a hydrogen atom in its ground state. 
@@ -462,14 +456,14 @@ constant:BoltzmannConstantInEVPerK qudt:hasQuantityKind quantitykind:HeatCapacit
                                    a qudt:PhysicalConstant;
                                    rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                    rdfs:label "Boltzmann constant in eV per K"@en;
-                                   skos:closeMatch resource:Boltzmann_constant.
+                                   skos:closeMatch <http://dbpedia.org/resource/Boltzmann_constant>.
 constant:BoltzmannConstantInHzPerK qudt:hasQuantityKind quantitykind:InverseTimeTemperature;
                                    qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                    qudt:quantityValue constant:Value_BoltzmannConstantInHzPerK;
                                    a qudt:PhysicalConstant;
                                    rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                    rdfs:label "Boltzmann constant in Hz per K"@en;
-                                   skos:closeMatch resource:Boltzmann_constant.
+                                   skos:closeMatch <http://dbpedia.org/resource/Boltzmann_constant>.
 constant:BoltzmannConstantInInverseMetersPerKelvin qudt:hasQuantityKind quantitykind:InverseLengthTemperature;
                                                    qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                    qudt:quantityValue constant:Value_BoltzmannConstantInInverseMetersPerKelvin;
@@ -477,7 +471,7 @@ constant:BoltzmannConstantInInverseMetersPerKelvin qudt:hasQuantityKind quantity
                                                    rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                    rdfs:label "Boltzmann constant in inverse meters per kelvin"@en-us,
                                                               "Boltzmann constant in inverse metres per kelvin"@en;
-                                                   skos:closeMatch resource:Boltzmann_constant.
+                                                   skos:closeMatch <http://dbpedia.org/resource/Boltzmann_constant>.
 constant:CharacteristicImpedanceOfVacuum dcterms:description """
   The constant $\\textit{Characteristic Impedance of Vacuum}$, symbol $Z0$ is the impedance of free space.
   This is a physical constant relating the magnitudes of the electric and magnetic fields of electromagnetic radiation travelling through free space. 
@@ -527,7 +521,7 @@ constant:ComptonWavelengthOver2Pi qudt:hasQuantityKind quantitykind:Length;
                                   a qudt:PhysicalConstant;
                                   rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                   rdfs:label "Compton wavelength over 2 pi"@en;
-                                  skos:closeMatch resource:Compton_wavelength.
+                                  skos:closeMatch <http://dbpedia.org/resource/Compton_wavelength>.
 constant:ConductanceQuantum qudt:dbpediaMatch "http://dbpedia.org/resource/Conductance_quantum"^^xsd:anyURI;
                             qudt:hasQuantityKind quantitykind:ElectricConductivity;
                             qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
@@ -542,7 +536,7 @@ constant:ConventionalValueOfJosephsonConstant qudt:exactConstant true;
                                               a qudt:PhysicalConstant;
                                               rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                               rdfs:label "conventional value of Josephson constant"@en;
-                                              skos:closeMatch resource:Magnetic_flux_quantum.
+                                              skos:closeMatch <http://dbpedia.org/resource/Magnetic_flux_quantum>.
 constant:ConventionalValueOfVonKlitzingConstant qudt:exactConstant true;
                                                 qudt:hasQuantityKind quantitykind:Resistance;
                                                 qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
@@ -550,21 +544,21 @@ constant:ConventionalValueOfVonKlitzingConstant qudt:exactConstant true;
                                                 a qudt:PhysicalConstant;
                                                 rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                 rdfs:label "conventional value of von Klitzing constant"@en;
-                                                skos:closeMatch resource:Quantum_Hall_effect.
+                                                skos:closeMatch <http://dbpedia.org/resource/Quantum_Hall_effect>.
 constant:CuXUnit qudt:hasQuantityKind quantitykind:Length;
                  qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                  qudt:quantityValue constant:Value_CuXUnit;
                  a qudt:PhysicalConstant;
                  rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                  rdfs:label "Cu x unit"@en;
-                 skos:closeMatch resource:X_unit.
+                 skos:closeMatch <http://dbpedia.org/resource/X_unit>.
 constant:DeuteronElectronMagneticMomentRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                              qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                              qudt:quantityValue constant:Value_DeuteronElectronMagneticMomentRatio;
                                              a qudt:PhysicalConstant;
                                              rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                              rdfs:label "deuteron-electron magnetic moment ratio"@en;
-                                             skos:closeMatch resource:Electron_magnetic_dipole_moment.
+                                             skos:closeMatch <http://dbpedia.org/resource/Electron_magnetic_dipole_moment>.
 constant:DeuteronElectronMassRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                    qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                    qudt:quantityValue constant:Value_DeuteronElectronMassRatio;
@@ -577,28 +571,28 @@ constant:DeuteronGFactor qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                          a qudt:PhysicalConstant;
                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                          rdfs:label "deuteron g factor"@en;
-                         skos:closeMatch resource:G-factor.
+                         skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:DeuteronMagneticMoment qudt:hasQuantityKind quantitykind:MagneticDipoleMoment;
                                 qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                 qudt:quantityValue constant:Value_DeuteronMagneticMoment;
                                 a qudt:PhysicalConstant;
                                 rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                 rdfs:label "deuteron magnetic moment"@en;
-                                skos:closeMatch resource:Magnetic_moment.
+                                skos:closeMatch <http://dbpedia.org/resource/Magnetic_moment>.
 constant:DeuteronMagneticMomentToBohrMagnetonRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                    qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                    qudt:quantityValue constant:Value_DeuteronMagneticMomentToBohrMagnetonRatio;
                                                    a qudt:PhysicalConstant;
                                                    rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                    rdfs:label "deuteron magnetic moment to Bohr magneton ratio"@en;
-                                                   skos:closeMatch resource:Bohr_magneton.
+                                                   skos:closeMatch <http://dbpedia.org/resource/Bohr_magneton>.
 constant:DeuteronMagneticMomentToNuclearMagnetonRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                       qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                       qudt:quantityValue constant:Value_DeuteronMagneticMomentToNuclearMagnetonRatio;
                                                       a qudt:PhysicalConstant;
                                                       rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                       rdfs:label "deuteron magnetic moment to nuclear magneton ratio"@en;
-                                                      skos:closeMatch resource:Nuclear_magneton.
+                                                      skos:closeMatch <http://dbpedia.org/resource/Nuclear_magneton>.
 constant:DeuteronMass qudt:hasQuantityKind quantitykind:Mass;
                       qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                       qudt:quantityValue constant:Value_DeuteronMass;
@@ -611,21 +605,21 @@ constant:DeuteronMassEnergyEquivalent qudt:hasQuantityKind quantitykind:Energy;
                                       a qudt:PhysicalConstant;
                                       rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                       rdfs:label "deuteron mass energy equivalent"@en;
-                                      skos:closeMatch resource:Mass%E2%80%93energy_equivalence.
+                                      skos:closeMatch <http://dbpedia.org/resource/Mass–energy_equivalence>.
 constant:DeuteronMassEnergyEquivalentInMeV qudt:hasQuantityKind quantitykind:Energy;
                                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                            qudt:quantityValue constant:Value_DeuteronMassEnergyEquivalentInMeV;
                                            a qudt:PhysicalConstant;
                                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                            rdfs:label "deuteron mass energy equivalent in MeV"@en;
-                                           skos:closeMatch resource:Mass%E2%80%93energy_equivalence.
+                                           skos:closeMatch <http://dbpedia.org/resource/Mass–energy_equivalence>.
 constant:DeuteronMassInAtomicMassUnit qudt:hasQuantityKind quantitykind:Mass;
                                       qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                       qudt:quantityValue constant:Value_DeuteronMassInAtomicMassUnit;
                                       a qudt:PhysicalConstant;
                                       rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                       rdfs:label "deuteron mass in atomic mass unit"@en;
-                                      skos:closeMatch resource:Atomic_mass_unit.
+                                      skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:DeuteronMolarMass qudt:hasQuantityKind quantitykind:MolarMass;
                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                            qudt:quantityValue constant:Value_DeuteronMolarMass;
@@ -638,14 +632,14 @@ constant:DeuteronNeutronMagneticMomentRatio qudt:hasQuantityKind quantitykind:Di
                                             a qudt:PhysicalConstant;
                                             rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                             rdfs:label "deuteron-neutron magnetic moment ratio"@en;
-                                            skos:closeMatch resource:Neutron_magnetic_moment.
+                                            skos:closeMatch <http://dbpedia.org/resource/Neutron_magnetic_moment>.
 constant:DeuteronProtonMagneticMomentRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                            qudt:quantityValue constant:Value_DeuteronProtonMagneticMomentRatio;
                                            a qudt:PhysicalConstant;
                                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                            rdfs:label "deuteron-proton magnetic moment ratio"@en;
-                                           skos:closeMatch resource:G-factor.
+                                           skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:DeuteronProtonMassRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                  qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                  qudt:quantityValue constant:Value_DeuteronProtonMassRatio;
@@ -658,7 +652,7 @@ constant:DeuteronRmsChargeRadius qudt:hasQuantityKind quantitykind:Length;
                                  a qudt:PhysicalConstant;
                                  rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                  rdfs:label "deuteron rms charge radius"@en;
-                                 skos:closeMatch resource:Nucleon.
+                                 skos:closeMatch <http://dbpedia.org/resource/Nucleon>.
 constant:ElectricConstant qudt:dbpediaMatch "http://dbpedia.org/resource/Vacuum_permittivity"^^xsd:anyURI;
                           qudt:exactConstant true;
                           qudt:hasQuantityKind quantitykind:Permittivity;
@@ -692,14 +686,14 @@ constant:ElectronChargeToMassQuotient qudt:hasQuantityKind quantitykind:Electric
                                       a qudt:PhysicalConstant;
                                       rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                       rdfs:label "electron charge to mass quotient"@en;
-                                      skos:closeMatch resource:Mass-to-charge_ratio.
+                                      skos:closeMatch <http://dbpedia.org/resource/Mass-to-charge_ratio>.
 constant:ElectronDeuteronMagneticMomentRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                              qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                              qudt:quantityValue constant:Value_ElectronDeuteronMagneticMomentRatio;
                                              a qudt:PhysicalConstant;
                                              rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                              rdfs:label "electron-deuteron magnetic moment ratio"@en;
-                                             skos:closeMatch resource:G-factor.
+                                             skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:ElectronDeuteronMassRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                    qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                    qudt:quantityValue constant:Value_ElectronDeuteronMassRatio;
@@ -712,7 +706,7 @@ constant:ElectronGFactor qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                          a qudt:PhysicalConstant;
                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                          rdfs:label "electron g factor"@en;
-                         skos:closeMatch resource:G-factor.
+                         skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:ElectronGyromagneticRatio dcterms:description """
   The $\\textit{Electron Gyromagnetic Ratio}$ is a property that an isolated electron has for its angular momentum and magnetic moment resulting from its spin. 
   While an electron's spin is sometimes visualized as a literal rotation about an axis, it is in fact a fundamentally different, quantum-mechanical phenomenon with no true analogue in classical physics. 
@@ -730,14 +724,14 @@ constant:ElectronGyromagneticRatio dcterms:description """
                                    a qudt:PhysicalConstant;
                                    rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                    rdfs:label "Electron Gyromagnetic Ratio"@en;
-                                   skos:closeMatch resource:Gyromagnetic_ratio.
+                                   skos:closeMatch <http://dbpedia.org/resource/Gyromagnetic_ratio>.
 constant:ElectronGyromagneticRatioOver2Pi qudt:hasQuantityKind quantitykind:GyromagneticRatio;
                                           qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                           qudt:quantityValue constant:Value_ElectronGyromagneticRatioOver2Pi;
                                           a qudt:PhysicalConstant;
                                           rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                           rdfs:label "electron gyromagnetic ratio over 2 pi"@en;
-                                          skos:closeMatch resource:Gyromagnetic_ratio.
+                                          skos:closeMatch <http://dbpedia.org/resource/Gyromagnetic_ratio>.
 constant:ElectronMagneticMoment qudt:dbpediaMatch "http://dbpedia.org/resource/Electron_magnetic_dipole_moment"^^xsd:anyURI;
                                 qudt:hasQuantityKind quantitykind:MagneticDipoleMoment;
                                 qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
@@ -751,23 +745,23 @@ constant:ElectronMagneticMomentAnomaly qudt:hasQuantityKind quantitykind:Dimensi
                                        a qudt:PhysicalConstant;
                                        rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                        rdfs:label "electron magnetic moment anomaly"@en;
-                                       skos:closeMatch resource:Electron_magnetic_dipole_moment.
+                                       skos:closeMatch <http://dbpedia.org/resource/Electron_magnetic_dipole_moment>.
 constant:ElectronMagneticMomentToBohrMagnetonRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                    qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                    qudt:quantityValue constant:Value_ElectronMagneticMomentToBohrMagnetonRatio;
                                                    a qudt:PhysicalConstant;
                                                    rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                    rdfs:label "electron magnetic moment to Bohr magneton ratio"@en;
-                                                   skos:closeMatch resource:Bohr_magneton,
-                                                                   resource:Electron_magnetic_dipole_moment.
+                                                   skos:closeMatch <http://dbpedia.org/resource/Bohr_magneton>,
+                                                                   <http://dbpedia.org/resource/Electron_magnetic_dipole_moment>.
 constant:ElectronMagneticMomentToNuclearMagnetonRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                       qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                       qudt:quantityValue constant:Value_ElectronMagneticMomentToNuclearMagnetonRatio;
                                                       a qudt:PhysicalConstant;
                                                       rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                       rdfs:label "electron magnetic moment to nuclear magneton ratio"@en;
-                                                      skos:closeMatch resource:Electron_magnetic_dipole_moment,
-                                                                      resource:Nuclear_magneton.
+                                                      skos:closeMatch <http://dbpedia.org/resource/Electron_magnetic_dipole_moment>,
+                                                                      <http://dbpedia.org/resource/Nuclear_magneton>.
 constant:ElectronMass qudt:hasQuantityKind quantitykind:Mass;
                       qudt:latexSymbol "$m_e$"^^qudt:LatexString;
                       qudt:quantityValue constant:Value_ElectronMass;
@@ -775,28 +769,28 @@ constant:ElectronMass qudt:hasQuantityKind quantitykind:Mass;
                       a qudt:PhysicalConstant;
                       rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                       rdfs:label "Electron Mass"@en;
-                      skos:closeMatch resource:Electron.
+                      skos:closeMatch <http://dbpedia.org/resource/Electron>.
 constant:ElectronMassEnergyEquivalent qudt:hasQuantityKind quantitykind:Energy;
                                       qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                       qudt:quantityValue constant:Value_ElectronMassEnergyEquivalent;
                                       a qudt:PhysicalConstant;
                                       rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                       rdfs:label "electron mass energy equivalent"@en;
-                                      skos:closeMatch resource:Mass%E2%80%93energy_equivalence.
+                                      skos:closeMatch <http://dbpedia.org/resource/Mass–energy_equivalence>.
 constant:ElectronMassEnergyEquivalentInMeV qudt:hasQuantityKind quantitykind:Energy;
                                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                            qudt:quantityValue constant:Value_ElectronMassEnergyEquivalentInMeV;
                                            a qudt:PhysicalConstant;
                                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                            rdfs:label "electron mass energy equivalent in MeV"@en;
-                                           skos:closeMatch resource:Mass%E2%80%93energy_equivalence.
+                                           skos:closeMatch <http://dbpedia.org/resource/Mass–energy_equivalence>.
 constant:ElectronMassInAtomicMassUnit qudt:hasQuantityKind quantitykind:Mass;
                                       qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                       qudt:quantityValue constant:Value_ElectronMassInAtomicMassUnit;
                                       a qudt:PhysicalConstant;
                                       rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                       rdfs:label "electron mass in atomic mass unit"@en;
-                                      skos:closeMatch resource:Atomic_mass_unit.
+                                      skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:ElectronMolarMass qudt:hasQuantityKind quantitykind:MolarMass;
                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                            qudt:quantityValue constant:Value_ElectronMolarMass;
@@ -809,7 +803,7 @@ constant:ElectronMuonMagneticMomentRatio qudt:hasQuantityKind quantitykind:Dimen
                                          a qudt:PhysicalConstant;
                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                          rdfs:label "electron-muon magnetic moment ratio"@en;
-                                         skos:closeMatch resource:G-factor.
+                                         skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:ElectronMuonMassRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                qudt:quantityValue constant:Value_ElectronMuonMassRatio;
@@ -822,7 +816,7 @@ constant:ElectronNeutronMagneticMomentRatio qudt:hasQuantityKind quantitykind:Di
                                             a qudt:PhysicalConstant;
                                             rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                             rdfs:label "electron-neutron magnetic moment ratio"@en;
-                                            skos:closeMatch resource:Neutron_magnetic_moment.
+                                            skos:closeMatch <http://dbpedia.org/resource/Neutron_magnetic_moment>.
 constant:ElectronNeutronMassRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                   qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                   qudt:quantityValue constant:Value_ElectronNeutronMassRatio;
@@ -835,7 +829,7 @@ constant:ElectronProtonMagneticMomentRatio qudt:hasQuantityKind quantitykind:Dim
                                            a qudt:PhysicalConstant;
                                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                            rdfs:label "electron-proton magnetic moment ratio"@en;
-                                           skos:closeMatch resource:G-factor.
+                                           skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:ElectronProtonMassRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                  qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                  qudt:quantityValue constant:Value_ElectronProtonMassRatio;
@@ -854,42 +848,42 @@ constant:ElectronToAlphaParticleMassRatio qudt:hasQuantityKind quantitykind:Dime
                                           a qudt:PhysicalConstant;
                                           rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                           rdfs:label "electron to alpha particle mass ratio"@en;
-                                          skos:closeMatch resource:Alpha_particle.
+                                          skos:closeMatch <http://dbpedia.org/resource/Alpha_particle>.
 constant:ElectronToShieldedHelionMagneticMomentRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                      qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                      qudt:quantityValue constant:Value_ElectronToShieldedHelionMagneticMomentRatio;
                                                      a qudt:PhysicalConstant;
                                                      rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                      rdfs:label "electron to shielded helion magnetic moment ratio"@en;
-                                                     skos:closeMatch resource:G-factor.
+                                                     skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:ElectronToShieldedProtonMagneticMomentRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                      qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                      qudt:quantityValue constant:Value_ElectronToShieldedProtonMagneticMomentRatio;
                                                      a qudt:PhysicalConstant;
                                                      rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                      rdfs:label "electron to shielded proton magnetic moment ratio"@en;
-                                                     skos:closeMatch resource:G-factor.
+                                                     skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:ElectronVoltAtomicMassUnitRelationship qudt:hasQuantityKind quantitykind:Mass;
                                                 qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                 qudt:quantityValue constant:Value_ElectronVoltAtomicMassUnitRelationship;
                                                 a qudt:PhysicalConstant;
                                                 rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                 rdfs:label "electron volt-atomic mass unit relationship"@en;
-                                                skos:closeMatch resource:Electron_volt.
+                                                skos:closeMatch <http://dbpedia.org/resource/Electron_volt>.
 constant:ElectronVoltHartreeRelationship qudt:hasQuantityKind quantitykind:Energy;
                                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                          qudt:quantityValue constant:Value_ElectronVoltHartreeRelationship;
                                          a qudt:PhysicalConstant;
                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                          rdfs:label "electron volt-hartree relationship"@en;
-                                         skos:closeMatch resource:Electron_volt.
+                                         skos:closeMatch <http://dbpedia.org/resource/Electron_volt>.
 constant:ElectronVoltHertzRelationship qudt:hasQuantityKind quantitykind:Frequency;
                                        qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                        qudt:quantityValue constant:Value_ElectronVoltHertzRelationship;
                                        a qudt:PhysicalConstant;
                                        rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                        rdfs:label "electron volt-hertz relationship"@en;
-                                       skos:closeMatch resource:Electron_volt.
+                                       skos:closeMatch <http://dbpedia.org/resource/Electron_volt>.
 constant:ElectronVoltInverseMeterRelationship qudt:hasQuantityKind quantitykind:InverseLength;
                                               qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                               qudt:quantityValue constant:Value_ElectronVoltInverseMeterRelationship;
@@ -897,28 +891,28 @@ constant:ElectronVoltInverseMeterRelationship qudt:hasQuantityKind quantitykind:
                                               rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                               rdfs:label "electron volt-inverse meter relationship"@en-us,
                                                          "electron volt-inverse metre relationship"@en;
-                                              skos:closeMatch resource:Electron_volt.
+                                              skos:closeMatch <http://dbpedia.org/resource/Electron_volt>.
 constant:ElectronVoltJouleRelationship qudt:hasQuantityKind quantitykind:Energy;
                                        qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                        qudt:quantityValue constant:Value_ElectronVoltJouleRelationship;
                                        a qudt:PhysicalConstant;
                                        rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                        rdfs:label "electron volt-joule relationship"@en;
-                                       skos:closeMatch resource:Electron_volt.
+                                       skos:closeMatch <http://dbpedia.org/resource/Electron_volt>.
 constant:ElectronVoltKelvinRelationship qudt:hasQuantityKind quantitykind:ThermodynamicTemperature;
                                         qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                         qudt:quantityValue constant:Value_ElectronVoltKelvinRelationship;
                                         a qudt:PhysicalConstant;
                                         rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                         rdfs:label "electron volt-kelvin relationship"@en;
-                                        skos:closeMatch resource:Electron_volt.
+                                        skos:closeMatch <http://dbpedia.org/resource/Electron_volt>.
 constant:ElectronVoltKilogramRelationship qudt:hasQuantityKind quantitykind:Mass;
                                           qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                           qudt:quantityValue constant:Value_ElectronVoltKilogramRelationship;
                                           a qudt:PhysicalConstant;
                                           rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                           rdfs:label "electron volt-kilogram relationship"@en;
-                                          skos:closeMatch resource:Electron_volt.
+                                          skos:closeMatch <http://dbpedia.org/resource/Electron_volt>.
 constant:ElementaryCharge qudt:dbpediaMatch "http://dbpedia.org/resource/Elementary_charge"^^xsd:anyURI;
                           qudt:exactMatch constant:AtomicUnitOfCharge;
                           qudt:hasQuantityKind quantitykind:ElectricCharge;
@@ -939,7 +933,7 @@ constant:ElementaryChargeOverH qudt:hasQuantityKind quantitykind:ElectricCurrent
                                a qudt:PhysicalConstant;
                                rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                rdfs:label "elementary charge over h"@en;
-                               skos:closeMatch resource:Elementary_charge.
+                               skos:closeMatch <http://dbpedia.org/resource/Elementary_charge>.
 constant:FaradayConstant dcterms:description """
   The $\\textit{Faraday Constant}$ is a constant equal to the product of electrical elementary charge and Avogadro constant; 
   this is approximately $9.64853321233100184 \\times 10^{4}\\ C/mol$.
@@ -969,7 +963,7 @@ constant:FermiCouplingConstant qudt:hasQuantityKind quantitykind:InverseSquareEn
                                a qudt:PhysicalConstant;
                                rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                rdfs:label "Fermi coupling constant"@en;
-                               skos:closeMatch resource:Coupling_constant.
+                               skos:closeMatch <http://dbpedia.org/resource/Coupling_constant>.
 constant:FineStructureConstant dcterms:description """
   The $\\textit{Fine-structure Constant}$ is a fundamental physical constant, namely the coupling constant
    characterizing the strength of the electromagnetic interaction.
@@ -1035,14 +1029,14 @@ constant:HartreeAtomicMassUnitRelationship qudt:hasQuantityKind quantitykind:Mas
                                            a qudt:PhysicalConstant;
                                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                            rdfs:label "hartree-atomic mass unit relationship"@en;
-                                           skos:closeMatch resource:Atomic_mass_unit.
+                                           skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:HartreeElectronVoltRelationship qudt:hasQuantityKind quantitykind:Energy;
                                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                          qudt:quantityValue constant:Value_HartreeElectronVoltRelationship;
                                          a qudt:PhysicalConstant;
                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                          rdfs:label "hartree-electron volt relationship"@en;
-                                         skos:closeMatch resource:Electron_volt.
+                                         skos:closeMatch <http://dbpedia.org/resource/Electron_volt>.
 constant:HartreeEnergy dcterms:description """
   The constant $\\textit{Hartree Energy}$ (symbol: $E_h$ or $Ha$), also known as the $\\textit{Hartree}$, is the atomic unit of energy. 
   The hartree energy is equal to the absolute value of the electric potential energy of the hydrogen atom in its ground state. 
@@ -1065,7 +1059,7 @@ constant:HartreeEnergyInEV qudt:hasQuantityKind quantitykind:Energy;
                            a qudt:PhysicalConstant;
                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                            rdfs:label "Hartree energy in eV"@en;
-                           skos:closeMatch resource:Hartree.
+                           skos:closeMatch <http://dbpedia.org/resource/Hartree>.
 constant:HartreeHertzRelationship qudt:hasQuantityKind quantitykind:Frequency;
                                   qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                   qudt:quantityValue constant:Value_HartreeHertzRelationship;
@@ -1115,21 +1109,21 @@ constant:HelionMassEnergyEquivalent qudt:hasQuantityKind quantitykind:Energy;
                                     a qudt:PhysicalConstant;
                                     rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                     rdfs:label "helion mass energy equivalent"@en;
-                                    skos:closeMatch resource:Mass%E2%80%93energy_equivalence.
+                                    skos:closeMatch <http://dbpedia.org/resource/Mass–energy_equivalence>.
 constant:HelionMassEnergyEquivalentInMeV qudt:hasQuantityKind quantitykind:Energy;
                                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                          qudt:quantityValue constant:Value_HelionMassEnergyEquivalentInMeV;
                                          a qudt:PhysicalConstant;
                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                          rdfs:label "helion mass energy equivalent in MeV"@en;
-                                         skos:closeMatch resource:Mass%E2%80%93energy_equivalence.
+                                         skos:closeMatch <http://dbpedia.org/resource/Mass–energy_equivalence>.
 constant:HelionMassInAtomicMassUnit qudt:hasQuantityKind quantitykind:Mass;
                                     qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                     qudt:quantityValue constant:Value_HelionMassInAtomicMassUnit;
                                     a qudt:PhysicalConstant;
                                     rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                     rdfs:label "helion mass in atomic mass unit"@en;
-                                    skos:closeMatch resource:Atomic_mass_unit.
+                                    skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:HelionMolarMass qudt:hasQuantityKind quantitykind:MolarMass;
                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                          qudt:quantityValue constant:Value_HelionMolarMass;
@@ -1148,14 +1142,14 @@ constant:HertzAtomicMassUnitRelationship qudt:hasQuantityKind quantitykind:Mass;
                                          a qudt:PhysicalConstant;
                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                          rdfs:label "hertz-atomic mass unit relationship"@en;
-                                         skos:closeMatch resource:Atomic_mass_unit.
+                                         skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:HertzElectronVoltRelationship qudt:hasQuantityKind quantitykind:Energy;
                                        qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                        qudt:quantityValue constant:Value_HertzElectronVoltRelationship;
                                        a qudt:PhysicalConstant;
                                        rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                        rdfs:label "hertz-electron volt relationship"@en;
-                                       skos:closeMatch resource:Electron_volt.
+                                       skos:closeMatch <http://dbpedia.org/resource/Electron_volt>.
 constant:HertzHartreeRelationship qudt:hasQuantityKind quantitykind:Energy;
                                   qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                   qudt:quantityValue constant:Value_HertzHartreeRelationship;
@@ -1194,7 +1188,7 @@ constant:InverseFineStructureConstant qudt:hasQuantityKind quantitykind:Dimensio
                                       a qudt:PhysicalConstant;
                                       rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                       rdfs:label "inverse fine-structure constant"@en;
-                                      skos:closeMatch resource:Fine-structure_constant.
+                                      skos:closeMatch <http://dbpedia.org/resource/Fine-structure_constant>.
 constant:InverseMeterAtomicMassUnitRelationship qudt:hasQuantityKind quantitykind:Mass;
                                                 qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                 qudt:quantityValue constant:Value_InverseMeterAtomicMassUnitRelationship;
@@ -1202,7 +1196,7 @@ constant:InverseMeterAtomicMassUnitRelationship qudt:hasQuantityKind quantitykin
                                                 rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                 rdfs:label "inverse meter-atomic mass unit relationship"@en-us,
                                                            "inverse metre-atomic mass unit relationship"@en;
-                                                skos:closeMatch resource:Atomic_mass_unit.
+                                                skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:InverseMeterElectronVoltRelationship qudt:hasQuantityKind quantitykind:Energy;
                                               qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                               qudt:quantityValue constant:Value_InverseMeterElectronVoltRelationship;
@@ -1210,7 +1204,7 @@ constant:InverseMeterElectronVoltRelationship qudt:hasQuantityKind quantitykind:
                                               rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                               rdfs:label "inverse meter-electron volt relationship"@en-us,
                                                          "inverse metre-electron volt relationship"@en;
-                                              skos:closeMatch resource:Electron_volt.
+                                              skos:closeMatch <http://dbpedia.org/resource/Electron_volt>.
 constant:InverseMeterHartreeRelationship qudt:hasQuantityKind quantitykind:Energy;
                                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                          qudt:quantityValue constant:Value_InverseMeterHartreeRelationship;
@@ -1253,7 +1247,7 @@ constant:InverseOfConductanceQuantum qudt:hasQuantityKind quantitykind:Resistanc
                                      a qudt:PhysicalConstant;
                                      rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                      rdfs:label "inverse of conductance quantum"@en;
-                                     skos:closeMatch resource:Conductance_quantum.
+                                     skos:closeMatch <http://dbpedia.org/resource/Conductance_quantum>.
 constant:JosephsonConstant dcterms:description """
   The constant $\\textit{Josephson Constant}$ is a proportionality factor between voltage and frequency of an
    alternating current corresponding to the product of two elementary charges $e$ and Planck's action quantum $h$.
@@ -1283,14 +1277,14 @@ constant:JouleAtomicMassUnitRelationship qudt:hasQuantityKind quantitykind:Mass;
                                          a qudt:PhysicalConstant;
                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                          rdfs:label "joule-atomic mass unit relationship"@en;
-                                         skos:closeMatch resource:Atomic_mass_unit.
+                                         skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:JouleElectronVoltRelationship qudt:hasQuantityKind quantitykind:Energy;
                                        qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                        qudt:quantityValue constant:Value_JouleElectronVoltRelationship;
                                        a qudt:PhysicalConstant;
                                        rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                        rdfs:label "joule-electron volt relationship"@en;
-                                       skos:closeMatch resource:Electron_volt.
+                                       skos:closeMatch <http://dbpedia.org/resource/Electron_volt>.
 constant:JouleHartreeRelationship qudt:hasQuantityKind quantitykind:Energy;
                                   qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                   qudt:quantityValue constant:Value_JouleHartreeRelationship;
@@ -1329,14 +1323,14 @@ constant:KelvinAtomicMassUnitRelationship qudt:hasQuantityKind quantitykind:Mass
                                           a qudt:PhysicalConstant;
                                           rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                           rdfs:label "kelvin-atomic mass unit relationship"@en;
-                                          skos:closeMatch resource:Atomic_mass_unit.
+                                          skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:KelvinElectronVoltRelationship qudt:hasQuantityKind quantitykind:Energy;
                                         qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                         qudt:quantityValue constant:Value_KelvinElectronVoltRelationship;
                                         a qudt:PhysicalConstant;
                                         rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                         rdfs:label "kelvin-electron volt relationship"@en;
-                                        skos:closeMatch resource:Electron_volt.
+                                        skos:closeMatch <http://dbpedia.org/resource/Electron_volt>.
 constant:KelvinHartreeRelationship qudt:hasQuantityKind quantitykind:Energy;
                                    qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                    qudt:quantityValue constant:Value_KelvinHartreeRelationship;
@@ -1374,14 +1368,14 @@ constant:KilogramAtomicMassUnitRelationship qudt:hasQuantityKind quantitykind:Ma
                                             a qudt:PhysicalConstant;
                                             rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                             rdfs:label "kilogram-atomic mass unit relationship"@en;
-                                            skos:closeMatch resource:Atomic_mass_unit.
+                                            skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:KilogramElectronVoltRelationship qudt:hasQuantityKind quantitykind:Energy;
                                           qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                           qudt:quantityValue constant:Value_KilogramElectronVoltRelationship;
                                           a qudt:PhysicalConstant;
                                           rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                           rdfs:label "kilogram-electron volt relationship"@en;
-                                          skos:closeMatch resource:Electron_volt.
+                                          skos:closeMatch <http://dbpedia.org/resource/Electron_volt>.
 constant:KilogramHartreeRelationship qudt:hasQuantityKind quantitykind:Energy;
                                      qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                      qudt:quantityValue constant:Value_KilogramHartreeRelationship;
@@ -1433,7 +1427,7 @@ constant:LoschmidtConstant273dot15K101dot325KPa qudt:hasQuantityKind quantitykin
                                                 a qudt:PhysicalConstant;
                                                 rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                 rdfs:label "Loschmidt constant 273.15 K 101.325 kPa"@en;
-                                                skos:closeMatch resource:Loschmidt_constant.
+                                                skos:closeMatch <http://dbpedia.org/resource/Loschmidt_constant>.
 constant:MagneticConstant dcterms:description """
   The constant $\\textit{Magentic Constant}$, also known as $\\textit{Permeability of Vacuum}$, is a scalar constant 
   $\\mu_0$ such that, in a vacuum the product with the magnetic field vector, $\\overrightarrow{H}$ 
@@ -1475,7 +1469,7 @@ constant:MoXUnit qudt:hasQuantityKind quantitykind:Length;
                  a qudt:PhysicalConstant;
                  rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                  rdfs:label "Mo x unit"@en;
-                 skos:closeMatch resource:X_unit.
+                 skos:closeMatch <http://dbpedia.org/resource/X_unit>.
 constant:MolarGasConstant dcterms:description """
   The constant $\\textit{Molar Gas Constant}$, also known as the gas constant, universal, or ideal gas constant, denoted by the symbol $R$,
    is a physical constant which is featured in many fundamental equations in the physical sciences,
@@ -1520,14 +1514,14 @@ constant:MolarPlanckConstant qudt:hasQuantityKind quantitykind:MolarAngularMomen
                              a qudt:PhysicalConstant;
                              rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                              rdfs:label "molar Planck constant"@en;
-                             skos:closeMatch resource:Planck_constant.
+                             skos:closeMatch <http://dbpedia.org/resource/Planck_constant>.
 constant:MolarPlanckConstantTimesC qudt:hasQuantityKind quantitykind:LengthMolarEnergy;
                                    qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                    qudt:quantityValue constant:Value_MolarPlanckConstantTimesC;
                                    a qudt:PhysicalConstant;
                                    rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                    rdfs:label "molar Planck constant times c"@en;
-                                   skos:closeMatch resource:Planck_constant.
+                                   skos:closeMatch <http://dbpedia.org/resource/Planck_constant>.
 constant:MolarVolumeOfIdealGas273dot15K100KPa dcterms:isReplacedBy constant:MolarVolumeOfIdealGas273dot15K100KiloPA;
                                               qudt:deprecated true;
                                               qudt:hasQuantityKind quantitykind:MolarVolume;
@@ -1568,14 +1562,14 @@ constant:MuonComptonWavelength qudt:hasQuantityKind quantitykind:Length;
                                a qudt:PhysicalConstant;
                                rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                rdfs:label "muon Compton wavelength"@en;
-                               skos:closeMatch resource:Compton_wavelength.
+                               skos:closeMatch <http://dbpedia.org/resource/Compton_wavelength>.
 constant:MuonComptonWavelengthOver2Pi qudt:hasQuantityKind quantitykind:Length;
                                       qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                       qudt:quantityValue constant:Value_MuonComptonWavelengthOver2Pi;
                                       a qudt:PhysicalConstant;
                                       rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                       rdfs:label "muon Compton wavelength over 2 pi"@en;
-                                      skos:closeMatch resource:Compton_wavelength.
+                                      skos:closeMatch <http://dbpedia.org/resource/Compton_wavelength>.
 constant:MuonElectronMassRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                qudt:quantityValue constant:Value_MuonElectronMassRatio;
@@ -1588,35 +1582,35 @@ constant:MuonGFactor qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                      a qudt:PhysicalConstant;
                      rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                      rdfs:label "muon g factor"@en;
-                     skos:closeMatch resource:G-factor.
+                     skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:MuonMagneticMoment qudt:hasQuantityKind quantitykind:MagneticDipoleMoment;
                             qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                             qudt:quantityValue constant:Value_MuonMagneticMoment;
                             a qudt:PhysicalConstant;
                             rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                             rdfs:label "muon magnetic moment"@en;
-                            skos:closeMatch resource:Magnetic_moment.
+                            skos:closeMatch <http://dbpedia.org/resource/Magnetic_moment>.
 constant:MuonMagneticMomentAnomaly qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                    qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                    qudt:quantityValue constant:Value_MuonMagneticMomentAnomaly;
                                    a qudt:PhysicalConstant;
                                    rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                    rdfs:label "muon magnetic moment anomaly"@en;
-                                   skos:closeMatch resource:Magnetic_moment.
+                                   skos:closeMatch <http://dbpedia.org/resource/Magnetic_moment>.
 constant:MuonMagneticMomentToBohrMagnetonRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                qudt:quantityValue constant:Value_MuonMagneticMomentToBohrMagnetonRatio;
                                                a qudt:PhysicalConstant;
                                                rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                rdfs:label "muon magnetic moment to Bohr magneton ratio"@en;
-                                               skos:closeMatch resource:Bohr_magneton.
+                                               skos:closeMatch <http://dbpedia.org/resource/Bohr_magneton>.
 constant:MuonMagneticMomentToNuclearMagnetonRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                   qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                   qudt:quantityValue constant:Value_MuonMagneticMomentToNuclearMagnetonRatio;
                                                   a qudt:PhysicalConstant;
                                                   rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                   rdfs:label "muon magnetic moment to nuclear magneton ratio"@en;
-                                                  skos:closeMatch resource:Nuclear_magneton.
+                                                  skos:closeMatch <http://dbpedia.org/resource/Nuclear_magneton>.
 constant:MuonMass qudt:hasQuantityKind quantitykind:Mass;
                   qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                   qudt:quantityValue constant:Value_MuonMass;
@@ -1629,21 +1623,21 @@ constant:MuonMassEnergyEquivalent qudt:hasQuantityKind quantitykind:Energy;
                                   a qudt:PhysicalConstant;
                                   rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                   rdfs:label "muon mass energy equivalent"@en;
-                                  skos:closeMatch resource:Mass%E2%80%93energy_equivalence.
+                                  skos:closeMatch <http://dbpedia.org/resource/Mass–energy_equivalence>.
 constant:MuonMassEnergyEquivalentInMeV qudt:hasQuantityKind quantitykind:Energy;
                                        qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                        qudt:quantityValue constant:Value_MuonMassEnergyEquivalentInMeV;
                                        a qudt:PhysicalConstant;
                                        rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                        rdfs:label "muon mass energy equivalent in MeV"@en;
-                                       skos:closeMatch resource:Mass%E2%80%93energy_equivalence.
+                                       skos:closeMatch <http://dbpedia.org/resource/Mass–energy_equivalence>.
 constant:MuonMassInAtomicMassUnit qudt:hasQuantityKind quantitykind:Mass;
                                   qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                   qudt:quantityValue constant:Value_MuonMassInAtomicMassUnit;
                                   a qudt:PhysicalConstant;
                                   rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                   rdfs:label "muon mass in atomic mass unit"@en;
-                                  skos:closeMatch resource:Atomic_mass_unit.
+                                  skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:MuonMolarMass qudt:hasQuantityKind quantitykind:MolarMass;
                        qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                        qudt:quantityValue constant:Value_MuonMolarMass;
@@ -1662,7 +1656,7 @@ constant:MuonProtonMagneticMomentRatio qudt:hasQuantityKind quantitykind:Dimensi
                                        a qudt:PhysicalConstant;
                                        rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                        rdfs:label "muon-proton magnetic moment ratio"@en;
-                                       skos:closeMatch resource:G-factor.
+                                       skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:MuonProtonMassRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                              qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                              qudt:quantityValue constant:Value_MuonProtonMassRatio;
@@ -1681,63 +1675,63 @@ constant:NaturalUnitOfAction qudt:hasQuantityKind quantitykind:Action;
                              a qudt:PhysicalConstant;
                              rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                              rdfs:label "natural unit of action"@en;
-                             skos:closeMatch resource:Natural_units.
+                             skos:closeMatch <http://dbpedia.org/resource/Natural_units>.
 constant:NaturalUnitOfActionInEVS qudt:hasQuantityKind quantitykind:Action;
                                   qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                   qudt:quantityValue constant:Value_NaturalUnitOfActionInEVS;
                                   a qudt:PhysicalConstant;
                                   rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                   rdfs:label "natural unit of action in eV s"@en;
-                                  skos:closeMatch resource:Natural_units.
+                                  skos:closeMatch <http://dbpedia.org/resource/Natural_units>.
 constant:NaturalUnitOfEnergy qudt:hasQuantityKind quantitykind:Energy;
                              qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                              qudt:quantityValue constant:Value_NaturalUnitOfEnergy;
                              a qudt:PhysicalConstant;
                              rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                              rdfs:label "natural unit of energy"@en;
-                             skos:closeMatch resource:Natural_units.
+                             skos:closeMatch <http://dbpedia.org/resource/Natural_units>.
 constant:NaturalUnitOfEnergyInMeV qudt:hasQuantityKind quantitykind:Energy;
                                   qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                   qudt:quantityValue constant:Value_NaturalUnitOfEnergyInMeV;
                                   a qudt:PhysicalConstant;
                                   rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                   rdfs:label "natural unit of energy in MeV"@en;
-                                  skos:closeMatch resource:Natural_units.
+                                  skos:closeMatch <http://dbpedia.org/resource/Natural_units>.
 constant:NaturalUnitOfLength qudt:hasQuantityKind quantitykind:Length;
                              qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                              qudt:quantityValue constant:Value_NaturalUnitOfLength;
                              a qudt:PhysicalConstant;
                              rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                              rdfs:label "natural unit of length"@en;
-                             skos:closeMatch resource:Natural_units.
+                             skos:closeMatch <http://dbpedia.org/resource/Natural_units>.
 constant:NaturalUnitOfMass qudt:hasQuantityKind quantitykind:Mass;
                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                            qudt:quantityValue constant:Value_NaturalUnitOfMass;
                            a qudt:PhysicalConstant;
                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                            rdfs:label "natural unit of mass"@en;
-                           skos:closeMatch resource:Natural_units.
+                           skos:closeMatch <http://dbpedia.org/resource/Natural_units>.
 constant:NaturalUnitOfMomentum qudt:hasQuantityKind quantitykind:LinearMomentum;
                                qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                qudt:quantityValue constant:Value_NaturalUnitOfMomentum;
                                a qudt:PhysicalConstant;
                                rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                rdfs:label "natural unit of momentum"@en;
-                               skos:closeMatch resource:Natural_units.
+                               skos:closeMatch <http://dbpedia.org/resource/Natural_units>.
 constant:NaturalUnitOfMomentumInMeV-PER-c qudt:hasQuantityKind quantitykind:LinearMomentum;
                                           qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                           qudt:quantityValue constant:Value_NaturalUnitOfMomentumInMeVPerC;
                                           a qudt:PhysicalConstant;
                                           rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                           rdfs:label "natural unit of momentum in MeV PER c"@en;
-                                          skos:closeMatch resource:Natural_units.
+                                          skos:closeMatch <http://dbpedia.org/resource/Natural_units>.
 constant:NaturalUnitOfTime qudt:hasQuantityKind quantitykind:Time;
                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                            qudt:quantityValue constant:Value_NaturalUnitOfTime;
                            a qudt:PhysicalConstant;
                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                            rdfs:label "natural unit of time"@en;
-                           skos:closeMatch resource:Natural_units.
+                           skos:closeMatch <http://dbpedia.org/resource/Natural_units>.
 constant:NaturalUnitOfVelocity qudt:exactConstant true;
                                qudt:hasQuantityKind quantitykind:LinearVelocity;
                                qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
@@ -1745,28 +1739,28 @@ constant:NaturalUnitOfVelocity qudt:exactConstant true;
                                a qudt:PhysicalConstant;
                                rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                rdfs:label "natural unit of velocity"@en;
-                               skos:closeMatch resource:Natural_units.
+                               skos:closeMatch <http://dbpedia.org/resource/Natural_units>.
 constant:NeutronComptonWavelength qudt:hasQuantityKind quantitykind:Length;
                                   qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                   qudt:quantityValue constant:Value_NeutronComptonWavelength;
                                   a qudt:PhysicalConstant;
                                   rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                   rdfs:label "neutron Compton wavelength"@en;
-                                  skos:closeMatch resource:Compton_wavelength.
+                                  skos:closeMatch <http://dbpedia.org/resource/Compton_wavelength>.
 constant:NeutronComptonWavelengthOver2Pi qudt:hasQuantityKind quantitykind:Length;
                                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                          qudt:quantityValue constant:Value_NeutronComptonWavelengthOver2Pi;
                                          a qudt:PhysicalConstant;
                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                          rdfs:label "neutron Compton wavelength over 2 pi"@en;
-                                         skos:closeMatch resource:Compton_wavelength.
+                                         skos:closeMatch <http://dbpedia.org/resource/Compton_wavelength>.
 constant:NeutronElectronMagneticMomentRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                             qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                             qudt:quantityValue constant:Value_NeutronElectronMagneticMomentRatio;
                                             a qudt:PhysicalConstant;
                                             rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                             rdfs:label "neutron-electron magnetic moment ratio"@en;
-                                            skos:closeMatch resource:Electron_magnetic_dipole_moment.
+                                            skos:closeMatch <http://dbpedia.org/resource/Electron_magnetic_dipole_moment>.
 constant:NeutronElectronMassRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                   qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                   qudt:quantityValue constant:Value_NeutronElectronMassRatio;
@@ -1779,21 +1773,21 @@ constant:NeutronGFactor qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                         a qudt:PhysicalConstant;
                         rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                         rdfs:label "neutron g factor"@en;
-                        skos:closeMatch resource:G-factor.
+                        skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:NeutronGyromagneticRatio qudt:hasQuantityKind quantitykind:GyromagneticRatio;
                                   qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                   qudt:quantityValue constant:Value_NeutronGyromagneticRatio;
                                   a qudt:PhysicalConstant;
                                   rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                   rdfs:label "neutron gyromagnetic ratio"@en;
-                                  skos:closeMatch resource:Gyromagnetic_ratio.
+                                  skos:closeMatch <http://dbpedia.org/resource/Gyromagnetic_ratio>.
 constant:NeutronGyromagneticRatioOver2Pi qudt:hasQuantityKind quantitykind:GyromagneticRatio;
                                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                          qudt:quantityValue constant:Value_NeutronGyromagneticRatioOver2Pi;
                                          a qudt:PhysicalConstant;
                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                          rdfs:label "neutron gyromagnetic ratio over 2 pi"@en;
-                                         skos:closeMatch resource:Gyromagnetic_ratio.
+                                         skos:closeMatch <http://dbpedia.org/resource/Gyromagnetic_ratio>.
 constant:NeutronMagneticMoment qudt:dbpediaMatch "http://dbpedia.org/resource/Neutron_magnetic_moment"^^xsd:anyURI;
                                qudt:hasQuantityKind quantitykind:MagneticDipoleMoment;
                                qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
@@ -1807,44 +1801,44 @@ constant:NeutronMagneticMomentToBohrMagnetonRatio qudt:hasQuantityKind quantityk
                                                   a qudt:PhysicalConstant;
                                                   rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                   rdfs:label "neutron magnetic moment to Bohr magneton ratio"@en;
-                                                  skos:closeMatch resource:Bohr_magneton,
-                                                                  resource:Neutron_magnetic_moment.
+                                                  skos:closeMatch <http://dbpedia.org/resource/Bohr_magneton>,
+                                                                  <http://dbpedia.org/resource/Neutron_magnetic_moment>.
 constant:NeutronMagneticMomentToNuclearMagnetonRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                      qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                      qudt:quantityValue constant:Value_NeutronMagneticMomentToNuclearMagnetonRatio;
                                                      a qudt:PhysicalConstant;
                                                      rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                      rdfs:label "neutron magnetic moment to nuclear magneton ratio"@en;
-                                                     skos:closeMatch resource:Neutron_magnetic_moment,
-                                                                     resource:Nuclear_magneton.
+                                                     skos:closeMatch <http://dbpedia.org/resource/Neutron_magnetic_moment>,
+                                                                     <http://dbpedia.org/resource/Nuclear_magneton>.
 constant:NeutronMass qudt:hasQuantityKind quantitykind:Mass;
                      qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                      qudt:quantityValue constant:Value_NeutronMass;
                      a qudt:PhysicalConstant;
                      rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                      rdfs:label "neutron mass"@en;
-                     skos:closeMatch resource:Neutron.
+                     skos:closeMatch <http://dbpedia.org/resource/Neutron>.
 constant:NeutronMassEnergyEquivalent qudt:hasQuantityKind quantitykind:Energy;
                                      qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                      qudt:quantityValue constant:Value_NeutronMassEnergyEquivalent;
                                      a qudt:PhysicalConstant;
                                      rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                      rdfs:label "neutron mass energy equivalent"@en;
-                                     skos:closeMatch resource:Mass%E2%80%93energy_equivalence.
+                                     skos:closeMatch <http://dbpedia.org/resource/Mass–energy_equivalence>.
 constant:NeutronMassEnergyEquivalentInMeV qudt:hasQuantityKind quantitykind:Energy;
                                           qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                           qudt:quantityValue constant:Value_NeutronMassEnergyEquivalentInMeV;
                                           a qudt:PhysicalConstant;
                                           rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                           rdfs:label "neutron mass energy equivalent in MeV"@en;
-                                          skos:closeMatch resource:Mass%E2%80%93energy_equivalence.
+                                          skos:closeMatch <http://dbpedia.org/resource/Mass–energy_equivalence>.
 constant:NeutronMassInAtomicMassUnit qudt:hasQuantityKind quantitykind:Mass;
                                      qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                      qudt:quantityValue constant:Value_NeutronMassInAtomicMassUnit;
                                      a qudt:PhysicalConstant;
                                      rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                      rdfs:label "neutron mass in atomic mass unit"@en;
-                                     skos:closeMatch resource:Atomic_mass_unit.
+                                     skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:NeutronMolarMass qudt:hasQuantityKind quantitykind:MolarMass;
                           qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                           qudt:quantityValue constant:Value_NeutronMolarMass;
@@ -1863,7 +1857,7 @@ constant:NeutronProtonMagneticMomentRatio qudt:hasQuantityKind quantitykind:Dime
                                           a qudt:PhysicalConstant;
                                           rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                           rdfs:label "neutron-proton magnetic moment ratio"@en;
-                                          skos:closeMatch resource:G-factor.
+                                          skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:NeutronProtonMassRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                 qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                 qudt:quantityValue constant:Value_NeutronProtonMassRatio;
@@ -1882,7 +1876,7 @@ constant:NeutronToShieldedProtonMagneticMomentRatio qudt:hasQuantityKind quantit
                                                     a qudt:PhysicalConstant;
                                                     rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                     rdfs:label "neutron to shielded proton magnetic moment ratio"@en;
-                                                    skos:closeMatch resource:G-factor.
+                                                    skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:NewtonianConstantOfGravitation qudt:dbpediaMatch "http://dbpedia.org/resource/Gravitational_constant"^^xsd:anyURI;
                                         qudt:hasQuantityKind quantitykind:GravitationalAttraction;
                                         qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
@@ -1914,7 +1908,7 @@ constant:NuclearMagnetonInEVPerT qudt:hasQuantityKind quantitykind:MagneticDipol
                                  a qudt:PhysicalConstant;
                                  rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                  rdfs:label "nuclear magneton in eV per T"@en;
-                                 skos:closeMatch resource:Nuclear_magneton.
+                                 skos:closeMatch <http://dbpedia.org/resource/Nuclear_magneton>.
 constant:NuclearMagnetonInInverseMetersPerTesla qudt:hasQuantityKind quantitykind:MagneticReluctivity;
                                                 qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                 qudt:quantityValue constant:Value_NuclearMagnetonInInverseMetersPerTesla;
@@ -1922,21 +1916,21 @@ constant:NuclearMagnetonInInverseMetersPerTesla qudt:hasQuantityKind quantitykin
                                                 rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                 rdfs:label "nuclear magneton in inverse meters per tesla"@en-us,
                                                            "nuclear magneton in inverse metres per tesla"@en;
-                                                skos:closeMatch resource:Nuclear_magneton.
+                                                skos:closeMatch <http://dbpedia.org/resource/Nuclear_magneton>.
 constant:NuclearMagnetonInKPerT qudt:hasQuantityKind quantitykind:TemperaturePerMagneticFluxDensity;
                                 qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                 qudt:quantityValue constant:Value_NuclearMagnetonInKPerT;
                                 a qudt:PhysicalConstant;
                                 rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                 rdfs:label "nuclear magneton in K per T"@en;
-                                skos:closeMatch resource:Nuclear_magneton.
+                                skos:closeMatch <http://dbpedia.org/resource/Nuclear_magneton>.
 constant:NuclearMagnetonInMHzPerT qudt:hasQuantityKind quantitykind:ElectricChargePerMass;
                                   qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                   qudt:quantityValue constant:Value_NuclearMagnetonInMHzPerT;
                                   a qudt:PhysicalConstant;
                                   rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                   rdfs:label "nuclear magneton in MHz per T"@en;
-                                  skos:closeMatch resource:Nuclear_magneton.
+                                  skos:closeMatch <http://dbpedia.org/resource/Nuclear_magneton>.
 constant:PermittivityOfVacuum dcterms:description """
   The constant $\\textit{Permittivity of Vacuum}$, also known as the $\\textit{electric constant}$ is a constant 
   whose value is $\\approx\\,6.854188e-12\\, farad\\,per\\,metre$. Sometimes also referred to as 
@@ -1995,28 +1989,28 @@ constant:PlanckConstantInEVS qudt:hasQuantityKind quantitykind:Action;
                              a qudt:PhysicalConstant;
                              rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                              rdfs:label "Planck constant in eV s"@en;
-                             skos:closeMatch resource:Planck_constant.
+                             skos:closeMatch <http://dbpedia.org/resource/Planck_constant>.
 constant:PlanckConstantOver2Pi qudt:hasQuantityKind quantitykind:Action;
                                qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                qudt:quantityValue constant:Value_PlanckConstantOver2Pi;
                                a qudt:PhysicalConstant;
                                rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                rdfs:label "Planck constant over 2 pi"@en;
-                               skos:closeMatch resource:Planck_constant.
+                               skos:closeMatch <http://dbpedia.org/resource/Planck_constant>.
 constant:PlanckConstantOver2PiInEVS qudt:hasQuantityKind quantitykind:Action;
                                     qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                     qudt:quantityValue constant:Value_PlanckConstantOver2PiInEVS;
                                     a qudt:PhysicalConstant;
                                     rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                     rdfs:label "Planck constant over 2 pi in eV s"@en;
-                                    skos:closeMatch resource:Planck_constant.
+                                    skos:closeMatch <http://dbpedia.org/resource/Planck_constant>.
 constant:PlanckConstantOver2PiTimesCInMeVFm qudt:hasQuantityKind quantitykind:LengthEnergy;
                                             qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                             qudt:quantityValue constant:Value_PlanckConstantOver2PiTimesCInMeVFm;
                                             a qudt:PhysicalConstant;
                                             rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                             rdfs:label "Planck constant over 2 pi times c in MeV fm"@en;
-                                            skos:closeMatch resource:Planck_constant.
+                                            skos:closeMatch <http://dbpedia.org/resource/Planck_constant>.
 constant:PlanckLength qudt:dbpediaMatch "http://dbpedia.org/resource/Planck_length"^^xsd:anyURI;
                       qudt:hasQuantityKind quantitykind:Length;
                       qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
@@ -2037,7 +2031,7 @@ constant:PlanckMassEnergyEquivalentInGeV qudt:hasQuantityKind quantitykind:Energ
                                          a qudt:PhysicalConstant;
                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                          rdfs:label "Planck mass energy equivalent in GeV"@en;
-                                         skos:closeMatch resource:Planck_mass.
+                                         skos:closeMatch <http://dbpedia.org/resource/Planck_mass>.
 constant:PlanckTemperature qudt:dbpediaMatch "http://dbpedia.org/resource/Planck_temperature"^^xsd:anyURI;
                            qudt:hasQuantityKind quantitykind:ThermodynamicTemperature;
                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
@@ -2058,21 +2052,21 @@ constant:ProtonChargeToMassQuotient qudt:hasQuantityKind quantitykind:ElectricCh
                                     a qudt:PhysicalConstant;
                                     rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                     rdfs:label "proton charge to mass quotient"@en;
-                                    skos:closeMatch resource:Mass-to-charge_ratio.
+                                    skos:closeMatch <http://dbpedia.org/resource/Mass-to-charge_ratio>.
 constant:ProtonComptonWavelength qudt:hasQuantityKind quantitykind:Length;
                                  qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                  qudt:quantityValue constant:Value_ProtonComptonWavelength;
                                  a qudt:PhysicalConstant;
                                  rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                  rdfs:label "proton Compton wavelength"@en;
-                                 skos:closeMatch resource:Compton_wavelength.
+                                 skos:closeMatch <http://dbpedia.org/resource/Compton_wavelength>.
 constant:ProtonComptonWavelengthOver2Pi qudt:hasQuantityKind quantitykind:Length;
                                         qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                         qudt:quantityValue constant:Value_ProtonComptonWavelengthOver2Pi;
                                         a qudt:PhysicalConstant;
                                         rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                         rdfs:label "proton Compton wavelength over 2 pi"@en;
-                                        skos:closeMatch resource:Compton_wavelength.
+                                        skos:closeMatch <http://dbpedia.org/resource/Compton_wavelength>.
 constant:ProtonElectronMassRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                  qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                  qudt:quantityValue constant:Value_ProtonElectronMassRatio;
@@ -2085,42 +2079,42 @@ constant:ProtonGFactor qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                        a qudt:PhysicalConstant;
                        rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                        rdfs:label "proton g factor"@en;
-                       skos:closeMatch resource:G-factor.
+                       skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:ProtonGyromagneticRatio qudt:hasQuantityKind quantitykind:GyromagneticRatio;
                                  qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                  qudt:quantityValue constant:Value_ProtonGyromagneticRatio;
                                  a qudt:PhysicalConstant;
                                  rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                  rdfs:label "proton gyromagnetic ratio"@en;
-                                 skos:closeMatch resource:Gyromagnetic_ratio.
+                                 skos:closeMatch <http://dbpedia.org/resource/Gyromagnetic_ratio>.
 constant:ProtonGyromagneticRatioOver2Pi qudt:hasQuantityKind quantitykind:GyromagneticRatio;
                                         qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                         qudt:quantityValue constant:Value_ProtonGyromagneticRatioOver2Pi;
                                         a qudt:PhysicalConstant;
                                         rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                         rdfs:label "proton gyromagnetic ratio over 2 pi"@en;
-                                        skos:closeMatch resource:Gyromagnetic_ratio.
+                                        skos:closeMatch <http://dbpedia.org/resource/Gyromagnetic_ratio>.
 constant:ProtonMagneticMoment qudt:hasQuantityKind quantitykind:MagneticDipoleMoment;
                               qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                               qudt:quantityValue constant:Value_ProtonMagneticMoment;
                               a qudt:PhysicalConstant;
                               rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                               rdfs:label "proton magnetic moment"@en;
-                              skos:closeMatch resource:Magnetic_moment.
+                              skos:closeMatch <http://dbpedia.org/resource/Magnetic_moment>.
 constant:ProtonMagneticMomentToBohrMagnetonRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                  qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                  qudt:quantityValue constant:Value_ProtonMagneticMomentToBohrMagnetonRatio;
                                                  a qudt:PhysicalConstant;
                                                  rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                  rdfs:label "proton magnetic moment to Bohr magneton ratio"@en;
-                                                 skos:closeMatch resource:Bohr_magneton.
+                                                 skos:closeMatch <http://dbpedia.org/resource/Bohr_magneton>.
 constant:ProtonMagneticMomentToNuclearMagnetonRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                     qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                     qudt:quantityValue constant:Value_ProtonMagneticMomentToNuclearMagnetonRatio;
                                                     a qudt:PhysicalConstant;
                                                     rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                     rdfs:label "proton magnetic moment to nuclear magneton ratio"@en;
-                                                    skos:closeMatch resource:Nuclear_magneton.
+                                                    skos:closeMatch <http://dbpedia.org/resource/Nuclear_magneton>.
 constant:ProtonMagneticShieldingCorrection qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                            qudt:quantityValue constant:Value_ProtonMagneticShieldingCorrection;
@@ -2134,28 +2128,28 @@ constant:ProtonMass qudt:hasQuantityKind quantitykind:Mass;
                     a qudt:PhysicalConstant;
                     rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                     rdfs:label "proton mass"@en;
-                    skos:closeMatch resource:Proton.
+                    skos:closeMatch <http://dbpedia.org/resource/Proton>.
 constant:ProtonMassEnergyEquivalent qudt:hasQuantityKind quantitykind:Energy;
                                     qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                     qudt:quantityValue constant:Value_ProtonMassEnergyEquivalent;
                                     a qudt:PhysicalConstant;
                                     rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                     rdfs:label "proton mass energy equivalent"@en;
-                                    skos:closeMatch resource:Mass%E2%80%93energy_equivalence.
+                                    skos:closeMatch <http://dbpedia.org/resource/Mass–energy_equivalence>.
 constant:ProtonMassEnergyEquivalentInMeV qudt:hasQuantityKind quantitykind:Energy;
                                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                          qudt:quantityValue constant:Value_ProtonMassEnergyEquivalentInMeV;
                                          a qudt:PhysicalConstant;
                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                          rdfs:label "proton mass energy equivalent in MeV"@en;
-                                         skos:closeMatch resource:Mass%E2%80%93energy_equivalence.
+                                         skos:closeMatch <http://dbpedia.org/resource/Mass–energy_equivalence>.
 constant:ProtonMassInAtomicMassUnit qudt:hasQuantityKind quantitykind:Mass;
                                     qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                     qudt:quantityValue constant:Value_ProtonMassInAtomicMassUnit;
                                     a qudt:PhysicalConstant;
                                     rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                     rdfs:label "proton mass in atomic mass unit"@en;
-                                    skos:closeMatch resource:Atomic_mass_unit.
+                                    skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:ProtonMolarMass qudt:hasQuantityKind quantitykind:MolarMass;
                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                          qudt:quantityValue constant:Value_ProtonMolarMass;
@@ -2174,7 +2168,7 @@ constant:ProtonNeutronMagneticMomentRatio qudt:hasQuantityKind quantitykind:Dime
                                           a qudt:PhysicalConstant;
                                           rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                           rdfs:label "proton-neutron magnetic moment ratio"@en;
-                                          skos:closeMatch resource:Neutron_magnetic_moment.
+                                          skos:closeMatch <http://dbpedia.org/resource/Neutron_magnetic_moment>.
 constant:ProtonNeutronMassRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                 qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                 qudt:quantityValue constant:Value_ProtonNeutronMassRatio;
@@ -2187,7 +2181,7 @@ constant:ProtonRmsChargeRadius qudt:hasQuantityKind quantitykind:Length;
                                a qudt:PhysicalConstant;
                                rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                rdfs:label "proton rms charge radius"@en;
-                               skos:closeMatch resource:Nucleon.
+                               skos:closeMatch <http://dbpedia.org/resource/Nucleon>.
 constant:ProtonTauMassRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                             qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                             qudt:quantityValue constant:Value_ProtonTauMassRatio;
@@ -2200,14 +2194,14 @@ constant:QuantumOfCirculation qudt:hasQuantityKind quantitykind:Circulation;
                               a qudt:PhysicalConstant;
                               rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                               rdfs:label "quantum of circulation"@en;
-                              skos:closeMatch resource:Circulation_%28fluid_dynamics%29.
+                              skos:closeMatch <http://dbpedia.org/resource/Circulation_%28fluid_dynamics%29>.
 constant:QuantumOfCirculationTimes2 qudt:hasQuantityKind quantitykind:Circulation;
                                     qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                     qudt:quantityValue constant:Value_QuantumOfCirculationTimes2;
                                     a qudt:PhysicalConstant;
                                     rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                     rdfs:label "quantum of circulation times 2"@en;
-                                    skos:closeMatch resource:Circulation_%28fluid_dynamics%29.
+                                    skos:closeMatch <http://dbpedia.org/resource/Circulation_%28fluid_dynamics%29>.
 constant:ReducedPlanckConstant dcterms:description """
   The $\\textit{Reduced Planck Constant}$, or $\\textit{Dirac Constant}$, is used in applications where
    frequency is expressed in terms of radians per second ($\\textit{angular frequency}$) instead of cycles per second. 
@@ -2248,21 +2242,21 @@ constant:RydbergConstantTimesCInHz qudt:hasQuantityKind quantitykind:Frequency;
                                    a qudt:PhysicalConstant;
                                    rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                    rdfs:label "Rydberg constant times c in Hz"@en;
-                                   skos:closeMatch resource:Rydberg_constant.
+                                   skos:closeMatch <http://dbpedia.org/resource/Rydberg_constant>.
 constant:RydbergConstantTimesHcInEV qudt:hasQuantityKind quantitykind:Energy;
                                     qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                     qudt:quantityValue constant:Value_RydbergConstantTimesHcInEV;
                                     a qudt:PhysicalConstant;
                                     rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                     rdfs:label "Rydberg constant times hc in eV"@en;
-                                    skos:closeMatch resource:Rydberg_constant.
+                                    skos:closeMatch <http://dbpedia.org/resource/Rydberg_constant>.
 constant:RydbergConstantTimesHcInJ qudt:hasQuantityKind quantitykind:Energy;
                                    qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                    qudt:quantityValue constant:Value_RydbergConstantTimesHcInJ;
                                    a qudt:PhysicalConstant;
                                    rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                    rdfs:label "Rydberg constant times hc in J"@en;
-                                   skos:closeMatch resource:Rydberg_constant.
+                                   skos:closeMatch <http://dbpedia.org/resource/Rydberg_constant>.
 constant:SackurTetrodeConstant1K100KPa qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                        qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                        qudt:quantityValue constant:Value_SackurTetrodeConstant1K100KPa;
@@ -2287,84 +2281,84 @@ constant:ShieldedHelionGyromagneticRatio qudt:hasQuantityKind quantitykind:Gyrom
                                          a qudt:PhysicalConstant;
                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                          rdfs:label "shielded helion gyromagnetic ratio"@en;
-                                         skos:closeMatch resource:Gyromagnetic_ratio.
+                                         skos:closeMatch <http://dbpedia.org/resource/Gyromagnetic_ratio>.
 constant:ShieldedHelionGyromagneticRatioOver2Pi qudt:hasQuantityKind quantitykind:GyromagneticRatio;
                                                 qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                 qudt:quantityValue constant:Value_ShieldedHelionGyromagneticRatioOver2Pi;
                                                 a qudt:PhysicalConstant;
                                                 rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                 rdfs:label "shielded helion gyromagnetic ratio over 2 pi"@en;
-                                                skos:closeMatch resource:Gyromagnetic_ratio.
+                                                skos:closeMatch <http://dbpedia.org/resource/Gyromagnetic_ratio>.
 constant:ShieldedHelionMagneticMoment qudt:hasQuantityKind quantitykind:MagneticDipoleMoment;
                                       qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                       qudt:quantityValue constant:Value_ShieldedHelionMagneticMoment;
                                       a qudt:PhysicalConstant;
                                       rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                       rdfs:label "shielded helion magnetic moment"@en;
-                                      skos:closeMatch resource:Magnetic_moment.
+                                      skos:closeMatch <http://dbpedia.org/resource/Magnetic_moment>.
 constant:ShieldedHelionMagneticMomentToBohrMagnetonRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                          qudt:quantityValue constant:Value_ShieldedHelionMagneticMomentToBohrMagnetonRatio;
                                                          a qudt:PhysicalConstant;
                                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                          rdfs:label "shielded helion magnetic moment to Bohr magneton ratio"@en;
-                                                         skos:closeMatch resource:Bohr_magneton.
+                                                         skos:closeMatch <http://dbpedia.org/resource/Bohr_magneton>.
 constant:ShieldedHelionMagneticMomentToNuclearMagnetonRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                             qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                             qudt:quantityValue constant:Value_ShieldedHelionMagneticMomentToNuclearMagnetonRatio;
                                                             a qudt:PhysicalConstant;
                                                             rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                             rdfs:label "shielded helion magnetic moment to nuclear magneton ratio"@en;
-                                                            skos:closeMatch resource:Nuclear_magneton.
+                                                            skos:closeMatch <http://dbpedia.org/resource/Nuclear_magneton>.
 constant:ShieldedHelionToProtonMagneticMomentRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                    qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                    qudt:quantityValue constant:Value_ShieldedHelionToProtonMagneticMomentRatio;
                                                    a qudt:PhysicalConstant;
                                                    rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                    rdfs:label "shielded helion to proton magnetic moment ratio"@en;
-                                                   skos:closeMatch resource:G-factor.
+                                                   skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:ShieldedHelionToShieldedProtonMagneticMomentRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                            qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                            qudt:quantityValue constant:Value_ShieldedHelionToShieldedProtonMagneticMomentRatio;
                                                            a qudt:PhysicalConstant;
                                                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                            rdfs:label "shielded helion to shielded proton magnetic moment ratio"@en;
-                                                           skos:closeMatch resource:G-factor.
+                                                           skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:ShieldedProtonGyromagneticRatio qudt:hasQuantityKind quantitykind:GyromagneticRatio;
                                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                          qudt:quantityValue constant:Value_ShieldedProtonGyromagneticRatio;
                                          a qudt:PhysicalConstant;
                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                          rdfs:label "shielded proton gyromagnetic ratio"@en;
-                                         skos:closeMatch resource:Gyromagnetic_ratio.
+                                         skos:closeMatch <http://dbpedia.org/resource/Gyromagnetic_ratio>.
 constant:ShieldedProtonGyromagneticRatioOver2Pi qudt:hasQuantityKind quantitykind:GyromagneticRatio;
                                                 qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                 qudt:quantityValue constant:Value_ShieldedProtonGyromagneticRatioOver2Pi;
                                                 a qudt:PhysicalConstant;
                                                 rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                 rdfs:label "shielded proton gyromagnetic ratio over 2 pi"@en;
-                                                skos:closeMatch resource:Gyromagnetic_ratio.
+                                                skos:closeMatch <http://dbpedia.org/resource/Gyromagnetic_ratio>.
 constant:ShieldedProtonMagneticMoment qudt:hasQuantityKind quantitykind:MagneticDipoleMoment;
                                       qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                       qudt:quantityValue constant:Value_ShieldedProtonMagneticMoment;
                                       a qudt:PhysicalConstant;
                                       rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                       rdfs:label "shielded proton magnetic moment"@en;
-                                      skos:closeMatch resource:Magnetic_moment.
+                                      skos:closeMatch <http://dbpedia.org/resource/Magnetic_moment>.
 constant:ShieldedProtonMagneticMomentToBohrMagnetonRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                          qudt:quantityValue constant:Value_ShieldedProtonMagneticMomentToBohrMagnetonRatio;
                                                          a qudt:PhysicalConstant;
                                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                          rdfs:label "shielded proton magnetic moment to Bohr magneton ratio"@en;
-                                                         skos:closeMatch resource:Bohr_magneton.
+                                                         skos:closeMatch <http://dbpedia.org/resource/Bohr_magneton>.
 constant:ShieldedProtonMagneticMomentToNuclearMagnetonRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                             qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                             qudt:quantityValue constant:Value_ShieldedProtonMagneticMomentToNuclearMagnetonRatio;
                                                             a qudt:PhysicalConstant;
                                                             rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                             rdfs:label "shielded proton magnetic moment to nuclear magneton ratio"@en;
-                                                            skos:closeMatch resource:Nuclear_magneton.
+                                                            skos:closeMatch <http://dbpedia.org/resource/Nuclear_magneton>.
 constant:SpeedOfLight_Vacuum dcterms:description """
   The $\\textit{Speed of Light in Vacuum}$, is a universal physical constant important in many areas of physics. 
   Its value is 299,792,458 metres per second, a figure that is exact because the length of the metre is
@@ -2423,14 +2417,14 @@ constant:TauComptonWavelength qudt:hasQuantityKind quantitykind:Length;
                               a qudt:PhysicalConstant;
                               rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                               rdfs:label "tau Compton wavelength"@en;
-                              skos:closeMatch resource:Compton_wavelength.
+                              skos:closeMatch <http://dbpedia.org/resource/Compton_wavelength>.
 constant:TauComptonWavelengthOver2Pi qudt:hasQuantityKind quantitykind:Length;
                                      qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                      qudt:quantityValue constant:Value_TauComptonWavelengthOver2Pi;
                                      a qudt:PhysicalConstant;
                                      rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                      rdfs:label "tau Compton wavelength over 2 pi"@en;
-                                     skos:closeMatch resource:Compton_wavelength.
+                                     skos:closeMatch <http://dbpedia.org/resource/Compton_wavelength>.
 constant:TauElectronMassRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                               qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                               qudt:quantityValue constant:Value_TauElectronMassRatio;
@@ -2449,21 +2443,21 @@ constant:TauMassEnergyEquivalent qudt:hasQuantityKind quantitykind:Energy;
                                  a qudt:PhysicalConstant;
                                  rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                  rdfs:label "tau mass energy equivalent"@en;
-                                 skos:closeMatch resource:Mass%E2%80%93energy_equivalence.
+                                 skos:closeMatch <http://dbpedia.org/resource/Mass–energy_equivalence>.
 constant:TauMassEnergyEquivalentInMeV qudt:hasQuantityKind quantitykind:Energy;
                                       qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                       qudt:quantityValue constant:Value_TauMassEnergyEquivalentInMeV;
                                       a qudt:PhysicalConstant;
                                       rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                       rdfs:label "tau mass energy equivalent in MeV"@en;
-                                      skos:closeMatch resource:Mass%E2%80%93energy_equivalence.
+                                      skos:closeMatch <http://dbpedia.org/resource/Mass–energy_equivalence>.
 constant:TauMassInAtomicMassUnit qudt:hasQuantityKind quantitykind:Mass;
                                  qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                  qudt:quantityValue constant:Value_TauMassInAtomicMassUnit;
                                  a qudt:PhysicalConstant;
                                  rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                  rdfs:label "tau mass in atomic mass unit"@en;
-                                 skos:closeMatch resource:Atomic_mass_unit.
+                                 skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:TauMolarMass qudt:hasQuantityKind quantitykind:MolarMass;
                       qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                       qudt:quantityValue constant:Value_TauMolarMass;
@@ -2501,7 +2495,7 @@ constant:TritonElectronMagneticMomentRatio qudt:hasQuantityKind quantitykind:Dim
                                            a qudt:PhysicalConstant;
                                            rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                            rdfs:label "triton-electron magnetic moment ratio"@en;
-                                           skos:closeMatch resource:Electron_magnetic_dipole_moment.
+                                           skos:closeMatch <http://dbpedia.org/resource/Electron_magnetic_dipole_moment>.
 constant:TritonElectronMassRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                  qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                  qudt:quantityValue constant:Value_TritonElectronMassRatio;
@@ -2514,28 +2508,28 @@ constant:TritonGFactor qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                        a qudt:PhysicalConstant;
                        rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                        rdfs:label "triton g factor"@en;
-                       skos:closeMatch resource:G-factor.
+                       skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:TritonMagneticMoment qudt:hasQuantityKind quantitykind:MagneticDipoleMoment;
                               qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                               qudt:quantityValue constant:Value_TritonMagneticMoment;
                               a qudt:PhysicalConstant;
                               rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                               rdfs:label "triton magnetic moment"@en;
-                              skos:closeMatch resource:Magnetic_moment.
+                              skos:closeMatch <http://dbpedia.org/resource/Magnetic_moment>.
 constant:TritonMagneticMomentToBohrMagnetonRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                  qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                  qudt:quantityValue constant:Value_TritonMagneticMomentToBohrMagnetonRatio;
                                                  a qudt:PhysicalConstant;
                                                  rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                  rdfs:label "triton magnetic moment to Bohr magneton ratio"@en;
-                                                 skos:closeMatch resource:Bohr_magneton.
+                                                 skos:closeMatch <http://dbpedia.org/resource/Bohr_magneton>.
 constant:TritonMagneticMomentToNuclearMagnetonRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                                     qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                     qudt:quantityValue constant:Value_TritonMagneticMomentToNuclearMagnetonRatio;
                                                     a qudt:PhysicalConstant;
                                                     rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                     rdfs:label "triton magnetic moment to nuclear magneton ratio"@en;
-                                                    skos:closeMatch resource:Nuclear_magneton.
+                                                    skos:closeMatch <http://dbpedia.org/resource/Nuclear_magneton>.
 constant:TritonMass qudt:hasQuantityKind quantitykind:Mass;
                     qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                     qudt:quantityValue constant:Value_TritonMass;
@@ -2548,21 +2542,21 @@ constant:TritonMassEnergyEquivalent qudt:hasQuantityKind quantitykind:Energy;
                                     a qudt:PhysicalConstant;
                                     rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                     rdfs:label "triton mass energy equivalent"@en;
-                                    skos:closeMatch resource:Mass%E2%80%93energy_equivalence.
+                                    skos:closeMatch <http://dbpedia.org/resource/Mass–energy_equivalence>.
 constant:TritonMassEnergyEquivalentInMeV qudt:hasQuantityKind quantitykind:Energy;
                                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                          qudt:quantityValue constant:Value_TritonMassEnergyEquivalentInMeV;
                                          a qudt:PhysicalConstant;
                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                          rdfs:label "triton mass energy equivalent in MeV"@en;
-                                         skos:closeMatch resource:Mass%E2%80%93energy_equivalence.
+                                         skos:closeMatch <http://dbpedia.org/resource/Mass–energy_equivalence>.
 constant:TritonMassInAtomicMassUnit qudt:hasQuantityKind quantitykind:Mass;
                                     qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                     qudt:quantityValue constant:Value_TritonMassInAtomicMassUnit;
                                     a qudt:PhysicalConstant;
                                     rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                     rdfs:label "triton mass in atomic mass unit"@en;
-                                    skos:closeMatch resource:Atomic_mass_unit.
+                                    skos:closeMatch <http://dbpedia.org/resource/Atomic_mass_unit>.
 constant:TritonMolarMass qudt:hasQuantityKind quantitykind:MolarMass;
                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                          qudt:quantityValue constant:Value_TritonMolarMass;
@@ -2575,14 +2569,14 @@ constant:TritonNeutronMagneticMomentRatio qudt:hasQuantityKind quantitykind:Dime
                                           a qudt:PhysicalConstant;
                                           rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                           rdfs:label "triton-neutron magnetic moment ratio"@en;
-                                          skos:closeMatch resource:Neutron_magnetic_moment.
+                                          skos:closeMatch <http://dbpedia.org/resource/Neutron_magnetic_moment>.
 constant:TritonProtonMagneticMomentRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                          qudt:quantityValue constant:Value_TritonProtonMagneticMomentRatio;
                                          a qudt:PhysicalConstant;
                                          rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                          rdfs:label "triton-proton magnetic moment ratio"@en;
-                                         skos:closeMatch resource:G-factor.
+                                         skos:closeMatch <http://dbpedia.org/resource/G-factor>.
 constant:TritonProtonMassRatio qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                                qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                qudt:quantityValue constant:Value_TritonProtonMassRatio;
@@ -5886,7 +5880,7 @@ constant:VonKlitzingConstant qudt:hasQuantityKind quantitykind:Resistance;
                              a qudt:PhysicalConstant;
                              rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                              rdfs:label "Von Klitzing constant"@en;
-                             skos:closeMatch resource:Quantum_Hall_effect.
+                             skos:closeMatch <http://dbpedia.org/resource/Quantum_Hall_effect>.
 constant:WeakMixingAngle qudt:dbpediaMatch "http://dbpedia.org/resource/Weinberg_angle"^^xsd:anyURI;
                          qudt:hasQuantityKind quantitykind:DimensionlessRatio;
                          qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
@@ -5900,14 +5894,14 @@ constant:WienFrequencyDisplacementLawConstant qudt:hasQuantityKind quantitykind:
                                               a qudt:PhysicalConstant;
                                               rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                               rdfs:label "Wien frequency displacement law constant"@en;
-                                              skos:closeMatch resource:Black_body.
+                                              skos:closeMatch <http://dbpedia.org/resource/Black_body>.
 constant:WienWavelengthDisplacementLawConstant qudt:hasQuantityKind quantitykind:LengthTemperature;
                                                qudt:informativeReference "http://physics.nist.gov/cuu/Constants/bibliography.html"^^xsd:anyURI;
                                                qudt:quantityValue constant:Value_WienWavelengthDisplacementLawConstant;
                                                a qudt:PhysicalConstant;
                                                rdfs:isDefinedBy <http://qudt.org/3.1.10/vocab/constant>;
                                                rdfs:label "Wien wavelength displacement law constant"@en;
-                                               skos:closeMatch resource:Wien%27s_displacement_law.
+                                               skos:closeMatch <http://dbpedia.org/resource/Wien%27s_displacement_law>.
 vaem:GMD_QUDT-CONSTANTS dcterms:contributor "Irene Polikoff",
                                             "Jack Hodges",
                                             "Ralph Hodgson",

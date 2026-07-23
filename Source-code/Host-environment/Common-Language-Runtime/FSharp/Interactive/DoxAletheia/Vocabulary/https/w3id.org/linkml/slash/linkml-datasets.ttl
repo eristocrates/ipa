@@ -7,9 +7,6 @@
 @prefix linkml: <https://w3id.org/linkml/>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix w3id: <https://w3id.org/>.
-@prefix shacl: <http://www.w3.org/ns/shacl#>.
 
 linkml:DataPackage a linkml:ClassDefinition;
                    rdfs:seeAlso "https://specs.frictionlessdata.io/data-package"^^xsd:anyURI;

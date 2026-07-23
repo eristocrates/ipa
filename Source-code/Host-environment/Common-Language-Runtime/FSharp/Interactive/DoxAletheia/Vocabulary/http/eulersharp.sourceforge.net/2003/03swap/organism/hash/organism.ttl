@@ -16,13 +16,6 @@
 @prefix fos: <http://eulersharp.sourceforge.net/2003/03swap/foster#>.
 @prefix clisko: <http://www.agfa.com/w3c/2009/clinicalSKOSSchemes#>.
 @prefix organism: <http://eulersharp.sourceforge.net/2003/03swap/organism#>.
-@prefix events: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
-@prefix agents: <http://eulersharp.sourceforge.net/2003/03swap/agent#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix uniprot: <http://purl.uniprot.org/core/>.
-@prefix swap_physicalResource: <http://eulersharp.sourceforge.net/2003/03swap/physicalResource#>.
-@prefix swap_space: <http://eulersharp.sourceforge.net/2003/03swap/space#>.
 
 organism: dce:contributor "Until 2010: Pieterjan De Potter, Pedro Debevere, Ghent University - IBBT/ELIS - Multimedia Lab/Belgium";
           dce:creator "Hans Cools, MD, Agfa Healthcare/Belgium"@en;

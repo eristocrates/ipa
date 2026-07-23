@@ -2,94 +2,88 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix co: <http://purl.org/ontology/co/core#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 
-co: dc11:creator <http://foaf.me/zazi#me>,
-                 <http://moustaki.org/foaf.rdf#moustaki>,
-                 <http://foaf.me/intrz#me>;
-    dc11:date "2010-09-13T16:11:52+01:00"^^xsd:dateTime;
-    dc11:description """The Counter Ontology specification provides basic concepts and properties 
+co: <http://purl.org/dc/elements/1.1/creator> <http://foaf.me/zazi#me>,
+                                              <http://moustaki.org/foaf.rdf#moustaki>,
+                                              <http://foaf.me/intrz#me>;
+    <http://purl.org/dc/elements/1.1/date> "2010-09-13T16:11:52+01:00"^^xsd:dateTime;
+    <http://purl.org/dc/elements/1.1/description> """The Counter Ontology specification provides basic concepts and properties 
 for describing a general counter concept and some important sub counters, e.g. an event counter, on/ for 
 the Semantic Web. This document contains a RDF description of the Counter Ontology."""@en;
-    dc11:title "The Counter Ontology"@en;
-    a owl:Ontology;
-    owl:imports dc11:,
-                <http://www.w3.org/2003/06/sw-vocab-status/ns>,
-                <http://purl.org/NET/c4dm/event.owl>;
-    owl:versionInfo 0.81.
-co:Counter a owl:Class,
+    <http://purl.org/dc/elements/1.1/title> "The Counter Ontology"@en;
+    a <http://www.w3.org/2002/07/owl#Ontology>;
+    <http://www.w3.org/2002/07/owl#imports> <http://purl.org/dc/elements/1.1/>,
+                                            <http://www.w3.org/2003/06/sw-vocab-status/ns>,
+                                            <http://purl.org/NET/c4dm/event.owl>;
+    <http://www.w3.org/2002/07/owl#versionInfo> 0.81.
+co:Counter a <http://www.w3.org/2002/07/owl#Class>,
              rdfs:Class;
            rdfs:comment "Counter of a given object/ given objects, which are related to that counter."@en;
            rdfs:isDefinedBy co:;
            rdfs:label "Counter"@en;
-           rdfs:subClassOf [owl:onProperty co:count ; 
-                            owl:cardinality "1"^^xsd:nonNegativeInteger ; 
-                            a owl:Restriction],
-                           [owl:onProperty co:count ; 
-                            owl:cardinality "1"^^xsd:nonNegativeInteger ; 
-                            a owl:Restriction],
-                           owl:Thing;
-           status:term_status "stable"@en.
-co:ScrobbleEvent a owl:Class,
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> co:count ; 
+                            <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> co:count ; 
+                            <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           <http://www.w3.org/2002/07/owl#Thing>;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable"@en.
+co:ScrobbleEvent a <http://www.w3.org/2002/07/owl#Class>,
                    rdfs:Class;
                  rdfs:comment """An event corresponding to a scrobbling (counting an activity, which includes at least a specific factor and 
 a specific agent), e.g. a track being played by someone, a video watched by someone, a book read by 
 someone, a sporting activity by someone, ..."""@en;
                  rdfs:isDefinedBy co:;
                  rdfs:label "Scrobble Event"@en;
-                 rdfs:subClassOf event:Event;
-                 status:term_status "unstable"@en.
-co:count a owl:DatatypeProperty,
-           owl:FunctionalProperty,
+                 rdfs:subClassOf <http://purl.org/NET/c4dm/event.owl#Event>;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable"@en.
+co:count a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+           <http://www.w3.org/2002/07/owl#FunctionalProperty>,
            rdf:Property;
          rdfs:comment "Links a counter resource to the actual count"@en;
          rdfs:domain co:Counter;
          rdfs:isDefinedBy co:;
          rdfs:label "has count"@en;
          rdfs:range xsd:integer;
-         status:term_status "stable"@en.
-co:counter a owl:ObjectProperty,
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable"@en.
+co:counter a <http://www.w3.org/2002/07/owl#ObjectProperty>,
              rdf:Property;
            rdfs:comment "Links an object to a counter resource. Please feel free to create further sub properties with more restricted domains."@en;
            rdfs:isDefinedBy co:;
            rdfs:label "has counter"@en;
            rdfs:range co:Counter;
-           status:term_status "stable"@en.
-co:event a owl:ObjectProperty,
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable"@en.
+co:event a <http://www.w3.org/2002/07/owl#ObjectProperty>,
            rdf:Property;
          rdfs:comment "Links counter resources to related events."@en;
          rdfs:isDefinedBy co:;
          rdfs:label "has event"@en;
-         rdfs:range event:Event;
+         rdfs:range <http://purl.org/NET/c4dm/event.owl#Event>;
          rdfs:subPropertyOf co:object;
-         owl:inverseOf co:event_counter;
-         status:term_status "testing"@en.
-co:event_counter a owl:ObjectProperty,
+         <http://www.w3.org/2002/07/owl#inverseOf> co:event_counter;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+co:event_counter a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                    rdf:Property;
                  rdfs:comment "Links events to a counter resource, where they where counted in."@en;
-                 rdfs:domain event:Event;
+                 rdfs:domain <http://purl.org/NET/c4dm/event.owl#Event>;
                  rdfs:isDefinedBy co:;
                  rdfs:label "has event counter"@en;
                  rdfs:subPropertyOf co:counter;
-                 status:term_status "unstable"@en.
-co:object a owl:ObjectProperty,
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable"@en.
+co:object a <http://www.w3.org/2002/07/owl#ObjectProperty>,
             rdf:Property;
           rdfs:comment "Links a counter resource to an object. Please feel free to create further sub properties with more restricted ranges."@en;
           rdfs:domain co:Counter;
           rdfs:isDefinedBy co:;
           rdfs:label "has object"@en;
-          owl:inverseOf co:counter;
-          status:term_status "testing"@en.
-co:scrobble_object a owl:ObjectProperty,
+          <http://www.w3.org/2002/07/owl#inverseOf> co:counter;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+co:scrobble_object a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                      rdf:Property;
                    rdfs:comment "A scrobble object of a scrobble event, e.g. a music track, a video or a described activity. That means a specific thing that is involved in this scrobbling action."@en;
                    rdfs:domain co:ScrobbleEvent;
                    rdfs:isDefinedBy co:;
                    rdfs:label "has scrobble object"@en;
-                   rdfs:subPropertyOf event:factor;
-                   status:term_status "unstable"@en.
+                   rdfs:subPropertyOf <http://purl.org/NET/c4dm/event.owl#factor>;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable"@en.

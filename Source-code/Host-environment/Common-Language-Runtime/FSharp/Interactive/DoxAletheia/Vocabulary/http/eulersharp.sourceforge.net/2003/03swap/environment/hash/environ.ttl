@@ -13,10 +13,6 @@
 @prefix space: <http://eulersharp.sourceforge.net/2003/03swap/space#>.
 @prefix env: <http://eulersharp.sourceforge.net/2003/03swap/environment#>.
 @prefix environ: <http://eulersharp.sourceforge.net/2003/03swap/environment#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix wgspos: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
-@prefix swap_space: <http://eulersharp.sourceforge.net/2003/03swap/space#>.
 
 <http://eulersharp.sourceforge.net/2003/03swap/environment> dce:contributor "Until 2010: Pieterjan De Potter; Ghent University - IBBT/ELIS - Multimedia Lab/Belgium"@en;
                                                             dce:creator "Hans Cools, MD; Agfa Healthcare/Belgium"@en;

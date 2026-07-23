@@ -9,11 +9,9 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix collections: <http://swan.mindinformatics.org/ontologies/1.2/collections/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix w3: <http://www.w3.org/>.
 @prefix ermrk: <http://www.essepuntato.it/2008/12/earmark#>.
 
-_:autos11159 a owl:AllDisjointClasses;
+_:autos33286 a owl:AllDisjointClasses;
              owl:members (:Attribute
                           :Comment
                           :Element).

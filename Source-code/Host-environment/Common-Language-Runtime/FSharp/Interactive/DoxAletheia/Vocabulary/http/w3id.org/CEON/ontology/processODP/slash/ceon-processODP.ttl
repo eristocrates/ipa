@@ -1,117 +1,110 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix ceon: <http://w3id.org/CEON/>.
 @prefix ceon-processODP: <http://w3id.org/CEON/ontology/processODP/>.
-@prefix cpa: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-dcterms:contributor a owl:AnnotationProperty.
-dcterms:created a owl:AnnotationProperty.
-dcterms:creator a owl:AnnotationProperty.
-dcterms:description a owl:AnnotationProperty.
-dcterms:issued a owl:AnnotationProperty.
-dcterms:license a owl:AnnotationProperty.
-dcterms:publisher a owl:AnnotationProperty.
-dcterms:title a owl:AnnotationProperty.
-vann:preferredNamespacePrefix a owl:AnnotationProperty.
-vann:preferredNamespaceUri a owl:AnnotationProperty.
-<http://w3id.org/CEON/ontology/location/Location> a owl:Class.
-ceon-processODP: dcterms:contributor "Eva Blomqvist",
-                                     "Robin Keskisärkkä",
-                                     "Mikael Lindecrantz";
-                 dcterms:created "2025-05-20"^^xsd:date;
-                 dcterms:creator "Huanyu Li";
-                 dcterms:description "A core ODP of the CEON ontology network, defining aspects of the process concept.";
-                 dcterms:issued "2025-06-30"^^xsd:date;
-                 dcterms:license "https://creativecommons.org/licenses/by/4.0/";
-                 dcterms:publisher "Onto-DESIDE";
-                 dcterms:title "Circular Economy Ontology Network (CEON) - Process ODP";
-                 vann:preferredNamespacePrefix "ceon-processODP";
-                 vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/processODP/";
-                 cpa:coversRequirements "Covers the following requirements from Onto-DESIDE D3.2: CE1-1, CE3-5, CE7-4, CE7-5, CE8-2, CE10-7, CE12-1, C3-1, C4-2, C4-5, C4-7, C4-9, C13-2, E1-9, E2-6, E3-7, T10-1.",
-                                        "Covers the following requirements from Onto-DESIDE D3.1: CVN-Process-3,4,5, C3-1, C4-2, C4-5, C4-7, C4-9, C13-2, E2-6";
-                 a owl:Ontology;
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://w3id.org/CEON/ontology/location/Location> a <http://www.w3.org/2002/07/owl#Class>.
+ceon-processODP: <http://purl.org/dc/terms/contributor> "Eva Blomqvist",
+                                                        "Robin Keskisärkkä",
+                                                        "Mikael Lindecrantz";
+                 <http://purl.org/dc/terms/created> "2025-05-20"^^xsd:date;
+                 <http://purl.org/dc/terms/creator> "Huanyu Li";
+                 <http://purl.org/dc/terms/description> "A core ODP of the CEON ontology network, defining aspects of the process concept.";
+                 <http://purl.org/dc/terms/issued> "2025-06-30"^^xsd:date;
+                 <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by/4.0/";
+                 <http://purl.org/dc/terms/publisher> "Onto-DESIDE";
+                 <http://purl.org/dc/terms/title> "Circular Economy Ontology Network (CEON) - Process ODP";
+                 <http://purl.org/vocab/vann/preferredNamespacePrefix> "ceon-processODP";
+                 <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/CEON/ontology/processODP/";
+                 <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> "Covers the following requirements from Onto-DESIDE D3.2: CE1-1, CE3-5, CE7-4, CE7-5, CE8-2, CE10-7, CE12-1, C3-1, C4-2, C4-5, C4-7, C4-9, C13-2, E1-9, E2-6, E3-7, T10-1.",
+                                                                                                           "Covers the following requirements from Onto-DESIDE D3.1: CVN-Process-3,4,5, C3-1, C4-2, C4-5, C4-7, C4-9, C13-2, E2-6";
+                 a <http://www.w3.org/2002/07/owl#Ontology>;
                  rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the process concept.";
                  rdfs:seeAlso <https://github.com/LiUSemWeb/CEON>;
-                 owl:priorVersion 0.4;
-                 owl:versionIRI <http://w3id.org/CEON/ontology/processODP/0.5/>;
-                 owl:versionInfo 0.5.
-ceon-processODP:Event a owl:Class;
+                 <http://www.w3.org/2002/07/owl#priorVersion> 0.4;
+                 <http://www.w3.org/2002/07/owl#versionIRI> <http://w3id.org/CEON/ontology/processODP/0.5/>;
+                 <http://www.w3.org/2002/07/owl#versionInfo> 0.5.
+ceon-processODP:Event a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "Something that happens within a given context or (short) timeframe.";
                       rdfs:label "Event";
-                      rdfs:subClassOf [owl:intersectionOf ([owl:someValuesFrom owl:Thing ; 
-                                                           owl:onProperty ceon-processODP:hasInput ; 
-                                                           a owl:Restriction]
-                                                           [owl:someValuesFrom owl:Thing ; 
-                                                           owl:onProperty ceon-processODP:hasOutput ; 
-                                                           a owl:Restriction]) ; 
-                                       a owl:Class],
-                                      [owl:onProperty ceon-processODP:hasPart ; 
-                                       owl:allValuesFrom ceon-processODP:Event ; 
-                                       a owl:Restriction].
-ceon-processODP:Process a owl:Class;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                                                                       <http://www.w3.org/2002/07/owl#onProperty> ceon-processODP:hasInput ; 
+                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                                                                       <http://www.w3.org/2002/07/owl#onProperty> ceon-processODP:hasOutput ; 
+                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                       a <http://www.w3.org/2002/07/owl#Class>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> ceon-processODP:hasPart ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> ceon-processODP:Event ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>].
+ceon-processODP:Process a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:comment "Something that takes place over a (longer) period of time and changes some state of affairs."@en;
                         rdfs:label "Process";
-                        rdfs:subClassOf [owl:intersectionOf ([owl:someValuesFrom owl:Thing ; 
-                                                             owl:onProperty ceon-processODP:hasInput ; 
-                                                             a owl:Restriction]
-                                                             [owl:someValuesFrom owl:Thing ; 
-                                                             owl:onProperty ceon-processODP:hasOutput ; 
-                                                             a owl:Restriction]) ; 
-                                         a owl:Class],
-                                        [owl:onProperty ceon-processODP:hasPart ; 
-                                         owl:allValuesFrom [owl:unionOf (ceon-processODP:Event
-                                                                         ceon-processODP:Process) ; 
-                                                            a owl:Class] ; 
-                                         a owl:Restriction].
-ceon-processODP:Situation a owl:Class;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                                                                         <http://www.w3.org/2002/07/owl#onProperty> ceon-processODP:hasInput ; 
+                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                                                                         <http://www.w3.org/2002/07/owl#onProperty> ceon-processODP:hasOutput ; 
+                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                         a <http://www.w3.org/2002/07/owl#Class>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> ceon-processODP:hasPart ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (ceon-processODP:Event
+                                                                                                                                 ceon-processODP:Process) ; 
+                                                                                        a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>].
+ceon-processODP:Situation a <http://www.w3.org/2002/07/owl#Class>;
                           rdfs:comment "A situation that may involve some resources and actors, i.e. a state of affairs at a certain point in time.";
                           rdfs:label "Situation";
-                          rdfs:subClassOf [owl:someValuesFrom owl:Thing ; 
-                                           owl:onProperty ceon-processODP:isSettingFor ; 
-                                           a owl:Restriction].
-ceon-processODP:TimeInterval a owl:Class;
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> ceon-processODP:isSettingFor ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>].
+ceon-processODP:TimeInterval a <http://www.w3.org/2002/07/owl#Class>;
                              rdfs:comment "A temporal entity has a starting time and an ending time.";
                              rdfs:label "Time Interval".
-ceon-processODP:duringTime a owl:ObjectProperty;
+ceon-processODP:duringTime a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                            rdfs:comment "The time interval during which something, e.g. a process or event, takes place.";
                            rdfs:label "during time";
                            rdfs:range ceon-processODP:TimeInterval.
-ceon-processODP:endTime a owl:DatatypeProperty;
+ceon-processODP:endTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                         rdfs:comment "Represents the end time of a time interval.";
                         rdfs:domain ceon-processODP:TimeInterval;
                         rdfs:label "end time";
                         rdfs:range xsd:dateTime.
-ceon-processODP:hasInput a owl:ObjectProperty;
+ceon-processODP:hasInput a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:comment "The inputs to a process or event.";
                          rdfs:domain ceon-processODP:Process;
                          rdfs:label "has input".
-ceon-processODP:hasOutput a owl:ObjectProperty;
+ceon-processODP:hasOutput a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                           rdfs:comment "The output of a process or event.";
                           rdfs:domain ceon-processODP:Process;
                           rdfs:label "has output".
-ceon-processODP:hasPart a owl:ObjectProperty,
-                          owl:TransitiveProperty;
+ceon-processODP:hasPart a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                          <http://www.w3.org/2002/07/owl#TransitiveProperty>;
                         rdfs:comment "A process or event can consist of several parts, which are sub-processes (e.g. steps) or events.";
                         rdfs:label "has part".
-ceon-processODP:isSettingFor a owl:ObjectProperty;
+ceon-processODP:isSettingFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                              rdfs:comment "The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state.";
                              rdfs:domain ceon-processODP:Situation;
                              rdfs:label "is the setting for".
-ceon-processODP:occursAtLocation a owl:ObjectProperty;
+ceon-processODP:occursAtLocation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                  rdfs:comment "The location in which something (e.g. an event or process) takes place, e.g. the factory location where something is manufactured.";
                                  rdfs:label "occurs at location";
                                  rdfs:range <http://w3id.org/CEON/ontology/location/Location>;
                                  rdfs:subPropertyOf ceon-processODP:isSettingFor.
-ceon-processODP:startTime a owl:DatatypeProperty;
+ceon-processODP:startTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                           rdfs:comment "Represents the start time of a time interval.";
                           rdfs:domain ceon-processODP:TimeInterval;
                           rdfs:label "start time";
                           rdfs:range xsd:dateTime.
-cpa:coversRequirements a owl:AnnotationProperty.
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
 xsd:date a rdfs:Datatype.

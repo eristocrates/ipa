@@ -6,9 +6,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix : <http://www.daml.org/services/owl-s/1.2/Service.owl#>.
-@prefix w3: <http://www.w3.org/>.
 @prefix owls: <http://www.daml.org/services/owl-s/1.2/Service.owl#>.
-@prefix owls_Service: <http://www.daml.org/services/owl-s/1.2/Service.owl#>.
 
 <http://www.daml.org/services/owl-s/1.2/Service.owl> a owl:Ontology;
                                                      rdfs:comment """

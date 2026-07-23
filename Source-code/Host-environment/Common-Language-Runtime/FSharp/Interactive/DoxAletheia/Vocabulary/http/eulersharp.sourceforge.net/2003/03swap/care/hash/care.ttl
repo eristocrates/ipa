@@ -11,10 +11,6 @@
 @prefix human: <http://eulersharp.sourceforge.net/2003/03swap/human#>.
 @prefix clisko: <http://www.agfa.com/w3c/2009/clinicalSKOSSchemes#>.
 @prefix care: <http://eulersharp.sourceforge.net/2003/03swap/care#>.
-@prefix environ: <http://eulersharp.sourceforge.net/2003/03swap/environment#>.
-@prefix events: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
 
 <http://eulersharp.sourceforge.net/2003/03swap/care> dce:contributor "Until 2010: Pieterjan De Potter; Ghent University - IBBT/ELIS - Multimedia Lab/Belgium"@en;
                                                      dce:creator "Hans Cools, MD; Agfa Healthcare/Belgium"@en;

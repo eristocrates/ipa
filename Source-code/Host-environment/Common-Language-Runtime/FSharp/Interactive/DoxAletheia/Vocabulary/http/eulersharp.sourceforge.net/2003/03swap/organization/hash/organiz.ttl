@@ -12,11 +12,6 @@
 @prefix space: <http://eulersharp.sourceforge.net/2003/03swap/space#>.
 @prefix organization: <http://eulersharp.sourceforge.net/2003/03swap/organization#>.
 @prefix organiz: <http://eulersharp.sourceforge.net/2003/03swap/organization#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix agents: <http://eulersharp.sourceforge.net/2003/03swap/agent#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix contact: <http://www.w3.org/2000/10/swap/pim/contact#>.
-@prefix swap_space: <http://eulersharp.sourceforge.net/2003/03swap/space#>.
 
 organization: dce:contributor "Until 2010: Pieterjan De Potter; Ghent University - IBBT/ELIS - Multimedia Lab/Belgium"@en;
               dce:creator "Hans Cools, MD; Agfa Healthcare/Belgium"@en;

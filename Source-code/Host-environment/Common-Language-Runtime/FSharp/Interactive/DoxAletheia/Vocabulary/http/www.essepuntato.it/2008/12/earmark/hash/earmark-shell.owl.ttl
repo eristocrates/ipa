@@ -1,0 +1,145 @@
+@base <http://www.essepuntato.it/2008/12/earmark>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix : <http://www.essepuntato.it/2008/12/earmark#>.
+@prefix earmark: <http://www.essepuntato.it/2008/12/earmark#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix collections: <http://swan.mindinformatics.org/ontologies/1.2/collections/>.
+
+_:autos193357 a owl:AllDisjointClasses;
+              owl:members (:Attribute
+                           :Comment
+                           :Element).
+dc:contributor a owl:AnnotationProperty.
+dc:creator a owl:AnnotationProperty.
+dc:date a owl:AnnotationProperty.
+dc:language a owl:AnnotationProperty.
+dc:rights a owl:AnnotationProperty.
+dc:title a owl:AnnotationProperty.
+<http://www.essepuntato.it/2008/12/earmark> dc:contributor "Angelo Di Iorio",
+                                                           "Fabio Vitali";
+                                            dc:creator "Silvio Peroni";
+                                            dc:date "2014-05-13";
+                                            dc:description "Extremely Annotational RDF Markup is a meta-syntax for non-embedded markup that can be used for stand-off annotations of textual content with fully W3C-compliant technologies. EARMARK is based on an ontologically precise definition of markup that instantiates the markup of a text document as an independent OWL document outside of the text strings it annotates, and through appropriate OWL and SWRL characterizations it can define structures such as trees or graphs and can be used to generate validity constraints (including co-constraints currently unavailable in most validation languages)."@en,
+                                                           <http://www.essepuntato.it/2008/12/earmark.png>;
+                                            dc:language "en"^^xsd:language;
+                                            dc:rights "This ontology is distributed under a Creative Commons Attribution License - http://creativecommons.org/licenses/by/3.0"@en;
+                                            dc:title "EARMARK Ontology";
+                                            a owl:Ontology;
+                                            rdfs:comment """Extremely Annotational RDF Markup (EARMARK) is a meta-syntax for non-embedded markup that can be used for stand-off annotations of textual content with fully W3C-compliant technologies.
+
+This document represents the EARMARK ontology definition of the shell classes i.e., all those classes that must be used to define all the elements, attributes, comments, text nodes and hierarchies among them."""@en;
+                                            rdfs:label "EARMARK Ontology: shell classes";
+                                            owl:imports <https://essepuntato.github.io/earmark/ghost/current/ghost.owl>;
+                                            owl:versionInfo "2.0".
+:Attribute a owl:Class;
+           rdfs:comment """A markup item identifying an attribute, as the item 'src' in the following XML excerpt:
+
+<img src=\"http://palindrom.es/phd/wp-content/uploads/2009/10/EARMARKLogo.png\" />"""@en;
+           rdfs:label "attribute"@en;
+           rdfs:subClassOf :MarkupItem.
+:Comment a owl:Class;
+         rdfs:comment """A markup item identifying a comment, as the item containing the string 'This is a comment' in the following XML excerpt:
+
+<!-- This is a comment -->"""@en;
+         rdfs:label "comment"@en;
+         rdfs:subClassOf :MarkupItem.
+:Docuverse a owl:Class.
+:Element a owl:Class;
+         rdfs:comment """A markup item identifying an element, as the item 'img' in the following XML excerpt:
+
+<img src=\"http://palindrom.es/phd/wp-content/uploads/2009/10/EARMARKLogo.png\" />"""@en;
+         rdfs:label "element"@en;
+         rdfs:subClassOf :MarkupItem.
+:MarkupItem a owl:Class.
+:PointerRange a owl:Class;
+              rdfs:comment """A range that refers to any text lying between two non-negative integer locations that identify precise positions withing a docuverse.
+
+Each location of this kind of range refers to a point before or after a particular character. For instance, taking into consideration the string 'This is an example' contained by a docuverse, the location '0' is immediately before the first character 'T', location '1' is immediately after the character 'T' and before the character 'h', the location '2' is after the character 'h' and before 'i', and so on.
+
+Note that these ranges allow to define (considering the string 'a devil' as content of a docuverse as example):
+- document-order ranges, i.e., those ranges that has the begin location lesser than the end location (e.g., begin = 2, end = 7, content result 'devil');
+- reverse-order ranges, i.e., those ranges that has the begin location greater than the end location (e.g., begin = 7, end = 2, content result 'lived')."""@en;
+              rdfs:label "pointer range"@en;
+              rdfs:subClassOf :Range,
+                              [a owl:Class ; 
+                               owl:intersectionOf ([a owl:Restriction ; 
+                                                   owl:onProperty :begins ; 
+                                                   owl:allValuesFrom xsd:nonNegativeInteger]
+                                                   [a owl:Restriction ; 
+                                                   owl:onProperty :ends ; 
+                                                   owl:allValuesFrom xsd:nonNegativeInteger])];
+              owl:disjointWith :XPathRange;
+              owl:hasKey (:refersTo
+                          :begins
+                          :ends).
+:Range a owl:Class.
+:StringDocuverse a owl:Class;
+                 rdfs:comment "A docuverse that specifies all its content in form of a string, such as 'This is the string the docuverse represents.'."@en;
+                 rdfs:label "string docuverse"@en;
+                 rdfs:subClassOf :Docuverse,
+                                 [a owl:Restriction ; 
+                                  owl:onProperty :hasContent ; 
+                                  owl:allValuesFrom xsd:string];
+                 owl:disjointWith :URIDocuverse.
+:URIDocuverse a owl:Class;
+              rdfs:comment "A container of strings that may appear in the document, such as the URL 'http://www.essepuntato.it/2008/12/docuverse.txt' that contains the string 'This is the string the docuverse represents.'"@en;
+              rdfs:label "URI docuverse"@en;
+              rdfs:subClassOf :Docuverse,
+                              [a owl:Restriction ; 
+                               owl:onProperty :hasContent ; 
+                               owl:allValuesFrom xsd:anyURI].
+:XPathPointerRange a owl:Class;
+                   rdfs:comment """A range that refers to any text, obtained from a particular xpath context starting from a docuverse content, lying between two non-negative integere locations that identify precise positions.
+
+This kind of range allows to define specific positions, as explained for the class 'PointerRange', within the concatenation of strings obtained by applying the xpath context to the docuverse the range refers to, as introduce in the class 'XPathRange'.
+
+For instance, considering the following docuverse content:
+
+<root><p>No devil </p><p>lived on</p></root>
+
+the range defined on that docuverse as xpath_context = '//p', begin = '0', end = '17' refers to the text 'No devil lived on'.
+
+NB: if we define a standard pointer range on the same docuverse using the same begin and end locations of the previous one, what we obtain as text will be '<root><p>No devil'."""@en;
+                   rdfs:label "xpath pointer range"@en;
+                   rdfs:subClassOf :XPathRange,
+                                   [a owl:Class ; 
+                                    owl:intersectionOf ([a owl:Restriction ; 
+                                                        owl:onProperty :begins ; 
+                                                        owl:allValuesFrom xsd:nonNegativeInteger]
+                                                        [a owl:Restriction ; 
+                                                        owl:onProperty :ends ; 
+                                                        owl:allValuesFrom xsd:nonNegativeInteger])].
+:XPathRange a owl:Class;
+            rdfs:comment """A range that refers to any text, obtained from a particular xpath context starting from the docuverse content, lying between two locations that identify precise positions.
+
+The semantics of this kind of range is the following:
+1. assuming the content of the docuverse the range refers to as well-formed XML, we consider the sequence composed by the nodes obtained by running the xpath context (= a query) on the docuverse. If some non-nodes (e.g., strings, integers, etc.) is returned, it must be excluded from the sequence;
+2. for each node in the sequence, we consider its 'value-of', i.e., the strings contained in all the text nodes reachable starting from the node itself;
+3. considering the concatenation of all the strings obtained in the previous point, we now calculate the begin and end locations of the range."""@en;
+            rdfs:label "xpath range"@en;
+            rdfs:subClassOf :Range;
+            owl:equivalentClass [a owl:Restriction ; 
+                                 owl:onProperty :hasXPathContext ; 
+                                 owl:someValuesFrom xsd:string];
+            owl:hasKey (:refersTo
+                        :begins
+                        :ends
+                        :hasXPathContext).
+:begins a owl:DatatypeProperty.
+:ends a owl:DatatypeProperty.
+:hasContent a owl:DatatypeProperty.
+:hasXPathContext a owl:DatatypeProperty,
+                   owl:FunctionalProperty;
+                 rdfs:comment "It defines a particular xpath context for the range."@en;
+                 rdfs:domain :XPathRange;
+                 rdfs:label "has xpath context"@en;
+                 rdfs:range xsd:string.
+:refersTo a owl:ObjectProperty.
+rdfs:comment a owl:AnnotationProperty.
+rdfs:label a owl:AnnotationProperty.
+owl:versionInfo a owl:AnnotationProperty.

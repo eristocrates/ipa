@@ -1,250 +1,240 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix wdt: <http://www.wikidata.org/prop/direct/>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix w3id: <https://w3id.org/>.
 @prefix coach: <https://w3id.org/coach#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix wikidata: <http://www.wikidata.org/entity/>.
-@prefix schemas: <https://schema.org/>.
 
-dcterms:abstract a owl:AnnotationProperty.
-dcterms:contributor a owl:AnnotationProperty.
-dcterms:created a owl:AnnotationProperty.
-dcterms:creator a owl:AnnotationProperty.
-dcterms:description a owl:AnnotationProperty.
-dcterms:issued a owl:AnnotationProperty.
-dcterms:license a owl:AnnotationProperty.
-dcterms:modified a owl:AnnotationProperty.
-dcterms:title a owl:AnnotationProperty.
-vann:preferredNamespacePrefix a owl:AnnotationProperty.
-vann:preferredNamespaceUri a owl:AnnotationProperty.
+<http://purl.org/dc/terms/abstract> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
 rdf:langString a rdfs:Datatype.
-skos:definition a owl:AnnotationProperty.
-skos:editorialNote a owl:AnnotationProperty.
-skos:inScheme a owl:ObjectProperty.
-skos:notation a owl:AnnotationProperty.
-wikidata:Q12909644 a owl:NamedIndividual;
-                   rdfs:label "political ideology"@en.
-wikidata:Q17888 a owl:NamedIndividual;
-                rdfs:isDefinedBy <https://www.wikidata.org/>;
-                rdfs:label "sexual orientation"@en.
-wikidata:Q33742 a owl:NamedIndividual;
-                rdfs:isDefinedBy <https://www.wikidata.org/>;
-                rdfs:label "natural language"@en.
-wikidata:Q4369513 a owl:NamedIndividual;
-                  rdfs:isDefinedBy <https://www.wikidata.org/>;
-                  rdfs:label "sex of humans"@en.
-wikidata:Q6256 a owl:NamedIndividual;
-               rdfs:isDefinedBy <https://www.wikidata.org/>;
-               rdfs:label "country"@en.
-wikidata:Q9174 a owl:NamedIndividual;
-               rdfs:isDefinedBy <https://www.wikidata.org/>;
-               rdfs:label "religion"@en.
-wdt:P31 a owl:ObjectProperty;
-        rdfs:label "instance of"@en.
-foaf:fundedBy a owl:AnnotationProperty.
-foaf:homepage a owl:AnnotationProperty.
-foaf:mbox a owl:AnnotationProperty.
-foaf:name a owl:AnnotationProperty.
-<https://gitlab.com/canevesecamilla> a owl:NamedIndividual;
-                                     foaf:mbox <mailto:canevesecamilla@gmail.com>;
-                                     foaf:name "Camilla Canevese".
-<https://gitlab.com/ecow> a owl:NamedIndividual;
-                          foaf:mbox <mailto:enrico@fagnoni.it>;
-                          foaf:name "Enrico Fagnoni".
-<https://gitlab.com/linkeddatacenter> a owl:NamedIndividual;
-                                      foaf:homepage "https://linkeddata.center/";
-                                      foaf:name "LinkedData.Center".
-schemas:citation a owl:AnnotationProperty.
-schemas:codeRepository a owl:AnnotationProperty.
-schemas:image a owl:AnnotationProperty;
-              rdfs:range schemas:MediaObject.
-coach: dcterms:abstract "An upper ontology to classify a character by some conceptual dimensions"@en;
-       dcterms:created "2025-02-02T10:11:00"^^xsd:dateTime;
-       dcterms:creator <https://gitlab.com/ecow>,
-                       <https://gitlab.com/canevesecamilla>;
-       dcterms:description "This ontology describes a person character as a vector of demographic traits, each dimension refers to a concept contained within a specific  taxonomy or to an instance of a  wikidata item."@en;
-       dcterms:license <https://creativecommons.org/licenses/by-nc/4.0/>;
-       dcterms:title "Character of a Character Ontology (COACH)"@en;
-       vann:preferredNamespacePrefix "coach";
-       vann:preferredNamespaceUri "https://w3id.org/coach#";
-       a owl:Ontology;
+<http://www.w3.org/2004/02/skos/core#definition> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#editorialNote> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#inScheme> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.w3.org/2004/02/skos/core#notation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.wikidata.org/entity/Q12909644> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                           rdfs:label "political ideology"@en.
+<http://www.wikidata.org/entity/Q17888> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                        rdfs:isDefinedBy <https://www.wikidata.org/>;
+                                        rdfs:label "sexual orientation"@en.
+<http://www.wikidata.org/entity/Q33742> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                        rdfs:isDefinedBy <https://www.wikidata.org/>;
+                                        rdfs:label "natural language"@en.
+<http://www.wikidata.org/entity/Q4369513> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                          rdfs:isDefinedBy <https://www.wikidata.org/>;
+                                          rdfs:label "sex of humans"@en.
+<http://www.wikidata.org/entity/Q6256> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                       rdfs:isDefinedBy <https://www.wikidata.org/>;
+                                       rdfs:label "country"@en.
+<http://www.wikidata.org/entity/Q9174> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                       rdfs:isDefinedBy <https://www.wikidata.org/>;
+                                       rdfs:label "religion"@en.
+<http://www.wikidata.org/prop/direct/P31> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                          rdfs:label "instance of"@en.
+<http://xmlns.com/foaf/0.1/fundedBy> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/homepage> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/mbox> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/name> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://gitlab.com/canevesecamilla> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                     <http://xmlns.com/foaf/0.1/mbox> <mailto:canevesecamilla@gmail.com>;
+                                     <http://xmlns.com/foaf/0.1/name> "Camilla Canevese".
+<https://gitlab.com/ecow> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                          <http://xmlns.com/foaf/0.1/mbox> <mailto:enrico@fagnoni.it>;
+                          <http://xmlns.com/foaf/0.1/name> "Enrico Fagnoni".
+<https://gitlab.com/linkeddatacenter> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                      <http://xmlns.com/foaf/0.1/homepage> "https://linkeddata.center/";
+                                      <http://xmlns.com/foaf/0.1/name> "LinkedData.Center".
+<https://schema.org/citation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://schema.org/codeRepository> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://schema.org/image> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                           rdfs:range <https://schema.org/MediaObject>.
+coach: <http://purl.org/dc/terms/abstract> "An upper ontology to classify a character by some conceptual dimensions"@en;
+       <http://purl.org/dc/terms/created> "2025-02-02T10:11:00"^^xsd:dateTime;
+       <http://purl.org/dc/terms/creator> <https://gitlab.com/ecow>,
+                                          <https://gitlab.com/canevesecamilla>;
+       <http://purl.org/dc/terms/description> "This ontology describes a person character as a vector of demographic traits, each dimension refers to a concept contained within a specific  taxonomy or to an instance of a  wikidata item."@en;
+       <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by-nc/4.0/>;
+       <http://purl.org/dc/terms/title> "Character of a Character Ontology (COACH)"@en;
+       <http://purl.org/vocab/vann/preferredNamespacePrefix> "coach";
+       <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/coach#";
+       a <http://www.w3.org/2002/07/owl#Ontology>;
        rdfs:isDefinedBy coach:;
        rdfs:label "COACH"@en;
-       owl:versionIRI coach:;
-       owl:versionInfo "0.9.0";
-       foaf:fundedBy <https://gitlab.com/linkeddatacenter>;
-       schemas:citation "C.Canevese, E.Fagnoni. Character of a Character Ontology (w3id.org/coach)"@en;
-       schemas:codeRepository <https://gitlab.com/linkeddatacenter/coach>;
-       schemas:image "/uml.png";
+       <http://www.w3.org/2002/07/owl#versionIRI> coach:;
+       <http://www.w3.org/2002/07/owl#versionInfo> "0.9.0";
+       <http://xmlns.com/foaf/0.1/fundedBy> <https://gitlab.com/linkeddatacenter>;
+       <https://schema.org/citation> "C.Canevese, E.Fagnoni. Character of a Character Ontology (w3id.org/coach)"@en;
+       <https://schema.org/codeRepository> <https://gitlab.com/linkeddatacenter/coach>;
+       <https://schema.org/image> "/uml.png";
        <https://w3id.org/widoco/vocab#introduction> "TBD introduction"@en.
-coach:AgeScheme a owl:NamedIndividual;
+coach:AgeScheme a <http://www.w3.org/2002/07/owl#NamedIndividual>;
                 rdfs:isDefinedBy <https://gitlab.com/linkeddatacenter/coach/-/raw/main/src/taxonomies/age-taxonomy.ttl>,
                                  coach:.
-coach:AgreeablenessScheme a owl:NamedIndividual;
+coach:AgreeablenessScheme a <http://www.w3.org/2002/07/owl#NamedIndividual>;
                           rdfs:isDefinedBy <https://gitlab.com/linkeddatacenter/coach/-/raw/main/src/taxonomies/big5-taxonomy.ttl>,
                                            coach:.
-coach:Character a owl:Class;
+coach:Character a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:isDefinedBy coach:;
                 rdfs:label "Character"@en;
-                owl:equivalentClass [owl:someValuesFrom owl:Thing ; 
-                                     owl:onProperty coach:dimension ; 
-                                     a owl:Restriction];
-                skos:definition "Represents an entity, real or fictional, characterized by various attributes (or dimensions) such as personality traits, cultural background, and preferences."@en.
-coach:ConscientiousnessScheme a owl:NamedIndividual;
+                <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                                                 <http://www.w3.org/2002/07/owl#onProperty> coach:dimension ; 
+                                                                 a <http://www.w3.org/2002/07/owl#Restriction>];
+                <http://www.w3.org/2004/02/skos/core#definition> "Represents an entity, real or fictional, characterized by various attributes (or dimensions) such as personality traits, cultural background, and preferences."@en.
+coach:ConscientiousnessScheme a <http://www.w3.org/2002/07/owl#NamedIndividual>;
                               rdfs:isDefinedBy <https://gitlab.com/linkeddatacenter/coach/-/raw/main/src/taxonomies/big5-taxonomy.ttl>,
                                                coach:.
-coach:EducationScheme a owl:NamedIndividual;
+coach:EducationScheme a <http://www.w3.org/2002/07/owl#NamedIndividual>;
                       rdfs:isDefinedBy <https://gitlab.com/linkeddatacenter/coach/-/raw/main/src/taxonomies/isced-taxonomy.ttl>.
-coach:ExtraversionScheme a owl:NamedIndividual;
+coach:ExtraversionScheme a <http://www.w3.org/2002/07/owl#NamedIndividual>;
                          rdfs:isDefinedBy <https://gitlab.com/linkeddatacenter/coach/-/raw/main/src/taxonomies/big5-taxonomy.ttl>,
                                           coach:.
-coach:NeuroticismScheme a owl:NamedIndividual;
+coach:NeuroticismScheme a <http://www.w3.org/2002/07/owl#NamedIndividual>;
                         rdfs:isDefinedBy <https://gitlab.com/linkeddatacenter/coach/-/raw/main/src/taxonomies/big5-taxonomy.ttl>,
                                          coach:.
-coach:OpenessScheme a owl:NamedIndividual;
+coach:OpenessScheme a <http://www.w3.org/2002/07/owl#NamedIndividual>;
                     rdfs:isDefinedBy <https://gitlab.com/linkeddatacenter/coach/-/raw/main/src/taxonomies/big5-taxonomy.ttl>.
-coach:PoliticalOrientationScheme a owl:NamedIndividual;
+coach:PoliticalOrientationScheme a <http://www.w3.org/2002/07/owl#NamedIndividual>;
                                  rdfs:isDefinedBy <https://gitlab.com/linkeddatacenter/coach/-/raw/main/src/taxonomies/political-orientation-taxonomy.ttl>.
-coach:dimension a owl:ObjectProperty;
+coach:dimension a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:domain coach:Character;
                 rdfs:isDefinedBy coach:;
                 rdfs:label "hasDimension"@en;
-                skos:definition "Identifies an essential feature or attribute of a Character, including personal, cultural, or psychological dimensions."@en.
-coach:dislikes a owl:ObjectProperty;
+                <http://www.w3.org/2004/02/skos/core#definition> "Identifies an essential feature or attribute of a Character, including personal, cultural, or psychological dimensions."@en.
+coach:dislikes a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:label "dislikes"@en;
-               rdfs:range owl:Thing;
+               rdfs:range <http://www.w3.org/2002/07/owl#Thing>;
                rdfs:subPropertyOf coach:dimension;
-               owl:propertyDisjointWith coach:likes;
-               skos:definition "Represents anything a Character dislikes."@en;
-               skos:editorialNote "Better to use a wikipedia item"@en.
-coach:hasAge a owl:ObjectProperty,
-               owl:FunctionalProperty;
+               <http://www.w3.org/2002/07/owl#propertyDisjointWith> coach:likes;
+               <http://www.w3.org/2004/02/skos/core#definition> "Represents anything a Character dislikes."@en;
+               <http://www.w3.org/2004/02/skos/core#editorialNote> "Better to use a wikipedia item"@en.
+coach:hasAge a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+               <http://www.w3.org/2002/07/owl#FunctionalProperty>;
              rdfs:label "hasAge"@en;
-             rdfs:range [owl:onProperty skos:inScheme ; 
-                         owl:hasValue coach:AgeScheme ; 
-                         a owl:Restriction];
+             rdfs:range [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#inScheme> ; 
+                         <http://www.w3.org/2002/07/owl#hasValue> coach:AgeScheme ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>];
              rdfs:subPropertyOf coach:dimension;
-             skos:definition "Associates a Character with their age, as defined within the AgeScheme."@en.
-coach:hasAgreeableness a owl:ObjectProperty,
-                         owl:FunctionalProperty;
+             <http://www.w3.org/2004/02/skos/core#definition> "Associates a Character with their age, as defined within the AgeScheme."@en.
+coach:hasAgreeableness a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                         <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                        rdfs:label "hasAgreeableness"@en;
-                       rdfs:range [owl:onProperty skos:inScheme ; 
-                                   owl:hasValue coach:AgreeablenessScheme ; 
-                                   a owl:Restriction];
+                       rdfs:range [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#inScheme> ; 
+                                   <http://www.w3.org/2002/07/owl#hasValue> coach:AgreeablenessScheme ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>];
                        rdfs:subPropertyOf coach:dimension;
-                       skos:definition "Associates a Character with their level of agreeableness, as defined in the AgreeablenessScheme."@en.
-coach:hasCitizenship a owl:ObjectProperty;
+                       <http://www.w3.org/2004/02/skos/core#definition> "Associates a Character with their level of agreeableness, as defined in the AgreeablenessScheme."@en.
+coach:hasCitizenship a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:label "hasCitizenship"@en;
-                     rdfs:range [owl:onProperty wdt:P31 ; 
-                                 owl:hasValue wikidata:Q6256 ; 
-                                 a owl:Restriction];
+                     rdfs:range [<http://www.w3.org/2002/07/owl#onProperty> <http://www.wikidata.org/prop/direct/P31> ; 
+                                 <http://www.w3.org/2002/07/owl#hasValue> <http://www.wikidata.org/entity/Q6256> ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>];
                      rdfs:subPropertyOf coach:dimension;
-                     skos:definition "Associates a Character with their country of citizenship."@en;
-                     skos:editorialNote "More than a citizenship is allowed"@en.
-coach:hasConscientiousness a owl:ObjectProperty,
-                             owl:FunctionalProperty;
+                     <http://www.w3.org/2004/02/skos/core#definition> "Associates a Character with their country of citizenship."@en;
+                     <http://www.w3.org/2004/02/skos/core#editorialNote> "More than a citizenship is allowed"@en.
+coach:hasConscientiousness a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                             <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                            rdfs:label "hasConscientiousness"@en;
-                           rdfs:range [owl:onProperty skos:inScheme ; 
-                                       owl:hasValue coach:ConscientiousnessScheme ; 
-                                       a owl:Restriction];
+                           rdfs:range [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#inScheme> ; 
+                                       <http://www.w3.org/2002/07/owl#hasValue> coach:ConscientiousnessScheme ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>];
                            rdfs:subPropertyOf coach:dimension;
-                           skos:definition "Associates a Character with their level of conscientiousness, as defined in the ConscientiousnessScheme."@en.
-coach:hasCountryOfBirth a owl:ObjectProperty,
-                          owl:FunctionalProperty;
+                           <http://www.w3.org/2004/02/skos/core#definition> "Associates a Character with their level of conscientiousness, as defined in the ConscientiousnessScheme."@en.
+coach:hasCountryOfBirth a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                          <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                         rdfs:label "hasCountryOfBirth"@en;
-                        rdfs:range [owl:onProperty wdt:P31 ; 
-                                    owl:hasValue wikidata:Q6256 ; 
-                                    a owl:Restriction];
+                        rdfs:range [<http://www.w3.org/2002/07/owl#onProperty> <http://www.wikidata.org/prop/direct/P31> ; 
+                                    <http://www.w3.org/2002/07/owl#hasValue> <http://www.wikidata.org/entity/Q6256> ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>];
                         rdfs:subPropertyOf coach:dimension;
-                        skos:definition "Associates a Character with their country of birth, specifying the nation where the character was born."@en.
-coach:hasEducation a owl:ObjectProperty,
-                     owl:FunctionalProperty;
+                        <http://www.w3.org/2004/02/skos/core#definition> "Associates a Character with their country of birth, specifying the nation where the character was born."@en.
+coach:hasEducation a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                    rdfs:label "hasEducation"@en;
-                   rdfs:range [owl:onProperty skos:inScheme ; 
-                               owl:hasValue coach:EducationScheme ; 
-                               a owl:Restriction];
+                   rdfs:range [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#inScheme> ; 
+                               <http://www.w3.org/2002/07/owl#hasValue> coach:EducationScheme ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>];
                    rdfs:subPropertyOf coach:dimension;
-                   skos:definition "Associates a Character with their educational background, as defined within the EducationScheme."@en.
-coach:hasExtraversion a owl:ObjectProperty,
-                        owl:FunctionalProperty;
+                   <http://www.w3.org/2004/02/skos/core#definition> "Associates a Character with their educational background, as defined within the EducationScheme."@en.
+coach:hasExtraversion a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                        <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                       rdfs:label "hasExtraversion"@en;
-                      rdfs:range [owl:onProperty skos:inScheme ; 
-                                  owl:hasValue coach:ExtraversionScheme ; 
-                                  a owl:Restriction];
+                      rdfs:range [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#inScheme> ; 
+                                  <http://www.w3.org/2002/07/owl#hasValue> coach:ExtraversionScheme ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>];
                       rdfs:subPropertyOf coach:dimension;
-                      skos:definition "Associates a Character with their level of extraversion, as defined within the ExtraversionScheme."@en.
-coach:hasLanguage a owl:ObjectProperty;
+                      <http://www.w3.org/2004/02/skos/core#definition> "Associates a Character with their level of extraversion, as defined within the ExtraversionScheme."@en.
+coach:hasLanguage a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:label "hasLanguage";
-                  rdfs:range [owl:onProperty wdt:P31 ; 
-                              owl:hasValue wikidata:Q33742 ; 
-                              a owl:Restriction];
+                  rdfs:range [<http://www.w3.org/2002/07/owl#onProperty> <http://www.wikidata.org/prop/direct/P31> ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> <http://www.wikidata.org/entity/Q33742> ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>];
                   rdfs:subPropertyOf coach:dimension;
-                  skos:definition "Associates a Character with the natural languages they speak."@en;
-                  skos:editorialNote "More than a language is allowed"@en.
-coach:hasNeuroticism a owl:ObjectProperty,
-                       owl:FunctionalProperty;
+                  <http://www.w3.org/2004/02/skos/core#definition> "Associates a Character with the natural languages they speak."@en;
+                  <http://www.w3.org/2004/02/skos/core#editorialNote> "More than a language is allowed"@en.
+coach:hasNeuroticism a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                       <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                      rdfs:label "hasNeuroticism"@en;
-                     rdfs:range [owl:onProperty skos:inScheme ; 
-                                 owl:hasValue coach:NeuroticismScheme ; 
-                                 a owl:Restriction];
+                     rdfs:range [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#inScheme> ; 
+                                 <http://www.w3.org/2002/07/owl#hasValue> coach:NeuroticismScheme ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>];
                      rdfs:subPropertyOf coach:dimension;
-                     skos:definition "Associates a Character with their level of neuroticism, as defined within the NeuroticismScheme."@en.
-coach:hasOpenness a owl:ObjectProperty,
-                    owl:FunctionalProperty;
+                     <http://www.w3.org/2004/02/skos/core#definition> "Associates a Character with their level of neuroticism, as defined within the NeuroticismScheme."@en.
+coach:hasOpenness a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                    <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                   rdfs:label "hasOpenness"@en;
-                  rdfs:range [owl:onProperty skos:inScheme ; 
-                              owl:hasValue coach:OpenessScheme ; 
-                              a owl:Restriction];
+                  rdfs:range [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#inScheme> ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> coach:OpenessScheme ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>];
                   rdfs:subPropertyOf coach:dimension;
-                  skos:definition "Associates a Character with their level of openness, as defined within the   OpennessScheme."@en.
-coach:hasPoliticalOrientation a owl:ObjectProperty,
-                                owl:FunctionalProperty;
+                  <http://www.w3.org/2004/02/skos/core#definition> "Associates a Character with their level of openness, as defined within the   OpennessScheme."@en.
+coach:hasPoliticalOrientation a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                               rdfs:label "hasPoliticalOrientation"@en;
-                              rdfs:range [owl:unionOf ([owl:onProperty skos:inScheme ; 
-                                                       owl:hasValue coach:PoliticalOrientationScheme ; 
-                                                       a owl:Restriction]
-                                                       [owl:onProperty wdt:P31 ; 
-                                                       owl:hasValue wikidata:Q12909644 ; 
-                                                       a owl:Restriction]) ; 
-                                          a owl:Class];
+                              rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#inScheme> ; 
+                                                                                   <http://www.w3.org/2002/07/owl#hasValue> coach:PoliticalOrientationScheme ; 
+                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                   [<http://www.w3.org/2002/07/owl#onProperty> <http://www.wikidata.org/prop/direct/P31> ; 
+                                                                                   <http://www.w3.org/2002/07/owl#hasValue> <http://www.wikidata.org/entity/Q12909644> ; 
+                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                          a <http://www.w3.org/2002/07/owl#Class>];
                               rdfs:subPropertyOf coach:dimension;
-                              skos:definition "Associates a Character with their political orientation."@en.
-coach:hasReligion a owl:ObjectProperty,
-                    owl:FunctionalProperty;
+                              <http://www.w3.org/2004/02/skos/core#definition> "Associates a Character with their political orientation."@en.
+coach:hasReligion a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                    <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                   rdfs:label "hasReligion"@en;
-                  rdfs:range [owl:onProperty wdt:P31 ; 
-                              owl:hasValue wikidata:Q9174 ; 
-                              a owl:Restriction];
+                  rdfs:range [<http://www.w3.org/2002/07/owl#onProperty> <http://www.wikidata.org/prop/direct/P31> ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> <http://www.wikidata.org/entity/Q9174> ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>];
                   rdfs:subPropertyOf coach:dimension;
-                  skos:definition "Associates a Character with their religion, specifying the religious belief system they adhere to."@en.
-coach:hasSex a owl:ObjectProperty,
-               owl:FunctionalProperty;
+                  <http://www.w3.org/2004/02/skos/core#definition> "Associates a Character with their religion, specifying the religious belief system they adhere to."@en.
+coach:hasSex a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+               <http://www.w3.org/2002/07/owl#FunctionalProperty>;
              rdfs:label "hasSex"@en;
-             rdfs:range [owl:onProperty wdt:P31 ; 
-                         owl:hasValue wikidata:Q4369513 ; 
-                         a owl:Restriction];
+             rdfs:range [<http://www.w3.org/2002/07/owl#onProperty> <http://www.wikidata.org/prop/direct/P31> ; 
+                         <http://www.w3.org/2002/07/owl#hasValue> <http://www.wikidata.org/entity/Q4369513> ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>];
              rdfs:subPropertyOf coach:dimension;
-             skos:definition "Associates a Character with their biological sex"@en.
-coach:hasSexualOrientation a owl:ObjectProperty,
-                             owl:FunctionalProperty;
+             <http://www.w3.org/2004/02/skos/core#definition> "Associates a Character with their biological sex"@en.
+coach:hasSexualOrientation a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                             <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                            rdfs:label "hasSexualOrientation"@en;
-                           rdfs:range [owl:onProperty wdt:P31 ; 
-                                       owl:hasValue wikidata:Q17888 ; 
-                                       a owl:Restriction];
+                           rdfs:range [<http://www.w3.org/2002/07/owl#onProperty> <http://www.wikidata.org/prop/direct/P31> ; 
+                                       <http://www.w3.org/2002/07/owl#hasValue> <http://www.wikidata.org/entity/Q17888> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>];
                            rdfs:subPropertyOf coach:dimension;
-                           skos:definition "Associates a Character with their sexual orientation"@en.
-coach:likes a owl:ObjectProperty;
+                           <http://www.w3.org/2004/02/skos/core#definition> "Associates a Character with their sexual orientation"@en.
+coach:likes a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:label "likes"@en;
-            rdfs:range owl:Thing;
+            rdfs:range <http://www.w3.org/2002/07/owl#Thing>;
             rdfs:subPropertyOf coach:dimension;
-            skos:definition "Anything a Character dislikes"@en;
-            skos:editorialNote "Better to use a wikipedia item."@en.
-<https://w3id.org/widoco/vocab#introduction> a owl:AnnotationProperty.
-<https://www.omg.org/spec/Commons/AnnotationVocabulary/synonym> a owl:AnnotationProperty.
+            <http://www.w3.org/2004/02/skos/core#definition> "Anything a Character dislikes"@en;
+            <http://www.w3.org/2004/02/skos/core#editorialNote> "Better to use a wikipedia item."@en.
+<https://w3id.org/widoco/vocab#introduction> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://www.omg.org/spec/Commons/AnnotationVocabulary/synonym> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.

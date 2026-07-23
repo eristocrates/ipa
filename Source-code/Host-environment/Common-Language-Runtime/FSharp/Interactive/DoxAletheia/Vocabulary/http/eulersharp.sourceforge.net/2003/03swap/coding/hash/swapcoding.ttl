@@ -1,0 +1,97 @@
+@base <http://eulersharp.sourceforge.net/2003/03swap/coding>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dce: <http://purl.org/dc/elements/1.1/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix irw: <http://www.ontologydesignpatterns.org/ont/web/irw.owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix event: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
+@prefix doc: <http://eulersharp.sourceforge.net/2003/03swap/document#>.
+@prefix coding: <http://eulersharp.sourceforge.net/2003/03swap/coding#>.
+@prefix swapcoding: <http://eulersharp.sourceforge.net/2003/03swap/coding#>.
+
+<http://eulersharp.sourceforge.net/2003/03swap/coding> dce:creator "Hans Cools, MD; Agfa Healthcare/Belgium"@en;
+                                                       dce:description "Formal general description of coding."@en;
+                                                       dce:format "OWL Full"@en;
+                                                       dce:publisher "Agfa Healthcare/Belgium"@en;
+                                                       a owl:Ontology;
+                                                       rdfs:seeAlso <http://www.w3.org/2004/02/skos/core>,
+                                                                    <http://www.agfa.com/w3c/2009/clinicalSKOSSchemes>.
+coding:Code a rdfs:Class;
+            rdfs:comment "A code system is declared using <http://www.w3.org/2004/02/skos/core#inScheme>. A system version is declared using <http://purl.org/dc/terms/hasVersion>."@en;
+            rdfs:isDefinedBy coding:;
+            rdfs:label "code"@en;
+            rdfs:subClassOf doc:Content;
+            skos:definition "Applied or converted form of information wherein one thing is replaced by another thing."@en.
+coding:codes a owl:ObjectProperty,
+               owl:FunctionalProperty;
+             rdfs:domain coding:Code;
+             rdfs:isDefinedBy coding:;
+             rdfs:range rdfs:Resource;
+             rdfs:subPropertyOf doc:about;
+             owl:inverseOf coding:hasCode;
+             skos:definition "Specifying something that has a code."@en.
+coding:hasBroadCode a owl:DatatypeProperty;
+                    rdfs:domain rdfs:Resource;
+                    rdfs:isDefinedBy coding:;
+                    rdfs:range rdfs:Datatype;
+                    rdfs:subPropertyOf coding:hasMappingCode;
+                    owl:propertyChainAxiom (rdf:type
+                                            skos:broadMatch
+                                            skos:notation);
+                    skos:definition "Specifying for something a code of a SKOS concept being broader than a class the instance is member of."@en.
+coding:hasCode a owl:ObjectProperty,
+                 owl:InverseFunctionalProperty;
+               rdfs:domain rdfs:Resource;
+               rdfs:isDefinedBy coding:;
+               rdfs:range coding:Code;
+               rdfs:subPropertyOf event:objectOf;
+               skos:definition "Specifying a code for something."@en.
+coding:hasCodeAuthority a rdf:Property;
+                        rdfs:domain coding:Code;
+                        rdfs:isDefinedBy coding:;
+                        rdfs:range foaf:Organization;
+                        skos:definition "Specifying an organization governing the code system, e.g. a government for a social security number."@en.
+coding:hasCodeExpirationDate a owl:DatatypeProperty,
+                               owl:FunctionalProperty;
+                             rdfs:domain coding:Code;
+                             rdfs:isDefinedBy coding:;
+                             rdfs:range xsd:dateTime;
+                             rdfs:subPropertyOf event:expires;
+                             skos:definition "Specifying the date on which a code stops to be valid."@en.
+coding:hasCodeValue a owl:DatatypeProperty,
+                      owl:InverseFunctionalProperty,
+                      owl:FunctionalProperty;
+                    rdfs:domain coding:Code;
+                    rdfs:isDefinedBy coding:;
+                    rdfs:range rdfs:Datatype;
+                    skos:definition "Specifying a code value."@en.
+coding:hasExactCode a owl:DatatypeProperty;
+                    rdfs:domain rdfs:Resource;
+                    rdfs:isDefinedBy coding:;
+                    rdfs:range rdfs:Datatype;
+                    rdfs:subPropertyOf coding:hasMappingCode;
+                    owl:propertyChainAxiom (rdf:type
+                                            skos:exactMatch
+                                            skos:notation);
+                    skos:definition "Specifying for something a code of a SKOS concept matching exactly a class the instance is member of."@en.
+coding:hasMappingCode a owl:DatatypeProperty;
+                      rdfs:domain rdfs:Resource;
+                      rdfs:isDefinedBy coding:;
+                      rdfs:range rdfs:Datatype;
+                      owl:propertyChainAxiom (rdf:type
+                                              skos:mappingRelation
+                                              skos:notation);
+                      skos:definition "Specifying for something a code of a SKOS concept matching a class that something is an instance of."@en.
+coding:hasNarrowCode a owl:DatatypeProperty;
+                     rdfs:domain rdfs:Resource;
+                     rdfs:isDefinedBy coding:;
+                     rdfs:range rdfs:Datatype;
+                     rdfs:subPropertyOf coding:hasMappingCode;
+                     owl:propertyChainAxiom (rdf:type
+                                             skos:narrowMatch
+                                             skos:notation);
+                     skos:definition "Specifying for something a code of a SKOS concept being narrower than a class the instance is member of."@en.

@@ -2,24 +2,20 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix prog: <http://purl.org/prog/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
 
-<http://id.ecs.soton.ac.uk/person/1248> a foaf:Person;
-                                        foaf:name "Christopher Gutteridge".
-<http://id.ecs.soton.ac.uk/person/1269> a foaf:Person;
-                                        foaf:name "Dr Nicholas Gibbins".
-<http://id.southampton.ac.uk/> a foaf:Organization;
-                               foaf:name "University of Southampton".
-prog: dcterms:creator <http://id.ecs.soton.ac.uk/person/1248>,
-                      <http://id.ecs.soton.ac.uk/person/1269>;
-      dcterms:description "This Vocabulary provides the means to create a document which describes a large event or other connected series of events. The primary purpose is to help humans comprehend the programme, not describe absolute truth. A single event (or even series) may have multiple programmes.";
-      dcterms:issued "2009-11-01"^^xsd:date;
-      dcterms:publisher <http://id.southampton.ac.uk/>;
-      dcterms:title "The Event Programme Vocabulary";
-      a owl:Ontology.
+<http://id.ecs.soton.ac.uk/person/1248> a <http://xmlns.com/foaf/0.1/Person>;
+                                        <http://xmlns.com/foaf/0.1/name> "Christopher Gutteridge".
+<http://id.ecs.soton.ac.uk/person/1269> a <http://xmlns.com/foaf/0.1/Person>;
+                                        <http://xmlns.com/foaf/0.1/name> "Dr Nicholas Gibbins".
+<http://id.southampton.ac.uk/> a <http://xmlns.com/foaf/0.1/Organization>;
+                               <http://xmlns.com/foaf/0.1/name> "University of Southampton".
+prog: <http://purl.org/dc/terms/creator> <http://id.ecs.soton.ac.uk/person/1248>,
+                                         <http://id.ecs.soton.ac.uk/person/1269>;
+      <http://purl.org/dc/terms/description> "This Vocabulary provides the means to create a document which describes a large event or other connected series of events. The primary purpose is to help humans comprehend the programme, not describe absolute truth. A single event (or even series) may have multiple programmes.";
+      <http://purl.org/dc/terms/issued> "2009-11-01"^^xsd:date;
+      <http://purl.org/dc/terms/publisher> <http://id.southampton.ac.uk/>;
+      <http://purl.org/dc/terms/title> "The Event Programme Vocabulary";
+      a <http://www.w3.org/2002/07/owl#Ontology>.
 prog:Activity a rdfs:Class;
               rdfs:comment """This class represents the abstract content of an event, which may be repeated many times, once or never. For example a training course, or a play. The primary purpose is to indicate that several events will have very similar content, to aid planning what to attend. It does not indicate that there is any reason people could not attend more than one realisation. It should not be used to abstract a repeating event, such as morning coffee or a monthly meeting.
 

@@ -1,0 +1,788 @@
+# baseURI: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/ACTUS/ACTUSContractTermMapping/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/ACTUS/ACTUSContractTerms/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/ACTUS/ACTUSTaxonomy/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/DER/CreditDerivatives/CreditDefaultSwaps/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/DER/DerivativesContracts/Options/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/DER/DerivativesContracts/Swaps/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/DER/RateDerivatives/IRSwaps/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FBC/DebtAndEquities/Debt/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FBC/FinancialInstruments/FinancialInstruments/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FBC/ProductsAndServices/ClientsAndAccounts/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FND/Accounting/CashFlows/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FND/Accounting/CurrencyAmount/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FND/Agreements/Agreements/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FND/Agreements/Contracts/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FND/DatesAndTimes/BusinessDates/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FND/DatesAndTimes/FinancialDates/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FND/Utilities/AnnotationVocabulary/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/IND/ForeignExchange/ForeignExchange/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/LOAN/LoansSpecific/CommercialLoans/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/SEC/Debt/Bonds/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/SEC/Debt/DebtInstruments/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/SEC/Debt/PoolBackedSecurities/
+# imports: https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/SEC/Debt/TradedShortTermDebt/
+# imports: https://www.omg.org/spec/Commons/AnnotationVocabulary/
+# imports: https://www.omg.org/spec/Commons/Classifiers/
+# imports: https://www.omg.org/spec/Commons/CodesAndCodeSets/
+# imports: https://www.omg.org/spec/Commons/Collections/
+# imports: https://www.omg.org/spec/Commons/DatesAndTimes/
+# imports: https://www.omg.org/spec/Commons/Designators/
+# imports: https://www.omg.org/spec/Commons/Documents/
+# imports: https://www.omg.org/spec/Commons/Identifiers/
+# imports: https://www.omg.org/spec/Commons/PartiesAndSituations/
+# imports: https://www.omg.org/spec/Commons/RolesAndCompositions/
+# imports: https://www.omg.org/spec/Commons/TextDatatype/
+
+@base <https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/ACTUS/ACTUSContractTermMapping/> .
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cds: <https://www.omg.org/spec/Commons/CodesAndCodeSets/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix cmns-txt: <https://www.omg.org/spec/Commons/TextDatatype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-actus-act: <https://spec.edmcouncil.org/fibo/ontology/ACTUS/ACTUSContractTerms/> .
+@prefix fibo-actus-actm: <https://spec.edmcouncil.org/fibo/ontology/ACTUS/ACTUSContractTermMapping/> .
+@prefix fibo-actus-acv: <https://spec.edmcouncil.org/fibo/ontology/ACTUS/ACTUSTaxonomy/> .
+@prefix fibo-der-cr-cds: <https://spec.edmcouncil.org/fibo/ontology/DER/CreditDerivatives/CreditDefaultSwaps/> .
+@prefix fibo-der-drc-opt: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/> .
+@prefix fibo-der-drc-swp: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/> .
+@prefix fibo-der-rtd-irswp: <https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-pas-caa: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/> .
+@prefix fibo-fnd-acc-csf: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CashFlows/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-dt-bd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-fx-fx: <https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/> .
+@prefix fibo-loan-spc-com: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CommercialLoans/> .
+@prefix fibo-sec-dbt-bnd: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/Bonds/> .
+@prefix fibo-sec-dbt-dbti: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/> .
+@prefix fibo-sec-dbt-pbs: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/> .
+@prefix fibo-sec-dbt-tstd: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/TradedShortTermDebt/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://spec.edmcouncil.org/fibo/ontology/ACTUS/ACTUSContractTermMapping/>
+	a owl:Ontology ;
+	rdfs:label "ACTUS Contract Term Mapping" ;
+	dcterms:abstract "This ontology represents a mapping from ACTUS contract terms that comprise the ACTUS data dictionary as a controlled vocabulary the corresponding concept(s) in FIBO, providing the relevant semantics and enabling integration." ;
+	dcterms:license """Copyright (c) 2026 ACTUS Financial Research Foundation
+Copyright (c) 2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2026 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+	dcterms:source "https://www.actusfrf.org"^^xsd:anyURI ;
+	owl:imports
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/ACTUS/ACTUSContractTerms/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/ACTUS/ACTUSTaxonomy/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/DER/CreditDerivatives/CreditDefaultSwaps/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/DER/DerivativesContracts/Options/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/DER/DerivativesContracts/Swaps/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/DER/RateDerivatives/IRSwaps/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FBC/DebtAndEquities/Debt/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FBC/FinancialInstruments/FinancialInstruments/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FBC/ProductsAndServices/ClientsAndAccounts/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FND/Accounting/CashFlows/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FND/Accounting/CurrencyAmount/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FND/Agreements/Agreements/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FND/Agreements/Contracts/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FND/DatesAndTimes/BusinessDates/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FND/DatesAndTimes/FinancialDates/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/FND/Utilities/AnnotationVocabulary/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/IND/ForeignExchange/ForeignExchange/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/LOAN/LoansSpecific/CommercialLoans/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/SEC/Debt/Bonds/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/SEC/Debt/DebtInstruments/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/SEC/Debt/PoolBackedSecurities/> ,
+		<https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/SEC/Debt/TradedShortTermDebt/> ,
+		<https://www.omg.org/spec/Commons/AnnotationVocabulary/> ,
+		<https://www.omg.org/spec/Commons/Classifiers/> ,
+		<https://www.omg.org/spec/Commons/CodesAndCodeSets/> ,
+		<https://www.omg.org/spec/Commons/Collections/> ,
+		<https://www.omg.org/spec/Commons/DatesAndTimes/> ,
+		<https://www.omg.org/spec/Commons/Designators/> ,
+		<https://www.omg.org/spec/Commons/Documents/> ,
+		<https://www.omg.org/spec/Commons/Identifiers/> ,
+		<https://www.omg.org/spec/Commons/PartiesAndSituations/> ,
+		<https://www.omg.org/spec/Commons/RolesAndCompositions/> ,
+		<https://www.omg.org/spec/Commons/TextDatatype/>
+		;
+	owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/2026Q2/ACTUS/ACTUSContractTermMapping/> ;
+	fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+	cmns-av:copyright
+		"Copyright (c) 2026 ACTUS Financial Research Foundation" ,
+		"Copyright (c) 2026 EDM Association dba EDM Council, Inc." ,
+		"Copyright (c) 2026 Object Management Group, Inc."
+		;
+	.
+
+fibo-actus-act:ACTUSContractTerm-BDC
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom fibo-fnd-dt-bd:BusinessDayConvention ;
+		]
+		;
+	.
+
+fibo-actus-act:ACTUSContractTerm-CDD
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom cmns-dt:Date ;
+		]
+		;
+	fibo-actus-act:hasParameterMapping "Starting from the contract, fibo-fnd-agr-agr:hasEffectiveDate cmns-dt:Date; cmns-dt:hasDateValue xsd:string" ;
+	.
+
+fibo-actus-act:ACTUSContractTerm-CID
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom cmns-id:Identifier ;
+		]
+		;
+	fibo-actus-act:hasParameterMapping "Starting from the contract, cmns-id:isIdentifiedBy cmns-id:Identifier; cmns-txt;hasTextValue xsd:string" ;
+	cmns-av:usageNote "Financial instrument identifier is the range of the property cmns-id;isIdentifiedBy in the case of any financial instrument, including most loans. In order to map this to ACTUS data, the property, 'is identified by' should be used together with the identifier, where the identifier for the contract may be a CUSIP, SEDOL code, FIGI, or something else, including a bespoke identifier for a contract traded over the counter, non-tradable contract such as many credit agreements, and the like. Typically, CID would denote a financial instrument identifier." ;
+	.
+
+fibo-actus-act:ACTUSContractTerm-CLDR
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom fibo-fnd-dt-fd:BusinessCalendar ;
+		]
+		;
+	.
+
+fibo-actus-act:ACTUSContractTerm-CNTRL
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom cmns-rlcmp:Role ;
+		]
+		;
+	fibo-actus-act:hasParameterMapping "Starting from the contract, this concept maps to (1) fibo-fnd-agr-ctr:hasContractParty fibo-fnd-agr-ctr:ContractParty; cmns-rlcmp:isPlayedBy cmns-org:LegalPerson; cmns-id:isIdentifiedBy cmns-id:Identifier; cmns-txt:hasTextValue xsd:string or (2) fibo-fnd-agr-ctr:hasContractParty fibo-fnd-agr-ctr:ContractParty; cmns-pts:actsOn (fibo-fnd-oac-own:Asset union fibo-fbc-dae-dbt:Collateral) or (3) fibo-fnd-agr-ctr:hasContractParty fibo-fnd-agr-ctr:ContractParty; fibo-fnd-oac-own:isOwningParty fibo-fbc-pas-fpas:Position. Note that liability is not defined in FIBO which is a gap and should be added in parallel with asset." ;
+	cmns-av:explanatoryNote
+		"This is called the contract role in the ACTUS applicability rules." ,
+		"This should really map to a union of roles that themselves map to the controlled vocabulary from the ACTUS specification for such roles (valid values). The roles may include buyer, seller, obligor, obligee, etc., or to a union of roles played by a financial asset or liability on the balance sheet of the legal entity playing the role. The challenge here is one of context, which requires rules to tease out completely."
+		;
+	.
+
+fibo-actus-act:ACTUSContractTerm-CRID
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom cmns-id:Identifier ;
+		]
+		;
+	fibo-actus-act:hasParameterMapping "Starting from the contract principal, originator, or issuer, cmns-rlcmp:isPlayedBy cmns-pts:Party; cmns-id:isIdentifiedBy cmns-id:Identifier; cmns-txt;hasTextValue xsd:string" ;
+	cmns-av:explanatoryNote "This is called the creator identifier in the ACTUS applicability rules." ;
+	.
+
+fibo-actus-act:ACTUSContractTerm-CT
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom fibo-actus-acv:ACTUSContractType ;
+		]
+		;
+	.
+
+fibo-actus-act:ACTUSContractTerm-CTS
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom fibo-fnd-agr-ctr:Contract ;
+		]
+		;
+	cmns-av:explanatoryNote "This should really map to a collection of contracts or a single contract, but to map it properly requires input from the ACTUS experts. Depends on what ACTUS means by contract structure." ;
+	.
+
+fibo-actus-act:ACTUSContractTerm-CUR
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom fibo-fnd-acc-cur:Currency ;
+		]
+		;
+	fibo-actus-act:hasParameterMapping "Starting from the contract, (1) fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-cur:Currency; cmns-dsg:isSignifiedBy fibo-fnd-acc-cur:CurrencyIdentifier; fibo-fnd-rel-rel;hasTag xsd:string, or (2) starting specifically from a currency instrument, fibo-fnd-acc-cur:hasBaseCurrency fibo-fnd-acc-cur:Currency; cmns-dsg:isSignifiedBy fibo-fnd-acc-cur:CurrencyIdentifier; fibo-fnd-rel-rel;hasTag xsd:string, where the base currency denotes the selling currency" ;
+	.
+
+fibo-actus-act:ACTUSContractTerm-CUR2
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom fibo-fnd-acc-cur:Currency ;
+		]
+		;
+	fibo-actus-act:hasParameterMapping "Starting from the contract, (1) fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-cur:Currency; cmns-dsg:isSignifiedBy fibo-fnd-acc-cur:CurrencyIdentifier; fibo-fnd-rel-rel;hasTag xsd:string, or (2) starting specifically from a currency instrument, fibo-fnd-acc-cur:hasDealtCurrency fibo-fnd-acc-cur:Currency; cmns-dsg:isSignifiedBy fibo-fnd-acc-cur:CurrencyIdentifier; fibo-fnd-rel-rel;hasTag xsd:string, where the base currency denotes the buying currency" ;
+	.
+
+fibo-actus-act:ACTUSContractTerm-CURS
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom fibo-fnd-acc-cur:Currency ;
+		]
+		;
+	fibo-actus-act:hasParameterMapping "Starting from the contract, (1) fibo-fbc-fi-stl:hasPreferredSettlementCurrency fibo-fnd-acc-cur:Currency; cmns-dsg:isSignifiedBy fibo-fnd-acc-cur:CurrencyIdentifier; fibo-fnd-rel-rel;hasTag xsd:string" ;
+	.
+
+fibo-actus-act:ACTUSContractTerm-MOC
+	a owl:NamedIndividual ;
+	cmns-av:explanatoryNote "Need to investigate what to map to represent the market value for a contract ..." ;
+	.
+
+fibo-actus-act:ACTUSContractTerm-NT
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ;
+		]
+		;
+	fibo-actus-act:hasParameterMapping "Starting from the contract or leg 1 of a swap, fibo-fnd-acc-cur:hasNotionalAmount fibo-fnd-acc-cur:MonetaryAmount; fibo-fnd-acc-cur:hasAmount xsd:decimal" ;
+	.
+
+fibo-actus-act:ACTUSContractTerm-NT2
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ;
+		]
+		;
+	fibo-actus-act:hasParameterMapping "Starting from leg 2 of a swap, fibo-fnd-acc-cur:hasNotionalAmount fibo-fnd-acc-cur:MonetaryAmount; fibo-fnd-acc-cur:hasAmount xsd:decimal" ;
+	.
+
+fibo-actus-act:ACTUSContractTerm-PPRD
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom fibo-fnd-acc-cur:MonetaryPrice ;
+		]
+		;
+	fibo-actus-act:hasParameterMapping "Starting from the contract, fibo-fnd-oac-own:hasAcquisitionPrice fibo-fnd-acc-cur:MonetaryPrice; fibo-fnd-acc-cur:hasAmount xsd:decimal" ;
+	.
+
+fibo-actus-act:ACTUSContractTerm-PRD
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom cmns-dt:CombinedDateTime ;
+		]
+		;
+	fibo-actus-act:hasParameterMapping "Starting from the contract, fibo-fnd-dt-fd:hasAcquisitionDate cmns-dt:CombinedDateTime" ;
+	.
+
+fibo-actus-act:ACTUSContractTerm-PTD
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom fibo-ind-fx-fx:QuotedExchangeRate ;
+		]
+		;
+	fibo-actus-act:hasParameterMapping "Starting from the contract, fibo-ind-fx-fx:hasQuotedExchangeRate fibo-ind-fx-fx:QuotedExchangeRate; fibo-fnd-acc-cur:hasRateValue xsd:decimal" ;
+	.
+
+fibo-actus-act:ACTUSContractTerm-SD
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom cmns-dt:Date ;
+		]
+		;
+	fibo-actus-act:hasParameterMapping "Starting from the contract, fibo-fnd-dt-oc:hasEventDate cmns-dt:Date; cmns-dt:hasDateValue xsd:string" ;
+	.
+
+fibo-actus-act:ACTUSContractTerm-STP
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom cmns-dt:Duration ;
+		]
+		;
+	fibo-actus-act:hasParameterMapping "Starting from the contract, fibo-ind-fx-fx:hasQuotationSettlementBasis cmns-dt:Duration; cmns-dt:hasDurationValue xsd:string" ;
+	.
+
+fibo-actus-act:ACTUSContractTerm-TD
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-dsg:denotes ;
+			owl:someValuesFrom cmns-dt:Date ;
+		]
+		;
+	fibo-actus-act:hasParameterMapping "Starting from the contract, fibo-fnd-arr-doc:hasTerminationDate cmns-dt:Date; cmns-dt:hasDateValue xsd:string" ;
+	.
+
+fibo-actus-acv:ACTUSContractType
+	a owl:Class ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-cls:classifies ;
+			owl:someValuesFrom fibo-fnd-acc-csf:CashFlowStructure ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom [
+				a owl:Class ;
+				owl:unionOf (
+					fibo-fnd-agr-ctr:WrittenContract
+					fibo-fbc-pas-caa:InvestmentOrDepositAccount
+				) ;
+			] ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-Annuity
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-fbc-dae-dbt:CreditAgreementRepaidPeriodically ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-BondWithWarrant
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-sec-dbt-bnd:BondWithWarrant ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-BoundaryControlledSwitch
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-fbc-fi-fi:DerivativeInstrument ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-fbc-fi-fi:DerivativeInstrument ;
+		]
+		;
+	skos:editorialNote "Need to figure out what restrictions are needed on derivative instrument to limit the coverage to the right set of agreements, and then map to those." ;
+	.
+
+fibo-actus-acv:ACTUSContractType-CallMoney
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom [
+				a owl:Class ;
+				owl:intersectionOf (
+					[
+						a owl:Restriction ;
+						owl:onProperty fibo-sec-dbt-dbti:hasCallFeature ;
+						owl:someValuesFrom fibo-sec-dbt-dbti:CallFeature ;
+					]
+					fibo-loan-spc-com:CommercialLoan
+				) ;
+			] ;
+		]
+		;
+	skos:editorialNote "Need to figure out whether this only applies to commercial loans and whether additional restrictions are needed to limit coverage to loans whose borrowers and lenders are financial institutions, possibly other things (short term?, interbank only?)." ;
+	.
+
+fibo-actus-acv:ACTUSContractType-CapFloorOption
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-der-drc-opt:InterestRateOption ;
+		]
+		;
+	skos:editorialNote "Need to figure out what restrictions are needed on derivative instrument to limit the coverage to the right set of agreements, and then map to those." ;
+	.
+
+fibo-actus-acv:ACTUSContractType-Cash
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom [
+				a owl:Class ;
+				owl:unionOf (
+					fibo-fbc-fi-fi:CashInstrument
+					fibo-fbc-pas-caa:InvestmentOrDepositAccount
+				) ;
+			] ;
+		]
+		;
+	skos:editorialNote "Rather than classifying the account, should this classify the value of the funds held in that account or something similar?" ;
+	.
+
+fibo-actus-acv:ACTUSContractType-Collateral
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-fnd-agr-ctr:CollateralAgreement ;
+		]
+		;
+	skos:editorialNote "Rather than classifying the collateral agreement, should this classify any debt instrument that is collateralized?" ;
+	.
+
+fibo-actus-acv:ACTUSContractType-Commodity
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-fbc-fi-fi:CommodityInstrument ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-ConvertibleNote
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom [
+				a owl:Class ;
+				owl:unionOf (
+					[
+						a owl:Restriction ;
+						owl:onProperty fibo-sec-dbt-dbti:hasCallFeature ;
+						owl:someValuesFrom fibo-sec-dbt-dbti:CallFeature ;
+					]
+					[
+						a owl:Restriction ;
+						owl:onProperty fibo-sec-dbt-dbti:hasPutFeature ;
+						owl:someValuesFrom fibo-sec-dbt-dbti:PutFeature ;
+					]
+				) ;
+			] ;
+		]
+		;
+	skos:editorialNote "Should this also only classify contracts that are convertible? Does this mean an additional restriction? Does it really apply to any sort of loan?" ;
+	.
+
+fibo-actus-acv:ACTUSContractType-CreditDefaultSwap
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-der-cr-cds:CreditDefaultSwap ;
+		]
+		;
+	skos:editorialNote "Is this really limited to CDS, or should it apply to anything (or maybe any derivative) where one of the parties to an underlying contract that triggers payment defaults?" ;
+	.
+
+fibo-actus-acv:ACTUSContractType-ExoticAnnuity
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-fbc-dae-dbt:CreditAgreementRepaidPeriodically ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-ExoticLinearAmortizer
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-fbc-dae-dbt:CreditAgreementRepaidPeriodically ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-ExoticNegativeAmortizer
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-fbc-dae-dbt:CreditAgreementRepaidPeriodically ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-ExoticOption
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-der-drc-opt:ExoticOption ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-Future
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-fbc-fi-fi:Future ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-Guarantee
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-fbc-dae-dbt:CreditEnhancementAgreement ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-LinearAmortizer
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-fbc-dae-dbt:CreditAgreementRepaidPeriodically ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-NegativeAmortizer
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-fbc-dae-dbt:CreditAgreementRepaidPeriodically ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-Option
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-fbc-fi-fi:Option ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-PerpetualBond
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-sec-dbt-bnd:PerpetualBond ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-PlainVanillaSwap
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-der-rtd-irswp:PlainVanillaInterestRateSwap ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-PrincipalAtMaturity
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-fbc-dae-dbt:CreditAgreementRepaidAtMaturity ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-RepurchaseAgreement
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-sec-dbt-tstd:RepurchaseAgreement ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-SecuritizationCreditRisk
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-sec-dbt-pbs:PoolBackedSecurity ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-SecuritizationMarketRisk
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-sec-dbt-pbs:PoolBackedSecurity ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-Stock
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-fbc-fi-fi:EquityInstrument ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-Swap
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-der-drc-swp:Swap ;
+		]
+		;
+	.
+
+fibo-actus-acv:ACTUSContractType-TotalReturnSwap
+	a
+		owl:NamedIndividual ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom fibo-der-drc-swp:TotalReturnSwap ;
+		]
+		;
+	.
+
+fibo-actus-acv:AlgorithmicContractCategory
+	a owl:Class ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-cls:classifies ;
+			owl:someValuesFrom fibo-fnd-acc-csf:CashFlowStructure ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom [
+				a owl:Class ;
+				owl:unionOf (
+					fibo-fnd-agr-ctr:WrittenContract
+					fibo-fbc-pas-caa:InvestmentOrDepositAccount
+				) ;
+			] ;
+		]
+		;
+	.
+
+fibo-actus-acv:AlgorithmicContractFamily
+	a owl:Class ;
+	rdfs:subClassOf
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-cls:classifies ;
+			owl:someValuesFrom fibo-fnd-acc-csf:CashFlowStructure ;
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty cmns-doc:refersTo ;
+			owl:someValuesFrom [
+				a owl:Class ;
+				owl:unionOf (
+					fibo-fnd-agr-ctr:WrittenContract
+					fibo-fbc-pas-caa:InvestmentOrDepositAccount
+				) ;
+			] ;
+		]
+		;
+	.
+

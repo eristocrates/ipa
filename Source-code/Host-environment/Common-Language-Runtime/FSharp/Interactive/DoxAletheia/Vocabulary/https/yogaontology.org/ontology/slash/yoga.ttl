@@ -1,94 +1,90 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix yoga: <https://yogaontology.org/ontology/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
 
-yoga: dc11:creator "Stan & Tanja";
-      dc11:description "Yoga Ontology is the list of vocabularies that define the yogic practice. Where Yoga is the union of the mind and body."@en;
-      dc11:issued "2020-07-16"^^xsd:date;
-      dc11:rights "Copyright © 2020 Tanya Ronzhina and Stan Ronzhin";
-      dc11:title "Yoga Ontology"@en;
-      vann:preferredNamespacePrefix "yoga";
-      a owl:Ontology;
+yoga: <http://purl.org/dc/elements/1.1/creator> "Stan & Tanja";
+      <http://purl.org/dc/elements/1.1/description> "Yoga Ontology is the list of vocabularies that define the yogic practice. Where Yoga is the union of the mind and body."@en;
+      <http://purl.org/dc/elements/1.1/issued> "2020-07-16"^^xsd:date;
+      <http://purl.org/dc/elements/1.1/rights> "Copyright © 2020 Tanya Ronzhina and Stan Ronzhin";
+      <http://purl.org/dc/elements/1.1/title> "Yoga Ontology"@en;
+      <http://purl.org/vocab/vann/preferredNamespacePrefix> "yoga";
+      a <http://www.w3.org/2002/07/owl#Ontology>;
       rdfs:comment "First publication v0.1"@en;
-      owl:versionInfo 0.1.
-yoga:Acidity a owl:Class;
+      <http://www.w3.org/2002/07/owl#versionInfo> 0.1.
+yoga:Acidity a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
              rdfs:label "Acidity"@en.
-yoga:Arm a owl:Class;
+yoga:Arm a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
          rdfs:label "Arm"@en;
          rdfs:subClassOf yoga:BodyPart.
-yoga:Asana a owl:Class;
+yoga:Asana a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "Asana is a comfortable and stable body posture in yoga."@en;
            rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
            rdfs:label "Asana"@en;
-           owl:disjointWith yoga:Sequence.
-yoga:Block a owl:Class;
+           <http://www.w3.org/2002/07/owl#disjointWith> yoga:Sequence.
+yoga:Block a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
            rdfs:label "Block"@en;
            rdfs:subClassOf yoga:Props.
-yoga:Body a owl:Class;
+yoga:Body a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
           rdfs:label "Body"@en.
-yoga:BodyPart a owl:Class;
+yoga:BodyPart a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "Body part is any part of an organism, such as a limb or an organ."@en;
               rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
               rdfs:label "Body part"@en;
               rdfs:subClassOf yoga:Body.
-yoga:Condition a owl:Class;
+yoga:Condition a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "Health complaints"@en;
                rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
                rdfs:label "Condition"@en;
                rdfs:subClassOf yoga:Acidity.
-yoga:LeftArm a owl:Class;
+yoga:LeftArm a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
              rdfs:label "LeftArm"@en;
              rdfs:subClassOf yoga:Arm.
-yoga:Mind a owl:Class;
+yoga:Mind a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "Mind is the totality of conscious and unconscious mental processes and activities"@en;
           rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
           rdfs:label "Mind"@en.
-yoga:Position a owl:Class;
+yoga:Position a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "Position is the way the body is placed in the space"@en;
               rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
               rdfs:label "Position"@en.
-yoga:Pranayama a owl:Class;
+yoga:Pranayama a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "Prana means the breath, life, vitality, respiration; Ayama could be translated as stretch, extension, restrain or control. Thus pranayama is the control of breath (inhalation and exhalation) in a steady pose."@en;
                rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
                rdfs:label "Pranayama"@en.
-yoga:Props a owl:Class;
+yoga:Props a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "Different equipment that could be used for yoga practice."@en;
            rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
            rdfs:label "Props"@en.
-yoga:Pubis a owl:Class;
+yoga:Pubis a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
            rdfs:label "Pubis"@en;
            rdfs:subClassOf yoga:BodyPart.
-yoga:Sequence a owl:Class;
+yoga:Sequence a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
               rdfs:label "Sequence"@en.
-yoga:Sitting a owl:Class;
+yoga:Sitting a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:label "Sitting"@en;
              rdfs:subClassOf yoga:Position.
-yoga:Standing a owl:Class;
+yoga:Standing a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
               rdfs:label "Standing"@en;
               rdfs:subClassOf yoga:Position.
-yoga:Viloma a owl:Class;
+yoga:Viloma a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
             rdfs:label "Viloma"@en;
             rdfs:subClassOf yoga:Pranayama.
-yoga:consistsOf a owl:ObjectProperty;
+yoga:consistsOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:domain yoga:Sequence;
                 rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
                 rdfs:label "consists of"@en;
                 rdfs:range yoga:Asana.
-yoga:hasEffectOn a owl:ObjectProperty;
+yoga:hasEffectOn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:domain yoga:Pranayama,
                              yoga:Asana;
                  rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
@@ -96,21 +92,21 @@ yoga:hasEffectOn a owl:ObjectProperty;
                  rdfs:range yoga:Mind,
                             yoga:Condition,
                             yoga:BodyPart.
-yoga:hasPosition a owl:ObjectProperty;
+yoga:hasPosition a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:domain yoga:Body;
                  rdfs:label "has position"@en;
                  rdfs:range yoga:Position.
-yoga:performedInPosition a owl:ObjectProperty;
+yoga:performedInPosition a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:domain yoga:Asana;
                          rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
                          rdfs:label "performed in position"@en;
                          rdfs:range yoga:Position.
-yoga:preparesFor a owl:ObjectProperty;
+yoga:preparesFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:domain yoga:Asana;
                  rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
                  rdfs:label "prepares for"@en;
                  rdfs:range yoga:Pranayama.
-yoga:uses a owl:ObjectProperty;
+yoga:uses a <http://www.w3.org/2002/07/owl#ObjectProperty>;
           rdfs:domain yoga:Asana;
           rdfs:isDefinedBy <http://yogaontology.org/ontology/>;
           rdfs:label "uses"@en;

@@ -11,9 +11,6 @@
 @prefix test-description: <http://www.w3.org/2006/03/test-description#>.
 @prefix vann: <http://purl.org/vocab/vann/>.
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix test: <http://www.w3.org/2006/03/test-description#>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 
 spec: dcterms:creator <https://csarven.ca/#i>;
       dcterms:description "Spec Terms provides classes and properties that can be used to describe any significant unit of information in technical reports."@en;

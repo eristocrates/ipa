@@ -8,9 +8,7 @@
 @prefix swrl: <http://www.w3.org/2003/11/swrl#>.
 @prefix drs: <http://cs-www.cs.yale.edu/homes/dvm/daml/drsonto040520.owl#>.
 @prefix : <http://www.daml.org/services/owl-s/1.2/generic/Expression.owl#>.
-@prefix w3: <http://www.w3.org/>.
 @prefix owlse: <http://www.daml.org/services/owl-s/1.2/generic/Expression.owl#>.
-@prefix owls_Expression: <http://www.daml.org/services/owl-s/1.2/generic/Expression.owl#>.
 
 drs:Formula a owl:Class.
 <http://www.daml.org/services/owl-s/1.2/generic/Expression.owl> a owl:Ontology;

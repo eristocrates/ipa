@@ -1,0 +1,29 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix mdofull: <https://w3id.org/mdo/full/>.
+
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+mdofull: <http://purl.org/dc/terms/contributor> "Patrick Lambrix",
+                                                "Rickard Armiento";
+         <http://purl.org/dc/terms/created> "2019-11-07";
+         <http://purl.org/dc/terms/creator> "Huanyu Li";
+         <http://purl.org/dc/terms/license> "https://github.com/huanyu-li/Materials-Design-Ontology/blob/master/LICENSE";
+         <http://purl.org/dc/terms/title> "Materials Design Ontology - Full"@en;
+         <http://purl.org/vocab/vann/preferredNamespacePrefix> "mdo";
+         <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/mdo/full/1.0/";
+         a <http://www.w3.org/2002/07/owl#Ontology>;
+         rdfs:comment "This is the Materials Design Ontology."@en;
+         rdfs:seeAlso "https://github.com/huanyu-li/Materials-Design-Ontology";
+         <http://www.w3.org/2002/07/owl#imports> <https://w3id.org/mdo/structure/1.0/>,
+                                                 <https://w3id.org/mdo/provenance/1.0/>,
+                                                 <https://w3id.org/mdo/core/1.0/>,
+                                                 <https://w3id.org/mdo/calculation/1.0/>;
+         <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/mdo/full/1.0/>;
+         <http://www.w3.org/2002/07/owl#versionInfo> "1.0".

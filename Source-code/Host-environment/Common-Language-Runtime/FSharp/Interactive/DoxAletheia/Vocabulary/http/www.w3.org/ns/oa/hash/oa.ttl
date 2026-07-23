@@ -1,29 +1,21 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix oa: <http://www.w3.org/ns/oa#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
-@prefix nsprov: <http://www.w3.org/ns/prov#>.
 
-oa: dc11:title "Web Annotation Ontology";
-    dcterms:creator [foaf:name "Benjamin Young" ; 
-                     a foaf:Person],
-                    [foaf:name "Robert Sanderson" ; 
-                     a foaf:Person],
-                    [foaf:name "Paolo Ciccarese" ; 
-                     a foaf:Person];
-    dcterms:modified "2016-11-12T21:28:11Z";
-    a owl:Ontology;
+oa: <http://purl.org/dc/elements/1.1/title> "Web Annotation Ontology";
+    <http://purl.org/dc/terms/creator> [<http://xmlns.com/foaf/0.1/name> "Benjamin Young" ; 
+                                        a <http://xmlns.com/foaf/0.1/Person>],
+                                       [<http://xmlns.com/foaf/0.1/name> "Robert Sanderson" ; 
+                                        a <http://xmlns.com/foaf/0.1/Person>],
+                                       [<http://xmlns.com/foaf/0.1/name> "Paolo Ciccarese" ; 
+                                        a <http://xmlns.com/foaf/0.1/Person>];
+    <http://purl.org/dc/terms/modified> "2016-11-12T21:28:11Z";
+    a <http://www.w3.org/2002/07/owl#Ontology>;
     rdfs:comment "The Web Annotation ontology defines the terms of the Web Annotation vocabulary. Any changes to this document MUST be from a Working Group in the W3C that has established expertise in the area.";
     rdfs:seeAlso <http://www.w3.org/TR/annotation-vocab/>;
-    owl:versionInfo "2016-11-12T21:28:11Z";
-    nsprov:wasRevisionOf <http://www.openannotation.org/spec/core/20130208/oa.owl>.
+    <http://www.w3.org/2002/07/owl#versionInfo> "2016-11-12T21:28:11Z";
+    <http://www.w3.org/ns/prov#wasRevisionOf> <http://www.openannotation.org/spec/core/20130208/oa.owl>.
 oa:Annotation a rdfs:Class;
               rdfs:comment "The class for Web Annotations.";
               rdfs:isDefinedBy oa:;
@@ -66,7 +58,7 @@ oa:Motivation a rdfs:Class;
               rdfs:comment "The Motivation class is used to record the user's intent or motivation for the creation of the Annotation, or the inclusion of the body or target, that it is associated with.";
               rdfs:isDefinedBy oa:;
               rdfs:label "Motivation";
-              rdfs:subClassOf skos:Concept.
+              rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
 oa:PreferContainedDescriptions a rdfs:Resource;
                                rdfs:comment "An IRI to signal the client prefers to receive full descriptions of the Annotations from a container, not just their IRIs.";
                                rdfs:isDefinedBy oa:;

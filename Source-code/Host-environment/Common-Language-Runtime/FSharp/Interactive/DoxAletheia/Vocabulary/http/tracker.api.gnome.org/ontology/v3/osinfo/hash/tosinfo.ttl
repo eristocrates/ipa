@@ -7,7 +7,7 @@
 @prefix nie: <http://tracker.api.gnome.org/ontology/v3/nie#>.
 @prefix nrl: <http://tracker.api.gnome.org/ontology/v3/nrl#>.
 @prefix osinfo: <http://tracker.api.gnome.org/ontology/v3/osinfo#>.
-@prefix w3: <http://www.w3.org/>.
+@prefix tosinfo: <http://tracker.api.gnome.org/ontology/v3/osinfo#>.
 
 osinfo: nrl:lastModified "2011-12-16T08:00:00Z";
         nrl:prefix "osinfo";

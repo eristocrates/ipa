@@ -10,11 +10,8 @@
 @prefix co: <http://purl.org/co/>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix ermrk: <http://www.essepuntato.it/2008/12/earmark#>.
-@prefix coll: <http://purl.org/co/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
 
-_:autos11189 a owl:AllDisjointClasses;
+_:autos33341 a owl:AllDisjointClasses;
              owl:members (earmark:Docuverse
                           earmark:MarkupItem
                           earmark:Range).

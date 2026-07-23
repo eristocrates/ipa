@@ -8,9 +8,6 @@
 @prefix pav: <http://purl.org/pav/>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix w3id: <https://w3id.org/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix shacl: <http://www.w3.org/ns/shacl#>.
 
 linkml:AnyValue a linkml:ClassDefinition;
                 skos:inScheme "https://w3id.org/linkml/extensions"^^xsd:anyURI;

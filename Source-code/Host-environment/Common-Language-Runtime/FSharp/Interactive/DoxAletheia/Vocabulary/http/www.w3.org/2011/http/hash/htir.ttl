@@ -1,0 +1,235 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix htir: <http://www.w3.org/2011/http#>.
+
+<http://www.w3.org/2011/http> a <http://www.w3.org/2002/07/owl#Ontology>;
+                              rdfs:comment "A namespace for describing HTTP messages (http://www.w3.org/Protocols/rfc2616/rfc2616.html)"@en;
+                              rdfs:isDefinedBy <http://www.w3.org/TR/HTTP-in-RDF/>;
+                              rdfs:label "HTTP in RDF"@en;
+                              rdfs:seeAlso <http://www.w3.org/TR/Content-in-RDF/>,
+                                           <http://www.w3.org/WAI/intro/earl>;
+                              <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/2011/content#>,
+                                                                      <http://purl.org/dc/terms/>;
+                              <http://www.w3.org/2002/07/owl#versionInfo> "Working Draft 29 April 2011"@en.
+htir:Connection a <http://www.w3.org/2002/07/owl#Class>,
+                  rdfs:Class;
+                rdfs:comment "A connection used for HTTP transfer."@en;
+                rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+                rdfs:label "Connection"@en.
+htir:EntityHeader a <http://www.w3.org/2002/07/owl#Class>,
+                    rdfs:Class;
+                  rdfs:comment "An entity header in an HTTP message."@en;
+                  rdfs:label "Entity Header"@en;
+                  rdfs:subClassOf htir:MessageHeader.
+htir:GeneralHeader a <http://www.w3.org/2002/07/owl#Class>,
+                     rdfs:Class;
+                   rdfs:comment "A general header in an HTTP message."@en;
+                   rdfs:label "General Header"@en;
+                   rdfs:subClassOf htir:MessageHeader.
+htir:HeaderElement a <http://www.w3.org/2002/07/owl#Class>,
+                     rdfs:Class;
+                   rdfs:comment "A part of a deconstructed header value."@en;
+                   rdfs:label "Header Element"@en.
+htir:HeaderName a <http://www.w3.org/2002/07/owl#Class>,
+                  rdfs:Class;
+                rdfs:comment "A header name."@en;
+                rdfs:label "Header Name"@en.
+htir:Message a <http://www.w3.org/2002/07/owl#Class>,
+               rdfs:Class;
+             rdfs:comment "An HTTP message."@en;
+             rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+             rdfs:label "Message"@en.
+htir:MessageHeader a <http://www.w3.org/2002/07/owl#Class>,
+                     rdfs:Class;
+                   rdfs:comment "A header in an HTTP message."@en;
+                   rdfs:label "Message Header"@en.
+htir:Method a <http://www.w3.org/2002/07/owl#Class>,
+              rdfs:Class;
+            rdfs:comment "The HTTP method used for the request."@en;
+            rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+            rdfs:label "Method"@en.
+htir:Parameter a <http://www.w3.org/2002/07/owl#Class>,
+                 rdfs:Class;
+               rdfs:comment "A parameter for a part of a header value."@en;
+               rdfs:label "Parameter"@en.
+htir:Request a <http://www.w3.org/2002/07/owl#Class>,
+               rdfs:Class;
+             rdfs:comment "An HTTP request."@en;
+             rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+             rdfs:label "Request"@en;
+             rdfs:subClassOf htir:Message.
+htir:RequestHeader a <http://www.w3.org/2002/07/owl#Class>,
+                     rdfs:Class;
+                   rdfs:comment "A header in an HTTP request message."@en;
+                   rdfs:label "Request Header"@en;
+                   rdfs:subClassOf htir:MessageHeader.
+htir:Response a <http://www.w3.org/2002/07/owl#Class>,
+                rdfs:Class;
+              rdfs:comment "An HTTP response."@en;
+              rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+              rdfs:label "Response"@en;
+              rdfs:subClassOf htir:Message.
+htir:ResponseHeader a <http://www.w3.org/2002/07/owl#Class>,
+                      rdfs:Class;
+                    rdfs:comment "A header in an HTTP response message."@en;
+                    rdfs:label "Response Header"@en;
+                    rdfs:subClassOf htir:MessageHeader.
+htir:StatusCode a <http://www.w3.org/2002/07/owl#Class>,
+                  rdfs:Class;
+                rdfs:comment "The status code of an HTTP response."@en;
+                rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+                rdfs:label "Status code"@en.
+htir:absolutePath a rdf:Property;
+                  rdfs:comment "The absolute path sort of request URI."@en;
+                  rdfs:label "Absolute path"@en;
+                  rdfs:subPropertyOf htir:requestURI.
+htir:absoluteURI a rdf:Property;
+                 rdfs:comment "The absolute request URI."@en;
+                 rdfs:label "Absolute URI"@en;
+                 rdfs:subPropertyOf htir:requestURI.
+htir:authority a rdf:Property;
+               rdfs:comment "The authority sort of request URI."@en;
+               rdfs:label "Authority"@en;
+               rdfs:subPropertyOf htir:requestURI.
+htir:body a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+            rdf:Property;
+          rdfs:comment "The entity body of an HTTP message."@en;
+          rdfs:domain htir:Message;
+          rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+          rdfs:label "Entity Body"@en;
+          rdfs:range <http://www.w3.org/2011/content#ContentAsBase64>.
+htir:connectionAuthority a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                           rdf:Property;
+                         rdfs:comment "The authority of a connection used for the HTTP transfer."@en;
+                         rdfs:domain htir:Connection;
+                         rdfs:label "Connection authority"@en;
+                         rdfs:range rdfs:Literal.
+htir:elementName a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                   rdf:Property;
+                 rdfs:comment "The name of a header element."@en;
+                 rdfs:domain htir:HeaderElement;
+                 rdfs:label "Header element name"@en;
+                 rdfs:range rdfs:Literal.
+htir:elementValue a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                    rdf:Property;
+                  rdfs:comment "The value of a header element."@en;
+                  rdfs:domain htir:HeaderElement;
+                  rdfs:label "Header element value"@en;
+                  rdfs:range rdfs:Literal.
+htir:fieldName a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                 rdf:Property;
+               rdfs:comment "The name of an HTTP header field."@en;
+               rdfs:domain htir:MessageHeader;
+               rdfs:label "Field name"@en;
+               rdfs:range rdfs:Literal.
+htir:fieldValue a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  rdf:Property;
+                rdfs:comment "The value of an HTTP header field."@en;
+                rdfs:domain htir:MessageHeader;
+                rdfs:label "Field value"@en;
+                rdfs:range rdfs:Literal.
+htir:hdrName a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+               rdf:Property;
+             rdfs:comment "The name of an HTTP header."@en;
+             rdfs:domain htir:MessageHeader;
+             rdfs:label "Header name"@en;
+             rdfs:range htir:HeaderName.
+htir:headerElements a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                      rdf:Property;
+                    rdfs:comment "The deconstructed parts of an HTTP header value."@en;
+                    rdfs:domain htir:MessageHeader;
+                    rdfs:label "Header elements"@en.
+htir:headers a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+               rdf:Property;
+             rdfs:comment "The headers in an HTTP message."@en;
+             rdfs:domain htir:Message;
+             rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+             rdfs:label "Headers"@en.
+htir:httpVersion a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                   rdf:Property;
+                 rdfs:comment "The HTTP version of an HTTP message."@en;
+                 rdfs:domain htir:Message;
+                 rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+                 rdfs:label "HTTP version"@en;
+                 rdfs:range rdfs:Literal.
+htir:methodName a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  rdf:Property;
+                rdfs:comment "The HTTP method name used for the HTTP request."@en;
+                rdfs:domain htir:Request;
+                rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+                rdfs:label "Method name"@en;
+                rdfs:range rdfs:Literal.
+htir:mthd a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+            rdf:Property;
+          rdfs:comment "The HTTP method used for the HTTP request."@en;
+          rdfs:domain htir:Request;
+          rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+          rdfs:label "Method"@en;
+          rdfs:range htir:Method.
+htir:paramName a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                 rdf:Property;
+               rdfs:comment "The name of a parameter in a part of a deconstructed HTTP header value."@en;
+               rdfs:domain htir:Parameter;
+               rdfs:label "Parameter name"@en;
+               rdfs:range rdfs:Literal.
+htir:paramValue a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  rdf:Property;
+                rdfs:comment "The value of a parameter in a part of a deconstructed HTTP header value."@en;
+                rdfs:domain htir:Parameter;
+                rdfs:label "Parameter value"@en;
+                rdfs:range rdfs:Literal.
+htir:params a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+              rdf:Property;
+            rdfs:comment "The parameters in a part of a deconstructed HTTP header value."@en;
+            rdfs:domain htir:HeaderElement;
+            rdfs:label "Header parameters"@en.
+htir:reasonPhrase a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                    rdf:Property;
+                  rdfs:comment "The reason phrase (status text) of an HTTP response."@en;
+                  rdfs:domain htir:Response;
+                  rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+                  rdfs:label "Reason phrase"@en;
+                  rdfs:range rdfs:Literal.
+htir:requestURI a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  rdf:Property;
+                rdfs:comment "The request URI of an HTTP request."@en;
+                rdfs:domain htir:Request;
+                rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+                rdfs:label "Request URI"@en;
+                rdfs:range rdfs:Literal.
+htir:requests a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                rdf:Property;
+              rdfs:comment "The HTTP requests made via a connection."@en;
+              rdfs:domain htir:Connection;
+              rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+              rdfs:label "Requests"@en.
+htir:resp a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+            rdf:Property;
+          rdfs:comment "The HTTP response sent in answer to an HTTP request."@en;
+          rdfs:domain htir:Request;
+          rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+          rdfs:label "Response"@en;
+          rdfs:range htir:Response.
+htir:sc a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+          rdf:Property;
+        rdfs:comment "The status code of an HTTP response."@en;
+        rdfs:domain htir:Response;
+        rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+        rdfs:label "Status code"@en;
+        rdfs:range htir:StatusCode.
+htir:statusCodeNumber a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                        rdf:Property;
+                      rdfs:comment "The status code number."@en;
+                      rdfs:domain htir:StatusCode;
+                      rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+                      rdfs:label "Status code"@en;
+                      rdfs:range xsd:int;
+                      rdfs:subPropertyOf <http://purl.org/dc/terms/identifier>.
+htir:statusCodeValue a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                       rdf:Property;
+                     rdfs:comment "The status code value of an HTTP response."@en;
+                     rdfs:domain htir:Response;
+                     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt>;
+                     rdfs:label "Status code"@en;
+                     rdfs:range rdfs:Literal.

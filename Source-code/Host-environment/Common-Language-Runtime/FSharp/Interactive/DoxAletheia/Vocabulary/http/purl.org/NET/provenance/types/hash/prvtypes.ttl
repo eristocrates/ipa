@@ -1,0 +1,118 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix prvtypes: <http://purl.org/net/provenance/types#>.
+
+<http://purl.org/net/provenance/types> a <http://xmlns.com/foaf/0.1/Document>;
+                                       rdfs:label "Document that defines the types module of the Provenance Vocabulary"@en;
+                                       <http://xmlns.com/foaf/0.1/primaryTopic> prvtypes:.
+prvtypes: <http://purl.org/dc/terms/created> "2009-11-07T12:00:00Z"^^xsd:dateTime;
+          <http://purl.org/dc/terms/creator> <http://users.ox.ac.uk/~zool0770/foaf.rdf#me>,
+                                             <http://olafhartig.de/foaf.rdf#olaf>;
+          <http://purl.org/dc/terms/description> "Extends the Provenance Vocabulary by defining subclasses of the types of provenance elements introduced in the core ontology."@en;
+          <http://purl.org/dc/terms/modified> "2012-03-14T12:00:00Z"^^xsd:dateTime;
+          <http://purl.org/dc/terms/title> "Provenance Vocabulary types module namespace"@en;
+          a <http://www.w3.org/2002/07/owl#Ontology>;
+          <http://www.w3.org/2002/07/owl#imports> <http://purl.org/net/provenance/ns#>.
+prvtypes:DataAccessor a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "DataAccessor is a concept that represents a system (i.e. a non-human agent) which performed the data access in order to retrieve an information resource from the Web."@en;
+                      rdfs:isDefinedBy prvtypes:;
+                      rdfs:label "Data Accessor"@en;
+                      rdfs:subClassOf <http://purl.org/net/provenance/ns#NonHumanAgent>;
+                      <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.ontologydesignpatterns.org/ont/web/irw.owl#WebClient>.
+prvtypes:DataCreatingDevice a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "DataCreatingDevice is a concept that represents a device which performed the creation of a data item. Examples for data creating devices are sensors."@en;
+                            rdfs:isDefinedBy prvtypes:;
+                            rdfs:label "Data Creating Device"@en;
+                            rdfs:subClassOf prvtypes:DataCreator,
+                                            <http://purl.org/net/provenance/ns#NonHumanAgent>;
+                            <http://www.w3.org/2002/07/owl#disjointWith> prvtypes:DataCreatingService,
+                                                                         prvtypes:DataCreatingEntity.
+prvtypes:DataCreatingEntity a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "DataCreatingEntity is a concept that represents a human agent who performed the creation of a data item, either directly or by being responsible for a non-human data creator (see the concepts prvTypes:DataCreatingService and prvTypes:DataCreatingDevice)."@en;
+                            rdfs:isDefinedBy prvtypes:;
+                            rdfs:label "Data Creating Entity"@en;
+                            rdfs:subClassOf prvtypes:DataCreator,
+                                            <http://purl.org/net/provenance/ns#HumanAgent>;
+                            <http://www.w3.org/2002/07/owl#disjointWith> prvtypes:DataCreatingDevice,
+                                                                         prvtypes:DataCreatingService.
+prvtypes:DataCreatingService a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "DataCreatingService is a concept that represents a software service which performed the creation of a data item. Examples for data creating services are reasoners, query engines, and workflow engines."@en;
+                             rdfs:isDefinedBy prvtypes:;
+                             rdfs:label "Data Creating Service"@en;
+                             rdfs:subClassOf prvtypes:DataCreator,
+                                             <http://purl.org/net/provenance/ns#NonHumanAgent>;
+                             <http://www.w3.org/2002/07/owl#disjointWith> prvtypes:DataCreatingDevice,
+                                                                          prvtypes:DataCreatingEntity.
+prvtypes:DataCreator a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "DataCreator is a concept that represents an agent which performed the creation of a data item."@en;
+                     rdfs:isDefinedBy prvtypes:;
+                     rdfs:label "Data Creator"@en;
+                     rdfs:subClassOf <http://www.w3.org/ns/prov#Agent>.
+prvtypes:HTTPBasedDataAccess a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "An HTTPBasedDataAccess represents the completed execution of accessing a data item using the HTTP protocol."@en;
+                             rdfs:isDefinedBy prvtypes:;
+                             rdfs:label "HTTP-based Data Access"@en;
+                             rdfs:subClassOf <http://purl.org/net/provenance/ns#DataAccess>.
+prvtypes:Measurement a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Measurement is a concept that represents the execution of a measurement."@en;
+                     rdfs:isDefinedBy prvtypes:;
+                     rdfs:label "Measurement"@en;
+                     rdfs:subClassOf <http://purl.org/net/provenance/ns#DataCreation>.
+prvtypes:Query a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:isDefinedBy prvtypes:;
+               rdfs:label "Query"@en;
+               rdfs:subClassOf <http://purl.org/net/provenance/ns#CreationGuideline>.
+prvtypes:QueryExecution a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:isDefinedBy prvtypes:;
+                        rdfs:label "Query Execution"@en;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> prvtypes:Query ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/net/provenance/ns#usedGuideline> ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        <http://purl.org/net/provenance/ns#DataCreation>.
+prvtypes:QueryResult a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "QueryResult is the result of a query execution."@en;
+                     rdfs:isDefinedBy prvtypes:;
+                     rdfs:label "Query Result"@en;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> prvtypes:QueryExecution ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/net/provenance/ns#createdBy> ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     <http://purl.org/net/provenance/ns#DataItem>.
+prvtypes:QueryTemplate a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "A QueryTemplate is a query that contains placeholders which are replaced by actual data to create an executable query."@en;
+                       rdfs:isDefinedBy prvtypes:;
+                       rdfs:label "Query Template"@en;
+                       rdfs:subClassOf <http://purl.org/net/provenance/ns#CreationGuideline>.
+prvtypes:SPARQLQuery a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy prvtypes:;
+                     rdfs:label "SPARQL Query"@en;
+                     rdfs:subClassOf prvtypes:Query;
+                     <http://www.w3.org/2002/07/owl#disjointWith> prvtypes:SQLQuery.
+prvtypes:SQLQuery a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:isDefinedBy prvtypes:;
+                  rdfs:label "SQL Query"@en;
+                  rdfs:subClassOf prvtypes:Query;
+                  <http://www.w3.org/2002/07/owl#disjointWith> prvtypes:SPARQLQuery.
+prvtypes:Sensor a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:isDefinedBy prvtypes:;
+                rdfs:label "Sensor"@en;
+                rdfs:subClassOf prvtypes:DataCreatingDevice.
+prvtypes:TriplifyMapping a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "TriplifyMapping is a concept that represents the mapping defined in a Triplify configuration file."@en;
+                         rdfs:isDefinedBy prvtypes:;
+                         rdfs:label "Triplify Mapping"@en;
+                         rdfs:subClassOf <http://purl.org/net/provenance/ns#CreationGuideline>.
+prvtypes:exchangedHTTPMessage a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:comment "This property refers to an HTTP message (request or response) that has been exchanged during an HTTP based data access."@en;
+                              rdfs:domain <http://purl.org/net/provenance/ns#DataAccess>;
+                              rdfs:isDefinedBy prvtypes:;
+                              rdfs:label "involved exchange of"@en;
+                              rdfs:range <http://www.w3.org/2006/http#Message>.
+<http://rdfs.org/ns/void#Dataset> a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:subClassOf <http://purl.org/net/provenance/ns#DataItem>.
+<http://www.ontologydesignpatterns.org/ont/web/irw.owl#WebClient> a <http://www.w3.org/2002/07/owl#Class>.
+rdf:Statement a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf <http://purl.org/net/provenance/ns#DataItem>.
+<http://www.w3.org/2004/03/trix/rdfg-1/Graph> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:subClassOf <http://purl.org/net/provenance/ns#DataItem>.
+<http://www.w3.org/2006/http#Message> a <http://www.w3.org/2002/07/owl#Class>.

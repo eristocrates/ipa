@@ -7,7 +7,7 @@
 @prefix nie: <http://tracker.api.gnome.org/ontology/v3/nie#>.
 @prefix nfo: <http://tracker.api.gnome.org/ontology/v3/nfo#>.
 @prefix mfo: <http://tracker.api.gnome.org/ontology/v3/mfo#>.
-@prefix w3: <http://www.w3.org/>.
+@prefix tmfo: <http://tracker.api.gnome.org/ontology/v3/mfo#>.
 
 mfo: nrl:lastModified "2010-02-16T11:00:00Z";
      nrl:prefix "mfo";

@@ -2,14 +2,11 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix sp: <http://spinrdf.org/sp#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-<http://spinrdf.org/sp> a owl:Ontology;
+<http://spinrdf.org/sp> a <http://www.w3.org/2002/07/owl#Ontology>;
                         rdfs:comment "An RDF schema to syntactically represent SPARQL queries and update commands as RDF triples.";
                         rdfs:label "SPIN SPARQL Syntax";
-                        owl:versionInfo "1.5.0".
+                        <http://www.w3.org/2002/07/owl#versionInfo> "1.5.0".
 sp:Aggregation a rdfs:Class;
                rdfs:comment "Base class of aggregation types (not part of the SPARQL 1.0 standard but supported by ARQ and other engines).";
                rdfs:label "Aggregation";
@@ -55,7 +52,7 @@ sp:Create a rdfs:Class;
           rdfs:label "Create";
           rdfs:subClassOf sp:Update.
 sp:Delete a rdfs:Class,
-            owl:DeprecatedClass;
+            <http://www.w3.org/2002/07/owl#DeprecatedClass>;
           rdfs:comment """Deprecated - use sp:Modify instead.
 
 Represents a DELETE FROM (part of SPARQL UPDATE language). The graph IRIs are stored in sp:graphIRI. The template patterns to delete are stored in sp:deletePattern. The WHERE clause is represented using sp:where.""";
@@ -107,7 +104,7 @@ sp:GroupConcat a rdfs:Class;
                rdfs:label "GROUP_CONCAT";
                rdfs:subClassOf sp:Aggregation.
 sp:Insert a rdfs:Class,
-            owl:DeprecatedClass;
+            <http://www.w3.org/2002/07/owl#DeprecatedClass>;
           rdfs:comment """Deprecated - use sp:Modify instead.
 
 Represents a INSERT INTO (part of SPARQL UPDATE language). The graph IRIs are stored in sp:graphIRI. The template patterns to delete are stored in sp:insertPattern. The WHERE clause is represented using sp:where.""";
@@ -118,7 +115,7 @@ sp:InsertData a rdfs:Class;
               rdfs:label "Insert data";
               rdfs:subClassOf sp:Update.
 sp:Let a rdfs:Class,
-         owl:DeprecatedClass;
+         <http://www.w3.org/2002/07/owl#DeprecatedClass>;
        rdfs:comment """Deprecated: use sp:Bind instead.
 
 A variable assignment (LET (?<varName> := <expression>)). Not part of the SPARQL 1.0 standard, but (for example) ARQ.""";

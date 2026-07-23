@@ -1,0 +1,2155 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix up: <http://purl.uniprot.org/core/>.
+
+_:B013058ac238c8feaa7bce8e6944cebcc a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Inferred_from_Homology_Existence
+                                                                                     up:Evidence_at_Protein_Level_Existence).
+_:B05ab1a7433381f9430e8ec40f8eec861 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Evidence_at_Transcript_Level_Existence
+                                                                                     up:Inferred_from_Homology_Existence).
+_:B0722d787fb914cebbcea2e5a648cd584 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Class
+                                                                                     up:Family
+                                                                                     up:Subkingdom
+                                                                                     up:Suborder
+                                                                                     up:Species
+                                                                                     up:Subgenus
+                                                                                     up:Tribe
+                                                                                     up:Subclass
+                                                                                     up:Genus
+                                                                                     up:Phylum
+                                                                                     up:Subtribe
+                                                                                     up:Superclass
+                                                                                     up:Superfamily
+                                                                                     up:Superorder
+                                                                                     up:Order
+                                                                                     up:Species_Subgroup
+                                                                                     up:Superkingdom
+                                                                                     up:Subspecies
+                                                                                     up:Kingdom
+                                                                                     up:Superphylum
+                                                                                     up:Subfamily
+                                                                                     up:Subphylum
+                                                                                     up:Forma
+                                                                                     up:Parvorder
+                                                                                     up:Varietas
+                                                                                     up:Species_Group).
+_:B0a29716a5f796fc5f1dd2f94d98a797a a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Evidence_at_Transcript_Level_Existence
+                                                                                     up:Predicted_Existence).
+_:B0c44c1e13ce810518c916fa01c4f6093 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:PD
+                                                                                     up:FAB
+                                                                                     up:LSIMS
+                                                                                     up:MALDI
+                                                                                     up:SELDI
+                                                                                     up:API
+                                                                                     up:ESI).
+_:B110ab9a599711ef0eca913dd7038196a a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Fiber_Diffraction
+                                                                                     up:Prediction
+                                                                                     up:X-Ray_Crystallography
+                                                                                     up:Neutron_Diffraction
+                                                                                     up:Electron_Microscopy
+                                                                                     up:Infrared_Spectroscopy
+                                                                                     up:NMR_Spectroscopy).
+_:B1d1f6576af683f2e301930b18f7c5da0 a rdf:List.
+_:B27503d8c858550cb248bbbc703280cee a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Fiber_Diffraction
+                                                                                     up:Prediction
+                                                                                     up:X-Ray_Crystallography
+                                                                                     up:Neutron_Diffraction
+                                                                                     up:Electron_Microscopy
+                                                                                     up:Infrared_Spectroscopy
+                                                                                     up:NMR_Spectroscopy).
+_:B294d35748d80494899b48cc351df5a1a a rdf:List.
+_:B2b12572bca42e618dbf011238a9e20aa a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Class
+                                                                                     up:Family
+                                                                                     up:Subkingdom
+                                                                                     up:Suborder
+                                                                                     up:Species
+                                                                                     up:Subgenus
+                                                                                     up:Tribe
+                                                                                     up:Subclass
+                                                                                     up:Genus
+                                                                                     up:Phylum
+                                                                                     up:Subtribe
+                                                                                     up:Superclass
+                                                                                     up:Superfamily
+                                                                                     up:Superorder
+                                                                                     up:Order
+                                                                                     up:Species_Subgroup
+                                                                                     up:Superkingdom
+                                                                                     up:Subspecies
+                                                                                     up:Kingdom
+                                                                                     up:Superphylum
+                                                                                     up:Subfamily
+                                                                                     up:Subphylum
+                                                                                     up:Forma
+                                                                                     up:Parvorder
+                                                                                     up:Varietas
+                                                                                     up:Species_Group).
+_:B3094234063bd745f5ee29204bec01084 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Uncertain_Existence
+                                                                                     up:Predicted_Existence).
+_:B367eb27c48f1abaa97c3c93984e070d2 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Inferred_from_Homology_Existence
+                                                                                     up:Predicted_Existence).
+_:B3719059690dae90d8e48561ccba4d40c a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:By_Similarity
+                                                                                     up:Potential
+                                                                                     up:Probable
+                                                                                     up:Experimental).
+_:B3dde24438d3d31eba23113dfc9f2ff29 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Inferred_from_Homology_Existence
+                                                                                     up:Uncertain_Existence).
+_:B4215c7f74522c400daf5e0102027833c a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Evidence_at_Transcript_Level_Existence
+                                                                                     up:Uncertain_Existence).
+_:B461d1ed104ae53a83f49e08a315d74be a rdf:List.
+("0.5"^^xsd:float
+ "0.9"^^xsd:float
+ "1.0"^^xsd:float) a rdf:List.
+("multiple"
+ "single") a rdf:List.
+_:B583c0e3969a260995cb536251237c0ab a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Uncertain_Existence
+                                                                                     up:Evidence_at_Protein_Level_Existence).
+_:B60f121cedf5eba521d83a456cdf01cf1 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Evidence_at_Transcript_Level_Existence
+                                                                                     up:Evidence_at_Protein_Level_Existence).
+_:B67d0420fd4bc81b951ff5e13ed954237 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Inferred_from_Homology_Existence
+                                                                                     up:Uncertain_Existence).
+_:B7638f88bba0465a52c1d53fc1501784c a rdf:List.
+_:B803b1e5d6669e6b985be10c3ea28b911 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Evidence_at_Transcript_Level_Existence
+                                                                                     up:Inferred_from_Homology_Existence).
+_:B83bf7744c269131339e0d3c6366ddd6f a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Uncertain_Existence
+                                                                                     up:Evidence_at_Protein_Level_Existence).
+("multiple"
+ "single") a rdf:List.
+_:B9e89039859582e10a9d40fcba10c8ca2 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Evidence_at_Transcript_Level_Existence
+                                                                                     up:Evidence_at_Protein_Level_Existence).
+_:Ba39f893d5ea102b6225d1274d385e76c a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:PD
+                                                                                     up:FAB
+                                                                                     up:LSIMS
+                                                                                     up:MALDI
+                                                                                     up:SELDI
+                                                                                     up:API
+                                                                                     up:ESI).
+_:Ba8d983df31ae7327e11fd0588c110084 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Uncertain_Existence
+                                                                                     up:Predicted_Existence).
+_:Baf2f5649ba3f6c982563d7563529c87c a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Inferred_from_Homology_Existence
+                                                                                     up:Evidence_at_Protein_Level_Existence).
+_:Bb2c1a3c5ce9d653539e2726a5b69b377 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Evidence_at_Protein_Level_Existence
+                                                                                     up:Predicted_Existence).
+_:Bb51f4a7e447be78f3059e5af175d8a6c a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:By_Similarity
+                                                                                     up:Potential
+                                                                                     up:Probable
+                                                                                     up:Experimental).
+_:Bb984dc1a80c6ec2b9ad223c189dafbd9 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Inferred_from_Homology_Existence
+                                                                                     up:Predicted_Existence).
+_:Bc1fa35d26173c64993d2949a0284b43f a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Evidence_at_Protein_Level_Existence
+                                                                                     up:Predicted_Existence).
+_:Bd38c095dd95fa224ccc3dfe70d301bfe a rdf:List.
+_:Bd4be4ac46f50668831d3ada9fc351758 a rdf:List.
+("0.5"^^xsd:float
+ "0.9"^^xsd:float
+ "1.0"^^xsd:float) a rdf:List.
+_:Be9b5e759516fde9e4d9f7f9b9db1c9eb a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Evidence_at_Transcript_Level_Existence
+                                                                                     up:Uncertain_Existence).
+_:Bf0034c88fc88aedd3f0bd7dddfad22aa a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (up:Evidence_at_Transcript_Level_Existence
+                                                                                     up:Predicted_Existence).
+up: a <http://www.w3.org/2002/07/owl#Ontology>;
+    rdfs:comment "Properties and classes used for protein annotation.".
+up:API a up:Mass_Measurement_Method,
+         <http://www.w3.org/2002/07/owl#Thing>;
+       rdfs:comment "Mass measurement using Atmospheric Pressure Ionization";
+       rdfs:label "Atmospheric Pressure Ionization".
+up:Absorption_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Indicates the wavelength in nm at which photoreactive proteins such as opsins and DNA photolyases show maximal absorption.";
+                         rdfs:label "Absorption";
+                         rdfs:subClassOf up:Biophysicochemical_Annotation.
+up:Active_Site_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Amino acid(s) involved in the activity of an enzyme.";
+                          rdfs:label "Active Site";
+                          rdfs:seeAlso "http://www.uniprot.org/manual/act_site"^^xsd:anyURI;
+                          rdfs:subClassOf up:Site_Annotation.
+up:Allergen_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Information relevant to allergenic proteins.";
+                       rdfs:label "Allergen";
+                       rdfs:seeAlso "http://www.uniprot.org/manual/allergenic_properties"^^xsd:anyURI;
+                       rdfs:subClassOf up:Annotation.
+up:Alternative_Initiation_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:label "Alternative Initiation";
+                                     rdfs:subClassOf up:Alternative_Products_Annotation.
+up:Alternative_Products_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Description of the existence of related protein sequences produced by alternative splicing of the same gene or by the use of alternative initiation codons.";
+                                   rdfs:label "Alternative Products";
+                                   rdfs:seeAlso "http://www.uniprot.org/manual/alternative_products"^^xsd:anyURI;
+                                   rdfs:subClassOf up:Annotation.
+up:Alternative_Promoter_Usage_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:label "Alternative Promoter Usage";
+                                         rdfs:subClassOf up:Alternative_Products_Annotation.
+up:Alternative_Sequence_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Description of sequence variants produced by alternative splicing.";
+                                   rdfs:label "Splice Variant";
+                                   rdfs:seeAlso "http://www.uniprot.org/manual/var_seq"^^xsd:anyURI;
+                                   rdfs:subClassOf up:Natural_Variation_Annotation.
+up:Alternative_Splicing_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:label "Alternative Splicing";
+                                   rdfs:subClassOf up:Alternative_Products_Annotation.
+up:Annotation a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Description of a resource on a specific topic.".
+up:Apicoplast a up:Organelle,
+                <http://www.w3.org/2002/07/owl#Thing>;
+              rdfs:label "Apicoplast".
+up:Attribution a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Entity used to attach evidence or provenance to a rdf statement via reification."@en.
+up:Beta_Strand_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Beta strand regions within the experimentally determined protein structure";
+                          rdfs:label "Strand";
+                          rdfs:seeAlso "http://www.uniprot.org/manual/strand"^^xsd:anyURI;
+                          rdfs:subClassOf up:Secondary_Structure_Annotation.
+up:Binding_Site_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Binding site for any chemical group (co-enzyme, prosthetic group, etc.).";
+                           rdfs:label "Binding Site";
+                           rdfs:seeAlso "http://www.uniprot.org/manual/binding"^^xsd:anyURI;
+                           rdfs:subClassOf up:Site_Annotation.
+up:Biophysicochemical_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Biophysical and physicochemical data such as pH dependence, temperature dependence, kinetic parameters, redox potentials, and maximal absorption.";
+                                 rdfs:label "Biophysicochemical Property";
+                                 rdfs:seeAlso "http://purl.uniprot.org/core/biophysicochemical_properties"^^xsd:anyURI;
+                                 rdfs:subClassOf up:Annotation.
+up:Biotechnology_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Description of the use of a specific protein in a biotechnological process.";
+                            rdfs:label "Biotechnology";
+                            rdfs:seeAlso "http://www.uniprot.org/manual/biotechnological_use"^^xsd:anyURI;
+                            rdfs:subClassOf up:Annotation.
+up:Book_Citation a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A chapter from a book.";
+                 rdfs:label "Book Citation";
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> up:name ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> up:name ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 up:Published_Citation.
+up:By_Similarity a up:Status,
+                   <http://www.w3.org/2002/07/owl#Thing>;
+                 rdfs:label "By Similarity".
+up:Calcium_Binding_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Extent of a calcium-binding region.";
+                              rdfs:label "Calcium Binding";
+                              rdfs:seeAlso "http://www.uniprot.org/manual/ca_bind"^^xsd:anyURI;
+                              rdfs:subClassOf up:Region_Annotation.
+up:Catalytic_Activity_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Description of the reactions catalyzed by an enzyme.";
+                                 rdfs:label "Catalytic Activity";
+                                 rdfs:seeAlso "http://www.uniprot.org/manual/catalytic_activity"^^xsd:anyURI;
+                                 rdfs:subClassOf up:Annotation.
+up:Caution_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Warning about possible errors and/or grounds for confusion.";
+                      rdfs:label "Caution";
+                      rdfs:seeAlso "http://www.uniprot.org/manual/caution"^^xsd:anyURI;
+                      rdfs:subClassOf up:Annotation.
+up:Cellular_Component a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:label "Cellular Component";
+                      rdfs:subClassOf up:Subcellular_Location.
+up:Chain_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Extent of a polypeptide chain in the mature protein.";
+                    rdfs:label "Chain";
+                    rdfs:seeAlso "http://www.uniprot.org/manual/chain"^^xsd:anyURI;
+                    rdfs:subClassOf up:Molecule_Processing_Annotation.
+up:Chloroplast a up:Organelle,
+                 <http://www.w3.org/2002/07/owl#Thing>;
+               rdfs:label "Chloroplast".
+up:Citation a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Description of a publication from which data was obtained.";
+            rdfs:seeAlso "http://www.uniprot.org/manual/references"^^xsd:anyURI;
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:date ; 
+                                                                      <http://www.w3.org/2002/07/owl#onProperty> up:date ; 
+                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:gYear ; 
+                                                                      <http://www.w3.org/2002/07/owl#onProperty> up:date ; 
+                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:gYearMonth ; 
+                                                                      <http://www.w3.org/2002/07/owl#onProperty> up:date ; 
+                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                             a <http://www.w3.org/2002/07/owl#Class>],
+                            [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:date ; 
+                                                                      <http://www.w3.org/2002/07/owl#onProperty> up:date ; 
+                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:gYear ; 
+                                                                      <http://www.w3.org/2002/07/owl#onProperty> up:date ; 
+                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:gYearMonth ; 
+                                                                      <http://www.w3.org/2002/07/owl#onProperty> up:date ; 
+                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                             a <http://www.w3.org/2002/07/owl#Class>];
+            <http://www.w3.org/2002/07/owl#disjointWith> up:Sequence,
+                                                         up:Range,
+                                                         up:Protein.
+up:Citation_Statement a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "The relationship between a resource and a citation.";
+                      rdfs:label "Citation Statement";
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (up:Strain
+                                                                                                                               up:Tissue
+                                                                                                                               up:Transposon) ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> up:context ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (up:Strain
+                                                                                                                               up:Tissue
+                                                                                                                               up:Transposon) ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> up:context ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      rdf:Statement.
+up:Class a up:Rank,
+           <http://www.w3.org/2002/07/owl#Thing>;
+         rdfs:label "Taxonomy rank Class".
+up:Cluster a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "Cluster of proteins with similar sequences.";
+           rdfs:seeAlso "http://www.uniprot.org/uniref/"^^xsd:anyURI;
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Sequence ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> up:member ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Sequence ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> up:member ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           <http://www.w3.org/2002/07/owl#Thing>;
+           <http://www.w3.org/2002/07/owl#disjointWith> up:Sequence,
+                                                        up:Protein.
+up:Cofactor_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Description of an enzyme cofactor.";
+                       rdfs:label "Cofactor";
+                       rdfs:seeAlso "http://www.uniprot.org/manual/cofactor"^^xsd:anyURI;
+                       rdfs:subClassOf up:Annotation.
+up:Coiled_Coil_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Extent of a coiled-coil region.";
+                          rdfs:label "Coiled-Coil";
+                          rdfs:seeAlso "http://www.uniprot.org/manual/coiled"^^xsd:anyURI;
+                          rdfs:subClassOf up:Region_Annotation.
+up:Compositional_Bias_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Extent of a compositionally biased region.";
+                                 rdfs:label "Compositionally Biased Region";
+                                 rdfs:seeAlso "http://www.uniprot.org/manual/compbias"^^xsd:anyURI;
+                                 rdfs:subClassOf up:Region_Annotation.
+up:Concept a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "A concept used to classify resources.";
+           rdfs:label "Concept";
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Concept ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> up:replaces ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Concept ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> up:replaces ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           <http://www.w3.org/2002/07/owl#Class>.
+up:Cross-link_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Posttranslationally formed amino acid bonds.";
+                         rdfs:label "Crosslink";
+                         rdfs:seeAlso "http://www.uniprot.org/manual/crosslnk"^^xsd:anyURI;
+                         rdfs:subClassOf up:Modification_Annotation.
+up:Cyanelle a up:Organelle,
+              <http://www.w3.org/2002/07/owl#Thing>;
+            rdfs:label "Cyanelle".
+up:DNA a <http://www.w3.org/2002/07/owl#Class>;
+       rdfs:subClassOf up:Molecule.
+up:Database a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Metadata for a life science database.";
+            rdfs:seeAlso "http://www.uniprot.org/manual/cross_references"^^xsd:anyURI;
+            rdfs:subClassOf <http://www.w3.org/2002/07/owl#Class>.
+up:Developmental_Stage_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "Description of the developmentally-specific expression of a protein.";
+                                  rdfs:label "Developmental Stage";
+                                  rdfs:seeAlso "http://www.uniprot.org/manual/developmental_stage"^^xsd:anyURI;
+                                  rdfs:subClassOf up:Annotation.
+up:Disease_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Description of the diseases associated with a deficiency of a protein.";
+                      rdfs:label "Disease";
+                      rdfs:seeAlso "http://www.uniprot.org/manual/involvement_in_disease"^^xsd:anyURI;
+                      rdfs:subClassOf up:Annotation.
+up:Disruption_Phenotype_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:label "Disruption Phenotype";
+                                   rdfs:seeAlso "http://www.uniprot.org/manual/disruption_phenotype"^^xsd:anyURI;
+                                   rdfs:subClassOf up:Annotation.
+up:Disulfide_Bond_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Describes residues which are linked by an intra-chain disulfide bond. If the endpoints are identical, the disulfide bond is an interchain one.";
+                             rdfs:label "Disulfide Bond";
+                             rdfs:seeAlso "http://www.uniprot.org/manual/disulfid"^^xsd:anyURI;
+                             rdfs:subClassOf up:Modification_Annotation.
+up:Domain_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Description of the domain structure of a protein.";
+                     rdfs:label "Domain";
+                     rdfs:seeAlso "http://www.uniprot.org/manual/domain_cc"^^xsd:anyURI;
+                     rdfs:subClassOf up:Annotation.
+up:Domain_Assignment_Statement a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "The relationship between a protein and a protein domain.";
+                               rdfs:label "Domain Assignment Statement";
+                               rdfs:subClassOf rdf:Statement.
+up:Domain_Extent_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Extent of a domain, which is defined as a specific combination of secondary structures organized into a characteristic three-dimensional structure or fold.";
+                            rdfs:label "Domain Extent";
+                            rdfs:seeAlso "http://www.uniprot.org/manual/domain"^^xsd:anyURI;
+                            rdfs:subClassOf up:Region_Annotation.
+up:ESI a up:Mass_Measurement_Method,
+         <http://www.w3.org/2002/07/owl#Thing>;
+       rdfs:label "Electrospray Ionization";
+       rdfs:seeAlso "iki:Electrospray_ionization"^^xsd:anyURI.
+up:Electron_Microscopy a up:Structure_Determination_Method,
+                         <http://www.w3.org/2002/07/owl#Thing>;
+                       rdfs:comment "The electron microscope is a microscope that can magnify very small details with high resolving power due to the use of electrons rather than light to scatter off material, magnifying at levels up to 500,000 times.";
+                       rdfs:label "Electron Microscopy";
+                       rdfs:seeAlso "iki:Electron_microscopy"^^xsd:anyURI.
+up:Electronic_Citation a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "An electronic publication.";
+                       rdfs:label "Electronic Citation";
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> up:name ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> up:name ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       up:Published_Citation.
+up:Endpoint_Statement a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Metadata for an endpoint of a range on a sequence.";
+                      rdfs:label "Endpoint Statement";
+                      rdfs:subClassOf rdf:Statement.
+up:Enzyme a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "A specific catalytic activity, defined by the Enzyme Commission of the Nomenclature Committee of the International Union of Biochemistry and Molecular Biology (IUBMB).";
+          rdfs:label "Enzyme";
+          rdfs:seeAlso "http://www.expasy.org/enzyme/"^^xsd:anyURI;
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Enzyme ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> up:replaces ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Enzyme ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> up:replacedBy ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Enzyme ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> up:replaces ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Enzyme ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> up:replacedBy ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          <http://www.w3.org/2002/07/owl#Class>.
+up:Enzyme_Regulation_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Description of an enzyme regulatory mechanism.";
+                                rdfs:label "Enzyme Regulation";
+                                rdfs:seeAlso "http://www.uniprot.org/manual/enzyme_regulation"^^xsd:anyURI;
+                                rdfs:subClassOf up:Annotation.
+up:Erroneous_Gene_Model_Prediction_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:label "Erroneous Gene Model Prediction";
+                                              rdfs:subClassOf up:Sequence_Caution_Annotation.
+up:Erroneous_Initiation_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:label "Erroneous Initiation";
+                                   rdfs:subClassOf up:Sequence_Caution_Annotation.
+up:Erroneous_Termination_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:label "Erroneous Termination";
+                                    rdfs:subClassOf up:Sequence_Caution_Annotation.
+up:Erroneous_Translation_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:label "Erroneous Translation";
+                                    rdfs:subClassOf up:Sequence_Caution_Annotation.
+up:Evidence_at_Protein_Level_Existence a up:Protein_Existence,
+                                         <http://www.w3.org/2002/07/owl#Thing>;
+                                       rdfs:label "Evidence at protein level".
+up:Evidence_at_Transcript_Level_Existence a <http://www.w3.org/2002/07/owl#Thing>,
+                                            up:Protein_Existence;
+                                          rdfs:comment "Indicates that the existence of a protein has not been strictly proven but that expression data (such as existence of cDNA(s), RT-PCR or Northern blots) indicate the existence of a transcript.";
+                                          rdfs:label "Evidence at transcript level".
+up:Experimental a <http://www.w3.org/2002/07/owl#Thing>,
+                  up:Status;
+                rdfs:label "Indicates that there is some experimental evidence that the given annotation could apply.".
+up:Experimental_Information_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:label "Experimental Information";
+                                       rdfs:subClassOf up:Sequence_Annotation.
+up:External_Sequence a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "The protein described in the linked record is an alternative splice form of the same gene product as described in this record. The function between the two isoforms is highly divergent.";
+                     rdfs:label "External Sequence";
+                     rdfs:seeAlso "http://www.uniprot.org/manual/alternative_products"^^xsd:anyURI;
+                     rdfs:subClassOf up:Known_Sequence.
+up:FAB a up:Mass_Measurement_Method,
+         <http://www.w3.org/2002/07/owl#Thing>;
+       rdfs:label "Fast Atom Bombardment".
+up:Family a <http://www.w3.org/2002/07/owl#Thing>,
+            up:Rank;
+          rdfs:label "Taxonomy rank Family".
+up:Family_Membership_Statement a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "The relationship between a protein and a protein family.";
+                               rdfs:label "Family Membership Statement";
+                               rdfs:subClassOf rdf:Statement.
+up:Fiber_Diffraction a up:Structure_Determination_Method,
+                       <http://www.w3.org/2002/07/owl#Thing>;
+                     rdfs:label "Fiber Diffraction".
+up:Forma a up:Rank,
+           <http://www.w3.org/2002/07/owl#Thing>;
+         rdfs:label "Taxonomy rank Forma".
+up:Frameshift_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:label "Frameshift";
+                         rdfs:subClassOf up:Sequence_Caution_Annotation.
+up:Function_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "General description of the functions of a protein.";
+                       rdfs:label "Function";
+                       rdfs:seeAlso "http://www.uniprot.org/manual/function"^^xsd:anyURI;
+                       rdfs:subClassOf up:Annotation.
+up:Gene a <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                         <http://www.w3.org/2002/07/owl#onClass> up:Gene ; 
+                         <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#prefLabel> ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                         <http://www.w3.org/2002/07/owl#onClass> up:Gene ; 
+                         <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#prefLabel> ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        <http://www.w3.org/2004/02/skos/core#Concept>,
+                        <http://www.w3.org/2002/07/owl#Thing>.
+up:Genomic_DNA a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "Genomic DNA";
+               rdfs:subClassOf up:DNA.
+up:Genomic_RNA a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "Genomic RNA";
+               rdfs:subClassOf up:RNA.
+up:Genus a <http://www.w3.org/2002/07/owl#Thing>,
+           up:Rank;
+         rdfs:label "Taxonomy rank Genus".
+up:Glycosylation_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Describes the occurrence of the attachment of a glycan (mono- or polysaccharide) to a residue of a protein.";
+                            rdfs:label "Glycosylation Site";
+                            rdfs:seeAlso "http://www.uniprot.org/manual/carbohyd"^^xsd:anyURI;
+                            rdfs:subClassOf up:Modification_Annotation.
+up:Helix_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Helical regions within the experimentally determined protein structure";
+                    rdfs:label "Helix";
+                    rdfs:seeAlso "http://www.uniprot.org/manual/helix"^^xsd:anyURI;
+                    rdfs:subClassOf up:Secondary_Structure_Annotation.
+up:Hydrogenosome a up:Organelle,
+                   <http://www.w3.org/2002/07/owl#Thing>;
+                 rdfs:label "Hydrogenosome".
+up:Induction_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Description of the compounds or conditions that stimulate the synthesis of a protein.";
+                        rdfs:label "Induction";
+                        rdfs:seeAlso "http://www.uniprot.org/manual/induction"^^xsd:anyURI;
+                        rdfs:subClassOf up:Annotation.
+up:Inferred_from_Homology_Existence a up:Protein_Existence,
+                                      <http://www.w3.org/2002/07/owl#Thing>;
+                                    rdfs:label "Inferred from homology".
+up:Infraclass a <http://www.w3.org/2002/07/owl#Thing>,
+                up:Rank;
+              rdfs:label "Taxonomy rank Infraclass".
+up:Infraorder a <http://www.w3.org/2002/07/owl#Thing>,
+                up:Rank;
+              rdfs:label "Taxonomy rank Infraorder".
+up:Infrared_Spectroscopy a up:Structure_Determination_Method,
+                           <http://www.w3.org/2002/07/owl#Thing>;
+                         rdfs:comment "A type of spectroscopy that uses the Infrared portion of the electromagnetic spectrum.";
+                         rdfs:label "Infrared Spectroscopy";
+                         rdfs:seeAlso "iki:Infrared_spectroscopy"^^xsd:anyURI.
+up:Initiator_Methionine_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Indicates that the initiator methionine has been cleaved off and is not shown in the sequence.";
+                                   rdfs:label "Initiator Methionine";
+                                   rdfs:seeAlso "http://www.uniprot.org/manual/init_met"^^xsd:anyURI;
+                                   rdfs:subClassOf up:Molecule_Processing_Annotation.
+up:Interaction a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Description of a protein-protein interaction.";
+               rdfs:seeAlso "http://www.uniprot.org/manual/binary_interactions"^^xsd:anyURI.
+up:Intramembrane_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Extent of a region located in a membrane without crossing it";
+                            rdfs:label "INTRAMEM";
+                            rdfs:seeAlso "http://www.uniprot.org/manual/Intramembrane"^^xsd:anyURI;
+                            rdfs:subClassOf up:Region_Annotation.
+up:Journal_Citation a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "An article published in a journal.";
+                    rdfs:label "Journal Citation";
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> up:name ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> up:name ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    up:Published_Citation.
+up:Kinetics_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Mentions the Michaelis-Menten constant (KM) and maximal velocity (Vmax) of enzymes.";
+                       rdfs:label "Kinetics";
+                       rdfs:subClassOf up:Biophysicochemical_Annotation.
+up:Kingdom a <http://www.w3.org/2002/07/owl#Thing>,
+             up:Rank;
+           rdfs:label "Taxonomy rank Kingdom".
+up:Known_Sequence a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "Known Sequence";
+                  rdfs:seeAlso "http://www.uniprot.org/manual/sequences"^^xsd:anyURI;
+                  rdfs:subClassOf up:Sequence.
+up:LSIMS a <http://www.w3.org/2002/07/owl#Thing>,
+           up:Mass_Measurement_Method;
+         rdfs:label "Liquid Secondary Ionization".
+up:Lipidation_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Covalent binding of a lipid moiety.";
+                         rdfs:label "Lipid Binding";
+                         rdfs:seeAlso "http://www.uniprot.org/manual/lipid"^^xsd:anyURI;
+                         rdfs:subClassOf up:Modification_Annotation.
+up:MALDI a <http://www.w3.org/2002/07/owl#Thing>,
+           up:Mass_Measurement_Method;
+         rdfs:label "Matrix-Assisted Laser Desorption";
+         rdfs:seeAlso "iki:Matrix-assisted_laser_desorption_ionization"^^xsd:anyURI.
+up:MRNA a <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:label "mRNA";
+        rdfs:subClassOf up:RNA.
+up:Mass_Measurement_Method a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "An experimental method for measuring the mass of a molecule.";
+                           rdfs:label "Mass Measurement";
+                           rdfs:seeAlso "iki:Mass_spectrometry"^^xsd:anyURI;
+                           rdfs:subClassOf up:Method.
+up:Mass_Spectrometry_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Indicates the mass of a sequence determined by mass spectrometry.";
+                                rdfs:label "Mass";
+                                rdfs:seeAlso "http://www.uniprot.org/manual/mass_spectrometry"^^xsd:anyURI;
+                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> up:method ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Mass_Measurement_Method ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> up:method ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> up:method ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Mass_Measurement_Method ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> up:method ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                up:Experimental_Information_Annotation.
+up:Metal_Binding_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Binding site for a metal ion.";
+                            rdfs:label "Metal Ion Binding Site";
+                            rdfs:seeAlso "http://www.uniprot.org/manual/metal"^^xsd:anyURI;
+                            rdfs:subClassOf up:Site_Annotation.
+up:Method a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "An experimental method.".
+up:Mitochondrion a up:Organelle,
+                   <http://www.w3.org/2002/07/owl#Thing>;
+                 rdfs:label "Mitochondion".
+up:Modification_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Describes amino acid modifications, post pre- and post-translational.";
+                           rdfs:label "Modification";
+                           rdfs:subClassOf up:Sequence_Annotation.
+up:Modified_Residue_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Posttranslational modification of a residue.";
+                               rdfs:label "Modified Residue";
+                               rdfs:seeAlso "http://www.uniprot.org/manual/mod_res"^^xsd:anyURI;
+                               rdfs:subClassOf up:Modification_Annotation.
+up:Modified_Sequence a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "Modified Sequence";
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Alternative_Sequence_Annotation ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> up:modification ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Simple_Sequence ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> up:basedOn ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Alternative_Sequence_Annotation ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> up:modification ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Simple_Sequence ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> up:basedOn ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     up:Known_Sequence.
+up:Molecule a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A biological molecule.".
+up:Molecule_Processing_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:label "Molecule Processing";
+                                  rdfs:subClassOf up:Sequence_Annotation.
+up:Motif_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Short (<=20 amino acids) sequence motif of biological interest.";
+                    rdfs:label "Motif";
+                    rdfs:seeAlso "http://www.uniprot.org/manual/motif"^^xsd:anyURI;
+                    rdfs:subClassOf up:Region_Annotation.
+up:Mutagenesis_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Site which has been experimentally altered.";
+                          rdfs:label "Mutagenesis Site";
+                          rdfs:seeAlso "http://www.uniprot.org/manual/mutagen"^^xsd:anyURI;
+                          rdfs:subClassOf up:Experimental_Information_Annotation.
+up:NMR_Spectroscopy a <http://www.w3.org/2002/07/owl#Thing>,
+                      up:Structure_Determination_Method;
+                    rdfs:label "NMR Spectroscopy";
+                    rdfs:seeAlso "iki:NMR"^^xsd:anyURI.
+up:NP_Binding_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Extent of a nucleotide phosphate-binding region.";
+                         rdfs:label "Nucleotide Phosphate Binding";
+                         rdfs:seeAlso "http://www.uniprot.org/manual/dna_bind"^^xsd:anyURI;
+                         rdfs:subClassOf up:Region_Annotation.
+up:Natural_Variant_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Authors report that sequence variants exist.";
+                              rdfs:label "Sequence Variant";
+                              rdfs:seeAlso "http://www.uniprot.org/manual/variant"^^xsd:anyURI;
+                              rdfs:subClassOf up:Natural_Variation_Annotation.
+up:Natural_Variation_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "Natural Variation";
+                                rdfs:subClassOf up:Sequence_Annotation.
+up:Neutron_Diffraction a up:Structure_Determination_Method,
+                         <http://www.w3.org/2002/07/owl#Thing>;
+                       rdfs:label "Neutron Diffraction";
+                       rdfs:seeAlso "iki:Neutron_diffraction"^^xsd:anyURI.
+up:Non-adjacent_Residues_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "Indicates that two residues in a sequence are not consecutive and that there are a number of unsequenced residues between them.";
+                                    rdfs:label "Non-consecutive Residues";
+                                    rdfs:seeAlso "http://www.uniprot.org/manual/non_cons"^^xsd:anyURI;
+                                    rdfs:subClassOf up:Experimental_Information_Annotation.
+up:Non-photosynthetic_plastid a up:Organelle,
+                                <http://www.w3.org/2002/07/owl#Thing>;
+                              rdfs:label "Non-photosyntethic plastid".
+up:Non-standard_Residue_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Describes the occurrence of a non standard residue in the sequence record.";
+                                   rdfs:label "Non standard residue";
+                                   rdfs:seeAlso "http://www.uniprot.org/manual/non_std"^^xsd:anyURI;
+                                   rdfs:subClassOf up:Modification_Annotation.
+up:Non-terminal_Residue_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "The residue at an extremity of the sequence is not the terminal residue.";
+                                   rdfs:label "Non-terminal Residue";
+                                   rdfs:seeAlso "http://www.uniprot.org/manual/non_ter"^^xsd:anyURI;
+                                   rdfs:subClassOf up:Experimental_Information_Annotation.
+up:NotObsolete a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A class introduced to group all records that are currently in the database.";
+               <http://www.w3.org/2002/07/owl#disjointWith> up:Obsolete;
+               <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#hasValue> false ; 
+                                                                <http://www.w3.org/2002/07/owl#onProperty> up:obsolete ; 
+                                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                               [<http://www.w3.org/2002/07/owl#hasValue> false ; 
+                                                                <http://www.w3.org/2002/07/owl#onProperty> up:obsolete ; 
+                                                                a <http://www.w3.org/2002/07/owl#Restriction>].
+up:NotObsoleteProtein a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> up:organism ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> up:Protein_Existence ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> up:existence ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> up:Simple_Sequence ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> up:sequence ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> up:organism ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> up:Protein_Existence ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> up:existence ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> up:Simple_Sequence ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> up:sequence ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      up:Protein,
+                                      up:NotObsolete.
+up:NotObsoleteTaxon a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> up:scientificName ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> up:scientificName ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    up:Taxon,
+                                    up:NotObsolete.
+up:Nucleomorph a <http://www.w3.org/2002/07/owl#Thing>,
+                 up:Organelle;
+               rdfs:label "Nuleomorph".
+up:Nucleotide_Binding_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Extent of a DNA-binding region.";
+                                 rdfs:label "DNA Binding";
+                                 rdfs:seeAlso "http://www.uniprot.org/manual/np_bind"^^xsd:anyURI;
+                                 rdfs:subClassOf up:Region_Annotation.
+up:Nucleotide_Mapping_Statement a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "The relationship between a protein and a nucleotide sequence.";
+                                rdfs:label "Nucleotide Mapping Statement";
+                                rdfs:subClassOf rdf:Statement.
+up:Nucleotide_Resource a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "A resource that descripes a nucleotide sequence.";
+                       rdfs:label "Nucleotide Resource";
+                       rdfs:subClassOf up:Resource;
+                       <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                        <http://www.w3.org/2002/07/owl#onProperty> up:locatedOn ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                       [<http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                        <http://www.w3.org/2002/07/owl#onProperty> up:locatedOn ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Restriction>].
+up:Observation_Citation a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Citation of an unpublished result.";
+                        rdfs:label "Observation Citation";
+                        rdfs:subClassOf up:Unpublished_Citation.
+up:Obsolete a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "The class of all obsolete records in the database (i.e. records that where once published but are now removed).";
+            <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#hasValue> true ; 
+                                                             <http://www.w3.org/2002/07/owl#onProperty> up:obsolete ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                            [<http://www.w3.org/2002/07/owl#hasValue> true ; 
+                                                             <http://www.w3.org/2002/07/owl#onProperty> up:obsolete ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>].
+up:ObsoleteProtein a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:seeAlso "http://www.uniprot.org/faq/11"^^xsd:anyURI;
+                   rdfs:subClassOf up:Protein,
+                                   up:Obsolete.
+up:ObsoleteTaxon a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Taxa are occasionally removed from the taxonomy database (particularly internal nodes, during a taxonomic revision) – these taxids are deleted, and are not reused.";
+                 rdfs:seeAlso "http://www.ncbi.nlm.nih.gov/books/NBK54428/"^^xsd:anyURI;
+                 rdfs:subClassOf up:Taxon,
+                                 up:Obsolete.
+up:Order a <http://www.w3.org/2002/07/owl#Thing>,
+           up:Rank;
+         rdfs:label "Taxonomy rank Order".
+up:Organellar_chromatophore a <http://www.w3.org/2002/07/owl#Thing>,
+                              up:Organelle;
+                            rdfs:label "Organellar chromatophore".
+up:Organelle a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:label "Organelle".
+up:Orientation a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "Orientation";
+               rdfs:subClassOf up:Subcellular_Location.
+up:Other_DNA a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:label "Other DNA";
+             rdfs:subClassOf up:DNA.
+up:Other_RNA a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:label "Other RNA";
+             rdfs:subClassOf up:RNA.
+up:PD a up:Mass_Measurement_Method,
+        <http://www.w3.org/2002/07/owl#Thing>;
+      rdfs:comment "";
+      rdfs:label "Plasma Desorption".
+up:PH_Dependence_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Describes the optimum pH for enzyme activity and/or the variation of enzyme activity with pH variation.";
+                            rdfs:label "pH Dependence";
+                            rdfs:subClassOf up:Biophysicochemical_Annotation.
+up:PTM_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Description of a posttranslational modification.";
+                  rdfs:label "PTM";
+                  rdfs:seeAlso "http://www.uniprot.org/manual/post-translational_modification"^^xsd:anyURI;
+                  rdfs:subClassOf up:Annotation.
+up:Part a <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:comment "Description of a part of a protein.";
+        rdfs:seeAlso "http://www.uniprot.org/manual/protein_names"^^xsd:anyURI;
+        rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+up:Participant a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A participant in a protein-protein interaction.";
+               rdfs:seeAlso "http://www.uniprot.org/manual/binary_interactions"^^xsd:anyURI.
+up:Parvorder a up:Rank,
+               <http://www.w3.org/2002/07/owl#Thing>;
+             rdfs:label "Taxonomy rank Parvorder".
+up:Patent_Citation a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "A patent application.";
+                   rdfs:label "Patent Citation";
+                   rdfs:subClassOf up:Published_Citation.
+up:Pathway a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "A hierarchical discription of a metabolic pathway.";
+           rdfs:seeAlso "http://www.uniprot.org/manual/pathway"^^xsd:anyURI,
+                        "http://www.grenoble.prabi.fr/obiwarehouse/unipathway"^^xsd:anyURI;
+           rdfs:subClassOf <http://www.w3.org/2002/07/owl#Class>.
+up:Pathway_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Description of the metabolic pathways with which a protein is associated.";
+                      rdfs:label "Pathway";
+                      rdfs:seeAlso "http://www.uniprot.org/manual/pathway"^^xsd:anyURI;
+                      rdfs:subClassOf up:Annotation.
+up:Peptide_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Extent of a released active peptide.";
+                      rdfs:label "Peptide";
+                      rdfs:seeAlso "http://www.uniprot.org/manual/peptide"^^xsd:anyURI;
+                      rdfs:subClassOf up:Molecule_Processing_Annotation.
+up:Pharmaceutical_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Description of the use of a protein as a pharmaceutical drug.";
+                             rdfs:label "Pharmaceutical";
+                             rdfs:seeAlso "http://www.uniprot.org/manual/pharmaceutical_use"^^xsd:anyURI;
+                             rdfs:subClassOf up:Annotation.
+up:Phylum a <http://www.w3.org/2002/07/owl#Thing>,
+            up:Rank;
+          rdfs:label "Taxonomy rank Phylum".
+up:Plastid a up:Organelle,
+             <http://www.w3.org/2002/07/owl#Thing>;
+           rdfs:label "Plastid".
+up:Polymorphism_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Description of polymorphisms.";
+                           rdfs:label "Polymorphism";
+                           rdfs:seeAlso "http://www.uniprot.org/manual/polymorphism"^^xsd:anyURI;
+                           rdfs:subClassOf up:Annotation.
+up:Potential a up:Status,
+               <http://www.w3.org/2002/07/owl#Thing>;
+             rdfs:comment "indicates that there is some logical or conclusive evidence that the given annotation could apply. This non-experimental qualifier is often used to present results from protein sequence analysis software tools, which are only annotated if the result makes sense in the biological context of a given protein. A typical example is the annotation of N-glycosylation sites in secreted proteins";
+             rdfs:label "Potential".
+up:Predicted_Existence a up:Protein_Existence,
+                         <http://www.w3.org/2002/07/owl#Thing>;
+                       rdfs:comment "This is used for proteins without evidence at protein, transcript, or homology levels.";
+                       rdfs:label "Predicted".
+up:Prediction a up:Structure_Determination_Method,
+                <http://www.w3.org/2002/07/owl#Thing>;
+              rdfs:label "Prediction".
+up:Probable a <http://www.w3.org/2002/07/owl#Thing>,
+              up:Status;
+            rdfs:comment "The status ‘Probable’ indicates stronger evidence than the qualifier ‘Potential’. This qualifier implies that there must be at least some experimental evidence, which indicates, that the information is expected to be found in the natural environment of a protein.";
+            rdfs:label "Probable".
+up:Propeptide_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Extent of a propeptide.";
+                         rdfs:label "Propeptide";
+                         rdfs:seeAlso "http://www.uniprot.org/manual/propep"^^xsd:anyURI;
+                         rdfs:subClassOf up:Molecule_Processing_Annotation.
+up:Protein a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "Description of a protein.";
+           rdfs:label "Protein";
+           rdfs:seeAlso "http://www.uniprot.org/help/uniprotkb"^^xsd:anyURI;
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Protein ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> up:replaces ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           <http://www.w3.org/2002/07/owl#Thing>,
+                           [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Protein ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> up:replaces ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Protein ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> up:replacedBy ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Protein ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> up:replacedBy ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>];
+           <http://www.w3.org/2002/07/owl#disjointWith> up:Sequence.
+up:Protein_Existence a <http://www.w3.org/2002/07/owl#Class>;
+                     <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#oneOf> (up:Evidence_at_Transcript_Level_Existence
+                                                                                                             up:Inferred_from_Homology_Existence
+                                                                                                             up:Uncertain_Existence
+                                                                                                             up:Evidence_at_Protein_Level_Existence
+                                                                                                             up:Predicted_Existence) ; 
+                                                                      a <http://www.w3.org/2002/07/owl#Class>],
+                                                                     [<http://www.w3.org/2002/07/owl#oneOf> (up:Evidence_at_Transcript_Level_Existence
+                                                                                                             up:Inferred_from_Homology_Existence
+                                                                                                             up:Uncertain_Existence
+                                                                                                             up:Evidence_at_Protein_Level_Existence
+                                                                                                             up:Predicted_Existence) ; 
+                                                                      a <http://www.w3.org/2002/07/owl#Class>].
+up:Protein_Family a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Desription of a set of related proteins.";
+                  rdfs:label "Protein Family".
+up:Published_Citation a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:label "Published Citation";
+                      rdfs:seeAlso "http://www.uniprot.org/manual/references"^^xsd:anyURI;
+                      rdfs:subClassOf up:Citation;
+                      <http://www.w3.org/2002/07/owl#disjointWith> up:Unpublished_Citation.
+up:RNA a <http://www.w3.org/2002/07/owl#Class>;
+       rdfs:subClassOf up:Molecule.
+up:RNA_Editing_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Description of any type of RNA editing that leads to one or more amino acid changes.";
+                          rdfs:label "RNA Editing";
+                          rdfs:seeAlso "http://www.uniprot.org/manual/rna_editing"^^xsd:anyURI;
+                          rdfs:subClassOf up:Annotation.
+up:Range a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "A range of amino acids on a protein  sequence.";
+         <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onDataRange> xsd:int ; 
+                                                                                                                                                   <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                                                   <http://www.w3.org/2002/07/owl#onProperty> up:begin ; 
+                                                                                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                                   [<http://www.w3.org/2002/07/owl#onDataRange> xsd:int ; 
+                                                                                                                                                   <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                                                   <http://www.w3.org/2002/07/owl#onProperty> up:end ; 
+                                                                                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                                   a <http://www.w3.org/2002/07/owl#Class>]
+                                                                                                   [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onDataRange> xsd:int ; 
+                                                                                                                                                   <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                                                   <http://www.w3.org/2002/07/owl#onProperty> up:end ; 
+                                                                                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                                   [<http://www.w3.org/2002/07/owl#onDataRange> xsd:int ; 
+                                                                                                                                                   <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                                                   <http://www.w3.org/2002/07/owl#onProperty> up:begin ; 
+                                                                                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                                   a <http://www.w3.org/2002/07/owl#Class>]) ; 
+                                                          a <http://www.w3.org/2002/07/owl#Class>],
+                                                         [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onDataRange> xsd:int ; 
+                                                                                                                                                   <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                                                   <http://www.w3.org/2002/07/owl#onProperty> up:begin ; 
+                                                                                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                                   [<http://www.w3.org/2002/07/owl#onDataRange> xsd:int ; 
+                                                                                                                                                   <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                                                   <http://www.w3.org/2002/07/owl#onProperty> up:end ; 
+                                                                                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                                   a <http://www.w3.org/2002/07/owl#Class>]
+                                                                                                   [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onDataRange> xsd:int ; 
+                                                                                                                                                   <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                                                   <http://www.w3.org/2002/07/owl#onProperty> up:end ; 
+                                                                                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                                   [<http://www.w3.org/2002/07/owl#onDataRange> xsd:int ; 
+                                                                                                                                                   <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                                                   <http://www.w3.org/2002/07/owl#onProperty> up:begin ; 
+                                                                                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                                   a <http://www.w3.org/2002/07/owl#Class>]) ; 
+                                                          a <http://www.w3.org/2002/07/owl#Class>].
+up:Rank a <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:comment "A rank of a taxon.".
+up:Redox_Potential_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Reports the value of the standard (midpoint) oxido-reduction potential(s) for electron transport proteins.";
+                              rdfs:label "Redox Potential";
+                              rdfs:subClassOf up:Biophysicochemical_Annotation.
+up:Region_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "Region";
+                     rdfs:subClassOf up:Sequence_Annotation.
+up:Repeat_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Extent of an internal sequence repetition.";
+                     rdfs:label "Repeat";
+                     rdfs:seeAlso "http://www.uniprot.org/manual/repeat"^^xsd:anyURI;
+                     rdfs:subClassOf up:Region_Annotation.
+up:Resource a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A life science resource.";
+            <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                             <http://www.w3.org/2002/07/owl#onProperty> up:database ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                            [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                             <http://www.w3.org/2002/07/owl#onProperty> up:database ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>].
+up:Ribosomal_Frameshifting a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:label "Ribosomal Frameshifting";
+                           rdfs:subClassOf up:Alternative_Products_Annotation.
+up:SELDI a up:Mass_Measurement_Method,
+           <http://www.w3.org/2002/07/owl#Thing>;
+         rdfs:label "Surface Enhanced Laser Desorption Ionization".
+up:Secondary_Structure_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "Describes the secondary structure of proteins whose tertiary structure is known experimentally.";
+                                  rdfs:label "Secondary Structure";
+                                  rdfs:subClassOf up:Sequence_Annotation.
+up:Sequence a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "An amino acid sequence.";
+            rdfs:seeAlso "http://www.uniprot.org/manual/sequences"^^xsd:anyURI,
+                         "http://www.uniprot.org/help/uniparc"^^xsd:anyURI.
+up:Sequence_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Description of a special region or site in a protein sequence.";
+                       rdfs:label "Sequence Annotation";
+                       rdfs:seeAlso "http://www.uniprot.org/manual/sequence_annotation"^^xsd:anyURI;
+                       rdfs:subClassOf up:Annotation.
+up:Sequence_Caution_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Warning about possible errors related to the protein sequence";
+                               rdfs:label "Sequence Caution";
+                               rdfs:seeAlso "http://www.uniprot.org/manual/sequence_caution"^^xsd:anyURI;
+                               rdfs:subClassOf up:Sequence_Annotation.
+up:Sequence_Conflict_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Different sources report differing sequences.";
+                                rdfs:label "Sequence Conflict";
+                                rdfs:seeAlso "http://www.uniprot.org/manual/conflict"^^xsd:anyURI;
+                                rdfs:subClassOf up:Experimental_Information_Annotation.
+up:Sequence_Uncertainty_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Used to describe region(s) of a sequence for which the authors are unsure about the sequence assignment.";
+                                   rdfs:label "Unsure Residue";
+                                   rdfs:seeAlso "http://www.uniprot.org/manual/unsure"^^xsd:anyURI;
+                                   rdfs:subClassOf up:Experimental_Information_Annotation.
+up:Signal_Peptide_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Extent of a signal sequence (prepeptide).";
+                             rdfs:label "Signal Peptide";
+                             rdfs:seeAlso "http://www.uniprot.org/manual/signal"^^xsd:anyURI;
+                             rdfs:subClassOf up:Molecule_Processing_Annotation.
+up:Similarity_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Description of the similarities (sequence or structural) of a protein with other proteins.";
+                         rdfs:label "Similarity";
+                         rdfs:seeAlso "http://www.uniprot.org/manual/sequence_similarities"^^xsd:anyURI;
+                         rdfs:subClassOf up:Annotation.
+up:Simple_Sequence a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "Simple Sequence";
+                   rdfs:subClassOf up:Known_Sequence.
+up:Site_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Any interesting single amino-acid site on the sequence, that is not defined by another feature key. It can also apply to an amino acid bond which is represented by the positions of the two flanking amino acids.";
+                   rdfs:label "Site";
+                   rdfs:seeAlso "http://www.uniprot.org/manual/site"^^xsd:anyURI;
+                   rdfs:subClassOf up:Sequence_Annotation.
+up:Species a <http://www.w3.org/2002/07/owl#Thing>,
+             up:Rank;
+           rdfs:label "Taxonomic rank Species".
+up:Species_Group a up:Rank,
+                   <http://www.w3.org/2002/07/owl#Thing>;
+                 rdfs:label "Taxonomic rank Species Group".
+up:Species_Subgroup a <http://www.w3.org/2002/07/owl#Thing>,
+                      up:Rank;
+                    rdfs:label "Taxonomic rank Species Subgroup".
+up:Status a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "Indicator for the reliability of a piece of information.";
+          rdfs:seeAlso "http://www.uniprot.org/manual/non_experimental_qualifiers"^^xsd:anyURI.
+up:Strain a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "A strain of a species.";
+          rdfs:label "Strain".
+up:Structure_Determination_Method a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "An experimental method for determining the 3D structure of a protein.";
+                                  rdfs:label "Structure Determination";
+                                  rdfs:subClassOf up:Method.
+up:Structure_Mapping_Statement a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "The relationship between a protein and a 3D structure.";
+                               rdfs:label "Structure Mapping Statement";
+                               rdfs:subClassOf rdf:Statement.
+up:Structure_Resource a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "A resource that describes the 3D structure of a protein.";
+                      rdfs:label "Structure Resource";
+                      rdfs:subClassOf up:Resource;
+                      <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#allValuesFrom> up:Structure_Determination_Method ; 
+                                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> up:method ; 
+                                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                       [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> up:method ; 
+                                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                       a <http://www.w3.org/2002/07/owl#Class>],
+                                                                      [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#allValuesFrom> up:Structure_Determination_Method ; 
+                                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> up:method ; 
+                                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                       [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> up:method ; 
+                                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                       a <http://www.w3.org/2002/07/owl#Class>].
+up:Structured_Name a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "A resource that holds a set of the known names for this protein together.";
+                   rdfs:seeAlso "http://www.uniprot.org/manual/protein_names"^^xsd:anyURI.
+up:Subcellular_Location a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:label "Subcellular Location";
+                        rdfs:seeAlso "http://www.uniprot.org/locations/"^^xsd:anyURI;
+                        rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+up:Subcellular_Location_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Description of the subcellular location of the mature protein.";
+                                   rdfs:label "Subcellular Location";
+                                   rdfs:seeAlso "http://www.uniprot.org/manual/subcellular_location"^^xsd:anyURI;
+                                   rdfs:subClassOf up:Annotation.
+up:Subclass a <http://www.w3.org/2002/07/owl#Thing>,
+              up:Rank;
+            rdfs:label "Taxonomic rank Subclass".
+up:Subfamily a up:Rank,
+               <http://www.w3.org/2002/07/owl#Thing>;
+             rdfs:label "Taxonomic rank Subfamily".
+up:Subgenus a up:Rank,
+              <http://www.w3.org/2002/07/owl#Thing>;
+            rdfs:label "Taxonomic rank Subgenus".
+up:Subkingdom a <http://www.w3.org/2002/07/owl#Thing>,
+                up:Rank;
+              rdfs:label "Taxonomic rank Subkingdom".
+up:Submission_Citation a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Data that was submitted directly to a database.";
+                       rdfs:label "Submission Citation";
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> up:submittedTo ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> up:submittedTo ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       up:Published_Citation.
+up:Suborder a up:Rank,
+              <http://www.w3.org/2002/07/owl#Thing>;
+            rdfs:label "Taxonomic rank Suborder".
+up:Subphylum a <http://www.w3.org/2002/07/owl#Thing>,
+               up:Rank;
+             rdfs:label "Taxonomic rank Subphylum".
+up:Subspecies a <http://www.w3.org/2002/07/owl#Thing>,
+                up:Rank;
+              rdfs:label "Taxonomic rank Subspecies".
+up:Subtribe a up:Rank,
+              <http://www.w3.org/2002/07/owl#Thing>;
+            rdfs:label "Taxonomic rank Subtribe".
+up:Subunit_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Description of the quaternary structure of a protein.";
+                      rdfs:label "Subunit";
+                      rdfs:seeAlso "http://www.uniprot.org/manual/subunit_structure"^^xsd:anyURI;
+                      rdfs:subClassOf up:Annotation.
+up:Superclass a up:Rank,
+                <http://www.w3.org/2002/07/owl#Thing>;
+              rdfs:label "Taxonomic rank Superclass".
+up:Superfamily a up:Rank,
+                 <http://www.w3.org/2002/07/owl#Thing>;
+               rdfs:label "Taxonomic rank Superfamily".
+up:Superkingdom a <http://www.w3.org/2002/07/owl#Thing>,
+                  up:Rank;
+                rdfs:label "Taxonomic rank Superkingdom".
+up:Superorder a up:Rank,
+                <http://www.w3.org/2002/07/owl#Thing>;
+              rdfs:label "Taxonomic rank Superorder".
+up:Superphylum a up:Rank,
+                 <http://www.w3.org/2002/07/owl#Thing>;
+               rdfs:label "Taxonomic rank Superphylum".
+up:Taxon a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "An element of a taxonomy for classifying life forms.";
+         rdfs:seeAlso "http://www.ncbi.nlm.nih.gov/books/NBK54428/"^^xsd:anyURI;
+         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Taxon ; 
+                          <http://www.w3.org/2002/07/owl#onProperty> up:replaces ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                          <http://www.w3.org/2002/07/owl#onProperty> up:mnemonic ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#allValuesFrom> up:Taxon ; 
+                          <http://www.w3.org/2002/07/owl#onProperty> up:replaces ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                          <http://www.w3.org/2002/07/owl#onProperty> up:mnemonic ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         <http://www.w3.org/2002/07/owl#Class>.
+up:Temperature_Dependence_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "Indicates the optimum temperature for enzyme activity and/or the variation of enzyme activity with temperature variation; the thermostability/thermolability of the enzyme is also mentioned when it is known.";
+                                     rdfs:label "Temperature Dependence";
+                                     rdfs:subClassOf up:Biophysicochemical_Annotation.
+up:Thesis_Citation a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "A Ph.D. thesis.";
+                   rdfs:label "Thesis Citation";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> up:institution ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> up:institution ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   up:Published_Citation.
+up:Tissue a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "A tissue such as lung or heart.";
+          rdfs:label "Tissue";
+          rdfs:seeAlso "http://www.uniprot.org/docs/tisslist"^^xsd:anyURI.
+up:Tissue_Specificity_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Description of the tissue specificity of a protein.";
+                                 rdfs:label "Tissue Specificity";
+                                 rdfs:seeAlso "http://www.uniprot.org/manual/tissue_specificity"^^xsd:anyURI;
+                                 rdfs:subClassOf up:Annotation.
+up:Topological_Domain_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "A topological domain.";
+                                 rdfs:label "Topological Domain";
+                                 rdfs:seeAlso "http://www.uniprot.org/manual/domain"^^xsd:anyURI;
+                                 rdfs:subClassOf up:Region_Annotation.
+up:Topology a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:label "Topology";
+            rdfs:subClassOf up:Subcellular_Location.
+up:Toxic_Dose_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment """Information on the LD(50). LD stands for \"Lethal Dose\". LD(50) is the amount of a toxin, given all at once, which causes the death of 50% (one half) of a group of test animals.""";
+                         rdfs:label "Toxic Dose";
+                         rdfs:seeAlso "http://www.uniprot.org/manual/toxic_dose"^^xsd:anyURI;
+                         rdfs:subClassOf up:Annotation.
+up:Transcribed_RNA a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "Transcribed RNA";
+                   rdfs:subClassOf up:RNA.
+up:Transcript_Resource a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "Transcript Resource";
+                       rdfs:subClassOf up:Resource.
+up:Transit_Peptide_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Extent of a transit peptide (mitochondrion, chloroplast, thylakoid, cyanelle or microbody).";
+                              rdfs:label "Transit Peptide";
+                              rdfs:seeAlso "http://www.uniprot.org/manual/transit"^^xsd:anyURI;
+                              rdfs:subClassOf up:Molecule_Processing_Annotation.
+up:Transmembrane_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Extent of a transmembrane region.";
+                            rdfs:label "Transmembrane";
+                            rdfs:seeAlso "http://www.uniprot.org/manual/transmem"^^xsd:anyURI;
+                            rdfs:subClassOf up:Region_Annotation.
+up:Transposon a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A transposon";
+              rdfs:label "Transposon".
+up:Tribe a <http://www.w3.org/2002/07/owl#Thing>,
+           up:Rank;
+         rdfs:label "Taxonomic rank Tribe".
+up:Turn_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Turns within the experimentally determined protein structure.";
+                   rdfs:label "Turn";
+                   rdfs:seeAlso "http://www.uniprot.org/manual/turn"^^xsd:anyURI;
+                   rdfs:subClassOf up:Secondary_Structure_Annotation.
+up:Unassigned_DNA a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "Unassigned DNA";
+                  rdfs:subClassOf up:DNA.
+up:Unassigned_RNA a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "Unassigned RNA";
+                  rdfs:subClassOf up:RNA.
+up:Uncertain_Existence a <http://www.w3.org/2002/07/owl#Thing>,
+                         up:Protein_Existence;
+                       rdfs:label "Uncertain".
+up:Unknown_Sequence a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:label "Unknown Sequence";
+                    rdfs:subClassOf up:Sequence.
+up:Unpublished_Citation a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:label "Unpublished Citation";
+                        rdfs:subClassOf up:Citation.
+up:Varietas a <http://www.w3.org/2002/07/owl#Thing>,
+              up:Rank;
+            rdfs:label "Taxonomic rank Varietas".
+up:Viral_cRNA a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Positive cRNA molecule that is made from from a single stranded genomic RNA.";
+              rdfs:label "Viral cRNA";
+              rdfs:subClassOf up:RNA.
+up:X-Ray_Crystallography a <http://www.w3.org/2002/07/owl#Thing>,
+                           up:Structure_Determination_Method;
+                         rdfs:comment "A technique in crystallography in which the pattern produced by the diffraction of x-rays through the closely spaced lattice of atoms in a crystal is recorded and then analyzed to reveal the nature of that lattice.";
+                         rdfs:label "X-Ray Crystallography";
+                         rdfs:seeAlso "iki:X-ray_crystallography"^^xsd:anyURI.
+up:Zinc_Finger_Annotation a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Extent of a zinc finger region.";
+                          rdfs:label "Zinc Finger";
+                          rdfs:seeAlso "http://www.uniprot.org/manual/zn_fing"^^xsd:anyURI;
+                          rdfs:subClassOf up:Region_Annotation.
+up:abstract a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "True if the class does not have any direct instances.";
+            rdfs:domain up:Database;
+            rdfs:range xsd:boolean.
+up:activity a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "The description of a catalytic activity.";
+            rdfs:domain up:Enzyme;
+            rdfs:label "catalytic activity";
+            rdfs:range xsd:string.
+up:alias a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:comment "An alternative name used in the flat text format.";
+         rdfs:range xsd:string.
+up:allergenName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "See http://www.expasy.org/cgi-bin/lists?allergen.txt";
+                rdfs:subPropertyOf up:structuredNameType.
+up:alternativeName a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "A synonym of the recommended name.";
+                   rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Part
+                                                                         up:Protein) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>],
+                               [<http://www.w3.org/2002/07/owl#unionOf> (up:Part
+                                                                         up:Protein) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>];
+                   rdfs:range up:Structured_Name;
+                   rdfs:seeAlso "http://www.uniprot.org/manual/protein_names"^^xsd:anyURI;
+                   rdfs:subPropertyOf up:structuredName.
+up:annotation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Attaches an annotation to a resource.";
+              rdfs:domain up:Protein;
+              rdfs:range up:Annotation.
+up:attribution a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Protein
+                                                                     rdf:Statement) ; 
+                            a <http://www.w3.org/2002/07/owl#Class>],
+                           [<http://www.w3.org/2002/07/owl#unionOf> (up:Protein
+                                                                     rdf:Statement) ; 
+                            a <http://www.w3.org/2002/07/owl#Class>];
+               rdfs:range up:Attribution.
+up:atypical a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "True if the protein is divergent in sequence or has mutated functional sites.";
+            rdfs:domain up:Family_Membership_Statement;
+            rdfs:range xsd:boolean.
+up:author a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:comment "The author of a publication.";
+          rdfs:domain up:Citation;
+          rdfs:range xsd:string.
+up:authorsIncomplete a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:domain up:Citation;
+                     rdfs:range xsd:boolean.
+up:base a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+up:basedOn a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+             <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:comment "The sequence on which the description of a modified sequence is based.";
+           rdfs:domain up:Modified_Sequence;
+           rdfs:label "based on";
+           rdfs:range up:Simple_Sequence.
+up:begin a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+           <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:comment "The first position of a range.";
+         rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Range
+                                                               up:Sequence) ; 
+                      a <http://www.w3.org/2002/07/owl#Class>],
+                     [<http://www.w3.org/2002/07/owl#unionOf> (up:Range
+                                                               up:Sequence) ; 
+                      a <http://www.w3.org/2002/07/owl#Class>];
+         rdfs:range xsd:int.
+up:biotechName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment "A name used in a biotechnological context.";
+               rdfs:subPropertyOf up:structuredNameType.
+up:category a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+up:cdAntigenName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:comment "A name from the Human Cell Differentiation Molecules (HCDM) nomenclature.";
+                 rdfs:subPropertyOf up:structuredNameType.
+up:cellularComponent a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onClass> up:Cellular_Component ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onProperty> up:cellularComponent ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                  [<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onClass> up:Orientation ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onProperty> up:orientation ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                  [<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onClass> up:Topology ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onProperty> up:topology ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                  a <http://www.w3.org/2002/07/owl#Class>],
+                                 [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onClass> up:Cellular_Component ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onProperty> up:cellularComponent ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                  [<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onClass> up:Orientation ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onProperty> up:orientation ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                  [<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onClass> up:Topology ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onProperty> up:topology ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                  a <http://www.w3.org/2002/07/owl#Class>];
+                     rdfs:range up:Cellular_Component.
+up:certain a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+             <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:comment "False if there is any uncertainty about a statement.";
+           rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Absorption_Annotation
+                                                                 up:Domain_Assignment_Statement
+                                                                 up:Endpoint_Statement) ; 
+                        a <http://www.w3.org/2002/07/owl#Class>],
+                       [<http://www.w3.org/2002/07/owl#unionOf> (up:Absorption_Annotation
+                                                                 up:Domain_Assignment_Statement
+                                                                 up:Endpoint_Statement) ; 
+                        a <http://www.w3.org/2002/07/owl#Class>];
+           rdfs:range xsd:boolean.
+up:chain a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:comment "Maps a series of symbols representing chains of a protein to a range of amino acids.";
+         rdfs:domain up:Structure_Mapping_Statement;
+         rdfs:range xsd:string.
+up:checksum a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "An caclulated value that is used to detect if there are errors in the sequence as shown due to among others IO errors. Both the crc64 and md5sum have collisions in UniProt data and cannot be used as unique keys.".
+up:citation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment "A publication from which data was extracted, or which contains additional information.";
+            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Cellular_Component
+                                                                  up:Database
+                                                                  up:External_Sequence
+                                                                  up:Nucleotide_Resource
+                                                                  up:Orientation
+                                                                  up:Protein
+                                                                  up:Topology) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>],
+                        [<http://www.w3.org/2002/07/owl#unionOf> (up:Cellular_Component
+                                                                  up:Database
+                                                                  up:External_Sequence
+                                                                  up:Nucleotide_Resource
+                                                                  up:Orientation
+                                                                  up:Protein
+                                                                  up:Topology) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>];
+            rdfs:range up:Citation.
+up:classifiedWith a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "A concept that classifies this resource.";
+                  rdfs:domain up:Protein;
+                  rdfs:label "classified with";
+                  rdfs:range up:Concept.
+up:cofactor a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "A cofactor required for a catalytic activity.";
+            rdfs:domain up:Enzyme;
+            rdfs:label "cofactor";
+            rdfs:range xsd:string.
+up:commonName a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+              rdfs:domain up:Taxon;
+              rdfs:label "common name";
+              rdfs:range xsd:string;
+              rdfs:subPropertyOf up:name.
+up:commonTaxon a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                 <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain up:Cluster;
+               rdfs:range up:Taxon.
+up:complete a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain up:Taxon;
+            rdfs:range xsd:boolean;
+            rdfs:seeAlso "http://www.uniprot.org/faq/15"^^xsd:anyURI.
+up:component a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "A component of a protein.";
+             rdfs:domain up:Protein;
+             rdfs:range up:Part;
+             rdfs:subPropertyOf up:part.
+up:conflictingSequence a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Protein
+                                                                             up:Sequence_Caution_Annotation
+                                                                             up:Sequence_Conflict_Annotation) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>],
+                                   [<http://www.w3.org/2002/07/owl#unionOf> (up:Protein
+                                                                             up:Sequence_Caution_Annotation
+                                                                             up:Sequence_Conflict_Annotation) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>];
+                       rdfs:range up:External_Sequence.
+up:context a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain up:Citation_Statement.
+up:crc64Checksum a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                   <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain up:Sequence;
+                 rdfs:range xsd:token;
+                 rdfs:subPropertyOf up:checksum.
+up:created a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+             <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:comment "The date a resource was created.";
+           rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Protein
+                                                                 up:Resource
+                                                                 up:Sequence) ; 
+                        a <http://www.w3.org/2002/07/owl#Class>],
+                       [<http://www.w3.org/2002/07/owl#unionOf> (up:Protein
+                                                                 up:Resource
+                                                                 up:Sequence) ; 
+                        a <http://www.w3.org/2002/07/owl#Class>];
+           rdfs:range xsd:date.
+up:database a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain up:Resource;
+            rdfs:range up:Database.
+up:date a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+          <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+        rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Attribution
+                                                              up:Citation) ; 
+                     a <http://www.w3.org/2002/07/owl#Class>],
+                    [<http://www.w3.org/2002/07/owl#unionOf> (up:Attribution
+                                                              up:Citation) ; 
+                     a <http://www.w3.org/2002/07/owl#Class>].
+up:domain a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:comment "A domain of a protein.";
+          rdfs:domain up:Protein;
+          rdfs:range up:Part;
+          rdfs:subPropertyOf up:part.
+up:domains a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+             <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:comment "The number of domains in a protein that correspond to a family. This is almost always 1, but may be 2 if  two identical domains are fused.";
+           rdfs:domain up:Family_Membership_Statement;
+           rdfs:range xsd:int.
+up:ecName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:comment "The ecName is the enzyme classification associated with a structured name of the protein. Proteins are often named after their enzymatic activity but can have more than one activity leading to multiple names.";
+          rdfs:subPropertyOf up:structuredNameType.
+up:editor a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:comment "The editor of a publication.";
+          rdfs:domain up:Book_Citation;
+          rdfs:range xsd:string.
+up:encodedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "The gene by which a protein is encoded.";
+             rdfs:domain up:Protein;
+             rdfs:label "encoded by";
+             rdfs:range up:Gene.
+up:encodedIn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "The subcellular location where a protein is encoded.";
+             rdfs:domain up:Protein;
+             rdfs:label "encoded in";
+             rdfs:range up:Subcellular_Location.
+up:end a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+         <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+       rdfs:comment "The last position of a range.";
+       rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Range
+                                                             up:Sequence) ; 
+                    a <http://www.w3.org/2002/07/owl#Class>],
+                   [<http://www.w3.org/2002/07/owl#unionOf> (up:Range
+                                                             up:Sequence) ; 
+                    a <http://www.w3.org/2002/07/owl#Class>];
+       rdfs:range xsd:int.
+up:enzyme a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:comment "The catalytic activity associated with a protein. or part of a protein.";
+          rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Part
+                                                                up:Protein) ; 
+                       a <http://www.w3.org/2002/07/owl#Class>],
+                      [<http://www.w3.org/2002/07/owl#unionOf> (up:Part
+                                                                up:Protein) ; 
+                       a <http://www.w3.org/2002/07/owl#Class>];
+          rdfs:label "enzyme";
+          rdfs:range up:Enzyme.
+up:erratum a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:comment "An erratum for a publication.";
+           rdfs:domain up:Published_Citation;
+           rdfs:range up:Published_Citation.
+up:erratumFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "The publication which an erratum refers to.";
+              rdfs:domain up:Published_Citation;
+              rdfs:label "erratum for";
+              rdfs:range up:Published_Citation;
+              <http://www.w3.org/2002/07/owl#inverseOf> up:erratum.
+up:existence a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+up:experiments a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                 <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain up:Interaction;
+               rdfs:range xsd:int.
+up:falseNegative a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                   <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:comment "True if a statement is true even though it was not predicted.";
+                 rdfs:domain up:Domain_Assignment_Statement;
+                 rdfs:label "false negative";
+                 rdfs:range xsd:boolean.
+up:fragment a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "Indicates if a sequence is complete or consists of one or more fragments.";
+            rdfs:domain up:Simple_Sequence;
+            rdfs:range [<http://www.w3.org/2002/07/owl#oneOf> () ; 
+                        a <http://www.w3.org/2002/07/owl#DataRange>],
+                       [<http://www.w3.org/2002/07/owl#oneOf> () ; 
+                        a <http://www.w3.org/2002/07/owl#DataRange>];
+            rdfs:seeAlso "http://www.uniprot.org/manual/sequence_status"^^xsd:anyURI.
+up:frameshift a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:comment "True if a sequence modification causes a frameshift.";
+              rdfs:domain up:RNA_Editing_Annotation;
+              rdfs:range xsd:boolean.
+up:fullName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "The full name.";
+            rdfs:subPropertyOf up:structuredNameType.
+up:fused a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+           <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:comment "True if the rule on which the membership of a protein to a family is based does not cover the entire protein.";
+         rdfs:domain up:Family_Membership_Statement;
+         rdfs:range xsd:boolean.
+up:group a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:comment "The group or consortium that authored a publication.";
+         rdfs:domain up:Citation;
+         rdfs:range xsd:string;
+         rdfs:subPropertyOf up:author.
+up:height a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+            <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:domain <http://xmlns.com/foaf/0.1/Image>;
+          rdfs:range xsd:int.
+up:hits a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+          <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+        rdfs:comment "The number of hits found in a sequence.";
+        rdfs:domain up:Domain_Assignment_Statement;
+        rdfs:range xsd:int.
+up:host a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+        rdfs:domain up:Taxon;
+        rdfs:range up:Taxon.
+up:identity a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "The level of sequence identity in a cluster.";
+            rdfs:domain up:Cluster;
+            rdfs:range [<http://www.w3.org/2002/07/owl#oneOf> () ; 
+                        a <http://www.w3.org/2002/07/owl#DataRange>],
+                       [<http://www.w3.org/2002/07/owl#oneOf> () ; 
+                        a <http://www.w3.org/2002/07/owl#DataRange>].
+up:implicit a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "True if existance of this resource can be inferred.";
+            rdfs:domain up:Database;
+            rdfs:range xsd:boolean.
+up:indexable a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+               <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:range xsd:boolean.
+up:institution a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment "The institution at which a thesis was written.";
+               rdfs:domain up:Thesis_Citation;
+               rdfs:range xsd:string.
+up:interaction a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain up:Protein;
+               rdfs:range up:Interaction.
+up:internationalNonproprietaryName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                   rdfs:comment "The international nonproprietary name: A generic name for a pharmaceutical substance or active pharmaceutical ingredient that is globally recognized and is a public property.";
+                                   rdfs:subPropertyOf up:structuredNameType.
+up:isolatedFrom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain up:Protein;
+                rdfs:range up:Tissue.
+up:length a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+            <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:domain up:Sequence;
+          rdfs:range xsd:int.
+up:limit a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+           <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:comment "True if the range does not extend beyond the specified endpoint.";
+         rdfs:domain up:Endpoint_Statement;
+         rdfs:range xsd:boolean.
+up:locatedIn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain up:Subcellular_Location_Annotation;
+             rdfs:range [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                         <http://www.w3.org/2002/07/owl#onClass> up:Cellular_Component ; 
+                                                                         <http://www.w3.org/2002/07/owl#onProperty> up:cellularComponent ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                         [<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                         <http://www.w3.org/2002/07/owl#onClass> up:Orientation ; 
+                                                                         <http://www.w3.org/2002/07/owl#onProperty> up:orientation ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                         [<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                         <http://www.w3.org/2002/07/owl#onClass> up:Topology ; 
+                                                                         <http://www.w3.org/2002/07/owl#onProperty> up:topology ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>],
+                        [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                         <http://www.w3.org/2002/07/owl#onClass> up:Cellular_Component ; 
+                                                                         <http://www.w3.org/2002/07/owl#onProperty> up:cellularComponent ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                         [<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                         <http://www.w3.org/2002/07/owl#onClass> up:Orientation ; 
+                                                                         <http://www.w3.org/2002/07/owl#onProperty> up:orientation ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                         [<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                         <http://www.w3.org/2002/07/owl#onClass> up:Topology ; 
+                                                                         <http://www.w3.org/2002/07/owl#onProperty> up:topology ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>].
+up:locatedOn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "The molecule a this resource is located on.";
+             rdfs:domain up:Nucleotide_Resource;
+             rdfs:label "located on";
+             rdfs:range up:Molecule.
+up:locator a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain up:Citation;
+           rdfs:range xsd:string.
+up:locusName a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+               <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+             rdfs:domain up:Gene;
+             rdfs:label "locus name";
+             rdfs:range xsd:string;
+             rdfs:subPropertyOf up:name.
+up:manual a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+            <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:domain up:Attribution;
+          rdfs:range xsd:boolean.
+up:mass a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+          <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+        rdfs:comment "The mass of a sequence in Daltons.";
+        rdfs:domain up:Simple_Sequence;
+        rdfs:range xsd:int.
+up:maximum a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+             <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:comment "A maximum value.";
+           rdfs:domain up:Absorption_Annotation;
+           rdfs:range xsd:float.
+up:md5Checksum a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                 <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain up:Sequence;
+               rdfs:range xsd:token;
+               rdfs:subPropertyOf up:checksum.
+up:measuredActivity a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "The maximum velocity, Vmax.";
+                    rdfs:domain up:Kinetics_Annotation;
+                    rdfs:label "measured activity";
+                    rdfs:range xsd:string.
+up:measuredAffinity a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "The Michaelis-Menten constant, Km.";
+                    rdfs:domain up:Kinetics_Annotation;
+                    rdfs:label "measured affinity";
+                    rdfs:range xsd:string.
+up:measuredError a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                   <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:comment "The magnitude of the error of a value that was measured.";
+                 rdfs:domain up:Mass_Spectrometry_Annotation;
+                 rdfs:label "measured error";
+                 rdfs:range xsd:float.
+up:measuredValue a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                   <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:comment "A value that was measured.";
+                 rdfs:domain up:Mass_Spectrometry_Annotation;
+                 rdfs:label "measured value";
+                 rdfs:range xsd:float.
+up:member a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:comment "One of several similar resources.";
+          rdfs:domain up:Cluster;
+          rdfs:range up:Sequence.
+up:memberOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain up:Sequence;
+            rdfs:label "member of";
+            rdfs:range up:Cluster;
+            <http://www.w3.org/2002/07/owl#inverseOf> up:member.
+up:method a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:comment "The experimental method that was used.";
+          rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Mass_Spectrometry_Annotation
+                                                                up:Structure_Resource) ; 
+                       a <http://www.w3.org/2002/07/owl#Class>],
+                      [<http://www.w3.org/2002/07/owl#unionOf> (up:Mass_Spectrometry_Annotation
+                                                                up:Structure_Resource) ; 
+                       a <http://www.w3.org/2002/07/owl#Class>];
+          rdfs:range up:Method.
+up:mnemonic a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+              <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+            rdfs:comment "A easy to remember identifier for a UniProtKB entry, but it is not a stable identifier and should not be used by programs to identify entries.";
+            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Cluster
+                                                                  up:Protein
+                                                                  up:Sequence) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>],
+                        [<http://www.w3.org/2002/07/owl#unionOf> (up:Cluster
+                                                                  up:Protein
+                                                                  up:Sequence) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>];
+            rdfs:range xsd:string;
+            rdfs:seeAlso "http://www.uniprot.org/manual/entry_name"^^xsd:anyURI;
+            rdfs:subPropertyOf up:name.
+up:modification a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "A modification of a sequence.";
+                rdfs:domain up:Modified_Sequence;
+                rdfs:range up:Alternative_Sequence_Annotation.
+up:modified a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "The date a resource was last modified.";
+            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Cluster
+                                                                  up:Protein
+                                                                  up:Sequence) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>],
+                        [<http://www.w3.org/2002/07/owl#unionOf> (up:Cluster
+                                                                  up:Protein
+                                                                  up:Sequence) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>];
+            rdfs:range xsd:date.
+up:name a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+          <http://www.w3.org/2002/07/owl#ObjectProperty>,
+          <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+        rdfs:label "name";
+        rdfs:subPropertyOf rdfs:label;
+        <http://www.w3.org/2002/07/owl#dataPropertyDomain> [<http://www.w3.org/2002/07/owl#unionOf> (up:Book_Citation
+                                                                                                     up:Journal_Citation) ; 
+                                                            a <http://www.w3.org/2002/07/owl#Class>],
+                                                           [<http://www.w3.org/2002/07/owl#unionOf> (up:Book_Citation
+                                                                                                     up:Journal_Citation) ; 
+                                                            a <http://www.w3.org/2002/07/owl#Class>];
+        <http://www.w3.org/2002/07/owl#dataPropertyRange> xsd:string.
+up:negative a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain up:Interaction;
+            rdfs:range xsd:boolean.
+up:obsolete a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "True if this resource has been replaced or deleted.";
+            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Protein
+                                                                  up:Taxon) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>],
+                        [<http://www.w3.org/2002/07/owl#unionOf> (up:Protein
+                                                                  up:Taxon) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>];
+            rdfs:label "obsolete";
+            rdfs:range xsd:boolean.
+up:oldMnemonic a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment "A mnemonic that is no longer in use for this entry.";
+               rdfs:domain up:Protein;
+               rdfs:range xsd:string;
+               rdfs:subPropertyOf up:name.
+up:orfName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain up:Gene;
+           rdfs:label "ORF name";
+           rdfs:range xsd:string;
+           rdfs:subPropertyOf up:name.
+up:organism a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment "The organism in which a protein occurs.";
+            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Protein
+                                                                  up:Sequence) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>],
+                        [<http://www.w3.org/2002/07/owl#unionOf> (up:Protein
+                                                                  up:Sequence) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>];
+            rdfs:range up:Taxon.
+up:orientation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                            <http://www.w3.org/2002/07/owl#onClass> up:Cellular_Component ; 
+                                                                            <http://www.w3.org/2002/07/owl#onProperty> up:cellularComponent ; 
+                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                            [<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                            <http://www.w3.org/2002/07/owl#onClass> up:Orientation ; 
+                                                                            <http://www.w3.org/2002/07/owl#onProperty> up:orientation ; 
+                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                            [<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                            <http://www.w3.org/2002/07/owl#onClass> up:Topology ; 
+                                                                            <http://www.w3.org/2002/07/owl#onProperty> up:topology ; 
+                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                            a <http://www.w3.org/2002/07/owl#Class>],
+                           [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                            <http://www.w3.org/2002/07/owl#onClass> up:Cellular_Component ; 
+                                                                            <http://www.w3.org/2002/07/owl#onProperty> up:cellularComponent ; 
+                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                            [<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                            <http://www.w3.org/2002/07/owl#onClass> up:Orientation ; 
+                                                                            <http://www.w3.org/2002/07/owl#onProperty> up:orientation ; 
+                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                            [<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                            <http://www.w3.org/2002/07/owl#onClass> up:Topology ; 
+                                                                            <http://www.w3.org/2002/07/owl#onProperty> up:topology ; 
+                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                            a <http://www.w3.org/2002/07/owl#Class>];
+               rdfs:range up:Orientation.
+up:otherName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:domain up:Taxon;
+             rdfs:label "other name";
+             rdfs:range xsd:string;
+             rdfs:subPropertyOf up:name.
+up:pages a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+           <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:comment "The first and last page for a chapter or article.";
+         rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Book_Citation
+                                                               up:Journal_Citation) ; 
+                      a <http://www.w3.org/2002/07/owl#Class>],
+                     [<http://www.w3.org/2002/07/owl#unionOf> (up:Book_Citation
+                                                               up:Journal_Citation) ; 
+                      a <http://www.w3.org/2002/07/owl#Class>];
+         rdfs:range xsd:string.
+up:part a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+        rdfs:range up:Part.
+up:partOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain up:Subcellular_Location;
+          rdfs:range up:Subcellular_Location.
+up:partOfLineage a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                   <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:comment "True for taxa that can appear as part of an organism's lineage.";
+                 rdfs:domain up:Taxon;
+                 rdfs:label "part of lineage";
+                 rdfs:range xsd:boolean.
+up:partial a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+             <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:comment "True if the pattern or profile on which the domain assignment is based did not detect the sequence because the sequence is not complete and lacks the region on which the pattern or profile is based.";
+           rdfs:domain up:Domain_Assignment_Statement;
+           rdfs:range xsd:boolean.
+up:participant a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "A protein that participates in a protein-protein interaction.";
+               rdfs:domain up:Interaction;
+               rdfs:range up:Participant.
+up:pattern a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+             <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:comment "A URL pattern, used to generate links by substituting an identifier.";
+           rdfs:domain up:Database;
+           rdfs:range xsd:string.
+up:place a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+           <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:comment "The place where a publication was published. This usually includes a country name.";
+         rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Book_Citation
+                                                               up:Thesis_Citation) ; 
+                      a <http://www.w3.org/2002/07/owl#Class>],
+                     [<http://www.w3.org/2002/07/owl#unionOf> (up:Book_Citation
+                                                               up:Thesis_Citation) ; 
+                      a <http://www.w3.org/2002/07/owl#Class>];
+         rdfs:range xsd:string.
+up:position a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "A position on a sequence.";
+            rdfs:domain up:RNA_Editing_Annotation;
+            rdfs:range xsd:int.
+up:precursor a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:domain up:Simple_Sequence;
+             rdfs:range xsd:boolean.
+up:publisher a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:comment "The publisher of a book.";
+             rdfs:domain up:Book_Citation;
+             rdfs:range xsd:string.
+up:range a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+         rdfs:comment "A range of amino acids.";
+         rdfs:domain up:Sequence_Annotation;
+         rdfs:range up:Range.
+up:rank a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+          <http://www.w3.org/2002/07/owl#ObjectProperty>;
+        rdfs:comment "The rank of a taxon.";
+        rdfs:domain up:Taxon;
+        rdfs:range up:Rank.
+up:recommendedName a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The name recommended by the UniProt consortium.";
+                   rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Part
+                                                                         up:Protein) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>],
+                               [<http://www.w3.org/2002/07/owl#unionOf> (up:Part
+                                                                         up:Protein) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>];
+                   rdfs:range up:Structured_Name;
+                   rdfs:subPropertyOf up:structuredName.
+up:referenceProteome a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:domain up:Taxon;
+                     rdfs:range xsd:boolean;
+                     rdfs:seeAlso "http://www.uniprot.org/faq/47"^^xsd:anyURI.
+up:relatedLocation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain up:Subcellular_Location;
+                   rdfs:range up:Subcellular_Location.
+up:replacedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "A resource that replaces this resource.";
+              rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Enzyme
+                                                                    up:Protein
+                                                                    up:Taxon) ; 
+                           a <http://www.w3.org/2002/07/owl#Class>],
+                          [<http://www.w3.org/2002/07/owl#unionOf> (up:Enzyme
+                                                                    up:Protein
+                                                                    up:Taxon) ; 
+                           a <http://www.w3.org/2002/07/owl#Class>];
+              rdfs:label "replaced by";
+              rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (up:Enzyme
+                                                                   up:Protein
+                                                                   up:Taxon) ; 
+                          a <http://www.w3.org/2002/07/owl#Class>],
+                         [<http://www.w3.org/2002/07/owl#unionOf> (up:Enzyme
+                                                                   up:Protein
+                                                                   up:Taxon) ; 
+                          a <http://www.w3.org/2002/07/owl#Class>];
+              <http://www.w3.org/2002/07/owl#inverseOf> up:replaces.
+up:replaces a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment "A resource that is replaced by this resource.";
+            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Enzyme
+                                                                  up:Protein
+                                                                  up:Taxon) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>],
+                        [<http://www.w3.org/2002/07/owl#unionOf> (up:Enzyme
+                                                                  up:Protein
+                                                                  up:Taxon) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>];
+            rdfs:range [<http://www.w3.org/2002/07/owl#intersectionOf> (up:Obsolete
+                                                                        [<http://www.w3.org/2002/07/owl#unionOf> (up:Enzyme
+                                                                                                                 up:Protein
+                                                                                                                 up:Taxon) ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Class>]) ; 
+                        a <http://www.w3.org/2002/07/owl#Class>],
+                       [<http://www.w3.org/2002/07/owl#intersectionOf> (up:Obsolete
+                                                                        [<http://www.w3.org/2002/07/owl#unionOf> (up:Enzyme
+                                                                                                                 up:Protein
+                                                                                                                 up:Taxon) ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Class>]) ; 
+                        a <http://www.w3.org/2002/07/owl#Class>].
+up:representativeFor a <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>,
+                       <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                       <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Protein
+                                                                           up:Sequence) ; 
+                                  a <http://www.w3.org/2002/07/owl#Class>],
+                                 [<http://www.w3.org/2002/07/owl#unionOf> (up:Protein
+                                                                           up:Sequence) ; 
+                                  a <http://www.w3.org/2002/07/owl#Class>];
+                     rdfs:range up:Cluster.
+up:resolution a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:comment "The resolution of an experiment, in Angstrom.";
+              rdfs:domain up:Structure_Resource;
+              rdfs:range xsd:float.
+up:reviewed a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "Indicates whether a resource has been reviewed by a curator.";
+            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Protein
+                                                                  up:Taxon) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>],
+                        [<http://www.w3.org/2002/07/owl#unionOf> (up:Protein
+                                                                  up:Taxon) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>];
+            rdfs:range xsd:boolean.
+up:scientificName a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                    <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain up:Taxon;
+                  rdfs:label "scientific name";
+                  rdfs:range xsd:string;
+                  rdfs:subPropertyOf up:name.
+up:scope a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:comment "The extent of the work carried out by the authors of a publication.";
+         rdfs:domain up:Citation_Statement;
+         rdfs:range xsd:string.
+up:seedFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain up:Sequence;
+           rdfs:range up:Cluster.
+up:sequence a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment "An amino acid sequence.";
+            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Annotation
+                                                                  up:Protein
+                                                                  up:Resource) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>],
+                        [<http://www.w3.org/2002/07/owl#unionOf> (up:Annotation
+                                                                  up:Protein
+                                                                  up:Resource) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>];
+            rdfs:range up:Sequence.
+up:sequenceFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "A resource that describes this sequence.";
+               rdfs:domain up:Sequence;
+               rdfs:label "sequence for";
+               rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (up:Annotation
+                                                                    up:Protein
+                                                                    up:Resource) ; 
+                           a <http://www.w3.org/2002/07/owl#Class>],
+                          [<http://www.w3.org/2002/07/owl#unionOf> (up:Annotation
+                                                                    up:Protein
+                                                                    up:Resource) ; 
+                           a <http://www.w3.org/2002/07/owl#Class>];
+               <http://www.w3.org/2002/07/owl#inverseOf> up:sequence.
+up:shortName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:comment "An abbreviation of the full name or an acronym.";
+             rdfs:subPropertyOf up:structuredNameType.
+up:source a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain up:Attribution.
+up:status a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+            <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:comment "The reliability of a statement.";
+          rdfs:range up:Status.
+up:strain a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain up:Taxon;
+          rdfs:range up:Strain.
+up:structuredName a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Part
+                                                                        up:Protein) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>],
+                              [<http://www.w3.org/2002/07/owl#unionOf> (up:Part
+                                                                        up:Protein) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>];
+                  rdfs:range up:Structured_Name.
+up:structuredNameType a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "All names of the protein, from commonly used to obsolete, to used in the literature..";
+                      rdfs:domain up:Structured_Name;
+                      rdfs:range xsd:string;
+                      rdfs:seeAlso "http://www.uniprot.org/manual/protein_names"^^xsd:anyURI.
+up:submittedName a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "A name provided by the submitter of the underlying nucleotide sequence.";
+                 rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Part
+                                                                       up:Protein) ; 
+                              a <http://www.w3.org/2002/07/owl#Class>],
+                             [<http://www.w3.org/2002/07/owl#unionOf> (up:Part
+                                                                       up:Protein) ; 
+                              a <http://www.w3.org/2002/07/owl#Class>];
+                 rdfs:range up:Structured_Name;
+                 rdfs:subPropertyOf up:structuredName.
+up:submittedTo a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment "The database a resource  was submitted to.";
+               rdfs:domain up:Submission_Citation.
+up:substitution a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "A replacement sequence.";
+                rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Mutagenesis_Annotation
+                                                                      up:Natural_Variant_Annotation
+                                                                      up:Sequence_Conflict_Annotation) ; 
+                             a <http://www.w3.org/2002/07/owl#Class>],
+                            [<http://www.w3.org/2002/07/owl#unionOf> (up:Mutagenesis_Annotation
+                                                                      up:Natural_Variant_Annotation
+                                                                      up:Sequence_Conflict_Annotation) ; 
+                             a <http://www.w3.org/2002/07/owl#Class>];
+                rdfs:range xsd:string.
+up:synonym a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+             <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain up:Taxon;
+           rdfs:range xsd:string;
+           rdfs:subPropertyOf up:name.
+up:title a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+           <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:comment "The title of a publication.";
+         rdfs:domain up:Citation;
+         rdfs:range xsd:string.
+up:topology a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                         <http://www.w3.org/2002/07/owl#onClass> up:Cellular_Component ; 
+                                                                         <http://www.w3.org/2002/07/owl#onProperty> up:cellularComponent ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                         [<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                         <http://www.w3.org/2002/07/owl#onClass> up:Orientation ; 
+                                                                         <http://www.w3.org/2002/07/owl#onProperty> up:orientation ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                         [<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                         <http://www.w3.org/2002/07/owl#onClass> up:Topology ; 
+                                                                         <http://www.w3.org/2002/07/owl#onProperty> up:topology ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>],
+                        [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                         <http://www.w3.org/2002/07/owl#onClass> up:Cellular_Component ; 
+                                                                         <http://www.w3.org/2002/07/owl#onProperty> up:cellularComponent ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                         [<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                         <http://www.w3.org/2002/07/owl#onClass> up:Orientation ; 
+                                                                         <http://www.w3.org/2002/07/owl#onProperty> up:orientation ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                         [<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                         <http://www.w3.org/2002/07/owl#onClass> up:Topology ; 
+                                                                         <http://www.w3.org/2002/07/owl#onProperty> up:topology ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>];
+            rdfs:range up:Topology.
+up:transcribedFrom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain up:Transcript_Resource.
+up:translatedFrom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain up:External_Sequence;
+                  rdfs:range up:Nucleotide_Resource.
+up:translatedTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain up:Transcript_Resource.
+up:version a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+             <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Protein
+                                                                 up:Sequence) ; 
+                        a <http://www.w3.org/2002/07/owl#Class>],
+                       [<http://www.w3.org/2002/07/owl#unionOf> (up:Protein
+                                                                 up:Sequence) ; 
+                        a <http://www.w3.org/2002/07/owl#Class>];
+           rdfs:range xsd:int.
+up:volume a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+            <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:comment "The volume a publication is part of.";
+          rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (up:Book_Citation
+                                                                up:Journal_Citation) ; 
+                       a <http://www.w3.org/2002/07/owl#Class>],
+                      [<http://www.w3.org/2002/07/owl#unionOf> (up:Book_Citation
+                                                                up:Journal_Citation) ; 
+                       a <http://www.w3.org/2002/07/owl#Class>].
+up:width a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+           <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:domain <http://xmlns.com/foaf/0.1/Image>;
+         rdfs:range xsd:int.
+up:xeno a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+          <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+        rdfs:domain up:Interaction;
+        rdfs:range xsd:boolean;
+        rdfs:seeAlso "http://www.uniprot.org/manual/binary_interactions"^^xsd:anyURI.
+rdf:Statement a <http://www.w3.org/2002/07/owl#Class>.
+rdfs:label a <http://www.w3.org/2002/07/owl#AnnotationProperty>,
+             <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.w3.org/2002/07/owl#Class> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2002/07/owl#Thing> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2004/02/skos/core#Concept> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2004/02/skos/core#prefLabel> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://xmlns.com/foaf/0.1/Image> a <http://www.w3.org/2002/07/owl#Class>.

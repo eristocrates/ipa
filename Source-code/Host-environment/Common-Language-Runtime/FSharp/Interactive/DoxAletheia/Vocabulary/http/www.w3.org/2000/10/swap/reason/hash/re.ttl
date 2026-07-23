@@ -6,9 +6,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace>.
 @prefix : <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix s: <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix w3: <http://www.w3.org/>.
 @prefix re: <http://www.w3.org/2000/10/swap/reason#>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
 
 re:Binding a rdfs:Class;
            rdfs:comment """A binding is given eg in a proof or query result.
@@ -49,7 +47,7 @@ re:Step a rdfs:Class;
 	""";
         rdfs:label "proof step".
 re:args a rdf:Property,
-          owl:FunctionalProperty;
+          <http://www.w3.org/2002/07/owl#FunctionalProperty>;
         rdfs:domain re:Commandline;
         rdfs:label """A human-readable representation of the arguments given
 	    on the command line""".
@@ -59,7 +57,7 @@ re:because a rdf:Property;
            rdfs:label "from";
            rdfs:range re:Step.
 re:boundTo a rdf:Property,
-             owl:FunctionalProperty;
+             <http://www.w3.org/2002/07/owl#FunctionalProperty>;
            rdfs:comment """
 	This binding binds its variable to this term.
 	""";
@@ -72,7 +70,7 @@ re:component a rdf:Property;
              rdfs:label "component";
              rdfs:range re:Step.
 re:evidence a rdf:Property,
-              owl:FunctionalProperty;
+              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
             rdfs:comment """The :evidence for a GMP inference step is a list of
     formulas, each proved by other means, which combined entail the
     result of making the given substitution in the antecedent of the rule.""";
@@ -90,21 +88,21 @@ re:gives a rdf:Property;
          rdfs:label "gives";
          rdfs:range <http://www.w3.org/2000/10/swap/reify#Formula>.
 re:rule a rdf:Property,
-          owl:FunctionalProperty;
+          <http://www.w3.org/2002/07/owl#FunctionalProperty>;
         rdfs:comment """The inference step was performed using a rule (implication)
     given.""";
         rdfs:domain re:Inference;
         rdfs:label "rule";
         rdfs:range re:Step.
 re:source a rdf:Property,
-            owl:FunctionalProperty;
+            <http://www.w3.org/2002/07/owl#FunctionalProperty>;
           rdfs:comment """The source document which was parsed.
 	""";
           rdfs:domain re:Parsing;
           rdfs:label "source";
           rdfs:range <http://www.w3.org/2000/10/swap/pim/soc#Work>.
 re:variable a rdf:Property,
-              owl:FunctionalProperty;
+              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
             rdfs:comment """
 	The given string is that used as the identifier of the variable
 	which is bound by this binding.  The variable name has to be given as

@@ -8,10 +8,6 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix schemas: <https://schema.org/>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix rec54: <http://www.w3.org/2001/02pd/rec54#>.
-@prefix locn: <http://www.w3.org/ns/locn#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix cpov: <http://data.europa.eu/m8g/>.
 
 <http://data.europa.eu/m8g> dc:issued "2024-01-31";
@@ -21,37 +17,37 @@
                             a owl:Ontology;
                             rdfs:label "core-location"@en,
                                        "core-location"@nl;
-                            rec54:editor [a foaf:Person ; 
-                                          foaf:firstName "Florian" ; 
-                                          foaf:lastName "Barthelemy" ; 
-                                          schemas:affiliation [foaf:name "PwC EU Services"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Jitse" ; 
-                                          foaf:lastName "De Cock" ; 
-                                          schemas:affiliation [foaf:name "PwC EU Services"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Emiel" ; 
-                                          foaf:lastName "Dhondt" ; 
-                                          schemas:affiliation [foaf:name "PwC EU Services"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Pavlina" ; 
-                                          foaf:lastName "Fragkou" ; 
-                                          schemas:affiliation [foaf:name "European Commission"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Arthur" ; 
-                                          foaf:lastName "Schiltz" ; 
-                                          schemas:affiliation [foaf:name "PwC EU Services"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Anastasia" ; 
-                                          foaf:lastName "Sofou" ; 
-                                          schemas:affiliation [foaf:name "Trasys International"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Emidio" ; 
-                                          foaf:lastName "Stani" ; 
-                                          schemas:affiliation [foaf:name "PwC EU Services"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Bert" ; 
-                                          foaf:lastName "Van Nuffelen"];
+                            <http://www.w3.org/2001/02pd/rec54#editor> [a foaf:Person ; 
+                                                                        foaf:firstName "Florian" ; 
+                                                                        foaf:lastName "Barthelemy" ; 
+                                                                        schemas:affiliation [foaf:name "PwC EU Services"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Jitse" ; 
+                                                                        foaf:lastName "De Cock" ; 
+                                                                        schemas:affiliation [foaf:name "PwC EU Services"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Emiel" ; 
+                                                                        foaf:lastName "Dhondt" ; 
+                                                                        schemas:affiliation [foaf:name "PwC EU Services"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Pavlina" ; 
+                                                                        foaf:lastName "Fragkou" ; 
+                                                                        schemas:affiliation [foaf:name "European Commission"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Arthur" ; 
+                                                                        foaf:lastName "Schiltz" ; 
+                                                                        schemas:affiliation [foaf:name "PwC EU Services"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Anastasia" ; 
+                                                                        foaf:lastName "Sofou" ; 
+                                                                        schemas:affiliation [foaf:name "Trasys International"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Emidio" ; 
+                                                                        foaf:lastName "Stani" ; 
+                                                                        schemas:affiliation [foaf:name "PwC EU Services"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Bert" ; 
+                                                                        foaf:lastName "Van Nuffelen"];
                             foaf:maker [a foaf:Person ; 
                                         foaf:firstName "Core Vocabularies Working Group"].
 cpov:AdminUnit a owl:Class;
@@ -67,28 +63,28 @@ cpov:code a owl:ObjectProperty;
           rdfs:range skos:Concept.
 cpov:coordinates a owl:DatatypeProperty;
                  rdfs:comment """	A list of geographic coordinates that define the extent of the Geometry."""@en;
-                 rdfs:domain locn:Geometry;
+                 rdfs:domain <http://www.w3.org/ns/locn#Geometry>;
                  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
                  rdfs:label "coordinates"@en;
                  rdfs:range xsd:string;
                  skos:scopeNote "Can be expressed as longitude, latitude, elevation."@en.
 cpov:crs a owl:DatatypeProperty;
          rdfs:comment "An identifier for the coordinate reference system."@en;
-         rdfs:domain locn:Geometry;
+         rdfs:domain <http://www.w3.org/ns/locn#Geometry>;
          rdfs:isDefinedBy <http://data.europa.eu/m8g>;
          rdfs:label "crs"@en;
          rdfs:range xsd:anyURI;
          skos:scopeNote "Can be a coordinate-based local, regional or global system used to locate geographical entities."@en.
 cpov:geometryType a owl:ObjectProperty;
                   rdfs:comment "The classification of the Geometry."@en;
-                  rdfs:domain locn:Geometry;
+                  rdfs:domain <http://www.w3.org/ns/locn#Geometry>;
                   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
                   rdfs:label "geometry type"@en;
                   rdfs:range skos:Concept;
                   skos:scopeNote "Can be a point, line or polygon."@en.
 cpov:latitude a owl:DatatypeProperty;
               rdfs:comment "The geographic coordinate that specifies the north / south position of the Geomerty on the Earth's surface."@en;
-              rdfs:domain locn:Geometry;
+              rdfs:domain <http://www.w3.org/ns/locn#Geometry>;
               rdfs:isDefinedBy <http://data.europa.eu/m8g>;
               rdfs:label "latitude"@en;
               rdfs:range xsd:string.
@@ -101,7 +97,7 @@ cpov:level a owl:ObjectProperty;
            skos:scopeNote "The recommended code list to indicate the level of an Admin Unit is the <a href=https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/atu-type>Administrative territorial unit type</a> Controlled Vocabulary maintained by the Publications Office of the EU. "@en.
 cpov:longitude a owl:DatatypeProperty;
                rdfs:comment "The geographic coordinate that specifies the east / west position of the Geometry on the Earth's surface."@en;
-               rdfs:domain locn:Geometry;
+               rdfs:domain <http://www.w3.org/ns/locn#Geometry>;
                rdfs:isDefinedBy <http://data.europa.eu/m8g>;
                rdfs:label "longitude"@en;
                rdfs:range xsd:string.

@@ -23,10 +23,6 @@
 @prefix odrl: <http://www.w3.org/ns/odrl/2/>.
 @prefix qb: <http://purl.org/linked-data/cube#>.
 @prefix csvw: <http://www.w3.org/ns/csvw#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix vcard2006: <http://www.w3.org/2006/vcard/ns#>.
-@prefix nsprov: <http://www.w3.org/ns/prov#>.
 
 om: dct:created "2025-08-24"^^xsd:date;
     dct:creator "OpenMetadata Team";

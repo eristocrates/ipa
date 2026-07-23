@@ -2,133 +2,123 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix ao: <http://purl.org/ontology/ao/core#>.
-@prefix rev: <http://purl.org/stuff/rev#>.
-@prefix toby: <http://tobyinkster.co.uk/#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix musim: <http://purl.org/ontology/similarity/>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 
-ao: dc11:creator <http://foaf.me/zazi#me>,
-                 toby:i;
-    dc11:date "2010-09-13T13:59:52+01:00"^^xsd:dateTime;
-    dc11:description """The Association Ontology specification provides basic properties 
+ao: <http://purl.org/dc/elements/1.1/creator> <http://foaf.me/zazi#me>,
+                                              <http://tobyinkster.co.uk/#i>;
+    <http://purl.org/dc/elements/1.1/date> "2010-09-13T13:59:52+01:00"^^xsd:dateTime;
+    <http://purl.org/dc/elements/1.1/description> """The Association Ontology specification provides basic properties 
 for describing specific associations to something, e.g. a context, an occasion, a genre or a mood, and enables furthermore, a mechanism to 
 like/rate and feedback these associations in context to something on/ for the Semantic Web. This document contains a RDF description 
 of the Association Ontology."""@en;
-    dc11:title "The Association Ontology"@en;
-    a owl:Ontology;
-    owl:imports dcterms:,
-                <http://purl.org/stuff/rev>,
-                dc11:,
-                <http://www.w3.org/2003/06/sw-vocab-status/ns>,
-                musim:,
-                foaf:,
-                <http://purl.org/NET/c4dm/event.owl>;
-    owl:versionInfo 0.4.
-ao:LikeableAssociation a owl:Class;
+    <http://purl.org/dc/elements/1.1/title> "The Association Ontology"@en;
+    a <http://www.w3.org/2002/07/owl#Ontology>;
+    <http://www.w3.org/2002/07/owl#imports> <http://purl.org/dc/terms/>,
+                                            <http://purl.org/stuff/rev>,
+                                            <http://purl.org/dc/elements/1.1/>,
+                                            <http://www.w3.org/2003/06/sw-vocab-status/ns>,
+                                            <http://purl.org/ontology/similarity/>,
+                                            <http://xmlns.com/foaf/0.1/>,
+                                            <http://purl.org/NET/c4dm/event.owl>;
+    <http://www.w3.org/2002/07/owl#versionInfo> 0.4.
+ao:LikeableAssociation a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:comment """A likeable association. That means this association type is intended to be used for voting (ao:likeminded), 
 feedbacking (rev:Feedback), reviewing (e.g. rev:rating) an association statement (related by ao:included_association) in the 
 context of something."""@en;
                        rdfs:isDefinedBy ao:;
                        rdfs:label "Likeable Association"@en;
-                       rdfs:subClassOf rev:Review,
-                                       musim:Association;
-                       status:term_status "testing"@en.
+                       rdfs:subClassOf <http://purl.org/stuff/rev#Review>,
+                                       <http://purl.org/ontology/similarity/Association>;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
 ao:activity a rdf:Property;
             rdfs:comment "An activity, which is associated to an individual, e.g. dancing, sleeping, driving."@en;
             rdfs:isDefinedBy ao:;
             rdfs:label "has activity"@en;
             rdfs:subPropertyOf ao:context;
-            status:term_status "testing"@en.
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
 ao:application a rdf:Property;
                rdfs:comment "An application, which is associated to an individual, e.g. a music player to a music track it's currently playing back."@en;
                rdfs:isDefinedBy ao:;
                rdfs:label "has application"@en;
                rdfs:subPropertyOf ao:context;
-               status:term_status "testing"@en.
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
 ao:context a rdf:Property;
            rdfs:comment "A property to associate any environmental context to an individual, e.g. a location, a time or an activity. Hence, this property is intended that sub properties should be created from it."@en;
-           rdfs:domain owl:Thing;
+           rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
            rdfs:isDefinedBy ao:;
            rdfs:label "has context"@en;
-           status:term_status "testing"@en.
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
 ao:device a rdf:Property;
           rdfs:comment "A device, which is associated with an individual, e.g. a CD player with a CD it's currently playing back."@en;
           rdfs:isDefinedBy ao:;
           rdfs:label "has device"@en;
           rdfs:subPropertyOf ao:context;
-          status:term_status "testing"@en.
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
 ao:genre a rdf:Property;
          rdfs:comment "An genre of something."@en;
-         rdfs:domain owl:Thing;
+         rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
          rdfs:isDefinedBy ao:;
          rdfs:label "has genre"@en;
-         rdfs:subPropertyOf dcterms:subject;
-         status:term_status "unstable"@en.
-ao:included_association a owl:ObjectProperty;
+         rdfs:subPropertyOf <http://purl.org/dc/terms/subject>;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable"@en.
+ao:included_association a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment """This property could be used to compose association statements or to reuse them, e.g. to make them likeable 
 in a specific context."""@en;
-                        rdfs:domain musim:Association;
+                        rdfs:domain <http://purl.org/ontology/similarity/Association>;
                         rdfs:isDefinedBy ao:;
                         rdfs:label "has included association"@en;
-                        rdfs:range musim:Association;
-                        owl:inverseOf [rdfs:label "is included association of" ; 
-                                       a owl:ObjectProperty];
-                        status:term_status "testing"@en.
-ao:likeminded a owl:ObjectProperty;
+                        rdfs:range <http://purl.org/ontology/similarity/Association>;
+                        <http://www.w3.org/2002/07/owl#inverseOf> [rdfs:label "is included association of" ; 
+                                                                   a <http://www.w3.org/2002/07/owl#ObjectProperty>];
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+ao:likeminded a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "Associates likeminded people to an association, which they like/ agree with.";
-              rdfs:domain musim:Association;
+              rdfs:domain <http://purl.org/ontology/similarity/Association>;
               rdfs:isDefinedBy ao:;
               rdfs:label "has likeminded";
-              rdfs:range foaf:Agent;
-              owl:inverseOf [rdfs:label "is likeminded of" ; 
-                             a owl:ObjectProperty];
-              status:term_status "testing".
+              rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+              <http://www.w3.org/2002/07/owl#inverseOf> [rdfs:label "is likeminded of" ; 
+                                                         a <http://www.w3.org/2002/07/owl#ObjectProperty>];
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
 ao:location a rdf:Property;
             rdfs:comment "A location, which is associated to an individual, e.g. my house, my country, my current whereabouts."@en;
             rdfs:isDefinedBy ao:;
             rdfs:label "has location"@en;
             rdfs:subPropertyOf ao:context;
-            status:term_status "testing"@en.
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
 ao:mood a rdf:Property;
         rdfs:comment "A mood that should be created by something."@en;
-        rdfs:domain owl:Thing;
+        rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
         rdfs:isDefinedBy ao:;
         rdfs:label "has mood"@en;
-        rdfs:subPropertyOf dcterms:subject;
-        status:term_status "unstable"@en.
+        rdfs:subPropertyOf <http://purl.org/dc/terms/subject>;
+        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable"@en.
 ao:occasion a rdf:Property;
             rdfs:comment "An occasion for which something was created."@en;
-            rdfs:domain owl:Thing;
+            rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
             rdfs:isDefinedBy ao:;
             rdfs:label "has occassion"@en;
-            rdfs:subPropertyOf dcterms:subject;
-            status:term_status "unstable"@en.
+            rdfs:subPropertyOf <http://purl.org/dc/terms/subject>;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable"@en.
 ao:time a rdf:Property;
         rdfs:comment "A time, which is associated to an individual, e.g. morning, afternoon, evening."@en;
         rdfs:isDefinedBy ao:;
         rdfs:label "has time"@en;
         rdfs:subPropertyOf ao:context;
-        owl:equivalentProperty dc11:date;
-        status:term_status "testing"@en.
-ao:used_application a owl:ObjectProperty,
+        <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/dc/elements/1.1/date>;
+        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+ao:used_application a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                       rdf:Property;
                     rdfs:comment "An application that is related to an event, e.g. a iTunes to a play back event of a music track."@en;
                     rdfs:isDefinedBy ao:;
                     rdfs:label "has used application"@en;
                     rdfs:subPropertyOf ao:application,
-                                       event:factor;
-                    status:term_status "unstable"@en.
-ao:used_device a owl:ObjectProperty,
+                                       <http://purl.org/NET/c4dm/event.owl#factor>;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable"@en.
+ao:used_device a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                  rdf:Property;
                rdfs:comment "A device that is related to an event, e.g. a MP3 player to a play back event of a music track."@en;
                rdfs:isDefinedBy ao:;
                rdfs:label "has used device"@en;
                rdfs:subPropertyOf ao:device,
-                                  event:factor;
-               status:term_status "unstable"@en.
+                                  <http://purl.org/NET/c4dm/event.owl#factor>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable"@en.

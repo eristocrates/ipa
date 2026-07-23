@@ -1,0 +1,493 @@
+@base <http://eulersharp.sourceforge.net/2003/03swap/time>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix dce: <http://purl.org/dc/elements/1.1/>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix clisko: <http://www.agfa.com/w3c/2009/clinicalSKOSSchemes#>.
+@prefix event: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
+@prefix time: <http://eulersharp.sourceforge.net/2003/03swap/time#>.
+@prefix tzont: <http://www.w3.org/2006/timezone#>.
+@prefix swaptime: <http://eulersharp.sourceforge.net/2003/03swap/time#>.
+
+<http://eulersharp.sourceforge.net/2003/03swap/time> dce:contributor "Jos De Roo, ir, Agfa Healthcare/Belgium; Marc Twagirumukiza, MD, PhD, Agfa Healthcare/Belgium"@en,
+                                                                     "Jos De Roo, Romain Endelin"@en;
+                                                     dce:creator "Hans Cools, MD; Agfa Healthcare/Belgium"@en;
+                                                     dce:description "Formal general description of time."@en;
+                                                     dce:format "OWL Full"@en;
+                                                     dce:publisher "Agfa Healthcare/Belgium"@en;
+                                                     dce:title "Time"@en;
+                                                     a owl:Ontology;
+                                                     rdfs:comment "For formal temporal reasoning,using the Unix Epoch time."@en;
+                                                     rdfs:seeAlso <http://eulersharp.sourceforge.net/2006/02swap/rif-plugin.yap>,
+                                                                  <http://eulersharp.sourceforge.net/2007/07test/rifP.n3>,
+                                                                  <http://eulersharp.sourceforge.net/2003/03swap/prolog>,
+                                                                  <http://eulersharp.sourceforge.net/2007/07test/biP.n3>,
+                                                                  <http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules>;
+                                                     skos:note "There are properties with list as range. A list keeps things together in a better way than a blank node and improves reasoning performance. List content is tripled when needed, e.g. to permit SPARQL querying."@en.
+time:after a owl:ObjectProperty,
+             owl:TransitiveProperty;
+           rdfs:domain event:Event;
+           rdfs:isDefinedBy time:;
+           rdfs:range event:Event;
+           rdfs:subPropertyOf time:timeRelatedTo;
+           owl:inverseOf time:before;
+           skos:definition "Linking a later to an earlier event."@en;
+           skos:note "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+time:before a owl:ObjectProperty,
+              owl:TransitiveProperty;
+            rdfs:domain event:Event;
+            rdfs:isDefinedBy time:;
+            rdfs:range event:Event;
+            rdfs:subPropertyOf time:timeRelatedTo;
+            skos:definition "Linking an earlier to a later event."@en;
+            skos:note "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+time:begins a owl:DatatypeProperty,
+              owl:FunctionalProperty;
+            rdfs:domain event:Event;
+            rdfs:isDefinedBy time:;
+            rdfs:range xsd:dateTime;
+            skos:definition "Specifying a begin point in time of an event."@en.
+time:beginsAfter a owl:ObjectProperty,
+                   owl:TransitiveProperty;
+                 rdfs:domain event:Event;
+                 rdfs:isDefinedBy time:;
+                 rdfs:range event:Event;
+                 rdfs:subPropertyOf time:timeRelatedTo;
+                 owl:inverseOf time:beginsBefore;
+                 skos:definition "Linking a later beginning to an earlier beginning event."@en;
+                 skos:note "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+time:beginsBefore a owl:ObjectProperty,
+                    owl:TransitiveProperty;
+                  rdfs:domain event:Event;
+                  rdfs:isDefinedBy time:;
+                  rdfs:range event:Event;
+                  rdfs:subPropertyOf time:timeRelatedTo;
+                  skos:definition "Linking an earlier beginning to a later beginning event."@en;
+                  skos:note "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+time:beginsBeforeEndOf a owl:ObjectProperty;
+                       rdfs:domain event:Event;
+                       rdfs:isDefinedBy time:;
+                       rdfs:range event:Event;
+                       rdfs:subPropertyOf time:timeRelatedTo;
+                       owl:propertyChainAxiom (time:beginsDuring
+                                               time:endsBefore);
+                       skos:definition "Linking a beginning event to a later ending of another event."@en;
+                       skos:note "Used in an N3 rule conclusion."@en.
+time:beginsDuring a owl:ObjectProperty,
+                    owl:TransitiveProperty;
+                  rdfs:domain event:Event;
+                  rdfs:isDefinedBy time:;
+                  rdfs:range event:Event;
+                  rdfs:subPropertyOf time:timeRelatedTo;
+                  skos:definition "Specifying an event during which another event begins."@en.
+time:beginsSameAsEndOf a owl:ObjectProperty,
+                         owl:TransitiveProperty;
+                       rdfs:domain event:Event;
+                       rdfs:isDefinedBy time:;
+                       rdfs:range event:Event;
+                       rdfs:subPropertyOf time:timeRelatedTo;
+                       owl:inverseOf time:endsSameAsBeginningOf;
+                       skos:definition "Linking a beginning event to another event ending at the same moment."@en;
+                       skos:note "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+time:calculatingAfter a owl:ObjectProperty;
+                      rdfs:comment "Such a triple invokes in an N3 rule a backward N3 rule checking this time relation for 2 events in premise and returning the triple."@en;
+                      rdfs:domain rdf:List;
+                      rdfs:isDefinedBy time:;
+                      rdfs:range rdf:List;
+                      skos:definition "Linking 2 lists with each a beginning and end date time typed literal of an event, and first event happens after second."@en.
+time:calculatingAge a owl:FunctionalProperty;
+                    rdfs:domain rdf:List;
+                    rdfs:isDefinedBy time:;
+                    rdfs:range e:Number;
+                    skos:definition "Specifying a calculated age in years for a list of something and a reference date time."@en;
+                    skos:note "Triggering in an N3 rule a backward N3 rule to calculate an age of something depending on a reference date time."@en.
+time:calculatingBefore a owl:ObjectProperty;
+                       rdfs:comment "Such a triple invokes in an N3 rule a backward N3 rule checking this time relation for 2 events in premise and returning the triple."@en;
+                       rdfs:domain rdf:List;
+                       rdfs:isDefinedBy time:;
+                       rdfs:range rdf:List;
+                       skos:definition "Linking 2 lists with each a beginning and end date time typed literal of an event, and first event happens before second."@en.
+time:calculatingBeginsAfter a owl:ObjectProperty;
+                            rdfs:comment "Such a triple invokes in an N3 rule a backward N3 rule checking this time relation for 2 events in premise and returning the triple."@en;
+                            rdfs:domain rdf:List;
+                            rdfs:isDefinedBy time:;
+                            rdfs:range rdf:List;
+                            skos:definition "Linking 2 lists with each a beginning and end date time typed literal of an event, and first event begins after second."@en.
+time:calculatingBeginsBefore a owl:ObjectProperty;
+                             rdfs:comment "Such a triple invokes in an N3 rule a backward N3 rule checking this time relation for 2 events in premise and returning the triple."@en;
+                             rdfs:domain rdf:List;
+                             rdfs:isDefinedBy time:;
+                             rdfs:range rdf:List;
+                             skos:definition "Linking 2 lists with each a beginning and end date time typed literal of an event, and first event begins before second."@en.
+time:calculatingDuration a owl:DatatypeProperty;
+                         rdfs:comment "Such a triple invokes in an N3 rule a backward N3 rule calculating an event's duration in premise and returning the duration."@en;
+                         rdfs:domain event:Event;
+                         rdfs:isDefinedBy time:;
+                         rdfs:range xsd:duration;
+                         skos:definition "Relating an event to its calculated duration."@en.
+time:calculatingDuring a owl:ObjectProperty;
+                       rdfs:comment "Such a triple invokes in an N3 rule a backward N3 rule checking this time relation for 2 events in premise and returning the triple."@en;
+                       rdfs:domain rdf:List;
+                       rdfs:isDefinedBy time:;
+                       rdfs:range rdf:List;
+                       skos:definition "Linking 2 lists with each a beginning and end date time typed literal of an event, and first event happens during second."@en.
+time:calculatingEndsAfter a owl:ObjectProperty;
+                          rdfs:comment "Such a triple invokes in an N3 rule a backward N3 rule checking this time relation for 2 events in premise and returning the triple."@en;
+                          rdfs:domain rdf:List;
+                          rdfs:isDefinedBy time:;
+                          rdfs:range rdf:List;
+                          skos:definition "Linking 2 lists with each a beginning and end date time typed literal of an event, and first event ends after second."@en.
+time:calculatingEndsBefore a owl:ObjectProperty;
+                           rdfs:comment "Such a triple invokes in an N3 rule a backward N3 rule checking this time relation for 2 events in premise and returning the triple."@en;
+                           rdfs:domain rdf:List;
+                           rdfs:isDefinedBy time:;
+                           rdfs:range rdf:List;
+                           skos:definition "Linking 2 lists with each a beginning and end date time typed literal of an event, and first event ends before second."@en.
+time:calculatingIncludes a owl:ObjectProperty;
+                         rdfs:comment "Such a triple invokes in an N3 rule a backward N3 rule checking this time relation for 2 events in premise and returning the triple."@en;
+                         rdfs:domain rdf:List;
+                         rdfs:isDefinedBy time:;
+                         rdfs:range rdf:List;
+                         skos:definition "Linking 2 lists with each a beginning and end date time typed literal of an event, and first event includes second."@en.
+time:calculatingOverlaps a owl:ObjectProperty;
+                         rdfs:comment "Such a triple invokes in an N3 rule a backward N3 rule checking this time relation for 2 events in premise and returning the triple."@en;
+                         rdfs:domain rdf:List;
+                         rdfs:isDefinedBy time:;
+                         rdfs:range rdf:List;
+                         skos:definition "Linking 2 lists with each a beginning and end date time typed literal of an event, and events overlap each other."@en.
+time:calculatingSameBeginning a owl:ObjectProperty;
+                              rdfs:comment "Such a triple invokes in an N3 rule a backward N3 rule checking this time relation for 2 events in premise and returning the triple."@en;
+                              rdfs:domain rdf:List;
+                              rdfs:isDefinedBy time:;
+                              rdfs:range rdf:List;
+                              skos:definition "Linking 2 lists with each a beginning and end date time typed literal of an event, and events beginning at a same time-point."@en.
+time:calculatingSameDuration a owl:ObjectProperty;
+                             rdfs:comment "Such a triple invokes in an N3 rule a backward N3 rule checking this time relation for 2 events in premise and returning the triple."@en;
+                             rdfs:domain rdf:List;
+                             rdfs:isDefinedBy time:;
+                             rdfs:range rdf:List;
+                             skos:definition "Linking 2 lists with each a beginning and end date time typed literal of an event, and events having same duration."@en.
+time:calculatingSameEnd a owl:ObjectProperty;
+                        rdfs:comment "Such a triple invokes in an N3 rule a backward N3 rule checking this time relation for 2 events in premise and returning the triple."@en;
+                        rdfs:domain rdf:List;
+                        rdfs:isDefinedBy time:;
+                        rdfs:range rdf:List;
+                        skos:definition "Linking 2 lists with each a beginning and end date time typed literal of an event, and events ending at a same time-point."@en.
+time:calculatingSameTime a owl:ObjectProperty;
+                         rdfs:comment "Such a triple invokes in an N3 rule a backward N3 rule checking this time relation for 2 events in premise and returning the triple."@en;
+                         rdfs:domain rdf:List;
+                         rdfs:isDefinedBy time:;
+                         rdfs:range rdf:List;
+                         skos:definition "Linking 2 lists with each a beginning and end date time typed literal of an event, and events happen during same time."@en.
+time:calculatingTakesLessLongThan a owl:ObjectProperty;
+                                  rdfs:comment "Such a triple invokes in an N3 rule a backward N3 rule checking this time relation for 2 events in premise and returning the triple."@en;
+                                  rdfs:domain rdf:List;
+                                  rdfs:isDefinedBy time:;
+                                  rdfs:range rdf:List;
+                                  skos:definition "Linking 2 lists with each a beginning and end date time typed literal of an event, and first event takes less long than second."@en.
+time:calculatingTakesLongerThan a owl:ObjectProperty;
+                                rdfs:comment "Such a triple invokes in an N3 rule a backward N3 rule checking this time relation for 2 events in premise and returning the triple."@en;
+                                rdfs:domain rdf:List;
+                                rdfs:isDefinedBy time:;
+                                rdfs:range rdf:List;
+                                skos:definition "Linking 2 lists with each a beginning and end date time typed literal of an event, and first event takes longer than second."@en.
+time:dateLiteralToPeriod a owl:ObjectProperty;
+                         rdfs:comment "Used in an N3 rule triple to invoke a backward N3 rule converting a date described by 3 literals to a period described by beginning and end date time, in this way explicitly stating the implicit period of a day margin."@en,
+                                      "In N3 rules universally quantified variables are declared to pick up the respective values: (?yearLiteral ?monthLiteral ?dayLiteral) time:dateLiteralToPeriod (?beginning ?end)."@en;
+                         rdfs:domain rdf:List;
+                         rdfs:isDefinedBy time:;
+                         rdfs:range rdf:List;
+                         skos:definition "Linking a list with 3 literals, resp representing number of years, number of months and number of days, to a list with 2 xsd:dateTime typed literals representing a beginning and an end of a day."@en.
+time:dateToPeriod a owl:ObjectProperty;
+                  rdfs:comment "Used in a triple to invoke a backward N3 rule converting an xsd:date typed literal to a period described by beginning and end date time, in this way explicitly stating the implicit time period margin."@en,
+                               "In N3 rules universally quantified variables are declared to pick up the respective values: ?date time:dateToPeriod (?beginning ?end)."@en;
+                  rdfs:domain xsd:date;
+                  rdfs:isDefinedBy time:;
+                  rdfs:range rdf:List;
+                  skos:definition "Linking an xsd:date typed literal to a list with 2 xsd:dateTime typed literals representing a beginning and an end of a day."@en.
+time:during a owl:ObjectProperty,
+              owl:TransitiveProperty;
+            rdfs:domain event:Event;
+            rdfs:isDefinedBy time:;
+            rdfs:range event:Event;
+            rdfs:subPropertyOf time:timeRelatedTo;
+            skos:definition "Specifying an event during which another event happens."@en;
+            skos:note "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+time:ends a owl:DatatypeProperty,
+            owl:FunctionalProperty;
+          rdfs:domain event:Event;
+          rdfs:isDefinedBy time:;
+          rdfs:range xsd:dateTime;
+          skos:definition "Specifying the end point in time of an event."@en.
+time:endsAfter a owl:ObjectProperty,
+                 owl:TransitiveProperty;
+               rdfs:domain event:Event;
+               rdfs:isDefinedBy time:;
+               rdfs:range event:Event;
+               rdfs:subPropertyOf time:timeRelatedTo;
+               owl:inverseOf time:endsBefore;
+               skos:definition "Linking a later ending to an earlier ending event."@en;
+               skos:note "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+time:endsAfterBeginningOf a owl:ObjectProperty;
+                          rdfs:domain event:Event;
+                          rdfs:isDefinedBy time:;
+                          rdfs:range event:Event;
+                          rdfs:subPropertyOf time:timeRelatedTo;
+                          owl:propertyChainAxiom (time:endsDuring
+                                                  time:beginsAfter);
+                          skos:definition "Linking an ending event to an earlier beginning of another event."@en;
+                          skos:note "Used in an N3 rule conclusion."@en.
+time:endsBefore a owl:ObjectProperty,
+                  owl:TransitiveProperty;
+                rdfs:domain event:Event;
+                rdfs:isDefinedBy time:;
+                rdfs:range event:Event;
+                rdfs:subPropertyOf time:timeRelatedTo;
+                skos:definition "Linking an earlier ending to a later ending event."@en;
+                skos:note "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+time:endsDuring a owl:ObjectProperty,
+                  owl:TransitiveProperty;
+                rdfs:domain event:Event;
+                rdfs:isDefinedBy time:;
+                rdfs:range event:Event;
+                rdfs:subPropertyOf time:timeRelatedTo;
+                skos:definition "Specifying an event during which another event ends."@en.
+time:endsSameAsBeginningOf a owl:ObjectProperty,
+                             owl:TransitiveProperty;
+                           rdfs:domain event:Event;
+                           rdfs:isDefinedBy time:;
+                           rdfs:range event:Event;
+                           rdfs:subPropertyOf time:timeRelatedTo;
+                           owl:inverseOf time:beginsSameAsEndOf;
+                           skos:definition "Linking an ending event to another event beginning at the same moment."@en;
+                           skos:note "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+time:hasAge a owl:FunctionalProperty;
+            rdfs:domain rdfs:Resource;
+            rdfs:isDefinedBy time:;
+            rdfs:range e:Number;
+            skos:definition "Specifying an age in years of something."@en.
+time:hasAges a owl:FunctionalProperty;
+             rdfs:domain rdfs:Class;
+             rdfs:isDefinedBy time:;
+             rdfs:range rdf:List;
+             skos:definition "Linking a group of something to a list of its members' ages in years."@en.
+time:hasBeginDate a owl:DatatypeProperty,
+                    owl:FunctionalProperty;
+                  rdfs:domain event:Event;
+                  rdfs:isDefinedBy time:;
+                  rdfs:range xsd:date;
+                  skos:definition "Specifying a begin point in time of an event as date."@en.
+time:hasBeginningPeriodMargin a owl:ObjectProperty;
+                              rdfs:domain event:Event;
+                              rdfs:isDefinedBy time:;
+                              rdfs:range rdf:List;
+                              skos:definition "Linking an event to a list with 2 xsd:dateTime typed literals representing a beginning and an end of a period wherein it begins."@en.
+time:hasDate a owl:DatatypeProperty,
+               owl:FunctionalProperty;
+             rdfs:domain rdfs:Resource;
+             rdfs:isDefinedBy time:;
+             rdfs:range xsd:date;
+             skos:definition "Specifying a date of something."@en.
+time:hasDateTime a owl:DatatypeProperty,
+                   owl:FunctionalProperty;
+                 rdfs:domain rdfs:Resource;
+                 rdfs:isDefinedBy time:;
+                 rdfs:range xsd:dateTime;
+                 skos:definition "Specifying a point in time of something with a date time."@en.
+time:hasDiagnosingPeriodMargin a owl:ObjectProperty;
+                               rdfs:domain rdfs:Resource;
+                               rdfs:isDefinedBy time:;
+                               rdfs:range rdf:List;
+                               skos:definition "Linking something to a list with 2 xsd:dateTime typed literals representing a beginning and an end of a period wherein it is diagnosed."@en.
+time:hasDuration a owl:DatatypeProperty,
+                   owl:FunctionalProperty;
+                 rdfs:domain event:Event;
+                 rdfs:isDefinedBy time:;
+                 rdfs:range xsd:duration;
+                 skos:definition "Specifying a duration of an event."@en.
+time:hasDurationDescription a owl:DatatypeProperty,
+                              owl:FunctionalProperty;
+                            rdfs:domain rdfs:Resource;
+                            rdfs:isDefinedBy time:;
+                            rdfs:range rdfs:Resource;
+                            skos:definition "Specifying a duration description for a temporal entity of something."@en.
+time:hasEndDate a owl:DatatypeProperty,
+                  owl:FunctionalProperty;
+                rdfs:domain event:Event;
+                rdfs:isDefinedBy time:;
+                rdfs:range xsd:date;
+                skos:definition "Specifying the end point in time of an event as date."@en.
+time:hasEndPeriodMargin a owl:ObjectProperty;
+                        rdfs:domain event:Event;
+                        rdfs:isDefinedBy time:;
+                        rdfs:range rdf:List;
+                        skos:definition "Linking an event to a list with 2 xsd:dateTime typed literals representing a beginning and an end of a period wherein it ends."@en.
+time:hasEvaluatingPeriodMargin a owl:ObjectProperty;
+                               rdfs:domain rdfs:Resource;
+                               rdfs:isDefinedBy time:;
+                               rdfs:range rdf:List;
+                               skos:definition "Linking something to a list with 2 xsd:dateTime typed literals representing a beginning and an end of a period wherein it is evaluated."@en.
+time:hasExaminingPeriodMargin a owl:ObjectProperty;
+                              rdfs:domain rdfs:Resource;
+                              rdfs:isDefinedBy time:;
+                              rdfs:range rdf:List;
+                              skos:definition "Linking something to a list with 2 xsd:dateTime typed literals representing a beginning and an end of a period wherein it is examined."@en.
+time:hasMedianAge a owl:DatatypeProperty,
+                    owl:FunctionalProperty;
+                  rdfs:domain rdfs:Class;
+                  rdfs:isDefinedBy time:;
+                  rdfs:range e:Number;
+                  skos:definition "Linking a class to the median age of its members."@en.
+time:hasObservingPeriodMargin a owl:ObjectProperty;
+                              rdfs:domain rdfs:Resource;
+                              rdfs:isDefinedBy time:;
+                              rdfs:range rdf:List;
+                              skos:definition "Linking something to a list with 2 xsd:dateTime typed literals representing a beginning and an end of a period wherein it is observed."@en.
+time:hasObtainingPeriodMargin a owl:ObjectProperty;
+                              rdfs:domain rdfs:Resource;
+                              rdfs:isDefinedBy time:;
+                              rdfs:range rdf:List;
+                              skos:definition "Linking something to a list with 2 xsd:dateTime typed literals representing a beginning and an end of a period wherein it is obtained."@en.
+time:hasOutputDateTime a owl:DatatypeProperty,
+                         owl:FunctionalProperty;
+                       rdfs:domain event:Process;
+                       rdfs:isDefinedBy time:;
+                       rdfs:range xsd:dateTime;
+                       skos:definition "Specifying a date time at which a process has an output."@en.
+time:hasPerformingPeriodMargin a owl:ObjectProperty;
+                               rdfs:domain event:Action;
+                               rdfs:isDefinedBy time:;
+                               rdfs:range rdf:List;
+                               skos:definition "Linking an action to a list with 2 xsd:dateTime typed literals representing a beginning and an end of a period wherein the action is performed."@en.
+time:hasSameBeginningAs a owl:SymmetricProperty;
+                        rdfs:domain event:Event;
+                        rdfs:isDefinedBy time:;
+                        rdfs:range event:Event;
+                        rdfs:subPropertyOf time:timeRelatedTo;
+                        skos:definition "Linking 2 events beginning on the same moment."@en;
+                        skos:note "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+time:hasSameDurationAs a owl:SymmetricProperty;
+                       rdfs:domain event:Event;
+                       rdfs:isDefinedBy time:;
+                       rdfs:range event:Event;
+                       rdfs:subPropertyOf time:timeRelatedTo;
+                       skos:definition "Linking 2 events having the same duration."@en;
+                       skos:note "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+time:hasSameEndAs a owl:SymmetricProperty;
+                  rdfs:domain event:Event;
+                  rdfs:isDefinedBy time:;
+                  rdfs:range event:Event;
+                  rdfs:subPropertyOf time:timeRelatedTo;
+                  skos:definition "Linking 2 events ending on the same moment."@en;
+                  skos:note "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+time:hasSameTimeAs a owl:SymmetricProperty;
+                   rdfs:domain event:Event;
+                   rdfs:isDefinedBy time:;
+                   rdfs:range event:Event;
+                   rdfs:subPropertyOf time:timeRelatedTo;
+                   skos:definition "Linking 2 events happening at the same time."@en;
+                   skos:note "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+time:hasSnapshotDate a owl:DatatypeProperty,
+                       owl:FunctionalProperty;
+                     rdfs:comment "A snapshot is an event with coinciding beginning and end."@en;
+                     rdfs:domain event:Event;
+                     rdfs:isDefinedBy time:;
+                     rdfs:range xsd:date;
+                     skos:definition "Specifying a snapshot event's date."@en;
+                     skos:note "Used in N3 rules calculating with date and duration using Unix Epoch time."@en.
+time:hasSnapshotDateTime a owl:DatatypeProperty,
+                           owl:FunctionalProperty;
+                         rdfs:comment "A snapshot is an event with coinciding beginning and end."@en;
+                         rdfs:domain event:Event;
+                         rdfs:isDefinedBy time:;
+                         rdfs:range xsd:dateTime;
+                         skos:definition "Specifying a snapshot event's date and time."@en;
+                         skos:note "Used in N3 rules calculating with date time and duration using Unix Epoch time."@en.
+time:hasTimeZone a owl:DatatypeProperty,
+                   owl:FunctionalProperty;
+                 rdfs:comment "Time zone extracted from an xsd:date, xsd:dateTime or xsd:time typed literal with rif builtin functions."@en;
+                 rdfs:isDefinedBy time:;
+                 rdfs:range xsd:dayTimeDuration;
+                 rdfs:seeAlso <http://eulersharp.sourceforge.net/2006/02swap/rif-plugin.yap>,
+                              <http://eulersharp.sourceforge.net/2007/07test/rifP.n3>;
+                 skos:definition "Specifying a time zone of something."@en;
+                 skos:note "Used in N3 rules calculating with date and duration using Unix Epoch time."@en.
+time:hasTreatingPeriodMargin a owl:ObjectProperty;
+                             rdfs:domain rdfs:Resource;
+                             rdfs:isDefinedBy time:;
+                             rdfs:range rdf:List;
+                             skos:definition "Linking something to a list with 2 xsd:dateTime typed literals representing a beginning and an end of a period wherein it is treated."@en.
+time:includes a owl:ObjectProperty,
+                owl:TransitiveProperty;
+              rdfs:domain event:Event;
+              rdfs:isDefinedBy time:;
+              rdfs:range event:Event;
+              rdfs:subPropertyOf time:timeRelatedTo;
+              owl:inverseOf time:during;
+              skos:definition "Specifying an event happening during another event."@en;
+              skos:note "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+time:overlaps a owl:SymmetricProperty;
+              rdfs:domain event:Event;
+              rdfs:isDefinedBy time:;
+              rdfs:range event:Event;
+              rdfs:subPropertyOf time:timeRelatedTo;
+              skos:definition "Specifying an event overlapping another event."@en;
+              skos:note "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+time:takesLessLongThan a owl:ObjectProperty,
+                         owl:TransitiveProperty;
+                       rdfs:domain event:Event;
+                       rdfs:isDefinedBy time:;
+                       rdfs:range event:Event;
+                       rdfs:subPropertyOf time:timeRelatedTo;
+                       owl:inverseOf time:takesLongerThan;
+                       skos:definition "Linking a shorter to a longer event."@en;
+                       skos:note "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+time:takesLongerThan a owl:ObjectProperty,
+                       owl:TransitiveProperty;
+                     rdfs:domain event:Event;
+                     rdfs:isDefinedBy time:;
+                     rdfs:range event:Event;
+                     rdfs:subPropertyOf time:timeRelatedTo;
+                     skos:definition "Linking a longer to a shorter event."@en;
+                     skos:note "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+time:timeRelatedTo a owl:ObjectProperty;
+                   rdfs:domain event:Event;
+                   rdfs:isDefinedBy time:;
+                   rdfs:range event:Event;
+                   owl:unionOf (time:beginsBefore
+                                time:beginsBeforeEndOf
+                                time:hasSameBeginningAs
+                                time:beginsDuring
+                                time:beginsAfter
+                                time:endsBefore
+                                time:hasSameEndAs
+                                time:endsDuring
+                                time:endsAfter
+                                time:before
+                                time:after
+                                time:overlaps
+                                time:hasSameTimeAs
+                                time:during
+                                time:includes
+                                time:hasSameDurationAs
+                                time:takesLongerThan
+                                time:takesLessLongThan);
+                   skos:definition "Relating 2 events in time."@en.
+time:yearLiteralToPeriod a owl:ObjectProperty;
+                         rdfs:comment "Used in a triple to invoke a backward N3 rule converting a literal to a period described by beginning and end date time, in this way explicitly stating the implicit period of a year margin."@en,
+                                      "In N3 rules universally quantified variables are declared to pick up the respective values: ?yearLiteral time:yearLiteralToPeriod (?beginning ?end)."@en;
+                         rdfs:domain rdfs:Literal;
+                         rdfs:isDefinedBy time:;
+                         rdfs:range rdf:List;
+                         skos:definition "Linking a literal representing number of years to a list with 2 xsd:dateTime typed literals representing a beginning and an end of a year."@en.
+time:yearMonthLiteralToPeriod a owl:ObjectProperty;
+                              rdfs:comment "Used in an N3 rule triple to invoke a backward N3 rule converting 2 literals to a period described by beginning and end date time, in this way explicitly stating the implicit period of a month margin."@en,
+                                           """In N3 rules universally quantified variables are declared to pick up the respective values: (?yearLiteral ?monthLiteral) time:yearMonthLiteralToPeriod (?beginning ?end); at runtime this will generate e.g. subject (\"2010\" \"3\") and object (."""@en;
+                              rdfs:domain rdf:List;
+                              rdfs:isDefinedBy time:;
+                              rdfs:range rdf:List;
+                              skos:definition "Linking a list with 2 literals, resp representing number of years and number of months, to a list with 2 xsd:dateTime typed literals representing a beginning and an end of a month."@en.

@@ -1,0 +1,119 @@
+@base <https://docs.oasis-open-projects.org/oslc-op/qm/v2.1/os/quality-management-vocab.ttl>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix oslc: <http://open-services.net/ns/core#>.
+@prefix osqm: <http://open-services.net/ns/qm#>.
+
+osqm: dcterms:description "All vocabulary URIs defined in the OSLC Quality Management (QM) namespace."^^rdf:XMLLiteral;
+      dcterms:hasVersion "OS";
+      dcterms:isPartOf <https://docs.oasis-open-projects.org/oslc-op/qm/v2.1/os/quality-management-spec.html>;
+      dcterms:issued "2022-01-19"^^xsd:date;
+      dcterms:license <http://www.apache.org/licenses/LICENSE-2.0>;
+      dcterms:publisher <https://open-services.net/about/>;
+      dcterms:source <https://docs.oasis-open-projects.org/oslc-op/qm/v2.1/os/quality-management-vocab.ttl>;
+      dcterms:title "OSLC Quality Management (QM) Vocabulary";
+      vann:preferredNamespacePrefix "oslc_qm";
+      a owl:Ontology;
+      rdfs:label "OSLC Quality Management (QM) Vocabulary";
+      rdfs:seeAlso <https://github.com/oslc-op/oslc-specs/blob/master/specs/qm/quality-management-vocab.ttl>.
+osqm:TestCase a rdfs:Class;
+              rdfs:comment "The QM Test Case resource.";
+              rdfs:isDefinedBy osqm:;
+              rdfs:label "TestCase".
+osqm:TestExecutionRecord a rdfs:Class;
+                         rdfs:comment "The QM Test Execution Record resource.";
+                         rdfs:isDefinedBy osqm:;
+                         rdfs:label "TestExecutionRecord".
+osqm:TestPlan a rdfs:Class;
+              rdfs:comment "The QM Test Plan resource.";
+              rdfs:isDefinedBy osqm:;
+              rdfs:label "TestPlan".
+osqm:TestResult a rdfs:Class;
+                rdfs:comment "The QM Test Result resource.";
+                rdfs:isDefinedBy osqm:;
+                rdfs:label "TestResult".
+osqm:TestScript a rdfs:Class;
+                rdfs:comment "The QM Test Script resource.";
+                rdfs:isDefinedBy osqm:;
+                rdfs:label "TestScript".
+osqm:affectedByChangeRequest oslc:inverseLabel "affects";
+                             a rdf:Property;
+                             rdfs:comment "Change request that affects the Test Result. It is likely that the target resource will be an oslc_cm:ChangeRequest but that is not necessarily the case.";
+                             rdfs:isDefinedBy osqm:;
+                             rdfs:label "affectedByChangeRequest".
+osqm:blockedByChangeRequest oslc:inverseLabel "blocks";
+                            a rdf:Property;
+                            rdfs:comment "Change Request that prevents execution of the Test Execution Record. It is likely that the target resource will be an oslc_cm:ChangeRequest but that is not necessarily the case.";
+                            rdfs:isDefinedBy osqm:;
+                            rdfs:label "blockedByChangeRequest".
+osqm:executesTestScript oslc:inverseLabel "executed by";
+                        a rdf:Property;
+                        rdfs:comment "Test Script executed to produce the Test Result. It is likely that the target resource will be an oslc_qm:TestScript but that is not necessarily the case.";
+                        rdfs:isDefinedBy osqm:;
+                        rdfs:label "executesTestScript".
+osqm:executionInstructions a rdf:Property;
+                           rdfs:comment "Instructions for executing the test script. Note that the value of Occurs is undefined. The resource shape document provided by the QM service provider may be consulted for its value.";
+                           rdfs:isDefinedBy osqm:;
+                           rdfs:label "executionInstructions".
+osqm:producedByTestExecutionRecord a rdf:Property;
+                                   rdfs:comment "Test Execution Record that the Test Result was produced by. It is likely that the target resource will be an oslc_qm:TestExecutionRecord but that is not necessarily the case.";
+                                   rdfs:isDefinedBy osqm:;
+                                   rdfs:label "producedByTestExecutionRecord".
+osqm:relatedChangeRequest oslc:inverseLabel "relates to";
+                          a rdf:Property;
+                          rdfs:comment "A related change request. It is likely that the target resource will be an oslc_cm:ChangeRequest but that is not necessarily the case.";
+                          rdfs:isDefinedBy osqm:;
+                          rdfs:label "relatedChangeRequest".
+osqm:reportsOnTestCase oslc:inverseLabel "reported by";
+                       a rdf:Property;
+                       rdfs:comment "Test Case that the Test Result reports on. It is likely that the target resource will be an oslc_qm:TestCase but that is not necessarily the case.";
+                       rdfs:isDefinedBy osqm:;
+                       rdfs:label "reportsOnTestCase".
+osqm:reportsOnTestPlan oslc:inverseLabel "reported by";
+                       a rdf:Property;
+                       rdfs:comment "Test Plan that a test or execution record reports on. It is likely that the target resource will be an oslc_qm:TestPlan but that is not necessarily the case.";
+                       rdfs:isDefinedBy osqm:;
+                       rdfs:label "reportsOnTestPlan".
+osqm:runsOnTestEnvironment a rdf:Property;
+                           rdfs:comment "Indicates the environment details of the test case for this execution record.";
+                           rdfs:isDefinedBy osqm:;
+                           rdfs:label "runsOnTestEnvironment".
+osqm:runsTestCase oslc:inverseLabel "run by";
+                  a rdf:Property;
+                  rdfs:comment "Test Case run by the Test Execution Record. It is likely that the target resource will be an oslc_qm:TestCase but that is not necessarily the case.";
+                  rdfs:isDefinedBy osqm:;
+                  rdfs:label "runsTestCase".
+osqm:status a rdf:Property;
+            rdfs:comment "Used to indicate the state of the Test Result based on values defined by the service provider.";
+            rdfs:isDefinedBy osqm:;
+            rdfs:label "status".
+osqm:testsChangeRequest oslc:inverseLabel "tested by";
+                        a rdf:Property;
+                        rdfs:comment "Change Request tested by the Test Case. It is likely that the target resource will be an oslc_cm:ChangeRequest but that is not necessarily the case.";
+                        rdfs:isDefinedBy osqm:;
+                        rdfs:label "testsChangeRequest".
+osqm:usesTestCase oslc:inverseLabel "used by";
+                  a rdf:Property;
+                  rdfs:comment "Test Case used by the Test Plan. It is likely that the target resource will be an oslc_qm:TestCase but that is not necessarily the case.";
+                  rdfs:isDefinedBy osqm:;
+                  rdfs:label "usesTestCase".
+osqm:usesTestScript oslc:inverseLabel "used by";
+                    a rdf:Property;
+                    rdfs:comment "Test Script used by the Test Case. It is likely that the target resource will be an oslc_qm:TestScript but that is not necessarily the case.";
+                    rdfs:isDefinedBy osqm:;
+                    rdfs:label "usesTestScript".
+osqm:validatesRequirement oslc:inverseLabel "validated by";
+                          a rdf:Property;
+                          rdfs:comment "Requirement that is validated by the Test Case. It is likely that the target resource will be an oslc_rm:Requirement but that is not necessarily the case.";
+                          rdfs:isDefinedBy osqm:;
+                          rdfs:label "validatesRequirement".
+osqm:validatesRequirementCollection oslc:inverseLabel "validated by";
+                                    a rdf:Property;
+                                    rdfs:comment "Requirement Collection that is validated by the Test Plan. It is likely that the target resource will be an oslc_rm:RequirementCollection but that is not necessarily the case.";
+                                    rdfs:isDefinedBy osqm:;
+                                    rdfs:label "validatesRequirementCollection".

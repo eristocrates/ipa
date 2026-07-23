@@ -2,30 +2,25 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix doap: <http://usefulinc.com/ns/doap#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix wn: <http://xmlns.com/wordnet/1.6/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
 
-doap: dc11:creator "Edd Dumbill";
-      dc11:description "Slovník Description of a Project (DOAP, Popis projektu), popsaný použitím W3C RDF Schema a Web Ontology Language."@cs,
-                       """Das Vokabular \"Description of a Project (DOAP)\", beschrieben durch W3C RDF Schema and the Web Ontology Language."""@de,
-                       """Le vocabulaire Description Of A Project (DOAP, Description D'Un Projet),
+doap: <http://purl.org/dc/elements/1.1/creator> "Edd Dumbill";
+      <http://purl.org/dc/elements/1.1/description> "Slovník Description of a Project (DOAP, Popis projektu), popsaný použitím W3C RDF Schema a Web Ontology Language."@cs,
+                                                    """Das Vokabular \"Description of a Project (DOAP)\", beschrieben durch W3C RDF Schema and the Web Ontology Language."""@de,
+                                                    """Le vocabulaire Description Of A Project (DOAP, Description D'Un Projet),
 		décrit en utilisant RDF Schema du W3C et OWL."""@fr,
-                       """El vocabulario Description of a Project (DOAP, Descripción de un Proyecto), descrito usando RDF Schema de W3C
+                                                    """El vocabulario Description of a Project (DOAP, Descripción de un Proyecto), descrito usando RDF Schema de W3C
 		y Web Ontology Language."""@es,
-                       "The Description of a Project (DOAP) vocabulary, described using W3C RDF Schema and the Web Ontology Language.",
-                       "プロジェクトの説明の語彙(DOAP)。W3C RDF SchemaとWeb Ontology Languageで作られた。"@ja;
-      dc11:format "application/rdf+xml";
-      dc11:rights "Copyright © 2004-2009 Edd Dumbill";
-      dc11:title "Description of a Project (DOAP) vocabulary";
-      a owl:Ontology;
-      owl:imports foaf:index.rdf;
-      foaf:maker [foaf:mbox <mailto:edd@usefulinc.com> ; 
-                  foaf:name "Edd Dumbill" ; 
-                  a foaf:Person].
-doap:ArchRepository a owl:Class,
+                                                    "The Description of a Project (DOAP) vocabulary, described using W3C RDF Schema and the Web Ontology Language.",
+                                                    "プロジェクトの説明の語彙(DOAP)。W3C RDF SchemaとWeb Ontology Languageで作られた。"@ja;
+      <http://purl.org/dc/elements/1.1/format> "application/rdf+xml";
+      <http://purl.org/dc/elements/1.1/rights> "Copyright © 2004-2009 Edd Dumbill";
+      <http://purl.org/dc/elements/1.1/title> "Description of a Project (DOAP) vocabulary";
+      a <http://www.w3.org/2002/07/owl#Ontology>;
+      <http://www.w3.org/2002/07/owl#imports> <http://xmlns.com/foaf/0.1/index.rdf>;
+      <http://xmlns.com/foaf/0.1/maker> [<http://xmlns.com/foaf/0.1/mbox> <mailto:edd@usefulinc.com> ; 
+                                         <http://xmlns.com/foaf/0.1/name> "Edd Dumbill" ; 
+                                         a <http://xmlns.com/foaf/0.1/Person>].
+doap:ArchRepository a <http://www.w3.org/2002/07/owl#Class>,
                       rdfs:Class;
                     rdfs:comment "GNU Arch source code repository."@en,
                                  "Úložiště zdrojových kódů GNU Arch."@cs,
@@ -42,7 +37,7 @@ doap:ArchRepository a owl:Class,
                                "GNU Arch repository"@en;
                     rdfs:subClassOf doap:Repository.
 doap:BKRepository a rdfs:Class,
-                    owl:Class;
+                    <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "Dépôt BitKeeper du code source."@fr,
                                "Úložiště zdrojových kódů BitKeeper."@cs,
                                "BitKeeper Quellcode-Versionierungssystem."@de,
@@ -65,7 +60,7 @@ doap:BazaarBranch a rdfs:Class;
                              "Bazaar Branch"@en;
                   rdfs:subClassOf doap:Repository.
 doap:CVSRepository a rdfs:Class,
-                     owl:Class;
+                     <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "Dépôt CVS du code source."@fr,
                                 "Úložiště zdrojových kódů CVS."@cs,
                                 "CVS Quellcode-Versionierungssystem."@de,
@@ -127,8 +122,8 @@ doap:Project a rdfs:Class;
                         "Projekt"@cs,
                         "Prijekt"@de,
                         "プロジェクト"@ja;
-             rdfs:subClassOf wn:Project,
-                             foaf:Project.
+             rdfs:subClassOf <http://xmlns.com/wordnet/1.6/Project>,
+                             <http://xmlns.com/foaf/0.1/Project>.
 doap:Repository a rdfs:Class;
                 rdfs:comment "ソースコードのリポジトリ"@ja,
                              "Source code repository."@en,
@@ -301,7 +296,7 @@ doap:developer a rdf:Property;
                           "開発者"@ja,
                           "desarrollador"@es,
                           "developer"@en;
-               rdfs:range foaf:Person.
+               rdfs:range <http://xmlns.com/foaf/0.1/Person>.
 doap:documenter a rdf:Property;
                 rdfs:comment "Proveedor de documentación para el proyecto."@es,
                              "Collaborateur à la documentation du projet."@fr,
@@ -317,7 +312,7 @@ doap:documenter a rdf:Property;
                            "escritor de ayuda"@es,
                            "文章制作者"@ja,
                            "rédacteur de l'aide"@fr;
-                rdfs:range foaf:Person.
+                rdfs:range <http://xmlns.com/foaf/0.1/Person>.
 doap:download-mirror a rdf:Property;
                      rdfs:comment "Mirror of software download web page."@en,
                                   "Spiegel der Seite von die Projekt-Software heruntergeladen werden kann."@de,
@@ -372,8 +367,8 @@ doap:helper a rdf:Property;
                        "colaborador"@es,
                        "Helfer"@de,
                        "spoluautor"@cs;
-            rdfs:range foaf:Person.
-doap:homepage a owl:InverseFunctionalProperty,
+            rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+doap:homepage a <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>,
                 rdf:Property;
               rdfs:comment """El URL de la página de un proyecto,
 		asociada con exactamente un proyecto."""@es,
@@ -393,7 +388,7 @@ doap:homepage a owl:InverseFunctionalProperty,
                          "ホームページ"@ja,
                          "homepage"@en,
                          "domovská stránka"@cs;
-              rdfs:subPropertyOf foaf:homepage.
+              rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/homepage>.
 doap:implements a rdf:Property;
                 rdfs:comment "このプロジェクトが実装したシステムの明細書。標準やAPIや明細書のようなもの。"@ja,
                              "A specification that a project implements. Could be a standard, API or legally defined level of conformance."@en;
@@ -469,7 +464,7 @@ doap:maintainer a rdf:Property;
                            "správce"@cs,
                            "maintainer"@en,
                            "desarrollador principal"@es;
-                rdfs:range foaf:Person.
+                rdfs:range <http://xmlns.com/foaf/0.1/Person>.
 doap:module a rdf:Property;
             rdfs:comment "このリポジトリのモジュール名前"@ja,
                          "Jméno modulu v úložišti."@cs,
@@ -477,10 +472,10 @@ doap:module a rdf:Property;
                          "Nombre del módulo de un repositorio."@es,
                          "Modul-Name eines Subversion."@de,
                          "Module name of a repository."@en;
-            rdfs:domain [owl:unionOf (doap:CVSRepository
-                                      doap:ArchRepository
-                                      doap:BKRepository) ; 
-                         a owl:Class];
+            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (doap:CVSRepository
+                                                                  doap:ArchRepository
+                                                                  doap:BKRepository) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>];
             rdfs:isDefinedBy doap:;
             rdfs:label "module"@fr,
                        "module"@en,
@@ -504,7 +499,7 @@ doap:name a rdf:Property;
                      "jméno"@cs;
           rdfs:range rdfs:Literal;
           rdfs:subPropertyOf rdfs:label.
-doap:old-homepage a owl:InverseFunctionalProperty,
+doap:old-homepage a <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>,
                     rdf:Property;
                   rdfs:comment "URL adresa předešlé domovské stránky projektu asociované s právě jedním projektem."@cs,
                                """URL of a project's past homepage,
@@ -524,7 +519,7 @@ doap:old-homepage a owl:InverseFunctionalProperty,
                              "Alte Homepage"@de,
                              "old homepage"@en,
                              "página web antigua"@es;
-                  rdfs:subPropertyOf foaf:homepage.
+                  rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/homepage>.
 doap:os a rdf:Property;
         rdfs:comment """Système d'exploitation auquel est limité le projet. Omettez cette propriété si le
 		projet n'est pas limité à un système d'exploitation."""@fr,
@@ -671,7 +666,7 @@ doap:tester a rdf:Property;
                        "tester"@cs,
                        "tester"@es,
                        "tester"@en;
-            rdfs:range foaf:Person.
+            rdfs:range <http://xmlns.com/foaf/0.1/Person>.
 doap:translator a rdf:Property;
                 rdfs:comment "Proveedor de traducciones al proyecto."@es,
                              "Mitarbeiter an den Übersetzungen eines Projektes."@de,
@@ -687,7 +682,7 @@ doap:translator a rdf:Property;
                            "Übersetzer"@de,
                            "traducteur"@fr,
                            "překladatel"@cs;
-                rdfs:range foaf:Person.
+                rdfs:range <http://xmlns.com/foaf/0.1/Person>.
 doap:vendor a rdf:Property;
             rdfs:comment "提供組織、商業の組織や自由の組織。"@ja,
                          "Vendor organization: commercial, free or otherwise"@en;
@@ -695,7 +690,7 @@ doap:vendor a rdf:Property;
             rdfs:isDefinedBy doap:;
             rdfs:label "提供組織"@ja,
                        "vendor"@en;
-            rdfs:range foaf:Organization.
+            rdfs:range <http://xmlns.com/foaf/0.1/Organization>.
 doap:wiki a rdf:Property;
           rdfs:comment "L'URL du Wiki pour la discussion collaborative sur le projet."@fr,
                        "このプロジェクトの討論用ウィキ"@ja,

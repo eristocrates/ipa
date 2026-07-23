@@ -1,105 +1,98 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix voaf: <http://purl.org/vocommons/voaf#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix w3id: <https://w3id.org/>.
-@prefix ccrel: <http://creativecommons.org/ns#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 @prefix seas-stats: <https://w3id.org/seas/>.
 
-ccrel:license a owl:AnnotationProperty.
-dcterms:contributor a owl:AnnotationProperty.
-dcterms:creator a owl:AnnotationProperty.
-dcterms:description a owl:AnnotationProperty.
-dcterms:issued a owl:AnnotationProperty.
-dcterms:modified a owl:AnnotationProperty.
-dcterms:title a owl:AnnotationProperty.
-vann:preferredNamespacePrefix a owl:AnnotationProperty.
-vann:preferredNamespaceUri a owl:AnnotationProperty.
-voaf:Vocabulary a owl:Class.
-status:term_status a owl:AnnotationProperty.
-foaf:Person a owl:Class.
-foaf:name a owl:DatatypeProperty.
-seas-stats:DecileEvaluation a owl:Class;
-                            rdfs:comment "The evaluated value is one of the deciles of the property value distribution. The rank of the decile is the object of property `seas:rank`."@en;
-                            rdfs:isDefinedBy seas-stats:StatisticsOntology;
-                            rdfs:label "Decile Evaluation"@en;
-                            rdfs:subClassOf seas-stats:RankedDistributionEvaluation;
-                            status:term_status "testing".
-seas-stats:DistributionMaximumEvaluation a owl:Class;
-                                         rdfs:comment "The evaluated value is the maximum of the property value distribution."@en;
-                                         rdfs:isDefinedBy seas-stats:StatisticsOntology;
-                                         rdfs:label "Distribution Maximum Evaluation"@en;
-                                         rdfs:subClassOf seas-stats:Evaluation;
-                                         status:term_status "testing".
-seas-stats:DistributionMeanEvaluation a owl:Class;
-                                      rdfs:comment "The evaluated value is the mean of the property value distribution."@en;
-                                      rdfs:isDefinedBy seas-stats:StatisticsOntology;
-                                      rdfs:label "Distribution Mean Evaluation"@en;
-                                      rdfs:subClassOf seas-stats:Evaluation;
-                                      status:term_status "testing".
-seas-stats:DistributionMedianEvaluation a owl:Class;
-                                        rdfs:comment "The evaluated value is the median of the property value distribution."@en;
-                                        rdfs:isDefinedBy seas-stats:StatisticsOntology;
-                                        rdfs:label "Distribution Median Evaluation"@en;
-                                        rdfs:subClassOf seas-stats:Evaluation;
-                                        status:term_status "testing".
-seas-stats:DistributionMinimumEvaluation a owl:Class;
-                                         rdfs:comment "The evaluated value is the minimum of the property value distribution."@en;
-                                         rdfs:isDefinedBy seas-stats:StatisticsOntology;
-                                         rdfs:label "Distribution Minimum Evaluation"@en;
-                                         rdfs:subClassOf seas-stats:Evaluation;
-                                         status:term_status "testing".
-seas-stats:PercentileEvaluation a owl:Class;
-                                rdfs:comment "The evaluated value is one of the percentiles of the property value distribution. The rank of the percentile is the object of property `seas:rank`."@en;
-                                rdfs:isDefinedBy seas-stats:StatisticsOntology;
-                                rdfs:label "Percentile Evaluation"@en;
-                                rdfs:subClassOf seas-stats:RankedDistributionEvaluation;
-                                status:term_status "testing".
-seas-stats:QuartileEvaluation a owl:Class;
-                              rdfs:comment "The evaluated value is one of the quartiles of the property value distribution. The rank of the quartile is the object of property `seas:rank`."@en;
-                              rdfs:isDefinedBy seas-stats:StatisticsOntology;
-                              rdfs:label "Quartile Evaluation"@en;
-                              rdfs:subClassOf seas-stats:RankedDistributionEvaluation;
-                              status:term_status "testing".
-seas-stats:RankedDistributionEvaluation a owl:Class;
-                                        rdfs:comment "The evaluated value is to be interpreted with respect to a rank, which is given as the object of property `seas:rank`."@en;
-                                        rdfs:isDefinedBy seas-stats:StatisticsOntology;
-                                        rdfs:label "Ranked Distribution Evaluation"@en;
-                                        rdfs:subClassOf [owl:onProperty seas-stats:rank ; 
-                                                         owl:cardinality 1 ],
-                                                        seas-stats:Evaluation;
-                                        status:term_status "testing".
-seas-stats:StandardDeviationEvaluation a owl:Class;
-                                       rdfs:comment "The evaluated value is the standard deviation of the property value distribution."@en;
-                                       rdfs:isDefinedBy seas-stats:StatisticsOntology;
-                                       rdfs:label "Standard Deviation Evaluation"@en;
-                                       rdfs:subClassOf seas-stats:Evaluation;
-                                       status:term_status "testing".
-seas-stats:StatisticsOntology ccrel:license <https://www.apache.org/licenses/LICENSE-2.0>;
-                              dcterms:creator <http://www.maxime-lefrancois.info/me#>;
-                              dcterms:description "This ontology defines common evaluation interpretation concepts for statistics."@en;
-                              dcterms:issued "2016-07-21"^^xsd:date;
-                              dcterms:modified "2016-07-21"^^xsd:date;
-                              dcterms:title "The SEAS Statistics ontology."@en;
-                              vann:preferredNamespacePrefix "seas";
-                              vann:preferredNamespaceUri seas-stats:;
-                              a owl:Ontology,
-                                voaf:Vocabulary;
-                              owl:imports seas-stats:EvaluationOntology;
-                              owl:versionIRI seas-stats:StatisticsOntology-1.0;
-                              owl:versionInfo "v1.0".
-seas-stats:rank a owl:DatatypeProperty,
-                  owl:FunctionalProperty;
-                rdfs:comment "Rank number of a ranked distribution evaluation, such as for quartiles, deciles or percentiles."@en;
-                rdfs:domain seas-stats:RankedDistributionEvaluation;
-                rdfs:isDefinedBy seas-stats:StatisticsOntology;
-                rdfs:label "rank"@en;
-                rdfs:range xsd:integer;
-                status:term_status "testing".
+<http://creativecommons.org/ns#license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocommons/voaf#Vocabulary> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/Person> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/name> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+seas-stats: <http://creativecommons.org/ns#license> <https://www.apache.org/licenses/LICENSE-2.0>;
+            <http://purl.org/dc/terms/contributor> [<http://xmlns.com/foaf/0.1/name> "Brigida Teixeira" ; 
+                                                    a <http://xmlns.com/foaf/0.1/Person>],
+                                                   [<http://xmlns.com/foaf/0.1/name> "Francisco Silva" ; 
+                                                    a <http://xmlns.com/foaf/0.1/Person>],
+                                                   [<http://xmlns.com/foaf/0.1/name> "Hannu JÃ¤rvinen" ; 
+                                                    a <http://xmlns.com/foaf/0.1/Person>],
+                                                   [<http://xmlns.com/foaf/0.1/name> "Erkki Siira" ; 
+                                                    a <http://xmlns.com/foaf/0.1/Person>],
+                                                   [<http://xmlns.com/foaf/0.1/name> "Lynda Temal" ; 
+                                                    a <http://xmlns.com/foaf/0.1/Person>],
+                                                   [<http://xmlns.com/foaf/0.1/name> "Takoua Ghariani" ; 
+                                                    a <http://xmlns.com/foaf/0.1/Person>],
+                                                   [<http://xmlns.com/foaf/0.1/name> "Gabriel Santos" ; 
+                                                    a <http://xmlns.com/foaf/0.1/Person>],
+                                                   [<http://xmlns.com/foaf/0.1/name> "Antoine Zimmermann" ; 
+                                                    a <http://xmlns.com/foaf/0.1/Person>],
+                                                   [<http://xmlns.com/foaf/0.1/name> "Marc Girod-Genet" ; 
+                                                    a <http://xmlns.com/foaf/0.1/Person>],
+                                                   <http://www.vtt.fi/JarmoKalaoja>;
+            <http://purl.org/dc/terms/creator> <http://maxime-lefrancois.info/me#>;
+            <http://purl.org/dc/terms/description> """The main SEAS ontology glues together all of the SEAS modules.
+
+SEAS ontology modules are organized on top of a core of three main modules:
+
+- the [seas:FeatureOfInterestOntology](https://w3id.org/seas/FeatureOfInterestOntology) describes feature of interests and their properties;
+- the [seas:EvaluationOntology](https://w3id.org/seas/EvaluationOntology) describes evaluations of these properties;
+- the [seas:SystemOntology](https://w3id.org/seas/SystemOntology) describes virtually isolated systems that share connections with other systems;
+
+On top of the seas:SystemOntology module, various vertical domain ontologies are defined for specific sub classes of systems and why they may be connected:
+
+- the [`seas:AreaOntology`](https://w3id.org/seas/AreaOntology) describes Zone systems:
+    - a zone may be linked by a crossable connection with another zone;
+    - a zone may be a sub-zone of another zone;
+    - zones are quantified in terms of area, population, and humidity.
+- more module descriptions to come soon...
+
+We furthermore encourage the use of the following external ontologies:
+
+- [the RDFP Presentation ontology](https://w3id.org/rdfp/) describes how RDF graphs can be validated, interpreted from web resource representations, or serialized as resource representations;
+- [the Process Execution Platform ontology](https://w3id.org/pep/) generalizes the core of the [SSN](http://www.w3.org/TR/vocab-ssn/) and the [SAN](https://www.irit.fr/recherches/MELODI/ontologies/SAN.owl) ontologies.
+"""@en;
+            <http://purl.org/dc/terms/issued> "2016-05-25"^^xsd:date;
+            <http://purl.org/dc/terms/title> "SEAS Ontology"@en;
+            <http://purl.org/vocab/vann/preferredNamespacePrefix> "seas";
+            <http://purl.org/vocab/vann/preferredNamespaceUri> seas-stats:;
+            a <http://purl.org/vocommons/voaf#Vocabulary>,
+              <http://www.w3.org/2002/07/owl#Ontology>;
+            <http://www.w3.org/2002/07/owl#imports> seas-stats:TimeOntology-1.0,
+                                                    seas-stats:FeatureOfInterestOntology-1.0,
+                                                    seas-stats:OfferingOntology-1.0,
+                                                    seas-stats:BooleanPropertyOntology-1.0,
+                                                    seas-stats:TradingOntology-1.0,
+                                                    seas-stats:ForecastingOntology-1.0,
+                                                    seas-stats:PlayerOntology-1.0,
+                                                    seas-stats:ZoneLightingOntology-1.0,
+                                                    seas-stats:StatisticsOntology-1.0,
+                                                    seas-stats:PeriodicSignalOntology-1.0,
+                                                    seas-stats:PhotovoltaicOntology-1.0,
+                                                    seas-stats:SystemOntology-1.0,
+                                                    seas-stats:ThermodynamicSystemOntology-1.0,
+                                                    seas-stats:ComfortOntology-1.0,
+                                                    seas-stats:BatteryOntology-1.0,
+                                                    seas-stats:ArchitectureOntology-2.0,
+                                                    seas-stats:EnergyFormOntology-1.0,
+                                                    seas-stats:ZoneOntology-1.0,
+                                                    seas-stats:BuildingOntology-1.0,
+                                                    seas-stats:FailableSystemOntology-1.0,
+                                                    seas-stats:ElectricPowerSystemOntology-1.0,
+                                                    seas-stats:OptimizationOntology-1.0,
+                                                    seas-stats:OperatingOntology-1.0,
+                                                    seas-stats:GreenKPIOntology-1.0,
+                                                    seas-stats:EvaluationOntology-1.0,
+                                                    seas-stats:DeviceOntology-1.0,
+                                                    seas-stats:FlexibilityOntology-1.0,
+                                                    seas-stats:ComplexOntology-1.0,
+                                                    seas-stats:ElectricVehicleOntology-1.0;
+            <http://www.w3.org/2002/07/owl#priorVersion> seas-stats:seas-0.9;
+            <http://www.w3.org/2002/07/owl#versionIRI> seas-stats:seas-1.0;
+            <http://www.w3.org/2002/07/owl#versionInfo> "v1.0".

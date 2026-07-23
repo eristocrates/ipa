@@ -1,19 +1,11 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix voaf: <http://purl.org/vocommons/voaf#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix w3id: <https://w3id.org/>.
 @prefix rdfp: <https://w3id.org/rdfp/>.
-@prefix ccrel: <http://creativecommons.org/ns#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 
-rdfp: ccrel:license <https://www.apache.org/licenses/LICENSE-2.0/>;
-      dcterms:creator <http://maxime-lefrancois.info/me#>;
-      dcterms:description """## RDF Presentation and RDF Presentation Negotiation
+rdfp: <http://creativecommons.org/ns#license> <https://www.apache.org/licenses/LICENSE-2.0/>;
+      <http://purl.org/dc/terms/creator> <http://maxime-lefrancois.info/me#>;
+      <http://purl.org/dc/terms/description> """## RDF Presentation and RDF Presentation Negotiation
 
 An RDF graph can be presented in several ways, using different media types. Examples of RDF media types include `application/rdf+xml`, `text/turtle`, `application/json+ld`.
 
@@ -121,16 +113,16 @@ maxime.lefrancois.86@gmail.com
 
 http://maxime-lefrancois.info/
 """@en;
-      dcterms:issued "2016-08-31"^^xsd:date;
-      dcterms:modified "2016-09-08"^^xsd:date;
-      dcterms:title "The RDF Presentation ontology"@en;
-      vann:preferredNamespacePrefix "rdfp";
-      vann:preferredNamespaceUri rdfp:;
-      a owl:Ontology,
-        voaf:Vocabulary;
-      owl:versionIRI rdfp:rdfp-1.0;
-      owl:versionInfo "v1.0".
-rdfp:Graph a owl:Class;
+      <http://purl.org/dc/terms/issued> "2016-08-31"^^xsd:date;
+      <http://purl.org/dc/terms/modified> "2016-09-08"^^xsd:date;
+      <http://purl.org/dc/terms/title> "The RDF Presentation ontology"@en;
+      <http://purl.org/vocab/vann/preferredNamespacePrefix> "rdfp";
+      <http://purl.org/vocab/vann/preferredNamespaceUri> rdfp:;
+      a <http://www.w3.org/2002/07/owl#Ontology>,
+        <http://purl.org/vocommons/voaf#Vocabulary>;
+      <http://www.w3.org/2002/07/owl#versionIRI> rdfp:rdfp-1.0;
+      <http://www.w3.org/2002/07/owl#versionInfo> "v1.0".
+rdfp:Graph a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment """Instances of rdfp:Graph are RDF graph resources that may have several representations.
 
    For example,
@@ -146,8 +138,8 @@ We propose an alignment of this resource with rdfg:Graph, but this is part of [a
            rdfs:isDefinedBy rdfp:;
            rdfs:label "Graph"@en;
            rdfs:subClassOf rdfp:Resource;
-           status:term_status "testing".
-rdfp:GraphDescription a owl:Class;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+rdfp:GraphDescription a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment """Instances of rdfp:GraphDescription describe RDF Graphs in terms of validation and presentation.
 
   A rdfp:GraphDescription may be linked to one or more validation rules.
@@ -165,8 +157,8 @@ We propose an alignment of this resource with sd:Graph, but this is part of [ano
 """@en;
                       rdfs:isDefinedBy rdfp:;
                       rdfs:label "Graph Description"@en;
-                      status:term_status "testing".
-rdfp:GraphPresentation a owl:Class;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+rdfp:GraphPresentation a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:comment """Instances of rdfp:GraphPresentation describe RDF Graph presentations in terms of lifting, lowering, and validation rules.
 
    - lifting rules can be used to generate a RDF graph from a document, using for instance a RML mapping, a XSPARQL rule, or SPARQL-Generate rule;
@@ -181,8 +173,8 @@ rdfp:GraphPresentation a owl:Class;
         rdfp:loweringRule <https://w3id.org/rdfp/example/graph/xml/loweringRule> ."""@en;
                        rdfs:isDefinedBy rdfp:;
                        rdfs:label "Presentation"@en;
-                       status:term_status "testing".
-rdfp:GraphValidationRule a owl:Class;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+rdfp:GraphValidationRule a <http://www.w3.org/2002/07/owl#Class>;
                          rdfs:comment """The class of graph validation rules resources. 
   Such resources may have various representations:
 
@@ -204,25 +196,25 @@ An RDFP engine willing to validate the conformance of a graph G described by `<g
 - If the result is true, then G validates against `<v>`."""@en;
                          rdfs:isDefinedBy rdfp:;
                          rdfs:label "Graph Validation Rule"@en;
-                         status:term_status "testing".
-rdfp:LiftingRule a owl:Class;
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+rdfp:LiftingRule a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment """The class of rules that enable RDF lifting.
 Such rules may have various representations, such as a [RML mapping](http://rml.io), a [SPARQL-Generate](https://w3id.org/sparql-generate) or a [XSPARQL query](http://xsparql.deri.org/)."""@en;
                  rdfs:isDefinedBy rdfp:;
                  rdfs:label "Lifting Rule"@en;
-                 status:term_status "testing".
-rdfp:LoweringRule a owl:Class;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+rdfp:LoweringRule a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "The class of rules that enable RDF lowering. Such rules may have various representations, such as a [STTL rule](https://ns.inria.fr/sparql-template/)."@en;
                   rdfs:isDefinedBy rdfp:;
                   rdfs:label "Lowering Rule"@en;
-                  status:term_status "testing".
-rdfp:Representation a owl:Class;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+rdfp:Representation a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "The class of web representations. A representation is also a resource."@en;
                     rdfs:isDefinedBy rdfp:;
                     rdfs:label "Representation"@en;
                     rdfs:subClassOf rdfp:Resource;
-                    status:term_status "testing".
-rdfp:RepresentationValidationRule a owl:Class;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+rdfp:RepresentationValidationRule a <http://www.w3.org/2002/07/owl#Class>;
                                   rdfs:comment """The class of representation validation rules resources. Such resources may have various representations:
 
 - a JSON Schema for JSON representations;
@@ -230,69 +222,69 @@ rdfp:RepresentationValidationRule a owl:Class;
 - a XPath query that must retrieve an element to validate."""@en;
                                   rdfs:isDefinedBy rdfp:;
                                   rdfs:label "Representation Validation Rule"@en;
-                                  status:term_status "testing".
-rdfp:Resource a owl:Class;
+                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+rdfp:Resource a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "The class of web resources, that have one or several representations."@en;
               rdfs:isDefinedBy rdfp:;
               rdfs:label "Resource"@en;
-              status:term_status "testing".
-rdfp:alias a owl:ObjectProperty;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+rdfp:alias a <http://www.w3.org/2002/07/owl#ObjectProperty>;
            rdfs:comment """Links a representation to one of its aliases. 
 
 According to the Web architecture design principles, there should never be two following rdfp:alias links."""@en;
            rdfs:isDefinedBy rdfp:;
            rdfs:label "alias"@en;
-           status:term_status "testing".
-rdfp:describedBy a owl:ObjectProperty;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+rdfp:describedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "Links a RDF graph to its description."@en;
                  rdfs:domain rdfp:Graph;
                  rdfs:isDefinedBy rdfp:;
                  rdfs:label "described by"@en;
                  rdfs:range rdfp:GraphDescription;
-                 status:term_status "testing".
-rdfp:liftingRule a owl:ObjectProperty;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+rdfp:liftingRule a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "Links a graph presentation to a resource that enables to lift documents to RDF."@en;
                  rdfs:domain rdfp:GraphRepresentation;
                  rdfs:isDefinedBy rdfp:;
                  rdfs:label "lifting rule"@en;
                  rdfs:range rdfp:LiftingRule;
-                 status:term_status "testing".
-rdfp:loweringRule a owl:ObjectProperty;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+rdfp:loweringRule a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "Links a graph description to a resource that enables to lower a RDF Graph to a document."@en;
                   rdfs:domain rdfp:GraphRepresentation;
                   rdfs:isDefinedBy rdfp:;
                   rdfs:label "lowering rule"@en;
                   rdfs:range rdfp:LoweringRule;
-                  status:term_status "testing".
-rdfp:mediaType a owl:DatatypeProperty;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+rdfp:mediaType a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment "Links a representation to its media type."@en;
                rdfs:isDefinedBy rdfp:;
                rdfs:label "media type"@en;
-               status:term_status "testing".
-rdfp:presentationFor a owl:ObjectProperty;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+rdfp:presentationFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "Links a RDF graph presentation to the description of RDF graphs it may present."@en;
                      rdfs:domain rdfp:GraphPresentation;
                      rdfs:isDefinedBy rdfp:;
                      rdfs:label "presentation for"@en;
                      rdfs:range rdfp:GraphDescription;
-                     owl:inverseOf rdfp:presentedBy;
-                     status:term_status "testing".
-rdfp:presentedBy a owl:ObjectProperty;
+                     <http://www.w3.org/2002/07/owl#inverseOf> rdfp:presentedBy;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+rdfp:presentedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "Links a RDF graph description to one of its presentation means."@en;
                  rdfs:domain rdfp:GraphDescription;
                  rdfs:isDefinedBy rdfp:;
                  rdfs:label "presented by"@en;
                  rdfs:range rdfp:GraphPresentation;
-                 status:term_status "testing".
-rdfp:representedBy a owl:ObjectProperty;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+rdfp:representedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "Links a resource to one of its representations. It is expected that the representation has a media type."@en;
                    rdfs:isDefinedBy rdfp:;
                    rdfs:label "represented by"@en;
-                   status:term_status "testing".
-rdfp:validationRule a owl:ObjectProperty;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+rdfp:validationRule a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:comment """Links a graph description (resp. a presentation) to a validation rule against which graphs conforming to this description (resp. representations conforming to this presentation) should validate. Such resources may have various representations.
 
 For example, resource identified by `<some_validation_rule>` may have a representation as a [SPARQL ASK query](https://www.w3.org/TR/sparql11-query/#ask), as a [ShEx expression](http://shexspec.github.io/), or as a [SHACL shape](https://www.w3.org/TR/shacl/)."""@en;
                     rdfs:isDefinedBy rdfp:;
                     rdfs:label "validation rule"@en;
-                    status:term_status "testing".
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".

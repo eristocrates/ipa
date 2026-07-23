@@ -1,0 +1,29 @@
+@base <http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix : <http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl#>.
+@prefix owlsObjectList: <http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl#>.
+
+<http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl> a owl:Ontology;
+                                                                rdfs:comment "";
+                                                                owl:versionInfo """
+    $Id: ObjectList.owl,v 1.5 2004/11/28 16:29:55 martin Exp $
+  """.
+:List a owl:Class;
+      rdfs:comment "This is intended to provide an OWL-DL compatible version of rdf:List";
+      rdfs:label "List".
+:first a owl:ObjectProperty;
+       rdfs:comment "The first item in the subject RDF list.";
+       rdfs:domain :List;
+       rdfs:label "first".
+:nil a :List;
+     rdfs:comment "The empty list, with no items in it. If the rest of a list is nil then the list has no more items in it.";
+     rdfs:label "nil".
+:rest a owl:ObjectProperty;
+      rdfs:comment "The rest of the subject RDF list after the first item.";
+      rdfs:domain :List;
+      rdfs:label "rest".

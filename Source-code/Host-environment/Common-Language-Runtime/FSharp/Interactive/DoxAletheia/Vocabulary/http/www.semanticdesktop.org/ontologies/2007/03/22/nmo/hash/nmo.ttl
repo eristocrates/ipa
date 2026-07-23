@@ -17,8 +17,6 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
 @prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
 @prefix nco: <http://www.semanticdesktop.org/ontologies/2007/03/22/nco#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
 
 <http://www.semanticdesktop.org/ontologies/2007/03/22/nmo> nao:creator <http://www.dfki.uni-kl.de/~mylka>;
                                                            nao:description "The Nepomuk Message Ontology extends the Nepomuk Information Element framework into the domain of messages. Kinds of messages covered by NMO include Emails and instant messages.";

@@ -18,8 +18,6 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix spdx: <https://spdx.org/rdf/3.1/terms/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix shacl: <http://www.w3.org/ns/shacl#>.
 
 <https://spdx.org/rdf/3.1/creationInfo_NoAssertionElement> a ns1:CreationInfo;
                                                            rdfs:comment "This individual element was defined by the spec."@en;

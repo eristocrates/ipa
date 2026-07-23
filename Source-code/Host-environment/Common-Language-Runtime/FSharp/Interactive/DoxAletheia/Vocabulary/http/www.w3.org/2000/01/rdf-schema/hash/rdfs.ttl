@@ -1,12 +1,9 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
 
-rdfs: dc11:title "The RDF Schema vocabulary (RDFS)";
-      a owl:Ontology;
+rdfs: <http://purl.org/dc/elements/1.1/title> "The RDF Schema vocabulary (RDFS)";
+      a <http://www.w3.org/2002/07/owl#Ontology>;
       rdfs:seeAlso <http://www.w3.org/2000/01/rdf-schema-more>.
 rdfs:Class a rdfs:Class;
            rdfs:comment "The class of classes.";

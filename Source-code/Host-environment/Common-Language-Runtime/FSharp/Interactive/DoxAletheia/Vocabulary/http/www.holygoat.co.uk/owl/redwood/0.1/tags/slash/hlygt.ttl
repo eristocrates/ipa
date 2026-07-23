@@ -1,0 +1,98 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix hlygt: <http://www.holygoat.co.uk/owl/redwood/0.1/tags/>.
+
+hlygt: <http://purl.org/dc/elements/1.1/contributor> "Danny Ayers",
+                                                     "Seth Russell";
+       <http://purl.org/dc/elements/1.1/creator> "Richard Newman";
+       <http://purl.org/dc/elements/1.1/description> "An ontology that describes tags, as used in the popular del.icio.us and Flickr systems, and allows for relationships between tags to be described."@en;
+       <http://purl.org/dc/elements/1.1/title> "Tag ontology"@en;
+       <http://purl.org/dc/terms/issued> "2005-03-23";
+       <http://purl.org/dc/terms/modified> "2005-11-27",
+                                           "2005-05-19",
+                                           "2005-12-21";
+       a <http://www.w3.org/2002/07/owl#Ontology>;
+       rdfs:label "An ontology for tags."@en;
+       <http://xmlns.com/foaf/0.1/maker> <http://www.holygoat.co.uk/foaf.rdf#RichardNewman>.
+hlygt:RestrictedTagging a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "A Tagging which has precisely one associated resource, and one associated tag."@en;
+                        rdfs:label "restricted tagging"@en;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> hlygt:associatedTag ; 
+                                         <http://www.w3.org/2002/07/owl#cardinality> 1  ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> hlygt:taggedResource ; 
+                                         <http://www.w3.org/2002/07/owl#cardinality> 1  ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        hlygt:Tagging.
+hlygt:Tag a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:label "Tag"@en;
+          rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+          <http://www.w3.org/2004/02/skos/core#definition> "A natural-language concept which is used to annotate another resource."@en.
+hlygt:Tagging a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A reified class which defines an instance of a tagging by an agent of a resource with one or more tags."@en;
+              rdfs:label "tagging"@en;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+hlygt:associatedTag a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "The object is a Tag which plays a role in the subject Tagging."@en;
+                    rdfs:domain hlygt:Tagging;
+                    rdfs:label "associated tag";
+                    rdfs:range hlygt:Tag;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+hlygt:equivalentTag a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "The two tags are asserted to be equivalent --- that is, that whenever one is associated with a resource, the other tag can be logically inferred to also be associated. Be very careful with this. I'm not sure if this should be a subproperty of owl:sameAs."@en;
+                    rdfs:domain hlygt:Tag;
+                    rdfs:label "equivalent tag"@en;
+                    rdfs:range hlygt:Tag;
+                    rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#sameAs>;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+hlygt:isTagOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Indicates that the subject tag applies to the object resource. This does not assert by who, when, or why the tagging occurred. For that information, use a reified Tagging resource."@en;
+              rdfs:domain hlygt:Tag;
+              rdfs:label "is tag of"@en;
+              <http://www.w3.org/2002/07/owl#inverseOf> hlygt:taggedWithTag.
+hlygt:name a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:comment "The name of a tag. Note that we can't relate this to skos:prefLabel because we cannot guarantee that tags have unique labels in a given conceptual scheme. Or can we?"@en;
+           rdfs:domain hlygt:Tag;
+           rdfs:label "tag name"@en;
+           rdfs:subPropertyOf rdfs:label,
+                              <http://purl.org/dc/elements/1.1/title>.
+hlygt:relatedTag a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "The two tags are asserted as being related. This might be symmetric, but it certainly isn't transitive."@en;
+                 rdfs:domain hlygt:Tag;
+                 rdfs:label "related tag"@en;
+                 rdfs:range hlygt:Tag;
+                 rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#semanticRelation>;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+hlygt:tag a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:comment "The relationship between a resource and a Tagging. Note, of course, that this allows us to tag tags and taggings themselves..."@en;
+          rdfs:label "tag"@en;
+          rdfs:range hlygt:Tagging.
+hlygt:tagName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:comment "The name of a tag. Note that we can't relate this to skos:prefLabel because we cannot guarantee that tags have unique labels in a given conceptual scheme. Or can we? DEPRECATED 2005-05-19: redundant 'tag'."@en;
+              rdfs:domain hlygt:Tag;
+              rdfs:label "tag name"@en;
+              rdfs:subPropertyOf rdfs:label,
+                                 <http://purl.org/dc/elements/1.1/title>.
+hlygt:taggedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The object plays the role of the tagger in the subject Tagging."@en;
+               rdfs:domain hlygt:Tagging;
+               rdfs:label "tagged by"@en;
+               rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+hlygt:taggedOn a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment "The subject Tagging occurred at the subject time and date."@en;
+               rdfs:domain hlygt:Tagging;
+               rdfs:label "tagged on"@en;
+               rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+hlygt:taggedResource a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "The object is a resource which plays a role in the subject Tagging."@en;
+                     rdfs:domain hlygt:Tagging;
+                     rdfs:label "tagged resource"@en;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+hlygt:taggedWithTag a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Indicates that the subject has been tagged with the object tag. This does not assert by who, when, or why the tagging occurred. For that information, use a reified Tagging resource."@en;
+                    rdfs:label "tagged with tag"@en;
+                    rdfs:range hlygt:Tag;
+                    rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#subject>.

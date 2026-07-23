@@ -5,12 +5,10 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix xml: <http://www.w3.org/XML/1998/namespace>.
 @prefix : <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix w3: <http://www.w3.org/>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
 
 list:append a rdf:Property,
-              owl:FunctionalProperty;
+              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
             rdfs:comment """
 Iff the subject is a list of lists and the concatenation of all those lists 
 is the object, then this is true.
@@ -26,7 +24,7 @@ Iff the object is a list and the subject is in that list, then this is true.
         rdfs:isDefinedBy <http://www.w3.org/2000/10/swap/list>;
         rdfs:label "in".
 list:last a rdf:Property,
-            owl:FunctionalProperty;
+            <http://www.w3.org/2002/07/owl#FunctionalProperty>;
           rdfs:comment """
 Iff the suject is a list and the obbject is the last thing that list, then this is true.
 The object can be calculated as a function of the list.

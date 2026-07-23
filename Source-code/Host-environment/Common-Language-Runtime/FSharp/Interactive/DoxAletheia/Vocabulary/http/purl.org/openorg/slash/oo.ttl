@@ -2,85 +2,78 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix oo: <http://purl.org/openorg/>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-<http://neologism.ecs.soton.ac.uk/oo> dc11:creator <http://neologism.ecs.soton.ac.uk/oo#cjg>,
-                                                   <http://neologism.ecs.soton.ac.uk/oo#ash>,
-                                                   <http://neologism.ecs.soton.ac.uk/oo#alex>;
-                                      dc11:license "http://creativecommons.org/licenses/by/3.0/";
-                                      dcterms:created "2012-12-11"^^xsd:date;
-                                      dcterms:description "This vocabulary provides supplementary terms for organisations wishing to publish open data about themselves.";
-                                      dcterms:modified "2013-04-17"^^xsd:date;
-                                      dcterms:partOf <http://neologism.ecs.soton.ac.uk/>;
-                                      dcterms:publisher "http://neologism.ecs.soton.ac.uk/oo#University%20of%20Southampton";
-                                      dcterms:status <http://purl.org/adms/status/UnderDevelopment>;
-                                      dcterms:title "Open Organisations";
-                                      dcterms:type <http://purl.org/adms/assettype/Ontology>;
-                                      vann:preferredNamespacePrefix "oo";
-                                      vann:preferredNamespaceUri "http://purl.org/openorg/";
-                                      a owl:Ontology;
-                                      foaf:homepage <http://neologism.ecs.soton.ac.uk/oo.html>.
-<http://neologism.ecs.soton.ac.uk/oo#University%20of%20Oxford> a dcterms:Agent;
-                                                               foaf:homepage <http://www.ox.ac.uk/>;
-                                                               foaf:member <http://neologism.ecs.soton.ac.uk/oo#alex>;
-                                                               foaf:name "University of Oxford".
-<http://neologism.ecs.soton.ac.uk/oo#University%20of%20Southampton> a dcterms:Agent;
-                                                                    foaf:homepage "",
-                                                                                  <http://www.soton.ac.uk/>;
-                                                                    foaf:member <http://neologism.ecs.soton.ac.uk/oo#ash>,
-                                                                                <http://neologism.ecs.soton.ac.uk/oo#cjg>;
-                                                                    foaf:name "University of Southampton".
-<http://neologism.ecs.soton.ac.uk/oo#alex> a foaf:Person;
-                                           foaf:homepage <http://alexdutton.co.uk/>;
-                                           foaf:mbox <mailto:alexander.dutton@it.ox.ac.uk>;
-                                           foaf:name "Alexander Dutton".
-<http://neologism.ecs.soton.ac.uk/oo#ash> a foaf:Person;
-                                          foaf:homepage <http://users.ecs.soton.ac.uk/ads04r>;
-                                          foaf:name "Ashley Smith".
-<http://neologism.ecs.soton.ac.uk/oo#cjg> a foaf:Person;
-                                          foaf:homepage <http://users.ecs.soton.ac.uk/cjg/>;
-                                          foaf:mbox <mailto:cjg@ecs.soton.ac.uk>;
-                                          foaf:name "Christopher Gutteridge".
-<http://neologism.ecs.soton.ac.uk/oo#rdf> dcterms:FileFormat "";
-                                          dcterms:license <http://creativecommons.org/licenses/by/3.0/>.
-<http://neologism.ecs.soton.ac.uk/oo#ttl> dcterms:FileFormat "";
-                                          dcterms:license <http://creativecommons.org/licenses/by/3.0/>.
-oo:Capability a owl:Class,
+<http://neologism.ecs.soton.ac.uk/oo> <http://purl.org/dc/elements/1.1/creator> <http://neologism.ecs.soton.ac.uk/oo#cjg>,
+                                                                                <http://neologism.ecs.soton.ac.uk/oo#ash>,
+                                                                                <http://neologism.ecs.soton.ac.uk/oo#alex>;
+                                      <http://purl.org/dc/elements/1.1/license> "http://creativecommons.org/licenses/by/3.0/";
+                                      <http://purl.org/dc/terms/created> "2012-12-11"^^xsd:date;
+                                      <http://purl.org/dc/terms/description> "This vocabulary provides supplementary terms for organisations wishing to publish open data about themselves.";
+                                      <http://purl.org/dc/terms/modified> "2013-04-17"^^xsd:date;
+                                      <http://purl.org/dc/terms/partOf> <http://neologism.ecs.soton.ac.uk/>;
+                                      <http://purl.org/dc/terms/publisher> "http://neologism.ecs.soton.ac.uk/oo#University%20of%20Southampton";
+                                      <http://purl.org/dc/terms/status> <http://purl.org/adms/status/UnderDevelopment>;
+                                      <http://purl.org/dc/terms/title> "Open Organisations";
+                                      <http://purl.org/dc/terms/type> <http://purl.org/adms/assettype/Ontology>;
+                                      <http://purl.org/vocab/vann/preferredNamespacePrefix> "oo";
+                                      <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/openorg/";
+                                      a <http://www.w3.org/2002/07/owl#Ontology>;
+                                      <http://xmlns.com/foaf/0.1/homepage> <http://neologism.ecs.soton.ac.uk/oo.html>.
+<http://neologism.ecs.soton.ac.uk/oo#University%20of%20Oxford> a <http://purl.org/dc/terms/Agent>;
+                                                               <http://xmlns.com/foaf/0.1/homepage> <http://www.ox.ac.uk/>;
+                                                               <http://xmlns.com/foaf/0.1/member> <http://neologism.ecs.soton.ac.uk/oo#alex>;
+                                                               <http://xmlns.com/foaf/0.1/name> "University of Oxford".
+<http://neologism.ecs.soton.ac.uk/oo#University%20of%20Southampton> a <http://purl.org/dc/terms/Agent>;
+                                                                    <http://xmlns.com/foaf/0.1/homepage> "",
+                                                                                                         <http://www.soton.ac.uk/>;
+                                                                    <http://xmlns.com/foaf/0.1/member> <http://neologism.ecs.soton.ac.uk/oo#ash>,
+                                                                                                       <http://neologism.ecs.soton.ac.uk/oo#cjg>;
+                                                                    <http://xmlns.com/foaf/0.1/name> "University of Southampton".
+<http://neologism.ecs.soton.ac.uk/oo#alex> a <http://xmlns.com/foaf/0.1/Person>;
+                                           <http://xmlns.com/foaf/0.1/homepage> <http://alexdutton.co.uk/>;
+                                           <http://xmlns.com/foaf/0.1/mbox> <mailto:alexander.dutton@it.ox.ac.uk>;
+                                           <http://xmlns.com/foaf/0.1/name> "Alexander Dutton".
+<http://neologism.ecs.soton.ac.uk/oo#ash> a <http://xmlns.com/foaf/0.1/Person>;
+                                          <http://xmlns.com/foaf/0.1/homepage> <http://users.ecs.soton.ac.uk/ads04r>;
+                                          <http://xmlns.com/foaf/0.1/name> "Ashley Smith".
+<http://neologism.ecs.soton.ac.uk/oo#cjg> a <http://xmlns.com/foaf/0.1/Person>;
+                                          <http://xmlns.com/foaf/0.1/homepage> <http://users.ecs.soton.ac.uk/cjg/>;
+                                          <http://xmlns.com/foaf/0.1/mbox> <mailto:cjg@ecs.soton.ac.uk>;
+                                          <http://xmlns.com/foaf/0.1/name> "Christopher Gutteridge".
+<http://neologism.ecs.soton.ac.uk/oo#rdf> <http://purl.org/dc/terms/FileFormat> "";
+                                          <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/3.0/>.
+<http://neologism.ecs.soton.ac.uk/oo#ttl> <http://purl.org/dc/terms/FileFormat> "";
+                                          <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/3.0/>.
+oo:Capability a <http://www.w3.org/2002/07/owl#Class>,
                 rdfs:Class;
               rdfs:comment "A capability of a facility or organization. This is subtley different from a service, in that it means that it is capable of performing a certain task or technique. It may be useful to list capabilities when bidding for research contracts and grants.";
               rdfs:label "Capability".
-oo:Equipment a owl:Class,
+oo:Equipment a <http://www.w3.org/2002/07/owl#Class>,
                rdfs:Class;
              rdfs:comment "An item of equipment. This term is in testing and may be superceeded by the Cerif vocab.";
              rdfs:label "Equipment".
-oo:Facility a owl:Class,
+oo:Facility a <http://www.w3.org/2002/07/owl#Class>,
               rdfs:Class;
             rdfs:comment "A facility. A facility is a grouping of equipment and/or people that can perform specific tasks. This term has been coined to use in relation to research facilites at universities, but is not restricted to only research facilities. This term is in testing and may be superceeded by the Cerif vocab.";
             rdfs:label "Facility".
 oo:NoLicenseDefined rdfs:comment "This term is intended to be a target for dcterms:license to specifically indicate that a license has not been defined for a resource.";
                     rdfs:label "No License Defined".
-oo:OrganizationProfileDocument a owl:Class,
+oo:OrganizationProfileDocument a <http://www.w3.org/2002/07/owl#Class>,
                                  rdfs:Class;
                                rdfs:comment "An RDF document describing a specific organisation.";
                                rdfs:label "Organization Profile Document";
-                               rdfs:subClassOf foaf:Document;
-                               owl:disjointWith foaf:PersonalProfileDocument.
-oo:Service a owl:Class,
+                               rdfs:subClassOf <http://xmlns.com/foaf/0.1/Document>;
+                               <http://www.w3.org/2002/07/owl#disjointWith> <http://xmlns.com/foaf/0.1/PersonalProfileDocument>.
+oo:Service a <http://www.w3.org/2002/07/owl#Class>,
              rdfs:Class;
            rdfs:comment "A service. This term has been defined for the purposes of defining services offered by university research facilities, but isn't restricted to universities or research. This term is in testing and may be superceeded by the Cerif vocab.";
            rdfs:label "Service".
-oo:access a owl:DatatypeProperty,
+oo:access a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
             rdf:Property;
           rdfs:comment "This relates a place (geo:SpatialThing) with a text description of how to access this thing. It may be that there is limited wheel chair access, a certain entrance is required or any other access information to tell a person planning to visit this place.";
           rdfs:label "access information";
           rdfs:range rdfs:Literal.
-oo:capacity a owl:DatatypeProperty,
+oo:capacity a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
               rdf:Property;
             rdfs:comment """This is used to indicate the capacity of a thing when performing its default function. Ideally a more semantically meaningful predicate should be used, describing the capacity of something in a particular function.
 
@@ -101,7 +94,7 @@ oo:contact a rdf:Property;
            rdfs:label "Contact".
 oo:contactForm a rdf:Property;
                rdfs:comment "a link from an agent to an HTML page or form that can be used to contact that agent. If a fragment identifier is used, it should refer to an @id of an HTML FORM element in the linked page.";
-               rdfs:domain foaf:Agent;
+               rdfs:domain <http://xmlns.com/foaf/0.1/Agent>;
                rdfs:label "contact form";
                rdfs:range rdfs:Resource.
 oo:corrections a rdf:Property;
@@ -114,11 +107,11 @@ oo:formalOrganization a rdf:Property;
 oo:mapIcon a rdf:Property;
            rdfs:comment """link a geospatial feature to a an icon to use to indicate its location. The \"point\" should be the bottom center of the image.""";
            rdfs:label "map icon";
-           rdfs:range foaf:Image.
+           rdfs:range <http://xmlns.com/foaf/0.1/Image>.
 oo:organization a rdf:Property;
                 rdfs:comment "Relates something to an organization. Intended for use to link things other than people and organizations to an organization, for example, equipment, key datasets (places, members).";
                 rdfs:label "organization";
-                rdfs:range foaf:Organization.
+                rdfs:range <http://xmlns.com/foaf/0.1/Organization>.
 oo:organizationalUnit a rdf:Property;
                       rdfs:comment "Relates something to a part of an organization.";
                       rdfs:label "Organizational Unit".
@@ -128,9 +121,9 @@ oo:primaryContact a rdf:Property;
                   rdfs:subPropertyOf oo:contact.
 oo:sparql a rdf:Property;
           rdfs:comment "This relates an organization to a SPARQL endpoint which allows you to query open data about or produced by that organization.";
-          rdfs:domain foaf:Organization;
+          rdfs:domain <http://xmlns.com/foaf/0.1/Organization>;
           rdfs:label "SPARQL Endpoint".
-oo:twitterHashtag a owl:DatatypeProperty,
+oo:twitterHashtag a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
                     rdf:Property;
                   rdfs:comment """This is used to relate a concept to the Twitter hashtag people are using to talk about that thing.
 

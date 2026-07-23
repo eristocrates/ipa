@@ -8,11 +8,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix schemas: <https://schema.org/>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix rec54: <http://www.w3.org/2001/02pd/rec54#>.
-@prefix person: <http://www.w3.org/ns/person#>.
 @prefix cpov: <http://data.europa.eu/m8g/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
 
 <http://data.europa.eu/m8g> dc:issued "2024-01-31";
                             dc:license <https://creativecommons.org/licenses/by/4.0/>;
@@ -21,37 +17,37 @@
                             a owl:Ontology;
                             rdfs:label "core-person-voc"@en,
                                        "core-person-voc"@nl;
-                            rec54:editor [a foaf:Person ; 
-                                          foaf:firstName "Florian" ; 
-                                          foaf:lastName "Barthelemy" ; 
-                                          schemas:affiliation [foaf:name "PwC EU Services"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Jitse" ; 
-                                          foaf:lastName "De Cock" ; 
-                                          schemas:affiliation [foaf:name "PwC EU Services"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Emiel" ; 
-                                          foaf:lastName "Dhondt" ; 
-                                          schemas:affiliation [foaf:name "PwC EU Services"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Pavlina" ; 
-                                          foaf:lastName "Fragkou" ; 
-                                          schemas:affiliation [foaf:name "European Commission"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Arthur" ; 
-                                          foaf:lastName "Schiltz" ; 
-                                          schemas:affiliation [foaf:name "PwC EU Services"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Anastasia" ; 
-                                          foaf:lastName "Sofou" ; 
-                                          schemas:affiliation [foaf:name "Trasys International"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Emidio" ; 
-                                          foaf:lastName "Stani" ; 
-                                          schemas:affiliation [foaf:name "PwC EU Services"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Bert" ; 
-                                          foaf:lastName "Van Nuffelen"];
+                            <http://www.w3.org/2001/02pd/rec54#editor> [a foaf:Person ; 
+                                                                        foaf:firstName "Florian" ; 
+                                                                        foaf:lastName "Barthelemy" ; 
+                                                                        schemas:affiliation [foaf:name "PwC EU Services"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Jitse" ; 
+                                                                        foaf:lastName "De Cock" ; 
+                                                                        schemas:affiliation [foaf:name "PwC EU Services"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Emiel" ; 
+                                                                        foaf:lastName "Dhondt" ; 
+                                                                        schemas:affiliation [foaf:name "PwC EU Services"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Pavlina" ; 
+                                                                        foaf:lastName "Fragkou" ; 
+                                                                        schemas:affiliation [foaf:name "European Commission"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Arthur" ; 
+                                                                        foaf:lastName "Schiltz" ; 
+                                                                        schemas:affiliation [foaf:name "PwC EU Services"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Anastasia" ; 
+                                                                        foaf:lastName "Sofou" ; 
+                                                                        schemas:affiliation [foaf:name "Trasys International"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Emidio" ; 
+                                                                        foaf:lastName "Stani" ; 
+                                                                        schemas:affiliation [foaf:name "PwC EU Services"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Bert" ; 
+                                                                        foaf:lastName "Van Nuffelen"];
                             foaf:maker [a foaf:Person ; 
                                         foaf:firstName "Core Vocabularies Working Group"].
 cpov:ContactPoint a owl:Class;
@@ -65,7 +61,7 @@ cpov:GenericDate a owl:Class;
                  rdfs:label "Generic date"@en.
 cpov:birthDate a owl:DatatypeProperty;
                rdfs:comment "The point in time on which the Person was born."@en;
-               rdfs:domain person:Person;
+               rdfs:domain <http://www.w3.org/ns/person#Person>;
                rdfs:isDefinedBy <http://data.europa.eu/m8g>;
                rdfs:label "date of birth"@en;
                rdfs:range cpov:GenericDate;
@@ -83,7 +79,7 @@ cpov:contactPage a owl:ObjectProperty;
                  rdfs:range foaf:Document.
 cpov:deathDate a owl:DatatypeProperty;
                rdfs:comment "The point in time on which the Person died."@en;
-               rdfs:domain person:Person;
+               rdfs:domain <http://www.w3.org/ns/person#Person>;
                rdfs:isDefinedBy <http://data.europa.eu/m8g>;
                rdfs:label "date of death"@en;
                rdfs:range cpov:GenericDate;
@@ -101,20 +97,20 @@ cpov:email a owl:DatatypeProperty;
            rdfs:range rdfs:Literal.
 cpov:gender a owl:ObjectProperty;
             rdfs:comment "The identities, expressions and societal roles of the Person."@en;
-            rdfs:domain person:Person;
+            rdfs:domain <http://www.w3.org/ns/person#Person>;
             rdfs:isDefinedBy <http://data.europa.eu/m8g>;
             rdfs:label "gender"@en;
             rdfs:range skos:Concept;
             skos:scopeNote "The gender of an individual should be recorded using a controlled vocabulary that is appropriate for the specific context. In some cases, the chromosomal or physical state of an individual will be more important than the gender that they express, in others the reverse will be true. What is always important is that the controlled vocabulary used to describe an individual's gender is stated explicitly."@en.
 cpov:matronymicName a owl:DatatypeProperty;
                     rdfs:comment "Name based on the given name of the Person's mother."@en;
-                    rdfs:domain person:Person;
+                    rdfs:domain <http://www.w3.org/ns/person#Person>;
                     rdfs:isDefinedBy <http://data.europa.eu/m8g>;
                     rdfs:label "matronymic name"@en;
                     rdfs:range rdf:langString.
 cpov:sex a owl:ObjectProperty;
          rdfs:comment "The organism's biological sex."@en;
-         rdfs:domain person:Person;
+         rdfs:domain <http://www.w3.org/ns/person#Person>;
          rdfs:isDefinedBy <http://data.europa.eu/m8g>;
          rdfs:label "sex"@en;
          rdfs:range skos:Concept;

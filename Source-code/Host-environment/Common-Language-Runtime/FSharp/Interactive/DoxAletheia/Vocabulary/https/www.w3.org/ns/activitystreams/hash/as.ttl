@@ -7,9 +7,6 @@
 @prefix as: <https://www.w3.org/ns/activitystreams#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix xml: <http://www.w3.org/XML/1998/namespace>.
-@prefix w3: <http://www.w3.org/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
-@prefix nsprov: <http://www.w3.org/ns/prov#>.
 
 rdf:langString a rdfs:Datatype.
 rdf:nil a :OrderedItems.
@@ -17,7 +14,7 @@ xsd:duration a rdfs:Datatype.
 <https://www.w3.org/ns/activitystreams#> a owl:Ontology;
                                          rdfs:comment "Extended Activity Streams 2.0 Vocabulary"@en;
                                          rdfs:label "Activity Streams 2.0"@en;
-                                         owl:imports nsprov:.
+                                         owl:imports <http://www.w3.org/ns/prov#>.
 :Accept a owl:Class;
         rdfs:comment "Actor accepts the Object"@en;
         rdfs:label "Accept"@en;

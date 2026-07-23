@@ -1,0 +1,54 @@
+@base <http://dublincore.org/vocabs/interactivityType.ttl>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dc: <http://dublincore.org/elements/1.1/>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix interact: <http://purl.org/dcx/lrmi-vocabs/interactivityType/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix lrmiinteractivityType: <http://purl.org/dcx/lrmi-vocabs/interactivityType/>.
+
+interact: dc:creator "LRMI Task Group (DCMI)"@en-us,
+                     "LRMI Task Group (DCMI)"@de;
+          dc:title "LRMI Interact Type Vocabulary"@en-us,
+                   "LRMI Vokabular der Interaktivitätstypen"@de;
+          dct:created "2017-03-01"^^xsd:date;
+          dct:description "A concept scheme that defines the predominate interact mode of the learning resource being described."@en-us,
+                          "Ein kontrolliertes Vokabular, das die vorherrschende Lehr-/Lernform der zu beschreibenden Lernressource definiert."@de;
+          dct:license <http://creativecommons.org/licenses/by/4.0/>;
+          dct:modified "2022-10-18"^^xsd:date;
+          dct:source "Based on the IEEE Learning Object Metadata standard (IEEE/LOM - IEEE 1484.12.1-202)."@en-us,
+                     "Basierend auf dem IEEE Learning Object Metadata Standard (IEEE/LOM - IEEE 1484.12.1-202)."@de;
+          vann:changes "https://www.dublincore.org/specifications/lrmi/concept_schemes/release-history/";
+          a skos:ConceptScheme.
+interact:active dct:source "Based on the IEEE Learning Object Metadata standard (IEEE 1484.12.1-202 (LOMv1.0))."@en-us,
+                           "Basierend auf dem IEEE Learning Object Metadata Standard (IEEE 1484.12.1-202 (LOMv1.0))."@de;
+                a skos:Concept;
+                skos:definition "Learning that engages and challenges the learner's thinking using real-life and/or imaginary situations taking advantage of the opportunities for learning presented by investigating, exploring, events, and life experiences."@en-us,
+                                "Lernen, welches das Denken des Lernenden in realen und/oder imaginären Situationen anregt und herausfordert und dabei die Lernmöglichkeiten nutzt, die sich durch Untersuchungen, Erkundungen, Ereignisse und Erfahrungen ergeben."@de;
+                skos:example "Selbstlernmodul"@de,
+                             "self-learning module"@en-us;
+                skos:inScheme interact:;
+                skos:prefLabel "active"@en-us,
+                               "aktiv (eher selbstgesteuert)"@de.
+interact:expositive dct:source "Based on the IEEE Learning Object Metadata standard (IEEE 1484.12.1-202 (LOMv1.0))."@en-us,
+                               "Basierend auf dem IEEE Learning Object Metadata Standard (IEEE 1484.12.1-202 (LOMv1.0))."@de;
+                    a skos:Concept;
+                    skos:definition "Use of a subject-matter expert to explain a concept or give clear and concise information in a purposeful way to the passive learner."@en-us,
+                                    "Einsatz eines Lehrenden zur Erklärung eines Konzepts oder zur zielgerichteten Vermittlung klarer und prägnanter Informationen an den Lernenden."@de;
+                    skos:inScheme interact:;
+                    skos:prefLabel "expositive"@en-us,
+                                   "erklärend (eher fremdgesteuert)"@de.
+interact:mixed dct:source "Based on IEEE Learning Object Metadata standard (IEEE 1484.12.1-202 (LOMv1.0))."@en-us,
+                          "Basierend auf dem IEEE Learning Object Metadata Standard (IEEE 1484.12.1-202 (LOMv1.0))."@de;
+               a skos:Concept;
+               skos:definition "Instructional interactions comprised of a mix of active learning and expositive approaches."@en-us,
+                               "Unterrichtliche Interaktionen, die eine Mischung aus aktivem Lernen (eher selbstgesteuert) und erklärenden Ansätzen (eher fremdgesteuert) beinhalten."@de;
+               skos:inScheme interact:;
+               skos:prefLabel "mixed"@en-us,
+                              "gemischt"@de.

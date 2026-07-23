@@ -2,92 +2,83 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix af: <http://purl.org/ontology/af/>.
-@prefix chord: <http://purl.org/ontology/chord/>.
-@prefix mo: <http://purl.org/ontology/mo/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
-@prefix timeline: <http://purl.org/NET/c4dm/timeline.owl#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 
-af:Amplitude a owl:Class;
+af:Amplitude a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment """
 		Result of an amplitude following process
 	""";
              rdfs:label "Amplitude";
              rdfs:subClassOf af:Signal;
-             status:term_status "testing".
-af:Beat a owl:Class;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:Beat a <http://www.w3.org/2002/07/owl#Class>;
         rdfs:comment "A beat event (instantaneous)";
         rdfs:label "Beat event";
         rdfs:subClassOf af:Point;
-        status:term_status "testing".
-af:ChordSegment a owl:Class;
+        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:ChordSegment a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment """
 		A classifier for chords. Equivalent concept as the one
 		in the Chord ontology.
 	""";
                 rdfs:subClassOf af:MusicSegment;
-                owl:equivalentClass chord:ChordEvent;
-                status:term_status "testing".
-af:Chromagram a owl:Class;
+                <http://www.w3.org/2002/07/owl#equivalentClass> <http://purl.org/ontology/chord/ChordEvent>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:Chromagram a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment """
 		A chromagram feature.
 	""";
               rdfs:label "Chromagram";
               rdfs:subClassOf af:Signal;
-              status:term_status "testing".
-af:DetectionFunction a owl:Class;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:DetectionFunction a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:comment """
 		A detection function.
 	""";
                      rdfs:label "Detection function";
                      rdfs:subClassOf af:Signal;
-                     status:term_status "testing".
-af:EmotionSegment a owl:Class;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:EmotionSegment a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment """
 		A classifier for emotional content
 		""";
                   rdfs:label "Emotion segment";
                   rdfs:subClassOf af:SpeechSegment;
-                  status:term_status "testing".
-af:EnglishIdiom a owl:Class;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:EnglishIdiom a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment """
 		English idiom
 		""";
                 rdfs:label "English idiom";
-                status:term_status "testing".
-af:GermanIdiom a owl:Class;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:GermanIdiom a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment """
 		German idiom
 		""";
                rdfs:label "German idiom";
-               status:term_status "testing".
-af:HungarianIdiom a owl:Class;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:HungarianIdiom a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "Hungarian idiom";
                   rdfs:label "Hungarian idiom";
-                  status:term_status "testing".
-af:Idiom a owl:Class;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:Idiom a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment """
 		Idiom (English with Irish accent, Austrian German, etc.)
 		""";
          rdfs:label "Idiom";
-         status:term_status "testing".
-af:IdiomSegment a owl:Class;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:IdiomSegment a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment """
 		A classifier for recognized idiom (English with Irish accent, etc.)
 		""";
                 rdfs:label "Idiom segment";
                 rdfs:subClassOf af:SpeechSegment;
-                status:term_status "testing".
-af:KeyChange a owl:Class;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:KeyChange a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "A key change event. The factor of such an event captures the key that holds after that event.";
              rdfs:label "Key change event";
              rdfs:subClassOf af:Point;
-             status:term_status "testing".
-af:KeySegment a owl:Class;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:KeySegment a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment """
 		A classifier for keys.
 		In case of a \"clean cut\", instances of such events
@@ -98,34 +89,34 @@ af:KeySegment a owl:Class;
 		""";
               rdfs:label "Key event";
               rdfs:subClassOf af:MusicSegment;
-              status:term_status "testing".
-af:Laugh a owl:Class;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:Laugh a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment """
 		A classifier for laugh content
 		""";
          rdfs:label "Laugh";
          rdfs:subClassOf af:SpeechSegment;
-         status:term_status "testing".
-af:LinearFrequencyCentroid a owl:Class;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:LinearFrequencyCentroid a <http://www.w3.org/2002/07/owl#Class>;
                            rdfs:comment """
 		Log-frequency spectral centroid
 	""";
                            rdfs:label "Linear-frequency spectral centroid";
                            rdfs:subClassOf af:SpectralCentroid;
-                           status:term_status "testing".
-af:LogFrequencyCentroid a owl:Class;
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:LogFrequencyCentroid a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:comment """
 		Log-frequency spectral centroid
 	""";
                         rdfs:label "Log-frequency spectral centroid";
                         rdfs:subClassOf af:SpectralCentroid;
-                        status:term_Status "testing".
-af:Loudness a owl:Class;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_Status> "testing".
+af:Loudness a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "Event holding a loudness value";
             rdfs:label "Loudness event";
             rdfs:subClassOf af:MusicSegment;
-            status:term_status "testing".
-af:Major a owl:Class;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:Major a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment """
 		A classifier for a major mode region.
 		In case of a \"clean cut\", instances of such events have one
@@ -134,8 +125,8 @@ af:Major a owl:Class;
 	""";
          rdfs:label "Major segment";
          rdfs:subClassOf af:MusicSegment;
-         status:term_status "testing".
-af:Minor a owl:Class;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:Minor a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment """
 		A classifier for a minor mode region.
 		In case of a \"clean cut\", instances of such events have one
@@ -144,112 +135,112 @@ af:Minor a owl:Class;
 	""";
          rdfs:label "Minor segment";
          rdfs:subClassOf af:MusicSegment;
-         status:term_status "testing".
-af:ModeChange a owl:Class;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:ModeChange a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "A mode change event. The factors of such events include the mode that holds after the event.";
               rdfs:label "Mode change event";
               rdfs:subClassOf af:Point;
-              status:term_status "testing".
-af:MusicSegment a owl:Class;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:MusicSegment a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment """
 		A classifier capturing the notion of an audio segment holding music.
 		This classifier can be subsumed with more specific classifiers.
 		""";
                 rdfs:label "Music";
                 rdfs:subClassOf af:StructuralSegment;
-                status:term_status "testing".
-af:MusicStructuralSegment a owl:Class;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:MusicStructuralSegment a <http://www.w3.org/2002/07/owl#Class>;
                           rdfs:comment """
 		Classifier capturing the notion of chorus, verse, intro, bridge, phrase, etc.
 		""";
                           rdfs:label "Music structural segment";
                           rdfs:subClassOf af:MusicSegment;
-                          status:term_status "testing".
-af:NonTonalOnset a owl:Class;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:NonTonalOnset a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "A percussive onset";
                  rdfs:label "Percussive onset";
                  rdfs:subClassOf af:Onset;
-                 status:term_status "testing".
-af:Onset a owl:Class;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:Onset a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment """
 		A classifier corresponding to the output of an onset detection process.
 		""";
          rdfs:label "Onset";
          rdfs:subClassOf af:Point;
-         status:term_status "testing".
-af:OnsetDetectionFunction a owl:Class;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:OnsetDetectionFunction a <http://www.w3.org/2002/07/owl#Class>;
                           rdfs:comment """
 		An onset detection function
 	""";
                           rdfs:label "Onset detection function";
                           rdfs:subClassOf af:DetectionFunction;
-                          status:term_status "testing".
-af:Ornament a owl:Class;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:Ornament a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "Classifying a temporal region holding a musical ornament";
             rdfs:label "Ornament event";
             rdfs:subClassOf af:MusicSegment;
-            status:term_status "testing".
-af:PersonSpeaking a owl:Class;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:PersonSpeaking a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment """
 			A classifier associating a FOAF description to a particular segment 
 			(to classify genre, recognized speaker, etc.)
 			""";
                   rdfs:label "Person speaking";
                   rdfs:subClassOf af:SpeechSegment;
-                  status:term_status "testing".
-af:Pitch a owl:Class;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:Pitch a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "Associate a point to a particular pitch",
                       "Event holding a pitch value (for example coming from a monophonic transcription process)";
          rdfs:label "Pitch event";
          rdfs:subClassOf af:Point,
                          af:MusicSegment;
-         status:term_status "testing".
-af:Point a owl:Class;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:Point a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment """
 		A classifier for instants corresponding to the output of an automatic process---an
 		artificial cognitive agent (should be associated to a time:Instant---DL version).
 		""";
          rdfs:label "Point";
-         rdfs:subClassOf [owl:someValuesFrom timeline:Instant ; 
-                          owl:onProperty event:time ; 
-                          a owl:Restriction],
-                         event:Event;
-         status:term_status "testing".
-af:Segment a owl:Class;
+         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/NET/c4dm/timeline.owl#Instant> ; 
+                          <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/NET/c4dm/event.owl#time> ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         <http://purl.org/NET/c4dm/event.owl#Event>;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:Segment a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment """
 		A classifier for a temporal region corresponding to the output
 		of an automatic process---an artificial cognitive agent.
 		""";
            rdfs:label "Segment";
-           rdfs:subClassOf [owl:someValuesFrom timeline:Interval ; 
-                            owl:onProperty event:time ; 
-                            a owl:Restriction],
-                           event:Event;
-           status:term_status "testing".
-af:Signal a owl:Class;
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/NET/c4dm/timeline.owl#Interval> ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/NET/c4dm/event.owl#time> ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           <http://purl.org/NET/c4dm/event.owl#Event>;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:Signal a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment """
 		A signal-like feature, holding dense data describing another signal.
 		Examples of signal features include chromagrams, spectrograms, onset detection functions etc.
 	""";
           rdfs:label "Signal-level feature";
-          rdfs:subClassOf mo:Signal;
-          status:term_status "testing".
-af:SpectralCentroid a owl:Class;
+          rdfs:subClassOf <http://purl.org/ontology/mo/Signal>;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:SpectralCentroid a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment """
 		Spectral centroid
 	""";
                     rdfs:label "Spectral centroid";
                     rdfs:subClassOf af:Signal;
-                    status:term_status "testing".
-af:SpeechSegment a owl:Class;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:SpeechSegment a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment """
 		A classifier capturing the notion of an audio segment holding speech
 		content
 		""";
                  rdfs:label "Speech";
                  rdfs:subClassOf af:StructuralSegment;
-                 status:term_status "testing".
-af:StructuralSegment a owl:Class;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:StructuralSegment a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:comment """
 		A classifier trying to capture the notion of structure in an audio piece.
 		This classifier should be subsumed by more specific classifiers: speech/music
@@ -257,61 +248,61 @@ af:StructuralSegment a owl:Class;
 		""";
                      rdfs:label "Structural Segment";
                      rdfs:subClassOf af:Segment;
-                     status:term_status "testing".
-af:Tempo a owl:Class;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:Tempo a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "Event holding a tempo value (120bpm...)";
          rdfs:label "Tempo event";
          rdfs:subClassOf af:MusicSegment;
-         status:term_status "testing".
-af:TempoDetectionFunction a owl:Class;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:TempoDetectionFunction a <http://www.w3.org/2002/07/owl#Class>;
                           rdfs:comment """
 		A tempo detection function
 	""";
                           rdfs:label "Tempo detection function";
                           rdfs:subClassOf af:DetectionFunction;
-                          status:term_status "testing".
-af:Text a owl:Class;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:Text a <http://www.w3.org/2002/07/owl#Class>;
         rdfs:comment """
 		A classifier allowing to associate some text to a segment
 		""";
         rdfs:label "Text";
         rdfs:subClassOf af:SpeechSegment;
-        status:term_status "testing".
-af:TimeSignature a owl:Class;
+        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:TimeSignature a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "Classifying a temporal region with a particular time signature (what? there is something else than 4/4?? :-)";
                  rdfs:label "Time signature";
                  rdfs:subClassOf af:MusicSegment;
-                 status:term_status "testing".
-af:TonalChange a owl:Class;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:TonalChange a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "A tonal change event.";
                rdfs:label "Tonal change event";
                rdfs:subClassOf af:Point;
-               status:term_status "testing".
-af:TonalChangeDetectionFunction a owl:Class;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:TonalChangeDetectionFunction a <http://www.w3.org/2002/07/owl#Class>;
                                 rdfs:comment """
 		A tonal change detection function
 	""";
                                 rdfs:label "Tonal change detection function";
                                 rdfs:subClassOf af:DetectionFunction;
-                                status:term_status "testing".
-af:TonalContentSpace a owl:Class;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:TonalContentSpace a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:comment """
 		A 6-D tonal content space
 	""";
                      rdfs:label "Tonal content space";
                      rdfs:subClassOf af:Signal;
-                     status:term_status "testing".
-af:TonalOnset a owl:Class;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:TonalOnset a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "A pitched onset";
               rdfs:label "Pitched onset";
               rdfs:subClassOf af:Onset;
-              status:term_status "testing".
-af:TonicChange a owl:Class;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:TonicChange a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "A tonic change event. The factors of such events include the tonic that holds after the event.";
                rdfs:label "Tonic change event";
                rdfs:subClassOf af:Point;
-               status:term_status "testing".
-af:TonicSegment a owl:Class;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:TonicSegment a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment """
 		A classifier for tonics.
 		In case of a \"clean cut\", instances of such events have one
@@ -320,41 +311,41 @@ af:TonicSegment a owl:Class;
 	""";
                 rdfs:label "Tonic event";
                 rdfs:subClassOf af:MusicSegment;
-                status:term_status "testing".
-af:ZeroCrossing a owl:Class;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:ZeroCrossing a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "Classifier for a zero-crossing point";
                 rdfs:label "Zero crossing";
                 rdfs:subClassOf af:Point;
-                status:term_status "testing".
-af:ZeroCrossingCount a owl:Class;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:ZeroCrossingCount a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:comment """
 		Zero-crossing counts
 	""";
                      rdfs:label "Zero-crossing counts";
                      rdfs:subClassOf af:Signal;
-                     status:term_status "testing".
-af:austrian_german dc11:title "Austrian German";
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:austrian_german <http://purl.org/dc/elements/1.1/title> "Austrian German";
                    a af:GermanIdiom;
-                   status:term_status "testing".
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
 af:confidence a rdf:Property,
-                owl:DatatypeProperty;
+                <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:comment """
 		A really generic property, allowing to associate a confidence to a document or to a particular
 		resource (such as an automatically detected segment)
 		""";
               rdfs:label "confidence";
               rdfs:range rdfs:Literal;
-              status:term_status "testing".
-af:dimensions a owl:DatatypeProperty;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:dimensions a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:comment """
 		Associates a signal with its dimensions, eg. \"12 3546\". Equivalent to the mpeg7:dim attribute of the mpeg7:Raw
 		element.
 	""";
               rdfs:domain af:Signal;
               rdfs:label "dimensions";
-              status:term_status "testing".
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
 af:emotional_intensity a rdf:Property,
-                         owl:ObjectProperty;
+                         <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment """
 		Associates an \"emotional intensity\" value to a 
 		segment detected as being \"emotional\"
@@ -362,128 +353,128 @@ af:emotional_intensity a rdf:Property,
                        rdfs:domain af:EmotionSegment;
                        rdfs:label "emotional intensity";
                        rdfs:range rdfs:Literal;
-                       status:term_status "testing".
-af:english_irish_accent dc11:title "English with an Irish accent";
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:english_irish_accent <http://purl.org/dc/elements/1.1/title> "English with an Irish accent";
                         a af:EnglishIdiom;
-                        status:term_status "testing".
-af:english_scottish_accent dc11:title "English with a Scottish accent";
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:english_scottish_accent <http://purl.org/dc/elements/1.1/title> "English with a Scottish accent";
                            a af:EnglishIdiom;
-                           status:term_status "testing".
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
 af:feature a rdf:Property,
-             owl:DatatypeProperty;
+             <http://www.w3.org/2002/07/owl#DatatypeProperty>;
            rdfs:comment """
 		Associates a segment classifying a feature to the actual feature---we should use mpeg7 sort-of datatypes here
 		""";
            rdfs:domain af:Segment;
            rdfs:label "feature";
            rdfs:range rdfs:Literal;
-           rdfs:subPropertyOf event:literal_factor;
-           status:term_status "testing".
+           rdfs:subPropertyOf <http://purl.org/NET/c4dm/event.owl#literal_factor>;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
 af:idiom a rdf:Property,
-           owl:DatatypeProperty;
+           <http://www.w3.org/2002/07/owl#DatatypeProperty>;
          rdfs:comment """
 		Associates a segment which classify an idiom (English with Irish accent, etc.) to an actual idiom
 		""";
          rdfs:domain af:IdiomSegment;
          rdfs:range af:Idiom;
-         rdfs:subPropertyOf event:hasLiteralFactor;
-         status:term_status "testing".
-af:key a owl:ObjectProperty;
+         rdfs:subPropertyOf <http://purl.org/NET/c4dm/event.owl#hasLiteralFactor>;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:key a <http://www.w3.org/2002/07/owl#ObjectProperty>;
        rdfs:comment "Associates a key event to the corresponding key";
        rdfs:domain af:KeySegment;
        rdfs:label "key";
-       rdfs:range owl:Thing;
-       rdfs:subPropertyOf event:factor;
-       status:term_status "testing".
-af:new_key a owl:ObjectProperty;
+       rdfs:range <http://www.w3.org/2002/07/owl#Thing>;
+       rdfs:subPropertyOf <http://purl.org/NET/c4dm/event.owl#factor>;
+       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:new_key a <http://www.w3.org/2002/07/owl#ObjectProperty>;
            rdfs:comment "Associates a key change event to the new key, holding after the change";
            rdfs:domain af:KeyChange;
            rdfs:label "new key";
-           rdfs:range owl:Thing;
-           rdfs:subPropertyOf event:factor;
-           status:term_status "testing".
-af:new_mode a owl:ObjectProperty;
+           rdfs:range <http://www.w3.org/2002/07/owl#Thing>;
+           rdfs:subPropertyOf <http://purl.org/NET/c4dm/event.owl#factor>;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:new_mode a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:comment "Mode that holds after the mode change event";
             rdfs:domain af:ModeChangeEvent;
             rdfs:label "new mode";
-            rdfs:range owl:Thing;
-            rdfs:subPropertyOf event:factor;
-            status:term_status "testing".
-af:new_tonic a owl:ObjectProperty;
+            rdfs:range <http://www.w3.org/2002/07/owl#Thing>;
+            rdfs:subPropertyOf <http://purl.org/NET/c4dm/event.owl#factor>;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:new_tonic a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "Tonic that holds after the tonic change event";
              rdfs:domain af:TonicChangeEvent;
              rdfs:label "new tonic";
-             rdfs:range owl:Thing;
-             rdfs:subPropertyOf event:factor;
-             status:term_status "testing".
+             rdfs:range <http://www.w3.org/2002/07/owl#Thing>;
+             rdfs:subPropertyOf <http://purl.org/NET/c4dm/event.owl#factor>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
 af:person a rdf:Property,
-            owl:ObjectProperty;
+            <http://www.w3.org/2002/07/owl#ObjectProperty>;
           rdfs:comment """
 		Associates a segment classified as holding speech content to a FOAF
 		profile (maybe holding information about genre, recognized speaker URI, etc.)
 		""";
           rdfs:domain af:PersonSegment;
           rdfs:label "person";
-          rdfs:range foaf:Person;
-          status:term_status "testing".
-af:pitch a owl:DatatypeProperty;
+          rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:pitch a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
          rdfs:comment """
 		Associates a pitch event to the corresponding pitch
 	""";
          rdfs:domain af:Pitch;
          rdfs:label "pitch";
          rdfs:subPropertyOf af:feature;
-         status:term_status "testing".
-af:signal_feature a owl:DatatypeProperty;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:signal_feature a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment """
 		Associates an audio signal with a track-level signal feature.
 		eg. a spectrogram, a chromagram, an onset detection function.
 	""";
-                  rdfs:domain mo:Signal;
+                  rdfs:domain <http://purl.org/ontology/mo/Signal>;
                   rdfs:label "signal-level feature";
                   rdfs:range af:Signal;
-                  status:term_status "testing".
-af:standard_british_english dc11:title "Standard British English";
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:standard_british_english <http://purl.org/dc/elements/1.1/title> "Standard British English";
                             a af:EnglishIdiom;
-                            status:term_status "testing".
-af:standard_german dc11:title "Standard German";
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:standard_german <http://purl.org/dc/elements/1.1/title> "Standard German";
                    a af:GermanIdiom;
-                   status:term_status "testing".
-af:standard_hungarian dc11:title "Standard Hungarian";
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:standard_hungarian <http://purl.org/dc/elements/1.1/title> "Standard Hungarian";
                       a af:HungarianIdiom;
-                      status:term_status "testing".
-af:standard_us_english dc11:title "Standard US English";
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:standard_us_english <http://purl.org/dc/elements/1.1/title> "Standard US English";
                        a af:EnglishIdiom;
-                       status:term_status "testing".
-af:swiss_german dc11:title "Swiss German";
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:swiss_german <http://purl.org/dc/elements/1.1/title> "Swiss German";
                 a af:GermanIdiom;
-                status:term_status "testing".
-af:tempo a owl:DatatypeProperty;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:tempo a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
          rdfs:comment """
 		Associates a tempo event to the corresponding tempo value.
 	""";
          rdfs:domain af:Tempo;
          rdfs:label "tempo";
          rdfs:subPropertyOf af:feature;
-         status:term_status "testing".
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
 af:text a rdf:Property,
-          owl:DatatypeProperty;
+          <http://www.w3.org/2002/07/owl#DatatypeProperty>;
         rdfs:comment """
 		Relates a Text segment (classifying a time interval that can 
 		be associated to some text) to a text string or other literals (number, etc.)
 		""";
         rdfs:domain af:Text;
         rdfs:range rdfs:Literal;
-        rdfs:subPropertyOf event:hasLiteralFactor;
-        status:term_status "testing".
-af:tonic a owl:ObjectProperty;
+        rdfs:subPropertyOf <http://purl.org/NET/c4dm/event.owl#hasLiteralFactor>;
+        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:tonic a <http://www.w3.org/2002/07/owl#ObjectProperty>;
          rdfs:comment "Associates a tonic event with the corresponding tonic";
          rdfs:domain af:TonicSegment;
          rdfs:label "tonic";
-         rdfs:range owl:Thing;
-         rdfs:subPropertyOf event:factor;
-         status:term_status "testing".
-af:value a owl:DatatypeProperty;
+         rdfs:range <http://www.w3.org/2002/07/owl#Thing>;
+         rdfs:subPropertyOf <http://purl.org/NET/c4dm/event.owl#factor>;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+af:value a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
          rdfs:comment """
 		Associates a signal resource as defined in the Music Ontology to a literal: its actual value.
 		For example, it can be used to link an onset detection function to a list of values.
@@ -491,10 +482,10 @@ af:value a owl:DatatypeProperty;
          rdfs:domain af:Signal;
          rdfs:label "value";
          rdfs:subPropertyOf rdf:value;
-         status:term_status "testing".
-<http://www.w3.org/1999/02/22-rdf-syntax-ns> dc11:creator <http://moustaki.org/foaf.rdf#moustaki>;
-                                             dc11:date "$Date: 2008/06/23 10:24:13 $";
-                                             dc11:description """
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+<http://www.w3.org/1999/02/22-rdf-syntax-ns> <http://purl.org/dc/elements/1.1/creator> <http://moustaki.org/foaf.rdf#moustaki>;
+                                             <http://purl.org/dc/elements/1.1/date> "$Date: 2008/06/23 10:24:13 $";
+                                             <http://purl.org/dc/elements/1.1/description> """
 		This ontology expresses some common concepts
 		to represent automatically extracted features
 		from audio signals. Therefore, it mainly relies 
@@ -505,9 +496,9 @@ af:value a owl:DatatypeProperty;
 		also describe the ouputted document to express some information
 		about itself (estimated confidence, maintainer of the program, etc.)
 		""";
-                                             dc11:title "The Audio Features ontology";
-                                             a owl:Ontology;
+                                             <http://purl.org/dc/elements/1.1/title> "The Audio Features ontology";
+                                             a <http://www.w3.org/2002/07/owl#Ontology>;
                                              rdfs:label "The Audio Features ontology";
-                                             owl:versionInfo "Revision: 1.1";
-                                             foaf:maker <http://moustaki.org/foaf.rdf#moustaki>.
-status:term_status a owl:AnnotationProperty.
+                                             <http://www.w3.org/2002/07/owl#versionInfo> "Revision: 1.1";
+                                             <http://xmlns.com/foaf/0.1/maker> <http://moustaki.org/foaf.rdf#moustaki>.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.

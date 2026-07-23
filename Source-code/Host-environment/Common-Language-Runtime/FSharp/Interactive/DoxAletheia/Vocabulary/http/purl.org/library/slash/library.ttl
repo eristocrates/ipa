@@ -1,0 +1,208 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix library: <http://purl.org/library/>.
+
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+library: <http://purl.org/dc/elements/1.1/creator> <http://viaf.org/viaf/136069274>;
+         <http://purl.org/dc/elements/1.1/description> """These are \"library\" extension terms intended for use with Schema.org""";
+         <http://purl.org/dc/elements/1.1/title> """Experimental \"library\" extension vocabulary for use with Schema.org"""@en;
+         a <http://www.w3.org/2002/07/owl#Ontology>.
+library:ArchiveMaterial a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:isDefinedBy library:;
+                        rdfs:label "ArchiveMaterial"@en;
+                        rdfs:subClassOf <http://schema.org/CreativeWork>;
+                        <http://www.w3.org/2002/07/owl#equivalentClass> <http://schema.org/CreativeWork/ArchiveMaterial>;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:Audiobook a <http://schema.org/BookFormatType>,
+                    <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                  rdfs:isDefinedBy library:;
+                  rdfs:label "Audio Book"@en;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:BlurayDisk a library:Carrier,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                   rdfs:isDefinedBy library:;
+                   rdfs:label "Bluray Disk"@en;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:BrailleBook a <http://schema.org/BookFormatType>,
+                      <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                    rdfs:isDefinedBy library:;
+                    rdfs:label "Braille Book"@en;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:CD a library:Carrier,
+             <http://www.w3.org/2002/07/owl#NamedIndividual>;
+           rdfs:isDefinedBy library:;
+           rdfs:label "Compact Disk"@en;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:Carrier a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment """This class contains a controlled list of \"carriers\" that can be used to contain a schema:CreativeWork."""@en;
+                rdfs:isDefinedBy library:;
+                rdfs:label "Carrier"@en;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:CassetteTape a library:Carrier,
+                       <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                     rdfs:isDefinedBy library:;
+                     rdfs:label "Cassette Tape"@en;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:ComputerFile a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy library:;
+                     rdfs:label "Computer File"@en;
+                     rdfs:subClassOf <http://schema.org/CreativeWork>;
+                     <http://www.w3.org/2002/07/owl#equivalentClass> <http://schema.org/CreativeWork/ComputerFile>;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:ContinuallyUpdatedBook a <http://schema.org/BookFormatType>,
+                                 <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                               rdfs:isDefinedBy library:;
+                               rdfs:label "Continually Updated Book"@en;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:DVD a library:Carrier,
+              <http://www.w3.org/2002/07/owl#NamedIndividual>;
+            rdfs:isDefinedBy library:;
+            rdfs:label "DVD"@en;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:FilmReel a library:Carrier,
+                   <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                 rdfs:isDefinedBy library:;
+                 rdfs:label "Film Reel"@en;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:Game a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:isDefinedBy library:;
+             rdfs:label "Game"@en;
+             rdfs:subClassOf <http://schema.org/CreativeWork>;
+             <http://www.w3.org/2002/07/owl#equivalentClass> <http://schema.org/CreativeWork/Game>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:Image a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:isDefinedBy library:;
+              rdfs:label "Image"@en;
+              rdfs:subClassOf <http://schema.org/CreativeWork>;
+              <http://www.w3.org/2002/07/owl#equivalentClass> <http://schema.org/CreativeWork/Image>;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:InteractiveMultimedia a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:isDefinedBy library:;
+                              rdfs:label "Interactive Multimedia"@en;
+                              rdfs:subClassOf <http://schema.org/CreativeWork>;
+                              <http://www.w3.org/2002/07/owl#equivalentClass> <http://schema.org/CreativeWork/InteractiveMultimedia>;
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:Kit a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "a mixture of various components issued as a unit and intended primarily for instructional purposes. No one component is identifiable as the predominant component of the item. Examples are packages of assorted materials, such as a set of K-12 social studies curriculum material (books, workbooks, guides, activities, etc.), or packages of educational test materials (tests, answer sheets, scoring guides, score charts, interpretative manuals, etc.)."@en;
+            rdfs:isDefinedBy library:;
+            rdfs:label "Kit"@en;
+            rdfs:subClassOf <http://schema.org/CreativeWork>;
+            <http://www.w3.org/2002/07/owl#equivalentClass> <http://schema.org/CreativeWork/Kit>;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:LP a library:Carrier,
+             <http://www.w3.org/2002/07/owl#NamedIndividual>;
+           rdfs:isDefinedBy library:;
+           rdfs:label "LP"@en;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:LargePrintBook a <http://schema.org/BookFormatType>,
+                         <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                       rdfs:isDefinedBy library:;
+                       rdfs:label "Large Print Book"@en;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:Microform a library:Carrier,
+                    <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                  rdfs:isDefinedBy library:;
+                  rdfs:label "Microform"@en;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:MusicalScore a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy library:;
+                     rdfs:label "Musical Score"@en;
+                     rdfs:subClassOf <http://schema.org/CreativeWork>;
+                     <http://www.w3.org/2002/07/owl#equivalentClass> <http://schema.org/CreativeWork/MusicalScore>;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:Newspaper a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:isDefinedBy library:;
+                  rdfs:label "Newspaper"@en;
+                  rdfs:subClassOf <http://schema.org/CreativeWork>;
+                  <http://www.w3.org/2002/07/owl#equivalentClass> <http://schema.org/CreativeWork/Newspaper>;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:Periodical a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:isDefinedBy library:;
+                   rdfs:label "Periodical"@en;
+                   rdfs:subClassOf <http://schema.org/CreativeWork>;
+                   <http://www.w3.org/2002/07/owl#equivalentClass> <http://schema.org/CreativeWork/Periodical>;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:Thesis a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:isDefinedBy library:;
+               rdfs:label "Thesis"@en;
+               rdfs:subClassOf <http://schema.org/Book>;
+               <http://www.w3.org/2002/07/owl#equivalentClass> <http://schema.org/CreativeWork/Book/Thesis>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:Toy a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:isDefinedBy library:;
+            rdfs:label "Toy"@en;
+            rdfs:subClassOf <http://schema.org/CreativeWork>;
+            <http://www.w3.org/2002/07/owl#equivalentClass> <http://schema.org/CreativeWork/Toy>;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:VHSTape a library:Carrier,
+                  <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                rdfs:isDefinedBy library:;
+                rdfs:label "VHS Tape"@en;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:Video a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:isDefinedBy library:;
+              rdfs:label "Video"@en;
+              rdfs:subClassOf <http://schema.org/CreativeWork>;
+              <http://www.w3.org/2002/07/owl#equivalentClass> <http://schema.org/CreativeWork/Video>;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:VideoGame a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:isDefinedBy library:;
+                  rdfs:label "VideoGame"@en;
+                  rdfs:subClassOf library:Game;
+                  <http://www.w3.org/2002/07/owl#equivalentClass> <http://schema.org/CreativeWork/VideoGame>;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:VisualMaterial a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:isDefinedBy library:;
+                       rdfs:label "Visual Material"@en;
+                       rdfs:subClassOf <http://schema.org/CreativeWork>;
+                       <http://www.w3.org/2002/07/owl#equivalentClass> <http://schema.org/CreativeWork/VisualMaterial>;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:Volume a library:Carrier,
+                 <http://www.w3.org/2002/07/owl#NamedIndividual>;
+               rdfs:isDefinedBy library:;
+               rdfs:label "Volume"@en;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:WWW a library:Carrier,
+              <http://www.w3.org/2002/07/owl#NamedIndividual>;
+            rdfs:isDefinedBy library:;
+            rdfs:label "World Wide Web"@en;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:WebSite a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:isDefinedBy library:;
+                rdfs:label "Web Site"@en;
+                rdfs:subClassOf <http://schema.org/CreativeWork>;
+                <http://www.w3.org/2002/07/owl#equivalentClass> <http://schema.org/CreativeWork/WebSite>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:hasCarrier a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain <http://schema.org/CreativeWork>;
+                   rdfs:isDefinedBy library:;
+                   rdfs:label "has carrier"@en;
+                   rdfs:range library:Carrier;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:holdingsCount a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment """This is the number of identifiable \"library\" collections that \"hold\" one or more exemplars (aka copies or \"Items\").""";
+                      rdfs:domain <http://schema.org/CreativeWork>;
+                      rdfs:isDefinedBy library:;
+                      rdfs:label "holdings count";
+                      rdfs:range xsd:integer;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:oclcnum a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain <http://schema.org/CreativeWork>;
+                rdfs:isDefinedBy library:;
+                rdfs:label "oclcnum"@en;
+                rdfs:range xsd:integer;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+library:placeOfPublication a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment "This is the place where the schema:CreativeWork was published."@en;
+                           rdfs:domain <http://schema.org/CreativeWork>;
+                           rdfs:isDefinedBy library:;
+                           rdfs:label "place of publication"@en;
+                           rdfs:range <http://schema.org/Place>;
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+<http://viaf.org/viaf/136069274> a <http://schema.org/Organization>,
+                                   <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                 rdfs:label "OCLC Research"@en.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.

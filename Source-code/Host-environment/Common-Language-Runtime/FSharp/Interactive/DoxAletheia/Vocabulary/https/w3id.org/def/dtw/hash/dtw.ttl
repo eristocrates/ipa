@@ -1,489 +1,476 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix doi: <https://doi.org/>.
-@prefix w3id: <https://w3id.org/>.
 @prefix dtw: <https://w3id.org/def/dtw#>.
-@prefix modp: <https://w3id.org/mod#>.
-@prefix hctl: <https://www.w3.org/2019/wot/hypermedia#>.
-@prefix td: <https://www.w3.org/2019/wot/td#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
-@prefix aerdcat: <http://www.w3.org/ns/dcat#>.
 
-dc11:contributor a owl:AnnotationProperty.
-dc11:creator a owl:AnnotationProperty.
-dc11:description a owl:AnnotationProperty.
-dc11:identifier a owl:AnnotationProperty.
-dc11:license a owl:AnnotationProperty.
-dc11:title a owl:AnnotationProperty.
-dcterms:bibliographicCitation a owl:AnnotationProperty.
-dcterms:created a owl:AnnotationProperty.
-dcterms:description dc11:description "Class has target description."@en;
-                    a owl:DatatypeProperty;
-                    rdfs:comment "Class has target description."@en;
-                    rdfs:domain owl:Thing;
-                    rdfs:label "description"@en;
-                    rdfs:range xsd:string.
-dcterms:identifier a owl:AnnotationProperty.
-dcterms:issued a owl:AnnotationProperty.
-dcterms:license a owl:AnnotationProperty.
-dcterms:modified a owl:AnnotationProperty.
-dcterms:publisher a owl:AnnotationProperty.
-dcterms:source a owl:AnnotationProperty.
-dcterms:title dc11:description "Class has target title."@en;
-              a owl:DatatypeProperty;
-              rdfs:comment "Class has target title."@en;
-              rdfs:domain owl:Thing;
-              rdfs:label "title"@en;
-              rdfs:range xsd:string.
-vann:preferredNamespacePrefix a owl:AnnotationProperty.
-vann:preferredNamespaceUri a owl:AnnotationProperty.
-rdfs:comment a owl:AnnotationProperty;
+<http://purl.org/dc/elements/1.1/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/identifier> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/bibliographicCitation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> <http://purl.org/dc/elements/1.1/description> "Class has target description."@en;
+                                       a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                       rdfs:comment "Class has target description."@en;
+                                       rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+                                       rdfs:label "description"@en;
+                                       rdfs:range xsd:string.
+<http://purl.org/dc/terms/identifier> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/source> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> <http://purl.org/dc/elements/1.1/description> "Class has target title."@en;
+                                 a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                 rdfs:comment "Class has target title."@en;
+                                 rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+                                 rdfs:label "title"@en;
+                                 rdfs:range xsd:string.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:comment a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
              rdfs:label "comment".
 xsd:date a rdfs:Datatype.
-owl:backwardCompatibleWith a owl:AnnotationProperty.
-owl:versionInfo a owl:AnnotationProperty.
-status:term_status a owl:AnnotationProperty.
-aerdcat:Resource dc11:description "Resource of data from DCAT ontology"@en;
-                 a owl:Class;
-                 rdfs:comment "Resource of data from DCAT ontology"@en;
-                 rdfs:label "Resource"@en;
-                 rdfs:subClassOf [owl:someValuesFrom dtw:DigitalEntity ; 
-                                  owl:onProperty dtw:isDataOf ; 
-                                  a owl:Restriction],
-                                 [owl:someValuesFrom aerdcat:Resource ; 
-                                  owl:onProperty dtw:resourceAggregatedFrom ; 
-                                  a owl:Restriction],
-                                 [owl:someValuesFrom aerdcat:Resource ; 
-                                  owl:onProperty dtw:resourceAggregates ; 
-                                  a owl:Restriction],
-                                 dtw:DigitalEntityDimension.
-dtw: dc11:contributor "Socorro Bernardos";
-     dc11:creator "Salvador González Gerpe";
-     dc11:description "Digital Twin ontology used to define Digital Twins and Semantic Digital Twins and aggregations by dimensions using Web of Things."@en;
-     dc11:identifier <https://doi.org/10.5281/zenodo.15263156>;
-     dc11:title "WoTDT: The WoT Digital Twin Ontology."@en;
-     dcterms:bibliographicCitation "González-Gerpe, S., Poveda-Villalón, M., & García-Castro, R. (2024). DTAG: A Methodology for Aggregating Digital Twins Using the WoTDT Ontology. APPLIED SCIENCES-BASEL, 14(13).";
-     dcterms:created "2024-04-01"^^xsd:date;
-     dcterms:issued "2024-04-01"^^xsd:date;
-     dcterms:license <https://creativecommons.org/licenses/by/4.0/>;
-     dcterms:modified "2025-06-15"^^xsd:date;
-     dcterms:publisher "W3ID";
-     dcterms:source <https://oeg-upm.github.io/WoT-DT-ontology-v2/OnToology/ontology.ttl/documentation/ontology.ttl>;
-     vann:preferredNamespacePrefix "dtw";
-     vann:preferredNamespaceUri dtw:;
-     a owl:Ontology;
-     owl:backwardCompatibleWith dtw:;
-     owl:priorVersion "0.4.0";
-     owl:versionIRI dtw:0.5.0;
-     owl:versionInfo "0.5.0";
-     status:term_status "stable"@en;
-     modp:createdWith <https://chowlk.linkeddata.es/>.
-dtw:BehavioralModel a owl:Class;
+<http://www.w3.org/2002/07/owl#backwardCompatibleWith> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#versionInfo> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/dcat#Resource> <http://purl.org/dc/elements/1.1/description> "Resource of data from DCAT ontology"@en;
+                                     a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "Resource of data from DCAT ontology"@en;
+                                     rdfs:label "Resource"@en;
+                                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:DigitalEntity ; 
+                                                      <http://www.w3.org/2002/07/owl#onProperty> dtw:isDataOf ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/ns/dcat#Resource> ; 
+                                                      <http://www.w3.org/2002/07/owl#onProperty> dtw:resourceAggregatedFrom ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/ns/dcat#Resource> ; 
+                                                      <http://www.w3.org/2002/07/owl#onProperty> dtw:resourceAggregates ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     dtw:DigitalEntityDimension.
+dtw: <http://purl.org/dc/elements/1.1/contributor> "Socorro Bernardos";
+     <http://purl.org/dc/elements/1.1/creator> "Salvador González Gerpe";
+     <http://purl.org/dc/elements/1.1/description> "Digital Twin ontology used to define Digital Twins and Semantic Digital Twins and aggregations by dimensions using Web of Things."@en;
+     <http://purl.org/dc/elements/1.1/identifier> <https://doi.org/10.5281/zenodo.15263156>;
+     <http://purl.org/dc/elements/1.1/title> "WoTDT: The WoT Digital Twin Ontology."@en;
+     <http://purl.org/dc/terms/bibliographicCitation> "González-Gerpe, S., Poveda-Villalón, M., & García-Castro, R. (2024). DTAG: A Methodology for Aggregating Digital Twins Using the WoTDT Ontology. APPLIED SCIENCES-BASEL, 14(13).";
+     <http://purl.org/dc/terms/created> "2024-04-01"^^xsd:date;
+     <http://purl.org/dc/terms/issued> "2024-04-01"^^xsd:date;
+     <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/>;
+     <http://purl.org/dc/terms/modified> "2025-06-15"^^xsd:date;
+     <http://purl.org/dc/terms/publisher> "W3ID";
+     <http://purl.org/dc/terms/source> <https://oeg-upm.github.io/WoT-DT-ontology-v2/OnToology/ontology.ttl/documentation/ontology.ttl>;
+     <http://purl.org/vocab/vann/preferredNamespacePrefix> "dtw";
+     <http://purl.org/vocab/vann/preferredNamespaceUri> dtw:;
+     a <http://www.w3.org/2002/07/owl#Ontology>;
+     <http://www.w3.org/2002/07/owl#backwardCompatibleWith> dtw:;
+     <http://www.w3.org/2002/07/owl#priorVersion> "0.4.0";
+     <http://www.w3.org/2002/07/owl#versionIRI> dtw:0.5.0;
+     <http://www.w3.org/2002/07/owl#versionInfo> "0.5.0";
+     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable"@en;
+     <https://w3id.org/mod#createdWith> <https://chowlk.linkeddata.es/>.
+dtw:BehavioralModel a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "Describes the behaviors and response mechanisms of the entity (e.g. state transition, performance and disturbances)"@en;
                     rdfs:label "Behavioral Model"@en;
                     rdfs:subClassOf dtw:Model.
-dtw:Connection a owl:Class;
+dtw:Connection a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "Existing connection between different dtw:ConnectionPoint."@en;
                rdfs:label "Connection"@en;
-               rdfs:subClassOf [owl:someValuesFrom dtw:InternalConnectionPoint ; 
-                                owl:onProperty dtw:hasConsumer ; 
-                                a owl:Restriction],
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:InternalConnectionPoint ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> dtw:hasConsumer ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
                                dtw:DigitalTwinDimension,
-                               [owl:onProperty dtw:hasConsumer ; 
-                                owl:onClass dtw:ConnectionPoint ; 
-                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                a owl:Restriction],
-                               [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                owl:onProperty dtw:hasProvider ; 
-                                owl:onClass dtw:ConnectionPoint ; 
-                                a owl:Restriction],
-                               [owl:someValuesFrom dtw:ExternalConnectionPoint ; 
-                                owl:onProperty dtw:hasProvider ; 
-                                a owl:Restriction],
-                               [owl:someValuesFrom dtw:InternalConnectionPoint ; 
-                                owl:onProperty dtw:hasProvider ; 
-                                a owl:Restriction],
-                               [owl:someValuesFrom dtw:ExternalConnectionPoint ; 
-                                owl:onProperty dtw:hasConsumer ; 
-                                a owl:Restriction].
-dtw:ConnectionPoint a owl:Class;
+                               [<http://www.w3.org/2002/07/owl#onProperty> dtw:hasConsumer ; 
+                                <http://www.w3.org/2002/07/owl#onClass> dtw:ConnectionPoint ; 
+                                <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> dtw:hasProvider ; 
+                                <http://www.w3.org/2002/07/owl#onClass> dtw:ConnectionPoint ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:ExternalConnectionPoint ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> dtw:hasProvider ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:InternalConnectionPoint ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> dtw:hasProvider ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:ExternalConnectionPoint ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> dtw:hasConsumer ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>].
+dtw:ConnectionPoint a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "Connection point of the connection."@en;
                     rdfs:label "Connection Point"@en.
-dtw:DataServiceConnection a owl:Class;
+dtw:DataServiceConnection a <http://www.w3.org/2002/07/owl#Class>;
                           rdfs:comment "Connection between dcat:Resource and td:InteractionAffordance."@en;
                           rdfs:label "Data Service Connection"@en;
                           rdfs:subClassOf dtw:Connection.
-dtw:DigitalEntity a owl:Class;
+dtw:DigitalEntity a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "This dimension of the digital twin consists of various data models that represents all the information allocated in the digital twin."@en;
                   rdfs:label "Digital Entity"@en;
-                  rdfs:subClassOf [owl:onProperty dtw:containsInteractionAffordance ; 
-                                   owl:onClass td:InteractionAffordance ; 
-                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom dtw:RulesModel ; 
-                                   owl:onProperty dtw:hasModel ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom dtw:SemanticModel ; 
-                                   owl:onProperty dtw:hasModel ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom dtw:PhysicalModel ; 
-                                   owl:onProperty dtw:hasModel ; 
-                                   a owl:Restriction],
-                                  [owl:onProperty dtw:hasData ; 
-                                   owl:onClass aerdcat:Resource ; 
-                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                   a owl:Restriction],
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> dtw:containsInteractionAffordance ; 
+                                   <http://www.w3.org/2002/07/owl#onClass> <https://www.w3.org/2019/wot/td#InteractionAffordance> ; 
+                                   <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:RulesModel ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> dtw:hasModel ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:SemanticModel ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> dtw:hasModel ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:PhysicalModel ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> dtw:hasModel ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> dtw:hasData ; 
+                                   <http://www.w3.org/2002/07/owl#onClass> <http://www.w3.org/ns/dcat#Resource> ; 
+                                   <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
                                   dtw:DigitalTwinDimension,
-                                  [owl:onProperty dtw:hasModel ; 
-                                   owl:onClass dtw:Model ; 
-                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom dtw:OntologyModel ; 
-                                   owl:onProperty dtw:hasModel ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom dtw:GeometricModel ; 
-                                   owl:onProperty dtw:hasModel ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom dtw:BehavioralModel ; 
-                                   owl:onProperty dtw:hasModel ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom dtw:MappingModel ; 
-                                   owl:onProperty dtw:hasModel ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom dtw:ShapesModel ; 
-                                   owl:onProperty dtw:hasModel ; 
-                                   a owl:Restriction].
-dtw:DigitalEntityDimension dc11:description "Digital Entity Dimension class to add resource, model and interaction affordances clases"@en;
-                           a owl:Class;
+                                  [<http://www.w3.org/2002/07/owl#onProperty> dtw:hasModel ; 
+                                   <http://www.w3.org/2002/07/owl#onClass> dtw:Model ; 
+                                   <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:OntologyModel ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> dtw:hasModel ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:GeometricModel ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> dtw:hasModel ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:BehavioralModel ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> dtw:hasModel ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:MappingModel ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> dtw:hasModel ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:ShapesModel ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> dtw:hasModel ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>].
+dtw:DigitalEntityDimension <http://purl.org/dc/elements/1.1/description> "Digital Entity Dimension class to add resource, model and interaction affordances clases"@en;
+                           a <http://www.w3.org/2002/07/owl#Class>;
                            rdfs:comment "Digital Entity Dimension class to add resource, model and interaction affordances clases"@en;
                            rdfs:label "Digital Entity Dimension"@en.
-dtw:DigitalTwin a owl:Class;
+dtw:DigitalTwin a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "A realistic representation of all product life cycle components using physical, virtual and interaction data."@en;
                 rdfs:label "Digital Twin"@en;
-                rdfs:subClassOf [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                 owl:onProperty dtw:hasPhysicalEntity ; 
-                                 owl:onClass dtw:PhysicalEntity ; 
-                                 a owl:Restriction],
-                                [owl:someValuesFrom dtw:ModelServiceConnection ; 
-                                 owl:onProperty dtw:hasConnection ; 
-                                 a owl:Restriction],
-                                [owl:onProperty dtw:hasDigitalEntity ; 
-                                 owl:onClass dtw:DigitalEntity ; 
-                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                 a owl:Restriction],
-                                td:Thing,
-                                [owl:someValuesFrom dtw:ModelDataConnection ; 
-                                 owl:onProperty dtw:hasConnection ; 
-                                 a owl:Restriction],
-                                [owl:someValuesFrom dtw:DataServiceConnection ; 
-                                 owl:onProperty dtw:hasConnection ; 
-                                 a owl:Restriction],
-                                [owl:someValuesFrom dtw:ModelModelConnection ; 
-                                 owl:onProperty dtw:hasConnection ; 
-                                 a owl:Restriction],
-                                [owl:onProperty dtw:hasConnection ; 
-                                 owl:onClass dtw:Connection ; 
-                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                 a owl:Restriction].
-dtw:DigitalTwinAggregate a owl:Class;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> dtw:hasPhysicalEntity ; 
+                                 <http://www.w3.org/2002/07/owl#onClass> dtw:PhysicalEntity ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:ModelServiceConnection ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> dtw:hasConnection ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> dtw:hasDigitalEntity ; 
+                                 <http://www.w3.org/2002/07/owl#onClass> dtw:DigitalEntity ; 
+                                 <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                <https://www.w3.org/2019/wot/td#Thing>,
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:ModelDataConnection ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> dtw:hasConnection ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:DataServiceConnection ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> dtw:hasConnection ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:ModelModelConnection ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> dtw:hasConnection ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> dtw:hasConnection ; 
+                                 <http://www.w3.org/2002/07/owl#onClass> dtw:Connection ; 
+                                 <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>].
+dtw:DigitalTwinAggregate a <http://www.w3.org/2002/07/owl#Class>;
                          rdfs:comment "Describes the aggregation of all the DTIs. Unlike the DTI, the DTA may not be an independent data structure. It may be a computing construct that has access to all DTIs and queries them either ad-hoc or proactively."@en;
                          rdfs:label "Digital Twin Aggregate"@en;
-                         rdfs:subClassOf [owl:someValuesFrom dtw:DigitalTwinAggregate ; 
-                                          owl:onProperty dtw:aggregateDTwA ; 
-                                          a owl:Restriction],
-                                         [owl:someValuesFrom dtw:DigitalTwinInstance ; 
-                                          owl:onProperty dtw:aggregateDTwI ; 
-                                          a owl:Restriction],
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:DigitalTwinAggregate ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> dtw:aggregateDTwA ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:DigitalTwinInstance ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> dtw:aggregateDTwI ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
                                          dtw:DigitalTwin.
-dtw:DigitalTwinDimension a owl:Class;
+dtw:DigitalTwinDimension a <http://www.w3.org/2002/07/owl#Class>;
                          rdfs:comment "Dimensions of which the digital twin is composed."@en;
                          rdfs:label "Digital Twin Dimension"@en.
-dtw:DigitalTwinInstance a owl:Class;
+dtw:DigitalTwinInstance a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:comment "Describes a specific corresponding physical product that an individual Digital Twin remains linked to throughout the life of that physical product."@en;
                         rdfs:label "Digital Twin Instance"@en;
                         rdfs:subClassOf dtw:DigitalTwin.
-dtw:ExternalConnectionPoint a owl:Class;
+dtw:ExternalConnectionPoint a <http://www.w3.org/2002/07/owl#Class>;
                             rdfs:comment "Connection point of the connection that is external to the DTw."@en;
                             rdfs:label "External Connection Point"@en;
                             rdfs:subClassOf dtw:ConnectionPoint.
-dtw:Format a owl:Class;
+dtw:Format a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "Extension format in which the model or data is available."@en;
            rdfs:label "Format"@en.
-dtw:GeometricModel a owl:Class;
+dtw:GeometricModel a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "Describes all the geometric parameters of the physical entity (e.g. shapes, sizes and assembly relations)."@en;
                    rdfs:label "Geometric Model"@en;
                    rdfs:subClassOf dtw:Model.
-dtw:InternalConnectionPoint a owl:Class;
+dtw:InternalConnectionPoint a <http://www.w3.org/2002/07/owl#Class>;
                             rdfs:comment "Connection point of the connection that is internal to the DTw."@en;
                             rdfs:label "Internal Connection Point"@en;
                             rdfs:subClassOf dtw:ConnectionPoint.
-dtw:MappingModel a owl:Class;
+dtw:MappingModel a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "Model that allows the alignment of data with the objective of obtaining harmonised data from non-harmonised data."@en;
                  rdfs:label "Mapping Model"@en;
                  rdfs:subClassOf dtw:SemanticModel.
-dtw:Model a owl:Class;
+dtw:Model a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "Representation or conceptualization of the data registered in the Virtual Entity dimension."@en;
           rdfs:label "Model"@en;
-          rdfs:subClassOf [owl:someValuesFrom dtw:DigitalEntity ; 
-                           owl:onProperty dtw:isModelOf ; 
-                           a owl:Restriction],
-                          [owl:someValuesFrom dtw:Model ; 
-                           owl:onProperty dtw:modelAggregatedFrom ; 
-                           a owl:Restriction],
-                          [owl:someValuesFrom dtw:Model ; 
-                           owl:onProperty dtw:modelAggregates ; 
-                           a owl:Restriction],
-                          [owl:onProperty dtw:hasFormat ; 
-                           owl:onClass dtw:Format ; 
-                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                           a owl:Restriction],
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:DigitalEntity ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> dtw:isModelOf ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:Model ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> dtw:modelAggregatedFrom ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:Model ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> dtw:modelAggregates ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> dtw:hasFormat ; 
+                           <http://www.w3.org/2002/07/owl#onClass> dtw:Format ; 
+                           <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
                           dtw:DigitalEntityDimension.
-dtw:ModelDataConnection a owl:Class;
+dtw:ModelDataConnection a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:comment "Connection between dtw:Model and dcat:Resource."@en;
                         rdfs:label "Model Data Connection"@en;
                         rdfs:subClassOf dtw:Connection.
-dtw:ModelModelConnection dc11:description "Model to model connection."@en;
-                         a owl:Class;
+dtw:ModelModelConnection <http://purl.org/dc/elements/1.1/description> "Model to model connection."@en;
+                         a <http://www.w3.org/2002/07/owl#Class>;
                          rdfs:comment "Model to model connection."@en;
                          rdfs:label "Model Model Connection"@en;
                          rdfs:subClassOf dtw:Connection.
-dtw:ModelServiceConnection a owl:Class;
+dtw:ModelServiceConnection a <http://www.w3.org/2002/07/owl#Class>;
                            rdfs:comment "Connection between dtw:Model and td:InteractionAffordance."@en;
                            rdfs:label "Model Service Connection"@en;
                            rdfs:subClassOf dtw:Connection.
-dtw:OntologyModel a owl:Class;
+dtw:OntologyModel a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "Model that contains the conceptualization of the information of the digital twin. This conceptualization activity refers to the organization and structuration of the information (data, knowledge, etc.), obtained during the acquisition process, into meaningful models at the knowledge level and according to the ontology requirements specification document."@en;
                   rdfs:label "Ontology Model"@en;
                   rdfs:subClassOf dtw:SemanticModel.
-dtw:PhysicalEntity a owl:Class;
+dtw:PhysicalEntity a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "This dimension of the digital twin consists of various subsystems, objects and sensory devices. These subsystems can include dynamic systems, control systems, maintenance systems, etc., and can be combined for a specific task. Also, non physical entities can be represented."@en;
                    rdfs:label "Physical Entity"@en;
                    rdfs:subClassOf dtw:DigitalTwinDimension.
-dtw:PhysicalModel a owl:Class;
+dtw:PhysicalModel a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "Responsible for providing all the physical properties (e.g. speed and force) based on dt:GeometricModel"@en;
                   rdfs:label "Physical Model"@en;
                   rdfs:subClassOf dtw:Model.
-dtw:RulesModel a owl:Class;
+dtw:RulesModel a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "A set of rules extracted from the historical data obtained from the physical model, whose function is to provide the virtual entity with a judgment for decision making, optimization, evaluation, prediction and maintenance."@en;
                rdfs:label "Rules Model"@en;
                rdfs:subClassOf dtw:Model.
-dtw:SemanticModel dc11:description "Model representing semantic web rules or conceptualizations."@en;
-                  a owl:Class;
+dtw:SemanticModel <http://purl.org/dc/elements/1.1/description> "Model representing semantic web rules or conceptualizations."@en;
+                  a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "Model representing semantic web rules or conceptualizations."@en;
                   rdfs:label "Semantic Model"@en;
                   rdfs:subClassOf dtw:Model.
-dtw:ShapesModel a owl:Class;
+dtw:ShapesModel a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "Model that contains the data validation rules allowing the data to be validated."@en;
                 rdfs:label "Shapes Model"@en;
                 rdfs:subClassOf dtw:SemanticModel.
-dtw:aggregateDTwA a owl:ObjectProperty;
+dtw:aggregateDTwA a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "Property that describes de action of aggregation between two different entities or dtw:DigitalTwinAggregate."@en;
                   rdfs:domain dtw:DigitalTwinAggregate;
                   rdfs:label "aggregate DTwA"@en;
                   rdfs:range dtw:DigitalTwinAggregate;
-                  owl:inverseOf dtw:aggregatedDTwAFrom.
-dtw:aggregateDTwI a owl:ObjectProperty;
+                  <http://www.w3.org/2002/07/owl#inverseOf> dtw:aggregatedDTwAFrom.
+dtw:aggregateDTwI a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "Property that describes de action of aggregation between two different entities or dtw:DigitalTwinInstance."@en;
                   rdfs:domain dtw:DigitalTwinAggregate;
                   rdfs:label "aggregate DTwI"@en;
                   rdfs:range dtw:DigitalTwinInstance;
-                  owl:inverseOf dtw:aggregatedDTwIFrom.
-dtw:aggregatedDTwAFrom dc11:description "DTwA aggregated from a specific DTwA"@en;
-                       a owl:ObjectProperty;
+                  <http://www.w3.org/2002/07/owl#inverseOf> dtw:aggregatedDTwIFrom.
+dtw:aggregatedDTwAFrom <http://purl.org/dc/elements/1.1/description> "DTwA aggregated from a specific DTwA"@en;
+                       a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "DTwA aggregated from a specific DTwA"@en;
                        rdfs:domain dtw:DigitalTwinAggregate;
                        rdfs:label "aggregated DTwA from"@en;
                        rdfs:range dtw:DigitalTwinAggregate.
-dtw:aggregatedDTwIFrom dc11:description "DTwI aggregated from a specific DTwA"@en;
-                       a owl:ObjectProperty;
+dtw:aggregatedDTwIFrom <http://purl.org/dc/elements/1.1/description> "DTwI aggregated from a specific DTwA"@en;
+                       a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "DTwI aggregated from a specific DTwA"@en;
                        rdfs:domain dtw:DigitalTwinInstance;
                        rdfs:label "aggregated DTwI from"@en;
                        rdfs:range dtw:DigitalTwinAggregate.
-dtw:containsInteractionAffordance a owl:ObjectProperty;
+dtw:containsInteractionAffordance a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                   rdfs:comment "Property that describes the different interaction affordances that the dt:DigitalTwinServices contains."@en;
                                   rdfs:domain dtw:DigitalEntity;
                                   rdfs:label "contains interaction affordance"@en;
-                                  rdfs:range td:InteractionAffordance;
-                                  owl:inverseOf dtw:isInteracctionAffordanceOf.
-dtw:hasConnection a owl:ObjectProperty;
+                                  rdfs:range <https://www.w3.org/2019/wot/td#InteractionAffordance>;
+                                  <http://www.w3.org/2002/07/owl#inverseOf> dtw:isInteracctionAffordanceOf.
+dtw:hasConnection a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "Property that describes the different connections of the dtw:DigitalTwin."@en;
                   rdfs:domain dtw:DigitalTwin;
                   rdfs:label "has connection"@en;
                   rdfs:range dtw:Connection;
-                  owl:inverseOf dtw:isConnectionOf.
-dtw:hasConnectionPoint a owl:ObjectProperty;
+                  <http://www.w3.org/2002/07/owl#inverseOf> dtw:isConnectionOf.
+dtw:hasConnectionPoint a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "Property that describes the connection point that the element of the DTw has to connect with others"@en;
                        rdfs:domain dtw:DigitalEntityDimension;
                        rdfs:label "has connection point"@en;
                        rdfs:range dtw:ConnectionPoint;
-                       owl:inverseOf dtw:isConnectionPointOf.
-dtw:hasConsumer a owl:ObjectProperty;
+                       <http://www.w3.org/2002/07/owl#inverseOf> dtw:isConnectionPointOf.
+dtw:hasConsumer a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "Property that describes if the connection point is the consumer of the information."@en;
                 rdfs:domain dtw:Connection;
                 rdfs:label "has consumer"@en;
                 rdfs:range dtw:ConnectionPoint;
-                owl:inverseOf dtw:isConsumerOf.
-dtw:hasData a owl:ObjectProperty;
+                <http://www.w3.org/2002/07/owl#inverseOf> dtw:isConsumerOf.
+dtw:hasData a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:comment "Property that describes the different data that the dt:DigitalTwinData contains."@en;
             rdfs:domain dtw:DigitalEntity;
             rdfs:label "has data"@en;
-            rdfs:range aerdcat:Resource;
-            owl:inverseOf dtw:isDataOf.
-dtw:hasDigitalEntity a owl:ObjectProperty;
+            rdfs:range <http://www.w3.org/ns/dcat#Resource>;
+            <http://www.w3.org/2002/07/owl#inverseOf> dtw:isDataOf.
+dtw:hasDigitalEntity a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "Property that describes the different Digital Entities that the digital twin contains."@en;
                      rdfs:domain dtw:DigitalTwin;
                      rdfs:label "has digital entity"@en;
                      rdfs:range dtw:DigitalEntity;
-                     owl:inverseOf dtw:isDigitalEntityOf.
-dtw:hasExtension a owl:DatatypeProperty;
+                     <http://www.w3.org/2002/07/owl#inverseOf> dtw:isDigitalEntityOf.
+dtw:hasExtension a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:comment "Extension of the model or data with which can be found."@en;
                  rdfs:domain dtw:Format;
                  rdfs:label "has extension"@en;
                  rdfs:range xsd:string.
-dtw:hasFormat a owl:ObjectProperty;
+dtw:hasFormat a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "Property that describes the different extension formats that the models or data can be found."@en;
               rdfs:domain dtw:Model;
               rdfs:label "has format"@en;
               rdfs:range dtw:Format;
-              owl:inverseOf dtw:isFormatOf.
-dtw:hasModel a owl:ObjectProperty;
+              <http://www.w3.org/2002/07/owl#inverseOf> dtw:isFormatOf.
+dtw:hasModel a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "Property that describes the different models that the dtw:DigitalEntity contains."@en;
              rdfs:domain dtw:DigitalEntity;
              rdfs:label "has model"@en;
              rdfs:range dtw:Model;
-             owl:inverseOf dtw:isModelOf.
-dtw:hasPhysicalEntity a owl:ObjectProperty;
+             <http://www.w3.org/2002/07/owl#inverseOf> dtw:isModelOf.
+dtw:hasPhysicalEntity a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "Property that describes the Physical Entity that the digital twin describes."@en;
                       rdfs:domain dtw:DigitalTwin;
                       rdfs:label "has physical entity"@en;
                       rdfs:range dtw:PhysicalEntity;
-                      owl:inverseOf dtw:isPhysicalEntityOf.
-dtw:hasProvider a owl:ObjectProperty;
+                      <http://www.w3.org/2002/07/owl#inverseOf> dtw:isPhysicalEntityOf.
+dtw:hasProvider a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "Property that describes if the connection point is the provider of the information."@en;
                 rdfs:domain dtw:Connection;
                 rdfs:label "has provider"@en;
                 rdfs:range dtw:ConnectionPoint;
-                owl:inverseOf dtw:isProviderOf.
-dtw:isConnectionOf dc11:description "Connection of a Digital Twin."@en;
-                   a owl:ObjectProperty;
+                <http://www.w3.org/2002/07/owl#inverseOf> dtw:isProviderOf.
+dtw:isConnectionOf <http://purl.org/dc/elements/1.1/description> "Connection of a Digital Twin."@en;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "Connection of a Digital Twin."@en;
                    rdfs:domain dtw:Connection;
                    rdfs:label "is connection of"@en;
                    rdfs:range dtw:DigitalTwin.
-dtw:isConnectionPointOf dc11:description "Connection point is referred to a Digital Entity Dimension"@en;
-                        a owl:ObjectProperty;
+dtw:isConnectionPointOf <http://purl.org/dc/elements/1.1/description> "Connection point is referred to a Digital Entity Dimension"@en;
+                        a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "Connection point is referred to a Digital Entity Dimension"@en;
                         rdfs:domain dtw:ConnectionPoint;
                         rdfs:label "is connection point of"@en;
                         rdfs:range dtw:DigitalEntityDimension.
-dtw:isConsumerOf dc11:description "Connection point is consumer of a connection."@en;
-                 a owl:ObjectProperty;
+dtw:isConsumerOf <http://purl.org/dc/elements/1.1/description> "Connection point is consumer of a connection."@en;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "Connection point is consumer of a connection."@en;
                  rdfs:domain dtw:ConnectionPoint;
                  rdfs:label "is consumer of"@en;
                  rdfs:range dtw:Connection.
-dtw:isDataOf dc11:description "Data of a Digital Entity."@en;
-             a owl:ObjectProperty;
+dtw:isDataOf <http://purl.org/dc/elements/1.1/description> "Data of a Digital Entity."@en;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "Data of a Digital Entity."@en;
-             rdfs:domain aerdcat:Resource;
+             rdfs:domain <http://www.w3.org/ns/dcat#Resource>;
              rdfs:label "is data of"@en;
              rdfs:range dtw:DigitalEntity.
-dtw:isDigitalEntityOf dc11:description "Digital entity of a Digital Twin."@en;
-                      a owl:ObjectProperty;
+dtw:isDigitalEntityOf <http://purl.org/dc/elements/1.1/description> "Digital entity of a Digital Twin."@en;
+                      a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "Digital entity of a Digital Twin."@en;
                       rdfs:domain dtw:DigitalEntity;
                       rdfs:label "is digital entity of"@en;
                       rdfs:range dtw:DigitalTwin.
-dtw:isFormatOf dc11:description "Format of a Model."@en;
-               a owl:ObjectProperty;
+dtw:isFormatOf <http://purl.org/dc/elements/1.1/description> "Format of a Model."@en;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment "Format of a Model."@en;
                rdfs:domain dtw:Format;
                rdfs:label "is format of"@en;
                rdfs:range dtw:Model.
-dtw:isInteracctionAffordanceOf dc11:description "Interaction Afforfance of a Digital Entity."@en;
-                               a owl:ObjectProperty;
+dtw:isInteracctionAffordanceOf <http://purl.org/dc/elements/1.1/description> "Interaction Afforfance of a Digital Entity."@en;
+                               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                rdfs:comment "Interaction Afforfance of a Digital Entity."@en;
-                               rdfs:domain td:InteractionAffordance;
+                               rdfs:domain <https://www.w3.org/2019/wot/td#InteractionAffordance>;
                                rdfs:label "is interaction affordance of"@en;
                                rdfs:range dtw:DigitalEntity.
-dtw:isModelOf dc11:description "Model contained by the Digital Entity Dimension."@en;
-              a owl:ObjectProperty;
+dtw:isModelOf <http://purl.org/dc/elements/1.1/description> "Model contained by the Digital Entity Dimension."@en;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "Model contained by the Digital Entity Dimension."@en;
               rdfs:domain dtw:Model;
               rdfs:label "is model of"@en;
               rdfs:range dtw:DigitalEntity.
-dtw:isPhysicalEntityOf dc11:description "Physical entity of a Digital Twin."@en;
-                       a owl:ObjectProperty;
+dtw:isPhysicalEntityOf <http://purl.org/dc/elements/1.1/description> "Physical entity of a Digital Twin."@en;
+                       a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "Physical entity of a Digital Twin."@en;
                        rdfs:domain dtw:PhysicalEntity;
                        rdfs:label "is physical entity of"@en;
                        rdfs:range dtw:DigitalTwin.
-dtw:isProviderOf dc11:description "Connection point is provider of a connection."@en;
-                 a owl:ObjectProperty;
+dtw:isProviderOf <http://purl.org/dc/elements/1.1/description> "Connection point is provider of a connection."@en;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "Connection point is provider of a connection."@en;
                  rdfs:domain dtw:ConnectionPoint;
                  rdfs:label "is provider of"@en;
                  rdfs:range dtw:Connection.
-dtw:modelAggregatedFrom a owl:ObjectProperty;
+dtw:modelAggregatedFrom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "Model aggregated from model."@en;
                         rdfs:domain dtw:Model;
                         rdfs:label "model aggregated from"@en;
                         rdfs:range dtw:Model;
-                        owl:inverseOf dtw:modelAggregates.
-dtw:modelAggregates dc11:description "Model aggregates model."@en;
-                    a owl:ObjectProperty;
+                        <http://www.w3.org/2002/07/owl#inverseOf> dtw:modelAggregates.
+dtw:modelAggregates <http://purl.org/dc/elements/1.1/description> "Model aggregates model."@en;
+                    a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:comment "Model aggregates model."@en;
                     rdfs:domain dtw:Model;
                     rdfs:label "model aggregates"@en;
                     rdfs:range dtw:Model.
-dtw:resourceAggregatedFrom a owl:ObjectProperty;
+dtw:resourceAggregatedFrom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                            rdfs:comment "Resource aggregated from resource."@en;
-                           rdfs:domain aerdcat:Resource;
+                           rdfs:domain <http://www.w3.org/ns/dcat#Resource>;
                            rdfs:label "resource aggregated from"@en;
-                           rdfs:range aerdcat:Resource;
-                           owl:inverseOf dtw:resourceAggregates.
-dtw:resourceAggregates dc11:description "Resource aggregates resource."@en;
-                       a owl:ObjectProperty;
+                           rdfs:range <http://www.w3.org/ns/dcat#Resource>;
+                           <http://www.w3.org/2002/07/owl#inverseOf> dtw:resourceAggregates.
+dtw:resourceAggregates <http://purl.org/dc/elements/1.1/description> "Resource aggregates resource."@en;
+                       a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "Resource aggregates resource."@en;
-                       rdfs:domain aerdcat:Resource;
+                       rdfs:domain <http://www.w3.org/ns/dcat#Resource>;
                        rdfs:label "resource aggregates"@en;
-                       rdfs:range aerdcat:Resource.
-modp:createdWith a owl:AnnotationProperty.
-hctl:hasTarget dc11:description "Class has target uri."@en;
-               a owl:DatatypeProperty;
-               rdfs:comment "Class has target uri."@en;
-               rdfs:domain dtw:Format;
-               rdfs:label "has target"@en;
-               rdfs:range xsd:anyURI.
-td:InteractionAffordance dc11:description "Affordance that represents a Service."@en;
-                         a owl:Class;
-                         rdfs:comment "Affordance that represents a Service."@en;
-                         rdfs:label "Interaction Affordance"@en;
-                         rdfs:subClassOf [owl:someValuesFrom dtw:DigitalEntity ; 
-                                          owl:onProperty dtw:isInteracctionAffordanceOf ; 
-                                          a owl:Restriction],
-                                         dtw:DigitalEntityDimension.
-td:Thing dc11:description "Thing of WoT."@en;
-         a owl:Class;
-         rdfs:comment "Thing of WoT."@en;
-         rdfs:label "Thing"@en.
-td:hasForm dc11:description "Interaction affordance has form."@en;
-           a owl:DatatypeProperty;
-           rdfs:comment "Interaction affordance has form."@en;
-           rdfs:domain td:InteractionAffordance;
-           rdfs:label "has form"@en;
-           rdfs:range xsd:anyURI.
-td:hasUriTemplateSchema dc11:description "Interaction affordance has an URI template schema."@en;
-                        a owl:DatatypeProperty;
-                        rdfs:comment "Interaction affordance has an URI template schema."@en;
-                        rdfs:domain td:InteractionAffordance;
-                        rdfs:label "has uri template schema"@en;
-                        rdfs:range xsd:string.
+                       rdfs:range <http://www.w3.org/ns/dcat#Resource>.
+<https://w3id.org/mod#createdWith> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://www.w3.org/2019/wot/hypermedia#hasTarget> <http://purl.org/dc/elements/1.1/description> "Class has target uri."@en;
+                                                   a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                   rdfs:comment "Class has target uri."@en;
+                                                   rdfs:domain dtw:Format;
+                                                   rdfs:label "has target"@en;
+                                                   rdfs:range xsd:anyURI.
+<https://www.w3.org/2019/wot/td#InteractionAffordance> <http://purl.org/dc/elements/1.1/description> "Affordance that represents a Service."@en;
+                                                       a <http://www.w3.org/2002/07/owl#Class>;
+                                                       rdfs:comment "Affordance that represents a Service."@en;
+                                                       rdfs:label "Interaction Affordance"@en;
+                                                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> dtw:DigitalEntity ; 
+                                                                        <http://www.w3.org/2002/07/owl#onProperty> dtw:isInteracctionAffordanceOf ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                       dtw:DigitalEntityDimension.
+<https://www.w3.org/2019/wot/td#Thing> <http://purl.org/dc/elements/1.1/description> "Thing of WoT."@en;
+                                       a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:comment "Thing of WoT."@en;
+                                       rdfs:label "Thing"@en.
+<https://www.w3.org/2019/wot/td#hasForm> <http://purl.org/dc/elements/1.1/description> "Interaction affordance has form."@en;
+                                         a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                         rdfs:comment "Interaction affordance has form."@en;
+                                         rdfs:domain <https://www.w3.org/2019/wot/td#InteractionAffordance>;
+                                         rdfs:label "has form"@en;
+                                         rdfs:range xsd:anyURI.
+<https://www.w3.org/2019/wot/td#hasUriTemplateSchema> <http://purl.org/dc/elements/1.1/description> "Interaction affordance has an URI template schema."@en;
+                                                      a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                      rdfs:comment "Interaction affordance has an URI template schema."@en;
+                                                      rdfs:domain <https://www.w3.org/2019/wot/td#InteractionAffordance>;
+                                                      rdfs:label "has uri template schema"@en;
+                                                      rdfs:range xsd:string.

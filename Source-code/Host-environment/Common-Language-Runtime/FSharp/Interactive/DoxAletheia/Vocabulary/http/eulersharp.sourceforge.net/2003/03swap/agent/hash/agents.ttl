@@ -15,14 +15,7 @@
 @prefix agent: <http://eulersharp.sourceforge.net/2003/03swap/agent#>.
 @prefix human: <http://eulersharp.sourceforge.net/2003/03swap/human#>.
 @prefix organism: <http://eulersharp.sourceforge.net/2003/03swap/organism#>.
-@prefix events: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
 @prefix agents: <http://eulersharp.sourceforge.net/2003/03swap/agent#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix swap_document: <http://eulersharp.sourceforge.net/2003/03swap/document#>.
-@prefix swap_foster: <http://eulersharp.sourceforge.net/2003/03swap/foster#>.
-@prefix swap_physicalResource: <http://eulersharp.sourceforge.net/2003/03swap/physicalResource#>.
-@prefix contact: <http://www.w3.org/2000/10/swap/pim/contact#>.
 
 <http://eulersharp.sourceforge.net/2003/03swap/agent> dce:contributor "Marc Twagirumukiza, MD, PhD, Agfa Healthcare/Belgium; Until 2010: Pieterjan De Potter, Pedro Debevere, Ghent University - IBBT/ELIS - Multimedia Lab/Belgium"@en;
                                                       dce:creator "Hans Cools, MD, Agfa Healthcare/Belgium"@en;

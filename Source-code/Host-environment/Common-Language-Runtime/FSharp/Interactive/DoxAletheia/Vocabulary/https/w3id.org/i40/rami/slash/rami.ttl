@@ -1,0 +1,400 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://iais.fraunhofer.de/vocabs/rami#> <http://purl.org/dc/terms/created> "2015-11-30"^^xsd:date;
+                                         <http://purl.org/dc/terms/creator> "Irlan Grangel",
+                                                                            "Niklas Petersen";
+                                         <http://purl.org/dc/terms/publisher> <http://de.dbpedia.org/resource/Fraunhofer-Gesellschaft>;
+                                         <http://purl.org/vocab/vann/preferredNamespacePrefix> "rami";
+                                         <http://purl.org/vocab/vann/preferredNamespaceUri> "http://iais.fraunhofer.de/vocabs/rami#";
+                                         <http://rdfs.org/ns/void#vocabulary> <http://purl.org/dc/elements/1.1/>,
+                                                                              <http://www.w3.org/XML/1998/namespace>,
+                                                                              <http://www.w3.org/2004/02/skos/core#>,
+                                                                              rdf:,
+                                                                              xsd:,
+                                                                              <http://iais.fraunhofer.de/vocabs/sf#>,
+                                                                              <http://xmlns.com/foaf/spec/>,
+                                                                              rdfs:,
+                                                                              <http://purl.org/dc/terms/>;
+                                         a <http://www.w3.org/2002/07/owl#Ontology>;
+                                         rdfs:isDefinedBy <http://iais.fraunhofer.de/vocabs/rami#>;
+                                         <http://www.w3.org/2002/07/owl#versionInfo> "SNAPSHOT";
+                                         <http://www.w3.org/2004/02/skos/core#definition> "A vocabulary which represents the Reference Architecture Model for Industry 4.0 (RAMI), including the concept of the Administration Shell I4.0 Component."@en;
+                                         <http://www.w3.org/2004/02/skos/core#prefLabel> "rami"@en.
+<http://iais.fraunhofer.de/vocabs/rami#AdminShell> <http://purl.org/dc/elements/1.1/source> "This definition comprises material from RAMI4.0."@en;
+                                                   a <http://www.w3.org/2002/07/owl#Class>;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Administration Shell"@en;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "Describe the Administration Shell for Products, Components, e.g. Machines"@en;
+                                                   <http://www.w3.org/2004/02/skos/core#hiddenLabel> "Administrative Shell"@en;
+                                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Admin Shell"@en,
+                                                                                                   "Verwaltungsschale"@de.
+<http://iais.fraunhofer.de/vocabs/rami#ApplicationData> a <http://www.w3.org/2002/07/owl#Class>;
+                                                        rdfs:subClassOf <http://iais.fraunhofer.de/vocabs/rami#BasicData>;
+                                                        <http://www.w3.org/2004/02/skos/core#definition> "Hier bestimmt der Gegenstand das Format"@de,
+                                                                                                         "The object determines the format"@en;
+                                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Anwendungsdaten"@de,
+                                                                                                        "Application Data"@en.
+<http://iais.fraunhofer.de/vocabs/rami#BasicData> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  <http://www.w3.org/2004/02/skos/core#definition> "Describe the different types of Data related to the I4.0 Entity/Object"@en;
+                                                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Data"@en,
+                                                                                                  "Daten"@de.
+<http://iais.fraunhofer.de/vocabs/rami#CADFormat> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                  rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#MCAD>;
+                                                  rdfs:range xsd:string;
+                                                  <http://www.w3.org/2004/02/skos/core#definition> "Different types of format files for CAD Archive of the Object/Entity"@en;
+                                                  <http://www.w3.org/2004/02/skos/core#prefLabel> "CAD Format"@en.
+<http://iais.fraunhofer.de/vocabs/rami#CADSystem> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                  rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#MCAD>;
+                                                  rdfs:range xsd:string;
+                                                  <http://www.w3.org/2004/02/skos/core#definition> "Points to the different types of CAD systems of the Object/Entity"@en;
+                                                  <http://www.w3.org/2004/02/skos/core#example> "Neutral 2D, Neutral 3D, SolidWorks";
+                                                  <http://www.w3.org/2004/02/skos/core#prefLabel> "CAD Format"@en.
+<http://iais.fraunhofer.de/vocabs/rami#CADarchive> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                   rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#MCAD>;
+                                                   rdfs:range xsd:anyURI;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "Link(URL) to the CAD Archive of the Object/Entity"@en;
+                                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "CAD Archive"@en.
+<http://iais.fraunhofer.de/vocabs/rami#ConnectedWorld> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                         <http://iais.fraunhofer.de/vocabs/rami#RAMIHierarchyLevel>;
+                                                       <http://www.w3.org/2004/02/skos/core#definition> "Connected World hierarchy level of RAMI 4.0.  Group of Factories, and the collaboration with external engineering firms, component suppliers and customers"@en;
+                                                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Connected World"@en.
+<http://iais.fraunhofer.de/vocabs/rami#ControlDevice> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                        <http://iais.fraunhofer.de/vocabs/rami#RAMIHierarchyLevel>;
+                                                      <http://www.w3.org/2004/02/skos/core#definition> "Control Device hierarchy level of RAMI 4.0"@en;
+                                                      <http://www.w3.org/2004/02/skos/core#prefLabel> "Control Device"@en.
+<http://iais.fraunhofer.de/vocabs/rami#CumulativeEnergyConsumption> a <http://www.w3.org/2002/07/owl#Class>.
+<http://iais.fraunhofer.de/vocabs/rami#ElectricalData> a <http://www.w3.org/2002/07/owl#Class>;
+                                                       rdfs:subClassOf <http://iais.fraunhofer.de/vocabs/rami#BasicData>;
+                                                       <http://www.w3.org/2004/02/skos/core#definition> "Electrical Data for the Object"@en;
+                                                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Electrical Data"@en.
+<http://iais.fraunhofer.de/vocabs/rami#EngineeringData> a <http://www.w3.org/2002/07/owl#Class>;
+                                                        rdfs:isDefinedBy <http://www.businessdictionary.com/definition/engineering-data.html#ixzz45Ydk71Su>;
+                                                        rdfs:subClassOf <http://iais.fraunhofer.de/vocabs/rami#BasicData>;
+                                                        <http://www.w3.org/2004/02/skos/core#definition> "Documents such as drawings, manufacturer's specifications, standards, and other information relating to design, procurement, fabrication, test, and inspection of an item or structure."@en;
+                                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Engineering Data"@en,
+                                                                                                        "Engineering-Daten"@de.
+<http://iais.fraunhofer.de/vocabs/rami#Enterprise> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                     <http://iais.fraunhofer.de/vocabs/rami#RAMIHierarchyLevel>;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "Enterprise hierarchy level of RAMI 4.0"@en;
+                                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Enterprise"@en.
+<http://iais.fraunhofer.de/vocabs/rami#FieldDevice> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                      <http://iais.fraunhofer.de/vocabs/rami#RAMIHierarchyLevel>;
+                                                    <http://www.w3.org/2004/02/skos/core#definition> "Field Device hierarchy level of RAMI 4.0"@en;
+                                                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Field Device"@en.
+<http://iais.fraunhofer.de/vocabs/rami#Firmware> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:subClassOf <http://iais.fraunhofer.de/vocabs/rami#ApplicationData>;
+                                                 <http://www.w3.org/2004/02/skos/core#definition> "Eingesetzte Firmware, Firmware-Module"@de,
+                                                                                                  "Used firmware, firmware modules"@en;
+                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Firmware"@de,
+                                                                                                 "Firmware"@en.
+<http://iais.fraunhofer.de/vocabs/rami#Instance> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://iais.fraunhofer.de/vocabs/rami#MCAD> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:subClassOf <http://iais.fraunhofer.de/vocabs/rami#EngineeringData>;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "Data that contain the files used for Mechanical Computer Aid Design of a given object"@en;
+                                             <http://www.w3.org/2004/02/skos/core#prefLabel> "MCAD"@de,
+                                                                                             "MCAD"@en.
+<http://iais.fraunhofer.de/vocabs/rami#Machine> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:subClassOf <http://iais.fraunhofer.de/vocabs/rami#Object>;
+                                                <http://www.w3.org/2004/02/skos/core#definition> "A machine is ordered, designed, commissioned, operated, serviced, converted and recycled."@en;
+                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Machine"@en.
+<http://iais.fraunhofer.de/vocabs/rami#Object> a <http://www.w3.org/2002/07/owl#Class>;
+                                               <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#oneOf> (<http://iais.fraunhofer.de/vocabs/rami#Instance>
+                                                                                                                                       <http://iais.fraunhofer.de/vocabs/rami#Type>) ; 
+                                                                                                a <http://www.w3.org/2002/07/owl#Class>];
+                                               <http://www.w3.org/2004/02/skos/core#altLabel> "Entity"@en,
+                                                                                              "Entität"@de;
+                                               <http://www.w3.org/2004/02/skos/core#definition> "Clearly identifiable object which is managed due to its importance in the world of information"@en,
+                                                                                                "Eindeutig identifizierbarer Gegenstand, der aufgrund seiner Bedeutung in der Informationswelt verwaltet wird"@de;
+                                               <http://www.w3.org/2004/02/skos/core#note> "Objects may be known in the form of a type or of an instance. An object in the planning phase is known as a type"@en;
+                                               <http://www.w3.org/2004/02/skos/core#prefLabel> "Object"@en,
+                                                                                               "Objekt"@de.
+<http://iais.fraunhofer.de/vocabs/rami#Order> a <http://www.w3.org/2002/07/owl#Class>;
+                                              <http://www.w3.org/2004/02/skos/core#definition> "Each order for manufacturing runs through a life cycle and its specifics necessarily have an impact on the production facility during performance of the order"@en;
+                                              <http://www.w3.org/2004/02/skos/core#prefLabel> "Order"@en.
+<http://iais.fraunhofer.de/vocabs/rami#Product> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                  <http://iais.fraunhofer.de/vocabs/rami#RAMIHierarchyLevel>;
+                                                <http://www.w3.org/2004/02/skos/core#definition> "Product hierarchy level of RAMI 4.0"@en;
+                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Product"@en.
+<http://iais.fraunhofer.de/vocabs/rami#RAMIHierarchyLevel> a <http://www.w3.org/2002/07/owl#Class>;
+                                                           rdfs:seeAlso <http://www.zvei.org/en/subjects/Industry-40/Pages/The-Reference-Architectural-Model-RAMI-40-and-the-Industrie-40-Component.aspx>;
+                                                           <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#oneOf> (<http://iais.fraunhofer.de/vocabs/rami#ConnectedWorld>
+                                                                                                                                                   <http://iais.fraunhofer.de/vocabs/rami#ControlDevice>
+                                                                                                                                                   <http://iais.fraunhofer.de/vocabs/rami#Enterprise>
+                                                                                                                                                   <http://iais.fraunhofer.de/vocabs/rami#FieldDevice>
+                                                                                                                                                   <http://iais.fraunhofer.de/vocabs/rami#Product>
+                                                                                                                                                   <http://iais.fraunhofer.de/vocabs/rami#Station>
+                                                                                                                                                   <http://iais.fraunhofer.de/vocabs/rami#WorkCenter>) ; 
+                                                                                                            a <http://www.w3.org/2002/07/owl#Class>];
+                                                           <http://www.w3.org/2004/02/skos/core#definition> "It describes the functional classification of various circumstances within Industrie 4.0. For classification within a factory, this axis of the reference architecture(layers) follows the IEC 62264 Standard."@en;
+                                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "RAMI Hierarchy Level"@en.
+<http://iais.fraunhofer.de/vocabs/rami#SafetyConfiguration> a <http://www.w3.org/2002/07/owl#Class>;
+                                                            rdfs:subClassOf <http://iais.fraunhofer.de/vocabs/rami#ApplicationData>;
+                                                            <http://www.w3.org/2004/02/skos/core#definition> "Safety Configuration of the Object/Entity. It contains certificate of compliance that states that the object has fullfils the safety requirements according to a given standard"@en;
+                                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "SafetyConfiguration"@en.
+<http://iais.fraunhofer.de/vocabs/rami#SensorMeasurementData> a <http://www.w3.org/2002/07/owl#Class>;
+                                                              rdfs:comment "Data measured by a sensor"@en;
+                                                              rdfs:label "Sensor Data"@en;
+                                                              rdfs:subClassOf <http://iais.fraunhofer.de/vocabs/rami#BasicData>;
+                                                              <http://www.w3.org/2002/07/owl#equivalentClass> <http://purl.oclc.org/NET/ssnx/ssn#SensorOutput>.
+<http://iais.fraunhofer.de/vocabs/rami#Standard> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 <http://www.w3.org/2004/02/skos/core#definition> "Standards that are used to describe the actual I4.0 Entity/Object"@en;
+                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Standard"@de,
+                                                                                                 "Standard"@en.
+<http://iais.fraunhofer.de/vocabs/rami#Station> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                  <http://iais.fraunhofer.de/vocabs/rami#RAMIHierarchyLevel>;
+                                                <http://www.w3.org/2004/02/skos/core#definition> "Station hierarchy level of RAMI 4.0"@en;
+                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Station"@en.
+<http://iais.fraunhofer.de/vocabs/rami#TechnicalFunctionality> a <http://www.w3.org/2002/07/owl#Class>;
+                                                               <http://www.w3.org/2004/02/skos/core#definition> "Technical Functionality of the Administration Shell"@en;
+                                                               <http://www.w3.org/2004/02/skos/core#note> "Technical functionality takes place in the Functional Layer of the reference architecture model RAMI4.0"@en;
+                                                               <http://www.w3.org/2004/02/skos/core#prefLabel> "Fachliche Funktionalität"@de,
+                                                                                                               "Technical Functionality"@en.
+<http://iais.fraunhofer.de/vocabs/rami#TraceRecordings> a <http://www.w3.org/2002/07/owl#Class>.
+<http://iais.fraunhofer.de/vocabs/rami#Type> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://iais.fraunhofer.de/vocabs/rami#VideoRecording> a <http://www.w3.org/2002/07/owl#Class>.
+<http://iais.fraunhofer.de/vocabs/rami#VideoRecordings> a <http://www.w3.org/2002/07/owl#Class>.
+<http://iais.fraunhofer.de/vocabs/rami#WorkCenter> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                     <http://iais.fraunhofer.de/vocabs/rami#RAMIHierarchyLevel>;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "Work Center hierarchy level of RAMI 4.0"@en;
+                                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Work Center"@en.
+<http://iais.fraunhofer.de/vocabs/rami#blockUrl> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                 rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#Firmware>;
+                                                 rdfs:range xsd:anyURI;
+                                                 <http://www.w3.org/2004/02/skos/core#definition> "URL of the Firmware that belongs to the Object/Entity"@en;
+                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Block Url"@en.
+<http://iais.fraunhofer.de/vocabs/rami#brakingResistance> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                            <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                          rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#ElectricalData>;
+                                                          rdfs:range <http://www.wurvoc.org/vocabularies/om-1.8/hertz>;
+                                                          <http://www.w3.org/2004/02/skos/core#prefLabel> "braking Resistance"@en.
+<http://iais.fraunhofer.de/vocabs/rami#certificateName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                                          <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                                        rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#SafetyConfiguration>;
+                                                        rdfs:range xsd:string;
+                                                        <http://www.w3.org/2004/02/skos/core#definition> "Certificate Safety Name of the Object/Entity"@en;
+                                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Certificate Name"@en.
+<http://iais.fraunhofer.de/vocabs/rami#certificateUrl> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                                         <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                                       rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#SafetyConfiguration>;
+                                                       rdfs:range xsd:anyURI;
+                                                       <http://www.w3.org/2004/02/skos/core#definition> "Certificate Safety Url of the Object/Entity"@en;
+                                                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Certificate Url"@en.
+<http://iais.fraunhofer.de/vocabs/rami#contributes> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                    rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#BasicData>;
+                                                    rdfs:range <http://www.w3.org/ns/prov#Agent>;
+                                                    <http://www.w3.org/2004/02/skos/core#definition> "Agent(Person or Software) that contributes to the Entity/Object related data. It correspond to the Contributor concept of OMM"@en;
+                                                    <http://www.w3.org/2004/02/skos/core#prefLabel> "typeDescription"@en.
+<http://iais.fraunhofer.de/vocabs/rami#contributionDate> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                         rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#BasicData>;
+                                                         rdfs:range xsd:dateTime;
+                                                         <http://www.w3.org/2004/02/skos/core#definition> "Date when an Agent(Person or Software) contributes to the Entity/Object related data. It correspond to the Contributor concept of OMM"@en;
+                                                         <http://www.w3.org/2004/02/skos/core#prefLabel> "hasCreator"@en.
+<http://iais.fraunhofer.de/vocabs/rami#createdBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                  rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#BasicData>;
+                                                  rdfs:range <http://www.w3.org/ns/prov#Agent>;
+                                                  <http://www.w3.org/2004/02/skos/core#definition> "Agent(Person or Software) that creates to the Entity/Object related data. It correspond to the Creator concept of OMM"@en;
+                                                  <http://www.w3.org/2004/02/skos/core#prefLabel> "hasCreator"@en.
+<http://iais.fraunhofer.de/vocabs/rami#creationDate> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                     rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#BasicData>;
+                                                     rdfs:range xsd:dateTime;
+                                                     <http://www.w3.org/2004/02/skos/core#definition> "Date when an Agent(Person or Software) creates to the Entity/Object related data. It correspond to the Creator concept of OMM"@en;
+                                                     <http://www.w3.org/2004/02/skos/core#prefLabel> "hasCreator"@en.
+<http://iais.fraunhofer.de/vocabs/rami#description> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                    rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#Object>;
+                                                    rdfs:range xsd:string;
+                                                    <http://www.w3.org/2004/02/skos/core#definition> "Description of the Object/Entity"@en;
+                                                    <http://www.w3.org/2004/02/skos/core#prefLabel> "has Description"@en.
+<http://iais.fraunhofer.de/vocabs/rami#eClass> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:subClassOf <http://iais.fraunhofer.de/vocabs/rami#Standard>;
+                                               <http://www.w3.org/2004/02/skos/core#definition> "Class to represent the connection of an I4.0 Entity/Object with the eCl@ss Standard"@en;
+                                               <http://www.w3.org/2004/02/skos/core#prefLabel> "eClass"@de,
+                                                                                               "eClass"@en.
+<http://iais.fraunhofer.de/vocabs/rami#eClassClassification> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                                               <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                                             rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#eClass>;
+                                                             rdfs:range xsd:integer;
+                                                             <http://www.w3.org/2004/02/skos/core#definition> "Identification of an object according to the eCl@ss Standard hierarchy level"@en;
+                                                             <http://www.w3.org/2004/02/skos/core#prefLabel> "eClassIRDI"@en.
+<http://iais.fraunhofer.de/vocabs/rami#eClassIRDI> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                                     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                                   rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#eClass>;
+                                                   rdfs:range xsd:string;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "Unique Identification of an object according to eCl@ss Standard"@en;
+                                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "eClassIRDI"@en.
+<http://iais.fraunhofer.de/vocabs/rami#firmwareDate> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                     rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#Firmware>;
+                                                     rdfs:range xsd:date;
+                                                     <http://www.w3.org/2004/02/skos/core#definition> "Firmware date that belongs to the Object/Entity"@en;
+                                                     <http://www.w3.org/2004/02/skos/core#prefLabel> "firmware Date"@en.
+<http://iais.fraunhofer.de/vocabs/rami#hasData> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#AdminShell>;
+                                                rdfs:range <http://iais.fraunhofer.de/vocabs/rami#BasicData>;
+                                                <http://www.w3.org/2004/02/skos/core#definition> "Connects the AdminShell with the different types of Data for the Object/Entity"@en;
+                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "has Data"@en.
+<http://iais.fraunhofer.de/vocabs/rami#hasEnergyValue> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                       rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#CumulativeEnergyConsumption>;
+                                                       rdfs:range xsd:float;
+                                                       <http://www.w3.org/2004/02/skos/core#prefLabel> "hasEnergyValue"@en.
+<http://iais.fraunhofer.de/vocabs/rami#hasRAMIHierarchyLevel> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                              rdfs:range <http://iais.fraunhofer.de/vocabs/rami#RAMIHierarchyLevel>;
+                                                              <http://www.w3.org/2004/02/skos/core#definition> "Connects the concepts with the correspondent layer in the RAMI Hierarchy Levels"@en;
+                                                              <http://www.w3.org/2004/02/skos/core#prefLabel> "has RAMI Hierarchy Level".
+<http://iais.fraunhofer.de/vocabs/rami#hasSensorId> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                                      <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                                    rdfs:domain <http://purl.oclc.org/NET/ssnx/ssn#Sensor>;
+                                                    rdfs:range xsd:string;
+                                                    <http://www.w3.org/2004/02/skos/core#definition> "Unique Identification of the Sensor"@en;
+                                                    <http://www.w3.org/2004/02/skos/core#prefLabel> "hasSensorId"@en.
+<http://iais.fraunhofer.de/vocabs/rami#hasTechnicalFuncionality> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                 rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#AdminShell>;
+                                                                 rdfs:range <http://iais.fraunhofer.de/vocabs/rami#TechnicalFunctionality>;
+                                                                 <http://www.w3.org/2004/02/skos/core#definition> "The Administrative Shell has Technical Funcionalities"@en;
+                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "has Technical Funcionality"@en.
+<http://iais.fraunhofer.de/vocabs/rami#identification> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                                         <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                                       rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#BasicData>;
+                                                       rdfs:range xsd:string;
+                                                       rdfs:seeAlso <https://www.w3.org/2005/Incubator/omm/XGR-omm-20111026/>;
+                                                       <http://www.w3.org/2004/02/skos/core#definition> "Identification for the Entity/Object related data. It correspond to the ID concept of OMM"@en;
+                                                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Identification"@en.
+<http://iais.fraunhofer.de/vocabs/rami#inputVoltage> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                       <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                     rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#ElectricalData>;
+                                                     rdfs:range <http://www.wurvoc.org/vocabularies/om-1.8/volt>;
+                                                     <http://www.w3.org/2004/02/skos/core#example> "230 V AC / 50-60 Hz";
+                                                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Input Voltage"@en.
+<http://iais.fraunhofer.de/vocabs/rami#inventoryNumber> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                                          <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                                        rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#BasicData>;
+                                                        rdfs:range xsd:string;
+                                                        <http://www.w3.org/2004/02/skos/core#definition> "Inventory number of the Entity/Object according to the identification nomenclature"@en;
+                                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Inventory Number"@en.
+<http://iais.fraunhofer.de/vocabs/rami#isDescribedWith> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                          <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                        rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#AdminShell>;
+                                                        rdfs:range <http://iais.fraunhofer.de/vocabs/rami#Standard>;
+                                                        <http://www.w3.org/2004/02/skos/core#definition> "Points to the Standard used to describe a given object"@en;
+                                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Is Described With"@en.
+<http://iais.fraunhofer.de/vocabs/rami#isPartOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                   <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+                                                 rdfs:comment "The Object can be part of of other Objects"@en;
+                                                 rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#Object>;
+                                                 rdfs:label "isPartOf"@en;
+                                                 rdfs:range <http://iais.fraunhofer.de/vocabs/rami#Object>.
+<http://iais.fraunhofer.de/vocabs/rami#livePicture> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                    rdfs:comment "Points to an Image for the Object/Entity"@en;
+                                                    rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#Object>;
+                                                    rdfs:label "LivePicture"@en,
+                                                               "Livebilder"@de;
+                                                    rdfs:range <http://xmlns.com/foaf/spec/Image>.
+<http://iais.fraunhofer.de/vocabs/rami#logs> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                             rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#TraceRecordings>;
+                                             rdfs:range xsd:string;
+                                             <http://www.w3.org/2004/02/skos/core#prefLabel> "logs"@en.
+<http://iais.fraunhofer.de/vocabs/rami#manual> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                               rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#ApplicationData>;
+                                               rdfs:range xsd:anyURI;
+                                               <http://www.w3.org/2004/02/skos/core#definition> "Points to the Manual document of a given Object/Entity"@en;
+                                               <http://www.w3.org/2004/02/skos/core#prefLabel> "Manual"@en.
+<http://iais.fraunhofer.de/vocabs/rami#name> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                               <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                             rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#Object>;
+                                             rdfs:range xsd:string;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "Name of the Object/Entity"@en;
+                                             <http://www.w3.org/2004/02/skos/core#prefLabel> "has Name"@en.
+<http://iais.fraunhofer.de/vocabs/rami#objectId> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                                   <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                                 rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#Object>;
+                                                 rdfs:range xsd:string;
+                                                 <http://www.w3.org/2004/02/skos/core#definition> "Unique ID for the Object/Entity"@en;
+                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "has Object Id"@en.
+<http://iais.fraunhofer.de/vocabs/rami#outputFrequency> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                          <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                        rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#ElectricalData>;
+                                                        rdfs:range <http://www.wurvoc.org/vocabularies/om-1.8/hertz>;
+                                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Output Frequency"@en.
+<http://iais.fraunhofer.de/vocabs/rami#phasesNumber> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                     rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#ElectricalData>;
+                                                     rdfs:range xsd:string;
+                                                     <http://www.w3.org/2004/02/skos/core#example> "Single phase, three phase";
+                                                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Phases Number"@en.
+<http://iais.fraunhofer.de/vocabs/rami#publishedURL> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                       <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                     rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#Standard>;
+                                                     rdfs:range xsd:AnyURI;
+                                                     <http://www.w3.org/2004/02/skos/core#definition> "Published URL of the Standard"@en;
+                                                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Published URL"@en.
+<http://iais.fraunhofer.de/vocabs/rami#releaseDate> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                    rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#Standard>;
+                                                    rdfs:range xsd:date;
+                                                    <http://www.w3.org/2004/02/skos/core#definition> "Release Date of the Standard"@en;
+                                                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Release Date"@en.
+<http://iais.fraunhofer.de/vocabs/rami#safetyName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                   rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#SafetyConfiguration>;
+                                                   rdfs:range xsd:string;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "Name of the Safety Configuration of the Object/Entity"@en;
+                                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Safety Name"@en.
+<http://iais.fraunhofer.de/vocabs/rami#standardName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                     rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#EngineeringData>;
+                                                     rdfs:range xsd:string;
+                                                     <http://www.w3.org/2004/02/skos/core#definition> "Name of the Standard that specifies the Engineering Data"@en;
+                                                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Standard Name"@en.
+<http://iais.fraunhofer.de/vocabs/rami#standardURL> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                    rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#EngineeringData>;
+                                                    rdfs:range xsd:anyURI;
+                                                    <http://www.w3.org/2004/02/skos/core#definition> "Points to the URL of the Standard that specifies the Engineering Data"@en;
+                                                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Standard URL"@en.
+<http://iais.fraunhofer.de/vocabs/rami#standardVersion> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                        rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#EngineeringData>;
+                                                        rdfs:range xsd:string;
+                                                        <http://www.w3.org/2004/02/skos/core#definition> "Version of the Standard that specifies the Engineering Data"@en;
+                                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Standard Version"@en.
+<http://iais.fraunhofer.de/vocabs/rami#stdName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#Standard>;
+                                                rdfs:range xsd:string;
+                                                <http://www.w3.org/2004/02/skos/core#definition> "Name of the Standard"@en;
+                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Std Name"@en.
+<http://iais.fraunhofer.de/vocabs/rami#typeDescription> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                        rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#BasicData>;
+                                                        rdfs:range xsd:string;
+                                                        rdfs:seeAlso <https://www.w3.org/2005/Incubator/omm/XGR-omm-20111026/>;
+                                                        <http://www.w3.org/2004/02/skos/core#definition> "Describes the Entity/Object related data. It correspond to the Description concept of OMM"@en;
+                                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "typeDescription"@en.
+<http://iais.fraunhofer.de/vocabs/rami#version> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#Firmware>,
+                                                            <http://iais.fraunhofer.de/vocabs/rami#Standard>;
+                                                rdfs:range xsd:string;
+                                                <http://www.w3.org/2004/02/skos/core#definition> "Current version of the Standard"@en,
+                                                                                                 "Version of the Firmware that belongs to the Object/Entity"@en;
+                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Version"@en,
+                                                                                                "has Version"@en.
+<http://iais.fraunhofer.de/vocabs/rami#videoRecordingUrl> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                                            <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                                          rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#VideoRecording>;
+                                                          rdfs:range xsd:anyURI;
+                                                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Video Recording Url"@en.
+<http://iais.fraunhofer.de/vocabs/rami#videoUrl> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                 rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#VideoRecordings>;
+                                                 rdfs:range xsd:anyURI;
+                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "videoUrl"@en.
+<http://iais.fraunhofer.de/vocabs/rami#wraps> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                              rdfs:domain <http://iais.fraunhofer.de/vocabs/rami#AdminShell>;
+                                              rdfs:range <http://iais.fraunhofer.de/vocabs/rami#Object>;
+                                              <http://www.w3.org/2004/02/skos/core#definition> "Connect the Object with the Admin Shell"@en;
+                                              <http://www.w3.org/2004/02/skos/core#prefLabel> "wraps"@en.
+<http://purl.oclc.org/NET/ssnx/ssn#Sensor> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.oclc.org/NET/ssnx/ssn#SensorOutput> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/dc/elements/1.1/source> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+xsd:AnyURI a <http://www.w3.org/2002/07/owl#Class>.
+xsd:date a rdfs:Datatype.
+<http://www.w3.org/2004/02/skos/core#altLabel> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#definition> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#example> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#hiddenLabel> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#note> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#prefLabel> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/prov#Agent> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.wurvoc.org/vocabularies/om-1.8/hertz> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.wurvoc.org/vocabularies/om-1.8/volt> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/spec/Image> a <http://www.w3.org/2002/07/owl#Class>.

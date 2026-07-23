@@ -1,0 +1,288 @@
+@base <http://eulersharp.sourceforge.net/2003/03swap/document>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dce: <http://purl.org/dc/elements/1.1/>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix ir: <http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#>.
+@prefix irw: <http://www.ontologydesignpatterns.org/ont/web/irw.owl#>.
+@prefix agent: <http://eulersharp.sourceforge.net/2003/03swap/agent#>.
+@prefix event: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
+@prefix physical: <http://eulersharp.sourceforge.net/2003/03swap/physicalResource#>.
+@prefix fos: <http://eulersharp.sourceforge.net/2003/03swap/foster#>.
+@prefix quant: <http://eulersharp.sourceforge.net/2003/03swap/quantities#>.
+@prefix human: <http://eulersharp.sourceforge.net/2003/03swap/human#>.
+@prefix doc: <http://eulersharp.sourceforge.net/2003/03swap/document#>.
+@prefix swapdocument: <http://eulersharp.sourceforge.net/2003/03swap/document#>.
+
+<http://eulersharp.sourceforge.net/2003/03swap/document> dce:contributor "Marc Twagirumukiza, MD, PhD, Agfa Healthcare/Belgium ; Until 2010: Pieterjan De Potter, Ghent University - IBBT/ELIS - Multimedia Lab/Belgium"@en;
+                                                         dce:creator "Hans Cools, MD, Agfa Healthcare/Belgium"@en;
+                                                         dce:description "Formal general description of document."@en;
+                                                         dce:format "OWL-Full"@en;
+                                                         dce:publisher "Agfa Healthcare/Belgium"@en;
+                                                         dce:title "Document"@en;
+                                                         a owl:Ontology;
+                                                         rdfs:comment "Copyright (c) 2009 Agfa-Gevaert Group and Ghent University - IBBT/ELIS - Multimedia Lab. All Rights Reserved. THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF Agfa-Gevaert Group and Ghent University - IBBT/ELIS - Multimedia Lab The copyright notice above does not evidence any actual or intended publication of such source code."@en;
+                                                         rdfs:seeAlso <http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl>,
+                                                                      <http://www.ontologydesignpatterns.org/ont/web/irw.owl>.
+doc:Author a rdfs:Class;
+           rdfs:isDefinedBy doc:;
+           rdfs:label "author"@en;
+           rdfs:subClassOf human:Role,
+                           [a owl:Restriction ; 
+                            owl:onProperty agent:rolePlayedIn ; 
+                            owl:someValuesFrom doc:Authoring];
+           skos:definition "Role of having responsibility for a document."@en.
+doc:Authoring a rdfs:Class;
+              rdfs:isDefinedBy doc:;
+              rdfs:label "authoring"@en;
+              rdfs:subClassOf event:Action,
+                              [a owl:Restriction ; 
+                               owl:onProperty event:hasOutputObject ; 
+                               owl:someValuesFrom doc:Content];
+              skos:definition "Taking responsibility for a content."@en;
+              skos:note "Different from creating a content"@en.
+doc:Content a rdfs:Class;
+            rdfs:isDefinedBy doc:;
+            rdfs:label "content"@en;
+            rdfs:subClassOf irw:InformationResource;
+            skos:definition "See definition of http://www.ontologydesignpatterns.org/ont/web/irw.owl#InformationResource."@en.
+doc:DataDefinitionOntology a rdfs:Class;
+                           rdfs:comment "E.g. data base table column header as property, data base table as domain class, data base field as range class, data base field value as instance, row as instance graph."@en;
+                           rdfs:isDefinedBy doc:;
+                           rdfs:label "data definition ontology"@en;
+                           rdfs:subClassOf owl:Ontology,
+                                           doc:Content;
+                           skos:definition "Direct formal representation of a data source structure."@en.
+doc:Deprecated a rdfs:Class,
+                 event:State;
+               rdfs:isDefinedBy doc:;
+               rdfs:label "deprecated"@en;
+               skos:definition "Marked as obsolete to warn against its use so that it may be phased out (www.thefreedictionary.com)."@en.
+doc:Deprecating a rdfs:Class;
+                rdfs:isDefinedBy doc:;
+                rdfs:label "deprecating"@en;
+                rdfs:subClassOf [a owl:Restriction ; 
+                                 owl:onProperty event:hasObject ; 
+                                 owl:someValuesFrom doc:Content],
+                                [a owl:Restriction ; 
+                                 owl:onProperty event:hasOutput ; 
+                                 owl:someValuesFrom doc:Deprecation];
+                skos:definition "Marking a content as obsolete to warn against its use so that it may be phased out (www.thefreedictionary.com)."@en.
+doc:Deprecation a rdfs:Class;
+                rdfs:isDefinedBy doc:;
+                rdfs:label "deprecation"@en;
+                rdfs:subClassOf [a owl:Restriction ; 
+                                 owl:onProperty event:outputOf ; 
+                                 owl:someValuesFrom doc:Deprecating];
+                skos:definition "A content made obsolete to warn against its use so it may be phased out (www.thefreedictionary.com)."@en.
+doc:DigitalContent a rdfs:Class;
+                   rdfs:isDefinedBy doc:;
+                   rdfs:label "digital content"@en;
+                   rdfs:subClassOf doc:Content;
+                   skos:definition "Content in electronic form as used by a digital computer."@en.
+doc:Document a rdfs:Class;
+             rdfs:isDefinedBy doc:;
+             rdfs:label "document"@en;
+             rdfs:subClassOf ir:InformationRealization;
+             skos:definition "See definition of <http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#InformationRealization."@en.
+doc:Image a rdfs:Class;
+          rdfs:isDefinedBy doc:;
+          rdfs:label "image"@en;
+          rdfs:subClassOf doc:Content;
+          skos:definition "Content as representation of a physical thing."@en.
+doc:Letter a rdfs:Class;
+           rdfs:isDefinedBy doc:;
+           rdfs:label "letter"@en;
+           rdfs:subClassOf doc:Report;
+           skos:definition "Directed report."@en.
+doc:Parent a rdfs:Class;
+           rdfs:isDefinedBy doc:;
+           rdfs:label "parent document"@en;
+           rdfs:subClassOf doc:Content;
+           skos:definition "First grade progenitor of a content."@en.
+doc:Record a rdfs:Class;
+           rdfs:isDefinedBy doc:;
+           rdfs:subClassOf doc:Content;
+           skos:definition "Content with focus on information administration."@en.
+doc:Report a rdfs:Class;
+           rdfs:isDefinedBy doc:;
+           rdfs:label "report"@en;
+           rdfs:subClassOf doc:Content;
+           skos:definition "Content with focus on information communication."@en.
+doc:Summary a rdfs:Class;
+            rdfs:isDefinedBy doc:;
+            rdfs:label "summary report"@en;
+            rdfs:subClassOf doc:Report;
+            skos:definition "Report containing the essentials of something."@en.
+doc:about a owl:ObjectProperty;
+          rdfs:domain doc:Content;
+          rdfs:isDefinedBy doc:;
+          rdfs:range rdfs:Resource;
+          rdfs:subPropertyOf event:hasObject;
+          skos:definition "Specifying something shown as a visual representation."@en.
+doc:addedTo a owl:ObjectProperty;
+            rdfs:domain doc:Content;
+            rdfs:isDefinedBy doc:;
+            rdfs:range doc:Content;
+            skos:definition "Specifying a content to which another is added."@en.
+doc:authenticatedBy a owl:ObjectProperty,
+                      owl:FunctionalProperty;
+                    rdfs:domain doc:Content;
+                    rdfs:isDefinedBy doc:;
+                    rdfs:range [a owl:Restriction ; 
+                                owl:onProperty agent:playsRole ; 
+                                owl:someValuesFrom agent:Authenticator].
+doc:authoredBy a owl:ObjectProperty;
+               rdfs:domain doc:Content;
+               rdfs:isDefinedBy doc:;
+               rdfs:range [a owl:Restriction ; 
+                           owl:onProperty agent:playsRole ; 
+                           owl:someValuesFrom doc:Author].
+doc:contains a owl:ObjectProperty;
+             rdfs:domain doc:Document;
+             rdfs:isDefinedBy doc:;
+             rdfs:range doc:Content;
+             rdfs:subPropertyOf ir:realizes;
+             skos:definition "Specifying content of a document."@en.
+doc:deprecatedBy a owl:ObjectProperty;
+                 rdfs:domain [rdfs:subClassOf doc:Content ; 
+                              rdfs:subClassOf [a owl:Restriction ; 
+                                               owl:onProperty event:hasState ; 
+                                               owl:someValuesFrom doc:Deprecated]];
+                 rdfs:isDefinedBy doc:;
+                 rdfs:range [a owl:Restriction ; 
+                             owl:onProperty agent:playsRole ; 
+                             owl:someValuesFrom agent:Deprecator];
+                 owl:inverseOf doc:deprecates;
+                 skos:definition "Specifying a deprecator of a deprecated content."@en.
+doc:deprecatedIn a owl:ObjectProperty;
+                 rdfs:domain [rdfs:subClassOf doc:Content ; 
+                              rdfs:subClassOf [a owl:Restriction ; 
+                                               owl:onProperty event:hasState ; 
+                                               owl:someValuesFrom doc:Deprecated]];
+                 rdfs:isDefinedBy doc:;
+                 rdfs:range doc:Deprecating;
+                 rdfs:subPropertyOf event:outputObjectOf;
+                 owl:inverseOf doc:whereinDeprecated;
+                 skos:definition "Specifying a deprecating wherein a content is deprecated."@en.
+doc:deprecates a owl:ObjectProperty;
+               rdfs:domain [a owl:Restriction ; 
+                            owl:onProperty agent:playsRole ; 
+                            owl:someValuesFrom agent:Deprecator];
+               rdfs:isDefinedBy doc:;
+               rdfs:range [rdfs:subClassOf doc:Content ; 
+                           rdfs:subClassOf [a owl:Restriction ; 
+                                            owl:onProperty event:hasState ; 
+                                            owl:someValuesFrom doc:Deprecated]];
+               skos:definition "Specifying a content a deprecator has deprecated."@en.
+doc:deprecationOf a owl:ObjectProperty;
+                  rdfs:domain doc:Deprecation;
+                  rdfs:isDefinedBy doc:;
+                  rdfs:range [rdfs:subClassOf doc:Content ; 
+                              rdfs:subClassOf [a owl:Restriction ; 
+                                               owl:onProperty event:hasState ; 
+                                               owl:someValuesFrom doc:Deprecated]];
+                  rdfs:subPropertyOf event:hasObject;
+                  skos:definition "Specifying a deprecation of a content."@en.
+doc:hasDeprecationDateTime a owl:DatatypeProperty,
+                             owl:FunctionalProperty;
+                           rdfs:domain doc:Deprecation;
+                           rdfs:isDefinedBy doc:;
+                           rdfs:range xsd:dateTime;
+                           skos:definition "Specifying a point in time of a deprecation of a content."@en.
+doc:hasDeprecator a owl:ObjectProperty;
+                  rdfs:domain doc:Deprecating;
+                  rdfs:isDefinedBy doc:;
+                  rdfs:range [a owl:Restriction ; 
+                              owl:onProperty agent:playsRole ; 
+                              owl:someValuesFrom agent:Deprecator];
+                  skos:definition "Specifying a deprecator acting in deprecating."@en.
+doc:hasDigitalSize a owl:ObjectProperty;
+                   rdfs:domain doc:DigitalContent;
+                   rdfs:isDefinedBy doc:;
+                   rdfs:range quant:DigitalSize;
+                   skos:definition "Specifying a digital size of a digital content."@en.
+doc:hasHash a rdf:Property;
+            rdfs:domain doc:DigitalContent;
+            rdfs:isDefinedBy doc:;
+            rdfs:range rdfs:Literal;
+            skos:definition "Specifying a hash of a digital content."@en.
+doc:hasLanguage a owl:ObjectProperty;
+                rdfs:domain doc:Content;
+                rdfs:isDefinedBy doc:;
+                rdfs:range fos:Language;
+                skos:definition "Specifying a language wherein a content is represented."@en.
+doc:hasMimeType a rdf:Property;
+                rdfs:domain doc:DigitalContent;
+                rdfs:isDefinedBy doc:;
+                rdfs:range rdfs:Literal;
+                skos:definition "Specifying a standard Multipurpose Internet Mail Extensions type of a digital content."@en.
+doc:hasParent a owl:ObjectProperty;
+              rdfs:domain doc:Content;
+              rdfs:isDefinedBy doc:;
+              rdfs:range doc:Content;
+              skos:definition "Specifying a parent content of a content."@en.
+doc:hasReport a owl:ObjectProperty;
+              rdfs:domain rdfs:Resource;
+              rdfs:isDefinedBy doc:;
+              rdfs:range doc:Report;
+              rdfs:subPropertyOf doc:about;
+              owl:inverseOf doc:reportOf.
+doc:hasSha1Hash a rdf:Property;
+                rdfs:domain doc:DigitalContent;
+                rdfs:isDefinedBy doc:;
+                rdfs:range rdfs:Literal;
+                rdfs:subPropertyOf doc:hasHash;
+                skos:definition "Specifying a RFCC 3174 US Secure Hash Algorithm 1 (SHA1) of a digital content"@en.
+doc:hasSummary a owl:ObjectProperty;
+               rdfs:domain rdfs:Resource;
+               rdfs:isDefinedBy doc:;
+               rdfs:range doc:Report;
+               rdfs:subPropertyOf doc:about;
+               owl:inverseOf doc:summaryOf.
+doc:hasTitle a rdf:Property;
+             rdfs:domain doc:Content;
+             rdfs:isDefinedBy doc:;
+             rdfs:range rdfs:Literal;
+             rdfs:subPropertyOf dct:title;
+             skos:definition "Specifying a title of a content."@en.
+doc:imageOf a owl:ObjectProperty;
+            rdfs:domain doc:Image;
+            rdfs:isDefinedBy doc:;
+            rdfs:range physical:Resource;
+            rdfs:subPropertyOf doc:about.
+doc:replaces a owl:ObjectProperty;
+             rdfs:domain doc:Content;
+             rdfs:isDefinedBy doc:;
+             rdfs:range doc:Content;
+             skos:definition "Specifying a content replaced by another."@en.
+doc:reportOf a owl:ObjectProperty;
+             rdfs:domain doc:Report;
+             rdfs:isDefinedBy doc:;
+             rdfs:range rdfs:Resource;
+             rdfs:subPropertyOf doc:about;
+             owl:inverseOf doc:hasReport.
+doc:summaryOf a owl:ObjectProperty;
+              rdfs:domain doc:Summary;
+              rdfs:isDefinedBy doc:;
+              rdfs:range rdfs:Resource;
+              rdfs:subPropertyOf doc:about;
+              owl:inverseOf doc:hasSummary.
+doc:transformedTo a owl:ObjectProperty;
+                  rdfs:domain doc:Content;
+                  rdfs:isDefinedBy doc:;
+                  rdfs:range doc:Content;
+                  skos:definition "Specifying a content transformed to another content."@en.
+doc:whereinDeprecated a owl:ObjectProperty;
+                      rdfs:domain doc:Deprecating;
+                      rdfs:isDefinedBy doc:;
+                      rdfs:range [rdfs:subClassOf doc:Content ; 
+                                  rdfs:subClassOf [a owl:Restriction ; 
+                                                   owl:onProperty event:hasState ; 
+                                                   owl:someValuesFrom doc:Deprecated]];
+                      rdfs:subPropertyOf event:hasOutputObject;
+                      skos:definition "Specifying a content deprecated in a deprecating."@en.

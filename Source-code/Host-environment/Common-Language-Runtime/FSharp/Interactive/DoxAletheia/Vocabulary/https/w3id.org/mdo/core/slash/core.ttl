@@ -1,140 +1,132 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix qudt: <http://qudt.org/schema/qudt/>.
-@prefix unit: <http://qudt.org/vocab/unit/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix w3id: <https://w3id.org/>.
 @prefix core: <https://w3id.org/mdo/core/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-<http://emmo.info/domains/emmo-material.owl#EMMO_4207e895_8b83_4318_996a_72cfb32acd94> a owl:Class;
+<http://emmo.info/domains/emmo-material.owl#EMMO_4207e895_8b83_4318_996a_72cfb32acd94> a <http://www.w3.org/2002/07/owl#Class>;
                                                                                        rdfs:label "Material".
-dcterms:contributor a owl:AnnotationProperty.
-dcterms:created a owl:AnnotationProperty.
-dcterms:creator a owl:AnnotationProperty.
-dcterms:license a owl:AnnotationProperty.
-dcterms:title a owl:AnnotationProperty.
-vann:preferredNamespacePrefix a owl:AnnotationProperty.
-vann:preferredNamespaceUri a owl:AnnotationProperty.
-qudt:Quantity a owl:Class.
-qudt:QuantityKind a owl:Class.
-qudt:QuantityValue a owl:Class.
-qudt:hasQuantityKind a owl:ObjectProperty;
-                     rdfs:range qudt:QuantityKind.
-qudt:numericalValue a owl:DatatypeProperty;
-                    rdfs:range xsd:double.
-qudt:quantityValue a owl:ObjectProperty;
-                   rdfs:range qudt:QuantityValue.
-qudt:unit a owl:ObjectProperty;
-          rdfs:range unit:Unit.
-unit:EV a unit:Unit,
-          owl:NamedIndividual.
-unit:GM-PER-CentiM3 a unit:Unit,
-                      owl:NamedIndividual.
-unit:Unit a owl:Class.
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://qudt.org/schema/qudt/Quantity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://qudt.org/schema/qudt/QuantityKind> a <http://www.w3.org/2002/07/owl#Class>.
+<http://qudt.org/schema/qudt/QuantityValue> a <http://www.w3.org/2002/07/owl#Class>.
+<http://qudt.org/schema/qudt/hasQuantityKind> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                              rdfs:range <http://qudt.org/schema/qudt/QuantityKind>.
+<http://qudt.org/schema/qudt/numericalValue> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                             rdfs:range xsd:double.
+<http://qudt.org/schema/qudt/quantityValue> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:range <http://qudt.org/schema/qudt/QuantityValue>.
+<http://qudt.org/schema/qudt/unit> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:range <http://qudt.org/vocab/unit/Unit>.
+<http://qudt.org/vocab/unit/EV> a <http://qudt.org/vocab/unit/Unit>,
+                                  <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://qudt.org/vocab/unit/GM-PER-CentiM3> a <http://qudt.org/vocab/unit/Unit>,
+                                              <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://qudt.org/vocab/unit/Unit> a <http://www.w3.org/2002/07/owl#Class>.
 xsd:date a rdfs:Datatype.
-core: dcterms:contributor "Rickard Armiento",
-                          "Patrick Lambrix";
-      dcterms:created "2019-11-07";
-      dcterms:creator "Huanyu Li";
-      dcterms:license "https://github.com/huanyu-li/Materials-Design-Ontology/blob/master/LICENSE";
-      dcterms:title "Materials Design Ontology - Core Module"@en;
-      vann:preferredNamespacePrefix "core";
-      vann:preferredNamespaceUri "https://w3id.org/mdo/core/1.0/";
-      a owl:Ontology;
+core: <http://purl.org/dc/terms/contributor> "Rickard Armiento",
+                                             "Patrick Lambrix";
+      <http://purl.org/dc/terms/created> "2019-11-07";
+      <http://purl.org/dc/terms/creator> "Huanyu Li";
+      <http://purl.org/dc/terms/license> "https://github.com/huanyu-li/Materials-Design-Ontology/blob/master/LICENSE";
+      <http://purl.org/dc/terms/title> "Materials Design Ontology - Core Module"@en;
+      <http://purl.org/vocab/vann/preferredNamespacePrefix> "core";
+      <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/mdo/core/1.0/";
+      a <http://www.w3.org/2002/07/owl#Ontology>;
       rdfs:comment "This is the core module in Materials Design Ontology."@en;
       rdfs:seeAlso "https://github.com/huanyu-li/Materials-Design-Ontology";
-      owl:versionIRI <https://w3id.org/mdo/core/1.0/>;
-      owl:versionInfo "1.0".
-core:CalculatedProperty a owl:Class;
+      <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/mdo/core/1.0/>;
+      <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+core:CalculatedProperty a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:comment "A calculated property is a proprty that is a result from a calculation."@en;
                         rdfs:label "Calculated Property"@en;
                         rdfs:subClassOf core:Property;
-                        owl:disjointWith core:PhysicalProperty.
-core:Calculation a owl:Class;
+                        <http://www.w3.org/2002/07/owl#disjointWith> core:PhysicalProperty.
+core:Calculation a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "A calculation is the use of a specific computational method to process structures and/or properties into output structures and/or calculated properties."@en;
                  rdfs:label "Calculation"@en;
-                 rdfs:subClassOf [owl:intersectionOf ([owl:someValuesFrom core:Structure ; 
-                                                      owl:onProperty core:hasInputStructure ; 
-                                                      a owl:Restriction]
-                                                      [owl:allValuesFrom core:Structure ; 
-                                                      owl:onProperty core:hasInputStructure ; 
-                                                      a owl:Restriction]
-                                                      [owl:allValuesFrom core:Structure ; 
-                                                      owl:onProperty core:hasOutputStructure ; 
-                                                      a owl:Restriction]) ; 
-                                  a owl:Class],
-                                 [owl:intersectionOf ([owl:someValuesFrom core:Property ; 
-                                                      owl:onProperty core:hasInputProperty ; 
-                                                      a owl:Restriction]
-                                                      [owl:allValuesFrom core:Property ; 
-                                                      owl:onProperty core:hasInputProperty ; 
-                                                      a owl:Restriction]
-                                                      [owl:allValuesFrom core:CalculatedProperty ; 
-                                                      owl:onProperty core:hasOutputCalculatedProperty ; 
-                                                      a owl:Restriction]) ; 
-                                  a owl:Class].
-core:ID a owl:DatatypeProperty;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> core:Structure ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onProperty> core:hasInputStructure ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                  [<http://www.w3.org/2002/07/owl#allValuesFrom> core:Structure ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onProperty> core:hasInputStructure ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                  [<http://www.w3.org/2002/07/owl#allValuesFrom> core:Structure ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onProperty> core:hasOutputStructure ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                  a <http://www.w3.org/2002/07/owl#Class>],
+                                 [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> core:Property ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onProperty> core:hasInputProperty ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                  [<http://www.w3.org/2002/07/owl#allValuesFrom> core:Property ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onProperty> core:hasInputProperty ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                  [<http://www.w3.org/2002/07/owl#allValuesFrom> core:CalculatedProperty ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onProperty> core:hasOutputCalculatedProperty ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                  a <http://www.w3.org/2002/07/owl#Class>].
+core:ID a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
         rdfs:comment "ID represents that a calculation has the unique ID in a string."@en;
         rdfs:domain core:Calculation;
         rdfs:label "ID"@en;
         rdfs:range xsd:string.
-core:PhysicalProperty a owl:Class;
+core:PhysicalProperty a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "A physical property is an objective property over a physical system. (ie, a property pertains to the physical reality)"@en;
                       rdfs:label "Physical Property"@en;
                       rdfs:subClassOf core:Property.
-core:Property a owl:Class;
+core:Property a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "A property in materials design is data pertaining to at least one material or materials system."@en;
               rdfs:label "Property"@en;
-              rdfs:subClassOf qudt:Quantity.
-core:PropertyName a owl:DatatypeProperty;
+              rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity>.
+core:PropertyName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment "PropertyName represents that a property has the name in a string."@en;
                   rdfs:domain core:Property;
                   rdfs:label "property name"@en;
                   rdfs:range xsd:string.
-core:Structure a owl:Class;
+core:Structure a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "A structure is the information of the sites and their occupancies in a material or materials system."@en;
                rdfs:label "Structure"@en;
-               rdfs:subClassOf [owl:intersectionOf ([owl:someValuesFrom <http://emmo.info/domains/emmo-material.owl#EMMO_4207e895_8b83_4318_996a_72cfb32acd94> ; 
-                                                    owl:onProperty core:relatesToMaterial ; 
-                                                    a owl:Restriction]
-                                                    [owl:allValuesFrom <http://emmo.info/domains/emmo-material.owl#EMMO_4207e895_8b83_4318_996a_72cfb32acd94> ; 
-                                                    owl:onProperty core:relatesToMaterial ; 
-                                                    a owl:Restriction]) ; 
-                                a owl:Class].
-core:hasInputProperty a owl:ObjectProperty;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> <http://emmo.info/domains/emmo-material.owl#EMMO_4207e895_8b83_4318_996a_72cfb32acd94> ; 
+                                                                                <http://www.w3.org/2002/07/owl#onProperty> core:relatesToMaterial ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                [<http://www.w3.org/2002/07/owl#allValuesFrom> <http://emmo.info/domains/emmo-material.owl#EMMO_4207e895_8b83_4318_996a_72cfb32acd94> ; 
+                                                                                <http://www.w3.org/2002/07/owl#onProperty> core:relatesToMaterial ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>].
+core:hasInputProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "hasInputProperty represents the relationship between a calculation and the properties it takes as input."@en;
                       rdfs:domain core:Calculation;
                       rdfs:label "has input property"@en;
                       rdfs:range core:Property.
-core:hasInputStructure a owl:ObjectProperty;
+core:hasInputStructure a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "hasInputStructure represents the relationship between a calculation and the structures it takes as input."@en;
                        rdfs:domain core:Calculation;
                        rdfs:label "has input structure"@en;
                        rdfs:range core:Structure.
-core:hasOutputCalculatedProperty a owl:ObjectProperty;
+core:hasOutputCalculatedProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                  rdfs:comment "hasOutputCalculatedProperty represents the relationship between a calculation and the calculated properties it outputs."@en;
                                  rdfs:domain core:Calculation;
                                  rdfs:label "has output calculated property"@en;
                                  rdfs:range core:CalculatedProperty.
-core:hasOutputStructure a owl:ObjectProperty;
+core:hasOutputStructure a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "hasOutputStructure represents the relationship between a calculation and the structures it outputs."@en;
                         rdfs:domain core:Calculation;
                         rdfs:label "has output structure"@en;
                         rdfs:range core:Structure.
-core:hasQuantityValue a owl:ObjectProperty;
+core:hasQuantityValue a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "hasQuantityValue represents the relationship between a property and quantity value it takes."@en;
                       rdfs:label "has quantity value"@en.
-core:relatesToMaterial a owl:ObjectProperty;
+core:relatesToMaterial a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "relatesToMaterial represents the relationship between a structure and the materials it comes from."@en;
                        rdfs:domain core:Structure;
                        rdfs:label "relates to material"@en;
                        rdfs:range <http://emmo.info/domains/emmo-material.owl#EMMO_4207e895_8b83_4318_996a_72cfb32acd94>.
-core:relatesToStructure a owl:ObjectProperty;
+core:relatesToStructure a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "relatesToStructure represents the relationship between a property and the structures it comes from."@en;
                         rdfs:domain core:Property;
                         rdfs:label "relates to structure"@en;

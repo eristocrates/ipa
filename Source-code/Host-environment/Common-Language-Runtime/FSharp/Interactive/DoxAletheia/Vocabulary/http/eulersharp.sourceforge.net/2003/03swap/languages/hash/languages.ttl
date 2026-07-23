@@ -11,10 +11,6 @@
 @prefix fos: <http://eulersharp.sourceforge.net/2003/03swap/foster#>.
 @prefix language: <http://eulersharp.sourceforge.net/2003/03swap/languages#>.
 @prefix languages: <http://eulersharp.sourceforge.net/2003/03swap/languages#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix swap_foster: <http://eulersharp.sourceforge.net/2003/03swap/foster#>.
 
 language: dce:contributor "Hans Cools, MD, Agfa Healthcare/Belgium"@en;
           dce:creator "Pieterjan De Potter and Pedro Debevere, Ghent University - IBBT/ELIS - Multimedia Lab/Belgium"@en;

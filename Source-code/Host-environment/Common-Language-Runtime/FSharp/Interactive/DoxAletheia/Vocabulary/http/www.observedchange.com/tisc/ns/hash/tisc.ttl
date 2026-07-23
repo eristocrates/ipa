@@ -1,0 +1,306 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix tisc: <http://www.observedchange.com/tisc/ns#>.
+
+<http://ifgi.uni-muenster.de/~j_jone02/> a <http://xmlns.com/foaf/0.1/Person>;
+                                         <http://xmlns.com/foaf/0.1/homepage> <http://ifgi.uni-muenster.de/~j_jone02/>;
+                                         <http://xmlns.com/foaf/0.1/name> "Jim Jones"@en.
+<http://kauppinen.net/tomi#me> a <http://xmlns.com/foaf/0.1/Person>;
+                               <http://xmlns.com/foaf/0.1/homepage> <http://kauppinen.net/tomi>;
+                               <http://xmlns.com/foaf/0.1/name> "Tomi Kauppinen"@en.
+<http://linkedscience.org/lsc/ns#begin> <http://dbpedia.org/ontology/related> <http://dbpedia.org/resource/Time>;
+                                        a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:comment "This predicate can be used to express a begin of a time period."@en;
+                                        rdfs:domain <http://linkedscience.org/lsc/ns#Research>;
+                                        rdfs:isDefinedBy <http://linkedscience.org/lsc/ns#begin>;
+                                        rdfs:label "begin"@en;
+                                        rdfs:range xsd:dateTime.
+<http://linkedscience.org/lsc/ns#end> <http://dbpedia.org/ontology/related> <http://dbpedia.org/resource/Time>;
+                                      a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:comment "This predicate can be used to express an end of a time period."@en;
+                                      rdfs:domain <http://linkedscience.org/lsc/ns#Research>;
+                                      rdfs:isDefinedBy <http://linkedscience.org/lsc/ns#end>;
+                                      rdfs:label "end"@en;
+                                      rdfs:range xsd:dateTime.
+<http://linkedscience.org/lsc/ns#fuzzybegin> <http://dbpedia.org/ontology/related> <http://dbpedia.org/resource/Time>;
+                                             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                             rdfs:comment "This predicate can be used to express a fuzzybegin of an imprecise time period."@en;
+                                             rdfs:domain <http://linkedscience.org/lsc/ns#Research>;
+                                             rdfs:isDefinedBy <http://linkedscience.org/lsc/ns#fuzzybegin>;
+                                             rdfs:label "fuzzybegin"@en;
+                                             rdfs:range xsd:dateTime.
+<http://linkedscience.org/lsc/ns#fuzzyend> <http://dbpedia.org/ontology/related> <http://dbpedia.org/resource/Time>;
+                                           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:comment "This predicate can be used to express a fuzzyend of an imprecise time period."@en;
+                                           rdfs:domain <http://linkedscience.org/lsc/ns#Research>;
+                                           rdfs:isDefinedBy <http://linkedscience.org/lsc/ns#fuzzyend>;
+                                           rdfs:label "fuzzyend"@en;
+                                           rdfs:range xsd:dateTime.
+<http://observedchange.com/tisc/ns> <http://purl.org/dc/terms/conformsTo> <http://www.w3.org/TR/rdfa-syntax>;
+                                    <http://purl.org/dc/terms/description> "This documents specifies the classes and properties introduced by the TISC core vocabulary."@en;
+                                    <http://purl.org/dc/terms/title> "Open Time and Space Core Vocabulary Specification"@en;
+                                    a <http://xmlns.com/foaf/0.1/Document>;
+                                    <http://www.w3.org/1999/xhtml/vocab#license> <http://creativecommons.org/licenses/by/1.0/>;
+                                    rdfs:label "Document that defines the core ontology of the Open Time and Space Core Vocabulary"@en;
+                                    <http://xmlns.com/foaf/0.1/primaryTopic> tisc:.
+<http://observedchange.com/tisc/ns#> <http://purl.org/dc/terms/description> """TISC, the Open Time and Space Core Vocabulary, 
+is a lightweight spatiotemporal vocabulary aiming to provide spatial and temporal terms such as \"happensAt\", \"locatedAt\", \"rightOf\"  to enable practitioners to relate their data to time and space. 
+The Open Time and Space Core Vocabulary is based on research about spatial and temporal properties.
+"""@en.
+<http://observedchange.com/tisc/ns#Object> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:comment """Object is (some)thing located in space and time.
+"""@en;
+                                           rdfs:isDefinedBy <http://observedchange.com/tisc/ns>;
+                                           rdfs:label "Object"@en.
+<http://observedchange.com/tisc/ns#PartialOverlap> a <http://www.w3.org/2002/07/owl#Class>;
+                                                   rdfs:comment """PartialOverlap is a class which allows instantiating characteristics of a partial overlap. 
+  """@en;
+                                                   rdfs:isDefinedBy <http://observedchange.com/tisc/ns>;
+                                                   rdfs:label "PartialOverlap"@en.
+<http://observedchange.com/tisc/ns#address> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:comment "address is an abstract property to express that an object has some address."@en;
+                                            rdfs:isDefinedBy <http://observedchange.com/tisc/ns#address>;
+                                            rdfs:label "address"@en;
+                                            rdfs:range xsd:string.
+<http://observedchange.com/tisc/ns#along> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                          rdfs:comment """along is an abstract property to express that an object is along another, for example \"a group of houses along by the river\"."""@en;
+                                          rdfs:isDefinedBy <http://observedchange.com/tisc/ns#along>;
+                                          rdfs:label "along"@en.
+<http://observedchange.com/tisc/ns#areasize> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                             rdfs:comment "areasize is an abstract property to express the size of the area of an object."@en;
+                                             rdfs:isDefinedBy <http://observedchange.com/tisc/ns#areasize>;
+                                             rdfs:label "areasize"@en;
+                                             rdfs:range xsd:float.
+<http://observedchange.com/tisc/ns#atFrontOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                              rdfs:comment "atFrontOf is an abstract property to express that an object is at front of another."@en;
+                                              rdfs:isDefinedBy <http://observedchange.com/tisc/ns#atFrontOf>;
+                                              rdfs:label "atFrontOf"@en.
+<http://observedchange.com/tisc/ns#behind> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:comment "behind is an abstract property to express that an object is behind another."@en;
+                                           rdfs:isDefinedBy <http://observedchange.com/tisc/ns#behind>;
+                                           rdfs:label "behind"@en.
+<http://observedchange.com/tisc/ns#disconnected> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                 rdfs:comment "disconnected is an abstract property to express that an object is disconnected from another."@en;
+                                                 rdfs:isDefinedBy <http://observedchange.com/tisc/ns#disconnected>;
+                                                 rdfs:label "disconnected"@en.
+<http://observedchange.com/tisc/ns#eastOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:comment "eastOf is an abstract property to express that an object is East of another."@en;
+                                           rdfs:isDefinedBy <http://observedchange.com/tisc/ns#eastOf>;
+                                           rdfs:label "eastOf"@en.
+<http://observedchange.com/tisc/ns#equal> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                          rdfs:comment "equal is an abstract property to express that an object is equal with another."@en;
+                                          rdfs:isDefinedBy <http://observedchange.com/tisc/ns#equal>;
+                                          rdfs:label "equal"@en.
+<http://observedchange.com/tisc/ns#existenceBeginsAt> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                      rdfs:comment "existenceBeginsAt is an abstract property to express that the existence of an object begins at a given time instant."@en;
+                                                      rdfs:isDefinedBy <http://observedchange.com/tisc/ns#existenceBeginsAt>;
+                                                      rdfs:label "existenceBeginsAt"@en;
+                                                      rdfs:range <http://www.w3.org/2006/time#Instant>.
+<http://observedchange.com/tisc/ns#existenceEndsAt> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                    rdfs:comment "existenceEndsAt is an abstract property to express that the existence of an object ends at a given time instant."@en;
+                                                    rdfs:isDefinedBy <http://observedchange.com/tisc/ns#existenceEndsAt>;
+                                                    rdfs:label "existenceEndsAt"@en;
+                                                    rdfs:range <http://www.w3.org/2006/time#Instant>.
+<http://observedchange.com/tisc/ns#externallyConnected> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                        rdfs:comment "externallyConnected is an abstract property to express that an object is externally connected with another."@en;
+                                                        rdfs:isDefinedBy <http://observedchange.com/tisc/ns#externallyConnected>;
+                                                        rdfs:label "externallyConnected"@en.
+<http://observedchange.com/tisc/ns#far> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:comment "far is an abstract property to express that an object is far from another."@en;
+                                        rdfs:isDefinedBy <http://observedchange.com/tisc/ns#far>;
+                                        rdfs:label "far"@en.
+<http://observedchange.com/tisc/ns#forecastMadeAt> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                   rdfs:comment "forecastMadeAt is an abstract property to express that an object is forecast made at certain time."@en;
+                                                   rdfs:isDefinedBy <http://observedchange.com/tisc/ns#forecastMadeAt>;
+                                                   rdfs:label "forecastMadeAt"@en;
+                                                   rdfs:range <http://www.w3.org/2006/time#TemporalEntity>.
+<http://observedchange.com/tisc/ns#geometry> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                             rdfs:comment "geometry is an abstract property to express that an object has certain geometry."@en;
+                                             rdfs:isDefinedBy <http://observedchange.com/tisc/ns#geometry>;
+                                             rdfs:label "geometry"@en.
+<http://observedchange.com/tisc/ns#happensAt> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                              rdfs:comment "happensAt is a predicate to state when something happens (for example an event such as a concert)."@en;
+                                              rdfs:isDefinedBy <http://observedchange.com/tisc/ns#happensAt>;
+                                              rdfs:label "happensAt"@en;
+                                              rdfs:range <http://www.w3.org/2006/time#Interval>.
+<http://observedchange.com/tisc/ns#hasCentroid> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                rdfs:comment """hasCentroid is an abstract property to express the location of the centroid of an area feature.
+  """@en;
+                                                rdfs:domain <http://observedchange.com/tisc/ns#Object>;
+                                                rdfs:isDefinedBy <http://observedchange.com/tisc/ns#hasCentroid>;
+                                                rdfs:label "hasCentroid"@en;
+                                                rdfs:range <http://observedchange.com/tisc/ns#Object>.
+<http://observedchange.com/tisc/ns#hasHeight> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                              rdfs:comment "hasHeight is an abstract property to express that an object has certain height."@en;
+                                              rdfs:isDefinedBy <http://observedchange.com/tisc/ns#hasHeight>;
+                                              rdfs:label "hasHeight"@en.
+<http://observedchange.com/tisc/ns#hasLength> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                              rdfs:comment "hasLength is an abstract property to express that an object has certain length."@en;
+                                              rdfs:isDefinedBy <http://observedchange.com/tisc/ns#hasLength>;
+                                              rdfs:label "hasLength"@en.
+<http://observedchange.com/tisc/ns#hasUnionOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                               rdfs:comment "hasUnionOf is an abstract property to express which union an object (or region) belongs to."@en;
+                                               rdfs:isDefinedBy <http://observedchange.com/tisc/ns#hasUnionOf>;
+                                               rdfs:label "hasUnionOf"@en.
+<http://observedchange.com/tisc/ns#hasWidth> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                             rdfs:comment "hasWidth is an abstract property to express that an object has certain width."@en;
+                                             rdfs:isDefinedBy <http://observedchange.com/tisc/ns#hasWidth>;
+                                             rdfs:label "hasWidth"@en.
+<http://observedchange.com/tisc/ns#here> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                         rdfs:comment "here is an abstract property to express that an object is at the same place as another."@en;
+                                         rdfs:isDefinedBy <http://observedchange.com/tisc/ns#here>;
+                                         rdfs:label "here"@en.
+<http://observedchange.com/tisc/ns#inFutureOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                               rdfs:comment "inFutureOf is an abstract property to express that an object is in future of another."@en;
+                                               rdfs:isDefinedBy <http://observedchange.com/tisc/ns#inFutureOf>;
+                                               rdfs:label "inFutureOf"@en;
+                                               rdfs:range <http://www.w3.org/2006/time#TemporalEntity>.
+<http://observedchange.com/tisc/ns#inPastOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                             rdfs:comment "inPastOf is an abstract property to express that an object is in past of another."@en;
+                                             rdfs:isDefinedBy <http://observedchange.com/tisc/ns#inPastOf>;
+                                             rdfs:label "inPastOf"@en;
+                                             rdfs:range <http://www.w3.org/2006/time#TemporalEntity>.
+<http://observedchange.com/tisc/ns#insideOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                             rdfs:comment "insideOf is an abstract property to express that an object is inside of another."@en;
+                                             rdfs:isDefinedBy <http://observedchange.com/tisc/ns#insideOf>;
+                                             rdfs:label "insideOf"@en.
+<http://observedchange.com/tisc/ns#isForecastFor> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                  rdfs:comment "isForecastFor is an abstract property to express that an object is a forecast for a certain time."@en;
+                                                  rdfs:isDefinedBy <http://observedchange.com/tisc/ns#isForecastFor>;
+                                                  rdfs:label "isForecastFor"@en;
+                                                  rdfs:range <http://www.w3.org/2006/time#TemporalEntity>.
+<http://observedchange.com/tisc/ns#leftOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:comment "leftOf is an abstract property to express that an object is to the left from another."@en;
+                                           rdfs:isDefinedBy <http://observedchange.com/tisc/ns#leftOf>;
+                                           rdfs:label "leftOf"@en;
+                                           <http://www.w3.org/2002/07/owl#inverseOf> <http://observedchange.com/tisc/ns#rightOf>.
+<http://observedchange.com/tisc/ns#locatedAt> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                              rdfs:comment "locatedAt is an abstract property to express that an object is located at somewhere."@en;
+                                              rdfs:isDefinedBy <http://observedchange.com/tisc/ns#locatedAt>;
+                                              rdfs:label "locatedAt"@en.
+<http://observedchange.com/tisc/ns#near> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                         rdfs:comment "near is an abstract property to express that an object is near to another."@en;
+                                         rdfs:isDefinedBy <http://observedchange.com/tisc/ns#near>;
+                                         rdfs:label "near"@en.
+<http://observedchange.com/tisc/ns#nearest> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:comment "nearest is an abstract property to express that an object is nearest to another."@en;
+                                            rdfs:isDefinedBy <http://observedchange.com/tisc/ns#nearest>;
+                                            rdfs:label "nearest"@en.
+<http://observedchange.com/tisc/ns#next> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                         rdfs:comment """next is an abstract property to express that an object is a next object in the order, for example to state the 
+logical ordering of metro stations or bus stops, i.e. like in \"next metro station from Victoria is Sloane Square\". However, as such next is ambiguous as also \"next metro station from Victoria is St James's Park\" would be valid. This can be solved by e.g. having two instances of Victoria station for each direction, or using some similar type of mechanism. Note also that next is different from nextTo. """@en;
+                                         rdfs:isDefinedBy <http://observedchange.com/tisc/ns#next>;
+                                         rdfs:label "next"@en.
+<http://observedchange.com/tisc/ns#nextTo> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:comment "nextTo is an abstract property to express that an object is next to another."@en;
+                                           rdfs:isDefinedBy <http://observedchange.com/tisc/ns#nextTo>;
+                                           rdfs:label "nextTo"@en.
+<http://observedchange.com/tisc/ns#nonTangentialProperPart> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                            rdfs:comment "nonTangentialProperPart is an abstract property to express that an object is non tangential proper part of another."@en;
+                                                            rdfs:isDefinedBy <http://observedchange.com/tisc/ns#nonTangentialProperPart>;
+                                                            rdfs:label "nonTangentialProperPart"@en.
+<http://observedchange.com/tisc/ns#northEastOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                rdfs:comment "northEastOf is an abstract property to express that an object is Northeast of another."@en;
+                                                rdfs:isDefinedBy <http://observedchange.com/tisc/ns#northEastOf>;
+                                                rdfs:label "northEastOf"@en.
+<http://observedchange.com/tisc/ns#northOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:comment "northOf is an abstract property to express that an object is North of another."@en;
+                                            rdfs:isDefinedBy <http://observedchange.com/tisc/ns#northOf>;
+                                            rdfs:label "northOf"@en.
+<http://observedchange.com/tisc/ns#northWestOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                rdfs:comment "northWestOf is an abstract property to express that an object is Northwest of another."@en;
+                                                rdfs:isDefinedBy <http://observedchange.com/tisc/ns#northWestOf>;
+                                                rdfs:label "northWestOf"@en.
+<http://observedchange.com/tisc/ns#outsideOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                              rdfs:comment "outsideOf is an abstract property to express that an object is outside of another."@en;
+                                              rdfs:isDefinedBy <http://observedchange.com/tisc/ns#outsideOf>;
+                                              rdfs:label "outsideOf"@en.
+<http://observedchange.com/tisc/ns#partialOverlapArea> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                       rdfs:comment """partialOverlapArea is an abstract property to express the overlaping area of two things in a PartialOverlap. The area units can be stated with partialOverlapUnit.
+  """@en;
+                                                       rdfs:domain <http://observedchange.com/tisc/ns#PartialOverlap>;
+                                                       rdfs:isDefinedBy <http://observedchange.com/tisc/ns#partialOverlapArea>;
+                                                       rdfs:label "partialOverlapArea"@en;
+                                                       rdfs:range <http://observedchange.com/tisc/ns#Object>.
+<http://observedchange.com/tisc/ns#partialOverlapFrom> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                       rdfs:comment """partialOverlapFrom is an abstract property to express the first object that takes part in a PartialOverlap.
+  """@en;
+                                                       rdfs:domain <http://observedchange.com/tisc/ns#PartialOverlap>;
+                                                       rdfs:isDefinedBy <http://observedchange.com/tisc/ns#partialOverlapFrom>;
+                                                       rdfs:label "partialOverlapFrom"@en;
+                                                       rdfs:range <http://observedchange.com/tisc/ns#Object>.
+<http://observedchange.com/tisc/ns#partialOverlapRatio> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                        rdfs:comment """partialOverlapRatio is an abstract property to express the ratio of dividing the partialOverlapArea by the area of the object pointed by partialOverlapFrom. 
+  """@en;
+                                                        rdfs:domain <http://observedchange.com/tisc/ns#PartialOverlap>;
+                                                        rdfs:isDefinedBy <http://observedchange.com/tisc/ns#partialOverlapRatio>;
+                                                        rdfs:label "partialOverlapRatio"@en;
+                                                        rdfs:range xsd:double.
+<http://observedchange.com/tisc/ns#partialOverlapTo> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                     rdfs:comment """partialOverlapTo is an abstract property to express the second object that takes part in a PartialOverlap.
+  """@en;
+                                                     rdfs:domain <http://observedchange.com/tisc/ns#PartialOverlap>;
+                                                     rdfs:isDefinedBy <http://observedchange.com/tisc/ns#partialOverlapTo>;
+                                                     rdfs:label "partialOverlapTo"@en;
+                                                     rdfs:range <http://observedchange.com/tisc/ns#Object>.
+<http://observedchange.com/tisc/ns#partialOverlapUnit> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                       rdfs:comment """partialOverlapUnit is an abstract property to express the units of partialOverlapArea of two things in a PartialOverlap. 
+  """@en;
+                                                       rdfs:domain <http://observedchange.com/tisc/ns#PartialOverlap>;
+                                                       rdfs:isDefinedBy <http://observedchange.com/tisc/ns#partialOverlapUnit>;
+                                                       rdfs:label "partialOverlapUnit"@en;
+                                                       rdfs:range xsd:double.
+<http://observedchange.com/tisc/ns#partiallyOverlapping> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                         rdfs:comment "partiallyOverlapping is an abstract property to express that an object is partially overlapping with another."@en;
+                                                         rdfs:isDefinedBy <http://observedchange.com/tisc/ns#partiallyOverlapping>;
+                                                         rdfs:label "partiallyOverlapping"@en.
+<http://observedchange.com/tisc/ns#rightOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:comment "rightOf is an abstract property to express that an object is to the right from another."@en;
+                                            rdfs:isDefinedBy <http://observedchange.com/tisc/ns#rightOf>;
+                                            rdfs:label "rightOf"@en;
+                                            <http://www.w3.org/2002/07/owl#inverseOf> <http://observedchange.com/tisc/ns#leftOf>.
+<http://observedchange.com/tisc/ns#sharesPathWith> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                   rdfs:comment "sharesPathWith is an abstract property to express that an object shares a path with another."@en;
+                                                   rdfs:isDefinedBy <http://observedchange.com/tisc/ns#sharesPathWith>;
+                                                   rdfs:label "sharesPathWith"@en.
+<http://observedchange.com/tisc/ns#sizeOfLandArea> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                   rdfs:comment "sizeOfLandArea is an abstract property to express the size of the land area of a region."@en;
+                                                   rdfs:isDefinedBy <http://observedchange.com/tisc/ns#sizeOfLandArea>;
+                                                   rdfs:label "sizeOfLandArea"@en.
+<http://observedchange.com/tisc/ns#southEastOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                rdfs:comment "southEastOf is an abstract property to express that an object is Southeast of another."@en;
+                                                rdfs:isDefinedBy <http://observedchange.com/tisc/ns#southEastOf>;
+                                                rdfs:label "southEastOf"@en.
+<http://observedchange.com/tisc/ns#southOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:comment "southOf is an abstract property to express that an object is South of another."@en;
+                                            rdfs:isDefinedBy <http://observedchange.com/tisc/ns#southOf>;
+                                            rdfs:label "southOf"@en.
+<http://observedchange.com/tisc/ns#southWestOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                rdfs:comment "southWestOf is an abstract property to express that an object is Southwest of another."@en;
+                                                rdfs:isDefinedBy <http://observedchange.com/tisc/ns#southWestOf>;
+                                                rdfs:label "southWestOf"@en.
+<http://observedchange.com/tisc/ns#tangentialProperPart> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                         rdfs:comment "tangentialProperPart is an abstract property to express that an object is tangential proper part of another."@en;
+                                                         rdfs:isDefinedBy <http://observedchange.com/tisc/ns#tangentialProperPart>;
+                                                         rdfs:label "tangentialProperPart"@en.
+<http://observedchange.com/tisc/ns#touches> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:comment "touches is an abstract property to express that a region touches another region."@en;
+                                            rdfs:isDefinedBy <http://observedchange.com/tisc/ns#touches>;
+                                            rdfs:label "touches"@en.
+<http://observedchange.com/tisc/ns#unionOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:comment "unionOf is an abstract property to express which union a spatiotemporal region forms."@en;
+                                            rdfs:isDefinedBy <http://observedchange.com/tisc/ns#unionOf>;
+                                            rdfs:label "unionOf"@en.
+<http://observedchange.com/tisc/ns#westOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:comment "westOf is an abstract property to express that an object is West of another."@en;
+                                           rdfs:isDefinedBy <http://observedchange.com/tisc/ns#westOf>;
+                                           rdfs:label "westOf"@en.
+tisc: <http://purl.org/dc/terms/created> "2013-10-06T17:30:00Z"^^xsd:dateTime;
+      <http://purl.org/dc/terms/creator> <http://kauppinen.net/tomi#me>;
+      <http://purl.org/dc/terms/title> "Open Time and Space Core Vocabulary namespace"@en;
+      <http://purl.org/net/provenance/ns#createdBy> [<http://purl.org/net/provenance/ns#performedBy> <http://kauppinen.net/tomi#me> ; 
+                                                     <http://purl.org/net/provenance/ns#performedAt> "2013-10-06T17:30:00Z"^^xsd:dateTime ; 
+                                                     a <http://purl.org/net/provenance/ns#DataCreation>];
+      a <http://www.w3.org/2002/07/owl#Ontology>,
+        <http://purl.org/net/provenance/ns#DataItem>.

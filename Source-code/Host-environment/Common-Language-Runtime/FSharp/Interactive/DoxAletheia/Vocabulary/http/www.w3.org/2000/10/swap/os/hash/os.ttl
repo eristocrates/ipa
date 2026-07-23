@@ -9,7 +9,6 @@
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
 @prefix ont: <http://www.daml.org/2000/10/daml-ont#>.
 @prefix os: <http://www.w3.org/2000/10/swap/os#>.
-@prefix w3: <http://www.w3.org/>.
 
 :argv a ont:UniqueProperty,
         rdf:Property;

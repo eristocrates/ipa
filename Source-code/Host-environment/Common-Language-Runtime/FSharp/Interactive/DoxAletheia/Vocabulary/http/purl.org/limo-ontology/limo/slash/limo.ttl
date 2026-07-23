@@ -1,0 +1,183 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix limo: <http://purl.org/limo-ontology/limo/>.
+
+<http://purl.org/dc/terms#description> a rdf:Property;
+                                       rdfs:comment "A small text to describe what the variable or model is about.";
+                                       rdfs:domain <http://purl.org/limo-ontology/limo#Model>,
+                                                   <http://purl.org/limo-ontology/limo#Variable>;
+                                       rdfs:label "dct:description";
+                                       rdfs:range rdfs:Literal.
+<http://purl.org/dc/terms#issued> a rdf:Property;
+                                  rdfs:comment "Defines the actual date that the model has been created.";
+                                  rdfs:domain <http://purl.org/limo-ontology/limo#Model>;
+                                  rdfs:label "dct:issued".
+<http://purl.org/dc/terms#title> a rdf:Property;
+                                 rdfs:comment "A name given to the variable or model.",
+                                              "A name given to the model.";
+                                 rdfs:domain <http://purl.org/limo-ontology/limo#Variable>,
+                                             <http://purl.org/limo-ontology/limo#Model>;
+                                 rdfs:label "dct:title";
+                                 rdfs:range rdfs:Literal.
+<http://purl.org/limo-ontology/limo#File> a <http://www.w3.org/2002/07/owl#Class>,
+                                            rdfs:Class;
+                                          rdfs:comment "Describes a file that can be imported in a particular platform such as R or SAS and execute the model. This could also be a PMML-XML file.";
+                                          rdfs:label "limo:File".
+<http://purl.org/limo-ontology/limo#Information%20Systems%20Lab%20%28ISLab%29> a <http://purl.org/dc/terms#Agent>;
+                                                                               <http://xmlns.com/foaf/0.1#homepage> <http://islab.uom.gr/>;
+                                                                               <http://xmlns.com/foaf/0.1#member> <http://purl.org/limo-ontology/limo#tambouris>,
+                                                                                                                  <http://purl.org/limo-ontology/limo#kat>,
+                                                                                                                  <http://purl.org/limo-ontology/limo#ekal>,
+                                                                                                                  <http://purl.org/limo-ontology/limo#akarm>;
+                                                                               <http://xmlns.com/foaf/0.1#name> "Information Systems Lab (ISLab)".
+<http://purl.org/limo-ontology/limo#Method> a <http://www.w3.org/2002/07/owl#Class>,
+                                              rdfs:Class;
+                                            rdfs:comment "Describes a statistical or data mining method used for creating a model. We assume that this class uses a set of predefined concepts such as linear regression, logistic regression, markov models, support vector machine, random forest, neural networks etc.";
+                                            rdfs:label "limo:Method";
+                                            rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+<http://purl.org/limo-ontology/limo#Model> a <http://www.w3.org/2002/07/owl#Class>,
+                                             rdfs:Class;
+                                           rdfs:comment "The actual predictive model that is described by the vocabulary.";
+                                           rdfs:label "limo:Model".
+<http://purl.org/limo-ontology/limo#Power> a <http://www.w3.org/2002/07/owl#Class>,
+                                             rdfs:Class;
+                                           rdfs:comment "Describes the predictive power of a model.";
+                                           rdfs:label "limo:Power".
+<http://purl.org/limo-ontology/limo#Variable> a <http://www.w3.org/2002/07/owl#Class>,
+                                                rdfs:Class;
+                                              rdfs:comment "Represents the variables that are included in the predictive model.";
+                                              rdfs:label "limo:Variable".
+<http://purl.org/limo-ontology/limo#accessURL> a rdf:Property;
+                                               rdfs:comment "The URL that the file can be accessed from.";
+                                               rdfs:domain <http://purl.org/limo-ontology/limo#File>;
+                                               rdfs:label "limo:accessURL".
+<http://purl.org/limo-ontology/limo#akarm> a <http://xmlns.com/foaf/0.1#Person>;
+                                           <http://xmlns.com/foaf/0.1#homepage> "";
+                                           <http://xmlns.com/foaf/0.1#mbox> <mailto:akarm@uom.gr>;
+                                           <http://xmlns.com/foaf/0.1#name> "Areti Karamanou".
+<http://purl.org/limo-ontology/limo#baseline> a rdf:Property;
+                                              rdfs:comment "Explicitly denotes that the predictive power of a model has been evaluated against the power of another model.";
+                                              rdfs:domain <http://purl.org/limo-ontology/limo#Model>;
+                                              rdfs:label "limo:baseline";
+                                              rdfs:range <http://purl.org/limo-ontology/limo#Model>.
+<http://purl.org/limo-ontology/limo#creator> a rdf:Property;
+                                             rdfs:comment "The person or organization that actually builds the model.";
+                                             rdfs:domain <http://purl.org/limo-ontology/limo#Model>;
+                                             rdfs:label "dct:creator";
+                                             rdfs:range <http://xmlns.com/foaf/0.1/Agent>.
+<http://purl.org/limo-ontology/limo#data> a rdf:Property;
+                                          rdfs:comment "Connects a model to the dataset that contains the actual data that have been used for the development of the model.";
+                                          rdfs:domain <http://purl.org/limo-ontology/limo/limo#Model>;
+                                          rdfs:label "limo:data";
+                                          rdfs:range <http://purl.org/linked-data/cube#Dataset>.
+<http://purl.org/limo-ontology/limo#ekal> a <http://xmlns.com/foaf/0.1#Person>;
+                                          <http://xmlns.com/foaf/0.1#homepage> "";
+                                          <http://xmlns.com/foaf/0.1#mbox> <mailto:ekal@uom.gr>;
+                                          <http://xmlns.com/foaf/0.1#name> "Evangelos Kalampokis".
+<http://purl.org/limo-ontology/limo#evaluationData> a rdf:Property;
+                                                    rdfs:comment "Connects a model to the dataset that represents its evaluation data.";
+                                                    rdfs:label "limo:evaluationData";
+                                                    rdfs:subPropertyOf <http://purl.org/limo-ontology/limo#data>.
+<http://purl.org/limo-ontology/limo#evaluationMethod> a rdf:Property;
+                                                      rdfs:comment "Is used to infer the predictive power of the model. The evaluation methods include out-of-sample evaluation with statistics such as Predicted Residual Sums of Squares, Root Mean Square Error or cross-validation techniques.",
+                                                                   "mpla mpla";
+                                                      rdfs:domain <http://purl.org/limo-ontology/limo#Power>;
+                                                      rdfs:label "limo:evaluationMethod".
+<http://purl.org/limo-ontology/limo#file> a rdf:Property;
+                                          rdfs:comment "Connects a model with a relative file.";
+                                          rdfs:domain <http://purl.org/limo-ontology/limo#Model>;
+                                          rdfs:label "limo:file";
+                                          rdfs:range <http://purl.org/limo-ontology/limo#File>.
+<http://purl.org/limo-ontology/limo#kat> a <http://xmlns.com/foaf/0.1#Person>;
+                                         <http://xmlns.com/foaf/0.1#homepage> "";
+                                         <http://xmlns.com/foaf/0.1#mbox> <mailto:kat@uom.gr>;
+                                         <http://xmlns.com/foaf/0.1#name> "Konstantinos Tarabanis".
+<http://purl.org/limo-ontology/limo#method> a rdf:Property;
+                                            rdfs:comment "Connects a model with its statistical or data mining method.";
+                                            rdfs:domain <http://purl.org/limo-ontology/limo#Model>;
+                                            rdfs:label "limo:method";
+                                            rdfs:range <http://purl.org/limo-ontology/limo#Method>.
+<http://purl.org/limo-ontology/limo#modelType> a rdf:Property;
+                                               rdfs:comment "Describes the main categories of the model that can be developed, namely classification, regression, clustering and dimension reduction.";
+                                               rdfs:domain <http://purl.org/limo-ontology/limo#Model>;
+                                               rdfs:label "limo:modelType".
+<http://purl.org/limo-ontology/limo#outcome> a rdf:Property;
+                                             rdfs:comment "The actual value that the evaluation method produces.",
+                                                          "";
+                                             rdfs:domain <http://purl.org/limo-ontology/limo#Power>;
+                                             rdfs:label "limo:outcome".
+<http://purl.org/limo-ontology/limo#power> a rdf:Property;
+                                           rdfs:comment "Connects a model to its predictive power.";
+                                           rdfs:domain <http://purl.org/limo-ontology/limo#Model>;
+                                           rdfs:label "limo:power";
+                                           rdfs:range <http://purl.org/limo-ontology/limo#Power>.
+<http://purl.org/limo-ontology/limo#publishedIn> a rdf:Property;
+                                                 rdfs:comment "Connects a model with the bibliographic resource it is published.";
+                                                 rdfs:domain <http://purl.org/limo-ontology/limo#Model>;
+                                                 rdfs:label "limo:publishedIn";
+                                                 rdfs:range <http://purl.org/dc/terms#BibliographicResource>.
+<http://purl.org/limo-ontology/limo#rawData> a rdf:Property;
+                                             rdfs:comment "Connects a model with it's dataset.";
+                                             rdfs:domain <http://purl.org/limo-ontology/limo#Model>;
+                                             rdfs:label "limo:rawData";
+                                             rdfs:range <http://purl.org/dc/dcmitype#Dataset>.
+<http://purl.org/limo-ontology/limo#rdf> <http://purl.org/dc/terms#FileFormat> "".
+<http://purl.org/limo-ontology/limo#spatial> a rdf:Property;
+                                             rdfs:comment "Dexcribes the spatial dimension of the model. The spatial dimension is derived from the actual data that has been employed.";
+                                             rdfs:domain <http://purl.org/limo-ontology/limo#Model>;
+                                             rdfs:label "limo:spatial";
+                                             rdfs:range <http://purl.org/dc/terms#Location>.
+<http://purl.org/limo-ontology/limo#tambouris> a <http://xmlns.com/foaf/0.1#Person>;
+                                               <http://xmlns.com/foaf/0.1#homepage> "";
+                                               <http://xmlns.com/foaf/0.1#mbox> <mailto:tambouris@uom.gr>;
+                                               <http://xmlns.com/foaf/0.1#name> "Eythimios Tambouris".
+<http://purl.org/limo-ontology/limo#temporal> a rdf:Property;
+                                              rdfs:comment "Describes the time period that the model covers. The time period reflects the period that is described in the actual data that have been used for the development of the model.";
+                                              rdfs:domain <http://purl.org/limo-ontology/limo#Model>;
+                                              rdfs:label "limo:temporal";
+                                              rdfs:range <http://purl.org/dc/terms#PeriodOfTime>.
+<http://purl.org/limo-ontology/limo#theme> a rdf:Property;
+                                           rdfs:comment "Connects a variable to its concept theme.";
+                                           rdfs:domain <http://purl.org/limo-ontology/limo#Variable>;
+                                           rdfs:label "limo:theme";
+                                           rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>.
+<http://purl.org/limo-ontology/limo#trainingData> a rdf:Property;
+                                                  rdfs:comment "Connects a model to a qb:DataSet that represents data that was used for the training of the model.";
+                                                  rdfs:label "limo:trainingData";
+                                                  rdfs:subPropertyOf <http://purl.org/limo-ontology/limo#data>.
+<http://purl.org/limo-ontology/limo#ttl> <http://purl.org/dc/terms#FileFormat> "".
+<http://purl.org/limo-ontology/limo#usageType> a rdf:Property;
+                                               rdfs:comment "Denotes whether the variable is the response of the model or one of the predictors.";
+                                               rdfs:domain <http://purl.org/limo-ontology/limo#Variable>;
+                                               rdfs:label "limo:usageType".
+<http://purl.org/limo-ontology/limo#validationData> a rdf:Property;
+                                                    rdfs:comment "Connects a model to a qb:DataSet that represents data that was used for the validation of the model.";
+                                                    rdfs:label "limo:validationData";
+                                                    rdfs:subPropertyOf <http://purl.org/limo-ontology/limo#data>.
+<http://purl.org/limo-ontology/limo#variable> a rdf:Property;
+                                              rdfs:comment "Connects a model to one of its variables.";
+                                              rdfs:domain <http://purl.org/limo-ontology/limo#Model>;
+                                              rdfs:label "limo:variable";
+                                              rdfs:range <http://purl.org/limo-ontology/limo#Variable>.
+<http://purl.org/limo-ontology/limo#variableType> a rdf:Property;
+                                                  rdfs:comment "Denotes whether the variable is continuous, categorical or ordinal.";
+                                                  rdfs:domain <http://purl.org/limo-ontology/limo#Variable>;
+                                                  rdfs:label "limo:variableType".
+limo: <http://purl.org/dc/elements/1.1#creator> <http://purl.org/limo-ontology/limo#akarm>,
+                                                <http://purl.org/limo-ontology/limo#ekal>,
+                                                <http://purl.org/limo-ontology/limo#kat>,
+                                                <http://purl.org/limo-ontology/limo#tambouris>;
+      <http://purl.org/dc/terms#created> "2013-09-23"^^xsd:date;
+      <http://purl.org/dc/terms#description> "This document introduces an RDF vocabulary that enables the publishing of descriptions of predictive models into the Linked Data Web and establishes links to other resources such as datasets, other models, academic articles and studies. This is an early draft. Feedback and discussion are welcomed.";
+      <http://purl.org/dc/terms#modified> "2013-09-23"^^xsd:date;
+      <http://purl.org/dc/terms#partOf> <http://195.251.218.39:8181/vocab>;
+      <http://purl.org/dc/terms#publisher> "http://purl.org/limo-ontology/limo/limo#Information%20Systems%20Lab%20%28ISLab%29";
+      <http://purl.org/dc/terms#status> <http://purl.org/adms/status/UnderDevelopment>;
+      <http://purl.org/dc/terms#title> "Linked Statistical Models Vocabulary (limo)";
+      <http://purl.org/dc/terms#type> <http://purl.org/adms/assettype/Ontology>;
+      <http://purl.org/vocab/vann#preferredNamespacePrefix> "limo";
+      <http://purl.org/vocab/vann#preferredNamespaceUri> "http://purl.org/limo-ontology/limo#";
+      a <http://www.w3.org/2002/07/owl#Ontology>;
+      <http://xmlns.com/foaf/0.1#homepage> limo:limo.html.
+<http://www.w3.org/2004/02/skos/core#Concept> a rdfs:Class.

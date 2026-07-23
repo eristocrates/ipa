@@ -7,19 +7,17 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix tosh: <http://topbraid.org/tosh#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix shacl: <http://www.w3.org/ns/shacl#>.
 
-_:autos5607 rdf:first [sh:datatype xsd:dateTime];
-            rdf:rest rdf:nil.
-_:autos5610 rdf:first [sh:datatype xsd:string];
-            rdf:rest _:autos5612.
-_:autos5612 rdf:first [sh:datatype rdf:langString];
-            rdf:rest rdf:nil.
-_:autos5643 rdf:first [sh:datatype rdf:langString];
-            rdf:rest _:autos5645.
-_:autos5645 rdf:first [sh:datatype rdf:HTML];
-            rdf:rest rdf:nil.
+_:autos30229 rdf:first [sh:datatype xsd:dateTime];
+             rdf:rest rdf:nil.
+_:autos30232 rdf:first [sh:datatype xsd:string];
+             rdf:rest _:autos30234.
+_:autos30234 rdf:first [sh:datatype rdf:langString];
+             rdf:rest rdf:nil.
+_:autos30282 rdf:first [sh:datatype rdf:langString];
+             rdf:rest _:autos30284.
+_:autos30284 rdf:first [sh:datatype rdf:HTML];
+             rdf:rest rdf:nil.
 <http://datashapes.org/dash> a owl:Ontology;
                              rdfs:comment "DASH is a SHACL library for frequently needed features and design patterns. The constraint components in this library are 100% standards compliant and will work on any engine that fully supports SHACL.";
                              rdfs:label "DASH Data Shapes Vocabulary";
@@ -195,7 +193,7 @@ The last expression of the script will be used as result of the constructor, so 
                  rdfs:subClassOf dash:Script,
                                  sh:Parameterizable.
 dash:DateOrDateTime rdf:first [sh:datatype xsd:date];
-                    rdf:rest _:autos5607;
+                    rdf:rest _:autos30229;
                     a rdf:List;
                     rdfs:comment "An rdf:List that can be used in property constraints as value for sh:or to indicate that all values of a property must be either xsd:date or xsd:dateTime.";
                     rdfs:label "Date or date time".
@@ -264,7 +262,7 @@ dash:GraphValidationTestCase a dash:ShapeClass;
                              rdfs:label "Graph validation test case";
                              rdfs:subClassOf dash:ValidationTestCase.
 dash:HTMLOrStringOrLangString rdf:first [sh:datatype rdf:HTML];
-                              rdf:rest _:autos5610;
+                              rdf:rest _:autos30232;
                               a rdf:List;
                               rdfs:comment "An rdf:List that can be used in property constraints as value for sh:or to indicate that all values of a property must be either rdf:HTML, xsd:string or rdf:langString (in that order of preference).";
                               rdfs:label "HTML or string or langString".
@@ -829,12 +827,12 @@ dash:StemConstraintComponent-stem dash:reifiableBy dash:ConstraintReificationSha
                                   sh:name "stem";
                                   sh:path dash:stem.
 dash:StringOrLangString rdf:first [sh:datatype xsd:string];
-                        rdf:rest _:autos5640;
+                        rdf:rest _:autos30279;
                         a rdf:List;
                         rdfs:comment "An rdf:List that can be used in property constraints as value for sh:or to indicate that all values of a property must be either xsd:string or rdf:langString.";
                         rdfs:label "String or langString".
 dash:StringOrLangStringOrHTML rdf:first [sh:datatype xsd:string];
-                              rdf:rest _:autos5643;
+                              rdf:rest _:autos30282;
                               a rdf:List;
                               rdfs:comment "An rdf:List that can be used in property constraints as value for sh:or to indicate that all values of a property must be either xsd:string, rdf:langString or rdf:HTML (in that order of preference).";
                               rdfs:label "string or langString or HTML".

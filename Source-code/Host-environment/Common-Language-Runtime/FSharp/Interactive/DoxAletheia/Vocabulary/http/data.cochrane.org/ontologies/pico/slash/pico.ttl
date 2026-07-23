@@ -1,372 +1,363 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix cochrane: <http://data.cochrane.org/ontologies/core/>.
 @prefix pico: <http://data.cochrane.org/ontologies/pico/>.
-@prefix psys: <http://proton.semanticweb.org/protonsys#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix schema: <http://schema.org/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-pico: dc11:abstract """The PICO ontology provides a machine accessible version of the PICO framework. It essentially provides a model for describing evidence in a consistent way. The model allows the specifying of complex populations, detailed interventions and their comparisons as well as the outcomes considered.
+pico: <http://purl.org/dc/elements/1.1/abstract> """The PICO ontology provides a machine accessible version of the PICO framework. It essentially provides a model for describing evidence in a consistent way. The model allows the specifying of complex populations, detailed interventions and their comparisons as well as the outcomes considered.
                  The PICO ontology was originally designed to model the questions asked and answered in Cochrane's systematic reviews. As a leader in the field of evidence based healthcare Cochrane uses the PICO model when framing and publishing evidence based questions.
                  The PICO model is widely adopted for describing healthcare evidence, furthermore is equally applicable in other evidence-based domains. It essentially provides a model for describing evidence in a consistent way.
     dcterms:description \"The PICO ontology describes questions in evidence based healthcare with the intention of supporting the publishing of evidence as linked data."""@en;
-      dc11:creator "Julian Everett",
-                   "Chris Mavergames",
-                   "Paul Wilton",
-                   "Silver Oliver",
-                   "Lorne Becker";
-      dc11:publisher "Cochrane";
-      dcterms:created "2014-02-06"^^xsd:date;
-      dcterms:modified "2019-09-06"^^xsd:date;
-      dcterms:rights "Copyright Cochrane 2020. Creative Commons License: CC BY-NC-ND : Attribution-NonCommercial-NoDerivs : https://creativecommons.org/licenses/by-nc-nd/4.0"@en;
-      dcterms:title "Cochrane PICO Ontology"@en;
-      vann:preferredNamespacePrefix "cp";
-      vann:preferredNamespaceUri "http://data.cochrane.org/ontologies/pico/";
-      schema:image "https://data.cochrane.org/ontologies/pico/PICO-ontology.png";
-      a owl:Ontology;
+      <http://purl.org/dc/elements/1.1/creator> "Julian Everett",
+                                                "Chris Mavergames",
+                                                "Paul Wilton",
+                                                "Silver Oliver",
+                                                "Lorne Becker";
+      <http://purl.org/dc/elements/1.1/publisher> "Cochrane";
+      <http://purl.org/dc/terms/created> "2014-02-06"^^xsd:date;
+      <http://purl.org/dc/terms/modified> "2019-09-06"^^xsd:date;
+      <http://purl.org/dc/terms/rights> "Copyright Cochrane 2020. Creative Commons License: CC BY-NC-ND : Attribution-NonCommercial-NoDerivs : https://creativecommons.org/licenses/by-nc-nd/4.0"@en;
+      <http://purl.org/dc/terms/title> "Cochrane PICO Ontology"@en;
+      <http://purl.org/vocab/vann/preferredNamespacePrefix> "cp";
+      <http://purl.org/vocab/vann/preferredNamespaceUri> "http://data.cochrane.org/ontologies/pico/";
+      <http://schema.org/image> "https://data.cochrane.org/ontologies/pico/PICO-ontology.png";
+      a <http://www.w3.org/2002/07/owl#Ontology>;
       rdfs:comment "The PICO ontology describes questions in evidence based healthcare with the intention of supporting the publishing of evidence as linked data."@en;
-      owl:versionInfo "4.0.1".
-pico:Age a owl:Class;
+      <http://www.w3.org/2002/07/owl#versionInfo> "4.0.1".
+pico:Age a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "The age of a population group"@en;
          rdfs:isDefinedBy pico:;
          rdfs:label "Age"@en.
-pico:AggregationMethod a owl:Class;
+pico:AggregationMethod a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:comment "Outcome aggregation method";
                        rdfs:isDefinedBy pico:;
                        rdfs:label "AggregationMethod"@en.
-pico:AppliedIntervention a owl:Class;
+pico:AppliedIntervention a <http://www.w3.org/2002/07/owl#Class>;
                          rdfs:comment "Abstract class, the intervention applied (procedure, materials etc)"@en;
                          rdfs:isDefinedBy pico:;
                          rdfs:label "AppliedIntervention"@en.
-pico:AssessmentScale a owl:Class;
+pico:AssessmentScale a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:comment "Outcome assessment scale, e.g. SCTID:273249006"@en;
                      rdfs:isDefinedBy pico:;
                      rdfs:label "AssessmentScale"@en.
-pico:Condition a owl:Class;
+pico:Condition a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "Conditions for example illness or disease."@en;
                rdfs:isDefinedBy pico:;
                rdfs:label "Condition"@en.
-pico:Dose a owl:Class;
+pico:Dose a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "Dose in an intervention"@en;
           rdfs:isDefinedBy pico:;
           rdfs:label "Dose"@en.
-pico:Duration a owl:Class;
+pico:Duration a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "Duration of some action"@en;
               rdfs:isDefinedBy pico:;
               rdfs:label "Duration"@en.
-pico:Intervention a owl:Class;
+pico:Intervention a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "An intervention in a PICO question is an action under consideration for this population."@en;
                   rdfs:isDefinedBy pico:;
                   rdfs:label "Intervention"@en.
-pico:InterventionClassification a owl:Class;
+pico:InterventionClassification a <http://www.w3.org/2002/07/owl#Class>;
                                 rdfs:comment "The type of intervention"@en;
                                 rdfs:isDefinedBy pico:;
                                 rdfs:label "Intervention Classification"@en.
-pico:InterventionGroup a owl:Class;
+pico:InterventionGroup a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:comment "An intervention group is a group of interventions for example an arm of a trial."@en;
                        rdfs:isDefinedBy pico:;
                        rdfs:label "InterventionGroup"@en.
-pico:InterventionProvider a owl:Class;
+pico:InterventionProvider a <http://www.w3.org/2002/07/owl#Class>;
                           rdfs:comment "The provider of an intervention"@en;
                           rdfs:isDefinedBy pico:;
                           rdfs:label "InterventionProvider"@en.
-pico:InterventionRationale a owl:Class;
+pico:InterventionRationale a <http://www.w3.org/2002/07/owl#Class>;
                            rdfs:comment "The rationale of an intervention"@en;
                            rdfs:isDefinedBy pico:;
                            rdfs:label "InterventionRationale"@en.
-pico:ModeOfDelivery a owl:Class;
+pico:ModeOfDelivery a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "Mode of delivery for an intervention"@en;
                     rdfs:isDefinedBy pico:;
                     rdfs:label "ModeOfDelivery"@en.
-pico:Outcome a owl:Class;
+pico:Outcome a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "The desired outcome of an intervention.";
              rdfs:isDefinedBy pico:;
              rdfs:label "Outcome"@en.
-pico:OutcomeClassification a owl:Class;
+pico:OutcomeClassification a <http://www.w3.org/2002/07/owl#Class>;
                            rdfs:comment "Classification scheme describing the type of outcome";
                            rdfs:isDefinedBy pico:;
                            rdfs:label "OutcomeClassification"@en.
-pico:OutcomeDomain a owl:Class;
+pico:OutcomeDomain a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "The outcome domain, typically a Condition.";
                    rdfs:isDefinedBy pico:;
                    rdfs:label "OutcomeDomain"@en.
-pico:OutcomeGroup a owl:Class;
+pico:OutcomeGroup a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "An outcome group is a group of outcomes."@en;
                   rdfs:isDefinedBy pico:;
                   rdfs:label "OutcomeGroup"@en.
-pico:PICO a owl:Class;
+pico:PICO a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "A PICO class represents an object that defines a research or a clinical question."@en;
           rdfs:isDefinedBy pico:;
           rdfs:label "PICO"@en.
-pico:Population a owl:Class;
+pico:Population a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "A population defines a group of people/patient in a PICO question."@en;
                 rdfs:isDefinedBy pico:;
                 rdfs:label "Population"@en.
-pico:Schedule a owl:Class;
+pico:Schedule a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "Schedule of an intervention";
               rdfs:isDefinedBy pico:;
               rdfs:label "Schedule"@en.
-pico:Setting a owl:Class;
+pico:Setting a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "Setting of an intervention"@en;
              rdfs:isDefinedBy pico:;
              rdfs:label "Setting"@en.
-pico:Sex a owl:Class;
+pico:Sex a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "The sex of a population group"@en;
          rdfs:isDefinedBy pico:;
          rdfs:label "Sex"@en.
-pico:SocialContext a owl:Class;
+pico:SocialContext a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "Social context of a population";
                    rdfs:isDefinedBy pico:;
                    rdfs:label "SocialContext"@en.
-pico:SpecificMetric a owl:Class;
+pico:SpecificMetric a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "Specific metric of an outcome";
                     rdfs:isDefinedBy pico:;
                     rdfs:label "SpecificMetric"@en.
-pico:Treatment a owl:Class;
+pico:Treatment a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "Some treatment of a population";
                rdfs:isDefinedBy pico:;
                rdfs:label "Treatment"@en.
-pico:age a owl:ObjectProperty;
+pico:age a <http://www.w3.org/2002/07/owl#ObjectProperty>;
          rdfs:comment "The age of a population"@en;
          rdfs:domain pico:Population;
          rdfs:isDefinedBy pico:;
          rdfs:label "age"@en;
          rdfs:range pico:Age.
-pico:aggregationMethod a owl:ObjectProperty;
+pico:aggregationMethod a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "The aggregation method of an outcome."@en;
                        rdfs:domain pico:Outcome;
                        rdfs:isDefinedBy pico:;
                        rdfs:label "aggregationMethod"@en;
                        rdfs:range pico:AggregationMethod.
-pico:appliedIntervention psys:transitiveOver cochrane:broaderConcept;
-                         a owl:ObjectProperty;
+pico:appliedIntervention <http://proton.semanticweb.org/protonsys#transitiveOver> <http://data.cochrane.org/ontologies/core/broaderConcept>;
+                         a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:comment "Associates an appliedIntervention (material, procedure) with a PICO Intervention instance."@en;
                          rdfs:domain pico:Intervention;
                          rdfs:isDefinedBy pico:;
                          rdfs:label "appliedIntervention"@en;
                          rdfs:range pico:AppliedIntervention.
-pico:childIntervention a owl:ObjectProperty;
+pico:childIntervention a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "The child intervention"@en;
                        rdfs:domain pico:Intervention;
                        rdfs:isDefinedBy pico:;
                        rdfs:label "childIntervention"@en;
                        rdfs:range pico:Intervention.
-pico:childOutcome a owl:ObjectProperty;
+pico:childOutcome a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "The child outcome"@en;
                   rdfs:domain pico:Outcome;
                   rdfs:isDefinedBy pico:;
                   rdfs:label "childOutcome"@en;
                   rdfs:range pico:Outcome.
-pico:comparatorGroup a owl:ObjectProperty;
+pico:comparatorGroup a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "A comparator intervention group"@en;
                      rdfs:domain pico:PICO;
                      rdfs:isDefinedBy pico:;
                      rdfs:label "comparatorGroup"@en;
                      rdfs:range pico:InterventionGroup.
-pico:condition psys:transitiveOver cochrane:broaderConcept;
-               a owl:ObjectProperty;
+pico:condition <http://proton.semanticweb.org/protonsys#transitiveOver> <http://data.cochrane.org/ontologies/core/broaderConcept>;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment "A precondition of the population."@en;
                rdfs:domain pico:Population;
                rdfs:isDefinedBy pico:;
                rdfs:label "condition"@en;
                rdfs:range pico:Condition.
-pico:dose a owl:ObjectProperty;
+pico:dose a <http://www.w3.org/2002/07/owl#ObjectProperty>;
           rdfs:comment "Dose used in an intervention"@en;
           rdfs:domain pico:Intervention;
           rdfs:isDefinedBy pico:;
           rdfs:label "dose"@en;
           rdfs:range pico:Dose.
-pico:duration a owl:ObjectProperty;
+pico:duration a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "duration of an intervention"@en;
               rdfs:domain pico:Intervention;
               rdfs:isDefinedBy pico:;
               rdfs:label "duration"@en;
               rdfs:range pico:Duration.
-pico:endpoint a owl:ObjectProperty;
+pico:endpoint a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "An endpoint of an outcome group, by duration"@en;
               rdfs:domain pico:OutcomeGroup;
               rdfs:isDefinedBy pico:;
               rdfs:label "endpoint"@en;
               rdfs:range pico:Duration.
-pico:excludedIntervention a owl:ObjectProperty;
+pico:excludedIntervention a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                           rdfs:comment "An excluded intervention."@en;
                           rdfs:domain pico:InterventionGroup;
                           rdfs:isDefinedBy pico:;
                           rdfs:label "excludedIntervention"@en;
                           rdfs:range pico:Intervention.
-pico:excludedOutcome a owl:ObjectProperty;
+pico:excludedOutcome a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "An excluded outcome."@en;
                      rdfs:domain pico:OutcomeGroup;
                      rdfs:isDefinedBy pico:;
                      rdfs:label "excludedOutcome"@en;
                      rdfs:range pico:Outcome.
-pico:excludedPopulation a owl:ObjectProperty;
+pico:excludedPopulation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "An excluded sub-population."@en;
                         rdfs:domain pico:PICO;
                         rdfs:isDefinedBy pico:;
                         rdfs:label "excludedPopulation"@en;
                         rdfs:range pico:Population.
-pico:intervention a owl:ObjectProperty;
+pico:intervention a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "An intervention"@en;
                   rdfs:domain pico:InterventionGroup;
                   rdfs:isDefinedBy pico:;
                   rdfs:label "intervention"@en;
                   rdfs:range pico:Intervention.
-pico:interventionClassification a owl:ObjectProperty;
+pico:interventionClassification a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                 rdfs:comment "The type of intervention."@en;
                                 rdfs:domain pico:Intervention;
                                 rdfs:isDefinedBy pico:;
                                 rdfs:label "interventionClassification"@en;
                                 rdfs:range pico:InterventionClassification.
-pico:interventionGroup a owl:ObjectProperty;
+pico:interventionGroup a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "An intervention group"@en;
                        rdfs:domain pico:PICO;
                        rdfs:isDefinedBy pico:;
                        rdfs:label "interventionGroup"@en;
                        rdfs:range pico:InterventionGroup.
-pico:interventionProvider a owl:ObjectProperty;
+pico:interventionProvider a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                           rdfs:comment "Intervention provider of an intervention"@en;
                           rdfs:domain pico:Intervention;
                           rdfs:isDefinedBy pico:;
                           rdfs:label "interventionProvider"@en;
                           rdfs:range pico:InterventionProvider.
-pico:interventionRationale a owl:ObjectProperty;
+pico:interventionRationale a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                            rdfs:comment "Rationale of an intervention"@en;
                            rdfs:domain pico:Intervention;
                            rdfs:isDefinedBy pico:;
                            rdfs:label "interventionRationale"@en;
                            rdfs:range pico:InterventionRationale.
-pico:isComparator a owl:DatatypeProperty;
+pico:isComparator a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment "The comparator flag (Deprecated)."@en;
                   rdfs:domain pico:Intervention;
                   rdfs:isDefinedBy pico:;
                   rdfs:label "isComparator"@en;
                   rdfs:range xsd:boolean.
-pico:modeOfDelivery a owl:ObjectProperty;
+pico:modeOfDelivery a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:comment "mode of delivery"@en;
                     rdfs:domain pico:Intervention;
                     rdfs:isDefinedBy pico:;
                     rdfs:label "modeOfDelivery"@en;
                     rdfs:range pico:ModeOfDelivery.
-pico:numberOfParticipants a owl:DatatypeProperty;
+pico:numberOfParticipants a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                           rdfs:comment "The number of participants in a population an intervention is being applied to"@en;
                           rdfs:domain pico:InterventionGroup;
                           rdfs:isDefinedBy pico:;
                           rdfs:label "numberOfParticipants"@en;
                           rdfs:range xsd:int.
-pico:outcome a owl:ObjectProperty;
+pico:outcome a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "Relates a outcome group to an outcome"@en;
              rdfs:domain pico:OutcomeGroup;
              rdfs:isDefinedBy pico:;
              rdfs:label "outcome"@en;
              rdfs:range pico:Outcome.
-pico:outcomeClassification a owl:ObjectProperty;
+pico:outcomeClassification a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                            rdfs:comment "The type of outcome."@en;
                            rdfs:domain pico:Outcome;
                            rdfs:isDefinedBy pico:;
                            rdfs:label "outcomeClassification"@en;
                            rdfs:range pico:OutcomeClassification.
-pico:outcomeDomain psys:transitiveOver cochrane:broaderConcept;
-                   a owl:ObjectProperty;
+pico:outcomeDomain <http://proton.semanticweb.org/protonsys#transitiveOver> <http://data.cochrane.org/ontologies/core/broaderConcept>;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "The domain of an outome, e.g. a side effect outcome, typically a condition."@en;
                    rdfs:domain pico:Outcome;
                    rdfs:isDefinedBy pico:;
                    rdfs:label "outcomeDomain"@en;
                    rdfs:range pico:OutcomeDomain.
-pico:outcomeGroup a owl:ObjectProperty;
+pico:outcomeGroup a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "Relates a pico to an outcome group"@en;
                   rdfs:domain pico:PICO;
                   rdfs:isDefinedBy pico:;
                   rdfs:label "outcomeGroup"@en;
                   rdfs:range pico:OutcomeGroup.
-pico:outcomeMeasurement a owl:ObjectProperty;
+pico:outcomeMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "The outcome measurement assessment scale."@en;
                         rdfs:domain pico:Outcome;
                         rdfs:isDefinedBy pico:;
                         rdfs:label "outcomeMeasurement"@en;
                         rdfs:range pico:AssessmentScale.
-pico:outcomeText a owl:DatatypeProperty;
+pico:outcomeText a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:comment "Free text associated with an Outcome."@en;
                  rdfs:domain pico:Outcome;
                  rdfs:isDefinedBy pico:;
                  rdfs:label "outcomeText"@en;
                  rdfs:range rdf:langString.
-pico:outcomeTreatment a owl:ObjectProperty;
+pico:outcomeTreatment a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "The outcome treatment."@en;
                       rdfs:domain pico:Outcome;
                       rdfs:isDefinedBy pico:;
                       rdfs:label "outcomeTreatment"@en;
                       rdfs:range pico:Treatment.
-pico:parentIntervention a owl:ObjectProperty;
+pico:parentIntervention a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "The parent intervention"@en;
                         rdfs:domain pico:Intervention;
                         rdfs:isDefinedBy pico:;
                         rdfs:label "parentIntervention"@en;
                         rdfs:range pico:Intervention;
-                        owl:inverseOf pico:childIntervention.
-pico:parentOutcome a owl:ObjectProperty;
+                        <http://www.w3.org/2002/07/owl#inverseOf> pico:childIntervention.
+pico:parentOutcome a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "References the parent outcome"@en;
                    rdfs:domain pico:Outcome;
                    rdfs:isDefinedBy pico:;
                    rdfs:label "parentOutcome"@en;
                    rdfs:range pico:Outcome;
-                   owl:inverseOf pico:childOutcome.
-pico:population a owl:ObjectProperty;
+                   <http://www.w3.org/2002/07/owl#inverseOf> pico:childOutcome.
+pico:population a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "A population"@en;
                 rdfs:domain pico:PICO;
                 rdfs:isDefinedBy pico:;
                 rdfs:label "population"@en;
                 rdfs:range pico:Population.
-pico:primaryEndpoint a owl:ObjectProperty;
+pico:primaryEndpoint a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "The primary endpoint of an outcome group, by duration"@en;
                      rdfs:domain pico:OutcomeGroup;
                      rdfs:isDefinedBy pico:;
                      rdfs:label "primaryEndpoint"@en;
                      rdfs:range pico:Duration.
-pico:schedule a owl:ObjectProperty;
+pico:schedule a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "schedule of an intervention"@en;
               rdfs:domain pico:Intervention;
               rdfs:isDefinedBy pico:;
               rdfs:label "schedule"@en;
               rdfs:range pico:Schedule.
-pico:setting a owl:ObjectProperty;
+pico:setting a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "setting of an intervention"@en;
              rdfs:domain pico:Intervention;
              rdfs:isDefinedBy pico:;
              rdfs:label "setting"@en;
              rdfs:range pico:Setting.
-pico:sex a owl:ObjectProperty;
+pico:sex a <http://www.w3.org/2002/07/owl#ObjectProperty>;
          rdfs:comment "The sex of a population"@en;
          rdfs:domain pico:Population;
          rdfs:isDefinedBy pico:;
          rdfs:label "sex"@en;
          rdfs:range pico:Sex.
-pico:socialContext a owl:ObjectProperty;
+pico:socialContext a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "The social context of a population"@en;
                    rdfs:domain pico:Population;
                    rdfs:isDefinedBy pico:;
                    rdfs:label "socialContext"@en;
                    rdfs:range pico:SocialContext.
-pico:treatment a owl:ObjectProperty;
+pico:treatment a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment "A treatment of a population"@en;
                rdfs:domain pico:Population;
                rdfs:isDefinedBy pico:;
                rdfs:label "treatment"@en;
                rdfs:range pico:Treatment.
-psys:transitiveOver a owl:AnnotationProperty.
-dc11:abstract a owl:AnnotationProperty.
-dc11:creator a owl:AnnotationProperty.
-dc11:publisher a owl:AnnotationProperty.
-dcterms:created a owl:AnnotationProperty.
-dcterms:modified a owl:AnnotationProperty.
-dcterms:rights a owl:AnnotationProperty.
-dcterms:title a owl:AnnotationProperty.
-vann:preferredNamespacePrefix a owl:AnnotationProperty.
-vann:preferredNamespaceUri a owl:AnnotationProperty.
-schema:image a owl:AnnotationProperty.
+<http://proton.semanticweb.org/protonsys#transitiveOver> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/abstract> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/rights> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://schema.org/image> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.

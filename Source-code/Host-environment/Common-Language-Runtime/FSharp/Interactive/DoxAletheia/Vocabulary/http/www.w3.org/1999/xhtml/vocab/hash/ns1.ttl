@@ -1,0 +1,387 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ns1: <http://www.w3.org/1999/xhtml/vocab#>.
+
+<http://www.w3.org/1999/xhtml/vocab> ns1:stylesheet <http://www.w3.org/StyleSheets/TR/base.css>.
+ns1:alert a rdf:Property;
+          rdfs:comment """A message
+      with important, and usually time-sensitive, information. Also see alertdialog
+      and status.""".
+ns1:alertdialog a rdf:Property;
+                rdfs:comment """A
+      type of dialog that contains an alert message, where initial focus goes
+      an element within the dialog. Also see alert and dialog.""".
+ns1:alternate a rdf:Property;
+              rdfs:comment """alternate 
+    designates alternate versions for a resource.""";
+              rdfs:member ns1:relrev-properties;
+              <http://www.w3.org/ns/rdfa#term> "alternate";
+              <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#alternate".
+ns1:appendix a rdf:Property;
+             rdfs:comment """appendix refers to a resource serving
+      as an appendix in a collection. """;
+             rdfs:member ns1:relrev-properties;
+             <http://www.w3.org/ns/rdfa#term> "appendix";
+             <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#appendix".
+ns1:application a rdf:Property;
+                rdfs:comment """A
+      region declared as a web application, as opposed to a web document.""".
+ns1:article a rdf:Property;
+            rdfs:comment """A section
+      of a page that consists of a composition that forms an independent part
+      of a document, page, or site.""".
+ns1:banner a rdf:Property;
+           rdfs:comment """contains
+      the prime heading or internal title of a page. """;
+           rdfs:member ns1:role-properties.
+ns1:bookmark a rdf:Property;
+             rdfs:comment """bookmark refers to a bookmark - a link
+      to a key entry point within an extended document. """;
+             rdfs:member ns1:relrev-properties;
+             <http://www.w3.org/ns/rdfa#term> "bookmark";
+             <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#bookmark".
+ns1:button a rdf:Property;
+           rdfs:comment """An input
+      that allows for user-triggered actions when clicked or pressed. Also see
+      link.""".
+ns1:chapter a rdf:Property;
+            rdfs:comment """chapter refers to a resource serving
+      as a chapter in a collection. """;
+            rdfs:member ns1:relrev-properties;
+            <http://www.w3.org/ns/rdfa#term> "chapter";
+            <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#chapter".
+ns1:checkbox a rdf:Property;
+             rdfs:comment """A checkable
+      input that has three possible values: true, false, or mixed.""".
+ns1:cite a rdf:Property;
+         rdfs:comment """cite refers to a resource that defines
+      a citation. """;
+         rdfs:member ns1:relrev-properties;
+         <http://www.w3.org/ns/rdfa#term> "cite";
+         <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#cite".
+ns1:columnheader a rdf:Property;
+                 rdfs:comment """A
+      cell containing header information for a column.""".
+ns1:combobox a rdf:Property;
+             rdfs:comment """A presentation
+      of a select; usually similar to a textbox where users can type ahead to
+      select an option, or type to enter arbitrary text as a new item in the
+      list. Also see listbox.""".
+ns1:complementary a rdf:Property;
+                  rdfs:comment """indicates that the section supports but is
+      separable from the main content of resource.""";
+                  rdfs:member ns1:role-properties.
+ns1:contentinfo a rdf:Property;
+                rdfs:comment """contains meta information about the
+      content on the page or the page as a whole.""";
+                rdfs:member ns1:role-properties.
+ns1:contents a rdf:Property;
+             rdfs:comment """contents refers to a resource serving
+      as a table of contents. """;
+             rdfs:member ns1:relrev-properties;
+             <http://www.w3.org/ns/rdfa#term> "contents";
+             <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#contents".
+ns1:copyright a rdf:Property;
+              rdfs:comment """copyright refers to a copyright
+      statement for the resource. """;
+              rdfs:member ns1:relrev-properties;
+              <http://www.w3.org/ns/rdfa#term> "copyright";
+              <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#copyright".
+ns1:definition a rdf:Property;
+               rdfs:comment "indicates the definition of a term or concept.";
+               rdfs:member ns1:role-properties.
+ns1:dialog a rdf:Property;
+           rdfs:comment """A dialog
+      is an application window that is designed to interrupt the current processing
+      of an application in order to prompt the user to enter information or require
+      a response. Also see alertdialog.""".
+ns1:directory a rdf:Property;
+              rdfs:comment """A list
+      of references to members of a group, such as a static table of contents.""".
+ns1:document a rdf:Property;
+             rdfs:comment """A region
+      containing related information that is declared as document content, as
+      opposed to a web application.""".
+ns1:first a rdf:Property;
+          rdfs:comment """first refers the first item in a
+      collection (see also start and top).""";
+          rdfs:member ns1:relrev-properties;
+          <http://www.w3.org/ns/rdfa#term> "first";
+          <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#first".
+ns1:form a rdf:Property;
+         rdfs:comment """A landmark
+      region that contains a collection of items and objects that, as a whole,
+      combine to create a form. Also see search.""".
+ns1:glossary a rdf:Property;
+             rdfs:comment """glossary refers to a resource
+      providing a glossary of terms. """;
+             rdfs:member ns1:relrev-properties;
+             <http://www.w3.org/ns/rdfa#term> "glossary";
+             <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#glossary".
+ns1:grid a rdf:Property;
+         rdfs:comment """A grid is
+      an interactive control which contains cells of tabular data arranged in
+      rows and columns, like a table.""".
+ns1:gridcell a rdf:Property;
+             rdfs:comment """A cell
+      in a grid or treegrid.""".
+ns1:group a rdf:Property;
+          rdfs:comment """A set of
+      user interface objects which are not intended to be included in a page
+      summary or table of contents by assistive technologies.""".
+ns1:heading a rdf:Property;
+            rdfs:comment """A heading
+      for a section of the page.""".
+ns1:help a rdf:Property;
+         rdfs:comment """help refers to a resource offering
+      help. """;
+         rdfs:member ns1:relrev-properties;
+         <http://www.w3.org/ns/rdfa#term> "help";
+         <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#help".
+ns1:icon a rdf:Property;
+         rdfs:comment """icon refers to a resource that
+      represents an icon. """;
+         rdfs:member ns1:relrev-properties;
+         <http://www.w3.org/ns/rdfa#term> "icon";
+         <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#icon".
+ns1:img a rdf:Property;
+        rdfs:comment """A container
+      for a collection of elements that form an image.""".
+ns1:index a rdf:Property;
+          rdfs:comment """index refers to a resource providing
+      an index. """;
+          rdfs:member ns1:relrev-properties;
+          <http://www.w3.org/ns/rdfa#term> "index";
+          <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#index".
+ns1:itsRules a rdf:Property;
+             rdfs:comment """itsRules indicates that the designated
+      resource is an [ITS] rule set.""";
+             rdfs:member ns1:relrev-properties;
+             <http://www.w3.org/ns/rdfa#term> "itsRules";
+             <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#itsRules".
+ns1:last a rdf:Property;
+         rdfs:comment """last refers to the last resource in a
+      collection of resources. """;
+         rdfs:member ns1:relrev-properties;
+         <http://www.w3.org/ns/rdfa#term> "last";
+         <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#last".
+ns1:license a rdf:Property;
+            rdfs:comment """license refers to a resource that
+      defines the associated license. """;
+            rdfs:member ns1:relrev-properties;
+            <http://www.w3.org/ns/rdfa#term> "license";
+            <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#license".
+ns1:link a rdf:Property;
+         rdfs:comment """An interactive
+      reference to an internal or external resource that, when activated, causes
+      the user agent to navigate to that resource. Also see button.""".
+ns1:list a rdf:Property;
+         rdfs:comment """A group of
+      non-interactive list items. Also see listbox.""".
+ns1:listbox a rdf:Property;
+            rdfs:comment """A widget
+      that allows the user to select one or more items from a list of choices.
+      Also see combobox and list.""".
+ns1:listitem a rdf:Property;
+             rdfs:comment """A single
+      item in a list or directory.""".
+ns1:log a rdf:Property;
+        rdfs:comment """A type of
+      live region where new information is added in meaningful order and old
+      information may disappear. Also see marquee.""".
+ns1:main a rdf:Property;
+         rdfs:comment """acts as the
+      main content of the document. """;
+         rdfs:member ns1:role-properties.
+ns1:marquee a rdf:Property;
+            rdfs:comment """A type
+      of live region where non-essential information changes frequently. Also
+      see log.""".
+ns1:math a rdf:Property;
+         rdfs:comment """Content that
+      represents a mathematical expression. """.
+ns1:menu a rdf:Property;
+         rdfs:comment """A type of
+      widget that offers a list of choices to the user.""".
+ns1:menubar a rdf:Property;
+            rdfs:comment """A presentation
+      of menu that usually remains visible and is usually presented horizontally.""".
+ns1:menuitem a rdf:Property;
+             rdfs:comment """An option
+      in a group of choices contained by a menu or menubar.""".
+ns1:menuitemcheckbox a rdf:Property;
+                     rdfs:comment """A
+      checkable menuitem that has three possible values: true, false, or mixed.""".
+ns1:menuitemradio a rdf:Property;
+                  rdfs:comment """A
+      checkable menuitem in a group of menuitemradio roles, only one of which
+      can be checked at a time.""".
+ns1:meta a rdf:Property;
+         rdfs:comment """meta refers to a resource that
+      provides metadata. """;
+         rdfs:member ns1:relrev-properties;
+         <http://www.w3.org/ns/rdfa#term> "meta";
+         <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#meta".
+ns1:navigation a rdf:Property;
+               rdfs:comment """indicates a collection of items suitable for
+      navigating the document or related documents.""";
+               rdfs:member ns1:role-properties.
+ns1:next a rdf:Property;
+         rdfs:comment """next refers to the next resource
+      (after the current one) in an ordered collection of resources. """;
+         rdfs:member ns1:relrev-properties;
+         <http://www.w3.org/ns/rdfa#term> "next";
+         <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#next".
+ns1:note a rdf:Property;
+         rdfs:comment """indicates
+      the content is parenthetic or ancillary to the main content of the
+      resource. """;
+         rdfs:member ns1:role-properties.
+ns1:option a rdf:Property;
+           rdfs:comment """A selectable
+      item in a select list.""".
+ns1:p3pv1 a rdf:Property;
+          rdfs:comment """p3pv1 refers to a P3P Policy Reference
+      File [P3P]. """;
+          rdfs:member ns1:relrev-properties;
+          <http://www.w3.org/ns/rdfa#term> "p3pv1";
+          <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#p3pv1".
+ns1:presentation a rdf:Property;
+                 rdfs:comment """An
+      element whose implicit native role semantics will not be mapped to the
+      accessibility API.""".
+ns1:prev a rdf:Property;
+         rdfs:comment """prev refers to a previous resource
+      (before the current one) in an ordered collection of resources. """;
+         rdfs:member ns1:relrev-properties;
+         <http://www.w3.org/ns/rdfa#term> "prev";
+         <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#prev".
+ns1:progressbar a rdf:Property;
+                rdfs:comment """An
+      element that displays the progress status for tasks that take a long time.""".
+ns1:radio a rdf:Property;
+          rdfs:comment """A checkable
+      input in a group of radio roles, only one of which can be checked at a
+      time.""".
+ns1:radiogroup a rdf:Property;
+               rdfs:comment """A group
+      of radio buttons.""".
+ns1:region a rdf:Property;
+           rdfs:comment """A large
+      perceivable section of a web page or document, that the author feels is
+      important enough to be included in a page summary or table of contents,
+      for example, an area of the page containing live sporting event statistics.""".
+ns1:relrev-properties a rdf:Bag;
+                      rdfs:member ns1:role-properties.
+ns1:role a rdf:Property,
+           rdf:Bag;
+         rdfs:comment """role indicates the purpose of the
+      resource. See the XHTML Role
+      Vocabulary for roles in this vocabulary space, and XHTMLROLE for information on extending the
+      collection of roles. """;
+         rdfs:member ns1:relrev-properties;
+         <http://www.w3.org/ns/rdfa#term> "role";
+         <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#role".
+ns1:role-properties a rdfs:member,
+                      rdf:Bag.
+ns1:row a rdf:Property;
+        rdfs:comment """A row of cells
+      in a grid.""".
+ns1:rowgroup a rdf:Property;
+             rdfs:comment """A group
+      containing one or more row elements in a grid.""".
+ns1:rowheader a rdf:Property;
+              rdfs:comment """A cell
+      containing header information for a row in a grid.""".
+ns1:scrollbar a rdf:Property;
+              rdfs:comment """A graphical
+      object that controls the scrolling of content within a viewing area, regardless
+      of whether the content is fully displayed within the viewing area.""".
+ns1:search a rdf:Property;
+           rdfs:comment """indicates
+      that the section provides a search facility. """;
+           rdfs:member ns1:role-properties.
+ns1:section a rdf:Property;
+            rdfs:comment """section refers to a resource serving
+      as a section in a collection. """;
+            rdfs:member ns1:relrev-properties;
+            <http://www.w3.org/ns/rdfa#term> "section";
+            <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#section".
+ns1:separator a rdf:Property;
+              rdfs:comment """A divider
+      that separates and distinguishes sections of content or groups of menuitems.""".
+ns1:slider a rdf:Property;
+           rdfs:comment """A user
+      input where the user selects a value from within a given range.""".
+ns1:spinbutton a rdf:Property;
+               rdfs:comment """A form
+      of range that expects a user to select from amongst discrete choices.""".
+ns1:start a rdf:Property;
+          rdfs:comment """start refers to the first resource in
+      a collection of resources. """;
+          rdfs:member ns1:relrev-properties;
+          <http://www.w3.org/ns/rdfa#term> "start";
+          <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#start".
+ns1:status a rdf:Property;
+           rdfs:comment """A container
+      whose content is advisory information for the user but is not important
+      enough to justify an alert. Also see alert.""".
+ns1:stylesheet a rdf:Property;
+               rdfs:comment """stylesheet refers to a resource
+      serving as a stylesheet for a resource. """;
+               rdfs:member ns1:relrev-properties;
+               <http://www.w3.org/ns/rdfa#term> "stylesheet";
+               <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#stylesheet".
+ns1:subsection a rdf:Property;
+               rdfs:comment """subsection refers to a resource
+      serving as a subsection in a collection. """;
+               rdfs:member ns1:relrev-properties;
+               <http://www.w3.org/ns/rdfa#term> "subsection";
+               <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#subsection".
+ns1:tab a rdf:Property;
+        rdfs:comment """A grouping
+      label providing a mechanism for selecting the tab content that is to be
+      rendered to the user.""".
+ns1:tablist a rdf:Property;
+            rdfs:comment """A list
+      of tab elements, which are references to tabpanel elements.""".
+ns1:tabpanel a rdf:Property;
+             rdfs:comment """A container
+      for the resources associated with a tab, where each tab is contained in
+      a tablist.""".
+ns1:textbox a rdf:Property;
+            rdfs:comment """Input
+      that allows free-form text as its value.""".
+ns1:timer a rdf:Property;
+          rdfs:comment """A type of
+      live region containing a numerical counter which indicates an amount of
+      elapsed time from a start point, or the time remaining until an end point.""".
+ns1:toolbar a rdf:Property;
+            rdfs:comment """A collection
+      of commonly used function buttons represented in compact visual form.""".
+ns1:tooltip a rdf:Property;
+            rdfs:comment """A contextual
+      popup that displays a description for an element.""".
+ns1:top a rdf:Property;
+        rdfs:comment "top is a synonym for start. ";
+        rdfs:member ns1:relrev-properties;
+        <http://www.w3.org/ns/rdfa#term> "top";
+        <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#top".
+ns1:tree a rdf:Property;
+         rdfs:comment """A type of
+      list that may contain sub-level nested groups that can be collapsed and
+      expanded.""".
+ns1:treegrid a rdf:Property;
+             rdfs:comment """A grid
+      whose rows can be expanded and collapsed in the same manner as for a tree.""".
+ns1:treeitem a rdf:Property;
+             rdfs:comment """An option
+      item of a tree. This is an element within a tree that may be expanded or
+      collapsed if it contains a sub-level group of treeitems.""".
+ns1:up a rdf:Property;
+       rdfs:comment """up refers to a resource \"above\" in a
+      hierarchically structured set. """;
+       rdfs:member ns1:relrev-properties;
+       <http://www.w3.org/ns/rdfa#term> "up";
+       <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#up".

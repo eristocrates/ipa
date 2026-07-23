@@ -6,8 +6,6 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix wn20schema: <http://www.w3.org/2006/03/wn/wn20/schema/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix wn20: <http://www.w3.org/2006/03/wn/wn20/>.
 
 xsd:integer a rdfs:Datatype.
 xsd:nonNegativeInteger a rdfs:Datatype.

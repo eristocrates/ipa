@@ -1,32 +1,24 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix wiki: <http://en.wikipedia.org/wiki/>.
-@prefix gr: <http://purl.org/goodrelations/v1#>.
 @prefix ofrd: <http://purl.org/opdm/refrigerator#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-dcterms:contributor a owl:AnnotationProperty.
-dcterms:creator a owl:AnnotationProperty.
-dcterms:subject a owl:AnnotationProperty.
-ofrd: dcterms:contributor <http://www.consumer.es/web/es/economia_domestica/servicios-y-hogar/2005/11/04/146650.php>,
-                          <http://www.wikipedia.org/>;
-      dcterms:creator "Martin Hepp",
-                      "Laszlo Torok",
-                      <http://www.unibw.de/ebusiness/>,
-                      "Bene Rodriguez-Castro",
-                      <http://opdm-project.org/>;
-      dcterms:subject "refrigerator fridge freezer"@en;
-      a owl:Ontology;
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/subject> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+ofrd: <http://purl.org/dc/terms/contributor> <http://www.consumer.es/web/es/economia_domestica/servicios-y-hogar/2005/11/04/146650.php>,
+                                             <http://www.wikipedia.org/>;
+      <http://purl.org/dc/terms/creator> "Martin Hepp",
+                                         "Laszlo Torok",
+                                         <http://www.unibw.de/ebusiness/>,
+                                         "Bene Rodriguez-Castro",
+                                         <http://opdm-project.org/>;
+      <http://purl.org/dc/terms/subject> "refrigerator fridge freezer"@en;
+      a <http://www.w3.org/2002/07/owl#Ontology>;
       rdfs:comment "Vocabulary to describe fridges and freezers"@en;
       rdfs:label "Fridge and Freezer Vocabulary"@en;
-      owl:imports <http://purl.org/opdm/utility#>,
-                  <http://purl.org/goodrelations/v1>.
+      <http://www.w3.org/2002/07/owl#imports> <http://purl.org/opdm/utility#>,
+                                              <http://purl.org/goodrelations/v1>.
 ofrd:BottomFreezer a ofrd:StyleOfUnit;
                    rdfs:comment "It represents a bottom freezer door type of fridge."@en;
                    rdfs:isDefinedBy ofrd:;
@@ -39,11 +31,11 @@ ofrd:Chest a ofrd:TypeOfBody;
            rdfs:comment "It represents a chest type of body frame for a fridge/freezer."@en;
            rdfs:isDefinedBy ofrd:;
            rdfs:label "Chest"@en.
-ofrd:ClimateClass a owl:Class;
+ofrd:ClimateClass a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "Class to represent the range of room temperatures that a fridge/freezer can operate. Possible values include: N, SN, ST, T."@en;
                   rdfs:isDefinedBy ofrd:;
                   rdfs:label "ClimateClass"@en;
-                  rdfs:subClassOf gr:QualitativeValue.
+                  rdfs:subClassOf <http://purl.org/goodrelations/v1#QualitativeValue>.
 ofrd:ClimateN a ofrd:ClimateClass;
               rdfs:comment "This concept represents the N climate class rating. The fridge/freezer can operate between 16 - 32 degree celsius of room temperature"@en;
               rdfs:isDefinedBy ofrd:;
@@ -100,64 +92,64 @@ ofrd:EnergyG a ofrd:EnergyRatingEU;
              rdfs:comment "This concept represents the G energy efficiency rating in the European Union labelling scheme"@en;
              rdfs:isDefinedBy ofrd:;
              rdfs:label "G Rating"@en.
-ofrd:EnergyRatingEU a owl:Class;
+ofrd:EnergyRatingEU a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "Class to represent the European Union energy label codas of a fridge. Possible values go from A+++ to G."@en;
                     rdfs:isDefinedBy ofrd:;
                     rdfs:label "EnergyRatingEU"@en;
-                    rdfs:subClassOf gr:QualitativeValue.
+                    rdfs:subClassOf <http://purl.org/goodrelations/v1#QualitativeValue>.
 ofrd:FreeStanding a ofrd:TypeOfBody;
                   rdfs:comment "It represents a free-standing type of body frame for a fridge/freezer."@en;
                   rdfs:isDefinedBy ofrd:;
                   rdfs:label "FreeStanding"@en.
 ofrd:Freezer <http://purl.org/opdm/utility#category> <http://purl.org/opdm/category/google#Home_and_Garden_Kitchen_and_Dining_KitchenAppliances_Freezers>;
-             a owl:Class;
+             a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "A generic dedicated Freezer (with no Fridge unit) as a product type"@en;
              rdfs:isDefinedBy ofrd:;
              rdfs:label "Congelador"@es,
                         "Freezer"@en;
              rdfs:subClassOf ofrd:FridgeFreezer;
-             foaf:depiction <http://upload.wikimedia.org/wikipedia/commons/2/21/2011-05-09_14-56-45_407.jpg>.
+             <http://xmlns.com/foaf/0.1/depiction> <http://upload.wikimedia.org/wikipedia/commons/2/21/2011-05-09_14-56-45_407.jpg>.
 ofrd:FrenchDoor a ofrd:StyleOfUnit;
                 rdfs:comment "It represents a french-door type of fridge."@en;
                 rdfs:isDefinedBy ofrd:;
                 rdfs:label "FrenchDoor"@en.
 ofrd:Fridge <http://purl.org/opdm/utility#category> <http://purl.org/opdm/category/google#Home_and_Garden_Kitchen_and_Dining_KitchenAppliances_Refrigerators>;
-            a owl:Class;
+            a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "A generic Fridge with no Freezer unit as a product type"@en;
             rdfs:isDefinedBy ofrd:;
             rdfs:label "Fridge"@en,
                        "Kühlschrank"@de,
                        "Frigorífico"@es;
             rdfs:subClassOf ofrd:FridgeFreezer;
-            skos:altLabel "Heladera"@es,
-                          "Nevera"@es,
-                          "Refrigerator"@en,
-                          "Refrigerador"@es;
-            foaf:depiction <http://upload.wikimedia.org/wikipedia/commons/2/21/2011-05-09_14-56-45_407.jpg>.
+            <http://www.w3.org/2004/02/skos/core#altLabel> "Heladera"@es,
+                                                           "Nevera"@es,
+                                                           "Refrigerator"@en,
+                                                           "Refrigerador"@es;
+            <http://xmlns.com/foaf/0.1/depiction> <http://upload.wikimedia.org/wikipedia/commons/2/21/2011-05-09_14-56-45_407.jpg>.
 ofrd:FridgeFreezer <http://purl.org/opdm/utility#category> <http://purl.org/opdm/category/google#Home_and_Garden_Kitchen_and_Dining_KitchenAppliances_Refrigerators>,
                                                            <http://purl.org/opdm/category/google#Home_and_Garden_Kitchen_and_Dining_KitchenAppliances_Freezers>;
-                   a owl:Class;
+                   a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "A generic Fridge/Freezer as a product type"@en;
                    rdfs:isDefinedBy ofrd:;
                    rdfs:label "Kühlschrank"@de,
                               "Frigorífico/Congelador"@es,
                               "FridgeFreezer"@en;
-                   rdfs:subClassOf gr:ProductOrService;
-                   skos:altLabel "Nevera/Congelador"@es,
-                                 "Refrigerador/Congelador"@es,
-                                 "Heladera/Congelador"@es,
-                                 "Refrigerator/Freezer"@en;
-                   foaf:depiction <http://upload.wikimedia.org/wikipedia/commons/2/21/2011-05-09_14-56-45_407.jpg>.
+                   rdfs:subClassOf <http://purl.org/goodrelations/v1#ProductOrService>;
+                   <http://www.w3.org/2004/02/skos/core#altLabel> "Nevera/Congelador"@es,
+                                                                  "Refrigerador/Congelador"@es,
+                                                                  "Heladera/Congelador"@es,
+                                                                  "Refrigerator/Freezer"@en;
+                   <http://xmlns.com/foaf/0.1/depiction> <http://upload.wikimedia.org/wikipedia/commons/2/21/2011-05-09_14-56-45_407.jpg>.
 ofrd:Left a ofrd:RelativeDirection;
           rdfs:comment "It represents the relative direction: left."@en;
           rdfs:isDefinedBy ofrd:;
           rdfs:label "Left"@en.
-ofrd:RelativeDirection dcterms:contributor wiki:Relative_direction;
-                       a owl:Class;
+ofrd:RelativeDirection <http://purl.org/dc/terms/contributor> <http://en.wikipedia.org/wiki/Relative_direction>;
+                       a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:comment "Class to represent the most common relative directions. Possible values include: left, right, forward, backward, up, down."@en;
                        rdfs:isDefinedBy ofrd:;
                        rdfs:label "RelativeDirection"@en;
-                       rdfs:subClassOf gr:QualitativeValue.
+                       rdfs:subClassOf <http://purl.org/goodrelations/v1#QualitativeValue>.
 ofrd:Right a ofrd:RelativeDirection;
            rdfs:comment "It represents the relative direction: right."@en;
            rdfs:isDefinedBy ofrd:;
@@ -170,20 +162,20 @@ ofrd:SingleDoor a ofrd:StyleOfUnit;
                 rdfs:comment "It represents a freezer-less door type of fridge."@en;
                 rdfs:isDefinedBy ofrd:;
                 rdfs:label "FreezerlessDoor"@en.
-ofrd:StyleOfUnit a owl:Class;
+ofrd:StyleOfUnit a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "Class to represent the different styles of fridge/freezers. Possible values include: french-door, side-by-side, top-freezer, bottom-freezer, single-door."@en;
                  rdfs:isDefinedBy ofrd:;
                  rdfs:label "StyleOfUnit"@en;
-                 rdfs:subClassOf gr:QualitativeValue.
+                 rdfs:subClassOf <http://purl.org/goodrelations/v1#QualitativeValue>.
 ofrd:TopFreezer a ofrd:StyleOfUnit;
                 rdfs:comment "It represents a top freezer door type of fridge."@en;
                 rdfs:isDefinedBy ofrd:;
                 rdfs:label "TopFreezerDoor"@en.
-ofrd:TypeOfBody a owl:Class;
+ofrd:TypeOfBody a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "Class to represent the different types of body frames of a fridge/freezer. Possible values include: built-in, free-standing."@en;
                 rdfs:isDefinedBy ofrd:;
                 rdfs:label "TypeOfBody"@en;
-                rdfs:subClassOf gr:QualitativeValue.
+                rdfs:subClassOf <http://purl.org/goodrelations/v1#QualitativeValue>.
 ofrd:antibacterial <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile> ; 
                                                                   <http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is a boolean (true/false - xsd:boolean)." ; 
                                                                   <http://purl.org/opdm/utility#attributePosition> 0  ; 
@@ -198,13 +190,13 @@ ofrd:antibacterial <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.o
                                                                   <http://purl.org/opdm/utility#rankingDirection> "DESC"];
                    <http://purl.org/opdm/utility#maxCardinality> "1";
                    <http://purl.org/opdm/utility#minCardinality> "0";
-                   a owl:DatatypeProperty;
+                   a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:comment "This property specifies whether the fridge/freezer is equipped with an antibacterial detector system or not."@en;
                    rdfs:domain ofrd:FridgeFreezer;
                    rdfs:isDefinedBy ofrd:;
                    rdfs:label "Antibacterial"@en;
                    rdfs:range xsd:boolean;
-                   rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
+                   rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
 ofrd:capableOfACS <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile> ; 
                                                                  <http://purl.org/opdm/utility#attributePosition> 0  ; 
                                                                  <http://purl.org/opdm/utility#rankingDirection> "DESC" ; 
@@ -219,13 +211,13 @@ ofrd:capableOfACS <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.or
                                                                  <http://purl.org/opdm/utility#priority> 0 ];
                   <http://purl.org/opdm/utility#maxCardinality> "1";
                   <http://purl.org/opdm/utility#minCardinality> "0";
-                  a owl:DatatypeProperty;
+                  a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment "This property specifies whether the fridge/freezer is equipped with an Advanced Control System (ACS) or not. ACS allows the fridge/freezer to maintain the desired internal temperature safe from variations in the external termperature."@en;
                   rdfs:domain ofrd:FridgeFreezer;
                   rdfs:isDefinedBy ofrd:;
                   rdfs:label "Capable of ACS"@en;
                   rdfs:range xsd:boolean;
-                  rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
+                  rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
 ofrd:childLock <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is a boolean (true/false - xsd:boolean)." ; 
                                                               <http://purl.org/opdm/utility#priority> 0  ; 
                                                               <http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile> ; 
@@ -240,13 +232,13 @@ ofrd:childLock <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/o
                                                               <http://purl.org/opdm/utility#attributePosition> 0 ];
                <http://purl.org/opdm/utility#maxCardinality> "1";
                <http://purl.org/opdm/utility#minCardinality> "0";
-               a owl:DatatypeProperty;
+               a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment "This property specifies whether the fridge/freezer is equipped with a child lock system or not."@en;
                rdfs:domain ofrd:FridgeFreezer;
                rdfs:isDefinedBy ofrd:;
                rdfs:label "Child lock"@en;
                rdfs:range xsd:boolean;
-               rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
+               rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
 ofrd:consumptionOfEnergy <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#priority> 0  ; 
                                                                         <http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile> ; 
                                                                         <http://purl.org/opdm/utility#rankingDirection> "DESC" ; 
@@ -261,20 +253,20 @@ ofrd:consumptionOfEnergy <http://purl.org/opdm/utility#isConfiguredBy> [<http://
                                                                         <http://purl.org/opdm/utility#attributePosition> 0 ];
                          <http://purl.org/opdm/utility#maxCardinality> "1";
                          <http://purl.org/opdm/utility#minCardinality> "0";
-                         <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [gr:hasMaxValue 0  ; 
-                                                                                   a gr:QuantitativeValue ; 
-                                                                                   gr:hasMinValue 0 ],
-                                                                                  [gr:hasMaxValue 0  ; 
-                                                                                   a gr:QuantitativeValue ; 
-                                                                                   gr:hasMinValue 0 ];
+                         <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [<http://purl.org/goodrelations/v1#hasMaxValue> 0  ; 
+                                                                                   a <http://purl.org/goodrelations/v1#QuantitativeValue> ; 
+                                                                                   <http://purl.org/goodrelations/v1#hasMinValue> 0 ],
+                                                                                  [<http://purl.org/goodrelations/v1#hasMaxValue> 0  ; 
+                                                                                   a <http://purl.org/goodrelations/v1#QuantitativeValue> ; 
+                                                                                   <http://purl.org/goodrelations/v1#hasMinValue> 0 ];
                          <http://purl.org/opdm/utility#recommendedUnitOfMeasure> "KWH";
-                         a owl:ObjectProperty;
+                         a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:comment "The consumption of energy of the fridge/freezer in kilowatt hour (in a year) - UN/CEFACT common code: KWH."@en;
                          rdfs:domain ofrd:FridgeFreezer;
                          rdfs:isDefinedBy ofrd:;
                          rdfs:label "Consumption of energy"@en;
-                         rdfs:range gr:QuantitativeValue;
-                         rdfs:subPropertyOf gr:quantitativeProductOrServiceProperty.
+                         rdfs:range <http://purl.org/goodrelations/v1#QuantitativeValue>;
+                         rdfs:subPropertyOf <http://purl.org/goodrelations/v1#quantitativeProductOrServiceProperty>.
 ofrd:display <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#attributePosition> 0  ; 
                                                             <http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is a boolean (true/false - xsd:boolean)." ; 
                                                             <http://purl.org/opdm/utility#priority> 0  ; 
@@ -289,13 +281,13 @@ ofrd:display <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opd
                                                             <http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile>];
              <http://purl.org/opdm/utility#maxCardinality> "1";
              <http://purl.org/opdm/utility#minCardinality> "0";
-             a owl:DatatypeProperty;
+             a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
              rdfs:comment "This property specifies whether the fridge/freezer is equipped with an electronic display system or not."@en;
              rdfs:domain ofrd:FridgeFreezer;
              rdfs:isDefinedBy ofrd:;
              rdfs:label "Display"@en;
              rdfs:range xsd:boolean;
-             rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
+             rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
 ofrd:doorOpenAlarm <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile> ; 
                                                                   a <http://purl.org/opdm/utility#MetadataContainer> ; 
                                                                   <http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is a boolean (true/false - xsd:boolean)." ; 
@@ -310,13 +302,13 @@ ofrd:doorOpenAlarm <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.o
                                                                   <http://purl.org/opdm/utility#rankingDirection> "DESC"];
                    <http://purl.org/opdm/utility#maxCardinality> "1";
                    <http://purl.org/opdm/utility#minCardinality> "0";
-                   a owl:DatatypeProperty;
+                   a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:comment "This property specifies whether the fridge/freezer is equipped with a door-open alarm system or not."@en;
                    rdfs:domain ofrd:FridgeFreezer;
                    rdfs:isDefinedBy ofrd:;
                    rdfs:label "Door open alarm"@en;
                    rdfs:range xsd:boolean;
-                   rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
+                   rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
 ofrd:energyStarUS <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#priority> 0  ; 
                                                                  <http://purl.org/opdm/utility#attributePosition> 0  ; 
                                                                  <http://purl.org/opdm/utility#rankingDirection> "DESC" ; 
@@ -331,13 +323,13 @@ ofrd:energyStarUS <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.or
                                                                  <http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is a boolean (true/false - xsd:boolean)."];
                   <http://purl.org/opdm/utility#maxCardinality> "1";
                   <http://purl.org/opdm/utility#minCardinality> "0";
-                  a owl:DatatypeProperty;
+                  a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment "This property specifies whether the fridge/freezer is certified with the Energy Star label awarded by the Department of Energy and Enviromental Protection Agency of the US, or not."@en;
                   rdfs:domain ofrd:FridgeFreezer;
                   rdfs:isDefinedBy ofrd:;
                   rdfs:label "Energy Star US"@en;
                   rdfs:range xsd:boolean;
-                  rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
+                  rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
 ofrd:frostFree <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is a boolean (true/false - xsd:boolean)." ; 
                                                               <http://purl.org/opdm/utility#priority> 0  ; 
                                                               <http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile> ; 
@@ -352,13 +344,13 @@ ofrd:frostFree <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/o
                                                               <http://purl.org/opdm/utility#attributePosition> 0 ];
                <http://purl.org/opdm/utility#maxCardinality> "1";
                <http://purl.org/opdm/utility#minCardinality> "0";
-               a owl:DatatypeProperty;
+               a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment "This property specifies whether the fridge/freezer is equipped with a frost-free system or not."@en;
                rdfs:domain ofrd:FridgeFreezer;
                rdfs:isDefinedBy ofrd:;
                rdfs:label "Frost free"@en;
                rdfs:range xsd:boolean;
-               rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
+               rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
 ofrd:iceDispenser <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#rankingDirection> "DESC" ; 
                                                                  <http://purl.org/opdm/utility#attributePosition> 0  ; 
                                                                  <http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is a boolean (true/false - xsd:boolean)." ; 
@@ -373,13 +365,13 @@ ofrd:iceDispenser <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.or
                                                                  a <http://purl.org/opdm/utility#MetadataContainer>];
                   <http://purl.org/opdm/utility#maxCardinality> "1";
                   <http://purl.org/opdm/utility#minCardinality> "0";
-                  a owl:DatatypeProperty;
+                  a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment "This property specifies whether the fridge/freezer is equipped with an ice dispenser system or not."@en;
                   rdfs:domain ofrd:FridgeFreezer;
                   rdfs:isDefinedBy ofrd:;
                   rdfs:label "Ice dispenser"@en;
                   rdfs:range xsd:boolean;
-                  rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
+                  rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
 ofrd:iceMaker <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile> ; 
                                                              a <http://purl.org/opdm/utility#MetadataContainer> ; 
                                                              <http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is a boolean (true/false - xsd:boolean)." ; 
@@ -394,13 +386,13 @@ ofrd:iceMaker <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/op
                                                              <http://purl.org/opdm/utility#rankingDirection> "DESC"];
               <http://purl.org/opdm/utility#maxCardinality> "1";
               <http://purl.org/opdm/utility#minCardinality> "0";
-              a owl:DatatypeProperty;
+              a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:comment "This property specifies whether the fridge/freezer is equipped with an ice-maker system or not."@en;
               rdfs:domain ofrd:FridgeFreezer;
               rdfs:isDefinedBy ofrd:;
               rdfs:label "Ice maker"@en;
               rdfs:range xsd:boolean;
-              rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
+              rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
 ofrd:levelOfNoise <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#priority> 0  ; 
                                                                  <http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile> ; 
                                                                  <http://purl.org/opdm/utility#attributePosition> 0  ; 
@@ -415,20 +407,20 @@ ofrd:levelOfNoise <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.or
                                                                  a <http://purl.org/opdm/utility#MetadataContainer>];
                   <http://purl.org/opdm/utility#maxCardinality> "1";
                   <http://purl.org/opdm/utility#minCardinality> "0";
-                  <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [gr:hasMaxValue 0  ; 
-                                                                            a gr:QuantitativeValue ; 
-                                                                            gr:hasMinValue 0 ],
-                                                                           [gr:hasMaxValue 0  ; 
-                                                                            a gr:QuantitativeValue ; 
-                                                                            gr:hasMinValue 0 ];
+                  <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [<http://purl.org/goodrelations/v1#hasMaxValue> 0  ; 
+                                                                            a <http://purl.org/goodrelations/v1#QuantitativeValue> ; 
+                                                                            <http://purl.org/goodrelations/v1#hasMinValue> 0 ],
+                                                                           [<http://purl.org/goodrelations/v1#hasMaxValue> 0  ; 
+                                                                            a <http://purl.org/goodrelations/v1#QuantitativeValue> ; 
+                                                                            <http://purl.org/goodrelations/v1#hasMinValue> 0 ];
                   <http://purl.org/opdm/utility#recommendedUnitOfMeasure> "2N";
-                  a owl:ObjectProperty;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "The level of noise in decibels of the fridge/freezer (UN/CEFACT common code: 2N)."@en;
                   rdfs:domain ofrd:FridgeFreezer;
                   rdfs:isDefinedBy ofrd:;
                   rdfs:label "Level of noise"@en;
-                  rdfs:range gr:QuantitativeValue;
-                  rdfs:subPropertyOf gr:quantitativeProductOrServiceProperty.
+                  rdfs:range <http://purl.org/goodrelations/v1#QuantitativeValue>;
+                  rdfs:subPropertyOf <http://purl.org/goodrelations/v1#quantitativeProductOrServiceProperty>.
 ofrd:numberOfFreezerCompartments <http://purl.org/opdm/utility#isConfiguredBy> [a <http://purl.org/opdm/utility#MetadataContainer> ; 
                                                                                 <http://purl.org/opdm/utility#priority> 0  ; 
                                                                                 <http://purl.org/opdm/utility#rankingDirection> "DESC" ; 
@@ -443,13 +435,13 @@ ofrd:numberOfFreezerCompartments <http://purl.org/opdm/utility#isConfiguredBy> [
                                                                                 <http://purl.org/opdm/utility#attributePosition> 0 ];
                                  <http://purl.org/opdm/utility#maxCardinality> "1";
                                  <http://purl.org/opdm/utility#minCardinality> "0";
-                                 a owl:DatatypeProperty;
+                                 a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                  rdfs:comment "This property specifies the number of compartments that the freezer is equipped with."@en;
                                  rdfs:domain ofrd:FridgeFreezer;
                                  rdfs:isDefinedBy ofrd:;
                                  rdfs:label "Number of freezer compartments"@en;
                                  rdfs:range xsd:integer;
-                                 rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
+                                 rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
 ofrd:numberOfFridgeShelves <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#rankingDirection> "DESC" ; 
                                                                           <http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is an integer (xsd:integer)." ; 
                                                                           a <http://purl.org/opdm/utility#MetadataContainer> ; 
@@ -464,13 +456,13 @@ ofrd:numberOfFridgeShelves <http://purl.org/opdm/utility#isConfiguredBy> [<http:
                                                                           <http://purl.org/opdm/utility#attributePosition> 0 ];
                            <http://purl.org/opdm/utility#maxCardinality> "1";
                            <http://purl.org/opdm/utility#minCardinality> "0";
-                           a owl:DatatypeProperty;
+                           a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "This property specifies the number of shelves or levels that the fridge is equipped with."@en;
                            rdfs:domain ofrd:FridgeFreezer;
                            rdfs:isDefinedBy ofrd:;
                            rdfs:label "Number of fridge shelves"@en;
                            rdfs:range xsd:integer;
-                           rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
+                           rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
 ofrd:numberOfFrontDoors <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is an integer (xsd:integer)." ; 
                                                                        <http://purl.org/opdm/utility#attributePosition> 0  ; 
                                                                        <http://purl.org/opdm/utility#rankingDirection> "DESC" ; 
@@ -485,19 +477,19 @@ ofrd:numberOfFrontDoors <http://purl.org/opdm/utility#isConfiguredBy> [<http://p
                                                                        <http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile>];
                         <http://purl.org/opdm/utility#maxCardinality> "1";
                         <http://purl.org/opdm/utility#minCardinality> "0";
-                        <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [gr:hasMaxValue 4  ; 
-                                                                                  gr:hasMinValue 1  ; 
-                                                                                  a gr:QuantitativeValue],
-                                                                                 [gr:hasMaxValue 4  ; 
-                                                                                  gr:hasMinValue 1  ; 
-                                                                                  a gr:QuantitativeValue];
-                        a owl:DatatypeProperty;
+                        <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [<http://purl.org/goodrelations/v1#hasMaxValue> 4  ; 
+                                                                                  <http://purl.org/goodrelations/v1#hasMinValue> 1  ; 
+                                                                                  a <http://purl.org/goodrelations/v1#QuantitativeValue>],
+                                                                                 [<http://purl.org/goodrelations/v1#hasMaxValue> 4  ; 
+                                                                                  <http://purl.org/goodrelations/v1#hasMinValue> 1  ; 
+                                                                                  a <http://purl.org/goodrelations/v1#QuantitativeValue>];
+                        a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                         rdfs:comment "This property specifies the number of front doors that the fridge is equipped with."@en;
                         rdfs:domain ofrd:FridgeFreezer;
                         rdfs:isDefinedBy ofrd:;
                         rdfs:label "Number of front doors"@en;
                         rdfs:range xsd:integer;
-                        rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
+                        rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
 ofrd:numberOfFrontDrawers <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile> ; 
                                                                          <http://purl.org/opdm/utility#attributePosition> 0  ; 
                                                                          a <http://purl.org/opdm/utility#MetadataContainer> ; 
@@ -512,19 +504,19 @@ ofrd:numberOfFrontDrawers <http://purl.org/opdm/utility#isConfiguredBy> [<http:/
                                                                          <http://purl.org/opdm/utility#rankingDirection> "DESC"];
                           <http://purl.org/opdm/utility#maxCardinality> "1";
                           <http://purl.org/opdm/utility#minCardinality> "0";
-                          <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [gr:hasMinValue 0  ; 
-                                                                                    gr:hasMaxValue 3  ; 
-                                                                                    a gr:QuantitativeValue],
-                                                                                   [gr:hasMinValue 0  ; 
-                                                                                    gr:hasMaxValue 3  ; 
-                                                                                    a gr:QuantitativeValue];
-                          a owl:DatatypeProperty;
+                          <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [<http://purl.org/goodrelations/v1#hasMinValue> 0  ; 
+                                                                                    <http://purl.org/goodrelations/v1#hasMaxValue> 3  ; 
+                                                                                    a <http://purl.org/goodrelations/v1#QuantitativeValue>],
+                                                                                   [<http://purl.org/goodrelations/v1#hasMinValue> 0  ; 
+                                                                                    <http://purl.org/goodrelations/v1#hasMaxValue> 3  ; 
+                                                                                    a <http://purl.org/goodrelations/v1#QuantitativeValue>];
+                          a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                           rdfs:comment "This property specifies the number of front drawers that the fridge is equipped with."@en;
                           rdfs:domain ofrd:FridgeFreezer;
                           rdfs:isDefinedBy ofrd:;
                           rdfs:label "Number of front drawers"@en;
                           rdfs:range xsd:integer;
-                          rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
+                          rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
 ofrd:positionOfDoorHinge <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#attributePosition> 0  ; 
                                                                         <http://purl.org/opdm/utility#rankingDirection> "DESC" ; 
                                                                         <http://purl.org/opdm/utility#priority> 0  ; 
@@ -539,13 +531,13 @@ ofrd:positionOfDoorHinge <http://purl.org/opdm/utility#isConfiguredBy> [<http://
                                                                         <http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile>];
                          <http://purl.org/opdm/utility#maxCardinality> "1";
                          <http://purl.org/opdm/utility#minCardinality> "0";
-                         a owl:ObjectProperty;
+                         a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:comment "The position of the door hinge of the fridge/freezer unit."@en;
                          rdfs:domain ofrd:FridgeFreezer;
                          rdfs:isDefinedBy ofrd:;
                          rdfs:label "Position of door hinge"@en;
                          rdfs:range ofrd:RelativeDirection;
-                         rdfs:subPropertyOf gr:qualitativeProductOrServiceProperty.
+                         rdfs:subPropertyOf <http://purl.org/goodrelations/v1#qualitativeProductOrServiceProperty>.
 ofrd:powerSupply <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#attributePosition> 0  ; 
                                                                 <http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is an individual of the gr:QuantitativeValue class." ; 
                                                                 a <http://purl.org/opdm/utility#MetadataContainer> ; 
@@ -560,20 +552,20 @@ ofrd:powerSupply <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org
                                                                 <http://purl.org/opdm/utility#priority> 0 ];
                  <http://purl.org/opdm/utility#maxCardinality> "1";
                  <http://purl.org/opdm/utility#minCardinality> "0";
-                 <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [a gr:QuantitativeValue ; 
-                                                                           gr:hasMaxValue 300  ; 
-                                                                           gr:hasMinValue 100 ],
-                                                                          [a gr:QuantitativeValue ; 
-                                                                           gr:hasMaxValue 300  ; 
-                                                                           gr:hasMinValue 100 ];
+                 <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [a <http://purl.org/goodrelations/v1#QuantitativeValue> ; 
+                                                                           <http://purl.org/goodrelations/v1#hasMaxValue> 300  ; 
+                                                                           <http://purl.org/goodrelations/v1#hasMinValue> 100 ],
+                                                                          [a <http://purl.org/goodrelations/v1#QuantitativeValue> ; 
+                                                                           <http://purl.org/goodrelations/v1#hasMaxValue> 300  ; 
+                                                                           <http://purl.org/goodrelations/v1#hasMinValue> 100 ];
                  <http://purl.org/opdm/utility#recommendedUnitOfMeasure> "VLT";
-                 a owl:ObjectProperty;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "The power supply requirements in volts of the fridge/freezer unit (UN/CEFACT common code: VLT). Optionally, this property can be complemented with a gr:valueReference property to indicate the frecuency that the power supply operates at in Hertz (UN/CEFACT common code: HTZ)."@en;
                  rdfs:domain ofrd:FridgeFreezer;
                  rdfs:isDefinedBy ofrd:;
                  rdfs:label "Power supply"@en;
-                 rdfs:range gr:QuantitativeValue;
-                 rdfs:subPropertyOf gr:quantitativeProductOrServiceProperty.
+                 rdfs:range <http://purl.org/goodrelations/v1#QuantitativeValue>;
+                 rdfs:subPropertyOf <http://purl.org/goodrelations/v1#quantitativeProductOrServiceProperty>.
 ofrd:ratingOfClimateClass <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#attributePosition> 0  ; 
                                                                          <http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is an individual of the ofrd:ClimateClass class." ; 
                                                                          a <http://purl.org/opdm/utility#MetadataContainer> ; 
@@ -588,13 +580,13 @@ ofrd:ratingOfClimateClass <http://purl.org/opdm/utility#isConfiguredBy> [<http:/
                                                                          <http://purl.org/opdm/utility#priority> 0 ];
                           <http://purl.org/opdm/utility#maxCardinality> "1";
                           <http://purl.org/opdm/utility#minCardinality> "0";
-                          a owl:ObjectProperty;
+                          a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                           rdfs:comment "The climate class rating that the fridge/freezer can operate at."@en;
                           rdfs:domain ofrd:FridgeFreezer;
                           rdfs:isDefinedBy ofrd:;
                           rdfs:label "Rating of climate class"@en;
                           rdfs:range ofrd:ClimateClass;
-                          rdfs:subPropertyOf gr:qualitativeProductOrServiceProperty.
+                          rdfs:subPropertyOf <http://purl.org/goodrelations/v1#qualitativeProductOrServiceProperty>.
 ofrd:ratingOfEnergyEU <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#priority> 0  ; 
                                                                      <http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile> ; 
                                                                      <http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is an individual of the ofrd:EnergyRatingEU class." ; 
@@ -609,13 +601,13 @@ ofrd:ratingOfEnergyEU <http://purl.org/opdm/utility#isConfiguredBy> [<http://pur
                                                                      a <http://purl.org/opdm/utility#MetadataContainer>];
                       <http://purl.org/opdm/utility#maxCardinality> "1";
                       <http://purl.org/opdm/utility#minCardinality> "0";
-                      a owl:ObjectProperty;
+                      a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "The rating of energy efficiency in the European Union that the fridge/freezer operates at."@en;
                       rdfs:domain ofrd:FridgeFreezer;
                       rdfs:isDefinedBy ofrd:;
                       rdfs:label "Rating of energy EU"@en;
                       rdfs:range ofrd:EnergyRatingEU;
-                      rdfs:subPropertyOf gr:qualitativeProductOrServiceProperty.
+                      rdfs:subPropertyOf <http://purl.org/goodrelations/v1#qualitativeProductOrServiceProperty>.
 ofrd:ratingOfStars <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile> ; 
                                                                   <http://purl.org/opdm/utility#attributePosition> 0  ; 
                                                                   <http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is an integer (xsd:integer)." ; 
@@ -630,19 +622,19 @@ ofrd:ratingOfStars <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.o
                                                                   <http://purl.org/opdm/utility#priority> 0 ];
                    <http://purl.org/opdm/utility#maxCardinality> "1";
                    <http://purl.org/opdm/utility#minCardinality> "0";
-                   <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [a gr:QuantitativeValue ; 
-                                                                             gr:hasMaxValue 4  ; 
-                                                                             gr:hasMinValue 1 ],
-                                                                            [a gr:QuantitativeValue ; 
-                                                                             gr:hasMaxValue 4  ; 
-                                                                             gr:hasMinValue 1 ];
-                   a owl:DatatypeProperty;
+                   <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [a <http://purl.org/goodrelations/v1#QuantitativeValue> ; 
+                                                                             <http://purl.org/goodrelations/v1#hasMaxValue> 4  ; 
+                                                                             <http://purl.org/goodrelations/v1#hasMinValue> 1 ],
+                                                                            [a <http://purl.org/goodrelations/v1#QuantitativeValue> ; 
+                                                                             <http://purl.org/goodrelations/v1#hasMaxValue> 4  ; 
+                                                                             <http://purl.org/goodrelations/v1#hasMinValue> 1 ];
+                   a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:comment "This property specifies the maximum temperature that the freezer unit can reach. The temperature is indicated using a number of stars. Each star corresponds to a -6 degree celsius increment."@en;
                    rdfs:domain ofrd:FridgeFreezer;
                    rdfs:isDefinedBy ofrd:;
                    rdfs:label "Rating of stars"@en;
                    rdfs:range xsd:integer;
-                   rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
+                   rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
 ofrd:remoteControl <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile> ; 
                                                                   <http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is a boolean (true/false - xsd:boolean)." ; 
                                                                   <http://purl.org/opdm/utility#attributePosition> 0  ; 
@@ -657,13 +649,13 @@ ofrd:remoteControl <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.o
                                                                   <http://purl.org/opdm/utility#rankingDirection> "DESC"];
                    <http://purl.org/opdm/utility#maxCardinality> "1";
                    <http://purl.org/opdm/utility#minCardinality> "0";
-                   a owl:DatatypeProperty;
+                   a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:comment "This property specifies whether the fridge/freezer can be controlled remotely via an external electronic device (smartphone, computer, etc.) system or not."@en;
                    rdfs:domain ofrd:FridgeFreezer;
                    rdfs:isDefinedBy ofrd:;
                    rdfs:label "Remote control"@en;
                    rdfs:range xsd:boolean;
-                   rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
+                   rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
 ofrd:reversibleDoor <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is a boolean (true/false - xsd:boolean)." ; 
                                                                    <http://purl.org/opdm/utility#attributePosition> 0  ; 
                                                                    <http://purl.org/opdm/utility#rankingDirection> "DESC" ; 
@@ -678,13 +670,13 @@ ofrd:reversibleDoor <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.
                                                                    <http://purl.org/opdm/utility#priority> 0 ];
                     <http://purl.org/opdm/utility#maxCardinality> "1";
                     <http://purl.org/opdm/utility#minCardinality> "0";
-                    a owl:DatatypeProperty;
+                    a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "This property specifies whether the fridge/freezer is equipped with doors that can be mounted on either side of the unit or not."@en;
                     rdfs:domain ofrd:FridgeFreezer;
                     rdfs:isDefinedBy ofrd:;
                     rdfs:label "Reversible door"@en;
                     rdfs:range xsd:boolean;
-                    rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
+                    rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
 ofrd:styleOfUnit <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is an individual of the ofrd:StyleOfUnit class." ; 
                                                                 <http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile> ; 
                                                                 <http://purl.org/opdm/utility#attributePosition> 0  ; 
@@ -699,13 +691,13 @@ ofrd:styleOfUnit <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org
                                                                 <http://purl.org/opdm/utility#priority> 0 ];
                  <http://purl.org/opdm/utility#maxCardinality> "1";
                  <http://purl.org/opdm/utility#minCardinality> "0";
-                 a owl:ObjectProperty;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "The type of door that the fridge/freezer is equipped with."@en;
                  rdfs:domain ofrd:FridgeFreezer;
                  rdfs:isDefinedBy ofrd:;
                  rdfs:label "Style of unit"@en;
                  rdfs:range ofrd:StyleOfUnit;
-                 rdfs:subPropertyOf gr:qualitativeProductOrServiceProperty.
+                 rdfs:subPropertyOf <http://purl.org/goodrelations/v1#qualitativeProductOrServiceProperty>.
 ofrd:typeOfBody <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#rankingDirection> "DESC" ; 
                                                                <http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile> ; 
                                                                <http://purl.org/opdm/utility#priority> 0  ; 
@@ -720,13 +712,13 @@ ofrd:typeOfBody <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/
                                                                a <http://purl.org/opdm/utility#MetadataContainer>];
                 <http://purl.org/opdm/utility#maxCardinality> "1";
                 <http://purl.org/opdm/utility#minCardinality> "0";
-                a owl:ObjectProperty;
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "The type of body frame that the fridge/freezer is equipped with."@en;
                 rdfs:domain ofrd:FridgeFreezer;
                 rdfs:isDefinedBy ofrd:;
                 rdfs:label "Type of body"@en;
                 rdfs:range ofrd:TypeOfBody;
-                rdfs:subPropertyOf gr:qualitativeProductOrServiceProperty.
+                rdfs:subPropertyOf <http://purl.org/goodrelations/v1#qualitativeProductOrServiceProperty>.
 ofrd:volumeOfFreezer <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#rankingDirection> "DESC" ; 
                                                                     a <http://purl.org/opdm/utility#MetadataContainer> ; 
                                                                     <http://purl.org/opdm/utility#priority> 0  ; 
@@ -741,20 +733,20 @@ ofrd:volumeOfFreezer <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl
                                                                     <http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is an individual of the gr:QuantitativeValue class."];
                      <http://purl.org/opdm/utility#maxCardinality> "1";
                      <http://purl.org/opdm/utility#minCardinality> "0";
-                     <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [gr:hasMinValue 0  ; 
-                                                                               a gr:QuantitativeValue ; 
-                                                                               gr:hasMaxValue 0 ],
-                                                                              [gr:hasMinValue 0  ; 
-                                                                               a gr:QuantitativeValue ; 
-                                                                               gr:hasMaxValue 0 ];
+                     <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [<http://purl.org/goodrelations/v1#hasMinValue> 0  ; 
+                                                                               a <http://purl.org/goodrelations/v1#QuantitativeValue> ; 
+                                                                               <http://purl.org/goodrelations/v1#hasMaxValue> 0 ],
+                                                                              [<http://purl.org/goodrelations/v1#hasMinValue> 0  ; 
+                                                                               a <http://purl.org/goodrelations/v1#QuantitativeValue> ; 
+                                                                               <http://purl.org/goodrelations/v1#hasMaxValue> 0 ];
                      <http://purl.org/opdm/utility#recommendedUnitOfMeasure> "LTR";
-                     a owl:ObjectProperty;
+                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "The volume in liters of the frozen goods compartment built-into the full fridge/freezer unit."@en;
                      rdfs:domain ofrd:FridgeFreezer;
                      rdfs:isDefinedBy ofrd:;
                      rdfs:label "Volume of freezer"@en;
-                     rdfs:range gr:QuantitativeValue;
-                     rdfs:subPropertyOf gr:quantitativeProductOrServiceProperty.
+                     rdfs:range <http://purl.org/goodrelations/v1#QuantitativeValue>;
+                     rdfs:subPropertyOf <http://purl.org/goodrelations/v1#quantitativeProductOrServiceProperty>.
 ofrd:volumeOfFridge <http://purl.org/opdm/utility#isConfiguredBy> [a <http://purl.org/opdm/utility#MetadataContainer> ; 
                                                                    <http://purl.org/opdm/utility#rankingDirection> "DESC" ; 
                                                                    <http://purl.org/opdm/utility#priority> 0  ; 
@@ -769,20 +761,20 @@ ofrd:volumeOfFridge <http://purl.org/opdm/utility#isConfiguredBy> [a <http://pur
                                                                    <http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile>];
                     <http://purl.org/opdm/utility#maxCardinality> "1";
                     <http://purl.org/opdm/utility#minCardinality> "0";
-                    <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [gr:hasMaxValue 0  ; 
-                                                                              a gr:QuantitativeValue ; 
-                                                                              gr:hasMinValue 0 ],
-                                                                             [gr:hasMaxValue 0  ; 
-                                                                              a gr:QuantitativeValue ; 
-                                                                              gr:hasMinValue 0 ];
+                    <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [<http://purl.org/goodrelations/v1#hasMaxValue> 0  ; 
+                                                                              a <http://purl.org/goodrelations/v1#QuantitativeValue> ; 
+                                                                              <http://purl.org/goodrelations/v1#hasMinValue> 0 ],
+                                                                             [<http://purl.org/goodrelations/v1#hasMaxValue> 0  ; 
+                                                                              a <http://purl.org/goodrelations/v1#QuantitativeValue> ; 
+                                                                              <http://purl.org/goodrelations/v1#hasMinValue> 0 ];
                     <http://purl.org/opdm/utility#recommendedUnitOfMeasure> "LTR";
-                    a owl:ObjectProperty;
+                    a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:comment "The volume in liters of the fresh goods compartment built-into the full fridge/freezer unit."@en;
                     rdfs:domain ofrd:FridgeFreezer;
                     rdfs:isDefinedBy ofrd:;
                     rdfs:label "Volume of fridge"@en;
-                    rdfs:range gr:QuantitativeValue;
-                    rdfs:subPropertyOf gr:quantitativeProductOrServiceProperty.
+                    rdfs:range <http://purl.org/goodrelations/v1#QuantitativeValue>;
+                    rdfs:subPropertyOf <http://purl.org/goodrelations/v1#quantitativeProductOrServiceProperty>.
 ofrd:volumeOfUnitGross <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#rankingDirection> "DESC" ; 
                                                                       a <http://purl.org/opdm/utility#MetadataContainer> ; 
                                                                       <http://purl.org/opdm/utility#attributePosition> 0  ; 
@@ -797,20 +789,20 @@ ofrd:volumeOfUnitGross <http://purl.org/opdm/utility#isConfiguredBy> [<http://pu
                                                                       <http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is an individual of the gr:QuantitativeValue class."];
                        <http://purl.org/opdm/utility#maxCardinality> "1";
                        <http://purl.org/opdm/utility#minCardinality> "0";
-                       <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [gr:hasMinValue 0  ; 
-                                                                                 gr:hasMaxValue 0  ; 
-                                                                                 a gr:QuantitativeValue],
-                                                                                [gr:hasMinValue 0  ; 
-                                                                                 gr:hasMaxValue 0  ; 
-                                                                                 a gr:QuantitativeValue];
+                       <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [<http://purl.org/goodrelations/v1#hasMinValue> 0  ; 
+                                                                                 <http://purl.org/goodrelations/v1#hasMaxValue> 0  ; 
+                                                                                 a <http://purl.org/goodrelations/v1#QuantitativeValue>],
+                                                                                [<http://purl.org/goodrelations/v1#hasMinValue> 0  ; 
+                                                                                 <http://purl.org/goodrelations/v1#hasMaxValue> 0  ; 
+                                                                                 a <http://purl.org/goodrelations/v1#QuantitativeValue>];
                        <http://purl.org/opdm/utility#recommendedUnitOfMeasure> "LTR";
-                       a owl:ObjectProperty;
+                       a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "The gross volume in liters of the total unit."@en;
                        rdfs:domain ofrd:FridgeFreezer;
                        rdfs:isDefinedBy ofrd:;
                        rdfs:label "Volume of unit gross"@en;
-                       rdfs:range gr:QuantitativeValue;
-                       rdfs:subPropertyOf gr:quantitativeProductOrServiceProperty.
+                       rdfs:range <http://purl.org/goodrelations/v1#QuantitativeValue>;
+                       rdfs:subPropertyOf <http://purl.org/goodrelations/v1#quantitativeProductOrServiceProperty>.
 ofrd:volumeOfUnitNet <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#rankingDirection> "DESC" ; 
                                                                     a <http://purl.org/opdm/utility#MetadataContainer> ; 
                                                                     <http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile> ; 
@@ -825,20 +817,20 @@ ofrd:volumeOfUnitNet <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl
                                                                     <http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is an individual of the gr:QuantitativeValue class."];
                      <http://purl.org/opdm/utility#maxCardinality> "1";
                      <http://purl.org/opdm/utility#minCardinality> "0";
-                     <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [a gr:QuantitativeValue ; 
-                                                                               gr:hasMaxValue 0  ; 
-                                                                               gr:hasMinValue 0 ],
-                                                                              [a gr:QuantitativeValue ; 
-                                                                               gr:hasMaxValue 0  ; 
-                                                                               gr:hasMinValue 0 ];
+                     <http://purl.org/opdm/utility#recommendedRangeOfMeasure> [a <http://purl.org/goodrelations/v1#QuantitativeValue> ; 
+                                                                               <http://purl.org/goodrelations/v1#hasMaxValue> 0  ; 
+                                                                               <http://purl.org/goodrelations/v1#hasMinValue> 0 ],
+                                                                              [a <http://purl.org/goodrelations/v1#QuantitativeValue> ; 
+                                                                               <http://purl.org/goodrelations/v1#hasMaxValue> 0  ; 
+                                                                               <http://purl.org/goodrelations/v1#hasMinValue> 0 ];
                      <http://purl.org/opdm/utility#recommendedUnitOfMeasure> "LTR";
-                     a owl:ObjectProperty;
+                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "The net volume in liters of the total unit. The value of this property usually is equal to the sum of the value of the properties ofrd:volumeOfFridge and ofrd:volumeOfFreezer"@en;
                      rdfs:domain ofrd:FridgeFreezer;
                      rdfs:isDefinedBy ofrd:;
                      rdfs:label "Volume of unit net"@en;
-                     rdfs:range gr:QuantitativeValue;
-                     rdfs:subPropertyOf gr:quantitativeProductOrServiceProperty.
+                     rdfs:range <http://purl.org/goodrelations/v1#QuantitativeValue>;
+                     rdfs:subPropertyOf <http://purl.org/goodrelations/v1#quantitativeProductOrServiceProperty>.
 ofrd:waterDispenser <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile> ; 
                                                                    a <http://purl.org/opdm/utility#MetadataContainer> ; 
                                                                    <http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is a boolean (true/false - xsd:boolean)." ; 
@@ -853,13 +845,13 @@ ofrd:waterDispenser <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.
                                                                    <http://purl.org/opdm/utility#rankingDirection> "DESC"];
                     <http://purl.org/opdm/utility#maxCardinality> "1";
                     <http://purl.org/opdm/utility#minCardinality> "0";
-                    a owl:DatatypeProperty;
+                    a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "This property specifies whether the fridge/freezer is equipped with a water dispenser system or not."@en;
                     rdfs:domain ofrd:FridgeFreezer;
                     rdfs:isDefinedBy ofrd:;
                     rdfs:label "Water dispenser"@en;
                     rdfs:range xsd:boolean;
-                    rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
+                    rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
 ofrd:waterFiltration <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl.org/opdm/utility#inProfile> <http://purl.org/opdm/utility#DefaultProfile> ; 
                                                                     a <http://purl.org/opdm/utility#MetadataContainer> ; 
                                                                     <http://purl.org/opdm/utility#exampleOfUsage> "The value of this property is a boolean (true/false - xsd:boolean)." ; 
@@ -874,12 +866,12 @@ ofrd:waterFiltration <http://purl.org/opdm/utility#isConfiguredBy> [<http://purl
                                                                     <http://purl.org/opdm/utility#rankingDirection> "DESC"];
                      <http://purl.org/opdm/utility#maxCardinality> "1";
                      <http://purl.org/opdm/utility#minCardinality> "0";
-                     a owl:DatatypeProperty;
+                     a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:comment "This property specifies whether the fridge/freezer is equipped with a water filtration system or not."@en;
                      rdfs:domain ofrd:FridgeFreezer;
                      rdfs:isDefinedBy ofrd:;
                      rdfs:label "Water filtration"@en;
                      rdfs:range xsd:boolean;
-                     rdfs:subPropertyOf gr:datatypeProductOrServiceProperty.
-skos:altLabel a owl:AnnotationProperty.
-foaf:depiction a owl:AnnotationProperty.
+                     rdfs:subPropertyOf <http://purl.org/goodrelations/v1#datatypeProductOrServiceProperty>.
+<http://www.w3.org/2004/02/skos/core#altLabel> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/depiction> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.

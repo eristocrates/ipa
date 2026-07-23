@@ -2,47 +2,42 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix cart: <http://purl.org/net/cartCoord#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
-@prefix wgspos: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
 
-dc11:creator a owl:AnnotationProperty.
-dc11:description a owl:AnnotationProperty.
-dc11:language a owl:AnnotationProperty.
-dc11:title a owl:AnnotationProperty.
-cart: dc11:creator "Diarmuid Ryan";
-      dc11:description "Ontology for representation of cartesian co-ordinates";
-      dc11:language "en";
-      dc11:title "cartCoordOnt";
-      a owl:Ontology;
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/language> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+cart: <http://purl.org/dc/elements/1.1/creator> "Diarmuid Ryan";
+      <http://purl.org/dc/elements/1.1/description> "Ontology for representation of cartesian co-ordinates";
+      <http://purl.org/dc/elements/1.1/language> "en";
+      <http://purl.org/dc/elements/1.1/title> "cartCoordOnt";
+      a <http://www.w3.org/2002/07/owl#Ontology>;
       rdfs:comment "Date Created: 3/7/15. Last Modified: 3/7/15.",
                    """This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
         				http://creativecommons.org/licenses/by-sa/4.0/""".
-cart:Point a owl:Class;
-           rdfs:subClassOf wgspos:SpatialThing.
-cart:Point_List a owl:Class;
-                rdfs:subClassOf wgspos:SpatialThing.
-cart:hasPlacement a owl:ObjectProperty;
+cart:Point a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>.
+cart:Point_List a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>.
+cart:hasPlacement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:label "has Point";
-                  rdfs:range wgspos:SpatialThing.
-cart:hasPoint a owl:ObjectProperty;
+                  rdfs:range <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>.
+cart:hasPoint a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:domain cart:Point_List;
               rdfs:label "has Point";
               rdfs:range cart:Point.
-cart:xcoord a owl:FunctionalProperty,
-              owl:DatatypeProperty;
+cart:xcoord a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
             rdfs:domain cart:Point;
             rdfs:label "X Coordinate";
             rdfs:range xsd:double.
-cart:ycoord a owl:FunctionalProperty,
-              owl:DatatypeProperty;
+cart:ycoord a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
             rdfs:domain cart:Point;
             rdfs:label "Y Coordinate";
             rdfs:range xsd:double.
-cart:zcoord a owl:FunctionalProperty,
-              owl:DatatypeProperty;
+cart:zcoord a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
             rdfs:domain cart:Point;
             rdfs:label "Z Coordinate";
             rdfs:range xsd:double.

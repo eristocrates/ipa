@@ -5,8 +5,6 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix shsh: <http://www.w3.org/ns/shacl-shacl#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix shacl: <http://www.w3.org/ns/shacl#>.
 
 shsh: rdfs:comment "This shapes graph can be used to validate SHACL shapes graphs against a subset of the syntax rules."@en;
       rdfs:label "SHACL for SHACL"@en;

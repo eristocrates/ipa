@@ -36,7 +36,7 @@ let inline (!|) (subject_terms: ^SubjectType list when ^SubjectType: (member as_
     |> List.map (fun subject_term -> subject_term.as_subject)
     |> Formula.from_subjects
 
-let inline (!/) (predicate_term: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate)) : Formula =
+let inline (!-) (predicate_term: ^PredicateType when ^PredicateType: (member as_predicate: Rdf_Predicate)) : Formula =
     Formula.from_predicate predicate_term.as_predicate
 
 let inline (!<) (object_term: ^ObjectType when ^ObjectType: (member as_object: Rdf_Object)) : Formula =

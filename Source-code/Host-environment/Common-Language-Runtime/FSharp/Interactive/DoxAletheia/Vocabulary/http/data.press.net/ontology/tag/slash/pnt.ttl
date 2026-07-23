@@ -2,58 +2,53 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix pnt: <http://data.press.net/ontology/tag/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 
-pnt: dcterms:created "2011-07-28"^^xsd:date;
-     dcterms:license <http://creativecommons.org/licenses/by-nd/3.0/>;
-     dcterms:modified "2011-10-03"^^xsd:date;
-     dcterms:title "SNaP Tag Ontology"@en;
-     a owl:Ontology;
+pnt: <http://purl.org/dc/terms/created> "2011-07-28"^^xsd:date;
+     <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by-nd/3.0/>;
+     <http://purl.org/dc/terms/modified> "2011-10-03"^^xsd:date;
+     <http://purl.org/dc/terms/title> "SNaP Tag Ontology"@en;
+     a <http://www.w3.org/2002/07/owl#Ontology>;
      rdfs:comment "The Tag Ontology defines relationships for semantically annotating taggable things (for example news assets) with domain entities (stuff) and events."@en;
-     owl:versionInfo "0.1.0";
-     foaf:maker <http://uk.linkedin.com/in/paulwilton>,
-                <http://uk.linkedin.com/in/jarredmcginnis>,
-                <http://uk.linkedin.com/in/pauliharman>.
-pnt:Tag a owl:Class;
+     <http://www.w3.org/2002/07/owl#versionInfo> "0.1.0";
+     <http://xmlns.com/foaf/0.1/maker> <http://uk.linkedin.com/in/paulwilton>,
+                                       <http://uk.linkedin.com/in/jarredmcginnis>,
+                                       <http://uk.linkedin.com/in/pauliharman>.
+pnt:Tag a <http://www.w3.org/2002/07/owl#Class>;
         rdfs:comment "Generic Tag Class - Taggables are tagged with a Tag"@en;
         rdfs:isDefinedBy pnt:;
         rdfs:label "Generic Tag Class"@en;
-        status:term_status "testing".
-pnt:Taggable a owl:Class;
+        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+pnt:Taggable a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "Generic Taggable Class - Taggable things can be tagged"@en;
              rdfs:isDefinedBy pnt:;
              rdfs:label "Generic Taggable Class"@en;
-             status:term_status "testing".
-pnt:about a owl:ObjectProperty;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+pnt:about a <http://www.w3.org/2002/07/owl#ObjectProperty>;
           rdfs:comment "Property that associates Tags with Taggables, refines pnt:isTaggedWith:  Taggable X about Tag Y.  pnt:about is a stronger relationship that pnt:mentions"@en;
           rdfs:domain pnt:Taggable;
           rdfs:isDefinedBy pnt:;
           rdfs:label "Property that associates Tags with Taggables refining pnt:isTaggedWith"@en;
           rdfs:range pnt:Tag;
           rdfs:subPropertyOf pnt:isTaggedWith;
-          status:term_status "testing".
-pnt:isTaggedWith a owl:ObjectProperty;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+pnt:isTaggedWith a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "Property that associates Tags with Taggables:  Taggable X isTaggedWith Tag Y"@en;
                  rdfs:domain pnt:Taggable;
                  rdfs:isDefinedBy pnt:;
                  rdfs:label "Property that associates Tags with Taggables"@en;
                  rdfs:range pnt:Tag;
-                 status:term_status "testing".
-pnt:mentions a owl:ObjectProperty;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+pnt:mentions a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "Property that associates Tags with Taggables, refines pnt:isTaggedWith:  Taggable X mentions Tag Y.  pnt:mentions is a weaker relationship that pnt:about"@en;
              rdfs:domain pnt:Taggable;
              rdfs:isDefinedBy pnt:;
              rdfs:label "Property that associates Tags with Taggables refining pnt:isTaggedWith"@en;
              rdfs:range pnt:Tag;
              rdfs:subPropertyOf pnt:isTaggedWith;
-             status:term_status "testing".
-<http://uk.linkedin.com/in/jarredmcginnis> a foaf:Person;
-                                           foaf:name "Jarred McGinnis".
-<http://uk.linkedin.com/in/pauliharman> a foaf:Person;
-                                        foaf:name "Paul Harman".
-<http://uk.linkedin.com/in/paulwilton> a foaf:Person;
-                                       foaf:name "Paul Wilton".
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+<http://uk.linkedin.com/in/jarredmcginnis> a <http://xmlns.com/foaf/0.1/Person>;
+                                           <http://xmlns.com/foaf/0.1/name> "Jarred McGinnis".
+<http://uk.linkedin.com/in/pauliharman> a <http://xmlns.com/foaf/0.1/Person>;
+                                        <http://xmlns.com/foaf/0.1/name> "Paul Harman".
+<http://uk.linkedin.com/in/paulwilton> a <http://xmlns.com/foaf/0.1/Person>;
+                                       <http://xmlns.com/foaf/0.1/name> "Paul Wilton".

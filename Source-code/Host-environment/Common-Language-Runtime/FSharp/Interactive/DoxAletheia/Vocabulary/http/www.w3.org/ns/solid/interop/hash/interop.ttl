@@ -10,7 +10,6 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix acl: <http://www.w3.org/ns/auth/acl#>.
-@prefix w3: <http://www.w3.org/>.
 
 <http://www.w3.org/ns/solid/interop#> dcterms:issued "2020-06-14"^^xsd:date;
                                       dcterms:modified "2020-09-24"^^xsd:date;

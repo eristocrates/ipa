@@ -2,144 +2,137 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix dbm: <http://purl.org/net/dbm/ontology#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix ccrel: <http://creativecommons.org/ns#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-dbm: ccrel:license <https://creativecommons.org/licenses/by/3.0/>;
-     dcterms:creator <https://plus.google.com/+MilosJovanovik>;
-     dcterms:description "An ontology for describing brand-name drugs.";
-     dcterms:issued "2014-09-01";
-     dcterms:modified "2016-08-28";
-     dcterms:publisher <http://finki.ukim.mk/>;
-     dcterms:rights "Copyright 2014, Milos Jovanovik";
-     dcterms:title "DBM Ontology";
-     vann:preferredNamespacePrefix "dbm";
-     vann:preferredNamespaceUri "http://purl.org/net/dbm/ontology#";
-     a owl:Ontology;
+dbm: <http://creativecommons.org/ns#license> <https://creativecommons.org/licenses/by/3.0/>;
+     <http://purl.org/dc/terms/creator> <https://plus.google.com/+MilosJovanovik>;
+     <http://purl.org/dc/terms/description> "An ontology for describing brand-name drugs.";
+     <http://purl.org/dc/terms/issued> "2014-09-01";
+     <http://purl.org/dc/terms/modified> "2016-08-28";
+     <http://purl.org/dc/terms/publisher> <http://finki.ukim.mk/>;
+     <http://purl.org/dc/terms/rights> "Copyright 2014, Milos Jovanovik";
+     <http://purl.org/dc/terms/title> "DBM Ontology";
+     <http://purl.org/vocab/vann/preferredNamespacePrefix> "dbm";
+     <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/net/dbm/ontology#";
+     a <http://www.w3.org/2002/07/owl#Ontology>;
      rdfs:comment "An ontology for the Drug Bureau of Macedonia (DBM).";
      rdfs:isDefinedBy <http://purl.org/net/dbm/ontology>;
      rdfs:label "DBM Ontology";
-     owl:versionInfo "1.1".
-dbm:Drug a owl:Class;
+     <http://www.w3.org/2002/07/owl#versionInfo> "1.1".
+dbm:Drug a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "This class represents a Drug entity from the Macedonian Drug Bureau.".
-dbm:approvalNumber a owl:DatatypeProperty;
+dbm:approvalNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:comment "This property represents the approval number assigned by the Macedonian Drug Bureau, for the company.";
                    rdfs:domain dbm:Drug;
                    rdfs:range xsd:string.
-dbm:approvedFor a owl:DatatypeProperty;
+dbm:approvedFor a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                 rdfs:comment "This property represents the company which holds the approval by the Macedonian Drug Bureau for the drug.";
                 rdfs:domain dbm:Drug;
                 rdfs:range xsd:string.
-dbm:approvedOn a owl:DatatypeProperty;
+dbm:approvedOn a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment "This property represents the date the company was given the approval by the Macedonian Drug Bureau for the drug.";
                rdfs:domain dbm:Drug;
                rdfs:range xsd:dateTime.
-dbm:approvedUntil a owl:DatatypeProperty;
+dbm:approvedUntil a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment "This property represents the expiry date of the approval which the company was given by the Macedonian Drug Bureau for the drug.";
                   rdfs:domain dbm:Drug;
                   rdfs:range xsd:dateTime.
-dbm:atcCodeExtended a owl:DatatypeProperty;
+dbm:atcCodeExtended a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "This property represents the extended ATC code for the drug, assigned by the Ministry of Health, of the Republic of Macedonia.";
                     rdfs:domain dbm:Drug;
                     rdfs:range xsd:string.
-dbm:brailleSupport a owl:DatatypeProperty;
+dbm:brailleSupport a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:comment "This property indicates wether the drug packaging has Braille support or not.";
                    rdfs:domain dbm:Drug;
                    rdfs:range xsd:string.
-dbm:brandNameCyrillic a owl:DatatypeProperty;
+dbm:brandNameCyrillic a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "This property represents the brand name of the drug, in cyrillic alphabet.";
                       rdfs:domain dbm:Drug;
                       rdfs:range xsd:string.
-dbm:dosage a owl:DatatypeProperty;
+dbm:dosage a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
            rdfs:comment "This property represents the dosage information for the drug.";
            rdfs:domain dbm:Drug;
            rdfs:range xsd:string.
-dbm:eanCode a owl:FunctionalProperty,
-              owl:DatatypeProperty;
+dbm:eanCode a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
             rdfs:comment "This property represents the EAN code of the drug.";
             rdfs:domain dbm:Drug;
             rdfs:range xsd:string.
-dbm:hifmCode a owl:DatatypeProperty,
-               owl:FunctionalProperty;
+dbm:hifmCode a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+               <http://www.w3.org/2002/07/owl#FunctionalProperty>;
              rdfs:comment "This is the code that the drug instance has in the local system of the Health Insurance Fund of Macedonia.";
              rdfs:domain dbm:Drug;
              rdfs:range xsd:string.
-dbm:manufacturer a owl:DatatypeProperty;
+dbm:manufacturer a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:comment "This property represents a manufacturer of a drug.";
                  rdfs:domain dbm:Drug;
                  rdfs:range xsd:string.
-dbm:packaging a owl:DatatypeProperty;
+dbm:packaging a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:comment "This property represents the packaging information of the drug.";
               rdfs:domain dbm:Drug;
               rdfs:range xsd:string.
-dbm:positiveList a owl:DatatypeProperty;
+dbm:positiveList a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:comment "This property tells if the drug is featured on the positive list of drugs, or not.";
                  rdfs:domain dbm:Drug;
                  rdfs:range xsd:string.
-dbm:priceWithVAT a owl:DatatypeProperty;
+dbm:priceWithVAT a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:comment "This property represents the price of the drug in Macedonian Denars (MKD), with VAT calculated.";
                  rdfs:domain dbm:Drug;
                  rdfs:range xsd:float.
-dbm:priceWithoutVAT a owl:DatatypeProperty;
+dbm:priceWithoutVAT a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "This property represents the price of the drug in Macedonian Denars (MKD), with no VAT calculated.";
                     rdfs:domain dbm:Drug;
                     rdfs:range xsd:float.
-dbm:referencePrice a owl:DatatypeProperty;
+dbm:referencePrice a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:comment "This property represents the reference price for the drug, as assigned by the Ministry of Health of the Republic of Macedonia.";
                    rdfs:domain dbm:Drug;
                    rdfs:range xsd:float.
-dbm:similarTo a owl:ObjectProperty,
-                owl:TransitiveProperty,
-                owl:SymmetricProperty;
+dbm:similarTo a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                <http://www.w3.org/2002/07/owl#TransitiveProperty>,
+                <http://www.w3.org/2002/07/owl#SymmetricProperty>;
               rdfs:comment "This property is used to represent that the drugs in question are similar in their purpose, i.e. contain the same active substance.";
               rdfs:domain dbm:Drug;
               rdfs:range dbm:Drug.
-dbm:strength a owl:DatatypeProperty;
+dbm:strength a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
              rdfs:comment "This property represents the strength of the drug.";
              rdfs:domain dbm:Drug;
              rdfs:range xsd:string.
-dbm:summaryReport a owl:FunctionalProperty,
-                    owl:DatatypeProperty;
+dbm:summaryReport a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                    <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment "This property holds the URL to the summary report for the drug, published by the Macedonian Drug Bureau.";
                   rdfs:domain dbm:Drug;
                   rdfs:range xsd:string.
-dbm:updateDate a owl:DatatypeProperty;
+dbm:updateDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment "This property represents the date the drug data has been updated.";
                rdfs:domain dbm:Drug;
                rdfs:range xsd:dateTime.
-dbm:usageGuidelines a owl:FunctionalProperty,
-                      owl:DatatypeProperty;
+dbm:usageGuidelines a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                      <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "This property holds the URL to the usage guidelines for the drug, published by the Macedonian Drug Bureau.";
                     rdfs:domain dbm:Drug;
                     rdfs:range xsd:string.
-<http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugbank/atcCode> a owl:DatatypeProperty;
+<http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugbank/atcCode> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                                                                 rdfs:comment "This property represents the ATC code of the drug.";
                                                                                 rdfs:domain dbm:Drug;
                                                                                 rdfs:range xsd:string.
-<http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugbank/brandName> a owl:DatatypeProperty;
+<http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugbank/brandName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                                                                   rdfs:comment "This property represents the brand name of the drug.";
                                                                                   rdfs:domain dbm:Drug;
                                                                                   rdfs:range xsd:string.
-<http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugbank/drugs> a owl:Class.
-<http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugbank/genericName> a owl:DatatypeProperty;
+<http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugbank/drugs> a <http://www.w3.org/2002/07/owl#Class>.
+<http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugbank/genericName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                                                                     rdfs:comment "This property represents the generic name of the drug.";
                                                                                     rdfs:domain dbm:Drug;
                                                                                     rdfs:range xsd:string.
-rdfs:label a owl:DatatypeProperty;
+rdfs:label a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
            rdfs:comment "This property holds the brand name of the drug, as a label.";
            rdfs:domain dbm:Drug;
            rdfs:range xsd:string.
-rdfs:seeAlso a owl:ObjectProperty;
+rdfs:seeAlso a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "This property links a drug from the Macedonian Drug Bureau with a drug from DrugBank, based on the ATC code.";
              rdfs:domain dbm:Drug;
              rdfs:range <http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugbank/drugs>.
-foaf:page a owl:DatatypeProperty,
-            owl:FunctionalProperty;
-          rdfs:comment "This property holds the URL of the drug information page on the Macedonian Drug Bureau website.";
-          rdfs:domain dbm:Drug;
-          rdfs:range xsd:string.
+<http://xmlns.com/foaf/0.1/page> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                   <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                 rdfs:comment "This property holds the URL of the drug information page on the Macedonian Drug Bureau website.";
+                                 rdfs:domain dbm:Drug;
+                                 rdfs:range xsd:string.

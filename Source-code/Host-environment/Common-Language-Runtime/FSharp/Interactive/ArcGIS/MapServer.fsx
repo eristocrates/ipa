@@ -1,8 +1,11 @@
 #time on
+
 fsi.PrintLength <- 30
+fsi.ShowDeclarationValues <- false
 
 open System
 open System.IO
+open System.Globalization
 open System.Reflection
 open System.Reflection.Emit
 open System.Diagnostics
@@ -89,6 +92,9 @@ open Fss.Types
 #r "nuget: CaseConverter"
 open CaseConverter
 
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\PowershellErgonomics.fsx"
+
+open PowershellErgonomics
 // RDFa Core Initial Context
 // https://www.w3.org/2011/rdfa-context/rdfa-1.1
 
@@ -290,6 +296,11 @@ let inline predicates (value:'Type) =
         )
         |> Array.toList
         
+let id_predicates = 
+    set [
+        "id"
+        "service_layer_id"
+    ]
 
 let inline predicateObjectList (value:'Type) =  
 
@@ -300,8 +311,8 @@ let inline predicateObjectList (value:'Type) =
             let key_predicate = Esri.ArcGISRuntime._prefix predicate_local_name
             let obj_value = Property.GetValue(value)
             match obj_value with 
-            |  :? System.String as value when predicate_local_name = "id" -> Some (key_predicate ->- value .*^ xsd.ID)
-            |  :? System.String as value when not (String.IsNullOrWhiteSpace(value)) -> Some (key_predicate ->- Literal.autotyped value)
+            | :? System.String as value when not (String.IsNullOrWhiteSpace(value)) && id_predicates.Contains (predicate_local_name) -> Some (key_predicate ->-  value .*^ xsd.ID)
+            | :? System.String as value when not (String.IsNullOrWhiteSpace(value)) -> Some (key_predicate ->- Literal.autotyped value)
             | :? Boolean as value -> Some(key_predicate ->- Literal.autotyped value)
             | :? (Byte array) as value -> Some(key_predicate ->- Literal.autotyped value)
             | :? Byte as value -> Some(key_predicate ->- Literal.autotyped value)
@@ -309,9 +320,11 @@ let inline predicateObjectList (value:'Type) =
             | :? DateTime as value -> Some(key_predicate ->- Literal.autotyped value)
             | :? DateTimeOffset as value -> Some(key_predicate ->- Literal.autotyped value)
             | :? Decimal as value -> Some(key_predicate ->- Literal.autotyped value)
-            | :? Double as value -> Some(key_predicate ->- Literal.autotyped value)
+            | :? Double as value when not (Double.IsNaN value) && id_predicates.Contains (predicate_local_name)  -> Some(key_predicate ->-  (string value) .*^ xsd.ID)
+            | :? Double as value when not (Double.IsNaN value) -> Some(key_predicate ->- Literal.autotyped value)
             | :? Int16 as value -> Some(key_predicate ->- Literal.autotyped value)
             | :? Int32 as value -> Some(key_predicate ->- Literal.autotyped value)
+            | :? Int64 as value when  id_predicates.Contains (predicate_local_name) -> Some(key_predicate ->-  (string value) .*^ xsd.ID)
             | :? Int64 as value -> Some(key_predicate ->- Literal.autotyped value)
             | :? SByte as value -> Some(key_predicate ->- Literal.autotyped value)
             | :? Single as value -> Some(key_predicate ->- Literal.autotyped value)
@@ -319,6 +332,7 @@ let inline predicateObjectList (value:'Type) =
             | :? TimeSpan as value -> Some(key_predicate ->- Literal.autotyped value)
             | :? UInt16 as value -> Some(key_predicate ->- Literal.autotyped value)
             | :? UInt32 as value -> Some(key_predicate ->- Literal.autotyped value)
+            | :? UInt64 as value when  id_predicates.Contains (predicate_local_name) -> Some(key_predicate ->-  (string value) .*^ xsd.ID)
             | :? UInt64 as value -> Some(key_predicate ->- Literal.autotyped value)
             | :? Uri as value -> Some(key_predicate ->- Literal.autotyped value)
             | :? Guid as value -> Some(key_predicate ->- Literal.autotyped value)
@@ -421,18 +435,19 @@ let layer_individuals =
     |> Array.toList
 
 MapServer.ServiceInfo.GroupedValues
-Layers[1].MapServiceSublayerInfo
+Layers[3].MapServiceSublayerInfo.FeatureTypes
+Layers[3].MapServiceSublayerInfo.Fields
 
-Layers[1].MapServiceSublayerInfo.GroupedProperties
+Layers[1].GroupedProperties
 |> String.concat "\n"
-|> Console.WriteLine
-
-MapServer.ImageFormat
+|> clip
+Layers
+|> Array.iter (fun Layer -> printfn "%s" Layer.MapServiceSublayerInfo.ParentLayerInfo.Name)
 
 typeof<Esri.ArcGISRuntime.ArcGISServices.ArcGISMapServiceInfo>
 typeof<ArcGISMapImageSublayer>
 
-let formula =
+let map_server_formula =
     !< owl.NamedIndividual --- a -!> MapServer.named_individual
     -~| MapServer.predicateObjectList
     -~| MapServer.ServiceInfo.predicateObjectList
@@ -441,64 +456,112 @@ let formula =
     -->/ MapServer.owl_class
     --- a
     --> owl.Class
-    -*| [for Layer in Layers -> !> Layer.named_individual -~|> Layer.predicateObjectList]
     
     
     // -!| MapServer.ServiceInfo.predicates --- rdfs.subPropertyOf --> Esri.ArcGISRuntime.service_info
 
 
 
-formula |> write_draft  test_directory test_name global_prefix_map
+map_server_formula |> write_draft  test_directory test_name global_prefix_map
+
+let layer_formulas = 
+    Layers
+    |> Array.Parallel.map (fun Layer -> 
+            let layer_directory = Path.Combine(test_directory,Layer.Name)
+            let info = 
+                !> Layer.named_individual -~|> List.concat [Layer.predicateObjectList ; Layer.MapServiceSublayerInfo.predicateObjectList]
+            let subtypes = 
+                Layer.MapServiceSublayerInfo.FeatureSubtypes
+                |> Seq.map (fun Subtype -> !> Layer.named_individual --- Esri.ArcGISRuntime._prefix "feature_subtypes" --> MapServer._prefix $"{Layer.Name}.{Subtype.Name}")
+                |> Seq.toList
+            let fields = 
+                Layer.MapServiceSublayerInfo.Fields
+                |> Seq.map (fun Field -> 
+                    !> Layer.named_individual
+                    --- Esri.ArcGISRuntime._prefix "fields"
+                    -->/ MapServer._prefix $"{Layer.Name}.{Field.Name}"
+                    --- a
+                    -->/ MapServer._prefix Field.Name
+                    --- rdfs.subClassOf
+                    --> Esri.ArcGISRuntime._prefix "Field"
+                    
+                    )
+                |> Seq.toList
+            let layer_formula = info -*| subtypes -*| fields
+            layer_formula |> write_draft  layer_directory Layer.Name global_prefix_map
+            layer_formula
+
+        
+    )
 
 
-let igraph = Formula.to_igraph formula
-let dataset = new InMemoryDataset(igraph)
-let sparql = new LeviathanQueryProcessor(dataset)
 
-let construct = QueryBuilder.Construct()
+let igraph = Formula.to_igraph map_server_formula
 
 
 
-let s = !? "s"
-let p = !? "p"
-let o = !? "o"
 
-let pattern_builder = new TriplePatternBuilder(igraph.NamespaceMap)
-let spo = !> s --- a --> o
+let all_features_query = QueryParameters()
+all_features_query.WhereClause <- "1 = 1"
+all_features_query.ReturnGeometry <- true
+
+
+let features =
+    Layers[5].Table.QueryFeaturesAsync(
+        all_features_query,
+        QueryFeatureFields.LoadAll
+    )
+    |> Async.AwaitTask
+    |> Async.RunSynchronously 
+    |> Seq.toArray
 
 type SparqlResultSet with 
     member this.variable_results (rdf_variable:Rdf_Variable) = 
         this.Results
         |> Seq.map (fun result -> result.Item rdf_variable.as_raw_string |> Rdf_Term.from_inode)
         |> Seq.toArray
+
+// ─────────────────────────────────────────────────────────────
+// Existing dotNetRDF query-form adapters
+// ─────────────────────────────────────────────────────────────
+
 let SELECT_ALL () : ISelectBuilder =
     QueryBuilder.SelectAll()
+
+
 let SELECT
     (variables: Rdf_Variable seq)
     : ISelectBuilder
     =
-    let variable_names =
-        variables
-        |> Seq.map (fun variable ->
-            variable.as_raw_string
-        )
-        |> Seq.toArray
+    variables
+    |> Seq.map (fun variable ->
+        variable.as_raw_string
+    )
+    |> Seq.toArray
+    |> QueryBuilder.Select
 
-    QueryBuilder.Select(variable_names)
 
-let CONSTRUCT (formula:Formula) = 
-
+let CONSTRUCT
+    (pattern_builder: TriplePatternBuilder)
+    (formula: Formula)
+    : IQueryBuilder
+    =
     QueryBuilder.Construct(
         Action<IDescribeGraphPatternBuilder>(
             fun construct_template ->
-                construct_template.Where(pattern_builder |> formula.as_graph_pattern)
+                construct_template.Where(
+                    pattern_builder
+                    |> formula.as_graph_pattern
+                )
                 |> ignore
         )
     )
+
+
 let ASK () : IQueryBuilder =
     QueryBuilder.Ask()
 
-    
+
 let DISCOVER
     (variables: Rdf_Variable seq)
     : IDescribeBuilder
@@ -510,16 +573,19 @@ let DISCOVER
     |> Seq.toArray
     |> QueryBuilder.Describe
 
-    
+
 let DESCRIBE
     (iris: IRIREF seq)
     : SparqlQuery
     =
     iris
-    |> Seq.map (fun iri -> iri.as_uri)
+    |> Seq.map (fun iri ->
+        iri.as_uri
+    )
     |> Seq.toArray
     |> QueryBuilder.Describe
-    |> fun builder -> builder.BuildQuery()
+    |> fun builder ->
+        builder.BuildQuery()
 
 
 let repair_describe_variables
@@ -549,79 +615,389 @@ let repair_describe_variables
 
             if not already_registered then
                 query_variables.Add(
-                    SparqlVariable(variable_name, true)
+                    SparqlVariable(
+                        variable_name,
+                        true
+                    )
                 )
         )
 
     query
+
+
 let WHERE
+    (pattern_builder: TriplePatternBuilder)
     (formula: Formula)
     (query_builder: IQueryBuilder)
     : SparqlQuery
     =
     query_builder
-        .Where(pattern_builder |> formula.as_graph_pattern)
+        .Where(
+            pattern_builder
+            |> formula.as_graph_pattern
+        )
         .BuildQuery()
-    |> repair_describe_variables    
-let select_query = 
-        sparql.ProcessQuery( 
-            SELECT_ALL()
-            |> WHERE (!> s --- a --> o)
-        ) :?> SparqlResultSet
+    |> repair_describe_variables
 
 
-select_query.variable_results s
-|> Array.map (fun term -> term.as_rendered_string ":" global_prefix_map)
+let private process_query
+    (graph: IGraph)
+    (query: SparqlQuery)
+    : obj
+    =
+    let dataset =
+        new InMemoryDataset(graph)
+
+    let processor =
+        new LeviathanQueryProcessor(dataset)
+
+    processor.ProcessQuery(query)
 
 
- // |> Turtle.write_igraph test_directory "results"
-
-sparql.ProcessQuery( 
-    CONSTRUCT (!> s --- dbug.this_ --> dbug.example)
-    |> WHERE (!> s --- Esri.ArcGISRuntime._prefix "id" --> "7" .*^ xsd.long)
-) :?> IGraph |> Turtle.write_igraph test_directory "results"
-let ask_query = 
-    (sparql.ProcessQuery( 
-        ASK()
-        |> WHERE (!> s --- a --> o)
-    ) :?> SparqlResultSet).Result
+type From_Where_Draft =
+    {
+        source_graph: IGraph option
+        where_formula: Formula option
+    }
 
 
-
-sparql.ProcessQuery( 
-    DISCOVER [s]
-    |> WHERE (!> s --- Esri.ArcGISRuntime._prefix "id" --> "7" .*^ xsd.long)
-) :?> IGraph |> Turtle.write_igraph test_directory "results"
-
-sparql.ProcessQuery( 
-    DESCRIBE [MapServer._prefix "Inlet"]
-    // |> WHERE (!> s --- p --> o)
-) :?> IGraph |> Turtle.write_igraph test_directory "results"
+let private empty_from_where_draft =
+    {
+        source_graph = None
+        where_formula = None
+    }
 
 
-let query =
-    DISCOVER [ s ]
-    |> WHERE (
-        !> s
-        --- Esri.ArcGISRuntime._prefix "id"
-        --> "7" .*^ xsd.long
+type From_Where_Builder<'Result>
+    (
+        execute:
+            IGraph ->
+            Formula ->
+            'Result
     )
+    =
 
-query.DescribeVariables
-|> Seq.iter (fun token ->
-    printfn "Describe token: %A" token.Value
-)
+    member _.Yield(_: unit) : From_Where_Draft =
+        empty_from_where_draft
 
-query.Variables
-|> Seq.iter (fun variable ->
-    printfn "Query variable: %s, result: %b"
-        variable.Name
-        variable.IsResultVariable
-)
+    member _.Zero() : From_Where_Draft =
+        empty_from_where_draft
+
+    member _.For
+        (
+            _draft: From_Where_Draft,
+            continuation: unit -> From_Where_Draft
+        )
+        : From_Where_Draft
+        =
+        continuation()
+
+
+    [<CustomOperation("from")>]
+    member _.From
+        (
+            draft: From_Where_Draft,
+            graph: IGraph
+        )
+        : From_Where_Draft
+        =
+        match draft.source_graph with
+        | Some _ ->
+            invalidOp
+                "The query already contains a source graph."
+
+        | None ->
+            {
+                draft with
+                    source_graph = Some graph
+            }
+
+
+    [<CustomOperation("where")>]
+    member _.Where
+        (
+            draft: From_Where_Draft,
+            formula: Formula
+        )
+        : From_Where_Draft
+        =
+        match draft.where_formula with
+        | Some _ ->
+            invalidOp
+                "The query already contains a where clause."
+
+        | None ->
+            {
+                draft with
+                    where_formula = Some formula
+            }
+
+
+    member _.Run
+        (
+            draft: From_Where_Draft
+        )
+        : 'Result
+        =
+        let graph =
+            match draft.source_graph with
+            | Some graph ->
+                graph
+
+            | None ->
+                invalidOp
+                    "The query requires a graph supplied with 'from'."
+
+
+        let where_formula =
+            match draft.where_formula with
+            | Some formula ->
+                formula
+
+            | None ->
+                invalidOp
+                    "The query requires a 'where' clause."
+
+
+        execute graph where_formula
+
+type From_Draft =
+    {
+        source_graph: IGraph option
+    }
+
+
+let private empty_from_draft =
+    {
+        source_graph = None
+    }
+
+
+type From_Builder<'Result>
+    (
+        execute: IGraph -> 'Result
+    )
+    =
+
+    member _.Yield(_: unit) : From_Draft =
+        empty_from_draft
+
+    member _.Zero() : From_Draft =
+        empty_from_draft
+
+    member _.For
+        (
+            _draft: From_Draft,
+            continuation: unit -> From_Draft
+        )
+        : From_Draft
+        =
+        continuation()
+
+
+    [<CustomOperation("from")>]
+    member _.From
+        (
+            draft: From_Draft,
+            graph: IGraph
+        )
+        : From_Draft
+        =
+        match draft.source_graph with
+        | Some _ ->
+            invalidOp
+                "The query already contains a source graph."
+
+        | None ->
+            {
+                draft with
+                    source_graph = Some graph
+            }
+
+
+    member _.Run
+        (
+            draft: From_Draft
+        )
+        : 'Result
+        =
+        let graph =
+            match draft.source_graph with
+            | Some graph ->
+                graph
+
+            | None ->
+                invalidOp
+                    "The query requires a graph supplied with 'from'."
+
+
+        execute graph
+module sparql =
+
+    let select
+        (variables: Rdf_Variable seq)
+        : From_Where_Builder<SparqlResultSet>
+        =
+        From_Where_Builder<SparqlResultSet>(
+            fun graph where_formula ->
+
+                let pattern_builder =
+                    TriplePatternBuilder(
+                        graph.NamespaceMap
+                    )
+
+                let query_builder =
+                    SELECT variables
+                    :> IQueryBuilder
+
+                let query =
+                    query_builder
+                    |> WHERE
+                        pattern_builder
+                        where_formula
+
+                process_query graph query
+                :?> SparqlResultSet
+        )
+
+
+    let select_all
+        : From_Where_Builder<SparqlResultSet>
+        =
+        From_Where_Builder<SparqlResultSet>(
+            fun graph where_formula ->
+
+                let pattern_builder =
+                    TriplePatternBuilder(
+                        graph.NamespaceMap
+                    )
+
+                let query_builder =
+                    SELECT_ALL ()
+                    :> IQueryBuilder
+
+                let query =
+                    query_builder
+                    |> WHERE
+                        pattern_builder
+                        where_formula
+
+                process_query graph query
+                :?> SparqlResultSet
+        )
+
+
+    let construct
+        (construct_formula: Formula)
+        : From_Where_Builder<IGraph>
+        =
+        From_Where_Builder<IGraph>(
+            fun graph where_formula ->
+
+                let pattern_builder =
+                    TriplePatternBuilder(
+                        graph.NamespaceMap
+                    )
+
+                let query_builder =
+                    CONSTRUCT
+                        pattern_builder
+                        construct_formula
+
+                let query =
+                    query_builder
+                    |> WHERE
+                        pattern_builder
+                        where_formula
+
+                process_query graph query
+                :?> IGraph
+        )
+
+
+    let ask
+        : From_Where_Builder<bool>
+        =
+        From_Where_Builder<bool>(
+            fun graph where_formula ->
+
+                let pattern_builder =
+                    TriplePatternBuilder(
+                        graph.NamespaceMap
+                    )
+
+                let query =
+                    ASK ()
+                    |> WHERE
+                        pattern_builder
+                        where_formula
+
+                let result_set =
+                    process_query graph query
+                    :?> SparqlResultSet
+
+                result_set.Result
+        )
+
+
+    let discover
+        (variables: Rdf_Variable seq)
+        : From_Where_Builder<IGraph>
+        =
+        From_Where_Builder<IGraph>(
+            fun graph where_formula ->
+
+                let pattern_builder =
+                    TriplePatternBuilder(
+                        graph.NamespaceMap
+                    )
+
+                let query_builder =
+                    DISCOVER variables
+                    :> IQueryBuilder
+
+                let query =
+                    query_builder
+                    |> WHERE
+                        pattern_builder
+                        where_formula
+
+                process_query graph query
+                :?> IGraph
+        )
+
+
+    let describe
+        (iris: IRIREF seq)
+        : From_Builder<IGraph>
+        =
+        From_Builder<IGraph>(
+            fun graph ->
+
+                let query =
+                    DESCRIBE iris
+
+                process_query graph query
+                :?> IGraph
+        )
 
 
 
 
+let s = !? "s"
+let p = !? "p"
+let o = !? "o"
+
+
+sparql.select [ s; p; o ] {
+    where ( !> s --- p --> o )
+    from igraph
+}
+
+sparql.construct  (!> s --- p --> o)  {
+    from igraph
+    where ( !> s --- p --> o )
+} |> Turtle.write_igraph test_directory "results"
 
 
 

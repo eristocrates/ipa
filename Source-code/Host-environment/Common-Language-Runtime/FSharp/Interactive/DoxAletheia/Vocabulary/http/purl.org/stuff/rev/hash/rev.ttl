@@ -2,15 +2,6 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix rev: <http://purl.org/stuff/rev#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix grddl: <http://www.w3.org/2003/g/data-view#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 
 <http://creativecommons.org/licenses/by/1.0/> <http://web.resource.org/cc/permits> <http://web.resource.org/cc/DerivativeWorks>,
                                                                                    <http://web.resource.org/cc/Distribution>,
@@ -18,174 +9,174 @@
                                               <http://web.resource.org/cc/requires> <http://web.resource.org/cc/Attribution>,
                                                                                     <http://web.resource.org/cc/Notice>;
                                               a <http://web.resource.org/cc/License>.
-dc11:date a owl:DatatypeProperty.
-dc11:description a owl:DatatypeProperty.
-dc11:title a owl:DatatypeProperty.
-<http://purl.org/stuff/rev> dc11:type dcmitype:Text;
+<http://purl.org/dc/elements/1.1/date> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/stuff/rev> <http://purl.org/dc/elements/1.1/type> <http://purl.org/dc/dcmitype/Text>;
                             <http://web.resource.org/cc/license> <http://creativecommons.org/licenses/by/1.0/>;
                             a <http://web.resource.org/cc/Work>.
-rev: dc11:date "2007-11-08";
-     dc11:description "Vocabulary for expressing reviews and ratings using the Resource Description Framework. It is compatible with hReview and conforms to OWL Lite";
-     vann:preferredNamespacePrefix "rev";
-     vann:preferredNamespaceUri "http://purl.org/stuff/rev#";
-     a owl:Thing,
-       owl:Ontology;
+rev: <http://purl.org/dc/elements/1.1/date> "2007-11-08";
+     <http://purl.org/dc/elements/1.1/description> "Vocabulary for expressing reviews and ratings using the Resource Description Framework. It is compatible with hReview and conforms to OWL Lite";
+     <http://purl.org/vocab/vann/preferredNamespacePrefix> "rev";
+     <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/stuff/rev#";
+     a <http://www.w3.org/2002/07/owl#Thing>,
+       <http://www.w3.org/2002/07/owl#Ontology>;
      rdfs:label "RDF Review Vocabulary";
-     status:userdocs <http://vocab.org/review/html>;
-     grddl:profileTransformation <http://danja.talis.com/xmlns/rev_2007-11-09/hreview2rdfxml.xsl>.
-rev:Comment a owl:Class,
+     <http://www.w3.org/2003/06/sw-vocab-status/ns#userdocs> <http://vocab.org/review/html>;
+     <http://www.w3.org/2003/g/data-view#profileTransformation> <http://danja.talis.com/xmlns/rev_2007-11-09/hreview2rdfxml.xsl>.
+rev:Comment a <http://www.w3.org/2002/07/owl#Class>,
               rdfs:Class;
             rdfs:comment "A comment on a review";
             rdfs:isDefinedBy rev:;
             rdfs:label "Comment";
-            status:moreinfo "proposed by iterating.com";
-            status:term_status "deprecated".
-rev:Feedback a owl:Class,
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#moreinfo> "proposed by iterating.com";
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+rev:Feedback a <http://www.w3.org/2002/07/owl#Class>,
                rdfs:Class;
              rdfs:comment "Feedback on the review. Expresses whether the review was useful or not";
              rdfs:isDefinedBy rev:;
              rdfs:label "Feedback";
-             status:moreinfo "proposed by iterating.com";
-             status:term_status "deprecated",
-                                "testing".
-rev:Review a owl:Class,
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#moreinfo> "proposed by iterating.com";
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated",
+                                                                        "testing".
+rev:Review a <http://www.w3.org/2002/07/owl#Class>,
              rdfs:Class;
            rdfs:comment "A review of an work"@en;
            rdfs:isDefinedBy rev:;
            rdfs:label "Review"@en;
-           status:moreinfo "core term";
-           status:term_status "stable".
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#moreinfo> "core term";
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
 rev:commenter a rdf:Property,
-                owl:ObjectProperty;
+                <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "The commenter on the review";
               rdfs:domain rev:Feedback,
                           rev:Comment;
               rdfs:isDefinedBy rev:;
               rdfs:label "commenter";
-              rdfs:range foaf:Agent;
-              status:moreinfo "proposed by iterating.com";
-              status:term_status "deprecated".
-rev:hasComment a owl:ObjectProperty,
+              rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#moreinfo> "proposed by iterating.com";
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+rev:hasComment a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                  rdf:Property;
                rdfs:comment "Used to associate a review with a comment on the review";
                rdfs:domain rev:Review;
                rdfs:isDefinedBy rev:;
                rdfs:label "hasComment";
                rdfs:range rev:Comment;
-               status:moreinfo "proposed by iterating.com";
-               status:term_status "deprecated".
-rev:hasFeedback a owl:ObjectProperty,
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#moreinfo> "proposed by iterating.com";
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+rev:hasFeedback a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                   rdf:Property;
                 rdfs:comment "Associates a review with a feedback on the review";
                 rdfs:domain rev:Review;
                 rdfs:isDefinedBy rev:;
                 rdfs:label "hasFeedback";
                 rdfs:range rev:Feedback;
-                status:moreinfo "proposed by iterating.com";
-                status:term_status "deprecated".
-rev:hasReview a owl:ObjectProperty,
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#moreinfo> "proposed by iterating.com";
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+rev:hasReview a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                 rdf:Property;
               rdfs:comment "Associates a work with a a review"@en;
               rdfs:domain rdfs:Resource;
               rdfs:isDefinedBy rev:;
               rdfs:label "has Review"@en;
               rdfs:range rev:Review;
-              status:moreinfo "core term";
-              status:term_status "stable".
-rev:maxRating dc11:description "Maximum value for rating property"@en;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#moreinfo> "core term";
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+rev:maxRating <http://purl.org/dc/elements/1.1/description> "Maximum value for rating property"@en;
               a rdf:Property;
               rdfs:comment "A numeric value"@en;
               rdfs:isDefinedBy rev:;
               rdfs:label "max Rating"@en;
-              status:moreinfo "Introduced by request of Revyu.com";
-              status:term_status "stable".
-rev:minRating dc11:description "Minimum value for rating property"@en;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#moreinfo> "Introduced by request of Revyu.com";
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+rev:minRating <http://purl.org/dc/elements/1.1/description> "Minimum value for rating property"@en;
               a rdf:Property;
               rdfs:comment "A numeric value"@en;
               rdfs:isDefinedBy rev:;
               rdfs:label "min Rating"@en;
-              status:moreinfo "Introduced by request of Revyu.com";
-              status:term_status "stable".
-rev:positiveVotes a owl:DatatypeProperty,
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#moreinfo> "Introduced by request of Revyu.com";
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+rev:positiveVotes a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
                     rdf:Property;
                   rdfs:comment "Number of positive usefulness votes (integer)";
                   rdfs:domain rev:Review;
                   rdfs:isDefinedBy rev:;
                   rdfs:label "positiveVotes";
                   rdfs:range rdfs:Literal;
-                  status:moreinfo "proposed by iterating.com";
-                  status:term_status "deprecated".
-rev:rating a owl:DatatypeProperty,
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#moreinfo> "proposed by iterating.com";
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+rev:rating a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
              rdf:Property;
            rdfs:comment "A numeric value"@en;
            rdfs:isDefinedBy rev:;
            rdfs:label "rating"@en;
-           status:moreinfo "core term";
-           status:term_status "stable".
-rev:reviewer a owl:ObjectProperty,
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#moreinfo> "core term";
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+rev:reviewer a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                rdf:Property;
              rdfs:comment "The person that has written the review"@en;
              rdfs:domain rev:Review;
              rdfs:isDefinedBy rev:;
              rdfs:label "reviewer"@en;
-             rdfs:range foaf:Person;
-             status:moreinfo "core term";
-             status:term_status "stable".
-rev:text a owl:DatatypeProperty,
+             rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#moreinfo> "core term";
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+rev:text a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
            rdf:Property;
          rdfs:comment "The text of the review"@en;
          rdfs:isDefinedBy rev:;
          rdfs:label "text"@en;
-         status:moreinfo "core term";
-         status:term_status "stable".
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#moreinfo> "core term";
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
 rev:title a rdf:Property,
-            owl:DatatypeProperty;
+            <http://www.w3.org/2002/07/owl#DatatypeProperty>;
           rdfs:comment "The title of the review";
           rdfs:domain rev:Review;
           rdfs:isDefinedBy rev:;
           rdfs:label "title";
           rdfs:range rdfs:Literal;
-          rdfs:subPropertyOf dc11:title;
-          status:moreinfo "proposed by iterating.com";
-          status:term_status "deprecated".
-rev:totalVotes a owl:DatatypeProperty,
+          rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/title>;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#moreinfo> "proposed by iterating.com";
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+rev:totalVotes a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
                  rdf:Property;
                rdfs:comment "Number of usefulness votes (integer)";
                rdfs:domain rev:Review;
                rdfs:isDefinedBy rev:;
                rdfs:label "totalVotes";
                rdfs:range rdfs:Literal;
-               status:moreinfo "proposed by iterating.com";
-               status:term_status "deprecated".
-rev:type a owl:DatatypeProperty,
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#moreinfo> "proposed by iterating.com";
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+rev:type a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
            rdf:Property;
          rdfs:comment "The type of media of a work under review";
          rdfs:isDefinedBy rev:;
          rdfs:label "type";
-         status:moreinfo "core term";
-         status:term_status "deprecated".
-<http://vocab.org/review/terms.html> dc11:format "text/html";
-                                     a foaf:Document,
-                                       dcmitype:Text;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#moreinfo> "core term";
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+<http://vocab.org/review/terms.html> <http://purl.org/dc/elements/1.1/format> "text/html";
+                                     a <http://xmlns.com/foaf/0.1/Document>,
+                                       <http://purl.org/dc/dcmitype/Text>;
                                      rdfs:label "HTML".
-<http://vocab.org/review/terms.json> dc11:format "application/json";
-                                     a foaf:Document,
-                                       dcmitype:Text;
+<http://vocab.org/review/terms.json> <http://purl.org/dc/elements/1.1/format> "application/json";
+                                     a <http://xmlns.com/foaf/0.1/Document>,
+                                       <http://purl.org/dc/dcmitype/Text>;
                                      rdfs:label "JSON".
-<http://vocab.org/review/terms.rdf> dcterms:hasFormat <http://vocab.org/review/terms.turtle>,
-                                                      <http://vocab.org/review/terms.json>,
-                                                      <http://vocab.org/review/terms.html>;
-                                    a dcmitype:Text,
-                                      foaf:Document;
-                                    foaf:primaryTopic rev:;
-                                    foaf:topic rev:.
-<http://vocab.org/review/terms.turtle> dc11:format "text/plain";
-                                       a foaf:Document,
-                                         dcmitype:Text;
+<http://vocab.org/review/terms.rdf> <http://purl.org/dc/terms/hasFormat> <http://vocab.org/review/terms.turtle>,
+                                                                         <http://vocab.org/review/terms.json>,
+                                                                         <http://vocab.org/review/terms.html>;
+                                    a <http://purl.org/dc/dcmitype/Text>,
+                                      <http://xmlns.com/foaf/0.1/Document>;
+                                    <http://xmlns.com/foaf/0.1/primaryTopic> rev:;
+                                    <http://xmlns.com/foaf/0.1/topic> rev:.
+<http://vocab.org/review/terms.turtle> <http://purl.org/dc/elements/1.1/format> "text/plain";
+                                       a <http://xmlns.com/foaf/0.1/Document>,
+                                         <http://purl.org/dc/dcmitype/Text>;
                                        rdfs:label "Turtle".
-rdfs:Class a owl:Class.
-rdfs:Resource a owl:Class.
-status:moreinfo a owl:AnnotationProperty.
-status:term_status a owl:AnnotationProperty.
-foaf:Agent a owl:Class.
-foaf:Person a owl:Class.
+rdfs:Class a <http://www.w3.org/2002/07/owl#Class>.
+rdfs:Resource a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#moreinfo> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/Agent> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/Person> a <http://www.w3.org/2002/07/owl#Class>.

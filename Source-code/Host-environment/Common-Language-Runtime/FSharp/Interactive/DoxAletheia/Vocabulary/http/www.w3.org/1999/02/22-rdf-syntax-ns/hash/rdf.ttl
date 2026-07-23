@@ -1,14 +1,11 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
 
-rdf: dc11:date "2019-12-16";
-     dc11:description "This is the RDF Schema for the RDF vocabulary terms in the RDF Namespace, defined in RDF 1.1 Concepts.";
-     dc11:title "The RDF Concepts Vocabulary (RDF)";
-     a owl:Ontology.
+rdf: <http://purl.org/dc/elements/1.1/date> "2019-12-16";
+     <http://purl.org/dc/elements/1.1/description> "This is the RDF Schema for the RDF vocabulary terms in the RDF Namespace, defined in RDF 1.1 Concepts.";
+     <http://purl.org/dc/elements/1.1/title> "The RDF Concepts Vocabulary (RDF)";
+     a <http://www.w3.org/2002/07/owl#Ontology>.
 rdf:Alt a rdfs:Class;
         rdfs:comment "The class of containers of alternatives.";
         rdfs:isDefinedBy rdf:;

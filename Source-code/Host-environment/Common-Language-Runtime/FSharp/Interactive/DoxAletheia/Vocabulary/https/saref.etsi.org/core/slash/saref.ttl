@@ -1,38 +1,32 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix saref: <https://saref.etsi.org/core/>.
-@prefix w3id: <https://w3id.org/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-dcterms:creator a owl:AnnotationProperty.
-dcterms:description a owl:AnnotationProperty.
-dcterms:issued a owl:AnnotationProperty.
-dcterms:license a owl:AnnotationProperty.
-dcterms:modified a owl:AnnotationProperty.
-dcterms:publisher a owl:AnnotationProperty.
-dcterms:source a owl:AnnotationProperty.
-dcterms:title a owl:AnnotationProperty.
-vann:preferredNamespacePrefix a owl:AnnotationProperty.
-vann:preferredNamespaceUri a owl:AnnotationProperty.
-saref: dcterms:creator <http://maxime-lefrancois.info/me#>,
-                       <https://w3id.org/people/mpoveda/>,
-                       <http://www.garcia-castro.com/foaf.rdf#me>,
-                       <https://www.linkedin.com/in/lauradaniele>;
-       dcterms:description "The Smart Applications REFerence ontology (SAREF) is intended to enable interoperability between solutions from different providers and among various activity sectors in the Internet of Things (IoT), thus contributing to the development of the global digital market."@en;
-       dcterms:issued "2020-02-11"^^xsd:date;
-       dcterms:license <https://forge.etsi.org/etsi-software-license>;
-       dcterms:modified "2020-05-29"^^xsd:date;
-       dcterms:publisher <https://www.etsi.org/>;
-       dcterms:source <https://saref.etsi.org/sources/saref-core/>;
-       dcterms:title "SAREF: the Smart Applications REFerence ontology"@en;
-       vann:preferredNamespacePrefix "saref";
-       vann:preferredNamespaceUri "https://saref.etsi.org/core/";
-       a owl:Ontology;
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/source> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+saref: <http://purl.org/dc/terms/creator> <http://maxime-lefrancois.info/me#>,
+                                          <https://w3id.org/people/mpoveda/>,
+                                          <http://www.garcia-castro.com/foaf.rdf#me>,
+                                          <https://www.linkedin.com/in/lauradaniele>;
+       <http://purl.org/dc/terms/description> "The Smart Applications REFerence ontology (SAREF) is intended to enable interoperability between solutions from different providers and among various activity sectors in the Internet of Things (IoT), thus contributing to the development of the global digital market."@en;
+       <http://purl.org/dc/terms/issued> "2020-02-11"^^xsd:date;
+       <http://purl.org/dc/terms/license> <https://forge.etsi.org/etsi-software-license>;
+       <http://purl.org/dc/terms/modified> "2020-05-29"^^xsd:date;
+       <http://purl.org/dc/terms/publisher> <https://www.etsi.org/>;
+       <http://purl.org/dc/terms/source> <https://saref.etsi.org/sources/saref-core/>;
+       <http://purl.org/dc/terms/title> "SAREF: the Smart Applications REFerence ontology"@en;
+       <http://purl.org/vocab/vann/preferredNamespacePrefix> "saref";
+       <http://purl.org/vocab/vann/preferredNamespaceUri> "https://saref.etsi.org/core/";
+       a <http://www.w3.org/2002/07/owl#Ontology>;
        rdfs:comment """Information about changes compared to version 1.1.1:
  - The classes and properties related to how to represent devices in building spaces (such as the saref:BuildingSpace class,  saref:BuildingObject class and saref:isLocatedIn property) have been removed from SAREF and incorporated  into the SAREF4BLDG extension related to buildings, including the reuse of the W3C? WGS84 geo positioning vocabulary.
  - The saref:DeviceCategory and saref:FunctionCategory classes have been removed. Instead, the hierarchy of device categories has been implemented directly as subclasses of the saref:Device class.
@@ -65,796 +59,796 @@ saref: dcterms:creator <http://maxime-lefrancois.info/me#>,
  - Language tags have been added to all labels and comments.
 """;
        rdfs:seeAlso <https://www.etsi.org/deliver/etsi_ts/103200_103299/103264/03.01.01_60/ts_103264v030101p.pdf>;
-       owl:versionIRI <https://saref.etsi.org/core/v3.1.1/>;
-       owl:versionInfo "v3.1.1".
-saref:ActuatingFunction a owl:Class;
+       <http://www.w3.org/2002/07/owl#versionIRI> <https://saref.etsi.org/core/v3.1.1/>;
+       <http://www.w3.org/2002/07/owl#versionInfo> "v3.1.1".
+saref:ActuatingFunction a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:comment "A function that allows to transmit data to actuators, such as level settings (e.g., temperature) or binary switching (e.g., open/close, on/off)"@en;
                         rdfs:label "Actuating function"@en;
                         rdfs:subClassOf saref:Function.
-saref:Actuator a owl:Class;
+saref:Actuator a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "A device responsible for moving or controlling a mechanism or system by performing an actuating function"@en;
                rdfs:label "Actuator"@en;
-               rdfs:subClassOf [owl:someValuesFrom saref:ActuatingFunction ; 
-                                owl:onProperty saref:hasFunction ; 
-                                a owl:Restriction],
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:ActuatingFunction ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> saref:hasFunction ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
                                saref:Device.
-saref:Appliance a owl:Class;
+saref:Appliance a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "An electrical/mechanical machine that accomplish some household functions, such as cleaning or cooking"@en;
                 rdfs:label "Appliance"@en;
                 rdfs:subClassOf saref:Device.
 saref:Cleaning a saref:Task,
-                 owl:NamedIndividual;
+                 <http://www.w3.org/2002/07/owl#NamedIndividual>;
                rdfs:comment "A type of task for which a device is designed"@en;
                rdfs:label "Cleaning"@en.
-saref:CloseCommand a owl:Class;
+saref:CloseCommand a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "A type of command"@en;
                    rdfs:label "Close command"@en;
-                   rdfs:subClassOf [owl:allValuesFrom saref:OpenCloseFunction ; 
-                                    owl:onProperty saref:isCommandOf ; 
-                                    a owl:Restriction],
-                                   [owl:someValuesFrom saref:OpenCloseState ; 
-                                    owl:onProperty saref:actsUpon ; 
-                                    a owl:Restriction],
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:OpenCloseFunction ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> saref:isCommandOf ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:OpenCloseState ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> saref:actsUpon ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
                                    saref:Command;
-                   owl:disjointWith saref:OpenCommand.
-saref:CloseState a owl:Class;
+                   <http://www.w3.org/2002/07/owl#disjointWith> saref:OpenCommand.
+saref:CloseState a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "The state of a device that is CLOSE"@en;
                  rdfs:label "Close state"@en;
                  rdfs:subClassOf saref:OpenCloseState.
-saref:Coal a owl:Class;
+saref:Coal a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "A type of commodity"@en;
            rdfs:label "Coal"@en;
            rdfs:subClassOf saref:Commodity.
 saref:Comfort a saref:Task,
-                owl:NamedIndividual;
+                <http://www.w3.org/2002/07/owl#NamedIndividual>;
               rdfs:comment "A type of task for which a device is designed"@en;
               rdfs:label "Comfort"@en.
-saref:Command a owl:Class;
+saref:Command a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "A directive that a device must support to perform a certain function. A command may act upon a state, but does not necessarily act upon a state. For example, the ON command acts upon the ON/OFF state, but the GET command does not act upon any state, it simply gives a directive to retrieve a certain value. We propose here a list of commands that are relevant for the purpose of SAREF, but this list can be extended."@en;
               rdfs:label "Command"@en;
-              rdfs:subClassOf [owl:onClass saref:Function ; 
-                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                               owl:onProperty saref:isCommandOf ; 
-                               a owl:Restriction],
-                              [owl:allValuesFrom saref:State ; 
-                               owl:onProperty saref:actsUpon ; 
-                               a owl:Restriction].
-saref:Commodity a owl:Class;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> saref:Function ; 
+                               <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> saref:isCommandOf ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:State ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> saref:actsUpon ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>].
+saref:Commodity a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "A marketable item for which there is demand, but which is supplied without qualitative differentiation across a market. SAREF refers to energy commodities such as electricity, gas, coal and oil. "@en;
                 rdfs:label "Commodity"@en.
-saref:Currency a owl:Class;
+saref:Currency a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "The class of units of measure for price"@en;
                rdfs:label "Currency"@en;
                rdfs:subClassOf saref:UnitOfMeasure.
-saref:Device a owl:Class;
+saref:Device a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "A tangible object designed to accomplish a particular task. In order to accomplish this task, the device performs one or more functions. For example, a washing machine is designed to wash (task) and to accomplish this task it performs a start and stop function."@en;
              rdfs:label "Device"@en;
-             rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
-                              owl:onProperty saref:hasManufacturer ; 
-                              a owl:Restriction],
-                             [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
-                              owl:onProperty saref:hasModel ; 
-                              a owl:Restriction],
-                             [owl:allValuesFrom saref:State ; 
-                              owl:onProperty saref:hasState ; 
-                              a owl:Restriction],
-                             [owl:allValuesFrom saref:Measurement ; 
-                              owl:onProperty saref:makesMeasurement ; 
-                              a owl:Restriction],
-                             [owl:allValuesFrom saref:Property ; 
-                              owl:onProperty saref:controlsProperty ; 
-                              a owl:Restriction],
-                             [owl:allValuesFrom saref:Property ; 
-                              owl:onProperty saref:measuresProperty ; 
-                              a owl:Restriction],
-                             [owl:allValuesFrom saref:Device ; 
-                              owl:onProperty saref:consistsOf ; 
-                              a owl:Restriction],
-                             [owl:allValuesFrom saref:Commodity ; 
-                              owl:onProperty saref:isUsedFor ; 
-                              a owl:Restriction],
-                             [owl:onClass saref:Task ; 
-                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                              owl:onProperty saref:accomplishes ; 
-                              a owl:Restriction],
-                             [owl:onClass saref:Function ; 
-                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                              owl:onProperty saref:hasFunction ; 
-                              a owl:Restriction],
-                             [owl:allValuesFrom saref:Service ; 
-                              owl:onProperty saref:offers ; 
-                              a owl:Restriction],
-                             [owl:allValuesFrom saref:Profile ; 
-                              owl:onProperty saref:hasProfile ; 
-                              a owl:Restriction].
-saref:DoorSwitch a owl:Class;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> saref:hasManufacturer ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> saref:hasModel ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:State ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> saref:hasState ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Measurement ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> saref:makesMeasurement ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Property ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> saref:controlsProperty ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Property ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> saref:measuresProperty ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Device ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> saref:consistsOf ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Commodity ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> saref:isUsedFor ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onClass> saref:Task ; 
+                              <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> saref:accomplishes ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onClass> saref:Function ; 
+                              <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> saref:hasFunction ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Service ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> saref:offers ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Profile ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> saref:hasProfile ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>].
+saref:DoorSwitch a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "A switch that performs the saref:OpenCloseFunction, is used for controlling a door, and can be found in the state saref:OpenCloseState. A saref:DoorSwitch is typically used to accomplish saref:Safety."@en;
                  rdfs:label "Door switch"@en;
-                 rdfs:subClassOf [owl:someValuesFrom saref:OpenCloseState ; 
-                                  owl:onProperty saref:hasState ; 
-                                  a owl:Restriction],
-                                 [owl:someValuesFrom saref:OpenCloseFunction ; 
-                                  owl:onProperty saref:hasFunction ; 
-                                  a owl:Restriction],
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:OpenCloseState ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> saref:hasState ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:OpenCloseFunction ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> saref:hasFunction ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
                                  saref:Switch.
 saref:Drying a saref:Task,
-               owl:NamedIndividual;
+               <http://www.w3.org/2002/07/owl#NamedIndividual>;
              rdfs:comment "A type of task for which a device is designed"@en;
              rdfs:label "Drying"@en.
-saref:Electricity a owl:Class;
+saref:Electricity a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "A type of commodity"@en;
                   rdfs:label "Electricity"@en;
                   rdfs:subClassOf saref:Commodity.
-saref:Energy a owl:Class;
+saref:Energy a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "A saref:Property related to some measurements that are characterized by a certain value measured in an energy unit (such as Kilowatt_Hour or Watt_hour). Furter specializations of the saref:Energy class can be found in the SAREF4ENER extension, where classes such as EnergyMax, EnergyMin and EnergyExpected are defined. "@en;
              rdfs:label "Energy"@en;
              rdfs:subClassOf saref:Property.
 saref:EnergyEfficiency a saref:Task,
-                         owl:NamedIndividual;
+                         <http://www.w3.org/2002/07/owl#NamedIndividual>;
                        rdfs:comment "A type of task for which a device is designed"@en;
                        rdfs:label "EnergyEfficiency"@en.
-saref:EnergyUnit a owl:Class;
+saref:EnergyUnit a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "The unit of measure for energy"@en;
                  rdfs:label "Energy unit"@en;
                  rdfs:subClassOf saref:UnitOfMeasure.
 saref:Entertainment a saref:Task,
-                      owl:NamedIndividual;
+                      <http://www.w3.org/2002/07/owl#NamedIndividual>;
                     rdfs:comment "A type of task for which a device is designed"@en;
                     rdfs:label "Entertainment"@en.
-saref:EventFunction a owl:Class;
+saref:EventFunction a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "A function that allows to notify about some relevant activity; e.g., that a certain threshold value has been exceeded or that some object has moved."@en;
                     rdfs:label "Event function"@en;
-                    rdfs:subClassOf [owl:onClass saref:Measurement ; 
-                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                     owl:onProperty saref:hasThresholdMeasurement ; 
-                                     a owl:Restriction],
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> saref:Measurement ; 
+                                     <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> saref:hasThresholdMeasurement ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
                                     saref:Function.
-saref:FeatureOfInterest a owl:Class;
+saref:FeatureOfInterest a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:comment "A feature of interest represents any real world entity from which a property is measured."@en;
                         rdfs:label "Feature of interest"@en;
-                        rdfs:subClassOf [owl:allValuesFrom saref:Measurement ; 
-                                         owl:onProperty saref:hasMeasurement ; 
-                                         a owl:Restriction],
-                                        [owl:allValuesFrom saref:Property ; 
-                                         owl:onProperty saref:hasProperty ; 
-                                         a owl:Restriction].
-saref:Function a owl:Class;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Measurement ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> saref:hasMeasurement ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Property ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> saref:hasProperty ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>].
+saref:Function a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "The functionality necessary to accomplish the task for which a device is designed. A device can be designed to perform more than one function. Functions can be structured in categories (subclasses) that reflect different points of view, for example, considering the specific application area for which a function can be used (e.g., light, temperature, motion, heat, power, etc.), or the capability that a function can support (e.g., receive, reply, notify, etc.), and so forth. "@en;
                rdfs:label "Function"@en;
-               rdfs:subClassOf [owl:onClass saref:Command ; 
-                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                owl:onProperty saref:hasCommand ; 
-                                a owl:Restriction].
-saref:Gas a owl:Class;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> saref:Command ; 
+                                <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> saref:hasCommand ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>].
+saref:Gas a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "A type of commodity"@en;
           rdfs:label "Gas"@en;
           rdfs:subClassOf saref:Commodity.
-saref:GetCommand a owl:Class;
+saref:GetCommand a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "A type of command"@en;
                  rdfs:label "Get command"@en;
                  rdfs:subClassOf saref:Command.
-saref:GetCurrentMeterValueCommand a owl:Class;
+saref:GetCurrentMeterValueCommand a <http://www.w3.org/2002/07/owl#Class>;
                                   rdfs:comment "A type of get command"@en;
                                   rdfs:label "Get current meter value command"@en;
-                                  rdfs:subClassOf [owl:allValuesFrom saref:MeteringFunction ; 
-                                                   owl:onProperty saref:isCommandOf ; 
-                                                   a owl:Restriction],
+                                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:MeteringFunction ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> saref:isCommandOf ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
                                                   saref:GetCommand.
-saref:GetMeterDataCommand a owl:Class;
+saref:GetMeterDataCommand a <http://www.w3.org/2002/07/owl#Class>;
                           rdfs:comment "A type of get command"@en;
                           rdfs:label "Get meter data command"@en;
-                          rdfs:subClassOf [owl:allValuesFrom saref:MeteringFunction ; 
-                                           owl:onProperty saref:isCommandOf ; 
-                                           a owl:Restriction],
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:MeteringFunction ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> saref:isCommandOf ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
                                           saref:GetCommand.
-saref:GetMeterHistoryCommand a owl:Class;
+saref:GetMeterHistoryCommand a <http://www.w3.org/2002/07/owl#Class>;
                              rdfs:comment "A type of get command"@en;
                              rdfs:label "Get meter history command"@en;
-                             rdfs:subClassOf [owl:allValuesFrom saref:MeteringFunction ; 
-                                              owl:onProperty saref:isCommandOf ; 
-                                              a owl:Restriction],
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:MeteringFunction ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> saref:isCommandOf ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
                                              saref:GetCommand.
-saref:GetSensingDataCommand a owl:Class;
+saref:GetSensingDataCommand a <http://www.w3.org/2002/07/owl#Class>;
                             rdfs:comment "A type of get command"@en;
                             rdfs:label "Get sensing data command"@en;
-                            rdfs:subClassOf [owl:allValuesFrom saref:SensingFunction ; 
-                                             owl:onProperty saref:isCommandOf ; 
-                                             a owl:Restriction],
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:SensingFunction ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> saref:isCommandOf ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
                                             saref:GetCommand.
-saref:HVAC a owl:Class;
+saref:HVAC a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "Heating, Ventilation and Air Conditioning (HVAC) device that provides indoor environmental comfort. A saref:HVAC is typically used to accomplish saref:Comfort."@en;
            rdfs:label "HVAC"@en;
            rdfs:subClassOf saref:Device.
-saref:Humidity a owl:Class;
+saref:Humidity a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "A saref:Property related to some measurements that are characterized by a certain value that is measured in a humidity unit"@en;
                rdfs:label "Humidity"@en;
                rdfs:subClassOf saref:Property.
-saref:IlluminanceUnit a owl:Class;
+saref:IlluminanceUnit a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "The unit of measure for light"@en;
                       rdfs:label "Illuminance unit"@en;
                       rdfs:subClassOf saref:UnitOfMeasure.
-saref:LevelControlFunction a owl:Class;
+saref:LevelControlFunction a <http://www.w3.org/2002/07/owl#Class>;
                            rdfs:comment "An actuating function that allows to do level adjustments of a property in a certain range (e.g., 0%-100%), such as dimming a light in a room or setting the speed of an electric motor. "@en;
                            rdfs:label "Level control function"@en;
                            rdfs:subClassOf saref:ActuatingFunction.
-saref:Light a owl:Class;
+saref:Light a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "A saref:Property related to some measurements that are characterized by a certain value that is measured in a illuminance unit (lux)"@en;
             rdfs:label "Light"@en;
             rdfs:subClassOf saref:Property.
-saref:LightSwitch a owl:Class;
+saref:LightSwitch a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "A switch that performs the saref:OnOffFunction, controls the property saref:Light, and can be found in the state saref:OnOffState. It can offer a switch on service. A saref:LightSwitch is typically used to accomplish saref:Lighting."@en;
                   rdfs:label "Light switch"@en;
-                  rdfs:subClassOf [owl:someValuesFrom saref:SwitchOnService ; 
-                                   owl:onProperty saref:offers ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom saref:Light ; 
-                                   owl:onProperty saref:controlsProperty ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom saref:OnOffState ; 
-                                   owl:onProperty saref:hasState ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom saref:OnOffFunction ; 
-                                   owl:onProperty saref:hasFunction ; 
-                                   a owl:Restriction],
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:SwitchOnService ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:offers ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:Light ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:controlsProperty ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:OnOffState ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:hasState ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:OnOffFunction ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:hasFunction ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
                                   saref:Switch.
 saref:Lighting a saref:Task,
-                 owl:NamedIndividual;
+                 <http://www.w3.org/2002/07/owl#NamedIndividual>;
                rdfs:comment "A type of task for which a device is designed"@en;
                rdfs:label "Lighting"@en.
-saref:Measurement a owl:Class;
+saref:Measurement a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "Represents the measured value made over a property. It is also linked to the unit of measure in which the value is expressed and the timestamp of the measurement."@en;
                   rdfs:label "Measurement"@en;
-                  rdfs:subClassOf [owl:allValuesFrom saref:Property ; 
-                                   owl:onProperty saref:relatesToProperty ; 
-                                   a owl:Restriction],
-                                  [owl:allValuesFrom saref:UnitOfMeasure ; 
-                                   owl:onProperty saref:isMeasuredIn ; 
-                                   a owl:Restriction],
-                                  [owl:allValuesFrom xsd:dateTime ; 
-                                   owl:onProperty saref:hasTimestamp ; 
-                                   a owl:Restriction],
-                                  [owl:onClass saref:UnitOfMeasure ; 
-                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                   owl:onProperty saref:isMeasuredIn ; 
-                                   a owl:Restriction],
-                                  [owl:allValuesFrom saref:FeatureOfInterest ; 
-                                   owl:onProperty saref:isMeasurementOf ; 
-                                   a owl:Restriction],
-                                  [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
-                                   owl:onProperty saref:hasValue ; 
-                                   a owl:Restriction],
-                                  [owl:onClass saref:Property ; 
-                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                   owl:onProperty saref:relatesToProperty ; 
-                                   a owl:Restriction].
-saref:Meter a owl:Class;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Property ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:relatesToProperty ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:UnitOfMeasure ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:isMeasuredIn ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:dateTime ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:hasTimestamp ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onClass> saref:UnitOfMeasure ; 
+                                   <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:isMeasuredIn ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:FeatureOfInterest ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:isMeasurementOf ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:hasValue ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onClass> saref:Property ; 
+                                   <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:relatesToProperty ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>].
+saref:Meter a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "A device built to accurately detect and display a quantity in a form readable by a human being. Further, a device of category saref:Meter that performs a saref:MeteringFunction."@en;
             rdfs:label "Meter"@en;
-            rdfs:subClassOf [owl:someValuesFrom saref:MeteringFunction ; 
-                             owl:onProperty saref:hasFunction ; 
-                             a owl:Restriction],
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:MeteringFunction ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> saref:hasFunction ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
                             saref:Device.
 saref:MeterReading a saref:Task,
-                     owl:NamedIndividual;
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>;
                    rdfs:comment "A type of task for which a device is designed"@en;
                    rdfs:label "Meter reading"@en.
-saref:MeteringFunction a owl:Class;
+saref:MeteringFunction a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:comment "A function that allows to get data from a meter, such as current meter reading or instantaneous demand"@en;
                        rdfs:label "Metering function"@en;
-                       rdfs:subClassOf [owl:allValuesFrom [owl:unionOf (saref:Commodity
-                                                                        saref:Property) ; 
-                                                           a owl:Class] ; 
-                                        owl:onProperty saref:hasMeterReadingType ; 
-                                        a owl:Restriction],
-                                       [owl:allValuesFrom saref:Measurement ; 
-                                        owl:onProperty saref:hasMeterReading ; 
-                                        a owl:Restriction],
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (saref:Commodity
+                                                                                                                                saref:Property) ; 
+                                                                                       a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> saref:hasMeterReadingType ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Measurement ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> saref:hasMeterReading ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
                                        saref:Function.
-saref:Motion a owl:Class;
+saref:Motion a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "A saref:Property related to some measurements that are characterized by a certain value that is measured in a unit of measure for motion"@en;
              rdfs:label "Motion"@en;
              rdfs:subClassOf saref:Property.
-saref:MultiLevelState a owl:Class;
+saref:MultiLevelState a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "A type of state"@en;
                       rdfs:label "Multi level state"@en;
                       rdfs:subClassOf saref:State.
-saref:NotifyCommand a owl:Class;
+saref:NotifyCommand a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "A type of command"@en;
                     rdfs:label "Notify command"@en;
-                    rdfs:subClassOf [owl:allValuesFrom saref:EventFunction ; 
-                                     owl:onProperty saref:isCommandOf ; 
-                                     a owl:Restriction],
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:EventFunction ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> saref:isCommandOf ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
                                     saref:Command.
-saref:Occupancy a owl:Class;
+saref:Occupancy a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "A saref:Property related to some measurements that are characterized by a certain value (saref:hasValue property) that is measured in a unit of measure for occupancy"@en;
                 rdfs:label "Occupancy"@en;
                 rdfs:subClassOf saref:Property.
-saref:OffCommand a owl:Class;
+saref:OffCommand a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "A type of command"@en;
                  rdfs:label "Off command"@en;
-                 rdfs:subClassOf [owl:allValuesFrom saref:OnOffFunction ; 
-                                  owl:onProperty saref:isCommandOf ; 
-                                  a owl:Restriction],
-                                 [owl:someValuesFrom saref:OnOffState ; 
-                                  owl:onProperty saref:actsUpon ; 
-                                  a owl:Restriction],
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:OnOffFunction ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> saref:isCommandOf ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:OnOffState ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> saref:actsUpon ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
                                  saref:Command;
-                 owl:disjointWith saref:OnCommand.
-saref:OffState a owl:Class;
+                 <http://www.w3.org/2002/07/owl#disjointWith> saref:OnCommand.
+saref:OffState a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "The state of a device that is Off"@en;
                rdfs:label "Off state"@en;
                rdfs:subClassOf saref:OnOffState.
-saref:OnCommand a owl:Class;
+saref:OnCommand a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "A type of command"@en;
                 rdfs:label "On command"@en;
-                rdfs:subClassOf [owl:allValuesFrom saref:OnOffFunction ; 
-                                 owl:onProperty saref:isCommandOf ; 
-                                 a owl:Restriction],
-                                [owl:someValuesFrom saref:OnOffState ; 
-                                 owl:onProperty saref:actsUpon ; 
-                                 a owl:Restriction],
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:OnOffFunction ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> saref:isCommandOf ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:OnOffState ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> saref:actsUpon ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
                                 saref:Command.
-saref:OnOffFunction a owl:Class;
+saref:OnOffFunction a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "An actuating function that allows to switch on and off an actuator"@en;
                     rdfs:label "On off function"@en;
                     rdfs:subClassOf saref:ActuatingFunction.
-saref:OnOffState a owl:Class;
+saref:OnOffState a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "A type of state"@en;
                  rdfs:label "On off state"@en;
                  rdfs:subClassOf saref:State.
-saref:OnState a owl:Class;
+saref:OnState a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "The state of a device that is On"@en;
               rdfs:label "On state"@en;
               rdfs:subClassOf saref:OnOffState.
-saref:OpenCloseFunction a owl:Class;
+saref:OpenCloseFunction a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:comment "An actuating function that allows to open and close a device"@en;
                         rdfs:label "Open close function"@en;
                         rdfs:subClassOf saref:ActuatingFunction.
-saref:OpenCloseState a owl:Class;
+saref:OpenCloseState a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:comment "A type of state"@en;
                      rdfs:label "Open close state"@en;
                      rdfs:subClassOf saref:State.
-saref:OpenCommand a owl:Class;
+saref:OpenCommand a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "A type of command"@en;
                   rdfs:label "Open command"@en;
-                  rdfs:subClassOf [owl:allValuesFrom saref:OpenCloseFunction ; 
-                                   owl:onProperty saref:isCommandOf ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom saref:OpenCloseState ; 
-                                   owl:onProperty saref:actsUpon ; 
-                                   a owl:Restriction],
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:OpenCloseFunction ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:isCommandOf ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:OpenCloseState ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:actsUpon ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
                                   saref:Command.
-saref:OpenState a owl:Class;
+saref:OpenState a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "The state of a device that is OPEN "@en;
                 rdfs:label "Open state"@en;
                 rdfs:subClassOf saref:OpenCloseState.
-saref:PauseCommand a owl:Class;
+saref:PauseCommand a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "A type of command"@en;
                    rdfs:label "Pause command"@en;
                    rdfs:subClassOf saref:Command.
-saref:Power a owl:Class;
+saref:Power a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "A saref:Property related to some measurements that are characterized by a certain value that is measured in a power unit (such as watt or kilowatt).  Further specializations of the saref:Power class can be found in the SAREF4ENER extension, where classes such as PowerMax, PowerMin and PowerExpected are defined."@en;
             rdfs:label "Power"@en;
             rdfs:subClassOf saref:Property.
-saref:PowerUnit a owl:Class;
+saref:PowerUnit a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "The unit of measure for power"@en;
                 rdfs:label "Power unit"@en;
                 rdfs:subClassOf saref:UnitOfMeasure.
-saref:Pressure a owl:Class;
+saref:Pressure a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "A saref:Property related to some measurements that are characterized by a certain value that is measured in a pressure unit (bar or pascal)"@en;
                rdfs:label "Pressure"@en;
                rdfs:subClassOf saref:Property.
-saref:PressureUnit a owl:Class;
+saref:PressureUnit a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "The unit of measure for pressure"@en;
                    rdfs:label "Pressure unit"@en;
                    rdfs:subClassOf saref:UnitOfMeasure.
-saref:Price a owl:Class;
+saref:Price a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "A saref:Property crelated to some measurements that are characterized by a certain value that is measured using saref:Currency"@en;
             rdfs:label "Price"@en;
             rdfs:subClassOf saref:Property.
-saref:Profile a owl:Class;
+saref:Profile a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "A specification associated to a device to collect information about a certain Property (e.g., Energy) for optimizing its usage in the home, office or building in which the device is located. This specification is about a certain Property (saref:isAbout), can be calculated over a time span (saref:hasTime) and can be associated to some costs (saref:hasPrice). An example is the Power Profile defined in the SAREF4ENER extension that can be associated to a device for optimizing the Energy efficiency in the home, office or building in which the device is located."@en;
               rdfs:label "Profile"@en;
-              rdfs:subClassOf [owl:allValuesFrom [owl:unionOf (saref:Commodity
-                                                               saref:Property) ; 
-                                                  a owl:Class] ; 
-                               owl:onProperty saref:isAbout ; 
-                               a owl:Restriction],
-                              [owl:allValuesFrom saref:Time ; 
-                               owl:onProperty saref:hasTime ; 
-                               a owl:Restriction],
-                              [owl:allValuesFrom saref:Price ; 
-                               owl:onProperty saref:hasPrice ; 
-                               a owl:Restriction],
-                              [owl:allValuesFrom saref:Profile ; 
-                               owl:onProperty saref:consistsOf ; 
-                               a owl:Restriction].
-saref:Property a owl:Class;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (saref:Commodity
+                                                                                                                       saref:Property) ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Class>] ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> saref:isAbout ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Time ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> saref:hasTime ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Price ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> saref:hasPrice ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Profile ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> saref:consistsOf ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>].
+saref:Property a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "A quality of a feature of interest that can be measured; an aspect of a feature of interest that is intrinsic to and cannot exist without the feature"@en;
                rdfs:label "Property"@en;
-               rdfs:subClassOf [owl:allValuesFrom saref:Measurement ; 
-                                owl:onProperty saref:relatesToMeasurement ; 
-                                a owl:Restriction],
-                               [owl:allValuesFrom saref:FeatureOfInterest ; 
-                                owl:onProperty saref:isPropertyOf ; 
-                                a owl:Restriction],
-                               [owl:allValuesFrom saref:Device ; 
-                                owl:onProperty saref:isMeasuredByDevice ; 
-                                a owl:Restriction],
-                               [owl:allValuesFrom saref:Device ; 
-                                owl:onProperty saref:isControlledByDevice ; 
-                                a owl:Restriction].
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Measurement ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> saref:relatesToMeasurement ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:FeatureOfInterest ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> saref:isPropertyOf ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Device ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> saref:isMeasuredByDevice ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Device ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> saref:isControlledByDevice ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>].
 saref:Safety a saref:Task,
-               owl:NamedIndividual;
+               <http://www.w3.org/2002/07/owl#NamedIndividual>;
              rdfs:comment "A type of task for which a device is designed"@en;
              rdfs:label "Safety"@en.
-saref:SensingFunction a owl:Class;
+saref:SensingFunction a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "A function that allows to transmit data from sensors, such as measurement values (e.g., temperature) or sensing data (e.g., occupancy)"@en;
                       rdfs:label "Sensing function"@en;
-                      rdfs:subClassOf [owl:allValuesFrom saref:Property ; 
-                                       owl:onProperty saref:hasSensorType ; 
-                                       a owl:Restriction],
-                                      [owl:someValuesFrom saref:Measurement ; 
-                                       owl:onProperty saref:hasSensingRange ; 
-                                       a owl:Restriction],
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:Property ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> saref:hasSensorType ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:Measurement ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> saref:hasSensingRange ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
                                       saref:Function.
-saref:Sensor a owl:Class;
+saref:Sensor a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "A device that detects and responds to events or changes in the physical environment such as light, motion, or temperature changes. Further, a device of category saref:Sensor that performs a saref:SensingFunction."@en;
              rdfs:label "Sensor"@en;
-             rdfs:subClassOf [owl:someValuesFrom saref:SensingFunction ; 
-                              owl:onProperty saref:hasFunction ; 
-                              a owl:Restriction],
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:SensingFunction ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> saref:hasFunction ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
                              saref:Device.
-saref:Service a owl:Class;
+saref:Service a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "A service is a representation of a function to a network that makes the function discoverable, registerable, remotely controllable by other devices in the network. A service can represent one or more functions. A Service is offered by a device that wants (a certain set of) its function(s) to be discoverable, registerable, remotely controllable by other devices in the network. A Service must specify the device that is offering the service and the function(s) to be represented."@en;
               rdfs:label "Service"@en;
-              rdfs:subClassOf [owl:onClass saref:Function ; 
-                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                               owl:onProperty saref:represents ; 
-                               a owl:Restriction],
-                              [owl:onClass saref:Device ; 
-                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                               owl:onProperty saref:isOfferedBy ; 
-                               a owl:Restriction].
-saref:SetAbsoluteLevelCommand a owl:Class;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> saref:Function ; 
+                               <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> saref:represents ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onClass> saref:Device ; 
+                               <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> saref:isOfferedBy ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>].
+saref:SetAbsoluteLevelCommand a <http://www.w3.org/2002/07/owl#Class>;
                               rdfs:comment "A type of set level command"@en;
                               rdfs:label "Set absolute level command"@en;
                               rdfs:subClassOf saref:SetLevelCommand.
-saref:SetLevelCommand a owl:Class;
+saref:SetLevelCommand a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "A type of command"@en;
                       rdfs:label "Set level command"@en;
-                      rdfs:subClassOf [owl:allValuesFrom saref:LevelControlFunction ; 
-                                       owl:onProperty saref:isCommandOf ; 
-                                       a owl:Restriction],
-                                      [owl:someValuesFrom saref:MultiLevelState ; 
-                                       owl:onProperty saref:actsUpon ; 
-                                       a owl:Restriction],
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:LevelControlFunction ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> saref:isCommandOf ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:MultiLevelState ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> saref:actsUpon ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
                                       saref:Command.
-saref:SetRelativeLevelCommand a owl:Class;
+saref:SetRelativeLevelCommand a <http://www.w3.org/2002/07/owl#Class>;
                               rdfs:comment "A type of set level command"@en;
                               rdfs:label "Set relative level command"@en;
                               rdfs:subClassOf saref:SetLevelCommand.
-saref:Smoke a owl:Class;
+saref:Smoke a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "A saref:Property related to some measurements that are characterized by a certain value that is measured in a unit of measure for smoke"@en;
             rdfs:label "Smoke"@en;
             rdfs:subClassOf saref:Property.
-saref:SmokeSensor a owl:Class;
+saref:SmokeSensor a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "A sensor that performs the saref:SensingFunction and the saref:EventFunction, and is used for the purpose of sensing a property of type saref:Smoke. A saref:SmokeSensor is typically used to saref:accomplish saref:Safety."@en;
                   rdfs:label "Smoke sensor"@en;
-                  rdfs:subClassOf [owl:someValuesFrom saref:Smoke ; 
-                                   owl:onProperty saref:measuresProperty ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom saref:SensingFunction ; 
-                                   owl:onProperty saref:hasFunction ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom saref:EventFunction ; 
-                                   owl:onProperty saref:hasFunction ; 
-                                   a owl:Restriction],
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:Smoke ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:measuresProperty ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:SensingFunction ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:hasFunction ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:EventFunction ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:hasFunction ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
                                   saref:Sensor.
-saref:StartCommand a owl:Class;
+saref:StartCommand a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "A type of command"@en;
                    rdfs:label "Start command"@en;
-                   rdfs:subClassOf [owl:allValuesFrom saref:StartStopFunction ; 
-                                    owl:onProperty saref:isCommandOf ; 
-                                    a owl:Restriction],
-                                   [owl:someValuesFrom saref:StartStopState ; 
-                                    owl:onProperty saref:actsUpon ; 
-                                    a owl:Restriction],
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:StartStopFunction ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> saref:isCommandOf ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:StartStopState ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> saref:actsUpon ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
                                    saref:Command;
-                   owl:disjointWith saref:StopCommand.
-saref:StartState a owl:Class;
+                   <http://www.w3.org/2002/07/owl#disjointWith> saref:StopCommand.
+saref:StartState a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "The state of a device that is STARTED"@en;
                  rdfs:label "Start state"@en;
                  rdfs:subClassOf saref:StartStopState.
-saref:StartStopFunction a owl:Class;
+saref:StartStopFunction a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:comment "An actuating function that allows to start and stop a device"@en;
                         rdfs:label "Start stop function"@en;
                         rdfs:subClassOf saref:ActuatingFunction.
-saref:StartStopState a owl:Class;
+saref:StartStopState a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:comment "A type of state"@en;
                      rdfs:label "Start stop state"@en;
                      rdfs:subClassOf saref:State.
-saref:State a owl:Class;
+saref:State a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "The state in which a device can be found, e.g, ON/OFF/STANDBY, or ONLINE/OFFLINE. We propose here a list of states that are relevant for the purpose of SAREF, but this list can be extended."@en;
             rdfs:label "State"@en.
-saref:StepDownCommand a owl:Class;
+saref:StepDownCommand a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "A type of command"@en;
                       rdfs:label "Step down command"@en;
-                      rdfs:subClassOf [owl:allValuesFrom saref:LevelControlFunction ; 
-                                       owl:onProperty saref:isCommandOf ; 
-                                       a owl:Restriction],
-                                      [owl:someValuesFrom saref:MultiLevelState ; 
-                                       owl:onProperty saref:actsUpon ; 
-                                       a owl:Restriction],
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:LevelControlFunction ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> saref:isCommandOf ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:MultiLevelState ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> saref:actsUpon ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
                                       saref:Command;
-                      owl:disjointWith saref:StepUpCommand.
-saref:StepUpCommand a owl:Class;
+                      <http://www.w3.org/2002/07/owl#disjointWith> saref:StepUpCommand.
+saref:StepUpCommand a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "A type of command"@en;
                     rdfs:label "Step up command"@en;
-                    rdfs:subClassOf [owl:allValuesFrom saref:LevelControlFunction ; 
-                                     owl:onProperty saref:isCommandOf ; 
-                                     a owl:Restriction],
-                                    [owl:someValuesFrom saref:MultiLevelState ; 
-                                     owl:onProperty saref:actsUpon ; 
-                                     a owl:Restriction],
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:LevelControlFunction ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> saref:isCommandOf ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:MultiLevelState ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> saref:actsUpon ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
                                     saref:Command.
-saref:StopCommand a owl:Class;
+saref:StopCommand a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "A type of command"@en;
                   rdfs:label "Stop command"@en;
-                  rdfs:subClassOf [owl:allValuesFrom saref:StartStopFunction ; 
-                                   owl:onProperty saref:isCommandOf ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom saref:StartStopState ; 
-                                   owl:onProperty saref:actsUpon ; 
-                                   a owl:Restriction],
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:StartStopFunction ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:isCommandOf ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:StartStopState ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> saref:actsUpon ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
                                   saref:Command.
-saref:StopState a owl:Class;
+saref:StopState a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "The state of a device that is STOPPED"@en;
                 rdfs:label "Stop state"@en;
                 rdfs:subClassOf saref:StartStopState.
-saref:Switch a owl:Class;
+saref:Switch a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "A device of category saref:Actuator that performs an actuating function of type saref:OnOffFunction or saref:OpenCloseFunction"@en;
              rdfs:label "Switch"@en;
              rdfs:subClassOf saref:Actuator.
-saref:SwitchOnService a owl:Class;
+saref:SwitchOnService a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "A type of service that represents an on/off function to the network"@en;
                       rdfs:label "Switch on service"@en;
-                      rdfs:subClassOf [owl:someValuesFrom saref:OnOffFunction ; 
-                                       owl:onProperty saref:represents ; 
-                                       a owl:Restriction],
-                                      [owl:someValuesFrom saref:LightSwitch ; 
-                                       owl:onProperty saref:isOfferedBy ; 
-                                       a owl:Restriction],
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:OnOffFunction ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> saref:represents ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:LightSwitch ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> saref:isOfferedBy ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
                                       saref:Service.
-saref:Task a owl:Class;
+saref:Task a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "The goal for which a device is designed (from a user perspective). For example, a washing machine is designed for the task of washing. We propose here a list of tasks that are relevant for the purpose of SAREF, but this list can be extended. Tasks can be accomplished by devices (saref:isAccomplishedBy)."@en;
            rdfs:label "Task"@en.
-saref:Temperature a owl:Class;
+saref:Temperature a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "A saref:Property related to some measurements that are characterized by a certain value that is measured in a temperature unit (degree_Celsius, degree_Fahrenheit, or degree_kelvin)"@en;
                   rdfs:label "Temperature"@en;
                   rdfs:subClassOf saref:Property.
-saref:TemperatureSensor a owl:Class;
+saref:TemperatureSensor a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:comment "A sensor that is used for the purpose of sensing a property of type saref:Temperature. A saref:TemperatureSensor is typically used to saref:accomplish saref:Comfort."@en;
                         rdfs:label "Temperature sensor"@en;
-                        rdfs:subClassOf [owl:someValuesFrom saref:Temperature ; 
-                                         owl:onProperty saref:measuresProperty ; 
-                                         a owl:Restriction],
-                                        [owl:someValuesFrom saref:SensingFunction ; 
-                                         owl:onProperty saref:hasFunction ; 
-                                         a owl:Restriction],
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:Temperature ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> saref:measuresProperty ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> saref:SensingFunction ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> saref:hasFunction ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
                                         saref:Sensor.
-saref:TemperatureUnit a owl:Class;
+saref:TemperatureUnit a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "The unit of measure for temperature"@en;
                       rdfs:label "Temperature unit"@en;
                       rdfs:subClassOf saref:UnitOfMeasure.
-saref:Time a owl:Class;
+saref:Time a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "A class that allows to specify the time concept."@en;
            rdfs:label "Time"@en.
-saref:ToggleCommand a owl:Class;
+saref:ToggleCommand a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "A type of command"@en;
                     rdfs:label "Toggle command"@en;
-                    rdfs:subClassOf [owl:allValuesFrom saref:OnOffFunction ; 
-                                     owl:onProperty saref:isCommandOf ; 
-                                     a owl:Restriction],
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> saref:OnOffFunction ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> saref:isCommandOf ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
                                     saref:Command.
-saref:UnitOfMeasure a owl:Class;
+saref:UnitOfMeasure a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment """The unit of measure is a standard for measurement of a quantity, such as a Property. For example,  Power is a property and Watt is a unit of power that represents a definite predetermined power: when we say 10 Watt, we actually mean 10 times the definite predetermined power called \"watt\". Our definition is based on the definition of unit of measure in the Ontology of units of Measure (OM). We propose here a list of some units of measure that are relevant for the purpose of SAREF, but this list can be extended, also using some other ontologies rather than the Ontology of units of Measure (OM)."""@en;
                     rdfs:label "Unit of measure"@en.
 saref:Washing a saref:Task,
-                owl:NamedIndividual;
+                <http://www.w3.org/2002/07/owl#NamedIndividual>;
               rdfs:comment "A type of task for which a device is designed"@en;
               rdfs:label "Washing"@en.
-saref:Water a owl:Class;
+saref:Water a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "A type of commodity"@en;
             rdfs:label "Water"@en;
             rdfs:subClassOf saref:Commodity.
 saref:WellBeing a saref:Task,
-                  owl:NamedIndividual;
+                  <http://www.w3.org/2002/07/owl#NamedIndividual>;
                 rdfs:comment "A type of task for which a device is designed"@en;
                 rdfs:label "WellBeing"@en.
-saref:accomplishes a owl:ObjectProperty;
+saref:accomplishes a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "A relationship between a certain entity (e.g., a device) and the task it accomplishes"@en;
                    rdfs:label "accomplishes"@en;
                    rdfs:range saref:Task;
-                   owl:inverseOf saref:isAccomplishedBy.
-saref:actsUpon a owl:ObjectProperty;
+                   <http://www.w3.org/2002/07/owl#inverseOf> saref:isAccomplishedBy.
+saref:actsUpon a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment "A relationship between a command and a state"@en;
                rdfs:domain saref:Command;
                rdfs:label "acts upon"@en;
                rdfs:range saref:State.
-saref:consistsOf a owl:ObjectProperty;
+saref:consistsOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "A relationship indicating a composite entity that consists of other entities (e.g., a temperature/humidity sensor that consists of a temperature sensor and a humidity sensor)"@en;
                  rdfs:label "consists of"@en.
-saref:controlsProperty a owl:ObjectProperty;
+saref:controlsProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "A relationship specifying the property that can be controlled by a certain device"@en;
                        rdfs:domain saref:Device;
                        rdfs:label "controls property"@en;
                        rdfs:range saref:Property.
-saref:hasCommand a owl:ObjectProperty;
+saref:hasCommand a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "A relationship between a function and a command"@en;
                  rdfs:domain saref:Function;
                  rdfs:label "has command"@en;
                  rdfs:range saref:Command;
-                 owl:inverseOf saref:isCommandOf.
-saref:hasDescription a owl:DatatypeProperty;
+                 <http://www.w3.org/2002/07/owl#inverseOf> saref:isCommandOf.
+saref:hasDescription a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:comment "A relationship providing a description of an entity (e.g., device). The value is expected to be a string or a string with language tag."@en,
                                   "DEPRECATED: The use of rdfs:comment is recommended instead."@en;
                      rdfs:label "has description"@en;
-                     owl:deprecated true.
-saref:hasFunction a owl:ObjectProperty;
+                     <http://www.w3.org/2002/07/owl#deprecated> true.
+saref:hasFunction a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "A relationship identifying the function of a device"@en;
                   rdfs:domain saref:Device;
                   rdfs:label "has function"@en;
                   rdfs:range saref:Function.
-saref:hasManufacturer a owl:DatatypeProperty;
+saref:hasManufacturer a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "A relationship identifying the manufacturer of an entity (e.g., device). The value is expected to be a string or a string with language tag."@en;
                       rdfs:label "has manufacturer"@en.
-saref:hasMeasurement a owl:ObjectProperty;
+saref:hasMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "A relationship between a feature of interest and a measurement about it"@en;
                      rdfs:domain saref:FeatureOfInterest;
                      rdfs:label "has measurement"@en;
                      rdfs:range saref:Measurement.
-saref:hasMeterReading a owl:ObjectProperty;
+saref:hasMeterReading a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "A relationship between a metering function and the measurement of the reading"@en;
                       rdfs:domain saref:MeteringFunction;
                       rdfs:label "has meter reading"@en;
                       rdfs:range saref:Measurement.
-saref:hasMeterReadingType a owl:ObjectProperty;
+saref:hasMeterReadingType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                           rdfs:comment "A relationship identifying the reading type of a metering function (e.g., Water, Gas, Pressure , Energy , Power, etc.)"@en;
                           rdfs:domain saref:MeteringFunction;
                           rdfs:label "has meter reading type"@en;
                           rdfs:range saref:Property.
-saref:hasModel a owl:DatatypeProperty;
+saref:hasModel a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment "A relationship identifying the model of an entity (e.g., device). The value is expected to be a string or a string with language tag."@en;
                rdfs:label "has model"@en.
-saref:hasPrice a owl:ObjectProperty;
+saref:hasPrice a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment "A relationship indentifying the price associated to an entity"@en;
                rdfs:label "has price"@en;
                rdfs:range saref:Price.
-saref:hasProfile a owl:ObjectProperty;
+saref:hasProfile a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "A relationship associating a profile to a certain device"@en;
                  rdfs:domain saref:Device;
                  rdfs:label "has profile"@en;
                  rdfs:range saref:Profile.
-saref:hasProperty a owl:ObjectProperty;
+saref:hasProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "A relationship between a feature of interest and a property of that feature"@en;
                   rdfs:domain saref:FeatureOfInterest;
                   rdfs:label "has property"@en;
                   rdfs:range saref:Property;
-                  owl:inverseOf saref:isPropertyOf.
-saref:hasSensingRange a owl:ObjectProperty;
+                  <http://www.w3.org/2002/07/owl#inverseOf> saref:isPropertyOf.
+saref:hasSensingRange a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "A relationship between a sensing function and a measurement identifying the range of a sensor detection"@en;
                       rdfs:domain saref:SensingFunction;
                       rdfs:label "has sensing range"@en;
                       rdfs:range saref:Measurement.
-saref:hasSensorType a owl:ObjectProperty;
+saref:hasSensorType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:comment "A relationship identifying the sensing type of a sensor detection (i.e., Temperature, Occupancy, Humidity, Motion , Smoke, Pressure, etc.) "@en;
                     rdfs:domain saref:SensingFunction;
                     rdfs:label "has sensor type"@en;
                     rdfs:range saref:Property.
-saref:hasState a owl:ObjectProperty;
+saref:hasState a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment "A relationship identifying the type of state of a device"@en;
                rdfs:domain saref:Device;
                rdfs:label "has state"@en;
                rdfs:range saref:State.
-saref:hasThresholdMeasurement a owl:ObjectProperty;
+saref:hasThresholdMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                               rdfs:comment "A relationship associated with an event function to notify that a certain threshold measurement has been exceeded"@en;
                               rdfs:domain saref:EventFunction;
                               rdfs:label "has threshold measurement"@en;
                               rdfs:range saref:Measurement.
-saref:hasTime a owl:ObjectProperty;
+saref:hasTime a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "A relationship to associate time information to an entity"@en;
               rdfs:label "has time"@en;
               rdfs:range saref:Time.
-saref:hasTimestamp a owl:DatatypeProperty;
+saref:hasTimestamp a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:comment "A relationship stating the timestamp of an entity (e.g. a measurement)."@en;
                    rdfs:label "has timestamp"@en.
-saref:hasTypicalConsumption a owl:ObjectProperty;
+saref:hasTypicalConsumption a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                             rdfs:comment "A relationship identifying the typical (energy or power) consumption of a device"@en;
                             rdfs:label "has typical consumption"@en.
-saref:hasValue a owl:DatatypeProperty;
+saref:hasValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment "A relationship defining the value of a certain property, e.g., energy or power. Note that, even if numeric values are expected to enable reasoning, measurement values could use other datatypes."@en;
                rdfs:label "has value"@en.
-saref:isAbout a owl:ObjectProperty;
+saref:isAbout a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "A relationship identifying what an entity, such as a profile, is about"@en;
               rdfs:label "isAbout"@en.
-saref:isAccomplishedBy a owl:ObjectProperty;
+saref:isAccomplishedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "A relationship identifying an entity (e.g., a device) that can accomplish a task."@en;
                        rdfs:domain saref:Task;
                        rdfs:label "is accomplished by"@en.
-saref:isCommandOf a owl:ObjectProperty;
+saref:isCommandOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "A relationship between a command and a function."@en;
                   rdfs:domain saref:Command;
                   rdfs:label "is command of"@en;
                   rdfs:range saref:Function.
-saref:isControlledByDevice a owl:ObjectProperty;
+saref:isControlledByDevice a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                            rdfs:comment "A relationship specifying the devices that can control a certain property"@en;
                            rdfs:domain saref:Property;
                            rdfs:label "is controlled by device"@en;
                            rdfs:range saref:Device.
-saref:isMeasuredByDevice a owl:ObjectProperty;
+saref:isMeasuredByDevice a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:comment "A relationship specifying the devices that can measure a certain property"@en;
                          rdfs:domain saref:Property;
                          rdfs:label "is measured by device"@en;
                          rdfs:range saref:Device.
-saref:isMeasuredIn a owl:ObjectProperty;
+saref:isMeasuredIn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "A relationship identifying the unit of measure used for a certain entity."@en;
                    rdfs:domain saref:Measurement;
                    rdfs:label "is measured in"@en;
                    rdfs:range saref:UnitOfMeasure.
-saref:isMeasurementOf a owl:ObjectProperty;
+saref:isMeasurementOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "A relationship between a measurement and the feature of interest whose quality was measured"@en;
                       rdfs:domain saref:Measurement;
                       rdfs:label "isMeasurementOf"@en;
                       rdfs:range saref:FeatureOfInterest;
-                      owl:inverseOf saref:hasMeasurement.
-saref:isOfferedBy a owl:ObjectProperty;
+                      <http://www.w3.org/2002/07/owl#inverseOf> saref:hasMeasurement.
+saref:isOfferedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "A relationship between a service and a device that offers the service"@en;
                   rdfs:domain saref:Service;
                   rdfs:label "is offered by"@en;
                   rdfs:range saref:Device;
-                  owl:inverseOf saref:offers.
-saref:isPropertyOf a owl:ObjectProperty;
+                  <http://www.w3.org/2002/07/owl#inverseOf> saref:offers.
+saref:isPropertyOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "A relationship between a property and the feature of interest it belongs to"@en;
                    rdfs:domain saref:Property;
                    rdfs:label "is property of"@en;
                    rdfs:range saref:FeatureOfInterest.
-saref:isUsedFor a owl:ObjectProperty;
+saref:isUsedFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "A relationship specifying the commodity for which a device is used for"@en;
                 rdfs:label "is used for"@en.
-saref:makesMeasurement a owl:ObjectProperty;
+saref:makesMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "A relation between a device and the measurements it makes. Such measurement will link together the value of the measurement, its unit of measure and the property to which it relates."@en;
                        rdfs:domain saref:Device;
                        rdfs:label "makes measurement"@en;
                        rdfs:range saref:Measurement;
-                       owl:inverseOf saref:measurementMadeBy.
-saref:measurementMadeBy a owl:ObjectProperty;
+                       <http://www.w3.org/2002/07/owl#inverseOf> saref:measurementMadeBy.
+saref:measurementMadeBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "A relation between a measurement and the device that made it."@en;
                         rdfs:domain saref:Measurement;
                         rdfs:label "measurement made by"@en;
                         rdfs:range saref:Device.
-saref:measuresProperty a owl:ObjectProperty;
+saref:measuresProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "A relationship specifying the property that can be measured by a certain device"@en;
                        rdfs:domain saref:Device;
                        rdfs:label "measures property"@en;
                        rdfs:range saref:Property.
-saref:offers a owl:ObjectProperty;
+saref:offers a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "A relationship between a device and a service"@en;
              rdfs:domain saref:Device;
              rdfs:label "offers"@en;
              rdfs:range saref:Service.
-saref:relatesToMeasurement a owl:ObjectProperty;
+saref:relatesToMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                            rdfs:comment "A relationship between a property and the measurements it relates to"@en;
                            rdfs:domain saref:Property;
                            rdfs:label "relates to measurement"@en;
                            rdfs:range saref:Measurement.
-saref:relatesToProperty a owl:ObjectProperty;
+saref:relatesToProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "A relationship between a measurement and the property it relates to"@en;
                         rdfs:domain saref:Measurement;
                         rdfs:label "relates to property"@en;
                         rdfs:range saref:Property;
-                        owl:inverseOf saref:relatesToMeasurement.
-saref:represents a owl:ObjectProperty;
+                        <http://www.w3.org/2002/07/owl#inverseOf> saref:relatesToMeasurement.
+saref:represents a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "A relationship between a service and a function."@en;
                  rdfs:domain saref:Service;
                  rdfs:label "represents"@en;

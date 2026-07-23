@@ -2,98 +2,93 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix wai: <http://purl.org/wai#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-dcterms:contributor a owl:AnnotationProperty.
-dcterms:creator a owl:AnnotationProperty.
-dcterms:date a owl:AnnotationProperty.
-dcterms:description a owl:AnnotationProperty.
-dcterms:rights a owl:AnnotationProperty.
-dcterms:title a owl:AnnotationProperty.
-wai: dcterms:contributor "Marcos Sacristán",
-                         "Pablo López",
-                         "Emilio Rubiera",
-                         "Diego Berrueta";
-     dcterms:creator "Luis Polo",
-                     "Ivan Mínguez";
-     dcterms:date "2010-10-11";
-     dcterms:description ""@en;
-     dcterms:rights "(c) TreeLogic, 2009";
-     dcterms:title "Roles and Profiles Ontology"@en;
-     a owl:Ontology;
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/date> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/rights> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+wai: <http://purl.org/dc/terms/contributor> "Marcos Sacristán",
+                                            "Pablo López",
+                                            "Emilio Rubiera",
+                                            "Diego Berrueta";
+     <http://purl.org/dc/terms/creator> "Luis Polo",
+                                        "Ivan Mínguez";
+     <http://purl.org/dc/terms/date> "2010-10-11";
+     <http://purl.org/dc/terms/description> ""@en;
+     <http://purl.org/dc/terms/rights> "(c) TreeLogic, 2009";
+     <http://purl.org/dc/terms/title> "Roles and Profiles Ontology"@en;
+     a <http://www.w3.org/2002/07/owl#Ontology>;
      rdfs:isDefinedBy <http://purl.org/wai.owl>.
-wai:Context a owl:Class;
+wai:Context a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "Contexts are similar to situations or state of affairs providing interpretation coordinates for profiles. In the most simple case, these coordinates are just geographical/spatial or temporal coordinates. WAI does not impose a fixed definition of context. It is deliberately wide in order to enable third-parties the adequation of the meaning of context according to their modeling needs and requirements."@en;
             rdfs:label "Context"@en.
-wai:Profile a owl:Class;
+wai:Profile a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment """A profile represents a particular person playing a given role. In the literature it is also known as a \"qua-individual\". WAI extends the meaning of profile to capture \"person-as-role\", \"person-at-context\" and \"person-in-community\"."""@en;
             rdfs:label "Profile"@en;
-            owl:disjointWith wai:Role.
-wai:Role a owl:Class;
+            <http://www.w3.org/2002/07/owl#disjointWith> wai:Role.
+wai:Role a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "A property that can be predicated of a person. In WAI ontology, roles are reified as first order individuals and relations between roles and players are expressed by means of the wai:plays property. WAI does not impose any subclassification of roles. The concept is open to be refined according to domain or application requirements."@en;
          rdfs:label "Role"@en;
-         owl:disjointWith wai:Profile.
-wai:atContext a owl:ObjectProperty;
+         <http://www.w3.org/2002/07/owl#disjointWith> wai:Profile.
+wai:atContext a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "This property enables to relate a profile with a given context (geographical, temporal, spatial, social, etc.)."@en;
               rdfs:domain wai:Profile;
               rdfs:label "at context"@en;
               rdfs:range wai:Context.
-wai:isActive a owl:FunctionalProperty,
-               owl:DatatypeProperty;
+wai:isActive a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+               <http://www.w3.org/2002/07/owl#DatatypeProperty>;
              rdfs:comment """This property allows to specify which is the user profile that is active, 
 given a interaction between two applications."""@en;
              rdfs:domain wai:Profile;
              rdfs:label "is active"@en;
              rdfs:range xsd:boolean.
-wai:participates a owl:ObjectProperty;
+wai:participates a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "This property encodes the participation relation between profiles and the communities they are member of."@en;
                  rdfs:domain wai:Profile;
                  rdfs:label "participates"@en;
-                 rdfs:range foaf:Group.
-wai:personalizes a owl:ObjectProperty;
+                 rdfs:range <http://xmlns.com/foaf/0.1/Group>.
+wai:personalizes a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "A role is personalized by means of a profile, which wrap the role in the identity of the person behind the profile."@en;
                  rdfs:domain wai:Profile;
                  rdfs:label "personalizes"@en;
                  rdfs:range wai:Role.
-wai:plays a owl:ObjectProperty;
+wai:plays a <http://www.w3.org/2002/07/owl#ObjectProperty>;
           rdfs:comment "This property relates roles and their players, who can be any foaf:Agent (a person, a group, etc.)"@en;
-          rdfs:domain foaf:Agent;
+          rdfs:domain <http://xmlns.com/foaf/0.1/Agent>;
           rdfs:label "plays"@en;
           rdfs:range wai:Role;
-          owl:propertyChainAxiom (wai:plays
-                                  wai:specializes),
-                                 (wai:plays
-                                  wai:specializes),
-                                 (wai:plays
-                                  wai:requires),
-                                 (wai:plays
-                                  wai:requires),
-                                 (wai:profiles
-                                  wai:personalizes),
-                                 (wai:profiles
-                                  wai:personalizes).
-wai:profiles a owl:ObjectProperty;
+          <http://www.w3.org/2002/07/owl#propertyChainAxiom> (wai:plays
+                                                              wai:specializes),
+                                                             (wai:plays
+                                                              wai:specializes),
+                                                             (wai:plays
+                                                              wai:requires),
+                                                             (wai:plays
+                                                              wai:requires),
+                                                             (wai:profiles
+                                                              wai:personalizes),
+                                                             (wai:profiles
+                                                              wai:personalizes).
+wai:profiles a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "This property relates people and the featured profiles."@en;
-             rdfs:domain foaf:Agent;
+             rdfs:domain <http://xmlns.com/foaf/0.1/Agent>;
              rdfs:label "profiles"@en;
              rdfs:range wai:Profile.
-wai:requires a owl:ObjectProperty;
+wai:requires a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "This property relates roles and their requisites, i.e. other roles."@en;
              rdfs:domain wai:Role;
              rdfs:label "requires"@en;
              rdfs:range wai:Role.
-wai:specializes a owl:TransitiveProperty,
-                  owl:ObjectProperty;
+wai:specializes a <http://www.w3.org/2002/07/owl#TransitiveProperty>,
+                  <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "This property allows to express hierarchies of roles, through of role specialization: if role A specializes role B, and B specializes C, then role A specializes role C."@en;
                 rdfs:domain wai:Role;
                 rdfs:label "specializes"@en;
                 rdfs:range wai:Role.
-rdfs:isDefinedBy a owl:AnnotationProperty.
-foaf:member owl:propertyChainAxiom (wai:profiles
-                                    wai:participates),
-                                   (wai:profiles
-                                    wai:participates).
+rdfs:isDefinedBy a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/member> <http://www.w3.org/2002/07/owl#propertyChainAxiom> (wai:profiles
+                                                                                       wai:participates),
+                                                                                      (wai:profiles
+                                                                                       wai:participates).

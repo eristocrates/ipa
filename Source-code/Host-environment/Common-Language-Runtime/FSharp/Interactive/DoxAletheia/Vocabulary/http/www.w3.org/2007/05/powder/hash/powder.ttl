@@ -11,10 +11,7 @@
 @prefix wdrd: <http://www.w3.org/2007/05/powder-xsd#>.
 @prefix wdr: <http://www.w3.org/2007/05/powder#>.
 @prefix : <http://www.w3.org/2007/05/powder#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
 @prefix powder: <http://www.w3.org/2007/05/powder#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix httpvoc: <http://www.w3.org/2006/http#>.
 
 http:302 a owl:Class.
 http:303 a owl:Class.
@@ -598,7 +595,7 @@ wdr:validFrom a owl:DatatypeProperty;
               rdfs:label "valid from"@en;
               rdfs:range xsd:dateTime;
               rdfs:seeAlso <http://www.w3.org/TR/powder-dr/#structure>;
-              rdfs:subPropertyOf dc11:date.
+              rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>.
 wdr:validUntil a owl:DatatypeProperty;
                rdfs:comment "This property denotes the expiry date of a Description Resource."@en;
                rdfs:domain wdr:DR;
@@ -606,4 +603,4 @@ wdr:validUntil a owl:DatatypeProperty;
                rdfs:label "valid until"@en;
                rdfs:range xsd:dateTime;
                rdfs:seeAlso <http://www.w3.org/TR/powder-dr/#structure>;
-               rdfs:subPropertyOf dc11:date.
+               rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>.

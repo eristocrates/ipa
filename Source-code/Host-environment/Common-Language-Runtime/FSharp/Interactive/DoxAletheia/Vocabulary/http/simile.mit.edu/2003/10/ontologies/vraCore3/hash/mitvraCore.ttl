@@ -1,0 +1,228 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix mitvraCore: <http://simile.mit.edu/2003/10/ontologies/vraCore3#>.
+
+mitvraCore: <http://purl.org/dc/elements/1.1/creator> "Andy Seaborne";
+            <http://purl.org/dc/elements/1.1/date> "2003-10-14";
+            <http://purl.org/dc/elements/1.1/format> "RDFS";
+            <http://purl.org/dc/elements/1.1/publisher> "The SIMILE Project";
+            <http://purl.org/dc/elements/1.1/title> "RDFS Ontology for VRA";
+            a <http://www.w3.org/2002/07/owl#Ontology>.
+mitvraCore:Corporation a rdfs:Class;
+                       rdfs:label "Corporation"@en;
+                       rdfs:subClassOf mitvraCore:Entity.
+mitvraCore:Entity a rdfs:Class;
+                  rdfs:comment "Entities are creators e.g. people or organisations";
+                  rdfs:label "Entity"@en;
+                  rdfs:subClassOf <http://purl.org/dc/elements/1.1/creator>.
+mitvraCore:Image a rdfs:Class;
+                 rdfs:comment "An image record is used for the visual surrogates of objects";
+                 rdfs:label "Image"@en;
+                 rdfs:subClassOf mitvraCore:Record.
+mitvraCore:LargerEntity a rdfs:Class;
+                        rdfs:comment "A work";
+                        rdfs:label "Larger Entity"@en.
+mitvraCore:Record a rdfs:Class;
+                  rdfs:comment "A record is the superclass for Works and Images";
+                  rdfs:label "Record"@en.
+mitvraCore:Series a rdfs:Class;
+                  rdfs:comment "A Series";
+                  rdfs:label "Series"@en;
+                  rdfs:subClassOf mitvraCore:Work.
+mitvraCore:Work a rdfs:Class;
+                rdfs:comment "A work record is used for physical or created objects";
+                rdfs:label "Work"@en;
+                rdfs:subClassOf mitvraCore:Record.
+mitvraCore:alteration a rdf:Property;
+                      rdfs:domain mitvraCore:Record;
+                      rdfs:label "alteration"@en;
+                      rdfs:subPropertyOf mitvraCore:date.
+mitvraCore:attribution a rdf:Property;
+                       rdfs:domain mitvraCore:Entity;
+                       rdfs:label "attribution"@en;
+                       rdfs:range rdfs:Literal.
+mitvraCore:beginning a rdf:Property;
+                     rdfs:domain mitvraCore:Record;
+                     rdfs:label "beginning"@en;
+                     rdfs:subPropertyOf mitvraCore:date.
+mitvraCore:completion a rdf:Property;
+                      rdfs:domain mitvraCore:Record;
+                      rdfs:label "completion"@en;
+                      rdfs:subPropertyOf mitvraCore:date.
+mitvraCore:creation a rdf:Property;
+                    rdfs:domain mitvraCore:Record;
+                    rdfs:label "creation"@en;
+                    rdfs:subPropertyOf mitvraCore:date.
+mitvraCore:creator a rdf:Property;
+                   rdfs:domain mitvraCore:Record;
+                   rdfs:label "creator"@en.
+mitvraCore:culture a rdf:Property;
+                   rdfs:domain mitvraCore:Record;
+                   rdfs:label "culture"@en;
+                   rdfs:range rdfs:Literal.
+mitvraCore:date a rdf:Property;
+                rdfs:domain mitvraCore:Record;
+                rdfs:label "date"@en;
+                rdfs:range rdfs:Literal.
+mitvraCore:description a rdf:Property;
+                       rdfs:domain mitvraCore:Record;
+                       rdfs:label "description"@en;
+                       rdfs:range rdfs:Literal.
+mitvraCore:design a rdf:Property;
+                  rdfs:domain mitvraCore:Record;
+                  rdfs:label "design"@en;
+                  rdfs:subPropertyOf mitvraCore:date.
+mitvraCore:dynasty a rdf:Property;
+                   rdfs:domain mitvraCore:Record;
+                   rdfs:label "dynasty"@en;
+                   rdfs:range rdfs:Literal.
+mitvraCore:group a rdf:Property;
+                 rdfs:domain mitvraCore:Record;
+                 rdfs:label "group"@en;
+                 rdfs:range rdfs:Literal.
+mitvraCore:id a rdf:Property;
+              rdfs:domain mitvraCore:Record;
+              rdfs:label "ID"@en;
+              rdfs:range rdfs:Literal.
+mitvraCore:idCurrentAccession a rdf:Property;
+                              rdfs:domain mitvraCore:Record;
+                              rdfs:label "current accession ID"@en;
+                              rdfs:range rdfs:Literal.
+mitvraCore:idCurrentRepository a rdf:Property;
+                               rdfs:domain mitvraCore:Record;
+                               rdfs:label "current repository ID"@en;
+                               rdfs:range rdfs:Literal.
+mitvraCore:idFormerAccession a rdf:Property;
+                             rdfs:domain mitvraCore:Record;
+                             rdfs:label "former accession ID"@en;
+                             rdfs:range rdfs:Literal.
+mitvraCore:idFormerRepository a rdf:Property;
+                              rdfs:domain mitvraCore:Record;
+                              rdfs:label "former repository ID"@en;
+                              rdfs:range rdfs:Literal.
+mitvraCore:location a rdf:Property;
+                    rdfs:domain mitvraCore:Record;
+                    rdfs:label "location"@en.
+mitvraCore:locationCreationSite a rdf:Property;
+                                rdfs:domain mitvraCore:Record;
+                                rdfs:label "creation site"@en;
+                                rdfs:subPropertyOf mitvraCore:location.
+mitvraCore:locationCurrentRepository a rdf:Property;
+                                     rdfs:domain mitvraCore:Record;
+                                     rdfs:label "current repository"@en;
+                                     rdfs:subPropertyOf mitvraCore:location.
+mitvraCore:locationCurrentSite a rdf:Property;
+                               rdfs:domain mitvraCore:Record;
+                               rdfs:label "current location"@en;
+                               rdfs:subPropertyOf mitvraCore:location.
+mitvraCore:locationDiscoverySite a rdf:Property;
+                                 rdfs:domain mitvraCore:Record;
+                                 rdfs:label "discovery site"@en;
+                                 rdfs:subPropertyOf mitvraCore:location.
+mitvraCore:locationFormerRepository a rdf:Property;
+                                    rdfs:domain mitvraCore:Record;
+                                    rdfs:label "former repository"@en;
+                                    rdfs:subPropertyOf mitvraCore:location.
+mitvraCore:locationFormerSite a rdf:Property;
+                              rdfs:domain mitvraCore:Record;
+                              rdfs:label "former location"@en;
+                              rdfs:subPropertyOf mitvraCore:location.
+mitvraCore:material a rdf:Property;
+                    rdfs:domain mitvraCore:Record;
+                    rdfs:label "material"@en.
+mitvraCore:measurements a rdf:Property;
+                        rdfs:domain mitvraCore:Record;
+                        rdfs:label "measurements"@en;
+                        rdfs:range rdfs:Literal.
+mitvraCore:measurementsDimensions a rdf:Property;
+                                  rdfs:domain mitvraCore:Record;
+                                  rdfs:label "dimensions"@en;
+                                  rdfs:range rdfs:Literal;
+                                  rdfs:subPropertyOf mitvraCore:measurements.
+mitvraCore:measurementsFormat a rdf:Property;
+                              rdfs:domain mitvraCore:Record;
+                              rdfs:label "format"@en;
+                              rdfs:range rdfs:Literal.
+mitvraCore:measurementsResolution a rdf:Property;
+                                  rdfs:domain mitvraCore:Record;
+                                  rdfs:label "resolution"@en;
+                                  rdfs:range rdfs:Literal.
+mitvraCore:medium a rdf:Property;
+                  rdfs:domain mitvraCore:Record;
+                  rdfs:label "medium"@en;
+                  rdfs:subPropertyOf mitvraCore:material.
+mitvraCore:movement a rdf:Property;
+                    rdfs:domain mitvraCore:Record;
+                    rdfs:label "movement"@en;
+                    rdfs:range rdfs:Literal.
+mitvraCore:period a rdf:Property;
+                  rdfs:domain mitvraCore:Record;
+                  rdfs:label "period"@en;
+                  rdfs:range rdfs:Literal;
+                  rdfs:subPropertyOf mitvraCore:stylePeriod.
+mitvraCore:relation a rdf:Property;
+                    rdfs:domain mitvraCore:Record;
+                    rdfs:label "relation"@en;
+                    rdfs:range mitvraCore:Relation;
+                    rdfs:subPropertyOf rdfs:seeAlso.
+mitvraCore:restoration a rdf:Property;
+                       rdfs:domain mitvraCore:Record;
+                       rdfs:label "restoration"@en;
+                       rdfs:subPropertyOf mitvraCore:date.
+mitvraCore:rights a rdf:Property;
+                  rdfs:domain mitvraCore:Record;
+                  rdfs:label "rights"@en;
+                  rdfs:subPropertyOf rdfs:seeAlso.
+mitvraCore:role a rdf:Property;
+                rdfs:domain mitvraCore:Entity;
+                rdfs:label "role"@en;
+                rdfs:range rdfs:Literal.
+mitvraCore:school a rdf:Property;
+                  rdfs:domain mitvraCore:Record;
+                  rdfs:label "school"@en;
+                  rdfs:range rdfs:Literal.
+mitvraCore:source a rdf:Property;
+                  rdfs:domain mitvraCore:Record;
+                  rdfs:label "source"@en;
+                  rdfs:subPropertyOf rdfs:seeAlso.
+mitvraCore:style a rdf:Property;
+                 rdfs:domain mitvraCore:Record;
+                 rdfs:label "style"@en;
+                 rdfs:range rdfs:Literal;
+                 rdfs:subPropertyOf mitvraCore:stylePeriod.
+mitvraCore:stylePeriod a rdf:Property;
+                       rdfs:domain mitvraCore:Record;
+                       rdfs:label "style/period"@en;
+                       rdfs:range rdfs:Literal.
+mitvraCore:subject a rdf:Property;
+                   rdfs:domain mitvraCore:Record;
+                   rdfs:label "subject"@en;
+                   rdfs:range rdfs:Resource.
+mitvraCore:support a rdf:Property;
+                   rdfs:domain mitvraCore:Record;
+                   rdfs:label "support"@en;
+                   rdfs:subPropertyOf mitvraCore:material.
+mitvraCore:technique a rdf:Property;
+                     rdfs:domain mitvraCore:Record;
+                     rdfs:label "technique"@en;
+                     rdfs:range rdfs:Literal.
+mitvraCore:title a rdf:Property;
+                 rdfs:domain mitvraCore:Record;
+                 rdfs:label "title"@en;
+                 rdfs:range rdfs:Literal.
+mitvraCore:titleTranslation a rdf:Property;
+                            rdfs:domain mitvraCore:Record;
+                            rdfs:label "title translation"@en;
+                            rdfs:subPropertyOf mitvraCore:titleVariant.
+mitvraCore:titleVariant a rdf:Property;
+                        rdfs:domain mitvraCore:Record;
+                        rdfs:label "title variant"@en;
+                        rdfs:subPropertyOf mitvraCore:title.
+mitvraCore:type a rdf:Property;
+                rdfs:domain mitvraCore:Record;
+                rdfs:label "VRA record type"@en;
+                rdfs:subPropertyOf rdf:type.
+mitvraCore:typeAAT a rdf:Property;
+                   rdfs:domain mitvraCore:Record;
+                   rdfs:label "VRA type"@en.

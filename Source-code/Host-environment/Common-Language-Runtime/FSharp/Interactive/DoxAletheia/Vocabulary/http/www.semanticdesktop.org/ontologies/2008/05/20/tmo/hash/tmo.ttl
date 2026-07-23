@@ -17,7 +17,6 @@
 @prefix tmo: <http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#>.
 @prefix nid3: <http://www.semanticdesktop.org/ontologies/2007/05/10/nid3#>.
 @prefix nexif: <http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#>.
-@prefix w3: <http://www.w3.org/>.
 
 <http://www.semanticdesktop.org/ontologies/2008/05/20/tmo> nao:creator <http://www.dfki.uni-kl.de/~brunzel/>;
                                                            nao:description "The TMO Ontology can be used to describe personal tasks of individuals, also known as to-do lists. It is based on RDF and NRL, the Nepomuk Representational Language and other Semantic Web ontologies.";

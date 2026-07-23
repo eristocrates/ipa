@@ -9,15 +9,13 @@
 @prefix qudt: <http://qudt.org/schema/qudt/>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix oum: <http://www.ontology-of-units-of-measure.org/resource/om-2/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
 
 <http://www.ontology-of-units-of-measure.org/resource/om-2-ucum> dcterms:created "2021-01-14"^^xsd:date;
                                                                  dcterms:creator <https://orcid.org/0000-0002-3884-3420>;
                                                                  dcterms:description "Mapping OM-2 units to UCUM codes - mostly done";
                                                                  dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/>;
                                                                  a owl:Ontology;
-                                                                 owl:imports dc11:,
+                                                                 owl:imports <http://purl.org/dc/elements/1.1/>,
                                                                              om:,
                                                                              <http://www.w3.org/2004/02/skos/core>.
 om:BritishThermalUnit-39F skos:notation "[Btu_39]"^^qudt:UCUMcs.

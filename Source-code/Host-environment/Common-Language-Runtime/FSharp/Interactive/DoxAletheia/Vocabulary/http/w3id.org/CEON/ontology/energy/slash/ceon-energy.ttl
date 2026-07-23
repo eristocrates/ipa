@@ -1,165 +1,155 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix ceon: <http://w3id.org/CEON/>.
-@prefix ceon-actorODP: <http://w3id.org/CEON/ontology/actorODP/>.
 @prefix ceon-energy: <http://w3id.org/CEON/ontology/energy/>.
-@prefix ceon-resourceODP: <http://w3id.org/CEON/ontology/resourceODP/>.
-@prefix cpa: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-ceon-energy: dcterms:contributor "Eva Blomqvist";
-             dcterms:created "2025-03-20";
-             dcterms:creator "Huanyu Li";
-             dcterms:description "A module of the CEON ontology network defining aspects of the energy concept.";
-             dcterms:issued "2025-06-30"^^xsd:date;
-             dcterms:license "https://creativecommons.org/licenses/by/4.0/";
-             dcterms:publisher "Onto-DESIDE";
-             dcterms:title "Circular Economy Ontology Network (CEON) - Energy Module";
-             vann:preferredNamespacePrefix "ceon-energy";
-             vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/energy/";
-             cpa:coversRequirements "Covers the following requirements from Onto-DESIDE D3.2: CE1-2, CE4-3, CE6-3, CE7-4, CE7-4, CE8-2, CE9-2, CE10-7, CE10-9, CE11-6, CE12-5.";
-             a owl:Ontology;
+ceon-energy: <http://purl.org/dc/terms/contributor> "Eva Blomqvist";
+             <http://purl.org/dc/terms/created> "2025-03-20";
+             <http://purl.org/dc/terms/creator> "Huanyu Li";
+             <http://purl.org/dc/terms/description> "A module of the CEON ontology network defining aspects of the energy concept.";
+             <http://purl.org/dc/terms/issued> "2025-06-30"^^xsd:date;
+             <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by/4.0/";
+             <http://purl.org/dc/terms/publisher> "Onto-DESIDE";
+             <http://purl.org/dc/terms/title> "Circular Economy Ontology Network (CEON) - Energy Module";
+             <http://purl.org/vocab/vann/preferredNamespacePrefix> "ceon-energy";
+             <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/CEON/ontology/energy/";
+             <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> "Covers the following requirements from Onto-DESIDE D3.2: CE1-2, CE4-3, CE6-3, CE7-4, CE7-4, CE8-2, CE9-2, CE10-7, CE10-9, CE11-6, CE12-5.";
+             a <http://www.w3.org/2002/07/owl#Ontology>;
              rdfs:seeAlso <https://github.com/LiUSemWeb/CEON>;
-             owl:imports <http://w3id.org/CEON/ontology/actorODP/0.4/>,
-                         <http://w3id.org/CEON/ontology/resourceODP/0.5/>;
-             owl:priorVersion 0.1;
-             owl:versionIRI <http://w3id.org/CEON/ontology/energy/0.2/>;
-             owl:versionInfo 0.2.
-ceon-energy:Biofuel a owl:Class;
+             <http://www.w3.org/2002/07/owl#imports> <http://w3id.org/CEON/ontology/actorODP/0.4/>,
+                                                     <http://w3id.org/CEON/ontology/resourceODP/0.5/>;
+             <http://www.w3.org/2002/07/owl#priorVersion> 0.1;
+             <http://www.w3.org/2002/07/owl#versionIRI> <http://w3id.org/CEON/ontology/energy/0.2/>;
+             <http://www.w3.org/2002/07/owl#versionInfo> 0.2.
+ceon-energy:Biofuel a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "Biofuel is a fuel that is produced over a short time span from biomass.";
                     rdfs:label "Biofuel";
                     rdfs:seeAlso "https://en.wikipedia.org/wiki/Biofuel";
                     rdfs:subClassOf ceon-energy:Biomass.
-ceon-energy:Biogas a owl:Class;
+ceon-energy:Biogas a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "Biogas represents an energy source that is produced from raw materials such as agricultural waste, manure, municipal waste, plant material, sewage, green waste, wastewater, and food waste.";
                    rdfs:label "Biogass";
                    rdfs:seeAlso "https://en.wikipedia.org/wiki/Biogas";
                    rdfs:subClassOf ceon-energy:Biomass.
-ceon-energy:Biomass a owl:Class;
+ceon-energy:Biomass a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "Biomass represents matter from recently living (but now dead) organisms such as plants, algae and animals.";
                     rdfs:label "Biomass";
                     rdfs:seeAlso "https://en.wikipedia.org/wiki/Biomass";
                     rdfs:subClassOf ceon-energy:EnergySource.
-ceon-energy:Coal a owl:Class;
+ceon-energy:Coal a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "Coal is a black or dark-brown combustible mineral substance consisting of carbonized vegetable matter.";
                  rdfs:label "Coal";
                  rdfs:seeAlso "https://en.wikipedia.org/wiki/Coal";
                  rdfs:subClassOf ceon-energy:FossilFuel.
-ceon-energy:Energy a owl:Class;
+ceon-energy:Energy a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "Energy is an ability or a property of matter or a system, to do work because of its motion, its mass, its electric charge, etc.";
                    rdfs:label "Energy";
                    rdfs:seeAlso "http://emmo.info/emmo#EMMO_31ec09ba_1713_42cb_83c7_b38bf6f9ced2";
-                   rdfs:subClassOf ceon-resourceODP:Resource.
-ceon-energy:EnergyComposition a owl:Class;
+                   rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Resource>.
+ceon-energy:EnergyComposition a <http://www.w3.org/2002/07/owl#Class>;
                               rdfs:comment "The relation representing the particpation of an energy as a resource.";
                               rdfs:label "Energy Composition";
-                              rdfs:subClassOf ceon-actorODP:ResourceParticipation.
-ceon-energy:EnergyConversion a owl:Class;
+                              rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceParticipation>.
+ceon-energy:EnergyConversion a <http://www.w3.org/2002/07/owl#Class>;
                              rdfs:comment "Energy Conversion is a process of transforming energy.";
                              rdfs:label "Energy Conversion";
-                             rdfs:subClassOf ceon-actorODP:ResourceRelation.
-ceon-energy:EnergyInfrastructure a owl:Class;
+                             rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation>.
+ceon-energy:EnergyInfrastructure a <http://www.w3.org/2002/07/owl#Class>;
                                  rdfs:comment "The infrastructures participating in various energy-related processes, including energy production, transmission or distribution.";
                                  rdfs:label "Energy Infrastructure";
-                                 rdfs:subClassOf ceon-actorODP:Infrastructure.
-ceon-energy:EnergySource a owl:Class;
+                                 rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/Infrastructure>.
+ceon-energy:EnergySource a <http://www.w3.org/2002/07/owl#Class>;
                          rdfs:comment "An energy source is a resource or system that provides the energy.";
                          rdfs:label "Energy Source".
-ceon-energy:FossilFuel a owl:Class;
+ceon-energy:FossilFuel a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:comment "A fossil fuel is a carbon compound- or hydrocarbon-containing material[2] formed naturally in the Earth's crust from the buried remains of prehistoric organisms (animals, plants or planktons), a process that occurs within geological formations.";
                        rdfs:label "Fossil Fuel";
                        rdfs:seeAlso "https://en.wikipedia.org/wiki/Fossil_fuel";
                        rdfs:subClassOf ceon-energy:EnergySource.
-ceon-energy:GeothermalEnergySource a owl:Class;
+ceon-energy:GeothermalEnergySource a <http://www.w3.org/2002/07/owl#Class>;
                                    rdfs:comment "Geothermal Energy Source is the Earth's crust. Geothermal energy is thermal energy extracted from the Earth's crust. It combines energy from the formation of the planet and from radioactive decay.";
                                    rdfs:label "Geothermal Energy Source";
                                    rdfs:seeAlso "https://en.wikipedia.org/wiki/Geothermal_energy";
                                    rdfs:subClassOf ceon-energy:EnergySource.
-ceon-energy:Hydropower a owl:Class;
+ceon-energy:Hydropower a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:comment "Hydropower is the use of falling or fast-running water to produce electricity or to power machines.";
                        rdfs:label "Hydropower";
                        rdfs:seeAlso "https://en.wikipedia.org/wiki/Hydropower";
                        rdfs:subClassOf ceon-energy:EnergySource.
-ceon-energy:NaturalGas a owl:Class;
+ceon-energy:NaturalGas a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:comment "Natural gas is a combustible gas that is naturally generated and stored under certain geological conditions by ancient animals and plants buried deep underground. It is a gaseous mixture of hydrocarbons and non-hydrocarbons, with methane as its main component.";
                        rdfs:label "Natural Gas";
                        rdfs:seeAlso "https://en.wikipedia.org/wiki/Natural_gas";
                        rdfs:subClassOf ceon-energy:FossilFuel.
-ceon-energy:NonRenewableEnergy a owl:Class;
+ceon-energy:NonRenewableEnergy a <http://www.w3.org/2002/07/owl#Class>;
                                rdfs:comment "Nonrenewable energy represents energy that comes from such resources that cannot be replaced onew they are used up.";
                                rdfs:label "NonReneable Energy";
                                rdfs:subClassOf ceon-energy:Energy.
-ceon-energy:Petroleum a owl:Class;
+ceon-energy:Petroleum a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "Petroleum is a naturally occurring yellow-black liquid chemical mixture found in geological formations, consisting primarily of hydrocarbons.";
                       rdfs:label "Petroleum";
                       rdfs:seeAlso "https://en.wikipedia.org/wiki/Petroleum";
                       rdfs:subClassOf ceon-energy:FossilFuel.
-ceon-energy:RenewableEnergy a owl:Class;
+ceon-energy:RenewableEnergy a <http://www.w3.org/2002/07/owl#Class>;
                             rdfs:comment "Renewable energy represents energy that comes from renewable resources.";
                             rdfs:label "Renewable Energy";
                             rdfs:subClassOf ceon-energy:Energy.
-ceon-energy:SolarEnergySource a owl:Class;
+ceon-energy:SolarEnergySource a <http://www.w3.org/2002/07/owl#Class>;
                               rdfs:comment "Solar Energy Source is the Sun.";
                               rdfs:label "Solar Energy Source";
                               rdfs:seeAlso "https://en.wikipedia.org/wiki/Solar_energy";
                               rdfs:subClassOf ceon-energy:EnergySource.
-ceon-energy:WindEnergySource a owl:Class;
+ceon-energy:WindEnergySource a <http://www.w3.org/2002/07/owl#Class>;
                              rdfs:comment "Wind Energy Source is the Wind.";
                              rdfs:label "Wind Energy Source";
                              rdfs:seeAlso "https://en.wikipedia.org/wiki/Wind_power";
                              rdfs:subClassOf ceon-energy:EnergySource.
-ceon-energy:hasAnergy a owl:ObjectProperty;
+ceon-energy:hasAnergy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "hasAnergy represents that energy has part of anergy.";
                       rdfs:label "has anergy";
-                      rdfs:subPropertyOf ceon-actorODP:participatingObject.
-ceon-energy:hasCarbonIntensity a owl:DatatypeProperty;
+                      rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actorODP/participatingObject>.
+ceon-energy:hasCarbonIntensity a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                rdfs:comment "hasCarbonIntensity measures how intensive that the carbon is for an energy source.";
                                rdfs:domain ceon-energy:EnergySource;
                                rdfs:label "has carbon intensity";
                                rdfs:range xsd:double.
-ceon-energy:hasConvertedEnergy a owl:ObjectProperty;
+ceon-energy:hasConvertedEnergy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                rdfs:comment "hasConvertedEnergy represents that an energy transformation process has its final energy.";
                                rdfs:label "has converted energy";
-                               rdfs:range [owl:unionOf (ceon-energy:NonRenewableEnergy
-                                                        ceon-energy:RenewableEnergy) ; 
-                                           a owl:Class];
-                               rdfs:subPropertyOf ceon-actorODP:participatingResource.
-ceon-energy:hasEnergyComponentPercentage a owl:DatatypeProperty;
+                               rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (ceon-energy:NonRenewableEnergy
+                                                                                    ceon-energy:RenewableEnergy) ; 
+                                           a <http://www.w3.org/2002/07/owl#Class>];
+                               rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actorODP/participatingResource>.
+ceon-energy:hasEnergyComponentPercentage a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                          rdfs:comment "hasEnergyComponentPercentage represents the percentage of a particular energy as a composition.";
                                          rdfs:domain ceon-energy:EnergyComposition;
                                          rdfs:label "has energy component percentage";
                                          rdfs:range xsd:double.
-ceon-energy:hasEnergySource a owl:ObjectProperty;
+ceon-energy:hasEnergySource a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                             rdfs:comment "hasEnergySource represents that energy can have some energy sources.";
                             rdfs:domain ceon-energy:Energy;
                             rdfs:label "has energy source";
                             rdfs:range ceon-energy:EnergySource.
-ceon-energy:hasExergy a owl:ObjectProperty;
+ceon-energy:hasExergy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "hasExergy represents that energy has part of exergy.";
                       rdfs:label "has exergy";
-                      rdfs:subPropertyOf ceon-actorODP:participatingObject.
-ceon-energy:hasOriginalEnergy a owl:ObjectProperty;
+                      rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actorODP/participatingObject>.
+ceon-energy:hasOriginalEnergy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                               rdfs:comment "hasOriginalEnergy represents that an energy transformation process has its initial energy.";
                               rdfs:label "has original energy";
-                              rdfs:range [owl:unionOf (ceon-energy:NonRenewableEnergy
-                                                       ceon-energy:RenewableEnergy) ; 
-                                          a owl:Class];
-                              rdfs:subPropertyOf ceon-actorODP:participatingResource.
-ceon-energy:hasSustainability a owl:DatatypeProperty;
+                              rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (ceon-energy:NonRenewableEnergy
+                                                                                   ceon-energy:RenewableEnergy) ; 
+                                          a <http://www.w3.org/2002/07/owl#Class>];
+                              rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actorODP/participatingResource>.
+ceon-energy:hasSustainability a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                               rdfs:comment "hasSustainability measures how sustainable an energy source is.";
                               rdfs:domain ceon-energy:EnergySource;
                               rdfs:label "has sustainability";
                               rdfs:range xsd:double.
-ceon-energy:participatingEnergy a owl:ObjectProperty;
+ceon-energy:participatingEnergy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                 rdfs:comment "participatingEnergy represents the energy in an energy composition.";
                                 rdfs:label "participating energy";
-                                rdfs:subPropertyOf ceon-actorODP:participatingSubject.
-geosparql:geoJSONLiteral a rdfs:Datatype.
-geosparql:gmlLiteral a rdfs:Datatype.
-geosparql:wktLiteral a rdfs:Datatype.
+                                rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actorODP/participatingSubject>.
+<http://www.opengis.net/ont/geosparql#geoJSONLiteral> a rdfs:Datatype.
+<http://www.opengis.net/ont/geosparql#gmlLiteral> a rdfs:Datatype.
+<http://www.opengis.net/ont/geosparql#wktLiteral> a rdfs:Datatype.

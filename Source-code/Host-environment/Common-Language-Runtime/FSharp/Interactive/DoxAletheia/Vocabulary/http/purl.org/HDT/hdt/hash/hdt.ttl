@@ -6,8 +6,6 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace>.
 @prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix hdt: <http://purl.org/HDT/hdt#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
 
 hdt: dcterms:modified "2010-10-03";
      dcterms:publisher "http://hdt.dcc.uchile.cl/"@en-us;

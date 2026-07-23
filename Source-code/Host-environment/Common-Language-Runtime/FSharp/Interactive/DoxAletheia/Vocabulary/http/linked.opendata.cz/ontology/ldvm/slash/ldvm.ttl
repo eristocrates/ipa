@@ -2,26 +2,20 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix ldvm: <http://linked.opendata.cz/ontology/ldvm/>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix voaf: <http://purl.org/vocommons/voaf#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix ccrel: <http://creativecommons.org/ns#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
 
-ldvm: ccrel:licence <http://creativecommons.org/licenses/by/4.0>;
-      dcterms:creator <http://helmich.cz/#me>,
-                      <http://purl.org/klimek#me>;
-      dcterms:description "Vocabulary for Linked Data Visualization Model (LDVM) serves for description and configuration of components and pipelines according to LDVM"@en;
-      dcterms:issued "2015-02-15+01:00"^^xsd:date;
-      dcterms:modified "2015-02-15+01:00"^^xsd:date;
-      dcterms:publisher <http://opendata.cz/>;
-      dcterms:title "Vocabulary for Linked Data Visualization Model"@en;
-      vann:preferredNamespacePrefix "ldvm";
-      vann:preferredNamespaceUri "http://linked.opendata.cz/ontology/ldvm/";
-      a owl:Ontology,
-        voaf:Vocabulary;
-      owl:versionInfo 0.1.
+ldvm: <http://creativecommons.org/ns#licence> <http://creativecommons.org/licenses/by/4.0>;
+      <http://purl.org/dc/terms/creator> <http://helmich.cz/#me>,
+                                         <http://purl.org/klimek#me>;
+      <http://purl.org/dc/terms/description> "Vocabulary for Linked Data Visualization Model (LDVM) serves for description and configuration of components and pipelines according to LDVM"@en;
+      <http://purl.org/dc/terms/issued> "2015-02-15+01:00"^^xsd:date;
+      <http://purl.org/dc/terms/modified> "2015-02-15+01:00"^^xsd:date;
+      <http://purl.org/dc/terms/publisher> <http://opendata.cz/>;
+      <http://purl.org/dc/terms/title> "Vocabulary for Linked Data Visualization Model"@en;
+      <http://purl.org/vocab/vann/preferredNamespacePrefix> "ldvm";
+      <http://purl.org/vocab/vann/preferredNamespaceUri> "http://linked.opendata.cz/ontology/ldvm/";
+      a <http://www.w3.org/2002/07/owl#Ontology>,
+        <http://purl.org/vocommons/voaf#Vocabulary>;
+      <http://www.w3.org/2002/07/owl#versionInfo> 0.1.
 ldvm:AnalyzerInstance rdfs:isDefinedBy ldvm:.
 ldvm:AnalyzerTemplate rdfs:isDefinedBy ldvm:.
 ldvm:ComponentConfiguration rdfs:isDefinedBy ldvm:.

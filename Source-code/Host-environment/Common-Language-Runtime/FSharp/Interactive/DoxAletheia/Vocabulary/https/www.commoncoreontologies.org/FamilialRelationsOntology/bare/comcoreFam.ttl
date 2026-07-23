@@ -1,0 +1,435 @@
+@base <https://www.commoncoreontologies.org/FamilialRelationsOntology>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix : <https://www.commoncoreontologies.org/FamilialRelationsOntology/>.
+@prefix cco: <https://www.commoncoreontologies.org/>.
+@prefix obo: <http://purl.obolibrary.org/obo/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix comcoreFam: <https://www.commoncoreontologies.org/FamilialRelationsOntology>.
+
+dcterms:license a owl:AnnotationProperty.
+dcterms:rights a owl:AnnotationProperty.
+skos:definition a owl:AnnotationProperty.
+skos:scopeNote a owl:AnnotationProperty.
+cco:FamilialRelationsOntology dcterms:license "BSD 3-Clause: https://github.com/CommonCoreOntology/CommonCoreOntologies/blob/master/LICENSE"@en;
+                              dcterms:rights "CUBRC Inc., see full license."@en;
+                              a owl:Ontology;
+                              rdfs:comment "This ontology is designed to represent familial relationships."@en;
+                              rdfs:label "Familial Relations Ontology"@en;
+                              owl:versionIRI <https://www.commoncoreontologies.org/2026-25-03/FamilialRelationsOntology>;
+                              owl:versionInfo "Version 1.0"@en.
+cco:ont00001760 a owl:AnnotationProperty.
+cco:ont00001774 a owl:ObjectProperty;
+                rdfs:label "has brother"@en;
+                rdfs:subPropertyOf cco:ont00001902;
+                owl:inverseOf cco:ont00001883;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001776 a owl:ObjectProperty;
+                rdfs:label "has grandfather"@en;
+                rdfs:subPropertyOf cco:ont00001945;
+                owl:inverseOf cco:ont00001876;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001780 a owl:ObjectProperty;
+                rdfs:label "has mother"@en;
+                rdfs:subPropertyOf cco:ont00001842;
+                owl:inverseOf cco:ont00001786;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001781 a owl:ObjectProperty;
+                rdfs:label "has step sister"@en;
+                rdfs:subPropertyOf cco:ont00001996;
+                owl:inverseOf cco:ont00001979;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001783 a owl:ObjectProperty;
+                rdfs:label "is granddaughter of"@en;
+                rdfs:subPropertyOf cco:ont00001945;
+                owl:inverseOf cco:ont00001820;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001784 a owl:ObjectProperty;
+                rdfs:label "has son-in-law"@en;
+                rdfs:subPropertyOf cco:ont00001818;
+                owl:inverseOf cco:ont00001881;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001785 a owl:ObjectProperty;
+                rdfs:label "has uncle"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                owl:inverseOf cco:ont00001988;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001786 a owl:ObjectProperty;
+                rdfs:label "is mother of"@en;
+                rdfs:subPropertyOf cco:ont00001995;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001788 a owl:ObjectProperty;
+                rdfs:label "has paternal aunt"@en;
+                rdfs:subPropertyOf cco:ont00001789;
+                owl:inverseOf cco:ont00001994;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001789 a owl:ObjectProperty;
+                rdfs:label "has aunt"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                owl:inverseOf cco:ont00001955;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001790 a owl:ObjectProperty;
+                rdfs:label "has maternal uncle"@en;
+                rdfs:subPropertyOf cco:ont00001785;
+                owl:inverseOf cco:ont00001929;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001792 a owl:ObjectProperty;
+                rdfs:label "has sister"@en;
+                rdfs:subPropertyOf cco:ont00001902;
+                owl:inverseOf cco:ont00001851;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001793 a owl:ObjectProperty;
+                rdfs:label "has half sister"@en;
+                rdfs:subPropertyOf cco:ont00001975;
+                owl:inverseOf cco:ont00001948;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001802 a owl:ObjectProperty;
+                rdfs:label "has husband"@en;
+                rdfs:subPropertyOf cco:ont00001804;
+                owl:inverseOf cco:ont00001957;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001804 a owl:ObjectProperty;
+                rdfs:label "is spouse of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                owl:inverseOf cco:ont00001804;
+                skos:scopeNote "Given a stronger temporal interpretation, this property may be symmetric. For more info please refer to https://github.com/BFO-ontology/BFO-2020/tree/master/src/owl/temporal%20extensions."@en;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001806 a owl:ObjectProperty,
+                  owl:SymmetricProperty;
+                rdfs:label "is first cousin of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                owl:inverseOf cco:ont00001806;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001812 a owl:ObjectProperty;
+                rdfs:label "is grandson of"@en;
+                rdfs:subPropertyOf cco:ont00001945;
+                owl:inverseOf cco:ont00001981;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001818 a owl:ObjectProperty;
+                rdfs:label "is in-law of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                owl:inverseOf cco:ont00001818;
+                skos:scopeNote "Given a stronger temporal interpretation, this property may be symmetric. For more info please refer to https://github.com/BFO-ontology/BFO-2020/tree/master/src/owl/temporal%20extensions."@en;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001820 a owl:ObjectProperty;
+                rdfs:label "has granddaughter"@en;
+                rdfs:subPropertyOf cco:ont00001850;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001823 a owl:ObjectProperty;
+                rdfs:label "has paternal uncle"@en;
+                rdfs:subPropertyOf cco:ont00001785;
+                owl:inverseOf cco:ont00001926;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001826 a owl:ObjectProperty;
+                rdfs:label "is sister-in-law of"@en;
+                rdfs:subPropertyOf cco:ont00001818;
+                owl:inverseOf cco:ont00001828;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001828 a owl:ObjectProperty;
+                rdfs:label "has sister-in-law"@en;
+                rdfs:subPropertyOf cco:ont00001818;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001835 a owl:ObjectProperty;
+                rdfs:label "is son of"@en;
+                rdfs:subPropertyOf cco:ont00001842;
+                owl:inverseOf cco:ont00001839;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001839 a owl:ObjectProperty;
+                rdfs:label "has son"@en;
+                rdfs:subPropertyOf cco:ont00001995;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001840 a owl:ObjectProperty;
+                rdfs:label "has grandmother"@en;
+                rdfs:subPropertyOf cco:ont00001945;
+                owl:inverseOf cco:ont00001882;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001842 a owl:ObjectProperty;
+                rdfs:label "is child of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                owl:inverseOf cco:ont00001995;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001843 a owl:ObjectProperty;
+                rdfs:label "is paternal first cousin of"@en;
+                rdfs:subPropertyOf cco:ont00001806;
+                owl:inverseOf cco:ont00001894;
+                skos:definition "Person A is paternal first cousin of Person B iff Person B has father F and F has sibling P and P is parent of Person A."@en;
+                skos:scopeNote "is_paternal_first_cousin_of is not a symmetric relationship as is is_first_cousin_of"@en;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001849 a owl:ObjectProperty;
+                rdfs:label "is father-in-law of"@en;
+                rdfs:subPropertyOf cco:ont00001818;
+                owl:inverseOf cco:ont00001935;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001850 a owl:ObjectProperty;
+                rdfs:label "is grandparent of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                owl:inverseOf cco:ont00001945;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001851 a owl:ObjectProperty;
+                rdfs:label "is sister of"@en;
+                rdfs:subPropertyOf cco:ont00001902;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001853 a owl:ObjectProperty;
+                rdfs:label "is mother-in-law of"@en;
+                rdfs:subPropertyOf cco:ont00001818;
+                owl:inverseOf cco:ont00001885;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001854 a owl:ObjectProperty;
+                rdfs:label "has daughter-in-law"@en;
+                rdfs:subPropertyOf cco:ont00001818;
+                owl:inverseOf cco:ont00001867;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001856 a owl:ObjectProperty;
+                rdfs:label "has niece"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                owl:inverseOf cco:ont00001932;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001858 a owl:ObjectProperty;
+                rdfs:label "is daughter of"@en;
+                rdfs:subPropertyOf cco:ont00001842;
+                owl:inverseOf cco:ont00001987;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001860 a owl:ObjectProperty;
+                rdfs:label "is ancestor of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                owl:inverseOf cco:ont00001968;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001865 a owl:ObjectProperty,
+                  owl:SymmetricProperty;
+                rdfs:label "has familial relationship to"@en;
+                skos:definition "A relationship between persons by virtue of ancestry or legal union."@en;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001867 a owl:ObjectProperty;
+                rdfs:label "is daughter-in-law of"@en;
+                rdfs:subPropertyOf cco:ont00001818;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001871 a owl:ObjectProperty;
+                rdfs:label "has wife"@en;
+                rdfs:subPropertyOf cco:ont00001804;
+                owl:inverseOf cco:ont00001887;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001872 a owl:ObjectProperty;
+                rdfs:label "is step-brother of"@en;
+                rdfs:subPropertyOf cco:ont00001996;
+                owl:inverseOf cco:ont00001890;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001876 a owl:ObjectProperty;
+                rdfs:label "is grandfather of"@en;
+                rdfs:subPropertyOf cco:ont00001850;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001881 a owl:ObjectProperty;
+                rdfs:label "is son-in-law of"@en;
+                rdfs:subPropertyOf cco:ont00001818;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001882 a owl:ObjectProperty;
+                rdfs:label "is grandmother of"@en;
+                rdfs:subPropertyOf cco:ont00001850;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001883 a owl:ObjectProperty;
+                rdfs:label "is brother of"@en;
+                rdfs:subPropertyOf cco:ont00001902;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001885 a owl:ObjectProperty;
+                rdfs:label "has mother-in-law"@en;
+                rdfs:subPropertyOf cco:ont00001818;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001887 a owl:ObjectProperty;
+                rdfs:label "is wife of"@en;
+                rdfs:subPropertyOf cco:ont00001804;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001890 a owl:ObjectProperty;
+                rdfs:label "has step brother"@en;
+                rdfs:subPropertyOf cco:ont00001996;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001891 a owl:ObjectProperty;
+                rdfs:label "has brother-in-law"@en;
+                rdfs:subPropertyOf cco:ont00001818;
+                owl:inverseOf cco:ont00001952;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001892 a owl:ObjectProperty;
+                rdfs:label "is paternal grandfather of"@en;
+                rdfs:subPropertyOf cco:ont00001876;
+                owl:inverseOf cco:ont00001972;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001894 a owl:ObjectProperty;
+                rdfs:label "has paternal first cousin"@en;
+                rdfs:subPropertyOf cco:ont00001806;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001897 a owl:ObjectProperty;
+                rdfs:label "is maternal grandmother of"@en;
+                rdfs:subPropertyOf cco:ont00001882;
+                owl:inverseOf cco:ont00001960;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001902 a owl:ObjectProperty,
+                  owl:SymmetricProperty;
+                rdfs:label "is sibling of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                owl:inverseOf cco:ont00001902;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001903 a owl:ObjectProperty;
+                rdfs:label "is maternal grandfather of"@en;
+                rdfs:subPropertyOf cco:ont00001876;
+                owl:inverseOf cco:ont00001973;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001905 a owl:ObjectProperty;
+                rdfs:label "is half-brother of"@en;
+                rdfs:subPropertyOf cco:ont00001975;
+                owl:inverseOf cco:ont00001927;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001906 a owl:ObjectProperty;
+                rdfs:label "is maternal first cousin of"@en;
+                rdfs:subPropertyOf cco:ont00001806;
+                owl:inverseOf cco:ont00001934;
+                skos:definition "Person A is maternal first cousin of Person B iff Person B has mother M and M has sibling P and P is parent of Person A."@en;
+                skos:scopeNote "is_maternal_first_cousin_of is not a symmetric relationship as is is_first_cousin_of"@en;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001911 a owl:ObjectProperty;
+                rdfs:label "is paternal grandmother of"@en;
+                rdfs:subPropertyOf cco:ont00001882;
+                owl:inverseOf cco:ont00001937;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001926 a owl:ObjectProperty;
+                rdfs:label "is paternal uncle of"@en;
+                rdfs:subPropertyOf cco:ont00001988;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001927 a owl:ObjectProperty;
+                rdfs:label "has half brother"@en;
+                rdfs:subPropertyOf cco:ont00001975;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001929 a owl:ObjectProperty;
+                rdfs:label "is maternal uncle of"@en;
+                rdfs:subPropertyOf cco:ont00001988;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001930 a owl:ObjectProperty,
+                  owl:SymmetricProperty;
+                rdfs:label "is second cousin of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                owl:inverseOf cco:ont00001930;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001932 a owl:ObjectProperty;
+                rdfs:label "is niece of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001934 a owl:ObjectProperty;
+                rdfs:label "has maternal first cousin"@en;
+                rdfs:subPropertyOf cco:ont00001806;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001935 a owl:ObjectProperty;
+                rdfs:label "has father-in-law"@en;
+                rdfs:subPropertyOf cco:ont00001818;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001937 a owl:ObjectProperty;
+                rdfs:label "has paternal grandmother"@en;
+                rdfs:subPropertyOf cco:ont00001840;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001941 a owl:ObjectProperty;
+                rdfs:label "is maternal aunt of"@en;
+                rdfs:subPropertyOf cco:ont00001955;
+                owl:inverseOf cco:ont00001958;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001945 a owl:ObjectProperty;
+                rdfs:label "is grandchild of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001946 a owl:ObjectProperty;
+                rdfs:label "has father"@en;
+                rdfs:subPropertyOf cco:ont00001842;
+                owl:inverseOf cco:ont00001985;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001948 a owl:ObjectProperty;
+                rdfs:label "is half sister of"@en;
+                rdfs:subPropertyOf cco:ont00001975;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001950 a owl:ObjectProperty,
+                  owl:SymmetricProperty;
+                rdfs:label "is third cousin of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                owl:inverseOf cco:ont00001950;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001952 a owl:ObjectProperty;
+                rdfs:label "is brother-in-law of"@en;
+                rdfs:subPropertyOf cco:ont00001818;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001955 a owl:ObjectProperty;
+                rdfs:label "is aunt of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001957 a owl:ObjectProperty;
+                rdfs:label "is husband of"@en;
+                rdfs:subPropertyOf cco:ont00001804;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001958 a owl:ObjectProperty;
+                rdfs:label "has maternal aunt"@en;
+                rdfs:subPropertyOf cco:ont00001789;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001960 a owl:ObjectProperty;
+                rdfs:label "has maternal grandmother"@en;
+                rdfs:subPropertyOf cco:ont00001840;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001967 a owl:ObjectProperty;
+                rdfs:label "is nephew of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                owl:inverseOf cco:ont00001969;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001968 a owl:ObjectProperty;
+                rdfs:label "is descendant of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001969 a owl:ObjectProperty;
+                rdfs:label "has nephew"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001972 a owl:ObjectProperty;
+                rdfs:label "has paternal grandfather"@en;
+                rdfs:subPropertyOf cco:ont00001776;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001973 a owl:ObjectProperty;
+                rdfs:label "has maternal grandfather"@en;
+                rdfs:subPropertyOf cco:ont00001776;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001975 a owl:ObjectProperty,
+                  owl:SymmetricProperty;
+                rdfs:label "is half-sibling of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                owl:inverseOf cco:ont00001975;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001979 a owl:ObjectProperty;
+                rdfs:label "is step-sister of"@en;
+                rdfs:subPropertyOf cco:ont00001996;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001981 a owl:ObjectProperty;
+                rdfs:label "has grandson"@en;
+                rdfs:subPropertyOf cco:ont00001850;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001985 a owl:ObjectProperty;
+                rdfs:label "is father of"@en;
+                rdfs:subPropertyOf cco:ont00001995;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001987 a owl:ObjectProperty;
+                rdfs:label "has daughter"@en;
+                rdfs:subPropertyOf cco:ont00001995;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001988 a owl:ObjectProperty;
+                rdfs:label "is uncle of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001994 a owl:ObjectProperty;
+                rdfs:label "is paternal aunt of"@en;
+                rdfs:subPropertyOf cco:ont00001955;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001995 a owl:ObjectProperty;
+                rdfs:label "is parent of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                skos:definition "x is_parent_of y is a familial relationship between an instance of Person x and a different instance of Person y."@en;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.
+cco:ont00001996 a owl:ObjectProperty;
+                rdfs:label "is step-sibling of"@en;
+                rdfs:subPropertyOf cco:ont00001865;
+                owl:inverseOf cco:ont00001996;
+                skos:scopeNote "Given a stronger temporal interpretation, this property may be symmetric. For more info please refer to https://github.com/BFO-ontology/BFO-2020/tree/master/src/owl/temporal%20extensions."@en;
+                cco:ont00001760 "https://www.commoncoreontologies.org/FamilialRelationsOntology"^^xsd:anyURI.

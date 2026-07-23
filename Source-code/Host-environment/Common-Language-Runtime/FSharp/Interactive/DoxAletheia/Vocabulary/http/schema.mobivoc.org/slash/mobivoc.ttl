@@ -1,0 +1,1392 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix mobivoc: <http://schema.mobivoc.org/>.
+
+<http://creativecommons.org/licenses/by/4.0/> rdfs:label "Creative Commons Attribution 4.0 International".
+<http://creativecommons.org/ns#license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                        rdfs:isDefinedBy <http://creativecommons.org/ns>.
+<http://dbpedia.org/resource/University_of_Bonn> a <http://xmlns.com/foaf/0.1/Organization>,
+                                                   <http://purl.org/dc/terms/Agent>;
+                                                 rdfs:label "University of Bonn".
+<http://eis.iai.uni-bonn.de/NiklasPetersen> <http://schema.org/affiliation> <http://dbpedia.org/resource/University_of_Bonn>;
+                                            a <http://purl.org/dc/terms/Agent>,
+                                              <http://xmlns.com/foaf/0.1/Person>;
+                                            <http://xmlns.com/foaf/0.1/name> "Niklas Petersen".
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                   rdfs:isDefinedBy <http://purl.org/dc/terms/>.
+<http://purl.org/dc/terms/date> a rdf:Property,
+                                  <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                rdfs:comment "The date of the given real-time capacity."@en;
+                                rdfs:domain mobivoc:RealTimeCapacity;
+                                rdfs:isDefinedBy <http://purl.org/dc/terms/>;
+                                rdfs:label "date"@en;
+                                rdfs:range xsd:datetime.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                  rdfs:isDefinedBy <http://purl.org/dc/terms/>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                    rdfs:isDefinedBy <http://purl.org/dc/terms/>.
+<http://purl.org/dc/terms/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                     rdfs:isDefinedBy <http://purl.org/dc/terms/>.
+<http://purl.org/dc/terms/rights> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                  rdfs:isDefinedBy <http://purl.org/dc/terms/>.
+<http://purl.org/goodrelations/v1#BusinessEntity> a <http://www.w3.org/2002/07/owl#class>;
+                                                  rdfs:comment "An instance of this class represents the legal agent making (or seeking) a particular offering. This can be a legal body or a person. A business entity has at least a primary mailing address and contact details. For this, typical address standards (vCard) and location data (geo, WGS84) can be attached. Note that the location of the business entity is not necessarily the location from which the product or service is being available."@en;
+                                                  rdfs:isDefinedBy <http://purl.org/goodrelations/v1#>;
+                                                  rdfs:label "Business entity"@en,
+                                                             "Juristische Person"@de.
+<http://purl.org/net/clange> <http://schema.org/affiliation> <http://dbpedia.org/resource/University_of_Bonn>;
+                             a <http://purl.org/dc/terms/Agent>,
+                               <http://xmlns.com/foaf/0.1/Person>;
+                             <http://xmlns.com/foaf/0.1/homepage> <http://langec.wordpress.com/about/>;
+                             <http://xmlns.com/foaf/0.1/name> "Christop Lange".
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                                      rdfs:isDefinedBy <http://purl.org/vocab/vann/>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                                   rdfs:isDefinedBy <http://purl.org/vocab/vann/>.
+mobivoc: <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/4.0/>;
+         <http://purl.org/dc/terms/contributor> <http://purl.org/net/clange>,
+                                                <http://sebastian.tramp.name/>,
+                                                <http://eis.iai.uni-bonn.de/NiklasPetersen>;
+         <http://purl.org/dc/terms/created> "2014-08-05"^^xsd:date;
+         <http://purl.org/dc/terms/creator> <https://ns.eccenca.com/aweilandt>,
+                                            <https://ns.eccenca.com/mbruemmer>;
+         <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+         <http://purl.org/dc/terms/publisher> <https://ns.eccenca.com/eccenca-GmbH>;
+         <http://purl.org/vocab/vann/preferredNamespacePrefix> "mv";
+         <http://purl.org/vocab/vann/preferredNamespaceUri> "http://schema.mobivoc.org/";
+         <http://rdfs.org/ns/void#vocabulary> <http://purl.org/vocab/vann/>,
+                                              <http://xmlns.com/foaf/0.1/>;
+         a <http://www.w3.org/2002/07/owl#Ontology>,
+           <http://purl.org/vocommons/voaf#Vocabulary>;
+         rdfs:comment "Our goal is to significantly improve the data mobility between all stakeholders by providing a standardized vocabulary using Semantic Web technologies and ontologies. For the open vocabulary covering various mobility aspects we use RDF (Resource Description Framework) - a recommended specification of the World Wide Web Consortium (W3C) and the so-called lingua franca for the integration of data and web. We invite everyone who is interested to join our MobiVoc initiative and to participate in the development of the Open Mobility Vocabulary.";
+         rdfs:isDefinedBy mobivoc:;
+         rdfs:label "MobiVoc: Open Mobility Vocabulary"@en;
+         <http://www.w3.org/2002/07/owl#versionInfo> "v1.0.0".
+mobivoc:AS_3112_Type_I mobivoc:ocmConnectionID "29";
+                       a mobivoc:PlugType;
+                       rdfs:comment "AS/NZS 3112 are the harmonised Australian and New Zealand standards for AC Plugs and Socket-Outlets.";
+                       rdfs:isDefinedBy mobivoc:;
+                       rdfs:label "AS 3112 Type I"@en;
+                       rdfs:seeAlso <https://en.wikipedia.org/wiki/AS/NZS_3112>;
+                       <http://www.w3.org/2004/02/skos/core#altLabel> "Type I",
+                                                                      "Type I/AS 3112/CPCS-CCC";
+                       <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Aust_AC_plug.jpg/800px-Aust_AC_plug.jpg>.
+mobivoc:AccessCondition <http://purl.org/dc/terms/created> "2017-08-29"^^xsd:date;
+                        <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                        a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "A condition that has to be fullfilled to get access to a civic structure."@en;
+                        rdfs:isDefinedBy mobivoc:;
+                        rdfs:label "Access condition"@en,
+                                   "Zugangsbedingung"@de;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:Action <http://purl.org/dc/terms/created> "2017-06-23"^^xsd:date;
+               <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Action that is done."@en;
+               rdfs:isDefinedBy mobivoc:;
+               rdfs:label "Aktion"@de,
+                          "Action"@en;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:AllParkingFacilitiesFull a mobivoc:CivicStructureStatus;
+                                 rdfs:comment "All parking facilities within a specified area are completely occupied."@en;
+                                 rdfs:isDefinedBy mobivoc:;
+                                 rdfs:label "All parking facilities full"@en,
+                                            "Alle Parkmöglichkeiten belegt"@de.
+mobivoc:Allow a mobivoc:Action;
+              rdfs:comment "Allow to do an action."@en;
+              rdfs:isDefinedBy mobivoc:;
+              rdfs:label "Allow"@en,
+                         "Erlauben"@de.
+mobivoc:AngleParking <http://purl.org/dc/terms/created> "2017-05-31"^^xsd:date;
+                     <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                     a mobivoc:ArrangementPattern;
+                     rdfs:comment "Parking where the parking spaces are arranged at an acute angle to the direction of approach, allowing the driver to enter a space easily and later reverse back out."@en,
+                                  "Bei der Schrägaufstellung wird das Fahrzeug mit einem Aufstellwinkel zwischen 50 und 90 gon (45° und ca. 81°) geparkt. Das Fahrzeug kann vorwärts in den Parkstand einfahren, muss zum Ausparken jedoch wieder rückwärts herausfahren. Diese Aufstellung wird oft bei Parkplätzen verwendet, da sie schmalere Fahrwege als die Senkrechtaufstellung und bessere Platzausnutzung als Parallelaufstellung ermöglicht."@de;
+                     rdfs:isDefinedBy mobivoc:;
+                     rdfs:label "Schrägaufstellung"@de,
+                                "Angle parking"@en;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                     <http://www.w3.org/2004/02/skos/core#altLabel> "Echelon parking"@en-uk.
+mobivoc:ArrangementPattern <http://purl.org/dc/terms/created> "2017-05-10"^^xsd:date;
+                           <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                           a <http://www.w3.org/2002/07/owl#Class>,
+                             rdfs:Class;
+                           rdfs:comment "Art und Weise, wie ein Fahrzeug auf einer Parkfläche aufgestellt wird."@de,
+                                        "Pattern how parking spaces are arranged in a parking facility or at roadside."@en;
+                           rdfs:isDefinedBy mobivoc:;
+                           rdfs:label "Arrangement pattern"@en,
+                                      "Aufstellart"@de;
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:AutomatedParkingGarage <http://purl.org/dc/terms/created> "2017-04-13"^^xsd:date;
+                               <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                               a <http://www.w3.org/2002/07/owl#Class>,
+                                 rdfs:Class;
+                               rdfs:comment "Parking garage with an automated parking system that automatically moves cars to the available parking space somewhere in the garage."@en;
+                               rdfs:isDefinedBy mobivoc:;
+                               rdfs:label "Automatisches Parkhaus"@de,
+                                          "Automated parking garage"@en;
+                               rdfs:subClassOf mobivoc:ParkingFacility;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:BS1363 mobivoc:ocmConnectionID "3";
+               a mobivoc:PlugType;
+               rdfs:comment "13 A plugs socket-outlets adaptors and connection units is a British Standard which specifies the most common type of single-phase AC power plugs and sockets that are used in the United Kingdom.";
+               rdfs:isDefinedBy mobivoc:;
+               rdfs:label "BS1363"@en;
+               rdfs:seeAlso <https://en.wikipedia.org/wiki/AC_power_plugs_and_sockets:_British_and_related_types#International_usage_of_Type_G>;
+               <http://www.w3.org/2004/02/skos/core#altLabel> "Type G";
+               <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/0/00/British_plug.jpg>.
+mobivoc:Bicycle a <http://schema.org/Vehicle>;
+                rdfs:comment "A human-or electric powered, pedal-driven, single-track vehicle, having two wheels attached to a frame, one behind the other."@en;
+                rdfs:isDefinedBy mobivoc:;
+                rdfs:label "Vélo"@fr,
+                           "Bicycle"@en,
+                           "Fahrrad"@de.
+mobivoc:BicycleParkingStation <http://purl.org/dc/terms/created> "2017-05-10"^^xsd:date;
+                              <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                              a <http://www.w3.org/2002/07/owl#Class>,
+                                rdfs:Class;
+                              rdfs:comment "Building or structure designed for use as a bicycle parking facility."@en;
+                              rdfs:isDefinedBy mobivoc:;
+                              rdfs:label "Fahrradparkstation"@de,
+                                         "Bicycle parking station"@en;
+                              rdfs:subClassOf mobivoc:ParkingFacility;
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:BikeAndRide a mobivoc:ParkingFacilityConnection;
+                    rdfs:comment "Parking facilities for bicycles with connection to public transport.";
+                    rdfs:isDefinedBy mobivoc:;
+                    rdfs:label "Bike and Ride".
+mobivoc:BusOrCoach a <http://schema.org/Vehicle>;
+                   rdfs:comment "A bus is a road vehicle designed to carry passengers. Coaches are luxury busses, usually in service for long distance travel."@en;
+                   rdfs:isDefinedBy mobivoc:;
+                   rdfs:label "Coach"@en,
+                              "Bus"@de.
+mobivoc:CCS_Type2 mobivoc:ocmConnectionID "33";
+                  a mobivoc:PlugType;
+                  rdfs:comment "The Combined Charging System is a quick charging method for battery electric vehicles delivering high-voltage direct current via a special electrical connector derived from the  IEC Type 2 connector. As the plug is a combination of an AC connector with a DC option the resulting connector is also called Combo Coupler and the variant with Type 2 is abbreviated as Combo2.";
+                  rdfs:isDefinedBy mobivoc:;
+                  rdfs:label "CCS Type2"@en;
+                  rdfs:seeAlso <https://en.wikipedia.org/wiki/Combined_Charging_System>;
+                  <http://www.w3.org/2004/02/skos/core#altLabel> "Combo2";
+                  <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/CCSCombo2.svg/1052px-CCSCombo2.svg.png>.
+mobivoc:CEE_7-Pin mobivoc:ocmConnectionID "18";
+                  a mobivoc:PlugType;
+                  rdfs:comment "CEE 7-Pin 32A / 400V Socket.";
+                  rdfs:isDefinedBy mobivoc:;
+                  rdfs:label "CEE 7-Pin"@en.
+mobivoc:CEE_7_16 mobivoc:ocmConnectionID "13";
+                 a mobivoc:PlugType;
+                 rdfs:comment "The CEE 7/16 standard sheet appears in Supplement 2 (June 1962) to the 1951 edition of CEE 7. The CEE 7/16 unearthed plug is used for low power Class II applications, it has two round 4 by 19 mm (0.157 by 0.748 in) pins, rated at 2.5 A. There are two variants.";
+                 rdfs:isDefinedBy mobivoc:;
+                 rdfs:label "CEE 7/16"@en;
+                 rdfs:seeAlso <https://en.wikipedia.org/wiki/AC_power_plugs_and_sockets#CEE_7/16_plugs>;
+                 <http://www.w3.org/2004/02/skos/core#altLabel> "Europlug";
+                 <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/6/63/Euro-Flachstecker_2.jpg>.
+mobivoc:CEE_7_4 mobivoc:ocmConnectionID "28";
+                a mobivoc:PlugType;
+                rdfs:comment "The CEE 7/3 socket and CEE 7/4 plug are commonly called Schuko. The socket (which is often, in error, also referred to as CEE 7/4) has a predominantly circular recess which is 17.5 mm (0.689 in) deep with two symmetrical round apertures and two earthing clips on the sides of the socket positioned to ensure that the earth is always engaged before live pin contact is made. The plug pins are 4.8 by 19 mm (0.189 by 0.748 in).";
+                rdfs:isDefinedBy mobivoc:;
+                rdfs:label "CEE 7/4"@en;
+                rdfs:seeAlso <https://en.wikipedia.org/wiki/AC_power_plugs_and_sockets#CEE_7/5_socket_and_CEE_7/6_plug_(French;_Type_E)>;
+                <http://www.w3.org/2004/02/skos/core#altLabel> "Schuko",
+                                                               "Type F";
+                <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/e/ef/Schuko_plug_and_socket.png>.
+mobivoc:CEE_7_5 mobivoc:ocmConnectionID "23";
+                a mobivoc:PlugType;
+                rdfs:comment """The CEE 7/5 socket and CEE 7/6 plug are defined in French standard NF C 61-314 \"Plugs and socket-outlets for household and similar purposes\" (which also includes CEE 7/7, 7/16 and 7/17 plugs) The socket has a predominantly circular recess which is 15 mm (0.591 in) deep with two symmetrical round apertures and a round 4.8 mm (0.189 in) earth pin projecting from the socket such that the tip is 23 mm (0.906 in) beyond the live contacts, to ensure that the earth is always engaged before live pin contact is made. The earth pin is centred between the apertures, offset by 10 mm (0.394 in). The plug (which is often, in error, also referred to as CEE 7/5) has two round pins measuring 4.8 by 19 mm (0.189 by 0.748 in), spaced 19 mm (0.748 in) apart and with an aperture for the socket's projecting earth pin. This standard is also used in Belgium, Poland, the Czech Republic, Slovakia and some other countries.""";
+                rdfs:isDefinedBy mobivoc:;
+                rdfs:label "CEE 7/5"@en;
+                rdfs:seeAlso <https://en.wikipedia.org/wiki/AC_power_plugs_and_sockets#CEE_7/5_socket_and_CEE_7/6_plug_(French;_Type_E)>;
+                <http://www.w3.org/2004/02/skos/core#altLabel> "Type E";
+                <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/E_plug_and_socket.jpg/1920px-E_plug_and_socket.jpg>.
+mobivoc:CHAdeMO mobivoc:ocmConnectionID "2";
+                a mobivoc:PlugType;
+                rdfs:comment "CHAdeMO is the trade name of a quick charging method for battery electric vehicles delivering up to 62.5 kW of direct current (500 V, 125 A[1]) via a special electrical connector.";
+                rdfs:isDefinedBy mobivoc:;
+                rdfs:label "CHAdeMO"@en;
+                rdfs:seeAlso <https://en.wikipedia.org/wiki/CHAdeMO>;
+                <http://www.w3.org/2002/07/owl#sameAs> <http://dbpedia.org/resource/CHAdeMO>;
+                <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/d/d3/CHAdeMO_Plug_VacavilleDavisStDC2.jpg>.
+mobivoc:Capacity <http://purl.org/dc/terms/created> "2017-04-13"^^xsd:date;
+                 <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                 a rdfs:Class,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Capacity of a civic structure."@en;
+                 rdfs:isDefinedBy mobivoc:;
+                 rdfs:label "Kapazität"@de,
+                            "Capacity"@en;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:Car a <http://schema.org/Vehicle>;
+            rdfs:comment "A wheeled, self-powered motor vehicle used for transportation."@en;
+            rdfs:isDefinedBy mobivoc:;
+            rdfs:label "Voiture"@fr,
+                       "Auto"@de,
+                       "Car"@en;
+            <http://www.w3.org/2004/02/skos/core#altLabel> "Pkw"@de.
+mobivoc:Carpooling a mobivoc:ParkingFacilityConnection;
+                   rdfs:comment "Parking facility used for carpooling or ridesharing.";
+                   rdfs:isDefinedBy mobivoc:;
+                   rdfs:label "Carpooling",
+                              "Parken und Mitfahren"@de;
+                   <http://www.w3.org/2004/02/skos/core#altLabel> "Park & Drive",
+                                                                  "P+M",
+                                                                  "P&M",
+                                                                  "Parken und Mitnehmen"@de.
+mobivoc:CarsharingUsers a mobivoc:UserGroup;
+                        rdfs:comment "User of a car rental model where people rent cars for short periods of time."@en;
+                        rdfs:isDefinedBy mobivoc:;
+                        rdfs:label "Carsharing users"@en-us,
+                                   "Car club users"@en-uk,
+                                   "Carsharing-Nutzer"@de,
+                                   "Utilisateurs de l'autopartage"@fr;
+                        <http://www.w3.org/2004/02/skos/core#hiddenLabel> "Car-sharing users",
+                                                                          "Car sharing users";
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Carsharing users"@en-us,
+                                                                        "Carsharing-Nutzer"@de.
+mobivoc:Charger a rdfs:Class,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Component of a charging point used to charge electric vehicles. A charging point can have one or more chargers.";
+                rdfs:isDefinedBy mobivoc:;
+                rdfs:label "Ladegerät"@de,
+                           "Charger"@en.
+mobivoc:ChargingPoint a rdfs:Class,
+                        <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Civic structure that supplies electric energy for the recharging of electric vehicles.";
+                      rdfs:isDefinedBy mobivoc:;
+                      rdfs:label "Charging point"@en,
+                                 "Ladestation"@de;
+                      rdfs:subClassOf <http://schema.org/CivicStructure>.
+mobivoc:CivicStructureStatus <http://purl.org/dc/terms/created> "2018-01-11"^^xsd:date;
+                             <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                             a rdfs:Class,
+                               <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Status information of a civic structure.";
+                             rdfs:isDefinedBy mobivoc:;
+                             rdfs:label "Civic structure status"@en,
+                                        "Status der Parkeinrichtung"@de;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:Closed a mobivoc:CivicStructureStatus;
+               rdfs:comment "The parking facility is closed.";
+               rdfs:isDefinedBy mobivoc:;
+               rdfs:label "Closed"@en,
+                          "Geschlossen"@de.
+mobivoc:ElectricVehicle a <http://schema.org/Vehicle>;
+                        rdfs:comment "A wheeled, self-powered motor vehicle using an electric drivetrain."@en;
+                        rdfs:isDefinedBy mobivoc:;
+                        rdfs:label "Elektrofahrzeug"@de,
+                                   "Electric vehicle"@en,
+                                   "Véhicule électrique"@fr.
+mobivoc:EnoughParkingSpacesAvailable a mobivoc:CivicStructureStatus;
+                                     rdfs:comment "The parking facility has parking spaces available.";
+                                     rdfs:isDefinedBy mobivoc:;
+                                     rdfs:label "Enough parking spaces available"@en,
+                                                "Genügend Stellplätze frei"@de.
+mobivoc:Families a mobivoc:UserGroup;
+                 rdfs:comment "Parents with children."@en;
+                 rdfs:isDefinedBy mobivoc:;
+                 rdfs:label "Families"@en,
+                            "Familien"@de.
+mobivoc:Faulty a mobivoc:CivicStructureStatus;
+               rdfs:comment "The parking facility is not operating normally.";
+               rdfs:isDefinedBy mobivoc:;
+               rdfs:label "Defekt"@de,
+                          "Faulty"@en.
+mobivoc:Full a mobivoc:CivicStructureStatus;
+             rdfs:comment "The parking facility is completely occupied.";
+             rdfs:isDefinedBy mobivoc:;
+             rdfs:label "Belegt"@de,
+                        "Full"@en.
+mobivoc:IEC_60309_16A_2_E mobivoc:ocmConnectionID "4";
+                          a mobivoc:PlugType;
+                          rdfs:comment """IEC 60309 (formerly IEC 309 and CEE 17, also published by CENELEC as EN 60309) is an international standard from the International Electrotechnical Commission (IEC) for \"plugs, socket-outlets and couplers for industrial purposes\". The blue P+N+E, 6h (180°) plug is a single phase connector. In particular this smallest (16 A) variant has become especially common in camping vehicles and sockets found in caravan parks and marinas throughout Europe.""";
+                          rdfs:isDefinedBy mobivoc:;
+                          rdfs:label "IEC_60309 16A 2+E"@en;
+                          rdfs:seeAlso <https://en.wikipedia.org/wiki/IEC_60309>;
+                          <http://www.w3.org/2004/02/skos/core#altLabel> "Blue Commando (2P+E)";
+                          <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/CEE_16A_230V_Wandsteckdose_Pinning.png/800px-CEE_16A_230V_Wandsteckdose_Pinning.png>.
+mobivoc:IEC_60309_3-pin mobivoc:ocmConnectionID "16",
+                                                "34";
+                        a mobivoc:PlugType;
+                        rdfs:comment """IEC 60309 (formerly IEC 309 and CEE 17, also published by CENELEC as EN 60309) is an international standard from the International Electrotechnical Commission (IEC) for \"plugs, socket-outlets and couplers for industrial purposes\". 3-Pin connector.""";
+                        rdfs:isDefinedBy mobivoc:;
+                        rdfs:label "IEC_60309 3-pin"@en;
+                        rdfs:seeAlso <https://en.wikipedia.org/wiki/IEC_60309>.
+mobivoc:IEC_60309_5-pin mobivoc:ocmConnectionID "17";
+                        a mobivoc:PlugType;
+                        rdfs:comment """IEC 60309 (formerly IEC 309 and CEE 17, also published by CENELEC as EN 60309) is an international standard from the International Electrotechnical Commission (IEC) for \"plugs, socket-outlets and couplers for industrial purposes\". 5-Pin connector.""";
+                        rdfs:isDefinedBy mobivoc:;
+                        rdfs:label "IEC_60309 5-pin"@en;
+                        rdfs:seeAlso <https://en.wikipedia.org/wiki/IEC_60309>;
+                        <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/CEE-Stecker.jpg/1280px-CEE-Stecker.jpg>.
+mobivoc:IEC_62196_Type_3A mobivoc:ocmConnectionID "36";
+                          a mobivoc:PlugType;
+                          rdfs:comment "The type 3A is derived from the Scame charging connectors adding the IEC 62196 pins which is suited for single-phase charging – the connector builds on the experience with the Scame connector for charging of light vehicles (electric motorcycles and scooters).";
+                          rdfs:isDefinedBy mobivoc:;
+                          rdfs:label "SCAME Type 3A"@en;
+                          rdfs:seeAlso <https://en.wikipedia.org/wiki/IEC_62196#Type_3_(EV_Plug_Alliance_connector),_Scame>;
+                          <http://www.w3.org/2004/02/skos/core#altLabel> "IEC 62196-2 Type 3A".
+mobivoc:IEC_62196_Type_3C mobivoc:ocmConnectionID "26";
+                          a mobivoc:PlugType;
+                          rdfs:comment "The type 3A is derived from the Scame charging connectors adding the IEC 62196 pins which is suited for single-phase charging – the connector builds on the experience with the Scame connector for charging of light vehicles (electric motorcycles and scooters). The additional type 3C adds additional 2 pins for three-phase charging for usage at fast charge stations. Based on its origin the connector is sometimes referred to as the Scame type 3 connector.";
+                          rdfs:isDefinedBy mobivoc:;
+                          rdfs:label "SCAME Type 3C"@en;
+                          rdfs:seeAlso <https://en.wikipedia.org/wiki/IEC_62196#Type_3_(EV_Plug_Alliance_connector),_Scame>;
+                          <http://www.w3.org/2004/02/skos/core#altLabel> "IEC 62196-2 Type 3C".
+mobivoc:Inhabitants a mobivoc:UserGroup;
+                    rdfs:comment "People living on the premises."@en;
+                    rdfs:isDefinedBy mobivoc:;
+                    rdfs:label "Inhabitants"@en,
+                               "Anwohner"@de.
+mobivoc:Mennekes_Type_2 mobivoc:ocmConnectionID "1036",
+                                                "25";
+                        a mobivoc:PlugType;
+                        rdfs:comment "The IEC 62196 Type 2 connector (commonly referred to as Mennekes) is used for charging electric cars within Europe. The connector is circular in shape, with a flattened top edge and originally specified for charging battery electric vehicles at 3–120 kilowatts.";
+                        rdfs:isDefinedBy mobivoc:;
+                        rdfs:label "Mennekes (Type 2)"@en;
+                        rdfs:seeAlso <https://en.wikipedia.org/wiki/Type_2_connector>;
+                        <http://www.w3.org/2004/02/skos/core#altLabel> "IEC_62196 Type 2";
+                        <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/f/f3/VDE-AR-E_2623-2-2-plug.jpg>.
+mobivoc:Motorbike a <http://schema.org/Vehicle>;
+                  rdfs:comment "A single-track, two-wheeled motor vehicle."@en;
+                  rdfs:isDefinedBy mobivoc:;
+                  rdfs:label "Motorbike"@en,
+                             "Motorrad"@de;
+                  <http://www.w3.org/2004/02/skos/core#altLabel> "Motorcycle"@en;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Moto"@fr,
+                                                                  "Motorbike"@en,
+                                                                  "Motorrad"@de.
+mobivoc:NEMA_14-30 mobivoc:ocmConnectionID "10";
+                   a mobivoc:PlugType;
+                   rdfs:comment "NEMA connectors are power plugs and receptacles used for AC mains electricity in North America and other countries that use the standards set by the US National Electrical Manufacturers Association. The NEMA 14 devices are four-wire grounding devices (hot-hot-neutral-ground) available in ratings from 15 to 60 A. The voltage rating is 250 V. Rated for 30A.";
+                   rdfs:isDefinedBy mobivoc:;
+                   rdfs:label "NEMA 14-30"@en;
+                   rdfs:seeAlso <https://en.wikipedia.org/wiki/NEMA_connector#NEMA_14>;
+                   <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/d/d3/220sb.svg>.
+mobivoc:NEMA_14-50 mobivoc:ocmConnectionID "11";
+                   a mobivoc:PlugType;
+                   rdfs:comment "NEMA connectors are power plugs and receptacles used for AC mains electricity in North America and other countries that use the standards set by the US National Electrical Manufacturers Association. The NEMA 14 devices are four-wire grounding devices (hot-hot-neutral-ground) available in ratings from 15 to 60 A. The voltage rating is 250 V. Rated for 60A.";
+                   rdfs:isDefinedBy mobivoc:;
+                   rdfs:label "NEMA 14-50"@en;
+                   rdfs:seeAlso <https://en.wikipedia.org/wiki/NEMA_connector#NEMA_14>;
+                   <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/d/d3/220sb.svg>.
+mobivoc:NEMA_5-15R mobivoc:ocmConnectionID "22";
+                   a mobivoc:PlugType;
+                   rdfs:comment """NEMA connectors are power plugs and receptacles used for AC mains electricity in North America and other countries that use the standards set by the US National Electrical Manufacturers Association. All NEMA 5 devices are three-wire grounding devices (hot-neutral-ground) rated for 125 V maximum.
+   The 5-15R is by far the most common electrical receptacle in North America in buildings built since the mid-twentieth century. It is usually installed in a duplex configuration; two receptacles may share a common circuit or may each be wired separately, sometimes to a switch.""";
+                   rdfs:isDefinedBy mobivoc:;
+                   rdfs:label "NEMA 5-15R"@en;
+                   rdfs:seeAlso <https://en.wikipedia.org/wiki/NEMA_connector#NEMA_5>;
+                   <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/NEMA_simplified_pins.svg/765px-NEMA_simplified_pins.svg.png>.
+mobivoc:NEMA_5-20R mobivoc:ocmConnectionID "9";
+                   a mobivoc:PlugType;
+                   rdfs:comment "NEMA connectors are power plugs and receptacles used for AC mains electricity in North America and other countries that use the standards set by the US National Electrical Manufacturers Association. All NEMA 5 devices are three-wire grounding devices (hot-neutral-ground) rated for 125 V maximum.";
+                   rdfs:isDefinedBy mobivoc:;
+                   rdfs:label "NEMA 5-20R"@en;
+                   rdfs:seeAlso <https://en.wikipedia.org/wiki/NEMA_connector#NEMA_5>;
+                   <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Electrical_outlet_with_label.jpg/1280px-Electrical_outlet_with_label.jpg>.
+mobivoc:NEMA_6-15 mobivoc:ocmConnectionID "15";
+                  a mobivoc:PlugType;
+                  rdfs:comment """NEMA connectors are power plugs and receptacles used for AC mains electricity in North America and other countries that use the standards set by the US National Electrical Manufacturers Association.
+All NEMA 6 devices are three-wire grounding devices (hot-hot-ground) used for 208 and 240 V circuits and rated for 250 V maximum. The 6-15 resembles the 5-15, but with collinear horizontal pins""";
+                  rdfs:isDefinedBy mobivoc:;
+                  rdfs:label "NEMA 6-15"@en;
+                  rdfs:seeAlso <https://en.wikipedia.org/wiki/NEMA_connector#NEMA_6>;
+                  <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Nema_6-15.svg/346px-Nema_6-15.svg.png>.
+mobivoc:NEMA_6-20 mobivoc:ocmConnectionID "14";
+                  a mobivoc:PlugType;
+                  rdfs:comment """NEMA connectors are power plugs and receptacles used for AC mains electricity in North America and other countries that use the standards set by the US National Electrical Manufacturers Association.
+All NEMA 6 devices are three-wire grounding devices (hot-hot-ground) used for 208 and 240 V circuits and rated for 250 V maximum. The 20 A plug has a blade rotated 90°.""";
+                  rdfs:isDefinedBy mobivoc:;
+                  rdfs:label "NEMA 6-20"@en;
+                  rdfs:seeAlso <https://en.wikipedia.org/wiki/NEMA_connector#NEMA_6>;
+                  <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/NEMA_simplified_pins.svg/765px-NEMA_simplified_pins.svg.png>.
+mobivoc:NoParkAndRideInformation a mobivoc:CivicStructureStatus;
+                                 rdfs:comment "No park and ride information will be available until the specified time.";
+                                 rdfs:isDefinedBy mobivoc:;
+                                 rdfs:label "Keine P+R-Informationen"@de,
+                                            "No park and ride information"@en.
+mobivoc:NoParkingAllowed a mobivoc:CivicStructureStatus;
+                         rdfs:comment "No parking allowed until the specified time.";
+                         rdfs:isDefinedBy mobivoc:;
+                         rdfs:label "No parking allowed"@en,
+                                    "Parken verboten"@de.
+mobivoc:NoParkingInformationAvailable a mobivoc:CivicStructureStatus;
+                                      rdfs:comment "Parking information is not available until a specified time.";
+                                      rdfs:isDefinedBy mobivoc:;
+                                      rdfs:label "No parking information available"@en,
+                                                 "Keine Parkinformationen verfügbar"@de.
+mobivoc:NormalParkingRestrictionsLifted a mobivoc:CivicStructureStatus;
+                                        rdfs:comment "The parking restrictions that normally apply in the specified location have been temporarily lifted.";
+                                        rdfs:isDefinedBy mobivoc:;
+                                        rdfs:label "Normal parking restrictions lifted"@en,
+                                                   "Normale Parkbeschränkungen aufgehoben"@de.
+mobivoc:OnlyAFewParkingSpacesAvailable a mobivoc:CivicStructureStatus;
+                                       rdfs:comment "The parking facility has 95% or greater occupancy.";
+                                       rdfs:isDefinedBy mobivoc:;
+                                       rdfs:label "Nur noch wenige Stellplätze frei"@de,
+                                                  "Only a few parking spaces available"@en.
+mobivoc:Operational a mobivoc:CivicStructureStatus;
+                    rdfs:comment "The facility is operational.";
+                    rdfs:isDefinedBy mobivoc:;
+                    rdfs:label "Status in Betrieb"@de,
+                               "Status operational"@en.
+mobivoc:ParallelParking <http://purl.org/dc/terms/created> "2017-05-10"^^xsd:date;
+                        <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                        a mobivoc:ArrangementPattern;
+                        rdfs:comment "Bei der Längsaufstellung wird das Fahrzeug (gemäß § 12 StVO) parallel zur Fahrbahn geparkt. Diese Fahrzeugaufstellung ist die gängigste Aufstellungsart an Straßen."@de,
+                                     "With parallel parking, vehicles are arranged in a line, with the front of one vehicle facing the back of an adjacent one. This is done parallel to a curb, when one is provided. Parallel parking is the most common mode of roadside parking for vehicles."@en;
+                        rdfs:isDefinedBy mobivoc:;
+                        rdfs:label "Parallel parking"@en,
+                                   "Längsaufstellung"@de;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                        <http://www.w3.org/2004/02/skos/core#altLabel> "Parallelaufstellung"@de;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Längsaufstellung"@de,
+                                                                        "Parallel parking"@en.
+mobivoc:ParkAndFly a mobivoc:ParkingFacilityConnection;
+                   rdfs:comment "Connection to airport.";
+                   rdfs:isDefinedBy mobivoc:;
+                   rdfs:label "Park & Fly",
+                              "Parken und Fliegen"@de;
+                   <http://www.w3.org/2004/02/skos/core#altLabel> "P+F",
+                                                                  "P&F".
+mobivoc:ParkAndRail a mobivoc:ParkingFacilityConnection;
+                    rdfs:comment "Connection to railway station.";
+                    rdfs:isDefinedBy mobivoc:;
+                    rdfs:label "Park and Rail".
+mobivoc:ParkAndRide a mobivoc:ParkingFacilityConnection;
+                    rdfs:comment "Connection to public transport.";
+                    rdfs:isDefinedBy mobivoc:;
+                    rdfs:label "Park & Ride"@en,
+                               "Parken und Reisen"@de;
+                    <http://www.w3.org/2004/02/skos/core#altLabel> "P+R",
+                                                                   "P&R".
+mobivoc:ParkAndRideServiceNotOperating a mobivoc:CivicStructureStatus;
+                                       rdfs:comment "Park and ride services are not operating until the specified time.";
+                                       rdfs:isDefinedBy mobivoc:;
+                                       rdfs:label "Kein P+R-Service"@de,
+                                                  "Park and ride service not operating"@en.
+mobivoc:ParkAndRideServiceOperating a mobivoc:CivicStructureStatus;
+                                    rdfs:comment "Park and ride services are operating until the specified time.";
+                                    rdfs:isDefinedBy mobivoc:;
+                                    rdfs:label "Park and ride service operating"@en,
+                                               "P+R-Service vorhanden"@de.
+mobivoc:ParkingBarrier a mobivoc:ParkingFacilityFeature;
+                       rdfs:comment "The parking facility has a parking barrier."@en;
+                       rdfs:isDefinedBy mobivoc:;
+                       rdfs:label "Parking barrier"@en,
+                                  "Parkschranke"@de.
+mobivoc:ParkingFacility <http://purl.org/dc/terms/created> "2014-10-16"^^xsd:date;
+                        <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                        a <http://www.w3.org/2002/07/owl#Class>,
+                          rdfs:Class;
+                        rdfs:comment "Any facility or area assigned for parking vehicles. A parking facility can provide one or more parking spaces."@en;
+                        rdfs:isDefinedBy mobivoc:;
+                        rdfs:label "Parking facility"@en,
+                                   "Parkeinrichtung"@de;
+                        rdfs:subClassOf <http://schema.org/CivicStructure>;
+                        <http://www.w3.org/2002/07/owl#equivalentClass> <http://schema.org/ParkingFacility>;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:ParkingFacilityConnection <http://purl.org/dc/terms/created> "2017-06-09"^^xsd:date;
+                                  <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                                  a rdfs:Class,
+                                    <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "Transport connections available at the parking facility (e.g. Park & Ride).";
+                                  rdfs:isDefinedBy mobivoc:;
+                                  rdfs:label "Parking facility connections"@en,
+                                             "Anschlussmöglichkeiten der Parkeinrichtung"@de;
+                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:ParkingFacilityEntrance <http://purl.org/dc/terms/created> "2017-05-10"^^xsd:date;
+                                <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                                a <http://www.w3.org/2002/07/owl#Class>,
+                                  rdfs:Class;
+                                rdfs:comment "Entrance of a parking facility where vehicles can enter the parking facility."@en;
+                                rdfs:isDefinedBy mobivoc:;
+                                rdfs:label "Entrance"@en,
+                                           "Einfahrt"@de;
+                                rdfs:subClassOf <http://schema.org/CivicStructure>;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:ParkingFacilityExit <http://purl.org/dc/terms/created> "2017-05-10"^^xsd:date;
+                            <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                            a <http://www.w3.org/2002/07/owl#Class>,
+                              rdfs:Class;
+                            rdfs:comment "Exit of a parking facility where vehicles can leave the parking facility."@en;
+                            rdfs:isDefinedBy mobivoc:;
+                            rdfs:label "Ausfahrt"@de,
+                                       "Exit"@en;
+                            rdfs:subClassOf <http://schema.org/CivicStructure>;
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:ParkingFacilityFeature <http://purl.org/dc/terms/created> "2017-04-13"^^xsd:date;
+                               <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                               a rdfs:Class,
+                                 <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Features of the parking facility (e.g. parking for disabled people).";
+                               rdfs:isDefinedBy mobivoc:;
+                               rdfs:label "Parking facility feature"@en,
+                                          "Ausstattung der Parkeinrichtung"@de;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:ParkingGarage <http://purl.org/dc/terms/created> "2017-04-13"^^xsd:date;
+                      <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                      a <http://www.w3.org/2002/07/owl#Class>,
+                        rdfs:Class;
+                      rdfs:comment "A single level or multilevel parking building to park at.";
+                      rdfs:isDefinedBy mobivoc:;
+                      rdfs:label "Parking garage"@en,
+                                 "Parkhaus"@de;
+                      rdfs:subClassOf mobivoc:ParkingFacility;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                      <http://www.w3.org/2004/02/skos/core#altLabel> "Hochgarage"@de,
+                                                                     "Parking structure"@en,
+                                                                     "Car park"@en,
+                                                                     "Parking building"@en;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "Parking garage"@en,
+                                                                      "Parkhaus"@de.
+mobivoc:ParkingLot <http://purl.org/dc/terms/created> "2017-05-30"^^xsd:date;
+                   <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                   a rdfs:Class,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Parking area on a single groundfloor level that is usually located outdoor.";
+                   rdfs:isDefinedBy mobivoc:;
+                   rdfs:label "Parking lot"@en,
+                              "Parkplatz"@de;
+                   rdfs:subClassOf mobivoc:ParkingFacility;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                   <http://www.w3.org/2004/02/skos/core#altLabel> "car lot"@en,
+                                                                  "Parkfläche"@de;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Parking lot"@en-us,
+                                                                   "Parkplatz"@de,
+                                                                   "Car park"@en-uk.
+mobivoc:ParkingSpace <http://purl.org/dc/terms/created> "2017-05-10"^^xsd:date;
+                     <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                     a rdfs:Class,
+                       <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "A parking space is a location that is designated for parking a vehicle. A parking space has a certain size, is sometimes marked and can be located at roadside or inside a parking facility. Depending on the location of the parking space, there can be regulations regarding the time allowed to park and a fee paid to use the parking space."@en;
+                     rdfs:isDefinedBy mobivoc:;
+                     rdfs:label "Parking space"@en,
+                                "Stellplatz"@de;
+                     rdfs:subClassOf <http://schema.org/CivicStructure>;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                     <http://www.w3.org/2004/02/skos/core#hiddenLabel> "Parkplatz"@de;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Stellplatz"@de,
+                                                                     "Parking space"@en.
+mobivoc:PayStation a mobivoc:ParkingFacilityFeature;
+                   rdfs:comment "The parking facility has a pay station."@en;
+                   rdfs:isDefinedBy mobivoc:;
+                   rdfs:label "Pay station"@en,
+                              "Kassenautomat"@de.
+mobivoc:PerpendicularParking <http://purl.org/dc/terms/created> "2017-05-10"^^xsd:date;
+                             <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                             a mobivoc:ArrangementPattern;
+                             rdfs:comment "Bei der Senkrechtaufstellung wird das Fahrzeug mit einem Aufstellwinkel von von 100 gon (90°) geparkt."@de,
+                                          "With perpendicular parking, vehicles are parked side to side, perpendicular to an aisle, curb, or wall. This type of parking is commonly used in parking lots and parking facilities."@en;
+                             rdfs:isDefinedBy mobivoc:;
+                             rdfs:label "Perpendicular parking"@en,
+                                        "Senkrechtaufstellung"@de;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                             <http://www.w3.org/2004/02/skos/core#altLabel> "Bay parking"@en;
+                             <http://www.w3.org/2004/02/skos/core#prefLabel> "Perpendicular parking"@en.
+mobivoc:PersonsWithDisabledParkingPermit a mobivoc:UserGroup;
+                                         rdfs:comment "Persons with disabilities having a special parking permit that gives the right to use parking spaces reserved for disabled people."@en;
+                                         rdfs:isDefinedBy mobivoc:;
+                                         rdfs:label "Persons with disabled parking permit"@en,
+                                                    "Personen mit Behindertenparkausweis"@de.
+mobivoc:Plug a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Component of a charger to connect an electric vehicle. There are different plug types used for charging electric vehicles.";
+             rdfs:isDefinedBy mobivoc:;
+             rdfs:label "Plug"@en,
+                        "Anschluss"@de.
+mobivoc:PlugType a rdfs:Class,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Type of a plug that is used to connect electric vehicles.";
+                 rdfs:isDefinedBy mobivoc:;
+                 rdfs:label "Plug type"@en,
+                            "Steckertyp"@de.
+mobivoc:RealTimeCapacity <http://purl.org/dc/terms/created> "2017-04-05"^^xsd:date,
+                                                            "2017-05-15"^^xsd:date;
+                         <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                         a <http://www.w3.org/2002/07/owl#Class>,
+                           rdfs:Class;
+                         rdfs:comment "Real-time capacity of a parking facility or parking space."@en,
+                                      "Real-time capacity of a civic structure."@en;
+                         rdfs:isDefinedBy mobivoc:;
+                         rdfs:label "Echtzeit Kapazität"@de,
+                                    "Real time capacity"@en;
+                         rdfs:subClassOf mobivoc:Capacity;
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:RecreationalVehicle a <http://schema.org/Vehicle>;
+                            rdfs:comment "A motor vehicle or trailer equipped with living space and amenities found in a home."@en;
+                            rdfs:isDefinedBy mobivoc:;
+                            rdfs:label "Recreational vehicle"@en,
+                                       "Wohnmobil"@de.
+mobivoc:Restrict a mobivoc:Action;
+                 rdfs:comment "An action is restricted."@en;
+                 rdfs:isDefinedBy mobivoc:;
+                 rdfs:label "Restrict"@en,
+                            "Beschränken"@de.
+mobivoc:SAE_Combo mobivoc:ocmConnectionID "32";
+                  a mobivoc:PlugType;
+                  rdfs:comment "The Combined Charging System is a quick charging method for battery electric vehicles delivering high-voltage direct current via a special electrical connector derived from the SAE J1772 (IEC Type 1).";
+                  rdfs:isDefinedBy mobivoc:;
+                  rdfs:label "SAE Combo (DC Fast Charge J1772)"@en;
+                  rdfs:seeAlso <https://en.wikipedia.org/wiki/Combined_Charging_System>;
+                  <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/CCSCombo2.svg/1052px-CCSCombo2.svg.png>.
+mobivoc:SAE_J1772-2001 mobivoc:ocmConnectionID "7";
+                       a mobivoc:PlugType;
+                       rdfs:comment """SAE J1772 (IEC Type 1) is a North American standard for electrical connectors for electric vehicles maintained by the SAE International and has the formal title \"SAE Surface Vehicle Recommended Practice J1772, SAE Electric Vehicle Conductive Charge Coupler\".""";
+                       rdfs:isDefinedBy mobivoc:;
+                       rdfs:label "J1772"@en;
+                       rdfs:seeAlso <https://en.wikipedia.org/wiki/SAE_J1772>.
+mobivoc:SAE_J1772-2009 mobivoc:ocmConnectionID "1";
+                       a mobivoc:PlugType;
+                       rdfs:comment """SAE J1772 (IEC Type 1) is a North American standard for electrical connectors for electric vehicles maintained by the SAE International and has the formal title \"SAE Surface Vehicle Recommended Practice J1772, SAE Electric Vehicle Conductive Charge Coupler\". 
+    The SAE J1772-2009 connector specification has been added to the international IEC 62196-2 standard.""";
+                       rdfs:isDefinedBy mobivoc:;
+                       rdfs:label "J1772 2009"@en;
+                       rdfs:seeAlso <https://en.wikipedia.org/wiki/IEC_62196#Type_1_(SAE_J1772-2009),_Yazaki>;
+                       <http://www.w3.org/2004/02/skos/core#altLabel> "IEC 62196 Type 1";
+                       <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SAE_J1772_7058855567.jpg/1280px-SAE_J1772_7058855567.jpg>.
+mobivoc:SEV1011_Type_J mobivoc:ocmConnectionID "1037";
+                       a mobivoc:PlugType;
+                       rdfs:comment "The Swiss standard, also used in Liechtenstein, is SN SEV 1011:2009 Plugs and socket-outlets for household and similar purposes. The standard defines a hierarchical system of plugs and sockets with two, three and five pins, and 10 A or 16 A ratings. Sockets will accept plugs with the same or fewer pins and the same or lower ratings.";
+                       rdfs:isDefinedBy mobivoc:;
+                       rdfs:label "SEV1011 Type J"@en;
+                       rdfs:seeAlso <https://en.wikipedia.org/wiki/AC_power_plugs_and_sockets#10_A_plugs_and_sockets_(Type_J)>;
+                       <http://www.w3.org/2004/02/skos/core#altLabel> "Swiss domestic 3-pin",
+                                                                      "Type J";
+                       <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/d/da/AC_Power_Plug_Type_J.jpg>.
+mobivoc:SpecialParkingRestrictionsInForce a mobivoc:CivicStructureStatus;
+                                          rdfs:comment "Parking restrictions, other than those that normally apply, are in force in a specified area.";
+                                          rdfs:isDefinedBy mobivoc:;
+                                          rdfs:label "Besondere Parkbeschränkungen in Kraft"@de,
+                                                     "Special parking restrictions in force"@en.
+mobivoc:StatusUnknown a mobivoc:CivicStructureStatus;
+                      rdfs:comment "The status of the parking facility is unknown.";
+                      rdfs:isDefinedBy mobivoc:;
+                      rdfs:label "Status unknown"@en,
+                                 "Status unbekannt"@de.
+mobivoc:SurveillanceBySecurityGuards a mobivoc:ParkingFacilityFeature;
+                                     rdfs:comment "The parking facility is surveilled by security guards."@en;
+                                     rdfs:isDefinedBy mobivoc:;
+                                     rdfs:label "surveillance by security guards"@en,
+                                                "Bewacht durch Personal"@de.
+mobivoc:TaxiDrivers a mobivoc:UserGroup;
+                    rdfs:comment "Drivers of a vehicle for hire, used by a single passenger or small group of passengers, often for a non-shared ride. Taxi drivers convey passengers between locations of their choice."@en;
+                    rdfs:isDefinedBy mobivoc:;
+                    rdfs:label "Taxifahrer"@de,
+                               "Taxi drivers"@en;
+                    <http://www.w3.org/2004/02/skos/core#altLabel> "Taxicab drivers"@en,
+                                                                   "Cabbies"@en-uk,
+                                                                   "Cab drivers"@en;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Taxi drivers"@en,
+                                                                    "Taxifahrer"@de.
+mobivoc:Tesla_Supercharger mobivoc:ocmConnectionID "27",
+                                                   "30";
+                           a mobivoc:PlugType;
+                           rdfs:comment "The Tesla Supercharger network is a system of 480-volt DC fast-charging stations built by American vehicle manufacturer Tesla Inc. to allow longer journeys for their all-electric manufactured vehicles (Model S, 3 and X), through quick charging of the vehicle's battery packs.";
+                           rdfs:isDefinedBy mobivoc:;
+                           rdfs:label "Tesla Supercharger"@en;
+                           rdfs:seeAlso <https://en.wikipedia.org/wiki/Tesla_Supercharger>;
+                           <http://xmlns.com/foaf/0.1/depiction> <https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Tesla-type-2-model-s-charge-port-inlet-0996.jpg/1280px-Tesla-type-2-model-s-charge-port-inlet-0996.jpg>.
+mobivoc:TimeSpecification <http://purl.org/dc/terms/created> "2017-06-07"^^xsd:date;
+                          <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                          a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Specific time a price specification is due for."@en;
+                          rdfs:isDefinedBy mobivoc:;
+                          rdfs:label "Time specification"@en,
+                                     "Zeitspezifikation"@de;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:Truck a <http://schema.org/Vehicle>;
+              rdfs:comment "A motor vehicle designed to transport cargo."@en;
+              rdfs:isDefinedBy mobivoc:;
+              rdfs:label "Truck"@en,
+                         "Lkw"@de.
+mobivoc:UndergroundParkingGarage <http://purl.org/dc/terms/created> "2017-04-13"^^xsd:date;
+                                 <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                                 a rdfs:Class,
+                                   <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Parking facility with one or more levels below the surface and none above ground.";
+                                 rdfs:isDefinedBy mobivoc:;
+                                 rdfs:label "Tiefgarage"@de,
+                                            "Underground parking garage"@en;
+                                 rdfs:subClassOf mobivoc:ParkingFacility;
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                 <http://www.w3.org/2004/02/skos/core#altLabel> "Rampengarage"@de;
+                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Tiefgarage"@de,
+                                                                                 "Underground parking garage"@en.
+mobivoc:UserGroup <http://purl.org/dc/terms/created> "2017-06-07"^^xsd:date;
+                  <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "A group of users having a common characteristic."@en;
+                  rdfs:isDefinedBy mobivoc:;
+                  rdfs:label "User group"@en,
+                             "Nutzergruppe"@de;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:VideoSurveillance a mobivoc:ParkingFacilityFeature;
+                          rdfs:comment "The parking facility is surveilled by video."@en;
+                          rdfs:isDefinedBy mobivoc:;
+                          rdfs:label "Video surveillance"@en,
+                                     "Videoüberwachung"@de.
+mobivoc:Women a mobivoc:UserGroup;
+              rdfs:comment "Female persons."@en;
+              rdfs:isDefinedBy mobivoc:;
+              rdfs:label "Women"@en,
+                         "Frauen"@de.
+mobivoc:XLR4 mobivoc:ocmConnectionID "21";
+             a mobivoc:PlugType;
+             rdfs:comment "The XLR connector is a style of electrical connector, primarily found on professional audio, video, and stage lighting equipment. The connectors are circular in design and have between 3 and 7 pins. They are most commonly associated with balanced audio interconnection, including AES3 digital audio, but are also used for lighting control, low-voltage power supplies, and other applications. XLR connectors are available from a number of manufacturers and are covered by an international standard for dimensions, IEC 61076-2-103.[1] They are superficially similar to the older and smaller DIN connector range, but are not physically compatible with them.";
+             rdfs:isDefinedBy mobivoc:;
+             rdfs:label "XLR 4-Pin"@en;
+             rdfs:seeAlso <https://en.wikipedia.org/wiki/XLR_connector#Four-pin_(XLR4)>.
+mobivoc:access <http://purl.org/dc/terms/created> "2017-06-07"^^xsd:date;
+               <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                 rdf:Property;
+               rdfs:comment "Indicates that a civic structure can only be accessed when certain conditions are fullfilled."@en;
+               rdfs:domain <http://schema.org/CivicStructure>;
+               rdfs:isDefinedBy mobivoc:;
+               rdfs:label "access"@en;
+               rdfs:range mobivoc:AccessCondition;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:action <http://purl.org/dc/terms/created> "2017-06-23"^^xsd:date;
+               <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                 rdf:Property;
+               rdfs:comment "Indicates which action is applied."@en;
+               rdfs:domain mobivoc:AccessCondition;
+               rdfs:isDefinedBy mobivoc:;
+               rdfs:label "action"@en;
+               rdfs:range mobivoc:Action;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:additionalInformation <http://purl.org/dc/terms/created> "2017-04-07"^^xsd:date;
+                              <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                              a rdf:Property,
+                                <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                              rdfs:comment "Further information about the civic structure or facility."@en;
+                              rdfs:domain <http://schema.org/CivicStructure>;
+                              rdfs:isDefinedBy mobivoc:;
+                              rdfs:label "additional information"@en,
+                                         "zusätzliche Information"@de;
+                              rdfs:range xsd:string;
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:arrangement <http://purl.org/dc/terms/created> "2017-05-10"^^xsd:date;
+                    <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                    a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                      rdf:Property;
+                    rdfs:comment "Indicates in which pattern a parking space is arranged.";
+                    rdfs:domain mobivoc:ParkingSpace,
+                                mobivoc:ParkingFacility;
+                    rdfs:isDefinedBy mobivoc:;
+                    rdfs:label "arrangement pattern"@en,
+                               "Anordnung"@de;
+                    rdfs:range mobivoc:ArrangementPattern;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:brand a rdf:Property,
+                <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:comment "Indicates the brand of a charger.";
+              rdfs:domain mobivoc:Charger;
+              rdfs:isDefinedBy mobivoc:;
+              rdfs:label "Marke"@de,
+                         "brand"@en;
+              rdfs:range xsd:string.
+mobivoc:cableAvailable a rdf:Property,
+                         <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:comment "Indicates whether the plug has a cable.";
+                       rdfs:domain mobivoc:Plug;
+                       rdfs:isDefinedBy mobivoc:;
+                       rdfs:label "cable available"@en,
+                                  "Kabel verfügbar"@de;
+                       rdfs:range xsd:boolean.
+mobivoc:capacity <http://purl.org/dc/terms/created> "2017-04-13"^^xsd:date;
+                 <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                 a rdf:Property,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Relates the civic structure to its capacity."@en;
+                 rdfs:domain <http://schema.org/CivicStructure>;
+                 rdfs:isDefinedBy mobivoc:;
+                 rdfs:label "hat Kapazität"@de,
+                            "has capacity"@en;
+                 rdfs:range mobivoc:Capacity;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:charger a rdf:Property,
+                  <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Describes the charger available at a charging point. A charging point can have more than one charger.";
+                rdfs:domain mobivoc:ChargingPoint;
+                rdfs:isDefinedBy mobivoc:;
+                rdfs:label "charger"@en;
+                rdfs:range mobivoc:Charger.
+mobivoc:chargerQuantity a rdf:Property,
+                          <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "Indicates the amount of chargers available at the charging point.";
+                        rdfs:domain mobivoc:Charger;
+                        rdfs:isDefinedBy mobivoc:;
+                        rdfs:label "Anzahl Ladepunkte"@de,
+                                   "charger quantity"@en;
+                        rdfs:range xsd:integer.
+mobivoc:chargingPoint <http://purl.org/dc/terms/created> "2017-04-13"^^xsd:date;
+                      <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                      a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                        rdf:Property;
+                      rdfs:comment "Indicates whether charging points are available.";
+                      rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (mobivoc:ParkingFacility
+                                                                            mobivoc:ParkingSpace) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>];
+                      rdfs:isDefinedBy mobivoc:;
+                      rdfs:label "has charging point"@en,
+                                 "hat Ladestation"@de;
+                      rdfs:range mobivoc:ChargingPoint;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:civicStructureStatus <http://purl.org/dc/terms/created> "2017-06-23"^^xsd:date;
+                             <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                             a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                               rdf:Property;
+                             rdfs:comment "Indicates the current status of the civil structure.";
+                             rdfs:domain <http://schema.org/CivicStructure>;
+                             rdfs:isDefinedBy mobivoc:;
+                             rdfs:label "civic structure status"@en,
+                                        "hat Status der zivilen Struktur"@de;
+                             rdfs:range mobivoc:CivicStructureStatus;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:connectedTo <http://purl.org/dc/terms/created> "2017-05-30"^^xsd:date;
+                    <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                    a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                      rdf:Property;
+                    rdfs:comment "Indicates the transport connections available.";
+                    rdfs:domain mobivoc:ParkingFacility;
+                    rdfs:isDefinedBy mobivoc:;
+                    rdfs:label "connected to";
+                    rdfs:range mobivoc:ParkingFacilityConnection;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:currentInA a rdf:Property,
+                     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "Indicates the current of a charger or plug in ampere.";
+                   rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (mobivoc:Plug
+                                                                         mobivoc:Charger) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>];
+                   rdfs:isDefinedBy mobivoc:;
+                   rdfs:label "current in A"@en;
+                   rdfs:range xsd:double.
+mobivoc:currentType a rdf:Property,
+                      <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "Indicates the current type (AC/DC) of the plug.";
+                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (mobivoc:Plug
+                                                                          mobivoc:Charger) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>];
+                    rdfs:isDefinedBy mobivoc:;
+                    rdfs:label "current type"@en;
+                    rdfs:range xsd:string.
+mobivoc:currentValue <http://purl.org/dc/terms/created> "2015-05-15"^^xsd:date;
+                     <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                     a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                       rdf:Property;
+                     rdfs:comment "Indicates the current value of the real-time capacity."@en;
+                     rdfs:domain mobivoc:RealTimeCapacity;
+                     rdfs:isDefinedBy mobivoc:;
+                     rdfs:label "current value"@en;
+                     rdfs:range xsd:integer;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:customerOf <http://purl.org/dc/terms/created> "2017-06-23"^^xsd:date;
+                   <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     rdf:Property;
+                   rdfs:comment "Indicates that a group is customer of a specific business entity."@en;
+                   rdfs:domain mobivoc:UserGroup;
+                   rdfs:isDefinedBy mobivoc:;
+                   rdfs:label "Kunde von"@de,
+                              "customer of"@en;
+                   rdfs:range <http://purl.org/goodrelations/v1#BusinessEntity>;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:dueForTime <http://purl.org/dc/terms/created> "2017-06-07"^^xsd:date;
+                   <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                   a rdf:Property,
+                     <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Indicates that a price specification is due for a certain time specification."@en;
+                   rdfs:domain <http://schema.org/PriceSpecification>;
+                   rdfs:isDefinedBy mobivoc:;
+                   rdfs:label "due for time"@en,
+                              "fällig für Zeitdauer"@de;
+                   rdfs:range mobivoc:TimeSpecification;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:employeeOf <http://purl.org/dc/terms/created> "2017-06-23"^^xsd:date;
+                   <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                   a rdf:Property,
+                     <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Indicates that a group is employee of a specific business entity."@en;
+                   rdfs:domain mobivoc:UserGroup;
+                   rdfs:isDefinedBy mobivoc:;
+                   rdfs:label "employee of"@en,
+                              "Mitarbeiter von"@de;
+                   rdfs:range <http://purl.org/goodrelations/v1#BusinessEntity>;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:energySource a rdf:Property,
+                       <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "Indicates the energy source used for the charging point i.e. renewable etc.";
+                     rdfs:domain mobivoc:ChargingPoint;
+                     rdfs:isDefinedBy mobivoc:;
+                     rdfs:label "energy source"@en;
+                     rdfs:range xsd:string.
+mobivoc:entrance <http://purl.org/dc/terms/created> "2017-05-15"^^xsd:date;
+                 <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                 a rdf:Property,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Describes the entrance of a parking facility."@en;
+                 rdfs:domain mobivoc:ParkingFacility;
+                 rdfs:isDefinedBy mobivoc:;
+                 rdfs:label "entrance"@en,
+                            "hat Einfahrt"@de;
+                 rdfs:range mobivoc:ParkingFacilityEntrance;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:exit <http://purl.org/dc/terms/created> "2017-05-10"^^xsd:date;
+             <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+               rdf:Property;
+             rdfs:comment "Describes the exit of a parking facility.";
+             rdfs:domain mobivoc:ParkingFacility;
+             rdfs:isDefinedBy mobivoc:;
+             rdfs:label "hat Ausfahrt"@de,
+                        "exit"@en;
+             rdfs:range mobivoc:ParkingFacilityExit;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:exitRate <http://purl.org/dc/terms/created> "2017-06-07"^^xsd:date;
+                 <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                 a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                   rdf:Property;
+                 rdfs:comment "The rate at which vehicles are exiting the parking facility.";
+                 rdfs:domain mobivoc:ParkingFacility;
+                 rdfs:isDefinedBy mobivoc:;
+                 rdfs:label "exit rate"@en;
+                 rdfs:range xsd:string;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:feature <http://purl.org/dc/terms/created> "2017-09-01"^^xsd:date;
+                <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                a rdf:Property,
+                  <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Indicates which feature the parking facility provides.";
+                rdfs:domain mobivoc:ParkingFacility;
+                rdfs:isDefinedBy mobivoc:;
+                rdfs:label "feature"@en;
+                rdfs:range mobivoc:ParkingFacilityFeature;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:fillRate <http://purl.org/dc/terms/created> "2017-05-10"^^xsd:date;
+                 <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                 a rdf:Property,
+                   <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:comment "The rate at which vehicles are entering the parking facility.";
+                 rdfs:domain mobivoc:ParkingFacility;
+                 rdfs:isDefinedBy mobivoc:;
+                 rdfs:label "fill rate"@en;
+                 rdfs:range xsd:string;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:freeOfCharge <http://purl.org/dc/terms/created> "2017-06-07"^^xsd:date;
+                     <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                     a rdf:Property,
+                       <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "Indicates that the usage of the civic structure is for free.";
+                     rdfs:domain <http://schema.org/PriceSpecification>;
+                     rdfs:isDefinedBy mobivoc:;
+                     rdfs:label "free of charge"@en,
+                                "kostenlos"@de;
+                     rdfs:range xsd:boolean;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:id <http://purl.org/dc/terms/created> "2017-05-11"^^xsd:date;
+           <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+           a rdf:Property,
+             <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:comment "ID of the entity.";
+           rdfs:isDefinedBy mobivoc:;
+           rdfs:label "ID"@de,
+                      "ID"@en;
+           rdfs:range xsd:string;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:isFastChargeCapable a rdf:Property,
+                              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:comment "Indicates that the charger is able to fast charge.";
+                            rdfs:domain mobivoc:Charger;
+                            rdfs:isDefinedBy mobivoc:;
+                            rdfs:label "erlaubt Schnellladen"@de,
+                                       "is fast charge capable"@en;
+                            rdfs:range xsd:boolean.
+mobivoc:level <http://purl.org/dc/terms/created> "2018-01-11"^^xsd:date;
+              <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+              a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                rdf:Property;
+              rdfs:comment "Indicates the level of a parking facility the parking space is located in."@en;
+              rdfs:domain mobivoc:ParkingSpace;
+              rdfs:isDefinedBy mobivoc:;
+              rdfs:label "Ebene"@de,
+                         "level"@en;
+              rdfs:range xsd:integer;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:maximumValue <http://purl.org/dc/terms/created> "2015-05-15"^^xsd:date;
+                     <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                     a rdf:Property,
+                       <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "Indicates the maximum value of the capacity."@en;
+                     rdfs:domain mobivoc:Capacity;
+                     rdfs:isDefinedBy mobivoc:;
+                     rdfs:label "maximum value"@en;
+                     rdfs:range xsd:integer;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:model a rdf:Property,
+                <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:comment "Indicates the charger model of the charging point.";
+              rdfs:domain mobivoc:Charger;
+              rdfs:isDefinedBy mobivoc:;
+              rdfs:label "Modell"@de,
+                         "model"@en;
+              rdfs:range xsd:string.
+mobivoc:name <http://purl.org/dc/terms/created> "2017-04-13"^^xsd:date;
+             <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+             a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+               rdf:Property;
+             rdfs:comment "Name of the civic structure or facility.";
+             rdfs:domain <http://schema.org/CivicStructure>;
+             rdfs:isDefinedBy mobivoc:;
+             rdfs:label "Name"@de,
+                        "name"@en;
+             rdfs:range xsd:string;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:numberOfLevels <http://purl.org/dc/terms/created> "2018-01-11"^^xsd:date;
+                       <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                       a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                         rdf:Property;
+                       rdfs:comment "Indicates the total number of levels a parking facility has."@en;
+                       rdfs:domain mobivoc:ParkingFacility;
+                       rdfs:isDefinedBy mobivoc:;
+                       rdfs:label "Anzahl Ebenen"@de,
+                                  "number of levels"@en;
+                       rdfs:range xsd:integer;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:ocmConnectionID a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                        rdfs:comment "The OpenChargeMap ID used for the Connection / Plug.";
+                        rdfs:isDefinedBy mobivoc:;
+                        rdfs:label "ocm connection ID"@en;
+                        rdfs:range xsd:string.
+mobivoc:operatedBy <http://purl.org/dc/terms/created> "2017-06-07"^^xsd:date;
+                   <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                   a rdf:Property,
+                     <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The operator of a civic structure or facility. Operator and owner can be different business entitites."@en;
+                   rdfs:domain <http://schema.org/CivicStructure>;
+                   rdfs:isDefinedBy mobivoc:;
+                   rdfs:label "betrieben von"@de,
+                              "operated by"@en;
+                   rdfs:range <http://purl.org/goodrelations/v1#BusinessEntity>;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:overnight <http://purl.org/dc/terms/created> "2017-06-07"^^xsd:date;
+                  <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                  a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                    rdf:Property;
+                  rdfs:comment "Indicates that a time period overnight is possible.";
+                  rdfs:domain mobivoc:TimeSpecification;
+                  rdfs:isDefinedBy mobivoc:;
+                  rdfs:label "über Nacht"@de,
+                             "overnight"@en;
+                  rdfs:range xsd:boolean;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:ownedBy <http://purl.org/dc/terms/created> "2017-04-05"^^xsd:date;
+                <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  rdf:Property;
+                rdfs:comment "The owner of a civic structure or facility. Owner and operator can be different business entities."@en;
+                rdfs:domain <http://schema.org/CivicStructure>;
+                rdfs:isDefinedBy mobivoc:;
+                rdfs:label "in Besitz von"@de,
+                           "owned by"@en;
+                rdfs:range <http://purl.org/goodrelations/v1#BusinessEntity>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:parkingSpace <http://purl.org/dc/terms/created> "2017-05-15"^^xsd:date;
+                     <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                     a rdf:Property,
+                       <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Relates the parking facility to a contained parking space."@en;
+                     rdfs:domain mobivoc:ParkingFacility;
+                     rdfs:isDefinedBy mobivoc:;
+                     rdfs:label "parking space"@en,
+                                "hat Stellplatz"@de;
+                     rdfs:range mobivoc:ParkingSpace;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:picture <http://purl.org/dc/terms/created> "2017-06-07"^^xsd:date;
+                <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                  rdf:Property;
+                rdfs:comment "URL of the picture of a civic structure or facility."@en;
+                rdfs:domain <http://schema.org/CivicStructure>;
+                rdfs:isDefinedBy mobivoc:;
+                rdfs:label "Bild"@de,
+                           "picture"@en;
+                rdfs:range xsd:string;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:plug a rdf:Property,
+               <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "Indicates the plugs available at a charger.";
+             rdfs:domain mobivoc:Charger;
+             rdfs:isDefinedBy mobivoc:;
+             rdfs:label "plug"@en;
+             rdfs:range mobivoc:Plug.
+mobivoc:plugType a rdf:Property,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Indicates the type of a plug.";
+                 rdfs:domain mobivoc:Plug;
+                 rdfs:isDefinedBy mobivoc:;
+                 rdfs:label "plug type"@en;
+                 rdfs:range mobivoc:PlugType.
+mobivoc:powerInKW a rdf:Property,
+                    <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "Indicates the power of a charger or plug in kilowatts.";
+                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (mobivoc:Plug
+                                                                        mobivoc:Charger) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>];
+                  rdfs:isDefinedBy mobivoc:;
+                  rdfs:label "power in kW"@en;
+                  rdfs:range xsd:double.
+mobivoc:price <http://purl.org/dc/terms/created> "2017-06-07"^^xsd:date;
+              <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+              a rdf:Property,
+                <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Indicates that a civic structure can be used for a specific price."@en;
+              rdfs:domain <http://schema.org/CivicStructure>;
+              rdfs:isDefinedBy mobivoc:;
+              rdfs:label "price"@en,
+                         "Preis"@de;
+              rdfs:range <http://schema.org/PriceSpecification>;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:queuingTime <http://purl.org/dc/terms/created> "2017-05-15"^^xsd:date;
+                    <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                    a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                      rdf:Property;
+                    rdfs:comment "The current queuing time (duration) for entering the parking facility.";
+                    rdfs:domain mobivoc:ParkingFacility;
+                    rdfs:isDefinedBy mobivoc:;
+                    rdfs:label "Wartezeit"@de,
+                               "queuing time"@en;
+                    rdfs:range xsd:string;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:rateOfOccupancy <http://purl.org/dc/terms/created> "2017-05-10"^^xsd:date;
+                        <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                        a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                          rdf:Property;
+                        rdfs:comment "Indicates the percentage value of parking spaces occupied in a parking facility.";
+                        rdfs:domain mobivoc:ParkingFacility;
+                        rdfs:isDefinedBy mobivoc:;
+                        rdfs:label "Belegungsrate"@de,
+                                   "rate of occupancy"@en;
+                        rdfs:range xsd:string;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:threePhasedCurrentAvailable a rdf:Property,
+                                      <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                    rdfs:comment "Indicates whether three-phased current is available.";
+                                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (mobivoc:Plug
+                                                                                          mobivoc:Charger) ; 
+                                                 a <http://www.w3.org/2002/07/owl#Class>];
+                                    rdfs:isDefinedBy mobivoc:;
+                                    rdfs:label "three-phased current available"@en;
+                                    rdfs:range xsd:boolean.
+mobivoc:timeEndValue <http://purl.org/dc/terms/created> "2017-06-07"^^xsd:date;
+                     <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                     a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                       rdf:Property;
+                     rdfs:comment "Indicates the end value of a time period.";
+                     rdfs:domain mobivoc:TimeSpecification;
+                     rdfs:isDefinedBy mobivoc:;
+                     rdfs:label "time end value"@en,
+                                "Endzeit"@de;
+                     rdfs:range xsd:float;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:timeStartValue <http://purl.org/dc/terms/created> "2017-06-07"^^xsd:date;
+                       <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                       a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                         rdf:Property;
+                       rdfs:comment "Indicates the start value of a time period.";
+                       rdfs:domain mobivoc:TimeSpecification;
+                       rdfs:isDefinedBy mobivoc:;
+                       rdfs:label "time start value"@en,
+                                  "Anfangszeit"@de;
+                       rdfs:range xsd:float;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:timeUnit <http://purl.org/dc/terms/created> "2017-06-07"^^xsd:date;
+                 <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                 a rdf:Property,
+                   <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:comment "Indicates the time unit a value is specified for.";
+                 rdfs:domain mobivoc:TimeSpecification;
+                 rdfs:isDefinedBy mobivoc:;
+                 rdfs:label "time unit"@en,
+                            "Zeiteinheit"@de;
+                 rdfs:range xsd:string;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:totalCapacity <http://purl.org/dc/terms/created> "2017-05-10"^^xsd:date;
+                      <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                      a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                        rdf:Property;
+                      rdfs:comment "Indicates the total number of parking spaces of a parking facility.";
+                      rdfs:domain mobivoc:ParkingFacility;
+                      rdfs:isDefinedBy mobivoc:;
+                      rdfs:label "total capacity"@en,
+                                 "Gesamtkapazität"@de;
+                      rdfs:range xsd:integer;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:unspecifiedCharge <http://purl.org/dc/terms/created> "2017-06-07"^^xsd:date;
+                          <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                          a rdf:Property,
+                            <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:comment "Indicates that a charge has to be paid for the usage of the civic structure.";
+                          rdfs:domain <http://schema.org/PriceSpecification>;
+                          rdfs:isDefinedBy mobivoc:;
+                          rdfs:label "kostenpflichtig"@de,
+                                     "unspecified charge"@en;
+                          rdfs:range xsd:boolean;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:validForUserGroup <http://purl.org/dc/terms/created> "2017-09-01"^^xsd:date;
+                          <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                          a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                            rdf:Property;
+                          rdfs:comment "Indicates that an entity is valid for a specific group of users."@en;
+                          rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (mobivoc:AccessCondition
+                                                                                <http://schema.org/PriceSpecification>
+                                                                                mobivoc:Capacity) ; 
+                                       a <http://www.w3.org/2002/07/owl#Class>];
+                          rdfs:isDefinedBy mobivoc:;
+                          rdfs:label "valid for user group"@en,
+                                     "gültig für Nutzergruppe"@de;
+                          rdfs:range mobivoc:UserGroup;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:validForVehicle <http://purl.org/dc/terms/created> "2017-08-29"^^xsd:date;
+                        <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                        a rdf:Property,
+                          <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "Indicates that an entity is valid for a specific type of vehicle."@en;
+                        rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (mobivoc:AccessCondition
+                                                                              <http://schema.org/PriceSpecification>
+                                                                              mobivoc:Capacity) ; 
+                                     a <http://www.w3.org/2002/07/owl#Class>];
+                        rdfs:isDefinedBy mobivoc:;
+                        rdfs:label "gültig für Fahrzeug"@de,
+                                   "valid for vehicle"@en;
+                        rdfs:range <http://schema.org/Vehicle>;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:vehicleHeightLimitInM <http://purl.org/dc/terms/created> "2017-04-13"^^xsd:date;
+                              <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                              a rdf:Property,
+                                <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                              rdfs:comment "Indicates the height limit in meter for vehicles using the parking facility.";
+                              rdfs:domain <http://schema.org/CivicStructure>;
+                              rdfs:isDefinedBy mobivoc:;
+                              rdfs:label "Höhenbegrenzung für Fahrzeuge"@de,
+                                         "vechicle height limit"@en;
+                              rdfs:range xsd:decimal;
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:vehicleLengthLimitInM <http://purl.org/dc/terms/created> "2017-04-13"^^xsd:date;
+                              <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                              a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                rdf:Property;
+                              rdfs:comment "Indicates the length limit in meter for vehicles using the parking facility.";
+                              rdfs:domain <http://schema.org/CivicStructure>;
+                              rdfs:isDefinedBy mobivoc:;
+                              rdfs:label "Längenbegrenzung für Fahrzeuge"@de,
+                                         "vehicle length limit"@en;
+                              rdfs:range xsd:decimal;
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:vehicleWidthLimitInM <http://purl.org/dc/terms/created> "2017-06-07"^^xsd:date;
+                             <http://purl.org/dc/terms/modified> "2018-01-12"^^xsd:date;
+                             a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                               rdf:Property;
+                             rdfs:comment "Indicates the width limit in meter for vehicles using the parking facility.";
+                             rdfs:domain <http://schema.org/CivicStructure>;
+                             rdfs:isDefinedBy mobivoc:;
+                             rdfs:label "vehicle width limit"@en,
+                                        "Breitenbegrenzung für Fahrzeuge"@de;
+                             rdfs:range xsd:decimal;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+mobivoc:voltageInV a rdf:Property,
+                     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "Indicates the voltage of a charger or plug in volt.";
+                   rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (mobivoc:Plug
+                                                                         mobivoc:Charger) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>];
+                   rdfs:isDefinedBy mobivoc:;
+                   rdfs:label "voltage in V"@en;
+                   rdfs:range xsd:double.
+<http://schema.org/CivicStructure> a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "A public structure, such as a town hall or concert hall, parking facility or charging point."@en;
+                                   rdfs:isDefinedBy <http://schema.org/>;
+                                   rdfs:label "Zivile Struktur"@de,
+                                              "Civic structure"@en;
+                                   rdfs:subClassOf <http://schema.org/Place>.
+<http://schema.org/OpeningHoursSpecification> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:comment "A structured value providing information about the opening hours of a place or a certain service inside a place."@en;
+                                              rdfs:isDefinedBy <http://schema.org/>;
+                                              rdfs:label "Öffnungszeiten"@de,
+                                                         "Opening hours specification"@en.
+<http://schema.org/PaymentMethod> a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "A payment method is a standardized procedure for transferring the monetary amount for a purchase. Payment methods are characterized by the legal and technical structures used, and by the organization or group carrying out the transaction."@en;
+                                  rdfs:isDefinedBy <http://schema.org/>;
+                                  rdfs:label "Zahlungsart"@de,
+                                             "Payment method"@en.
+<http://schema.org/Place> a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Entities that have a somewhat fixed, physical extension."@en;
+                          rdfs:isDefinedBy <http://schema.org/>;
+                          rdfs:label "Place"@en.
+<http://schema.org/PostalAddress> a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "The mailing address."@en;
+                                  rdfs:isDefinedBy <http://schema.org/>;
+                                  rdfs:label "Postal address"@en.
+<http://schema.org/PriceSpecification> a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:comment "A structured value representing a price or price range for an item."@en;
+                                       rdfs:isDefinedBy <http://schema.org/>;
+                                       rdfs:label "Preisspezifikation"@de,
+                                                  "Price specification"@en.
+<http://schema.org/Vehicle> a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "A vehicle is a device that is designed or used to transport people or cargo over land, water, air, or through space."@en;
+                            rdfs:isDefinedBy <http://schema.org/>;
+                            rdfs:label "Fahrzeug"@de,
+                                       "Vehicle"@en.
+<http://schema.org/acceptedPaymentMethod> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                          rdfs:comment "The payment method(s) accepted by seller for this offer."@en;
+                                          rdfs:domain <http://schema.org/CivicStructure>;
+                                          rdfs:isDefinedBy <http://schema.org/>;
+                                          rdfs:label "accepted payment method"@en;
+                                          rdfs:range <http://schema.org/PaymentMethod>.
+<http://schema.org/address> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "Physical address of the item."@en;
+                            rdfs:domain <http://schema.org/Place>;
+                            rdfs:isDefinedBy <http://schema.org/>;
+                            rdfs:label "address"@en;
+                            rdfs:range <http://schema.org/PostalAddress>.
+<http://schema.org/openingHoursSpecification> a rdf:Property,
+                                                <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                              rdfs:comment "Indicates the general opening hours for a business or civic structure."@en;
+                                              rdfs:domain <http://schema.org/CivicStructure>;
+                                              rdfs:isDefinedBy <http://schema.org/>;
+                                              rdfs:label "opening hours specification"@en;
+                                              rdfs:range <http://schema.org/OpeningHoursSpecification>.
+<http://sebastian.tramp.name/> <http://schema.org/affiliation> <https://ns.eccenca.com/eccenca-GmbH>;
+                               a <http://purl.org/dc/terms/Agent>,
+                                 <http://xmlns.com/foaf/0.1/Person>;
+                               <http://www.w3.org/2002/07/owl#sameAs> <http://aksw.org/SebastianTramp>,
+                                                                      <https://ns.eccenca.com/stramp>;
+                               <http://xmlns.com/foaf/0.1/name> "Sebastian Tramp".
+<http://www.w3.org/2003/01/geo/wgs84_pos#lat> a rdf:Property,
+                                                <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                              rdfs:comment "Geographic latitude of a place."@en;
+                                              rdfs:domain <http://schema.org/Place>;
+                                              rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#>;
+                                              rdfs:label "latitude"@en;
+                                              rdfs:range xsd:string.
+<http://www.w3.org/2003/01/geo/wgs84_pos#long> a rdf:Property,
+                                                 <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                               rdfs:comment "Geographic longitude of a place."@en;
+                                               rdfs:domain <http://schema.org/Place>;
+                                               rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#>;
+                                               rdfs:label "longitude"@en;
+                                               rdfs:range xsd:string.
+<https://ns.eccenca.com/aweilandt> <http://schema.org/affiliation> <https://ns.eccenca.com/eccenca-GmbH>;
+                                   a <http://purl.org/dc/terms/Agent>,
+                                     <http://xmlns.com/foaf/0.1/Person>;
+                                   <http://xmlns.com/foaf/0.1/name> "Annette Weilandt".
+<https://ns.eccenca.com/eccenca-GmbH> a <http://xmlns.com/foaf/0.1/Organization>,
+                                        <http://purl.org/dc/terms/Agent>;
+                                      <http://xmlns.com/foaf/0.1/name> "eccenca GmbH".
+<https://ns.eccenca.com/mbruemmer> <http://schema.org/affiliation> <https://ns.eccenca.com/eccenca-GmbH>;
+                                   a <http://purl.org/dc/terms/Agent>,
+                                     <http://xmlns.com/foaf/0.1/Person>;
+                                   <http://xmlns.com/foaf/0.1/name> "Martin Brümmer".

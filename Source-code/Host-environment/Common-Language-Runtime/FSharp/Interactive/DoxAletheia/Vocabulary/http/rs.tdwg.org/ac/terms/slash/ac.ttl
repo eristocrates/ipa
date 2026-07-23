@@ -1,178 +1,172 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
 @prefix ac: <http://rs.tdwg.org/ac/terms/>.
-@prefix dwc: <http://rs.tdwg.org/dwc/terms/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
 
-<http://rs.tdwg.org/ac/terms.rdf> dc11:creator "Biodiversity Information Standards (TDWG)";
-                                  dc11:format "application/rdf+xml";
-                                  dcterms:modified "2022-05-27T14:43:39-05:00"^^xsd:dateTime;
-                                  dcterms:references ac:;
-                                  a foaf:document.
-ac: dc11:publisher "Biodiversity Information Standards (TDWG)"@en;
-    dcterms:created "2013-10-28"^^xsd:date;
-    dcterms:description "This term list includes all currently valid terms that have been defined in the core Audubon Core namespace ac:."@en;
-    dcterms:hasPart ac:freqHigh,
-                    ac:radius,
-                    ac:reviewerLiteral,
-                    ac:resourceCreationTechnique,
-                    ac:mediaDuration,
-                    ac:variant,
-                    ac:associatedObservationReference,
-                    ac:physicalSetting,
-                    ac:yFrac,
-                    ac:endTimestamp,
-                    ac:metadataLanguageLiteral,
-                    ac:caption,
-                    ac:freqLow,
-                    ac:commenterLiteral,
-                    ac:frameRate,
-                    ac:commenter,
-                    ac:endTime,
-                    ac:tag,
-                    ac:taxonCoverage,
-                    ac:subjectOrientationLiteral,
-                    ac:subjectPartLiteral,
-                    ac:otherScientificName,
-                    ac:ServiceAccessPoint,
-                    ac:taxonCount,
-                    ac:derivedFrom,
-                    ac:attributionLogoURL,
-                    ac:variantLiteral,
-                    ac:subjectCategoryVocabulary,
-                    ac:IDofContainingCollection,
-                    ac:captureDevice,
-                    ac:attributionLinkURL,
-                    ac:xFrac,
-                    ac:metadataCreatorLiteral,
-                    ac:provider,
-                    ac:isROIOf,
-                    ac:subjectOrientation,
-                    ac:fundingAttribution,
-                    ac:metadataCreator,
-                    ac:providerID,
-                    ac:hasServiceAccessPoint,
-                    ac:comments,
-                    ac:RegionOfInterest,
-                    ac:furtherInformationURL,
-                    ac:associatedSpecimenReference,
-                    ac:startTime,
-                    ac:serviceExpectation,
-                    ac:widthFrac,
-                    ac:metadataLanguage,
-                    ac:mediaSpeed,
-                    ac:reviewerComments,
-                    ac:metadataProviderLiteral,
-                    ac:licenseLogoURL,
-                    ac:accessURI,
-                    ac:variantDescription,
-                    ac:reviewer,
-                    ac:providerLiteral,
-                    ac:digitizationDate,
-                    ac:relatedResourceID,
-                    ac:hashFunction,
-                    ac:hashValue,
-                    ac:subtype,
-                    ac:subjectPart,
-                    ac:subtypeLiteral,
-                    ac:startTimestamp,
-                    ac:metadataProvider,
-                    ac:licensingException,
-                    ac:hasROI,
-                    ac:heightFrac,
-                    ac:timeOfDay,
-                    ac:providerManagedID;
-    dcterms:hasVersion <http://rs.tdwg.org/ac/version/terms/2020-01-27>,
-                       <http://rs.tdwg.org/ac/version/terms/2021-10-05>,
-                       <http://rs.tdwg.org/ac/version/terms/2022-02-23>,
-                       <http://rs.tdwg.org/ac/version/terms/2020-10-13>,
-                       <http://rs.tdwg.org/ac/version/terms/2021-02-01>,
-                       <http://rs.tdwg.org/ac/version/terms/2013-10-28>;
-    dcterms:publisher <https://www.grid.ac/institutes/grid.480498.9>;
-    dcterms:title "Core terms defined by Audubon Core"@en;
-    vann:preferredNamespacePrefix "ac";
-    vann:preferredNamespaceUri "http://rs.tdwg.org/ac/terms/";
+<http://rs.tdwg.org/ac/terms.rdf> <http://purl.org/dc/elements/1.1/creator> "Biodiversity Information Standards (TDWG)";
+                                  <http://purl.org/dc/elements/1.1/format> "application/rdf+xml";
+                                  <http://purl.org/dc/terms/modified> "2022-05-27T14:43:39-05:00"^^xsd:dateTime;
+                                  <http://purl.org/dc/terms/references> ac:;
+                                  a <http://xmlns.com/foaf/0.1/document>.
+ac: <http://purl.org/dc/elements/1.1/publisher> "Biodiversity Information Standards (TDWG)"@en;
+    <http://purl.org/dc/terms/created> "2013-10-28"^^xsd:date;
+    <http://purl.org/dc/terms/description> "This term list includes all currently valid terms that have been defined in the core Audubon Core namespace ac:."@en;
+    <http://purl.org/dc/terms/hasPart> ac:freqHigh,
+                                       ac:radius,
+                                       ac:reviewerLiteral,
+                                       ac:resourceCreationTechnique,
+                                       ac:mediaDuration,
+                                       ac:variant,
+                                       ac:associatedObservationReference,
+                                       ac:physicalSetting,
+                                       ac:yFrac,
+                                       ac:endTimestamp,
+                                       ac:metadataLanguageLiteral,
+                                       ac:caption,
+                                       ac:freqLow,
+                                       ac:commenterLiteral,
+                                       ac:frameRate,
+                                       ac:commenter,
+                                       ac:endTime,
+                                       ac:tag,
+                                       ac:taxonCoverage,
+                                       ac:subjectOrientationLiteral,
+                                       ac:subjectPartLiteral,
+                                       ac:otherScientificName,
+                                       ac:ServiceAccessPoint,
+                                       ac:taxonCount,
+                                       ac:derivedFrom,
+                                       ac:attributionLogoURL,
+                                       ac:variantLiteral,
+                                       ac:subjectCategoryVocabulary,
+                                       ac:IDofContainingCollection,
+                                       ac:captureDevice,
+                                       ac:attributionLinkURL,
+                                       ac:xFrac,
+                                       ac:metadataCreatorLiteral,
+                                       ac:provider,
+                                       ac:isROIOf,
+                                       ac:subjectOrientation,
+                                       ac:fundingAttribution,
+                                       ac:metadataCreator,
+                                       ac:providerID,
+                                       ac:hasServiceAccessPoint,
+                                       ac:comments,
+                                       ac:RegionOfInterest,
+                                       ac:furtherInformationURL,
+                                       ac:associatedSpecimenReference,
+                                       ac:startTime,
+                                       ac:serviceExpectation,
+                                       ac:widthFrac,
+                                       ac:metadataLanguage,
+                                       ac:mediaSpeed,
+                                       ac:reviewerComments,
+                                       ac:metadataProviderLiteral,
+                                       ac:licenseLogoURL,
+                                       ac:accessURI,
+                                       ac:variantDescription,
+                                       ac:reviewer,
+                                       ac:providerLiteral,
+                                       ac:digitizationDate,
+                                       ac:relatedResourceID,
+                                       ac:hashFunction,
+                                       ac:hashValue,
+                                       ac:subtype,
+                                       ac:subjectPart,
+                                       ac:subtypeLiteral,
+                                       ac:startTimestamp,
+                                       ac:metadataProvider,
+                                       ac:licensingException,
+                                       ac:hasROI,
+                                       ac:heightFrac,
+                                       ac:timeOfDay,
+                                       ac:providerManagedID;
+    <http://purl.org/dc/terms/hasVersion> <http://rs.tdwg.org/ac/version/terms/2020-01-27>,
+                                          <http://rs.tdwg.org/ac/version/terms/2021-10-05>,
+                                          <http://rs.tdwg.org/ac/version/terms/2022-02-23>,
+                                          <http://rs.tdwg.org/ac/version/terms/2020-10-13>,
+                                          <http://rs.tdwg.org/ac/version/terms/2021-02-01>,
+                                          <http://rs.tdwg.org/ac/version/terms/2013-10-28>;
+    <http://purl.org/dc/terms/publisher> <https://www.grid.ac/institutes/grid.480498.9>;
+    <http://purl.org/dc/terms/title> "Core terms defined by Audubon Core"@en;
+    <http://purl.org/vocab/vann/preferredNamespacePrefix> "ac";
+    <http://purl.org/vocab/vann/preferredNamespaceUri> "http://rs.tdwg.org/ac/terms/";
     a <http://rs.tdwg.org/dwc/terms/attributes/TermList>;
     rdfs:comment "This term list includes all currently valid terms that have been defined in the core Audubon Core namespace ac:."@en;
     rdfs:label "Core terms defined by Audubon Core"@en.
-ac:IDofContainingCollection dcterms:isPartOf ac:.
-ac:RegionOfInterest dcterms:isPartOf ac:.
-ac:ServiceAccessPoint dcterms:isPartOf ac:.
-ac:accessURI dcterms:isPartOf ac:.
-ac:associatedObservationReference dcterms:isPartOf ac:.
-ac:associatedSpecimenReference dcterms:isPartOf ac:.
-ac:attributionLinkURL dcterms:isPartOf ac:.
-ac:attributionLogoURL dcterms:isPartOf ac:.
-ac:caption dcterms:isPartOf ac:.
-ac:captureDevice dcterms:isPartOf ac:.
-ac:commenter dcterms:isPartOf ac:.
-ac:commenterLiteral dcterms:isPartOf ac:.
-ac:comments dcterms:isPartOf ac:.
-ac:derivedFrom dcterms:isPartOf ac:.
-ac:digitizationDate dcterms:isPartOf ac:.
-ac:endTime dcterms:isPartOf ac:.
-ac:endTimestamp dcterms:isPartOf ac:.
-ac:frameRate dcterms:isPartOf ac:.
-ac:freqHigh dcterms:isPartOf ac:.
-ac:freqLow dcterms:isPartOf ac:.
-ac:fundingAttribution dcterms:isPartOf ac:.
-ac:furtherInformationURL dcterms:isPartOf ac:.
-ac:hasROI dcterms:isPartOf ac:.
-ac:hasServiceAccessPoint dcterms:isPartOf ac:.
-ac:hashFunction dcterms:isPartOf ac:.
-ac:hashValue dcterms:isPartOf ac:.
-ac:heightFrac dcterms:isPartOf ac:.
-ac:isROIOf dcterms:isPartOf ac:.
-ac:licenseLogoURL dcterms:isPartOf ac:.
-ac:licensingException dcterms:isPartOf ac:.
-ac:mediaDuration dcterms:isPartOf ac:.
-ac:mediaSpeed dcterms:isPartOf ac:.
-ac:metadataCreator dcterms:isPartOf ac:.
-ac:metadataCreatorLiteral dcterms:isPartOf ac:.
-ac:metadataLanguage dcterms:isPartOf ac:.
-ac:metadataLanguageLiteral dcterms:isPartOf ac:.
-ac:metadataProvider dcterms:isPartOf ac:.
-ac:metadataProviderLiteral dcterms:isPartOf ac:.
-ac:otherScientificName dcterms:isPartOf ac:.
-ac:physicalSetting dcterms:isPartOf ac:.
-ac:provider dcterms:isPartOf ac:.
-ac:providerID dcterms:isPartOf ac:.
-ac:providerLiteral dcterms:isPartOf ac:.
-ac:providerManagedID dcterms:isPartOf ac:.
-ac:radius dcterms:isPartOf ac:.
-ac:relatedResourceID dcterms:isPartOf ac:.
-ac:resourceCreationTechnique dcterms:isPartOf ac:.
-ac:reviewer dcterms:isPartOf ac:.
-ac:reviewerComments dcterms:isPartOf ac:.
-ac:reviewerLiteral dcterms:isPartOf ac:.
-ac:serviceExpectation dcterms:isPartOf ac:.
-ac:startTime dcterms:isPartOf ac:.
-ac:startTimestamp dcterms:isPartOf ac:.
-ac:subjectCategoryVocabulary dcterms:isPartOf ac:.
-ac:subjectOrientation dcterms:isPartOf ac:.
-ac:subjectOrientationLiteral dcterms:isPartOf ac:.
-ac:subjectPart dcterms:isPartOf ac:.
-ac:subjectPartLiteral dcterms:isPartOf ac:.
-ac:subtype dcterms:isPartOf ac:.
-ac:subtypeLiteral dcterms:isPartOf ac:.
-ac:tag dcterms:isPartOf ac:.
-ac:taxonCount dcterms:isPartOf ac:.
-ac:taxonCoverage dcterms:isPartOf ac:.
-ac:timeOfDay dcterms:isPartOf ac:.
-ac:variant dcterms:isPartOf ac:.
-ac:variantDescription dcterms:isPartOf ac:.
-ac:variantLiteral dcterms:isPartOf ac:.
-ac:widthFrac dcterms:isPartOf ac:.
-ac:xFrac dcterms:isPartOf ac:.
-ac:yFrac dcterms:isPartOf ac:.
-<http://rs.tdwg.org/ac/version/terms/2013-10-28> dcterms:isVersionOf ac:.
-<http://rs.tdwg.org/ac/version/terms/2020-01-27> dcterms:isVersionOf ac:.
-<http://rs.tdwg.org/ac/version/terms/2020-10-13> dcterms:isVersionOf ac:.
-<http://rs.tdwg.org/ac/version/terms/2021-02-01> dcterms:isVersionOf ac:.
-<http://rs.tdwg.org/ac/version/terms/2021-10-05> dcterms:isVersionOf ac:.
-<http://rs.tdwg.org/ac/version/terms/2022-02-23> dcterms:isVersionOf ac:.
+ac:IDofContainingCollection <http://purl.org/dc/terms/isPartOf> ac:.
+ac:RegionOfInterest <http://purl.org/dc/terms/isPartOf> ac:.
+ac:ServiceAccessPoint <http://purl.org/dc/terms/isPartOf> ac:.
+ac:accessURI <http://purl.org/dc/terms/isPartOf> ac:.
+ac:associatedObservationReference <http://purl.org/dc/terms/isPartOf> ac:.
+ac:associatedSpecimenReference <http://purl.org/dc/terms/isPartOf> ac:.
+ac:attributionLinkURL <http://purl.org/dc/terms/isPartOf> ac:.
+ac:attributionLogoURL <http://purl.org/dc/terms/isPartOf> ac:.
+ac:caption <http://purl.org/dc/terms/isPartOf> ac:.
+ac:captureDevice <http://purl.org/dc/terms/isPartOf> ac:.
+ac:commenter <http://purl.org/dc/terms/isPartOf> ac:.
+ac:commenterLiteral <http://purl.org/dc/terms/isPartOf> ac:.
+ac:comments <http://purl.org/dc/terms/isPartOf> ac:.
+ac:derivedFrom <http://purl.org/dc/terms/isPartOf> ac:.
+ac:digitizationDate <http://purl.org/dc/terms/isPartOf> ac:.
+ac:endTime <http://purl.org/dc/terms/isPartOf> ac:.
+ac:endTimestamp <http://purl.org/dc/terms/isPartOf> ac:.
+ac:frameRate <http://purl.org/dc/terms/isPartOf> ac:.
+ac:freqHigh <http://purl.org/dc/terms/isPartOf> ac:.
+ac:freqLow <http://purl.org/dc/terms/isPartOf> ac:.
+ac:fundingAttribution <http://purl.org/dc/terms/isPartOf> ac:.
+ac:furtherInformationURL <http://purl.org/dc/terms/isPartOf> ac:.
+ac:hasROI <http://purl.org/dc/terms/isPartOf> ac:.
+ac:hasServiceAccessPoint <http://purl.org/dc/terms/isPartOf> ac:.
+ac:hashFunction <http://purl.org/dc/terms/isPartOf> ac:.
+ac:hashValue <http://purl.org/dc/terms/isPartOf> ac:.
+ac:heightFrac <http://purl.org/dc/terms/isPartOf> ac:.
+ac:isROIOf <http://purl.org/dc/terms/isPartOf> ac:.
+ac:licenseLogoURL <http://purl.org/dc/terms/isPartOf> ac:.
+ac:licensingException <http://purl.org/dc/terms/isPartOf> ac:.
+ac:mediaDuration <http://purl.org/dc/terms/isPartOf> ac:.
+ac:mediaSpeed <http://purl.org/dc/terms/isPartOf> ac:.
+ac:metadataCreator <http://purl.org/dc/terms/isPartOf> ac:.
+ac:metadataCreatorLiteral <http://purl.org/dc/terms/isPartOf> ac:.
+ac:metadataLanguage <http://purl.org/dc/terms/isPartOf> ac:.
+ac:metadataLanguageLiteral <http://purl.org/dc/terms/isPartOf> ac:.
+ac:metadataProvider <http://purl.org/dc/terms/isPartOf> ac:.
+ac:metadataProviderLiteral <http://purl.org/dc/terms/isPartOf> ac:.
+ac:otherScientificName <http://purl.org/dc/terms/isPartOf> ac:.
+ac:physicalSetting <http://purl.org/dc/terms/isPartOf> ac:.
+ac:provider <http://purl.org/dc/terms/isPartOf> ac:.
+ac:providerID <http://purl.org/dc/terms/isPartOf> ac:.
+ac:providerLiteral <http://purl.org/dc/terms/isPartOf> ac:.
+ac:providerManagedID <http://purl.org/dc/terms/isPartOf> ac:.
+ac:radius <http://purl.org/dc/terms/isPartOf> ac:.
+ac:relatedResourceID <http://purl.org/dc/terms/isPartOf> ac:.
+ac:resourceCreationTechnique <http://purl.org/dc/terms/isPartOf> ac:.
+ac:reviewer <http://purl.org/dc/terms/isPartOf> ac:.
+ac:reviewerComments <http://purl.org/dc/terms/isPartOf> ac:.
+ac:reviewerLiteral <http://purl.org/dc/terms/isPartOf> ac:.
+ac:serviceExpectation <http://purl.org/dc/terms/isPartOf> ac:.
+ac:startTime <http://purl.org/dc/terms/isPartOf> ac:.
+ac:startTimestamp <http://purl.org/dc/terms/isPartOf> ac:.
+ac:subjectCategoryVocabulary <http://purl.org/dc/terms/isPartOf> ac:.
+ac:subjectOrientation <http://purl.org/dc/terms/isPartOf> ac:.
+ac:subjectOrientationLiteral <http://purl.org/dc/terms/isPartOf> ac:.
+ac:subjectPart <http://purl.org/dc/terms/isPartOf> ac:.
+ac:subjectPartLiteral <http://purl.org/dc/terms/isPartOf> ac:.
+ac:subtype <http://purl.org/dc/terms/isPartOf> ac:.
+ac:subtypeLiteral <http://purl.org/dc/terms/isPartOf> ac:.
+ac:tag <http://purl.org/dc/terms/isPartOf> ac:.
+ac:taxonCount <http://purl.org/dc/terms/isPartOf> ac:.
+ac:taxonCoverage <http://purl.org/dc/terms/isPartOf> ac:.
+ac:timeOfDay <http://purl.org/dc/terms/isPartOf> ac:.
+ac:variant <http://purl.org/dc/terms/isPartOf> ac:.
+ac:variantDescription <http://purl.org/dc/terms/isPartOf> ac:.
+ac:variantLiteral <http://purl.org/dc/terms/isPartOf> ac:.
+ac:widthFrac <http://purl.org/dc/terms/isPartOf> ac:.
+ac:xFrac <http://purl.org/dc/terms/isPartOf> ac:.
+ac:yFrac <http://purl.org/dc/terms/isPartOf> ac:.
+<http://rs.tdwg.org/ac/version/terms/2013-10-28> <http://purl.org/dc/terms/isVersionOf> ac:.
+<http://rs.tdwg.org/ac/version/terms/2020-01-27> <http://purl.org/dc/terms/isVersionOf> ac:.
+<http://rs.tdwg.org/ac/version/terms/2020-10-13> <http://purl.org/dc/terms/isVersionOf> ac:.
+<http://rs.tdwg.org/ac/version/terms/2021-02-01> <http://purl.org/dc/terms/isVersionOf> ac:.
+<http://rs.tdwg.org/ac/version/terms/2021-10-05> <http://purl.org/dc/terms/isVersionOf> ac:.
+<http://rs.tdwg.org/ac/version/terms/2022-02-23> <http://purl.org/dc/terms/isVersionOf> ac:.

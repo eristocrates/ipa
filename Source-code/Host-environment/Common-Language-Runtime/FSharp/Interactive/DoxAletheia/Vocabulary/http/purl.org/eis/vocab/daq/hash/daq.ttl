@@ -2,136 +2,125 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix daq: <http://purl.org/eis/vocab/daq#>.
-@prefix qb: <http://purl.org/linked-data/cube#>.
-@prefix sdmxa: <http://purl.org/linked-data/sdmx/2009/attribute#>.
-@prefix voaf: <http://purl.org/vocommons/voaf#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
-@prefix trig: <http://www.w3.org/2004/03/trix/rdfg-1/>.
-@prefix nsprov: <http://www.w3.org/ns/prov#>.
 
-daq: dcterms:creator [foaf:homepage <http://langec.wordpress.com/about/> ; 
-                      rdfs:seeAlso <http://purl.org/net/clange> ; 
-                      foaf:name "Christoph Lange"],
-                     [foaf:mbox <mailto:debattis@cs.uni-bonn.de> ; 
-                      foaf:homepage <http://www.jeremydebattista.info/> ; 
-                      foaf:name "Jeremy Debattista"];
-     dcterms:modified "2015-04-01"^^xsd:date;
-     a voaf:Vocabulary,
-       owl:Ontology;
+daq: <http://purl.org/dc/terms/creator> [<http://xmlns.com/foaf/0.1/homepage> <http://langec.wordpress.com/about/> ; 
+                                         rdfs:seeAlso <http://purl.org/net/clange> ; 
+                                         <http://xmlns.com/foaf/0.1/name> "Christoph Lange"],
+                                        [<http://xmlns.com/foaf/0.1/mbox> <mailto:debattis@cs.uni-bonn.de> ; 
+                                         <http://xmlns.com/foaf/0.1/homepage> <http://www.jeremydebattista.info/> ; 
+                                         <http://xmlns.com/foaf/0.1/name> "Jeremy Debattista"];
+     <http://purl.org/dc/terms/modified> "2015-04-01"^^xsd:date;
+     a <http://purl.org/vocommons/voaf#Vocabulary>,
+       <http://www.w3.org/2002/07/owl#Ontology>;
      rdfs:comment "The Dataset Quality Vocabulary (daQ) is a lightweight, extensible core vocabulary for attaching the result of quality benchmarking of a linked open dataset (usually an expensive process) to that dataset.  daQ is designed to be extended by custom quality metrics.  Use cases include filtering and ranking datasets by quality.";
      rdfs:label "Dataset Quality Vocabulary (daQ)".
-daq:Category a owl:Class,
+daq:Category a <http://www.w3.org/2002/07/owl#Class>,
                rdfs:Class;
              rdfs:comment "The highest level of quality metric is a category. A category groups a number of dimensions relevant to each other which aims at measuring the quality of a dataset from different aspects. Categories are provided as subclasses of this abstract class, which is not intended for direct usage.";
              rdfs:label "Category".
-daq:Dimension a owl:Class,
+daq:Dimension a <http://www.w3.org/2002/07/owl#Class>,
                 rdfs:Class;
               rdfs:comment "Each dimension is part of a larger group called category (See daq:Category). Each dimension has a number of metrics which are associated to it. A dimension is linked with a category using the daq:hasDimension property. Dimensions are provided as subclasses of this abstract class, which is not intended for direct usage.";
               rdfs:label "Dimension".
-daq:Metric a owl:Class,
+daq:Metric a <http://www.w3.org/2002/07/owl#Class>,
              rdfs:Class;
            rdfs:comment """The smallest unit of measuring a quality dimension is a metric. A metric belongs to exactly one dimension. Each metric has one or more observations (	exttt{daq:hasObservation}), which records data quality assessment value following a computation. Metrics are provided as subclasses of this abstract class, which is not intended for direct usage.""";
            rdfs:label "Metric".
-daq:Observation a owl:Class,
+daq:Observation a <http://www.w3.org/2002/07/owl#Class>,
                   rdfs:Class;
                 rdfs:comment "A quality observation represents the statistical and provenance information of the attached metric's assessment activity.";
                 rdfs:label "Quality Observation";
-                rdfs:subClassOf qb:Observation,
-                                nsprov:Entity.
-daq:QualityGraph a owl:Class,
+                rdfs:subClassOf <http://purl.org/linked-data/cube#Observation>,
+                                <http://www.w3.org/ns/prov#Entity>.
+daq:QualityGraph a <http://www.w3.org/2002/07/owl#Class>,
                    rdfs:Class;
                  rdfs:comment "Defines a quality graph which will contain all metadata about quality metrics on the dataset.";
                  rdfs:label "Quality Graph Statistics";
-                 rdfs:subClassOf [owl:hasValue daq:dsd ; 
-                                  owl:onProperty qb:structure ; 
-                                  a owl:Restriction],
-                                 qb:DataSet,
-                                 trig:Graph.
-daq:computedBy a qb:DimensionProperty,
-                 owl:ObjectProperty,
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> daq:dsd ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/linked-data/cube#structure> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 <http://purl.org/linked-data/cube#DataSet>,
+                                 <http://www.w3.org/2004/03/trix/rdfg-1/Graph>.
+daq:computedBy a <http://purl.org/linked-data/cube#DimensionProperty>,
+                 <http://www.w3.org/2002/07/owl#ObjectProperty>,
                  rdf:Property;
                rdfs:comment "TODO: Define properly";
-               rdfs:domain qb:Observation;
+               rdfs:domain <http://purl.org/linked-data/cube#Observation>;
                rdfs:label "computed by".
-daq:computedOn a qb:DimensionProperty,
-                 owl:ObjectProperty,
+daq:computedOn a <http://purl.org/linked-data/cube#DimensionProperty>,
+                 <http://www.w3.org/2002/07/owl#ObjectProperty>,
                  rdf:Property;
                rdfs:comment "Quality metrics can be (in principle) calculated on various forms of data (such as datasets, graphs, set of triples etc...). This vocabulary allow the owner/user of such RDF data to calculate metrics on multiple (and different) resources.";
-               rdfs:domain qb:Observation;
+               rdfs:domain <http://purl.org/linked-data/cube#Observation>;
                rdfs:label "computed on";
                rdfs:range rdfs:Resource.
-daq:dsd qb:component [qb:componentAttachment qb:DataSet ; 
-                      qb:componentRequired true ; 
-                      qb:attribute sdmxa:unitMeasure],
-                     [qb:measure daq:value],
-                     [qb:order 3  ; 
-                      qb:dimension sdmx-dimension:timePeriod],
-                     [qb:order 2  ; 
-                      qb:dimension daq:computedOn],
-                     [qb:order 1  ; 
-                      qb:dimension daq:metric];
-        a qb:DataStructureDefinition.
-daq:expectedDataType a owl:DatatypeProperty,
+daq:dsd <http://purl.org/linked-data/cube#component> [<http://purl.org/linked-data/cube#componentAttachment> <http://purl.org/linked-data/cube#DataSet> ; 
+                                                      <http://purl.org/linked-data/cube#componentRequired> true ; 
+                                                      <http://purl.org/linked-data/cube#attribute> <http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure>],
+                                                     [<http://purl.org/linked-data/cube#measure> daq:value],
+                                                     [<http://purl.org/linked-data/cube#order> 3  ; 
+                                                      <http://purl.org/linked-data/cube#dimension> <http://purl.org/linked-data/sdmx/2009/dimension#timePeriod>],
+                                                     [<http://purl.org/linked-data/cube#order> 2  ; 
+                                                      <http://purl.org/linked-data/cube#dimension> daq:computedOn],
+                                                     [<http://purl.org/linked-data/cube#order> 1  ; 
+                                                      <http://purl.org/linked-data/cube#dimension> daq:metric];
+        a <http://purl.org/linked-data/cube#DataStructureDefinition>.
+daq:expectedDataType a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
                        rdf:Property;
                      rdfs:comment "Each metric should have an expect data type for it's observed value (e.g. xsd:boolean, xsd:double etc...)";
                      rdfs:domain daq:Metric;
                      rdfs:label "expected data type";
                      rdfs:range xsd:anySimpleType;
-                     owl:cardinality "1"^^xsd:nonNegativeInteger.
-daq:hasDimension a owl:ObjectProperty,
+                     <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger.
+daq:hasDimension a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                    rdf:Property;
                  rdfs:comment "The category concept classifies dimensions related to the measurement of quality for a specific criteria. This is an abstract property and should not be used directly. Specific sub-properties should be inherited for different dimensions.";
                  rdfs:domain daq:Category;
                  rdfs:label "hasDimension";
                  rdfs:range daq:Dimension.
-daq:hasMetric a owl:ObjectProperty,
+daq:hasMetric a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                 rdf:Property;
               rdfs:comment "A dimension is an abstract concept which groups an number of more concrete metrics to measure quality of a dataset. This is an abstract property and should not be used directly. Specific sub-properties should be inherited for different metrics.";
               rdfs:domain daq:Dimension;
               rdfs:label "hasMetric";
               rdfs:range daq:Metric.
-daq:hasObservation a owl:DatatypeProperty,
+daq:hasObservation a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
                      rdf:Property;
                    rdfs:comment "Computed metrics can have 1 or more quality observations, where each computed resource has one observation.";
                    rdfs:domain daq:Metric;
                    rdfs:label "has observation";
                    rdfs:range daq:Observation;
-                   owl:inverseOf daq:metric;
-                   owl:minCardinality "1"^^xsd:nonNegativeInteger.
-daq:isEstimate a owl:ObjectProperty,
+                   <http://www.w3.org/2002/07/owl#inverseOf> daq:metric;
+                   <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger.
+daq:isEstimate a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                  rdf:Property;
                rdfs:comment "This property flags true if an assessed observation of a metric gives an estimate result instead of a more accurate one.";
-               rdfs:domain qb:Observation;
+               rdfs:domain <http://purl.org/linked-data/cube#Observation>;
                rdfs:label "is estimate";
                rdfs:range xsd:boolean;
-               owl:cardinality "1"^^xsd:nonNegativeInteger.
-daq:metric a qb:DimensionProperty,
-             owl:DatatypeProperty,
+               <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger.
+daq:metric a <http://purl.org/linked-data/cube#DimensionProperty>,
+             <http://www.w3.org/2002/07/owl#DatatypeProperty>,
              rdf:Property;
            rdfs:comment "Represents the metric being observed.";
-           rdfs:domain qb:Observation;
+           rdfs:domain <http://purl.org/linked-data/cube#Observation>;
            rdfs:label "metric";
            rdfs:range daq:Metric;
-           owl:inverseOf daq:hasObservation;
-           owl:minCardinality "1"^^xsd:nonNegativeInteger.
-daq:requires a owl:ObjectProperty,
+           <http://www.w3.org/2002/07/owl#inverseOf> daq:hasObservation;
+           <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger.
+daq:requires a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                rdf:Property;
              rdfs:comment "A metric might require a number of external resources (e.g. a gold standard) in order to be able to measure the quality. In order to cater for the most generic requirement, this property links a metric to the required resource (e.g. a URI to the gold standard dataset used).";
              rdfs:domain daq:Metric;
              rdfs:label "requires";
              rdfs:range rdfs:Resource.
-daq:value a qb:MeasureProperty,
-            owl:DatatypeProperty,
+daq:value a <http://purl.org/linked-data/cube#MeasureProperty>,
+            <http://www.w3.org/2002/07/owl#DatatypeProperty>,
             rdf:Property;
           rdfs:comment "Each metric will have a value computed. In order to deal with the different return type of the metric computation, this property links a metric with a value object (e.g. boolean, double, Literal).";
-          rdfs:domain qb:Observation;
+          rdfs:domain <http://purl.org/linked-data/cube#Observation>;
           rdfs:label "value";
-          owl:cardinality "1"^^xsd:nonNegativeInteger.
-sdmx-dimension:timePeriod rdfs:domain qb:Observation;
-                          rdfs:range xsd:dateTime;
-                          owl:cardinality "1"^^xsd:nonNegativeInteger.
+          <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger.
+<http://purl.org/linked-data/sdmx/2009/dimension#timePeriod> rdfs:domain <http://purl.org/linked-data/cube#Observation>;
+                                                             rdfs:range xsd:dateTime;
+                                                             <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger.

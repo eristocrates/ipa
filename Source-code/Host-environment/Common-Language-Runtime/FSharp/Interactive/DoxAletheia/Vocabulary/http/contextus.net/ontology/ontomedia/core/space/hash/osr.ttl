@@ -1,288 +1,283 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix oc: <http://contextus.net/ontology/ontomedia/core/expression#>.
 @prefix osr: <http://contextus.net/ontology/ontomedia/core/space#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
 
-osr: dc11:creator "Mischa M Tuffield (mailto:mmt04r@ecs.soton.ac.uk)",
-                  "K Faith Lawrence (mailto:kf03r@ecs.soton.ac.uk)",
-                  "Michael O. Jewell (mailto:moj@ecs.soton.ac.uk)";
-     dc11:description "The OntoMedia Space representation denotes areas of landscape. Expands on the AKT location ontology"@en;
-     dc11:title "OntoMedia Space Representation"@en;
-     dcterms:created "2005-05-11";
-     a owl:Ontology;
+osr: <http://purl.org/dc/elements/1.1/creator> "Mischa M Tuffield (mailto:mmt04r@ecs.soton.ac.uk)",
+                                               "K Faith Lawrence (mailto:kf03r@ecs.soton.ac.uk)",
+                                               "Michael O. Jewell (mailto:moj@ecs.soton.ac.uk)";
+     <http://purl.org/dc/elements/1.1/description> "The OntoMedia Space representation denotes areas of landscape. Expands on the AKT location ontology"@en;
+     <http://purl.org/dc/elements/1.1/title> "OntoMedia Space Representation"@en;
+     <http://purl.org/dc/terms/created> "2005-05-11";
+     a <http://www.w3.org/2002/07/owl#Ontology>;
      rdfs:label "OntoMedia Space Representation";
-     owl:versionInfo "0.2".
-osr:Aquatic a owl:Class;
+     <http://www.w3.org/2002/07/owl#versionInfo> "0.2".
+osr:Aquatic a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "This property is to be used to describe an aquatic region";
             rdfs:label "Aquatic Region";
             rdfs:subClassOf osr:Region.
-osr:Arable a owl:Class;
+osr:Arable a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "This property is to be used to describe an arable region";
            rdfs:label "Arable";
            rdfs:subClassOf osr:Region.
-osr:Arboreal a owl:Class;
+osr:Arboreal a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "This property is to be used to describe an arboreal region";
              rdfs:label "Arboreal";
              rdfs:subClassOf osr:Region.
-osr:Area a owl:Class;
+osr:Area a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "This property is to be used to describe a specific area";
          rdfs:label "Area";
          rdfs:subClassOf osr:Region.
-osr:Bay a owl:Class;
+osr:Bay a <http://www.w3.org/2002/07/owl#Class>;
         rdfs:comment "This property is to be used to describe a bay region";
         rdfs:label "Bay";
         rdfs:subClassOf osr:Aquatic.
-osr:Biological-Surface-Space a owl:Class;
+osr:Biological-Surface-Space a <http://www.w3.org/2002/07/owl#Class>;
                              rdfs:comment "This property is to be used to describe the surface of a biological object";
                              rdfs:label "Biological Surface Space";
                              rdfs:subClassOf osr:Surface-Space.
-osr:Bog a owl:Class;
+osr:Bog a <http://www.w3.org/2002/07/owl#Class>;
         rdfs:comment "This property is to be used to describe a boggy region";
         rdfs:label "Bog";
         rdfs:subClassOf osr:Hydrated.
-osr:Bounding a owl:Class;
+osr:Bounding a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "This property is to be used to describe a region that marks the boundary between other regions";
              rdfs:label "Bounding";
              rdfs:subClassOf osr:Region.
-osr:Capital a owl:Class;
+osr:Capital a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "This property is to be used to describe a Capital city";
             rdfs:label "Capital";
             rdfs:subClassOf osr:Metropolis.
-osr:City a owl:Class;
+osr:City a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "This property is to be used to describe a city space";
          rdfs:label "City";
          rdfs:subClassOf osr:Urban-Area.
-osr:Container a owl:Class;
+osr:Container a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "This property is to be used to describe a container";
               rdfs:label "Container";
               rdfs:subClassOf <http://contextus.net/ontology/ontomedia/misc/AKTlocation#Enclosed-Space>.
-osr:Continent a owl:Class;
+osr:Continent a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "This property is to be used to describe a continent";
               rdfs:label "Continent";
               rdfs:subClassOf osr:Region.
-osr:Copse a owl:Class;
+osr:Copse a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "This property is to be used to describe a copse region";
           rdfs:label "Copse";
           rdfs:subClassOf osr:Arboreal.
-osr:Country a owl:Class;
+osr:Country a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "This property is to be used to describe a country";
             rdfs:label "Country";
             rdfs:subClassOf osr:Region.
-osr:Estuary a owl:Class;
+osr:Estuary a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "This property is to be used to describe an estuary region";
             rdfs:label "Estuary";
             rdfs:subClassOf osr:Aquatic.
-osr:Field a owl:Class;
+osr:Field a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "This property is to be used to describe a field";
           rdfs:label "Field";
           rdfs:subClassOf osr:Arable.
-osr:Forest a owl:Class;
+osr:Forest a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "This property is to be used to describe a forested region";
            rdfs:label "Forest";
            rdfs:subClassOf osr:Arboreal.
-osr:Galaxy a owl:Class;
+osr:Galaxy a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "This property is to be used to describe a galaxy";
            rdfs:label "Galaxy";
            rdfs:subClassOf <http://contextus.net/ontology/ontomedia/misc/AKTlocation#Open-Space>.
-osr:Gaseous a owl:Class;
+osr:Gaseous a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "This property is to be used to describe a gaseous region";
             rdfs:label "Gaseous";
             rdfs:subClassOf osr:Region.
-osr:Hydrated a owl:Class;
+osr:Hydrated a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "This property is to be used to describe a very damp region";
              rdfs:label "Hydrated";
              rdfs:subClassOf osr:Region.
-osr:Lake a owl:Class;
+osr:Lake a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "This property is to be used to describe a lake region";
          rdfs:label "Lake";
          rdfs:subClassOf osr:Aquatic.
-osr:Layer a owl:Class;
+osr:Layer a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "This property is to be used to describe a region that forms a layer";
           rdfs:label "Layer";
           rdfs:subClassOf osr:Region.
-osr:Ledge a owl:Class;
+osr:Ledge a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "This property is to be used to describe a ledge i.e on the mountain wall";
           rdfs:label "Ledge";
           rdfs:subClassOf osr:Area.
-osr:Level-Traversing-Space a owl:Class;
+osr:Level-Traversing-Space a <http://www.w3.org/2002/07/owl#Class>;
                            rdfs:comment "This class is used to represent a space which traverses levels";
                            rdfs:label "Level Traversing Space";
                            rdfs:subClassOf osr:Space.
-osr:Lot a owl:Class;
+osr:Lot a <http://www.w3.org/2002/07/owl#Class>;
         rdfs:comment "This property is to be used to describe a lot of land";
         rdfs:label "Lot";
         rdfs:subClassOf osr:Area.
-osr:Marsh a owl:Class;
+osr:Marsh a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "This property is to be used to describe a marshy region";
           rdfs:label "Marsh";
           rdfs:subClassOf osr:Hydrated.
-osr:Metropolis a owl:Class;
+osr:Metropolis a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "This property is to be used to describe a metropolis";
                rdfs:label "Metropolis";
                rdfs:subClassOf osr:Urban-Area.
-osr:Mountain a owl:Class;
+osr:Mountain a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "This property is to be used to describe a mountain";
              rdfs:label "Mountain";
              rdfs:subClassOf osr:Region.
-osr:Mountain-Range a owl:Class;
+osr:Mountain-Range a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "This property is to be used to describe a continious mountainous region";
                    rdfs:label "Mountain Range";
                    rdfs:subClassOf osr:Region.
-osr:Necropolis a owl:Class;
+osr:Necropolis a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "This property is to be used to describe a necropolis";
                rdfs:label "Necropolis";
                rdfs:subClassOf osr:Urban-Area.
-osr:Ocean a owl:Class;
+osr:Ocean a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "This property is to be used to describe an ocean region";
           rdfs:label "Ocean";
           rdfs:subClassOf osr:Aquatic.
-osr:Orbit a owl:Class;
+osr:Orbit a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "This property is to be used to describe the path of an orbiting object";
           rdfs:label "Orbit";
           rdfs:subClassOf <http://contextus.net/ontology/ontomedia/misc/AKTlocation#Open-Space>.
-osr:Orchard a owl:Class;
+osr:Orchard a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "This property is to be used to describe a cultivated orchard region";
             rdfs:label "Orchard";
             rdfs:subClassOf osr:Arboreal.
-osr:Plains a owl:Class;
+osr:Plains a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "This property is to be used to describe plains";
            rdfs:label "Plains";
            rdfs:subClassOf osr:Region.
-osr:Pond a owl:Class;
+osr:Pond a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "This property is to be used to describe a man-made pond region";
          rdfs:label "Pond";
          rdfs:subClassOf osr:Aquatic.
-osr:Pool a owl:Class;
+osr:Pool a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "This property is to be used to describe a pool region";
          rdfs:label "Pool";
          rdfs:subClassOf osr:Aquatic.
-osr:Port a owl:Class;
+osr:Port a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "This property is to be used to describe a port city";
          rdfs:label "Port";
          rdfs:subClassOf osr:City.
-osr:Portal a owl:Class;
+osr:Portal a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "This property is to be used to describe a portal i.e doorway, stargate";
            rdfs:label "Portal";
            rdfs:subClassOf <http://contextus.net/ontology/ontomedia/misc/AKTlocation#Enclosed-Space>.
-osr:Puddle a owl:Class;
+osr:Puddle a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "This property is to be used to describe a puddle region";
            rdfs:label "Puddle";
            rdfs:subClassOf osr:Aquatic.
-osr:Quay a owl:Class;
+osr:Quay a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "This property is to be used to describe a quay";
          rdfs:label "Quay";
          rdfs:subClassOf osr:Urban-Area.
-osr:Region a owl:Class;
+osr:Region a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "This property is to be used to describe a region";
            rdfs:label "Region";
            rdfs:subClassOf <http://contextus.net/ontology/ontomedia/misc/AKTlocation#Open-Space>.
-osr:River a owl:Class;
+osr:River a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "This property is to be used to describe a river region";
           rdfs:label "River";
           rdfs:subClassOf osr:Aquatic.
-osr:Riverbank a owl:Class;
+osr:Riverbank a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "This property is to be used to describe a riverbank";
               rdfs:label "Riverbank";
               rdfs:subClassOf osr:Bounding.
-osr:Sea a owl:Class;
+osr:Sea a <http://www.w3.org/2002/07/owl#Class>;
         rdfs:comment "This property is to be used to describe a sea region";
         rdfs:label "Sea";
         rdfs:subClassOf osr:Aquatic.
-osr:Seashore a owl:Class;
+osr:Seashore a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "This property is to be used to describe a sea shore";
              rdfs:label "Seashore";
              rdfs:subClassOf osr:Bounding.
-osr:Space a owl:Class;
+osr:Space a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "This property is to be used to describe a space";
           rdfs:label "Space";
-          rdfs:subClassOf oc:Entity;
-          owl:equivalentClass <http://contextus.net/ontology/ontomedia/misc/AKTlocation#Abstract-Space>.
-osr:Stream a owl:Class;
+          rdfs:subClassOf <http://contextus.net/ontology/ontomedia/core/expression#Entity>;
+          <http://www.w3.org/2002/07/owl#equivalentClass> <http://contextus.net/ontology/ontomedia/misc/AKTlocation#Abstract-Space>.
+osr:Stream a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "This property is to be used to describe a stream region";
            rdfs:label "Stream";
            rdfs:subClassOf osr:Aquatic.
-osr:Surface-Space a owl:Class;
+osr:Surface-Space a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "This property is to be used to describe the surface of a object";
                   rdfs:label "Surface Space";
                   rdfs:subClassOf osr:Space.
-osr:Swamp a owl:Class;
+osr:Swamp a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "This property is to be used to describe a swampy region";
           rdfs:label "Swamp";
           rdfs:subClassOf osr:Hydrated.
-osr:Town a owl:Class;
+osr:Town a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "This property is to be used to describe a town";
          rdfs:label "Town";
          rdfs:subClassOf osr:Urban-Area.
-osr:Universe a owl:Class;
+osr:Universe a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "This property is to be used to describe a universe";
              rdfs:label "Universe";
              rdfs:subClassOf <http://contextus.net/ontology/ontomedia/misc/AKTlocation#Open-Space>.
-osr:Urban-Area a owl:Class;
+osr:Urban-Area a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "This property is to be used to describe an urban area";
                rdfs:label "Urban Area";
                rdfs:subClassOf <http://contextus.net/ontology/ontomedia/misc/AKTlocation#Open-Space>.
-osr:Vessel a owl:Class;
+osr:Vessel a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "This property is to be used to describe a vessel";
            rdfs:label "Vessel";
            rdfs:subClassOf <http://contextus.net/ontology/ontomedia/misc/AKTlocation#Enclosed-Space>.
-osr:Village a owl:Class;
+osr:Village a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "This property is to be used to describe a village space";
             rdfs:label "Village";
             rdfs:subClassOf osr:Urban-Area.
-osr:Volcano a owl:Class;
+osr:Volcano a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "This property is to be used to describe a volcano";
             rdfs:label "Volcano";
             rdfs:subClassOf osr:Mountain.
-osr:Wood a owl:Class;
+osr:Wood a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "This property is to be used to describe a wooded region";
          rdfs:label "Wood";
          rdfs:subClassOf osr:Arboreal.
-osr:World a owl:Class;
+osr:World a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "This property is to be used to describe a world, planet, moon or other similar body";
           rdfs:label "World";
           rdfs:subClassOf <http://contextus.net/ontology/ontomedia/misc/AKTlocation#Open-Space>.
-osr:adjacent-above a owl:ObjectProperty;
+osr:adjacent-above a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "This property is to be used to describe an adjacent Space which is above the other";
                    rdfs:domain osr:Space;
                    rdfs:label "Adjacent Above";
                    rdfs:range osr:Space;
                    rdfs:subPropertyOf osr:adjacent-to;
-                   owl:inverseOf osr:adjacent-below.
-osr:adjacent-below a owl:ObjectProperty;
+                   <http://www.w3.org/2002/07/owl#inverseOf> osr:adjacent-below.
+osr:adjacent-below a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "This property is to be used to describe an adjacent Space which is below the other";
                    rdfs:domain osr:Space;
                    rdfs:label "Adjacent Below";
                    rdfs:range osr:Space;
                    rdfs:subPropertyOf osr:adjacent-to;
-                   owl:inverseOf osr:adjacent-above.
-osr:has-boundary a owl:ObjectProperty;
+                   <http://www.w3.org/2002/07/owl#inverseOf> osr:adjacent-above.
+osr:has-boundary a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "This property is to be used to describe an Space which is the boundary of the Space";
                  rdfs:domain osr:Space;
                  rdfs:label "Has Boundary";
                  rdfs:range osr:Space;
                  rdfs:subPropertyOf <http://contextus.net/ontology/ontomedia/misc/AKTlocation#is-located-in>;
-                 owl:inverseOf osr:is-boundary-of.
-osr:has-dividing-item a owl:ObjectProperty;
+                 <http://www.w3.org/2002/07/owl#inverseOf> osr:is-boundary-of.
+osr:has-dividing-item a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "This property is to be used to describe an item used to divide a portal";
                       rdfs:domain osr:Portal;
                       rdfs:label "Has Dividing Item";
-                      rdfs:range oc:Item.
-osr:is-boundary-of a owl:ObjectProperty;
+                      rdfs:range <http://contextus.net/ontology/ontomedia/core/expression#Item>.
+osr:is-boundary-of a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "This property is to be used to describe an Space of which the region is the boundary";
                    rdfs:domain osr:Space;
                    rdfs:label "Is Boundary Of";
                    rdfs:range osr:Space;
                    rdfs:subPropertyOf <http://contextus.net/ontology/ontomedia/misc/AKTlocation#is-located-in>;
-                   owl:inverseOf osr:has-boundary.
-osr:orbit-around a owl:ObjectProperty;
+                   <http://www.w3.org/2002/07/owl#inverseOf> osr:has-boundary.
+osr:orbit-around a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "This property is to be used to describe an adjacent Space which describes an orbit around the other";
                  rdfs:domain osr:Space;
                  rdfs:label "Orbit Around";
                  rdfs:range osr:Space;
                  rdfs:subPropertyOf osr:adjacent-to;
-                 owl:inverseOf osr:adjacent-below.
+                 <http://www.w3.org/2002/07/owl#inverseOf> osr:adjacent-below.

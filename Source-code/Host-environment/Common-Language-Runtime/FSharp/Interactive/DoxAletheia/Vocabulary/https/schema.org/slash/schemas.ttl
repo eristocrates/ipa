@@ -51,17 +51,7 @@
 @prefix unece: <http://unece.org/vocab#>.
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#>.
 @prefix void: <http://rdfs.org/ns/void#>.
-@prefix snomedct: <http://purl.bioontology.org/ontology/SNOMEDCT/>.
-@prefix pto: <http://www.productontology.org/id/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix wikidata: <http://www.wikidata.org/entity/>.
-@prefix ogp: <http://ogp.me/ns#>.
-@prefix vcard2006: <http://www.w3.org/2006/vcard/ns#>.
 @prefix schemas: <https://schema.org/>.
-@prefix nsprov: <http://www.w3.org/ns/prov#>.
-@prefix regorg: <http://www.w3.org/ns/regorg#>.
 
 eli:amends a rdf:Property.
 eli:changes a rdf:Property.
@@ -522,7 +512,7 @@ schema:Atlas a rdfs:Class;
              rdfs:label "Atlas";
              rdfs:subClassOf schema:CreativeWork;
              schema:isPartOf <https://bib.schema.org/>;
-             schema:source pto:Atlas.
+             schema:source <http://www.productontology.org/id/Atlas>.
 schema:Attorney a rdfs:Class;
                 rdfs:comment "Professional service: Attorney. \\n\\nThis type is deprecated - [[LegalService]] is more inclusive and less ambiguous.";
                 rdfs:label "Attorney";
@@ -2503,7 +2493,7 @@ schema:FreeReturn a schema:ReturnFeesEnumeration;
 schema:Friday a schema:DayOfWeek;
               rdfs:comment "The day of the week between Thursday and Saturday.";
               rdfs:label "Friday";
-              schema:sameAs wikidata:Q130.
+              schema:sameAs <http://www.wikidata.org/entity/Q130>.
 schema:FrontWheelDriveConfiguration a schema:DriveWheelConfigurationValue;
                                     rdfs:comment "Front-wheel drive is a transmission layout where the engine drives the front wheels.";
                                     rdfs:label "FrontWheelDriveConfiguration";
@@ -3481,7 +3471,7 @@ schema:LocalBusiness a rdfs:Class;
                      rdfs:label "LocalBusiness";
                      rdfs:subClassOf schema:Organization,
                                      schema:Place;
-                     skos:closeMatch regorg:RegisteredOrganization.
+                     skos:closeMatch <http://www.w3.org/ns/regorg#RegisteredOrganization>.
 schema:LocationFeatureSpecification a rdfs:Class;
                                     rdfs:comment "Specifies a location feature by providing a structured value representing a feature of an accommodation as a property-value pair of varying degrees of formality.";
                                     rdfs:label "LocationFeatureSpecification";
@@ -4001,7 +3991,7 @@ schema:MolecularEntity a rdfs:Class;
 schema:Monday a schema:DayOfWeek;
               rdfs:comment "The day of the week between Sunday and Tuesday.";
               rdfs:label "Monday";
-              schema:sameAs wikidata:Q105.
+              schema:sameAs <http://www.wikidata.org/entity/Q105>.
 schema:MonetaryAmount a rdfs:Class;
                       rdfs:comment "A monetary value or range. This type can be used to describe an amount of money such as $50 USD, or a range as in describing a bank account being suitable for a balance between £1,000 and £1,000,000 GBP, or the value of a salary, etc. It is recommended to use [[PriceSpecification]] Types to describe the price of an Offer, Invoice, etc.";
                       rdfs:label "MonetaryAmount";
@@ -4255,7 +4245,7 @@ schema:Newspaper a rdfs:Class;
                  rdfs:label "Newspaper";
                  rdfs:subClassOf schema:Periodical;
                  schema:isPartOf <https://bib.schema.org/>;
-                 schema:source pto:Newspaper.
+                 schema:source <http://www.productontology.org/id/Newspaper>.
 schema:NightClub a rdfs:Class;
                  rdfs:comment "A nightclub or discotheque.";
                  rdfs:label "NightClub";
@@ -5947,7 +5937,7 @@ schema:SatiricalArticle a rdfs:Class;
 schema:Saturday a schema:DayOfWeek;
                 rdfs:comment "The day of the week between Friday and Sunday.";
                 rdfs:label "Saturday";
-                schema:sameAs wikidata:Q131.
+                schema:sameAs <http://www.wikidata.org/entity/Q131>.
 schema:Schedule a rdfs:Class;
                 rdfs:comment """A schedule defines a repeating time period used to describe a regularly occurring [[Event]]. At a minimum a schedule will specify [[repeatFrequency]] which describes the interval between occurrences of the event. Additional information can be provided to specify the schedule more precisely.
       This includes identifying the day(s) of the week or month when the recurring event will take place, in addition to its start and end time. Schedules may also
@@ -6425,7 +6415,7 @@ See also the <a href=\"/docs/hotels.html\">dedicated document on the use of sche
 schema:Sunday a schema:DayOfWeek;
               rdfs:comment "The day of the week between Saturday and Monday.";
               rdfs:label "Sunday";
-              schema:sameAs wikidata:Q132.
+              schema:sameAs <http://www.wikidata.org/entity/Q132>.
 schema:SuperficialAnatomy a rdfs:Class;
                           rdfs:comment "Anatomical features that can be observed by sight (without dissection), including the form and proportions of the human body as well as surface landmarks that correspond to deeper subcutaneous structures. Superficial anatomy plays an important role in sports medicine, phlebotomy, and other medical specialties as underlying anatomical structures can be identified through surface palpation. For example, during back surgery, superficial anatomy can be used to palpate and count vertebrae to find the site of incision. Or in phlebotomy, superficial anatomy can be used to locate an underlying vein; for example, the median cubital vein can be located by palpating the borders of the cubital fossa (such as the epicondyles of the humerus) and then looking for the superficial signs of the vein, such as size, prominence, ability to refill after depression, and feel of surrounding tissue support. As another example, in a subluxation (dislocation) of the glenohumeral joint, the bony structure becomes pronounced with the deltoid muscle failing to cover the glenohumeral joint allowing the edges of the scapula to be superficially visible. Here, the superficial anatomy is the visible edges of the scapula, implying the underlying dislocation of the joint (the related anatomical structure).";
                           rdfs:label "SuperficialAnatomy";
@@ -6578,7 +6568,7 @@ schema:Thesis a rdfs:Class;
               rdfs:label "Thesis";
               rdfs:subClassOf schema:CreativeWork;
               schema:isPartOf <https://bib.schema.org/>;
-              schema:source pto:Thesis.
+              schema:source <http://www.productontology.org/id/Thesis>.
 schema:Thing a rdfs:Class;
              rdfs:comment "The most generic type of item.";
              rdfs:label "Thing".
@@ -6589,7 +6579,7 @@ schema:Throat a schema:PhysicalExam;
 schema:Thursday a schema:DayOfWeek;
                 rdfs:comment "The day of the week between Wednesday and Friday.";
                 rdfs:label "Thursday";
-                schema:sameAs wikidata:Q129.
+                schema:sameAs <http://www.wikidata.org/entity/Q129>.
 schema:Ticket a rdfs:Class;
               rdfs:comment "Used to describe a ticket to an event, a flight, a bus ride, etc.";
               rdfs:label "Ticket";
@@ -6764,7 +6754,7 @@ schema:True a schema:Boolean;
 schema:Tuesday a schema:DayOfWeek;
                rdfs:comment "The day of the week between Monday and Wednesday.";
                rdfs:label "Tuesday";
-               schema:sameAs wikidata:Q127.
+               schema:sameAs <http://www.wikidata.org/entity/Q127>.
 schema:TypeAndQuantityNode a rdfs:Class;
                            rdfs:comment "A structured value indicating the quantity, unit of measurement, and business function of goods included in a bundle offer.";
                            rdfs:label "TypeAndQuantityNode";
@@ -7332,7 +7322,7 @@ schema:WebSite a rdfs:Class;
 schema:Wednesday a schema:DayOfWeek;
                  rdfs:comment "The day of the week between Tuesday and Thursday.";
                  rdfs:label "Wednesday";
-                 schema:sameAs wikidata:Q128.
+                 schema:sameAs <http://www.wikidata.org/entity/Q128>.
 schema:WesternConventional a schema:MedicineSystem;
                            rdfs:comment "The conventional Western system of medicine, that aims to apply the best available evidence gained from the scientific method to clinical decision making. Also known as conventional or Western medicine.";
                            rdfs:label "WesternConventional";

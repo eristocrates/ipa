@@ -9,10 +9,7 @@
 @prefix event: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
 @prefix organism: <http://eulersharp.sourceforge.net/2003/03swap/organism#>.
 @prefix genomab: <http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#>.
-@prefix events: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
 @prefix genab: <http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
 
 genomab: dce:creator "Hans Cools, MD, Agfa Healthcare/Belgium"@en;
          dce:description "Formal general description of genome abnormality."@en;

@@ -11,9 +11,6 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix country: <http://eulersharp.sourceforge.net/2003/03swap/countries#>.
 @prefix countries: <http://eulersharp.sourceforge.net/2003/03swap/countries#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
 
 <http://eulersharp.sourceforge.net/2003/03swap/countries> dce:contributor "Hans Cools, MD, Agfa Healthcare/Belgium"@en;
                                                           dce:creator "Pieterjan De Potter and Pedro Debevere, Ghent University - IBBT/ELIS - Multimedia Lab/Belgium"@en;

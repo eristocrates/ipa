@@ -8,10 +8,6 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix dct: <http://purl.org/dc/terms/>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix dr: <http://purl.org/swan/2.0/discourse-relationships/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix swande: <http://purl.org/swan/2.0/discourse-elements/>.
 
 dct:contributor a owl:AnnotationProperty.
 dct:creator a owl:AnnotationProperty.
@@ -30,6 +26,6 @@ swan: dct:contributor "Paolo Ciccarese";
       a owl:Ontology;
       rdfs:label "SWAN ontology v. 2.0";
       owl:imports <http://purl.org/swan/2.0/agents/>,
-                  swande:,
-                  dr:,
+                  <http://purl.org/swan/2.0/discourse-elements/>,
+                  <http://purl.org/swan/2.0/discourse-relationships/>,
                   <http://purl.org/spar/fabio>.

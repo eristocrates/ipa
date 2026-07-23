@@ -1,16 +1,13 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix doc: <http://www.w3.org/2000/10/swap/pim/doc#>.
 @prefix rec54: <http://www.w3.org/2001/02pd/rec54#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
 
-rec54: dc11:description """This is (the start of) an event-based model of the W3C process;
+rec54: <http://purl.org/dc/elements/1.1/description> """This is (the start of) an event-based model of the W3C process;
   e.g. RECdd is the class of Recommendation Director's Decisions;
 	i.e. messages to w3c-ac-members announcing a new
 	W3C Recommendation.""";
-       dc11:title "Model of the W3C Process";
+       <http://purl.org/dc/elements/1.1/title> "Model of the W3C Process";
        rdfs:comment "$Id: rec54.rdf,v 1.20 2014-06-12 11:03:50 denis Exp $";
        rdfs:seeAlso <http://www.w3.org/DesignIssues/PaperTrail>,
                     <http://www.w3.org/Consortium/Process/>,
@@ -100,23 +97,23 @@ rec54:Retired rdfs:label "WD not longer in development";
               rdfs:subClassOf rec54:WD.
 rec54:Superseded rdfs:comment "Another work has superseded this one, which should not be considered as current any more.";
                  rdfs:label "supersed Work";
-                 rdfs:subClassOf doc:Work.
+                 rdfs:subClassOf <http://www.w3.org/2000/10/swap/pim/doc#Work>.
 rec54:TRPub rdfs:label "a W3C Technical Report";
             rdfs:seeAlso <http://www.w3.org/Consortium/Process/tr.html#Reports>;
-            rdfs:subClassOf doc:Work.
+            rdfs:subClassOf <http://www.w3.org/2000/10/swap/pim/doc#Work>.
 rec54:WD rdfs:label "W3C Working Draft";
          rdfs:subClassOf rec54:TRPub;
          rec54:cites rec54:ActivityStatement.
 rec54:WDreq rdfs:label "WD req.";
             rdfs:subClassOf rec54:WGAction;
             rec54:effect rec54:WD.
-rec54:cites rdfs:domain doc:Work;
+rec54:cites rdfs:domain <http://www.w3.org/2000/10/swap/pim/doc#Work>;
             rdfs:label "cites".
 rec54:editor rdfs:label "editor";
-             rdfs:subPropertyOf dc11:contributor.
+             rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/contributor>.
 rec54:effect rdfs:label "has an effect on".
 rec54:formerShortname rdfs:label "former short name";
-                      rdfs:subPropertyOf dc11:identifier.
+                      rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/identifier>.
 rec54:fromSubmission rdfs:domain rec54:NOTE;
                      rdfs:label "published per Member Submission request".
 rec54:implementationFeedbackDue rdfs:domain rec54:CR;
@@ -135,12 +132,12 @@ rec54:patentRules rdfs:domain rec54:TRPub;
 rec54:prReviewsDue rdfs:domain rec54:PR;
                    rdfs:label "proposed recommendation feedback due".
 rec54:previousEdition rdfs:label "previous edition";
-                      rdfs:subPropertyOf dc11:relation.
+                      rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/relation>.
 rec54:replaces rdfs:comment "Specs that shouldn't be used anymore because a newer one is available";
-               rdfs:domain doc:Work;
+               rdfs:domain <http://www.w3.org/2000/10/swap/pim/doc#Work>;
                rdfs:label "replaces".
 rec54:supersedes rdfs:comment "this Work supersedes what was one in that Work";
-                 rdfs:domain doc:Work;
+                 rdfs:domain <http://www.w3.org/2000/10/swap/pim/doc#Work>;
                  rdfs:label "supersedes";
-                 rdfs:range doc:Work;
-                 rdfs:subPropertyOf dc11:relation.
+                 rdfs:range <http://www.w3.org/2000/10/swap/pim/doc#Work>;
+                 rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/relation>.

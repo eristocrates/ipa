@@ -2,28 +2,22 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix sql: <http://ns.inria.fr/ast/sql#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 
-sql: dcterms:created "2013-12-09"^^xsd:date;
-     dcterms:creator "Olivier Corby",
-                     "Corentin Follenfant";
-     dcterms:description "A vocabulary that allows SQL code abstract syntax trees to be published in RDF."@en;
-     dcterms:license <http://creativecommons.org/licenses/by/1.0/>;
-     dcterms:modified "2014-01-28"^^xsd:date;
-     dcterms:title "SQL Abstract Syntax Trees Vocabulary"@en;
-     vann:preferredNamespacePrefix "sql";
-     vann:preferredNamespaceUri "http://ns.inria.fr/ast/sql#";
-     a owl:Ontology;
+sql: <http://purl.org/dc/terms/created> "2013-12-09"^^xsd:date;
+     <http://purl.org/dc/terms/creator> "Olivier Corby",
+                                        "Corentin Follenfant";
+     <http://purl.org/dc/terms/description> "A vocabulary that allows SQL code abstract syntax trees to be published in RDF."@en;
+     <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/1.0/>;
+     <http://purl.org/dc/terms/modified> "2014-01-28"^^xsd:date;
+     <http://purl.org/dc/terms/title> "SQL Abstract Syntax Trees Vocabulary"@en;
+     <http://purl.org/vocab/vann/preferredNamespacePrefix> "sql";
+     <http://purl.org/vocab/vann/preferredNamespaceUri> "http://ns.inria.fr/ast/sql#";
+     a <http://www.w3.org/2002/07/owl#Ontology>;
      rdfs:label "SQL Abstract Syntax Trees Vocabulary"@en;
      rdfs:seeAlso <http://ns.inria.fr/ast/sql/index.html>,
                   <http://spinrdf.org/sp>;
-     owl:versionInfo "0.3";
-     status:term_status "unstable".
+     <http://www.w3.org/2002/07/owl#versionInfo> "0.3";
+     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
 sql:ASTNode a rdfs:Class;
             rdfs:comment "Abstract class subsumed by all AST node classes."@en;
             rdfs:isDefinedBy sql:;

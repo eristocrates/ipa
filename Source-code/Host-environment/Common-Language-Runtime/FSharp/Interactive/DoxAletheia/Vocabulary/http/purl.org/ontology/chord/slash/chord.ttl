@@ -2,62 +2,54 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix chord: <http://purl.org/ontology/chord/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix planet: <http://dbpedia.org/>.
-@prefix resource: <http://dbpedia.org/resource/>.
-@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-chord: dc11:date "2007-09-11";
-       dc11:description """FIXME
+chord: <http://purl.org/dc/elements/1.1/date> "2007-09-11";
+       <http://purl.org/dc/elements/1.1/description> """FIXME
 		""";
-       dc11:title "The Chord Ontology";
-       a owl:Ontology;
-       owl:versionInfo "Revision: 0.1";
-       foaf:maker <http://chrissutton.org/me>.
+       <http://purl.org/dc/elements/1.1/title> "The Chord Ontology";
+       a <http://www.w3.org/2002/07/owl#Ontology>;
+       <http://www.w3.org/2002/07/owl#versionInfo> "Revision: 0.1";
+       <http://xmlns.com/foaf/0.1/maker> <http://chrissutton.org/me>.
 chord:Chord a rdfs:Class,
-              owl:Class;
+              <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "Two or more notes played together.";
             rdfs:isDefinedBy chord:;
             rdfs:label "Chord".
 chord:ChordEvent a rdfs:Class,
-                   owl:Class;
+                   <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "A chord being played.";
                  rdfs:isDefinedBy chord:;
                  rdfs:label "ChordEvent";
-                 rdfs:subClassOf event:Event.
+                 rdfs:subClassOf <http://purl.org/NET/c4dm/event.owl#Event>.
 chord:Interval a rdfs:Class,
-                 owl:Class;
+                 <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "An interval above the root of a chord.";
                rdfs:isDefinedBy chord:;
                rdfs:label "Interval".
 chord:Modifier a rdfs:Class,
-                 owl:Class;
+                 <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "A modifier applied to a note to change its pitch.";
                rdfs:isDefinedBy chord:;
                rdfs:label "Modifier".
 chord:Natural a rdfs:Class,
-                owl:Class;
+                <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "One of the seven natural notes of the Western music system.";
               rdfs:isDefinedBy chord:;
               rdfs:label "Natural";
               rdfs:subClassOf chord:Note.
 chord:Note a rdfs:Class,
-             owl:Class;
+             <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "FIXME";
            rdfs:isDefinedBy chord:;
            rdfs:label "Note".
 chord:ScaleInterval a rdfs:Class,
-                      owl:Class;
+                      <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "An interval in the root scale, made up of the degree of the scale and optional modifier.";
                     rdfs:isDefinedBy chord:;
                     rdfs:label "ScaleInterval";
                     rdfs:subClassOf chord:Interval.
 chord:SemitoneInterval a rdfs:Class,
-                         owl:Class;
+                         <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:comment "A semitone interval.";
                        rdfs:isDefinedBy chord:;
                        rdfs:label "SemitoneInterval";
@@ -73,7 +65,7 @@ chord:aug chord:interval [chord:degree "1" ;
           rdfs:comment "An augmented chord.";
           rdfs:isDefinedBy chord:;
           rdfs:label "aug";
-          rdfs:seeAlso resource:Augmented_chord.
+          rdfs:seeAlso <http://dbpedia.org/resource/Augmented_chord>.
 chord:base_chord a rdf:Property;
                  rdfs:comment """The chord on which this one is based. 
 			For example, a C7 chord might have chord:Cmaj as its base chord.""";
@@ -111,7 +103,7 @@ chord:dim chord:interval [chord:degree "1" ;
           rdfs:comment "A diminished chord.";
           rdfs:isDefinedBy chord:;
           rdfs:label "dim";
-          rdfs:seeAlso resource:Diminished_chord.
+          rdfs:seeAlso <http://dbpedia.org/resource/Diminished_chord>.
 chord:dim7 chord:interval [chord:degree "1" ; 
                            a chord:ScaleInterval],
                           [chord:modifier chord:flat ; 
@@ -167,7 +159,7 @@ chord:maj chord:interval [chord:degree "1" ;
           rdfs:comment "A major chord.";
           rdfs:isDefinedBy chord:;
           rdfs:label "maj";
-          rdfs:seeAlso resource:Major_chord.
+          rdfs:seeAlso <http://dbpedia.org/resource/Major_chord>.
 chord:maj6 chord:interval [chord:degree "3" ; 
                            a chord:ScaleInterval],
                           [chord:degree "5" ; 
@@ -180,8 +172,8 @@ chord:maj6 chord:interval [chord:degree "3" ;
            rdfs:comment "A major sixth chord.";
            rdfs:isDefinedBy chord:;
            rdfs:label "maj6";
-           rdfs:seeAlso resource:Sixth_chord,
-                        resource:Major_chord.
+           rdfs:seeAlso <http://dbpedia.org/resource/Sixth_chord>,
+                        <http://dbpedia.org/resource/Major_chord>.
 chord:maj7 chord:interval [chord:degree "1" ; 
                            a chord:ScaleInterval],
                           [chord:degree "3" ; 
@@ -194,7 +186,7 @@ chord:maj7 chord:interval [chord:degree "1" ;
            rdfs:comment "A major seventh chord.";
            rdfs:isDefinedBy chord:;
            rdfs:label "maj7";
-           rdfs:seeAlso resource:Major_seventh_chord.
+           rdfs:seeAlso <http://dbpedia.org/resource/Major_seventh_chord>.
 chord:maj9 chord:interval [chord:degree "7" ; 
                            a chord:ScaleInterval],
                           [chord:degree "9" ; 
@@ -209,7 +201,7 @@ chord:maj9 chord:interval [chord:degree "7" ;
            rdfs:comment "A major ninth chord.";
            rdfs:isDefinedBy chord:;
            rdfs:label "maj9";
-           rdfs:seeAlso resource:Major_chord.
+           rdfs:seeAlso <http://dbpedia.org/resource/Major_chord>.
 chord:min chord:interval [chord:degree "1" ; 
                           a chord:ScaleInterval],
                          [chord:modifier chord:flat ; 
@@ -221,7 +213,7 @@ chord:min chord:interval [chord:degree "1" ;
           rdfs:comment "A minor chord.";
           rdfs:isDefinedBy chord:;
           rdfs:label "min";
-          rdfs:seeAlso resource:Minor_chord.
+          rdfs:seeAlso <http://dbpedia.org/resource/Minor_chord>.
 chord:min6 chord:interval [chord:degree "5" ; 
                            a chord:ScaleInterval],
                           [chord:degree "6" ; 
@@ -235,8 +227,8 @@ chord:min6 chord:interval [chord:degree "5" ;
            rdfs:comment "A minor sixth chord.";
            rdfs:isDefinedBy chord:;
            rdfs:label "min6";
-           rdfs:seeAlso resource:Sixth_chord,
-                        resource:Minor_chord.
+           rdfs:seeAlso <http://dbpedia.org/resource/Sixth_chord>,
+                        <http://dbpedia.org/resource/Minor_chord>.
 chord:min7 chord:interval [chord:degree "1" ; 
                            a chord:ScaleInterval],
                           [chord:modifier chord:flat ; 
@@ -251,7 +243,7 @@ chord:min7 chord:interval [chord:degree "1" ;
            rdfs:comment "A minor seventh chord.";
            rdfs:isDefinedBy chord:;
            rdfs:label "min7";
-           rdfs:seeAlso resource:Minor_seventh_chord.
+           rdfs:seeAlso <http://dbpedia.org/resource/Minor_seventh_chord>.
 chord:min9 chord:interval [chord:modifier chord:flat ; 
                            chord:degree "7" ; 
                            a chord:ScaleInterval],
@@ -268,7 +260,7 @@ chord:min9 chord:interval [chord:modifier chord:flat ;
            rdfs:comment "A minor ninth chord.";
            rdfs:isDefinedBy chord:;
            rdfs:label "min9";
-           rdfs:seeAlso resource:Minor_chord.
+           rdfs:seeAlso <http://dbpedia.org/resource/Minor_chord>.
 chord:minmaj7 chord:interval [chord:degree "1" ; 
                               a chord:ScaleInterval],
                              [chord:modifier chord:flat ; 
@@ -282,12 +274,12 @@ chord:minmaj7 chord:interval [chord:degree "1" ;
               rdfs:comment "A minor (major 7th) chord.";
               rdfs:isDefinedBy chord:;
               rdfs:label "minmaj7";
-              rdfs:seeAlso resource:Minor_major_seventh_chord.
+              rdfs:seeAlso <http://dbpedia.org/resource/Minor_major_seventh_chord>.
 chord:modifier a rdf:Property;
                rdfs:comment "A modification to a note's pitch.";
-               rdfs:domain [owl:unionOf (chord:Note
-                                         chord:ScaleInterval) ; 
-                            a owl:Class];
+               rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (chord:Note
+                                                                     chord:ScaleInterval) ; 
+                            a <http://www.w3.org/2002/07/owl#Class>];
                rdfs:isDefinedBy chord:;
                rdfs:label "modifier";
                rdfs:range chord:Modifier.
@@ -432,7 +424,7 @@ chord:seventh chord:interval [chord:degree "1" ;
               rdfs:comment "A seventh chord.";
               rdfs:isDefinedBy chord:;
               rdfs:label "7";
-              rdfs:seeAlso resource:Seventh_chord.
+              rdfs:seeAlso <http://dbpedia.org/resource/Seventh_chord>.
 chord:sharp a chord:Modifier;
             rdfs:isDefinedBy chord:;
             rdfs:label "sharp".
@@ -446,7 +438,7 @@ chord:sus2 chord:interval [chord:degree "1" ;
            rdfs:comment "A suspended fourth chord.";
            rdfs:isDefinedBy chord:;
            rdfs:label "sus2";
-           rdfs:seeAlso resource:Suspended_chord.
+           rdfs:seeAlso <http://dbpedia.org/resource/Suspended_chord>.
 chord:sus4 chord:interval [chord:degree "1" ; 
                            a chord:ScaleInterval],
                           [chord:degree "4" ; 
@@ -457,7 +449,7 @@ chord:sus4 chord:interval [chord:degree "1" ;
            rdfs:comment "A suspended fourth chord.";
            rdfs:isDefinedBy chord:;
            rdfs:label "sus4";
-           rdfs:seeAlso resource:Suspended_chord.
+           rdfs:seeAlso <http://dbpedia.org/resource/Suspended_chord>.
 chord:without_interval a rdf:Property;
                        rdfs:comment "A degree of the scale expected in the chord but not actually present here.";
                        rdfs:domain chord:Chord;

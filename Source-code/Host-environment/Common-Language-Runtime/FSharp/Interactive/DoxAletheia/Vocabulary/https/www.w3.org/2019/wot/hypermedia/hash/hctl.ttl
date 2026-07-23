@@ -1,72 +1,67 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix hctl: <https://www.w3.org/2019/wot/hypermedia#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix schema: <http://schema.org/>.
 
-hctl: dcterms:creator <https://vcharpenay.link/#me>;
-      vann:preferredNamespacePrefix "hctl";
-      a owl:Ontology;
+hctl: <http://purl.org/dc/terms/creator> <https://vcharpenay.link/#me>;
+      <http://purl.org/vocab/vann/preferredNamespacePrefix> "hctl";
+      a <http://www.w3.org/2002/07/owl#Ontology>;
       rdfs:comment "Ontology designed to provide an RDF representation of Hypermedia Controls, in particular links and forms.";
       rdfs:label "Hypermedia Controls Ontology".
 hctl:ExpectedResponse a rdfs:Class,
-                        owl:Class;
+                        <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "Communication metadata describing the expected response message."@en;
                       rdfs:label "ExpectedResponse".
 hctl:Form a rdfs:Class,
-            owl:Class;
+            <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment """A form can be viewed as a statement of \"To perform an <b><em>operation type</em></b> operation on <b><em>form context</b></em>, make a <b><em>request method</b></em> request to <b><em>submission target</b></em>\" where the optional <b><em>form fields</b></em> may further describe the required request. In Thing Descriptions, the <b><em>form context</b></em> is the surrounding Object, such as Properties, Actions, and Events or the Thing itself for meta-interactions."""@en;
           rdfs:label "Form".
 hctl:Link a rdfs:Class,
-            owl:Class;
+            <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment """A link can be viewed as a statement of the form \"<b><em>link context</em></b>  has a <b><em>relation type</em></b> resource at <b><em>link target</em></b>\", where the optional <b><em>target attributes</em></b>  may further describe the resource."""@en;
           rdfs:label "Link".
-hctl:forContentCoding schema:domainIncludes hctl:Form;
-                      schema:rangeIncludes schema:Text;
-                      a owl:DatatypeProperty;
+hctl:forContentCoding <http://schema.org/domainIncludes> hctl:Form;
+                      <http://schema.org/rangeIncludes> <http://schema.org/Text>;
+                      a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment """Content coding values indicate an encoding transformation that has been or can be applied to a representation. Content codings are primarily used to allow a representation to be compressed or otherwise usefully transformed without losing the identity of its underlying media type and without loss of information. Examples of content coding include \"gzip\", \"deflate\", etc. """@en;
                       rdfs:label "forContentCoding".
-hctl:forContentType schema:domainIncludes hctl:Form;
-                    schema:rangeIncludes schema:Text;
-                    a owl:DatatypeProperty;
+hctl:forContentType <http://schema.org/domainIncludes> hctl:Form;
+                    <http://schema.org/rangeIncludes> <http://schema.org/Text>;
+                    a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "Assign a content type based on a media type [[IANA-MEDIA-TYPES]] (e.g., 'text/plain') and potential parameters (e.g., 'charset=utf-8') for the media type."@en;
                     rdfs:label "forContentType".
-hctl:forSubProtocol schema:domainIncludes hctl:Form;
-                    schema:rangeIncludes schema:Text;
-                    a owl:DatatypeProperty;
+hctl:forSubProtocol <http://schema.org/domainIncludes> hctl:Form;
+                    <http://schema.org/rangeIncludes> <http://schema.org/Text>;
+                    a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment """Indicates the exact mechanism by which an interaction will be accomplished for a given protocol when there are multiple options.
      
 For example, for HTTP and Events, it indicates which of several available mechanisms should be used for asynchronous notifications such as long polling, websub (also see https://www.w3.org/TR/websub/), or server sent events (also see https://www.w3.org/TR/eventsource/). Please note that there is no restriction on the sub-protocol selection and other mechanisms can also be announced by this subprotocol term."""@en;
                     rdfs:label "forSubProtocol".
-hctl:hasAnchor schema:domainIncludes hctl:Link;
-               a owl:ObjectProperty;
+hctl:hasAnchor <http://schema.org/domainIncludes> hctl:Link;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment "By default, the context, or anchor, of a link conveyed in the Link header field is the URL of the representation it is associated with, as defined in RFC7231, Section 3.1.4.1, and is serialized as a URI.";
                rdfs:label "hasAnchor".
-hctl:hasOperationType schema:domainIncludes hctl:Form;
-                      a owl:ObjectProperty;
+hctl:hasOperationType <http://schema.org/domainIncludes> hctl:Form;
+                      a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "Indicates the semantic intention of performing the operation(s) described by the form.";
                       rdfs:label "hasOperationType".
-hctl:hasRelationType schema:domainIncludes hctl:Link;
-                     a owl:ObjectProperty;
+hctl:hasRelationType <http://schema.org/domainIncludes> hctl:Link;
+                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "A link relation type identifies the semantics of a link.";
                      rdfs:label "hasRelationType".
-hctl:hasTarget schema:domainIncludes hctl:Link,
-                                     hctl:Form;
-               a owl:ObjectProperty;
+hctl:hasTarget <http://schema.org/domainIncludes> hctl:Link,
+                                                  hctl:Form;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment "target IRI of a link or submission target of a form.";
                rdfs:label "hasTarget".
-hctl:hintsAtMediaType schema:domainIncludes hctl:Link;
-                      schema:rangeIncludes schema:Text;
-                      a owl:DatatypeProperty;
+hctl:hintsAtMediaType <http://schema.org/domainIncludes> hctl:Link;
+                      <http://schema.org/rangeIncludes> <http://schema.org/Text>;
+                      a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "Target attribute providing a hint indicating what the media type [IANA-MEDIA-TYPES] of the result of dereferencing the link should be.";
                       rdfs:label "hintsAtMediaType".
-hctl:returns schema:domainIncludes hctl:Form;
-             schema:rangeIncludes hctl:ExpectedResponse;
-             a owl:ObjectProperty;
+hctl:returns <http://schema.org/domainIncludes> hctl:Form;
+             <http://schema.org/rangeIncludes> hctl:ExpectedResponse;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment """This optional term can be used if, e.g., the output communication metadata differ from input metdata (e.g., output contentType differ from the
      input contentType). The response name contains metadata that is only valid for the reponse messages."""@en;
              rdfs:label "returns".

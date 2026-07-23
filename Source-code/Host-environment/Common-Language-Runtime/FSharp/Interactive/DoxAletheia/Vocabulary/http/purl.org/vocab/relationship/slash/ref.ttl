@@ -1,0 +1,577 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ref: <http://purl.org/vocab/relationship/>.
+
+<http://iandavis.com/id/me> a <http://xmlns.com/foaf/0.1/Person>;
+                            <http://xmlns.com/foaf/0.1/name> "Ian Davis".
+<http://lists.foaf-project.org/mailman/listinfo/foaf-dev> rdfs:label "FOAF-DEV mailing list".
+ref: <http://open.vocab.org/terms/discussionList> <http://lists.foaf-project.org/mailman/listinfo/foaf-dev>;
+     <http://purl.org/dc/elements/1.1/creator> <http://iandavis.com/id/me>,
+                                               [<http://xmlns.com/foaf/0.1/name> "Eric Vitiello Jr" ; 
+                                                a <http://xmlns.com/foaf/0.1/Person>];
+     <http://purl.org/dc/elements/1.1/description> "A vocabulary for describing relationships between people";
+     <http://purl.org/dc/elements/1.1/identifier> "http://purl.org/vocab/relationship/rel-vocab-20050810";
+     <http://purl.org/dc/elements/1.1/title> "RELATIONSHIP: A vocabulary for describing relationships between people";
+     <http://purl.org/dc/terms/isVersionOf> ref:;
+     <http://purl.org/dc/terms/issued> "2004-02-11";
+     <http://purl.org/dc/terms/replaces> ref:rel-vocab-20090515;
+     <http://purl.org/vocab/vann/example> <http://purl.org/vocab/relationship/examples/1>,
+                                          <http://purl.org/vocab/relationship/examples/2>;
+     <http://purl.org/vocab/vann/preferredNamespacePrefix> "rel";
+     <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/vocab/relationship";
+     a <http://www.w3.org/2002/07/owl#Ontology>;
+     <http://www.w3.org/2004/02/skos/core#changeNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                       <http://purl.org/dc/elements/1.1/date> "2005-08-10" ; 
+                                                       rdf:value "Added isDefinedBy properties and updated documentation"],
+                                                      [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                       <http://purl.org/dc/elements/1.1/date> "2010-04-19" ; 
+                                                       rdf:value "Inlined the examples that had been orphaned by publishing software changes"];
+     <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                        <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                        rdf:value "Asserted that foaf:knows is rdfs:subPropertyOf rel:knowsOf"],
+                                                       [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                        <http://purl.org/dc/elements/1.1/date> "2009-05-15" ; 
+                                                        rdf:value "Typed vocabulary as owl:Ontology"],
+                                                       [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                        <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                        rdf:value "Incorporated changes suggested by Henry Story on foaf-dev list"].
+ref:Relationship a rdfs:Class;
+                 rdfs:isDefinedBy ref:;
+                 rdfs:label "Relationship"@en;
+                 <http://www.w3.org/2004/02/skos/core#definition> "A particular type of connection existing between people related to or having dealings with each other."@en.
+ref:acquaintanceOf a <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                   rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                   rdfs:isDefinedBy ref:;
+                   rdfs:label "Acquaintance Of"@en;
+                   rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                   rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
+                                      <http://xmlns.com/foaf/0.1/knows>;
+                   <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.perceive.net/schemas/relationship/acquaintanceOf>;
+                   <http://www.w3.org/2004/02/skos/core#definition> "A person having more than slight or superficial knowledge of this person but short of friendship."@en;
+                   <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                      <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                      rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:ambivalentOf a rdf:Property;
+                 rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                 rdfs:isDefinedBy ref:;
+                 rdfs:label "Ambivalent Of"@en;
+                 rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                 rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>;
+                 <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.perceive.net/schemas/relationship/ambivalentOf>;
+                 <http://www.w3.org/2004/02/skos/core#definition> "A person towards whom this person has mixed feelings or emotions."@en;
+                 <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                    <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                    rdf:value "Removed assertion that this property is a sub-property of foaf:knows due to reciprocity requirements. It is possible for one to be ambivalent of another without that person knowing the first."],
+                                                                   [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                    <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                    rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:ancestorOf a <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+               rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+               rdfs:isDefinedBy ref:;
+               rdfs:label "Ancestor Of"@en;
+               rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+               rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>;
+               <http://www.w3.org/2002/07/owl#inverseOf> ref:descendantOf;
+               <http://www.w3.org/2004/02/skos/core#definition> "A person who is a descendant of this person."@en;
+               <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                  <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                  rdf:value "Removed assertion that this property is a sub-property of foaf:knows. foaf:knows requires a reciprocation that may not be possible for distant ancestors."],
+                                                                 [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                  <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                  rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:antagonistOf a rdf:Property;
+                 rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                 rdfs:isDefinedBy ref:;
+                 rdfs:label "Antagonist Of"@en;
+                 rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                 rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/knows>,
+                                    <http://www.w3.org/2002/07/owl#differentFrom>;
+                 <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.perceive.net/schemas/relationship/antagonistOf>;
+                 <http://www.w3.org/2004/02/skos/core#definition> "A person who opposes and contends against this person."@en;
+                 <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                    <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                    rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:apprenticeTo a rdf:Property;
+                 rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                 rdfs:isDefinedBy ref:;
+                 rdfs:label "Apprentice To"@en;
+                 rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                 rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/knows>,
+                                    <http://www.w3.org/2002/07/owl#differentFrom>;
+                 <http://www.w3.org/2002/07/owl#inverseOf> ref:mentorOf;
+                 <http://www.w3.org/2004/02/skos/core#definition> "A person to whom this person serves as a trusted counselor or teacher."@en;
+                 <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                    <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                    rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:childOf a rdf:Property;
+            rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+            rdfs:isDefinedBy ref:;
+            rdfs:label "Child Of"@en;
+            rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+            rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/knows>,
+                               <http://www.w3.org/2002/07/owl#differentFrom>;
+            <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.perceive.net/schemas/relationship/childOf>;
+            <http://www.w3.org/2002/07/owl#inverseOf> ref:parentOf;
+            <http://www.w3.org/2004/02/skos/core#definition> "A person who was given birth to or nurtured and raised by this person."@en;
+            <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                               <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                               rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:closeFriendOf a <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                  rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                  rdfs:isDefinedBy ref:;
+                  rdfs:label "Close Friend Of"@en;
+                  rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                  rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
+                                     <http://xmlns.com/foaf/0.1/knows>;
+                  <http://www.w3.org/2004/02/skos/core#definition> "A person who shares a close mutual friendship with this person."@en;
+                  <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                     <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                     rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:collaboratesWith a <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                     rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                     rdfs:isDefinedBy ref:;
+                     rdfs:label "Collaborates With"@en;
+                     rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                     rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
+                                        <http://xmlns.com/foaf/0.1/knows>;
+                     <http://www.w3.org/2004/02/skos/core#definition> "A person who works towards a common goal with this person."@en;
+                     <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                        <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                        rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:colleagueOf a <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                rdfs:isDefinedBy ref:;
+                rdfs:label "Colleague Of"@en;
+                rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
+                                   <http://xmlns.com/foaf/0.1/knows>;
+                <http://www.w3.org/2004/02/skos/core#definition> "A person who is a member of the same profession as this person."@en;
+                <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                   <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                   rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:descendantOf a <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+                 rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                 rdfs:isDefinedBy ref:;
+                 rdfs:label "Descendant Of"@en,
+                            "Descendant Of";
+                 rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                 rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>;
+                 <http://www.w3.org/2002/07/owl#inverseOf> ref:ancestorOf;
+                 <http://www.w3.org/2004/02/skos/core#definition> "A person from whom this person is descended."@en;
+                 <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                    <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                    rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"],
+                                                                   [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                    <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                    rdf:value "Removed assertion that this property is a sub-property of foaf:knows. foaf:knows requires a reciprocation that may not be possible for distant descendants."].
+ref:employedBy a rdf:Property;
+               rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+               rdfs:isDefinedBy ref:;
+               rdfs:label "Employed By"@en;
+               rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+               rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
+                                  <http://xmlns.com/foaf/0.1/knows>;
+               <http://www.w3.org/2002/07/owl#inverseOf> ref:employerOf;
+               <http://www.w3.org/2004/02/skos/core#definition> "A person for whom this person's services have been engaged."@en;
+               <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                  <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                  rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:employerOf a rdf:Property;
+               rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+               rdfs:isDefinedBy ref:;
+               rdfs:label "Employer Of"@en;
+               rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+               rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
+                                  <http://xmlns.com/foaf/0.1/knows>;
+               <http://www.w3.org/2002/07/owl#inverseOf> ref:employedBy;
+               <http://www.w3.org/2004/02/skos/core#definition> "A person who engages the services of this person."@en;
+               <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                  <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                  rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:enemyOf a rdf:Property;
+            rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+            rdfs:isDefinedBy ref:;
+            rdfs:label "Enemy Of"@en;
+            rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+            rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
+                               <http://xmlns.com/foaf/0.1/knows>;
+            <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.perceive.net/schemas/relationship/enemyOf>;
+            <http://www.w3.org/2004/02/skos/core#definition> "A person towards whom this person feels hatred, intends injury to, or opposes the interests of."@en;
+            <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                               <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                               rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:engagedTo a <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+              rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+              rdfs:isDefinedBy ref:;
+              rdfs:label "Engaged To"@en;
+              rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+              rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
+                                 <http://xmlns.com/foaf/0.1/knows>;
+              <http://www.w3.org/2004/02/skos/core#definition> "A person to whom this person is betrothed."@en;
+              <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                 <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+<http://purl.org/vocab/relationship/examples/1> a <http://open.vocab.org/terms/SchemaExample>;
+                                                rdfs:comment """<p>The RELATIONSHIP vocabulary can be used without modification with <a href=\"http://xmlns.com/foaf/0.1/\">FOAF</a> documents. Simply replace <code>foaf:knows</code> properties with a more specific property from this vocabulary. For backwards compatibility with older, non-RDF aware,  tools, you may want to keep the <code>foaf:knows</code> property as well.</p>     <pre>
+<code class=\"xml\">
+&lt;rdf:RDF
+      xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"
+      xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"
+      xmlns:foaf=\"http://xmlns.com/foaf/0.1/\"
+      xmlns:rel=\"http://purl.org/vocab/relationship/\"
+      &gt;
+
+  &lt;foaf:Person rdf:nodeID=\"ian\"&gt;
+    &lt;foaf:name&gt;Ian Davis&lt;/foaf:name&gt;
+    &lt;foaf:title&gt;Mr&lt;/foaf:title&gt;
+    &lt;foaf:firstName&gt;Ian&lt;/foaf:firstName&gt;
+    &lt;foaf:surname&gt;Davis&lt;/foaf:surname&gt;
+
+    &lt;rel:hasMet&gt;
+      &lt;foaf:Person&gt;
+        &lt;foaf:name&gt;William Tell&lt;/foaf:name&gt;
+      &lt;/foaf:Person&gt;
+    &lt;/rel:hasMet&gt;
+
+    &lt;rel:collaboratesWith rdf:nodeID=\"eric\"/&gt;
+  &lt;/foaf:Person&gt;
+
+  &lt;foaf:Person rdf:nodeID=\"eric\"&gt;
+    &lt;foaf:nick&gt;pixel&lt;/foaf:nick&gt;
+  &lt;/foaf:Person&gt;
+
+
+
+&lt;/rdf:RDF&gt;
+</code>
+    </pre>
+"""^^rdf:XMLLiteral;
+                                                rdfs:label "Using With FOAF".
+<http://purl.org/vocab/relationship/examples/2> a <http://open.vocab.org/terms/SchemaExample>;
+                                                rdfs:comment """<p>
+
+      The relationship vocabulary can be used to describe relationships with the people linked from a web page. This is particularly useful for blogrolls or contact lists but can be used with any type of link. The HTML <code>a</code> element provides two attributes, <a href=\"http://www.w3.org/TR/html401/struct/links.html#adef-rel\">rel and rev</a>, that can be used to specify the relationship. Both <code>rel</code> and <code>rev</code> take a space separated list of keywords as their value. To use a term from the relationship vocabulary just drop the <code>http://purl.org/vocab/relationship/</code> namespace to leave the property name, e.g. <code>http://purl.org/vocab/relationship/worksWith</code> would become <code>worksWith</code> which can be added as the value of <code>rel</code> or <code>rev</code>.
+    </p>
+    <dl>
+      <dt>
+        <code>rel</code>
+      </dt>
+      <dd>
+        <p>
+          The <code>rel</code> attribute specifies a relationship that the author of the <em>linked</em> page has with the author of the <em>linking</em> page.
+          For example:
+        </p>
+        <pre><code><span class=\"elem\">&lt;a</span><span class=\"attr\">href</span>=\"<span class=\"attrVal\">http://example.com/boats</span>\" <span class=\"attr highlight\">rel</span>=\"<span class=\"attrVal\">childOf</span>\"<span class=\"elem\">&gt;</span><span class=\"text\">The boat we restored</span><span class=\"elem\">\"&lt;/a&gt;</span></code></pre>
+        <p>This link states that the author of <code>http://example.com/boats</code> is a child of the author of the html above. </p>
+      </dd>
+      <dt>
+        <code>rev</code>
+      </dt>
+      <dd>
+        <p>
+          The <code>rev</code> attribute specifies a relationship that the author of the <em>linking</em> page has with the author of the   <em>linked</em> page. The example here is:
+        </p>
+        <pre><code><span class=\"elem\">&lt;a</span><span class=\"attr\">href</span>=\"<span class=\"attrVal\">http://example.com/boats</span>\" <span class=\"attr highlight\">rev</span>=\"<span class=\"attrVal\">childOf</span>\"<span class=\"elem\">&gt;</span><span class=\"text\">The boat we restored</span><span class=\"elem\">\"&lt;/a&gt;</span></code></pre>
+        <p>In this case the meaning of the link is reversed: the author of the html above is a child of the author of <code>http://example.com/boats</code>.</p>
+      </dd>
+    </dl>
+    <p>The HTML and XHTML recommendations require an HTML document to declare a custom profile if it uses any non-standard <code>rel</code> or <code>rev</code> types. This is done by adding a <code>profile</code> attribute with a value of <code>http://purl.org/vocab/relationship/</code> to the document's <code>head</code> element. </p>
+    <pre><code>  &lt;head profile=\"http://purl.org/vocab/relationship/\"&gt;
+    &lt;title&gt;People I Know&lt;/title&gt;
+  &lt;/head&gt;</code></pre>
+    <h3>Complete Example</h3>
+    <pre><code>  &lt;html profile=\"http://purl.org/vocab/relationship/\"&gt;
+    &lt;head&gt;
+      &lt;title&gt;People I Know&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;p&gt;Here are the people I know:&lt;/p&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=\"http://example.com/~freddy\" rel=\"closeFriendOf\"&gt;Freddy (he's cool!)&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=\"http://frooble.com/\" rel=\"mentorOf\"&gt;Jimbo&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=\"http://mmmm.com/klm\" rel=\"friendOf\"&gt;Katie&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=\"http://example.com/~omah\" rel=\"worksWith\"&gt;Omah (does the coding)&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=\"http://example.com/~jason\" rev=\"closeFriendOf employedBy\"&gt;Jason, my henchman&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre>
+    <h3>RDF Interpretation</h3>
+    <p>Custom parsers that extract RDF from (X)HTML can use the relationships expressed in the links to infer the
+  equivilent RDF triples. It should be remembered that the relationship is between the authors of the pages not between
+  the pages themselves. Given the following link on a document at <code>http://example.com/mypage.html</code>:
+  </p>
+    <pre><code><span class=\"elem\">&lt;a</span><span class=\"attr\">href</span>=\"<span class=\"attrVal\">http://example.com/boats</span>\" <span class=\"attr highlight\">rel</span>=\"<span class=\"attrVal\">childOf</span>\"<span class=\"elem\">&gt;</span><span class=\"text\">The boat we restored</span><span class=\"elem\">\"&lt;/a&gt;</span></code></pre>
+    <p>a suggested RDF extraction is:</p>
+    <pre><code>  &lt;foaf:Person&gt;
+    &lt;foaf:maker rdf:resource=\"http://example.com/boats\"/&gt;
+    &lt;rel:childOf&gt;
+      &lt;foaf:Person&gt;
+        &lt;foaf:maker rdf:resource=\"http://example.com/mypage.html\"/&gt;
+      &lt;/foaf:Person&gt;
+    &lt;/rel:childOf&gt;
+  &lt;/foaf:Person&gt;</code></pre>
+"""^^rdf:XMLLiteral;
+                                                rdfs:label "Using With HTML and XHTML".
+ref:friendOf a <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+             rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+             rdfs:isDefinedBy ref:;
+             rdfs:label "Friend Of"@en;
+             rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+             rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
+                                <http://xmlns.com/foaf/0.1/knows>;
+             <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.perceive.net/schemas/relationship/friendOf>;
+             <http://www.w3.org/2004/02/skos/core#definition> "A person who shares mutual friendship with this person."@en;
+             <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:grandchildOf a rdf:Property;
+                 rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                 rdfs:isDefinedBy ref:;
+                 rdfs:label "Grandchild Of",
+                            "Grandchild Of"@en;
+                 rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                 rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/knows>,
+                                    <http://www.w3.org/2002/07/owl#differentFrom>;
+                 <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.perceive.net/schemas/relationship/grandchildOf>;
+                 <http://www.w3.org/2002/07/owl#inverseOf> ref:grandparentOf;
+                 <http://www.w3.org/2004/02/skos/core#definition> "A person who is a child of any of this person's children."@en;
+                 <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                    <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                    rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:grandparentOf a rdf:Property;
+                  rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                  rdfs:isDefinedBy ref:;
+                  rdfs:label "Grandparent Of"@en;
+                  rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                  rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/knows>,
+                                     <http://www.w3.org/2002/07/owl#differentFrom>;
+                  <http://www.w3.org/2002/07/owl#inverseOf> ref:grandchildOf;
+                  <http://www.w3.org/2004/02/skos/core#definition> "A person who is the parent of any of this person's parents."@en;
+                  <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                     <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                     rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:hasMet a <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+           rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+           rdfs:isDefinedBy ref:;
+           rdfs:label "Has Met"@en;
+           rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+           rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
+                              <http://xmlns.com/foaf/0.1/knows>;
+           <http://www.w3.org/2004/02/skos/core#definition> "A person who has met this person whether in passing or longer."@en;
+           <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                              <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                              rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:influencedBy a rdf:Property;
+                 rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                 rdfs:isDefinedBy ref:;
+                 rdfs:label "Influenced By"@en;
+                 rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                 rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>;
+                 <http://www.w3.org/2004/02/skos/core#definition> "a person who has influenced this person."@en;
+                 <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                    <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                    rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"],
+                                                                   [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                    <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                    rdf:value "Removed assertion that this property is a sub-property of foaf:knows due to reciprocity requirements. It is possible for one to be influenced by another by reputation without that person knowing the first."].
+ref:knowsByReputation a rdf:Property;
+                      rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                      rdfs:isDefinedBy ref:;
+                      rdfs:label "Knows By Reputation"@en;
+                      rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                      rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>;
+                      <http://www.w3.org/2004/02/skos/core#definition> "A person known by this person primarily for a particular action, position or field of endeavour."@en;
+                      <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                         <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                         rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"],
+                                                                        [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                         <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                         rdf:value "Removed assertion that this property is a sub-property of foaf:knows due to reciprocity requirements. It is possible for one to know of another by reputation without that person knowing the first."].
+ref:knowsInPassing a rdf:Property;
+                   rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                   rdfs:isDefinedBy ref:;
+                   rdfs:label "Knows In Passing"@en;
+                   rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                   rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
+                                      <http://xmlns.com/foaf/0.1/knows>;
+                   <http://www.w3.org/2004/02/skos/core#definition> "A person whom this person has slight or superficial knowledge of."@en;
+                   <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                      <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                      rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:knowsOf a rdf:Property;
+            rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+            rdfs:isDefinedBy ref:;
+            rdfs:label "Knows Of"@en;
+            rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+            rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>;
+            <http://www.w3.org/2004/02/skos/core#definition> "A person who has come to be known to this person through their actions or position."@en;
+            <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                               <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                               rdf:value "Removed assertion that this property is a sub-property of foaf:knows due to reciprocity requirements. It is possible for one to know of another without that person knowing the first."],
+                                                              [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                               <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                               rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"],
+                                                              [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                               <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                               rdf:value "Assert that foaf:knows is rdfs:subPropertyOf rel:knowsOf"].
+ref:lifePartnerOf a <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                  rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                  rdfs:isDefinedBy ref:;
+                  rdfs:label "Life Partner of"@en;
+                  rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                  rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
+                                     <http://xmlns.com/foaf/0.1/knows>;
+                  <http://www.w3.org/2004/02/skos/core#definition> "A person who has made a long-term commitment to this person's."@en;
+                  <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                     <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                     rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:livesWith a <http://www.w3.org/2002/07/owl#TransitiveProperty>,
+                <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+              rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+              rdfs:isDefinedBy ref:;
+              rdfs:label "Lives With"@en;
+              rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+              rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/knows>,
+                                 <http://www.w3.org/2002/07/owl#differentFrom>;
+              <http://www.w3.org/2004/02/skos/core#definition> "A person who shares a residence with this person."@en;
+              <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                 <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:lostContactWith a <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                    rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                    rdfs:isDefinedBy ref:;
+                    rdfs:label "Lost Contact With"@en;
+                    rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                    rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
+                                       <http://xmlns.com/foaf/0.1/knows>;
+                    <http://www.w3.org/2004/02/skos/core#definition> "A person who was once known by this person but has subsequently become uncontactable."@en;
+                    <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                       <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                       rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:mentorOf a rdf:Property;
+             rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+             rdfs:isDefinedBy ref:;
+             rdfs:label "Mentor Of"@en;
+             rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+             rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/knows>,
+                                <http://www.w3.org/2002/07/owl#differentFrom>;
+             <http://www.w3.org/2002/07/owl#inverseOf> ref:apprenticeTo;
+             <http://www.w3.org/2004/02/skos/core#definition> "A person who serves as a trusted counselor or teacher to this person."@en;
+             <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:neighborOf a <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+               rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+               rdfs:isDefinedBy ref:;
+               rdfs:label "Neighbor Of"@en;
+               rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+               rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/knows>,
+                                  <http://www.w3.org/2002/07/owl#differentFrom>;
+               <http://www.w3.org/2004/02/skos/core#definition> "A person who lives in the same locality as this person."@en;
+               <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                  <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                  rdf:value "Removed assertion that this property is transitive."],
+                                                                 [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                  <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                  rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:parentOf a rdf:Property;
+             rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+             rdfs:isDefinedBy ref:;
+             rdfs:label "Parent Of"@en;
+             rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+             rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/knows>,
+                                <http://www.w3.org/2002/07/owl#differentFrom>;
+             <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.perceive.net/schemas/relationship/parentOf>;
+             <http://www.w3.org/2002/07/owl#inverseOf> ref:childOf;
+             <http://www.w3.org/2004/02/skos/core#definition> "A person who has given birth to or nurtured and raised this person."@en;
+             <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:participant a rdf:Property;
+                rdfs:domain ref:Relationship;
+                rdfs:isDefinedBy ref:;
+                rdfs:label "Participant"@en;
+                rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                   <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                   rdf:value "Removed assertion that this property is a sub-property of foaf:knows."].
+ref:participantIn a rdf:Property;
+                  rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                  rdfs:isDefinedBy ref:;
+                  rdfs:label "Participant In"@en;
+                  rdfs:range ref:Relationship;
+                  <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                     <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                     rdf:value "Removed assertion that this property is a sub-property of foaf:knows."].
+ref:siblingOf a <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+              rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+              rdfs:isDefinedBy ref:;
+              rdfs:label "Sibling Of"@en;
+              rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+              rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
+                                 <http://xmlns.com/foaf/0.1/knows>;
+              <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.perceive.net/schemas/relationship/siblingOf>;
+              <http://www.w3.org/2004/02/skos/core#definition> "A person having one or both parents in common with this person."@en;
+              <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                 <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:spouseOf a <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+             rdfs:isDefinedBy ref:;
+             rdfs:label "Spouse Of"@en;
+             rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+             rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
+                                <http://xmlns.com/foaf/0.1/knows>;
+             <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.perceive.net/schemas/relationship/spouseOf>;
+             <http://www.w3.org/2004/02/skos/core#definition> "A person who is married to this person"@en;
+             <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:worksWith a <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+              rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+              rdfs:isDefinedBy ref:;
+              rdfs:label "Works With"@en;
+              rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+              rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/knows>,
+                                 <http://www.w3.org/2002/07/owl#differentFrom>;
+              <http://www.w3.org/2004/02/skos/core#definition> "A person who works for the same employer as this person."@en;
+              <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                 <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                 rdf:value "Removed assertion that this property is transitive."],
+                                                                [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                 <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"].
+ref:wouldLikeToKnow a rdf:Property;
+                    rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                    rdfs:isDefinedBy ref:;
+                    rdfs:label "Would Like To Know"@en;
+                    rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                    rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>;
+                    <http://www.w3.org/2004/02/skos/core#definition> "A person whom this person would desire to know more closely."@en;
+                    <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                       <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                       rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals"],
+                                                                      [<http://purl.org/dc/elements/1.1/creator> "Ian Davis" ; 
+                                                                       <http://purl.org/dc/elements/1.1/date> "2010-02-09" ; 
+                                                                       rdf:value "Removed assertion that this property is a sub-property of foaf:knows which would imply that the two people already know one another."].
+<http://vocab.org/relationship/.html> <http://purl.org/dc/elements/1.1/format> "text/html";
+                                      a <http://xmlns.com/foaf/0.1/Document>,
+                                        <http://purl.org/dc/dcmitype/Text>;
+                                      rdfs:label "HTML".
+<http://vocab.org/relationship/.json> <http://purl.org/dc/elements/1.1/format> "application/json";
+                                      a <http://xmlns.com/foaf/0.1/Document>,
+                                        <http://purl.org/dc/dcmitype/Text>;
+                                      rdfs:label "JSON".
+<http://vocab.org/relationship/.rdf> <http://purl.org/dc/terms/hasFormat> <http://vocab.org/relationship/.turtle>,
+                                                                          <http://vocab.org/relationship/.json>,
+                                                                          <http://vocab.org/relationship/.html>;
+                                     a <http://purl.org/dc/dcmitype/Text>,
+                                       <http://xmlns.com/foaf/0.1/Document>;
+                                     <http://xmlns.com/foaf/0.1/primaryTopic> ref:;
+                                     <http://xmlns.com/foaf/0.1/topic> ref:.
+<http://vocab.org/relationship/.turtle> <http://purl.org/dc/elements/1.1/format> "text/plain";
+                                        a <http://xmlns.com/foaf/0.1/Document>,
+                                          <http://purl.org/dc/dcmitype/Text>;
+                                        rdfs:label "Turtle".
+<http://xmlns.com/foaf/0.1/knows> rdfs:subPropertyOf ref:knowsOf.

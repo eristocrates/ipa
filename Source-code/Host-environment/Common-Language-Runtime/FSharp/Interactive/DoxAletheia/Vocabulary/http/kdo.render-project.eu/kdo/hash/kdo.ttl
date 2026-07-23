@@ -2,124 +2,117 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix kdo: <http://kdo.render-project.eu/kdo#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix sioc: <http://rdfs.org/sioc/ns#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
 <http://kdo.render-project.eu/> rdfs:label "Knowledge Diversity Ontology (KDO) Specification".
-kdo: dcterms:description "The Knowledge Diversity Ontology aims at providing a vocabulary that describes different dimensions of knowledge diversity of the Web. To support the representation of diversity information, the conceptual model of the Knowledge Diversity Ontology includes concepts and relations that were identified and modelled by focusing on real world scenarios in context of customer feedback, news, and Wikipedia opinion mining as well as content and sentiment analysis."@en;
-     dcterms:modified "2012-10-03"^^xsd:date;
-     dcterms:title "The Knowledge Diversity Ontology"@en;
-     vann:preferredNamespacePrefix "kdo";
-     vann:preferredNamespaceUri "http://kdo.render-project.eu/kdo#";
-     a owl:Ontology;
+kdo: <http://purl.org/dc/terms/description> "The Knowledge Diversity Ontology aims at providing a vocabulary that describes different dimensions of knowledge diversity of the Web. To support the representation of diversity information, the conceptual model of the Knowledge Diversity Ontology includes concepts and relations that were identified and modelled by focusing on real world scenarios in context of customer feedback, news, and Wikipedia opinion mining as well as content and sentiment analysis."@en;
+     <http://purl.org/dc/terms/modified> "2012-10-03"^^xsd:date;
+     <http://purl.org/dc/terms/title> "The Knowledge Diversity Ontology"@en;
+     <http://purl.org/vocab/vann/preferredNamespacePrefix> "kdo";
+     <http://purl.org/vocab/vann/preferredNamespaceUri> "http://kdo.render-project.eu/kdo#";
+     a <http://www.w3.org/2002/07/owl#Ontology>;
      rdfs:comment "This ontology has been developed in context with the RENDER project."@en;
      rdfs:seeAlso <http://kdo.render-project.eu/>;
-     owl:imports <http://rdfs.org/sioc/ns>;
-     owl:versionInfo "v2.2".
-kdo:Bias a owl:Class;
+     <http://www.w3.org/2002/07/owl#imports> <http://rdfs.org/sioc/ns>;
+     <http://www.w3.org/2002/07/owl#versionInfo> "v2.2".
+kdo:Bias a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment """A bias can be attached to a kdo:Statement and can therefore also relate to agents, posts, and opinions. More specifically, a bias can also relate to another bias.
 
 """@en;
          rdfs:isDefinedBy kdo:;
          rdfs:label "Bias"@en.
-kdo:NewsArticle a owl:Class;
+kdo:NewsArticle a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment """The kdo:NewsArticle class represents news articles. The news article class is defined because there is no class to represent news articles in the SIOC ontology. The NewsArticle is a subclass of the sioc:Post class which is itself a subclass of the foaf:Document.
 """@en;
                 rdfs:isDefinedBy kdo:;
                 rdfs:label "News article"@en;
-                rdfs:subClassOf sioc:Post.
-kdo:NewsWebsite a owl:Class;
+                rdfs:subClassOf <http://rdfs.org/sioc/ns#Post>.
+kdo:NewsWebsite a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment """The kdo:NewsWebsite class represents news publisher containers that are commonly related to a single web site. The NewsWebsite class is defined because there is no container class to represent the news publisher web sites in the SIOC ontology. The NewsWebsite class is defined as a subclass of the sioc:Container.
 """@en;
                 rdfs:isDefinedBy kdo:;
                 rdfs:label "News web site"@en;
-                rdfs:subClassOf sioc:Container.
-kdo:Opinion a owl:Class;
+                rdfs:subClassOf <http://rdfs.org/sioc/ns#Container>.
+kdo:Opinion a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment """The opinion class represents is used to contextualize2 provenance, crawling other meta-information. A blank node may be used to represent opinions. Opinions are connected to statement through kdo:hasOpinion.
 
 """@en;
             rdfs:isDefinedBy kdo:;
             rdfs:label "Opinion"@en.
-kdo:Polarity a owl:Class;
+kdo:Polarity a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment """The kdo:Polarity class is used to express the polarity of sentiments. The predefined instances of this class are: kdo:neutralPolarity, kdo:positivePolarity, kdo:negativePolarity.
 """@en;
              rdfs:isDefinedBy kdo:.
-kdo:Sentiment a owl:Class;
+kdo:Sentiment a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment """The sentiment class represents the sentiments expressed by the opinions and posts. A sentiment can have (kdo:hasPolarity) different types of polarity (positive, negative, and neutral) and a decimal score (kdo:hasScore). It is in the range of kdo:hasSentiment.
 """@en;
               rdfs:isDefinedBy kdo:;
               rdfs:label "Sentiment"@en.
-kdo:Statement a owl:Class;
+kdo:Statement a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment """The statement class is the central class in the core of the KD ontology. It serves as a hub that connects sentiments (kdo:hasSentiment), opinions (kdo:hasOpinion), biases (kdo:hasBias), posts (kdo:hasPost), and agents (kdo:involvedAgent). Moreover, each statement may have an expression which is a string literal.
 """@en;
               rdfs:isDefinedBy kdo:;
               rdfs:label "Statement"@en.
-kdo:hasBias a owl:ObjectProperty;
+kdo:hasBias a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:comment """The kdo:hasBias property is used associate a kdo:Bias with a sioc:Post.
 """@en;
-            rdfs:domain [owl:unionOf (sioc:Post
-                                      kdo:Statement) ; 
-                         a owl:Class];
+            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://rdfs.org/sioc/ns#Post>
+                                                                  kdo:Statement) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>];
             rdfs:isDefinedBy kdo:;
             rdfs:label "has bias"@en;
             rdfs:range kdo:Bias.
-kdo:hasExpression a owl:DatatypeProperty;
+kdo:hasExpression a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment """This property attaches a string literal to a kdo:Statement. This literal should be a text excerpt which states a statement and is extracted from a related post.
 """@en;
                   rdfs:domain kdo:Statement;
                   rdfs:isDefinedBy kdo:;
                   rdfs:label "has expression"@en;
                   rdfs:range xsd:string.
-kdo:hasOpinion a owl:ObjectProperty;
+kdo:hasOpinion a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment """Relates a sioc:Post to a kdo:Opinion.
 """@en;
-               rdfs:domain [owl:unionOf (sioc:Post
-                                         kdo:Statement) ; 
-                            a owl:Class];
+               rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://rdfs.org/sioc/ns#Post>
+                                                                     kdo:Statement) ; 
+                            a <http://www.w3.org/2002/07/owl#Class>];
                rdfs:isDefinedBy kdo:;
                rdfs:label "has opinion"@en;
                rdfs:range kdo:Opinion.
-kdo:hasPolarity a owl:ObjectProperty;
+kdo:hasPolarity a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment """The kdo:hasPolarity is used to specify the polarity of a kdo:Sentiment. It has three individuals: kdo:positivePolarity representing the positive orientation, kdo:negativePolarity representing the negative orientation, kdo:neutralPolarity representing the neutral.
 """@en;
                 rdfs:domain kdo:Sentiment;
                 rdfs:isDefinedBy kdo:;
                 rdfs:label "has polarity"@en;
                 rdfs:range kdo:Polarity.
-kdo:hasPost a owl:ObjectProperty;
+kdo:hasPost a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:comment "This class attaches a statement to a post";
             rdfs:domain kdo:Statement;
             rdfs:isDefinedBy kdo:;
             rdfs:label "has post"@en;
-            rdfs:range sioc:Post.
-kdo:hasScore a owl:DatatypeProperty;
+            rdfs:range <http://rdfs.org/sioc/ns#Post>.
+kdo:hasScore a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
              rdfs:comment """This property indicates the score of a kdo:Sentiment. This score is denoted as a decimal. However, the range can vary and depends on the implementation of the sentiment extraction process.
 """@en;
              rdfs:domain kdo:Sentiment;
              rdfs:isDefinedBy kdo:;
              rdfs:label "has score"@en;
              rdfs:range xsd:decimal.
-kdo:hasSentiment a owl:ObjectProperty;
+kdo:hasSentiment a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment """The kdo:hasSentiment property is used to specify which kdo:Sentiment is attached to a sioc:Post.
 """@en;
-                 rdfs:domain [owl:unionOf (sioc:Post
-                                           kdo:Statement) ; 
-                              a owl:Class];
+                 rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://rdfs.org/sioc/ns#Post>
+                                                                       kdo:Statement) ; 
+                              a <http://www.w3.org/2002/07/owl#Class>];
                  rdfs:isDefinedBy kdo:;
                  rdfs:label "has sentiment"@en;
                  rdfs:range kdo:Sentiment.
-kdo:involvedAgent a owl:ObjectProperty;
+kdo:involvedAgent a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment """The kdo:involvedAgent property is used to specify the holder of an opinion. An opinion holder is represented by the foaf:Agent class.
 """@en;
                   rdfs:domain kdo:Statement;
                   rdfs:isDefinedBy kdo:;
                   rdfs:label "involved agent"@en;
-                  rdfs:range foaf:Agent.
+                  rdfs:range <http://xmlns.com/foaf/0.1/Agent>.
 kdo:negativePolarity a kdo:Polarity;
                      rdfs:comment "This individual is used to mark a negative polarity."@en;
                      rdfs:isDefinedBy kdo:;
@@ -132,18 +125,18 @@ kdo:positivePolarity a kdo:Polarity;
                      rdfs:comment "This individual is used to mark a postitive polarity."@en;
                      rdfs:isDefinedBy kdo:;
                      rdfs:label "Positive polarity"@en.
-kdo:relatedTo a owl:ObjectProperty;
+kdo:relatedTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment """Relates one bias to another.
 """@en;
               rdfs:domain kdo:Bias;
               rdfs:isDefinedBy kdo:;
               rdfs:label "related to"@en;
               rdfs:range kdo:Bias.
-dcterms:description a owl:DatatypeProperty.
-dcterms:modified a owl:DatatypeProperty.
-dcterms:title a owl:DatatypeProperty.
-vann:preferredNamespacePrefix a owl:DatatypeProperty.
-vann:preferredNamespaceUri a owl:DatatypeProperty.
-sioc:Container a owl:Class.
-sioc:Post a owl:Class.
-foaf:Agent a owl:Class.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://rdfs.org/sioc/ns#Container> a <http://www.w3.org/2002/07/owl#Class>.
+<http://rdfs.org/sioc/ns#Post> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/Agent> a <http://www.w3.org/2002/07/owl#Class>.

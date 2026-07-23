@@ -2,64 +2,59 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix pni: <http://data.press.net/ontology/identifier/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 
-pni: dcterms:created "2012-03-21"^^xsd:date;
-     dcterms:license <http://creativecommons.org/licenses/by-nd/3.0/>;
-     dcterms:modified "2012-03-21"^^xsd:date;
-     dcterms:title "SNaP Identifier Ontology"@en;
-     a owl:Ontology;
+pni: <http://purl.org/dc/terms/created> "2012-03-21"^^xsd:date;
+     <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by-nd/3.0/>;
+     <http://purl.org/dc/terms/modified> "2012-03-21"^^xsd:date;
+     <http://purl.org/dc/terms/title> "SNaP Identifier Ontology"@en;
+     a <http://www.w3.org/2002/07/owl#Ontology>;
      rdfs:comment "The Identifier Ontology models non-RDF based Identifiers for resources. The enables us to maintain a mapping between RDF resources identifiers and their equivalent IDs in an alternate, non-RDF based domain."@en;
-     owl:versionInfo "0.3.0";
-     foaf:maker <http://uk.linkedin.com/in/jarredmcginnis>,
-                <http://www.linkedin.com/pub/matt-nathan/33/44a/68a>,
-                <http://uk.linkedin.com/in/paulwilton>,
-                <http://uk.linkedin.com/in/pauliharman>.
-pni:Authority a owl:Class;
+     <http://www.w3.org/2002/07/owl#versionInfo> "0.3.0";
+     <http://xmlns.com/foaf/0.1/maker> <http://uk.linkedin.com/in/jarredmcginnis>,
+                                       <http://www.linkedin.com/pub/matt-nathan/33/44a/68a>,
+                                       <http://uk.linkedin.com/in/paulwilton>,
+                                       <http://uk.linkedin.com/in/pauliharman>.
+pni:Authority a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "The Authority for an Identifier, for example the domain or namespace within which an ID is contained"@en;
               rdfs:isDefinedBy pni:;
               rdfs:label "The Authority for an Identifier"@en;
-              status:term_status "testing".
-pni:Identifiable a owl:Class;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+pni:Identifiable a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "An instance that is Identifiable can have an Identifier associated with it."@en;
                  rdfs:isDefinedBy pni:;
                  rdfs:label "An Identifiable resource type"@en;
-                 status:term_status "testing".
-pni:Identifier a owl:Class;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+pni:Identifier a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "An ID for a given resource. For example a literal ID from a legacy system"@en;
                rdfs:isDefinedBy pni:;
                rdfs:label "An Identifier for a resource"@en;
-               status:term_status "testing".
-pni:authority a owl:ObjectProperty;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+pni:authority a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "Property defining the containing authority of an Identifier"@en;
               rdfs:domain pni:Identifier;
               rdfs:isDefinedBy pni:;
               rdfs:label "Indicates the ID Authority of an Identifier"@en;
               rdfs:range pni:Authority;
-              status:term_status "testing".
-pni:hasIdentifier a owl:ObjectProperty;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+pni:hasIdentifier a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "Associates an Identifier to an Identifiable thing"@en;
                   rdfs:domain pni:Identifiable;
                   rdfs:isDefinedBy pni:;
                   rdfs:label "Associates an Identifier to an Identifiable thing"@en;
                   rdfs:range pni:Identifier;
-                  status:term_status "testing".
-pni:value a owl:DatatypeProperty;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+pni:value a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
           rdfs:comment "Property indicating the literal value of the Identifier"@en;
           rdfs:domain pni:Identifier;
           rdfs:isDefinedBy pni:;
           rdfs:label "the value of the Identifier"@en;
           rdfs:range rdfs:Literal;
-          status:term_status "testing".
-<http://uk.linkedin.com/in/jarredmcginnis> a foaf:Person;
-                                           foaf:name "Jarred McGinnis".
-<http://uk.linkedin.com/in/pauliharman> a foaf:Person;
-                                        foaf:name "Paul Harman".
-<http://uk.linkedin.com/in/paulwilton> a foaf:Person;
-                                       foaf:name "Paul Wilton".
-<http://www.linkedin.com/pub/matt-nathan/33/44a/68a> a foaf:Person;
-                                                     foaf:name "Matt Nathan".
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+<http://uk.linkedin.com/in/jarredmcginnis> a <http://xmlns.com/foaf/0.1/Person>;
+                                           <http://xmlns.com/foaf/0.1/name> "Jarred McGinnis".
+<http://uk.linkedin.com/in/pauliharman> a <http://xmlns.com/foaf/0.1/Person>;
+                                        <http://xmlns.com/foaf/0.1/name> "Paul Harman".
+<http://uk.linkedin.com/in/paulwilton> a <http://xmlns.com/foaf/0.1/Person>;
+                                       <http://xmlns.com/foaf/0.1/name> "Paul Wilton".
+<http://www.linkedin.com/pub/matt-nathan/33/44a/68a> a <http://xmlns.com/foaf/0.1/Person>;
+                                                     <http://xmlns.com/foaf/0.1/name> "Matt Nathan".

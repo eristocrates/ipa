@@ -1,20 +1,15 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix csvw: <http://www.w3.org/ns/csvw#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
-@prefix nsprov: <http://www.w3.org/ns/prov#>.
 
-csvw: dcterms:date "2015-06-19"^^xsd:date;
-      dcterms:description "This document describes the RDFS vocabulary description used in the Metadata Vocabulary for Tabular Data [[tabular-metadata]] along with the default JSON-LD Context."@en;
-      dcterms:imports <http://www.w3.org/ns/prov>;
-      dcterms:title "CSVW Namespace Vocabulary Terms"@en;
-      a owl:Ontology;
+csvw: <http://purl.org/dc/terms/date> "2015-06-19"^^xsd:date;
+      <http://purl.org/dc/terms/description> "This document describes the RDFS vocabulary description used in the Metadata Vocabulary for Tabular Data [[tabular-metadata]] along with the default JSON-LD Context."@en;
+      <http://purl.org/dc/terms/imports> <http://www.w3.org/ns/prov>;
+      <http://purl.org/dc/terms/title> "CSVW Namespace Vocabulary Terms"@en;
+      a <http://www.w3.org/2002/07/owl#Ontology>;
       rdfs:seeAlso <http://www.w3.org/TR/tabular-metadata>;
-      owl:versionInfo <https://github.com/w3c/csvw/commit/6e6daf99e29d6983600d2bc9d1dc8f57712a35c4>.
+      <http://www.w3.org/2002/07/owl#versionInfo> <https://github.com/w3c/csvw/commit/6e6daf99e29d6983600d2bc9d1dc8f57712a35c4>.
 csvw:Cell a rdfs:Class;
           rdfs:comment "A Cell represents a cell at the intersection of a Row and a Column within a Table."@en;
           rdfs:isDefinedBy csvw:;
@@ -74,10 +69,10 @@ csvw:Transformation a rdfs:Class;
                     rdfs:label "Transformation Definition"@en.
 csvw:aboutUrl a rdf:Property;
               rdfs:comment "A URI template property that MAY be used to indicate what a cell contains information about."@en;
-              rdfs:domain [owl:unionOf (csvw:TableGroup
-                                        csvw:Table
-                                        csvw:Schema
-                                        csvw:Column)];
+              rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:TableGroup
+                                                                    csvw:Table
+                                                                    csvw:Schema
+                                                                    csvw:Column)];
               rdfs:isDefinedBy csvw:;
               rdfs:label "about URL"@en;
               rdfs:range csvw:uriTemplate.
@@ -99,8 +94,8 @@ csvw:column a rdf:Property;
             rdfs:range csvw:Column.
 csvw:columnReference a rdf:Property;
                      rdfs:comment "A column reference property that holds either a single reference to a column description object within this schema, or an array of references. These form the referencing columns for the foreign key definition."@en;
-                     rdfs:domain [owl:unionOf (csvw:ForeignKey
-                                               csvw:TableReference)];
+                     rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:ForeignKey
+                                                                           csvw:TableReference)];
                      rdfs:isDefinedBy csvw:;
                      rdfs:label "column reference"@en;
                      rdfs:range xsd:string.
@@ -110,20 +105,20 @@ csvw:commentPrefix a rdf:Property;
                    rdfs:isDefinedBy csvw:;
                    rdfs:label "comment prefix"@en;
                    rdfs:range xsd:string.
-csvw:csvEncodedTabularData a nsprov:Role;
+csvw:csvEncodedTabularData a <http://www.w3.org/ns/prov#Role>;
                            rdfs:comment "Describes the role of a CSV file in the tabular data mapping."@en;
                            rdfs:isDefinedBy csvw:;
                            rdfs:label "CSV Encoded Tabular Data"@en.
 csvw:datatype a rdf:Property;
               rdfs:comment "An object property that contains either a single string that is the main datatype of the values of the cell or a datatype description object. If the value of this property is a string, it MUST be one of the built-in datatypes defined in section 5.11.1 Built-in Datatypes or an absolute URL; if it is an object then it describes a more specialised datatype. "@en;
-              rdfs:domain [owl:unionOf (csvw:TableGroup
-                                        csvw:Table
-                                        csvw:Schema
-                                        csvw:Column)];
+              rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:TableGroup
+                                                                    csvw:Table
+                                                                    csvw:Schema
+                                                                    csvw:Column)];
               rdfs:isDefinedBy csvw:;
               rdfs:label "datatype"@en;
-              rdfs:range [owl:unionOf (csvw:Datatype
-                                       xsd:string)].
+              rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (csvw:Datatype
+                                                                   xsd:string)].
 csvw:decimalChar a rdf:Property;
                  rdfs:comment "A string whose value is used to represent a decimal point within the number."@en;
                  rdfs:domain csvw:NumericFormat;
@@ -132,10 +127,10 @@ csvw:decimalChar a rdf:Property;
                  rdfs:range xsd:string.
 csvw:default a rdf:Property;
              rdfs:comment "An atomic property holding a single string that is used to create a default value for the cell in cases where the original string value is an empty string."@en;
-             rdfs:domain [owl:unionOf (csvw:TableGroup
-                                       csvw:Table
-                                       csvw:Schema
-                                       csvw:Column)];
+             rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:TableGroup
+                                                                   csvw:Table
+                                                                   csvw:Schema
+                                                                   csvw:Column)];
              rdfs:isDefinedBy csvw:;
              rdfs:label "default"@en;
              rdfs:range xsd:string.
@@ -152,8 +147,8 @@ csvw:describes a rdf:Property;
                rdfs:label "describes"@en.
 csvw:dialect a rdf:Property;
              rdfs:comment "An object property that provides a single dialect description. If provided, dialect provides hints to processors about how to parse the referenced files to create tabular data models for the tables in the group."@en;
-             rdfs:domain [owl:unionOf (csvw:TableGroup
-                                       csvw:Table)];
+             rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:TableGroup
+                                                                   csvw:Table)];
              rdfs:isDefinedBy csvw:;
              rdfs:label "dialect"@en;
              rdfs:range csvw:Dialect.
@@ -173,8 +168,8 @@ csvw:foreignKey a rdf:Property;
                 rdfs:comment """For a Table: a list of foreign keys on the table.
 
 For a Schema: an array property of foreign key definitions that define how the values from specified columns within this table link to rows within this table or other tables."""@en;
-                rdfs:domain [owl:unionOf (csvw:Table
-                                          csvw:Schema)];
+                rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:Table
+                                                                      csvw:Schema)];
                 rdfs:isDefinedBy csvw:;
                 rdfs:label "foreign key"@en;
                 rdfs:range csvw:ForeignKey.
@@ -189,8 +184,8 @@ csvw:groupChar a rdf:Property;
                rdfs:domain csvw:NumericFormat;
                rdfs:isDefinedBy csvw:;
                rdfs:label "group character"@en;
-               rdfs:range [owl:unionOf (csvw:NumericFormat
-                                        xsd:string)].
+               rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (csvw:NumericFormat
+                                                                    xsd:string)].
 csvw:header a rdf:Property;
             rdfs:comment "A boolean atomic property that, if `true`, sets the header row count flag to `1`, and if `false` to `0`, unless headerRowCount is provided, in which case the value provided for the header property is ignored."@en;
             rdfs:domain csvw:Dialect;
@@ -205,10 +200,10 @@ csvw:headerRowCount a rdf:Property;
                     rdfs:range xsd:nonNegativeInteger.
 csvw:lang a rdf:Property;
           rdfs:comment "An atomic property giving a single string language code as defined by [[BCP47]]."@en;
-          rdfs:domain [owl:unionOf (csvw:TableGroup
-                                    csvw:Table
-                                    csvw:Schema
-                                    csvw:Column)];
+          rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:TableGroup
+                                                                csvw:Table
+                                                                csvw:Schema
+                                                                csvw:Column)];
           rdfs:isDefinedBy csvw:;
           rdfs:label "language"@en;
           rdfs:range xsd:string.
@@ -272,25 +267,25 @@ csvw:name a rdf:Property;
           rdfs:range xsd:string.
 csvw:note a rdf:Property;
           rdfs:comment "An array property that provides an array of objects representing arbitrary annotations on the annotated tabular data model."@en;
-          rdfs:domain [owl:unionOf (csvw:TableGroup
-                                    csvw:Table)];
+          rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:TableGroup
+                                                                csvw:Table)];
           rdfs:isDefinedBy csvw:;
           rdfs:label "note"@en.
 csvw:null a rdf:Property;
           rdfs:comment "An atomic property giving the string or strings used for null values within the data. If the string value of the cell is equal to any one of these values, the cell value is `null`."@en;
-          rdfs:domain [owl:unionOf (csvw:TableGroup
-                                    csvw:Table
-                                    csvw:Schema
-                                    csvw:Column)];
+          rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:TableGroup
+                                                                csvw:Table
+                                                                csvw:Schema
+                                                                csvw:Column)];
           rdfs:isDefinedBy csvw:;
           rdfs:label "null"@en;
           rdfs:range xsd:string.
 csvw:ordered a rdf:Property;
              rdfs:comment "A boolean atomic property taking a single value which indicates whether a list that is the value of the cell is ordered (if `true`) or unordered (if `false`)."@en;
-             rdfs:domain [owl:unionOf (csvw:TableGroup
-                                       csvw:Table
-                                       csvw:Schema
-                                       csvw:Column)];
+             rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:TableGroup
+                                                                   csvw:Table
+                                                                   csvw:Schema
+                                                                   csvw:Column)];
              rdfs:isDefinedBy csvw:;
              rdfs:label "ordered"@en;
              rdfs:range xsd:boolean.
@@ -304,17 +299,17 @@ csvw:primaryKey a rdf:Property;
                 rdfs:comment """For Schema: A column reference property that holds either a single reference to a column description object or an array of references.
 
 For Row: a possibly empty list of cells whose values together provide a unique identifier for this row. This is similar to the name of a column."""@en;
-                rdfs:domain [owl:unionOf (csvw:Schema
-                                          csvw:Row)];
+                rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:Schema
+                                                                      csvw:Row)];
                 rdfs:isDefinedBy csvw:;
                 rdfs:label "primary key"@en;
                 rdfs:range xsd:string.
 csvw:propertyUrl a rdf:Property;
                  rdfs:comment "An URI template property that MAY be used to create a URI for a property if the table is mapped to another format. "@en;
-                 rdfs:domain [owl:unionOf (csvw:TableGroup
-                                           csvw:Table
-                                           csvw:Schema
-                                           csvw:Column)];
+                 rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:TableGroup
+                                                                       csvw:Table
+                                                                       csvw:Schema
+                                                                       csvw:Column)];
                  rdfs:isDefinedBy csvw:;
                  rdfs:label "property URL"@en;
                  rdfs:range csvw:uriTemplate.
@@ -337,10 +332,10 @@ csvw:referencedRow a rdf:Property;
                    rdfs:label "referenced rows"@en.
 csvw:required a rdf:Property;
               rdfs:comment "A boolean atomic property taking a single value which indicates whether the cell must have a non-null value. The default is `false`. "@en;
-              rdfs:domain [owl:unionOf (csvw:TableGroup
-                                        csvw:Table
-                                        csvw:Schema
-                                        csvw:Column)];
+              rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:TableGroup
+                                                                    csvw:Table
+                                                                    csvw:Schema
+                                                                    csvw:Column)];
               rdfs:isDefinedBy csvw:;
               rdfs:label "required"@en;
               rdfs:range xsd:boolean.
@@ -386,10 +381,10 @@ csvw:scriptFormat a rdf:Property;
                   rdfs:range xsd:anyURI.
 csvw:separator a rdf:Property;
                rdfs:comment "An atomic property that MUST have a single string value that is the character used to separate items in the string value of the cell."@en;
-               rdfs:domain [owl:unionOf (csvw:TableGroup
-                                         csvw:Table
-                                         csvw:Schema
-                                         csvw:Column)];
+               rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:TableGroup
+                                                                     csvw:Table
+                                                                     csvw:Schema
+                                                                     csvw:Column)];
                rdfs:isDefinedBy csvw:;
                rdfs:label "separator"@en;
                rdfs:range xsd:string.
@@ -425,8 +420,8 @@ csvw:source a rdf:Property;
             rdfs:range xsd:string.
 csvw:suppressOutput a rdf:Property;
                     rdfs:comment "A boolean atomic property. If `true`, suppresses any output that would be generated when converting a table or cells within a column."@en;
-                    rdfs:domain [owl:unionOf (csvw:Table
-                                              csvw:Column)];
+                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:Table
+                                                                          csvw:Column)];
                     rdfs:isDefinedBy csvw:;
                     rdfs:label "suppress output"@en;
                     rdfs:range xsd:boolean.
@@ -439,19 +434,19 @@ csvw:table a rdf:Property;
            rdfs:subPropertyOf rdfs:member.
 csvw:tableDirection a rdf:Property;
                     rdfs:comment "One of `rtl`, `ltr` or `auto`. Indicates whether the tables in the group should be displayed with the first column on the right, on the left, or based on the first character in the table that has a specific direction."@en;
-                    rdfs:domain [owl:unionOf (csvw:TableGroup
-                                              csvw:Table)];
+                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:TableGroup
+                                                                          csvw:Table)];
                     rdfs:isDefinedBy csvw:;
                     rdfs:label "table direction"@en;
                     rdfs:range csvw:Direction.
 csvw:tableSchema a rdf:Property;
                  rdfs:comment "An object property that provides a single schema description as described in section 5.5 Schemas, used as the default for all the tables in the group"@en;
-                 rdfs:domain [owl:unionOf (csvw:TableGroup
-                                           csvw:Table)];
+                 rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:TableGroup
+                                                                       csvw:Table)];
                  rdfs:isDefinedBy csvw:;
                  rdfs:label "table schema"@en;
                  rdfs:range csvw:Schema.
-csvw:tabularMetadata a nsprov:Role;
+csvw:tabularMetadata a <http://www.w3.org/ns/prov#Role>;
                      rdfs:comment "Describes the role of a Metadata file in the tabular data mapping."@en;
                      rdfs:isDefinedBy csvw:;
                      rdfs:label "Tabular Metadata"@en.
@@ -463,10 +458,10 @@ csvw:targetFormat a rdf:Property;
                   rdfs:range xsd:anyURI.
 csvw:textDirection a rdf:Property;
                    rdfs:comment "An atomic property that must have a single value that is one of `rtl` or `ltr` (the default)."@en;
-                   rdfs:domain [owl:unionOf (csvw:TableGroup
-                                             csvw:Table
-                                             csvw:Schema
-                                             csvw:Column)];
+                   rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:TableGroup
+                                                                         csvw:Table
+                                                                         csvw:Schema
+                                                                         csvw:Column)];
                    rdfs:isDefinedBy csvw:;
                    rdfs:label "text direction"@en;
                    rdfs:range csvw:Direction.
@@ -474,17 +469,17 @@ csvw:title a rdf:Property;
            rdfs:comment """For a Transformation A natural language property that describes the format that will be generated from the transformation.
 
 For a Column: A natural language property that provides possible alternative names for the column."""@en;
-           rdfs:domain [owl:unionOf (csvw:Transformation
-                                     csvw:Column
-                                     csvw:Row)];
+           rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:Transformation
+                                                                 csvw:Column
+                                                                 csvw:Row)];
            rdfs:isDefinedBy csvw:;
            rdfs:label "title"@en.
 csvw:transformations a rdf:Property;
                      rdfs:comment "An array property of transformation definitions that provide mechanisms to transform the tabular data into other formats."@en;
-                     rdfs:domain [owl:unionOf (csvw:TableGroup
-                                               csvw:Table
-                                               csvw:Schema
-                                               csvw:Column)];
+                     rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:TableGroup
+                                                                           csvw:Table
+                                                                           csvw:Schema
+                                                                           csvw:Column)];
                      rdfs:isDefinedBy csvw:;
                      rdfs:label "transformations"@en;
                      rdfs:range csvw:Transformation.
@@ -503,17 +498,17 @@ csvw:url a rdf:Property;
          rdfs:comment """For a Table: This link property gives the single URL of the CSV file that the table is held in, relative to the location of the metadata document.
 
 For a Transformation: A link property giving the single URL of the file that the script or template is held in, relative to the location of the metadata document."""@en;
-         rdfs:domain [owl:unionOf (csvw:Table
-                                   csvw:Transformation)];
+         rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:Table
+                                                               csvw:Transformation)];
          rdfs:isDefinedBy csvw:;
          rdfs:label "url"@en;
          rdfs:range xsd:anyURI.
 csvw:valueUrl a rdf:Property;
               rdfs:comment "An URI template property that is used to map the values of cells into URLs."@en;
-              rdfs:domain [owl:unionOf (csvw:TableGroup
-                                        csvw:Table
-                                        csvw:Schema
-                                        csvw:Column)];
+              rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (csvw:TableGroup
+                                                                    csvw:Table
+                                                                    csvw:Schema
+                                                                    csvw:Column)];
               rdfs:isDefinedBy csvw:;
               rdfs:label "valueUrl"@en;
               rdfs:range csvw:uriTemplate.

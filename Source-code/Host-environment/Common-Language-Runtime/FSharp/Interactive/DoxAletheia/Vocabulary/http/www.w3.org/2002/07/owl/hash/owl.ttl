@@ -1,13 +1,9 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix w3: <http://www.w3.org/>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix grddl: <http://www.w3.org/2003/g/data-view#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-<http://www.w3.org/2002/07/owl> dc11:title "The OWL 2 Schema vocabulary (OWL 2)";
+<http://www.w3.org/2002/07/owl> <http://purl.org/dc/elements/1.1/title> "The OWL 2 Schema vocabulary (OWL 2)";
                                 a owl:Ontology;
                                 rdfs:comment """
   This ontology partially describes the built-in classes and
@@ -35,7 +31,7 @@
                                 owl:imports <http://www.w3.org/2000/01/rdf-schema>;
                                 owl:versionIRI <http://www.w3.org/2002/07/owl>;
                                 owl:versionInfo "$Date: 2009/11/15 10:54:12 $";
-                                grddl:namespaceTransformation <http://dev.w3.org/cvsweb/2009/owl-grddl/owx2rdf.xsl>.
+                                <http://www.w3.org/2003/g/data-view#namespaceTransformation> <http://dev.w3.org/cvsweb/2009/owl-grddl/owx2rdf.xsl>.
 owl:AllDifferent a rdfs:Class;
                  rdfs:comment "The class of collections of pairwise different individuals.";
                  rdfs:isDefinedBy owl:;

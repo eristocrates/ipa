@@ -8,11 +8,8 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
 @prefix doc: <http://www.w3.org/2000/10/swap/pim/doc#>.
 @prefix bnf: <http://www.w3.org/2000/10/swap/grammar/bnf#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix tblcard: <http://www.w3.org/People/Berners-Lee/card#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
 
-<http://www.w3.org/2000/10/swap/grammar/bnf> dc:creator tblcard:i;
+<http://www.w3.org/2000/10/swap/grammar/bnf> dc:creator <http://www.w3.org/People/Berners-Lee/card#i>;
                                              rdfs:comment """
     This ontology contains terms for defining a context-free grammar.
     The basic property is mustBeOneSequence which is equivalent to

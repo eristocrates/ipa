@@ -1,12 +1,10 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix swrl: <http://www.w3.org/2003/11/swrl#>.
 
 <http://www.w3.org/2003/11/swrl> rdfs:comment "RDF Schema definition of the RDF Concrete Syntax for the Semantic Web Rule Language";
-                                 owl:versionInfo "$Id: swrl.rdf,v 1.1 2004/05/21 18:46:39 vivien Exp $".
+                                 <http://www.w3.org/2002/07/owl#versionInfo> "$Id: swrl.rdf,v 1.1 2004/05/21 18:46:39 vivien Exp $".
 swrl:Atom a rdfs:Class;
           rdfs:comment "common superclass".
 swrl:Builtin a rdfs:Class.
@@ -56,7 +54,7 @@ swrl:classPredicate a rdf:Property;
                     rdfs:range rdfs:Class.
 swrl:dataRange a rdf:Property;
                rdfs:domain swrl:DataRangeAtom;
-               rdfs:range owl:DataRange.
+               rdfs:range <http://www.w3.org/2002/07/owl#DataRange>.
 swrl:head a rdf:Property;
           rdfs:comment "rule head (consequent):  List of Atom";
           rdfs:domain swrl:Imp;

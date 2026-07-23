@@ -2,256 +2,247 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix shoah: <http://dati.cdec.it/lod/shoah/>.
-@prefix bio: <http://purl.org/vocab/bio/0.1/>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix ccrel: <http://creativecommons.org/ns#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-shoah: ccrel:license <https://creativecommons.org/licenses/by/4.0/>;
-       dc11:creator "Laura Brazzo";
-       dc11:description "The ontology describing the Shoah domain, proposed here in beta version, aims to formally describe concepts and relationships that characterize the process of persecution and deportation of Jews in Italy between 1943 and 1945."@en;
-       dcterms:creator <https://plus.google.com/+silviamazzini_lod/>,
-                       shoah:www.cdec.it,
-                       shoah:www.regesta.com;
-       dcterms:issued "2014-01-01"^^xsd:date;
-       vann:preferredNamespacePrefix "shoah";
-       vann:preferredNamespaceUri "http://dati.cdec.it/lod/shoah/";
-       a owl:Ontology;
-       owl:imports bio:,
-                   foaf:;
-       owl:versionIRI shoah:0.1;
-       owl:versionInfo "beta version".
-shoah:Convoy a owl:Class;
+shoah: <http://creativecommons.org/ns#license> <https://creativecommons.org/licenses/by/4.0/>;
+       <http://purl.org/dc/elements/1.1/creator> "Laura Brazzo";
+       <http://purl.org/dc/elements/1.1/description> "The ontology describing the Shoah domain, proposed here in beta version, aims to formally describe concepts and relationships that characterize the process of persecution and deportation of Jews in Italy between 1943 and 1945."@en;
+       <http://purl.org/dc/terms/creator> <https://plus.google.com/+silviamazzini_lod/>,
+                                          shoah:www.cdec.it,
+                                          shoah:www.regesta.com;
+       <http://purl.org/dc/terms/issued> "2014-01-01"^^xsd:date;
+       <http://purl.org/vocab/vann/preferredNamespacePrefix> "shoah";
+       <http://purl.org/vocab/vann/preferredNamespaceUri> "http://dati.cdec.it/lod/shoah/";
+       a <http://www.w3.org/2002/07/owl#Ontology>;
+       <http://www.w3.org/2002/07/owl#imports> <http://purl.org/vocab/bio/0.1/>,
+                                               <http://xmlns.com/foaf/0.1/>;
+       <http://www.w3.org/2002/07/owl#versionIRI> shoah:0.1;
+       <http://www.w3.org/2002/07/owl#versionInfo> "beta version".
+shoah:Convoy a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:label "Convoy"@en.
-shoah:DetentionPlace a owl:Class;
+shoah:DetentionPlace a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:label "Detention Place"@en.
-shoah:DetentionPlaceTransfer a owl:Class;
+shoah:DetentionPlaceTransfer a <http://www.w3.org/2002/07/owl#Class>;
                              rdfs:label "Detention Place Transfer"@en.
-shoah:Liberation a owl:Class;
+shoah:Liberation a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:label "Liberation"@en.
-shoah:Massacre a owl:Class;
+shoah:Massacre a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:label "Massacre"@en.
-shoah:NaziCamp a owl:Class;
+shoah:NaziCamp a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:label "Nazi Camp"@en.
-shoah:NaziCampTransfer a owl:Class;
+shoah:NaziCampTransfer a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:label "Nazi Camp Transfer"@en.
-shoah:Persecution a owl:Class;
+shoah:Persecution a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:label "Persecution"@en.
-shoah:Place a owl:Class;
+shoah:Place a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:label "Place"@en.
-shoah:arrestDate a owl:DatatypeProperty;
+shoah:arrestDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:domain shoah:Persecution;
                  rdfs:label "Arrest Date"@en;
                  rdfs:range xsd:string.
-shoah:arrestPlace a owl:ObjectProperty;
+shoah:arrestPlace a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:domain shoah:Persecution;
                   rdfs:label "Arrest Place"@en;
                   rdfs:range shoah:Place.
-shoah:arrestedBy a owl:DatatypeProperty;
+shoah:arrestedBy a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:domain shoah:Persecution;
                  rdfs:label "Arrested By"@en;
                  rdfs:range xsd:string.
-shoah:arrivalDate a owl:DatatypeProperty;
+shoah:arrivalDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:domain shoah:Convoy;
                   rdfs:label "Arrival Date"@en.
-shoah:auntOf a owl:ObjectProperty;
-             rdfs:domain foaf:Person;
+shoah:auntOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
              rdfs:label "Aunt of"@en;
-             rdfs:range foaf:Person.
-shoah:brotherOf a owl:ObjectProperty;
-                rdfs:domain foaf:Person;
+             rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+shoah:brotherOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                 rdfs:label "Brother of"@en;
-                rdfs:range foaf:Person.
-shoah:campSerialNumber a owl:DatatypeProperty;
+                rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+shoah:campSerialNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                        rdfs:domain shoah:Persecution;
                        rdfs:label "Camp Serial Number"@en;
                        rdfs:range xsd:string.
-shoah:consortFamilyName a owl:DatatypeProperty;
-                        rdfs:domain foaf:Person;
+shoah:consortFamilyName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                         rdfs:label "Consort Family Name"@en;
                         rdfs:range xsd:string.
-shoah:consortFirstName a owl:DatatypeProperty;
-                       rdfs:domain foaf:Person;
+shoah:consortFirstName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                        rdfs:label "Consort First Name"@en;
                        rdfs:range xsd:string.
-shoah:consortOf a owl:ObjectProperty;
-                rdfs:domain foaf:Person;
+shoah:consortOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                 rdfs:label "Consort of"@en;
-                rdfs:range foaf:Person.
-shoah:consortReligion a owl:DatatypeProperty;
-                      rdfs:domain foaf:Person;
+                rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+shoah:consortReligion a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                       rdfs:label "Consort Religion"@en;
                       rdfs:range xsd:string.
-shoah:convoy a owl:ObjectProperty;
+shoah:convoy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:domain shoah:Persecution;
              rdfs:label "Convoy"@en;
              rdfs:range shoah:Convoy.
-shoah:convoyDeparturePlace a owl:ObjectProperty;
+shoah:convoyDeparturePlace a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                            rdfs:domain shoah:Persecution;
                            rdfs:label "Last Place before Deportation"@en;
                            rdfs:range shoah:DetentionPlace.
-shoah:convoyNumber a owl:DatatypeProperty;
+shoah:convoyNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:domain shoah:Persecution;
                    rdfs:label "Convoy Number"@en.
-shoah:country a owl:DatatypeProperty;
+shoah:country a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:domain shoah:Place;
               rdfs:label "Country"@en;
               rdfs:range xsd:string.
-shoah:dateOfBirth a owl:DatatypeProperty;
-                  rdfs:domain foaf:Person;
+shoah:dateOfBirth a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                   rdfs:label "Date of Birth"@en;
                   rdfs:range xsd:dateTime.
-shoah:dateOfDeath a owl:DatatypeProperty;
-                  rdfs:domain foaf:Person;
+shoah:dateOfDeath a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                   rdfs:label "Date of Death"@en;
                   rdfs:range xsd:dateTime.
-shoah:deathDescription a owl:DatatypeProperty;
-                       rdfs:domain foaf:Person;
+shoah:deathDescription a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                        rdfs:label "Death Description"@en;
                        rdfs:range xsd:string.
-shoah:deathInItaly a owl:DatatypeProperty;
+shoah:deathInItaly a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:domain shoah:Persecution;
                    rdfs:label "Death in Italy"@en;
                    rdfs:range xsd:boolean.
-shoah:departureDate a owl:DatatypeProperty;
+shoah:departureDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:domain shoah:Persecution;
                     rdfs:label "Departure Date"@en;
                     rdfs:range xsd:dateTime.
-shoah:detentionPlace a owl:ObjectProperty;
+shoah:detentionPlace a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:domain shoah:Persecution;
                      rdfs:label "Detention Place"@en;
                      rdfs:range shoah:DetentionPlace.
-shoah:detentionPlaceTransfer a owl:ObjectProperty;
+shoah:detentionPlaceTransfer a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                              rdfs:domain shoah:Persecution;
                              rdfs:label "Detention Place Transfer"@en;
                              rdfs:range shoah:DetentionPlaceTransfer.
-shoah:districtOfResidence a owl:DatatypeProperty;
-                          rdfs:domain foaf:Person;
+shoah:districtOfResidence a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                           rdfs:label "District of Residence"@en;
                           rdfs:range xsd:string.
-shoah:fatherName a owl:DatatypeProperty;
-                 rdfs:domain foaf:Person;
+shoah:fatherName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                  rdfs:label "Father Name"@en;
                  rdfs:range xsd:string.
-shoah:fatherOf a owl:ObjectProperty;
-               rdfs:domain foaf:Person;
+shoah:fatherOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                rdfs:label "Father of"@en;
-               rdfs:range foaf:Person.
-shoah:fromNaziCamp a owl:ObjectProperty;
+               rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+shoah:fromNaziCamp a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:domain shoah:NaziCampTransfer;
                    rdfs:label "from Camp"@en;
                    rdfs:range shoah:NaziCamp.
-shoah:fromPrison a owl:ObjectProperty;
+shoah:fromPrison a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:domain shoah:DetentionPlaceTransfer;
                  rdfs:label "from Prison"@en;
                  rdfs:range shoah:DetentionPlace.
-shoah:grandfatherOf a owl:ObjectProperty;
-                    rdfs:domain foaf:Person;
+shoah:grandfatherOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                     rdfs:label "Grandfather of"@en;
-                    rdfs:range foaf:Person.
-shoah:grandmotherOf a owl:ObjectProperty;
-                    rdfs:domain foaf:Person;
+                    rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+shoah:grandmotherOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                     rdfs:label "Grandmother of"@en;
-                    rdfs:range foaf:Person.
-shoah:liberation a owl:ObjectProperty;
+                    rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+shoah:liberation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:domain shoah:Persecution;
                  rdfs:label "Liberation"@en;
                  rdfs:range shoah:Liberation.
-shoah:liberationDate a owl:DatatypeProperty;
+shoah:liberationDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:domain shoah:Liberation;
                      rdfs:label "Liberation Date"@en;
                      rdfs:range xsd:dateTime.
-shoah:massacre a owl:ObjectProperty;
+shoah:massacre a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:domain shoah:Persecution;
                rdfs:label "Massacre in Italy"@en;
                rdfs:range shoah:Massacre.
-shoah:motherMaidenName a owl:DatatypeProperty;
-                       rdfs:domain foaf:Person;
+shoah:motherMaidenName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                        rdfs:label "Mother Maiden Name"@en;
                        rdfs:range xsd:string.
-shoah:motherName a owl:DatatypeProperty;
-                 rdfs:domain foaf:Person;
+shoah:motherName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                  rdfs:label "Mother Name"@en;
                  rdfs:range xsd:string.
-shoah:motherOf a owl:ObjectProperty;
-               rdfs:domain foaf:Person;
+shoah:motherOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                rdfs:label "Mother of"@en;
-               rdfs:range foaf:Person.
-shoah:naziCampTransfer a owl:ObjectProperty;
+               rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+shoah:naziCampTransfer a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:domain shoah:Persecution;
                        rdfs:label "Nazi Camp Transfer"@en;
                        rdfs:range shoah:NaziCampTransfer.
-shoah:parentPlace a owl:DatatypeProperty;
+shoah:parentPlace a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:domain shoah:Place;
                   rdfs:label "Parent Place"@en;
                   rdfs:range xsd:string.
-shoah:parentReligion a owl:DatatypeProperty;
-                     rdfs:domain foaf:Person;
+shoah:parentReligion a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                      rdfs:label "Parent Religion"@en;
                      rdfs:range xsd:string.
-shoah:persecution a owl:ObjectProperty;
-                  rdfs:domain foaf:Person;
+shoah:persecution a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                   rdfs:label "Persecution"@en;
                   rdfs:range shoah:Persecution.
-shoah:persecutionCategory a owl:DatatypeProperty;
+shoah:persecutionCategory a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                           rdfs:domain shoah:Persecution;
                           rdfs:label "Reason of Deportation"@en;
                           rdfs:range xsd:dateTime.
-shoah:placeOfBirth a owl:ObjectProperty;
-                   rdfs:domain foaf:Person;
+shoah:placeOfBirth a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                    rdfs:label "Place of Birth"@en;
                    rdfs:range shoah:Place.
-shoah:placeOfDeath a owl:ObjectProperty;
-                   rdfs:domain foaf:Person;
+shoah:placeOfDeath a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                    rdfs:label "Place of Death"@en;
                    rdfs:range shoah:Place.
-shoah:returnDate a owl:DatatypeProperty;
+shoah:returnDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:domain shoah:Liberation;
                  rdfs:label "Return Date"@en;
                  rdfs:range xsd:dateTime.
-shoah:returnPlace a owl:DatatypeProperty;
+shoah:returnPlace a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:domain shoah:Liberation;
                   rdfs:label "Return Place"@en;
                   rdfs:range xsd:string.
-shoah:shoahSurvivor a owl:DatatypeProperty;
-                    rdfs:domain foaf:Person;
+shoah:shoahSurvivor a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                     rdfs:label "Shoah Survivor"@en;
                     rdfs:range xsd:boolean.
-shoah:sisterOf a owl:ObjectProperty;
-               rdfs:domain foaf:Person;
+shoah:sisterOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                rdfs:label "Sister of"@en;
-               rdfs:range foaf:Person.
-shoah:subCampOf a owl:ObjectProperty;
+               rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+shoah:subCampOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:domain shoah:NaziCamp;
                 rdfs:label "Sub Camp of"@en;
                 rdfs:range shoah:NaziCamp.
-shoah:toNaziCamp a owl:ObjectProperty;
+shoah:toNaziCamp a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:domain shoah:NaziCampTransfer,
                              shoah:Persecution;
                  rdfs:label "to Camp"@en;
                  rdfs:range shoah:NaziCamp.
-shoah:toPrison a owl:ObjectProperty;
+shoah:toPrison a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:domain shoah:DetentionPlaceTransfer;
                rdfs:label "to Prison"@en;
                rdfs:range shoah:DetentionPlace.
-shoah:transferDate a owl:DatatypeProperty;
+shoah:transferDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:domain shoah:NaziCampTransfer;
                    rdfs:label "Transfer Date"@en;
                    rdfs:range xsd:string.
-shoah:uncleOf a owl:ObjectProperty;
-              rdfs:domain foaf:Person;
+shoah:uncleOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
               rdfs:label "Uncle of"@en;
-              rdfs:range foaf:Person.
-shoah:widowOf a owl:ObjectProperty;
-              rdfs:domain foaf:Person;
+              rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+shoah:widowOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
               rdfs:label "Widow of"@en;
-              rdfs:range foaf:Person.
-shoah:widowerOf a owl:ObjectProperty;
-                rdfs:domain foaf:Person;
+              rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+shoah:widowerOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
                 rdfs:label "Widower of"@en;
-                rdfs:range foaf:Person.
+                rdfs:range <http://xmlns.com/foaf/0.1/Person>.

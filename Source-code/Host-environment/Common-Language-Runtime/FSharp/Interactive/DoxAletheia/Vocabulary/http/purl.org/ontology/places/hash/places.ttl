@@ -1,0 +1,571 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix places: <http://purl.org/ontology/places#>.
+
+<http://creativecommons.org/licenses/by/1.0/> <http://web.resource.org/cc/permits> <http://web.resource.org/cc/DerivativeWorks>,
+                                                                                   <http://web.resource.org/cc/Distribution>,
+                                                                                   <http://web.resource.org/cc/Reproduction>;
+                                              <http://web.resource.org/cc/requires> <http://web.resource.org/cc/Attribution>,
+                                                                                    <http://web.resource.org/cc/Notice>;
+                                              a <http://web.resource.org/cc/Licence>.
+<http://purl.org/ontology/places> <http://purl.org/dc/terms/created> "2010-11-27"^^xsd:date;
+                                  <http://purl.org/dc/terms/description> "The Places Ontology is a simple lightweight ontology for describing places of geographic interest."@en;
+                                  <http://purl.org/dc/terms/title> "The Places Ontology"@en;
+                                  <http://purl.org/dc/terms/type> <http://purl.org/dc/dcmitype/Text>;
+                                  <http://purl.org/vocab/vann/preferredNamespacePrefix> "place";
+                                  <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/ontology/places#";
+                                  <http://web.resource.org/cc/license> <http://creativecommons.org/licenses/by/1.0/>;
+                                  a <http://web.resource.org/cc/Work>,
+                                    <http://www.w3.org/2002/07/owl#Ontology>;
+                                  rdfs:comment "The Places Ontology is a simple lightweight ontology for describing places of geographic interest."@en;
+                                  <http://xmlns.com/foaf/0.1/maker> <http://purl.org/ontology/places/#rob>,
+                                                                    <http://purl.org/ontology/places/#tom>,
+                                                                    <http://purl.org/ontology/places/#michael>.
+places:ArbitraryRegion a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "An area that is useful to illustrate a particular point but does not have a recognised political or cultural identity.";
+                       rdfs:isDefinedBy places:;
+                       rdfs:label "Arbitrary Region"@en,
+                                  "ArbitraryRegion",
+                                  "Région Arbitraire"@fr-fr,
+                                  "任意区域"@zh,
+                                  "Willkürliche Region"@de,
+                                  "Arbitraria Región"@es;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Bay a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "An indentation to a shoreline, a body of water enclosed but with a large mouth to a wider body of water.";
+           rdfs:isDefinedBy places:;
+           rdfs:label "Bay",
+                      "Bay"@de,
+                      "Bay"@en,
+                      "Bay"@fr-fr,
+                      "湾"@zh,
+                      "Bahía"@es;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Beach a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "The shore of a body of water, usually sandy or pebbly.";
+             rdfs:isDefinedBy places:;
+             rdfs:label "Beach",
+                        "Beach"@de,
+                        "Beach"@en,
+                        "Beach"@fr-fr,
+                        "Playa"@es,
+                        "海滩"@zh;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Borough a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "An administrative region of governance.";
+               rdfs:isDefinedBy places:;
+               rdfs:label "Municipio"@es,
+                          "Arrondissement"@fr-fr,
+                          "Bezirk"@de,
+                          "Borough",
+                          "Borough"@en,
+                          "伯勒"@zh;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Boundary a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A Boundary resource specifies a sequence of points which, if joined, give the boundary of a geographical area. The sequence may be a serious of resources, each with a latitude and longitude, or a series of points using the datatype place:latlong. If the final point is the same as the first then the boundary is considered to be a closed area, whereas if the first and last points differ the boundary is considered to be a border line.";
+                rdfs:isDefinedBy places:;
+                rdfs:label "Boundary";
+                rdfs:subClassOf rdf:Seq;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Cape a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A strip of land projecting into a body of water";
+            rdfs:isDefinedBy places:;
+            rdfs:label "Cape",
+                       "Cape"@de,
+                       "Cape"@en,
+                       "Cap"@fr-fr,
+                       "Cabo"@es,
+                       "披肩"@zh;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:City a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A large settlement, often with some form of formal political recognition.";
+            rdfs:isDefinedBy places:;
+            rdfs:label "市"@zh,
+                       "Ciudad"@es,
+                       "City",
+                       "City"@de,
+                       "City"@en,
+                       "City"@fr-fr;
+            rdfs:seeAlso <http://en.wikipedia.org/wiki/City>;
+            <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/ontology/City>;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Cliff a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A steep high face of rock.";
+             rdfs:isDefinedBy places:;
+             rdfs:label "Acantilado"@es,
+                        "悬崖"@zh,
+                        "Cliff",
+                        "Cliff"@de,
+                        "Cliff"@en,
+                        "Cliff"@fr-fr;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Continent a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A large landmass recognised by convention as a continent.";
+                 rdfs:isDefinedBy places:;
+                 rdfs:label "Kontinent"@de,
+                            "Continent",
+                            "Continent"@en,
+                            "Continent"@fr-fr,
+                            "大陆"@zh,
+                            "Continente"@es;
+                 rdfs:seeAlso <http://en.wikipedia.org/wiki/Continent>;
+                 <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/ontology/Continent>,
+                                                                 <http://www.telegraphis.net/ontology/geography/geography#Continent>;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Country a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A region considered to be the territory of a recognised political state.";
+               rdfs:isDefinedBy places:;
+               rdfs:label "Country",
+                          "Country"@en,
+                          "País"@es,
+                          "国家"@zh,
+                          "Pays"@fr-fr,
+                          "Land"@de;
+               rdfs:seeAlso <http://en.wikipedia.org/wiki/Country>;
+               <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/ontology/Country>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:County a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A county is a land area of local governance within a country. A county may have cities and towns within its area.";
+              rdfs:isDefinedBy places:;
+              rdfs:label "Comté"@fr-fr,
+                         "County",
+                         "Condado"@es,
+                         "County"@de,
+                         "County"@en,
+                         "县"@zh;
+              rdfs:seeAlso <http://en.wikipedia.org/wiki/County>;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Desert a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A desert is a landscape or region that receives an extremely low amount of precipitation, less than enough to support growth of most plants.";
+              rdfs:isDefinedBy places:;
+              rdfs:label "沙漠"@zh,
+                         "Desert",
+                         "Desert"@de,
+                         "Desert"@en,
+                         "Desert"@fr-fr,
+                         "Desierto"@es;
+              rdfs:seeAlso <http://en.wikipedia.org/wiki/Desert>;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:District a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A region of governance.";
+                rdfs:isDefinedBy places:;
+                rdfs:label "District",
+                           "区"@zh,
+                           "District"@en,
+                           "District"@fr-fr,
+                           "Distrito"@es,
+                           "Bezirk"@de;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Estuary a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "The widened area of a river as it opens to meet the sea or ocean.";
+               rdfs:isDefinedBy places:;
+               rdfs:label "Mündung"@de,
+                          "Estuario"@es,
+                          "Estuary",
+                          "Estuary"@en,
+                          "河口"@zh,
+                          "Estuaire"@fr-fr;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Glacier a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A slow-moving mass of ice.";
+               rdfs:isDefinedBy places:;
+               rdfs:label "Gletscher"@de,
+                          "Glacier",
+                          "Glacier"@en,
+                          "Glacier"@fr-fr,
+                          "Glaciar"@es,
+                          "冰川"@zh;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Gulf a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Part of a sea or ocean that is partially enclosed by land. Like a bay but larger.";
+            rdfs:isDefinedBy places:;
+            rdfs:label "Gulf",
+                       "Gulf"@de,
+                       "Gulf"@en,
+                       "海湾"@zh,
+                       "Golfo"@es,
+                       "Golfe"@fr-fr;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Hamlet a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A Hamlet is a small human settlement consisting of just a few dwellings.";
+              rdfs:isDefinedBy places:;
+              rdfs:label "Aldea"@es,
+                         "Hamlet",
+                         "Hamlet"@en,
+                         "Hamlet"@fr-fr,
+                         "Weiler"@de,
+                         "村庄"@zh;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Hill a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A hill is a landform that extends above the surrounding terrain.";
+            rdfs:isDefinedBy places:;
+            rdfs:label "希尔"@zh,
+                       "Hill",
+                       "Hill"@de,
+                       "Hill"@en,
+                       "Hill"@es,
+                       "Hill"@fr-fr;
+            rdfs:seeAlso <http://en.wikipedia.org/wiki/Hill>;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Island a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A landmass surrounded entirely by water.";
+              rdfs:isDefinedBy places:;
+              rdfs:label "Isla"@es,
+                         "岛"@zh,
+                         "Island",
+                         "Island"@de,
+                         "Island"@en,
+                         "Island"@fr-fr;
+              rdfs:seeAlso <http://en.wikipedia.org/wiki/Island>;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Isthmus a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A narrow strip of land, bounded by water on two sides, and connecting two larger landmasses.";
+               rdfs:isDefinedBy places:;
+               rdfs:label "Isthme"@fr-fr,
+                          "Istmo"@es,
+                          "Isthmus",
+                          "Isthmus"@de,
+                          "Isthmus"@en,
+                          "地峡"@zh;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Lake a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "An inland body of water.";
+            rdfs:isDefinedBy places:;
+            rdfs:label "Lago"@es,
+                       "湖"@zh,
+                       "Lake",
+                       "Lake"@de,
+                       "Lake"@en,
+                       "Lake"@fr-fr;
+            rdfs:seeAlso <http://en.wikipedia.org/wiki/Lake>;
+            <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/ontology/Lake>;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:LandMass a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A piece of land, useful in combination with Continent, Plate and others.";
+                rdfs:isDefinedBy places:;
+                rdfs:label "Masa de tierra"@es,
+                           "LandMass",
+                           "Landmass"@en,
+                           "Landmasse"@de,
+                           "陆地"@zh,
+                           "La masse continentale"@fr-fr;
+                rdfs:seeAlso <http://en.wikipedia.org/wiki/Landmass>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Mountain a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A mountain is a large landform that stretches above the surrounding land in a limited area usually in the form of a peak. A mountain is generally steeper than a hill.";
+                rdfs:isDefinedBy places:;
+                rdfs:label "Mountain",
+                           "Mountain"@de,
+                           "Mountain"@en,
+                           "Mountain"@fr-fr,
+                           "Montaña"@es,
+                           "山"@zh;
+                rdfs:seeAlso <http://en.wikipedia.org/wiki/Mountain>;
+                <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/ontology/Mountain>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Municipality a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "A region of governance, often self-governed.";
+                    rdfs:isDefinedBy places:;
+                    rdfs:label "Municipio"@es,
+                               "市"@zh,
+                               "Municipality",
+                               "Municipality"@en,
+                               "Municipalité"@fr-fr,
+                               "Gemeinde"@de;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Ocean a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A major body of salt water.";
+             rdfs:isDefinedBy places:;
+             rdfs:label "Mar"@es,
+                        "Ocean",
+                        "Ocean"@de,
+                        "Ocean"@en,
+                        "Ocean"@fr-fr,
+                        "海洋"@zh;
+             rdfs:seeAlso <http://en.wikipedia.org/wiki/Ocean>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Parish a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "An area of regional governance stemming from the geographical area associated with a church.";
+              rdfs:isDefinedBy places:;
+              rdfs:label "Gemeinde"@de,
+                         "Parish",
+                         "Parish"@en,
+                         "Parroquia"@es,
+                         "教区"@zh,
+                         "Paroisse"@fr-fr;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Path a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment " A Path is a recognised and maintained route from one place to another that is suitable for pedestrians.";
+            rdfs:isDefinedBy places:;
+            rdfs:label "路径"@zh,
+                       "Ruta"@es,
+                       "Path",
+                       "Path"@de,
+                       "Path"@en,
+                       "Path"@fr-fr;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Peninsula a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A landmass projecting out into a body of water.";
+                 rdfs:isDefinedBy places:;
+                 rdfs:label "Peninsula",
+                            "Peninsula"@en,
+                            "Península"@es,
+                            "Péninsule"@fr-fr,
+                            "Halbinsel"@de,
+                            "半岛"@zh;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Plain a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A level area of land.";
+             rdfs:isDefinedBy places:;
+             rdfs:label "Plain",
+                        "Plain"@de,
+                        "Plain"@en,
+                        "Plain"@fr-fr,
+                        "Llanura"@es,
+                        "平原"@zh;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Plate a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A geological plate, a piece of the earth’s crust. Useful for geological descriptions involving the movement and separation of continents.";
+             rdfs:isDefinedBy places:;
+             rdfs:label "Plate",
+                        "Plate"@en,
+                        "Tafel"@de,
+                        "Placa"@es,
+                        "板"@zh,
+                        "Plate"@fr-fr;
+             rdfs:seeAlso <http://en.wikipedia.org/wiki/Tectonic_plate>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Plateau a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A flat highland, a large area of flat land higher than the surrounding land.";
+               rdfs:isDefinedBy places:;
+               rdfs:label "高原"@zh,
+                          "Meseta"@es,
+                          "Plateau",
+                          "Plateau"@de,
+                          "Plateau"@en,
+                          "Plateau"@fr-fr;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Province a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A region of governance.";
+                rdfs:isDefinedBy places:;
+                rdfs:label "省"@zh,
+                           "Province",
+                           "Province"@en,
+                           "Province"@fr-fr,
+                           "Provinz"@de,
+                           "Provincia"@es;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Region a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A politically or culturally recognised area.";
+              rdfs:isDefinedBy places:;
+              rdfs:label "Región"@es,
+                         "Region",
+                         "Region"@de,
+                         "Region"@en,
+                         "Région"@fr-fr,
+                         "区"@zh;
+              rdfs:seeAlso <http://en.wikipedia.org/wiki/Region>;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Reservoir a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A man-made or natural lake used for the storage and regulation of a water supply.";
+                 rdfs:isDefinedBy places:;
+                 rdfs:label "水库"@zh,
+                            "Depósito"@es,
+                            "Reservoir",
+                            "Reservoir"@de,
+                            "Reservoir"@en,
+                            "Réservoir"@fr-fr;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Ridge a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A long elevation or striation in the land.";
+             rdfs:isDefinedBy places:;
+             rdfs:label "脊"@zh,
+                        "Ridge",
+                        "Ridge"@de,
+                        "Ridge"@en,
+                        "Ridge"@es,
+                        "Ridge"@fr-fr;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:River a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A natural watercourse flowing towards an ocean, sea or lake.";
+             rdfs:isDefinedBy places:;
+             rdfs:label "Río"@es,
+                        "River",
+                        "River"@de,
+                        "River"@en,
+                        "River"@fr-fr,
+                        "河"@zh;
+             rdfs:seeAlso <http://en.wikipedia.org/wiki/River>;
+             <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/ontology/River>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Road a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A Road is a recognised and maintained route from one place to another that is suitable for vehicles.";
+            rdfs:isDefinedBy places:;
+            rdfs:label "Por carretera"@es,
+                       "Road",
+                       "Road"@de,
+                       "Road"@en,
+                       "Road"@fr-fr,
+                       "路"@zh;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Sea a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "A large body of salt water, usually connected to an ocean.";
+           rdfs:isDefinedBy places:;
+           rdfs:label "Mar"@es,
+                      "Mer"@fr-fr,
+                      "Sea",
+                      "Sea"@de,
+                      "Sea"@en,
+                      "海"@zh;
+           rdfs:seeAlso <http://en.wikipedia.org/wiki/Sea>;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Settlement a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "A Settlement is an area of land inhabited by humans and usually having buildings.";
+                  rdfs:isDefinedBy places:;
+                  rdfs:label "解决"@zh,
+                             "Siedlung"@de,
+                             "Règlement"@fr-fr,
+                             "Settlement",
+                             "Settlement"@en,
+                             "Liquidación"@es;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:State a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A State is a land area of governance within a country. A state may have counties, cities and towns within its area.";
+             rdfs:isDefinedBy places:;
+             rdfs:label "State",
+                        "State"@en,
+                        "Staat"@de,
+                        "Estado"@es,
+                        "État"@fr-fr,
+                        "国家"@zh;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Strait a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A narrow channel of a sea joining two larger bodies of water.";
+              rdfs:isDefinedBy places:;
+              rdfs:label "Strait",
+                         "Strait"@en,
+                         "Estrecho"@es,
+                         "Meerenge"@de,
+                         "Détroit"@fr-fr,
+                         "海峡"@zh;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Town a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A settlement smaller than a city but larger than a village.";
+            rdfs:isDefinedBy places:;
+            rdfs:label "Ville"@fr-fr,
+                       "Ciudad"@es,
+                       "镇"@zh,
+                       "Town",
+                       "Town"@de,
+                       "Town"@en;
+            rdfs:seeAlso <http://en.wikipedia.org/wiki/Town>;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Township a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A settlement and geographic area, less formally recognised than a town.";
+                rdfs:isDefinedBy places:;
+                rdfs:label "Municipio"@es,
+                           "Canton"@fr-fr,
+                           "乡"@zh,
+                           "Township",
+                           "Township"@de,
+                           "Township"@en;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Valley a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A depressed area of land, often between mountains and often containing a river.";
+              rdfs:isDefinedBy places:;
+              rdfs:label "Valley",
+                         "Valley"@de,
+                         "Valley"@en,
+                         "Valle"@es,
+                         "Vallée"@fr-fr,
+                         "谷"@zh;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Village a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A small human settlement.";
+               rdfs:isDefinedBy places:;
+               rdfs:label "Pueblo"@es,
+                          "村"@zh,
+                          "Village",
+                          "Village"@de,
+                          "Village"@en,
+                          "Village"@fr-fr;
+               rdfs:seeAlso <http://en.wikipedia.org/wiki/Village>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Volcano a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A volcano is a crack in the Earth's crust that allows lava and hot gases to escape.";
+               rdfs:isDefinedBy places:;
+               rdfs:label "火山"@zh,
+                          "Vulkan"@de,
+                          "Volcan"@fr-fr,
+                          "Volcano",
+                          "Volcano"@en,
+                          "Volcán"@es;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:Watershed a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A ridge of land seperating two adjacent water systems.";
+                 rdfs:isDefinedBy places:;
+                 rdfs:label "Watershed",
+                            "Watershed"@en,
+                            "Wasserscheide"@de,
+                            "流域"@zh,
+                            "Des bassins versants"@fr-fr,
+                            "Cuencas"@es;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:bounded_by a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "The bounded by property relates any place to a boundary that marks out the geographic area it covers.";
+                  rdfs:isDefinedBy places:;
+                  rdfs:label "bounded by";
+                  rdfs:range places:Boundary;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:in a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:comment """in is a property that allows you to say that a place is entirely within the boundaries of another place. It allows you to make statements like \"Paris is in france\".""";
+          rdfs:isDefinedBy places:;
+          rdfs:label "in",
+                     "in"@de,
+                     "in"@en,
+                     "在"@zh,
+                     "dans"@fr-fr,
+                     "en"@es;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:latlong a rdfs:Datatype;
+               rdfs:comment """The Lat/long datatype allows us to specify that a literal value is a latitude/longitude pair, based in the WGS84 projection and in the comma-seperated, decimal format. e.g. \"38.897605896,-77.0365219116\"^^place:latlong would specify the WGS84 geographic co-ordinates of The White House, Washington DC.""";
+               rdfs:label "Lat/Long".
+places:overlaps a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Overlaps is a property for saying that a particular place shares an area of land with another place but that neither place is entirely within the other.";
+                rdfs:isDefinedBy places:;
+                rdfs:label "solapamientos"@es,
+                           "overlaps",
+                           "overlaps"@en,
+                           "重叠"@zh,
+                           "Überschneidungen"@de,
+                           "chevauchements"@fr-fr;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+places:point_on_map a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "The point on map property indicates where a place should be shown by a pin on a map.";
+                    rdfs:label "Point on map".
+<http://purl.org/ontology/places/#michael> a <http://xmlns.com/foaf/0.1/Person>;
+                                           <http://xmlns.com/foaf/0.1/name> "Michael Smethurst".
+<http://purl.org/ontology/places/#rob> a <http://xmlns.com/foaf/0.1/Person>;
+                                       <http://xmlns.com/foaf/0.1/name> "Rob Styles".
+<http://purl.org/ontology/places/#tom> a <http://xmlns.com/foaf/0.1/Person>;
+                                       <http://xmlns.com/foaf/0.1/name> "Tom Scott".
+<http://vocab.org/places/schema.html> <http://purl.org/dc/elements/1.1/format> "text/html";
+                                      a <http://purl.org/dc/dcmitype/Text>,
+                                        <http://xmlns.com/foaf/0.1/Document>;
+                                      rdfs:label "HTML".
+<http://vocab.org/places/schema.json> <http://purl.org/dc/elements/1.1/format> "application/json";
+                                      a <http://purl.org/dc/dcmitype/Text>,
+                                        <http://xmlns.com/foaf/0.1/Document>;
+                                      rdfs:label "JSON".
+<http://vocab.org/places/schema.rdf> <http://purl.org/dc/terms/hasFormat> <http://vocab.org/places/schema.html>,
+                                                                          <http://vocab.org/places/schema.json>,
+                                                                          <http://vocab.org/places/schema.turtle>;
+                                     a <http://xmlns.com/foaf/0.1/Document>,
+                                       <http://purl.org/dc/dcmitype/Text>;
+                                     <http://xmlns.com/foaf/0.1/primaryTopic> <http://purl.org/ontology/places>;
+                                     <http://xmlns.com/foaf/0.1/topic> <http://purl.org/ontology/places>.
+<http://vocab.org/places/schema.turtle> <http://purl.org/dc/elements/1.1/format> "text/plain";
+                                        a <http://purl.org/dc/dcmitype/Text>,
+                                          <http://xmlns.com/foaf/0.1/Document>;
+                                        rdfs:label "Turtle".

@@ -2,8 +2,6 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix rss: <http://purl.org/rss/1.0/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
 
 rss:channel a rdfs:Class;
             rdfs:comment "An RSS information channel.";
@@ -13,7 +11,7 @@ rss:description a rdf:Property;
                 rdfs:comment "A short text description of the subject.";
                 rdfs:isDefinedBy rss:;
                 rdfs:label "Description";
-                rdfs:subPropertyOf dc11:description.
+                rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/description>.
 rss:image a rdfs:Class;
           rdfs:comment "An RSS image.";
           rdfs:isDefinedBy rss:;
@@ -30,7 +28,7 @@ rss:link a rdf:Property;
          rdfs:comment "The URL to which an HTML rendering of the subject will link.";
          rdfs:isDefinedBy rss:;
          rdfs:label "Link";
-         rdfs:subPropertyOf dc11:identifier.
+         rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/identifier>.
 rss:name a rdf:Property;
          rdfs:comment "The text input field's (variable) name.";
          rdfs:isDefinedBy rss:;
@@ -43,9 +41,9 @@ rss:title a rdf:Property;
           rdfs:comment "A descriptive title for the channel.";
           rdfs:isDefinedBy rss:;
           rdfs:label "Title";
-          rdfs:subPropertyOf dc11:title.
+          rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/title>.
 rss:url a rdf:Property;
         rdfs:comment "The URL of the image to used in the 'src' attribute of the channel's image tag when rendered as HTML.";
         rdfs:isDefinedBy rss:;
         rdfs:label "URL";
-        rdfs:subPropertyOf dc11:identifier.
+        rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/identifier>.

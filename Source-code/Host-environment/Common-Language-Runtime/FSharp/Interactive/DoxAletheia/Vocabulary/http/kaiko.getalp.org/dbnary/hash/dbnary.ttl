@@ -7,21 +7,15 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix xml: <http://www.w3.org/XML/1998/namespace>.
 @prefix dbnary: <http://kaiko.getalp.org/dbnary#>.
-@prefix qb: <http://purl.org/linked-data/cube#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix lime: <http://www.w3.org/ns/lemon/lime#>.
-@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#>.
 
-<http://kaiko.getalp.org/dbnary> dcterms:abstract """The DBnary dataset gives access to many lexical data currently contained implicitely in several editions of Wiktionary.
+<http://kaiko.getalp.org/dbnary> <http://purl.org/dc/terms/abstract> """The DBnary dataset gives access to many lexical data currently contained implicitely in several editions of Wiktionary.
  The data model used is Ontolex, with very few extensions used to encode specific information. We also uses the DataCube Ontology to provide some statistivs concerning the extraction and enhancement process on each version of Wiktionary.
  This Ontology describes these extensions.""";
-                                 dcterms:creator <http://serasset.bitbucket.io/>;
-                                 dcterms:license <http://creativecommons.org/licenses/by-sa/4.0/>;
-                                 dcterms:title "The DBnary Ontolex Extension Data Model";
-                                 vann:preferredNamespacePrefix "dbnary";
-                                 vann:preferredNamespaceUri "http://kaiko.getalp.org/dbnary";
+                                 <http://purl.org/dc/terms/creator> <http://serasset.bitbucket.io/>;
+                                 <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by-sa/4.0/>;
+                                 <http://purl.org/dc/terms/title> "The DBnary Ontolex Extension Data Model";
+                                 <http://purl.org/vocab/vann/preferredNamespacePrefix> "dbnary";
+                                 <http://purl.org/vocab/vann/preferredNamespaceUri> "http://kaiko.getalp.org/dbnary";
                                  a owl:Ontology;
                                  rdfs:comment "DBnary: A lexicon model designed to allow the representation of lexical data extracted from wiktionary language editions (http://www.wiktionary.org/). The dbnary model extends the ontolex model (http://www.w3.org/ns/lemon/ontolex)."@en;
                                  rdfs:label "DBnary";
@@ -46,80 +40,80 @@
          rdfs:comment "An underspecified antonymy relation between LexicalEntities (Lexical entries or Lexical Senses). This relation is used to encode an information available in a lexicon when the linked Lexical Senses are not known. When both source and target of the relation are Lexical Senses, one should use the corresponding LEMON relation. "@en;
          rdfs:domain [a owl:Class ; 
                       owl:unionOf (:Page
-                                   ontolex:LexicalEntry
-                                   ontolex:LexicalSense)];
+                                   <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                   <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)];
          rdfs:range [a owl:Class ; 
                      owl:unionOf (:Page
-                                  ontolex:LexicalEntry
-                                  ontolex:LexicalSense)].
+                                  <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                  <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)].
 :approximateSynonym a owl:ObjectProperty,
                       owl:NamedIndividual,
                       :NymProperty;
                     rdfs:comment "An underspecified approximate synonymy relation between LexicalEntities (Lexical entries or Lexical Senses). This relation is used to encode an information available in a lexicon when the linked Lexical Senses are not known. When both source and target of the relation are Lexical Senses, one should use the corresponding LEMON relation. "@en;
                     rdfs:domain [a owl:Class ; 
                                  owl:unionOf (:Page
-                                              ontolex:LexicalEntry
-                                              ontolex:LexicalSense)];
+                                              <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                              <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)];
                     rdfs:range [a owl:Class ; 
                                 owl:unionOf (:Page
-                                             ontolex:LexicalEntry
-                                             ontolex:LexicalSense)].
+                                             <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                             <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)].
 :count a owl:DatatypeProperty,
          owl:NamedIndividual,
-         qb:MeasureProperty;
+         <http://purl.org/linked-data/cube#MeasureProperty>;
        rdfs:comment "cardinality of a certain set of Object a specific extract."@en;
        rdfs:label "count"@en;
        rdfs:range xsd:int.
-:dbnaryNymRelationsDataStructure qb:component [qb:dimension :observationLanguage],
-                                              [qb:dimension :wiktionaryDumpVersion],
-                                              [qb:dimension :nymRelation],
-                                              [qb:measure :count];
+:dbnaryNymRelationsDataStructure <http://purl.org/linked-data/cube#component> [<http://purl.org/linked-data/cube#dimension> :observationLanguage],
+                                                                              [<http://purl.org/linked-data/cube#dimension> :wiktionaryDumpVersion],
+                                                                              [<http://purl.org/linked-data/cube#dimension> :nymRelation],
+                                                                              [<http://purl.org/linked-data/cube#measure> :count];
                                  a owl:NamedIndividual,
-                                   qb:DataStructureDefinition;
+                                   <http://purl.org/linked-data/cube#DataStructureDefinition>;
                                  rdfs:comment "The DataStructure of the DataCube describing the count of main DBnary/Ontolex Classes."@en.
-:dbnaryStatisticsDataStructure qb:component [qb:dimension :observationLanguage],
-                                            [qb:dimension :wiktionaryDumpVersion],
-                                            [qb:measure :lexicalEntryCount],
-                                            [qb:measure :lexicalSenseCount],
-                                            [qb:measure :pageCount],
-                                            [qb:measure :translationsCount];
+:dbnaryStatisticsDataStructure <http://purl.org/linked-data/cube#component> [<http://purl.org/linked-data/cube#dimension> :observationLanguage],
+                                                                            [<http://purl.org/linked-data/cube#dimension> :wiktionaryDumpVersion],
+                                                                            [<http://purl.org/linked-data/cube#measure> :lexicalEntryCount],
+                                                                            [<http://purl.org/linked-data/cube#measure> :lexicalSenseCount],
+                                                                            [<http://purl.org/linked-data/cube#measure> :pageCount],
+                                                                            [<http://purl.org/linked-data/cube#measure> :translationsCount];
                                a owl:NamedIndividual,
-                                 qb:DataStructureDefinition;
+                                 <http://purl.org/linked-data/cube#DataStructureDefinition>;
                                rdfs:comment "The DataStructure of the DataCube describing the count of main DBnary/Ontolex Classes."@en.
-:dbnaryTranslationsDataStructure qb:component [qb:dimension :observationLanguage],
-                                              [qb:dimension lime:language],
-                                              [qb:dimension :wiktionaryDumpVersion],
-                                              [qb:measure :count];
+:dbnaryTranslationsDataStructure <http://purl.org/linked-data/cube#component> [<http://purl.org/linked-data/cube#dimension> :observationLanguage],
+                                                                              [<http://purl.org/linked-data/cube#dimension> <http://www.w3.org/ns/lemon/lime#language>],
+                                                                              [<http://purl.org/linked-data/cube#dimension> :wiktionaryDumpVersion],
+                                                                              [<http://purl.org/linked-data/cube#measure> :count];
                                  a owl:NamedIndividual,
-                                   qb:DataStructureDefinition;
+                                   <http://purl.org/linked-data/cube#DataStructureDefinition>;
                                  rdfs:comment "The DataStructure of the DataCube describing the count of translations to a certain language in a certain extract."@en.
 :derivedFrom a owl:ObjectProperty,
                owl:TransitiveProperty;
              rdfs:comment "This transitive relation states that a Page, Lexical Entry or Lexical Sense derives from another Page or Lexical Entry or Lexical Sense."@en;
              rdfs:domain [a owl:Class ; 
                           owl:unionOf (:Page
-                                       ontolex:LexicalEntry
-                                       ontolex:LexicalSense)];
+                                       <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                       <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)];
              rdfs:range [a owl:Class ; 
                          owl:unionOf (:Page
-                                      ontolex:LexicalEntry
-                                      ontolex:LexicalSense)].
+                                      <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                      <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)].
 :describes a owl:ObjectProperty;
            rdfs:comment "links a Page to any lexical entry that share the same written form. "@en;
            rdfs:domain :Page;
-           rdfs:range ontolex:LexicalEntry.
-:enhancementConfidenceDataStructure qb:component [qb:dimension :observationLanguage],
-                                                 [qb:dimension :wiktionaryDumpVersion],
-                                                 [qb:dimension :enhancementMethod],
-                                                 [qb:measure :f1Measure],
-                                                 [qb:measure :precisionMeasure],
-                                                 [qb:measure :recallMeasure];
+           rdfs:range <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>.
+:enhancementConfidenceDataStructure <http://purl.org/linked-data/cube#component> [<http://purl.org/linked-data/cube#dimension> :observationLanguage],
+                                                                                 [<http://purl.org/linked-data/cube#dimension> :wiktionaryDumpVersion],
+                                                                                 [<http://purl.org/linked-data/cube#dimension> :enhancementMethod],
+                                                                                 [<http://purl.org/linked-data/cube#measure> :f1Measure],
+                                                                                 [<http://purl.org/linked-data/cube#measure> :precisionMeasure],
+                                                                                 [<http://purl.org/linked-data/cube#measure> :recallMeasure];
                                     a owl:NamedIndividual,
-                                      qb:DataStructureDefinition;
+                                      <http://purl.org/linked-data/cube#DataStructureDefinition>;
                                     rdfs:comment "Performance of the Enhancement Process by Dump version and extractor version."@en.
 :enhancementMethod a owl:DatatypeProperty,
                      owl:NamedIndividual,
-                     qb:DimensionProperty;
+                     <http://purl.org/linked-data/cube#DimensionProperty>;
                    rdfs:comment "Name of the enhancement method for wich the confidence measures are given."@en;
                    rdfs:label "Name of the enhancement method"@en;
                    rdfs:range xsd:string.
@@ -128,7 +122,7 @@
                   rdfs:comment "The version number of the extraction program used to produce this DBnary dataset from the wiktionary dumps."@en.
 :f1Measure a owl:DatatypeProperty,
              owl:NamedIndividual,
-             qb:MeasureProperty;
+             <http://purl.org/linked-data/cube#MeasureProperty>;
            rdfs:comment "The F1 confidence value as calculated by (2xPrecxRecall)/(Prec+Recall)"@en;
            rdfs:label "F1 Measure"@en;
            rdfs:range xsd:double.
@@ -144,52 +138,52 @@
          rdfs:comment "An underspecified holonymy relation between LexicalEntities (Lexical entries or Lexical Senses). This relation is used to encode an information available in a lexicon when the linked Lexical Senses are not known. When both source and target of the relation are Lexical Senses, one should use the corresponding LEMON relation. "@en;
          rdfs:domain [a owl:Class ; 
                       owl:unionOf (:Page
-                                   ontolex:LexicalEntry
-                                   ontolex:LexicalSense)];
+                                   <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                   <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)];
          rdfs:range [a owl:Class ; 
                      owl:unionOf (:Page
-                                  ontolex:LexicalEntry
-                                  ontolex:LexicalSense)].
+                                  <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                  <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)].
 :hypernym a owl:ObjectProperty,
             owl:NamedIndividual,
             :NymProperty;
           rdfs:comment "An underspecified hypernymy relation between LexicalEntities (Lexical entries or Lexical Senses). This relation is used to encode an information available in a lexicon when the linked Lexical Senses are not known. When both source and target of the relation are Lexical Senses, one should use the corresponding LEMON relation. "@en;
           rdfs:domain [a owl:Class ; 
                        owl:unionOf (:Page
-                                    ontolex:LexicalEntry
-                                    ontolex:LexicalSense)];
+                                    <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                    <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)];
           rdfs:range [a owl:Class ; 
                       owl:unionOf (:Page
-                                   ontolex:LexicalEntry
-                                   ontolex:LexicalSense)].
+                                   <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                   <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)].
 :hyponym a owl:ObjectProperty,
            owl:NamedIndividual,
            :NymProperty;
          rdfs:comment "An underspecified hyponymy relation between LexicalEntities (Lexical entries or Lexical Senses). This relation is used to encode an information available in a lexicon when the linked Lexical Senses are not known. When both source and target of the relation are Lexical Senses, one should use the corresponding LEMON relation. "@en;
          rdfs:domain [a owl:Class ; 
                       owl:unionOf (:Page
-                                   ontolex:LexicalEntry
-                                   ontolex:LexicalSense)];
+                                   <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                   <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)];
          rdfs:range [a owl:Class ; 
                      owl:unionOf (:Page
-                                  ontolex:LexicalEntry
-                                  ontolex:LexicalSense)].
+                                  <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                  <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)].
 :isTranslationOf a owl:ObjectProperty;
                  rdfs:comment "links the translation information to the Lexical Entity it belongs to."@en;
                  rdfs:domain :Translation;
                  rdfs:range [a owl:Class ; 
                              owl:unionOf (:Page
-                                          ontolex:LexicalEntry
-                                          ontolex:LexicalSense)].
+                                          <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                          <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)].
 :lexicalEntryCount a owl:DatatypeProperty,
                      owl:NamedIndividual,
-                     qb:MeasureProperty;
+                     <http://purl.org/linked-data/cube#MeasureProperty>;
                    rdfs:comment "count of ontolex Lexical Entries contained in a specific extract."@en;
                    rdfs:label "count of Lexical Entries"@en;
                    rdfs:range xsd:int.
 :lexicalSenseCount a owl:DatatypeProperty,
                      owl:NamedIndividual,
-                     qb:MeasureProperty;
+                     <http://purl.org/linked-data/cube#MeasureProperty>;
                    rdfs:comment "count of ontolex Lexical Senses contained in a specific extract."@en;
                    rdfs:label "count of Lexical Senses"@en;
                    rdfs:range xsd:int.
@@ -199,39 +193,39 @@
          rdfs:comment "An underspecified meronymy relation between LexicalEntities (Lexical entries or Lexical Senses). This relation is used to encode an information available in a lexicon when the linked Lexical Senses are not known. When both source and target of the relation are Lexical Senses, one should use the corresponding LEMON relation. "@en;
          rdfs:domain [a owl:Class ; 
                       owl:unionOf (:Page
-                                   ontolex:LexicalEntry
-                                   ontolex:LexicalSense)];
+                                   <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                   <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)];
          rdfs:range [a owl:Class ; 
                      owl:unionOf (:Page
-                                  ontolex:LexicalEntry
-                                  ontolex:LexicalSense)].
+                                  <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                  <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)].
 :nymRelation a owl:ObjectProperty,
                owl:DatatypeProperty,
                owl:NamedIndividual,
-               qb:DimensionProperty;
+               <http://purl.org/linked-data/cube#DimensionProperty>;
              rdfs:comment "the dimension stating the counted nym relation in the Nym Count Datacube."@en;
              rdfs:label "Nym relation"@en;
              rdfs:range :NymProperty,
                         xsd:string.
 :observationLanguage a owl:DatatypeProperty,
                        owl:NamedIndividual,
-                       qb:DimensionProperty;
+                       <http://purl.org/linked-data/cube#DimensionProperty>;
                      rdfs:comment "The language dimension of an observation"@en;
                      rdfs:label "Observation Language"@en;
                      rdfs:range xsd:string.
 :pageCount a owl:DatatypeProperty,
              owl:NamedIndividual,
-             qb:MeasureProperty;
+             <http://purl.org/linked-data/cube#MeasureProperty>;
            rdfs:comment "count of dbnary Pages contained in a specific extract."@en;
            rdfs:label "count of Pages"@en;
            rdfs:range xsd:int.
 :partOfSpeech a owl:DatatypeProperty;
               rdfs:comment "The original part of speech as it was defined in the Wiktionary page. This property takes a String litteral as object."@en;
-              rdfs:domain ontolex:LexicalEntry;
+              rdfs:domain <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>;
               rdfs:range xsd:string.
 :precisionMeasure a owl:DatatypeProperty,
                     owl:NamedIndividual,
-                    qb:MeasureProperty;
+                    <http://purl.org/linked-data/cube#MeasureProperty>;
                   rdfs:comment "The number of correct guesses among the computed guesses"@en;
                   rdfs:label "Precision"@en;
                   rdfs:range xsd:double.
@@ -239,13 +233,13 @@
       rdfs:range xsd:int.
 :recallMeasure a owl:DatatypeProperty,
                  owl:NamedIndividual,
-                 qb:MeasureProperty;
+                 <http://purl.org/linked-data/cube#MeasureProperty>;
                rdfs:comment "The fraction of relevant instances that were actually retrieved"@en;
                rdfs:label "Recall"@en;
                rdfs:range xsd:double.
 :senseNumber a owl:DatatypeProperty;
              rdfs:comment "The number of the lexical Sense in the Lexical Entry, as given by Wiktionary. This property takes a String literal as an object."@en;
-             rdfs:domain ontolex:LexicalSense;
+             rdfs:domain <http://www.w3.org/ns/lemon/ontolex#LexicalSense>;
              rdfs:range xsd:string.
 :synonym a owl:ObjectProperty,
            owl:NamedIndividual,
@@ -253,58 +247,58 @@
          rdfs:comment "An underspecified synonymy relation between LexicalEntities (Lexical entries or Lexical Senses). This relation is used to encode an information available in a lexicon when the linked Lexical Senses are not known. When both source and target of the relation are Lexical Senses, one should use the corresponding LEMON relation. "@en;
          rdfs:domain [a owl:Class ; 
                       owl:unionOf (:Page
-                                   ontolex:LexicalEntry
-                                   ontolex:LexicalSense)];
+                                   <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                   <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)];
          rdfs:range [a owl:Class ; 
                      owl:unionOf (:Page
-                                  ontolex:LexicalEntry
-                                  ontolex:LexicalSense)].
+                                  <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                  <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)].
 :targetLanguage a owl:ObjectProperty,
                   owl:FunctionalProperty;
                 rdfs:comment "The target language of a given translation, defined as a Linguistic System."@en;
                 rdfs:domain :Translation;
-                rdfs:range dcterms:LinguisticSystem.
+                rdfs:range <http://purl.org/dc/terms/LinguisticSystem>.
 :targetLanguageCode a owl:DatatypeProperty,
                       owl:FunctionalProperty;
                     rdfs:comment "The target language of a given translation. This may be used when the dbnary:targetLanguage object property can not be used."@en;
                     rdfs:domain :Translation;
                     rdfs:range xsd:string.
-:translationGlossesDataStructure qb:component [qb:measure :translationsWithSenseNumberAndTextualGloss],
-                                              [qb:measure :translationsWithNoGloss],
-                                              [qb:measure :translationsWithTextualGloss],
-                                              [qb:dimension :observationLanguage],
-                                              [qb:dimension :wiktionaryDumpVersion],
-                                              [qb:measure :translationsWithSenseNumber];
+:translationGlossesDataStructure <http://purl.org/linked-data/cube#component> [<http://purl.org/linked-data/cube#measure> :translationsWithSenseNumberAndTextualGloss],
+                                                                              [<http://purl.org/linked-data/cube#measure> :translationsWithNoGloss],
+                                                                              [<http://purl.org/linked-data/cube#measure> :translationsWithTextualGloss],
+                                                                              [<http://purl.org/linked-data/cube#dimension> :observationLanguage],
+                                                                              [<http://purl.org/linked-data/cube#dimension> :wiktionaryDumpVersion],
+                                                                              [<http://purl.org/linked-data/cube#measure> :translationsWithSenseNumber];
                                  a owl:NamedIndividual,
-                                   qb:DataStructureDefinition;
+                                   <http://purl.org/linked-data/cube#DataStructureDefinition>;
                                  rdfs:comment "The DataStructure of the DataCube describing the translations and their associated glosses."@en.
 :translationsCount a owl:DatatypeProperty,
                      owl:NamedIndividual,
-                     qb:MeasureProperty;
+                     <http://purl.org/linked-data/cube#MeasureProperty>;
                    rdfs:comment "count of Dbnary Translations contained in a specific extract."@en;
                    rdfs:label "count of Translations"@en;
                    rdfs:range xsd:int.
 :translationsWithNoGloss a owl:DatatypeProperty,
                            owl:NamedIndividual,
-                           qb:MeasureProperty;
+                           <http://purl.org/linked-data/cube#MeasureProperty>;
                          rdfs:comment "count of the number of translation that is not associated to a gloss."@en;
                          rdfs:label "Translations with no gloss"@en;
                          rdfs:range xsd:int.
 :translationsWithSenseNumber a owl:DatatypeProperty,
                                owl:NamedIndividual,
-                               qb:MeasureProperty;
+                               <http://purl.org/linked-data/cube#MeasureProperty>;
                              rdfs:comment "count of the number of translations that are associated to a gloss containing only a sense number."@en;
                              rdfs:label "Translations with a sense number but no textual gloss"@en;
                              rdfs:range xsd:int.
 :translationsWithSenseNumberAndTextualGloss a owl:DatatypeProperty,
                                               owl:NamedIndividual,
-                                              qb:MeasureProperty;
+                                              <http://purl.org/linked-data/cube#MeasureProperty>;
                                             rdfs:comment "count of the number of translations that are associated to a gloss containing both a sense number and a textual description"@en;
                                             rdfs:label "Translations with a sense number and textual gloss"@en;
                                             rdfs:range xsd:int.
 :translationsWithTextualGloss a owl:DatatypeProperty,
                                 owl:NamedIndividual,
-                                qb:MeasureProperty;
+                                <http://purl.org/linked-data/cube#MeasureProperty>;
                               rdfs:comment "count of the number of translations that are associated with a gloss containing only a textual description."@en;
                               rdfs:label "Translations with a textual gloss but no sense number"@en;
                               rdfs:range xsd:int.
@@ -314,19 +308,19 @@
           rdfs:comment """A verb that indicates more precisely the manner of doing something by replacing a verb of a more generalized meaning. E.g.: \"Stroll\" is a troponym of \"walk\", since it involves a slow and relaxed sort of walking."""@en;
           rdfs:domain [a owl:Class ; 
                        owl:unionOf (:Page
-                                    ontolex:LexicalEntry
-                                    ontolex:LexicalSense)];
+                                    <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                    <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)];
           rdfs:range [a owl:Class ; 
                       owl:unionOf (:Page
-                                   ontolex:LexicalEntry
-                                   ontolex:LexicalSense)].
+                                   <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                   <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)].
 :usage a owl:DatatypeProperty;
        rdfs:comment "Usage note that is used to further annotate the target of the translation."@en;
        rdfs:domain :Translation;
        rdfs:range xsd:string.
 :wiktionaryDumpVersion a owl:DatatypeProperty,
                          owl:NamedIndividual,
-                         qb:DimensionProperty;
+                         <http://purl.org/linked-data/cube#DimensionProperty>;
                        rdfs:comment "version number of the wiktionary dump from which the lexical data is extracted."@en;
                        rdfs:label "Wiktionary Dump Version"@en;
                        rdfs:range xsd:string.
@@ -334,38 +328,38 @@
              rdfs:comment "The written form of a translation equivalent."@en;
              rdfs:domain :Translation;
              rdfs:range xsd:string.
-<http://kaiko.getalp.org/dbnary/statistics/dbnaryNymRelationsCube> qb:structure :dbnaryNymRelationsDataStructure;
+<http://kaiko.getalp.org/dbnary/statistics/dbnaryNymRelationsCube> <http://purl.org/linked-data/cube#structure> :dbnaryNymRelationsDataStructure;
                                                                    a owl:NamedIndividual,
-                                                                     qb:DataSet;
+                                                                     <http://purl.org/linked-data/cube#DataSet>;
                                                                    rdfs:comment "The Data Cube containing observations on nym relations for a specific DBnary extract."@en.
-<http://kaiko.getalp.org/dbnary/statistics/dbnaryStatisticsCube> qb:structure :dbnaryStatisticsDataStructure;
+<http://kaiko.getalp.org/dbnary/statistics/dbnaryStatisticsCube> <http://purl.org/linked-data/cube#structure> :dbnaryStatisticsDataStructure;
                                                                  a owl:NamedIndividual,
-                                                                   qb:DataSet;
+                                                                   <http://purl.org/linked-data/cube#DataSet>;
                                                                  rdfs:comment "The Data Cube containing general observations on a specific DBnary extract."@en.
-<http://kaiko.getalp.org/dbnary/statistics/dbnaryTranslationsCube> qb:structure :dbnaryTranslationsDataStructure;
+<http://kaiko.getalp.org/dbnary/statistics/dbnaryTranslationsCube> <http://purl.org/linked-data/cube#structure> :dbnaryTranslationsDataStructure;
                                                                    a owl:NamedIndividual,
-                                                                     qb:DataSet;
+                                                                     <http://purl.org/linked-data/cube#DataSet>;
                                                                    rdfs:comment "The Data Cube containing observations on translations for a specific DBnary extract."@en.
-<http://kaiko.getalp.org/dbnary/statistics/enhancementConfidenceDataCube> qb:structure :enhancementConfidenceDataStructure;
+<http://kaiko.getalp.org/dbnary/statistics/enhancementConfidenceDataCube> <http://purl.org/linked-data/cube#structure> :enhancementConfidenceDataStructure;
                                                                           a owl:NamedIndividual,
-                                                                            qb:DataSet;
+                                                                            <http://purl.org/linked-data/cube#DataSet>;
                                                                           rdfs:comment "The Data Cube containing the confidence measures of the enhancement process for each wiktionary dump. Both effective confidence and random baselines are given."@en.
-<http://kaiko.getalp.org/dbnary/statistics/translationGlossesCube> qb:structure :translationGlossesDataStructure;
+<http://kaiko.getalp.org/dbnary/statistics/translationGlossesCube> <http://purl.org/linked-data/cube#structure> :translationGlossesDataStructure;
                                                                    a owl:NamedIndividual,
-                                                                     qb:DataSet;
+                                                                     <http://purl.org/linked-data/cube#DataSet>;
                                                                    rdfs:comment "The Data Cube containing observations on glosses attached to translations."@en.
-dcterms:LinguisticSystem a owl:Class.
-dcterms:abstract a owl:AnnotationProperty.
-dcterms:creator a owl:AnnotationProperty.
-dcterms:license a owl:AnnotationProperty.
-dcterms:title a owl:AnnotationProperty.
-qb:DataSet a owl:Class.
-qb:DataStructureDefinition a owl:Class.
-qb:DimensionProperty a owl:Class.
-qb:MeasureProperty a owl:Class.
-qb:component a owl:AnnotationProperty.
-qb:dimension a owl:AnnotationProperty.
-qb:measure a owl:AnnotationProperty.
-qb:structure a owl:AnnotationProperty.
-lime:language a owl:NamedIndividual,
-                qb:MeasureProperty.
+<http://purl.org/dc/terms/LinguisticSystem> a owl:Class.
+<http://purl.org/dc/terms/abstract> a owl:AnnotationProperty.
+<http://purl.org/dc/terms/creator> a owl:AnnotationProperty.
+<http://purl.org/dc/terms/license> a owl:AnnotationProperty.
+<http://purl.org/dc/terms/title> a owl:AnnotationProperty.
+<http://purl.org/linked-data/cube#DataSet> a owl:Class.
+<http://purl.org/linked-data/cube#DataStructureDefinition> a owl:Class.
+<http://purl.org/linked-data/cube#DimensionProperty> a owl:Class.
+<http://purl.org/linked-data/cube#MeasureProperty> a owl:Class.
+<http://purl.org/linked-data/cube#component> a owl:AnnotationProperty.
+<http://purl.org/linked-data/cube#dimension> a owl:AnnotationProperty.
+<http://purl.org/linked-data/cube#measure> a owl:AnnotationProperty.
+<http://purl.org/linked-data/cube#structure> a owl:AnnotationProperty.
+<http://www.w3.org/ns/lemon/lime#language> a owl:NamedIndividual,
+                                             <http://purl.org/linked-data/cube#MeasureProperty>.

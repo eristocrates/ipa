@@ -2,384 +2,378 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix oc: <http://contextus.net/ontology/ontomedia/core/expression#>.
-@prefix trait: <http://contextus.net/ontology/ontomedia/ext/common/trait#>.
-@prefix date: <http://contextus.net/ontology/ontomedia/misc/date#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
 
-oc: dc11:creator "Mischa M Tuffield (mailto:mmt04r@ecs.soton.ac.uk)",
-                 "K Faith Lawrence (mailto:kf03r@ecs.soton.ac.uk)",
-                 "Michael O. Jewell (mailto:moj@ecs.soton.ac.uk)";
-    dc11:description "OntoMedia (Ontology for Media) has been designed to describe the interactions occurring in multimedia."@en;
-    dc11:title "OntoMedia Core"@en;
-    dcterms:created "2005-05-03";
-    a owl:Ontology;
+oc: <http://purl.org/dc/elements/1.1/creator> "Mischa M Tuffield (mailto:mmt04r@ecs.soton.ac.uk)",
+                                              "K Faith Lawrence (mailto:kf03r@ecs.soton.ac.uk)",
+                                              "Michael O. Jewell (mailto:moj@ecs.soton.ac.uk)";
+    <http://purl.org/dc/elements/1.1/description> "OntoMedia (Ontology for Media) has been designed to describe the interactions occurring in multimedia."@en;
+    <http://purl.org/dc/elements/1.1/title> "OntoMedia Core"@en;
+    <http://purl.org/dc/terms/created> "2005-05-03";
+    a <http://www.w3.org/2002/07/owl#Ontology>;
     rdfs:label "OntoMedia Core";
-    owl:versionInfo "0.32".
-oc:Abstract-Item a owl:Class;
+    <http://www.w3.org/2002/07/owl#versionInfo> "0.32".
+oc:Abstract-Item a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "This class represents an abstract entity which may participate in an event within the media";
                  rdfs:label "Abstract Item";
                  rdfs:subClassOf oc:Item.
-oc:Action a owl:Class;
+oc:Action a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "This event class describes an action sequence (ie no plot)";
           rdfs:label "Action";
           rdfs:subClassOf oc:Event.
-oc:Collection a owl:Class;
+oc:Collection a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "This class represents a collection of entities";
               rdfs:label "Collection";
               rdfs:subClassOf oc:Abstract-Item.
-oc:Context a owl:Class;
+oc:Context a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "This class represents the context in which an event or entity exists";
            rdfs:label "Context";
            rdfs:subClassOf oc:Abstract-Item.
-oc:DiscreteTime a owl:ObjectProperty;
+oc:DiscreteTime a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "The time/date/temporal reference for the the event";
                 rdfs:domain oc:Occurrence;
                 rdfs:label "Time/Date";
-                rdfs:range date:Date.
-oc:EndTime a owl:ObjectProperty;
+                rdfs:range <http://contextus.net/ontology/ontomedia/misc/date#Date>.
+oc:EndTime a <http://www.w3.org/2002/07/owl#ObjectProperty>;
            rdfs:comment "The time/date/temporal reference for the end of the event";
            rdfs:domain oc:Occurrence;
            rdfs:label "Period Initial Limit";
-           rdfs:range date:Date.
-oc:Entity a owl:Class;
+           rdfs:range <http://contextus.net/ontology/ontomedia/misc/date#Date>.
+oc:Entity a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "A thing";
           rdfs:label "Entity";
           rdfs:subClassOf oc:Expression.
-oc:Event a owl:Class;
+oc:Event a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "This property defines an event";
          rdfs:label "Event";
          rdfs:subClassOf oc:Expression.
-oc:Expression a owl:Class;
+oc:Expression a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "This class represents a piece of information conveyed through a media";
               rdfs:label "Expression".
-oc:Gain a owl:Class;
+oc:Gain a <http://www.w3.org/2002/07/owl#Class>;
         rdfs:comment "This event class results in an overall increase of the entities related to the primary subject or subjects of the event";
         rdfs:label "Gain";
         rdfs:subClassOf oc:Event.
-oc:Introduction a owl:Class;
+oc:Introduction a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "This event class denotes the introduction of an entity to the media";
                 rdfs:label "Introduction";
                 rdfs:subClassOf oc:Event.
-oc:Item a owl:Class;
+oc:Item a <http://www.w3.org/2002/07/owl#Class>;
         rdfs:comment "This class represents an entity which may participate in an event within the media. An Item may be abstract or physical";
         rdfs:label "Item";
         rdfs:subClassOf oc:Entity.
-oc:Loss a owl:Class;
+oc:Loss a <http://www.w3.org/2002/07/owl#Class>;
         rdfs:comment "This event class results in an overall reduction of the entities related to the primary subject or subjects of the event";
         rdfs:label "Loss";
         rdfs:subClassOf oc:Event.
-oc:MediaTAQ a owl:ObjectProperty;
+oc:MediaTAQ a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:comment "Terminus Ante Quem (Limit Before Which): The latest point that the period the event covers could have happened";
             rdfs:domain oc:Occurrence;
             rdfs:label "Media End Period Limit";
             rdfs:range <http://contextus.net/ontology/ontomedia/misc/locspec#LocSpec>.
-oc:MediaTPQ a owl:ObjectProperty;
+oc:MediaTPQ a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:comment "Terminus Post Quem (Limit After Which): The earliest point that the period the event covers could be said to be happening",
                          "This property specifies the earliest point in the media at which the event occurrence could have happened";
             rdfs:domain oc:Occurrence;
             rdfs:label "Media Start Period Limit";
             rdfs:range <http://contextus.net/ontology/ontomedia/misc/locspec#LocSpec>.
-oc:Occurrence a owl:Class;
+oc:Occurrence a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "This class represents a single occurrence of an event, placing it at a position in a timeline";
               rdfs:label "Occurrence";
               rdfs:subClassOf oc:Entity.
-oc:Physical-Item a owl:Class;
+oc:Physical-Item a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "This class represents a physical entity which may participate in an event within the media";
                  rdfs:label "Physical Item";
                  rdfs:subClassOf oc:Collection,
                                  oc:Item.
-oc:Social a owl:Class;
+oc:Social a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "This event class describes a sequence focusing on social, interpersonal and personal emotional elements";
           rdfs:label "Social";
           rdfs:subClassOf oc:Event.
-oc:StartTime a owl:ObjectProperty;
+oc:StartTime a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "The time/date/temporal reference for the start of the event";
              rdfs:domain oc:Occurrence;
              rdfs:label "Temporal End";
-             rdfs:range date:Date.
-oc:TAQ a owl:ObjectProperty;
+             rdfs:range <http://contextus.net/ontology/ontomedia/misc/date#Date>.
+oc:TAQ a <http://www.w3.org/2002/07/owl#ObjectProperty>;
        rdfs:comment "Terminus Ante Quem (Limit Before Which): The latest date that the period the event covers could have happened";
        rdfs:domain oc:Occurrence;
        rdfs:label "Period Terminal Limit";
-       rdfs:range date:Date.
-oc:TPQ a owl:ObjectProperty;
+       rdfs:range <http://contextus.net/ontology/ontomedia/misc/date#Date>.
+oc:TPQ a <http://www.w3.org/2002/07/owl#ObjectProperty>;
        rdfs:comment "The time/date/temporal reference for the start of the event";
        rdfs:domain oc:Occurrence;
        rdfs:label "Temporal Start";
-       rdfs:range date:Date.
-oc:Timeline a owl:Class;
+       rdfs:range <http://contextus.net/ontology/ontomedia/misc/date#Date>.
+oc:Timeline a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "This class contains a sequence of occurring events";
             rdfs:label "Timeline";
             rdfs:subClassOf oc:Entity.
-oc:Transformation a owl:Class;
+oc:Transformation a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "This event class results in no gain or loss of attributes or entities, merely alteration";
                   rdfs:label "Transformation";
                   rdfs:subClassOf oc:Event.
-oc:allows-existence-of a owl:ObjectProperty;
+oc:allows-existence-of a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "This class represents that the desired expression may exist within the context";
                        rdfs:domain oc:Context;
                        rdfs:label "Allows Existence Of";
                        rdfs:range oc:Expression;
-                       owl:inverseOf oc:exists-in.
-oc:caused-by a owl:ObjectProperty;
+                       <http://www.w3.org/2002/07/owl#inverseOf> oc:exists-in.
+oc:caused-by a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "This property indicates the instigating factor of an event, whether it be an item, event, or collection.";
-             rdfs:domain [owl:unionOf (oc:Event
-                                       oc:Entity) ; 
-                          a owl:Class];
+             rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (oc:Event
+                                                                   oc:Entity) ; 
+                          a <http://www.w3.org/2002/07/owl#Class>];
              rdfs:label "Caused By";
-             rdfs:range [owl:unionOf (oc:Event
-                                      oc:Entity) ; 
-                         a owl:Class];
-             owl:inverseOf oc:causes.
-oc:causes a owl:ObjectProperty;
+             rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (oc:Event
+                                                                  oc:Entity) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>];
+             <http://www.w3.org/2002/07/owl#inverseOf> oc:causes.
+oc:causes a <http://www.w3.org/2002/07/owl#ObjectProperty>;
           rdfs:comment "This property indicates the instigating factor of an event, whether it be an item, event, or collection.";
-          rdfs:domain [owl:unionOf (oc:Event
-                                    oc:Entity) ; 
-                       a owl:Class];
+          rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (oc:Event
+                                                                oc:Entity) ; 
+                       a <http://www.w3.org/2002/07/owl#Class>];
           rdfs:label "Causes";
-          rdfs:range [owl:unionOf (oc:Event
-                                   oc:Entity) ; 
-                      a owl:Class];
-          owl:inverseOf oc:caused-by.
-oc:contained-by a owl:ObjectProperty;
+          rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (oc:Event
+                                                               oc:Entity) ; 
+                      a <http://www.w3.org/2002/07/owl#Class>];
+          <http://www.w3.org/2002/07/owl#inverseOf> oc:caused-by.
+oc:contained-by a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "This property indicates that one expression is contained by the other";
                 rdfs:domain oc:Expression;
                 rdfs:label "Contained By";
                 rdfs:range oc:Expression;
                 rdfs:subPropertyOf oc:is-linked-to;
-                owl:inverseOf oc:contains.
-oc:contains a owl:ObjectProperty;
+                <http://www.w3.org/2002/07/owl#inverseOf> oc:contains.
+oc:contains a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:comment "This property indicates that one expression contains the other";
             rdfs:domain oc:Expression;
             rdfs:label "Contains";
             rdfs:range oc:Expression;
             rdfs:subPropertyOf oc:is-linked-to;
-            owl:inverseOf oc:contained-by.
-oc:end-point a owl:ObjectProperty;
+            <http://www.w3.org/2002/07/owl#inverseOf> oc:contained-by.
+oc:end-point a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "This property specifies the point in the media at which the event occurrence stops happening";
              rdfs:domain oc:Occurrence;
              rdfs:label "End Point in Media";
              rdfs:range <http://contextus.net/ontology/ontomedia/misc/locspec#LocSpec>.
-oc:exists-in a owl:ObjectProperty;
+oc:exists-in a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "This class represents that the expression exists within the related context";
              rdfs:domain oc:Expression;
              rdfs:label "Exists In";
              rdfs:range oc:Context;
-             owl:inverseOf oc:allows-existence-of.
-oc:final-event a owl:ObjectProperty;
+             <http://www.w3.org/2002/07/owl#inverseOf> oc:allows-existence-of.
+oc:final-event a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:domain oc:Event;
                rdfs:range oc:Event.
-oc:follows a owl:ObjectProperty;
+oc:follows a <http://www.w3.org/2002/07/owl#ObjectProperty>;
            rdfs:comment "Follows specifies the occurrence that happens after the referencing occurrence";
            rdfs:domain oc:Occurrence;
            rdfs:label "Follows";
            rdfs:range oc:Occurrence;
-           owl:inverseOf oc:precedes.
-oc:from a owl:ObjectProperty;
+           <http://www.w3.org/2002/07/owl#inverseOf> oc:precedes.
+oc:from a <http://www.w3.org/2002/07/owl#ObjectProperty>;
         rdfs:comment "This property specifies the entity which is being transformed";
         rdfs:domain oc:Transformation;
         rdfs:label "From";
         rdfs:range oc:Entity.
-oc:has-duration a owl:FunctionalProperty;
+oc:has-duration a <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                 rdfs:comment "This property specifies the duration of the occurrence";
                 rdfs:domain oc:Occurrence;
                 rdfs:label "Duration of Occurrence";
-                rdfs:range [owl:unionOf (<http://contextus.net/ontology/ontomedia/misc/locspec#LocSpec>
-                                         trait:Dimension) ; 
-                            a owl:Class].
-oc:has-max-number-of-parts a owl:ObjectProperty;
+                rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (<http://contextus.net/ontology/ontomedia/misc/locspec#LocSpec>
+                                                                     <http://contextus.net/ontology/ontomedia/ext/common/trait#Dimension>) ; 
+                            a <http://www.w3.org/2002/07/owl#Class>].
+oc:has-max-number-of-parts a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                            rdfs:comment "This property specifies the maximum number of parts that can be contained by the collection";
                            rdfs:domain oc:Collection;
                            rdfs:label "Has Maximum Number Of Parts";
                            rdfs:range rdfs:Literal.
-oc:has-min-number-of-parts a owl:ObjectProperty;
+oc:has-min-number-of-parts a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                            rdfs:comment "This property specifies the minimum number of parts that can be contained by the collection";
                            rdfs:domain oc:Collection;
                            rdfs:label "Has Minimum Number Of Parts";
                            rdfs:range rdfs:Literal.
-oc:has-number-of-parts a owl:ObjectProperty;
+oc:has-number-of-parts a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "This property specifies the number of parts contained by the collection";
                        rdfs:domain oc:Collection;
                        rdfs:label "Has Number Of Parts";
                        rdfs:range rdfs:Literal.
-oc:has-object-entity a owl:ObjectProperty;
+oc:has-object-entity a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "This property specifies the entity which is the target of the event";
                      rdfs:domain oc:Event;
                      rdfs:label "Has Object Entity";
                      rdfs:range oc:Entity.
-oc:has-occurrence a owl:ObjectProperty;
+oc:has-occurrence a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "This property defines any occurrences of this event";
                   rdfs:domain oc:Event;
                   rdfs:label "Has occurrence";
                   rdfs:range oc:Occurrence;
-                  owl:inverseOf oc:occurrence-of.
-oc:has-shadow a owl:ObjectProperty;
+                  <http://www.w3.org/2002/07/owl#inverseOf> oc:occurrence-of.
+oc:has-shadow a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "This property indicates that the expression is a variation on another, very similar but not exactly the same. For example the different interpretations of the same character";
               rdfs:domain oc:Expression;
               rdfs:label "Has Shadow";
               rdfs:range oc:Expression;
               rdfs:subPropertyOf oc:has-variant;
-              owl:inverseOf oc:is-shadow-of.
-oc:has-spin-off a owl:ObjectProperty;
+              <http://www.w3.org/2002/07/owl#inverseOf> oc:is-shadow-of.
+oc:has-spin-off a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "This property indicates that the expression has developed from another";
                 rdfs:domain oc:Item;
                 rdfs:label "Has Spin Off";
                 rdfs:range oc:Item;
                 rdfs:subPropertyOf oc:has-variant;
-                owl:inverseOf oc:is-spin-off-of.
-oc:has-subject-entity a owl:ObjectProperty;
+                <http://www.w3.org/2002/07/owl#inverseOf> oc:is-spin-off-of.
+oc:has-subject-entity a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "This property specifies the entity which carries out the aim of the event";
                       rdfs:domain oc:Event;
                       rdfs:label "Has Subject Entity";
                       rdfs:range oc:Entity.
-oc:has-variant a owl:ObjectProperty;
+oc:has-variant a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment "This property indicates that the expression is a variation of another";
                rdfs:domain oc:Expression;
                rdfs:label "Has Variant";
                rdfs:range oc:Expression;
                rdfs:subPropertyOf oc:is-linked-to;
-               owl:inverseOf <http://contextus.net/ontology/ontomedia/core/has-variant>.
-oc:initial-event a owl:ObjectProperty;
+               <http://www.w3.org/2002/07/owl#inverseOf> <http://contextus.net/ontology/ontomedia/core/has-variant>.
+oc:initial-event a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "the first event which begins this sequence";
                  rdfs:domain oc:Event;
                  rdfs:range oc:Event.
-oc:inspired a owl:ObjectProperty;
+oc:inspired a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:comment "This property indicates that the expression inspired another";
             rdfs:domain oc:Expression;
             rdfs:label "Inspired";
             rdfs:range oc:Expression;
             rdfs:subPropertyOf oc:has-variant;
-            owl:inverseOf oc:inspired-by.
-oc:inspired-by a owl:ObjectProperty;
+            <http://www.w3.org/2002/07/owl#inverseOf> oc:inspired-by.
+oc:inspired-by a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment "This property indicates that the expression was inspired by another";
                rdfs:domain oc:Expression;
                rdfs:label "Inspired By";
                rdfs:range oc:Expression;
                rdfs:subPropertyOf oc:has-variant;
-               owl:inverseOf oc:inspired.
-oc:involved-in a owl:ObjectProperty;
+               <http://www.w3.org/2002/07/owl#inverseOf> oc:inspired.
+oc:involved-in a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment "This property specifies the events involved in by this entity. Note that this includes the subject and object.";
                rdfs:domain oc:Entity;
                rdfs:label "Involves";
                rdfs:range oc:Event;
-               owl:inverseOf oc:involves.
-oc:involves a owl:ObjectProperty;
+               <http://www.w3.org/2002/07/owl#inverseOf> oc:involves.
+oc:involves a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:comment "This property specifies the entities involved in this event. Note that this includes the subject and object.";
             rdfs:domain oc:Event;
             rdfs:label "Involves";
             rdfs:range oc:Entity;
-            owl:inverseOf oc:involved-in.
-oc:is a owl:ObjectProperty;
+            <http://www.w3.org/2002/07/owl#inverseOf> oc:involved-in.
+oc:is a <http://www.w3.org/2002/07/owl#ObjectProperty>;
       rdfs:comment "This property indicates that the expression is exactly the same as another";
       rdfs:domain oc:Expression;
       rdfs:label "Is";
       rdfs:range oc:Expression;
       rdfs:subPropertyOf oc:is-linked-to;
-      owl:inverseOf oc:is.
-oc:is-linked-to a owl:ObjectProperty;
+      <http://www.w3.org/2002/07/owl#inverseOf> oc:is.
+oc:is-linked-to a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "This property indicates that there is some type of link between the named Expressions";
                 rdfs:domain oc:Expression;
                 rdfs:label "Is Linked To";
                 rdfs:range oc:Expression;
-                owl:inverseOf oc:is-not-linked-to.
-oc:is-not a owl:ObjectProperty;
+                <http://www.w3.org/2002/07/owl#inverseOf> oc:is-not-linked-to.
+oc:is-not a <http://www.w3.org/2002/07/owl#ObjectProperty>;
           rdfs:comment "This property indicates that the expression is entirely different to another";
           rdfs:domain oc:Expression;
           rdfs:label "Is Not";
           rdfs:range oc:Expression;
           rdfs:subPropertyOf oc:is-not-linked-to;
-          owl:inverseOf oc:is-not.
-oc:is-not-linked-to a owl:ObjectProperty;
+          <http://www.w3.org/2002/07/owl#inverseOf> oc:is-not.
+oc:is-not-linked-to a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:comment "This property indicates that there is some no link between the named Expressions";
                     rdfs:domain oc:Expression;
                     rdfs:label "Is Not Linked To";
                     rdfs:range oc:Expression;
-                    owl:inverseOf oc:is-linked-to.
-oc:is-potentially a owl:ObjectProperty;
+                    <http://www.w3.org/2002/07/owl#inverseOf> oc:is-linked-to.
+oc:is-potentially a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "This property indicates that the expression is potentially another. For example, it may be a possible future version";
                   rdfs:domain oc:Expression;
                   rdfs:label "Is Potentially";
                   rdfs:range oc:Expression;
                   rdfs:subPropertyOf oc:has-variant.
-oc:is-shadow-of a owl:ObjectProperty;
+oc:is-shadow-of a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "This property indicates that the expression is a variation on another, very similar but not exactly the same. For example the different interpretations of the same character";
                 rdfs:domain oc:Expression;
                 rdfs:label "Is Shadow Of";
                 rdfs:range oc:Expression;
                 rdfs:subPropertyOf oc:has-variant;
-                owl:inverseOf oc:has-shadow.
-oc:is-spin-off-of a owl:ObjectProperty;
+                <http://www.w3.org/2002/07/owl#inverseOf> oc:has-shadow.
+oc:is-spin-off-of a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "This property indicates that the expression has developed from another";
                   rdfs:domain oc:Item;
                   rdfs:label "Is Spin Off Of";
                   rdfs:range oc:Item;
                   rdfs:subPropertyOf oc:has-variant;
-                  owl:inverseOf oc:has-spin-off.
-oc:occurrence-of a owl:ObjectProperty;
+                  <http://www.w3.org/2002/07/owl#inverseOf> oc:has-spin-off.
+oc:occurrence-of a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "This property defines any the event that the occurrence relates to";
                  rdfs:domain oc:Occurrence;
                  rdfs:label "Occurrence Of";
                  rdfs:range oc:Event;
-                 owl:inverseOf oc:has-occurrence.
-oc:occurs a owl:FunctionalProperty;
+                 <http://www.w3.org/2002/07/owl#inverseOf> oc:has-occurrence.
+oc:occurs a <http://www.w3.org/2002/07/owl#FunctionalProperty>;
           rdfs:comment "This property specifies the region of media in when an event occurrence happens";
           rdfs:domain oc:Occurrence;
           rdfs:label "Occurs";
           rdfs:range <http://contextus.net/ontology/ontomedia/misc/locspec#LocSpec>.
-oc:postcondition a owl:ObjectProperty;
+oc:postcondition a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "This property contains the state which should occur as a consequence of this event";
                  rdfs:domain oc:Event;
                  rdfs:label "Postcondition";
-                 rdfs:range [owl:unionOf (oc:Entity
-                                          oc:Event) ; 
-                             a owl:Class].
-oc:precedes a owl:ObjectProperty;
+                 rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (oc:Entity
+                                                                      oc:Event) ; 
+                             a <http://www.w3.org/2002/07/owl#Class>].
+oc:precedes a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:comment "This property defines the occurrence which immediately follows this occurrence";
             rdfs:domain oc:Occurrence;
             rdfs:label "Precedes";
             rdfs:range oc:Occurrence;
-            owl:inverseOf oc:follows.
-oc:precondition a owl:ObjectProperty;
+            <http://www.w3.org/2002/07/owl#inverseOf> oc:follows.
+oc:precondition a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "This property is a state that must exist before the event can occur";
                 rdfs:domain oc:Event;
                 rdfs:label "Precondition";
-                rdfs:range [owl:unionOf (oc:Entity
-                                         oc:Event) ; 
-                            a owl:Class].
-oc:referenced-by a owl:ObjectProperty;
+                rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (oc:Entity
+                                                                     oc:Event) ; 
+                            a <http://www.w3.org/2002/07/owl#Class>].
+oc:referenced-by a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "This property indicates that the expression is refered to by another expression.";
                  rdfs:domain oc:Expression;
                  rdfs:label "Refers To";
                  rdfs:range oc:Expression;
-                 owl:inverseOf oc:refers-to.
-oc:refers-to a owl:ObjectProperty;
+                 <http://www.w3.org/2002/07/owl#inverseOf> oc:refers-to.
+oc:refers-to a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "This property indicates that the expression refers to another expression. This may be an event referring to a location, or a character refering to an event, etc.";
              rdfs:domain oc:Expression;
              rdfs:label "Refers To";
              rdfs:range oc:Expression;
-             owl:inverseOf oc:referenced-by.
-oc:start-point a owl:FunctionalProperty;
+             <http://www.w3.org/2002/07/owl#inverseOf> oc:referenced-by.
+oc:start-point a <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                rdfs:comment "This property specifies the point in the media at which the event occurrence starts happening";
                rdfs:domain oc:Occurrence;
                rdfs:label "Start point in Media";
                rdfs:range <http://contextus.net/ontology/ontomedia/misc/locspec#LocSpec>.
-oc:summary a owl:FunctionalProperty;
+oc:summary a <http://www.w3.org/2002/07/owl#FunctionalProperty>;
            rdfs:comment "This property is a plain-text summery of what occurs in the event";
            rdfs:domain oc:Event;
            rdfs:label "Summary";
            rdfs:range rdfs:Literal.
-oc:timeline-ref a owl:ObjectProperty;
+oc:timeline-ref a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "Reference to the Timeline that the Occurrence exists on";
                 rdfs:domain oc:Occurrence;
                 rdfs:label "Timeline Reference";
                 rdfs:range oc:Timeline.
-oc:to a owl:ObjectProperty;
+oc:to a <http://www.w3.org/2002/07/owl#ObjectProperty>;
       rdfs:comment "This property specifies the resultant entity";
       rdfs:domain oc:Transformation;
       rdfs:label "To";
       rdfs:range oc:Entity.
-trait:Dimension a owl:Class.
-<http://contextus.net/ontology/ontomedia/misc/locspec#LocSpec> a owl:Class.
+<http://contextus.net/ontology/ontomedia/ext/common/trait#Dimension> a <http://www.w3.org/2002/07/owl#Class>.
+<http://contextus.net/ontology/ontomedia/misc/locspec#LocSpec> a <http://www.w3.org/2002/07/owl#Class>.

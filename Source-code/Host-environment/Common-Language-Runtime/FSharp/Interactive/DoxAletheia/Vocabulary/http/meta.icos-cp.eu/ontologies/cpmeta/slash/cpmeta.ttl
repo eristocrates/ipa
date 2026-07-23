@@ -2,22 +2,6 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix cpmeta: <http://meta.icos-cp.eu/ontologies/cpmeta/>.
-@prefix qu: <http://purl.oclc.org/NET/ssnx/qu/qu#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix voaf: <http://purl.org/vocommons/voaf#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix sosa: <http://www.w3.org/ns/sosa/>.
-@prefix ccrel: <http://creativecommons.org/ns#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix schema: <http://schema.org/>.
-@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
-@prefix nsprov: <http://www.w3.org/ns/prov#>.
-@prefix ssno: <http://www.w3.org/ns/ssn/>.
-@prefix wikipedia: <https://en.wikipedia.org/wiki/>.
 
 _:B1004809906d3e12f99661b1a76eddae7 a rdf:List.
 _:B210d135d7e3c2e87b5dac6c74105563d a rdf:List.
@@ -40,1315 +24,1315 @@ _:B92bda980bcf07003b9f210aabc8e0908 a rdf:List.
  "2"
  "Associated") a rdf:List.
 _:Bca703e0b057bfdbf2829109a60f4c5ec a rdf:List.
-ccrel:license a owl:AnnotationProperty.
-cpmeta: ccrel:license <https://creativecommons.org/publicdomain/zero/1.0/>;
-        dc11:creator <http://meta.icos-cp.eu/resources/people/Oleg%20Mirzov>;
-        dc11:description "OWL vocabulary describing metadata of two environmental research infrastructures: ICOS and SITES"@en;
-        dc11:issued "2015-05-18"^^xsd:date;
-        dc11:modified "2023-01-24"^^xsd:date;
-        dc11:publisher <http://meta.icos-cp.eu/resources/organizations/CP>;
-        dc11:rights "Copyright © 2023 ICOS ERIC";
-        dc11:title "Ontology of Integrated Carbon Observation System (ICOS)"@en;
-        vann:preferredNamespacePrefix "cpmeta";
-        vann:preferredNamespaceUri "http://meta.icos-cp.eu/ontologies/cpmeta/";
-        a owl:Ontology,
-          voaf:Vocabulary;
-        owl:versionInfo 1.0.
-cpmeta:AS a owl:Class;
+<http://creativecommons.org/ns#license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+cpmeta: <http://creativecommons.org/ns#license> <https://creativecommons.org/publicdomain/zero/1.0/>;
+        <http://purl.org/dc/elements/1.1/creator> <http://meta.icos-cp.eu/resources/people/Oleg%20Mirzov>;
+        <http://purl.org/dc/elements/1.1/description> "OWL vocabulary describing metadata of two environmental research infrastructures: ICOS and SITES"@en;
+        <http://purl.org/dc/elements/1.1/issued> "2015-05-18"^^xsd:date;
+        <http://purl.org/dc/elements/1.1/modified> "2023-01-24"^^xsd:date;
+        <http://purl.org/dc/elements/1.1/publisher> <http://meta.icos-cp.eu/resources/organizations/CP>;
+        <http://purl.org/dc/elements/1.1/rights> "Copyright © 2023 ICOS ERIC";
+        <http://purl.org/dc/elements/1.1/title> "Ontology of Integrated Carbon Observation System (ICOS)"@en;
+        <http://purl.org/vocab/vann/preferredNamespacePrefix> "cpmeta";
+        <http://purl.org/vocab/vann/preferredNamespaceUri> "http://meta.icos-cp.eu/ontologies/cpmeta/";
+        a <http://www.w3.org/2002/07/owl#Ontology>,
+          <http://purl.org/vocommons/voaf#Vocabulary>;
+        <http://www.w3.org/2002/07/owl#versionInfo> 1.0.
+cpmeta:AS a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:label "Atmospheric station";
-          rdfs:subClassOf [owl:onProperty cpmeta:belongsToTheNetworkOf ; 
-                           owl:hasValue <http://meta.icos-cp.eu/resources/organizations/ATC> ; 
-                           a owl:Restriction],
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> cpmeta:belongsToTheNetworkOf ; 
+                           <http://www.w3.org/2002/07/owl#hasValue> <http://meta.icos-cp.eu/resources/organizations/ATC> ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
                           cpmeta:IcosStation.
-cpmeta:AncillaryDatum a owl:Class;
-                      owl:disjointUnionOf (cpmeta:AncillaryEntry
-                                           cpmeta:AncillaryValue).
-cpmeta:AncillaryEntry a owl:Class;
+cpmeta:AncillaryDatum a <http://www.w3.org/2002/07/owl#Class>;
+                      <http://www.w3.org/2002/07/owl#disjointUnionOf> (cpmeta:AncillaryEntry
+                                                                       cpmeta:AncillaryValue).
+cpmeta:AncillaryEntry a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "contains the ancillary value(s), submission date, and optional information date";
                       rdfs:label "Ancillary Entry";
-                      rdfs:subClassOf [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                       owl:onProperty dcterms:dateSubmitted ; 
-                                       owl:onDataRange xsd:dateTime ; 
-                                       a owl:Restriction],
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/dc/terms/dateSubmitted> ; 
+                                       <http://www.w3.org/2002/07/owl#onDataRange> xsd:dateTime ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
                                       cpmeta:AncillaryDatum.
-cpmeta:AncillaryValue a owl:Class;
+cpmeta:AncillaryValue a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "the class of ancillary values coming from controlled vocabularies";
                       rdfs:label "Ancillary Value";
                       rdfs:subClassOf cpmeta:AncillaryDatum.
-cpmeta:AtmoStation a owl:Class;
+cpmeta:AtmoStation a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:label "ATMO station";
                    rdfs:subClassOf cpmeta:Station.
-cpmeta:CentralFacility a owl:Class;
+cpmeta:CentralFacility a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:label "Central Facility";
                        rdfs:subClassOf cpmeta:Organization.
-cpmeta:ClimateZone a owl:Class;
+cpmeta:ClimateZone a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:label "Climate Zone".
-cpmeta:Collection a owl:Class;
-                  rdfs:subClassOf [owl:onProperty cpmeta:isNextVersionOf ; 
-                                   owl:allValuesFrom cpmeta:Collection ; 
-                                   a owl:Restriction],
-                                  [owl:onProperty dcterms:hasPart ; 
-                                   owl:allValuesFrom [owl:unionOf (cpmeta:Collection
-                                                                   cpmeta:DataObject) ; 
-                                                      a owl:Class] ; 
-                                   a owl:Restriction],
-                                  [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                   owl:onProperty dcterms:creator ; 
-                                   owl:onClass cpmeta:Organization ; 
-                                   a owl:Restriction],
-                                  [owl:onProperty dcterms:description ; 
-                                   owl:allValuesFrom xsd:string ; 
-                                   a owl:Restriction],
-                                  [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                   owl:onProperty dcterms:title ; 
-                                   owl:onDataRange xsd:string ; 
-                                   a owl:Restriction],
-                                  nsprov:Entity.
-cpmeta:DataAcquisition a owl:Class;
-                       rdfs:subClassOf [owl:someValuesFrom owl:Thing ; 
-                                        owl:onProperty nsprov:wasAssociatedWith ; 
-                                        a owl:Restriction],
-                                       nsprov:Activity.
-cpmeta:DataObject a owl:Class;
-                  rdfs:subClassOf [owl:someValuesFrom owl:Thing ; 
-                                   owl:onProperty cpmeta:hasObjectSpec ; 
-                                   a owl:Restriction],
-                                  [owl:onProperty cpmeta:isNextVersionOf ; 
-                                   owl:allValuesFrom cpmeta:DataObject ; 
-                                   a owl:Restriction],
+cpmeta:Collection a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> cpmeta:isNextVersionOf ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> cpmeta:Collection ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/dc/terms/hasPart> ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:Collection
+                                                                                                                           cpmeta:DataObject) ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/dc/terms/creator> ; 
+                                   <http://www.w3.org/2002/07/owl#onClass> cpmeta:Organization ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/dc/terms/description> ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/dc/terms/title> ; 
+                                   <http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  <http://www.w3.org/ns/prov#Entity>.
+cpmeta:DataAcquisition a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#wasAssociatedWith> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       <http://www.w3.org/ns/prov#Activity>.
+cpmeta:DataObject a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasObjectSpec ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> cpmeta:isNextVersionOf ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> cpmeta:DataObject ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
                                   cpmeta:StaticObject.
-cpmeta:DataObjectSpec a owl:Class;
+cpmeta:DataObjectSpec a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:label "Data Object specification";
-                      rdfs:subClassOf [owl:someValuesFrom owl:Thing ; 
-                                       owl:onProperty cpmeta:hasAssociatedProject ; 
-                                       a owl:Restriction],
-                                      [owl:someValuesFrom owl:Thing ; 
-                                       owl:onProperty cpmeta:hasDataTheme ; 
-                                       a owl:Restriction],
-                                      [owl:someValuesFrom owl:Thing ; 
-                                       owl:onProperty cpmeta:hasEncoding ; 
-                                       a owl:Restriction],
-                                      [owl:someValuesFrom owl:Thing ; 
-                                       owl:onProperty cpmeta:hasFormat ; 
-                                       a owl:Restriction],
-                                      [owl:someValuesFrom rdfs:Literal ; 
-                                       owl:onProperty cpmeta:hasDataLevel ; 
-                                       a owl:Restriction],
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasAssociatedProject ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasDataTheme ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasEncoding ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasFormat ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasDataLevel ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
                                       cpmeta:DataObjectSpecifyingThing.
-cpmeta:DataObjectSpecifyingThing a owl:Class.
-cpmeta:DataProduction a owl:Class;
-                      rdfs:subClassOf [owl:someValuesFrom owl:Thing ; 
-                                       owl:onProperty cpmeta:wasPerformedBy ; 
-                                       a owl:Restriction],
-                                      [owl:someValuesFrom rdfs:Literal ; 
-                                       owl:onProperty nsprov:endedAtTime ; 
-                                       a owl:Restriction],
-                                      nsprov:Activity.
-cpmeta:DataSubmission a owl:Class;
-                      rdfs:subClassOf [owl:someValuesFrom owl:Thing ; 
-                                       owl:onProperty nsprov:wasAssociatedWith ; 
-                                       a owl:Restriction],
-                                      nsprov:Activity.
-cpmeta:DataTheme a owl:Class;
+cpmeta:DataObjectSpecifyingThing a <http://www.w3.org/2002/07/owl#Class>.
+cpmeta:DataProduction a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> cpmeta:wasPerformedBy ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#endedAtTime> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      <http://www.w3.org/ns/prov#Activity>.
+cpmeta:DataSubmission a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#wasAssociatedWith> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      <http://www.w3.org/ns/prov#Activity>.
+cpmeta:DataTheme a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:label "Data Theme";
-                 rdfs:subClassOf [owl:someValuesFrom rdfs:Literal ; 
-                                  owl:onProperty cpmeta:hasIcon ; 
-                                  a owl:Restriction],
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasIcon ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
                                  cpmeta:DataObjectSpecifyingThing.
-cpmeta:DatasetColumn a owl:Class;
+cpmeta:DatasetColumn a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:label "Dataset column";
-                     rdfs:subClassOf [owl:someValuesFrom owl:Thing ; 
-                                      owl:onProperty cpmeta:hasValueFormat ; 
-                                      a owl:Restriction],
-                                     [owl:someValuesFrom owl:Thing ; 
-                                      owl:onProperty cpmeta:hasValueType ; 
-                                      a owl:Restriction],
-                                     [owl:someValuesFrom rdfs:Literal ; 
-                                      owl:onProperty cpmeta:hasColumnTitle ; 
-                                      a owl:Restriction],
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasValueFormat ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasValueType ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasColumnTitle ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
                                      cpmeta:DataObjectSpecifyingThing.
-cpmeta:DatasetSpec a owl:Class;
+cpmeta:DatasetSpec a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:label "Dataset Specification";
                    rdfs:subClassOf cpmeta:DataObjectSpecifyingThing.
-cpmeta:DatasetVariable a owl:Class;
+cpmeta:DatasetVariable a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:label "Dataset variable";
-                       rdfs:subClassOf [owl:someValuesFrom owl:Thing ; 
-                                        owl:onProperty cpmeta:hasValueType ; 
-                                        a owl:Restriction],
-                                       [owl:someValuesFrom rdfs:Literal ; 
-                                        owl:onProperty cpmeta:hasVariableTitle ; 
-                                        a owl:Restriction],
-                                       sosa:ObservableProperty.
-cpmeta:DocumentObject a owl:Class;
-                      rdfs:subClassOf [owl:onProperty cpmeta:isNextVersionOf ; 
-                                       owl:allValuesFrom cpmeta:DocumentObject ; 
-                                       a owl:Restriction],
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasValueType ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasVariableTitle ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       <http://www.w3.org/ns/sosa/ObservableProperty>.
+cpmeta:DocumentObject a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> cpmeta:isNextVersionOf ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> cpmeta:DocumentObject ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
                                       cpmeta:StaticObject.
-cpmeta:ES a owl:Class;
+cpmeta:ES a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:label "Ecosystem station";
-          rdfs:subClassOf [owl:onProperty cpmeta:belongsToTheNetworkOf ; 
-                           owl:hasValue <http://meta.icos-cp.eu/resources/organizations/ETC> ; 
-                           a owl:Restriction],
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> cpmeta:belongsToTheNetworkOf ; 
+                           <http://www.w3.org/2002/07/owl#hasValue> <http://meta.icos-cp.eu/resources/organizations/ETC> ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
                           cpmeta:IcosStation.
-cpmeta:EcosystemType a owl:Class;
+cpmeta:EcosystemType a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:label "Ecosystem Type".
-cpmeta:FluxnetStation a owl:Class;
+cpmeta:FluxnetStation a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:label "FLUXNET station";
                       rdfs:subClassOf cpmeta:Station.
-cpmeta:Funder a owl:Class;
+cpmeta:Funder a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:subClassOf cpmeta:Organization.
-cpmeta:Funding a owl:Class;
-               rdfs:subClassOf [owl:someValuesFrom cpmeta:Funder ; 
-                                owl:onProperty cpmeta:hasFunder ; 
-                                a owl:Restriction].
-cpmeta:IcosStation a owl:Class;
+cpmeta:Funding a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> cpmeta:Funder ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasFunder ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>].
+cpmeta:IcosStation a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:label "ICOS station";
-                   rdfs:subClassOf [owl:someValuesFrom rdfs:Literal ; 
-                                    owl:onProperty cpmeta:countryCode ; 
-                                    a owl:Restriction],
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> cpmeta:countryCode ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
                                    cpmeta:Station.
-cpmeta:IngosStation a owl:Class;
+cpmeta:IngosStation a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:label "InGOS station";
                     rdfs:subClassOf cpmeta:Station.
-cpmeta:Instrument a owl:Class;
-                  rdfs:subClassOf [owl:onProperty cpmeta:hasInstrumentOwner ; 
-                                   owl:onClass cpmeta:Organization ; 
-                                   owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                   a owl:Restriction],
-                                  [owl:onProperty cpmeta:hasVendor ; 
-                                   owl:onClass cpmeta:Organization ; 
-                                   owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom rdfs:Literal ; 
-                                   owl:onProperty cpmeta:hasModel ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom rdfs:Literal ; 
-                                   owl:onProperty cpmeta:hasSerialNumber ; 
-                                   a owl:Restriction],
-                                  sosa:Sensor.
-cpmeta:LatLonBox a owl:Class;
-                 owl:equivalentClass [owl:intersectionOf (cpmeta:SpatialCoverage
-                                                          [owl:someValuesFrom rdfs:Literal ; 
-                                                          owl:onProperty cpmeta:hasEasternBound ; 
-                                                          a owl:Restriction]
-                                                          [owl:someValuesFrom rdfs:Literal ; 
-                                                          owl:onProperty cpmeta:hasNorthernBound ; 
-                                                          a owl:Restriction]
-                                                          [owl:someValuesFrom rdfs:Literal ; 
-                                                          owl:onProperty cpmeta:hasSouthernBound ; 
-                                                          a owl:Restriction]
-                                                          [owl:someValuesFrom rdfs:Literal ; 
-                                                          owl:onProperty cpmeta:hasWesternBound ; 
-                                                          a owl:Restriction]) ; 
-                                      a owl:Class].
-cpmeta:Membership a owl:Class;
+cpmeta:Instrument a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasInstrumentOwner ; 
+                                   <http://www.w3.org/2002/07/owl#onClass> cpmeta:Organization ; 
+                                   <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasVendor ; 
+                                   <http://www.w3.org/2002/07/owl#onClass> cpmeta:Organization ; 
+                                   <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasModel ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasSerialNumber ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  <http://www.w3.org/ns/sosa/Sensor>.
+cpmeta:LatLonBox a <http://www.w3.org/2002/07/owl#Class>;
+                 <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (cpmeta:SpatialCoverage
+                                                                                                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                                                                                                  <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasEasternBound ; 
+                                                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                                                                                                  <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasNorthernBound ; 
+                                                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                                                                                                  <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasSouthernBound ; 
+                                                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                                                                                                  <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasWesternBound ; 
+                                                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                  a <http://www.w3.org/2002/07/owl#Class>].
+cpmeta:Membership a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:label "Membership";
-                  rdfs:subClassOf [owl:someValuesFrom owl:Thing ; 
-                                   owl:onProperty cpmeta:atOrganization ; 
-                                   a owl:Restriction],
-                                  [owl:someValuesFrom owl:Thing ; 
-                                   owl:onProperty cpmeta:hasRole ; 
-                                   a owl:Restriction].
-cpmeta:NeonStation a owl:Class;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> cpmeta:atOrganization ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasRole ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>].
+cpmeta:NeonStation a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:label "NEON station";
                    rdfs:subClassOf cpmeta:Station.
-cpmeta:OS a owl:Class;
+cpmeta:OS a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:label "Oceanic station";
-          rdfs:subClassOf [owl:onProperty cpmeta:belongsToTheNetworkOf ; 
-                           owl:hasValue <http://meta.icos-cp.eu/resources/organizations/OTC> ; 
-                           a owl:Restriction],
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> cpmeta:belongsToTheNetworkOf ; 
+                           <http://www.w3.org/2002/07/owl#hasValue> <http://meta.icos-cp.eu/resources/organizations/OTC> ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
                           cpmeta:IcosStation.
-cpmeta:ObjectEncoding a owl:Class;
-                      rdfs:subClassOf dcterms:FileFormat.
-cpmeta:ObjectFormat a owl:Class;
-                    rdfs:subClassOf dcterms:FileFormat.
-cpmeta:Organization a owl:Class;
-                    rdfs:subClassOf [owl:someValuesFrom rdfs:Literal ; 
-                                     owl:onProperty cpmeta:hasName ; 
-                                     a owl:Restriction],
-                                    nsprov:Agent.
-cpmeta:Person a owl:Class;
-              rdfs:subClassOf [owl:someValuesFrom rdfs:Literal ; 
-                               owl:onProperty cpmeta:hasEmail ; 
-                               a owl:Restriction],
-                              [owl:someValuesFrom rdfs:Literal ; 
-                               owl:onProperty cpmeta:hasFirstName ; 
-                               a owl:Restriction],
-                              [owl:someValuesFrom rdfs:Literal ; 
-                               owl:onProperty cpmeta:hasLastName ; 
-                               a owl:Restriction],
-                              nsprov:Agent.
-cpmeta:Position a owl:Class;
+cpmeta:ObjectEncoding a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf <http://purl.org/dc/terms/FileFormat>.
+cpmeta:ObjectFormat a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf <http://purl.org/dc/terms/FileFormat>.
+cpmeta:Organization a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasName ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    <http://www.w3.org/ns/prov#Agent>.
+cpmeta:Person a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasEmail ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasFirstName ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasLastName ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              <http://www.w3.org/ns/prov#Agent>.
+cpmeta:Position a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:label "Position";
-                rdfs:subClassOf [owl:someValuesFrom rdfs:Literal ; 
-                                 owl:onProperty cpmeta:hasLatitude ; 
-                                 a owl:Restriction],
-                                [owl:someValuesFrom rdfs:Literal ; 
-                                 owl:onProperty cpmeta:hasLongitude ; 
-                                 a owl:Restriction],
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasLatitude ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasLongitude ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
                                 cpmeta:SpatialCoverage.
-cpmeta:Project a owl:Class;
+cpmeta:Project a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:subClassOf cpmeta:DataObjectSpecifyingThing.
-cpmeta:QuantityKind a owl:Class;
+cpmeta:QuantityKind a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "The kind of physical quantity, for example volume, length, concentration. Can be basic or derived, standard or non-standard. Implies an associated physical quantity dimension but does not have a fixed unit of measurement.";
                     rdfs:label "Quantity Kind";
-                    rdfs:seeAlso qu:QuantityKind,
+                    rdfs:seeAlso <http://purl.oclc.org/NET/ssnx/qu/qu#QuantityKind>,
                                  <http://qudt.org/schema/qudt#QuantityKind>;
                     rdfs:subClassOf cpmeta:DataObjectSpecifyingThing.
-cpmeta:Role a owl:Class.
-cpmeta:SailDrone a owl:Class;
+cpmeta:Role a <http://www.w3.org/2002/07/owl#Class>.
+cpmeta:SailDrone a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:label "Sail Drone";
                  rdfs:subClassOf cpmeta:Station.
-cpmeta:SimpleDataObject a owl:Class;
-                        owl:disjointWith cpmeta:SpatialDataObject;
-                        owl:equivalentClass [owl:intersectionOf (cpmeta:DataObject
-                                                                 [owl:someValuesFrom owl:Thing ; 
-                                                                 owl:onProperty cpmeta:wasAcquiredBy ; 
-                                                                 a owl:Restriction]
-                                                                 [owl:onProperty cpmeta:hasObjectSpec ; 
-                                                                 owl:allValuesFrom cpmeta:SimpleObjectSpec ; 
-                                                                 a owl:Restriction]) ; 
-                                             a owl:Class].
-cpmeta:SimpleObjectSpec a owl:Class;
+cpmeta:SimpleDataObject a <http://www.w3.org/2002/07/owl#Class>;
+                        <http://www.w3.org/2002/07/owl#disjointWith> cpmeta:SpatialDataObject;
+                        <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (cpmeta:DataObject
+                                                                                                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                                                                                                         <http://www.w3.org/2002/07/owl#onProperty> cpmeta:wasAcquiredBy ; 
+                                                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                         [<http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasObjectSpec ; 
+                                                                                                                         <http://www.w3.org/2002/07/owl#allValuesFrom> cpmeta:SimpleObjectSpec ; 
+                                                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Class>].
+cpmeta:SimpleObjectSpec a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:label "Simple Object specification";
-                        rdfs:subClassOf [owl:onProperty cpmeta:containsDataset ; 
-                                         owl:allValuesFrom cpmeta:TabularDatasetSpec ; 
-                                         a owl:Restriction],
-                                        [owl:onProperty cpmeta:containsDataset ; 
-                                         owl:cardinality "1"^^xsd:nonNegativeInteger ; 
-                                         a owl:Restriction],
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> cpmeta:containsDataset ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> cpmeta:TabularDatasetSpec ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> cpmeta:containsDataset ; 
+                                         <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
                                         cpmeta:DataObjectSpec.
-cpmeta:Site a owl:Class;
+cpmeta:Site a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "Physical research site";
-            rdfs:subClassOf [owl:onProperty geosparql:hasGeometry ; 
-                             owl:allValuesFrom cpmeta:SpatialCoverage ; 
-                             a owl:Restriction],
-                            [owl:onProperty cpmeta:hasEcosystemType ; 
-                             owl:onClass cpmeta:EcosystemType ; 
-                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                             a owl:Restriction],
-                            geosparql:Feature.
-cpmeta:SpatialCoverage a owl:Class;
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://www.opengis.net/ont/geosparql#hasGeometry> ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> cpmeta:SpatialCoverage ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasEcosystemType ; 
+                             <http://www.w3.org/2002/07/owl#onClass> cpmeta:EcosystemType ; 
+                             <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            <http://www.opengis.net/ont/geosparql#Feature>.
+cpmeta:SpatialCoverage a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:label "Spatial Coverage";
-                       rdfs:subClassOf geosparql:Geometry.
-cpmeta:SpatialDataObject a owl:Class;
-                         owl:equivalentClass [owl:intersectionOf (cpmeta:DataObject
-                                                                  [owl:someValuesFrom cpmeta:LatLonBox ; 
-                                                                  owl:onProperty cpmeta:hasSpatialCoverage ; 
-                                                                  a owl:Restriction]
-                                                                  [owl:someValuesFrom owl:Thing ; 
-                                                                  owl:onProperty cpmeta:wasProducedBy ; 
-                                                                  a owl:Restriction]
-                                                                  [owl:someValuesFrom rdfs:Literal ; 
-                                                                  owl:onProperty cpmeta:hasEndTime ; 
-                                                                  a owl:Restriction]
-                                                                  [owl:someValuesFrom rdfs:Literal ; 
-                                                                  owl:onProperty cpmeta:hasStartTime ; 
-                                                                  a owl:Restriction]) ; 
-                                              a owl:Class].
-cpmeta:StaticObject a owl:Class;
-                    rdfs:subClassOf [owl:someValuesFrom owl:Thing ; 
-                                     owl:onProperty cpmeta:wasSubmittedBy ; 
-                                     a owl:Restriction],
-                                    nsprov:Entity.
-cpmeta:Station a owl:Class;
-               rdfs:subClassOf [owl:someValuesFrom rdfs:Literal ; 
-                                owl:onProperty cpmeta:hasStationId ; 
-                                a owl:Restriction],
+                       rdfs:subClassOf <http://www.opengis.net/ont/geosparql#Geometry>.
+cpmeta:SpatialDataObject a <http://www.w3.org/2002/07/owl#Class>;
+                         <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (cpmeta:DataObject
+                                                                                                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> cpmeta:LatLonBox ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasSpatialCoverage ; 
+                                                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#onProperty> cpmeta:wasProducedBy ; 
+                                                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasEndTime ; 
+                                                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasStartTime ; 
+                                                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                          a <http://www.w3.org/2002/07/owl#Class>].
+cpmeta:StaticObject a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> cpmeta:wasSubmittedBy ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    <http://www.w3.org/ns/prov#Entity>.
+cpmeta:Station a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasStationId ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
                                cpmeta:Organization.
-cpmeta:StringVocabulary a owl:Class;
-                        rdfs:subClassOf [owl:someValuesFrom rdfs:Literal ; 
-                                         owl:onProperty cpmeta:containsString ; 
-                                         a owl:Restriction],
+cpmeta:StringVocabulary a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> cpmeta:containsString ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
                                         cpmeta:ValueFormat.
-cpmeta:TabularDatasetSpec a owl:Class;
+cpmeta:TabularDatasetSpec a <http://www.w3.org/2002/07/owl#Class>;
                           rdfs:label "Tabular Dataset Specification";
-                          rdfs:subClassOf [owl:someValuesFrom owl:Thing ; 
-                                           owl:onProperty cpmeta:hasColumn ; 
-                                           a owl:Restriction],
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> cpmeta:hasColumn ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
                                           cpmeta:DatasetSpec.
-cpmeta:ThematicCenter a owl:Class;
+cpmeta:ThematicCenter a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:label "Thematic Center";
                       rdfs:subClassOf cpmeta:CentralFacility;
-                      owl:equivalentClass [owl:oneOf (<http://meta.icos-cp.eu/resources/organizations/ATC>
-                                                      <http://meta.icos-cp.eu/resources/organizations/ETC>
-                                                      <http://meta.icos-cp.eu/resources/organizations/OTC>
-                                                      <https://meta.fieldsites.se/resources/organizations/SITES_SLU>) ; 
-                                           a owl:Class].
-cpmeta:ValueFormat a owl:Class;
+                      <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#oneOf> (<http://meta.icos-cp.eu/resources/organizations/ATC>
+                                                                                                              <http://meta.icos-cp.eu/resources/organizations/ETC>
+                                                                                                              <http://meta.icos-cp.eu/resources/organizations/OTC>
+                                                                                                              <https://meta.fieldsites.se/resources/organizations/SITES_SLU>) ; 
+                                                                       a <http://www.w3.org/2002/07/owl#Class>].
+cpmeta:ValueFormat a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:subClassOf cpmeta:DataObjectSpecifyingThing.
-cpmeta:ValueType a owl:Class;
+cpmeta:ValueType a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "Domain-specific meaning of the values";
                  rdfs:label "Value Type";
-                 rdfs:subClassOf skos:Concept.
-cpmeta:VariableInfo a owl:Class;
+                 rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+cpmeta:VariableInfo a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:subClassOf cpmeta:DataObjectSpecifyingThing.
-cpmeta:WdcggStation a owl:Class;
+cpmeta:WdcggStation a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:label "WDCGG station";
                     rdfs:subClassOf cpmeta:Station.
-cpmeta:asGeoJSON a owl:DatatypeProperty,
-                   owl:FunctionalProperty;
+cpmeta:asGeoJSON a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                   <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                  rdfs:domain cpmeta:SpatialCoverage;
                  rdfs:label "GeoJSON representation";
                  rdfs:range xsd:string;
-                 rdfs:subPropertyOf geosparql:hasSerialization.
+                 rdfs:subPropertyOf <http://www.opengis.net/ont/geosparql#hasSerialization>.
 cpmeta:asciiAtcProductTimeSer cpmeta:hasGoodFlagValue "O",
                                                       "R",
                                                       "U";
-                              a owl:NamedIndividual,
+                              a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                 cpmeta:ObjectFormat;
                               rdfs:comment "Semicolon-separated ASCII, with #-prefixed multi-line header";
                               rdfs:label "ICOS ATC time series".
-cpmeta:asciiAtcTimeSer a owl:NamedIndividual,
+cpmeta:asciiAtcTimeSer a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                          cpmeta:ObjectFormat;
                        rdfs:label "ICOS ATC Raw time series".
 cpmeta:asciiEtcHalfHourlyProductTimeSer cpmeta:hasGoodFlagValue "1",
                                                                 "0";
-                                        a owl:NamedIndividual,
+                                        a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                           cpmeta:ObjectFormat;
                                         rdfs:comment "The first two columns are expected to be the beginning and the end of the averaging period in yyyyMMddHHmm format (no DST)";
                                         rdfs:label "ICOS ETC half-hourly product CSV";
                                         rdfs:seeAlso cpmeta:etcLocalDateTime.
-cpmeta:asciiEtcRawTimeSer a owl:NamedIndividual,
+cpmeta:asciiEtcRawTimeSer a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                             cpmeta:ObjectFormat;
                           rdfs:label "Raw ASCII ETC station data".
-cpmeta:asciiEtcTimeSer a owl:NamedIndividual,
+cpmeta:asciiEtcTimeSer a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                          cpmeta:ObjectFormat;
                        rdfs:label "Time series in ICOS Sweden format".
 cpmeta:asciiOtcProductCsv cpmeta:hasGoodFlagValue "2",
                                                   "9";
-                          a owl:NamedIndividual,
+                          a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                             cpmeta:ObjectFormat;
                           rdfs:comment "Single-line comment, first column is UTC ISO-8601 timestamp, NaN for missing values, comma-separated.";
                           rdfs:label "ICOS OTC time series".
-cpmeta:asciiOtcSocatTimeSer a owl:NamedIndividual,
+cpmeta:asciiOtcSocatTimeSer a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                               cpmeta:ObjectFormat;
                             rdfs:label "Data in OTC/SOCAT TSV format".
-cpmeta:asciiWdcggTimeSer a owl:NamedIndividual,
+cpmeta:asciiWdcggTimeSer a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                            cpmeta:ObjectFormat;
                          rdfs:label "WDCGG gas mole fraction time series".
-cpmeta:atOrganization a owl:FunctionalProperty,
-                        owl:ObjectProperty;
-                      rdfs:domain [owl:unionOf (cpmeta:Membership
-                                                ssno:Deployment) ; 
-                                   a owl:Class];
+cpmeta:atOrganization a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                        <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:Membership
+                                                                            <http://www.w3.org/ns/ssn/Deployment>) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>];
                       rdfs:label "at organization";
                       rdfs:range cpmeta:Organization.
-cpmeta:awardNumber a owl:DatatypeProperty,
-                     owl:FunctionalProperty;
+cpmeta:awardNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                    rdfs:domain cpmeta:Funding;
                    rdfs:label "award number";
                    rdfs:range xsd:string;
                    rdfs:subPropertyOf cpmeta:fundingInfoProp.
-cpmeta:awardTitle a owl:DatatypeProperty,
-                    owl:FunctionalProperty;
+cpmeta:awardTitle a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                    <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                   rdfs:domain cpmeta:Funding;
                   rdfs:label "award title";
                   rdfs:range xsd:string;
                   rdfs:subPropertyOf cpmeta:fundingInfoProp.
-cpmeta:awardURI a owl:DatatypeProperty,
-                  owl:FunctionalProperty;
+cpmeta:awardURI a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                  <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                 rdfs:domain cpmeta:Funding;
                 rdfs:label "award URI";
                 rdfs:range xsd:anyURI;
                 rdfs:subPropertyOf cpmeta:fundingInfoProp.
-cpmeta:belongsToTheNetworkOf a owl:FunctionalProperty,
-                               owl:ObjectProperty;
+cpmeta:belongsToTheNetworkOf a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                               <http://www.w3.org/2002/07/owl#ObjectProperty>;
                              rdfs:domain cpmeta:Station;
                              rdfs:label "belongs to thematic center";
                              rdfs:range cpmeta:ThematicCenter.
-cpmeta:binEtcRawTimeSer a owl:NamedIndividual,
+cpmeta:binEtcRawTimeSer a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                           cpmeta:ObjectFormat;
                         rdfs:label "Raw binary ETC station data".
-cpmeta:bmpChar a owl:NamedIndividual,
+cpmeta:bmpChar a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                  cpmeta:ValueFormat;
                rdfs:comment "a character from the basic multilingual plane";
                rdfs:label "UTF-16 character".
-cpmeta:broaderEcosystem a owl:ObjectProperty;
+cpmeta:broaderEcosystem a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:domain cpmeta:EcosystemType;
                         rdfs:label "more general ecosystem";
                         rdfs:range cpmeta:EcosystemType;
-                        rdfs:subPropertyOf skos:broader.
-cpmeta:containsDataset a owl:ObjectProperty;
+                        rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#broader>.
+cpmeta:containsDataset a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:domain cpmeta:DataObjectSpec;
                        rdfs:label "contains dataset";
                        rdfs:range cpmeta:DatasetSpec.
-cpmeta:containsString a owl:DatatypeProperty;
+cpmeta:containsString a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:domain cpmeta:StringVocabulary;
                       rdfs:range xsd:string.
-cpmeta:country a owl:DatatypeProperty,
-                 owl:FunctionalProperty;
+cpmeta:country a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                 <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                rdfs:domain cpmeta:Station;
                rdfs:label "Country";
                rdfs:range xsd:string;
                rdfs:subPropertyOf cpmeta:hasStationSpecificParam.
-cpmeta:countryCode a owl:DatatypeProperty,
-                     owl:FunctionalProperty;
+cpmeta:countryCode a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                    rdfs:comment "ISO 3166-1 alpha-2 country code";
                    rdfs:domain cpmeta:Station;
                    rdfs:label "country code";
-                   rdfs:range [owl:withRestrictions ([xsd:pattern "^[A-Z]{2}$"]) ; 
-                               owl:onDatatype xsd:string ; 
+                   rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:pattern "^[A-Z]{2}$"]) ; 
+                               <http://www.w3.org/2002/07/owl#onDatatype> xsd:string ; 
                                a rdfs:Datatype];
-                   rdfs:seeAlso wikipedia:ISO_3166-1;
+                   rdfs:seeAlso <https://en.wikipedia.org/wiki/ISO_3166-1>;
                    rdfs:subPropertyOf cpmeta:hasStationSpecificParam.
-cpmeta:csvWithIso8601tsFirstCol a owl:NamedIndividual,
+cpmeta:csvWithIso8601tsFirstCol a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                   cpmeta:ObjectFormat;
                                 rdfs:label "CSV with ISO8601 timestamp as first column".
-cpmeta:etcDate a owl:NamedIndividual,
+cpmeta:etcDate a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                  cpmeta:ValueFormat;
                rdfs:label "d/m/yyyy".
-cpmeta:etcLocalDateTime a owl:NamedIndividual,
+cpmeta:etcLocalDateTime a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                           cpmeta:ValueFormat;
                         rdfs:comment "Local dateTime timestamp without any daylight savings time adjustments, that is, local winter time.";
                         rdfs:label "yyyyMMddHHmm (no DST) (ICOS ETC)".
-cpmeta:etcRawTimeSerMultiZip a owl:NamedIndividual,
+cpmeta:etcRawTimeSerMultiZip a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                cpmeta:ObjectFormat;
                              rdfs:label "Multi-file zip archive with ETC raw time series".
-cpmeta:excel a owl:NamedIndividual,
+cpmeta:excel a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                cpmeta:ObjectFormat;
              rdfs:label "Microsoft Excel (of unspecified structure)".
-cpmeta:float32 a owl:NamedIndividual,
+cpmeta:float32 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                  cpmeta:ValueFormat;
                rdfs:label "32-bit floating point value".
-cpmeta:float64 a owl:NamedIndividual,
+cpmeta:float64 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                  cpmeta:ValueFormat;
                rdfs:label "64-bit floating point value".
-cpmeta:funderIdentifier a owl:DatatypeProperty,
-                          owl:FunctionalProperty;
+cpmeta:funderIdentifier a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                          <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                         rdfs:domain cpmeta:Funder;
                         rdfs:label "funder identifier";
                         rdfs:range xsd:string;
                         rdfs:subPropertyOf cpmeta:fundingInfoProp.
-cpmeta:funderIdentifierType a owl:DatatypeProperty,
-                              owl:FunctionalProperty;
+cpmeta:funderIdentifierType a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                             rdfs:domain cpmeta:Funder;
                             rdfs:label "funder identifier type";
-                            rdfs:range [owl:oneOf () ; 
+                            rdfs:range [<http://www.w3.org/2002/07/owl#oneOf> () ; 
                                         a rdfs:Datatype];
                             rdfs:subPropertyOf cpmeta:fundingInfoProp.
-cpmeta:fundingInfoProp a owl:DatatypeProperty.
-cpmeta:gzipEncoding a owl:NamedIndividual,
+cpmeta:fundingInfoProp a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+cpmeta:gzipEncoding a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                       cpmeta:ObjectEncoding;
                     rdfs:label "gzip".
-cpmeta:hasActualColumnNames a owl:DatatypeProperty,
-                              owl:FunctionalProperty;
+cpmeta:hasActualColumnNames a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                             rdfs:comment "Contains a JSON array with actual column names";
                             rdfs:domain cpmeta:SimpleDataObject;
                             rdfs:range xsd:string.
-cpmeta:hasActualVariable a owl:ObjectProperty;
+cpmeta:hasActualVariable a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:domain cpmeta:DataObject;
                          rdfs:range cpmeta:VariableInfo.
-cpmeta:hasAncillaryDataValue a owl:DatatypeProperty;
+cpmeta:hasAncillaryDataValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                              rdfs:comment "parent property for ancillary value properties whose values are plain literals (not from vocabularies)";
                              rdfs:domain cpmeta:AncillaryEntry;
                              rdfs:label "ancillary data value";
                              rdfs:range rdfs:Literal.
-cpmeta:hasAncillaryEntry a owl:ObjectProperty;
+cpmeta:hasAncillaryEntry a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:comment "ancillary entry associated with a station";
                          rdfs:domain cpmeta:Station;
                          rdfs:label "ancillary entry";
                          rdfs:range cpmeta:AncillaryEntry.
-cpmeta:hasAncillaryObjectValue a owl:ObjectProperty;
+cpmeta:hasAncillaryObjectValue a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                rdfs:comment "parent property for ancillary value properties whose values come from controlled vocabularies";
                                rdfs:domain cpmeta:AncillaryEntry;
                                rdfs:label "ancillary object value";
                                rdfs:range cpmeta:AncillaryValue.
-cpmeta:hasAssociatedProject a owl:FunctionalProperty,
-                              owl:ObjectProperty;
+cpmeta:hasAssociatedProject a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                              <http://www.w3.org/2002/07/owl#ObjectProperty>;
                             rdfs:domain cpmeta:DataObjectSpec;
                             rdfs:label "associated with project";
                             rdfs:range cpmeta:Project.
-cpmeta:hasAssociatedPublication a owl:DatatypeProperty;
+cpmeta:hasAssociatedPublication a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                 rdfs:domain cpmeta:Station;
                                 rdfs:label "associated publication";
                                 rdfs:range xsd:anyURI;
-                                rdfs:subPropertyOf dcterms:bibliographicCitation.
-cpmeta:hasAtcId a owl:DatatypeProperty,
-                  owl:FunctionalProperty;
+                                rdfs:subPropertyOf <http://purl.org/dc/terms/bibliographicCitation>.
+cpmeta:hasAtcId a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                  <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                 rdfs:range xsd:string;
                 rdfs:subPropertyOf cpmeta:hasTcId.
-cpmeta:hasAttributionWeight a owl:DatatypeProperty,
-                              owl:FunctionalProperty;
+cpmeta:hasAttributionWeight a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                             rdfs:comment "to be used for determining the order of names in citation strings";
                             rdfs:domain cpmeta:Membership;
                             rdfs:label "attribution weight";
                             rdfs:range xsd:integer;
                             rdfs:subPropertyOf cpmeta:hasExtraRoleInfo.
-cpmeta:hasCitationString a owl:DatatypeProperty,
-                           owl:FunctionalProperty;
+cpmeta:hasCitationString a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                           <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                          rdfs:comment "a synthetic property; the RDF triples with it as a predicate are to be created by business-logic-based inference, not inserted into the triple store explicitly";
                          rdfs:domain cpmeta:StaticObject;
                          rdfs:range xsd:string.
-cpmeta:hasClimateZone a owl:FunctionalProperty,
-                        owl:ObjectProperty;
+cpmeta:hasClimateZone a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                        <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:domain cpmeta:Station;
                       rdfs:label "climate zone";
                       rdfs:range cpmeta:ClimateZone.
-cpmeta:hasColumn a owl:ObjectProperty;
+cpmeta:hasColumn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:domain cpmeta:TabularDatasetSpec;
                  rdfs:label "has column";
                  rdfs:range cpmeta:DatasetColumn;
                  rdfs:subPropertyOf cpmeta:hasVariable.
-cpmeta:hasColumnTitle a owl:DatatypeProperty,
-                        owl:FunctionalProperty;
+cpmeta:hasColumnTitle a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                        <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                       rdfs:domain cpmeta:DatasetColumn;
                       rdfs:label "column title";
                       rdfs:range xsd:string;
                       rdfs:subPropertyOf cpmeta:hasVariableTitle.
-cpmeta:hasDataLevel a owl:DatatypeProperty,
-                      owl:FunctionalProperty;
+cpmeta:hasDataLevel a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                      <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                     rdfs:comment "Data level according to ICOS classification. Does not imply the data are official ICOS data.";
                     rdfs:domain cpmeta:DataObjectSpec;
                     rdfs:label "data level";
-                    rdfs:range [owl:oneOf () ; 
+                    rdfs:range [<http://www.w3.org/2002/07/owl#oneOf> () ; 
                                 a rdfs:Datatype].
-cpmeta:hasDataTheme a owl:FunctionalProperty,
-                      owl:ObjectProperty;
-                    rdfs:domain [owl:unionOf (cpmeta:DataObjectSpec
-                                              cpmeta:ThematicCenter) ; 
-                                 a owl:Class];
+cpmeta:hasDataTheme a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                      <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:DataObjectSpec
+                                                                          cpmeta:ThematicCenter) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>];
                     rdfs:label "has data theme";
                     rdfs:range cpmeta:DataTheme.
-cpmeta:hasDepiction a owl:DatatypeProperty;
-                    rdfs:domain nsprov:Agent;
+cpmeta:hasDepiction a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:domain <http://www.w3.org/ns/prov#Agent>;
                     rdfs:label "has depiction";
                     rdfs:range xsd:anyURI;
-                    rdfs:subPropertyOf schema:image.
-cpmeta:hasDocumentationObject a owl:ObjectProperty;
-                              rdfs:domain [owl:unionOf (cpmeta:DataObjectSpec
-                                                        cpmeta:Station) ; 
-                                           a owl:Class];
+                    rdfs:subPropertyOf <http://schema.org/image>.
+cpmeta:hasDocumentationObject a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:DataObjectSpec
+                                                                                    cpmeta:Station) ; 
+                                           a <http://www.w3.org/2002/07/owl#Class>];
                               rdfs:label "has documentation";
                               rdfs:range cpmeta:DocumentObject.
-cpmeta:hasDocumentationUri a owl:DatatypeProperty;
+cpmeta:hasDocumentationUri a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:domain cpmeta:Station;
                            rdfs:label "documentation link";
                            rdfs:range xsd:anyURI;
-                           rdfs:subPropertyOf dcterms:bibliographicCitation.
-cpmeta:hasDoi a owl:DatatypeProperty;
-              rdfs:domain [owl:unionOf (cpmeta:Collection
-                                        cpmeta:StaticObject) ; 
-                           a owl:Class];
+                           rdfs:subPropertyOf <http://purl.org/dc/terms/bibliographicCitation>.
+cpmeta:hasDoi a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:Collection
+                                                                    cpmeta:StaticObject) ; 
+                           a <http://www.w3.org/2002/07/owl#Class>];
               rdfs:range xsd:string.
-cpmeta:hasEasternBound a owl:DatatypeProperty,
-                         owl:FunctionalProperty;
+cpmeta:hasEasternBound a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                         <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                        rdfs:domain cpmeta:LatLonBox;
                        rdfs:label "eastern bound";
-                       rdfs:range [owl:withRestrictions ([xsd:minInclusive -1.8E2]
-                                                         [xsd:maxInclusive 1.8E2]) ; 
-                                   owl:onDatatype xsd:double ; 
+                       rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive -1.8E2]
+                                                                                     [xsd:maxInclusive 1.8E2]) ; 
+                                   <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
                                    a rdfs:Datatype];
                        rdfs:subPropertyOf cpmeta:latlongs.
-cpmeta:hasEcosystemType a owl:ObjectProperty;
-                        rdfs:domain [owl:unionOf (cpmeta:ES
-                                                  cpmeta:Site
-                                                  <https://meta.fieldsites.se/ontologies/sites/Station>) ; 
-                                     a owl:Class];
+cpmeta:hasEcosystemType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:ES
+                                                                              cpmeta:Site
+                                                                              <https://meta.fieldsites.se/ontologies/sites/Station>) ; 
+                                     a <http://www.w3.org/2002/07/owl#Class>];
                         rdfs:label "ecosystem type";
                         rdfs:range cpmeta:EcosystemType.
-cpmeta:hasElevation a owl:DatatypeProperty,
-                      owl:FunctionalProperty;
+cpmeta:hasElevation a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                      <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                     rdfs:comment "Elevation above sea level in meters";
-                    rdfs:domain [owl:unionOf (cpmeta:Station
-                                              geosparql:Geometry) ; 
-                                 a owl:Class];
+                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:Station
+                                                                          <http://www.opengis.net/ont/geosparql#Geometry>) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>];
                     rdfs:label "Elevation";
                     rdfs:range xsd:float.
-cpmeta:hasEmail a owl:DatatypeProperty,
-                  owl:FunctionalProperty;
-                rdfs:domain [owl:unionOf (cpmeta:Organization
-                                          cpmeta:Person) ; 
-                             a owl:Class];
+cpmeta:hasEmail a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                  <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:Organization
+                                                                      cpmeta:Person) ; 
+                             a <http://www.w3.org/2002/07/owl#Class>];
                 rdfs:label "E-mail";
-                rdfs:range [owl:withRestrictions ([xsd:pattern "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$"]) ; 
-                            owl:onDatatype xsd:string ; 
+                rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:pattern "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$"]) ; 
+                            <http://www.w3.org/2002/07/owl#onDatatype> xsd:string ; 
                             a rdfs:Datatype].
-cpmeta:hasEncoding a owl:FunctionalProperty,
-                     owl:ObjectProperty;
+cpmeta:hasEncoding a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                     <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "data stream encoding, e.g. zip, gzip, plain file";
                    rdfs:domain cpmeta:DataObjectSpec;
                    rdfs:label "encoding";
                    rdfs:range cpmeta:ObjectEncoding;
-                   rdfs:subPropertyOf dcterms:format.
-cpmeta:hasEndDate a owl:DatatypeProperty,
-                    owl:FunctionalProperty;
+                   rdfs:subPropertyOf <http://purl.org/dc/terms/format>.
+cpmeta:hasEndDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                    <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                   rdfs:domain cpmeta:Funding;
                   rdfs:label "end date";
                   rdfs:range xsd:date.
-cpmeta:hasEndTime a owl:DatatypeProperty,
-                    owl:FunctionalProperty;
-                  rdfs:domain [owl:unionOf (cpmeta:Membership
-                                            cpmeta:SpatialDataObject
-                                            ssno:Deployment) ; 
-                               a owl:Class];
+cpmeta:hasEndTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                    <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:Membership
+                                                                        cpmeta:SpatialDataObject
+                                                                        <http://www.w3.org/ns/ssn/Deployment>) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>];
                   rdfs:label "end time";
                   rdfs:range xsd:dateTime.
-cpmeta:hasEtcId a owl:DatatypeProperty,
-                  owl:FunctionalProperty;
+cpmeta:hasEtcId a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                  <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                 rdfs:range xsd:string;
                 rdfs:subPropertyOf cpmeta:hasTcId.
-cpmeta:hasExtraRoleInfo a owl:DatatypeProperty;
+cpmeta:hasExtraRoleInfo a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                         rdfs:domain cpmeta:Membership;
                         rdfs:label "extra role info";
                         rdfs:range rdfs:Literal.
-cpmeta:hasFirstName a owl:DatatypeProperty,
-                      owl:FunctionalProperty;
+cpmeta:hasFirstName a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                      <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                     rdfs:domain cpmeta:Person;
                     rdfs:label "first name";
                     rdfs:range xsd:string.
-cpmeta:hasFormat a owl:FunctionalProperty,
-                   owl:ObjectProperty;
+cpmeta:hasFormat a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "format of the Data Object; will be used to determine the machinery for processing it";
                  rdfs:domain cpmeta:DataObjectSpec;
                  rdfs:label "format";
                  rdfs:range cpmeta:ObjectFormat;
-                 rdfs:subPropertyOf dcterms:format.
-cpmeta:hasFormatSpecificMetadata a owl:DatatypeProperty;
+                 rdfs:subPropertyOf <http://purl.org/dc/terms/format>.
+cpmeta:hasFormatSpecificMetadata a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                  rdfs:comment "parent property for concrete format-specific metadata properties",
                                               "used for WDCGG data, may be retired in the future";
                                  rdfs:domain cpmeta:DataObject;
                                  rdfs:label "format-specific metadata";
                                  rdfs:range rdfs:Literal.
-cpmeta:hasFunder a owl:FunctionalProperty,
-                   owl:ObjectProperty;
+cpmeta:hasFunder a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:domain cpmeta:Funding;
                  rdfs:label "funder";
                  rdfs:range cpmeta:Funder.
-cpmeta:hasFunding a owl:ObjectProperty;
-                  rdfs:domain [owl:unionOf (cpmeta:CentralFacility
-                                            cpmeta:Station) ; 
-                               a owl:Class];
+cpmeta:hasFunding a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:CentralFacility
+                                                                        cpmeta:Station) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>];
                   rdfs:label "has funding";
                   rdfs:range cpmeta:Funding.
-cpmeta:hasGoodFlagValue a owl:DatatypeProperty;
+cpmeta:hasGoodFlagValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                         rdfs:domain cpmeta:ObjectFormat;
                         rdfs:range xsd:string.
-cpmeta:hasHideFromSearchPolicy a owl:DatatypeProperty,
-                                 owl:FunctionalProperty;
+cpmeta:hasHideFromSearchPolicy a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                 <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                                rdfs:range xsd:boolean;
                                rdfs:subPropertyOf cpmeta:hasPolicy.
-cpmeta:hasIcon a owl:DatatypeProperty,
-                 owl:FunctionalProperty;
+cpmeta:hasIcon a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                 <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                rdfs:comment "URL link to SVG icon to be used in user interfaces";
                rdfs:domain cpmeta:DataTheme;
                rdfs:label "has icon";
                rdfs:range xsd:anyURI;
-               rdfs:subPropertyOf schema:image.
-cpmeta:hasInstrumentComponent a owl:ObjectProperty,
-                                owl:TransitiveProperty;
+               rdfs:subPropertyOf <http://schema.org/image>.
+cpmeta:hasInstrumentComponent a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                <http://www.w3.org/2002/07/owl#TransitiveProperty>;
                               rdfs:domain cpmeta:Instrument;
                               rdfs:range cpmeta:Instrument;
-                              rdfs:subPropertyOf ssno:hasSubSystem.
-cpmeta:hasInstrumentOwner a owl:FunctionalProperty,
-                            owl:ObjectProperty;
+                              rdfs:subPropertyOf <http://www.w3.org/ns/ssn/hasSubSystem>.
+cpmeta:hasInstrumentOwner a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                            <http://www.w3.org/2002/07/owl#ObjectProperty>;
                           rdfs:domain cpmeta:Instrument;
                           rdfs:range cpmeta:Organization.
-cpmeta:hasKeyword a owl:DatatypeProperty;
+cpmeta:hasKeyword a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment """A \"virtual\" property, created for keyword search in SPARQL. A multi-value counterpart of cpmeta:hasKeywords, which contains a string with comma-separated list of keywords.""";
                   rdfs:domain cpmeta:DataObject;
                   rdfs:range xsd:string.
-cpmeta:hasKeywords a owl:DatatypeProperty,
-                     owl:FunctionalProperty;
+cpmeta:hasKeywords a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                    rdfs:comment "String representing a comma-separated list of keywords";
-                   rdfs:domain [owl:unionOf (cpmeta:DataObject
-                                             cpmeta:DataObjectSpec
-                                             cpmeta:Project) ; 
-                                a owl:Class];
+                   rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:DataObject
+                                                                         cpmeta:DataObjectSpec
+                                                                         cpmeta:Project) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>];
                    rdfs:range xsd:string.
-cpmeta:hasLabelingDate a owl:DatatypeProperty,
-                         owl:FunctionalProperty;
+cpmeta:hasLabelingDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                         <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                        rdfs:comment "the date when the station was approved by ICOS and got labelled as an ICOS station";
                        rdfs:domain cpmeta:IcosStation;
                        rdfs:label "labelling date";
                        rdfs:range xsd:date;
                        rdfs:subPropertyOf cpmeta:hasStationSpecificParam.
-cpmeta:hasLastName a owl:DatatypeProperty,
-                     owl:FunctionalProperty;
+cpmeta:hasLastName a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                    rdfs:domain cpmeta:Person;
                    rdfs:label "last name";
                    rdfs:range xsd:string.
-cpmeta:hasLatitude a owl:DatatypeProperty,
-                     owl:FunctionalProperty;
+cpmeta:hasLatitude a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                    rdfs:comment "Decimal degrees in WGS84/GRS80";
-                   rdfs:domain [owl:unionOf (cpmeta:Position
-                                             cpmeta:Station
-                                             ssno:Deployment) ; 
-                                a owl:Class];
+                   rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:Position
+                                                                         cpmeta:Station
+                                                                         <http://www.w3.org/ns/ssn/Deployment>) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>];
                    rdfs:label "Latitude";
-                   rdfs:range [owl:withRestrictions ([xsd:minInclusive -9.0E1]
-                                                     [xsd:maxInclusive 9.0E1]) ; 
-                               owl:onDatatype xsd:double ; 
+                   rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive -9.0E1]
+                                                                                 [xsd:maxInclusive 9.0E1]) ; 
+                               <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
                                a rdfs:Datatype];
                    rdfs:subPropertyOf cpmeta:latlongs.
-cpmeta:hasLongitude a owl:DatatypeProperty,
-                      owl:FunctionalProperty;
+cpmeta:hasLongitude a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                      <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                     rdfs:comment "Decimal degrees in WGS84/GRS80";
-                    rdfs:domain [owl:unionOf (cpmeta:Position
-                                              cpmeta:Station
-                                              ssno:Deployment) ; 
-                                 a owl:Class];
+                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:Position
+                                                                          cpmeta:Station
+                                                                          <http://www.w3.org/ns/ssn/Deployment>) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>];
                     rdfs:label "Longitude";
-                    rdfs:range [owl:withRestrictions ([xsd:minInclusive -1.8E2]
-                                                      [xsd:maxInclusive 1.8E2]) ; 
-                                owl:onDatatype xsd:double ; 
+                    rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive -1.8E2]
+                                                                                  [xsd:maxInclusive 1.8E2]) ; 
+                                <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
                                 a rdfs:Datatype];
                     rdfs:subPropertyOf cpmeta:latlongs.
-cpmeta:hasMarkerIcon a owl:DatatypeProperty,
-                       owl:FunctionalProperty;
+cpmeta:hasMarkerIcon a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                       <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                      rdfs:comment "URL link to an icon that can be used by web apps to show e.g. locations of stations";
                      rdfs:domain cpmeta:DataTheme;
                      rdfs:label "has marker icon";
                      rdfs:range xsd:anyURI;
-                     rdfs:subPropertyOf schema:image.
-cpmeta:hasMaxValue a owl:DatatypeProperty,
-                     owl:FunctionalProperty;
+                     rdfs:subPropertyOf <http://schema.org/image>.
+cpmeta:hasMaxValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                    rdfs:domain cpmeta:VariableInfo;
                    rdfs:range xsd:double.
-cpmeta:hasMeanAnnualPrecip a owl:DatatypeProperty,
-                             owl:FunctionalProperty;
+cpmeta:hasMeanAnnualPrecip a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                             <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                            rdfs:comment "measured in mm";
                            rdfs:domain cpmeta:ES;
                            rdfs:label "mean annual precipitation";
                            rdfs:range xsd:float;
                            rdfs:subPropertyOf cpmeta:hasStationSpecificParam.
-cpmeta:hasMeanAnnualRadiation a owl:DatatypeProperty,
-                                owl:FunctionalProperty;
+cpmeta:hasMeanAnnualRadiation a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                               rdfs:comment "measured in W m-2";
                               rdfs:domain cpmeta:ES;
                               rdfs:label "mean annual radiation";
                               rdfs:range xsd:float;
                               rdfs:subPropertyOf cpmeta:hasStationSpecificParam.
-cpmeta:hasMeanAnnualTemp a owl:DatatypeProperty,
-                           owl:FunctionalProperty;
+cpmeta:hasMeanAnnualTemp a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                           <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                          rdfs:comment "measured in °C";
                          rdfs:domain cpmeta:Station;
                          rdfs:label "mean annual temperature";
                          rdfs:range xsd:float;
                          rdfs:subPropertyOf cpmeta:hasStationSpecificParam.
-cpmeta:hasMembership a owl:ObjectProperty;
+cpmeta:hasMembership a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:domain cpmeta:Person;
                      rdfs:label "has membership";
                      rdfs:range cpmeta:Membership.
-cpmeta:hasMinValue a owl:DatatypeProperty,
-                     owl:FunctionalProperty;
+cpmeta:hasMinValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                    rdfs:domain cpmeta:VariableInfo;
                    rdfs:range xsd:double.
-cpmeta:hasModel a owl:DatatypeProperty,
-                  owl:FunctionalProperty;
+cpmeta:hasModel a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                  <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                 rdfs:domain cpmeta:Instrument;
                 rdfs:label "instrument model";
                 rdfs:range xsd:string.
-cpmeta:hasName a owl:DatatypeProperty,
-                 owl:FunctionalProperty;
-               rdfs:domain [owl:unionOf (cpmeta:Instrument
-                                         cpmeta:Organization
-                                         cpmeta:StaticObject) ; 
-                            a owl:Class];
+cpmeta:hasName a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                 <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+               rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:Instrument
+                                                                     cpmeta:Organization
+                                                                     cpmeta:StaticObject) ; 
+                            a <http://www.w3.org/2002/07/owl#Class>];
                rdfs:label "Name";
                rdfs:range xsd:string;
-               rdfs:subPropertyOf dcterms:title.
-cpmeta:hasNorthernBound a owl:DatatypeProperty,
-                          owl:FunctionalProperty;
+               rdfs:subPropertyOf <http://purl.org/dc/terms/title>.
+cpmeta:hasNorthernBound a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                          <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                         rdfs:domain cpmeta:LatLonBox;
                         rdfs:label "northern bound";
-                        rdfs:range [owl:withRestrictions ([xsd:minInclusive -9.0E1]
-                                                          [xsd:maxInclusive 9.0E1]) ; 
-                                    owl:onDatatype xsd:double ; 
+                        rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive -9.0E1]
+                                                                                      [xsd:maxInclusive 9.0E1]) ; 
+                                    <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
                                     a rdfs:Datatype];
                         rdfs:subPropertyOf cpmeta:latlongs.
-cpmeta:hasNumberOfRows a owl:DatatypeProperty,
-                         owl:FunctionalProperty;
+cpmeta:hasNumberOfRows a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                         <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                        rdfs:domain cpmeta:SimpleDataObject;
                        rdfs:label "number of rows";
                        rdfs:range xsd:long.
-cpmeta:hasObjectSpec a owl:FunctionalProperty,
-                       owl:ObjectProperty;
+cpmeta:hasObjectSpec a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                       <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:domain cpmeta:DataObject;
                      rdfs:label "has specification";
                      rdfs:range cpmeta:DataObjectSpec.
-cpmeta:hasOperationalPeriod a owl:DatatypeProperty,
-                              owl:FunctionalProperty;
+cpmeta:hasOperationalPeriod a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                             rdfs:domain cpmeta:Station;
                             rdfs:label "operational period";
                             rdfs:range xsd:string;
                             rdfs:subPropertyOf cpmeta:hasStationSpecificParam.
-cpmeta:hasOrcidId a owl:DatatypeProperty,
-                    owl:FunctionalProperty;
+cpmeta:hasOrcidId a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                    <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                   rdfs:domain cpmeta:Person;
                   rdfs:label "Orcid ID";
                   rdfs:range xsd:string;
                   rdfs:subPropertyOf cpmeta:hasStringId.
-cpmeta:hasOtcId a owl:DatatypeProperty,
-                  owl:FunctionalProperty;
+cpmeta:hasOtcId a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                  <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                 rdfs:range xsd:string;
                 rdfs:subPropertyOf cpmeta:hasTcId.
-cpmeta:hasPolicy a owl:DatatypeProperty;
+cpmeta:hasPolicy a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:domain cpmeta:Project;
                  rdfs:range rdfs:Literal.
-cpmeta:hasQuantityKind a owl:FunctionalProperty,
-                         owl:ObjectProperty;
+cpmeta:hasQuantityKind a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                         <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:domain cpmeta:ValueType;
                        rdfs:label "quantity kind";
                        rdfs:range cpmeta:QuantityKind.
-cpmeta:hasResponsibleOrganization a owl:ObjectProperty;
+cpmeta:hasResponsibleOrganization a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                   rdfs:domain cpmeta:Station;
                                   rdfs:label "responsible organization";
                                   rdfs:range cpmeta:Organization.
-cpmeta:hasRole a owl:FunctionalProperty,
-                 owl:ObjectProperty;
+cpmeta:hasRole a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                 <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:domain cpmeta:Membership;
                rdfs:label "has role";
                rdfs:range cpmeta:Role.
-cpmeta:hasSamplingHeight a owl:DatatypeProperty,
-                           owl:FunctionalProperty;
-                         rdfs:domain [owl:unionOf (cpmeta:DataAcquisition
-                                                   ssno:Deployment) ; 
-                                      a owl:Class];
+cpmeta:hasSamplingHeight a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                           <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                         rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:DataAcquisition
+                                                                               <http://www.w3.org/ns/ssn/Deployment>) ; 
+                                      a <http://www.w3.org/2002/07/owl#Class>];
                          rdfs:range xsd:float.
-cpmeta:hasSamplingPoint a owl:ObjectProperty;
-                        rdfs:domain [owl:unionOf (cpmeta:DataAcquisition
-                                                  cpmeta:Site) ; 
-                                     a owl:Class];
+cpmeta:hasSamplingPoint a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:DataAcquisition
+                                                                              cpmeta:Site) ; 
+                                     a <http://www.w3.org/2002/07/owl#Class>];
                         rdfs:range cpmeta:Position;
-                        rdfs:subPropertyOf nsprov:atLocation.
-cpmeta:hasSerialNumber a owl:DatatypeProperty,
-                         owl:FunctionalProperty;
+                        rdfs:subPropertyOf <http://www.w3.org/ns/prov#atLocation>.
+cpmeta:hasSerialNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                         <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                        rdfs:domain cpmeta:Instrument;
                        rdfs:label "serial number";
                        rdfs:range xsd:string.
-cpmeta:hasSha256sum a owl:DatatypeProperty,
-                      owl:FunctionalProperty;
+cpmeta:hasSha256sum a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                      <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                     rdfs:domain cpmeta:StaticObject;
                     rdfs:label "SHA-256 hashsum";
-                    rdfs:range [owl:withRestrictions ([xsd:length "64"^^xsd:nonNegativeInteger]) ; 
-                                owl:onDatatype xsd:hexBinary ; 
+                    rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:length "64"^^xsd:nonNegativeInteger]) ; 
+                                <http://www.w3.org/2002/07/owl#onDatatype> xsd:hexBinary ; 
                                 a rdfs:Datatype].
-cpmeta:hasSizeInBytes a owl:DatatypeProperty,
-                        owl:FunctionalProperty;
+cpmeta:hasSizeInBytes a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                        <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                       rdfs:domain cpmeta:StaticObject;
                       rdfs:range xsd:long.
-cpmeta:hasSkipPidMintingPolicy a owl:DatatypeProperty,
-                                 owl:FunctionalProperty;
+cpmeta:hasSkipPidMintingPolicy a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                 <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                                rdfs:range xsd:boolean;
                                rdfs:subPropertyOf cpmeta:hasPolicy.
-cpmeta:hasSkipStoragePolicy a owl:DatatypeProperty,
-                              owl:FunctionalProperty;
+cpmeta:hasSkipStoragePolicy a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                             rdfs:range xsd:boolean;
                             rdfs:subPropertyOf cpmeta:hasPolicy.
-cpmeta:hasSouthernBound a owl:DatatypeProperty,
-                          owl:FunctionalProperty;
+cpmeta:hasSouthernBound a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                          <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                         rdfs:domain cpmeta:LatLonBox;
                         rdfs:label "southern bound";
-                        rdfs:range [owl:withRestrictions ([xsd:minInclusive -9.0E1]
-                                                          [xsd:maxInclusive 9.0E1]) ; 
-                                    owl:onDatatype xsd:double ; 
+                        rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive -9.0E1]
+                                                                                      [xsd:maxInclusive 9.0E1]) ; 
+                                    <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
                                     a rdfs:Datatype];
                         rdfs:subPropertyOf cpmeta:latlongs.
-cpmeta:hasSpatialCoverage a owl:FunctionalProperty,
-                            owl:ObjectProperty;
-                          rdfs:domain [owl:unionOf (cpmeta:DataObject
-                                                    cpmeta:Station
-                                                    geosparql:Feature) ; 
-                                       a owl:Class];
+cpmeta:hasSpatialCoverage a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                            <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:DataObject
+                                                                                cpmeta:Station
+                                                                                <http://www.opengis.net/ont/geosparql#Feature>) ; 
+                                       a <http://www.w3.org/2002/07/owl#Class>];
                           rdfs:label "spatial coverage";
                           rdfs:range cpmeta:SpatialCoverage;
-                          rdfs:subPropertyOf geosparql:hasGeometry.
-cpmeta:hasStartDate a owl:DatatypeProperty,
-                      owl:FunctionalProperty;
+                          rdfs:subPropertyOf <http://www.opengis.net/ont/geosparql#hasGeometry>.
+cpmeta:hasStartDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                      <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                     rdfs:domain cpmeta:Funding;
                     rdfs:label "start date";
                     rdfs:range xsd:date.
-cpmeta:hasStartTime a owl:DatatypeProperty,
-                      owl:FunctionalProperty;
-                    rdfs:domain [owl:unionOf (cpmeta:Membership
-                                              cpmeta:SpatialDataObject
-                                              ssno:Deployment) ; 
-                                 a owl:Class];
+cpmeta:hasStartTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                      <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:Membership
+                                                                          cpmeta:SpatialDataObject
+                                                                          <http://www.w3.org/ns/ssn/Deployment>) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>];
                     rdfs:label "start time";
                     rdfs:range xsd:dateTime.
-cpmeta:hasStationClass a owl:DatatypeProperty,
-                         owl:FunctionalProperty;
+cpmeta:hasStationClass a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                         <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                        rdfs:domain cpmeta:IcosStation;
                        rdfs:label "Station Class";
-                       rdfs:range [owl:oneOf () ; 
+                       rdfs:range [<http://www.w3.org/2002/07/owl#oneOf> () ; 
                                    a rdfs:Datatype];
                        rdfs:subPropertyOf cpmeta:hasStationSpecificParam.
-cpmeta:hasStationId a owl:DatatypeProperty,
-                      owl:FunctionalProperty;
+cpmeta:hasStationId a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                      <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                     rdfs:domain cpmeta:Station;
                     rdfs:label "Station ID";
                     rdfs:range xsd:string;
                     rdfs:subPropertyOf cpmeta:hasStringId.
-cpmeta:hasStationSpecificParam a owl:DatatypeProperty;
+cpmeta:hasStationSpecificParam a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                rdfs:domain cpmeta:Station;
                                rdfs:range rdfs:Literal.
-cpmeta:hasStringId a owl:DatatypeProperty;
+cpmeta:hasStringId a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:comment "umbrella property for organizing id-related properties";
                    rdfs:range xsd:string.
-cpmeta:hasTcId a owl:DatatypeProperty;
-               rdfs:domain [owl:unionOf (cpmeta:Instrument
-                                         cpmeta:Organization
-                                         cpmeta:Person) ; 
-                            a owl:Class];
+cpmeta:hasTcId a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:Instrument
+                                                                     cpmeta:Organization
+                                                                     cpmeta:Person) ; 
+                            a <http://www.w3.org/2002/07/owl#Class>];
                rdfs:range xsd:string;
                rdfs:subPropertyOf cpmeta:hasStringId.
-cpmeta:hasTemporalResolution a owl:DatatypeProperty;
-                             rdfs:domain [owl:unionOf (cpmeta:DataObject
-                                                       cpmeta:DatasetSpec) ; 
-                                          a owl:Class];
+cpmeta:hasTemporalResolution a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                             rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:DataObject
+                                                                                   cpmeta:DatasetSpec) ; 
+                                          a <http://www.w3.org/2002/07/owl#Class>];
                              rdfs:range xsd:string.
-cpmeta:hasTimeZoneOffset a owl:DatatypeProperty,
-                           owl:FunctionalProperty;
+cpmeta:hasTimeZoneOffset a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                           <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                          rdfs:comment "offset of local timezone from UTC";
                          rdfs:domain cpmeta:Station;
                          rdfs:label "time zone offset";
                          rdfs:range xsd:integer;
                          rdfs:subPropertyOf cpmeta:hasStationSpecificParam.
-cpmeta:hasUnit a owl:DatatypeProperty,
-                 owl:FunctionalProperty;
+cpmeta:hasUnit a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                 <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                rdfs:comment "unit of measurement";
                rdfs:domain cpmeta:ValueType;
                rdfs:label "unit";
                rdfs:range xsd:string.
-cpmeta:hasValueFormat a owl:FunctionalProperty,
-                        owl:ObjectProperty;
+cpmeta:hasValueFormat a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                        <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:domain cpmeta:DatasetColumn;
                       rdfs:label "value format";
                       rdfs:range cpmeta:ValueFormat.
-cpmeta:hasValueType a owl:FunctionalProperty,
-                      owl:ObjectProperty;
+cpmeta:hasValueType a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                      <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:domain cpmeta:DatasetVariable;
                     rdfs:label "value type";
                     rdfs:range cpmeta:ValueType.
-cpmeta:hasVariable a owl:ObjectProperty;
+cpmeta:hasVariable a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:domain cpmeta:DatasetSpec;
                    rdfs:label "has variable";
                    rdfs:range cpmeta:DatasetVariable.
-cpmeta:hasVariableName a owl:DatatypeProperty;
+cpmeta:hasVariableName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                        rdfs:comment """A \"virtual\" property only used to define a variable in SPARQL, to support variable-name search. Is a multi-valued counterpart of cpmeta:hasActualColumnNames (for SimpleDataObjects), which contains a JSON array. Also, used to indicate variable name that a sensor is measuring (via Deployment).""";
-                       rdfs:domain [owl:unionOf (cpmeta:DataObject
-                                                 ssno:Deployment) ; 
-                                    a owl:Class];
+                       rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:DataObject
+                                                                             <http://www.w3.org/ns/ssn/Deployment>) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>];
                        rdfs:range xsd:string.
-cpmeta:hasVariableTitle a owl:DatatypeProperty,
-                          owl:FunctionalProperty;
+cpmeta:hasVariableTitle a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                          <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                         rdfs:domain cpmeta:DatasetVariable;
                         rdfs:label "variable title";
                         rdfs:range xsd:string;
-                        rdfs:subPropertyOf dcterms:title.
-cpmeta:hasVendor a owl:FunctionalProperty,
-                   owl:ObjectProperty;
+                        rdfs:subPropertyOf <http://purl.org/dc/terms/title>.
+cpmeta:hasVendor a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:domain cpmeta:Instrument;
                  rdfs:range cpmeta:Organization.
-cpmeta:hasWesternBound a owl:DatatypeProperty,
-                         owl:FunctionalProperty;
+cpmeta:hasWesternBound a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                         <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                        rdfs:domain cpmeta:LatLonBox;
                        rdfs:label "western bound";
-                       rdfs:range [owl:withRestrictions ([xsd:minInclusive -1.8E2]
-                                                         [xsd:maxInclusive 1.8E2]) ; 
-                                   owl:onDatatype xsd:double ; 
+                       rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive -1.8E2]
+                                                                                     [xsd:maxInclusive 1.8E2]) ; 
+                                   <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
                                    a rdfs:Datatype];
                        rdfs:subPropertyOf cpmeta:latlongs.
-cpmeta:hasWigosId a owl:DatatypeProperty,
-                    owl:FunctionalProperty;
+cpmeta:hasWigosId a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                    <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                   rdfs:domain cpmeta:AS;
                   rdfs:label "WIGOS ID";
                   rdfs:range xsd:string;
                   rdfs:subPropertyOf cpmeta:hasStringId.
-cpmeta:icosLicence a owl:NamedIndividual,
-                     dcterms:LicenseDocument;
+cpmeta:icosLicence a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     <http://purl.org/dc/terms/LicenseDocument>;
                    rdfs:label "ICOS CCBY4 Data Licence";
                    rdfs:seeAlso <https://data.icos-cp.eu/licence>;
-                   skos:exactMatch <https://creativecommons.org/licenses/by/4.0>.
-cpmeta:igbp_BSV a owl:NamedIndividual,
+                   <http://www.w3.org/2004/02/skos/core#exactMatch> <https://creativecommons.org/licenses/by/4.0>.
+cpmeta:igbp_BSV a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   cpmeta:EcosystemType.
-cpmeta:igbp_CRO a owl:NamedIndividual,
+cpmeta:igbp_CRO a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   cpmeta:EcosystemType.
-cpmeta:igbp_CSH a owl:NamedIndividual,
+cpmeta:igbp_CSH a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   cpmeta:EcosystemType.
-cpmeta:igbp_CVM a owl:NamedIndividual,
+cpmeta:igbp_CVM a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   cpmeta:EcosystemType.
-cpmeta:igbp_DBF a owl:NamedIndividual,
+cpmeta:igbp_DBF a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   cpmeta:EcosystemType.
-cpmeta:igbp_DNF a owl:NamedIndividual,
+cpmeta:igbp_DNF a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   cpmeta:EcosystemType.
-cpmeta:igbp_EBF a owl:NamedIndividual,
+cpmeta:igbp_EBF a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   cpmeta:EcosystemType.
-cpmeta:igbp_ENF a owl:NamedIndividual,
+cpmeta:igbp_ENF a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   cpmeta:EcosystemType.
-cpmeta:igbp_GRA a owl:NamedIndividual,
+cpmeta:igbp_GRA a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   cpmeta:EcosystemType.
-cpmeta:igbp_MF a owl:NamedIndividual,
+cpmeta:igbp_MF a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                  cpmeta:EcosystemType.
-cpmeta:igbp_OSH a owl:NamedIndividual,
+cpmeta:igbp_OSH a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   cpmeta:EcosystemType.
-cpmeta:igbp_SAV a owl:NamedIndividual,
+cpmeta:igbp_SAV a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   cpmeta:EcosystemType.
-cpmeta:igbp_SNO a owl:NamedIndividual,
+cpmeta:igbp_SNO a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   cpmeta:EcosystemType.
-cpmeta:igbp_URB a owl:NamedIndividual,
+cpmeta:igbp_URB a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   cpmeta:EcosystemType.
-cpmeta:igbp_WAT a owl:NamedIndividual,
+cpmeta:igbp_WAT a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   cpmeta:EcosystemType.
-cpmeta:igbp_WET a owl:NamedIndividual,
+cpmeta:igbp_WET a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   cpmeta:EcosystemType.
-cpmeta:igbp_WSA a owl:NamedIndividual,
+cpmeta:igbp_WSA a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   cpmeta:EcosystemType.
-cpmeta:image a owl:NamedIndividual,
+cpmeta:image a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                cpmeta:ObjectFormat;
              rdfs:label "Image of an unspecified format".
-cpmeta:impliesDefaultLicence a owl:FunctionalProperty,
-                               owl:ObjectProperty;
-                             rdfs:domain [owl:unionOf (cpmeta:DataObjectSpec
-                                                       cpmeta:Project) ; 
-                                          a owl:Class];
+cpmeta:impliesDefaultLicence a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                               <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:DataObjectSpec
+                                                                                   cpmeta:Project) ; 
+                                          a <http://www.w3.org/2002/07/owl#Class>];
                              rdfs:label "implies default licence";
-                             rdfs:range dcterms:LicenseDocument.
-cpmeta:ingosRar a owl:NamedIndividual,
+                             rdfs:range <http://purl.org/dc/terms/LicenseDocument>.
+cpmeta:ingosRar a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   cpmeta:ObjectFormat;
                 rdfs:label "RAR archive with InGoS time series results".
-cpmeta:int32 a owl:NamedIndividual,
+cpmeta:int32 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                cpmeta:ValueFormat;
              rdfs:label "32-bit integer value".
-cpmeta:isNextVersionOf a owl:ObjectProperty,
-                         owl:InverseFunctionalProperty;
-                       rdfs:domain [owl:unionOf (cpmeta:Collection
-                                                 cpmeta:StaticObject) ; 
-                                    a owl:Class];
-                       rdfs:range [owl:unionOf (cpmeta:Collection
-                                                cpmeta:StaticObject) ; 
-                                   a owl:Class];
-                       rdfs:subPropertyOf nsprov:wasRevisionOf.
-cpmeta:isOptionalColumn a owl:DatatypeProperty,
-                          owl:FunctionalProperty;
+cpmeta:isNextVersionOf a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                         <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>;
+                       rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:Collection
+                                                                             cpmeta:StaticObject) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>];
+                       rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (cpmeta:Collection
+                                                                            cpmeta:StaticObject) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>];
+                       rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasRevisionOf>.
+cpmeta:isOptionalColumn a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                          <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                         rdfs:domain cpmeta:DatasetColumn;
                         rdfs:range xsd:boolean;
                         rdfs:subPropertyOf cpmeta:isOptionalVariable.
-cpmeta:isOptionalVariable a owl:DatatypeProperty,
-                            owl:FunctionalProperty;
+cpmeta:isOptionalVariable a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                            <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                           rdfs:domain cpmeta:DatasetVariable;
                           rdfs:range xsd:boolean.
-cpmeta:isQualityFlagFor a owl:ObjectProperty,
-                          owl:InverseFunctionalProperty;
+cpmeta:isQualityFlagFor a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                          <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>;
                         rdfs:domain cpmeta:DatasetColumn;
                         rdfs:label "is a quality flag for";
                         rdfs:range cpmeta:DatasetColumn.
-cpmeta:isRegexColumn a owl:DatatypeProperty,
-                       owl:FunctionalProperty;
+cpmeta:isRegexColumn a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                       <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                      rdfs:domain cpmeta:DatasetColumn;
                      rdfs:range xsd:boolean;
                      rdfs:subPropertyOf cpmeta:isRegexVariable.
-cpmeta:isRegexVariable a owl:DatatypeProperty,
-                         owl:FunctionalProperty;
+cpmeta:isRegexVariable a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                         <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                        rdfs:domain cpmeta:DatasetVariable;
                        rdfs:range xsd:boolean.
-cpmeta:iso8601date a owl:NamedIndividual,
+cpmeta:iso8601date a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                      cpmeta:ValueFormat;
                    rdfs:label "Date in ISO-8601 format".
-cpmeta:iso8601dateTime a owl:NamedIndividual,
+cpmeta:iso8601dateTime a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                          cpmeta:ValueFormat;
                        rdfs:comment "Internally represented as int64 milliseconds since Unix epoch.";
                        rdfs:label "Date-and-time stamp in ISO-8601 format".
-cpmeta:iso8601timeOfDay a owl:NamedIndividual,
+cpmeta:iso8601timeOfDay a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                           cpmeta:ValueFormat;
                         rdfs:label "[h]h:mm[:ss]".
-cpmeta:isoLikeLocalDateTime a owl:NamedIndividual,
+cpmeta:isoLikeLocalDateTime a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                               cpmeta:ValueFormat;
                             rdfs:comment "May use space instead of 'T' for separator";
                             rdfs:label "ISO-like local dateTime".
-cpmeta:koppen_Af a owl:NamedIndividual,
+cpmeta:koppen_Af a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                    cpmeta:ClimateZone.
-cpmeta:koppen_Am a owl:NamedIndividual,
+cpmeta:koppen_Am a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                    cpmeta:ClimateZone.
-cpmeta:koppen_Aw_As a owl:NamedIndividual,
+cpmeta:koppen_Aw_As a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                       cpmeta:ClimateZone.
-cpmeta:koppen_BSh a owl:NamedIndividual,
+cpmeta:koppen_BSh a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_BSk a owl:NamedIndividual,
+cpmeta:koppen_BSk a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_BWh a owl:NamedIndividual,
+cpmeta:koppen_BWh a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_BWk a owl:NamedIndividual,
+cpmeta:koppen_BWk a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Cfa a owl:NamedIndividual,
+cpmeta:koppen_Cfa a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Cfb a owl:NamedIndividual,
+cpmeta:koppen_Cfb a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Cfc a owl:NamedIndividual,
+cpmeta:koppen_Cfc a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Csa a owl:NamedIndividual,
+cpmeta:koppen_Csa a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Csb a owl:NamedIndividual,
+cpmeta:koppen_Csb a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Csc a owl:NamedIndividual,
+cpmeta:koppen_Csc a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Cwa a owl:NamedIndividual,
+cpmeta:koppen_Cwa a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Cwb a owl:NamedIndividual,
+cpmeta:koppen_Cwb a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Cwc a owl:NamedIndividual,
+cpmeta:koppen_Cwc a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Dfa a owl:NamedIndividual,
+cpmeta:koppen_Dfa a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Dfb a owl:NamedIndividual,
+cpmeta:koppen_Dfb a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Dfc a owl:NamedIndividual,
+cpmeta:koppen_Dfc a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Dfd a owl:NamedIndividual,
+cpmeta:koppen_Dfd a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Dsa a owl:NamedIndividual,
+cpmeta:koppen_Dsa a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Dsb a owl:NamedIndividual,
+cpmeta:koppen_Dsb a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Dsc a owl:NamedIndividual,
+cpmeta:koppen_Dsc a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Dsd a owl:NamedIndividual,
+cpmeta:koppen_Dsd a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Dwa a owl:NamedIndividual,
+cpmeta:koppen_Dwa a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Dwb a owl:NamedIndividual,
+cpmeta:koppen_Dwb a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Dwc a owl:NamedIndividual,
+cpmeta:koppen_Dwc a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_Dwd a owl:NamedIndividual,
+cpmeta:koppen_Dwd a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ClimateZone.
-cpmeta:koppen_EF a owl:NamedIndividual,
+cpmeta:koppen_EF a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                    cpmeta:ClimateZone.
-cpmeta:koppen_ET a owl:NamedIndividual,
+cpmeta:koppen_ET a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                    cpmeta:ClimateZone.
-cpmeta:latlongs a owl:DatatypeProperty;
+cpmeta:latlongs a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                 rdfs:range xsd:double.
-cpmeta:locatedAt a owl:FunctionalProperty,
-                   owl:ObjectProperty;
+cpmeta:locatedAt a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:domain cpmeta:Organization;
                  rdfs:label "located at";
-                 rdfs:range geosparql:Feature;
-                 rdfs:subPropertyOf nsprov:atLocation.
-cpmeta:multiImageZip a owl:NamedIndividual,
+                 rdfs:range <http://www.opengis.net/ont/geosparql#Feature>;
+                 rdfs:subPropertyOf <http://www.w3.org/ns/prov#atLocation>.
+cpmeta:multiImageZip a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                        cpmeta:ObjectFormat;
                      rdfs:label "Uncompressed zip archive with images".
-cpmeta:netcdf a owl:NamedIndividual,
+cpmeta:netcdf a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                 cpmeta:ObjectFormat;
               rdfs:label "NetCDF (spatial)".
 cpmeta:netcdfTimeSeries cpmeta:hasGoodFlagValue "O",
                                                 "R",
                                                 "U";
-                        a owl:NamedIndividual,
+                        a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                           cpmeta:ObjectFormat;
                         rdfs:label "NetCDF (time series)".
-cpmeta:operatesOn a owl:ObjectProperty;
+cpmeta:operatesOn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:domain cpmeta:Station;
                   rdfs:label "operates on";
                   rdfs:range cpmeta:Site;
-                  rdfs:subPropertyOf nsprov:atLocation.
-cpmeta:otcRawData a owl:NamedIndividual,
+                  rdfs:subPropertyOf <http://www.w3.org/ns/prov#atLocation>.
+cpmeta:otcRawData a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ObjectFormat;
                   rdfs:label "ICOS OTC Raw Data".
-cpmeta:plainFileEncoding a owl:NamedIndividual,
+cpmeta:plainFileEncoding a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                            cpmeta:ObjectEncoding;
                          rdfs:label "plain file".
-cpmeta:string a owl:NamedIndividual,
+cpmeta:string a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                 cpmeta:ValueFormat.
-cpmeta:wasAcquiredBy a owl:ObjectProperty;
+cpmeta:wasAcquiredBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:domain cpmeta:DataObject;
                      rdfs:label "was acquired by";
                      rdfs:range cpmeta:DataAcquisition;
-                     rdfs:subPropertyOf nsprov:wasGeneratedBy.
-cpmeta:wasHostedBy a owl:ObjectProperty;
+                     rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasGeneratedBy>.
+cpmeta:wasHostedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:range cpmeta:Organization;
-                   rdfs:subPropertyOf nsprov:wasAssociatedWith.
-cpmeta:wasParticipatedInBy a owl:ObjectProperty;
-                           rdfs:subPropertyOf nsprov:wasAssociatedWith.
-cpmeta:wasPerformedAt a owl:FunctionalProperty,
-                        owl:ObjectProperty;
-                      rdfs:domain nsprov:Activity;
+                   rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasAssociatedWith>.
+cpmeta:wasParticipatedInBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasAssociatedWith>.
+cpmeta:wasPerformedAt a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                        <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain <http://www.w3.org/ns/prov#Activity>;
                       rdfs:label "was performed at";
-                      rdfs:range geosparql:Feature;
-                      rdfs:subPropertyOf nsprov:atLocation.
-cpmeta:wasPerformedBy a owl:FunctionalProperty,
-                        owl:ObjectProperty;
-                      rdfs:subPropertyOf nsprov:wasAssociatedWith.
-cpmeta:wasPerformedWith a owl:ObjectProperty;
+                      rdfs:range <http://www.opengis.net/ont/geosparql#Feature>;
+                      rdfs:subPropertyOf <http://www.w3.org/ns/prov#atLocation>.
+cpmeta:wasPerformedBy a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                        <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasAssociatedWith>.
+cpmeta:wasPerformedWith a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "instrument used to perform data acquisition";
                         rdfs:domain cpmeta:DataAcquisition.
-cpmeta:wasProducedBy a owl:ObjectProperty;
+cpmeta:wasProducedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:domain cpmeta:DataObject;
                      rdfs:label "was produced by";
                      rdfs:range cpmeta:DataProduction;
-                     rdfs:subPropertyOf nsprov:wasGeneratedBy.
-cpmeta:wasSubmittedBy a owl:FunctionalProperty,
-                        owl:ObjectProperty;
+                     rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasGeneratedBy>.
+cpmeta:wasSubmittedBy a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                        <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:domain cpmeta:StaticObject;
                       rdfs:label "was submitted by";
                       rdfs:range cpmeta:DataSubmission;
-                      rdfs:subPropertyOf nsprov:wasGeneratedBy.
-cpmeta:zipArchive a owl:NamedIndividual,
+                      rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasGeneratedBy>.
+cpmeta:zipArchive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     cpmeta:ObjectFormat;
                   rdfs:label "Arbitrary ZIP archive".
-cpmeta:zipEncoding a owl:NamedIndividual,
+cpmeta:zipEncoding a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                      cpmeta:ObjectEncoding;
                    rdfs:label "zip".
 <http://meta.icos-cp.eu/resources/organizations/ATC> cpmeta:hasName "Atmosphere Thematic Centre";
-                                                     a owl:NamedIndividual,
+                                                     a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                                        cpmeta:ThematicCenter;
                                                      rdfs:label "ICOS ATC".
 <http://meta.icos-cp.eu/resources/organizations/ETC> cpmeta:hasName "Ecosystem Thematic Centre";
-                                                     a owl:NamedIndividual,
+                                                     a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                                        cpmeta:ThematicCenter;
                                                      rdfs:label "ICOS ETC".
 <http://meta.icos-cp.eu/resources/organizations/OTC> cpmeta:hasName "Ocean Thematic Centre";
-                                                     a owl:NamedIndividual,
+                                                     a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                                        cpmeta:ThematicCenter;
                                                      rdfs:label "ICOS OTC".
-dc11:contributor a owl:AnnotationProperty.
-dc11:creator a owl:AnnotationProperty.
-dc11:description a owl:AnnotationProperty.
-dc11:issued a owl:AnnotationProperty.
-dc11:modified a owl:AnnotationProperty.
-dc11:publisher a owl:AnnotationProperty.
-dc11:rights a owl:AnnotationProperty.
-dc11:title a owl:AnnotationProperty.
-dcterms:FileFormat a owl:Class.
-dcterms:LicenseDocument a owl:Class.
-dcterms:bibliographicCitation a owl:DatatypeProperty;
-                              rdfs:range rdfs:Literal.
-dcterms:creator a owl:ObjectProperty.
-dcterms:date a owl:DatatypeProperty;
-             rdfs:label "Date";
-             rdfs:range rdfs:Literal.
-dcterms:dateSubmitted a owl:DatatypeProperty;
-                      rdfs:label "Date Submitted";
-                      rdfs:range rdfs:Literal.
-dcterms:description a owl:DatatypeProperty;
-                    rdfs:label "Description";
-                    rdfs:range rdfs:Literal.
-dcterms:format a owl:ObjectProperty;
-               rdfs:label "Format".
-dcterms:hasPart a owl:ObjectProperty.
-dcterms:title a owl:DatatypeProperty;
-              rdfs:range rdfs:Literal.
-vann:preferredNamespacePrefix a owl:AnnotationProperty.
-vann:preferredNamespaceUri a owl:AnnotationProperty.
-schema:image a owl:DatatypeProperty.
-geosparql:Feature a owl:Class;
-                  rdfs:subClassOf geosparql:SpatialObject;
-                  owl:disjointWith geosparql:Geometry.
-geosparql:Geometry a owl:Class;
-                   rdfs:subClassOf geosparql:SpatialObject.
-geosparql:SpatialObject a owl:Class.
-geosparql:hasGeometry a owl:ObjectProperty;
-                      rdfs:domain geosparql:Feature;
-                      rdfs:range geosparql:Geometry.
-geosparql:hasSerialization a owl:DatatypeProperty;
-                           rdfs:domain geosparql:Geometry;
-                           rdfs:range rdfs:Literal.
+<http://purl.org/dc/elements/1.1/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/rights> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/FileFormat> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/dc/terms/LicenseDocument> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/dc/terms/bibliographicCitation> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                 rdfs:range rdfs:Literal.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://purl.org/dc/terms/date> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                rdfs:label "Date";
+                                rdfs:range rdfs:Literal.
+<http://purl.org/dc/terms/dateSubmitted> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                         rdfs:label "Date Submitted";
+                                         rdfs:range rdfs:Literal.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                       rdfs:label "Description";
+                                       rdfs:range rdfs:Literal.
+<http://purl.org/dc/terms/format> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:label "Format".
+<http://purl.org/dc/terms/hasPart> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                 rdfs:range rdfs:Literal.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://schema.org/image> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.opengis.net/ont/geosparql#Feature> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:subClassOf <http://www.opengis.net/ont/geosparql#SpatialObject>;
+                                               <http://www.w3.org/2002/07/owl#disjointWith> <http://www.opengis.net/ont/geosparql#Geometry>.
+<http://www.opengis.net/ont/geosparql#Geometry> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:subClassOf <http://www.opengis.net/ont/geosparql#SpatialObject>.
+<http://www.opengis.net/ont/geosparql#SpatialObject> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.opengis.net/ont/geosparql#hasGeometry> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                   rdfs:domain <http://www.opengis.net/ont/geosparql#Feature>;
+                                                   rdfs:range <http://www.opengis.net/ont/geosparql#Geometry>.
+<http://www.opengis.net/ont/geosparql#hasSerialization> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                        rdfs:domain <http://www.opengis.net/ont/geosparql#Geometry>;
+                                                        rdfs:range rdfs:Literal.
 rdf:PlainLiteral a rdfs:Datatype.
-rdf:type a owl:AnnotationProperty.
+rdf:type a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
 rdfs:Literal a rdfs:Datatype.
-rdfs:comment a owl:AnnotationProperty.
-rdfs:label a owl:AnnotationProperty.
-rdfs:seeAlso a owl:AnnotationProperty.
+rdfs:comment a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:label a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:seeAlso a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
 xsd:boolean a rdfs:Datatype.
 xsd:date a rdfs:Datatype.
 xsd:dateTime a rdfs:Datatype.
@@ -1358,92 +1342,92 @@ xsd:hexBinary a rdfs:Datatype.
 xsd:integer a rdfs:Datatype.
 xsd:nonNegativeInteger a rdfs:Datatype.
 xsd:string a rdfs:Datatype.
-owl:Thing a owl:Class.
-skos:Concept a owl:Class.
-skos:broader a owl:ObjectProperty;
-             rdfs:label "has broader".
-skos:closeMatch a owl:ObjectProperty,
-                  owl:SymmetricProperty;
-                rdfs:domain skos:Concept;
-                rdfs:label "close match (SKOS)";
-                rdfs:range skos:Concept.
-skos:exactMatch a owl:ObjectProperty,
-                  owl:TransitiveProperty,
-                  owl:SymmetricProperty;
-                rdfs:domain skos:Concept;
-                rdfs:label "exact match (SKOS)";
-                rdfs:range skos:Concept;
-                rdfs:subPropertyOf skos:closeMatch.
-nsprov:Activity a owl:Class.
-nsprov:Agent a owl:Class.
-nsprov:Entity a owl:Class.
-nsprov:atLocation a owl:ObjectProperty.
-nsprov:endedAtTime a owl:DatatypeProperty;
-                   rdfs:domain nsprov:Activity;
-                   rdfs:label "endedAtTime";
-                   rdfs:range xsd:dateTime.
-nsprov:hadPrimarySource a owl:ObjectProperty;
-                        rdfs:domain nsprov:Entity;
-                        rdfs:range nsprov:Entity.
-nsprov:startedAtTime a owl:DatatypeProperty;
-                     rdfs:domain nsprov:Activity;
-                     rdfs:label "startedAtTime";
-                     rdfs:range xsd:dateTime.
-nsprov:wasAssociatedWith a owl:ObjectProperty;
-                         rdfs:comment "A prov:Agent that had some (unspecified) responsibility for an occurrence of a prov:Activity";
-                         rdfs:domain nsprov:Activity;
-                         rdfs:label "was associated with";
-                         rdfs:range nsprov:Agent.
-nsprov:wasGeneratedBy a owl:ObjectProperty;
-                      rdfs:domain nsprov:Entity;
-                      rdfs:range nsprov:Activity.
-nsprov:wasRevisionOf a owl:ObjectProperty;
-                     rdfs:domain nsprov:Entity;
-                     rdfs:range nsprov:Entity.
-sosa:ObservableProperty a owl:Class.
-sosa:Sensor a owl:Class;
-            rdfs:subClassOf [owl:onProperty ssno:hasDeployment ; 
-                             owl:allValuesFrom ssno:Deployment ; 
-                             a owl:Restriction].
-ssno:Deployment a owl:Class.
-ssno:forProperty a owl:ObjectProperty;
-                 rdfs:label "for property".
-ssno:hasDeployment a owl:ObjectProperty;
-                   rdfs:label "has deployment".
-ssno:hasSubSystem a owl:ObjectProperty;
-                  rdfs:label "has subsystem".
-<https://creativecommons.org/licenses/by/4.0> a owl:NamedIndividual;
+<http://www.w3.org/2002/07/owl#Thing> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2004/02/skos/core#Concept> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2004/02/skos/core#broader> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                              rdfs:label "has broader".
+<http://www.w3.org/2004/02/skos/core#closeMatch> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                   <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                                                 rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept>;
+                                                 rdfs:label "close match (SKOS)";
+                                                 rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>.
+<http://www.w3.org/2004/02/skos/core#exactMatch> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                   <http://www.w3.org/2002/07/owl#TransitiveProperty>,
+                                                   <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                                                 rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept>;
+                                                 rdfs:label "exact match (SKOS)";
+                                                 rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>;
+                                                 rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#closeMatch>.
+<http://www.w3.org/ns/prov#Activity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/ns/prov#Agent> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/ns/prov#Entity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/ns/prov#atLocation> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.w3.org/ns/prov#endedAtTime> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                        rdfs:domain <http://www.w3.org/ns/prov#Activity>;
+                                        rdfs:label "endedAtTime";
+                                        rdfs:range xsd:dateTime.
+<http://www.w3.org/ns/prov#hadPrimarySource> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                             rdfs:domain <http://www.w3.org/ns/prov#Entity>;
+                                             rdfs:range <http://www.w3.org/ns/prov#Entity>.
+<http://www.w3.org/ns/prov#startedAtTime> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                          rdfs:domain <http://www.w3.org/ns/prov#Activity>;
+                                          rdfs:label "startedAtTime";
+                                          rdfs:range xsd:dateTime.
+<http://www.w3.org/ns/prov#wasAssociatedWith> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                              rdfs:comment "A prov:Agent that had some (unspecified) responsibility for an occurrence of a prov:Activity";
+                                              rdfs:domain <http://www.w3.org/ns/prov#Activity>;
+                                              rdfs:label "was associated with";
+                                              rdfs:range <http://www.w3.org/ns/prov#Agent>.
+<http://www.w3.org/ns/prov#wasGeneratedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:domain <http://www.w3.org/ns/prov#Entity>;
+                                           rdfs:range <http://www.w3.org/ns/prov#Activity>.
+<http://www.w3.org/ns/prov#wasRevisionOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                          rdfs:domain <http://www.w3.org/ns/prov#Entity>;
+                                          rdfs:range <http://www.w3.org/ns/prov#Entity>.
+<http://www.w3.org/ns/sosa/ObservableProperty> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/ns/sosa/Sensor> a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/ssn/hasDeployment> ; 
+                                                    <http://www.w3.org/2002/07/owl#allValuesFrom> <http://www.w3.org/ns/ssn/Deployment> ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>].
+<http://www.w3.org/ns/ssn/Deployment> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/ns/ssn/forProperty> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:label "for property".
+<http://www.w3.org/ns/ssn/hasDeployment> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                         rdfs:label "has deployment".
+<http://www.w3.org/ns/ssn/hasSubSystem> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:label "has subsystem".
+<https://creativecommons.org/licenses/by/4.0> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
                                               rdfs:label "vanilla CC BY 4".
-<https://creativecommons.org/publicdomain/zero/1.0/> a owl:NamedIndividual,
-                                                       dcterms:LicenseDocument;
+<https://creativecommons.org/publicdomain/zero/1.0/> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                       <http://purl.org/dc/terms/LicenseDocument>;
                                                      rdfs:label "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication".
-<https://meta.fieldsites.se/ontologies/sites/Station> a owl:Class;
+<https://meta.fieldsites.se/ontologies/sites/Station> a <http://www.w3.org/2002/07/owl#Class>;
                                                       rdfs:label "SITES station";
-                                                      rdfs:subClassOf [owl:onProperty cpmeta:belongsToTheNetworkOf ; 
-                                                                       owl:hasValue <https://meta.fieldsites.se/resources/organizations/SITES_SLU> ; 
-                                                                       a owl:Restriction],
+                                                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> cpmeta:belongsToTheNetworkOf ; 
+                                                                       <http://www.w3.org/2002/07/owl#hasValue> <https://meta.fieldsites.se/resources/organizations/SITES_SLU> ; 
+                                                                       a <http://www.w3.org/2002/07/owl#Restriction>],
                                                                       cpmeta:Station.
-<https://meta.fieldsites.se/ontologies/sites/aquanetPointMeasurementsCsv> a owl:NamedIndividual,
+<https://meta.fieldsites.se/ontologies/sites/aquanetPointMeasurementsCsv> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                                                             cpmeta:ObjectFormat;
                                                                           rdfs:label "AquaNet point measurements csv".
-<https://meta.fieldsites.se/ontologies/sites/delimitedHeaderCsv> a owl:NamedIndividual,
+<https://meta.fieldsites.se/ontologies/sites/delimitedHeaderCsv> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                                                    cpmeta:ObjectFormat;
                                                                  rdfs:label "Character delimited header csv".
-<https://meta.fieldsites.se/ontologies/sites/image> a owl:NamedIndividual,
+<https://meta.fieldsites.se/ontologies/sites/image> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                                       cpmeta:ObjectFormat;
                                                     rdfs:label "Image".
-<https://meta.fieldsites.se/ontologies/sites/sitesLicence> a owl:NamedIndividual,
-                                                             dcterms:LicenseDocument;
+<https://meta.fieldsites.se/ontologies/sites/sitesLicence> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                             <http://purl.org/dc/terms/LicenseDocument>;
                                                            rdfs:label "SITES CCBY4 Data Licence";
                                                            rdfs:seeAlso <https://data.fieldsites.se/licence>;
-                                                           skos:exactMatch <https://creativecommons.org/licenses/by/4.0>.
-<https://meta.fieldsites.se/ontologies/sites/spectralPointCloud> a owl:NamedIndividual,
+                                                           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://creativecommons.org/licenses/by/4.0>.
+<https://meta.fieldsites.se/ontologies/sites/spectralPointCloud> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                                                    cpmeta:ObjectFormat;
                                                                  rdfs:label "SITES Spectral point cloud".
-<https://meta.fieldsites.se/ontologies/sites/zipLidar> a owl:NamedIndividual,
+<https://meta.fieldsites.se/ontologies/sites/zipLidar> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                                          cpmeta:ObjectFormat;
                                                        rdfs:label "Zipped LiDAR data".
 <https://meta.fieldsites.se/resources/organizations/SITES_SLU> cpmeta:hasName "SITES coordination center at SLU";
-                                                               a owl:NamedIndividual,
+                                                               a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                                                  cpmeta:ThematicCenter;
                                                                rdfs:label "SITES at SLU".

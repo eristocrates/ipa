@@ -2,85 +2,81 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix snarm: <http://rdf.myexperiment.org/ontologies/snarm/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
 
-dc11:contributor a owl:AnnotationProperty.
-dc11:creator a owl:AnnotationProperty.
-dc11:date a owl:AnnotationProperty.
-dc11:format a owl:AnnotationProperty.
-dc11:language a owl:AnnotationProperty.
-dc11:publisher a owl:AnnotationProperty.
-dc11:title a owl:AnnotationProperty.
-dcterms:RightsStatement a owl:Class.
-snarm: dc11:contributor "David R Newman";
-       dc11:creator <http://id.ecs.soton.ac.uk/person/9421>;
-       dc11:date "2009-01-28"^^xsd:date;
-       dc11:format "rdf/xml";
-       dc11:language "en";
-       dc11:publisher <http://rdf.myexperiment.org/>;
-       dc11:title "Simple Network Access Rights Management (SNARM) Ontology"@en;
-       a owl:Ontology;
+<http://purl.org/dc/elements/1.1/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/date> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/format> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/language> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/RightsStatement> a <http://www.w3.org/2002/07/owl#Class>.
+snarm: <http://purl.org/dc/elements/1.1/contributor> "David R Newman";
+       <http://purl.org/dc/elements/1.1/creator> <http://id.ecs.soton.ac.uk/person/9421>;
+       <http://purl.org/dc/elements/1.1/date> "2009-01-28"^^xsd:date;
+       <http://purl.org/dc/elements/1.1/format> "rdf/xml";
+       <http://purl.org/dc/elements/1.1/language> "en";
+       <http://purl.org/dc/elements/1.1/publisher> <http://rdf.myexperiment.org/>;
+       <http://purl.org/dc/elements/1.1/title> "Simple Network Access Rights Management (SNARM) Ontology"@en;
+       a <http://www.w3.org/2002/07/owl#Ontology>;
        rdfs:comment " This ontology is designed for representing access rights within a simple network of associated users/groups.";
        rdfs:label "SNARM Ontology v1.1";
-       owl:versionInfo "$Date: 2011/09/02 $",
-                       "".
-snarm:Access a owl:Class;
+       <http://www.w3.org/2002/07/owl#versionInfo> "$Date: 2011/09/02 $",
+                                                   "".
+snarm:Access a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "The Unrestricted Access to an AccessType";
              rdfs:isDefinedBy snarm:;
              rdfs:label "Access";
-             rdfs:subClassOf [owl:onProperty snarm:has-access-type ; 
-                              owl:cardinality "1"^^xsd:nonNegativeInteger ; 
-                              a owl:Restriction];
-             owl:disjointWith snarm:Accesser,
-                              snarm:AccessType,
-                              snarm:Policy.
-snarm:AccessType a owl:Class;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> snarm:has-access-type ; 
+                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>];
+             <http://www.w3.org/2002/07/owl#disjointWith> snarm:Accesser,
+                                                          snarm:AccessType,
+                                                          snarm:Policy.
+snarm:AccessType a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "The AccessType that is being giving, e.g. view, edit, download, etc.";
                  rdfs:isDefinedBy snarm:;
                  rdfs:label "AccessType";
-                 owl:disjointWith snarm:Access,
-                                  snarm:Accesser,
-                                  snarm:Policy.
-snarm:Accesser a owl:Class;
+                 <http://www.w3.org/2002/07/owl#disjointWith> snarm:Access,
+                                                              snarm:Accesser,
+                                                              snarm:Policy.
+snarm:Accesser a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "The Accesser that is getting access";
                rdfs:isDefinedBy snarm:;
                rdfs:label "Accesser";
-               owl:disjointWith snarm:Access,
-                                snarm:AccessType,
-                                snarm:Policy.
-snarm:Policy a owl:Class;
+               <http://www.w3.org/2002/07/owl#disjointWith> snarm:Access,
+                                                            snarm:AccessType,
+                                                            snarm:Policy.
+snarm:Policy a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "A Policy for the access rights to an object for users in the social network";
              rdfs:isDefinedBy snarm:;
              rdfs:label "Policy";
-             rdfs:subClassOf dcterms:RightsStatement;
-             owl:disjointWith snarm:Access,
-                              snarm:Accesser,
-                              snarm:AccessType.
-snarm:RestrictedAccess a owl:Class;
+             rdfs:subClassOf <http://purl.org/dc/terms/RightsStatement>;
+             <http://www.w3.org/2002/07/owl#disjointWith> snarm:Access,
+                                                          snarm:Accesser,
+                                                          snarm:AccessType.
+snarm:RestrictedAccess a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:comment "The restricted Access to an AccessType";
                        rdfs:isDefinedBy snarm:;
                        rdfs:label "RestrictedAccess";
-                       rdfs:subClassOf [owl:onProperty snarm:has-accesser ; 
-                                        owl:cardinality "1"^^xsd:nonNegativeInteger ; 
-                                        a owl:Restriction],
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> snarm:has-accesser ; 
+                                        <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
                                        snarm:Access.
-snarm:has-access a owl:ObjectProperty;
+snarm:has-access a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "An Access that a Policy provides";
                  rdfs:domain snarm:Policy;
                  rdfs:isDefinedBy snarm:;
                  rdfs:label "has-access";
                  rdfs:range snarm:Access.
-snarm:has-access-type a owl:ObjectProperty,
-                        owl:FunctionalProperty;
+snarm:has-access-type a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                        <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                       rdfs:comment "The AccessType an Access provides";
                       rdfs:isDefinedBy snarm:;
                       rdfs:label "has-access-type";
                       rdfs:range snarm:AccessType.
-snarm:has-accesser a owl:ObjectProperty,
-                     owl:FunctionalProperty;
+snarm:has-accesser a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                    rdfs:comment "An Accesser that a Mode provides access to";
                    rdfs:domain snarm:Access;
                    rdfs:isDefinedBy snarm:;

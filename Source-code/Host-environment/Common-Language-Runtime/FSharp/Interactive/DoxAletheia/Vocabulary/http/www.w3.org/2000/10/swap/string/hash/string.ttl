@@ -7,7 +7,6 @@
 @prefix : <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix s: <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix w3: <http://www.w3.org/>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#>.
 
 <http://www.w3.org/2000/10/swap/string> rdfs:comment "String Processing Ontology",

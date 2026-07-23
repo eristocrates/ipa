@@ -8,9 +8,6 @@
 @prefix dc: <http://purl.org/dc/terms/>.
 @prefix vann: <http://purl.org/vocab/vann/>.
 @prefix cito: <http://purl.org/spar/cito/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix acl: <http://www.w3.org/ns/auth/acl#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
 
 acp: dc:description "The Access Control Policy Language (ACP) is a language for describing, controlling, and granting access to resources."@en;
      dc:issued "2022-05-18"^^xsd:date;
@@ -43,7 +40,7 @@ acp:AccessMode dc:description "The ACP specification does not define specific Ac
                a rdfs:Class;
                rdfs:isDefinedBy acp:;
                rdfs:label "Access Mode"@en;
-               rdfs:seeAlso acl:Access.
+               rdfs:seeAlso <http://www.w3.org/ns/auth/acl#Access>.
 acp:AlwaysSatisfiedRestriction dc:description "Defined instances of the Always Satisfied Restriction class are used in Matcher restrictions to indicate that the restriction is always satisfied. The default behaviour of a Matcher is to not be satisfied, so this is the only way to make a Matcher always satisfied."@en;
                                a rdfs:Class;
                                rdfs:isDefinedBy acp:;

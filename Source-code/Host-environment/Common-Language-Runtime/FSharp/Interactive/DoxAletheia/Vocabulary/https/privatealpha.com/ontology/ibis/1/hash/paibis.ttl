@@ -1,0 +1,222 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix paibis: <https://privatealpha.com/ontology/ibis/1#>.
+
+<http://danny.ayers.name/index.rdf#me> <http://xmlns.com/foaf/0.1/name> "Danny Ayers"@en.
+<http://doriantaylor.com/person/dorian-taylor#me> <http://xmlns.com/foaf/0.1/name> "Dorian Taylor"@en.
+<http://hyperdata.org/xmlns/ibis/> <http://purl.org/dc/terms/creator> <http://danny.ayers.name/index.rdf#me>.
+<http://www.cc.gatech.edu/~ellendo/rittel/rittel-issues.pdf> <http://purl.org/dc/terms/creator> "Werner Kunz"@en,
+                                                                                                "Horst Rittel"@en;
+                                                             <http://purl.org/dc/terms/date> "1970"@en;
+                                                             <http://purl.org/dc/terms/title> "Issues as Elements of Information Systems"@en.
+<http://www.cs.hut.fi/Opinnot/T-93.850/2005/Papers/gIBIS1988-conklin.pdf> <http://purl.org/dc/terms/creator> "Michael L. Begeman"@en,
+                                                                                                             "Jeff Conklin"@en;
+                                                                          <http://purl.org/dc/terms/date> "1988"@en;
+                                                                          <http://purl.org/dc/terms/title> "gIBIS: a hypertext tool for exploratory policy discussion"@en.
+<https://privatealpha.com/ontology/ibis/1> a <http://purl.org/ontology/bibo/Webpage>.
+paibis: <http://purl.org/dc/terms/created> "2012-12-11T22:22:53-08:00"^^xsd:dateTime;
+        <http://purl.org/dc/terms/creator> <http://doriantaylor.com/person/dorian-taylor#me>;
+        <http://purl.org/dc/terms/modified> "2018-02-22T03:39:14Z"^^xsd:dateTime,
+                                            "2014-02-24T21:14:13Z"^^xsd:dateTime,
+                                            "2012-12-12T16:04:50-08:00"^^xsd:dateTime;
+        <http://purl.org/dc/terms/title> "IBIS (bis) Vocabulary"@en;
+        <http://purl.org/ontology/bibo/uri> paibis:;
+        <http://purl.org/vocab/vann/preferredNamespacePrefix> "ibis";
+        a <http://www.w3.org/2002/07/owl#Ontology>;
+        rdfs:comment "This document specifies a vocabulary for describing an IBIS (issue-based information system)."@en;
+        rdfs:isDefinedBy paibis:;
+        rdfs:label "IBIS"@en;
+        rdfs:seeAlso <http://en.wikipedia.org/wiki/Issue-Based_Information_System>,
+                     <http://www.cs.hut.fi/Opinnot/T-93.850/2005/Papers/gIBIS1988-conklin.pdf>,
+                     <https://privatealpha.com/ontology/ibis/1.rdf>,
+                     <https://privatealpha.com/ontology/process-model/1#>,
+                     <http://hyperdata.org/xmlns/ibis/>,
+                     <http://dublincore.org/documents/dcmi-terms/>,
+                     <http://www.w3.org/TR/prov-o/>,
+                     <http://www.cc.gatech.edu/~ellendo/rittel/rittel-issues.pdf>,
+                     <https://privatealpha.com/ontology/ibis/1.n3>;
+        <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/2004/02/skos/core#>;
+        <http://www.w3.org/2002/07/owl#versionInfo> "0.3"@en.
+paibis:Argument a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "An Argument is a type of Issue that explicitly supports or refutes a Position."@en;
+                rdfs:isDefinedBy paibis:;
+                rdfs:label "Argument"@en;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> paibis:replaced-by ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> paibis:Argument ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> paibis:replaces ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> paibis:Argument ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                paibis:Issue;
+                <http://www.w3.org/2002/07/owl#disjointWith> paibis:Position;
+                <http://www.w3.org/2004/02/skos/core#usageNote> "An Argument need not only relate in scope to another Argument, but it must only be replaced by another argument."@en.
+paibis:Invariant a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "An Issue or Position can be marked Invariant to denote that it has been deemed outside of the influence of the Agents in the system, i.e., something to be steered around."@en;
+                 rdfs:isDefinedBy paibis:;
+                 rdfs:label "Invariant"@en;
+                 rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+paibis:Issue a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "An Issue is a state of affairs, claimed by one or more Agents to either be a misfit itself, or affecting some other Issue or Position."@en;
+             rdfs:isDefinedBy paibis:;
+             rdfs:label "Issue"@en;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> paibis:replaces ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> paibis:Issue ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             <http://www.w3.org/2004/02/skos/core#Concept>,
+                             [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#narrowerTransitive> ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> paibis:Issue ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> paibis:replaced-by ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> paibis:Issue ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#broaderTransitive> ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> paibis:Issue ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>];
+             <http://www.w3.org/2002/07/owl#disjointWith> paibis:Position.
+paibis:Network a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A network of issues, positions, and arguments."@en;
+               rdfs:isDefinedBy paibis:;
+               rdfs:label "Network"@en;
+               rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
+paibis:Position a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A Position asserts a moral, ethical, pragmatic, or similar kind of assertion, typically identifying what, if anything, should be done about an Issue."@en;
+                rdfs:isDefinedBy paibis:;
+                rdfs:label "Position"@en;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#broaderTransitive> ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> paibis:Position ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#narrowerTransitive> ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> paibis:Position ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> paibis:replaces ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> paibis:Position ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> paibis:replaced-by ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> paibis:Position ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                <http://www.w3.org/2004/02/skos/core#Concept>;
+                <http://www.w3.org/2002/07/owl#disjointWith> paibis:Argument,
+                                                             paibis:Issue.
+paibis:concerns a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "The subject is an issue concerning the object, which can be any resource."@en;
+                rdfs:domain paibis:Issue;
+                rdfs:isDefinedBy paibis:;
+                rdfs:label "concerns"@en;
+                rdfs:range <http://www.w3.org/2002/07/owl#Thing>.
+paibis:endorsed-by a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "A concept can be endorsed by an Agent without said Agent having mentioned or advanced it initially, and without any additional comment."@en;
+                   rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept>;
+                   rdfs:isDefinedBy paibis:;
+                   rdfs:label "endorsed by"@en;
+                   rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+                   <http://www.w3.org/2002/07/owl#inverseOf> paibis:endorses;
+                   <http://www.w3.org/2004/02/skos/core#note> "This term, along with ibis:endorses, enables an Agent to signal its agreement with a concept. To signal disagreement, explain why with an ibis:Argument that ibis:opposes the concept."@en.
+paibis:endorses a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "An Agent can endorse a concept without having initially mentioned or advanced it, and without any additional comment."@en;
+                rdfs:domain <http://xmlns.com/foaf/0.1/Agent>;
+                rdfs:isDefinedBy paibis:;
+                rdfs:label "endorses"@en;
+                rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>;
+                <http://www.w3.org/2002/07/owl#inverseOf> paibis:endorsed-by;
+                <http://www.w3.org/2004/02/skos/core#note> "This term, along with ibis:endorsed-by, enables an Agent to signal its agreement with a concept. To signal disagreement, explain why with an ibis:Argument that ibis:opposes the concept."@en.
+paibis:generalizes a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The subject is a more generic form of the object."@en;
+                   rdfs:isDefinedBy paibis:;
+                   rdfs:label "generalizes"@en;
+                   <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.w3.org/2004/02/skos/core#narrower>;
+                   <http://www.w3.org/2002/07/owl#inverseOf> paibis:specializes;
+                   <http://www.w3.org/2004/02/skos/core#note> "The equivalent property skos:narrower asserts that the object is narrower than the subject, while the subject of ibis:generalizes is more general than the object."@en.
+paibis:opposed-by a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "Indicates a subject position opposed by an object argument."@en;
+                  rdfs:domain paibis:Position;
+                  rdfs:isDefinedBy paibis:;
+                  rdfs:label "opposed by"@en;
+                  rdfs:range paibis:Argument;
+                  <http://www.w3.org/2002/07/owl#inverseOf> paibis:opposes.
+paibis:opposes a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "Indicates a subject argument that opposes an object position."@en;
+               rdfs:domain paibis:Argument;
+               rdfs:isDefinedBy paibis:;
+               rdfs:label "opposes"@en;
+               rdfs:range paibis:Position;
+               <http://www.w3.org/2002/07/owl#inverseOf> paibis:opposed-by.
+paibis:questioned-by a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Indicates a belief called into question by an issue."@en;
+                     rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept>;
+                     rdfs:isDefinedBy paibis:;
+                     rdfs:label "questioned by"@en;
+                     rdfs:range paibis:Issue;
+                     <http://www.w3.org/2002/07/owl#inverseOf> paibis:questions.
+paibis:questions a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Indicates an issue that raises doubt on a belief."@en;
+                 rdfs:domain paibis:Issue;
+                 rdfs:isDefinedBy paibis:;
+                 rdfs:label "questions"@en;
+                 rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>;
+                 <http://www.w3.org/2002/07/owl#inverseOf> paibis:questioned-by.
+paibis:replaced-by a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Indicates when a concept is replaced by another concept of the same type."@en;
+                   rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept>;
+                   rdfs:isDefinedBy paibis:;
+                   rdfs:label "replaced by"@en;
+                   rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>;
+                   rdfs:subPropertyOf <http://purl.org/dc/terms/isReplacedBy>;
+                   <http://www.w3.org/2002/07/owl#inverseOf> paibis:replaces.
+paibis:replaces a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Indicates when a concept replaces another concept of the same type."@en;
+                rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept>;
+                rdfs:isDefinedBy paibis:;
+                rdfs:label "replaces"@en;
+                rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>;
+                rdfs:subPropertyOf <http://purl.org/dc/terms/replaces>;
+                <http://www.w3.org/2002/07/owl#inverseOf> paibis:replaced-by.
+paibis:responds-to a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Indicates an issue to which the subject position responds."@en;
+                   rdfs:domain paibis:Position;
+                   rdfs:isDefinedBy paibis:;
+                   rdfs:label "responds to"@en;
+                   rdfs:range paibis:Issue;
+                   <http://www.w3.org/2002/07/owl#inverseOf> paibis:response.
+paibis:response a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Indicates a position that responds to the subject issue."@en;
+                rdfs:domain paibis:Issue;
+                rdfs:isDefinedBy paibis:;
+                rdfs:label "response"@en;
+                rdfs:range paibis:Position;
+                <http://www.w3.org/2002/07/owl#inverseOf> paibis:responds-to.
+paibis:specializes a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The subject is a more specific form of the object."@en;
+                   rdfs:isDefinedBy paibis:;
+                   rdfs:label "specializes"@en;
+                   <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.w3.org/2004/02/skos/core#broader>;
+                   <http://www.w3.org/2002/07/owl#inverseOf> paibis:generalizes;
+                   <http://www.w3.org/2004/02/skos/core#note> "The equivalent property skos:broader asserts that the object is broader than the subject, while the subject of ibis:specializes is more specific than the object."@en.
+paibis:suggested-by a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Indicates when the subject issue is suggested by the object belief."@en;
+                    rdfs:domain paibis:Issue;
+                    rdfs:isDefinedBy paibis:;
+                    rdfs:label "suggested by"@en;
+                    rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>;
+                    <http://www.w3.org/2002/07/owl#inverseOf> paibis:suggests.
+paibis:suggests a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Indicates when the subject belief suggests the object issue."@en;
+                rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept>;
+                rdfs:isDefinedBy paibis:;
+                rdfs:label "suggests"@en;
+                rdfs:range paibis:Issue;
+                <http://www.w3.org/2002/07/owl#inverseOf> paibis:suggested-by.
+paibis:supported-by a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Indicates a subject position supported by an object argument."@en;
+                    rdfs:domain paibis:Position;
+                    rdfs:isDefinedBy paibis:;
+                    rdfs:label "supported by"@en;
+                    rdfs:range paibis:Argument;
+                    <http://www.w3.org/2002/07/owl#inverseOf> paibis:supports.
+paibis:supports a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Indicates a subject argument that supports an object position."@en;
+                rdfs:domain paibis:Argument;
+                rdfs:isDefinedBy paibis:;
+                rdfs:label "supports"@en;
+                rdfs:range paibis:Position;
+                <http://www.w3.org/2002/07/owl#inverseOf> paibis:supported-by.

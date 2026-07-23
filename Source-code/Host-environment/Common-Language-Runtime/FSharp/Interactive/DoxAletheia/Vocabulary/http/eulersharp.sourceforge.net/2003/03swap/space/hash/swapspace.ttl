@@ -1,0 +1,285 @@
+@base <http://eulersharp.sourceforge.net/2003/03swap/space>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dce: <http://purl.org/dc/elements/1.1/>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix spaceobject: <http://sweet.jpl.nasa.gov/2.3/reprSpaceGeometry.owl#>.
+@prefix event: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
+@prefix quant: <http://eulersharp.sourceforge.net/2003/03swap/quantities#>.
+@prefix space: <http://eulersharp.sourceforge.net/2003/03swap/space#>.
+@prefix swapspace: <http://eulersharp.sourceforge.net/2003/03swap/space#>.
+
+<http://eulersharp.sourceforge.net/2003/03swap/space> dce:creator "Hans Cools, MD, Agfa Healthcare, Belgium"@en;
+                                                      dce:description "Formal description of space."@en;
+                                                      dce:format "OWL Full"@en;
+                                                      dce:publisher "Agfa Healthcare/Belgium"@en;
+                                                      dce:title "Space"@en;
+                                                      a owl:Ontology;
+                                                      rdfs:seeAlso <http://www.w3.org/2003/01/geo/wgs84_pos>,
+                                                                   <http://sweet.jpl.nasa.gov/2.3/reprSpaceGeometry.owl>.
+space:Centroid dce:source <http://en.wikipedia.org/wiki/Centroid#>;
+               a rdfs:Class;
+               rdfs:isDefinedBy space:;
+               rdfs:label "centroid"@en;
+               rdfs:subClassOf space:Point;
+               skos:definition """Intersection of all straight lines dividing object X in 2-dimensional space into two parts of equal moment about the line. Informally, it is the \"average\" (arithmetic mean) of all points of X. The definition extends to any object X in n-dimensional space: its centroid is the intersection of all hyperplanes that divide X into two parts of equal moment."""@en.
+space:Curve a rdfs:Class;
+            rdfs:isDefinedBy space:;
+            rdfs:label "curve"@en;
+            rdfs:subClassOf space:OneDimensionalSpatialResource,
+                            spaceobject:Curve;
+            skos:definition "one-dimensional spatial resource consisting of points extending in any direction."@en.
+space:Length dce:source <http://en.wikipedia.org/wiki/Rectangle#>;
+             a rdfs:Class;
+             rdfs:isDefinedBy space:;
+             rdfs:label "length"@en;
+             rdfs:subClassOf space:Side;
+             skos:definition "Longer side of a rectangle."@en.
+space:Line dce:source <http://en.wikipedia.org/wiki/Line#>;
+           a rdfs:Class;
+           rdfs:isDefinedBy space:;
+           rdfs:label "line"@en;
+           rdfs:subClassOf space:Curve,
+                           spaceobject:Line;
+           skos:definition "Straight curve OR curve without curvature OR curve consisting of points extending in one direction."@en.
+space:OneDimensionalSpatialResource a rdfs:Class;
+                                    rdfs:isDefinedBy space:;
+                                    rdfs:label "one-dimensional spatial resource"@en;
+                                    rdfs:subClassOf space:SpatialResource,
+                                                    spaceobject:GeometricalObject_1D;
+                                    skos:definition "Spatial resource having 1 spatial dimension."@en.
+space:OuterSurface a rdfs:Class;
+                   rdfs:isDefinedBy space:;
+                   rdfs:label "outer surface"@en;
+                   rdfs:subClassOf space:Surface;
+                   skos:definition "Outer two-dimensional boundary of a 3-dimensional spatial resource."@en.
+space:Point a rdfs:Class;
+            rdfs:isDefinedBy space:;
+            rdfs:label "spatial point"@en;
+            rdfs:subClassOf space:SpatialResource,
+                            spaceobject:Point;
+            skos:definition "Spatial resource without spatial dimension."@en.
+space:Polygon dce:source <http://en.wikipedia.org/wiki/Polygon#>;
+              a rdfs:Class;
+              rdfs:isDefinedBy space:;
+              rdfs:label "polygon"@en;
+              rdfs:subClassOf space:TwoDimensionalSpatialResource,
+                              spaceobject:Polygon;
+              skos:definition "Flat two-dimensional spatial resource with at least 3 straight lines joined to form a closed chain."@en.
+space:Quadrilateral dce:source <http://en.wikipedia.org/wiki/Quadrilateral#>;
+                    a rdfs:Class;
+                    rdfs:isDefinedBy space:;
+                    rdfs:label "quadrilateral"@en;
+                    rdfs:subClassOf space:Polygon;
+                    skos:definition "Polygon with four sides."@en.
+space:Rectangle dce:source <http://en.wikipedia.org/wiki/Rectangle#>;
+                a rdfs:Class;
+                rdfs:isDefinedBy space:;
+                rdfs:label "rectangle"@en;
+                rdfs:subClassOf space:Quadrilateral,
+                                spaceobject:Rectangle;
+                skos:definition "Quadrilateral with four right angles."@en.
+space:Side dce:source <http://en.wikipedia.org/wiki/Polygon#>;
+           a rdfs:Class;
+           rdfs:isDefinedBy space:;
+           rdfs:label "side"@en;
+           rdfs:subClassOf space:Line;
+           skos:definition "Straight line of a polygon."@en.
+space:SpatialResource a rdfs:Class;
+                      rdfs:isDefinedBy space:;
+                      rdfs:label "spatial resource"@en;
+                      rdfs:subClassOf geo:SpatialThing,
+                                      spaceobject:GeometricalObject;
+                      skos:definition "Resource with 0 to 3 dimensions."@en.
+space:Square dce:source <http://en.wikipedia.org/wiki/Square#>;
+             a rdfs:Class;
+             rdfs:isDefinedBy space:;
+             rdfs:label "square"@en;
+             rdfs:subClassOf space:Rectangle,
+                             spaceobject:Square;
+             skos:definition "Rectangle with two adjacent sides having equal length OR regular quadrilateral."@en.
+space:Surface a rdfs:Class;
+              rdfs:isDefinedBy space:;
+              rdfs:label "surface"@en;
+              rdfs:subClassOf space:TwoDimensionalSpatialResource;
+              skos:definition "Two-dimensional boundary of a 3-dimensional spatial resource."@en.
+space:ThreeDimensionalSpatialResource a rdfs:Class;
+                                      rdfs:isDefinedBy space:;
+                                      rdfs:label "three-dimensional spatial resource"@en;
+                                      rdfs:subClassOf space:SpatialResource,
+                                                      spaceobject:GeometricalObject_3D;
+                                      skos:definition "Spatial resource having 3 spatial dimensions."@en.
+space:Transfer a rdfs:Class;
+               rdfs:isDefinedBy space:;
+               rdfs:label "transfer"@en;
+               rdfs:subClassOf [a owl:Restriction ; 
+                                owl:onProperty event:outputOf ; 
+                                owl:allValuesFrom space:Transferring];
+               skos:definition "Something brought from one place to another."@en.
+space:Transferring a rdfs:Class;
+                   rdfs:isDefinedBy space:;
+                   rdfs:label "transferring"@en;
+                   rdfs:subClassOf event:Action;
+                   skos:definition "Bringing something from one place to another."@en.
+space:TwoDimensionalSpatialResource a rdfs:Class;
+                                    rdfs:isDefinedBy space:;
+                                    rdfs:label "two-dimensional spatial resource"@en;
+                                    rdfs:subClassOf space:SpatialResource,
+                                                    spaceobject:GeometricalObject_2D;
+                                    skos:definition "Spatial resource having 2 spatial dimensions."@en.
+space:Width dce:source <http://en.wikipedia.org/wiki/Rectangle#>;
+            a rdfs:Class;
+            rdfs:isDefinedBy space:;
+            rdfs:label "width"@en;
+            rdfs:subClassOf space:Side;
+            skos:definition "Shorter side of a rectangle."@en.
+space:XCoordinate a rdfs:Class;
+                  rdfs:isDefinedBy space:;
+                  rdfs:label "X coordinate"@en;
+                  rdfs:subClassOf quant:Length;
+                  skos:definition "X coordinate in a Cartesian coordinate system."@en.
+space:YCoordinate a rdfs:Class;
+                  rdfs:isDefinedBy space:;
+                  rdfs:label "Y coordinate"@en;
+                  rdfs:subClassOf quant:Length;
+                  skos:definition "Y coordinate in a Cartesian coordinate system."@en.
+space:ZCoordinate a rdfs:Class;
+                  rdfs:isDefinedBy space:;
+                  rdfs:label "Z coordinate"@en;
+                  rdfs:subClassOf quant:Length;
+                  skos:definition "Z coordinate in a Cartesian coordinate system."@en.
+space:containedBy a owl:ObjectProperty;
+                  rdfs:domain dct:PhysicalResource;
+                  rdfs:isDefinedBy space:;
+                  rdfs:range dct:PhysicalResource;
+                  owl:inverseOf space:contains;
+                  skos:definition "Specifying something physically containing something else."@en.
+space:contains a owl:ObjectProperty;
+               rdfs:domain dct:PhysicalResource;
+               rdfs:isDefinedBy space:;
+               rdfs:range dct:PhysicalResource;
+               owl:propertyChainAxiom (space:contains
+                                       foaf:member);
+               skos:definition "Specifying something physically contained by something else."@en.
+space:from a owl:ObjectProperty;
+           rdfs:domain space:Transferring;
+           rdfs:isDefinedBy space:;
+           rdfs:range space:SpatialResource;
+           skos:definition "Specifying a location something is being transferred from."@en.
+space:hasCentroid a owl:ObjectProperty;
+                  rdfs:domain space:SpatialResource;
+                  rdfs:isDefinedBy space:;
+                  rdfs:range space:Centroid;
+                  rdfs:subPropertyOf space:hasPoint;
+                  skos:definition "Specifying a centroid of a spatial thing."@en.
+space:hasLength a owl:ObjectProperty;
+                rdfs:domain space:Rectangle;
+                rdfs:isDefinedBy space:;
+                rdfs:range space:Length;
+                skos:definition "Specifying a length of a rectangle."@en.
+space:hasLowerLeftAngle a owl:ObjectProperty;
+                        rdfs:domain space:Rectangle;
+                        rdfs:isDefinedBy space:;
+                        rdfs:range space:Point;
+                        rdfs:subPropertyOf space:hasPoint;
+                        skos:definition "Specifying a lower left angle of a rectangle."@en.
+space:hasPoint a owl:ObjectProperty;
+               rdfs:domain space:SpatialResource;
+               rdfs:isDefinedBy space:;
+               rdfs:range space:Point;
+               rdfs:subPropertyOf space:whereinLocated;
+               skos:definition "Specifying a point of a spatial resource."@en.
+space:hasPosition a owl:ObjectProperty;
+                  rdfs:comment "A position is described by 0 to n coordinates."@en;
+                  rdfs:domain space:SpatialResource;
+                  rdfs:isDefinedBy space:;
+                  rdfs:range space:Point;
+                  rdfs:subPropertyOf geo:location;
+                  skos:definition "Specifying a position of a spatial resource."@en.
+space:hasSide a owl:ObjectProperty;
+              rdfs:domain space:Polygon;
+              rdfs:isDefinedBy space:;
+              rdfs:range space:Side;
+              skos:definition "Specifying a side of a polygon."@en.
+space:hasUpperLeftAngle a owl:ObjectProperty;
+                        rdfs:domain space:Rectangle;
+                        rdfs:isDefinedBy space:;
+                        rdfs:range space:Point;
+                        rdfs:subPropertyOf space:hasPoint;
+                        skos:definition "Specifying an upper left angle of a rectangle."@en.
+space:hasWidth a owl:ObjectProperty;
+               rdfs:domain space:Rectangle;
+               rdfs:isDefinedBy space:;
+               rdfs:range space:Width;
+               skos:definition "Specifying a width of a rectangle."@en.
+space:hasXCoordinate a owl:ObjectProperty;
+                     rdfs:domain space:Point;
+                     rdfs:isDefinedBy space:;
+                     rdfs:range space:XCoordinate;
+                     rdfs:subPropertyOf quant:hasLength;
+                     skos:definition "Specifying an X coordinate of a point in space."@en.
+space:hasYCoordinate a owl:ObjectProperty;
+                     rdfs:domain space:Point;
+                     rdfs:isDefinedBy space:;
+                     rdfs:range space:YCoordinate;
+                     rdfs:subPropertyOf quant:hasLength;
+                     skos:definition "Specifying a Y coordinate of a point in space."@en.
+space:hasZCoordinate a owl:ObjectProperty;
+                     rdfs:domain space:Point;
+                     rdfs:isDefinedBy space:;
+                     rdfs:range space:ZCoordinate;
+                     rdfs:subPropertyOf quant:hasLength;
+                     skos:definition "Specifying a Z coordinate of a point in space."@en.
+space:locatedIn a owl:ObjectProperty;
+                rdfs:domain space:SpatialResource;
+                rdfs:isDefinedBy space:;
+                rdfs:range space:SpatialResource;
+                skos:definition "Specifying a spatial resource wherein a spatial resource is located."@en.
+space:locatedOn a owl:ObjectProperty;
+                rdfs:domain space:SpatialResource;
+                rdfs:isDefinedBy space:;
+                rdfs:range space:Surface;
+                skos:definition "Specifying a surface whereon a spatial resource is located."@en.
+space:to a owl:ObjectProperty;
+         rdfs:domain space:Transferring;
+         rdfs:isDefinedBy space:;
+         rdfs:range space:SpatialResource;
+         skos:definition "Specifying a location something is being transferred to."@en.
+space:transferOf a owl:ObjectProperty;
+                 rdfs:domain space:Transfer;
+                 rdfs:isDefinedBy space:;
+                 rdfs:range rdfs:Resource;
+                 rdfs:subPropertyOf event:hasObject;
+                 skos:definition "Specifying something transferred."@en.
+space:transferredFrom a owl:ObjectProperty;
+                      rdfs:domain rdfs:Resource;
+                      rdfs:isDefinedBy space:;
+                      rdfs:range space:SpatialResource;
+                      skos:definition "Specifying a location something is transferred from."@en.
+space:transferredTo a owl:ObjectProperty;
+                    rdfs:domain rdfs:Resource;
+                    rdfs:isDefinedBy space:;
+                    rdfs:range space:SpatialResource;
+                    skos:definition "Specifying a location something is transferred to."@en.
+space:transferringOf a owl:ObjectProperty;
+                     rdfs:domain space:Transferring;
+                     rdfs:isDefinedBy space:;
+                     rdfs:range rdfs:Resource;
+                     rdfs:subPropertyOf event:hasOutputObject;
+                     skos:definition "Specifying something transferred in a transferring."@en.
+space:whereinLocated a owl:ObjectProperty;
+                     rdfs:domain space:SpatialResource;
+                     rdfs:isDefinedBy space:;
+                     rdfs:range space:SpatialResource;
+                     skos:definition "Specifying a spatial resource located in a spatial resource."@en.
+space:whereonLocated a owl:ObjectProperty;
+                     rdfs:domain space:Surface;
+                     rdfs:isDefinedBy space:;
+                     rdfs:range space:SpatialResource;
+                     skos:definition "Specifying a spatial resource located on a surface."@en.

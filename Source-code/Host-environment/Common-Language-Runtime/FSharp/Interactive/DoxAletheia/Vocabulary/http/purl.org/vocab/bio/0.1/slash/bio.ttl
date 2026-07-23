@@ -1,25 +1,9 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix lode: <http://linkedevents.org/ontology/>.
-@prefix label: <http://purl.org/net/vocab/2004/03/label#>.
-@prefix mo: <http://purl.org/ontology/mo/>.
 @prefix bio: <http://purl.org/vocab/bio/0.1/>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix time: <http://www.w3.org/2006/time#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix open: <http://open.vocab.org/terms/>.
-@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
-@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix rel: <http://purl.org/vocab/relationship/>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 
-<file:///var/www/vocab.org/www/htdocs/bio/> dcterms:type dcmitype:Text;
+<file:///var/www/vocab.org/www/htdocs/bio/> <http://purl.org/dc/terms/type> <http://purl.org/dc/dcmitype/Text>;
                                             <http://web.resource.org/cc/license> <http://creativecommons.org/licenses/by/1.0/>;
                                             a <http://web.resource.org/cc/Work>.
 <http://creativecommons.org/licenses/by/1.0/> <http://web.resource.org/cc/permits> <http://web.resource.org/cc/Reproduction>,
@@ -28,15 +12,15 @@
                                               <http://web.resource.org/cc/requires> <http://web.resource.org/cc/Notice>,
                                                                                     <http://web.resource.org/cc/Attribution>;
                                               a <http://web.resource.org/cc/License>.
-<http://iandavis.com/id/me> a foaf:Person;
-                            foaf:name "Ian Davis".
+<http://iandavis.com/id/me> a <http://xmlns.com/foaf/0.1/Person>;
+                            <http://xmlns.com/foaf/0.1/name> "Ian Davis".
 <http://lists.foaf-project.org/mailman/listinfo/foaf-dev> rdfs:label "FOAF-DEV mailing list".
-bio: open:discussionList <http://lists.foaf-project.org/mailman/listinfo/foaf-dev>;
-     dcterms:abstract "This document describes a vocabulary for describing biographical information about people, both living and dead. "@en;
-     dcterms:creator <http://iandavis.com/id/me>,
-                     "David Galbraith";
-     dcterms:date "2010-05-10"^^xsd:date;
-     dcterms:description """<div>
+bio: <http://open.vocab.org/terms/discussionList> <http://lists.foaf-project.org/mailman/listinfo/foaf-dev>;
+     <http://purl.org/dc/terms/abstract> "This document describes a vocabulary for describing biographical information about people, both living and dead. "@en;
+     <http://purl.org/dc/terms/creator> <http://iandavis.com/id/me>,
+                                        "David Galbraith";
+     <http://purl.org/dc/terms/date> "2010-05-10"^^xsd:date;
+     <http://purl.org/dc/terms/description> """<div>
         
         <p>The BIO vocabulary contains terms useful for finding out more about people and their backgrounds and has some cross-over into genealogical information. 
         The approach taken is to describe a person's life as a series of interconnected key events, around which other information can be woven. 
@@ -60,115 +44,115 @@ bio: open:discussionList <http://lists.foaf-project.org/mailman/listinfo/foaf-de
         <p><figure><img src=\"/bio/timelines.png\"></img><br></br>Figure: Biography Vocabulary Timelines(<a href=\"http://vocab.org/bio/timelines.png\">PNG version</a>, <a href=\"http://vocab.org/bio/timelines.svg\">SVG version</a>)</figure></p>
         <p>Please see <a href=\"https://github.com/iand/vocab-bio\">https://github.com/iand/vocab-bio</a> for the master version of this vocabulary.</p>
       </div>"""^^rdf:XMLLiteral;
-     dcterms:identifier "http://purl.org/vocab/bio/0.1/schema";
-     dcterms:issued "2003-03-07"^^xsd:date;
-     dcterms:rights "Copyright © 2002-2010 Ian Davis and David Galbraith";
-     dcterms:title "BIO: A vocabulary for biographical information"@en;
-     vann:example <http://purl.org/vocab/bio/examples/1>;
-     vann:preferredNamespacePrefix "bio";
-     vann:preferredNamespaceUri "http://purl.org/vocab/bio/0.1/";
-     vann:termGroup bio:termgroup2,
-                    bio:termgroup5,
-                    bio:termgroup4,
-                    bio:termgroup1,
-                    bio:termgroup3;
-     a owl:Ontology;
-     skos:changeNote [dcterms:date "2004-03-05" ; 
-                      dcterms:creator "Ian Davis" ; 
-                      rdf:value "Added Creative Commons license"],
-                     [dcterms:date "2009-05-19" ; 
-                      dcterms:creator "Ian Davis" ; 
-                      rdf:value "Minor changes to improve publishing process"],
-                     [dcterms:date "2010-05-20" ; 
-                      dcterms:creator "Ian Davis" ; 
-                      rdf:value "Batch of revisions based on community feedback"],
-                     [dcterms:date "2011-06-14" ; 
-                      dcterms:creator "Ian Davis" ; 
-                      rdf:value "Expanded description and added diagrams"],
-                     [dcterms:date "2005-04-01" ; 
-                      dcterms:creator "Ian Davis" ; 
-                      rdf:value "Added examples"],
-                     [dcterms:date "2010-04-20" ; 
-                      dcterms:creator "Ian Davis" ; 
-                      rdf:value "Added change history"];
-     skos:historyNote [dcterms:date "2003-07-28" ; 
-                       dcterms:creator "Ian Davis" ; 
-                       rdf:value "Added keywords property"],
-                      [dcterms:date "2010-06-06" ; 
-                       dcterms:creator "Ian Davis" ; 
-                       rdf:value "Added subproperty and equivalent property relations for bio:father, bio:mother and bio:child"],
-                      [dcterms:date "2010-05-10" ; 
-                       dcterms:creator "Ian Davis" ; 
-                       rdf:value "Major expansion of properties and classes"],
-                      [dcterms:date "2011-06-14" ; 
-                       dcterms:creator "Ian Davis" ; 
-                       rdf:value "Added bio:Relationship class and properties"],
-                      [dcterms:date "2011-06-10" ; 
-                       dcterms:creator "Ian Davis" ; 
-                       rdf:value "Added bio:Formation and bio:Disbanding events"],
-                      [dcterms:date "2011-06-14" ; 
-                       dcterms:creator "Alexandre Passant" ; 
-                       rdf:value "Added properties for Birth and Death Event types, motivated by JSON serialisations of RDF"],
-                      [dcterms:date "2011-06-10" ; 
-                       dcterms:creator "Ian Davis" ; 
-                       rdf:value "Added bio:Performance event"],
-                      [dcterms:date "2010-06-05" ; 
-                       dcterms:creator "Ian Davis" ; 
-                       rdf:value "Added biography property"].
-bio:Accession dcterms:issued "2010-05-03";
-              a owl:Class;
+     <http://purl.org/dc/terms/identifier> "http://purl.org/vocab/bio/0.1/schema";
+     <http://purl.org/dc/terms/issued> "2003-03-07"^^xsd:date;
+     <http://purl.org/dc/terms/rights> "Copyright © 2002-2010 Ian Davis and David Galbraith";
+     <http://purl.org/dc/terms/title> "BIO: A vocabulary for biographical information"@en;
+     <http://purl.org/vocab/vann/example> <http://purl.org/vocab/bio/examples/1>;
+     <http://purl.org/vocab/vann/preferredNamespacePrefix> "bio";
+     <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/vocab/bio/0.1/";
+     <http://purl.org/vocab/vann/termGroup> bio:termgroup2,
+                                            bio:termgroup5,
+                                            bio:termgroup4,
+                                            bio:termgroup1,
+                                            bio:termgroup3;
+     a <http://www.w3.org/2002/07/owl#Ontology>;
+     <http://www.w3.org/2004/02/skos/core#changeNote> [<http://purl.org/dc/terms/date> "2004-03-05" ; 
+                                                       <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                       rdf:value "Added Creative Commons license"],
+                                                      [<http://purl.org/dc/terms/date> "2009-05-19" ; 
+                                                       <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                       rdf:value "Minor changes to improve publishing process"],
+                                                      [<http://purl.org/dc/terms/date> "2010-05-20" ; 
+                                                       <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                       rdf:value "Batch of revisions based on community feedback"],
+                                                      [<http://purl.org/dc/terms/date> "2011-06-14" ; 
+                                                       <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                       rdf:value "Expanded description and added diagrams"],
+                                                      [<http://purl.org/dc/terms/date> "2005-04-01" ; 
+                                                       <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                       rdf:value "Added examples"],
+                                                      [<http://purl.org/dc/terms/date> "2010-04-20" ; 
+                                                       <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                       rdf:value "Added change history"];
+     <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/terms/date> "2003-07-28" ; 
+                                                        <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                        rdf:value "Added keywords property"],
+                                                       [<http://purl.org/dc/terms/date> "2010-06-06" ; 
+                                                        <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                        rdf:value "Added subproperty and equivalent property relations for bio:father, bio:mother and bio:child"],
+                                                       [<http://purl.org/dc/terms/date> "2010-05-10" ; 
+                                                        <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                        rdf:value "Major expansion of properties and classes"],
+                                                       [<http://purl.org/dc/terms/date> "2011-06-14" ; 
+                                                        <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                        rdf:value "Added bio:Relationship class and properties"],
+                                                       [<http://purl.org/dc/terms/date> "2011-06-10" ; 
+                                                        <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                        rdf:value "Added bio:Formation and bio:Disbanding events"],
+                                                       [<http://purl.org/dc/terms/date> "2011-06-14" ; 
+                                                        <http://purl.org/dc/terms/creator> "Alexandre Passant" ; 
+                                                        rdf:value "Added properties for Birth and Death Event types, motivated by JSON serialisations of RDF"],
+                                                       [<http://purl.org/dc/terms/date> "2011-06-10" ; 
+                                                        <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                        rdf:value "Added bio:Performance event"],
+                                                       [<http://purl.org/dc/terms/date> "2010-06-05" ; 
+                                                        <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                        rdf:value "Added biography property"].
+bio:Accession <http://purl.org/dc/terms/issued> "2010-05-03";
+              a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "The event of a person succeeding to the right to hold regal power. This event is often automatic on the death of the previous monarch and is usually followed by a coronation event."@en;
               rdfs:isDefinedBy bio:;
               rdfs:label "Accession"@en;
               rdfs:subClassOf bio:IndividualEvent;
-              status:term_status "unstable".
-bio:Adoption dcterms:issued "2010-05-03";
-             a owl:Class;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Adoption <http://purl.org/dc/terms/issued> "2010-05-03";
+             a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "The event of creating of a legal parent/child relationship that does not exist biologically."@en;
              rdfs:isDefinedBy bio:;
              rdfs:label "Adoption"@en;
              rdfs:subClassOf bio:IndividualEvent;
-             status:term_status "unstable".
-bio:Annulment dcterms:issued "2010-05-03";
-              a owl:Class;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Annulment <http://purl.org/dc/terms/issued> "2010-05-03";
+              a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "The event of declaring a marriage void from the beginning as though it never existed."@en;
               rdfs:isDefinedBy bio:;
               rdfs:label "Annulment"@en;
               rdfs:subClassOf bio:GroupEvent;
-              status:term_status "unstable".
-bio:Assassination dcterms:issued "2010-05-05";
-                  a owl:Class;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Assassination <http://purl.org/dc/terms/issued> "2010-05-05";
+                  a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "The event of a person being deliberately targeted and killed."@en;
                   rdfs:isDefinedBy bio:;
                   rdfs:label "Assassination"@en;
                   rdfs:subClassOf bio:Murder;
-                  status:term_status "unstable".
-bio:Baptism dcterms:issued "2010-05-03";
-            a owl:Class;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Baptism <http://purl.org/dc/terms/issued> "2010-05-03";
+            a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "The ceremonial event held to admit a person to membership of a Christian church."@en;
             rdfs:isDefinedBy bio:;
             rdfs:label "Baptism"@en;
             rdfs:subClassOf bio:IndividualEvent;
-            status:term_status "unstable";
-            skos:changeNote [dcterms:date "2010-05-20" ; 
-                             dcterms:creator "Ian Davis" ; 
-                             rdf:value "Revised comment, replacing 'the Christian church' with 'a Christian church' "].
-bio:BarMitzvah dcterms:issued "2010-05-03";
-               a owl:Class;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable";
+            <http://www.w3.org/2004/02/skos/core#changeNote> [<http://purl.org/dc/terms/date> "2010-05-20" ; 
+                                                              <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                              rdf:value "Revised comment, replacing 'the Christian church' with 'a Christian church' "].
+bio:BarMitzvah <http://purl.org/dc/terms/issued> "2010-05-03";
+               a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "The ceremonial event held when a Jewish boy reaches age 13."@en;
                rdfs:isDefinedBy bio:;
                rdfs:label "BarMitzvah"@en;
                rdfs:subClassOf bio:IndividualEvent;
-               status:term_status "unstable".
-bio:BasMitzvah dcterms:issued "2010-05-03";
-               a owl:Class;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:BasMitzvah <http://purl.org/dc/terms/issued> "2010-05-03";
+               a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment """The ceremonial event held when a Jewish girl reaching age 13, also known as \"Bat Mitzvah.\""""@en;
                rdfs:isDefinedBy bio:;
                rdfs:label "BasMitzvah"@en;
                rdfs:subClassOf bio:IndividualEvent;
-               status:term_status "unstable".
-bio:Birth vann:example [rdfs:label "The birth of Albert Einstein" ; 
-                        rdfs:comment """
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Birth <http://purl.org/vocab/vann/example> [rdfs:label "The birth of Albert Einstein" ; 
+                                                rdfs:comment """
         <pre><code>_:e a bio:Birth 
     ; dc:date \"1879-03-14\"
     ; bio:principal &lt;http://dbpedia.org/resource/Albert_Einstein&gt;
@@ -177,88 +161,88 @@ bio:Birth vann:example [rdfs:label "The birth of Albert Einstein" ;
     ; bio:place &lt;http://dbpedia.org/resource/Ulm&gt;
     .</code></pre>
 """^^rdf:XMLLiteral ; 
-                        a open:SchemaExample];
-          a owl:Class;
+                                                a <http://open.vocab.org/terms/SchemaExample>];
+          a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "The event of a person entering into life."@en;
           rdfs:isDefinedBy bio:;
           rdfs:label "Birth"@en;
           rdfs:subClassOf bio:IndividualEvent;
-          status:term_status "testing";
-          skos:changeNote [dcterms:date "2010-05-04" ; 
-                           dcterms:creator "Ian Davis" ; 
-                           rdf:value "Marked as testing"].
-bio:Burial dcterms:issued "2010-05-03";
-           a owl:Class;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing";
+          <http://www.w3.org/2004/02/skos/core#changeNote> [<http://purl.org/dc/terms/date> "2010-05-04" ; 
+                                                            <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                            rdf:value "Marked as testing"].
+bio:Burial <http://purl.org/dc/terms/issued> "2010-05-03";
+           a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "The event of interring the remains of a person's body into the ground."@en;
            rdfs:isDefinedBy bio:;
            rdfs:label "Burial"@en;
            rdfs:subClassOf bio:IndividualEvent;
-           status:term_status "unstable".
-bio:Coronation dcterms:issued "2010-05-03";
-               a owl:Class;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Coronation <http://purl.org/dc/terms/issued> "2010-05-03";
+               a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "The ceremonial event of a person being invested with regal power to become a monarch."@en;
                rdfs:isDefinedBy bio:;
                rdfs:label "Coronation"@en;
                rdfs:subClassOf bio:IndividualEvent;
-               status:term_status "unstable".
-bio:Cremation dcterms:issued "2010-05-03";
-              vann:example [rdfs:label "The cremation of Albert Einstein" ; 
-                            rdfs:comment """
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Cremation <http://purl.org/dc/terms/issued> "2010-05-03";
+              <http://purl.org/vocab/vann/example> [rdfs:label "The cremation of Albert Einstein" ; 
+                                                    rdfs:comment """
         <pre><code>_:e a bio:Cremation 
     ; dc:date \"1955-04-18\"
     ; bio:principal &lt;http://dbpedia.org/resource/Albert_Einstein&gt;
     ; bio:place &lt;http://dbpedia.org/resource/Princeton,_New_Jersey&gt;
     .</code></pre>
 """^^rdf:XMLLiteral ; 
-                            a open:SchemaExample];
-              a owl:Class;
+                                                    a <http://open.vocab.org/terms/SchemaExample>];
+              a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "The event of disposing of the remains of a person's body by fire."@en;
               rdfs:isDefinedBy bio:;
               rdfs:label "Cremation"@en;
               rdfs:subClassOf bio:IndividualEvent;
-              status:term_status "unstable".
-bio:Death vann:example [rdfs:label "The death of Albert Einstein" ; 
-                        rdfs:comment """
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Death <http://purl.org/vocab/vann/example> [rdfs:label "The death of Albert Einstein" ; 
+                                                rdfs:comment """
         <pre><code>_:e a bio:Death 
     ; dc:date \"1955-04-18\"
     ; bio:principal &lt;http://dbpedia.org/resource/Albert_Einstein&gt;
     ; bio:place &lt;http://dbpedia.org/resource/Princeton,_New_Jersey&gt;
     .</code></pre>
 """^^rdf:XMLLiteral ; 
-                        a open:SchemaExample];
-          a owl:Class;
+                                                a <http://open.vocab.org/terms/SchemaExample>];
+          a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "The event of a person's life ending."@en;
           rdfs:isDefinedBy bio:;
           rdfs:label "Death"@en;
           rdfs:subClassOf bio:IndividualEvent;
-          status:term_status "stable";
-          skos:changeNote [dcterms:date "2010-05-04" ; 
-                           dcterms:creator "Ian Davis" ; 
-                           rdf:value "Marked as a stable term"].
-bio:Demotion dcterms:issued "2010-05-03";
-             a owl:Class;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+          <http://www.w3.org/2004/02/skos/core#changeNote> [<http://purl.org/dc/terms/date> "2010-05-04" ; 
+                                                            <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                            rdf:value "Marked as a stable term"].
+bio:Demotion <http://purl.org/dc/terms/issued> "2010-05-03";
+             a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "The event of a person changing the position they hold with an employer to one with less importance or responsibility."@en;
              rdfs:isDefinedBy bio:;
              rdfs:label "Demotion"@en;
              rdfs:subClassOf bio:PositionChange;
-             status:term_status "unstable".
-bio:Disbanding dcterms:issued "2011-06-10";
-               a owl:Class;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Disbanding <http://purl.org/dc/terms/issued> "2011-06-10";
+               a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "The event of a group or organization being disbanded."@en;
                rdfs:isDefinedBy bio:;
                rdfs:label "Disbanding"@en;
                rdfs:subClassOf bio:IndividualEvent;
-               status:term_status "unstable".
-bio:Dismissal dcterms:issued "2010-05-03";
-              a owl:Class;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Dismissal <http://purl.org/dc/terms/issued> "2010-05-03";
+              a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "The event of a person involuntarily giving up their office or position. Dismissal is often perceived to be the employee's fault and may be considered disgraceful."@en;
               rdfs:isDefinedBy bio:;
               rdfs:label "Dismissal"@en;
               rdfs:subClassOf bio:IndividualEvent;
-              status:term_status "unstable".
-bio:Divorce dcterms:issued "2010-05-03";
-            vann:example [rdfs:label "The divorce of Albert Einstein and Mileva Marić" ; 
-                          rdfs:comment """
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Divorce <http://purl.org/dc/terms/issued> "2010-05-03";
+            <http://purl.org/vocab/vann/example> [rdfs:label "The divorce of Albert Einstein and Mileva Marić" ; 
+                                                  rdfs:comment """
         <pre><code>_:e a bio:Divorce 
     ; dc:date \"1919-02-14\"
     ; bio:partner &lt;http://dbpedia.org/resource/Albert_Einstein&gt;
@@ -266,150 +250,150 @@ bio:Divorce dcterms:issued "2010-05-03";
     ; bio:place &lt;http://dbpedia.org/resource/Zurich&gt;
     .</code></pre>
 """^^rdf:XMLLiteral ; 
-                          a open:SchemaExample];
-            a owl:Class;
+                                                  a <http://open.vocab.org/terms/SchemaExample>];
+            a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "The event of legally dissolving a marriage."@en;
             rdfs:isDefinedBy bio:;
             rdfs:label "Divorce"@en;
             rdfs:subClassOf bio:GroupEvent;
-            status:term_status "unstable".
-bio:Emigration dcterms:issued "2010-05-03";
-               vann:example [rdfs:label "Albert Einstein emigrating to the United States" ; 
-                             rdfs:comment """
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Emigration <http://purl.org/dc/terms/issued> "2010-05-03";
+               <http://purl.org/vocab/vann/example> [rdfs:label "Albert Einstein emigrating to the United States" ; 
+                                                     rdfs:comment """
         <pre><code>_:e a bio:Emigration 
     ; dc:date \"1933\"^^xsd:gYear
     ; bio:principal &lt;http://dbpedia.org/resource/Albert_Einstein&gt;
     ; bio:state &lt;http://dbpedia.org/resource/United_States&gt;
     .</code></pre>
 """^^rdf:XMLLiteral ; 
-                             a open:SchemaExample];
-               a owl:Class;
+                                                     a <http://open.vocab.org/terms/SchemaExample>];
+               a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "The event of a person leaving their homeland with the intent of residing elsewhere."@en;
                rdfs:isDefinedBy bio:;
                rdfs:label "Emigration"@en;
                rdfs:subClassOf bio:IndividualEvent;
-               status:term_status "unstable".
-bio:Employment dcterms:issued "2010-05-03";
-               a owl:Class;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Employment <http://purl.org/dc/terms/issued> "2010-05-03";
+               a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "The event of a person entering an occupational relationship with an employer."@en;
                rdfs:isDefinedBy bio:;
                rdfs:label "Employment"@en;
                rdfs:subClassOf bio:IndividualEvent;
-               status:term_status "unstable".
-bio:Enrolment dcterms:issued "2010-05-03";
-              a owl:Class;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Enrolment <http://purl.org/dc/terms/issued> "2010-05-03";
+              a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "The event of a person initiating attendence to a school or other place of learning."@en;
               rdfs:isDefinedBy bio:;
               rdfs:label "Enrolment"@en;
               rdfs:subClassOf bio:IndividualEvent;
-              status:term_status "unstable".
-bio:Event vann:usageNote "This class is intended to describe biographical events, i.e. events in the life of a person."@en;
-          a owl:Class;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Event <http://purl.org/vocab/vann/usageNote> "This class is intended to describe biographical events, i.e. events in the life of a person."@en;
+          a <http://www.w3.org/2002/07/owl#Class>;
           rdfs:comment "An event is an occurrence that brings about a change in the state of affairs for one or more people and/or other agents. Events are assumed to occur over a period of time and may not have precise start and end points."@en;
           rdfs:isDefinedBy bio:;
           rdfs:label "Event"@en;
-          rdfs:subClassOf event:Event,
-                          lode:Event,
-                          dcmitype:Event,
+          rdfs:subClassOf <http://purl.org/NET/c4dm/event.owl#Event>,
+                          <http://linkedevents.org/ontology/Event>,
+                          <http://purl.org/dc/dcmitype/Event>,
                           <http://sw.opencyc.org/2009/04/07/concept/en/Event>;
-          status:term_status "testing";
-          skos:changeNote [dcterms:date "2010-05-04" ; 
-                           dcterms:creator "Ian Davis" ; 
-                           rdf:value "Marked as a stable term"],
-                          [dcterms:date "2010-05-20" ; 
-                           dcterms:creator "Ian Davis" ; 
-                           rdf:value "Marked as testing status"];
-          skos:historyNote [dcterms:date "2010-05-04" ; 
-                            dcterms:creator "Ian Davis" ; 
-                            rdf:value "Made equivalent to cyc:Event"],
-                           [dcterms:date "2010-05-20" ; 
-                            dcterms:creator "Ian Davis" ; 
-                            rdf:value "Removed subclass of owl-time ProperInteval"].
-bio:Execution dcterms:issued "2010-05-05";
-              a owl:Class;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing";
+          <http://www.w3.org/2004/02/skos/core#changeNote> [<http://purl.org/dc/terms/date> "2010-05-04" ; 
+                                                            <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                            rdf:value "Marked as a stable term"],
+                                                           [<http://purl.org/dc/terms/date> "2010-05-20" ; 
+                                                            <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                            rdf:value "Marked as testing status"];
+          <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/terms/date> "2010-05-04" ; 
+                                                             <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                             rdf:value "Made equivalent to cyc:Event"],
+                                                            [<http://purl.org/dc/terms/date> "2010-05-20" ; 
+                                                             <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                             rdf:value "Removed subclass of owl-time ProperInteval"].
+bio:Execution <http://purl.org/dc/terms/issued> "2010-05-05";
+              a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "The event of a person being deliberately killed as punishment."@en;
               rdfs:isDefinedBy bio:;
               rdfs:label "Execution"@en;
               rdfs:subClassOf bio:Death;
-              status:term_status "unstable".
-bio:Formation dcterms:issued "2011-06-10";
-              a owl:Class;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Formation <http://purl.org/dc/terms/issued> "2011-06-10";
+              a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "The event of a group or organization coming into being."@en;
               rdfs:isDefinedBy bio:;
               rdfs:label "Formation"@en;
               rdfs:subClassOf bio:IndividualEvent;
-              status:term_status "unstable".
-bio:Funeral dcterms:issued "2010-05-03";
-            a owl:Class;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Funeral <http://purl.org/dc/terms/issued> "2010-05-03";
+            a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "The event of marking a person's death with a ceremony."@en;
             rdfs:isDefinedBy bio:;
             rdfs:label "Funeral"@en;
             rdfs:subClassOf bio:IndividualEvent;
-            status:term_status "unstable".
-bio:Graduation dcterms:issued "2010-05-03";
-               vann:example [rdfs:label "Albert Einstein receiving his Doctorate from the University of Zurich" ; 
-                             rdfs:comment """
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Graduation <http://purl.org/dc/terms/issued> "2010-05-03";
+               <http://purl.org/vocab/vann/example> [rdfs:label "Albert Einstein receiving his Doctorate from the University of Zurich" ; 
+                                                     rdfs:comment """
         <pre><code>_:e a bio:Graduation 
     ; dc:date \"1905\"^^xsd:gYear
     ; bio:principal &lt;http://dbpedia.org/resource/Albert_Einstein&gt;
     ; bio:organization &lt;http://dbpedia.org/resource/University_of_Zurich&gt;
     .</code></pre>
 """^^rdf:XMLLiteral ; 
-                             a open:SchemaExample];
-               a owl:Class;
+                                                     a <http://open.vocab.org/terms/SchemaExample>];
+               a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "The event of a person being awarded educational diplomas or degrees."@en;
                rdfs:isDefinedBy bio:;
                rdfs:label "Graduation"@en;
                rdfs:subClassOf bio:IndividualEvent;
-               status:term_status "unstable".
-bio:GroupEvent a owl:Class;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:GroupEvent a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "A type of event that is principally about one or more agents and their partnership. Other agents may be involved but the event is most significant for the partner agent."@en;
                rdfs:isDefinedBy bio:;
                rdfs:label "Group Event"@en;
-               rdfs:subClassOf [owl:onProperty bio:partner ; 
-                                owl:minCardinality "2"^^xsd:nonNegativeInteger ; 
-                                a owl:Restriction],
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> bio:partner ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "2"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
                                bio:Event;
-               status:term_status "unstable".
-bio:Imprisonment dcterms:issued "2010-05-04";
-                 a owl:Class;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Imprisonment <http://purl.org/dc/terms/issued> "2010-05-04";
+                 a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "The event of a person being detained in a jail or prison."@en;
                  rdfs:isDefinedBy bio:;
                  rdfs:label "Imprisonment"@en;
                  rdfs:subClassOf bio:IndividualEvent;
-                 status:term_status "unstable".
-bio:Inauguration dcterms:issued "2010-05-03";
-                 a owl:Class;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Inauguration <http://purl.org/dc/terms/issued> "2010-05-03";
+                 a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "The ceremonial event marking the beginning of a person's term of office as a leader."@en;
                  rdfs:isDefinedBy bio:;
                  rdfs:label "Inauguration"@en;
                  rdfs:subClassOf bio:IndividualEvent;
-                 status:term_status "unstable".
-bio:IndividualEvent a owl:Class;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:IndividualEvent a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "A type of event that is principally about a single person, group or organization. Other agents may be involved but the event is most significant for the principal agent."@en;
                     rdfs:isDefinedBy bio:;
                     rdfs:label "Individual Event"@en;
-                    rdfs:subClassOf [owl:onProperty bio:principal ; 
-                                     owl:cardinality "1"^^xsd:nonNegativeInteger ; 
-                                     a owl:Restriction],
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> bio:principal ; 
+                                     <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
                                     bio:Event;
-                    status:term_status "unstable".
-bio:Interval dcterms:issued "2010-05-03";
-             a owl:Class;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Interval <http://purl.org/dc/terms/issued> "2010-05-03";
+             a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "A extended interval of time related to a particular state of affairs, such as the lifespan of a person or a period of employment."@en;
              rdfs:isDefinedBy bio:;
              rdfs:label "Interval"@en;
-             rdfs:subClassOf time:ProperInterval;
-             status:term_status "unstable".
-bio:Investiture dcterms:issued "2010-05-03";
-                a owl:Class;
+             rdfs:subClassOf <http://www.w3.org/2006/time#ProperInterval>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Investiture <http://purl.org/dc/terms/issued> "2010-05-03";
+                a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "The ceremonial event of a person taking a public office or honour."@en;
                 rdfs:isDefinedBy bio:;
                 rdfs:label "Investiture"@en;
                 rdfs:subClassOf bio:IndividualEvent;
-                status:term_status "unstable".
-bio:Marriage vann:example [rdfs:label "The marriage of Albert Einstein and Mileva Marić" ; 
-                           rdfs:comment """
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Marriage <http://purl.org/vocab/vann/example> [rdfs:label "The marriage of Albert Einstein and Mileva Marić" ; 
+                                                   rdfs:comment """
         <pre><code>_:e a bio:Marriage 
     ; dc:date \"1903\"
     ; bio:partner &lt;http://dbpedia.org/resource/Albert_Einstein&gt;
@@ -417,478 +401,478 @@ bio:Marriage vann:example [rdfs:label "The marriage of Albert Einstein and Milev
     ; bio:place &lt;http://dbpedia.org/resource/Bern&gt;
     .</code></pre>
 """^^rdf:XMLLiteral ; 
-                           a open:SchemaExample];
-             a owl:Class;
+                                                   a <http://open.vocab.org/terms/SchemaExample>];
+             a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "The event of creating uniting the participants into a new family unit, sometimes accompanied by a formal wedding ceremony. This is intended to cover a broad range of marriages including those given formal legal standing, common-law, or by convention. It is not restricted to marriages of two people of the opposite gender, but also includes polygamous and same-sex unions."@en;
              rdfs:isDefinedBy bio:;
              rdfs:label "Marriage"@en;
              rdfs:subClassOf bio:GroupEvent;
-             owl:equivalentClass <http://sw.opencyc.org/2009/04/07/concept/en/WeddingEvent_Generic>;
-             status:term_status "stable";
-             skos:changeNote [dcterms:date "2010-05-04" ; 
-                              dcterms:creator "Ian Davis" ; 
-                              rdf:value "Marked as a stable term"];
-             skos:historyNote [dcterms:date "2010-05-04" ; 
-                               dcterms:creator "Ian Davis" ; 
-                               rdf:value "Made equivalent to cyc:WeddingEvent_Generic"].
-bio:Murder dcterms:issued "2010-05-05";
-           a owl:Class;
+             <http://www.w3.org/2002/07/owl#equivalentClass> <http://sw.opencyc.org/2009/04/07/concept/en/WeddingEvent_Generic>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+             <http://www.w3.org/2004/02/skos/core#changeNote> [<http://purl.org/dc/terms/date> "2010-05-04" ; 
+                                                               <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                               rdf:value "Marked as a stable term"];
+             <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/terms/date> "2010-05-04" ; 
+                                                                <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                                rdf:value "Made equivalent to cyc:WeddingEvent_Generic"].
+bio:Murder <http://purl.org/dc/terms/issued> "2010-05-05";
+           a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "The event of a person being killed unlawfully with intent by the killer."@en;
            rdfs:isDefinedBy bio:;
            rdfs:label "Murder"@en;
            rdfs:subClassOf bio:Death;
-           status:term_status "unstable".
-bio:NameChange dcterms:issued "2010-05-03";
-               a owl:Class;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:NameChange <http://purl.org/dc/terms/issued> "2010-05-03";
+               a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "The event of a person changing their name."@en;
                rdfs:isDefinedBy bio:;
                rdfs:label "Change of Name"@en;
                rdfs:subClassOf bio:IndividualEvent;
-               status:term_status "unstable".
-bio:Naturalization dcterms:issued "2010-05-03";
-                   vann:example [rdfs:label "Albert Einstein becoming a citizen of the United States" ; 
-                                 rdfs:comment """
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Naturalization <http://purl.org/dc/terms/issued> "2010-05-03";
+                   <http://purl.org/vocab/vann/example> [rdfs:label "Albert Einstein becoming a citizen of the United States" ; 
+                                                         rdfs:comment """
         <pre><code>_:e a bio:Emigration 
     ; dc:date \"1940\"
     ; bio:principal &lt;http://dbpedia.org/resource/Albert_Einstein&gt;
     ; bio:state &lt;http://dbpedia.org/resource/United_States&gt;
     .</code></pre>
 """^^rdf:XMLLiteral ; 
-                                 a open:SchemaExample];
-                   a owl:Class;
+                                                         a <http://open.vocab.org/terms/SchemaExample>];
+                   a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "The event of a person obtaining citizenship. Note that the place the naturalization event occurs at may be different from the state the person is obtaining citizenship of. "@en;
                    rdfs:isDefinedBy bio:;
                    rdfs:label "Naturalization"@en;
                    rdfs:subClassOf bio:IndividualEvent;
-                   status:term_status "unstable".
-bio:Ordination dcterms:issued "2010-05-03";
-               a owl:Class;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Ordination <http://purl.org/dc/terms/issued> "2010-05-03";
+               a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "The ceremonial event held when a person receives authority to act in religious matters."@en;
                rdfs:isDefinedBy bio:;
                rdfs:label "Ordination"@en;
                rdfs:subClassOf bio:IndividualEvent;
-               status:term_status "unstable".
-bio:Performance dcterms:issued "2011-06-12";
-                a owl:Class;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Performance <http://purl.org/dc/terms/issued> "2011-06-12";
+                a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "The event of an individual or a group of performers performing. Examples include concerts, plays, recitals, recordings, busking etc."@en;
                 rdfs:isDefinedBy bio:;
                 rdfs:label "Performance"@en;
                 rdfs:subClassOf bio:GroupEvent;
-                owl:equivalentClass mo:Performance;
-                status:term_status "unstable".
-bio:PositionChange dcterms:issued "2010-05-03";
-                   a owl:Class;
+                <http://www.w3.org/2002/07/owl#equivalentClass> <http://purl.org/ontology/mo/Performance>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:PositionChange <http://purl.org/dc/terms/issued> "2010-05-03";
+                   a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "The event of a person changing the position they hold with an employer."@en;
                    rdfs:isDefinedBy bio:;
                    rdfs:label "Change of Position"@en;
                    rdfs:subClassOf bio:IndividualEvent;
-                   status:term_status "unstable".
-bio:Promotion dcterms:issued "2010-05-03";
-              a owl:Class;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Promotion <http://purl.org/dc/terms/issued> "2010-05-03";
+              a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "The event of a person changing the position they hold with an employer to one with more importance or responsibility."@en;
               rdfs:isDefinedBy bio:;
               rdfs:label "Promotion"@en;
               rdfs:subClassOf bio:PositionChange;
-              status:term_status "unstable".
-bio:Redundancy dcterms:issued "2010-05-03";
-               a owl:Class;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Redundancy <http://purl.org/dc/terms/issued> "2010-05-03";
+               a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "The event of a person involuntarily giving up an office or position that is no longer needed. Redundancy is usually perceived to be the employer's fault and is usually due to conditions outside of the employee's control."@en;
                rdfs:isDefinedBy bio:;
                rdfs:label "Redundancy"@en;
                rdfs:subClassOf bio:IndividualEvent;
-               status:term_status "unstable".
-bio:Relationship dcterms:issued "2011-06-14";
-                 a owl:Class;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Relationship <http://purl.org/dc/terms/issued> "2011-06-14";
+                 a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "A particular type of connection existing between people, groups or organizations related to or having dealings with each other."@en;
                  rdfs:isDefinedBy bio:;
                  rdfs:label "Agent Relationship"@en;
-                 owl:equivalentClass rel:Relationship;
-                 status:term_status "unstable".
-bio:Resignation dcterms:issued "2010-05-03";
-                a owl:Class;
+                 <http://www.w3.org/2002/07/owl#equivalentClass> <http://purl.org/vocab/relationship/Relationship>;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Resignation <http://purl.org/dc/terms/issued> "2010-05-03";
+                a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "The event of a person voluntarily giving up or quitting their office or position."@en;
                 rdfs:isDefinedBy bio:;
                 rdfs:label "Resignation"@en;
                 rdfs:subClassOf bio:IndividualEvent;
-                status:term_status "unstable".
-bio:Retirement dcterms:issued "2010-05-03";
-               a owl:Class;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:Retirement <http://purl.org/dc/terms/issued> "2010-05-03";
+               a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "The event of a person exiting an occupational relationship with an employer after a qualifying time period. In many cultures retirement is expected and even required once the person reaches a particular age."@en;
                rdfs:isDefinedBy bio:;
                rdfs:label "Retirement"@en;
                rdfs:subClassOf bio:IndividualEvent;
-               status:term_status "unstable".
-bio:agent dcterms:issued "2010-05-05";
-          label:plural "Agents"@en;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:agent <http://purl.org/dc/terms/issued> "2010-05-05";
+          <http://purl.org/net/vocab/2004/03/label#plural> "Agents"@en;
           a rdf:Property,
-            owl:ObjectProperty;
+            <http://www.w3.org/2002/07/owl#ObjectProperty>;
           rdfs:comment "A person, organization or group that plays a role in an event."@en;
           rdfs:domain bio:Event;
           rdfs:isDefinedBy bio:;
           rdfs:label "Agent"@en;
-          rdfs:range foaf:Agent;
-          rdfs:subPropertyOf owl:differentFrom;
-          owl:inverseOf bio:event.
-bio:biography dcterms:issued "2010-06-05";
-              vann:usageNote "<p>It is expected that the value of this property is either a literal formatted with HTML markup or a pointer to an HTML document.</p>"^^rdf:XMLLiteral;
+          rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+          rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>;
+          <http://www.w3.org/2002/07/owl#inverseOf> bio:event.
+bio:biography <http://purl.org/dc/terms/issued> "2010-06-05";
+              <http://purl.org/vocab/vann/usageNote> "<p>It is expected that the value of this property is either a literal formatted with HTML markup or a pointer to an HTML document.</p>"^^rdf:XMLLiteral;
               a rdf:Property;
               rdfs:comment "An extended description or account of someone's life."@en;
-              rdfs:domain foaf:Person;
+              rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
               rdfs:isDefinedBy bio:;
               rdfs:label "Biography"@en;
-              status:term_status "unstable".
-bio:birth label:plural "Birth Events"@en;
-          a owl:ObjectProperty,
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:birth <http://purl.org/net/vocab/2004/03/label#plural> "Birth Events"@en;
+          a <http://www.w3.org/2002/07/owl#ObjectProperty>,
             rdf:Property;
           rdfs:comment "An birth event associated with a person, group or organization."@en;
-          rdfs:domain foaf:Agent;
+          rdfs:domain <http://xmlns.com/foaf/0.1/Agent>;
           rdfs:isDefinedBy bio:;
           rdfs:label "Birth Event"@en;
           rdfs:range bio:Birth;
           rdfs:subPropertyOf bio:event,
-                             owl:differentFrom;
-          skos:historyNote [dcterms:date "2011-07-12" ; 
-                            dcterms:creator "Alexandre Passant" ; 
-                            rdf:value "Proposed addition of the property"].
-bio:child dcterms:issued "2010-05-03";
-          label:plural "Children"@en;
-          vann:usageNote """Note that this is a strict definition of child that does not include adopted children, step-children or similar non-biological relationships. The <a href=\"http://purl.org/vocab/relationship\">Relationship</a> vocabulary may be more suitable for broader types of parent/child relation."""^^rdf:XMLLiteral;
+                             <http://www.w3.org/2002/07/owl#differentFrom>;
+          <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/terms/date> "2011-07-12" ; 
+                                                             <http://purl.org/dc/terms/creator> "Alexandre Passant" ; 
+                                                             rdf:value "Proposed addition of the property"].
+bio:child <http://purl.org/dc/terms/issued> "2010-05-03";
+          <http://purl.org/net/vocab/2004/03/label#plural> "Children"@en;
+          <http://purl.org/vocab/vann/usageNote> """Note that this is a strict definition of child that does not include adopted children, step-children or similar non-biological relationships. The <a href=\"http://purl.org/vocab/relationship\">Relationship</a> vocabulary may be more suitable for broader types of parent/child relation."""^^rdf:XMLLiteral;
           a rdf:Property,
-            owl:ObjectProperty;
+            <http://www.w3.org/2002/07/owl#ObjectProperty>;
           rdfs:comment "A biological child of a person. "@en;
-          rdfs:domain foaf:Person;
+          rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
           rdfs:isDefinedBy bio:;
           rdfs:label "Child"@en;
-          rdfs:range foaf:Person;
-          rdfs:subPropertyOf owl:differentFrom;
-          owl:equivalentProperty rel:parentOf;
-          status:term_status "unstable";
-          skos:historyNote [dcterms:date "2010-06-06" ; 
-                            dcterms:creator "Ian Davis" ; 
-                            rdf:value "Made equivalent to rel:parentOf on suggestion of Gautier Poupeau"].
-bio:concludingEvent dcterms:issued "2010-05-06";
-                    label:plural "Concluding Event"@en;
+          rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+          rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>;
+          <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/vocab/relationship/parentOf>;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable";
+          <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/terms/date> "2010-06-06" ; 
+                                                             <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                             rdf:value "Made equivalent to rel:parentOf on suggestion of Gautier Poupeau"].
+bio:concludingEvent <http://purl.org/dc/terms/issued> "2010-05-06";
+                    <http://purl.org/net/vocab/2004/03/label#plural> "Concluding Event"@en;
                     a rdf:Property,
-                      owl:ObjectProperty;
+                      <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:comment "An event that marks the end of an interval and/or relationship. The event changes of the state of affairs that held during the interval. For example a period of study may be concluded by a Graduation event."@en;
                     rdfs:isDefinedBy bio:;
                     rdfs:label "Concluding Event"@en;
                     rdfs:range bio:Event;
-                    rdfs:subPropertyOf owl:differentFrom.
-bio:concurrentEvent dcterms:issued "2010-05-06";
-                    label:plural "Concurrent Events"@en;
-                    a owl:SymmetricProperty,
-                      owl:ObjectProperty,
+                    rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>.
+bio:concurrentEvent <http://purl.org/dc/terms/issued> "2010-05-06";
+                    <http://purl.org/net/vocab/2004/03/label#plural> "Concurrent Events"@en;
+                    a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                      <http://www.w3.org/2002/07/owl#ObjectProperty>,
                       rdf:Property;
                     rdfs:comment "An event that occurs while this event is occurring. The events need not start or conclude at the same times."@en;
                     rdfs:domain bio:Event;
                     rdfs:isDefinedBy bio:;
                     rdfs:label "Concurrent Event"@en;
                     rdfs:range bio:Event;
-                    rdfs:subPropertyOf owl:differentFrom.
-bio:date label:plural "Dates"@en;
-         vann:usageNote """<p>The date should be formatted as specified in <a href=\"http://www.w3.org/TR/NOTE-datetime\">ISO8601</a>.
+                    rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>.
+bio:date <http://purl.org/net/vocab/2004/03/label#plural> "Dates"@en;
+         <http://purl.org/vocab/vann/usageNote> """<p>The date should be formatted as specified in <a href=\"http://www.w3.org/TR/NOTE-datetime\">ISO8601</a>.
     For example: 2003-03-15 corresponds to the 15th March 2003, and 2003-03-15T13:21-05:00 corresponds to 15th March 2003, 8:21 am, US Eastern Standard Time.</p>"""^^rdf:XMLLiteral;
          a rdf:Property;
          rdfs:comment "The date at which an event occurred."@en;
          rdfs:domain bio:Event;
          rdfs:isDefinedBy bio:;
          rdfs:label "Date"@en;
-         rdfs:subPropertyOf dc11:date;
-         status:term_status "stable";
-         skos:changeNote [dcterms:date "2010-05-04" ; 
-                          dcterms:creator "Ian Davis" ; 
-                          rdf:value "Marked as a stable term"],
-                         [dcterms:date "2010-05-03" ; 
-                          dcterms:creator "Ian Davis" ; 
-                          rdf:value "Added a plural label"].
-bio:death label:plural "Death Events"@en;
-          a owl:ObjectProperty,
+         rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+         <http://www.w3.org/2004/02/skos/core#changeNote> [<http://purl.org/dc/terms/date> "2010-05-04" ; 
+                                                           <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                           rdf:value "Marked as a stable term"],
+                                                          [<http://purl.org/dc/terms/date> "2010-05-03" ; 
+                                                           <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                           rdf:value "Added a plural label"].
+bio:death <http://purl.org/net/vocab/2004/03/label#plural> "Death Events"@en;
+          a <http://www.w3.org/2002/07/owl#ObjectProperty>,
             rdf:Property;
           rdfs:comment "An death event associated with a person, group or organization."@en;
-          rdfs:domain foaf:Agent;
+          rdfs:domain <http://xmlns.com/foaf/0.1/Agent>;
           rdfs:isDefinedBy bio:;
           rdfs:label "Death Event"@en;
           rdfs:range bio:Death;
-          rdfs:subPropertyOf owl:differentFrom,
+          rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
                              bio:event;
-          skos:historyNote [dcterms:date "2011-07-12" ; 
-                            dcterms:creator "Alexandre Passant" ; 
-                            rdf:value "Proposed addition of the property"].
-bio:employer dcterms:issued "2010-05-05";
-             label:plural "Employers"@en;
-             a owl:ObjectProperty,
+          <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/terms/date> "2011-07-12" ; 
+                                                             <http://purl.org/dc/terms/creator> "Alexandre Passant" ; 
+                                                             rdf:value "Proposed addition of the property"].
+bio:employer <http://purl.org/dc/terms/issued> "2010-05-05";
+             <http://purl.org/net/vocab/2004/03/label#plural> "Employers"@en;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                rdf:Property;
              rdfs:comment "An agent that is involved in an event as an employer."@en;
              rdfs:domain bio:Event;
              rdfs:isDefinedBy bio:;
              rdfs:label "Employer"@en;
-             rdfs:range foaf:Agent;
+             rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
              rdfs:subPropertyOf bio:agent.
-bio:event label:plural "Life Events"@en;
-          a owl:ObjectProperty,
+bio:event <http://purl.org/net/vocab/2004/03/label#plural> "Life Events"@en;
+          a <http://www.w3.org/2002/07/owl#ObjectProperty>,
             rdf:Property;
           rdfs:comment "An event associated with a person, group or organization."@en;
-          rdfs:domain foaf:Agent;
+          rdfs:domain <http://xmlns.com/foaf/0.1/Agent>;
           rdfs:isDefinedBy bio:;
           rdfs:label "Life Event"@en;
           rdfs:range bio:Event;
-          rdfs:subPropertyOf owl:differentFrom;
-          owl:inverseOf bio:agent;
-          skos:changeNote [dcterms:date "2010-05-03" ; 
-                           dcterms:creator "Ian Davis" ; 
-                           rdf:value "Added a plural label"];
-          skos:historyNote [dcterms:date "2011-06-14" ; 
-                            dcterms:creator "Ian Davis" ; 
-                            rdf:value "Changed domain to foaf:Agent"],
-                           [dcterms:date "2010-05-03" ; 
-                            dcterms:creator "Ian Davis" ; 
-                            rdf:value "Made a subproperty of owl:differentFrom"].
-bio:eventInterval dcterms:issued "2010-06-05";
+          rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>;
+          <http://www.w3.org/2002/07/owl#inverseOf> bio:agent;
+          <http://www.w3.org/2004/02/skos/core#changeNote> [<http://purl.org/dc/terms/date> "2010-05-03" ; 
+                                                            <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                            rdf:value "Added a plural label"];
+          <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/terms/date> "2011-06-14" ; 
+                                                             <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                             rdf:value "Changed domain to foaf:Agent"],
+                                                            [<http://purl.org/dc/terms/date> "2010-05-03" ; 
+                                                             <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                             rdf:value "Made a subproperty of owl:differentFrom"].
+bio:eventInterval <http://purl.org/dc/terms/issued> "2010-06-05";
                   a rdf:Property,
-                    owl:ObjectProperty;
+                    <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "The interval during which the event occurs. This interval represents the exact interval of occurence for an event, it starts at the moment the event commences and finishes when the event concludes. In other words both the event and the interval start at the same instant of time and extend for the same duration."@en;
                   rdfs:domain bio:Event;
                   rdfs:isDefinedBy bio:;
                   rdfs:label "Event Interval"@en;
                   rdfs:range bio:Interval;
-                  status:term_status "unstable".
-bio:father dcterms:issued "2010-05-03";
-           vann:usageNote """Note that this is a strict definition of father that does not include non-biological relationships. The <a href=\"http://purl.org/vocab/relationship\">Relationship</a> vocabulary may be more suitable for broader types of parent/child relation."""^^rdf:XMLLiteral;
-           a owl:ObjectProperty,
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:father <http://purl.org/dc/terms/issued> "2010-05-03";
+           <http://purl.org/vocab/vann/usageNote> """Note that this is a strict definition of father that does not include non-biological relationships. The <a href=\"http://purl.org/vocab/relationship\">Relationship</a> vocabulary may be more suitable for broader types of parent/child relation."""^^rdf:XMLLiteral;
+           a <http://www.w3.org/2002/07/owl#ObjectProperty>,
              rdf:Property,
-             owl:FunctionalProperty;
+             <http://www.w3.org/2002/07/owl#FunctionalProperty>;
            rdfs:comment "The biological father of a person, also known as the genitor."@en;
-           rdfs:domain foaf:Person;
+           rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
            rdfs:isDefinedBy bio:;
            rdfs:label "Father"@en;
-           rdfs:range foaf:Person;
-           rdfs:subPropertyOf rel:childOf,
-                              owl:differentFrom;
-           status:term_status "unstable";
-           skos:historyNote [dcterms:date "2010-06-06" ; 
-                             dcterms:creator "Ian Davis" ; 
-                             rdf:value "Made subproperty of rel:childOf on suggestion of Gautier Poupeau"].
-bio:followingEvent dcterms:issued "2010-05-06";
-                   label:plural "Following Events"@en;
-                   a owl:ObjectProperty,
-                     owl:TransitiveProperty,
+           rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+           rdfs:subPropertyOf <http://purl.org/vocab/relationship/childOf>,
+                              <http://www.w3.org/2002/07/owl#differentFrom>;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable";
+           <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/terms/date> "2010-06-06" ; 
+                                                              <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                              rdf:value "Made subproperty of rel:childOf on suggestion of Gautier Poupeau"].
+bio:followingEvent <http://purl.org/dc/terms/issued> "2010-05-06";
+                   <http://purl.org/net/vocab/2004/03/label#plural> "Following Events"@en;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     <http://www.w3.org/2002/07/owl#TransitiveProperty>,
                      rdf:Property;
                    rdfs:comment "An event that starts at some time after this event."@en;
                    rdfs:domain bio:Event;
                    rdfs:isDefinedBy bio:;
                    rdfs:label "Following Event"@en;
                    rdfs:range bio:Event;
-                   rdfs:subPropertyOf owl:differentFrom.
-bio:immediatelyFollowingEvent dcterms:issued "2010-05-06";
-                              label:plural "Immediately Following Events"@en;
+                   rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>.
+bio:immediatelyFollowingEvent <http://purl.org/dc/terms/issued> "2010-05-06";
+                              <http://purl.org/net/vocab/2004/03/label#plural> "Immediately Following Events"@en;
                               a rdf:Property,
-                                owl:ObjectProperty;
+                                <http://www.w3.org/2002/07/owl#ObjectProperty>;
                               rdfs:comment "An event that starts immediately after this event."@en;
                               rdfs:domain bio:Event;
                               rdfs:isDefinedBy bio:;
                               rdfs:label "Immediately Following Event"@en;
                               rdfs:range bio:Event;
-                              rdfs:subPropertyOf owl:differentFrom,
+                              rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
                                                  bio:followingEvent.
-bio:immediatelyPrecedingEvent dcterms:issued "2010-05-06";
-                              label:plural "Immediately Preceding Events"@en;
+bio:immediatelyPrecedingEvent <http://purl.org/dc/terms/issued> "2010-05-06";
+                              <http://purl.org/net/vocab/2004/03/label#plural> "Immediately Preceding Events"@en;
                               a rdf:Property,
-                                owl:ObjectProperty;
+                                <http://www.w3.org/2002/07/owl#ObjectProperty>;
                               rdfs:comment "An event that occurs and concludes immediately before this event."@en;
                               rdfs:domain bio:Event;
                               rdfs:isDefinedBy bio:;
                               rdfs:label "Immediately Preceding Event"@en;
                               rdfs:range bio:Event;
-                              rdfs:subPropertyOf owl:differentFrom,
+                              rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
                                                  bio:precedingEvent.
-bio:initiatingEvent dcterms:issued "2010-05-06";
-                    label:plural "Initiating Event"@en;
+bio:initiatingEvent <http://purl.org/dc/terms/issued> "2010-05-06";
+                    <http://purl.org/net/vocab/2004/03/label#plural> "Initiating Event"@en;
                     a rdf:Property,
-                      owl:ObjectProperty;
+                      <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:comment "An event that marks the start of an interval and/or relationship. The event contributes to and/or causes of the state of affairs that hold during the interval. For example a period of study may be initiated by an Enrolment event."@en;
                     rdfs:isDefinedBy bio:;
                     rdfs:label "Initiating Event"@en;
                     rdfs:range bio:Event;
-                    rdfs:subPropertyOf owl:differentFrom.
-bio:interval dcterms:issued "2010-06-05";
+                    rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>.
+bio:interval <http://purl.org/dc/terms/issued> "2010-06-05";
              a rdf:Property,
-               owl:ObjectProperty;
+               <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "The interval during which the relationship persists."@en;
              rdfs:domain bio:Relationship;
              rdfs:isDefinedBy bio:;
              rdfs:label "Relationship Interval"@en;
              rdfs:range bio:Interval;
-             status:term_status "unstable".
-bio:keywords dcterms:issued "2003-07-28";
-             a owl:DatatypeProperty,
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:keywords <http://purl.org/dc/terms/issued> "2003-07-28";
+             a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
                rdf:Property;
              rdfs:comment "A comma delimited list of key words that describe a person."@en;
-             rdfs:domain foaf:Person;
+             rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
              rdfs:isDefinedBy bio:;
              rdfs:label "Key Words"@en;
              rdfs:range rdfs:Literal;
-             rdfs:subPropertyOf dc11:subject;
-             status:term_status "stable";
-             skos:changeNote [dcterms:date "2010-05-04" ; 
-                              dcterms:creator "Ian Davis" ; 
-                              rdf:value "Marked as a stable term"];
-             skos:historyNote [dcterms:date "2010-05-03" ; 
-                               dcterms:creator "Ian Davis" ; 
-                               rdf:value "Declared that this is a datatype property"].
-bio:mother dcterms:issued "2010-05-03";
-           vann:usageNote """Note that this is a strict definition of mother that does not include non-biological relationships. The <a href=\"http://purl.org/vocab/relationship\">Relationship</a> vocabulary may be more suitable for broader types of parent/child relation."""^^rdf:XMLLiteral;
-           a owl:ObjectProperty,
+             rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/subject>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+             <http://www.w3.org/2004/02/skos/core#changeNote> [<http://purl.org/dc/terms/date> "2010-05-04" ; 
+                                                               <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                               rdf:value "Marked as a stable term"];
+             <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/terms/date> "2010-05-03" ; 
+                                                                <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                                rdf:value "Declared that this is a datatype property"].
+bio:mother <http://purl.org/dc/terms/issued> "2010-05-03";
+           <http://purl.org/vocab/vann/usageNote> """Note that this is a strict definition of mother that does not include non-biological relationships. The <a href=\"http://purl.org/vocab/relationship\">Relationship</a> vocabulary may be more suitable for broader types of parent/child relation."""^^rdf:XMLLiteral;
+           a <http://www.w3.org/2002/07/owl#ObjectProperty>,
              rdf:Property,
-             owl:FunctionalProperty;
+             <http://www.w3.org/2002/07/owl#FunctionalProperty>;
            rdfs:comment "The biological mother of a person, also known as the genetrix."@en;
-           rdfs:domain foaf:Person;
+           rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
            rdfs:isDefinedBy bio:;
            rdfs:label "Mother"@en;
-           rdfs:range foaf:Person;
-           rdfs:subPropertyOf owl:differentFrom,
-                              rel:childOf;
-           status:term_status "unstable";
-           skos:historyNote [dcterms:date "2010-06-06" ; 
-                             dcterms:creator "Ian Davis" ; 
-                             rdf:value "Made subproperty of rel:childOf on suggestion of Gautier Poupeau"].
-bio:officiator dcterms:issued "2010-05-05";
-               label:plural "Officiators"@en;
-               a owl:ObjectProperty,
+           rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+           rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>,
+                              <http://purl.org/vocab/relationship/childOf>;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable";
+           <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/terms/date> "2010-06-06" ; 
+                                                              <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                              rdf:value "Made subproperty of rel:childOf on suggestion of Gautier Poupeau"].
+bio:officiator <http://purl.org/dc/terms/issued> "2010-05-05";
+               <http://purl.org/net/vocab/2004/03/label#plural> "Officiators"@en;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                  rdf:Property;
                rdfs:comment "A person that officiates at a ceremonial event."@en;
                rdfs:domain bio:Event;
                rdfs:isDefinedBy bio:;
                rdfs:label "Officiator"@en;
-               rdfs:range foaf:Person;
+               rdfs:range <http://xmlns.com/foaf/0.1/Person>;
                rdfs:subPropertyOf bio:agent.
 bio:olb a rdf:Property,
-          owl:DatatypeProperty;
+          <http://www.w3.org/2002/07/owl#DatatypeProperty>;
         rdfs:comment "A one-line biography of the person."@en;
-        rdfs:domain foaf:Person;
+        rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
         rdfs:isDefinedBy bio:;
         rdfs:label "One-line bio"@en;
         rdfs:range rdfs:Literal;
-        status:term_status "stable";
-        skos:changeNote [dcterms:date "2010-05-04" ; 
-                         dcterms:creator "Ian Davis" ; 
-                         rdf:value "Marked as a stable term"];
-        skos:historyNote [dcterms:date "2010-05-03" ; 
-                          dcterms:creator "Ian Davis" ; 
-                          rdf:value "Declared that this is a datatype property"].
-bio:organization dcterms:issued "2010-05-05";
-                 label:plural "Organizations"@en;
+        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+        <http://www.w3.org/2004/02/skos/core#changeNote> [<http://purl.org/dc/terms/date> "2010-05-04" ; 
+                                                          <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                          rdf:value "Marked as a stable term"];
+        <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/terms/date> "2010-05-03" ; 
+                                                           <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                           rdf:value "Declared that this is a datatype property"].
+bio:organization <http://purl.org/dc/terms/issued> "2010-05-05";
+                 <http://purl.org/net/vocab/2004/03/label#plural> "Organizations"@en;
                  a rdf:Property,
-                   owl:ObjectProperty;
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "An organization that plays a role in an event."@en;
                  rdfs:domain bio:Event;
                  rdfs:isDefinedBy bio:;
                  rdfs:label "Organization"@en;
-                 rdfs:range foaf:Person;
+                 rdfs:range <http://xmlns.com/foaf/0.1/Person>;
                  rdfs:subPropertyOf bio:agent.
-bio:parent dcterms:issued "2010-05-05";
-           label:plural "Parents"@en;
-           a owl:ObjectProperty,
+bio:parent <http://purl.org/dc/terms/issued> "2010-05-05";
+           <http://purl.org/net/vocab/2004/03/label#plural> "Parents"@en;
+           a <http://www.w3.org/2002/07/owl#ObjectProperty>,
              rdf:Property;
            rdfs:comment "A person that takes the parent role in an event."@en;
            rdfs:domain bio:Event;
            rdfs:isDefinedBy bio:;
            rdfs:label "Parent"@en;
-           rdfs:range foaf:Person;
+           rdfs:range <http://xmlns.com/foaf/0.1/Person>;
            rdfs:subPropertyOf bio:agent.
-bio:participant dcterms:issued "2011-06-14";
-                label:plural "Participants"@en;
+bio:participant <http://purl.org/dc/terms/issued> "2011-06-14";
+                <http://purl.org/net/vocab/2004/03/label#plural> "Participants"@en;
                 a rdf:Property,
-                  owl:ObjectProperty;
+                  <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "A person, group or organization that participates in a relationship for some time."@en;
                 rdfs:domain bio:Relationship;
                 rdfs:isDefinedBy bio:;
                 rdfs:label "Participant"@en;
-                rdfs:range foaf:Agent;
-                rdfs:subPropertyOf owl:differentFrom;
-                owl:equivalentProperty rel:participant;
-                owl:inverseOf bio:relationship.
-bio:partner dcterms:issued "2010-05-05";
-            label:plural "Partners"@en;
-            a owl:ObjectProperty,
+                rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+                rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>;
+                <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/vocab/relationship/participant>;
+                <http://www.w3.org/2002/07/owl#inverseOf> bio:relationship.
+bio:partner <http://purl.org/dc/terms/issued> "2010-05-05";
+            <http://purl.org/net/vocab/2004/03/label#plural> "Partners"@en;
+            a <http://www.w3.org/2002/07/owl#ObjectProperty>,
               rdf:Property;
             rdfs:comment "A person that is involved in a event as a partner in a relationship."@en;
             rdfs:domain bio:Event;
             rdfs:isDefinedBy bio:;
             rdfs:label "Partner"@en;
-            rdfs:range foaf:Person;
+            rdfs:range <http://xmlns.com/foaf/0.1/Person>;
             rdfs:subPropertyOf bio:agent.
-bio:place label:plural "Places"@en;
+bio:place <http://purl.org/net/vocab/2004/03/label#plural> "Places"@en;
           a rdf:Property;
           rdfs:comment "The place at which an event occurred."@en;
           rdfs:domain bio:Event;
           rdfs:isDefinedBy bio:;
           rdfs:label "Place"@en;
-          status:term_status "stable";
-          skos:changeNote [dcterms:date "2010-05-03" ; 
-                           dcterms:creator "Ian Davis" ; 
-                           rdf:value "Added a plural label"],
-                          [dcterms:date "2010-05-04" ; 
-                           dcterms:creator "Ian Davis" ; 
-                           rdf:value "Marked as a stable term"].
-bio:position dcterms:issued "2010-05-05";
-             label:plural "Positions"@en;
-             a owl:ObjectProperty,
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+          <http://www.w3.org/2004/02/skos/core#changeNote> [<http://purl.org/dc/terms/date> "2010-05-03" ; 
+                                                            <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                            rdf:value "Added a plural label"],
+                                                           [<http://purl.org/dc/terms/date> "2010-05-04" ; 
+                                                            <http://purl.org/dc/terms/creator> "Ian Davis" ; 
+                                                            rdf:value "Marked as a stable term"].
+bio:position <http://purl.org/dc/terms/issued> "2010-05-05";
+             <http://purl.org/net/vocab/2004/03/label#plural> "Positions"@en;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                rdf:Property;
              rdfs:comment "The employment position or public office involved in an event."@en;
              rdfs:domain bio:Event;
              rdfs:isDefinedBy bio:;
              rdfs:label "Position"@en;
-             rdfs:range foaf:Person;
+             rdfs:range <http://xmlns.com/foaf/0.1/Person>;
              rdfs:subPropertyOf bio:agent;
-             status:term_status "unstable".
-bio:precedingEvent dcterms:issued "2010-05-06";
-                   label:plural "Preceding Events"@en;
-                   a owl:TransitiveProperty,
-                     owl:ObjectProperty,
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+bio:precedingEvent <http://purl.org/dc/terms/issued> "2010-05-06";
+                   <http://purl.org/net/vocab/2004/03/label#plural> "Preceding Events"@en;
+                   a <http://www.w3.org/2002/07/owl#TransitiveProperty>,
+                     <http://www.w3.org/2002/07/owl#ObjectProperty>,
                      rdf:Property;
                    rdfs:comment "An event that occurs and concludes at some time before this event."@en;
                    rdfs:domain bio:Event;
                    rdfs:isDefinedBy bio:;
                    rdfs:label "Preceding Event"@en;
                    rdfs:range bio:Event;
-                   rdfs:subPropertyOf owl:differentFrom.
-bio:principal dcterms:issued "2010-05-05";
-              label:plural "Principals"@en;
+                   rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>.
+bio:principal <http://purl.org/dc/terms/issued> "2010-05-05";
+              <http://purl.org/net/vocab/2004/03/label#plural> "Principals"@en;
               a rdf:Property,
-                owl:ObjectProperty;
+                <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "A person that takes the primary and most important role in an event. For example the principal in a Birth event would be the child being born and the principal in a Burial event would be the deceased person."@en;
               rdfs:domain bio:Event;
               rdfs:isDefinedBy bio:;
               rdfs:label "Principal"@en;
-              rdfs:range foaf:Person;
+              rdfs:range <http://xmlns.com/foaf/0.1/Person>;
               rdfs:subPropertyOf bio:agent.
-bio:relationship dcterms:issued "2011-06-14";
-                 label:plural "Relationships"@en;
-                 a owl:ObjectProperty,
+bio:relationship <http://purl.org/dc/terms/issued> "2011-06-14";
+                 <http://purl.org/net/vocab/2004/03/label#plural> "Relationships"@en;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                    rdf:Property;
                  rdfs:comment "A relationship that a person, group or organization participates in for some time."@en;
-                 rdfs:domain foaf:Agent;
+                 rdfs:domain <http://xmlns.com/foaf/0.1/Agent>;
                  rdfs:isDefinedBy bio:;
                  rdfs:label "Relationship"@en;
                  rdfs:range bio:Relationship;
-                 rdfs:subPropertyOf owl:differentFrom;
-                 owl:equivalentProperty rel:participantIn;
-                 owl:inverseOf bio:participant.
-bio:spectator dcterms:issued "2010-05-05";
-              label:plural "Spectators"@en;
-              a owl:ObjectProperty,
+                 rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#differentFrom>;
+                 <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/vocab/relationship/participantIn>;
+                 <http://www.w3.org/2002/07/owl#inverseOf> bio:participant.
+bio:spectator <http://purl.org/dc/terms/issued> "2010-05-05";
+              <http://purl.org/net/vocab/2004/03/label#plural> "Spectators"@en;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                 rdf:Property;
               rdfs:comment "A person that is present at and observes the occurrence of at least part of an event."@en;
               rdfs:domain bio:Event;
               rdfs:isDefinedBy bio:;
               rdfs:label "Spectator"@en;
-              rdfs:range foaf:Person;
+              rdfs:range <http://xmlns.com/foaf/0.1/Person>;
               rdfs:subPropertyOf bio:agent.
-bio:state dcterms:issued "2010-05-05";
-          label:plural "States"@en;
+bio:state <http://purl.org/dc/terms/issued> "2010-05-05";
+          <http://purl.org/net/vocab/2004/03/label#plural> "States"@en;
           a rdf:Property,
-            owl:ObjectProperty;
+            <http://www.w3.org/2002/07/owl#ObjectProperty>;
           rdfs:comment "A country or independent territory that is involved in an event."@en;
           rdfs:domain bio:Event;
           rdfs:isDefinedBy bio:;
@@ -968,17 +952,17 @@ bio:termgroup5 rdf:_1 bio:concurrentEvent;
                rdf:_5 bio:immediatelyPrecedingEvent;
                a rdf:Bag;
                rdfs:label "Properties that relate an event to another event"@en.
-bio:witness dcterms:issued "2010-05-05";
-            label:plural "Witnesses"@en;
+bio:witness <http://purl.org/dc/terms/issued> "2010-05-05";
+            <http://purl.org/net/vocab/2004/03/label#plural> "Witnesses"@en;
             a rdf:Property,
-              owl:ObjectProperty;
+              <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:comment "A person that witnesses and can bear testimony to the occurrence of an event."@en;
             rdfs:domain bio:Event;
             rdfs:isDefinedBy bio:;
             rdfs:label "Witness"@en;
-            rdfs:range foaf:Person;
+            rdfs:range <http://xmlns.com/foaf/0.1/Person>;
             rdfs:subPropertyOf bio:spectator.
-<http://purl.org/vocab/bio/examples/1> a open:SchemaExample;
+<http://purl.org/vocab/bio/examples/1> a <http://open.vocab.org/terms/SchemaExample>;
                                        rdfs:comment """<p>Based on information at <a href=\"http://en.wikipedia.org/wiki/Henry_VIII_of_England\">Wikipedia</a> and <a href=\"http://www3.dcs.hull.ac.uk/cgi-bin/gedlkup/n=royal?royal00828\">Hull University</a></p>
 <pre><code>@prefix bio: &lt;http://purl.org/vocab/bio/0.1/&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
@@ -1356,30 +1340,30 @@ _:marriage6-interval
 </code></pre>
 """^^rdf:XMLLiteral;
                                        rdfs:label "A Biography of Henry VIII, King of England".
-<http://vocab.org/bio/0.1/.html> dc11:format "text/html";
-                                 a dcmitype:Text,
-                                   foaf:Document;
+<http://vocab.org/bio/0.1/.html> <http://purl.org/dc/elements/1.1/format> "text/html";
+                                 a <http://purl.org/dc/dcmitype/Text>,
+                                   <http://xmlns.com/foaf/0.1/Document>;
                                  rdfs:label "HTML".
-<http://vocab.org/bio/0.1/.json> dc11:format "application/json";
-                                 a dcmitype:Text,
-                                   foaf:Document;
+<http://vocab.org/bio/0.1/.json> <http://purl.org/dc/elements/1.1/format> "application/json";
+                                 a <http://purl.org/dc/dcmitype/Text>,
+                                   <http://xmlns.com/foaf/0.1/Document>;
                                  rdfs:label "JSON".
-<http://vocab.org/bio/0.1/.rdf> dcterms:hasFormat <http://vocab.org/bio/0.1/.html>,
-                                                  <http://vocab.org/bio/0.1/.json>,
-                                                  <http://vocab.org/bio/0.1/.turtle>;
-                                a foaf:Document,
-                                  dcmitype:Text;
-                                foaf:primaryTopic bio:;
-                                foaf:topic bio:.
-<http://vocab.org/bio/0.1/.turtle> dc11:format "text/plain";
-                                   a dcmitype:Text,
-                                     foaf:Document;
+<http://vocab.org/bio/0.1/.rdf> <http://purl.org/dc/terms/hasFormat> <http://vocab.org/bio/0.1/.html>,
+                                                                     <http://vocab.org/bio/0.1/.json>,
+                                                                     <http://vocab.org/bio/0.1/.turtle>;
+                                a <http://xmlns.com/foaf/0.1/Document>,
+                                  <http://purl.org/dc/dcmitype/Text>;
+                                <http://xmlns.com/foaf/0.1/primaryTopic> bio:;
+                                <http://xmlns.com/foaf/0.1/topic> bio:.
+<http://vocab.org/bio/0.1/.turtle> <http://purl.org/dc/elements/1.1/format> "text/plain";
+                                   a <http://purl.org/dc/dcmitype/Text>,
+                                     <http://xmlns.com/foaf/0.1/Document>;
                                    rdfs:label "Turtle".
-foaf:Person a owl:Class;
-            owl:equivalentClass [owl:intersectionOf ([owl:onProperty bio:father ; 
-                                                     owl:cardinality "1"^^xsd:nonNegativeInteger ; 
-                                                     a owl:Restriction]
-                                                     [owl:onProperty bio:mother ; 
-                                                     owl:cardinality "1"^^xsd:nonNegativeInteger ; 
-                                                     a owl:Restriction]) ; 
-                                 a owl:Class].
+<http://xmlns.com/foaf/0.1/Person> a <http://www.w3.org/2002/07/owl#Class>;
+                                   <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onProperty> bio:father ; 
+                                                                                                                                    <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                    [<http://www.w3.org/2002/07/owl#onProperty> bio:mother ; 
+                                                                                                                                    <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Class>].

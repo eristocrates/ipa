@@ -17,8 +17,6 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
 @prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
 @prefix nco: <http://www.semanticdesktop.org/ontologies/2007/03/22/nco#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
 
 <http://www.semanticdesktop.org/ontologies/2007/05/10/nid3> nao:creator <http://www.dfki.uni-kl.de/~mylka>;
                                                             nao:hasDefaultNamespace "http://www.semanticdesktop.org/ontologies/2007/05/10/nid3#";

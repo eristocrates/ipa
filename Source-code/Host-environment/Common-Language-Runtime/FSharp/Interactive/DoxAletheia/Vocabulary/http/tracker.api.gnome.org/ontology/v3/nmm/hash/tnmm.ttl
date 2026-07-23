@@ -9,8 +9,7 @@
 @prefix nie: <http://tracker.api.gnome.org/ontology/v3/nie#>.
 @prefix nmm: <http://tracker.api.gnome.org/ontology/v3/nmm#>.
 @prefix nrl: <http://tracker.api.gnome.org/ontology/v3/nrl#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix tnmm: <http://tracker.api.gnome.org/ontology/v3/nmm#>.
 
 nmm: nrl:lastModified "2014-09-19T11:05:00Z";
      nrl:prefix "nmm";

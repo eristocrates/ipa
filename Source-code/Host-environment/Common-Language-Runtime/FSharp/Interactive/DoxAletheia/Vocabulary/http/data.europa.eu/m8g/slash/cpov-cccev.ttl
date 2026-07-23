@@ -8,11 +8,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix schemas: <https://schema.org/>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix rec54: <http://www.w3.org/2001/02pd/rec54#>.
-@prefix time: <http://www.w3.org/2006/time#>.
 @prefix cpov: <http://data.europa.eu/m8g/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
 
 <http://data.europa.eu/m8g> dc:issued "2024-01-31";
                             dc:license <https://creativecommons.org/licenses/by/4.0/>;
@@ -21,37 +17,37 @@
                             a owl:Ontology;
                             rdfs:label "cccev"@en,
                                        "cccev"@nl;
-                            rec54:editor [a foaf:Person ; 
-                                          foaf:firstName "Florian" ; 
-                                          foaf:lastName "Barthelemy" ; 
-                                          schemas:affiliation [foaf:name "PwC EU Services"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Jitse" ; 
-                                          foaf:lastName "De Cock" ; 
-                                          schemas:affiliation [foaf:name "PwC EU Services"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Emiel" ; 
-                                          foaf:lastName "Dhondt" ; 
-                                          schemas:affiliation [foaf:name "PwC EU Services"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Pavlina" ; 
-                                          foaf:lastName "Fragkou" ; 
-                                          schemas:affiliation [foaf:name "European Commission"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Arthur" ; 
-                                          foaf:lastName "Schiltz" ; 
-                                          schemas:affiliation [foaf:name "PwC EU Services"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Anastasia" ; 
-                                          foaf:lastName "Sofou" ; 
-                                          schemas:affiliation [foaf:name "Trasys International"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Emidio" ; 
-                                          foaf:lastName "Stani" ; 
-                                          schemas:affiliation [foaf:name "PwC EU Services"]],
-                                         [a foaf:Person ; 
-                                          foaf:firstName "Bert" ; 
-                                          foaf:lastName "Van Nuffelen"];
+                            <http://www.w3.org/2001/02pd/rec54#editor> [a foaf:Person ; 
+                                                                        foaf:firstName "Florian" ; 
+                                                                        foaf:lastName "Barthelemy" ; 
+                                                                        schemas:affiliation [foaf:name "PwC EU Services"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Jitse" ; 
+                                                                        foaf:lastName "De Cock" ; 
+                                                                        schemas:affiliation [foaf:name "PwC EU Services"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Emiel" ; 
+                                                                        foaf:lastName "Dhondt" ; 
+                                                                        schemas:affiliation [foaf:name "PwC EU Services"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Pavlina" ; 
+                                                                        foaf:lastName "Fragkou" ; 
+                                                                        schemas:affiliation [foaf:name "European Commission"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Arthur" ; 
+                                                                        foaf:lastName "Schiltz" ; 
+                                                                        schemas:affiliation [foaf:name "PwC EU Services"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Anastasia" ; 
+                                                                        foaf:lastName "Sofou" ; 
+                                                                        schemas:affiliation [foaf:name "Trasys International"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Emidio" ; 
+                                                                        foaf:lastName "Stani" ; 
+                                                                        schemas:affiliation [foaf:name "PwC EU Services"]],
+                                                                       [a foaf:Person ; 
+                                                                        foaf:firstName "Bert" ; 
+                                                                        foaf:lastName "Van Nuffelen"];
                             foaf:maker [a foaf:Person ; 
                                         foaf:firstName "Core Vocabularies Working Group"].
 cpov:Constraint a owl:Class;
@@ -265,13 +261,13 @@ cpov:validityPeriod a owl:ObjectProperty;
                     rdfs:domain cpov:Evidence;
                     rdfs:isDefinedBy <http://data.europa.eu/m8g>;
                     rdfs:label "validity period"@en;
-                    rdfs:range time:ProperInterval.
+                    rdfs:range <http://www.w3.org/2006/time#ProperInterval>.
 cpov:validityPeriodConstraint a owl:ObjectProperty;
                               rdfs:comment "Temporal condition on the validity period of the Evidence Type."@en;
                               rdfs:domain cpov:EvidenceType;
                               rdfs:isDefinedBy <http://data.europa.eu/m8g>;
                               rdfs:label "validity period constraint"@en;
-                              rdfs:range time:ProperInterval;
+                              rdfs:range <http://www.w3.org/2006/time#ProperInterval>;
                               skos:scopeNote "E.g. A Belgian birth evidence is valid for X months after emission. To express constraints on the validity period that must hold when assessing the evidence (e.g. the certificate of good conduct cannot be issued more than 3 months ago), we refer to the Constraint class."@en.
 cpov:value a owl:DatatypeProperty;
            rdfs:comment "Value for the Information Concept that the Evidence supports."@en;

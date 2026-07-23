@@ -1,0 +1,155 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix solid: <http://www.w3.org/ns/solid/terms>.
+
+solid: <http://purl.org/dc/terms/issued> "2015-11-16"^^xsd:date;
+       <http://purl.org/dc/terms/modified> "2018-01-24"^^xsd:date;
+       a <http://www.w3.org/2002/07/owl#Ontology>;
+       rdfs:label "Solid terms"@en;
+       <https://creativecommons.org/ns#attributionURL> solid:;
+       <https://creativecommons.org/ns#license> <https://creativecommons.org/publicdomain/zero/1.0/>.
+<http://www.w3.org/ns/solid/terms#Account> a rdfs:Class;
+                                           rdfs:comment "A Solid account."@en;
+                                           rdfs:isDefinedBy solid:;
+                                           rdfs:label "Account"@en.
+<http://www.w3.org/ns/solid/terms#Inbox> a rdfs:Class;
+                                         rdfs:comment "A resource containing notifications."@en;
+                                         rdfs:isDefinedBy solid:;
+                                         rdfs:label "Inbox"@en.
+<http://www.w3.org/ns/solid/terms#ListedDocument> a rdfs:Class;
+                                                  rdfs:comment "Listed Type Index is a registry of resources that are publicly discoverable by outside users and applications."@en;
+                                                  rdfs:isDefinedBy solid:;
+                                                  rdfs:label "Listed Type Index"@en.
+<http://www.w3.org/ns/solid/terms#Notification> a rdfs:Class;
+                                                rdfs:comment "A notification resource."@en;
+                                                rdfs:isDefinedBy solid:;
+                                                rdfs:label "Notification"@en.
+<http://www.w3.org/ns/solid/terms#Patch> a rdfs:Class;
+                                         rdfs:comment "A patch expresses conditional modifications to a resource that has an RDF-based representation."@en;
+                                         rdfs:isDefinedBy solid:;
+                                         rdfs:label "Patch"@en.
+<http://www.w3.org/ns/solid/terms#Timeline> a rdfs:Class;
+                                            rdfs:comment "A resource containing time ordered items and sub-containers.  Sub-containers may be desirable in file based systems to split the timeline into logical components e.g. /yyyy-mm-dd/ as used in ISO 8061."@en;
+                                            rdfs:isDefinedBy solid:;
+                                            rdfs:label "Timeline"@en.
+<http://www.w3.org/ns/solid/terms#TypeIndex> a rdfs:Class;
+                                             rdfs:comment "A index of type registries for resources. Applications can register the RDF type they use and list them in the index resource."@en;
+                                             rdfs:isDefinedBy solid:;
+                                             rdfs:label "Type index"@en.
+<http://www.w3.org/ns/solid/terms#TypeRegistration> a rdfs:Class;
+                                                    rdfs:comment "The registered types that map a RDF classes/types to their locations using either `instance` or `instanceContainer` property."@en;
+                                                    rdfs:isDefinedBy solid:;
+                                                    rdfs:label "Type Registration"@en.
+<http://www.w3.org/ns/solid/terms#UnlistedDocument> a rdfs:Class;
+                                                    rdfs:comment "Unlisted Type Index is a registry of resources that are private to the user and their apps, for types that are not publicly discoverable."@en;
+                                                    rdfs:isDefinedBy solid:;
+                                                    rdfs:label "Unlisted Type Index"@en.
+<http://www.w3.org/ns/solid/terms#account> a rdf:Property;
+                                           rdfs:comment "A solid account belonging to an Agent."@en;
+                                           rdfs:isDefinedBy solid:;
+                                           rdfs:label "account"@en.
+<http://www.w3.org/ns/solid/terms#deletes> a rdf:Property,
+                                             <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                             <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                           rdfs:comment "The triple patterns this patch removes from the document."@en;
+                                           rdfs:domain <http://www.w3.org/ns/solid/terms#Patch>;
+                                           rdfs:isDefinedBy solid:;
+                                           rdfs:label "deletes"@en;
+                                           rdfs:range <http://www.w3.org/2000/10/swap/log#Formula>.
+<http://www.w3.org/ns/solid/terms#forClass> a rdf:Property;
+                                            rdfs:comment "A class that is used to map an listed or unlisted type index."@en;
+                                            rdfs:isDefinedBy solid:;
+                                            rdfs:label "registry class"@en.
+<http://www.w3.org/ns/solid/terms#inbox> a rdf:Property;
+                                         rdfs:comment "Deprecated pointer to a Linked Data Notifications inbox; please use http://www.w3.org/ns/ldp#inbox instead."@en;
+                                         rdfs:isDefinedBy solid:;
+                                         rdfs:label "inbox (deprecated)"@en;
+                                         rdfs:subPropertyOf <http://www.w3.org/ns/ldp#inbox>;
+                                         <http://www.w3.org/2002/07/owl#deprecated> true;
+                                         <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.w3.org/ns/ldp#inbox>.
+<http://www.w3.org/ns/solid/terms#inserts> a rdf:Property,
+                                             <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                             <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                           rdfs:comment "The triple patterns this patch adds to the document."@en;
+                                           rdfs:domain <http://www.w3.org/ns/solid/terms#Patch>;
+                                           rdfs:isDefinedBy solid:;
+                                           rdfs:label "inserts"@en;
+                                           rdfs:range <http://www.w3.org/2000/10/swap/log#Formula>.
+<http://www.w3.org/ns/solid/terms#instance> a rdf:Property;
+                                            rdfs:comment "Maps a type to an individual resource, typically an index or a directory listing resource."@en;
+                                            rdfs:isDefinedBy solid:;
+                                            rdfs:label "instance"@en.
+<http://www.w3.org/ns/solid/terms#instanceContainer> a rdf:Property;
+                                                     rdfs:comment "Maps a type to a container which the client would have to list to get the instances of that type."@en;
+                                                     rdfs:isDefinedBy solid:;
+                                                     rdfs:label "instance container"@en.
+<http://www.w3.org/ns/solid/terms#loginEndpoint> a rdf:Property;
+                                                 rdfs:comment "The login URI of a given server."@en;
+                                                 rdfs:isDefinedBy solid:;
+                                                 rdfs:label "loginEndpoint"@en.
+<http://www.w3.org/ns/solid/terms#logoutEndpoint> a rdf:Property;
+                                                  rdfs:comment "The logout URI of a given server."@en;
+                                                  rdfs:isDefinedBy solid:;
+                                                  rdfs:label "logoutEndpoint"@en.
+<http://www.w3.org/ns/solid/terms#notification> a rdf:Property;
+                                                rdfs:comment "Notification resource for an inbox."@en;
+                                                rdfs:isDefinedBy solid:;
+                                                rdfs:label "notification"@en.
+<http://www.w3.org/ns/solid/terms#oidcIssuer> a rdf:Property;
+                                              rdfs:comment "The preferred OpenID Connect issuer URI for a given Web ID."@en;
+                                              rdfs:isDefinedBy solid:;
+                                              rdfs:label "oidcIssuer"@en;
+                                              rdfs:subPropertyOf <http://openid.net/specs/connect/1.0/issuer>.
+<http://www.w3.org/ns/solid/terms#patches> a rdf:Property,
+                                             <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:comment "The document to which this patch applies."@en;
+                                           rdfs:domain <http://www.w3.org/ns/solid/terms#Patch>;
+                                           rdfs:isDefinedBy solid:;
+                                           rdfs:label "patches"@en;
+                                           rdfs:range rdfs:Resource.
+<http://www.w3.org/ns/solid/terms#privateTypeIndex> a rdf:Property;
+                                                    rdfs:comment "Points to an unlisted type index resource."@en;
+                                                    rdfs:isDefinedBy solid:;
+                                                    rdfs:label "private type index"@en;
+                                                    rdfs:range <http://www.w3.org/ns/solid/terms#UnlistedDocument>.
+<http://www.w3.org/ns/solid/terms#publicTypeIndex> a rdf:Property;
+                                                   rdfs:comment "Points to a listed type index resource."@en;
+                                                   rdfs:isDefinedBy solid:;
+                                                   rdfs:label "public type index"@en;
+                                                   rdfs:range <http://www.w3.org/ns/solid/terms#ListedDocument>;
+                                                   rdfs:subPropertyOf <http://www.w3.org/ns/solid/terms#typeIndex>.
+<http://www.w3.org/ns/solid/terms#read> a rdf:Property;
+                                        rdfs:comment "Indicates if a message has been read or not. This property should have a boolean datatype."@en;
+                                        rdfs:domain <http://rdfs.org/sioc/ns#Post>;
+                                        rdfs:isDefinedBy solid:;
+                                        rdfs:label "read"@en.
+<http://www.w3.org/ns/solid/terms#storageQuota> a rdf:Property,
+                                                  <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                rdfs:comment "The quota of non-volatile memory that is available for the account (in bytes)"@en;
+                                                rdfs:domain <http://www.w3.org/ns/solid/terms#Account>;
+                                                rdfs:isDefinedBy solid:;
+                                                rdfs:label "Non-volatile memory quota"@en.
+<http://www.w3.org/ns/solid/terms#storageUsage> a rdf:Property,
+                                                  <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                rdfs:comment "The amount of non-volatile memory that the account have used (in bytes)"@en;
+                                                rdfs:domain <http://www.w3.org/ns/solid/terms#Account>;
+                                                rdfs:isDefinedBy solid:;
+                                                rdfs:label "Non-volatile memory usage"@en.
+<http://www.w3.org/ns/solid/terms#timeline> a rdf:Property;
+                                            rdfs:comment "Timeline for a given resource."@en;
+                                            rdfs:isDefinedBy solid:;
+                                            rdfs:label "timeline"@en.
+<http://www.w3.org/ns/solid/terms#typeIndex> a rdf:Property;
+                                             rdfs:comment "Points to a TypeIndex resource."@en;
+                                             rdfs:isDefinedBy solid:;
+                                             rdfs:label "type index"@en;
+                                             rdfs:range <http://www.w3.org/ns/solid/terms#TypeIndex>.
+<http://www.w3.org/ns/solid/terms#where> a rdf:Property,
+                                           <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                           <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                         rdfs:comment "The conditions the document and the inserted and deleted triple patterns need to satisfy in order for the patch to be applied."@en;
+                                         rdfs:domain <http://www.w3.org/ns/solid/terms#Patch>;
+                                         rdfs:isDefinedBy solid:;
+                                         rdfs:label "where"@en;
+                                         rdfs:range <http://www.w3.org/2000/10/swap/log#Formula>.

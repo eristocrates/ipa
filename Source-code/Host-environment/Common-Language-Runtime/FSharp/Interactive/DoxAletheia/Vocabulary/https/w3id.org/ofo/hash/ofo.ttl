@@ -1,316 +1,308 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix w3id: <https://w3id.org/>.
 @prefix ofo: <https://w3id.org/ofo#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix schemas: <https://schema.org/>.
 
-dcterms:contributor a owl:AnnotationProperty.
-dcterms:creator a owl:AnnotationProperty.
-dcterms:description a owl:AnnotationProperty.
-dcterms:title a owl:AnnotationProperty.
-vann:preferredNamespacePrefix a owl:AnnotationProperty.
-vann:preferredNamespaceUri a owl:AnnotationProperty.
-skos:example a owl:AnnotationProperty.
-foaf:name a owl:AnnotationProperty.
-foaf:weblog a owl:AnnotationProperty.
-<https://orcid.org/0000-0002-8809-3277> a owl:NamedIndividual;
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#example> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/name> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/weblog> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://orcid.org/0000-0002-8809-3277> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
                                         rdfs:comment "Alex Donkers";
                                         rdfs:label "Alex Donkers";
-                                        foaf:name "Alex Donkers";
-                                        foaf:weblog "https://linktr.ee/AlexDonkers".
-schemas:name a owl:AnnotationProperty.
-ofo: dcterms:contributor "Dujuan Yang",
-                         "Bauke de Vries";
-     dcterms:creator <https://orcid.org/0000-0002-8809-3277>;
-     dcterms:description "The aim of the Occupant Feedback Ontology is to semantically describe passive and active occupant feedback and to enable integration of this feedback with linked building data."@en;
-     dcterms:title "Occupant Feedback Ontology"@en;
-     vann:preferredNamespacePrefix "ofo";
-     vann:preferredNamespaceUri "https://w3id.org/ofo#";
-     a owl:Ontology;
+                                        <http://xmlns.com/foaf/0.1/name> "Alex Donkers";
+                                        <http://xmlns.com/foaf/0.1/weblog> "https://linktr.ee/AlexDonkers".
+<https://schema.org/name> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+ofo: <http://purl.org/dc/terms/contributor> "Dujuan Yang",
+                                            "Bauke de Vries";
+     <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0002-8809-3277>;
+     <http://purl.org/dc/terms/description> "The aim of the Occupant Feedback Ontology is to semantically describe passive and active occupant feedback and to enable integration of this feedback with linked building data."@en;
+     <http://purl.org/dc/terms/title> "Occupant Feedback Ontology"@en;
+     <http://purl.org/vocab/vann/preferredNamespacePrefix> "ofo";
+     <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/ofo#";
+     a <http://www.w3.org/2002/07/owl#Ontology>;
      rdfs:label "Occupant Feedback Ontology"@en;
-     owl:versionInfo 1.0.
-ofo:DataPoint a owl:Class;
+     <http://www.w3.org/2002/07/owl#versionInfo> 1.0.
+ofo:DataPoint a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "A data element in a database representing the state of a property."@en;
               rdfs:label "Data point"@en;
               rdfs:subClassOf ofo:Result;
-              skos:example "The data point can be used in various types of databases. It corresponds to single data records in time-series databases, or rows in SQL database tables. It is also a common concept in BMS servers, representing for example a sensor reading, output value of an actuator or any other scalar value."@en.
-ofo:Database a owl:Class;
+              <http://www.w3.org/2004/02/skos/core#example> "The data point can be used in various types of databases. It corresponds to single data records in time-series databases, or rows in SQL database tables. It is also a common concept in BMS servers, representing for example a sensor reading, output value of an actuator or any other scalar value."@en.
+ofo:Database a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment """A collection of data.
 
 The database class is used to describe an external database, storing results of executions, such as a time-series database."""@en;
              rdfs:label "Database"@en.
-ofo:FeatureOfInterest a owl:Class;
+ofo:FeatureOfInterest a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "An abstraction of a real-world phenomenon which could be described in terms of its properties."@en;
                       rdfs:label "Feature of interest"@en;
-                      rdfs:subClassOf [owl:onProperty ofo:hasProperty ; 
-                                       owl:onClass ofo:Property ; 
-                                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                                       a owl:Restriction];
-                      skos:example """An object, part, zone, event etc.
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> ofo:hasProperty ; 
+                                       <http://www.w3.org/2002/07/owl#onClass> ofo:Property ; 
+                                       <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>];
+                      <http://www.w3.org/2004/02/skos/core#example> """An object, part, zone, event etc.
 In the context of the OFO ontology, an ofo:Person will usually also be an ofo:FeatureOfInterest."""@en.
-ofo:Feedback a owl:Class;
+ofo:Feedback a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "An act of producing a statement of opinion on the state of a property."@en;
              rdfs:label "Feedback"@en.
-ofo:Location a owl:Class;
+ofo:Location a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment """The area or space something is in.
 
 The ofo:Location class could be used to describe both geographical locations (such as points) and topological locations (such as rooms)."""@en;
              rdfs:label "Location"@en.
-ofo:Person a owl:Class;
+ofo:Person a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "A member of the human race."@en;
            rdfs:label "Person"@en.
-ofo:Property a owl:Class;
+ofo:Property a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "A measurable and intrinsic characteristic of a feature of interest."@en;
              rdfs:label "Property"@en;
-             rdfs:subClassOf [owl:onProperty ofo:isPropertyOf ; 
-                              owl:onClass ofo:FeatureOfInterest ; 
-                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
-                              a owl:Restriction].
-ofo:PropertySet a owl:Class;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> ofo:isPropertyOf ; 
+                              <http://www.w3.org/2002/07/owl#onClass> ofo:FeatureOfInterest ; 
+                              <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>].
+ofo:PropertySet a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "A collection of properties. The collection could also be a singleton or a null set."@en;
                 rdfs:label "Property set"@en.
-ofo:Result a owl:Class;
+ofo:Result a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "The outcome of an execution."@en;
            rdfs:label "Result"@en;
-           skos:example "The result may hold, for example, a value, a unit, a result time and other provenance data."@en.
-ofo:Smartwatch a owl:Class;
+           <http://www.w3.org/2004/02/skos/core#example> "The result may hold, for example, a value, a unit, a result time and other provenance data."@en.
+ofo:Smartwatch a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "A wearable computer in the form of a watch. It can implement procedures to perform observations and actuations."@en;
                rdfs:label "Smartwatch"@en;
                rdfs:subClassOf ofo:Wearable.
-ofo:Wearable a owl:Class;
+ofo:Wearable a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "A smart electronic device that is worn close to or on the surface of a person’s skin. It can implement procedures to perform observations and actuations."@en;
              rdfs:label "Wearable"@en.
-ofo:containsProperty a owl:ObjectProperty;
+ofo:containsProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "Relationship between a property set and a property which is part of this set."@en;
                      rdfs:domain ofo:PropertySet;
                      rdfs:label "contains property"@en;
                      rdfs:range ofo:Property;
-                     owl:inverseOf ofo:isPartOfPropertySet.
-ofo:executesOn a owl:ObjectProperty;
+                     <http://www.w3.org/2002/07/owl#inverseOf> ofo:isPartOfPropertySet.
+ofo:executesOn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment "Relationship between a wearable and the property it executes on."@en;
                rdfs:label "executes on"@en;
                rdfs:range ofo:Property;
-               owl:inverseOf ofo:isExecutedBy;
+               <http://www.w3.org/2002/07/owl#inverseOf> ofo:isExecutedBy;
                <https://www.schema.org/domainIncludes> ofo:Wearable.
-ofo:givesFeedback a owl:ObjectProperty;
+ofo:givesFeedback a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "Relationship between a person and the feedback given by this person."@en;
                   rdfs:domain ofo:Person;
                   rdfs:label "gives feedback"@en;
                   rdfs:range ofo:Feedback;
-                  owl:inverseOf ofo:isFeedbackOf;
-                  owl:propertyChainAxiom (ofo:wears
-                                          ofo:monitorsFeedback).
-ofo:hasComplexProperty a owl:ObjectProperty;
+                  <http://www.w3.org/2002/07/owl#inverseOf> ofo:isFeedbackOf;
+                  <http://www.w3.org/2002/07/owl#propertyChainAxiom> (ofo:wears
+                                                                      ofo:monitorsFeedback).
+ofo:hasComplexProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "Direct relationship between a feature of interest and a result."@en;
                        rdfs:domain ofo:FeatureOfInterest;
                        rdfs:label "has complex property"@en;
                        rdfs:range ofo:Result;
                        rdfs:subPropertyOf ofo:hasResult;
-                       owl:inverseOf ofo:isComplexPropertyOf.
-ofo:hasDataPoint a owl:ObjectProperty;
+                       <http://www.w3.org/2002/07/owl#inverseOf> ofo:isComplexPropertyOf.
+ofo:hasDataPoint a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "Relationship between a database and its data points."@en;
                  rdfs:domain ofo:Database;
                  rdfs:label "has data point"@en;
                  rdfs:range ofo:DataPoint;
-                 owl:inverseOf ofo:isDataPointOf.
-ofo:hasEvaluatedProperty a owl:ObjectProperty;
+                 <http://www.w3.org/2002/07/owl#inverseOf> ofo:isDataPointOf.
+ofo:hasEvaluatedProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:comment "Relationship between feedback and the property it evaluates."@en;
                          rdfs:domain ofo:Feedback;
                          rdfs:label "has evaluated property"@en;
                          rdfs:range ofo:Property;
-                         owl:inverseOf ofo:hasFeedback.
-ofo:hasExternalDatabase a owl:ObjectProperty;
+                         <http://www.w3.org/2002/07/owl#inverseOf> ofo:hasFeedback.
+ofo:hasExternalDatabase a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "Linking a wearable with the database its results are stored in."@en;
                         rdfs:label "has external database"@en;
                         rdfs:range ofo:Database;
-                        owl:inverseOf ofo:isExternalDatabaseOf;
+                        <http://www.w3.org/2002/07/owl#inverseOf> ofo:isExternalDatabaseOf;
                         <https://www.schema.org/rangeIncludes> ofo:Wearable.
-ofo:hasFeatureOfInterest a owl:ObjectProperty;
+ofo:hasFeatureOfInterest a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:comment "Linking feedback with its feature of interest."@en;
                          rdfs:domain ofo:Feedback;
                          rdfs:label "has feature of interest"@en;
                          rdfs:range ofo:FeatureOfInterest;
-                         owl:inverseOf ofo:isFeatureOfInterestOf;
-                         owl:propertyChainAxiom (ofo:hasEvaluatedProperty
-                                                 ofo:isPropertyOf).
-ofo:hasFeedback a owl:ObjectProperty;
+                         <http://www.w3.org/2002/07/owl#inverseOf> ofo:isFeatureOfInterestOf;
+                         <http://www.w3.org/2002/07/owl#propertyChainAxiom> (ofo:hasEvaluatedProperty
+                                                                             ofo:isPropertyOf).
+ofo:hasFeedback a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "Relationship between a property and feedback evaluating this property."@en;
                 rdfs:domain ofo:Property;
                 rdfs:label "has feedback"@en;
                 rdfs:range ofo:Feedback.
-ofo:hasFeedbackResult a owl:ObjectProperty;
+ofo:hasFeedbackResult a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "Linking feedback to its result."@en;
                       rdfs:domain ofo:Feedback;
                       rdfs:label "has feedback result"@en;
                       rdfs:range ofo:Result;
                       rdfs:subPropertyOf ofo:hasResult;
-                      owl:inverseOf ofo:isFeedbackResultOf.
-ofo:hasID a owl:DatatypeProperty,
-            owl:FunctionalProperty;
+                      <http://www.w3.org/2002/07/owl#inverseOf> ofo:isFeedbackResultOf.
+ofo:hasID a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+            <http://www.w3.org/2002/07/owl#FunctionalProperty>;
           rdfs:comment "The ID of a data point in an external database."@en;
           rdfs:domain ofo:DataPoint;
           rdfs:label "has ID"@en;
           rdfs:subPropertyOf ofo:hasValue.
-ofo:hasLocation a owl:ObjectProperty;
+ofo:hasLocation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "Relationship between an entity, such as a person or a wearable, and a location."@en;
                 rdfs:label "has location"@en;
                 rdfs:range ofo:Location;
-                owl:inverseOf ofo:isLocationOf;
-                owl:propertyChainAxiom (ofo:isWornBy
-                                        ofo:hasLocation),
-                                       (ofo:wears
-                                        ofo:hasLocation);
+                <http://www.w3.org/2002/07/owl#inverseOf> ofo:isLocationOf;
+                <http://www.w3.org/2002/07/owl#propertyChainAxiom> (ofo:isWornBy
+                                                                    ofo:hasLocation),
+                                                                   (ofo:wears
+                                                                    ofo:hasLocation);
                 <https://www.schema.org/domainIncludes> ofo:Person,
                                                         ofo:Wearable.
-ofo:hasProperty a owl:ObjectProperty,
-                  owl:InverseFunctionalProperty;
+ofo:hasProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>;
                 rdfs:comment "Linking a feature of interest with its property. The property is intrinsic to this feature of interest, and cannot exist without this feature of interest."@en;
                 rdfs:domain ofo:FeatureOfInterest;
                 rdfs:label "has property"@en;
                 rdfs:range ofo:Property;
-                owl:inverseOf ofo:isPropertyOf.
-ofo:hasPropertyState a owl:ObjectProperty;
+                <http://www.w3.org/2002/07/owl#inverseOf> ofo:isPropertyOf.
+ofo:hasPropertyState a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "Linking a property with a result."@en;
                      rdfs:domain ofo:Property;
                      rdfs:label "has property state"@en;
                      rdfs:range ofo:Result;
                      rdfs:subPropertyOf ofo:hasResult;
-                     owl:inverseOf ofo:isPropertyStateOf.
-ofo:hasResult a owl:ObjectProperty;
+                     <http://www.w3.org/2002/07/owl#inverseOf> ofo:isPropertyStateOf.
+ofo:hasResult a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "A superproperty of multiple object properties with an ofo:Result as rdfs:Range. This superproperty can be used to simultaneously query multiple ways of describing property values and increases the freedom of the data modeler."@en;
               rdfs:label "has result"@en;
               rdfs:range ofo:Result;
-              owl:inverseOf ofo:isResultOf.
-ofo:hasSimpleFeedbackState a owl:DatatypeProperty;
+              <http://www.w3.org/2002/07/owl#inverseOf> ofo:isResultOf.
+ofo:hasSimpleFeedbackState a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "Linking feedback with a simple result value described as a literal."@en;
                            rdfs:domain ofo:Feedback;
                            rdfs:label "has simple feedback state"@en;
                            rdfs:subPropertyOf ofo:hasSimpleResult.
-ofo:hasSimpleProperty a owl:DatatypeProperty;
+ofo:hasSimpleProperty a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "Linking a feature of interest with a simple property value described as a literal."@en;
                       rdfs:domain ofo:FeatureOfInterest;
                       rdfs:label "has simple property"@en;
                       rdfs:subPropertyOf ofo:hasSimpleResult.
-ofo:hasSimplePropertyState a owl:DatatypeProperty;
+ofo:hasSimplePropertyState a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "Linking a property with a simple property state value described as a literal."@en;
                            rdfs:domain ofo:Property;
                            rdfs:label "has simple property state"@en;
                            rdfs:subPropertyOf ofo:hasSimpleResult.
-ofo:hasSimpleResult a owl:DatatypeProperty;
+ofo:hasSimpleResult a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "A superproperty of multiple datatype properties that describe simple result values. This superproperty can be used to simultaneously query multiple ways of describing simple property values and increases the freedom of the data modeler."@en;
                     rdfs:label "has simple result"@en.
-ofo:hasSubProperty a owl:ObjectProperty;
+ofo:hasSubProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "Describing a whole-part relationship between a property and its sub-property."@en;
                    rdfs:domain ofo:Property;
                    rdfs:label "has sub-property"@en;
                    rdfs:range ofo:Property;
-                   owl:inverseOf ofo:isSubPropertyOf.
-ofo:hasValue a owl:DatatypeProperty,
-               owl:FunctionalProperty;
+                   <http://www.w3.org/2002/07/owl#inverseOf> ofo:isSubPropertyOf.
+ofo:hasValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+               <http://www.w3.org/2002/07/owl#FunctionalProperty>;
              rdfs:comment "The simple value of a result."@en;
              rdfs:domain ofo:Result;
              rdfs:label "has value"@en;
              rdfs:subPropertyOf ofo:hasSimpleResult.
-ofo:isComplexPropertyOf a owl:ObjectProperty;
+ofo:isComplexPropertyOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "Linking a result with a feature of interest."@en;
                         rdfs:domain ofo:Result;
                         rdfs:label "is complex property of"@en;
                         rdfs:range ofo:FeatureOfInterest;
                         rdfs:subPropertyOf ofo:isResultOf.
-ofo:isDataPointOf a owl:ObjectProperty;
+ofo:isDataPointOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "Linking a data point with the database it is part of."@en;
                   rdfs:domain ofo:DataPoint;
                   rdfs:label "is data point of"@en;
                   rdfs:range ofo:Database.
-ofo:isExecutedBy a owl:ObjectProperty;
+ofo:isExecutedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "Relationship between a property and the wearable which acts on the property."@en;
                  rdfs:domain ofo:Property;
                  rdfs:label "is executed by"@en;
                  <https://www.schema.org/rangeIncludes> ofo:Wearable.
-ofo:isExternalDatabaseOf a owl:ObjectProperty;
+ofo:isExternalDatabaseOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:comment "Linking a database with the wearable which results are stored in this database."@en;
                          rdfs:domain ofo:Database;
                          rdfs:label "is external database of"@en;
                          <https://www.schema.org/rangeIncludes> ofo:Wearable.
-ofo:isFeatureOfInterestOf a owl:ObjectProperty;
+ofo:isFeatureOfInterestOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                           rdfs:comment "Linking a feature of interest with feedback that evaluates a property of this feature of interest."@en;
                           rdfs:domain ofo:FeatureOfInterest;
                           rdfs:label "is feature of interest of"@en;
                           rdfs:range ofo:Feedback.
-ofo:isFeedbackOf a owl:ObjectProperty;
+ofo:isFeedbackOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "Relationship between feedback and the person that gave this feedback."@en;
                  rdfs:domain ofo:Feedback;
                  rdfs:label "is feedback of"@en;
                  rdfs:range ofo:Person;
-                 owl:propertyChainAxiom (ofo:isMonitoredBy
-                                         ofo:isWornBy).
-ofo:isFeedbackResultOf a owl:ObjectProperty;
+                 <http://www.w3.org/2002/07/owl#propertyChainAxiom> (ofo:isMonitoredBy
+                                                                     ofo:isWornBy).
+ofo:isFeedbackResultOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "Linking a result with feedback."@en;
                        rdfs:domain ofo:Result;
                        rdfs:label "is feedback result of"@en;
                        rdfs:range ofo:Feedback;
                        rdfs:subPropertyOf ofo:isResultOf.
-ofo:isLocationOf a owl:ObjectProperty;
+ofo:isLocationOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "Relationship between a location and an entity, such as a person or a wearable."@en;
                  rdfs:domain ofo:Location;
                  rdfs:label "is location of"@en;
                  <https://www.schema.org/rangeIncludes> ofo:Person,
                                                         ofo:Wearable.
-ofo:isMonitoredBy a owl:ObjectProperty;
+ofo:isMonitoredBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "Relationship between feedback and the executor (e.g. a wearable) that monitored this feedback."@en;
                   rdfs:domain ofo:Feedback;
                   rdfs:label "is monitored by"@en;
-                  owl:inverseOf ofo:monitorsFeedback;
+                  <http://www.w3.org/2002/07/owl#inverseOf> ofo:monitorsFeedback;
                   <https://www.schema.org/rangeIncludes> ofo:Wearable.
-ofo:isPartOfPropertySet a owl:ObjectProperty;
+ofo:isPartOfPropertySet a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "Relationship between a property and the property set it is part of."@en;
                         rdfs:domain ofo:Property;
                         rdfs:label "is part of property set"@en;
                         rdfs:range ofo:PropertySet.
-ofo:isPropertyOf a owl:ObjectProperty,
-                   owl:FunctionalProperty;
+ofo:isPropertyOf a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                   <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                  rdfs:comment "Linking a property with its feature of interest. The property is intrinsic to this feature of interest, and cannot exist without a feature of interest."@en;
                  rdfs:domain ofo:Property;
                  rdfs:label "is property of"@en;
                  rdfs:range ofo:FeatureOfInterest.
-ofo:isPropertyStateOf a owl:ObjectProperty;
+ofo:isPropertyStateOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "Linking a result with a property."@en;
                       rdfs:domain ofo:Result;
                       rdfs:label "is property state of"@en;
                       rdfs:range ofo:Property;
                       rdfs:subPropertyOf ofo:isResultOf.
-ofo:isResultOf a owl:ObjectProperty;
+ofo:isResultOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment "A superproperty of multiple object properties with an ofo:Result as rdfs:Domain. This superproperty can be used to simultaneously query multiple ways of describing property values and increases the freedom of the data modeler."@en;
                rdfs:domain ofo:Result;
                rdfs:label "is result of"@en.
-ofo:isSubPropertyOf a owl:ObjectProperty;
+ofo:isSubPropertyOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:comment "Relation between a sub-property and its parent property."@en;
                     rdfs:domain ofo:Property;
                     rdfs:label "is sub-property of"@en;
                     rdfs:range ofo:Property;
-                    skos:example "The object property describes a typical whole-part relationship between a property and its sub-properties. It is used in cases where properties are so complex that it is desirable to decompose them into separate properties. The separate properties might also be individually linked to their own results."@en.
-ofo:isWornBy a owl:ObjectProperty;
+                    <http://www.w3.org/2004/02/skos/core#example> "The object property describes a typical whole-part relationship between a property and its sub-properties. It is used in cases where properties are so complex that it is desirable to decompose them into separate properties. The separate properties might also be individually linked to their own results."@en.
+ofo:isWornBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "Describing the relation between a wearable and the person wearing this wearable."@en;
              rdfs:domain ofo:Wearable;
              rdfs:label "is worn by"@en;
              rdfs:range ofo:Person;
-             owl:inverseOf ofo:wears.
-ofo:monitorsFeedback a owl:ObjectProperty;
+             <http://www.w3.org/2002/07/owl#inverseOf> ofo:wears.
+ofo:monitorsFeedback a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "Relationship between an executor (e.g. a wearable) and the feedback it monitors."@en;
                      rdfs:label "monitors feedback"@en;
                      rdfs:range ofo:Feedback;
                      <https://www.schema.org/domainIncludes> ofo:Wearable.
-ofo:wears a owl:ObjectProperty;
+ofo:wears a <http://www.w3.org/2002/07/owl#ObjectProperty>;
           rdfs:comment "Relationship between a wearable and the person that wears this wearable."@en;
           rdfs:domain ofo:Person;
           rdfs:label "wears"@en;
           rdfs:range ofo:Wearable.
-<https://www.schema.org/domainIncludes> a owl:AnnotationProperty.
-<https://www.schema.org/rangeIncludes> a owl:AnnotationProperty.
+<https://www.schema.org/domainIncludes> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://www.schema.org/rangeIncludes> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.

@@ -10,13 +10,6 @@
 @prefix schema1: <http://schema.org/>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix iao: <http://purl.obolibrary.org/obo/IAO_>.
-@prefix w3: <http://www.w3.org/>.
-@prefix w3id: <https://w3id.org/>.
-@prefix pobo: <http://purl.obolibrary.org/obo/>.
-@prefix schema: <http://schema.org/>.
-@prefix oboinowl: <http://www.geneontology.org/formats/oboInOwl#>.
-@prefix shacl: <http://www.w3.org/ns/shacl#>.
 
 linkml:Annotatable a linkml:ClassDefinition;
                    skos:inScheme "https://w3id.org/linkml/annotations"^^xsd:anyURI;
@@ -212,7 +205,7 @@ linkml:decimal a linkml:TypeDefinition;
                linkml:uri "http://www.w3.org/2001/XMLSchema#decimal"^^xsd:anyURI.
 linkml:deprecated_element_has_exact_replacement a linkml:SlotDefinition;
                                                 skos:inScheme "https://w3id.org/linkml/mappings"^^xsd:anyURI;
-                                                skos:mappingRelation iao:0100001;
+                                                skos:mappingRelation <http://purl.obolibrary.org/obo/IAO_0100001>;
                                                 linkml:definition_uri "https://w3id.org/linkml/deprecated_element_has_exact_replacement"^^xsd:anyURI;
                                                 linkml:description "When an element is deprecated, it can be automatically replaced by this uri or curie";
                                                 linkml:imported_from "linkml:mappings";

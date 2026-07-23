@@ -1,0 +1,133 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix spacerel: <http://data.ordnancesurvey.co.uk/ontology/spatialrelations/>.
+
+<http://data.ordnancesurvey.co.uk/ontology/geometry/1kmGridSquare> a <http://www.w3.org/2002/07/owl#Class>.
+<http://data.ordnancesurvey.co.uk/ontology/geometry/20kmGridSquare> a <http://www.w3.org/2002/07/owl#Class>.
+spacerel: <http://purl.org/dc/elements/1.1/contributor> "John Goodwin";
+          <http://purl.org/dc/elements/1.1/creator> "Ordnance Survey";
+          <http://purl.org/dc/elements/1.1/description> "An ontology describing basic spatial relations.";
+          <http://purl.org/dc/elements/1.1/title> "Spatial Relations Ontology"@en;
+          <http://purl.org/dc/terms/creator> <http://data.ordnancesurvey.co.uk/id/ordnancesurvey>;
+          <http://purl.org/dc/terms/publisher> <http://data.ordnancesurvey.co.uk/id/ordnancesurvey>;
+          a <http://www.w3.org/2002/07/owl#Thing>,
+            <http://www.w3.org/2002/07/owl#NamedIndividual>,
+            <http://www.w3.org/2002/07/owl#Ontology>;
+          rdfs:isDefinedBy <http://www.ordnancesurvey.co.uk/ontology/spatialrelations.owl>;
+          rdfs:label "Spatial Relations Ontology";
+          <http://www.w3.org/2002/07/owl#imports> <http://www.opengis.net/ont/geosparql>.
+spacerel:containedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:seeAlso spacerel:within;
+                     rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>;
+                     <http://www.w3.org/2002/07/owl#deprecated> true.
+spacerel:contains a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                    <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+                  rdfs:comment "The interior of one object completely contains the interior of the other. Their boundaries may or may not intersect.";
+                  rdfs:domain <http://www.opengis.net/ont/geosparql#SpatialObject>;
+                  rdfs:isDefinedBy <http://www.ordnancesurvey.co.uk/ontology/spatialrelations.owl>;
+                  rdfs:label "contains"@en;
+                  rdfs:range <http://www.opengis.net/ont/geosparql#SpatialObject>;
+                  rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>;
+                  <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.opengis.net/ont/geosparql#sfContains>;
+                  <http://www.w3.org/2002/07/owl#propertyChainAxiom> (spacerel:contains
+                                                                      spacerel:equals),
+                                                                     (spacerel:equals
+                                                                      spacerel:contains).
+spacerel:disjoint a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                    <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                  rdfs:comment "The boundaries and interiors of the two objects do not intersect, i.e. they have no points in common.";
+                  rdfs:domain <http://www.opengis.net/ont/geosparql#SpatialObject>;
+                  rdfs:isDefinedBy <http://www.ordnancesurvey.co.uk/ontology/spatialrelations.owl>;
+                  rdfs:label "disjoint"@en;
+                  rdfs:range <http://www.opengis.net/ont/geosparql#SpatialObject>;
+                  rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>;
+                  <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.opengis.net/ont/geosparql#sfDisjoint>;
+                  <http://www.w3.org/2002/07/owl#propertyChainAxiom> (spacerel:disjoint
+                                                                      spacerel:equals),
+                                                                     (spacerel:within
+                                                                      spacerel:disjoint),
+                                                                     (spacerel:disjoint
+                                                                      spacerel:contains),
+                                                                     (spacerel:equals
+                                                                      spacerel:disjoint).
+spacerel:easting a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:comment "Distance in metres east of National Grid origin.";
+                 rdfs:domain <http://www.opengis.net/ont/geosparql#SpatialObject>;
+                 rdfs:isDefinedBy <http://www.ordnancesurvey.co.uk/ontology/spatialrelations.owl>;
+                 rdfs:label "easting".
+spacerel:equals a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  <http://www.w3.org/2002/07/owl#TransitiveProperty>,
+                  <http://www.w3.org/2002/07/owl#ReflexiveProperty>,
+                  <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                rdfs:comment "The two objects have the same boundary and the same interior.";
+                rdfs:domain <http://www.opengis.net/ont/geosparql#SpatialObject>;
+                rdfs:isDefinedBy <http://www.ordnancesurvey.co.uk/ontology/spatialrelations.owl>;
+                rdfs:label "equal"@en;
+                rdfs:range <http://www.opengis.net/ont/geosparql#SpatialObject>;
+                rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>;
+                <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.opengis.net/ont/geosparql#sfEquals>.
+spacerel:northing a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "Distance in metres north of National Grid origin.";
+                  rdfs:domain <http://www.opengis.net/ont/geosparql#SpatialObject>;
+                  rdfs:isDefinedBy <http://www.ordnancesurvey.co.uk/ontology/spatialrelations.owl>;
+                  rdfs:label "northing".
+spacerel:oneKMGridReference a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "The National Grid reference identifying the km square in which the name falls.";
+                            rdfs:isDefinedBy <http://www.ordnancesurvey.co.uk/ontology/spatialrelations.owl>;
+                            rdfs:label "1km Grid Reference";
+                            rdfs:range <http://data.ordnancesurvey.co.uk/ontology/geometry/1kmGridSquare>.
+spacerel:partiallyOverlaps a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                             <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                           rdfs:comment "The boundaries and interiors of the two objects intersect.";
+                           rdfs:domain <http://www.opengis.net/ont/geosparql#SpatialObject>;
+                           rdfs:label "overlaps"@en;
+                           rdfs:range <http://www.opengis.net/ont/geosparql#SpatialObject>;
+                           rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>;
+                           <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.opengis.net/ont/geosparql#sfOverlaps>;
+                           <http://www.w3.org/2002/07/owl#propertyChainAxiom> (spacerel:equals
+                                                                               spacerel:partiallyOverlaps),
+                                                                              (spacerel:partiallyOverlaps
+                                                                               spacerel:equals).
+spacerel:touches a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "The boundaries of the two objects intersect but their interiors do not.";
+                 rdfs:domain <http://www.opengis.net/ont/geosparql#SpatialObject>;
+                 rdfs:isDefinedBy <http://www.ordnancesurvey.co.uk/ontology/spatialrelations.owl>;
+                 rdfs:label "touches"@en;
+                 rdfs:range <http://www.opengis.net/ont/geosparql#SpatialObject>;
+                 rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>;
+                 <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.opengis.net/ont/geosparql#sfTouches>;
+                 <http://www.w3.org/2002/07/owl#propertyChainAxiom> (spacerel:touches
+                                                                     spacerel:equals),
+                                                                    (spacerel:equals
+                                                                     spacerel:touches).
+spacerel:twentyKMGridReference a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:comment "The National Grid reference identifying the 20km square in which the name falls.";
+                               rdfs:isDefinedBy <http://www.ordnancesurvey.co.uk/ontology/spatialrelations.owl>;
+                               rdfs:label "20km Grid Reference";
+                               rdfs:range <http://data.ordnancesurvey.co.uk/ontology/geometry/20kmGridSquare>.
+spacerel:within a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+                rdfs:comment "The interior of one object is completely within the interior of the other object. Their boundaries may or may not intersect.";
+                rdfs:domain <http://www.opengis.net/ont/geosparql#SpatialObject>;
+                rdfs:label "within"@en;
+                rdfs:range <http://www.opengis.net/ont/geosparql#SpatialObject>;
+                rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>;
+                <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.opengis.net/ont/geosparql#sfWithin>;
+                <http://www.w3.org/2002/07/owl#inverseOf> spacerel:contains;
+                <http://www.w3.org/2002/07/owl#propertyChainAxiom> (spacerel:within
+                                                                    spacerel:equals),
+                                                                   (spacerel:equals
+                                                                    spacerel:within).
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/date> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/rights> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:label a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:seeAlso a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#Thing> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2002/07/owl#deprecated> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#topObjectProperty> a <http://www.w3.org/2002/07/owl#ObjectProperty>.

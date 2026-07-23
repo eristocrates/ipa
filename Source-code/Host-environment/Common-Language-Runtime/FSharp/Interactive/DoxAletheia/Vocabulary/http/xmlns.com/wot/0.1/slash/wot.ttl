@@ -1,169 +1,161 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix wn: <http://xmlns.com/wordnet/1.6/>.
 @prefix wot: <http://xmlns.com/wot/0.1/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
-@prefix ical: <http://www.w3.org/2002/12/cal/ical#>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 
-wot: dc11:date "2004-02-23";
-     dc11:description "Web Of Trust (wot) RDF vocabulary, described using W3C RDF Schema and the Web Ontology Language.";
-     dc11:title "Web Of Trust vocabulary";
-     a owl:Ontology;
-     rdfs:seeAlso foaf:;
-     owl:imports <http://www.w3.org/2002/07/owl>,
-                 <http://www.w3.org/2000/01/rdf-schema>.
-wot:EncryptedDocument a owl:Class;
+wot: <http://purl.org/dc/elements/1.1/date> "2004-02-23";
+     <http://purl.org/dc/elements/1.1/description> "Web Of Trust (wot) RDF vocabulary, described using W3C RDF Schema and the Web Ontology Language.";
+     <http://purl.org/dc/elements/1.1/title> "Web Of Trust vocabulary";
+     a <http://www.w3.org/2002/07/owl#Ontology>;
+     rdfs:seeAlso <http://xmlns.com/foaf/0.1/>;
+     <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/2002/07/owl>,
+                                             <http://www.w3.org/2000/01/rdf-schema>.
+wot:EncryptedDocument a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "An encrypted document intended for a set of recipients.";
                       rdfs:isDefinedBy wot:;
                       rdfs:label "Encrypted Document";
-                      rdfs:subClassOf wn:Endorsement-4,
-                                      foaf:Document;
-                      owl:disjointWith wot:User,
-                                       wot:SigEvent,
-                                       wot:Endorsement,
-                                       wot:PubKey;
-                      status:term_status "unstable".
-wot:Endorsement a owl:Class;
+                      rdfs:subClassOf <http://xmlns.com/wordnet/1.6/Endorsement-4>,
+                                      <http://xmlns.com/foaf/0.1/Document>;
+                      <http://www.w3.org/2002/07/owl#disjointWith> wot:User,
+                                                                   wot:SigEvent,
+                                                                   wot:Endorsement,
+                                                                   wot:PubKey;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+wot:Endorsement a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "An endorsement resource containing a detached ascii signature.";
                 rdfs:isDefinedBy wot:;
                 rdfs:label "Endorsement";
-                rdfs:subClassOf foaf:Document,
-                                wn:Endorsement-4;
-                owl:disjointWith wot:User,
-                                 wot:SigEvent,
-                                 wot:PubKey,
-                                 wot:EncryptedDocument;
-                status:term_status "unstable".
-wot:PubKey a owl:Class;
+                rdfs:subClassOf <http://xmlns.com/foaf/0.1/Document>,
+                                <http://xmlns.com/wordnet/1.6/Endorsement-4>;
+                <http://www.w3.org/2002/07/owl#disjointWith> wot:User,
+                                                             wot:SigEvent,
+                                                             wot:PubKey,
+                                                             wot:EncryptedDocument;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+wot:PubKey a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "A class used to represent a PGP/GPG public key for a user (an agent, person, group or organization).";
            rdfs:isDefinedBy wot:;
            rdfs:label "Public Key";
-           rdfs:subClassOf wn:Credential;
-           owl:disjointWith wot:Endorsement,
-                            wot:SigEvent,
-                            wot:User,
-                            wot:EncryptedDocument;
-           status:term_status "stable".
-wot:SigEvent a owl:Class;
+           rdfs:subClassOf <http://xmlns.com/wordnet/1.6/Credential>;
+           <http://www.w3.org/2002/07/owl#disjointWith> wot:Endorsement,
+                                                        wot:SigEvent,
+                                                        wot:User,
+                                                        wot:EncryptedDocument;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+wot:SigEvent a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "An event describing the action of a public key being signed by some other public key.";
              rdfs:isDefinedBy wot:;
              rdfs:label "Key Signing Event";
-             rdfs:subClassOf ical:Vevent,
-                             wn:Event;
-             owl:disjointWith wot:PubKey,
-                              wot:EncryptedDocument,
-                              wot:Endorsement,
-                              wot:User;
-             status:term_status "testing".
-wot:User a owl:Class;
+             rdfs:subClassOf <http://www.w3.org/2002/12/cal/ical#Vevent>,
+                             <http://xmlns.com/wordnet/1.6/Event>;
+             <http://www.w3.org/2002/07/owl#disjointWith> wot:PubKey,
+                                                          wot:EncryptedDocument,
+                                                          wot:Endorsement,
+                                                          wot:User;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+wot:User a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "A user (agent, person, group or organization) of a PGP/GPG public key.";
          rdfs:isDefinedBy wot:;
          rdfs:label "Key User";
-         rdfs:subClassOf foaf:Agent;
-         owl:disjointWith wot:Endorsement,
-                          wot:SigEvent,
-                          wot:PubKey,
-                          wot:EncryptedDocument;
-         status:term_status "stable".
-wot:assurance a owl:ObjectProperty;
+         rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent>;
+         <http://www.w3.org/2002/07/owl#disjointWith> wot:Endorsement,
+                                                      wot:SigEvent,
+                                                      wot:PubKey,
+                                                      wot:EncryptedDocument;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+wot:assurance a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "A property linking a document to an endorsement resource containing a detached ascii signature.";
-              rdfs:domain foaf:Document;
+              rdfs:domain <http://xmlns.com/foaf/0.1/Document>;
               rdfs:isDefinedBy wot:;
               rdfs:label "Assurance";
               rdfs:range wot:Endorsement;
-              status:term_status "stable".
-wot:encryptedTo a owl:ObjectProperty;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+wot:encryptedTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "A property linking an encrypted document to a recipient.";
                 rdfs:domain wot:EncryptedDocument;
                 rdfs:isDefinedBy wot:;
                 rdfs:label "Encrypted to";
                 rdfs:range wot:PubKey;
-                status:term_status "unstable".
-wot:encrypter a owl:ObjectProperty,
-                owl:FunctionalProperty;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+wot:encrypter a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                <http://www.w3.org/2002/07/owl#FunctionalProperty>;
               rdfs:comment "A property linking an encrypted document to the public key that was used to encrypt it.";
               rdfs:domain wot:EncryptedDocument;
               rdfs:isDefinedBy wot:;
               rdfs:label "Encrypted by";
               rdfs:range wot:PubKey;
-              status:term_status "unstable".
-wot:fingerprint a owl:InverseFunctionalProperty,
-                  owl:DatatypeProperty;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+wot:fingerprint a <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>,
+                  <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                 rdfs:comment "A public key hex fingerprint string (40 digits, white space insignificant).";
                 rdfs:domain wot:PubKey;
                 rdfs:isDefinedBy wot:;
                 rdfs:label "Fingerprint";
                 rdfs:range xsd:string;
-                status:term_status "testing".
-wot:hasKey a owl:ObjectProperty;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+wot:hasKey a <http://www.w3.org/2002/07/owl#ObjectProperty>;
            rdfs:comment "A property to link a PubKey from a User";
            rdfs:domain wot:User;
            rdfs:isDefinedBy wot:;
            rdfs:label "has Key";
            rdfs:range wot:PubKey;
-           owl:inverseOf wot:identity;
-           status:term_status "testing".
-wot:hex_id a owl:DatatypeProperty;
+           <http://www.w3.org/2002/07/owl#inverseOf> wot:identity;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+wot:hex_id a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
            rdfs:comment "A public key hex identifier string (8 digits).";
            rdfs:domain wot:PubKey;
            rdfs:isDefinedBy wot:;
            rdfs:label "Hex identifier";
            rdfs:range xsd:string;
-           status:term_status "stable".
-wot:identity a owl:ObjectProperty,
-               owl:FunctionalProperty;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+wot:identity a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+               <http://www.w3.org/2002/07/owl#FunctionalProperty>;
              rdfs:comment "A property linking a public key to the user of the key.";
              rdfs:domain wot:PubKey;
              rdfs:isDefinedBy wot:;
              rdfs:label "Identity";
              rdfs:range wot:User;
-             status:term_status "testing".
-wot:length a owl:DatatypeProperty;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+wot:length a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
            rdfs:comment "A numeric string representing the length, in bytes, of a public key.";
            rdfs:domain wot:PubKey;
            rdfs:isDefinedBy wot:;
            rdfs:label "Length";
            rdfs:range xsd:integer;
-           status:term_status "stable".
-wot:pubkeyAddress a owl:ObjectProperty;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+wot:pubkeyAddress a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "The location of an ascii version of a public key.";
                   rdfs:domain wot:PubKey;
                   rdfs:isDefinedBy wot:;
                   rdfs:label "Address";
-                  rdfs:range foaf:Document;
-                  status:term_status "testing".
-wot:sigdate a owl:DatatypeProperty;
+                  rdfs:range <http://xmlns.com/foaf/0.1/Document>;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+wot:sigdate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
             rdfs:comment "The date of a public key signature event.";
             rdfs:domain wot:SigEvent;
             rdfs:isDefinedBy wot:;
             rdfs:label "Signature date";
             rdfs:range xsd:date;
-            status:term_status "testing".
-wot:signed a owl:ObjectProperty;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+wot:signed a <http://www.w3.org/2002/07/owl#ObjectProperty>;
            rdfs:comment "A property linking a public key to a public key signature event.";
            rdfs:domain wot:PubKey;
            rdfs:isDefinedBy wot:;
            rdfs:label "Signed";
            rdfs:range wot:SigEvent;
-           status:term_status "testing".
-wot:signer a owl:ObjectProperty,
-             owl:FunctionalProperty;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+wot:signer a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+             <http://www.w3.org/2002/07/owl#FunctionalProperty>;
            rdfs:comment "A property linking a public key signature event to the public key that was used to sign.";
            rdfs:domain wot:SigEvent;
            rdfs:isDefinedBy wot:;
            rdfs:label "Signer";
            rdfs:range wot:PubKey;
-           status:term_status "unstable".
-wot:sigtime a owl:DatatypeProperty;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+wot:sigtime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
             rdfs:comment "The time (of day) of a public key signature event.";
             rdfs:domain wot:SigEvent;
             rdfs:isDefinedBy wot:;
             rdfs:label "Signature time";
             rdfs:range xsd:time;
-            status:term_status "unstable".
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".

@@ -1,0 +1,187 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix aosdatcat: <https://w3id.org/aerOS/data-catalog#>.
+
+<http://purl.org/dc/terms/conformsTo> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                      rdfs:isDefinedBy <http://purl.org/dc/terms/>;
+                                      rdfs:label "conforms to".
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>,
+                                         <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                       rdfs:isDefinedBy <http://purl.org/dc/terms/>;
+                                       rdfs:label "description".
+<http://purl.org/dc/terms/identifier> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                      rdfs:isDefinedBy <http://purl.org/dc/terms/>;
+                                      rdfs:label "identifier";
+                                      rdfs:range rdfs:Literal.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/publisher> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                     rdfs:isDefinedBy <http://purl.org/dc/terms/>;
+                                     rdfs:label "publisher".
+<http://purl.org/dc/terms/source> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/example> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://w3id.org/rml/TriplesMap> a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:isDefinedBy <http://w3id.org/rml/>;
+                                 rdfs:label "Triples Map".
+xsd:date a rdfs:Datatype.
+<http://www.w3.org/2002/07/owl#versionInfo> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#Concept> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core>;
+                                              rdfs:label "Concept".
+<http://www.w3.org/2004/02/skos/core#ConceptScheme> a <http://www.w3.org/2002/07/owl#Class>;
+                                                    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core>;
+                                                    rdfs:label "Concept Scheme".
+<http://www.w3.org/2004/02/skos/core#inScheme> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                               rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept>;
+                                               rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core>;
+                                               rdfs:label "in scheme";
+                                               rdfs:range <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
+<http://www.w3.org/ns/dcat#Catalog> a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+                                    rdfs:label "Catalog".
+<http://www.w3.org/ns/dcat#DataService> a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+                                        rdfs:label "Data Service".
+<http://www.w3.org/ns/dcat#Dataset> a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+                                    rdfs:label "Dataset".
+<http://www.w3.org/ns/dcat#Distribution> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+                                         rdfs:label "Distribution".
+<http://www.w3.org/ns/dcat#accessService> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                          rdfs:domain <http://www.w3.org/ns/dcat#Distribution>;
+                                          rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+                                          rdfs:label "access service";
+                                          rdfs:range <http://www.w3.org/ns/dcat#DataService>.
+<http://www.w3.org/ns/dcat#accessURL> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                      rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+                                      rdfs:label "access url".
+<http://www.w3.org/ns/dcat#catalog> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                    rdfs:domain <http://www.w3.org/ns/dcat#Catalog>;
+                                    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+                                    rdfs:label "catalog";
+                                    rdfs:range <http://www.w3.org/ns/dcat#Catalog>.
+<http://www.w3.org/ns/dcat#dataset> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                    rdfs:domain <http://www.w3.org/ns/dcat#Catalog>;
+                                    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+                                    rdfs:label "dataset";
+                                    rdfs:range <http://www.w3.org/ns/dcat#Dataset>.
+<http://www.w3.org/ns/dcat#distribution> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                         rdfs:domain <http://www.w3.org/ns/dcat#Dataset>;
+                                         rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+                                         rdfs:label "distribution";
+                                         rdfs:range <http://www.w3.org/ns/dcat#Distribution>.
+<http://www.w3.org/ns/dcat#endpointURL> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                        rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+                                        rdfs:label "endpoint url".
+<http://www.w3.org/ns/dcat#keyword> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+                                    rdfs:label "keyword".
+<http://www.w3.org/ns/dcat#mediaType> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                      rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+                                      rdfs:label "media type".
+<http://www.w3.org/ns/dcat#servesDataset> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                          rdfs:domain <http://www.w3.org/ns/dcat#DataService>;
+                                          rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+                                          rdfs:label "serves dataset";
+                                          rdfs:range <http://www.w3.org/ns/dcat#Dataset>.
+<http://www.w3.org/ns/dcat#service> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                    rdfs:domain <http://www.w3.org/ns/dcat#Catalog>;
+                                    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+                                    rdfs:label "service";
+                                    rdfs:range <http://www.w3.org/ns/dcat#DataService>.
+<http://www.w3.org/ns/dcat#theme> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+                                  rdfs:label "theme".
+<http://www.w3.org/ns/dcat#themeTaxonomy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                          rdfs:domain <http://www.w3.org/ns/dcat#Catalog>;
+                                          rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+                                          rdfs:label "theme taxonomy".
+<http://www.w3.org/ns/org#Membership> a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:isDefinedBy <http://www.w3.org/ns/org#>;
+                                      rdfs:label "Membership".
+<http://www.w3.org/ns/org#Organization> a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:isDefinedBy <http://www.w3.org/ns/org#>;
+                                        rdfs:label "Organization".
+<http://www.w3.org/ns/org#Role> a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:isDefinedBy <http://www.w3.org/ns/org#>;
+                                rdfs:label "Role".
+<http://www.w3.org/ns/org#member> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain <http://www.w3.org/ns/org#Membership>;
+                                  rdfs:isDefinedBy <http://www.w3.org/ns/org#>;
+                                  rdfs:label "member".
+<http://www.w3.org/ns/org#organization> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:domain <http://www.w3.org/ns/org#Membership>;
+                                        rdfs:isDefinedBy <http://www.w3.org/ns/org#>;
+                                        rdfs:label "organization";
+                                        rdfs:range <http://www.w3.org/ns/org#Organization>.
+<http://www.w3.org/ns/org#role> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain <http://www.w3.org/ns/org#Membership>;
+                                rdfs:isDefinedBy <http://www.w3.org/ns/org#>;
+                                rdfs:label "role";
+                                rdfs:range <http://www.w3.org/ns/org#Role>.
+<https://w3id.org/aerOS/continuum#Domain> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:isDefinedBy <https://w3id.org/aerOS/continuum>;
+                                          rdfs:label "Domain".
+<https://w3id.org/aerOS/continuum#User> a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:isDefinedBy <https://w3id.org/aerOS/continuum>;
+                                        rdfs:label "User".
+<https://w3id.org/aerOS/continuum#domain> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                          rdfs:isDefinedBy <https://w3id.org/aerOS/continuum>;
+                                          rdfs:label "domain";
+                                          rdfs:range <https://w3id.org/aerOS/continuum#Domain>.
+aosdatcat: <http://purl.org/dc/terms/creator> "Ignacio Dominguez Martinez-Casanueva";
+           <http://purl.org/dc/terms/description> """
+                                        Ontology that defines concepts for representing the aerOS Data Catalog
+                                        """;
+           <http://purl.org/dc/terms/license> <http://purl.org/NET/rdflicense/APACHE2.0>;
+           <http://purl.org/dc/terms/modified> "2024-08-23"^^xsd:date;
+           <http://purl.org/dc/terms/source> <https://gitlab.aeros-project.eu/wp4/t4.1/data-catalog-ontology>;
+           <http://purl.org/dc/terms/title> "aerOS Data Catalog Ontology";
+           <http://purl.org/vocab/vann/preferredNamespacePrefix> "aerdcat";
+           <http://purl.org/vocab/vann/preferredNamespaceUri> aosdatcat:;
+           a <http://www.w3.org/2002/07/owl#Ontology>;
+           rdfs:label "aerOS Data Catalog Ontology"@en;
+           <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/aerOS/data-catalog>;
+           <http://www.w3.org/2002/07/owl#versionInfo> "1.0.0";
+           <https://w3id.org/mod#createdWith> <https://chowlk.linkeddata.es/>.
+aosdatcat:ContextBroker a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Represents an NGSI-LD Context Broker.";
+                        rdfs:isDefinedBy <https://w3id.org/aerOS/data-catalog>;
+                        rdfs:label "Context Broker";
+                        rdfs:subClassOf <http://www.w3.org/ns/dcat#DataService>.
+aosdatcat:DataProduct a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Representation of a data product as wrapper of a dataset.";
+                      rdfs:isDefinedBy <https://w3id.org/aerOS/data-catalog>;
+                      rdfs:label "Data Product";
+                      rdfs:subClassOf <http://www.w3.org/ns/dcat#Dataset>.
+aosdatcat:DataProductOwner a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                             <http://www.w3.org/ns/org#Role>;
+                           rdfs:comment "Person responsible for the creation and publication of a data product.";
+                           rdfs:isDefinedBy <https://w3id.org/aerOS/data-catalog>;
+                           rdfs:label "Data Product Owner".
+aosdatcat:contextBroker a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "Relation with a context broker.";
+                        rdfs:isDefinedBy <https://w3id.org/aerOS/data-catalog>;
+                        rdfs:label "context broker";
+                        rdfs:range aosdatcat:ContextBroker;
+                        rdfs:subPropertyOf <http://www.w3.org/ns/dcat#service>.
+aosdatcat:dataProduct a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "Relation with a data product.";
+                      rdfs:isDefinedBy <https://w3id.org/aerOS/data-catalog>;
+                      rdfs:label "data product";
+                      rdfs:range aosdatcat:DataProduct;
+                      rdfs:subPropertyOf <http://www.w3.org/ns/dcat#dataset>.
+aosdatcat:servesDataProduct a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "Denotes a data product exposed by a data service.";
+                            rdfs:isDefinedBy <https://w3id.org/aerOS/data-catalog>;
+                            rdfs:label "serves data product";
+                            rdfs:range aosdatcat:DataProduct;
+                            rdfs:subPropertyOf <http://www.w3.org/ns/dcat#servesDataset>.
+<https://w3id.org/mod#createdWith> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.

@@ -1,12 +1,9 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix html: <http://www.w3.org/1999/xhtml/>.
-@prefix rdfa: <http://www.w3.org/ns/rdfa#>.
 @prefix xhv: <http://www.w3.org/1999/xhtml/vocab#>.
 
-html:vocab xhv:stylesheet <http://www.w3.org/StyleSheets/TR/base.css>.
+<http://www.w3.org/1999/xhtml/vocab> xhv:stylesheet <http://www.w3.org/StyleSheets/TR/base.css>.
 xhv:alert a rdf:Property;
           rdfs:comment """A message
       with important, and usually time-sensitive, information. Also see alertdialog
@@ -19,14 +16,14 @@ xhv:alternate a rdf:Property;
               rdfs:comment """alternate 
     designates alternate versions for a resource.""";
               rdfs:member xhv:relrev-properties;
-              rdfa:term "alternate";
-              rdfa:uri "http://www.w3.org/1999/xhtml/vocab#alternate".
+              <http://www.w3.org/ns/rdfa#term> "alternate";
+              <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#alternate".
 xhv:appendix a rdf:Property;
              rdfs:comment """appendix refers to a resource serving
       as an appendix in a collection. """;
              rdfs:member xhv:relrev-properties;
-             rdfa:term "appendix";
-             rdfa:uri "http://www.w3.org/1999/xhtml/vocab#appendix".
+             <http://www.w3.org/ns/rdfa#term> "appendix";
+             <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#appendix".
 xhv:application a rdf:Property;
                 rdfs:comment """A
       region declared as a web application, as opposed to a web document.""".
@@ -42,8 +39,8 @@ xhv:bookmark a rdf:Property;
              rdfs:comment """bookmark refers to a bookmark - a link
       to a key entry point within an extended document. """;
              rdfs:member xhv:relrev-properties;
-             rdfa:term "bookmark";
-             rdfa:uri "http://www.w3.org/1999/xhtml/vocab#bookmark".
+             <http://www.w3.org/ns/rdfa#term> "bookmark";
+             <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#bookmark".
 xhv:button a rdf:Property;
            rdfs:comment """An input
       that allows for user-triggered actions when clicked or pressed. Also see
@@ -52,8 +49,8 @@ xhv:chapter a rdf:Property;
             rdfs:comment """chapter refers to a resource serving
       as a chapter in a collection. """;
             rdfs:member xhv:relrev-properties;
-            rdfa:term "chapter";
-            rdfa:uri "http://www.w3.org/1999/xhtml/vocab#chapter".
+            <http://www.w3.org/ns/rdfa#term> "chapter";
+            <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#chapter".
 xhv:checkbox a rdf:Property;
              rdfs:comment """A checkable
       input that has three possible values: true, false, or mixed.""".
@@ -61,8 +58,8 @@ xhv:cite a rdf:Property;
          rdfs:comment """cite refers to a resource that defines
       a citation. """;
          rdfs:member xhv:relrev-properties;
-         rdfa:term "cite";
-         rdfa:uri "http://www.w3.org/1999/xhtml/vocab#cite".
+         <http://www.w3.org/ns/rdfa#term> "cite";
+         <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#cite".
 xhv:columnheader a rdf:Property;
                  rdfs:comment """A
       cell containing header information for a column.""".
@@ -83,14 +80,14 @@ xhv:contents a rdf:Property;
              rdfs:comment """contents refers to a resource serving
       as a table of contents. """;
              rdfs:member xhv:relrev-properties;
-             rdfa:term "contents";
-             rdfa:uri "http://www.w3.org/1999/xhtml/vocab#contents".
+             <http://www.w3.org/ns/rdfa#term> "contents";
+             <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#contents".
 xhv:copyright a rdf:Property;
               rdfs:comment """copyright refers to a copyright
       statement for the resource. """;
               rdfs:member xhv:relrev-properties;
-              rdfa:term "copyright";
-              rdfa:uri "http://www.w3.org/1999/xhtml/vocab#copyright".
+              <http://www.w3.org/ns/rdfa#term> "copyright";
+              <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#copyright".
 xhv:definition a rdf:Property;
                rdfs:comment "indicates the definition of a term or concept.";
                rdfs:member xhv:role-properties.
@@ -110,8 +107,8 @@ xhv:first a rdf:Property;
           rdfs:comment """first refers the first item in a
       collection (see also start and top).""";
           rdfs:member xhv:relrev-properties;
-          rdfa:term "first";
-          rdfa:uri "http://www.w3.org/1999/xhtml/vocab#first".
+          <http://www.w3.org/ns/rdfa#term> "first";
+          <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#first".
 xhv:form a rdf:Property;
          rdfs:comment """A landmark
       region that contains a collection of items and objects that, as a whole,
@@ -120,8 +117,8 @@ xhv:glossary a rdf:Property;
              rdfs:comment """glossary refers to a resource
       providing a glossary of terms. """;
              rdfs:member xhv:relrev-properties;
-             rdfa:term "glossary";
-             rdfa:uri "http://www.w3.org/1999/xhtml/vocab#glossary".
+             <http://www.w3.org/ns/rdfa#term> "glossary";
+             <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#glossary".
 xhv:grid a rdf:Property;
          rdfs:comment """A grid is
       an interactive control which contains cells of tabular data arranged in
@@ -140,14 +137,14 @@ xhv:help a rdf:Property;
          rdfs:comment """help refers to a resource offering
       help. """;
          rdfs:member xhv:relrev-properties;
-         rdfa:term "help";
-         rdfa:uri "http://www.w3.org/1999/xhtml/vocab#help".
+         <http://www.w3.org/ns/rdfa#term> "help";
+         <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#help".
 xhv:icon a rdf:Property;
          rdfs:comment """icon refers to a resource that
       represents an icon. """;
          rdfs:member xhv:relrev-properties;
-         rdfa:term "icon";
-         rdfa:uri "http://www.w3.org/1999/xhtml/vocab#icon".
+         <http://www.w3.org/ns/rdfa#term> "icon";
+         <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#icon".
 xhv:img a rdf:Property;
         rdfs:comment """A container
       for a collection of elements that form an image.""".
@@ -155,26 +152,26 @@ xhv:index a rdf:Property;
           rdfs:comment """index refers to a resource providing
       an index. """;
           rdfs:member xhv:relrev-properties;
-          rdfa:term "index";
-          rdfa:uri "http://www.w3.org/1999/xhtml/vocab#index".
+          <http://www.w3.org/ns/rdfa#term> "index";
+          <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#index".
 xhv:itsRules a rdf:Property;
              rdfs:comment """itsRules indicates that the designated
       resource is an [ITS] rule set.""";
              rdfs:member xhv:relrev-properties;
-             rdfa:term "itsRules";
-             rdfa:uri "http://www.w3.org/1999/xhtml/vocab#itsRules".
+             <http://www.w3.org/ns/rdfa#term> "itsRules";
+             <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#itsRules".
 xhv:last a rdf:Property;
          rdfs:comment """last refers to the last resource in a
       collection of resources. """;
          rdfs:member xhv:relrev-properties;
-         rdfa:term "last";
-         rdfa:uri "http://www.w3.org/1999/xhtml/vocab#last".
+         <http://www.w3.org/ns/rdfa#term> "last";
+         <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#last".
 xhv:license a rdf:Property;
             rdfs:comment """license refers to a resource that
       defines the associated license. """;
             rdfs:member xhv:relrev-properties;
-            rdfa:term "license";
-            rdfa:uri "http://www.w3.org/1999/xhtml/vocab#license".
+            <http://www.w3.org/ns/rdfa#term> "license";
+            <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#license".
 xhv:link a rdf:Property;
          rdfs:comment """An interactive
       reference to an internal or external resource that, when activated, causes
@@ -224,8 +221,8 @@ xhv:meta a rdf:Property;
          rdfs:comment """meta refers to a resource that
       provides metadata. """;
          rdfs:member xhv:relrev-properties;
-         rdfa:term "meta";
-         rdfa:uri "http://www.w3.org/1999/xhtml/vocab#meta".
+         <http://www.w3.org/ns/rdfa#term> "meta";
+         <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#meta".
 xhv:navigation a rdf:Property;
                rdfs:comment """indicates a collection of items suitable for
       navigating the document or related documents.""";
@@ -234,8 +231,8 @@ xhv:next a rdf:Property;
          rdfs:comment """next refers to the next resource
       (after the current one) in an ordered collection of resources. """;
          rdfs:member xhv:relrev-properties;
-         rdfa:term "next";
-         rdfa:uri "http://www.w3.org/1999/xhtml/vocab#next".
+         <http://www.w3.org/ns/rdfa#term> "next";
+         <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#next".
 xhv:note a rdf:Property;
          rdfs:comment """indicates
       the content is parenthetic or ancillary to the main content of the
@@ -248,8 +245,8 @@ xhv:p3pv1 a rdf:Property;
           rdfs:comment """p3pv1 refers to a P3P Policy Reference
       File [P3P]. """;
           rdfs:member xhv:relrev-properties;
-          rdfa:term "p3pv1";
-          rdfa:uri "http://www.w3.org/1999/xhtml/vocab#p3pv1".
+          <http://www.w3.org/ns/rdfa#term> "p3pv1";
+          <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#p3pv1".
 xhv:presentation a rdf:Property;
                  rdfs:comment """An
       element whose implicit native role semantics will not be mapped to the
@@ -258,8 +255,8 @@ xhv:prev a rdf:Property;
          rdfs:comment """prev refers to a previous resource
       (before the current one) in an ordered collection of resources. """;
          rdfs:member xhv:relrev-properties;
-         rdfa:term "prev";
-         rdfa:uri "http://www.w3.org/1999/xhtml/vocab#prev".
+         <http://www.w3.org/ns/rdfa#term> "prev";
+         <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#prev".
 xhv:progressbar a rdf:Property;
                 rdfs:comment """An
       element that displays the progress status for tasks that take a long time.""".
@@ -284,8 +281,8 @@ xhv:role a rdf:Property,
       Vocabulary for roles in this vocabulary space, and XHTMLROLE for information on extending the
       collection of roles. """;
          rdfs:member xhv:relrev-properties;
-         rdfa:term "role";
-         rdfa:uri "http://www.w3.org/1999/xhtml/vocab#role".
+         <http://www.w3.org/ns/rdfa#term> "role";
+         <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#role".
 xhv:role-properties a rdfs:member,
                       rdf:Bag.
 xhv:row a rdf:Property;
@@ -309,8 +306,8 @@ xhv:section a rdf:Property;
             rdfs:comment """section refers to a resource serving
       as a section in a collection. """;
             rdfs:member xhv:relrev-properties;
-            rdfa:term "section";
-            rdfa:uri "http://www.w3.org/1999/xhtml/vocab#section".
+            <http://www.w3.org/ns/rdfa#term> "section";
+            <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#section".
 xhv:separator a rdf:Property;
               rdfs:comment """A divider
       that separates and distinguishes sections of content or groups of menuitems.""".
@@ -324,8 +321,8 @@ xhv:start a rdf:Property;
           rdfs:comment """start refers to the first resource in
       a collection of resources. """;
           rdfs:member xhv:relrev-properties;
-          rdfa:term "start";
-          rdfa:uri "http://www.w3.org/1999/xhtml/vocab#start".
+          <http://www.w3.org/ns/rdfa#term> "start";
+          <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#start".
 xhv:status a rdf:Property;
            rdfs:comment """A container
       whose content is advisory information for the user but is not important
@@ -334,14 +331,14 @@ xhv:stylesheet a rdf:Property;
                rdfs:comment """stylesheet refers to a resource
       serving as a stylesheet for a resource. """;
                rdfs:member xhv:relrev-properties;
-               rdfa:term "stylesheet";
-               rdfa:uri "http://www.w3.org/1999/xhtml/vocab#stylesheet".
+               <http://www.w3.org/ns/rdfa#term> "stylesheet";
+               <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#stylesheet".
 xhv:subsection a rdf:Property;
                rdfs:comment """subsection refers to a resource
       serving as a subsection in a collection. """;
                rdfs:member xhv:relrev-properties;
-               rdfa:term "subsection";
-               rdfa:uri "http://www.w3.org/1999/xhtml/vocab#subsection".
+               <http://www.w3.org/ns/rdfa#term> "subsection";
+               <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#subsection".
 xhv:tab a rdf:Property;
         rdfs:comment """A grouping
       label providing a mechanism for selecting the tab content that is to be
@@ -369,8 +366,8 @@ xhv:tooltip a rdf:Property;
 xhv:top a rdf:Property;
         rdfs:comment "top is a synonym for start. ";
         rdfs:member xhv:relrev-properties;
-        rdfa:term "top";
-        rdfa:uri "http://www.w3.org/1999/xhtml/vocab#top".
+        <http://www.w3.org/ns/rdfa#term> "top";
+        <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#top".
 xhv:tree a rdf:Property;
          rdfs:comment """A type of
       list that may contain sub-level nested groups that can be collapsed and
@@ -386,5 +383,5 @@ xhv:up a rdf:Property;
        rdfs:comment """up refers to a resource \"above\" in a
       hierarchically structured set. """;
        rdfs:member xhv:relrev-properties;
-       rdfa:term "up";
-       rdfa:uri "http://www.w3.org/1999/xhtml/vocab#up".
+       <http://www.w3.org/ns/rdfa#term> "up";
+       <http://www.w3.org/ns/rdfa#uri> "http://www.w3.org/1999/xhtml/vocab#up".

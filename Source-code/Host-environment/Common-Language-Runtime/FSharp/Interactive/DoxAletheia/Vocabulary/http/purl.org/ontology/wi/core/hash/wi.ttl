@@ -2,170 +2,157 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix wi: <http://purl.org/ontology/wi/core#>.
-@prefix wo: <http://purl.org/ontology/wo/core#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix toby: <http://tobyinkster.co.uk/#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix time: <http://www.w3.org/2006/time#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
-@prefix scovo: <http://purl.org/NET/scovo#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix wlo: <http://purl.org/ontology/wo/>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 
-wi: dc11:creator "Danica Damljanovic",
-                 <http://swordfish.rdfweb.org/people/libby/rdfweb/webwho.xrdf#me>,
-                 "Yi Zeng",
-                 <http://danbri.org/foaf.rdf#danbri>,
-                 <http://foaf.me/zazi#me>,
-                 <http://www.johnbreslin.com/foaf/foaf.rdf#me>,
-                 "Yan Wang",
-                 toby:i,
-                 <http://sw.deri.org/~sheila/foaf.rdf#me>,
-                 "Zhisheng Huang";
-    dc11:date "2010-09-14T15:20:52+01:00"^^xsd:dateTime;
-    dc11:description "A vocabulary for describing preferences (interests) within contexts, their temporal dynamics and their origin"@en;
-    dc11:title "Weighted Interests Vocabulary"@en;
-    vann:preferredNamespacePrefix "wi";
-    vann:preferredNamespaceUri "http://purl.org/ontology/wi/core#";
-    a owl:Ontology;
-    owl:imports <http://purl.org/NET/c4dm/event.owl>,
-                dc11:,
-                dcterms:,
-                wlo:core,
-                foaf:,
-                vann:,
-                <http://purl.org/NET/scovo>,
-                <http://www.w3.org/2006/time>,
-                <http://www.w3.org/2003/06/sw-vocab-status/ns>;
-    owl:versionInfo 0.5.
-wi:ExplicitMining dc11:description "An explicitly mined user interest"@en;
-                  dc11:title "Explicit Mining"@en;
-                  a scovo:Dimension;
+wi: <http://purl.org/dc/elements/1.1/creator> "Danica Damljanovic",
+                                              <http://swordfish.rdfweb.org/people/libby/rdfweb/webwho.xrdf#me>,
+                                              "Yi Zeng",
+                                              <http://danbri.org/foaf.rdf#danbri>,
+                                              <http://foaf.me/zazi#me>,
+                                              <http://www.johnbreslin.com/foaf/foaf.rdf#me>,
+                                              "Yan Wang",
+                                              <http://tobyinkster.co.uk/#i>,
+                                              <http://sw.deri.org/~sheila/foaf.rdf#me>,
+                                              "Zhisheng Huang";
+    <http://purl.org/dc/elements/1.1/date> "2010-09-14T15:20:52+01:00"^^xsd:dateTime;
+    <http://purl.org/dc/elements/1.1/description> "A vocabulary for describing preferences (interests) within contexts, their temporal dynamics and their origin"@en;
+    <http://purl.org/dc/elements/1.1/title> "Weighted Interests Vocabulary"@en;
+    <http://purl.org/vocab/vann/preferredNamespacePrefix> "wi";
+    <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/ontology/wi/core#";
+    a <http://www.w3.org/2002/07/owl#Ontology>;
+    <http://www.w3.org/2002/07/owl#imports> <http://purl.org/NET/c4dm/event.owl>,
+                                            <http://purl.org/dc/elements/1.1/>,
+                                            <http://purl.org/dc/terms/>,
+                                            <http://purl.org/ontology/wo/core>,
+                                            <http://xmlns.com/foaf/0.1/>,
+                                            <http://purl.org/vocab/vann/>,
+                                            <http://purl.org/NET/scovo>,
+                                            <http://www.w3.org/2006/time>,
+                                            <http://www.w3.org/2003/06/sw-vocab-status/ns>;
+    <http://www.w3.org/2002/07/owl#versionInfo> 0.5.
+wi:ExplicitMining <http://purl.org/dc/elements/1.1/description> "An explicitly mined user interest"@en;
+                  <http://purl.org/dc/elements/1.1/title> "Explicit Mining"@en;
+                  a <http://purl.org/NET/scovo#Dimension>;
                   rdfs:isDefinedBy wi:;
-                  status:term_status "testing"@en.
-wi:ImplicitMining dc11:description "An implicitly mined user interest"@en;
-                  dc11:title "Implicit Mining"@en;
-                  a scovo:Dimension;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+wi:ImplicitMining <http://purl.org/dc/elements/1.1/description> "An implicitly mined user interest"@en;
+                  <http://purl.org/dc/elements/1.1/title> "Implicit Mining"@en;
+                  a <http://purl.org/NET/scovo#Dimension>;
                   rdfs:isDefinedBy wi:;
-                  status:term_status "testing"@en.
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
 wi:InterestDynamics a rdfs:Class,
-                      owl:Class;
+                      <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "An event concept for describing dynamics of interests, e.g. weight changes, periods of interest."@en;
                     rdfs:isDefinedBy wi:;
                     rdfs:label "Interest Dynamics"@en;
-                    rdfs:subClassOf wo:Weight;
-                    status:term_status "testing"@en.
-wi:WeightedInterest a owl:Class,
+                    rdfs:subClassOf <http://purl.org/ontology/wo/core#Weight>;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+wi:WeightedInterest a <http://www.w3.org/2002/07/owl#Class>,
                       rdfs:Class;
                     rdfs:comment "A weighted interest object, which also can have interest dynamics etc."@en;
                     rdfs:isDefinedBy wi:;
                     rdfs:label "Weighted Interest"@en;
-                    rdfs:subClassOf scovo:Item;
-                    status:term_status "unstable"@en.
+                    rdfs:subClassOf <http://purl.org/NET/scovo#Item>;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable"@en.
 wi:agent a rdf:Property,
-           owl:ObjectProperty;
+           <http://www.w3.org/2002/07/owl#ObjectProperty>;
          rdfs:comment "A link from a mined interest to the related person"@en;
          rdfs:domain wi:WeightedInterest;
          rdfs:isDefinedBy wi:;
          rdfs:label "has agent"@en;
-         rdfs:range foaf:Agent;
-         owl:inverseOf wi:preference;
-         status:term_status "testing"@en.
-wi:appear_time a owl:ObjectProperty,
+         rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+         <http://www.w3.org/2002/07/owl#inverseOf> wi:preference;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+wi:appear_time a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                  rdf:Property;
                rdfs:comment "The time when the interest appears in a certain kind of scenario."@en;
-               rdfs:domain [owl:unionOf (wi:WeightedInterest
-                                         wi:InterestDynamics) ; 
-                            a owl:Class];
+               rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (wi:WeightedInterest
+                                                                     wi:InterestDynamics) ; 
+                            a <http://www.w3.org/2002/07/owl#Class>];
                rdfs:isDefinedBy wi:;
                rdfs:label "has appear time"@en;
-               rdfs:subPropertyOf event:time;
-               status:term_status "testing"@en.
+               rdfs:subPropertyOf <http://purl.org/NET/c4dm/event.owl#time>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
 wi:attention_duration a rdf:Property,
-                        owl:ObjectProperty;
+                        <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "An interval of attention for an interest."@en;
                       rdfs:domain wi:WeightedInterest;
                       rdfs:isDefinedBy wi:;
                       rdfs:label "has attention duration"@en;
-                      rdfs:range time:Interval;
-                      rdfs:subPropertyOf event:time;
-                      status:term_status "testing"@en.
+                      rdfs:range <http://www.w3.org/2006/time#Interval>;
+                      rdfs:subPropertyOf <http://purl.org/NET/c4dm/event.owl#time>;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
 wi:evidence a rdf:Property,
-              owl:ObjectProperty;
+              <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:comment "A link between a context and evidence supporting the interpretation of preferences in a context"@en;
-            rdfs:domain [owl:unionOf (wi:WeightedInterest
-                                      wi:InterestDynamics) ; 
-                         a owl:Class];
+            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (wi:WeightedInterest
+                                                                  wi:InterestDynamics) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>];
             rdfs:isDefinedBy wi:;
             rdfs:label "has evidence"@en;
-            rdfs:subPropertyOf event:factor;
-            status:term_status "unstable"@en.
-wi:interest_dynamics a owl:ObjectProperty,
+            rdfs:subPropertyOf <http://purl.org/NET/c4dm/event.owl#factor>;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable"@en.
+wi:interest_dynamics a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                        rdf:Property;
                      rdfs:comment "To relate a weighted interest to its temporal dynamics."@en;
                      rdfs:domain wi:WeightedInterest;
                      rdfs:isDefinedBy wi:;
                      rdfs:label "has interest dynamics"@en;
                      rdfs:range wi:InterestDynamics;
-                     rdfs:subPropertyOf event:sub_event;
-                     status:term_status "testing"@en.
-wi:longest_duration a owl:ObjectProperty,
+                     rdfs:subPropertyOf <http://purl.org/NET/c4dm/event.owl#sub_event>;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+wi:longest_duration a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                       rdf:Property;
                     rdfs:comment "The longest continuous interval of attention for an interest, e.g. for an interest, if it appears in the following years: 1990, 1991, 1995, 1996, 1997, 1998, 2001, then the longest duration is 4 years."@en;
                     rdfs:isDefinedBy wi:;
                     rdfs:label "has longest duration"@en;
                     rdfs:subPropertyOf wi:attention_duration;
-                    status:term_status "testing"@en.
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
 wi:not_interested_in a rdf:Property,
-                       owl:ObjectProperty;
+                       <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "A link between an agent and a topic of no interest to them"@en;
-                     rdfs:domain foaf:Agent;
+                     rdfs:domain <http://xmlns.com/foaf/0.1/Agent>;
                      rdfs:isDefinedBy wi:;
                      rdfs:label "is not interested in"@en;
-                     status:term_status "unstable"@en.
-wi:overall_weight a owl:FunctionalProperty,
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable"@en.
+wi:overall_weight a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
                     rdf:Property,
-                    owl:ObjectProperty;
+                    <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "This weight reflects the overall interest in a topic and should be different from the actual weight of interest."@en;
                   rdfs:domain wi:WeightedInterest;
                   rdfs:isDefinedBy wi:;
                   rdfs:label "has overall weight"@en;
-                  rdfs:subPropertyOf wo:weight;
-                  status:term_status "testing"@en.
-wi:preference a owl:ObjectProperty,
+                  rdfs:subPropertyOf <http://purl.org/ontology/wo/core#weight>;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+wi:preference a <http://www.w3.org/2002/07/owl#ObjectProperty>,
                 rdf:Property;
               rdfs:comment "A link between an agent and a weighted interest"@en;
-              rdfs:domain foaf:Agent;
+              rdfs:domain <http://xmlns.com/foaf/0.1/Agent>;
               rdfs:isDefinedBy wi:;
               rdfs:label "has preference"@en;
               rdfs:range wi:WeightedInterest;
-              status:term_status "unstable"@en.
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable"@en.
 wi:statistical_item a rdf:Property,
-                      owl:ObjectProperty;
+                      <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:comment "A link from an interest to statistics about itself"@en;
                     rdfs:domain wi:WeightedInterest;
                     rdfs:isDefinedBy wi:;
                     rdfs:label "has statistical item"@en;
-                    rdfs:range scovo:Item;
-                    status:term_status "testing"@en.
-wi:topic a owl:ObjectProperty,
+                    rdfs:range <http://purl.org/NET/scovo#Item>;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+wi:topic a <http://www.w3.org/2002/07/owl#ObjectProperty>,
            rdf:Property;
          rdfs:comment "A topic of the weighted interest"@en;
          rdfs:domain wi:WeightedInterest;
          rdfs:isDefinedBy wi:;
          rdfs:label "has topic"@en;
-         rdfs:subPropertyOf dcterms:subject;
-         status:term_status "unstable"@en.
+         rdfs:subPropertyOf <http://purl.org/dc/terms/subject>;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable"@en.
 wi:ultimative_duration a rdf:Property,
-                         owl:ObjectProperty;
+                         <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment "The overall duration of attention for an interest, e.g. for an interest, if it appears in the following years: 1990, 1991, 1995, 1996, 1997, 1998, 2001, then the longest duration is 7 years."@en;
                        rdfs:isDefinedBy wi:;
                        rdfs:label "has ultimative duration"@en;
                        rdfs:subPropertyOf wi:attention_duration;
-                       status:term_status "testing"@en.
-foaf:topic_interest owl:propertyChainAxiom (wi:preference
-                                            wi:topic).
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+<http://xmlns.com/foaf/0.1/topic_interest> <http://www.w3.org/2002/07/owl#propertyChainAxiom> (wi:preference
+                                                                                               wi:topic).

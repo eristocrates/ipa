@@ -1,13 +1,16 @@
+@base <http://www.w3.org/2000/10/swap/pim/doc>.
+
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix w3: <http://www.w3.org/>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix : <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix doc: <http://www.w3.org/2000/10/swap/pim/doc#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix tblcard: <http://www.w3.org/People/Berners-Lee/card#>.
-@prefix contact: <http://www.w3.org/2000/10/swap/pim/contact#>.
+@prefix r: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix s: <http://www.w3.org/2000/01/rdf-schema#>.
 
-<http://www.w3.org/2000/10/swap/pim/doc> doc:creator tblcard:i;
+<http://www.w3.org/2000/10/swap/pim/doc> doc:creator <http://www.w3.org/People/Berners-Lee/card#i>;
                                          doc:ipr <http://www.w3.org/2000/10/swap/LICENSE.n3>;
                                          doc:version "$Id: doc.rdf,v 1.4 2006/07/29 20:18:43 timbl Exp $".
 doc:OpenSourceLicense rdfs:comment """Class of licenses which can be called Open Soutrce
@@ -26,7 +29,7 @@ doc:creator a rdf:Property;
             rdfs:comment "The person (not string) who created this.";
             rdfs:domain doc:Work;
             rdfs:label "creator";
-            rdfs:range contact:SocialEntity.
+            rdfs:range <http://www.w3.org/2000/10/swap/pim/contact#SocialEntity>.
 doc:dependsOn a rdf:Property;
               rdfs:comment "The meaning or value of this work depends on that of that work.";
               rdfs:domain doc:Work;
@@ -50,17 +53,17 @@ doc:ipr a rdf:Property;
         rdfs:range doc:Work.
 doc:mayControl a rdf:Property;
                rdfs:comment "This may change that access control for that";
-               rdfs:domain contact:SocialEntity;
+               rdfs:domain <http://www.w3.org/2000/10/swap/pim/contact#SocialEntity>;
                rdfs:label "may control";
                rdfs:range doc:Work.
 doc:mayRead a rdf:Property;
             rdfs:comment "This may access that for read -- compare 'r' unix";
-            rdfs:domain contact:SocialEntity;
+            rdfs:domain <http://www.w3.org/2000/10/swap/pim/contact#SocialEntity>;
             rdfs:label "may read";
             rdfs:range doc:Work.
 doc:mayWrite a rdf:Property;
              rdfs:comment "This may access that to modify it -- compare 'w' unix";
-             rdfs:domain contact:SocialEntity;
+             rdfs:domain <http://www.w3.org/2000/10/swap/pim/contact#SocialEntity>;
              rdfs:label "may write";
              rdfs:range doc:Work.
 doc:obsoletes a rdf:Property;
@@ -80,9 +83,9 @@ doc:rules a rdf:Property;
 	containing rules. The rules are valid information about the terms
 	defined in the namespace document.
 	""";
-          rdfs:domain contact:Work;
+          rdfs:domain <http://www.w3.org/2000/10/swap/pim/contact#Work>;
           rdfs:label "rules";
-          rdfs:range contact:Work.
+          rdfs:range <http://www.w3.org/2000/10/swap/pim/contact#Work>.
 doc:subLicense a rdf:Property,
                  owl:TransitiveProperty;
                rdfs:comment """For any license, a sublicense is a licensing offering a subset of the rights. 

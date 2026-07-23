@@ -6,10 +6,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace>.
 @prefix : <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix s: <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix w3: <http://www.w3.org/>.
 @prefix crypto: <http://www.w3.org/2000/10/swap/crypto#>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix string: <http://www.w3.org/2000/10/swap/string#>.
 
 crypto:CanEncrypt rdfs:comment "PublicKeyObjects which are capable of encrypting things";
                   rdfs:isSubClassOf crypto:PublicKeyObject.
@@ -33,11 +30,11 @@ crypto:PublicKeyObject a rdfs:Class;
                        rdfs:comment """An object corresponding to a key for some algorithm.
 The object can hold a public and optionally a private key.""".
 crypto:md5 a rdf:Property,
-             owl:FunctionalProperty;
+             <http://www.w3.org/2002/07/owl#FunctionalProperty>;
            rdfs:comment "The object is a MD5 hash of the subject.";
-           rdfs:domain string:String;
+           rdfs:domain <http://www.w3.org/2000/10/swap/string#String>;
            rdfs:label "MD5 hash";
-           rdfs:range string:String.
+           rdfs:range <http://www.w3.org/2000/10/swap/string#String>.
 crypto:publicKey a rdfs:Property;
                  rdfs:comment """The object is a public key object that doesn't
     contain the private key data in the subject.
@@ -45,12 +42,12 @@ crypto:publicKey a rdfs:Property;
                  rdfs:domain crypto:PublicKeyObject;
                  rdfs:range crypto:PublicKeyObject.
 crypto:sha a rdf:Property,
-             owl:FunctionalProperty,
-             owl:InverseFunctionalProperty;
+             <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+             <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>;
            rdfs:comment "The object is a SHA-1 hash of the subject.";
-           rdfs:domain string:String;
+           rdfs:domain <http://www.w3.org/2000/10/swap/string#String>;
            rdfs:label "SHA hash";
-           rdfs:range string:String.
+           rdfs:range <http://www.w3.org/2000/10/swap/string#String>.
 crypto:sign a rdf:Property;
             rdfs:comment """The subject should be a list of two things, a hash
 string and a key (containing private and public parts). The object is

@@ -19,17 +19,6 @@
 @prefix doc: <http://eulersharp.sourceforge.net/2003/03swap/document#>.
 @prefix humanbody: <http://eulersharp.sourceforge.net/2003/03swap/humanBody#>.
 @prefix human: <http://eulersharp.sourceforge.net/2003/03swap/human#>.
-@prefix events: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
-@prefix taxon: <http://purl.uniprot.org/taxonomy/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix agents: <http://eulersharp.sourceforge.net/2003/03swap/agent#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix uniprot: <http://purl.uniprot.org/core/>.
-@prefix swap_document: <http://eulersharp.sourceforge.net/2003/03swap/document#>.
-@prefix swap_foster: <http://eulersharp.sourceforge.net/2003/03swap/foster#>.
-@prefix swap_physicalResource: <http://eulersharp.sourceforge.net/2003/03swap/physicalResource#>.
-@prefix swap_quantities: <http://eulersharp.sourceforge.net/2003/03swap/quantities#>.
-@prefix contact: <http://www.w3.org/2000/10/swap/pim/contact#>.
 
 <http://eulersharp.sourceforge.net/2003/03swap/human> dce:contributor """\"Until 2010: Pieterjan De Potter, Pedro Debevere, Ghent University - IBBT/ELIS - Multimedia Lab/Belgium"""@en;
                                                       dce:creator "Hans Cools, MD, Agfa Healthcare/Belgium"@en;
@@ -406,7 +395,7 @@ human:SubspeciesHomoSapiensSapiens unicore:rank unicore:Subspecies;
                                    a rdfs:Class,
                                      unicore:Taxon;
                                    rdfs:isDefinedBy human:;
-                                   rdfs:subClassOf taxon:9606.
+                                   rdfs:subClassOf <http://purl.uniprot.org/taxonomy/9606>.
 human:Woman a rdfs:Class;
             rdfs:isDefinedBy human:;
             rdfs:label "woman"@en;

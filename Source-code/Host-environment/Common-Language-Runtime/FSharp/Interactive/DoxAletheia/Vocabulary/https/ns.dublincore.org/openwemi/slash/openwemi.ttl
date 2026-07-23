@@ -7,9 +7,6 @@
 @prefix dct: <http://purl.org/dc/terms/>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix openwemi: <https://ns.dublincore.org/openwemi/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix open: <http://open.vocab.org/terms/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
 
 openwemi: dct:creator "Dublin Core Metadata Initiative, OpenWEMI Working Group";
           dct:date "2024/01/19";
@@ -54,31 +51,31 @@ openwemi:commonEndeavor dct:description "commonEndeavour is intended to define a
                         rdfs:comment "Relates any two resources that are or contain the same endeavor.";
                         rdfs:isDefinedBy openwemi:;
                         rdfs:label "common Endeavor"@en;
-                        owl:equivalentProperty open:commonEndeavour.
+                        owl:equivalentProperty <http://open.vocab.org/terms/commonEndeavour>.
 openwemi:commonExpression dct:description "commonExpression is intended to define a relationship between two resources that may or may not be modeled as OpenWEMI. This makes it possible to assert that a resource modeled using a vocabulary that does not use the OpenWEMI entity model explicitly is describing the Expression as another resource."@en;
                           a rdf:Property;
                           rdfs:comment "Relates any two resources that are or contain the same Expression.";
                           rdfs:isDefinedBy openwemi:;
                           rdfs:label "common Expression"@en;
-                          owl:equivalentProperty open:commonExpression.
+                          owl:equivalentProperty <http://open.vocab.org/terms/commonExpression>.
 openwemi:commonItem dct:description "commonItem is intended to define a relationship between two resources that may or may not be modeled as OpenWEMI. This makes it possible to assert that a resource modeled using a vocabulary that does not use the OpenWEMI entity model explicitly is describing the same Item as another resource."@en;
                     a rdf:Property;
                     rdfs:comment "Relates any two resources that are or contain the same Item.";
                     rdfs:isDefinedBy openwemi:;
                     rdfs:label "common Item"@en;
-                    owl:equivalentProperty open:commonItem.
+                    owl:equivalentProperty <http://open.vocab.org/terms/commonItem>.
 openwemi:commonManifestation dct:description "commonManifestation is intended to define a relationship between two resources that may or may not be modeled as OpenWEMI. This makes it possible to assert that a resource modeled using a vocabulary that does not use the OpenWEMI entity model explicitly is describing the same Manifestation as another resource."@en;
                              a rdf:Property;
                              rdfs:comment "Relates any two resources that are or contain the same Manifestation.";
                              rdfs:isDefinedBy openwemi:;
                              rdfs:label "common Manifestation"@en;
-                             owl:equivalentProperty open:commonManifestation.
+                             owl:equivalentProperty <http://open.vocab.org/terms/commonManifestation>.
 openwemi:commonWork dct:description "commonWork is intended to define a relationship between two resources that may or may not be modeled as OpenWEMI. This makes it possible to assert that a resource modeled using a vocabulary that does not use the OpenWEMI entity model explicitly is describing the same Work as another resource."@en;
                     a rdf:Property;
                     rdfs:comment "Relates any two resources that are or contain the same Work.";
                     rdfs:isDefinedBy openwemi:;
                     rdfs:label "common Work"@en;
-                    owl:equivalentProperty open:commonWork.
+                    owl:equivalentProperty <http://open.vocab.org/terms/commonWork>.
 openwemi:expressedBy dct:description "A relationship asserted from a Work to an Expression that expresses the Work."@en;
                      a rdf:Property;
                      rdfs:comment "An Expression of a Work."@en;

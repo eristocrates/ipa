@@ -1,0 +1,904 @@
+@base <http://eulersharp.sourceforge.net/2003/03swap/quantities>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dce: <http://purl.org/dc/elements/1.1/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix mathop: <http://sweet.jpl.nasa.gov/2.3/reprMathOperation.owl#>.
+@prefix pmass: <http://sweet.jpl.nasa.gov/2.3/propMass.owl#>.
+@prefix ppres: <http://sweet.jpl.nasa.gov/2.3/propPressure.owl#>.
+@prefix pspeed: <http://sweet.jpl.nasa.gov/2.3/propSpeed.owl#>.
+@prefix pthermo: <http://sweet.jpl.nasa.gov/2.3/propTemperature.owl#>.
+@prefix pdist: <http://sweet.jpl.nasa.gov/2.3/propSpaceDistance.owl#>.
+@prefix pmdim: <http://sweet.jpl.nasa.gov/2.3/propSpaceMultidimensional.owl#>.
+@prefix time: <http://sweet.jpl.nasa.gov/2.3/propTime.owl#>.
+@prefix unit: <http://sweet.jpl.nasa.gov/2.3/reprSciUnits.owl#>.
+@prefix screla: <http://sweet.jpl.nasa.gov/2.3/relaSci.owl#>.
+@prefix irw: <http://www.ontologydesignpatterns.org/ont/web/irw.owl#>.
+@prefix units: <http://eulersharp.sourceforge.net/2003/03swap/units#>.
+@prefix fos: <http://eulersharp.sourceforge.net/2003/03swap/foster#>.
+@prefix event: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
+@prefix space: <http://eulersharp.sourceforge.net/2003/03swap/space#>.
+@prefix physical: <http://eulersharp.sourceforge.net/2003/03swap/physicalResource#>.
+@prefix agent: <http://eulersharp.sourceforge.net/2003/03swap/agent#>.
+@prefix doc: <http://eulersharp.sourceforge.net/2003/03swap/document#>.
+@prefix clisko: <http://www.agfa.com/w3c/2009/clinicalSKOSSchemes#>.
+@prefix quant: <http://eulersharp.sourceforge.net/2003/03swap/quantities#>.
+@prefix swapquantities: <http://eulersharp.sourceforge.net/2003/03swap/quantities#>.
+
+<http://eulersharp.sourceforge.net/2003/03swap/quantities> dce:contributor "Boris De Vloed, MSc; Agfa Healthcare/Belgium"@en;
+                                                           dce:creator "Hans Cools, MD; Agfa Healthcare, Belgium"@en;
+                                                           dce:description "Formal description of quantities."@en;
+                                                           dce:format "OWL Full"@en;
+                                                           dce:publisher "Agfa Healthcare, Belgium"@en;
+                                                           dce:title "Quantities"@en;
+                                                           a owl:Ontology;
+                                                           rdfs:comment "Reusing NASA 'SWEET' ontologies."@en,
+                                                                        "Specific quantities are declared in respective ontologies, e.g. Strength and hasStrength in http://www.agfa.com/w3c/2009/drugTherapy#."@en.
+quant:Accuracy a rdfs:Class;
+               rdfs:comment "The higher an accuracy, the more test results are true."@en;
+               rdfs:isDefinedBy quant:;
+               rdfs:label "accuracy"@en;
+               rdfs:subClassOf quant:Ratio;
+               skos:definition "Probability a test result is true."@en.
+quant:AmountOfSubstance a rdfs:Class;
+                        rdfs:isDefinedBy quant:;
+                        rdfs:label "amount of substance"@en;
+                        rdfs:subClassOf quant:PhysicalQuantity;
+                        skos:definition "Physical quantity proportional to the number of elementary entities which may be atoms, molecules, ions, electrons, or particles, the choice of which is dependent upon context and must be stated."@en.
+quant:AmountOfSubstanceConcentration a rdfs:Class;
+                                     rdfs:isDefinedBy quant:;
+                                     rdfs:label "amount-of-substance concentration"@en;
+                                     rdfs:subClassOf quant:Quantity;
+                                     skos:definition "Physical quantity expressing the amount of substance of something per unit of volume."@en.
+quant:Area a rdfs:Class;
+           rdfs:isDefinedBy quant:;
+           rdfs:label "area"@en;
+           rdfs:subClassOf quant:PhysicalQuantity,
+                           pmdim:Area;
+           skos:definition "Spatial quantity of a two-dimensional spatial resource."@en.
+quant:AreaMeasurement a rdfs:Class;
+                      rdfs:isDefinedBy quant:;
+                      rdfs:label "area measurement"@en;
+                      rdfs:subClassOf quant:Measurement,
+                                      [a owl:Restriction ; 
+                                       owl:onProperty quant:measurementOf ; 
+                                       owl:someValuesFrom quant:Area],
+                                      [a owl:Restriction ; 
+                                       owl:onProperty quant:hasUnit ; 
+                                       owl:someValuesFrom [a owl:Restriction ; 
+                                                           owl:onProperty quant:unitOf ; 
+                                                           owl:someValuesFrom quant:AreaMeasurement]].
+quant:ArealDensity a rdfs:Class;
+                   rdfs:isDefinedBy quant:;
+                   rdfs:label "areal density"@en;
+                   rdfs:subClassOf quant:PhysicalQuantity;
+                   skos:definition "Number of something per area."@en;
+                   skos:note "E.g. population density, mitotic count, bit density"@en.
+quant:ArealDensityMeasurement a rdfs:Class;
+                              rdfs:isDefinedBy quant:;
+                              rdfs:label "areal density measurement"@en;
+                              rdfs:subClassOf quant:Measurement,
+                                              [a owl:Restriction ; 
+                                               owl:onProperty quant:measurementOf ; 
+                                               owl:someValuesFrom quant:ArealDensity],
+                                              [a owl:Restriction ; 
+                                               owl:onProperty quant:hasUnit ; 
+                                               owl:someValuesFrom [a owl:Restriction ; 
+                                                                   owl:onProperty quant:unitOf ; 
+                                                                   owl:someValuesFrom quant:ArealDensityMeasurement]];
+                              skos:definition "Measurement of number of something per area."@en.
+quant:ArithmeticMean a rdfs:Class;
+                     rdfs:isDefinedBy quant:;
+                     rdfs:label "arithmetic mean"@en;
+                     rdfs:subClassOf quant:Average,
+                                     quant:Ratio;
+                     skos:definition "Sum of all numbers of a set divided by the number of numbers in the set."@en.
+quant:Aspecificity a rdfs:Class;
+                   rdfs:comment "The higher an aspecificity, the more false positive cases are detected, e.g. the more healthy people are considered sick."@en;
+                   rdfs:isDefinedBy quant:;
+                   rdfs:label "aspecificity"@en;
+                   rdfs:subClassOf quant:Ratio;
+                   skos:definition "Probability a test is positive given the absence of a condition."@en.
+quant:Average a rdfs:Class;
+              rdfs:isDefinedBy quant:;
+              rdfs:label "average"@en;
+              rdfs:subClassOf quant:Quantity;
+              skos:definition "Central tendency number of a data set."@en.
+quant:Circularity a rdfs:Class;
+                  rdfs:isDefinedBy quant:;
+                  rdfs:label "circularity"@en;
+                  rdfs:subClassOf quant:Quantity;
+                  skos:definition "."@en.
+quant:Concentration a rdfs:Class;
+                    rdfs:isDefinedBy quant:;
+                    rdfs:label "concentration"@en;
+                    rdfs:subClassOf quant:PhysicalQuantity;
+                    skos:definition "Physical quantity expressing the amount of something per unit of something else."@en.
+quant:ConcentrationMeasurement a rdfs:Class;
+                               rdfs:isDefinedBy quant:;
+                               rdfs:label "concentration measurement"@en;
+                               rdfs:subClassOf quant:Measurement,
+                                               [a owl:Restriction ; 
+                                                owl:onProperty quant:measurementOf ; 
+                                                owl:someValuesFrom quant:Concentration],
+                                               [a owl:Restriction ; 
+                                                owl:onProperty quant:hasUnit ; 
+                                                owl:someValuesFrom [a owl:Restriction ; 
+                                                                    owl:onProperty quant:unitOf ; 
+                                                                    owl:someValuesFrom quant:ConcentrationMeasurement]].
+quant:Decreased a rdfs:Class,
+                  event:State;
+                rdfs:comment "Quantity having a smaller measurement value than a reference."@en;
+                rdfs:isDefinedBy quant:;
+                rdfs:label "decreased"@en;
+                skos:definition "Quantity being decreased compared to a reference."@en.
+quant:Deficient a rdfs:Class,
+                  event:State;
+                rdfs:comment "Quantity having a smaller measurement value than a normative reference value range."@en;
+                rdfs:isDefinedBy quant:;
+                rdfs:label "deficient"@en;
+                skos:definition "Quantity being deficient compared to a reference."@en.
+quant:Denominator a rdfs:Class;
+                  rdfs:comment "E.g. 20 mL water in 1 g sugar/20 mL water"@en;
+                  rdfs:isDefinedBy quant:;
+                  rdfs:label "denominator"@en;
+                  rdfs:subClassOf quant:Quantity;
+                  skos:definition "Quantity in a fraction, dividing another quantity."@en.
+quant:DigitalSize a rdfs:Class;
+                  rdfs:isDefinedBy quant:;
+                  rdfs:label "digital size"@en;
+                  rdfs:subClassOf quant:PhysicalQuantity;
+                  skos:definition "Physical quantity expressing the amount of information storage or communication in digital computing."@en.
+quant:DigitalSizeMeasurement a rdfs:Class;
+                             rdfs:isDefinedBy quant:;
+                             rdfs:label "digital size measurement"@en;
+                             rdfs:subClassOf quant:Measurement,
+                                             [a owl:Restriction ; 
+                                              owl:onProperty quant:measurementOf ; 
+                                              owl:someValuesFrom quant:DigitalSize],
+                                             [a owl:Restriction ; 
+                                              owl:onProperty quant:hasUnit ; 
+                                              owl:someValuesFrom [a owl:Restriction ; 
+                                                                  owl:onProperty quant:unitOf ; 
+                                                                  owl:someValuesFrom quant:DigitalSizeMeasurement]];
+                             skos:definition "Measurement of the amount of information storage or communication in digital computing."@en.
+quant:ElectricalResistance a rdfs:Class;
+                           rdfs:isDefinedBy quant:;
+                           rdfs:label "electrical resistance"@en;
+                           rdfs:subClassOf quant:PhysicalQuantity;
+                           skos:definition "Physical quantity expressing the opposition to the passage of an electric current."@en.
+quant:Excessive a rdfs:Class,
+                  event:State;
+                rdfs:comment "Quantity having a bigger measurement value than a normative reference value range."@en;
+                rdfs:isDefinedBy quant:;
+                rdfs:label "excessive"@en;
+                skos:definition "Quantity being excessive compared to a reference."@en.
+quant:Factor a rdfs:Class;
+             rdfs:comment "E.g. quantity 'percentage', its measurement having factor 'percent' or '0.01'."@en;
+             rdfs:isDefinedBy quant:;
+             rdfs:label "factor"@en;
+             skos:definition "Reference value by which a quantity measurement value is multiplied."@en.
+quant:FalseDiscoveryRate a rdfs:Class;
+                         rdfs:comment "The higher a false discovery rate, the more positive test results are false."@en;
+                         rdfs:isDefinedBy quant:;
+                         rdfs:label "false discovery rate"@en;
+                         rdfs:subClassOf quant:Ratio;
+                         skos:definition "Probability a positive test result is false."@en.
+quant:FalseNegativeRate a rdfs:Class;
+                        rdfs:comment "The higher a false negative rate, the more true positive cases go undetected, e.g. the more sick people are considered healthy."@en;
+                        rdfs:isDefinedBy quant:;
+                        rdfs:label "false negative rate"@en;
+                        rdfs:subClassOf quant:Ratio;
+                        skos:definition "Probability a test is negative given a condition."@en.
+quant:Frequency a rdfs:Class;
+                rdfs:isDefinedBy quant:;
+                rdfs:label "frequency"@en;
+                rdfs:subClassOf quant:Ratio,
+                                [a owl:Restriction ; 
+                                 owl:onProperty quant:hasNumerator ; 
+                                 owl:someValuesFrom quant:NumberOfEvents];
+                skos:definition "Quantity expressing the number of recurrent events per unit of time."@en.
+quant:FrequencyMeasurement a rdfs:Class;
+                           rdfs:isDefinedBy quant:;
+                           rdfs:label "frequency measurement"@en;
+                           rdfs:subClassOf quant:Measurement,
+                                           [a owl:Restriction ; 
+                                            owl:onProperty quant:measurementOf ; 
+                                            owl:someValuesFrom quant:Frequency],
+                                           [a owl:Restriction ; 
+                                            owl:onProperty quant:hasUnit ; 
+                                            owl:someValuesFrom [a owl:Restriction ; 
+                                                                owl:onProperty quant:unitOf ; 
+                                                                owl:someValuesFrom quant:FrequencyMeasurement]],
+                                           [a owl:Restriction ; 
+                                            owl:onProperty quant:hasValue ; 
+                                            owl:someValuesFrom xsd:decimal].
+quant:GrayLevel a rdfs:Class;
+                rdfs:isDefinedBy quant:;
+                rdfs:label "gray level"@en;
+                rdfs:subClassOf quant:Quantity;
+                skos:definition "."@en.
+quant:Increased a rdfs:Class,
+                  event:State;
+                rdfs:comment "Quantity having a bigger measurement value than a reference."@en;
+                rdfs:isDefinedBy quant:;
+                rdfs:label "increased"@en;
+                skos:definition "Quantity being increased compared to a reference."@en.
+quant:Length a rdfs:Class;
+             rdfs:isDefinedBy quant:;
+             rdfs:label "length"@en;
+             rdfs:subClassOf quant:PhysicalQuantity,
+                             pdist:Length;
+             skos:definition "Spatial quantity of a one-dimensional spatial resource."@en.
+quant:LengthMeasurement a rdfs:Class;
+                        rdfs:isDefinedBy quant:;
+                        rdfs:label "length measurement"@en;
+                        rdfs:subClassOf quant:Measurement,
+                                        [a owl:Restriction ; 
+                                         owl:onProperty quant:measurementOf ; 
+                                         owl:someValuesFrom quant:Length],
+                                        [a owl:Restriction ; 
+                                         owl:onProperty quant:hasUnit ; 
+                                         owl:someValuesFrom [a owl:Restriction ; 
+                                                             owl:onProperty quant:unitOf ; 
+                                                             owl:someValuesFrom quant:LengthMeasurement]].
+quant:Mass a rdfs:Class;
+           rdfs:isDefinedBy quant:;
+           rdfs:label "mass"@en;
+           rdfs:subClassOf quant:PhysicalQuantity,
+                           pmass:Mass;
+           skos:definition "Physical quantity equal to an object's resistance to changing either the speed or direction of its motion."@en;
+           skos:note "The mass of an object is independent of gravity and therefore different from but proportional to its weight."@en.
+quant:MassConcentration a rdfs:Class;
+                        rdfs:isDefinedBy quant:;
+                        rdfs:label "mass concentration"@en;
+                        rdfs:subClassOf quant:Concentration;
+                        skos:definition "Physical quantity expressing the amount of mass of something per unit of something else."@en.
+quant:MassConcentrationMeasurement a rdfs:Class;
+                                   rdfs:isDefinedBy quant:;
+                                   rdfs:label "mass concentration measurement"@en;
+                                   rdfs:subClassOf quant:ConcentrationMeasurement,
+                                                   [a owl:Restriction ; 
+                                                    owl:onProperty quant:measurementOf ; 
+                                                    owl:someValuesFrom quant:MassConcentration],
+                                                   [a owl:Restriction ; 
+                                                    owl:onProperty quant:hasUnit ; 
+                                                    owl:someValuesFrom [a owl:Restriction ; 
+                                                                        owl:onProperty quant:unitOf ; 
+                                                                        owl:someValuesFrom quant:MassConcentrationMeasurement]].
+quant:MassMeasurement a rdfs:Class;
+                      rdfs:isDefinedBy quant:;
+                      rdfs:label "mass measurement"@en;
+                      rdfs:subClassOf quant:Measurement,
+                                      [a owl:Restriction ; 
+                                       owl:onProperty quant:measurementOf ; 
+                                       owl:someValuesFrom quant:Mass],
+                                      [a owl:Restriction ; 
+                                       owl:onProperty quant:hasUnit ; 
+                                       owl:someValuesFrom [a owl:Restriction ; 
+                                                           owl:onProperty quant:unitOf ; 
+                                                           owl:someValuesFrom quant:MassMeasurement]].
+quant:Maximum a rdfs:Class;
+              rdfs:isDefinedBy quant:;
+              rdfs:label "maximum"@en;
+              rdfs:subClassOf quant:Number;
+              skos:definition "Largest number of a set of numbers."@en.
+quant:Measurement a rdfs:Class;
+                  rdfs:isDefinedBy quant:;
+                  rdfs:label "measurement"@en;
+                  rdfs:subClassOf event:Examination,
+                                  [a owl:Restriction ; 
+                                   owl:onProperty event:outputOf ; 
+                                   owl:allValuesFrom quant:Measuring];
+                  skos:definition "Quantification of a property by comparison with a standard."@en.
+quant:Measurer a rdfs:Class;
+               rdfs:isDefinedBy quant:;
+               rdfs:label "measurer"@en;
+               rdfs:subClassOf agent:Role;
+               skos:definition "Role of an agent measuring something."@en.
+quant:Measuring a rdfs:Class;
+                rdfs:isDefinedBy quant:;
+                rdfs:label "measuring"@en;
+                rdfs:subClassOf event:Examining,
+                                event:Procedure,
+                                [a owl:Restriction ; 
+                                 owl:onProperty event:hasInput ; 
+                                 owl:allValuesFrom quant:Quantity],
+                                [a owl:Restriction ; 
+                                 owl:onProperty event:hasOutput ; 
+                                 owl:allValuesFrom quant:Measurement];
+                skos:definition "Quantifying a property by comparison with a standard."@en.
+quant:Median a rdfs:Class;
+             rdfs:isDefinedBy quant:;
+             rdfs:label "median"@en;
+             rdfs:subClassOf quant:Quantity;
+             skos:definition "Number separating a higher half of a data set from a lower half."@en.
+quant:Minimum a rdfs:Class;
+              rdfs:isDefinedBy quant:;
+              rdfs:label "minimum"@en;
+              rdfs:subClassOf quant:Number;
+              skos:definition "Smallest number of a set of numbers."@en.
+quant:NegativePredictiveValue a rdfs:Class;
+                              rdfs:comment "The higher a negative predictive value, the more negative test results are true."@en;
+                              rdfs:isDefinedBy quant:;
+                              rdfs:label "negative predictive value"@en;
+                              rdfs:subClassOf quant:Ratio;
+                              skos:definition "Probability a negative test result is true."@en.
+quant:Normal a rdfs:Class,
+               event:State;
+             rdfs:comment "Quantity having a measurement value within a normative reference value range."@en;
+             rdfs:isDefinedBy quant:;
+             rdfs:label "normal"@en;
+             skos:definition "Quantity being compliant with a reference."@en.
+quant:NotExcessive a rdfs:Class,
+                     event:State;
+                   rdfs:comment "Quantity having a not a bigger measurement value than a normative reference value range."@en;
+                   rdfs:isDefinedBy quant:;
+                   rdfs:label "not excessive"@en;
+                   skos:definition "Quantity being not excessive compared to a reference."@en.
+quant:NotShort a rdfs:Class,
+                 event:State;
+               rdfs:isDefinedBy quant:;
+               rdfs:label "not short"@en;
+               skos:definition "Being in time not less than a reference."@en.
+quant:Number a rdfs:Class;
+             rdfs:isDefinedBy quant:;
+             rdfs:label "number"@en;
+             rdfs:subClassOf quant:Quantity;
+             skos:definition "Quantity with dimension 1, its measurement having no unit."@en.
+quant:NumberOfEvents a rdfs:Class;
+                     rdfs:isDefinedBy quant:;
+                     rdfs:label "number of recurrent events"@en;
+                     rdfs:subClassOf quant:Number;
+                     skos:definition "Count of recurrent events."@en.
+quant:Numerator a rdfs:Class;
+                rdfs:comment "E.g. 1 g sugar in 1 g sugar/20 mL water"@en;
+                rdfs:isDefinedBy quant:;
+                rdfs:label "numerator"@en;
+                rdfs:subClassOf quant:Quantity;
+                skos:definition "Quantity in a fraction, divided by another quantity."@en.
+quant:OnceADay a rdfs:Class,
+                 quant:Frequency;
+               rdfs:comment "E.g. frequency of drug intake"@en;
+               rdfs:isDefinedBy quant:;
+               rdfs:label "once a day"@en;
+               skos:exactMatch [a skos:Concept ; 
+                                skos:inScheme clisko:sct20080731 ; 
+                                skos:notation "229797004"^^clisko:sct20080731DT].
+quant:Part a rdfs:Class;
+           rdfs:isDefinedBy quant:;
+           rdfs:label "part"@en;
+           rdfs:subClassOf quant:Number;
+           skos:definition "Part number of something."@en.
+quant:Percentage a rdfs:Class;
+                 rdfs:isDefinedBy quant:;
+                 rdfs:label "percentage"@en;
+                 rdfs:subClassOf quant:Ratio;
+                 skos:definition "Ratio of something to 100 of something more general."@en.
+quant:PercentageMeasurement a rdfs:Class;
+                            rdfs:isDefinedBy quant:;
+                            rdfs:label "percentage measurement"@en;
+                            rdfs:subClassOf quant:Measurement,
+                                            [a owl:Restriction ; 
+                                             owl:onProperty quant:measurementOf ; 
+                                             owl:someValuesFrom quant:Percentage],
+                                            [a owl:Restriction ; 
+                                             owl:onProperty quant:hasFactor ; 
+                                             owl:someValuesFrom quant:percent].
+quant:PhysicalQuantity a rdfs:Class;
+                       rdfs:isDefinedBy quant:;
+                       rdfs:label "physical quantity"@en;
+                       rdfs:subClassOf quant:Quantity;
+                       skos:definition "Physical property that can be quantified by the product of a numeric value and a unit value."@en.
+quant:Precision a rdfs:Class;
+                rdfs:comment "The higher a precision, the more positive test results are true."@en;
+                rdfs:isDefinedBy quant:;
+                rdfs:label "precision"@en;
+                rdfs:subClassOf quant:Ratio;
+                skos:definition "Probability a positive test result is true."@en.
+quant:Pressure a rdfs:Class;
+               rdfs:isDefinedBy quant:;
+               rdfs:label "pressure"@en;
+               rdfs:subClassOf quant:PhysicalQuantity,
+                               ppres:Pressure;
+               skos:definition "Physical quantity expressing the amount of force applied on a unit surface."@en.
+quant:Probability a rdfs:Class;
+                  rdfs:isDefinedBy quant:;
+                  rdfs:label "probability"@en;
+                  rdfs:subClassOf quant:Quantity;
+                  skos:definition "Numerical expression of the chance of something to happen."@en.
+quant:Quantity a rdfs:Class;
+               rdfs:isDefinedBy quant:;
+               rdfs:label "quantity"@en;
+               rdfs:subClassOf event:Observable;
+               skos:definition "Property that can be quantified by the product of a numeric value and a unit value."@en,
+                               "Property of a phenomenon, body, or substance, where the property has a magnitude that can be expressed as a number and a reference. http://www.w3.org/2005/Incubator/w3pm/XGR-w3pm-20091008/#A"@en.
+quant:Ratio a rdfs:Class;
+            rdfs:comment "E.g. 1 g sugar/20 mL water = 0,05 g sugar/mL water"@en;
+            rdfs:isDefinedBy quant:;
+            rdfs:label "ratio"@en;
+            rdfs:subClassOf quant:Quantity,
+                            mathop:Ratio;
+            skos:definition "Quantity as fraction of 2 other quantities."@en.
+quant:Sample a rdfs:Class;
+             rdfs:isDefinedBy quant:;
+             rdfs:label "sample"@en;
+             rdfs:subClassOf fos:Group;
+             skos:definition "Group of members in a test sample."@en.
+quant:SampleSize a rdfs:Class;
+                 rdfs:isDefinedBy quant:;
+                 rdfs:label "sample size"@en;
+                 rdfs:subClassOf quant:Number;
+                 skos:definition "Number of members in a test sample."@en.
+quant:Sensitivity a rdfs:Class;
+                  rdfs:comment "The higher a sensitivity, the fewer true positive cases go undetected, e.g. the fewer sick people are considered healthy."@en;
+                  rdfs:isDefinedBy quant:;
+                  rdfs:label "sensitivity"@en;
+                  rdfs:subClassOf quant:Ratio;
+                  skos:definition "Probability a test is positive given a condition, e.g. a human is sick."@en.
+quant:Short a rdfs:Class,
+              event:State;
+            rdfs:isDefinedBy quant:;
+            rdfs:label "short"@en;
+            skos:definition "Being in time less than a reference."@en.
+quant:SolutionConcentration a rdfs:Class;
+                            rdfs:isDefinedBy quant:;
+                            rdfs:label "solution concentration"@en;
+                            rdfs:subClassOf quant:Concentration;
+                            skos:definition "Physical quantity expressing the amount of a solute per unit of a solution."@en.
+quant:Specificity a rdfs:Class;
+                  rdfs:comment "The higher a specificity, the more true negative cases are detected, e.g. the fewer healthy people are considered sick."@en;
+                  rdfs:isDefinedBy quant:;
+                  rdfs:label "specificity"@en;
+                  rdfs:subClassOf quant:Ratio;
+                  skos:definition "Probability a test is negative given the absence of a condition."@en.
+quant:Speed a rdfs:Class;
+            rdfs:isDefinedBy quant:;
+            rdfs:label "speed"@en;
+            rdfs:subClassOf quant:PhysicalQuantity,
+                            pspeed:Speed;
+            skos:definition "Physical quantity expressing a change of position of something per change of time."@en.
+quant:Temperature a rdfs:Class;
+                  rdfs:isDefinedBy quant:;
+                  rdfs:label "thermodynamic temperature"@en;
+                  rdfs:subClassOf pthermo:Temperature.
+quant:TemperatureMeasurement a rdfs:Class;
+                             rdfs:isDefinedBy quant:;
+                             rdfs:label "thermodynamic temperature measurement"@en;
+                             rdfs:subClassOf quant:Measurement,
+                                             [a owl:Restriction ; 
+                                              owl:onProperty quant:measurementOf ; 
+                                              owl:someValuesFrom quant:Temperature],
+                                             [a owl:Restriction ; 
+                                              owl:onProperty quant:hasUnit ; 
+                                              owl:someValuesFrom [a owl:Restriction ; 
+                                                                  owl:onProperty quant:unitOf ; 
+                                                                  owl:someValuesFrom quant:TemperatureMeasurement]].
+quant:ThriceADay a rdfs:Class,
+                   quant:Frequency;
+                 rdfs:comment "E.g. frequency of drug intake"@en;
+                 rdfs:isDefinedBy quant:;
+                 rdfs:label "thrice a day"@en;
+                 skos:exactMatch [a skos:Concept ; 
+                                  skos:inScheme clisko:sct20080731 ; 
+                                  skos:notation "229798009"^^clisko:sct20080731DT].
+quant:Time a rdfs:Class;
+           rdfs:isDefinedBy quant:;
+           rdfs:label "time"@en;
+           rdfs:subClassOf quant:Quantity,
+                           time:Time;
+           skos:definition "Quantity as dimension in which events occur in sequence."@en.
+quant:Total a rdfs:Class;
+            rdfs:isDefinedBy quant:;
+            rdfs:label "total"@en;
+            rdfs:subClassOf quant:Number;
+            skos:definition "Total number of something."@en.
+quant:TwiceADay a rdfs:Class,
+                  quant:Frequency;
+                rdfs:comment "E.g. frequency of drug intake"@en;
+                rdfs:isDefinedBy quant:;
+                rdfs:label "twice a day"@en;
+                skos:exactMatch [a skos:Concept ; 
+                                 skos:inScheme clisko:sct20080731 ; 
+                                 skos:notation "229799001"^^clisko:sct20080731DT].
+quant:Velocity a rdfs:Class;
+               rdfs:isDefinedBy quant:;
+               rdfs:label "velocity"@en;
+               rdfs:subClassOf quant:PhysicalQuantity,
+                               pspeed:Velocity;
+               skos:definition "Vector physical quantity expressing a speed of something and its direction."@en.
+quant:Volume a rdfs:Class;
+             rdfs:isDefinedBy quant:;
+             rdfs:label "volume"@en;
+             rdfs:subClassOf quant:PhysicalQuantity,
+                             pmdim:Volume;
+             skos:definition "Spatial quantity of a three-dimensional spatial resource."@en.
+quant:VolumeFLowRate a rdfs:Class;
+                     rdfs:isDefinedBy quant:;
+                     rdfs:label "volume fLow rate"@en;
+                     rdfs:subClassOf quant:PhysicalQuantity;
+                     skos:definition "Physical quantity expressing a volume passing through a given surface per unit of time."@en.
+quant:VolumeFLowRateMeasurement a rdfs:Class;
+                                rdfs:isDefinedBy quant:;
+                                rdfs:label "volume fLow rate measurement"@en;
+                                rdfs:subClassOf quant:Measurement,
+                                                [a owl:Restriction ; 
+                                                 owl:onProperty quant:measurementOf ; 
+                                                 owl:someValuesFrom quant:VolumeFLowRate],
+                                                [a owl:Restriction ; 
+                                                 owl:onProperty quant:hasUnit ; 
+                                                 owl:someValuesFrom [a owl:Restriction ; 
+                                                                     owl:onProperty quant:unitOf ; 
+                                                                     owl:someValuesFrom quant:VolumeFLowRateMeasurement]];
+                                skos:definition "Measurement of physical quantity expressing a volume passing through a given surface per unit of time."@en.
+quant:VolumeMeasurement a rdfs:Class;
+                        rdfs:isDefinedBy quant:;
+                        rdfs:label "volume measurement"@en;
+                        rdfs:subClassOf quant:Measurement,
+                                        [a owl:Restriction ; 
+                                         owl:onProperty quant:measurementOf ; 
+                                         owl:someValuesFrom quant:Volume],
+                                        [a owl:Restriction ; 
+                                         owl:onProperty quant:hasUnit ; 
+                                         owl:someValuesFrom [a owl:Restriction ; 
+                                                             owl:onProperty quant:unitOf ; 
+                                                             owl:someValuesFrom quant:VolumeMeasurement]].
+quant:areaOf a owl:ObjectProperty;
+             rdfs:domain quant:Area;
+             rdfs:isDefinedBy quant:;
+             rdfs:range space:SpatialResource;
+             rdfs:subPropertyOf quant:physicalQuantityOf;
+             skos:definition "Specifying a physical resource having an area."@en.
+quant:averageOf a owl:ObjectProperty;
+                rdfs:domain quant:Average;
+                rdfs:isDefinedBy quant:;
+                rdfs:range rdf:List;
+                rdfs:subPropertyOf quant:quantityOf;
+                owl:inverseOf quant:hasAverage;
+                skos:definition "Specifying a set of numbers having an average."@en.
+quant:convertedFrom a owl:ObjectProperty;
+                    rdfs:domain quant:Measurement;
+                    rdfs:isDefinedBy quant:;
+                    rdfs:range quant:Measurement;
+                    skos:definition "Specifying a measurement converted to another measurement with a different unit."@en.
+quant:convertedTo a owl:ObjectProperty;
+                  rdfs:domain quant:Measurement;
+                  rdfs:isDefinedBy quant:;
+                  rdfs:range quant:Measurement;
+                  skos:definition "Specifying a measurement converted from another measurement with a different unit."@en.
+quant:counts a owl:DatatypeProperty;
+             rdfs:comment "Used in conclusion of a rule with in its antecedent a calculation of a value with a built-in."@en;
+             rdfs:domain rdfs:Class;
+             rdfs:isDefinedBy quant:;
+             rdfs:range xsd:nonNegativeInteger;
+             owl:propertyChainAxiom (quant:hasNumber
+                                     quant:hasMeasurement
+                                     quant:hasValue);
+             skos:definition "Specifying a number of members in a set."@en.
+quant:denominatorOf a owl:ObjectProperty;
+                    rdfs:domain quant:Denominator;
+                    rdfs:isDefinedBy quant:;
+                    rdfs:range quant:Ratio;
+                    owl:inverseOf quant:hasDenominator;
+                    skos:definition "Specifying a ratio having a denominator."@en.
+quant:frequencyOf a owl:ObjectProperty;
+                  rdfs:domain quant:Frequency;
+                  rdfs:isDefinedBy quant:;
+                  rdfs:range event:Event;
+                  rdfs:subPropertyOf quant:quantityOf;
+                  owl:inverseOf quant:hasFrequency;
+                  skos:definition "Specifying an event having a frequency."@en.
+quant:hasArea a owl:ObjectProperty;
+              rdfs:domain space:SpatialResource;
+              rdfs:isDefinedBy quant:;
+              rdfs:range quant:Area;
+              rdfs:subPropertyOf quant:hasPhysicalQuantity;
+              skos:definition "Specifying an area of a physical resource."@en.
+quant:hasAverage a owl:ObjectProperty;
+                 rdfs:domain rdf:List;
+                 rdfs:isDefinedBy quant:;
+                 rdfs:range quant:Average;
+                 rdfs:subPropertyOf quant:hasQuantity;
+                 skos:definition "Specifying an average of a set of numbers."@en.
+quant:hasCircularity a owl:ObjectProperty;
+                     rdfs:domain doc:Image;
+                     rdfs:isDefinedBy quant:;
+                     rdfs:range quant:Circularity;
+                     skos:definition "Specifying a circularity of an image information resource."@en.
+quant:hasDenominator a owl:ObjectProperty;
+                     rdfs:domain quant:Ratio;
+                     rdfs:isDefinedBy quant:;
+                     rdfs:range quant:Denominator;
+                     skos:definition "Specifying a denominator of a ratio."@en.
+quant:hasFactor a owl:ObjectProperty;
+                rdfs:comment "E.g. 'per cent' is factor of 'percentage measurement'."@en;
+                rdfs:domain quant:Measurement;
+                rdfs:isDefinedBy quant:;
+                rdfs:range quant:Factor;
+                skos:definition "Specifying a factor of a measurement."@en.
+quant:hasFrequency a owl:ObjectProperty;
+                   rdfs:domain event:Event;
+                   rdfs:isDefinedBy quant:;
+                   rdfs:range quant:Frequency;
+                   rdfs:subPropertyOf quant:hasQuantity;
+                   skos:definition "Specifying a frequency of an event."@en.
+quant:hasGrayLevel a owl:ObjectProperty;
+                   rdfs:domain doc:Image;
+                   rdfs:isDefinedBy quant:;
+                   rdfs:range quant:GrayLevel;
+                   skos:definition "Specifying a gray level of an image information resource."@en.
+quant:hasLength a owl:ObjectProperty;
+                rdfs:domain space:SpatialResource;
+                rdfs:isDefinedBy quant:;
+                rdfs:range quant:Length;
+                rdfs:subPropertyOf quant:hasPhysicalQuantity;
+                skos:definition "Specifying a length of a physical resource."@en.
+quant:hasLowerValue a owl:DatatypeProperty,
+                      owl:FunctionalProperty;
+                    rdfs:domain quant:Measurement;
+                    rdfs:isDefinedBy quant:;
+                    rdfs:range rdfs:Resource;
+                    skos:definition "Specifying a lower reference value of a measurement."@en.
+quant:hasMass a owl:ObjectProperty;
+              rdfs:domain physical:Resource;
+              rdfs:isDefinedBy quant:;
+              rdfs:range quant:Mass;
+              rdfs:subPropertyOf quant:hasPhysicalQuantity;
+              skos:definition "Specifying a mass of a physical resource."@en.
+quant:hasMaximum a owl:ObjectProperty;
+                 rdfs:domain rdf:List;
+                 rdfs:isDefinedBy quant:;
+                 rdfs:range quant:Maximum;
+                 rdfs:subPropertyOf quant:hasQuantity;
+                 skos:definition "Specifying the largest number of a set of numbers."@en.
+quant:hasMeasurement a owl:ObjectProperty;
+                     rdfs:domain quant:Quantity;
+                     rdfs:isDefinedBy quant:;
+                     rdfs:range quant:Measurement;
+                     rdfs:subPropertyOf event:objectOf;
+                     skos:definition "Specifying a measurement of a quantity."@en.
+quant:hasMeasuring a owl:ObjectProperty;
+                   rdfs:domain quant:Quantity;
+                   rdfs:isDefinedBy quant:;
+                   rdfs:range quant:Measuring;
+                   rdfs:subPropertyOf event:outputObjectOf;
+                   skos:definition "Specifying a measuring of a quantity."@en.
+quant:hasMedian a owl:ObjectProperty;
+                rdfs:comment "A triple of the form '?list quant:hasMedian ?median' triggers in an N3 rule backward rules to calculate a median."@en;
+                rdfs:domain rdf:List;
+                rdfs:isDefinedBy quant:;
+                rdfs:range quant:Median;
+                rdfs:subPropertyOf quant:hasQuantity;
+                skos:definition "Specifying a median of a list of numbers."@en.
+quant:hasMinimum a owl:ObjectProperty;
+                 rdfs:domain rdf:List;
+                 rdfs:isDefinedBy quant:;
+                 rdfs:range quant:Minimum;
+                 rdfs:subPropertyOf quant:hasQuantity;
+                 skos:definition "Specifying the smallest number of a set of numbers."@en.
+quant:hasNumber a owl:ObjectProperty;
+                rdfs:domain rdfs:Class;
+                rdfs:isDefinedBy quant:;
+                rdfs:label "has number"@en;
+                rdfs:range quant:Number;
+                rdfs:subPropertyOf quant:hasQuantity;
+                skos:definition "Specifying a number of something."@en.
+quant:hasNumerator a owl:ObjectProperty;
+                   rdfs:domain quant:Ratio;
+                   rdfs:isDefinedBy quant:;
+                   rdfs:range quant:Numerator;
+                   skos:definition "Specifying a numerator of a ratio."@en.
+quant:hasPart a owl:ObjectProperty;
+              rdfs:domain rdfs:Resource;
+              rdfs:isDefinedBy quant:;
+              rdfs:label "has part"@en;
+              rdfs:range quant:Part;
+              rdfs:subPropertyOf quant:hasNumber;
+              skos:definition "Specifying a part of something."@en.
+quant:hasPhysicalQuantity a owl:ObjectProperty;
+                          rdfs:domain physical:Resource;
+                          rdfs:isDefinedBy quant:;
+                          rdfs:range quant:PhysicalQuantity;
+                          rdfs:subPropertyOf quant:hasQuantity;
+                          skos:definition "Specifying a quantifiable physical property of something."@en.
+quant:hasQuantity a owl:ObjectProperty;
+                  rdfs:domain rdfs:Resource;
+                  rdfs:isDefinedBy quant:;
+                  rdfs:range quant:Quantity;
+                  skos:definition "Specifying a quantifiable property of something."@en.
+quant:hasTotal a owl:ObjectProperty;
+               rdfs:domain rdfs:Resource;
+               rdfs:isDefinedBy quant:;
+               rdfs:label "has total"@en;
+               rdfs:range quant:Total;
+               rdfs:subPropertyOf quant:hasNumber;
+               skos:definition "Specifying a total of something."@en.
+quant:hasUnit a owl:ObjectProperty;
+              rdfs:domain quant:Measurement;
+              rdfs:isDefinedBy quant:;
+              rdfs:range units:Unit;
+              skos:definition "Specifying a unit of a measurement."@en.
+quant:hasUpperValue a owl:DatatypeProperty,
+                      owl:FunctionalProperty;
+                    rdfs:domain quant:Measurement;
+                    rdfs:isDefinedBy quant:;
+                    rdfs:range rdfs:Resource;
+                    skos:definition "Specifying an upper reference value of a measurement."@en.
+quant:hasValue a owl:DatatypeProperty,
+                 owl:FunctionalProperty;
+               rdfs:domain quant:Measurement;
+               rdfs:isDefinedBy quant:;
+               rdfs:range rdfs:Resource;
+               skos:definition "Specifying a value of a measurement."@en.
+quant:hasValueDecrease a owl:DatatypeProperty,
+                         owl:FunctionalProperty;
+                       rdfs:comment "Used in an N3 rule to calculate a value decrease."@en;
+                       rdfs:domain quant:Measurement;
+                       rdfs:isDefinedBy quant:;
+                       rdfs:range rdfs:Resource;
+                       skos:definition "Specifying a decrease of a value of a measurement compared to a reference."@en.
+quant:hasValueDeficit a owl:DatatypeProperty,
+                        owl:FunctionalProperty;
+                      rdfs:comment "Used in an N3 rule to calculate a value deficit."@en;
+                      rdfs:domain quant:Measurement;
+                      rdfs:isDefinedBy quant:;
+                      rdfs:range rdfs:Resource;
+                      skos:definition "Specifying a deficit of a value of a measurement towards a normative reference."@en.
+quant:hasValueExcess a owl:DatatypeProperty,
+                       owl:FunctionalProperty;
+                     rdfs:comment "Used in an N3 rule to calculate a value excess."@en;
+                     rdfs:domain quant:Measurement;
+                     rdfs:isDefinedBy quant:;
+                     rdfs:range rdfs:Resource;
+                     skos:definition "Specifying an excess of a value of a measurement towards a normative reference."@en.
+quant:hasValueIncrease a owl:DatatypeProperty,
+                         owl:FunctionalProperty;
+                       rdfs:comment "Used in an N3 rule to calculate a value increase."@en;
+                       rdfs:domain quant:Measurement;
+                       rdfs:isDefinedBy quant:;
+                       rdfs:range rdfs:Resource;
+                       skos:definition "Specifying an increase of a value of a measurement compared to a reference."@en.
+quant:hasVolume a owl:ObjectProperty;
+                rdfs:domain space:SpatialResource;
+                rdfs:isDefinedBy quant:;
+                rdfs:range quant:Volume;
+                rdfs:subPropertyOf quant:hasPhysicalQuantity;
+                skos:definition "Specifying a volume of a physical resource."@en.
+quant:lengthOf a owl:ObjectProperty;
+               rdfs:domain quant:Length;
+               rdfs:isDefinedBy quant:;
+               rdfs:range space:SpatialResource;
+               rdfs:subPropertyOf quant:physicalQuantityOf;
+               skos:definition "Specifying a physical resource having a length."@en.
+quant:massOf a owl:ObjectProperty;
+             rdfs:domain quant:Mass;
+             rdfs:isDefinedBy quant:;
+             rdfs:range physical:Resource;
+             rdfs:subPropertyOf quant:physicalQuantityOf;
+             skos:definition "Specifying a physical resource having a mass."@en.
+quant:maximumOf a owl:ObjectProperty;
+                rdfs:domain quant:Maximum;
+                rdfs:isDefinedBy quant:;
+                rdfs:range rdf:List;
+                rdfs:subPropertyOf quant:quantityOf;
+                skos:definition "Specifying a set of numbers of which a number is the largest."@en.
+quant:measuredBy a owl:ObjectProperty;
+                 rdfs:domain quant:Quantity;
+                 rdfs:isDefinedBy quant:;
+                 rdfs:label "measured by"@en;
+                 rdfs:range [a owl:Restriction ; 
+                             owl:onProperty agent:playsRole ; 
+                             owl:someValuesFrom quant:Measurer];
+                 skos:definition "Specifying an agent measuring a quantity."@en.
+quant:measurementOf a owl:ObjectProperty;
+                    rdfs:domain quant:Measurement;
+                    rdfs:isDefinedBy quant:;
+                    rdfs:label "measurement of"@en;
+                    rdfs:range quant:Quantity;
+                    rdfs:subPropertyOf event:hasObject;
+                    skos:definition "Specifying a quantity of a measurement."@en.
+quant:measuringOf a owl:ObjectProperty;
+                  rdfs:domain quant:Measuring;
+                  rdfs:isDefinedBy quant:;
+                  rdfs:range quant:Quantity;
+                  rdfs:subPropertyOf event:hasOutputObject;
+                  skos:definition "Specifying a quantity of a measuring."@en.
+quant:medianOf a owl:ObjectProperty;
+               rdfs:domain quant:Median;
+               rdfs:isDefinedBy quant:;
+               rdfs:range rdf:List;
+               rdfs:subPropertyOf quant:quantityOf;
+               owl:inverseOf quant:hasMedian;
+               skos:definition "Specifying a set of numbers having a median."@en.
+quant:minimumOf a owl:ObjectProperty;
+                rdfs:domain quant:Minimum;
+                rdfs:isDefinedBy quant:;
+                rdfs:range rdf:List;
+                rdfs:subPropertyOf quant:quantityOf;
+                skos:definition "Specifying a set of numbers of which a number is the smallest."@en.
+quant:numberOf a owl:ObjectProperty;
+               rdfs:domain quant:Number;
+               rdfs:isDefinedBy quant:;
+               rdfs:label "number of"@en;
+               rdfs:range rdfs:Resource;
+               rdfs:subPropertyOf quant:quantityOf;
+               skos:definition "Specifying something having a number."@en.
+quant:numeratorOf a owl:ObjectProperty;
+                  rdfs:domain quant:Numerator;
+                  rdfs:isDefinedBy quant:;
+                  rdfs:range quant:Ratio;
+                  owl:inverseOf quant:hasNumerator;
+                  skos:definition "Specifying a ratio having a numerator."@en.
+quant:partOf a owl:ObjectProperty;
+             rdfs:domain quant:Part;
+             rdfs:isDefinedBy quant:;
+             rdfs:label "part of"@en;
+             rdfs:range rdfs:Resource;
+             rdfs:subPropertyOf quant:numberOf;
+             owl:inverseOf quant:hasPart;
+             skos:definition "Specifying something having a part."@en.
+quant:percent screla:hasSymbol "%";
+              a rdfs:Class,
+                quant:Factor;
+              rdfs:isDefinedBy quant:;
+              rdfs:label "percent"@en;
+              skos:definition "Factor being 1/100."@en;
+              skos:exactMatch [a skos:Concept ; 
+                               skos:inScheme clisko:sct20080731 ; 
+                               skos:notation "118582008"^^clisko:sct20080731DT];
+              skos:note "Percent is not a unit."@en.
+quant:percentageOf a owl:ObjectProperty;
+                   rdfs:domain quant:Percentage;
+                   rdfs:isDefinedBy quant:;
+                   rdfs:label "percentage of"@en;
+                   rdfs:range [a owl:Restriction ; 
+                               owl:onProperty quant:hasNumber ; 
+                               owl:someValuesFrom quant:Total];
+                   skos:definition "Specifying a total of a percentage, set of things that will be counted in a rule as a denominator to calculate a percentage value."@en.
+quant:percentageThat a owl:ObjectProperty;
+                     rdfs:domain quant:Percentage;
+                     rdfs:isDefinedBy quant:;
+                     rdfs:label "percentage that"@en;
+                     rdfs:range [a owl:Restriction ; 
+                                 owl:onProperty quant:hasNumber ; 
+                                 owl:someValuesFrom quant:Part];
+                     skos:definition "Specifying a part of a percentage, set of things that will be counted in a rule as the numerator to calculate a percentage value."@en.
+quant:physicalQuantityOf a owl:ObjectProperty;
+                         rdfs:domain quant:PhysicalQuantity;
+                         rdfs:isDefinedBy quant:;
+                         rdfs:range physical:Resource;
+                         owl:inverseOf quant:hasPhysicalQuantity;
+                         skos:definition "Specifying something having a quantifiable physical property."@en.
+quant:quantityOf a owl:ObjectProperty;
+                 rdfs:domain quant:Quantity;
+                 rdfs:isDefinedBy quant:;
+                 rdfs:range rdfs:Resource;
+                 skos:definition "Specifying something having a quantifiable property."@en.
+quant:totalOf a owl:ObjectProperty;
+              rdfs:domain quant:Total;
+              rdfs:isDefinedBy quant:;
+              rdfs:label "total of"@en;
+              rdfs:range rdfs:Resource;
+              rdfs:subPropertyOf quant:numberOf;
+              owl:inverseOf quant:hasTotal;
+              skos:definition "Specifying something having a total."@en.
+quant:unitOf a owl:ObjectProperty;
+             rdfs:domain units:Unit;
+             rdfs:isDefinedBy quant:;
+             rdfs:range quant:Measurement;
+             owl:inverseOf quant:hasUnit;
+             skos:definition "Specifying a measurement having a unit."@en.
+quant:valueOf a owl:ObjectProperty;
+              rdfs:domain rdfs:Resource;
+              rdfs:isDefinedBy quant:;
+              rdfs:range quant:Measurement;
+              skos:definition "Specifying a measurement having a value."@en.
+quant:volumeOf a owl:ObjectProperty;
+               rdfs:domain quant:Volume;
+               rdfs:isDefinedBy quant:;
+               rdfs:range space:SpatialResource;
+               rdfs:subPropertyOf quant:physicalQuantityOf;
+               skos:definition "Specifying a physical resource having a volume."@en.

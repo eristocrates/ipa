@@ -1,0 +1,277 @@
+@base <https://docs.oasis-open-projects.org/oslc-op/cm/v3.0/errata01/os/change-mgt-vocab.ttl>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix oslc_cm: <http://open-services.net/ns/cm#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+@prefix oscm: <http://open-services.net/ns/cm#>.
+
+oslc_cm: dcterms:description "All vocabulary URIs defined in the OSLC Change Management (CM) namespace."^^rdf:XMLLiteral;
+         dcterms:hasVersion "OS";
+         dcterms:isPartOf <https://docs.oasis-open-projects.org/oslc-op/cm/v3.0/errata01/os/change-mgt-spec.html>;
+         dcterms:issued "2023-07-06"^^xsd:date;
+         dcterms:license <http://www.apache.org/licenses/LICENSE-2.0>;
+         dcterms:publisher <https://open-services.net/about/>;
+         dcterms:source <https://docs.oasis-open-projects.org/oslc-op/cm/v3.0/errata01/os/change-mgt-vocab.ttl>;
+         dcterms:title "The OSLC Change Management(CM) Vocabulary";
+         vann:preferredNamespacePrefix "oslc_cm";
+         a owl:Ontology;
+         rdfs:label "The OSLC Change Management(CM) Vocabulary".
+oslc_cm:Approved a oslc_cm:State;
+                 rdfs:comment "Whether or not the Change Request has been approved.";
+                 rdfs:isDefinedBy oslc_cm:;
+                 rdfs:label "approved".
+oslc_cm:Blocker a oslc_cm:Severity;
+                rdfs:comment "Severe problem. No workaround. Blocks development, test, or usage.";
+                rdfs:isDefinedBy oslc_cm:;
+                rdfs:label "Blocker".
+oslc_cm:ChangeNotice a rdfs:Class;
+                     rdfs:comment "Represents an assignment notification of a change request. May be used also to bestow authority onto the assigned user to effect the changes.";
+                     rdfs:isDefinedBy oslc_cm:;
+                     rdfs:label "ChangeNotice";
+                     rdfs:subClassOf oslc_cm:ChangeRequest.
+oslc_cm:ChangeRequest a rdfs:Class;
+                      rdfs:comment "The CM Change Request resource.";
+                      rdfs:isDefinedBy oslc_cm:;
+                      rdfs:label "ChangeRequest".
+oslc_cm:Closed a oslc_cm:State;
+               rdfs:comment "Whether or not the Change Request is completely done, no further fixes or fix verification is needed.";
+               rdfs:isDefinedBy oslc_cm:;
+               rdfs:label "closed".
+oslc_cm:Critical a oslc_cm:Severity;
+                 rdfs:comment "Severe problem. No workaround.";
+                 rdfs:isDefinedBy oslc_cm:;
+                 rdfs:label "Critical".
+oslc_cm:Defect a rdfs:Class;
+               rdfs:comment "A software or product defect.";
+               rdfs:isDefinedBy oslc_cm:;
+               rdfs:label "Defect";
+               rdfs:subClassOf oslc_cm:ChangeRequest.
+oslc_cm:Enhancement a rdfs:Class;
+                    rdfs:comment "A request for new functionality.";
+                    rdfs:isDefinedBy oslc_cm:;
+                    rdfs:label "Enhancement";
+                    rdfs:subClassOf oslc_cm:ChangeRequest.
+oslc_cm:Fixed a oslc_cm:State;
+              rdfs:comment "Whether or not the Change Request has been fixed.";
+              rdfs:isDefinedBy oslc_cm:;
+              rdfs:label "fixed".
+oslc_cm:High a oslc_cm:Priority;
+             rdfs:comment "Highest priority, action on the change request highly recommended.";
+             rdfs:isDefinedBy oslc_cm:;
+             rdfs:label "High".
+oslc_cm:Inprogress a oslc_cm:State;
+                   rdfs:comment "Whether or not the Change Request in a state indicating that active work is occurring.";
+                   rdfs:isDefinedBy oslc_cm:;
+                   rdfs:label "inprogress".
+oslc_cm:Low a oslc_cm:Priority;
+            rdfs:comment "Action on the change request can be safely deferred.";
+            rdfs:isDefinedBy oslc_cm:;
+            rdfs:label "Low".
+oslc_cm:Major a oslc_cm:Severity;
+              rdfs:comment "Prevents function from being used. There is a workaround.";
+              rdfs:isDefinedBy oslc_cm:;
+              rdfs:label "Major".
+oslc_cm:Medium a oslc_cm:Priority;
+               rdfs:comment "Acting on the change request can wait, but not forever.";
+               rdfs:isDefinedBy oslc_cm:;
+               rdfs:label "Medium".
+oslc_cm:Minor a oslc_cm:Severity;
+              rdfs:comment "Minimal impact.";
+              rdfs:isDefinedBy oslc_cm:;
+              rdfs:label "Minor".
+oslc_cm:Normal a oslc_cm:Severity;
+               rdfs:comment "Affects non-critical functionality. There is a workaround.";
+               rdfs:isDefinedBy oslc_cm:;
+               rdfs:label "Normal".
+oslc_cm:Priority a rdfs:Class;
+                 rdfs:comment "Defines the possible oslc_cm:priority property values.";
+                 rdfs:isDefinedBy oslc_cm:;
+                 rdfs:label "Priority".
+oslc_cm:PriorityUnassigned a oslc_cm:Priority;
+                           rdfs:comment "The priority of the change request is intentionally not set.";
+                           rdfs:isDefinedBy oslc_cm:;
+                           rdfs:label "PriorityUnassigned".
+oslc_cm:ReviewTask a rdfs:Class;
+                   rdfs:comment "A request to make a change and review the change.";
+                   rdfs:isDefinedBy oslc_cm:;
+                   rdfs:label "ReviewTask";
+                   rdfs:subClassOf oslc_cm:Task.
+oslc_cm:Reviewed a oslc_cm:State;
+                 rdfs:comment "Whether or not the Change Request has been reviewed.";
+                 rdfs:isDefinedBy oslc_cm:;
+                 rdfs:label "reviewed".
+oslc_cm:Severity a rdfs:Class;
+                 rdfs:comment "Defines the possible oslc_cm:severity property values.";
+                 rdfs:isDefinedBy oslc_cm:;
+                 rdfs:label "Severity".
+oslc_cm:SeverityUnassigned a oslc_cm:Severity;
+                           rdfs:comment "The severity of the change request is intentionally not set.";
+                           rdfs:isDefinedBy oslc_cm:;
+                           rdfs:label "SeverityUnassigned".
+oslc_cm:State a rdfs:Class;
+              rdfs:comment "Defines the possible oslc_cm:state property values.";
+              rdfs:isDefinedBy oslc_cm:;
+              rdfs:label "State".
+oslc_cm:Task a rdfs:Class;
+             rdfs:comment "An executable and trackable activity.";
+             rdfs:isDefinedBy oslc_cm:;
+             rdfs:label "Task";
+             rdfs:subClassOf oslc_cm:ChangeRequest.
+oslc_cm:Verified a oslc_cm:State;
+                 rdfs:comment "Whether or not the resolution or fix of the Change Request has been verified.";
+                 rdfs:isDefinedBy oslc_cm:;
+                 rdfs:label "verified".
+oslc_cm:affectedByDefect a rdf:Property;
+                         rdfs:comment """Change request is affected by a reported defect. It is
+likely that the target resource will be an oslc_cm:Defect.""";
+                         rdfs:isDefinedBy oslc_cm:;
+                         rdfs:label "affectedByDefect".
+oslc_cm:affectsPlanItem a rdf:Property;
+                        rdfs:comment """Change request affects a plan item. It is likely that
+the target resource will be an oslc_cm:ChangeRequest.""";
+                        rdfs:isDefinedBy oslc_cm:;
+                        rdfs:label "affectsPlanItem".
+oslc_cm:affectsRequirement a rdf:Property;
+                           rdfs:comment """The ChangeRequest affects a Requirement. It is likely
+that the target resource will be an oslc_rm:Requirement.""";
+                           rdfs:isDefinedBy oslc_cm:;
+                           rdfs:label "affectsRequirement".
+oslc_cm:affectsTestResult a rdf:Property;
+                          rdfs:comment """Associated resource that is affected by this Change
+Request. It is likely that the target resource will be an
+oslc_qm:TestResult.""";
+                          rdfs:isDefinedBy oslc_cm:;
+                          rdfs:label "affectsTestResult".
+oslc_cm:approved a rdf:Property;
+                 rdfs:comment "Whether or not the Change Request has been approved.";
+                 rdfs:isDefinedBy oslc_cm:;
+                 rdfs:label "approved".
+oslc_cm:authorizer a rdf:Property;
+                   rdfs:comment "The URI of a resource describing an agent who is responsible authorizing for and/or has authorized effort to be expended to address a set of change requests.";
+                   rdfs:isDefinedBy oslc_cm:;
+                   rdfs:label "authorizer".
+oslc_cm:blocksTestExecutionRecord a rdf:Property;
+                                  rdfs:comment """Associated resource that is blocked by this Change
+Request. It is likely that the target resource will be an
+oslc_qm:TestExecutionRecord.""";
+                                  rdfs:isDefinedBy oslc_cm:;
+                                  rdfs:label "blocksTestExecutionRecord".
+oslc_cm:closeDate a rdf:Property;
+                  rdfs:comment "The date at which no further activity or work is intended to be conducted.";
+                  rdfs:isDefinedBy oslc_cm:;
+                  rdfs:label "closeDate".
+oslc_cm:closed a rdf:Property;
+               rdfs:comment "Whether or not the Change Request is completely done, no further fixes or fix verification is needed.";
+               rdfs:isDefinedBy oslc_cm:;
+               rdfs:label "closed".
+oslc_cm:defect a rdfs:Resource;
+               rdfs:comment "Used to report defects in testing.";
+               rdfs:isDefinedBy oslc_cm:;
+               rdfs:label "defect".
+oslc_cm:fixed a rdf:Property;
+              rdfs:comment "Whether or not the Change Request has been fixed.";
+              rdfs:isDefinedBy oslc_cm:;
+              rdfs:label "fixed".
+oslc_cm:implementsRequirement a rdf:Property;
+                              rdfs:comment """The ChangeRequest implements the associated Requirement. It is likely that the
+target resource will be an oslc_rm:Requirement.""";
+                              rdfs:isDefinedBy oslc_cm:;
+                              rdfs:label "implementsRequirement".
+oslc_cm:inProgress a rdf:Property;
+                   rdfs:comment "Whether or not the Change Request in a state indicating that active work is occurring.";
+                   rdfs:isDefinedBy oslc_cm:;
+                   rdfs:label "inProgress".
+oslc_cm:parent a rdf:Property;
+               rdfs:comment "The related parent change requests of the subject change request.";
+               rdfs:isDefinedBy oslc_cm:;
+               rdfs:label "parent".
+oslc_cm:planItem a rdfs:Resource;
+                 rdfs:comment "Used for associating change requests into plans (project, release, sprint, etc).";
+                 rdfs:isDefinedBy oslc_cm:;
+                 rdfs:label "planItem".
+oslc_cm:priority a rdf:Property;
+                 rdfs:comment """Used to indicate the relative importance of ChangeRequests.
+It is likely that the target resource will be an
+oslc_cm:Priority.""";
+                 rdfs:isDefinedBy oslc_cm:;
+                 rdfs:label "priority".
+oslc_cm:relatedChangeRequest a rdf:Property;
+                             rdfs:comment """This relationship is loosely coupled, has no specific
+meaning, and can be used to link related change requests. It is likely
+that the target resource will be an oslc_cm:ChangeRequest.""";
+                             rdfs:isDefinedBy oslc_cm:;
+                             rdfs:label "relatedChangeRequest".
+oslc_cm:relatedTestCase a rdf:Property;
+                        rdfs:comment """Related test case resource. It is likely that the
+target resource will be an oslc_qm:TestCase.""";
+                        rdfs:isDefinedBy oslc_cm:;
+                        rdfs:label "relatedTestCase".
+oslc_cm:relatedTestExecutionRecord a rdf:Property;
+                                   rdfs:comment """Related to a test execution resource. It is likely
+that the target resource will be an oslc_qm:TestExecutionRecord.""";
+                                   rdfs:isDefinedBy oslc_cm:;
+                                   rdfs:label "relatedTestExecutionRecord".
+oslc_cm:relatedTestPlan a rdf:Property;
+                        rdfs:comment """Related test plan resource. It is likely that the
+target resource will be an oslc_qm:TestPlan.""";
+                        rdfs:isDefinedBy oslc_cm:;
+                        rdfs:label "relatedTestPlan".
+oslc_cm:relatedTestScript a rdf:Property;
+                          rdfs:comment """Related test script resource. It is likely that the
+target resource will be an oslc_qm:TestScript.""";
+                          rdfs:isDefinedBy oslc_cm:;
+                          rdfs:label "relatedTestScript".
+oslc_cm:requirementsChangeRequest a rdfs:Resource;
+                                  rdfs:comment "Used for associating a change request for usage in tracking changes to a Requirements resource.";
+                                  rdfs:isDefinedBy oslc_cm:;
+                                  rdfs:label "requirementsChangeRequest".
+oslc_cm:reviewed a rdf:Property;
+                 rdfs:comment "Whether or not the Change Request has been reviewed.";
+                 rdfs:isDefinedBy oslc_cm:;
+                 rdfs:label "reviewed".
+oslc_cm:severity a rdf:Property;
+                 rdfs:comment """Used to indicate the severity or potential impact of a defect.
+It is likely that the target resource will be an oslc_cm:Severity.""";
+                 rdfs:isDefinedBy oslc_cm:;
+                 rdfs:label "severity".
+oslc_cm:state a rdf:Property;
+              rdfs:comment "Used to indicate the status of the change request.";
+              rdfs:isDefinedBy oslc_cm:;
+              rdfs:label "state".
+oslc_cm:status a rdf:Property;
+               rdfs:comment """Used to indicate the status of the change request based
+on values defined by the service provider. Most often a read-only
+property. It is likely that the target resource will be a string corresponding to an
+oslc_cm:State value.""";
+               rdfs:isDefinedBy oslc_cm:;
+               rdfs:label "status";
+               vs:term_status "archaic".
+oslc_cm:task a rdfs:Resource;
+             rdfs:comment "Used for associating change requests into executable and track-able items.";
+             rdfs:isDefinedBy oslc_cm:;
+             rdfs:label "task".
+oslc_cm:testedByTestCase a rdf:Property;
+                         rdfs:comment """Test case by which this change request is tested. It is
+likely that the target resource will be an oslc_qm:TestCase.""";
+                         rdfs:isDefinedBy oslc_cm:;
+                         rdfs:label "testedByTestCase".
+oslc_cm:tracksChangeSet a rdf:Property;
+                        rdfs:comment """Tracks a change set resource. It is likely that the
+target resource will be an oslc_config:ChangeSet.""";
+                        rdfs:isDefinedBy oslc_cm:;
+                        rdfs:label "tracksChangeSet".
+oslc_cm:tracksRequirement a rdf:Property;
+                          rdfs:comment """Tracks the associated Requirement or Requirement
+ChangeSet resources. It is likely that the target resource will be an
+oslc_rm:Requirement.""";
+                          rdfs:isDefinedBy oslc_cm:;
+                          rdfs:label "tracksRequirement".
+oslc_cm:verified a rdf:Property;
+                 rdfs:comment "Whether or not the resolution or fix of the Change Request has been verified.";
+                 rdfs:isDefinedBy oslc_cm:;
+                 rdfs:label "verified".

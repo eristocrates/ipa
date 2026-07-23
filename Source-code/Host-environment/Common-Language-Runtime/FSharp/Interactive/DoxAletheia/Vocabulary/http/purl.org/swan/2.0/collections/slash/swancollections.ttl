@@ -1,0 +1,111 @@
+@base <http://purl.org/swan/2.0/collections/>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix : <http://purl.org/swan/2.0/collections/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix swancollections: <http://purl.org/swan/2.0/collections/>.
+
+dct:contributor a owl:AnnotationProperty.
+dct:creator a owl:AnnotationProperty.
+dct:date a owl:AnnotationProperty.
+dct:format a owl:AnnotationProperty.
+dct:language a owl:AnnotationProperty.
+dct:publisher a owl:AnnotationProperty.
+dct:title a owl:AnnotationProperty.
+<http://purl.org/swan/2.0/collections/> dct:contributor "Paolo Ciccarese",
+                                                        "Marco Ocana";
+                                        dct:creator <http://www.hcklab.org/foaf.rdf#me>;
+                                        dct:date "January 14, 2009";
+                                        dct:format "rdf/xml";
+                                        dct:language "en";
+                                        dct:publisher "Mindinformatics, Massachusetts General Hospital";
+                                        dct:title "Collections ontology"@en;
+                                        a owl:Ontology;
+                                        rdfs:label "Collections v. 2.0";
+                                        owl:versionInfo "2.0".
+:Bag a owl:Class;
+     rdfs:comment "Bag - Collection that can have a number of copies of each object";
+     rdfs:label "(collections) Bag";
+     rdfs:subClassOf :Collection;
+     owl:disjointWith :Set.
+:Collection a owl:Class;
+            rdfs:comment "Collection - A group of objects that can be considered as a whole.";
+            rdfs:label "(collections) Collection";
+            rdfs:subClassOf owl:Thing.
+:Item a owl:Class;
+      rdfs:comment "Item - Element belonging to a Bag";
+      rdfs:label "(collections) Item";
+      rdfs:subClassOf owl:Thing;
+      owl:disjointWith :Collection.
+:List a owl:Class;
+      rdfs:comment "List - An ordered array of items, that can be present in multiple copies";
+      rdfs:label "(collections) List";
+      rdfs:subClassOf :Bag,
+                      [a owl:Restriction ; 
+                       owl:onProperty :lastItem ; 
+                       owl:maxCardinality "1"^^xsd:nonNegativeInteger],
+                      [a owl:Restriction ; 
+                       owl:onProperty :firstItem ; 
+                       owl:maxCardinality "1"^^xsd:nonNegativeInteger].
+:ListItem a owl:Class;
+          rdfs:comment "ListItem - Element belonging to a list";
+          rdfs:label "(collections) ListItem";
+          rdfs:subClassOf :Item.
+:Set a owl:Class;
+     rdfs:comment "Set - A collection that cannot contain duplicate elements.";
+     rdfs:label "(collections) Set";
+     rdfs:subClassOf :Collection.
+:element a owl:ObjectProperty;
+         rdfs:comment "element - The link to the members of a Set";
+         rdfs:domain :Collection.
+:firstItem a owl:FunctionalProperty,
+             owl:ObjectProperty;
+           rdfs:domain :List;
+           rdfs:range :ListItem;
+           rdfs:subPropertyOf :item.
+:followedBy a owl:ObjectProperty,
+              owl:TransitiveProperty;
+            rdfs:comment "followedBy - The link to the first item of the list";
+            rdfs:domain :ListItem;
+            rdfs:range :ListItem.
+:item a owl:ObjectProperty;
+      rdfs:comment "item - The link to every item of the Bag";
+      rdfs:domain :Bag;
+      rdfs:range :Item;
+      rdfs:subPropertyOf :element.
+:itemContent a owl:ObjectProperty,
+               owl:FunctionalProperty;
+             rdfs:comment "itemContent - The link to the actual resource to which the item refers.";
+             rdfs:domain :Item;
+             rdfs:range [a owl:Class ; 
+                         owl:complementOf :Item].
+:lastItem a owl:FunctionalProperty,
+            owl:ObjectProperty;
+          rdfs:comment "lastItem - The link to the first item of the list";
+          rdfs:domain :List;
+          rdfs:range :ListItem;
+          rdfs:subPropertyOf :item.
+:nextItem a owl:ObjectProperty,
+            owl:FunctionalProperty;
+          rdfs:comment "nextItem - The link to the next item in a list (ordered collection)";
+          rdfs:subPropertyOf :followedBy.
+:preceededBy a owl:ObjectProperty,
+               owl:TransitiveProperty;
+             rdfs:comment "preceededBy - The link to the previous item in a list (ordered collection)";
+             rdfs:domain :ListItem;
+             rdfs:range :ListItem.
+:previousItem a owl:ObjectProperty,
+                owl:FunctionalProperty;
+              rdfs:comment "previousItem - The link to the previous item in a list (ordered collection)";
+              rdfs:subPropertyOf :preceededBy;
+              owl:inverseOf :nextItem.
+:size a owl:DatatypeProperty;
+      rdfs:comment "size - The number of item belonging to a collection";
+      rdfs:domain :Collection;
+      rdfs:range xsd:int.
+owl:Thing a owl:Class.

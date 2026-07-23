@@ -1,391 +1,380 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix org: <http://www.w3.org/ns/org#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix w3id: <https://w3id.org/>.
 @prefix aeros: <https://w3id.org/aerOS/continuum#>.
-@prefix modp: <https://w3id.org/mod#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix schema: <http://schema.org/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-<http://purl.org/NET/rdflicense/APACHE2.0> a owl:NamedIndividual.
-dc11:contributor a owl:AnnotationProperty.
-dc11:created a owl:AnnotationProperty.
-dc11:creator a owl:AnnotationProperty.
-dc11:title a owl:AnnotationProperty.
-dcterms:LicenseDocument a owl:Class;
-                        rdfs:isDefinedBy dcterms:;
-                        rdfs:label "License Document".
-dcterms:contributor a owl:AnnotationProperty.
-dcterms:created a owl:AnnotationProperty.
-dcterms:creator a owl:AnnotationProperty.
-dcterms:description a owl:DatatypeProperty;
-                    rdfs:domain aeros:Domain,
-                                aeros:Service;
-                    rdfs:isDefinedBy dcterms:;
-                    rdfs:label "description";
-                    rdfs:range xsd:string.
-dcterms:identifier a owl:DatatypeProperty;
-                   rdfs:domain org:Organization,
-                               aeros:Domain,
-                               aeros:Service,
-                               aeros:ServiceComponent,
-                               aeros:ServiceType;
-                   rdfs:isDefinedBy dcterms:;
-                   rdfs:label "identifier";
-                   rdfs:range xsd:string.
-dcterms:license a owl:ObjectProperty;
-                rdfs:domain aeros:ServiceType;
-                rdfs:isDefinedBy dcterms:;
-                rdfs:label "license";
-                rdfs:range dcterms:LicenseDocument.
-dcterms:modified a owl:AnnotationProperty.
-dcterms:name a owl:DatatypeProperty;
-             rdfs:domain aeros:LowLevelOrchestrator;
-             rdfs:isDefinedBy dcterms:;
-             rdfs:label "name";
-             rdfs:range xsd:string.
-dcterms:source a owl:AnnotationProperty.
-dcterms:title a owl:DatatypeProperty;
-              rdfs:domain aeros:NetworkPort;
-              rdfs:isDefinedBy dcterms:;
-              rdfs:label "title";
-              rdfs:range xsd:string.
-vann:preferredNamespacePrefix a owl:AnnotationProperty.
-vann:preferredNamespaceUri a owl:AnnotationProperty.
-schema:email a owl:DatatypeProperty;
-             rdfs:isDefinedBy schema:;
-             rdfs:label "email";
-             rdfs:range xsd:string.
-schema:url a owl:DatatypeProperty;
-           rdfs:domain aeros:LowLevelOrchestrator;
-           rdfs:isDefinedBy schema:;
-           rdfs:label "url";
-           rdfs:range xsd:anyURI.
-xsd:Area a owl:Class.
-xsd:Location a owl:Class.
+<http://purl.org/NET/rdflicense/APACHE2.0> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/dc/elements/1.1/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/LicenseDocument> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:isDefinedBy <http://purl.org/dc/terms/>;
+                                           rdfs:label "License Document".
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                       rdfs:domain aeros:Domain,
+                                                   aeros:Service;
+                                       rdfs:isDefinedBy <http://purl.org/dc/terms/>;
+                                       rdfs:label "description";
+                                       rdfs:range xsd:string.
+<http://purl.org/dc/terms/identifier> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                      rdfs:domain <http://www.w3.org/ns/org#Organization>,
+                                                  aeros:Domain,
+                                                  aeros:Service,
+                                                  aeros:ServiceComponent,
+                                                  aeros:ServiceType;
+                                      rdfs:isDefinedBy <http://purl.org/dc/terms/>;
+                                      rdfs:label "identifier";
+                                      rdfs:range xsd:string.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:domain aeros:ServiceType;
+                                   rdfs:isDefinedBy <http://purl.org/dc/terms/>;
+                                   rdfs:label "license";
+                                   rdfs:range <http://purl.org/dc/terms/LicenseDocument>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/name> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                rdfs:domain aeros:LowLevelOrchestrator;
+                                rdfs:isDefinedBy <http://purl.org/dc/terms/>;
+                                rdfs:label "name";
+                                rdfs:range xsd:string.
+<http://purl.org/dc/terms/source> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                 rdfs:domain aeros:NetworkPort;
+                                 rdfs:isDefinedBy <http://purl.org/dc/terms/>;
+                                 rdfs:label "title";
+                                 rdfs:range xsd:string.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://schema.org/email> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:isDefinedBy <http://schema.org/>;
+                          rdfs:label "email";
+                          rdfs:range xsd:string.
+<http://schema.org/url> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:domain aeros:LowLevelOrchestrator;
+                        rdfs:isDefinedBy <http://schema.org/>;
+                        rdfs:label "url";
+                        rdfs:range xsd:anyURI.
+xsd:Area a <http://www.w3.org/2002/07/owl#Class>.
+xsd:Location a <http://www.w3.org/2002/07/owl#Class>.
 xsd:date a rdfs:Datatype.
-owl:versionInfo a owl:AnnotationProperty.
-org:Membership a owl:Class;
-               rdfs:isDefinedBy org:;
-               rdfs:label "Membership".
-org:Organization a owl:Class;
-                 rdfs:comment "Group of people that work together towards a business goal. In the scope of aerOS, an organization is accountable for the management of an aerOS domain as part of a continuum.";
-                 rdfs:isDefinedBy org:;
-                 rdfs:label "Organization".
-org:Role a owl:Class;
-         rdfs:comment "Function or set of functions that a person can perform within an organization. In the scope of aerOS, the functions will be mapped to the capabilities exposed by the aerOS continuum.";
-         rdfs:isDefinedBy org:;
-         rdfs:label "Role".
-org:member a owl:ObjectProperty;
-           rdfs:domain org:Membership;
-           rdfs:isDefinedBy org:;
-           rdfs:label "member";
-           rdfs:range foaf:Person.
-org:organization a owl:ObjectProperty;
-                 rdfs:domain org:Membership;
-                 rdfs:isDefinedBy org:;
-                 rdfs:label "organization";
-                 rdfs:range org:Organization.
-org:role a owl:ObjectProperty;
-         rdfs:domain org:Membership;
-         rdfs:isDefinedBy org:;
-         rdfs:label "role";
-         rdfs:range org:Role.
-foaf:Person a owl:Class;
-            rdfs:isDefinedBy foaf:;
-            rdfs:label "Person".
-foaf:firstName a owl:DatatypeProperty;
-               rdfs:domain foaf:Person;
-               rdfs:isDefinedBy foaf:;
-               rdfs:label "first name";
-               rdfs:range xsd:string.
-foaf:lastName a owl:DatatypeProperty;
-              rdfs:domain foaf:Person;
-              rdfs:isDefinedBy foaf:;
-              rdfs:label "last name";
-              rdfs:range xsd:string.
-aeros: dcterms:contributor "Andreu Belsa Pellicer",
-                           "Rafael Vaño Garcia";
-       dcterms:created "2024-02-14"^^xsd:date;
-       dcterms:creator "Ignacio Dominguez Martinez-Casanueva";
-       dcterms:description """
+<http://www.w3.org/2002/07/owl#versionInfo> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/org#Membership> a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:isDefinedBy <http://www.w3.org/ns/org#>;
+                                      rdfs:label "Membership".
+<http://www.w3.org/ns/org#Organization> a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:comment "Group of people that work together towards a business goal. In the scope of aerOS, an organization is accountable for the management of an aerOS domain as part of a continuum.";
+                                        rdfs:isDefinedBy <http://www.w3.org/ns/org#>;
+                                        rdfs:label "Organization".
+<http://www.w3.org/ns/org#Role> a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Function or set of functions that a person can perform within an organization. In the scope of aerOS, the functions will be mapped to the capabilities exposed by the aerOS continuum.";
+                                rdfs:isDefinedBy <http://www.w3.org/ns/org#>;
+                                rdfs:label "Role".
+<http://www.w3.org/ns/org#member> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain <http://www.w3.org/ns/org#Membership>;
+                                  rdfs:isDefinedBy <http://www.w3.org/ns/org#>;
+                                  rdfs:label "member";
+                                  rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+<http://www.w3.org/ns/org#organization> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:domain <http://www.w3.org/ns/org#Membership>;
+                                        rdfs:isDefinedBy <http://www.w3.org/ns/org#>;
+                                        rdfs:label "organization";
+                                        rdfs:range <http://www.w3.org/ns/org#Organization>.
+<http://www.w3.org/ns/org#role> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain <http://www.w3.org/ns/org#Membership>;
+                                rdfs:isDefinedBy <http://www.w3.org/ns/org#>;
+                                rdfs:label "role";
+                                rdfs:range <http://www.w3.org/ns/org#Role>.
+<http://xmlns.com/foaf/0.1/Person> a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>;
+                                   rdfs:label "Person".
+<http://xmlns.com/foaf/0.1/firstName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                      rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                                      rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>;
+                                      rdfs:label "first name";
+                                      rdfs:range xsd:string.
+<http://xmlns.com/foaf/0.1/lastName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                     rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                                     rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>;
+                                     rdfs:label "last name";
+                                     rdfs:range xsd:string.
+aeros: <http://purl.org/dc/terms/contributor> "Andreu Belsa Pellicer",
+                                              "Rafael Vaño Garcia";
+       <http://purl.org/dc/terms/created> "2024-02-14"^^xsd:date;
+       <http://purl.org/dc/terms/creator> "Ignacio Dominguez Martinez-Casanueva";
+       <http://purl.org/dc/terms/description> """
                                     Ontology for the orchestration of the aerOS continuum.
                                     """;
-       dcterms:license <http://purl.org/NET/rdflicense/APACHE2.0>;
-       dcterms:modified "2024-08-23"^^xsd:date;
-       dcterms:source <https://gitlab.aeros-project.eu/wp4/t4.1/aeros-continuum>;
-       dcterms:title "aerOS Continuum Ontology";
-       vann:preferredNamespacePrefix "aeros";
-       vann:preferredNamespaceUri aeros:;
-       a owl:Ontology,
-         owl:NamedIndividual;
+       <http://purl.org/dc/terms/license> <http://purl.org/NET/rdflicense/APACHE2.0>;
+       <http://purl.org/dc/terms/modified> "2024-08-23"^^xsd:date;
+       <http://purl.org/dc/terms/source> <https://gitlab.aeros-project.eu/wp4/t4.1/aeros-continuum>;
+       <http://purl.org/dc/terms/title> "aerOS Continuum Ontology";
+       <http://purl.org/vocab/vann/preferredNamespacePrefix> "aeros";
+       <http://purl.org/vocab/vann/preferredNamespaceUri> aeros:;
+       a <http://www.w3.org/2002/07/owl#Ontology>,
+         <http://www.w3.org/2002/07/owl#NamedIndividual>;
        rdfs:label "aerOS Continuum Ontology"@en;
-       owl:versionIRI <https://w3id.org/aerOS/continuum>;
-       owl:versionInfo "1.1.0";
-       modp:createdWith <https://chowlk.linkeddata.es/>.
-aeros:CloudTier a owl:NamedIndividual,
+       <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/aerOS/continuum>;
+       <http://www.w3.org/2002/07/owl#versionInfo> "1.1.0";
+       <https://w3id.org/mod#createdWith> <https://chowlk.linkeddata.es/>.
+aeros:CloudTier a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                   aeros:InfrastructureElementTier.
-aeros:ContainerdOrchestration a owl:NamedIndividual,
+aeros:ContainerdOrchestration a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                 aeros:OrchestrationType.
-aeros:CpuArchitecture a owl:Class;
+aeros:CpuArchitecture a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:label "Cpu Architecture".
-aeros:DockerOrchestration a owl:NamedIndividual,
+aeros:DockerOrchestration a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                             aeros:OrchestrationType.
-aeros:Domain a owl:Class;
+aeros:Domain a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "A set of one or more IEs, functionally connected and sharing a common instance of aerOS basic services among them, constituting an administrative domain able to be managed and orchestrated by aerOS Meta-OS and thus be part of the IoT-Edge-Cloud continuum.";
              rdfs:label "Domain".
-aeros:DomainStatus a owl:Class;
+aeros:DomainStatus a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "Represents the status of a domain. Possible types are Preliminar, Functional, Removed.Represents the status of a domain. Possible types are Preliminar, Functional, Removed.";
                    rdfs:label "Domain Status".
-aeros:EdgeTier a owl:NamedIndividual,
+aeros:EdgeTier a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                  aeros:InfrastructureElementTier.
-aeros:FailedServiceComponent a owl:NamedIndividual,
+aeros:FailedServiceComponent a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                aeros:ServiceComponentStatus.
-aeros:FarEdgeTier a owl:NamedIndividual,
+aeros:FarEdgeTier a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     aeros:InfrastructureElementTier.
-aeros:FinishedServiceComponent a owl:NamedIndividual,
+aeros:FinishedServiceComponent a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                  aeros:ServiceComponentStatus.
-aeros:FunctionalDomain a owl:NamedIndividual,
+aeros:FunctionalDomain a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                          aeros:DomainStatus.
-aeros:InfrastructureElement a owl:Class;
+aeros:InfrastructureElement a <http://www.w3.org/2002/07/owl#Class>;
                             rdfs:comment """\"The fundamental building block within aerOS Meta-OS. A physical or virtual computing resource providing the necessary processing power, storage capacity, and network connectivity to support containerised workloads and services.
 
 Exposes aerOS runtime on top of provided capabilities being thus the minimum execution unit within the IoT-Edge-Cloud continuum.\"""";
                             rdfs:label "Infrastructure Element".
-aeros:InfrastructureElementRequirements a owl:Class;
+aeros:InfrastructureElementRequirements a <http://www.w3.org/2002/07/owl#Class>;
                                         rdfs:comment "Represents the IE requirements for running a service component.";
                                         rdfs:label "Infrastructure Element Requirements".
-aeros:InfrastructureElementStatus a owl:Class;
+aeros:InfrastructureElementStatus a <http://www.w3.org/2002/07/owl#Class>;
                                   rdfs:comment "Represents the status of an IE. Possible types are READY, OVERLOAD, UNSECURE, UNTRUSTED.";
                                   rdfs:label "Infrastructure Element Status".
-aeros:InfrastructureElementTier a owl:Class;
+aeros:InfrastructureElementTier a <http://www.w3.org/2002/07/owl#Class>;
                                 rdfs:comment "Represents the computing continuum tier (cloud, edge, ...) of an IE.";
                                 rdfs:label "Infrastructure Element Tier".
-aeros:IotTier a owl:NamedIndividual,
+aeros:IotTier a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                 aeros:InfrastructureElementTier.
-aeros:KubernetesOrchestration a owl:NamedIndividual,
+aeros:KubernetesOrchestration a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                 aeros:OrchestrationType.
-aeros:Linux a owl:NamedIndividual,
+aeros:Linux a <http://www.w3.org/2002/07/owl#NamedIndividual>,
               aeros:OperatingSystem.
-aeros:LocatingServiceComponent a owl:NamedIndividual,
+aeros:LocatingServiceComponent a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                  aeros:ServiceComponentStatus.
-aeros:LowLevelOrchestrator a owl:Class;
+aeros:LowLevelOrchestrator a <http://www.w3.org/2002/07/owl#Class>;
                            rdfs:comment "This element interprets the Decision Blueprint coming from the HLO and oversees the actual deployment of workloads in the selected IE(s). Being aware of the underlying container management frameworks, is able to convert the allocation order into proper deployment. Several LLOs may live in the same domain.";
                            rdfs:label "Low Level Orchestrator".
-aeros:MigratingServiceComponent a owl:NamedIndividual,
+aeros:MigratingServiceComponent a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                   aeros:ServiceComponentStatus.
-aeros:NetworkPort a owl:Class;
+aeros:NetworkPort a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:label "Network Port".
-aeros:OpenstackOrchestration a owl:NamedIndividual,
+aeros:OpenstackOrchestration a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                aeros:OrchestrationType.
-aeros:OperatingSystem a owl:Class;
+aeros:OperatingSystem a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:label "Operating System".
-aeros:OrchestrationType a owl:Class;
+aeros:OrchestrationType a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:comment "Container orchestration technology.";
                         rdfs:label "Orchestration Type".
-aeros:OverloadInfrastructureElement a owl:NamedIndividual,
+aeros:OverloadInfrastructureElement a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                       aeros:InfrastructureElementStatus.
-aeros:OverloadServiceComponent a owl:NamedIndividual,
+aeros:OverloadServiceComponent a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                  aeros:ServiceComponentStatus.
-aeros:PreliminarDomain a owl:NamedIndividual,
+aeros:PreliminarDomain a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                          aeros:DomainStatus.
-aeros:ReadyInfrastructureElement a owl:NamedIndividual,
+aeros:ReadyInfrastructureElement a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                    aeros:InfrastructureElementStatus.
-aeros:RemovedDomain a owl:NamedIndividual,
+aeros:RemovedDomain a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                       aeros:DomainStatus.
-aeros:RemovingServiceComponent a owl:NamedIndividual,
+aeros:RemovingServiceComponent a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                  aeros:ServiceComponentStatus.
-aeros:RunningServiceComponent a owl:NamedIndividual,
+aeros:RunningServiceComponent a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                 aeros:ServiceComponentStatus.
-aeros:Service a owl:Class;
+aeros:Service a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "Represents a single instance of an IoT service with a unique identifier. A service is composed by one or some ServiceComponents.";
               rdfs:label "Service".
-aeros:ServiceComponent a owl:Class;
+aeros:ServiceComponent a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:comment "Individual, deployable units that together constitute a Service in the aerOS ecosystem, each with a specific role or function.";
                        rdfs:label "Service Component".
-aeros:ServiceComponentStatus a owl:Class;
+aeros:ServiceComponentStatus a <http://www.w3.org/2002/07/owl#Class>;
                              rdfs:label "Service Component Status".
-aeros:ServiceType a owl:Class;
+aeros:ServiceType a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment """Identifies the services such as a \"catalogue\".""";
                   rdfs:label "Service Type".
-aeros:StartingServiceComponent a owl:NamedIndividual,
+aeros:StartingServiceComponent a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                  aeros:ServiceComponentStatus.
-aeros:UnsecureInfrastructureElement a owl:NamedIndividual,
+aeros:UnsecureInfrastructureElement a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                       aeros:InfrastructureElementStatus.
-aeros:UntrustedInfrastructureElement a owl:NamedIndividual,
+aeros:UntrustedInfrastructureElement a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                        aeros:InfrastructureElementStatus.
-aeros:User a owl:Class;
+aeros:User a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "Person with access to the capabilities of the continuum.";
            rdfs:label "User";
-           rdfs:subClassOf foaf:Person.
-aeros:Windows a owl:NamedIndividual,
+           rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person>.
+aeros:Windows a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                 aeros:OperatingSystem.
-aeros:arm32Architecture a owl:NamedIndividual,
+aeros:arm32Architecture a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                           aeros:CpuArchitecture.
-aeros:arm64Architecture a owl:NamedIndividual,
+aeros:arm64Architecture a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                           aeros:CpuArchitecture.
-aeros:availableRam a owl:DatatypeProperty;
+aeros:availableRam a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:domain aeros:InfrastructureElement;
                    rdfs:label "available ram";
                    rdfs:range xsd:integer.
-aeros:averagePowerConsumption a owl:DatatypeProperty;
+aeros:averagePowerConsumption a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                               rdfs:domain aeros:InfrastructureElement;
                               rdfs:label "average power consumption";
                               rdfs:range xsd:float.
-aeros:belongsTo a owl:ObjectProperty;
+aeros:belongsTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:domain aeros:LowLevelOrchestrator;
                 rdfs:label "belongs to";
                 rdfs:range aeros:Domain.
-aeros:cliArgs a owl:DatatypeProperty;
+aeros:cliArgs a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:domain aeros:ServiceComponent;
               rdfs:label "cli args";
               rdfs:range xsd:string.
-aeros:containerImage a owl:DatatypeProperty;
+aeros:containerImage a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:domain aeros:ServiceComponent;
                      rdfs:label "container image";
                      rdfs:range xsd:string.
-aeros:cpuArchitecture a owl:ObjectProperty;
+aeros:cpuArchitecture a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:domain aeros:InfrastructureElement;
                       rdfs:label "cpu architecture";
                       rdfs:range aeros:CpuArchitecture.
-aeros:cpuCores a owl:DatatypeProperty;
+aeros:cpuCores a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:domain aeros:InfrastructureElement;
                rdfs:label "cpu cores";
                rdfs:range xsd:integer.
-aeros:currentCpuUsage a owl:DatatypeProperty;
+aeros:currentCpuUsage a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:domain aeros:InfrastructureElement;
                       rdfs:label "current cpu usage";
                       rdfs:range xsd:float.
-aeros:currentPowerConsumption a owl:DatatypeProperty;
+aeros:currentPowerConsumption a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                               rdfs:domain aeros:InfrastructureElement;
                               rdfs:label "current power consumption";
                               rdfs:range xsd:float.
-aeros:currentRamUsage a owl:DatatypeProperty;
+aeros:currentRamUsage a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:domain aeros:InfrastructureElement;
                       rdfs:label "current ram usage";
                       rdfs:range xsd:integer.
-aeros:deployedOnServiceComponent a owl:ObjectProperty;
+aeros:deployedOnServiceComponent a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                  rdfs:domain aeros:InfrastructureElement;
                                  rdfs:label "deployed on service component";
                                  rdfs:range aeros:ServiceComponent.
-aeros:domain a owl:ObjectProperty;
+aeros:domain a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:domain aeros:InfrastructureElement;
              rdfs:label "domain";
              rdfs:range aeros:Domain.
-aeros:domainStatus a owl:ObjectProperty;
+aeros:domainStatus a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:domain aeros:Domain;
                    rdfs:label "domain status";
                    rdfs:range aeros:DomainStatus.
-aeros:envVars a owl:DatatypeProperty;
+aeros:envVars a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:domain aeros:ServiceComponent;
               rdfs:label "env vars";
               rdfs:range xsd:string.
-aeros:exposesNetworkPort a owl:ObjectProperty;
+aeros:exposesNetworkPort a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:domain aeros:ServiceComponent;
                          rdfs:label "exposes network port";
                          rdfs:range aeros:NetworkPort.
-aeros:infrastructureElementRequirements a owl:ObjectProperty;
+aeros:infrastructureElementRequirements a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                         rdfs:domain aeros:ServiceComponent;
                                         rdfs:label "infrastructure element requirements";
                                         rdfs:range aeros:InfrastructureElementRequirements.
-aeros:infrastructureElementStatus a owl:ObjectProperty;
+aeros:infrastructureElementStatus a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                   rdfs:domain aeros:InfrastructureElement;
                                   rdfs:label "infrastructure element status";
                                   rdfs:range aeros:InfrastructureElementStatus.
-aeros:infrastructureElementTier a owl:ObjectProperty;
+aeros:infrastructureElementTier a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                 rdfs:domain aeros:InfrastructureElement;
                                 rdfs:label "infrastructure element tier";
                                 rdfs:range aeros:InfrastructureElementTier.
-aeros:internalIpAddress a owl:DatatypeProperty;
+aeros:internalIpAddress a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                         rdfs:domain aeros:InfrastructureElement;
                         rdfs:label "internal ip address";
                         rdfs:range xsd:string.
-aeros:isEntrypoint a owl:DatatypeProperty;
+aeros:isEntrypoint a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:domain aeros:Domain;
                    rdfs:label "is entrypoint";
                    rdfs:range xsd:boolean.
-aeros:isPartOfService a owl:ObjectProperty;
+aeros:isPartOfService a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:domain aeros:ServiceComponent;
                       rdfs:label "is part of service";
                       rdfs:range aeros:Service.
-aeros:location a owl:ObjectProperty,
-                 owl:DatatypeProperty;
+aeros:location a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                 <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:domain aeros:InfrastructureElement;
                rdfs:label "location";
                rdfs:range xsd:Location.
-aeros:macAddress a owl:DatatypeProperty;
+aeros:macAddress a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:domain aeros:InfrastructureElement;
                  rdfs:label "mac address";
                  rdfs:range xsd:string.
-aeros:operatingSystem a owl:ObjectProperty;
+aeros:operatingSystem a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:domain aeros:InfrastructureElement;
                       rdfs:label "operating system";
                       rdfs:range aeros:OperatingSystem.
-aeros:orchestrationType a owl:ObjectProperty;
+aeros:orchestrationType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:domain aeros:LowLevelOrchestrator;
                         rdfs:label "orchestration type";
                         rdfs:range aeros:OrchestrationType.
-aeros:owner a owl:ObjectProperty;
+aeros:owner a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:domain aeros:Domain;
             rdfs:label "owner";
-            rdfs:range org:Organization.
-aeros:portNumber a owl:DatatypeProperty;
+            rdfs:range <http://www.w3.org/ns/org#Organization>.
+aeros:portNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:domain aeros:NetworkPort;
                  rdfs:label "port number";
                  rdfs:range xsd:integer.
-aeros:publicUrl a owl:DatatypeProperty;
+aeros:publicUrl a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                 rdfs:domain aeros:Domain;
                 rdfs:label "public url";
                 rdfs:range xsd:anyURI.
-aeros:ramCapacity a owl:DatatypeProperty;
+aeros:ramCapacity a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:domain aeros:InfrastructureElement;
                   rdfs:label "ram capacity";
                   rdfs:range xsd:integer.
-aeros:realTimeCapable a owl:DatatypeProperty;
+aeros:realTimeCapable a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:domain aeros:InfrastructureElement,
                                   aeros:InfrastructureElementRequirements;
                       rdfs:label "real time capable";
                       rdfs:range xsd:boolean.
-aeros:requiredCpuUsage a owl:DatatypeProperty;
+aeros:requiredCpuUsage a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                        rdfs:domain aeros:InfrastructureElementRequirements;
                        rdfs:label "required cpu usage";
                        rdfs:range xsd:float.
-aeros:requiredRam a owl:DatatypeProperty;
+aeros:requiredRam a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:domain aeros:InfrastructureElementRequirements;
                   rdfs:label "required ram";
                   rdfs:range xsd:integer.
-aeros:serviceComponentStatus a owl:ObjectProperty;
+aeros:serviceComponentStatus a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                              rdfs:domain aeros:ServiceComponent;
                              rdfs:label "service component status";
                              rdfs:range aeros:ServiceComponentStatus.
-aeros:serviceType a owl:ObjectProperty;
+aeros:serviceType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:domain aeros:Service;
                   rdfs:label "service type";
                   rdfs:range aeros:ServiceType.
-aeros:sla a owl:DatatypeProperty;
+aeros:sla a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
           rdfs:domain aeros:ServiceComponent;
           rdfs:label "sla";
           rdfs:range xsd:string.
-aeros:username a owl:DatatypeProperty;
+aeros:username a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:domain aeros:User;
                rdfs:label "username";
                rdfs:range xsd:string.
-aeros:webPage a owl:DatatypeProperty;
+aeros:webPage a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:domain aeros:ServiceType;
               rdfs:label "web page";
               rdfs:range xsd:anyURI.
-aeros:withinArea a owl:ObjectProperty,
-                   owl:DatatypeProperty;
+aeros:withinArea a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                   <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:domain aeros:InfrastructureElementRequirements;
                  rdfs:label "within area";
                  rdfs:range xsd:Area.
-aeros:x64Architecture a owl:NamedIndividual,
+aeros:x64Architecture a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                         aeros:CpuArchitecture.
-modp:createdWith a owl:AnnotationProperty.
+<https://w3id.org/mod#createdWith> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.

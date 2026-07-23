@@ -1,380 +1,363 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix l4lod: <http://ns.inria.fr/l4lod/v2/>.
 @prefix ldr: <http://purl.oclc.org/NET/ldr/ns#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix voaf: <http://purl.org/vocommons/voaf#>.
-@prefix void: <http://rdfs.org/ns/void#>.
-@prefix cpa: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix acl: <http://www.w3.org/ns/auth/acl#>.
-@prefix ldp: <http://www.w3.org/ns/ldp#>.
-@prefix odrl: <http://www.w3.org/ns/odrl/2/>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix ccrel: <http://creativecommons.org/ns#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
-@prefix nsprov: <http://www.w3.org/ns/prov#>.
 
-ldr: ccrel:license <http://creativecommons.org/licenses/by/3.0/>;
-     dc11:creator <http://delicias.dia.fi.upm.es/~vrodriguez/>;
-     dcterms:contributor "Asuncion Gomez-Perez",
-                         "Victor Rodriguez-Doncel",
-                         "Mari Carmen Suarez",
-                         "Maria Poveda-Villalon";
-     dcterms:creator "Ontology Engineering Group - Universidad PolitÃƒÂ©cnica de Madrid";
-     dcterms:description """The Linked Data Rights ontology provides the vocabulary for creating rights expressions for Linked Data resources by extending the ODRL ontology. 
+ldr: <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/3.0/>;
+     <http://purl.org/dc/elements/1.1/creator> <http://delicias.dia.fi.upm.es/~vrodriguez/>;
+     <http://purl.org/dc/terms/contributor> "Asuncion Gomez-Perez",
+                                            "Victor Rodriguez-Doncel",
+                                            "Mari Carmen Suarez",
+                                            "Maria Poveda-Villalon";
+     <http://purl.org/dc/terms/creator> "Ontology Engineering Group - Universidad PolitÃƒÂ©cnica de Madrid";
+     <http://purl.org/dc/terms/description> """The Linked Data Rights ontology provides the vocabulary for creating rights expressions for Linked Data resources by extending the ODRL ontology. 
                    Linked Data assets (RDF triples, graphs, datasets, mappings...) can be object of protection by the intellectual property law, the database law or its access or publication be restricted by other legal reasons (personal data pro- tection, security reasons, etc.). Publishing a rights expression along with the digital asset, allows the rightsholder waiving some or all of the IP and database rights (leaving the work in the public domain), permitting some operations if certain conditions are satisfied (like giving attribution to the author) or simply reminding the audience that some rights are reserved. Specific vocabulary is given for authorising specific uses of Linked Data."""@en;
-     dcterms:issued "2013-09-20"^^xsd:date,
-                    "2014-08-30"^^xsd:date;
-     dcterms:title "Linked Data Rights (LDR)"@en;
-     vann:preferredNamespacePrefix "ldr";
-     vann:preferredNamespaceUri "http://purl.oclc.org/NET/ldr/ns#";
-     voaf:classNumber "31"^^xsd:int;
-     voaf:hasEquivalencesWith foaf:null,
-                              ccrel:null,
-                              odrl:null;
-     voaf:propertyNumber "18"^^xsd:int;
-     voaf:reliesOn ccrel:null,
-                   odrl:null,
-                   odrl:;
-     voaf:similar <http://schema.theodi.org/odrs/>,
-                  odrl:null,
-                  l4lod:l4lod_v2.rdf,
-                  <http://data.opendataday.it/LiMo>;
-     voaf:specializes ccrel:null,
-                      odrl:null;
-     cpa:coversRequirements <http://oeg-dev.dia.fi.upm.es/licensius/static/ldr/pattern.html#reqs>;
-     cpa:hasComponent "http://www.w3.org/TR/swbp-n-aryRelations/"@en;
-     cpa:hasIntent <http://oeg-dev.dia.fi.upm.es/licensius/static/ldr/pattern.html#int>;
-     cpa:scenarios "Declaring rights on both Linked Open Data and Linked Closed Data"@en;
-     a owl:Ontology;
+     <http://purl.org/dc/terms/issued> "2013-09-20"^^xsd:date,
+                                       "2014-08-30"^^xsd:date;
+     <http://purl.org/dc/terms/title> "Linked Data Rights (LDR)"@en;
+     <http://purl.org/vocab/vann/preferredNamespacePrefix> "ldr";
+     <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.oclc.org/NET/ldr/ns#";
+     <http://purl.org/vocommons/voaf#classNumber> "31"^^xsd:int;
+     <http://purl.org/vocommons/voaf#hasEquivalencesWith> <http://xmlns.com/foaf/0.1/null>,
+                                                          <http://creativecommons.org/ns#null>,
+                                                          <http://www.w3.org/ns/odrl/2/null>;
+     <http://purl.org/vocommons/voaf#propertyNumber> "18"^^xsd:int;
+     <http://purl.org/vocommons/voaf#reliesOn> <http://creativecommons.org/ns#null>,
+                                               <http://www.w3.org/ns/odrl/2/null>,
+                                               <http://www.w3.org/ns/odrl/2/>;
+     <http://purl.org/vocommons/voaf#similar> <http://schema.theodi.org/odrs/>,
+                                              <http://www.w3.org/ns/odrl/2/null>,
+                                              <http://ns.inria.fr/l4lod/v2/l4lod_v2.rdf>,
+                                              <http://data.opendataday.it/LiMo>;
+     <http://purl.org/vocommons/voaf#specializes> <http://creativecommons.org/ns#null>,
+                                                  <http://www.w3.org/ns/odrl/2/null>;
+     <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> <http://oeg-dev.dia.fi.upm.es/licensius/static/ldr/pattern.html#reqs>;
+     <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasComponent> "http://www.w3.org/TR/swbp-n-aryRelations/"@en;
+     <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasIntent> <http://oeg-dev.dia.fi.upm.es/licensius/static/ldr/pattern.html#int>;
+     <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#scenarios> "Declaring rights on both Linked Open Data and Linked Closed Data"@en;
+     a <http://www.w3.org/2002/07/owl#Ontology>;
      rdfs:label "Linked Data Rights"@en;
-     owl:versionInfo "2.0"@en;
-     nsprov:wasDerivedFrom <http://oeg-dev.dia.fi.upm.es/licensius/static/lldr/lldr-2013.07.18.owl>.
-ldr:Access a owl:Class;
+     <http://www.w3.org/2002/07/owl#versionInfo> "2.0"@en;
+     <http://www.w3.org/ns/prov#wasDerivedFrom> <http://oeg-dev.dia.fi.upm.es/licensius/static/lldr/lldr-2013.07.18.owl>.
+ldr:Access a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment "Right of access, which can be legally granted (e.g. public sector information) or expressely restricted (e.g. secrets compromising national security)"@en;
            rdfs:subClassOf ldr:LinkedDataRight;
-           skos:exactMatch acl:Access.
-ldr:Action a owl:Class.
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <http://www.w3.org/ns/auth/acl#Access>.
+ldr:Action a <http://www.w3.org/2002/07/owl#Class>.
 ldr:Agent rdfs:comment "Deprecated in favour of the ODRL term"@en,
                        "Agent related to a Linked Data resource";
-          owl:deprecated true;
-          skos:exactMatch foaf:Agent,
-                          odrl:Party.
-ldr:CopyrightException a owl:Class;
+          <http://www.w3.org/2002/07/owl#deprecated> true;
+          <http://www.w3.org/2004/02/skos/core#exactMatch> <http://xmlns.com/foaf/0.1/Agent>,
+                                                           <http://www.w3.org/ns/odrl/2/Party>.
+ldr:CopyrightException a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:comment "Reason which can be invoked to make an exception to the intellectual property or database law "@en;
                        rdfs:subClassOf ldr:Proposition.
-ldr:DatabaseRight a owl:Class;
+ldr:DatabaseRight a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "Sui generis right for databases, recognized in European countries and others"@en;
                   rdfs:subClassOf ldr:LinkedDataRight.
-ldr:Derivation a owl:Class;
+ldr:Derivation a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "Transformation of the work, including translation adaptation or any other form modification"@en;
                rdfs:subClassOf ldr:IPRight;
-               skos:closeMatch ccrel:DerivativeWorks.
-ldr:Distribution a owl:Class;
+               <http://www.w3.org/2004/02/skos/core#closeMatch> <http://creativecommons.org/ns#DerivativeWorks>.
+ldr:Distribution a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "Make available the original work or its copies, in a physical medium"@en;
                  rdfs:subClassOf ldr:IPRight;
-                 skos:exactMatch ccrel:Distribution.
-ldr:ExtendedRule a owl:Class;
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <http://creativecommons.org/ns#Distribution>.
+ldr:ExtendedRule a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "Extended Relations may tie Permission, Prohibition, Duty, and Constraint entities together with an AND, OR or XOR relationship. Only entities of the same type can be linked with this model. For example, a Permission and Prohibition cannot be linked together within this model. The Extended rule is composed of two or more rules";
-                 rdfs:subClassOf odrl:Rule.
-ldr:Extraction a owl:Class;
+                 rdfs:subClassOf <http://www.w3.org/ns/odrl/2/Rule>.
+ldr:Extraction a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "Right to permanent or temporary transfer of all or a substantial part of the contents of a database to another medium by any means or in any form"@en;
                rdfs:subClassOf ldr:DatabaseRight.
-ldr:FamousDataLicense a owl:Class;
+ldr:FamousDataLicense a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "License publicly available and known to the public"@en;
                       rdfs:subClassOf ldr:License.
-ldr:HTTPDELETE a owl:NamedIndividual,
+ldr:HTTPDELETE a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                  ldr:LDPAccess;
                rdfs:comment "Accessing with the HTTP DELETE Method"@en.
-ldr:HTTPGET a owl:NamedIndividual,
+ldr:HTTPGET a <http://www.w3.org/2002/07/owl#NamedIndividual>,
               ldr:LDPAccess;
             rdfs:comment "Accessing with the HTTP GET Method"@en.
-ldr:HTTPPATCH a owl:NamedIndividual,
+ldr:HTTPPATCH a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                 ldr:LDPAccess;
               rdfs:comment "Accesing with the HTTP PATH Method"@en.
-ldr:HTTPPOST a owl:NamedIndividual,
+ldr:HTTPPOST a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                ldr:LDPAccess;
              rdfs:comment "Accessing with the HTTP POST Method"@en.
-ldr:HTTPPUT a owl:NamedIndividual,
+ldr:HTTPPUT a <http://www.w3.org/2002/07/owl#NamedIndividual>,
               ldr:LDPAccess;
             rdfs:comment "Accessing with the HTTP PUT Method"@en.
-ldr:IPRight a owl:Class;
+ldr:IPRight a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "Intellectual Property right"@en;
             rdfs:subClassOf ldr:LinkedDataRight.
-ldr:LDPAccess a owl:Class;
+ldr:LDPAccess a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:subClassOf ldr:Access.
-ldr:License a owl:Class;
+ldr:License a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment "Set of rights expressions offered to the public, which grant one or more rights, possibly conditioned to the fulfillment of one or more conditions (propositions)"@en;
             rdfs:subClassOf ldr:LinkedDataPolicy.
-ldr:LinkedDataAccess a owl:NamedIndividual,
+ldr:LinkedDataAccess a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                        ldr:Access;
                      rdfs:label "Retrieval of Linked Data resources"@en.
-ldr:LinkedDataPolicy a owl:Class;
+ldr:LinkedDataPolicy a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:comment "A policy applied over a Linked Data resource"@en;
-                     rdfs:subClassOf odrl:Policy.
-ldr:LinkedDataResource a owl:Class;
+                     rdfs:subClassOf <http://www.w3.org/ns/odrl/2/Policy>.
+ldr:LinkedDataResource a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:comment "A Linked Data resource, object of some rights"@en;
-                       rdfs:subClassOf odrl:Asset.
-ldr:LinkedDataRight a owl:Class;
+                       rdfs:subClassOf <http://www.w3.org/ns/odrl/2/Asset>.
+ldr:LinkedDataRight a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "Action legally granted as allowable to be exercised on a Linked Data resource"@en;
                     rdfs:subClassOf ldr:Action.
-ldr:Proposition a owl:Class;
+ldr:Proposition a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "A veritative statement"@en.
-ldr:PublicCommunication a owl:Class;
+ldr:PublicCommunication a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:comment "Granting a number of people access to the work without existing distribution"@en;
                         rdfs:subClassOf ldr:IPRight.
-ldr:Reproduction a owl:Class;
+ldr:Reproduction a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "Direct or indirect fixation, allowing its communication and/or making copies of it"@en;
                  rdfs:subClassOf ldr:IPRight;
-                 skos:exactMatch ccrel:Reproduction.
-ldr:ResourceLegalStatus a owl:Class;
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <http://creativecommons.org/ns#Reproduction>.
+ldr:ResourceLegalStatus a <http://www.w3.org/2002/07/owl#Class>;
                         rdfs:comment "Attribute of a resource regarding its legal status"@en;
                         rdfs:subClassOf ldr:Proposition.
-ldr:Reutilization a owl:Class;
+ldr:Reutilization a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "Right to make available to the public all or a substantial part of the contents of a database by the distribution of copies, by renting, by on-line or other forms of transmission"@en;
                   rdfs:subClassOf ldr:DatabaseRight.
 ldr:RightsObject rdfs:comment "Object over which a right is execised"@en,
                               "Deprecated in favour of ODRL"@en;
-                 owl:deprecated true;
-                 skos:exactMatch odrl:Asset.
-ldr:SPARQLASK a owl:NamedIndividual,
+                 <http://www.w3.org/2002/07/owl#deprecated> true;
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <http://www.w3.org/ns/odrl/2/Asset>.
+ldr:SPARQLASK a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                 ldr:SPARQLAccess;
               rdfs:comment "Access through the SPARQL ASK query form"@en.
-ldr:SPARQLAccess a owl:Class;
+ldr:SPARQLAccess a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:subClassOf ldr:Access.
-ldr:SPARQLCONSTRUCT a owl:NamedIndividual,
+ldr:SPARQLCONSTRUCT a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                       ldr:SPARQLAccess;
                     rdfs:comment "Access through the SPARQL CONSTRUCT query form"@en.
-ldr:SPARQLDESCRIBE a owl:NamedIndividual,
+ldr:SPARQLDESCRIBE a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                      ldr:SPARQLAccess;
                    rdfs:comment "Access through the SPARQL DESCRIBE query form"@en.
-ldr:SPARQLSELECT a owl:NamedIndividual,
+ldr:SPARQLSELECT a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                    ldr:SPARQLAccess;
                  rdfs:comment "Access through the SPARQL SELECT query form"@en.
-ldr:access a owl:NamedIndividual,
+ldr:access a <http://www.w3.org/2002/07/owl#NamedIndividual>,
              ldr:Access;
            rdfs:comment "Access in any manner or form".
-ldr:baseSoftwareUpon a owl:NamedIndividual,
+ldr:baseSoftwareUpon a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                        ldr:Distribution;
                      rdfs:comment "Distribute a pice of software whose well functioning depends on the related Linked Data resource"@en.
-ldr:copyDatabase a owl:NamedIndividual,
+ldr:copyDatabase a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                    ldr:Extraction;
                  rdfs:comment "Coyping a dataset, for other purposes than private use"@en.
-ldr:copyWork a owl:NamedIndividual,
+ldr:copyWork a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                ldr:Reproduction;
              rdfs:comment "copying the work for purposes other than private"@en.
-ldr:dataFormat a owl:DatatypeProperty;
+ldr:dataFormat a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment """Format of the data (\"text/html\", \"application/rdf+xml\", etc.)"""@en;
-               rdfs:subPropertyOf odrl:rightOperand,
+               rdfs:subPropertyOf <http://www.w3.org/ns/odrl/2/rightOperand>,
                                   ldr:hasclaim.
-ldr:derivation a owl:NamedIndividual,
+ldr:derivation a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                  ldr:Derivation;
                rdfs:comment "General transformation of the work"@en.
-ldr:deriveClasses a owl:NamedIndividual,
+ldr:deriveClasses a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     ldr:Derivation;
                   rdfs:comment "Subclassing"@en.
-ldr:deriveProperties a owl:NamedIndividual,
+ldr:deriveProperties a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                        ldr:Derivation;
                      rdfs:comment "Subpropertying"@en.
-ldr:distribution a owl:NamedIndividual,
+ldr:distribution a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                    ldr:Distribution;
                  rdfs:comment "General act of making available the original work or its copies, in a physical medium"@en.
-ldr:downloadDatabase a owl:NamedIndividual,
+ldr:downloadDatabase a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                        ldr:Extraction;
                      rdfs:comment "Downloading a dataset, for other purposes than private use"@en.
-ldr:downloadWork a owl:NamedIndividual,
+ldr:downloadWork a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                    ldr:Reproduction;
                  rdfs:comment "downloading the work for purposes other than private"@en.
-ldr:extract a owl:NamedIndividual,
+ldr:extract a <http://www.w3.org/2002/07/owl#NamedIndividual>,
               ldr:Extraction;
             rdfs:comment "General right of extraction"@en.
-ldr:hasAllRightsReserved a owl:NamedIndividual,
+ldr:hasAllRightsReserved a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                            ldr:ResourceLegalStatus;
                          rdfs:comment "Declares that the referred resource is protected under copyright or database rights, and none of them is waived"@en.
-ldr:hasAttributionText a owl:DatatypeProperty;
+ldr:hasAttributionText a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                        rdfs:comment "Text that has to be included as requested by a condition"@en;
                        rdfs:domain ldr:Proposition;
                        rdfs:range rdfs:Literal;
-                       rdfs:subPropertyOf odrl:rightOperand,
+                       rdfs:subPropertyOf <http://www.w3.org/ns/odrl/2/rightOperand>,
                                           ldr:hasclaim;
-                       skos:closeMatch ccrel:attributionURL,
-                                       ccrel:attributionName.
-ldr:hasClaim a owl:ObjectProperty;
+                       <http://www.w3.org/2004/02/skos/core#closeMatch> <http://creativecommons.org/ns#attributionURL>,
+                                                                        <http://creativecommons.org/ns#attributionName>.
+ldr:hasClaim a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "Declares a claim asserted in the context of a rights expression"@en;
              rdfs:range ldr:Proposition.
-ldr:hasCopyrightExpired a owl:NamedIndividual,
+ldr:hasCopyrightExpired a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                           ldr:ResourceLegalStatus;
                         rdfs:comment "Declares that the referred resource has its copyright expired"@en.
-ldr:hasCopyrightNotice a owl:DatatypeProperty;
+ldr:hasCopyrightNotice a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                        rdfs:comment "Text that has to be attached imposed as a condition"@en;
                        rdfs:range rdfs:Literal;
-                       rdfs:subPropertyOf odrl:rightOperand,
+                       rdfs:subPropertyOf <http://www.w3.org/ns/odrl/2/rightOperand>,
                                           ldr:hasclaim.
-ldr:hasDatabaseRightsExpired a owl:NamedIndividual,
+ldr:hasDatabaseRightsExpired a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                ldr:ResourceLegalStatus;
                              rdfs:comment "Declares that the referred resource has the database rights expired"@en.
-ldr:hasDisclaimerText a owl:DatatypeProperty;
+ldr:hasDisclaimerText a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "Text discharging responsibilities on the use of the Linked Data resource"@en;
-                      rdfs:domain odrl:Policy;
-                      rdfs:subPropertyOf odrl:rightOperand,
+                      rdfs:domain <http://www.w3.org/ns/odrl/2/Policy>;
+                      rdfs:subPropertyOf <http://www.w3.org/ns/odrl/2/rightOperand>,
                                          ldr:hasclaim.
-ldr:hasExtendedRule a owl:ObjectProperty;
+ldr:hasExtendedRule a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:comment "Links a Policy to an ExtendedRule it contains"@en;
-                    rdfs:domain odrl:Policy;
+                    rdfs:domain <http://www.w3.org/ns/odrl/2/Policy>;
                     rdfs:range ldr:ExtendedRule.
-ldr:hasIndustrialSecret a owl:NamedIndividual,
+ldr:hasIndustrialSecret a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                           ldr:ResourceLegalStatus;
                         rdfs:comment "The referred resource containts an Industrial Secret"@en.
-ldr:hasLegalStatus a owl:ObjectProperty;
+ldr:hasLegalStatus a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "Declares the legal status of a resource";
                    rdfs:domain ldr:LinkedDataResource;
                    rdfs:range ldr:ResourceLegalStatus.
-ldr:hasNationalSecurityInfo a owl:NamedIndividual,
+ldr:hasNationalSecurityInfo a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                               ldr:ResourceLegalStatus;
                             rdfs:comment "Declares that the referred resource has information whose disclosure might harm the national security"@en.
-ldr:hasPersonalData a owl:NamedIndividual,
+ldr:hasPersonalData a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                       ldr:ResourceLegalStatus,
-                      owl:DatatypeProperty;
+                      <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "Declares that the referred resource has personal data"@en;
-                    rdfs:subPropertyOf odrl:rightOperand,
+                    rdfs:subPropertyOf <http://www.w3.org/ns/odrl/2/rightOperand>,
                                        ldr:hasclaim.
-ldr:hasPrivacyLevel a owl:DatatypeProperty;
+ldr:hasPrivacyLevel a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "Declares the privacy level (e.g. personal data) for a Linked Data resource"@en;
                     rdfs:domain ldr:LinkedDataResource;
-                    rdfs:subPropertyOf odrl:rightOperand,
+                    rdfs:subPropertyOf <http://www.w3.org/ns/odrl/2/rightOperand>,
                                        ldr:hasclaim.
-ldr:hasRequirement a owl:ObjectProperty;
+ldr:hasRequirement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "Declares which requirements have to be fulfilled for the Rule to be valid"@en;
-                   rdfs:domain odrl:Rule;
+                   rdfs:domain <http://www.w3.org/ns/odrl/2/Rule>;
                    rdfs:range ldr:Proposition.
-ldr:hasTopSecret a owl:NamedIndividual,
+ldr:hasTopSecret a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                    ldr:ResourceLegalStatus;
                  rdfs:comment "Declares that the referred resource contains top secret information of military nature or other"@en.
-ldr:hasclaim a owl:DatatypeProperty.
-ldr:isInPublicDomain a owl:NamedIndividual,
+ldr:hasclaim a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+ldr:isInPublicDomain a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                        ldr:ResourceLegalStatus;
                      rdfs:comment "Declares that the declared resource is in the public domain"@en.
-ldr:issuedOn a owl:DatatypeProperty,
-               owl:AnnotationProperty;
+ldr:issuedOn a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+               <http://www.w3.org/2002/07/owl#AnnotationProperty>;
              rdfs:comment "Date on which the rights expression is issued, with legal consequences on the copyright or database right expiration."@en;
              rdfs:domain ldr:Policy;
              rdfs:range xsd:dateTime.
-ldr:judicialProcess a owl:NamedIndividual,
+ldr:judicialProcess a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                       ldr:CopyrightException;
                     rdfs:comment "if the action is carried out for the purposes of an administrative or judicial procedure"@en.
-ldr:mirror a owl:NamedIndividual,
+ldr:mirror a <http://www.w3.org/2002/07/owl#NamedIndividual>,
              ldr:Distribution;
            rdfs:comment "The action of mirroring any piece of Linked Data"@en.
-ldr:nationalSecurity a owl:NamedIndividual,
+ldr:nationalSecurity a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                        ldr:CopyrightException;
                      rdfs:comment "if the action is carried out in the interests of public security"@en.
-ldr:operation a owl:DatatypeProperty;
+ldr:operation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:comment "May be set with one of the mathematical values AND, OR and XOR. (OR is the default if not specified.)"@en;
               rdfs:domain ldr:ExtendedRule;
               rdfs:range xsd:string.
-ldr:protocol a owl:DatatypeProperty;
+ldr:protocol a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
              rdfs:comment """Access protocol (e.g. \"SPARQL\", \"HTTPS\", etc.)"""@en;
-             rdfs:subPropertyOf odrl:rightOperand,
+             rdfs:subPropertyOf <http://www.w3.org/ns/odrl/2/rightOperand>,
                                 ldr:hasclaim.
-ldr:publicCommunication a owl:NamedIndividual,
+ldr:publicCommunication a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                           ldr:PublicCommunication;
                         rdfs:comment "General right of public communication"@en.
-ldr:publishDatabase a owl:NamedIndividual,
+ldr:publishDatabase a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                       ldr:Reutilization;
                     rdfs:comment "Make available a database in internet or by other means"@en.
-ldr:queriesPerDay a owl:DatatypeProperty;
+ldr:queriesPerDay a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment "Number of queries per day"@en;
-                  rdfs:subPropertyOf odrl:rightOperand,
+                  rdfs:subPropertyOf <http://www.w3.org/ns/odrl/2/rightOperand>,
                                      ldr:hasclaim.
-ldr:queriesPerMinute a owl:DatatypeProperty;
+ldr:queriesPerMinute a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:comment "Number of queries per minute"@en;
-                     rdfs:subPropertyOf odrl:rightOperand,
+                     rdfs:subPropertyOf <http://www.w3.org/ns/odrl/2/rightOperand>,
                                         ldr:hasclaim.
-ldr:reasonWith a owl:NamedIndividual,
+ldr:reasonWith a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                  ldr:Access;
                rdfs:comment "Accesing Linked Data with the purpose of reasoning, through an specialized protocol (e.g. OWLLink) or not"@en.
-ldr:rebaseURIs a owl:NamedIndividual,
+ldr:rebaseURIs a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                  ldr:Derivation;
                rdfs:comment "Partially change the URI systematically rebasing the entities"@en.
-ldr:reificate a owl:NamedIndividual,
+ldr:reificate a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                 ldr:Derivation;
               rdfs:comment "Reificate an RDF statement or a set thereof"@en.
-ldr:rent a owl:NamedIndividual,
+ldr:rent a <http://www.w3.org/2002/07/owl#NamedIndividual>,
            ldr:Distribution;
          rdfs:comment "Renting a copy of the work"@en.
-ldr:reproduction a owl:NamedIndividual,
+ldr:reproduction a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                    ldr:Reproduction;
                  rdfs:comment "General right of public reproduction"@en.
-ldr:research a owl:NamedIndividual,
+ldr:research a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                ldr:CopyrightException;
              rdfs:comment "illustration for teaching or scientific research, provided the source, including the author's name, is acknowledged"@en.
-ldr:reutilization a owl:NamedIndividual,
+ldr:reutilization a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     ldr:Reutilization;
                   rdfs:comment "General right of re-utilization"@en.
-ldr:sell a owl:NamedIndividual,
+ldr:sell a <http://www.w3.org/2002/07/owl#NamedIndividual>,
            ldr:Distribution;
          rdfs:comment "Selling a copy of the work"@en.
-ldr:sellAccess a owl:NamedIndividual,
+ldr:sellAccess a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                  ldr:Distribution;
                rdfs:comment "Offering for meny the access to a copy of the work"@en.
-ldr:transcodeWork a owl:NamedIndividual,
+ldr:transcodeWork a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     ldr:Derivation;
                   rdfs:comment "Transcoding the work"@en;
-                  skos:example "Having permission to publish a dataset as NTRIPLES, does not entitle the grantee the act of publishing the dataset as Turtle"@en.
-ldr:translateWork a owl:NamedIndividual,
+                  <http://www.w3.org/2004/02/skos/core#example> "Having permission to publish a dataset as NTRIPLES, does not entitle the grantee the act of publishing the dataset as Turtle"@en.
+ldr:translateWork a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                     ldr:Derivation;
                   rdfs:comment "Translating the work"@en;
-                  skos:example "Having permission to publish a dataset, does not entitle the grantee the act of publishing a tanslated version of it"@en.
-ldr:truthValue a owl:DatatypeProperty;
+                  <http://www.w3.org/2004/02/skos/core#example> "Having permission to publish a dataset, does not entitle the grantee the act of publishing a tanslated version of it"@en.
+ldr:truthValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment "Truth value"@en;
                rdfs:domain ldr:Proposition;
                rdfs:range xsd:boolean.
-<http://purl.org/NET/rdflicense/cc-zero1.0> a owl:NamedIndividual,
+<http://purl.org/NET/rdflicense/cc-zero1.0> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                               ldr:FamousDataLicense;
                                             rdfs:comment "Creative Commons public domain waiver"@en;
                                             rdfs:label "CC0"@en.
-<http://purl.org/NET/rdflicense/odbc-by1.0> a owl:NamedIndividual,
+<http://purl.org/NET/rdflicense/odbc-by1.0> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                               ldr:FamousDataLicense;
                                             rdfs:comment "Attribution for data/databases"@en;
                                             rdfs:label "Open Data Commons Attribution"@en.
-<http://purl.org/NET/rdflicense/odbc-pddl1.0> a owl:NamedIndividual,
+<http://purl.org/NET/rdflicense/odbc-pddl1.0> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                                 ldr:FamousDataLicense;
                                               rdfs:comment "Public Domain for data/databases"@en;
                                               rdfs:label "ODC Public Domain Dedication and Licence (PDDL)"@en.
-<http://purl.org/NET/rdflicense/odbl1.0> a owl:NamedIndividual,
+<http://purl.org/NET/rdflicense/odbl1.0> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                            ldr:FamousDataLicense;
                                          rdfs:comment "Attribution Share-Alike for data/databases"@en;
                                          rdfs:label "ODC Open Database License"@en.
-void:Dataset a owl:Class;
-             rdfs:subClassOf ldr:LinkedDataResource.
-void:Linkset a owl:Class;
-             rdfs:subClassOf ldr:LinkedDataResource.
-<http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/> a owl:NamedIndividual,
+<http://rdfs.org/ns/void#Dataset> a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:subClassOf ldr:LinkedDataResource.
+<http://rdfs.org/ns/void#Linkset> a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:subClassOf ldr:LinkedDataResource.
+<http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
                                                                               ldr:FamousDataLicense;
                                                                             rdfs:label "UK Open Government License for public sector information"@en,
                                                                                        "UK Open Government License"@en.
-rdf:Statement a owl:Class;
+rdf:Statement a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:subClassOf ldr:LinkedDataResource.
-owl:Ontology a owl:Class;
-             rdfs:subClassOf ldr:LinkedDataResource.
-owl:topObjectProperty rdfs:comment "hasIssuer"@en.
-skos:closeMatch a owl:AnnotationProperty.
-skos:exactMatch a owl:AnnotationProperty.
-skos:example a owl:AnnotationProperty.
-skos:narrowMatch a owl:AnnotationProperty.
-ldp:Resource a owl:Class;
-             rdfs:subClassOf ldr:LinkedDataResource.
-odrl:Asset a owl:Class.
-odrl:Constraint a owl:Class;
-                rdfs:subClassOf ldr:Proposition.
-odrl:Policy a owl:Class.
-odrl:Rule a owl:Class.
-odrl:rightOperand a owl:DatatypeProperty.
-<urn:mpeg:mpeg21:mco:core:2012#Contract> a owl:Class;
+<http://www.w3.org/2002/07/owl#Ontology> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:subClassOf ldr:LinkedDataResource.
+<http://www.w3.org/2002/07/owl#topObjectProperty> rdfs:comment "hasIssuer"@en.
+<http://www.w3.org/2004/02/skos/core#closeMatch> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#exactMatch> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#example> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#narrowMatch> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/ldp#Resource> a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:subClassOf ldr:LinkedDataResource.
+<http://www.w3.org/ns/odrl/2/Asset> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/ns/odrl/2/Constraint> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:subClassOf ldr:Proposition.
+<http://www.w3.org/ns/odrl/2/Policy> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/ns/odrl/2/Rule> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/ns/odrl/2/rightOperand> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<urn:mpeg:mpeg21:mco:core:2012#Contract> a <http://www.w3.org/2002/07/owl#Class>;
                                          rdfs:subClassOf ldr:LinkedDataPolicy.

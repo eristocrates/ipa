@@ -2,69 +2,64 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix summa: <http://purl.org/voc/summa/>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-dcterms:description a owl:DatatypeProperty.
-dcterms:modified a owl:DatatypeProperty.
-dcterms:title a owl:DatatypeProperty.
-summa: dcterms:description "The SUMMA Vocabulary enables to request and represent summarized RDf resources. It should be used in context to the SUMMA API definition."@en;
-       dcterms:modified "2015-04-11"^^xsd:date;
-       dcterms:title "SUMMA Vocabulary"@en;
-       vann:preferredNamespacePrefix "summa";
-       vann:preferredNamespaceUri "http://purl.org/voc/summa/";
-       a owl:Ontology;
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+summa: <http://purl.org/dc/terms/description> "The SUMMA Vocabulary enables to request and represent summarized RDf resources. It should be used in context to the SUMMA API definition."@en;
+       <http://purl.org/dc/terms/modified> "2015-04-11"^^xsd:date;
+       <http://purl.org/dc/terms/title> "SUMMA Vocabulary"@en;
+       <http://purl.org/vocab/vann/preferredNamespacePrefix> "summa";
+       <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/voc/summa/";
+       a <http://www.w3.org/2002/07/owl#Ontology>;
        rdfs:label "summa";
        rdfs:seeAlso summa:;
-       owl:versionInfo "v0.1".
-summa:Summary a owl:Class;
+       <http://www.w3.org/2002/07/owl#versionInfo> "v0.1".
+summa:Summary a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:isDefinedBy summa:;
               rdfs:label "summary"@en.
-summa:SummaryGroup a owl:Class;
+summa:SummaryGroup a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:isDefinedBy summa:;
                    rdfs:label "summary group"@en.
-summa:entity a owl:ObjectProperty;
+summa:entity a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:domain summa:Summary;
              rdfs:isDefinedBy summa:;
              rdfs:label "entity"@en;
              rdfs:range rdfs:Resource.
-summa:fixedProperty a owl:ObjectProperty;
+summa:fixedProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:domain summa:Summary;
                     rdfs:isDefinedBy summa:;
                     rdfs:label "fixed property"@en;
                     rdfs:range rdf:Property.
-summa:group a owl:ObjectProperty;
+summa:group a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:domain rdf:Statement;
             rdfs:isDefinedBy summa:;
             rdfs:label "group"@en;
             rdfs:range summa:SummaryGroup.
-summa:language a owl:DatatypeProperty;
+summa:language a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:domain summa:Summary;
                rdfs:isDefinedBy summa:;
                rdfs:label "langauge"@en;
                rdfs:range xsd:string.
-summa:maxHops a owl:DatatypeProperty;
+summa:maxHops a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:domain summa:Summary;
               rdfs:isDefinedBy summa:;
               rdfs:label "maximum number of hops"@en;
               rdfs:range xsd:positiveInteger.
-summa:path a owl:ObjectProperty;
+summa:path a <http://www.w3.org/2002/07/owl#ObjectProperty>;
            rdfs:domain rdf:Statement;
            rdfs:isDefinedBy summa:;
            rdfs:label "path"@en;
            rdfs:range rdf:Statement.
-summa:statement a owl:ObjectProperty;
+summa:statement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:domain summa:Summary;
                 rdfs:isDefinedBy summa:;
                 rdfs:label "statement"@en;
                 rdfs:range rdf:Statement.
-summa:topK a owl:DatatypeProperty;
+summa:topK a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
            rdfs:domain summa:Summary;
            rdfs:isDefinedBy summa:;
            rdfs:label "top k"@en;
            rdfs:range xsd:positiveInteger.
-vann:preferredNamespacePrefix a owl:DatatypeProperty.
-vann:preferredNamespaceUri a owl:DatatypeProperty.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.

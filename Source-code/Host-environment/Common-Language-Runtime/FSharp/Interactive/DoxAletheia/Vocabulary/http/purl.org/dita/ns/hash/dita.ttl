@@ -2,27 +2,20 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix dita: <http://purl.org/dita/ns#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix ccrel: <http://creativecommons.org/ns#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-<http://colin.maudry/rdf/colin-maudry#me> foaf:mbox <mailto:colin@maudry.com>;
-                                          foaf:name "Colin Maudry".
-dita: ccrel:license <http://unlicense.org/>;
-      dcterms:created "2013-01-04"^^xsd:date;
-      dcterms:creator <http://colin.maudry/rdf/colin-maudry#me>;
-      dcterms:description "The DITA RDF ontology translates the semantics of a subset of the vocabulary described in the DITA 1.2 specification in a format that can be understood in the semantic Web of data. By Colin Maudry, licensed under the terms of the Unlicense (public domain).";
-      dcterms:modified "2014-08-03"^^xsd:date;
-      dcterms:title "DITA RDF ontology";
-      vann:preferredNamespacePrefix "dita";
-      vann:preferredNamespaceUri dita:;
-      a owl:Ontology;
+<http://colin.maudry/rdf/colin-maudry#me> <http://xmlns.com/foaf/0.1/mbox> <mailto:colin@maudry.com>;
+                                          <http://xmlns.com/foaf/0.1/name> "Colin Maudry".
+dita: <http://creativecommons.org/ns#license> <http://unlicense.org/>;
+      <http://purl.org/dc/terms/created> "2013-01-04"^^xsd:date;
+      <http://purl.org/dc/terms/creator> <http://colin.maudry/rdf/colin-maudry#me>;
+      <http://purl.org/dc/terms/description> "The DITA RDF ontology translates the semantics of a subset of the vocabulary described in the DITA 1.2 specification in a format that can be understood in the semantic Web of data. By Colin Maudry, licensed under the terms of the Unlicense (public domain).";
+      <http://purl.org/dc/terms/modified> "2014-08-03"^^xsd:date;
+      <http://purl.org/dc/terms/title> "DITA RDF ontology";
+      <http://purl.org/vocab/vann/preferredNamespacePrefix> "dita";
+      <http://purl.org/vocab/vann/preferredNamespaceUri> dita:;
+      a <http://www.w3.org/2002/07/owl#Ontology>;
       rdfs:seeAlso <http://docs.oasis-open.org/dita/v1.2/os/spec/DITA1.2-spec.html>;
-      foaf:depiction <http://bit.ly/DitaRdfLucidChart>.
+      <http://xmlns.com/foaf/0.1/depiction> <http://bit.ly/DitaRdfLucidChart>.
 dita:Audience a rdfs:Class;
               rdfs:comment "The audience metadata element indicates, through the value of its type attribute, the intended audience for a topic."@en-us;
               rdfs:label "Audience";
@@ -202,7 +195,7 @@ dita:author a rdf:Property;
             rdfs:label "author";
             rdfs:range xsd:string;
             rdfs:seeAlso <http://docs.oasis-open.org/dita/v1.2/os/spec/langref/author.html>;
-            rdfs:subPropertyOf dcterms:author.
+            rdfs:subPropertyOf <http://purl.org/dc/terms/author>.
 dita:backmatter rdfs:comment "The backmatter element contains the material that follows the main body of a document and any appendices. It may include items such as a colophon, legal notices, and various types of book lists such as a glossary or an index."@en-us;
                 rdfs:label "backmatter";
                 rdfs:seeAlso <http://docs.oasis-open.org/dita/v1.2/os/spec/langref/backmatter.html>;
@@ -257,20 +250,20 @@ dita:copyright a rdf:Property;
 dita:created rdfs:comment "The created element specifies the document creation date using the date attribute."@en-us;
              rdfs:domain dita:Doctype;
              rdfs:label "created";
-             rdfs:range dcterms:W3CDTF;
+             rdfs:range <http://purl.org/dc/terms/W3CDTF>;
              rdfs:seeAlso <http://docs.oasis-open.org/dita/v1.2/os/spec/langref/created.html>;
-             rdfs:subPropertyOf dcterms:created.
+             rdfs:subPropertyOf <http://purl.org/dc/terms/created>.
 dita:createdExpiry a rdf:Property;
                    rdfs:comment "The date when the information should be retired or refreshed, entered as YYYY-MM-DD, where YYYY is the year, MM is the month from 01 to 12, and DD is the day from 01-31."@en-us;
                    rdfs:domain dita:Doctype;
                    rdfs:label "created (expiry)";
-                   rdfs:range dcterms:W3CDTF;
+                   rdfs:range <http://purl.org/dc/terms/W3CDTF>;
                    rdfs:seeAlso <http://docs.oasis-open.org/dita/v1.2/os/spec/langref/created.html>.
 dita:createdGolive a rdf:Property;
                    rdfs:comment "The publication or general availability (GA) date, entered as YYYY-MM-DD, where YYYY is the year, MM is the month from 01 to 12, and DD is the day from 01-31."@en-us;
                    rdfs:domain dita:Doctype;
                    rdfs:label "created (golive)";
-                   rdfs:range dcterms:W3CDTF;
+                   rdfs:range <http://purl.org/dc/terms/W3CDTF>;
                    rdfs:seeAlso <http://docs.oasis-open.org/dita/v1.2/os/spec/langref/created.html>.
 dita:element a rdf:Property;
              rdfs:comment "Indicates that the file contains the target element."@en-us;
@@ -413,20 +406,20 @@ dita:referenceObject a rdf:Property;
 dita:revised rdfs:comment "The revised element in the prolog is used to maintain tracking dates that are important in a topic development cycle, such as the last modification date, the original availability date, and the expiration date."@en-us;
              rdfs:domain dita:Doctype;
              rdfs:label "revised";
-             rdfs:range dcterms:W3CDTF;
+             rdfs:range <http://purl.org/dc/terms/W3CDTF>;
              rdfs:seeAlso <http://docs.oasis-open.org/dita/v1.2/os/spec/langref/revised.html>;
-             rdfs:subPropertyOf dcterms:revised.
+             rdfs:subPropertyOf <http://purl.org/dc/terms/revised>.
 dita:revisedExpiry a rdf:Property;
                    rdfs:comment "The date when the information should be retired or refreshed, entered as YYYY-MM-DD, where YYYY is the year, MM is the month from 01 to 12, and DD is the day from 01-31."@en-us;
                    rdfs:domain dita:Doctype;
                    rdfs:label "revised (expiry)";
-                   rdfs:range dcterms:W3CDTF;
+                   rdfs:range <http://purl.org/dc/terms/W3CDTF>;
                    rdfs:seeAlso <http://docs.oasis-open.org/dita/v1.2/os/spec/langref/revised.html>.
 dita:revisedGolive a rdf:Property;
                    rdfs:comment "The publication or general availability (GA) date, entered as YYYY-MM-DD, where YYYY is the year, MM is the month from 01 to 12, and DD is the day from 01-31."@en-us;
                    rdfs:domain dita:Doctype;
                    rdfs:label "revised (golive)";
-                   rdfs:range dcterms:W3CDTF;
+                   rdfs:range <http://purl.org/dc/terms/W3CDTF>;
                    rdfs:seeAlso <http://docs.oasis-open.org/dita/v1.2/os/spec/langref/revised.html>.
 dita:scope a rdf:Property;
            rdfs:comment "The scope attribute identifies the closeness of the relationship between the current document and the target resource."@en-us;
@@ -453,7 +446,7 @@ dita:source a rdf:Property;
             rdfs:label "source";
             rdfs:range xsd:string;
             rdfs:seeAlso <http://docs.oasis-open.org/dita/v1.2/os/spec/langref/source.html>;
-            rdfs:subPropertyOf dcterms:source.
+            rdfs:subPropertyOf <http://purl.org/dc/terms/source>.
 dita:subtopic a rdf:Property;
               rdfs:comment "Topics can be nested."@en-us;
               rdfs:domain dita:Topic;
@@ -468,7 +461,7 @@ dita:title a rdf:Property;
            rdfs:label "title";
            rdfs:range xsd:string;
            rdfs:seeAlso <http://docs.oasis-open.org/dita/v1.2/os/spec/langref/title.html>;
-           rdfs:subPropertyOf dcterms:title.
+           rdfs:subPropertyOf <http://purl.org/dc/terms/title>.
 dita:topicref rdfs:comment "The topicref element identifies a topic (such as a concept, task, or reference) or other resource."@en-us;
               rdfs:label "topicref";
               rdfs:seeAlso <http://docs.oasis-open.org/dita/v1.2/os/spec/langref/topicref.html>;

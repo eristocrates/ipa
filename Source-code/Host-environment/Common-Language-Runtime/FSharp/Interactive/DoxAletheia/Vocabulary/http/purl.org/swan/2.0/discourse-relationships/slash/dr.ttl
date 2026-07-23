@@ -2,103 +2,100 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix dr: <http://purl.org/swan/2.0/discourse-relationships/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
 
-dcterms:contributor a owl:AnnotationProperty.
-dcterms:creator a owl:AnnotationProperty.
-dcterms:date a owl:AnnotationProperty.
-dcterms:format a owl:AnnotationProperty.
-dcterms:language a owl:AnnotationProperty.
-dcterms:publisher a owl:AnnotationProperty.
-dcterms:title a owl:AnnotationProperty.
-dr: dcterms:contributor "Tim Clark",
-                        "David Shotton",
-                        "Paolo Ciccarese",
-                        "Gwen Wong",
-                        "Elizabeth Wu",
-                        "June Kinoshita",
-                        "Marco Ocana";
-    dcterms:creator <http://www.hcklab.org/foaf.rdf#me>;
-    dcterms:date "October 12, 2010";
-    dcterms:format "rdf/xml";
-    dcterms:language "en";
-    dcterms:publisher "Massachusetts General Hospital";
-    dcterms:title "Discourse relationships vocabulary"@en;
-    a owl:Ontology;
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/date> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/format> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/language> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+dr: <http://purl.org/dc/terms/contributor> "Tim Clark",
+                                           "David Shotton",
+                                           "Paolo Ciccarese",
+                                           "Gwen Wong",
+                                           "Elizabeth Wu",
+                                           "June Kinoshita",
+                                           "Marco Ocana";
+    <http://purl.org/dc/terms/creator> <http://www.hcklab.org/foaf.rdf#me>;
+    <http://purl.org/dc/terms/date> "October 12, 2010";
+    <http://purl.org/dc/terms/format> "rdf/xml";
+    <http://purl.org/dc/terms/language> "en";
+    <http://purl.org/dc/terms/publisher> "Massachusetts General Hospital";
+    <http://purl.org/dc/terms/title> "Discourse relationships vocabulary"@en;
+    a <http://www.w3.org/2002/07/owl#Ontology>;
     rdfs:comment "These relationships don't have range and domains defined as they are meant to be reused in different contexts";
     rdfs:label "Discourse relationships vocabulary v. 3.0";
-    owl:versionInfo "3.0".
-dr:alternativeTo a owl:SymmetricProperty,
-                   owl:ObjectProperty;
+    <http://www.w3.org/2002/07/owl#versionInfo> "3.0".
+dr:alternativeTo a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment """It connects two different resources that can be 
 	    		considered alternative interpretations of the same experimental results""";
                  rdfs:label "alternativeTo";
                  rdfs:subPropertyOf dr:relatesTo.
-dr:arisesFrom a owl:ObjectProperty;
+dr:arisesFrom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "Something (question, doubt...) that arises because of something else";
               rdfs:label "arisesFrom";
               rdfs:subPropertyOf dr:refersTo.
-dr:consistentWith a owl:SymmetricProperty,
-                    owl:ObjectProperty;
+dr:consistentWith a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                    <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment """It expresses consistency between two resources. 
 	    		It is a bidirectional relationship""";
                   rdfs:label "consistentWith";
                   rdfs:subPropertyOf dr:relatesTo.
-dr:inconsistentWith a owl:SymmetricProperty,
-                      owl:ObjectProperty;
+dr:inconsistentWith a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                      <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:comment """It expresses inconsistency between two resources. 
 	    		It is a bidirectional relationship""";
                     rdfs:label "inconsistentWith";
                     rdfs:subPropertyOf dr:relatesTo.
-dr:motivates a owl:ObjectProperty;
+dr:motivates a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment "Something (hypothesis, doubt...) that motivates something else like an experiment";
              rdfs:label "motivates";
              rdfs:subPropertyOf dr:refersTo.
-dr:referencesAsInconsistentEvidence a owl:ObjectProperty;
+dr:referencesAsInconsistentEvidence a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                     rdfs:comment "";
                                     rdfs:label "referencesAsInconsistentEvidence";
                                     rdfs:subPropertyOf dr:refersTo.
-dr:referencesAsRelevantEvidence a owl:ObjectProperty;
+dr:referencesAsRelevantEvidence a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                 rdfs:comment "";
                                 rdfs:label "referencesAsRelevantEvidence";
                                 rdfs:subPropertyOf dr:refersTo.
-dr:referencesAsSupportiveEvidence a owl:ObjectProperty;
+dr:referencesAsSupportiveEvidence a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                   rdfs:comment "";
                                   rdfs:label "referencesAsSupportiveEvidence";
                                   rdfs:subPropertyOf dr:refersTo.
-dr:refersTo a owl:ObjectProperty;
+dr:refersTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:comment """It connects an entity with another entity in an 
 				unidirectional way""";
             rdfs:label "refersTo";
             rdfs:subPropertyOf dr:relatesTo.
-dr:relatesTo a owl:ObjectProperty;
+dr:relatesTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment """The most generic relationship: it expresses connection 
 			between two resources without specifying the nature of such connection""";
              rdfs:label "relatesTo".
-dr:relevantTo a owl:SymmetricProperty,
-                owl:ObjectProperty;
+dr:relevantTo a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment """It expresses the fact that a resource is 
 	    		relevant for another one and vice-versa""";
               rdfs:label "relevantTo";
               rdfs:subPropertyOf dr:relatesTo.
-dr:respondsNegativelyTo a owl:ObjectProperty;
+dr:respondsNegativelyTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment """It expresses the fact that one entity is talking 
 				    		about another one expressing disagreement""";
                         rdfs:label "respondsNegativelyTo";
                         rdfs:subPropertyOf dr:respondsTo.
-dr:respondsNeutrallyTo a owl:ObjectProperty;
+dr:respondsNeutrallyTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:comment """It expresses the fact that one entity is 
 				    		talking about another one without expressing agreement or disagreement""";
                        rdfs:label "respondsNeutrallyTo";
                        rdfs:subPropertyOf dr:respondsTo.
-dr:respondsPositivelyTo a owl:ObjectProperty;
+dr:respondsPositivelyTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment """It expresses the fact that one entity is talking 
 				    		about another one expressing agreement""";
                         rdfs:label "respondsPositivelyTo";
                         rdfs:subPropertyOf dr:respondsTo.
-dr:respondsTo a owl:ObjectProperty;
+dr:respondsTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "";
               rdfs:label "respondsTo";
               rdfs:subPropertyOf dr:refersTo.

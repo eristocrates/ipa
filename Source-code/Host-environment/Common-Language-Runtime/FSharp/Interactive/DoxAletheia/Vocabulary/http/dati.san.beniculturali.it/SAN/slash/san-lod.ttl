@@ -2,81 +2,71 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix san-lod: <http://dati.san.beniculturali.it/SAN/>.
-@prefix oad: <http://lod.xdams.org/reload/oad/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix org: <http://www.w3.org/ns/org#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix geonames: <http://www.geonames.org/ontology#>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-san-lod: dc11:creator "ICAR - Centro MAAS";
-         dc11:date "2015-03-02";
-         dc11:rights "Per l'ontologia ed il thesaurus SAN, si applica una licenza Creative Commons 2.5 BY di attribuzione. Per tipologie di uso e riutilizzo non consentite dalla licenza adottata, è necessario richiedere esplicita autorizzazione all'ICAR";
-         dc11:title "SAN Ontologia";
-         a owl:Ontology;
-         owl:versionInfo "Version 1.1".
-<http://dati.san.beniculturali.it/SAN/TesauroSAN/Estensione_data_complesso> a owl:Class;
-                                                                            rdfs:subClassOf skos:Concept;
-                                                                            skos:prefLabel "Estensione alla data del complesso archivistico"@it.
-<http://dati.san.beniculturali.it/SAN/TesauroSAN/Status_scheda_provenienza> a owl:Class;
-                                                                            rdfs:subClassOf skos:Concept;
-                                                                            skos:prefLabel "Status della scheda nel sistema di provenienza"@it.
-<http://dati.san.beniculturali.it/SAN/TesauroSAN/Tematismo> a owl:Class;
-                                                            rdfs:subClassOf skos:Concept;
-                                                            skos:prefLabel "Tematismo"@it.
-<http://dati.san.beniculturali.it/SAN/TesauroSAN/Tipo_data_esistenza_CPF> a owl:Class;
-                                                                          rdfs:subClassOf skos:Concept;
-                                                                          skos:prefLabel "Tipologia della data di esistenza del soggetto produttore"@it.
-<http://dati.san.beniculturali.it/SAN/TesauroSAN/natura_giuridica_ente> a owl:Class;
-                                                                        rdfs:subClassOf skos:Concept;
-                                                                        skos:prefLabel "natura giuridica"@it.
-<http://dati.san.beniculturali.it/SAN/TesauroSAN/sottotipologia_ente> a owl:Class;
-                                                                      rdfs:subClassOf skos:Concept;
-                                                                      skos:prefLabel "Sottotipologie del Soggetto produttore Ente"@it.
-<http://dati.san.beniculturali.it/SAN/TesauroSAN/tipologia_Conservatore> a owl:Class;
-                                                                         rdfs:subClassOf skos:Concept;
-                                                                         skos:prefLabel "Tipologia del soggetto conservatore"@it.
-san-lod:abstract a owl:DatatypeProperty;
+san-lod: <http://purl.org/dc/elements/1.1/creator> "ICAR - Centro MAAS";
+         <http://purl.org/dc/elements/1.1/date> "2015-03-02";
+         <http://purl.org/dc/elements/1.1/rights> "Per l'ontologia ed il thesaurus SAN, si applica una licenza Creative Commons 2.5 BY di attribuzione. Per tipologie di uso e riutilizzo non consentite dalla licenza adottata, è necessario richiedere esplicita autorizzazione all'ICAR";
+         <http://purl.org/dc/elements/1.1/title> "SAN Ontologia";
+         a <http://www.w3.org/2002/07/owl#Ontology>;
+         <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.1".
+<http://dati.san.beniculturali.it/SAN/TesauroSAN/Estensione_data_complesso> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                            rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                                                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Estensione alla data del complesso archivistico"@it.
+<http://dati.san.beniculturali.it/SAN/TesauroSAN/Status_scheda_provenienza> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                            rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                                                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Status della scheda nel sistema di provenienza"@it.
+<http://dati.san.beniculturali.it/SAN/TesauroSAN/Tematismo> a <http://www.w3.org/2002/07/owl#Class>;
+                                                            rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Tematismo"@it.
+<http://dati.san.beniculturali.it/SAN/TesauroSAN/Tipo_data_esistenza_CPF> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                          rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                                                                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Tipologia della data di esistenza del soggetto produttore"@it.
+<http://dati.san.beniculturali.it/SAN/TesauroSAN/natura_giuridica_ente> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                        rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                                                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "natura giuridica"@it.
+<http://dati.san.beniculturali.it/SAN/TesauroSAN/sottotipologia_ente> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                      rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                                                                      <http://www.w3.org/2004/02/skos/core#prefLabel> "Sottotipologie del Soggetto produttore Ente"@it.
+<http://dati.san.beniculturali.it/SAN/TesauroSAN/tipologia_Conservatore> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                         rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                                                                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Tipologia del soggetto conservatore"@it.
+san-lod:abstract a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaeac.xsd//eac-cpf/cpfDescription/description/biogHist/abstract",
                               "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaead.xsd//ead/archdesc/did/abstract[@langcode]";
-                 rdfs:domain [owl:unionOf [] ; 
-                              a owl:Class];
+                 rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> [] ; 
+                              a <http://www.w3.org/2002/07/owl#Class>];
                  rdfs:label "abstract".
-san-lod:acronimo a owl:DatatypeProperty;
+san-lod:acronimo a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/scons.xsd//scons/acronimo";
                  rdfs:domain san-lod:conservatore;
                  rdfs:label "acronimo".
-san-lod:altraDenominazioneComplarc a owl:DatatypeProperty;
+san-lod:altraDenominazioneComplarc a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                    rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaead.xsd//ead/archdesc/did/unittitle";
                                    rdfs:domain san-lod:complessoArchivistico;
                                    rdfs:label "altra denominazione complesso archivistico".
-san-lod:altraDenominazioneProduttore a owl:DatatypeProperty;
+san-lod:altraDenominazioneProduttore a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                      rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaeac.xsd//eac-cpf/cpfDescription/identity/nameEntry[@localType='altradenominazione']/part";
                                      rdfs:domain san-lod:produttore;
                                      rdfs:label "altra denominazione produttore".
-san-lod:altraDenominazioneProfiloIstituzionale a owl:DatatypeProperty;
+san-lod:altraDenominazioneProfiloIstituzionale a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                                rdfs:domain san-lod:profiloIstituzionale;
                                                rdfs:label "altra denominazione profilo istituzionale".
-san-lod:altroAccesso a owl:DatatypeProperty;
+san-lod:altroAccesso a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/scons.xsd//scons/altroaccesso";
                      rdfs:domain san-lod:conservatore;
                      rdfs:label "altro accesso".
-san-lod:autore a owl:DatatypeProperty;
+san-lod:autore a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/strumenti.xsd//ead/eadheader/filedesc/titlestmt/author";
                rdfs:domain san-lod:strumento;
                rdfs:label "autore".
-san-lod:casaEditrice a owl:DatatypeProperty;
+san-lod:casaEditrice a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/strumenti.xsd//ead/eadheader/filedesc/publicationstm/publisher";
                      rdfs:domain san-lod:strumento;
                      rdfs:label "casa editrice".
-san-lod:codice_ISIL a owl:DatatypeProperty;
+san-lod:codice_ISIL a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:domain san-lod:conservatore;
                     rdfs:label "codice ISIL".
-san-lod:complessoArchivistico a owl:Class;
+san-lod:complessoArchivistico a <http://www.w3.org/2002/07/owl#Class>;
                               rdfs:comment "Locuzione generica per indicare un corpus documentale oggetto di descrizione.";
                               rdfs:label "complesso archivistico";
                               rdfs:subClassOf [],
@@ -86,12 +76,12 @@ san-lod:complessoArchivistico a owl:Class;
                                               [],
                                               [],
                                               [],
-                                              owl:Thing,
+                                              <http://www.w3.org/2002/07/owl#Thing>,
                                               [],
                                               [],
                                               [];
-                              owl:equivalentClass oad:uod.
-san-lod:conservatore a owl:Class;
+                              <http://www.w3.org/2002/07/owl#equivalentClass> <http://lod.xdams.org/reload/oad/uod>.
+san-lod:conservatore a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:comment "Il soggetto sul quale ricade la responsabilità  della conservazione e valorizzazione dell'archivio";
                      rdfs:label "soggetto conservatore";
                      rdfs:subClassOf [],
@@ -99,327 +89,327 @@ san-lod:conservatore a owl:Class;
                                      [],
                                      [],
                                      [],
-                                     owl:Thing,
+                                     <http://www.w3.org/2002/07/owl#Thing>,
                                      [],
                                      [],
                                      [];
-                     owl:equivalentClass org:Organization.
-san-lod:consistenza a owl:DatatypeProperty;
+                     <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.w3.org/ns/org#Organization>.
+san-lod:consistenza a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaead.xsd//ead/archdesc/did/physdesc/extent";
                     rdfs:domain san-lod:complessoArchivistico;
                     rdfs:label "consistenza";
-                    owl:equivalentProperty oad:extentAndMedium.
-san-lod:consultazione a owl:DatatypeProperty;
+                    <http://www.w3.org/2002/07/owl#equivalentProperty> <http://lod.xdams.org/reload/oad/extentAndMedium>.
+san-lod:consultazione a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                       rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/scons.xsd//scons/consultazione";
                       rdfs:domain san-lod:conservatore;
                       rdfs:label "consultazione";
                       rdfs:range xsd:boolean.
-san-lod:contestoStoricoIstituzionale a owl:Class;
+san-lod:contestoStoricoIstituzionale a <http://www.w3.org/2002/07/owl#Class>;
                                      rdfs:comment """Organizzazione istituzionale entro cui ha operato il soggetto produttore. Può trattarsi di uno Stato o di articolazioni territoriali o amministrative di esso. L'entità  statale può essere individuata con la denominazione propria di un determinato periodo storico (per es. “Repubblica di Siena”, “Granducato di Toscana””) o con le denominazioni assunte in un più lungo arco cronologico (es. \"Regno d'Italia poi Repubblica italiana\").""";
                                      rdfs:label "contesto storico istituzionale";
-                                     rdfs:subClassOf owl:Thing.
-san-lod:date a owl:Class;
+                                     rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+san-lod:date a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:label "date";
-             rdfs:subClassOf owl:Thing.
-san-lod:dateCSI a owl:Class;
+             rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+san-lod:dateCSI a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:label "date contesto storico istituzionale";
                 rdfs:subClassOf [],
                                 san-lod:date.
-san-lod:dateCSITesto dcterms:description "Date contesto storico istituzionale testuali";
-                     a owl:DatatypeProperty;
+san-lod:dateCSITesto <http://purl.org/dc/terms/description> "Date contesto storico istituzionale testuali";
+                     a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:domain san-lod:dateCSI;
                      rdfs:label "date contesto storico istituzionale testo".
-san-lod:dateComplarc a owl:Class;
+san-lod:dateComplarc a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:label "date complesso archivistico";
                      rdfs:subClassOf [],
                                      [],
                                      san-lod:date.
-san-lod:dateComplarcNormal a owl:DatatypeProperty;
+san-lod:dateComplarcNormal a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaead.xsd//ead/archdesc/did/unitdate[@datechar='principale']/@normal";
                            rdfs:domain san-lod:dateComplarc;
                            rdfs:label "date complesso archivistico normal";
-                           owl:equivalentProperty oad:date.
-san-lod:dateComplarcTesto a owl:DatatypeProperty;
+                           <http://www.w3.org/2002/07/owl#equivalentProperty> <http://lod.xdams.org/reload/oad/date>.
+san-lod:dateComplarcTesto a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                           rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaead.xsd//ead/archdesc/did/unitdate[@datechar='principale']";
                           rdfs:domain san-lod:dateComplarc;
                           rdfs:label "date complesso archivistico testo".
-san-lod:dateEsistenza a owl:Class;
+san-lod:dateEsistenza a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:label "date esistenza";
                       rdfs:subClassOf [],
                                       [],
                                       [],
                                       san-lod:date.
-san-lod:dateEsistenzaNormal a owl:DatatypeProperty;
+san-lod:dateEsistenzaNormal a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                             rdfs:domain san-lod:dateEsistenza;
                             rdfs:label "date esistenza normal";
-                            owl:equivalentProperty <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#existDates>.
-san-lod:dateEsistenzaTesto a owl:DatatypeProperty;
+                            <http://www.w3.org/2002/07/owl#equivalentProperty> <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#existDates>.
+san-lod:dateEsistenzaTesto a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaeac.xsd//eac-cpf/cpfDescription/description/existDates/dateSet/date";
                            rdfs:domain san-lod:dateEsistenza;
                            rdfs:label "date esistenza testo".
-san-lod:dateQualificazioniRelCpf a owl:DatatypeProperty;
+san-lod:dateQualificazioniRelCpf a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                  rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaeac.xsd//eac-cpf/cpfDescription/relations/cpfRelation/date";
                                  rdfs:domain san-lod:qualificazioniRelazioniCpf;
                                  rdfs:label "date qualificazioni relazioni Cpf".
-san-lod:dateStrumento a owl:Class;
+san-lod:dateStrumento a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:label "date strumento";
                       rdfs:subClassOf san-lod:date.
-san-lod:dateStrumentoTesto a owl:DatatypeProperty;
+san-lod:dateStrumentoTesto a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/strumenti.xsd//ead/eadheader/filedesc/publicationstm/date";
                            rdfs:domain san-lod:dateStrumento;
                            rdfs:label "date strumento testo".
-san-lod:denominazioneCSI a owl:DatatypeProperty;
+san-lod:denominazioneCSI a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                          rdfs:domain san-lod:contestoStoricoIstituzionale;
                          rdfs:label "denominazione contesto storico istituzionale".
-san-lod:descrizione a owl:DatatypeProperty;
+san-lod:descrizione a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/strumenti.xsd//ead/eadheader/filedesc/notestmt/note",
                                  "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/scons.xsd//scons/descrizione";
-                    rdfs:domain [owl:unionOf [] ; 
-                                 a owl:Class];
+                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> [] ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>];
                     rdfs:label "descrizione".
-san-lod:descrizioneCSI a owl:DatatypeProperty;
+san-lod:descrizioneCSI a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                        rdfs:domain san-lod:contestoStoricoIstituzionale;
                        rdfs:label "descrizione contesto storico istituzionale".
-san-lod:edito a owl:DatatypeProperty;
+san-lod:edito a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/strumenti.xsd//ead/eadheader/filedesc/notestmt/note/@type";
               rdfs:domain san-lod:strumento;
               rdfs:label "edito";
               rdfs:range xsd:boolean.
-san-lod:ente a owl:Class;
+san-lod:ente a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:label "ente";
              rdfs:subClassOf san-lod:produttore;
-             owl:disjointWith san-lod:famiglia,
-                              san-lod:persona;
-             owl:equivalentClass <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#corporateBoby>.
-san-lod:estensioneDateComplarc a owl:Class;
+             <http://www.w3.org/2002/07/owl#disjointWith> san-lod:famiglia,
+                                                          san-lod:persona;
+             <http://www.w3.org/2002/07/owl#equivalentClass> <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#corporateBoby>.
+san-lod:estensioneDateComplarc a <http://www.w3.org/2002/07/owl#Class>;
                                rdfs:label "estensione date complesso archivistico";
                                rdfs:subClassOf [],
                                                san-lod:date.
-san-lod:estensioneDateNormal a owl:DatatypeProperty;
+san-lod:estensioneDateNormal a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                              rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaead.xsd//ead/archdesc/did/unitdate/@normal";
                              rdfs:domain san-lod:estensioneDateComplarc;
                              rdfs:label "estensione date normal".
-san-lod:famiglia a owl:Class;
+san-lod:famiglia a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:label "famiglia";
                  rdfs:subClassOf san-lod:produttore;
-                 owl:disjointWith san-lod:persona;
-                 owl:equivalentClass <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#family>.
-san-lod:formaAutorizzataComplarc a owl:DatatypeProperty;
+                 <http://www.w3.org/2002/07/owl#disjointWith> san-lod:persona;
+                 <http://www.w3.org/2002/07/owl#equivalentClass> <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#family>.
+san-lod:formaAutorizzataComplarc a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                  rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaead.xsd//ead/archdesc/did/unittitle";
                                  rdfs:domain san-lod:complessoArchivistico;
                                  rdfs:label "forma autorizzata complesso archivistico";
-                                 owl:equivalentProperty oad:title.
-san-lod:formaAutorizzataConservatore a owl:DatatypeProperty;
+                                 <http://www.w3.org/2002/07/owl#equivalentProperty> <http://lod.xdams.org/reload/oad/title>.
+san-lod:formaAutorizzataConservatore a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                      rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/scons.xsd//scons/formaautorizzata",
                                                   "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/scons.xsd//scons/formeparallele";
                                      rdfs:domain san-lod:conservatore;
                                      rdfs:label "forma autorizzata conservatore".
-san-lod:formaAutorizzataProduttore a owl:DatatypeProperty;
+san-lod:formaAutorizzataProduttore a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                    rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaeac.xsd//eac-cpf/cpfDescription/identity/nameEntry/part",
                                                 "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaeac.xsd//eac-cpf/cpfDescription/identity/nameEntryParallel/nameEntry/part[@langcode]";
                                    rdfs:domain san-lod:produttore;
                                    rdfs:label "forma autorizzata produttore";
-                                   owl:equivalentProperty <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#authorizedForm>.
-san-lod:formaAutorizzataProfiloIstituzionale a owl:DatatypeProperty;
+                                   <http://www.w3.org/2002/07/owl#equivalentProperty> <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#authorizedForm>.
+san-lod:formaAutorizzataProfiloIstituzionale a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                              rdfs:domain san-lod:profiloIstituzionale;
                                              rdfs:label "forma autorizzata profilo istituzionale".
-san-lod:has_CSI a owl:ObjectProperty;
-                rdfs:domain [owl:unionOf [] ; 
-                             a owl:Class];
+san-lod:has_CSI a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> [] ; 
+                             a <http://www.w3.org/2002/07/owl#Class>];
                 rdfs:label "ha contesto storico istituzionale";
                 rdfs:range san-lod:contestoStoricoIstituzionale.
-san-lod:has_conservatore a owl:ObjectProperty;
+san-lod:has_conservatore a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:domain san-lod:complessoArchivistico;
                          rdfs:label "ha conservatore";
                          rdfs:range san-lod:conservatore.
-san-lod:has_cpf a owl:ObjectProperty;
+san-lod:has_cpf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:domain san-lod:contestoStoricoIstituzionale;
                 rdfs:label "ha cpf";
-                rdfs:range [owl:unionOf [] ; 
-                            a owl:Class];
-                owl:inverseOf san-lod:has_CSI.
-san-lod:has_dateCSI a owl:ObjectProperty;
+                rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> [] ; 
+                            a <http://www.w3.org/2002/07/owl#Class>];
+                <http://www.w3.org/2002/07/owl#inverseOf> san-lod:has_CSI.
+san-lod:has_dateCSI a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:domain san-lod:contestoStoricoIstituzionale;
                     rdfs:label "ha date contesto storico istituzionale";
                     rdfs:range san-lod:dateCSI.
-san-lod:has_dateComplarc a owl:ObjectProperty;
+san-lod:has_dateComplarc a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:domain san-lod:complessoArchivistico;
                          rdfs:label "ha date complesso archivistico";
                          rdfs:range san-lod:dateComplarc.
-san-lod:has_dateEsistenza a owl:ObjectProperty;
-                          rdfs:domain [owl:unionOf [] ; 
-                                       a owl:Class];
+san-lod:has_dateEsistenza a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> [] ; 
+                                       a <http://www.w3.org/2002/07/owl#Class>];
                           rdfs:label "ha date esistenza";
                           rdfs:range san-lod:dateEsistenza.
-san-lod:has_dateEsistenzaTipo a owl:ObjectProperty;
+san-lod:has_dateEsistenzaTipo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                               rdfs:domain san-lod:dateEsistenza;
                               rdfs:label "ha tipo date di esistenza";
                               rdfs:range <http://dati.san.beniculturali.it/SAN/TesauroSAN/Tipo_data_esistenza_CPF>.
-san-lod:has_dateStrumento a owl:ObjectProperty;
+san-lod:has_dateStrumento a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                           rdfs:domain san-lod:strumento;
                           rdfs:label "ha date strumento";
                           rdfs:range san-lod:dateStrumento.
-san-lod:has_estensioneDateComplarc a owl:ObjectProperty;
+san-lod:has_estensioneDateComplarc a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                    rdfs:domain san-lod:complessoArchivistico;
                                    rdfs:label "ha estensione date complesso archivistico";
                                    rdfs:range san-lod:estensioneDateComplarc.
-san-lod:has_estensioneDateTipo a owl:ObjectProperty;
+san-lod:has_estensioneDateTipo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                rdfs:domain san-lod:estensioneDateComplarc;
                                rdfs:label "ha estensione date tipo";
                                rdfs:range <http://dati.san.beniculturali.it/SAN/TesauroSAN/Estensione_data_complesso>.
-san-lod:has_livelloSuperiore a owl:ObjectProperty;
+san-lod:has_livelloSuperiore a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                              rdfs:domain san-lod:complessoArchivistico;
                              rdfs:label "ha livelloSuperiore";
                              rdfs:range san-lod:complessoArchivistico.
-san-lod:has_luogoAmbitoTerritoriale a owl:ObjectProperty;
+san-lod:has_luogoAmbitoTerritoriale a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                     rdfs:label "ha luogo Ambito Territoriale";
                                     rdfs:subPropertyOf san-lod:has_luogoProduttore.
-san-lod:has_luogoConservatore a owl:ObjectProperty;
+san-lod:has_luogoConservatore a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                               rdfs:domain san-lod:conservatore;
                               rdfs:label "ha luogoConservatore";
                               rdfs:range san-lod:luogoConservatore.
-san-lod:has_luogoGiurisdizione a owl:ObjectProperty;
+san-lod:has_luogoGiurisdizione a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                rdfs:label "ha luogo Giurisdizione";
                                rdfs:subPropertyOf san-lod:has_luogoProduttore.
-san-lod:has_luogoMorte a owl:ObjectProperty;
+san-lod:has_luogoMorte a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:label "ha luogo morte";
                        rdfs:subPropertyOf san-lod:has_luogoProduttore.
-san-lod:has_luogoNascita a owl:ObjectProperty;
+san-lod:has_luogoNascita a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:label "ha luogo nascita";
                          rdfs:subPropertyOf san-lod:has_luogoProduttore.
-san-lod:has_luogoProduttore a owl:ObjectProperty;
+san-lod:has_luogoProduttore a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                             rdfs:domain san-lod:produttore;
                             rdfs:label "ha luogoProduttore";
                             rdfs:range san-lod:luogo;
-                            owl:equivalentProperty <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#hasPlace>.
-san-lod:has_luogoResidenza a owl:ObjectProperty;
+                            <http://www.w3.org/2002/07/owl#equivalentProperty> <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#hasPlace>.
+san-lod:has_luogoResidenza a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                            rdfs:label "ha luogo Residenza";
                            rdfs:subPropertyOf san-lod:has_luogoProduttore.
-san-lod:has_luogoSede a owl:ObjectProperty;
+san-lod:has_luogoSede a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:label "ha luogo Sede";
                       rdfs:subPropertyOf san-lod:has_luogoProduttore.
-san-lod:has_natura_giuridica_ente a owl:ObjectProperty;
-                                  rdfs:domain [owl:unionOf [] ; 
-                                               a owl:Class];
+san-lod:has_natura_giuridica_ente a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> [] ; 
+                                               a <http://www.w3.org/2002/07/owl#Class>];
                                   rdfs:label "ha natura giuridica ente";
                                   rdfs:range <http://dati.san.beniculturali.it/SAN/TesauroSAN/natura_giuridica_ente>.
-san-lod:has_produttore a owl:ObjectProperty;
+san-lod:has_produttore a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:domain san-lod:complessoArchivistico;
                        rdfs:label "ha produttore";
                        rdfs:range san-lod:produttore.
-san-lod:has_qualificazioniRelazioniCpf a owl:ObjectProperty;
-                                       rdfs:domain [owl:unionOf [] ; 
-                                                    a owl:Class];
+san-lod:has_qualificazioniRelazioniCpf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> [] ; 
+                                                    a <http://www.w3.org/2002/07/owl#Class>];
                                        rdfs:label "ha qualificazioni relazioni Cpf";
                                        rdfs:range san-lod:qualificazioniRelazioniCpf.
-san-lod:has_relazionePI a owl:ObjectProperty;
+san-lod:has_relazionePI a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:domain san-lod:qualificazioniRelazioniCpf;
                         rdfs:label "ha relazione con Profilo Istituzionale";
                         rdfs:range san-lod:profiloIstituzionale.
-san-lod:has_relazioneProduttore a owl:ObjectProperty;
+san-lod:has_relazioneProduttore a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                 rdfs:domain san-lod:qualificazioniRelazioniCpf;
                                 rdfs:label "ha relazione con Soggetto Produttore";
                                 rdfs:range san-lod:produttore.
-san-lod:has_sitoWeb a owl:ObjectProperty;
+san-lod:has_sitoWeb a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:domain san-lod:conservatore;
                     rdfs:label "ha sito web";
                     rdfs:range san-lod:sitoWeb.
-san-lod:has_sottotipologia_ente a owl:ObjectProperty;
-                                rdfs:domain [owl:unionOf [] ; 
-                                             a owl:Class];
+san-lod:has_sottotipologia_ente a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> [] ; 
+                                             a <http://www.w3.org/2002/07/owl#Class>];
                                 rdfs:label "ha sottotipologia ente";
                                 rdfs:range <http://dati.san.beniculturali.it/SAN/TesauroSAN/sottotipologia_ente>.
-san-lod:has_statusProvenienza a owl:ObjectProperty;
-                              rdfs:domain [owl:unionOf [] ; 
-                                           a owl:Class];
+san-lod:has_statusProvenienza a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> [] ; 
+                                           a <http://www.w3.org/2002/07/owl#Class>];
                               rdfs:label "ha statusProvenienza";
                               rdfs:range <http://dati.san.beniculturali.it/SAN/TesauroSAN/Status_scheda_provenienza>.
-san-lod:has_strumentoDiRicerca a owl:ObjectProperty;
+san-lod:has_strumentoDiRicerca a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                rdfs:domain san-lod:complessoArchivistico;
                                rdfs:label "ha strumento di ricerca";
                                rdfs:range san-lod:strumento;
-                               owl:equivalentProperty oad:has_findingAid.
-san-lod:has_strumentoDigitale a owl:ObjectProperty;
+                               <http://www.w3.org/2002/07/owl#equivalentProperty> <http://lod.xdams.org/reload/oad/has_findingAid>.
+san-lod:has_strumentoDigitale a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                               rdfs:domain san-lod:strumento;
                               rdfs:label "ha strumento digitale";
                               rdfs:range san-lod:strumentoDigitale.
-san-lod:has_tematismo a owl:ObjectProperty;
+san-lod:has_tematismo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:domain san-lod:complessoArchivistico;
                       rdfs:label "ha tematismo";
                       rdfs:range <http://dati.san.beniculturali.it/SAN/TesauroSAN/Tematismo>.
-san-lod:has_tipologia a owl:ObjectProperty;
+san-lod:has_tipologia a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:domain san-lod:conservatore;
                       rdfs:label "ha tipologia";
                       rdfs:range <http://dati.san.beniculturali.it/SAN/TesauroSAN/tipologia_Conservatore>.
-san-lod:indirizzo a owl:DatatypeProperty;
+san-lod:indirizzo a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:domain san-lod:conservatore;
                   rdfs:label "indirizzo".
-san-lod:isConservatoreOf a owl:ObjectProperty;
+san-lod:isConservatoreOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:domain san-lod:conservatore;
                          rdfs:label "è conservatore di";
                          rdfs:range san-lod:complessoArchivistico;
-                         owl:inverseOf san-lod:has_conservatore.
-san-lod:isProduttoreOf a owl:ObjectProperty;
+                         <http://www.w3.org/2002/07/owl#inverseOf> san-lod:has_conservatore.
+san-lod:isProduttoreOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                        rdfs:domain san-lod:produttore;
                        rdfs:label "è produttore di";
                        rdfs:range san-lod:complessoArchivistico;
-                       owl:inverseOf san-lod:has_produttore.
-san-lod:isStrumentoDiRicercaOf a owl:ObjectProperty;
+                       <http://www.w3.org/2002/07/owl#inverseOf> san-lod:has_produttore.
+san-lod:isStrumentoDiRicercaOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                rdfs:domain san-lod:strumento;
                                rdfs:label "è strumento di ricerca di";
                                rdfs:range san-lod:complessoArchivistico;
-                               owl:inverseOf san-lod:has_strumentoDiRicerca.
-san-lod:luogo a owl:Class;
+                               <http://www.w3.org/2002/07/owl#inverseOf> san-lod:has_strumentoDiRicerca.
+san-lod:luogo a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:label "luogo";
               rdfs:subClassOf [],
-                              owl:Thing;
-              owl:equivalentClass geonames:Feature,
-                                  <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#place>.
-san-lod:luogoCAP a owl:DatatypeProperty;
+                              <http://www.w3.org/2002/07/owl#Thing>;
+              <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.geonames.org/ontology#Feature>,
+                                                              <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#place>.
+san-lod:luogoCAP a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/scons.xsd//scons/localizzazione/@cap";
                  rdfs:domain san-lod:luogoConservatore;
                  rdfs:label "luogo CAP".
-san-lod:luogoComune a owl:DatatypeProperty;
+san-lod:luogoComune a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/scons.xsd//scons/localizzazione/@comune";
                     rdfs:domain san-lod:luogoConservatore;
                     rdfs:label "luogo comune".
-san-lod:luogoConservatore a owl:Class;
+san-lod:luogoConservatore a <http://www.w3.org/2002/07/owl#Class>;
                           rdfs:label "luogo conservatore";
                           rdfs:subClassOf [],
                                           [],
                                           [],
                                           [],
                                           san-lod:luogo.
-san-lod:luogoPaese a owl:DatatypeProperty;
+san-lod:luogoPaese a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/scons.xsd//scons/localizzazione/@paese";
                    rdfs:domain san-lod:luogoConservatore;
                    rdfs:label "luogo paese".
-san-lod:luogoProvincia a owl:DatatypeProperty;
+san-lod:luogoProvincia a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                        rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/scons.xsd//scons/localizzazione/@provincia";
                        rdfs:domain san-lod:luogoConservatore;
                        rdfs:label "luogo provincia".
-san-lod:luogoPubblicazione a owl:DatatypeProperty;
+san-lod:luogoPubblicazione a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/strumenti.xsd//ead/eadheader/filedesc/publicationstm/address";
                            rdfs:domain san-lod:strumento;
                            rdfs:label "luogo pubblicazione".
-san-lod:luogoTesto a owl:DatatypeProperty;
+san-lod:luogoTesto a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaeac.xsd//eac-cpf/cpfDescription/placeDates/placeDate/place",
                                 "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/scons.xsd//scons/localizzazione";
                    rdfs:domain san-lod:luogo;
                    rdfs:label "luogo testo".
-san-lod:orario a owl:DatatypeProperty;
+san-lod:orario a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/scons.xsd//scons/orario";
                rdfs:domain san-lod:conservatore;
                rdfs:label "orario".
-san-lod:ordinamento a owl:DatatypeProperty;
+san-lod:ordinamento a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:domain san-lod:complessoArchivistico;
                     rdfs:label "ordinamento".
-san-lod:persona a owl:Class;
+san-lod:persona a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:label "persona";
                 rdfs:subClassOf san-lod:produttore;
-                owl:equivalentClass foaf:person,
-                                    <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#person>.
-san-lod:produttore a owl:Class;
+                <http://www.w3.org/2002/07/owl#equivalentClass> <http://xmlns.com/foaf/0.1/person>,
+                                                                <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#person>.
+san-lod:produttore a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "Soggetto (ente, famiglia o persona) che ha prodotto o acquisito per finalità  amministrative, familiari o personali il complesso archivistico oggetto di descrizione. Può essere collegato ad altri soggetti produttori con relazioni gerarchiche o temporali.";
                    rdfs:label "soggetto produttore";
                    rdfs:subClassOf [],
@@ -429,15 +419,15 @@ san-lod:produttore a owl:Class;
                                    [],
                                    [],
                                    [],
-                                   owl:Thing;
-                   owl:equivalentClass <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#entity>,
-                                       [owl:unionOf [] ; 
-                                        a owl:Class].
-san-lod:professione a owl:DatatypeProperty;
+                                   <http://www.w3.org/2002/07/owl#Thing>;
+                   <http://www.w3.org/2002/07/owl#equivalentClass> <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#entity>,
+                                                                   [<http://www.w3.org/2002/07/owl#unionOf> [] ; 
+                                                                    a <http://www.w3.org/2002/07/owl#Class>].
+san-lod:professione a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaeac.xsd//eac-cpf/cpfDescription/description/descriptiveEntries/descriptiveEntry/term";
                     rdfs:domain san-lod:persona;
                     rdfs:label "professione".
-san-lod:profiloIstituzionale a owl:Class;
+san-lod:profiloIstituzionale a <http://www.w3.org/2002/07/owl#Class>;
                              rdfs:comment """Istituzioni, preunitarie o unitarie, descritte una volta per tutte, con riferimento al periodo in cui hanno operato e al contesto storico istituzionale o statuale di appartenenza.
 Descrive una volta per tutte un particolare soggetto produttore, e costituisce una chiave di ricerca per tutti i soggetti produttori che appartengono al profilo descritto.""";
                              rdfs:label "profilo istituzionale";
@@ -447,58 +437,58 @@ Descrive una volta per tutte un particolare soggetto produttore, e costituisce u
                                              [],
                                              [],
                                              [],
-                                             owl:Thing,
+                                             <http://www.w3.org/2002/07/owl#Thing>,
                                              [].
-san-lod:qualificazioniRelazioniCpf a owl:Class;
+san-lod:qualificazioniRelazioniCpf a <http://www.w3.org/2002/07/owl#Class>;
                                    rdfs:label "qualificazioni relazioni Cpf";
                                    rdfs:subClassOf [],
-                                                   owl:Thing.
-san-lod:recordProvenienzaId a owl:DatatypeProperty;
+                                                   <http://www.w3.org/2002/07/owl#Thing>.
+san-lod:recordProvenienzaId a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                             rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaead.xsd//ead/archdesc/did/unitid",
                                          "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaeac.xsd//eac-cpf/control/otherRecordId",
                                          "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/strumenti.xsd//ead/eadheader/eadid";
-                            rdfs:domain [owl:unionOf [] ; 
-                                         a owl:Class];
+                            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> [] ; 
+                                         a <http://www.w3.org/2002/07/owl#Class>];
                             rdfs:label "record provenienza id".
-san-lod:schedaProvenienzaHref a owl:DatatypeProperty;
+san-lod:schedaProvenienzaHref a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                               rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaead.xsd//ead/archdesc/did/unitid/@identifier",
                                            "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaeac.xsd//eac-cpf/control/sources/source/@xlink:href",
                                            "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/strumenti.xsd//ead/eadheader/eadid/@URL";
-                              rdfs:domain [owl:unionOf [] ; 
-                                           a owl:Class];
+                              rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> [] ; 
+                                           a <http://www.w3.org/2002/07/owl#Class>];
                               rdfs:label "scheda provenienza href";
                               rdfs:range xsd:anyURI.
-san-lod:schedaSAN a owl:DatatypeProperty;
-                  rdfs:domain [owl:unionOf [] ; 
-                               a owl:Class];
+san-lod:schedaSAN a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> [] ; 
+                               a <http://www.w3.org/2002/07/owl#Class>];
                   rdfs:label "scheda SAN";
                   rdfs:range xsd:anyURI.
-san-lod:servizi a owl:DatatypeProperty;
+san-lod:servizi a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                 rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/scons.xsd//scons/servizi";
                 rdfs:domain san-lod:conservatore;
                 rdfs:label "servizi".
-san-lod:sistemaProvenienza a owl:DatatypeProperty;
+san-lod:sistemaProvenienza a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/strumenti.xsd//ead/eadheader/eadid/@identifier",
                                         "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaead.xsd//ead/archdesc/did/unitid/@type",
                                         "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaeac.xsd//eac-cpf/control/otherRecordId/@localtype";
-                           rdfs:domain [owl:unionOf [] ; 
-                                        a owl:Class];
+                           rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> [] ; 
+                                        a <http://www.w3.org/2002/07/owl#Class>];
                            rdfs:label "sistema provenienza".
-san-lod:sitoWeb a owl:Class;
+san-lod:sitoWeb a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:label "sito web";
-                rdfs:subClassOf owl:Thing;
-                owl:equivalentClass <http://lod.xdams.org/reload/ocsa/contactArea>.
-san-lod:sitoWebHref a owl:DatatypeProperty;
+                rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                <http://www.w3.org/2002/07/owl#equivalentClass> <http://lod.xdams.org/reload/ocsa/contactArea>.
+san-lod:sitoWebHref a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/scons.xsd//scons/sitoweb/@href";
                     rdfs:domain san-lod:sitoWeb;
                     rdfs:label "sito web href";
                     rdfs:range xsd:anyURI;
-                    owl:equivalentProperty foaf:homepage.
-san-lod:sitoWebTesto a owl:DatatypeProperty;
+                    <http://www.w3.org/2002/07/owl#equivalentProperty> <http://xmlns.com/foaf/0.1/homepage>.
+san-lod:sitoWebTesto a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/scons.xsd//scons/sitoweb";
                      rdfs:domain san-lod:sitoWeb;
                      rdfs:label "sito web testo".
-san-lod:strumento a owl:Class;
+san-lod:strumento a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "Repertorio - in forma di inventario analitico o sommario, elenco, elenco di versamento, elenco di consistenza, elenco numerico o altro - che descrive in maniera più o meno dettagliata un fondo o parte di esso.";
                   rdfs:label "strumento di ricerca";
                   rdfs:subClassOf [],
@@ -507,37 +497,37 @@ san-lod:strumento a owl:Class;
                                   [],
                                   [],
                                   [],
-                                  owl:Thing,
+                                  <http://www.w3.org/2002/07/owl#Thing>,
                                   [];
-                  owl:equivalentClass oad:findingAid.
-san-lod:strumentoDigitale a owl:Class;
+                  <http://www.w3.org/2002/07/owl#equivalentClass> <http://lod.xdams.org/reload/oad/findingAid>.
+san-lod:strumentoDigitale a <http://www.w3.org/2002/07/owl#Class>;
                           rdfs:label "strumento digitale";
                           rdfs:subClassOf [],
                                           [],
-                                          owl:Thing.
-san-lod:strumentoDigitaleLink a owl:DatatypeProperty;
+                                          <http://www.w3.org/2002/07/owl#Thing>.
+san-lod:strumentoDigitaleLink a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                               rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/strumenti.xsd//ead/eadheader/filedesc/editionstmt/edition/extptr/@href";
                               rdfs:domain san-lod:strumentoDigitale;
                               rdfs:label "strumento digitale link";
                               rdfs:range xsd:anyURI.
-san-lod:strumentoDigitaleTitolo a owl:DatatypeProperty;
+san-lod:strumentoDigitaleTitolo a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                 rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/strumenti.xsd//ead/eadheader/filedesc/editionstmt/edition/extptr/@title";
                                 rdfs:domain san-lod:strumentoDigitale;
                                 rdfs:label "strumento digitale titolo".
-san-lod:tipoQualificazioniRelCpf a owl:DatatypeProperty;
+san-lod:tipoQualificazioniRelCpf a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                  rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaeac.xsd//eac-cpf/cpfDescription/relations/cpfRelation/@localType";
                                  rdfs:domain san-lod:qualificazioniRelazioniCpf;
                                  rdfs:label "tipo qualificazioni relazioni Cpf";
-                                 owl:equivalentProperty <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#cpfRelationType>.
-san-lod:tipologiaComplesso a owl:DatatypeProperty;
+                                 <http://www.w3.org/2002/07/owl#equivalentProperty> <http://archivi.ibc.regione.emilia-romagna.it/ontology/eac-cpf#cpfRelationType>.
+san-lod:tipologiaComplesso a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaead.xsd//ead/archdesc[@level='otherlevel']/@otherlevel";
                            rdfs:domain san-lod:complessoArchivistico;
                            rdfs:label "tipologia complesso".
-san-lod:titolo a owl:DatatypeProperty;
+san-lod:titolo a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/strumenti.xsd//ead/eadheader/filedesc/titlestmt/titleproper";
                rdfs:domain san-lod:strumento;
                rdfs:label "titolo".
-san-lod:titolo_nobiliare a owl:DatatypeProperty;
+san-lod:titolo_nobiliare a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                          rdfs:comment "Tracciato schema SAN: http://www.san.beniculturali.it/tracciato/schemaeac.xsd//eac-cpf/cpfDescription/description/descriptiveEntries/descriptiveEntry/term";
                          rdfs:domain san-lod:persona;
                          rdfs:label "titolo nobiliare".

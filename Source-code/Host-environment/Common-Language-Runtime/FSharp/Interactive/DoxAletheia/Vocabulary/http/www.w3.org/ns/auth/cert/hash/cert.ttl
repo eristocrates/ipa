@@ -1,20 +1,10 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix bblfish: <http://bblfish.net/people/henry/card#>.
-@prefix wiki: <http://en.wikipedia.org/wiki/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix cert: <http://www.w3.org/ns/auth/cert#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix wot: <http://xmlns.com/wot/0.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 
-cert: dcterms:created "2008-11-13"^^xsd:date;
-      a owl:Ontology;
+cert: <http://purl.org/dc/terms/created> "2008-11-13"^^xsd:date;
+      a <http://www.w3.org/2002/07/owl#Ontology>;
       rdfs:comment """
    Ontology for Certificates and crypto stuff.
    This is in development. 
@@ -45,9 +35,9 @@ cert: dcterms:created "2008-11-13"^^xsd:date;
       rdfs:seeAlso <http://lists.foaf-project.org/mailman/listinfo/foaf-protocols>,
                    <http://www.w3.org/ns/auth/X509Uml.svg>,
                    <http://www.w3.org/ns/auth/rsa>;
-      status:term_status "unstable";
-      foaf:maker bblfish:me.
-cert:Certificate a owl:Class;
+      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable";
+      <http://xmlns.com/foaf/0.1/maker> <http://bblfish.net/people/henry/card#me>.
+cert:Certificate a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment """A certificate is a Document that is signed.
     As explained here http://www.pgpi.org/doc/pgpintro/#p16
     'A digital certificate consists of three things:
@@ -58,31 +48,31 @@ cert:Certificate a owl:Class;
     """@en;
                  rdfs:isDefinedBy cert:;
                  rdfs:label "Certificate"@en;
-                 rdfs:subClassOf foaf:Document;
-                 status:term_status "unstable".
-cert:Key a owl:Class;
+                 rdfs:subClassOf <http://xmlns.com/foaf/0.1/Document>;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+cert:Key a <http://www.w3.org/2002/07/owl#Class>;
          rdfs:comment "the class of keys"@en;
          rdfs:isDefinedBy cert:;
-         status:term_status "unstable".
-cert:PGPCertificate a owl:Class;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+cert:PGPCertificate a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "the class of PGP Certificates"@en;
                     rdfs:isDefinedBy cert:;
                     rdfs:label "PGPCertificate";
                     rdfs:subClassOf cert:Certificate;
-                    owl:equivalentClass wot:PubKey;
-                    status:term_status "unstable".
-cert:PrivateKey a owl:Class;
+                    <http://www.w3.org/2002/07/owl#equivalentClass> <http://xmlns.com/wot/0.1/PubKey>;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+cert:PrivateKey a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment "Private Key"@en;
                 rdfs:isDefinedBy cert:;
                 rdfs:label "PrivateKey";
                 rdfs:subClassOf cert:Key.
-cert:PublicKey a owl:Class;
+cert:PublicKey a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "Public Key";
                rdfs:isDefinedBy cert:;
                rdfs:label "PublicKey";
                rdfs:subClassOf cert:Key;
-               status:term_status "unstable".
-cert:RSAKey a owl:Class;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+cert:RSAKey a <http://www.w3.org/2002/07/owl#Class>;
             rdfs:comment """
     The union of the public and private components of an RSAKey.
     Usually those pieces are not kept together
@@ -90,31 +80,31 @@ cert:RSAKey a owl:Class;
             rdfs:isDefinedBy cert:;
             rdfs:label "RSA Key"@en;
             rdfs:subClassOf cert:Key;
-            status:term_status "unstable".
-cert:RSAPublicKey a owl:Class;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+cert:RSAPublicKey a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment """
     The RSA public key.  Padded message m are encrypted by applying the function
       modulus(power(m,exponent),modulus)
     """@en;
                   rdfs:isDefinedBy cert:;
                   rdfs:label "RSA Public Key"@en;
-                  rdfs:seeAlso wiki:RSA;
+                  rdfs:seeAlso <http://en.wikipedia.org/wiki/RSA>;
                   rdfs:subClassOf cert:PublicKey,
                                   cert:RSAKey;
-                  status:term_status "unstable".
-cert:Signature a owl:Class;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+cert:Signature a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment "the class of signtatures"@en;
                rdfs:isDefinedBy cert:;
                rdfs:label "Signature";
-               status:term_status "unstable".
-cert:X509Certificate a owl:Class;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+cert:X509Certificate a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:comment "the class of X509 Certificates"@en;
                      rdfs:isDefinedBy cert:;
                      rdfs:label "X509Certificate";
-                     rdfs:seeAlso wiki:X509;
+                     rdfs:seeAlso <http://en.wikipedia.org/wiki/X509>;
                      rdfs:subClassOf cert:Certificate;
-                     status:term_status "unstable".
-cert:exponent a owl:DatatypeProperty;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+cert:exponent a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:comment """
        The exponent used to encrypt the message. Number chosen between
        1 and the totient(p*q). Often named 'e' .
@@ -123,7 +113,7 @@ cert:exponent a owl:DatatypeProperty;
               rdfs:isDefinedBy cert:;
               rdfs:label "exponent"@en;
               rdfs:range xsd:nonNegativeInteger;
-              status:term_status "unstable".
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
 cert:hex a rdfs:Datatype;
          rdfs:comment """<span xmlns=\"http://www.w3.org/1999/xhtml\"><p>
    An encoding of a positive integer (from 0 to infinity) as a hexadecimal string that makes it easy to read and/or fun to present on the web.</p>
@@ -166,17 +156,17 @@ cert:hex a rdfs:Datatype;
         """^^rdf:XMLLiteral;
          rdfs:isDefinedBy cert:;
          rdfs:label "hexadecimal"@en;
-         rdfs:seeAlso wiki:Hexadecimal;
-         owl:equivalentClass xsd:nonNegativeInteger;
-         status:term_status "archaic";
-         skos:editorialNote """<span xmlns=\"http://www.w3.org/1999/xhtml\"><p> 
+         rdfs:seeAlso <http://en.wikipedia.org/wiki/Hexadecimal>;
+         <http://www.w3.org/2002/07/owl#equivalentClass> xsd:nonNegativeInteger;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "archaic";
+         <http://www.w3.org/2004/02/skos/core#editorialNote> """<span xmlns=\"http://www.w3.org/1999/xhtml\"><p> 
      This relation should slowly be transited to just being a datatype.</p>
      <p>Being a datatype and a property is legal as explained here
   <a href=\"http://lists.w3.org/Archives/Public/semantic-web/2010Mar/0037.html\">on the semantic web mailing list in March 2010</a>. 
  But it may be somewhat confusing, especially if it goes against a pattern - still to be set - by the xsd datatypes as the follow up email makes clear. </p></span>
    """@en.
 cert:identity a rdf:Property,
-                owl:ObjectProperty;
+                <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment """
     the identity of the public key. This is the entity that knows the private key and 
     so can decrypt messages encrypted with the public key, or encrypt messages that can 
@@ -185,24 +175,24 @@ cert:identity a rdf:Property,
               rdfs:domain cert:PublicKey;
               rdfs:isDefinedBy cert:;
               rdfs:label "identity"@en;
-              owl:inverseOf cert:key;
-              status:term_status "archaic";
-              skos:editorialNote """
+              <http://www.w3.org/2002/07/owl#inverseOf> cert:key;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "archaic";
+              <http://www.w3.org/2004/02/skos/core#editorialNote> """
          It turns out that this relation is unintuitive to write out and to name.
          One should instead use cert:key
     """@en.
-cert:key a owl:InverseFunctionalProperty,
-           owl:ObjectProperty,
+cert:key a <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>,
+           <http://www.w3.org/2002/07/owl#ObjectProperty>,
            rdf:Property;
          rdfs:comment "relates an agent to a key - most often the public key."@en;
-         rdfs:domain foaf:Agent;
+         rdfs:domain <http://xmlns.com/foaf/0.1/Agent>;
          rdfs:isDefinedBy cert:;
          rdfs:label "key"@en;
          rdfs:range cert:Key,
                     cert:PublicKey;
-         owl:inverseOf cert:identity;
-         status:term_status "unstable".
-cert:modulus a owl:DatatypeProperty;
+         <http://www.w3.org/2002/07/owl#inverseOf> cert:identity;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+cert:modulus a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
              rdfs:comment """    
    <p>The modulus of an RSA public and private key. 
    Or the modulus of a DSA Key.
@@ -221,8 +211,8 @@ cert:modulus a owl:DatatypeProperty;
              rdfs:label "modulus"@en;
              rdfs:range xsd:base64Binary,
                         xsd:hexBinary;
-             status:term_status "unstable".
-cert:privateExponent a owl:DatatypeProperty;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+cert:privateExponent a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:comment """
        The exponent used to decrypt the message
        calculated as 
@@ -233,4 +223,4 @@ cert:privateExponent a owl:DatatypeProperty;
                      rdfs:isDefinedBy cert:;
                      rdfs:label "private"@en;
                      rdfs:range xsd:nonNegativeInteger;
-                     status:term_status "unstable".
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".

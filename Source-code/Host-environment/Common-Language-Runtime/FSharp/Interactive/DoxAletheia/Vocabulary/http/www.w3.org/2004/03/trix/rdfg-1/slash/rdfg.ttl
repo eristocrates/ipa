@@ -1,26 +1,25 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix trig: <http://www.w3.org/2004/03/trix/rdfg-1/>.
+@prefix rdfg: <http://www.w3.org/2004/03/trix/rdfg-1/>.
 
-trig:Graph a rdfs:Class;
+rdfg:Graph a rdfs:Class;
            rdfs:comment """
 An RDF graph (with intensional semantics).
       """;
            rdfs:label "Graph".
-trig:equivalentGraph a rdf:Property;
+rdfg:equivalentGraph a rdf:Property;
                      rdfs:comment """
 The graphs associated with the subject and object are equivalent.
       """;
-                     rdfs:domain trig:Graph;
+                     rdfs:domain rdfg:Graph;
                      rdfs:label "equivalent graph";
-                     rdfs:range trig:Graph.
-trig:subGraphOf a rdf:Property;
+                     rdfs:range rdfg:Graph.
+rdfg:subGraphOf a rdf:Property;
                 rdfs:comment """
 The graph associated with the subject is a subgraph of a graph equivalent
 to that associated with the object.
       """;
-                rdfs:domain trig:Graph;
+                rdfs:domain rdfg:Graph;
                 rdfs:label "subgraph of";
-                rdfs:range trig:Graph.
+                rdfs:range rdfg:Graph.

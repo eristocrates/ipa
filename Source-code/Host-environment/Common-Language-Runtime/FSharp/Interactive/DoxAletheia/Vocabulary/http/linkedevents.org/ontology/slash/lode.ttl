@@ -2,45 +2,34 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix lode: <http://linkedevents.org/ontology/>.
-@prefix cidoccrm: <http://purl.org/NET/cidoc-crm/core#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix time: <http://www.w3.org/2006/time#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
-@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix wgspos: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
 
-lode: dcterms:contributor [foaf:name "Lynda Hardman" ; 
-                           foaf:homepage <http://www.cwi.nl/~lynda/>],
-                          [foaf:name "Raphaël Troncy" ; 
-                           foaf:homepage <http://www.cwi.nl/~troncy/>];
-      dcterms:creator [foaf:name "Ryan Shaw" ; 
-                       foaf:homepage <http://aeshin.org/>];
-      dcterms:date "2010-10-07"^^xsd:date;
-      dcterms:hasFormat <http://linkedevents.org/ontology/rdfxml/>,
-                        <http://linkedevents.org/ontology/html/>;
-      dcterms:identifier "http://linkedevents.org/ontology/2010-10-07/";
-      dcterms:isVersionOf lode:;
-      dcterms:issued "2009-10-07"^^xsd:date;
-      dcterms:modified "2010-10-07"^^xsd:date;
-      dcterms:rights "Copyright © 2010 Ryan Shaw";
-      dcterms:title "LODE: An ontology for Linking Open Descriptions of Events"@en;
-      vann:preferredNamespacePrefix "lode";
-      vann:preferredNamespaceUri "http://linkedevents.org/ontology/";
+lode: <http://purl.org/dc/terms/contributor> [<http://xmlns.com/foaf/0.1/name> "Lynda Hardman" ; 
+                                              <http://xmlns.com/foaf/0.1/homepage> <http://www.cwi.nl/~lynda/>],
+                                             [<http://xmlns.com/foaf/0.1/name> "Raphaël Troncy" ; 
+                                              <http://xmlns.com/foaf/0.1/homepage> <http://www.cwi.nl/~troncy/>];
+      <http://purl.org/dc/terms/creator> [<http://xmlns.com/foaf/0.1/name> "Ryan Shaw" ; 
+                                          <http://xmlns.com/foaf/0.1/homepage> <http://aeshin.org/>];
+      <http://purl.org/dc/terms/date> "2010-10-07"^^xsd:date;
+      <http://purl.org/dc/terms/hasFormat> <http://linkedevents.org/ontology/rdfxml/>,
+                                           <http://linkedevents.org/ontology/html/>;
+      <http://purl.org/dc/terms/identifier> "http://linkedevents.org/ontology/2010-10-07/";
+      <http://purl.org/dc/terms/isVersionOf> lode:;
+      <http://purl.org/dc/terms/issued> "2009-10-07"^^xsd:date;
+      <http://purl.org/dc/terms/modified> "2010-10-07"^^xsd:date;
+      <http://purl.org/dc/terms/rights> "Copyright © 2010 Ryan Shaw";
+      <http://purl.org/dc/terms/title> "LODE: An ontology for Linking Open Descriptions of Events"@en;
+      <http://purl.org/vocab/vann/preferredNamespacePrefix> "lode";
+      <http://purl.org/vocab/vann/preferredNamespaceUri> "http://linkedevents.org/ontology/";
       <http://web.resource.org/cc/license> <http://creativecommons.org/licenses/by-sa/3.0/>;
-      a owl:Ontology;
+      a <http://www.w3.org/2002/07/owl#Ontology>;
       rdfs:comment """
 This document describes an ontology for publishing descriptions of
 historical events as Linked Data, and for mapping between other
 event-related vocabularies and ontologies."""@en;
       rdfs:label "LODE: An ontology for Linking Open Descriptions of Events"@en;
-      owl:versionInfo "2010-10-07".
-lode:Event dcterms:issued "2009-07-28"^^xsd:date;
-           a owl:Class;
+      <http://www.w3.org/2002/07/owl#versionInfo> "2010-10-07".
+lode:Event <http://purl.org/dc/terms/issued> "2009-07-28"^^xsd:date;
+           a <http://www.w3.org/2002/07/owl#Class>;
            rdfs:comment """
 An event consists of some temporal and spatial boundaries subjectively
 imposed on the flux of reality or imagination, that we wish to treat
@@ -53,15 +42,15 @@ specify that an event involves a change of state, nor does it attempt
 to distinguish events from processes or states."""@en;
            rdfs:isDefinedBy lode:;
            rdfs:label "Event"@en;
-           rdfs:subClassOf cidoccrm:E2_Temporal_Entity,
-                           dcmitype:Event;
-           owl:equivalentClass event:Event,
-                               <http://www.loa-cnr.it/ontologies/DUL.owl#Event>;
-           skos:definition """
+           rdfs:subClassOf <http://purl.org/NET/cidoc-crm/core#E2_Temporal_Entity>,
+                           <http://purl.org/dc/dcmitype/Event>;
+           <http://www.w3.org/2002/07/owl#equivalentClass> <http://purl.org/NET/c4dm/event.owl#Event>,
+                                                           <http://www.loa-cnr.it/ontologies/DUL.owl#Event>;
+           <http://www.w3.org/2004/02/skos/core#definition> """
 \"Something that happened,\" as might be reported in a news article or
 explained by a historian."""@en.
-lode:atPlace dcterms:issued "2009-07-28"^^xsd:date;
-             a owl:ObjectProperty;
+lode:atPlace <http://purl.org/dc/terms/issued> "2009-07-28"^^xsd:date;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
              rdfs:comment """
 This property relates an event to some meaningful place, which may
 have a name (e.g. \"Paris\") or may be defined relative to some other
@@ -73,12 +62,12 @@ place."""@en;
              rdfs:label "at place"@en;
              rdfs:range <http://www.loa-cnr.it/ontologies/DUL.owl#Place>;
              rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#hasLocation>;
-             skos:definition """
+             <http://www.w3.org/2004/02/skos/core#definition> """
 a named or relatively specified place that is where
 an event happened."""@en.
-lode:atTime dcterms:issued "2009-07-28"^^xsd:date;
-            a owl:ObjectProperty,
-              owl:FunctionalProperty;
+lode:atTime <http://purl.org/dc/terms/issued> "2009-07-28"^^xsd:date;
+            a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
             rdfs:comment """
 Equivalent definitions from other ontologies:
 
@@ -91,45 +80,45 @@ such span of time."""@en;
             rdfs:domain lode:Event;
             rdfs:isDefinedBy lode:;
             rdfs:label "at time"@en;
-            rdfs:range time:TemporalEntity;
+            rdfs:range <http://www.w3.org/2006/time#TemporalEntity>;
             rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#isObservableAt>,
-                               cidoccrm:P4_has_time-span;
-            owl:equivalentProperty event:time;
-            skos:definition """
+                               <http://purl.org/NET/cidoc-crm/core#P4_has_time-span>;
+            <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/NET/c4dm/event.owl#time>;
+            <http://www.w3.org/2004/02/skos/core#definition> """
 an abstract instant or interval of
 time that is when an event happened."""@en.
-lode:circa dcterms:issued "2009-07-28"^^xsd:date;
-           a owl:ObjectProperty;
+lode:circa <http://purl.org/dc/terms/issued> "2009-07-28"^^xsd:date;
+           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
            rdfs:comment """
 This property relates a span of time that cannot be precisely located
 in a chronological series to another span of time that can be
 precisely located, thus asserting that the latter is an approximation
 of the former."""@en,
                         "An temporal relation expressing nearness in time."@en;
-           rdfs:domain time:TemporalEntity;
+           rdfs:domain <http://www.w3.org/2006/time#TemporalEntity>;
            rdfs:isDefinedBy lode:;
            rdfs:label "circa"@en;
-           rdfs:range time:DateTimeInterval;
-           skos:definition """
+           rdfs:range <http://www.w3.org/2006/time#DateTimeInterval>;
+           <http://www.w3.org/2004/02/skos/core#definition> """
 an interval of time that can be
 precisely described using calendar dates and clock times."""@en.
-<http://linkedevents.org/ontology/html/> dcterms:format [rdfs:label "HTML"@en ; 
-                                                         rdf:value "text/html" ; 
-                                                         a dcterms:IMT].
-lode:illustrate dcterms:issued "2010-10-07"^^xsd:date;
-                a owl:ObjectProperty;
+<http://linkedevents.org/ontology/html/> <http://purl.org/dc/terms/format> [rdfs:label "HTML"@en ; 
+                                                                            rdf:value "text/html" ; 
+                                                                            a <http://purl.org/dc/terms/IMT>].
+lode:illustrate <http://purl.org/dc/terms/issued> "2010-10-07"^^xsd:date;
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment """
 This property relates any thing (typically a media object) to an event which it
 illustrates, documents or comments upon."""@en;
-                rdfs:domain owl:Thing;
+                rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
                 rdfs:isDefinedBy lode:;
                 rdfs:label "illustrate"@en;
                 rdfs:range lode:Event;
-                skos:definition """
+                <http://www.w3.org/2004/02/skos/core#definition> """
 an event illustrated by some thing (typically a media object)"""@en.
-lode:inSpace dcterms:issued "2009-07-28"^^xsd:date;
-             a owl:ObjectProperty,
-               owl:FunctionalProperty;
+lode:inSpace <http://purl.org/dc/terms/issued> "2009-07-28"^^xsd:date;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+               <http://www.w3.org/2002/07/owl#FunctionalProperty>;
              rdfs:comment """
 This property relates an event to some subjectively imposed spatial
 boundaries, i.e. a region of space. An event can be related to only
@@ -142,14 +131,14 @@ region."""@en;
              rdfs:domain lode:Event;
              rdfs:isDefinedBy lode:;
              rdfs:label "in space"@en;
-             rdfs:range wgspos:SpatialThing;
+             rdfs:range <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>;
              rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#hasRegion>;
-             owl:equivalentProperty event:place;
-             skos:definition """
+             <http://www.w3.org/2002/07/owl#equivalentProperty> <http://purl.org/NET/c4dm/event.owl#place>;
+             <http://www.w3.org/2004/02/skos/core#definition> """
 an abstract region of space (e.g. a
 geospatial point or region) that is where an event happened."""@en.
-lode:involved dcterms:issued "2009-07-28"^^xsd:date;
-              a owl:ObjectProperty;
+lode:involved <http://purl.org/dc/terms/issued> "2009-07-28"^^xsd:date;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment """
 This property relates an event to any physical, social, or mental
 object or substance. It does not imply any causal relationship or
@@ -159,12 +148,12 @@ creation, destruction, etc."""@en;
               rdfs:isDefinedBy lode:;
               rdfs:label "involved"@en;
               rdfs:range <http://www.loa-cnr.it/ontologies/DUL.owl#Object>;
-              owl:equivalentProperty <http://www.loa-cnr.it/ontologies/DUL.owl#hasParticipant>;
-              skos:definition """
+              <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.loa-cnr.it/ontologies/DUL.owl#hasParticipant>;
+              <http://www.w3.org/2004/02/skos/core#definition> """
 a (physical, social, or mental) object involved in
 an event."""@en.
-lode:involvedAgent dcterms:issued "2009-07-28"^^xsd:date;
-                   a owl:ObjectProperty;
+lode:involvedAgent <http://purl.org/dc/terms/issued> "2009-07-28"^^xsd:date;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment """
 This property relates an event to anything with agency, such as a
 (legal or natural) person, a group, an organization, a computational
@@ -175,12 +164,12 @@ intentionality, etc."""@en;
                    rdfs:label "involved agent"@en;
                    rdfs:range <http://www.loa-cnr.it/ontologies/DUL.owl#Agent>;
                    rdfs:subPropertyOf lode:involved;
-                   owl:equivalentProperty <http://www.loa-cnr.it/ontologies/DUL.owl#involvesAgent>;
-                   skos:definition "an agent involved in an event."@en.
-<http://linkedevents.org/ontology/rdfxml/> dcterms:format [rdfs:label "RDF/XML"@en ; 
-                                                           rdf:value "application/rdf+xml" ; 
-                                                           a dcterms:IMT].
-event:agent rdfs:subPropertyOf lode:involvedAgent.
-cidoccrm:P11_had_participant rdfs:subPropertyOf lode:involvedAgent.
-cidoccrm:P12_occurred_in_the_presence_of rdfs:subPropertyOf lode:involved.
-cidoccrm:P7_took_place_at rdfs:subPropertyOf lode:inSpace.
+                   <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.loa-cnr.it/ontologies/DUL.owl#involvesAgent>;
+                   <http://www.w3.org/2004/02/skos/core#definition> "an agent involved in an event."@en.
+<http://linkedevents.org/ontology/rdfxml/> <http://purl.org/dc/terms/format> [rdfs:label "RDF/XML"@en ; 
+                                                                              rdf:value "application/rdf+xml" ; 
+                                                                              a <http://purl.org/dc/terms/IMT>].
+<http://purl.org/NET/c4dm/event.owl#agent> rdfs:subPropertyOf lode:involvedAgent.
+<http://purl.org/NET/cidoc-crm/core#P11_had_participant> rdfs:subPropertyOf lode:involvedAgent.
+<http://purl.org/NET/cidoc-crm/core#P12_occurred_in_the_presence_of> rdfs:subPropertyOf lode:involved.
+<http://purl.org/NET/cidoc-crm/core#P7_took_place_at> rdfs:subPropertyOf lode:inSpace.

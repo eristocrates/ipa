@@ -18,14 +18,7 @@
 @prefix env: <http://eulersharp.sourceforge.net/2003/03swap/environment#>.
 @prefix clisko: <http://www.agfa.com/w3c/2009/clinicalSKOSSchemes#>.
 @prefix event: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
-@prefix environ: <http://eulersharp.sourceforge.net/2003/03swap/environment#>.
 @prefix events: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix agents: <http://eulersharp.sourceforge.net/2003/03swap/agent#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix swap_space: <http://eulersharp.sourceforge.net/2003/03swap/space#>.
-@prefix swap_time: <http://eulersharp.sourceforge.net/2003/03swap/time#>.
 
 <http://eulersharp.sourceforge.net/2003/03swap/event> dce:contributor "Jos De Roo, Dirk Colaert, Marc Twagirumukiza; Agfa Healthcare/Belgium. Until 2010: Pieterjan De Potter; Ghent University - IBBT/ELIS - Multimedia Lab/Belgium.";
                                                       dce:creator "Hans Cools, MD; Agfa Healthcare/Belgium"@en;

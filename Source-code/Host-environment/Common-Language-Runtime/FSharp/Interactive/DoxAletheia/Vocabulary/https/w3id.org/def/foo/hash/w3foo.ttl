@@ -1,0 +1,754 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix w3foo: <https://w3id.org/def/foo#>.
+
+<http://creativecommons.org/ns#license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://data.bioontology.org/metadata/prefixIRI> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/abstract> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/bibliographicCitation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/ontology/wo/TaxonRank> a <http://www.w3.org/2002/07/owl#Class>.
+xsd:time a rdfs:Datatype.
+<http://www.w3.org/2003/01/geo/wgs84_pos#alt> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                              <http://www.w3.org/2002/07/owl#sameAs> w3foo:Altitude.
+<http://www.w3.org/2003/01/geo/wgs84_pos#lat> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                              <http://www.w3.org/2002/07/owl#sameAs> w3foo:Latitude.
+<http://www.w3.org/2003/01/geo/wgs84_pos#long> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                               <http://www.w3.org/2002/07/owl#sameAs> w3foo:Longitude.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/prov#Agent> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/ns/prov#Entity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/ns/prov#generatedAtTime> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/prov#wasAttributedTo> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/prov#wasDerivedFrom> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/sosa/FeatureOfInterest> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                              <http://www.w3.org/2002/07/owl#sameAs> w3foo:FeatureOfInterest.
+<http://www.w3.org/ns/sosa/ObservableProperty> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                               <http://www.w3.org/2002/07/owl#sameAs> w3foo:ObservableProperty.
+<http://www.w3.org/ns/sosa/Observation> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                        <http://www.w3.org/2002/07/owl#sameAs> w3foo:Observation.
+<http://www.w3.org/ns/sosa/Sensor> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                   <http://www.w3.org/2002/07/owl#sameAs> w3foo:Sensor.
+<http://www.w3.org/ns/sosa/hasFeatureOfInterest> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                 <http://www.w3.org/2002/07/owl#sameAs> w3foo:hasFeatureOfInterest.
+<http://www.w3.org/ns/sosa/isObservedBy> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                         <http://www.w3.org/2002/07/owl#sameAs> w3foo:isObservedBy.
+<http://www.w3.org/ns/sosa/madeBySensor> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                         <http://www.w3.org/2002/07/owl#sameAs> w3foo:madeBySensor.
+<http://www.w3.org/ns/sosa/madeObservation> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                            <http://www.w3.org/2002/07/owl#sameAs> w3foo:madeObservation.
+<http://www.w3.org/ns/sosa/observes> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                     <http://www.w3.org/2002/07/owl#sameAs> w3foo:observes.
+<http://xmlns.com/foaf/0.1/Organization> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/Person> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/affiliation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/homepage> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/mbox> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://github.com/Naeima> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                              <http://www.w3.org/ns/prov#Agent>,
+                              <http://xmlns.com/foaf/0.1/Person>;
+                            <http://xmlns.com/foaf/0.1/affiliation> "Cardiff University"@en;
+                            <http://xmlns.com/foaf/0.1/mbox> <mailto:naeima.hamed@cardiff.ac.uk>;
+                            <http://xmlns.com/foaf/0.1/name> "Naeima Hamed"@en.
+<https://link.springer.com/chapter/10.1007/978-3-031-43458-7_29> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                                   <http://www.w3.org/ns/prov#Agent>,
+                                                                   <http://xmlns.com/foaf/0.1/Organization>;
+                                                                 <http://xmlns.com/foaf/0.1/homepage> <https://rdcu.be/dKNG2>;
+                                                                 <http://xmlns.com/foaf/0.1/name> "Springer, Cham"@en.
+<https://ontology.forest-observatory.org/> <http://purl.org/dc/elements/1.1/creator> "Data Provider"@en;
+                                           <http://purl.org/dc/elements/1.1/description> "The dataset from which this ontology was derived."@en;
+                                           <http://purl.org/dc/elements/1.1/title> "Source Dataset"@en;
+                                           <http://purl.org/dc/terms/created> "2023-01-15"^^xsd:date;
+                                           a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                             <http://www.w3.org/ns/prov#Entity>.
+<https://schema.org/citation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo: <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by-sa/4.0/>;
+       <http://purl.org/dc/elements/1.1/abstract> "The Forest Observatory Ontology (FOO) comprises a novel upper-level ontology that integrates wildlife data generated by sensors. FOO borrows classes and properties from SOSA and BBC wildlife ontology."@en;
+       <http://purl.org/dc/elements/1.1/contributor> "Benoit Goossens"@en,
+                                                     "Pablo Orozco-terWengel"@en,
+                                                     "Charith Perera"@en,
+                                                     "Omer Rana"@en;
+       <http://purl.org/dc/elements/1.1/creator> "Naeima Hamed"@en;
+       <http://purl.org/dc/elements/1.1/description> "This ontology describes wildlife observations generated by sensors."@en;
+       <http://purl.org/dc/elements/1.1/title> "Forest Observatory Ontology (FOO)"@en;
+       <http://purl.org/dc/terms/issued> "2024-06-01"^^xsd:date;
+       <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by-sa/4.0/>;
+       <http://purl.org/dc/terms/publisher> <https://ontoology.linkeddata.es/>;
+       <http://purl.org/vocab/vann/preferredNamespacePrefix> "foo"@en;
+       <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/def/foo#";
+       a <http://www.w3.org/2002/07/owl#Ontology>;
+       <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/ns/sosa/>;
+       <http://www.w3.org/2002/07/owl#versionIRI> w3foo:V2.0;
+       <http://www.w3.org/2002/07/owl#versionInfo> "BBC Wildlife Ontology Reused 26 June 2024";
+       <http://www.w3.org/ns/prov#generatedAtTime> "2024-06-01T00:00:00+00:00"^^xsd:dateTime;
+       <http://www.w3.org/ns/prov#wasAttributedTo> <https://github.com/Naeima>;
+       <http://www.w3.org/ns/prov#wasDerivedFrom> <https://ontology.forest-observatory.org/>;
+       <https://schema.org/citation> "Cite this vocabulary as: Hamed, N., Rana, O., Goossens, B., Orozco-terWengel, P., Perera, C. (2023). FOO: An Upper-Level Ontology for the Forest Observatory. In: Pesquita, C., et al. The Semantic Web: ESWC 2023 Satellite Events. ESWC 2023. Lecture Notes in Computer Science, vol 13998. Springer, Cham. https://doi.org/10.1007/978-3-031-43458-7_29"@en.
+w3foo:Abaw a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             w3foo:Sensor;
+           rdfs:label "Abaw"@en;
+           w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+           w3foo:observes w3foo:GPSObservation.
+w3foo:Altitude a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                 <http://www.w3.org/2002/07/owl#NamedIndividual>;
+               rdfs:domain w3foo:Observation;
+               rdfs:label "Altitude";
+               rdfs:range xsd:double;
+               <http://www.w3.org/2004/02/skos/core#definition> "Altitude of the elephant in meters at the moment of data collection.".
+w3foo:Animalia a <http://www.w3.org/2002/07/owl#Class>,
+                 <http://www.w3.org/2002/07/owl#NamedIndividual>;
+               rdfs:label "Animalia"@en-gb;
+               rdfs:subClassOf w3foo:Kingdom;
+               <http://www.w3.org/2002/07/owl#sameAs> <https://www.bbc.co.uk/ontologies/wildlife-ontology#Animalia>.
+w3foo:Aqeela a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               w3foo:Sensor;
+             rdfs:label "Aqeela"@en;
+             w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+             w3foo:observes w3foo:GPSObservation.
+w3foo:Bikang1 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                w3foo:Sensor;
+              rdfs:label "Bikang 1"@en;
+              w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+              w3foo:observes w3foo:GPSObservation.
+w3foo:Bikang2 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                w3foo:Sensor;
+              rdfs:label "Bikang 2"@en;
+              w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+              w3foo:observes w3foo:GPSObservation.
+w3foo:Binbingan a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  w3foo:Sensor;
+                rdfs:label "Binbingan"@en;
+                w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+                w3foo:observes w3foo:GPSObservation.
+w3foo:CNRatio a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:CameraTrap a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   w3foo:Sensor;
+                 rdfs:label "Camera Trap"@en;
+                 w3foo:hasFeatureOfInterest w3foo:Image;
+                 w3foo:observes w3foo:ImageObservation.
+w3foo:Carnivora a <http://www.w3.org/2002/07/owl#Class>,
+                  <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                rdfs:label "Carnivora"@en-gb;
+                rdfs:subClassOf w3foo:Order;
+                <http://www.w3.org/2002/07/owl#sameAs> <https://www.bbc.co.uk/ontologies/wildlife-ontology#Carnivora>.
+w3foo:Chordata a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf <https://www.bbc.co.uk/ontologies/wildlife-ontology#Order>.
+w3foo:Class a <http://www.w3.org/2002/07/owl#Class>,
+              <http://www.w3.org/2002/07/owl#NamedIndividual>;
+            <http://www.w3.org/2002/07/owl#sameAs> <https://www.bbc.co.uk/ontologies/wildlife-ontology#Class>.
+w3foo:Clay a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain w3foo:Observation;
+           rdfs:label "Clay"@en;
+           rdfs:range xsd:double;
+           <http://www.w3.org/2004/02/skos/core#definition> "Clay content of the soil sample."@en.
+w3foo:Count a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain w3foo:Observation;
+            rdfs:label "Count"@en;
+            rdfs:range xsd:integer;
+            <http://www.w3.org/2004/02/skos/core#definition> "Observation count per data set.".
+w3foo:Cov a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:domain w3foo:Observation;
+          rdfs:label "Cov";
+          rdfs:range xsd:double;
+          <http://www.w3.org/2004/02/skos/core#definition> "TBC".
+w3foo:Dara a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             w3foo:Sensor;
+           rdfs:label "Dara"@en;
+           w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+           w3foo:observes w3foo:GPSObservation.
+w3foo:Date a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:Direction a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain w3foo:Observation;
+                rdfs:label "Direction";
+                rdfs:range xsd:integer;
+                <http://www.w3.org/2004/02/skos/core#definition> "Direction of elephant travel at the moment of data collection.".
+w3foo:Distance a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain w3foo:Observation;
+               rdfs:label "Distance"@en;
+               rdfs:range xsd:double;
+               <http://www.w3.org/2004/02/skos/core#definition> "Distance (m) travelled from the last to the current data collection point.".
+w3foo:Elephantidae a <http://www.w3.org/2002/07/owl#Class>,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                   rdfs:label "Elephantidae"@en-gb;
+                   rdfs:subClassOf w3foo:Family;
+                   <http://www.w3.org/2002/07/owl#sameAs> <https://www.bbc.co.uk/ontologies/wildlife-ontology#Elephantidae>.
+w3foo:ElephasMaximus a w3foo:Animalia,
+                       w3foo:Proboscidea,
+                       w3foo:Elephantidae,
+                       w3foo:Chordata,
+                       w3foo:Mammalia,
+                       w3foo:FeatureOfInterest,
+                       <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                     rdfs:comment "Bornean elephants exhibit distinct morphological and behavioural traits compared to mainland Asian elephants, and their genetic uniqueness emphasises their priority for conservation efforts. Although they are considered an evolutionary significant unit requiring tailored conservation measures, their formal recognition as a subspecies awaits further research. Restricted to about 5% of Borneo, primarily in Sabah, Bornean elephants typically form family groups of 5 to 20 individuals, occasionally merging into larger herds of up to 200."@en;
+                     rdfs:label "Asian Elephant"@en,
+                                "Elephas maximus"@la;
+                     <http://www.w3.org/2004/02/skos/core#definition> "Elephas maximus, commonly known as the Asian elephant, is a species of large mammal native to various regions in South and Southeast Asia, including India, Sri Lanka, Thailand, and parts of Indonesia. It is distinguished by its smaller ears compared to its African relatives, and it has a prominent domed head with two hemispherical bulges. The Asian elephant is classified as Endangered due to significant threats from habitat loss, fragmentation, and poaching. This species plays a crucial ecological role, aiding in forest maintenance through seed dispersal and the creation of clearings in dense vegetation."@en.
+w3foo:Family a <http://www.w3.org/2002/07/owl#Class>,
+               <http://www.w3.org/2002/07/owl#NamedIndividual>;
+             <http://www.w3.org/2002/07/owl#sameAs> <https://www.bbc.co.uk/ontologies/wildlife-ontology#Family>.
+w3foo:FeatureOfInterest a <http://www.w3.org/2002/07/owl#Class>,
+                          <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                        rdfs:label "Feature of Interest"@en;
+                        <http://www.w3.org/2004/02/skos/core#definition> "The thing whose property is being estimated or calculated in the course of an Observation to arrive at a Result, or whose property is being manipulated by an Actuator, or which is being sampled or transformed in the act of Sampling. In the context of FOO, Soil is the FeatureOfInterest. Most of the sensors are used to observe a property (phenomenon) of a location (e.g., the moisture of soil)."@en.
+w3foo:GMTDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain w3foo:Observation;
+              rdfs:label "GMT Date";
+              rdfs:range xsd:date;
+              <http://www.w3.org/2004/02/skos/core#definition> "The GMT date in Sabah, Malaysia, when the GPS collar records its readings.".
+w3foo:GMTTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain w3foo:Observation;
+              rdfs:label "GMT Time";
+              rdfs:range xsd:time;
+              <http://www.w3.org/2004/02/skos/core#definition> "The GMT time in Sabah, Malaysia, when the GPS collar records its readings.".
+w3foo:GPSObservation a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                       w3foo:Observation;
+                     rdfs:label "GPS Observation"@en;
+                     w3foo:Altitude "11.7"^^xsd:double,
+                                    "16.7"^^xsd:double;
+                     w3foo:Count 1 ;
+                     w3foo:Cov "0.0"^^xsd:double;
+                     w3foo:Direction 0 ;
+                     w3foo:Distance "0.0"^^xsd:double;
+                     w3foo:GMTDate "2011-10-25"^^xsd:date;
+                     w3foo:GMTTime "22:40:35"^^xsd:time,
+                                   "23:40:35"^^xsd:time;
+                     w3foo:HDOP "1.14"^^xsd:double,
+                                "1.64"^^xsd:double;
+                     w3foo:ID "1SAT32";
+                     w3foo:Latitude "1.537206"^^xsd:double,
+                                    "1.237206"^^xsd:double;
+                     w3foo:LocalDate "2011-10-26"^^xsd:date;
+                     w3foo:LocalTime "07:40:35"^^xsd:time;
+                     w3foo:Longitude "565.2223"^^xsd:double,
+                                     "566.2223"^^xsd:double;
+                     w3foo:Speed "0.24"^^xsd:double;
+                     w3foo:Temperature "24.5"^^xsd:double;
+                     w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+                     w3foo:madeBySensor w3foo:Jasper,
+                                        w3foo:Seri,
+                                        w3foo:Liun,
+                                        w3foo:Ita,
+                                        w3foo:Kuma,
+                                        w3foo:Tulid,
+                                        w3foo:Sejati,
+                                        w3foo:Puteri,
+                                        w3foo:Maliau,
+                                        w3foo:Bikang1,
+                                        w3foo:Umas2,
+                                        w3foo:Merotai,
+                                        w3foo:Jasmin,
+                                        w3foo:Kasih,
+                                        w3foo:Aqeela,
+                                        w3foo:Tunglap,
+                                        w3foo:Binbingan,
+                                        w3foo:Bikang2,
+                                        w3foo:Putut,
+                                        w3foo:Dara,
+                                        w3foo:Guli;
+                     w3foo:resultTime "2015-10-26T07:40:35"^^xsd:dateTime,
+                                      "2011-10-26T07:40:35"^^xsd:dateTime.
+w3foo:Genus a <http://www.w3.org/2002/07/owl#Class>,
+              <http://www.w3.org/2002/07/owl#NamedIndividual>;
+            <http://www.w3.org/2002/07/owl#sameAs> <https://www.bbc.co.uk/ontologies/wildlife-ontology#Genus>.
+w3foo:Guli a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             w3foo:Sensor;
+           rdfs:label "Guli"@en;
+           w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+           w3foo:observes w3foo:GPSObservation.
+w3foo:HDOP a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain w3foo:Observation;
+           rdfs:label "HDOP";
+           rdfs:range xsd:double;
+           <http://www.w3.org/2004/02/skos/core#definition> "Horizontal Dilution of Precision (HDOP), indicating GPS accuracy in latitude and longitude. Lower values indicate better precision.".
+w3foo:Horizon a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain w3foo:Observation;
+              rdfs:label "Horizon"@en;
+              rdfs:range xsd:string;
+              <http://www.w3.org/2004/02/skos/core#definition> "Soil horizon sampled."@en.
+w3foo:ID a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:domain w3foo:Observation;
+         rdfs:label "ID";
+         rdfs:range xsd:string.
+w3foo:Identifier a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:Image a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              w3foo:FeatureOfInterest;
+            rdfs:label "Camera Trap Image"@en;
+            <http://www.w3.org/2004/02/skos/core#definition> "Image generated by motion-activated wildlife cameras."@en.
+w3foo:ImageID a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:ImageObservation a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                         w3foo:Observation;
+                       rdfs:label "Image Observation"@en;
+                       w3foo:Date "2024-06-12"^^xsd:date;
+                       w3foo:ImageID "001";
+                       w3foo:Make "RECONYX";
+                       w3foo:Model "PC800 PROFESSIONAL";
+                       w3foo:Time "12:34:56"^^xsd:time;
+                       w3foo:madeBySensor w3foo:CameraTrap.
+w3foo:InorganicP a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:Ita a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+            w3foo:Sensor;
+          rdfs:label "Ita"@en;
+          w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+          w3foo:observes w3foo:GPSObservation.
+w3foo:Jasmin a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               w3foo:Sensor;
+             rdfs:label "Jasmin"@en;
+             w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+             w3foo:observes w3foo:GPSObservation.
+w3foo:Jasper a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               w3foo:Sensor;
+             rdfs:label "Jasper"@en;
+             w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+             w3foo:observes w3foo:GPSObservation.
+w3foo:Kasih a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              w3foo:Sensor;
+            rdfs:label "Kasih"@en;
+            w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+            w3foo:observes w3foo:GPSObservation.
+w3foo:Kingdom a <http://www.w3.org/2002/07/owl#Class>,
+                <http://www.w3.org/2002/07/owl#NamedIndividual>;
+              <http://www.w3.org/2002/07/owl#sameAs> <https://www.bbc.co.uk/ontologies/wildlife-ontology#Kingdom>.
+w3foo:Kuma a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             w3foo:Sensor;
+           rdfs:label "Kuma"@en;
+           w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+           w3foo:observes w3foo:GPSObservation.
+w3foo:LandUse a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain w3foo:Observation;
+              rdfs:label "Land Use"@en;
+              rdfs:range xsd:string;
+              <http://www.w3.org/2004/02/skos/core#definition> "Land use of the study plots: Unlogged tropical forest, Logged tropical forest or Oil palm plantation."@en.
+w3foo:Latitude a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                 <http://www.w3.org/2002/07/owl#NamedIndividual>;
+               rdfs:domain w3foo:Observation;
+               rdfs:label "Latitude";
+               rdfs:range xsd:double;
+               <http://www.w3.org/2004/02/skos/core#definition> "Latitudinal coordinate of the elephant at the moment of data collection.".
+w3foo:LianaDBH_cm a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:Lianas a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               w3foo:Sensor,
+               w3foo:FeatureOfInterest;
+             rdfs:label "Lianas"@en;
+             <http://www.w3.org/2004/02/skos/core#definition> "Woody climbing plants found in tropical forests, commonly observed in forest plots."@en;
+             w3foo:ID "TS1";
+             w3foo:PlotNo 1 ;
+             w3foo:SiteName "Danum W15";
+             w3foo:SitePlotCode "F1P1";
+             w3foo:observes w3foo:TreeObservation.
+w3foo:Liun a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             w3foo:Sensor;
+           rdfs:label "Liun"@en;
+           w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+           w3foo:observes w3foo:GPSObservation.
+w3foo:LocalDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain w3foo:Observation;
+                rdfs:label "Local Date";
+                rdfs:range xsd:date;
+                <http://www.w3.org/2004/02/skos/core#definition> "The local date in Sabah, Malaysia, when the GPS collar records its readings.".
+w3foo:LocalTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain w3foo:Observation;
+                rdfs:label "Local Time";
+                rdfs:range xsd:time;
+                <http://www.w3.org/2004/02/skos/core#definition> "The local time in Sabah, Malaysia, when the GPS collar records its readings.".
+w3foo:Longitude a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                  <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                rdfs:domain w3foo:Observation;
+                rdfs:label "Longitude";
+                rdfs:range xsd:double;
+                <http://www.w3.org/2004/02/skos/core#definition> "Longitudinal coordinate of the elephant at the moment of data collection.".
+w3foo:Make a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:MalayopythonReticulatus a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                w3foo:FeatureOfInterest;
+                              rdfs:label "Malayopython reticulatus"@la,
+                                         "Reticulated Python"@en;
+                              <http://www.w3.org/2004/02/skos/core#definition> "Malayopython reticulatus, aka the reticulated python, is a large snake species native to Southeast Asia. Renowned for its impressive length, it is the longest snake in the world, often exceeding 6 meters. It inhabits various environments, including rainforests, woodlands, and plantations, demonstrating adaptability. As a generalist predator, it feeds on many animals, contributing to its ecological significance."@en.
+w3foo:Maliau a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               w3foo:Sensor;
+             rdfs:label "Maliau"@en;
+             w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+             w3foo:observes w3foo:GPSObservation.
+w3foo:Mammalia a <http://www.w3.org/2002/07/owl#Class>,
+                 <http://www.w3.org/2002/07/owl#NamedIndividual>;
+               rdfs:label "Mammalia"@en-gb;
+               rdfs:subClassOf w3foo:Class;
+               <http://www.w3.org/2002/07/owl#sameAs> <https://www.bbc.co.uk/ontologies/wildlife-ontology#Mammalia>.
+w3foo:ManisJavanica a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      w3foo:FeatureOfInterest;
+                    rdfs:comment "Manis Javanica is a species critically threatened by poaching and habitat loss. It is one of eight pangolin species, all of which are considered Vulnerable, Endangered, or Critically Endangered according to the IUCN Red List and listed in CITES Appendix I. The Sunda pangolin, critically endangered and the only species found in Malaysia, inhabits Peninsular Malaysia and Malaysian Borneo, including Sabah and Sarawak. Despite its high protection status in Sabah, where it is (totally protected) under the Wildlife Conservation Enactment 1997, the species faces severe threats from illegal wildlife trade and habitat degradation. In 2019, authorities in Sabah seized over 30 tonnes of pangolin products, highlighting the extensive illicit trade network. The Sunda pangolin occupies various habitats, from primary and secondary forests to wetlands, mangroves, and grasslands."@en;
+                    rdfs:label "Manis javanica"@la,
+                               "Sunda Pangolin"@en;
+                    <http://www.w3.org/2004/02/skos/core#definition> "Sunda pangolin aka Manis Javanica is a mammal distinguished by its protective armor of keratin scales, which cover its body except for its belly and face. Native to Southeast Asia, including Malaysia, Thailand, Indonesia, and Vietnam, this species is adapted to various habitats, ranging from primary and secondary forests to wetlands, mangroves, and grasslands. Characterized by its elongated body, small head, and long, prehensile tail, the Sunda pangolin is primarily nocturnal and has a diet mainly consisting of ants and termites, which it extracts using its long, sticky tongue. It plays a vital role in its ecosystem by controlling insect populations."@en.
+w3foo:Merotai a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                w3foo:Sensor;
+              rdfs:label "Merotai"@en;
+              w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+              w3foo:observes w3foo:GPSObservation.
+w3foo:Model a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:Nasalislarvatus a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        w3foo:FeatureOfInterest;
+                      rdfs:comment "Male proboscis monkeys have notably large noses, which are believed to have evolved due to their sexually competitive social system. Significant correlations exist between nose size, body size, testis size, and the number of females in a male's harem. This suggests that both male competition and female choice have driven the evolution of these enlarged noses."@en;
+                      rdfs:label "Nasalis larvatus"@la,
+                                 "Proboscis Monkey"@en;
+                      <http://www.w3.org/2004/02/skos/core#definition> "Nasalis larvatus, aka the proboscis monkey, is a primate species endemic to the island of Borneo. Characterized by its large, pendulous nose in males, this arboreal monkey primarily inhabits mangrove forests, riverine, and coastal areas, and is known for its distinct vocalizations and swimming abilities."@en.
+w3foo:ObservableProperty a <http://www.w3.org/2002/07/owl#Class>,
+                           <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                         rdfs:label "Observable Property"@en;
+                         <http://www.w3.org/2004/02/skos/core#definition> "An observable quality (property, characteristic) of a FeatureOfInterest. (e.g., Temperature, humidity, presence)"@en.
+w3foo:Observation a <http://www.w3.org/2002/07/owl#Class>,
+                    <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                  rdfs:label "Observation"@en;
+                  <http://www.w3.org/2004/02/skos/core#definition> "Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest (e.g., Elephant). Observation can be seen as a placeholder that links relevant information together. In our ontology, observation can be considered an ID for each data record."@en.
+w3foo:Order a <http://www.w3.org/2002/07/owl#Class>,
+              <http://www.w3.org/2002/07/owl#NamedIndividual>;
+            <http://www.w3.org/2002/07/owl#sameAs> <https://www.bbc.co.uk/ontologies/wildlife-ontology#Order>.
+w3foo:Phylum a <http://www.w3.org/2002/07/owl#Class>,
+               <http://www.w3.org/2002/07/owl#NamedIndividual>;
+             <http://www.w3.org/2002/07/owl#sameAs> <https://www.bbc.co.uk/ontologies/wildlife-ontology#Phylum>.
+w3foo:PlotName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain w3foo:Observation;
+               rdfs:label "Plot Name";
+               rdfs:range xsd:string;
+               <http://www.w3.org/2004/02/skos/core#definition> "Name of the 1 Ha plot sampled."@en.
+w3foo:PlotNo a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:Proboscidea a <http://www.w3.org/2002/07/owl#Class>,
+                    <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                  rdfs:label "Proboscidea "@en-gb;
+                  rdfs:subClassOf w3foo:Order;
+                  <http://www.w3.org/2002/07/owl#sameAs> <https://www.bbc.co.uk/ontologies/wildlife-ontology#Proboscidea>.
+w3foo:Puteri a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               w3foo:Sensor;
+             rdfs:label "Puteri"@en;
+             w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+             w3foo:observes w3foo:GPSObservation.
+w3foo:Putut a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              w3foo:Sensor;
+            rdfs:label "Putut"@en;
+            w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+            w3foo:observes w3foo:GPSObservation.
+w3foo:Reptilia a <http://www.w3.org/2002/07/owl#Class>,
+                 <http://www.w3.org/2002/07/owl#NamedIndividual>;
+               rdfs:label "Reptilia"@en-gb;
+               rdfs:subClassOf w3foo:Class;
+               <http://www.w3.org/2002/07/owl#sameAs> <https://www.bbc.co.uk/ontologies/wildlife-ontology#Reptilia>.
+w3foo:Sand a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:Sejati a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               w3foo:Sensor;
+             rdfs:label "Sejati"@en;
+             w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+             w3foo:observes w3foo:GPSObservation.
+w3foo:Sensor a <http://www.w3.org/2002/07/owl#Class>,
+               <http://www.w3.org/2002/07/owl#NamedIndividual>;
+             rdfs:label "Sensor"@en;
+             <http://www.w3.org/2004/02/skos/core#definition> "Device, agent (including humans), or software (simulation) involved in, or implementing, a Procedure. (e.g., Temperature sensor, humidity sensor, motion sensor). In our model, we have created a unique ID for each sensor based on the platform it is hosted by."@en.
+w3foo:Seri a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             w3foo:Sensor;
+           rdfs:label "Seri"@en;
+           w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+           w3foo:observes w3foo:GPSObservation.
+w3foo:Silt a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain w3foo:Observation;
+           rdfs:label "Silt"@en;
+           rdfs:range xsd:double;
+           <http://www.w3.org/2004/02/skos/core#definition> "Silt content of the soil sample."@en.
+w3foo:Site a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain w3foo:Observation;
+           rdfs:label "Site"@en;
+           rdfs:range xsd:string;
+           <http://www.w3.org/2004/02/skos/core#definition> "Geographical area/site which samples were taken from."@en.
+w3foo:SiteName a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:SitePlotCode a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:Soil <http://purl.org/dc/terms/bibliographicCitation> "Elias DM, McNamara NP, Ostle NJ, Majalap-Lee N, 2018. Soil properties across primary forest, logged forest, and oil palm plantation in Sabah, Malaysia. NERC Environmental Information Data Centre."@en;
+           a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             w3foo:FeatureOfInterest;
+           rdfs:label "Soil"@en;
+           <http://www.w3.org/2004/02/skos/core#definition> "A dataset describing soil properties from organic and mineral soil across various land uses in Sabah, Malaysia, sampled and measured at the Forest Research Centre Sabah Malaysia."@en.
+w3foo:SoilObservation a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        w3foo:Observation;
+                      rdfs:label "Soil Observation"@en;
+                      w3foo:CNRatio "14.24"^^xsd:double;
+                      w3foo:Clay "62.88"^^xsd:double;
+                      w3foo:Horizon "Organic";
+                      w3foo:Identifier "MB4";
+                      w3foo:InorganicP "25.03"^^xsd:double;
+                      w3foo:LandUse "Unlogged";
+                      w3foo:PlotName "Belian";
+                      w3foo:Sand "20.66"^^xsd:double;
+                      w3foo:Silt "16.46"^^xsd:double;
+                      w3foo:Site "Maliau Basin Conservation Area";
+                      w3foo:SoilPH "4.69"^^xsd:double;
+                      w3foo:Subplot "4";
+                      w3foo:TotalC "5.45"^^xsd:double;
+                      w3foo:TotalN "0.38"^^xsd:double;
+                      w3foo:TotalP "263.74"^^xsd:double;
+                      w3foo:hasFeatureOfInterest w3foo:Soil;
+                      w3foo:madeBySensor w3foo:SoilSensor.
+w3foo:SoilPH a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:domain w3foo:Observation;
+             rdfs:label "Soil PH";
+             rdfs:range xsd:double;
+             <http://www.w3.org/2004/02/skos/core#definition> "Measured pH of the soil sample."@en.
+w3foo:SoilSensor a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   w3foo:Sensor;
+                 rdfs:label "Soil Sensor"@en;
+                 w3foo:hasFeatureOfInterest w3foo:Soil;
+                 w3foo:observes w3foo:SoilObservation.
+w3foo:Species a <http://www.w3.org/2002/07/owl#Class>,
+                <http://www.w3.org/2002/07/owl#NamedIndividual>;
+              <http://www.w3.org/2002/07/owl#sameAs> <https://www.bbc.co.uk/ontologies/wildlife-ontology#Species>.
+w3foo:Speed a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain w3foo:Observation;
+            rdfs:label "Speed";
+            rdfs:range xsd:double;
+            <http://www.w3.org/2004/02/skos/core#definition> "Speed of the elephant at the moment of data collection.".
+w3foo:Squamata a <http://www.w3.org/2002/07/owl#Class>,
+                 <http://www.w3.org/2002/07/owl#NamedIndividual>;
+               rdfs:label "Squamata"@en-gb;
+               rdfs:subClassOf w3foo:Order;
+               <http://www.w3.org/2002/07/owl#sameAs> <https://www.bbc.co.uk/ontologies/wildlife-ontology#Squamata>.
+w3foo:Subplot a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain w3foo:Observation;
+              rdfs:label "Sub plot"@en;
+              rdfs:range xsd:string;
+              <http://www.w3.org/2004/02/skos/core#definition> "Number of the subplot sampled within each 1 Ha plot."@en.
+w3foo:SubplotRadius_m a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:TaxonRank a <http://www.w3.org/2002/07/owl#Class>,
+                  <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                <http://www.w3.org/2002/07/owl#sameAs> <https://www.bbc.co.uk/ontologies/wildlife-ontology#TaxonRank>.
+w3foo:Temperature a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain w3foo:Observation;
+                  rdfs:label "Temperature";
+                  rdfs:range xsd:double;
+                  <http://www.w3.org/2004/02/skos/core#definition> "Estimated temperature of the elephant in Celsius at the moment of data collection.".
+w3foo:Time a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:TotalC a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:domain w3foo:Observation;
+             rdfs:label "Total C"@en;
+             rdfs:range xsd:double;
+             <http://www.w3.org/2004/02/skos/core#definition> "Total carbon content of the soil sample."@en.
+w3foo:TotalN a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:domain w3foo:Observation;
+             rdfs:label "Total N"@en;
+             rdfs:range xsd:double;
+             <http://www.w3.org/2004/02/skos/core#definition> "Total nitrogen content of the soil sample."@en.
+w3foo:TotalP a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:TreeDBH_cm a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:TreeHeight_m a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:TreeID a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:TreeIndividualNo a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:TreeNLianas a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:TreeNotes a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+w3foo:TreeObservation a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        w3foo:Observation;
+                      rdfs:label "Tree Observation"@en;
+                      w3foo:Date "2017-07-21"^^xsd:date;
+                      w3foo:ID "TreeObs1";
+                      w3foo:LianaDBH_cm 10 ;
+                      w3foo:SubplotRadius_m 30 ;
+                      w3foo:TreeDBH_cm 110 ;
+                      w3foo:TreeHeight_m 60 ;
+                      w3foo:TreeID "Shorea pauciflora";
+                      w3foo:TreeIndividualNo 2 ;
+                      w3foo:TreeNLianas 3 ;
+                      w3foo:TreeNotes "";
+                      w3foo:hasFeatureOfInterest w3foo:Lianas;
+                      w3foo:madeBySensor w3foo:Lianas.
+w3foo:Tulid a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              w3foo:Sensor;
+            rdfs:label "Tulid"@en;
+            w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+            w3foo:observes w3foo:GPSObservation.
+w3foo:Tunglap a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                w3foo:Sensor;
+              rdfs:label "Tunglap"@en;
+              w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+              w3foo:observes w3foo:GPSObservation.
+w3foo:Umas2 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              w3foo:Sensor;
+            rdfs:label "Umas2"@en;
+            w3foo:hasFeatureOfInterest w3foo:ElephasMaximus;
+            w3foo:observes w3foo:GPSObservation.
+w3foo:Viverridae a <http://www.w3.org/2002/07/owl#Class>,
+                   <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                 rdfs:label "Viverridae"@en-gb;
+                 rdfs:subClassOf w3foo:Family;
+                 <http://www.w3.org/2002/07/owl#sameAs> <https://www.bbc.co.uk/ontologies/wildlife-ontology#Viverridae>.
+w3foo:hasFeatureOfInterest a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                             <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment "A relation between an Observation and the entity whose quality was observed, or between an Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled."@en;
+                           rdfs:domain w3foo:Observation;
+                           rdfs:isDefinedBy <http://www.w3.org/ns/sosa/>;
+                           rdfs:label "has Feature Of Interest"@en;
+                           rdfs:range w3foo:FeatureOfInterest;
+                           <http://www.w3.org/2002/07/owl#inverseOf> <http://www.w3.org/ns/sosa/isFeatureOfInterestOf>;
+                           <http://www.w3.org/2004/02/skos/core#definition> "A relation between an Observation and the entity whose quality was observed, or between an Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled."@en;
+                           <http://www.w3.org/2004/02/skos/core#example> "For example, in an Observation of the weight of a person, the FeatureOfInterest is the person and the property is its weight."@en.
+w3foo:isFeatureOfInterestOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "A relation between a FeatureOfInterest and an Observation about it, an Actuation acting on it, or an act of Sampling that sampled it."@en;
+                            rdfs:domain w3foo:FeatureOfInterest;
+                            rdfs:isDefinedBy <http://www.w3.org/ns/sosa/>;
+                            rdfs:label "is feature of interest of"@en;
+                            rdfs:range w3foo:Observation;
+                            <http://www.w3.org/2002/07/owl#inverseOf> <http://www.w3.org/ns/sosa/hasFeatureOfInterest>;
+                            <http://www.w3.org/2004/02/skos/core#definition> "A relation between a FeatureOfInterest and an Observation about it, an Actuation acting on it, or an act of Sampling that sampled it."@en.
+w3foo:isObservedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                   rdfs:comment "Relation between an ObservableProperty and the Sensor able to observe it."@en;
+                   rdfs:domain w3foo:ObservableProperty;
+                   rdfs:isDefinedBy <http://www.w3.org/ns/sosa/>;
+                   rdfs:label "is observed by"@en;
+                   rdfs:range w3foo:Sensor;
+                   <http://www.w3.org/2002/07/owl#inverseOf> w3foo:observes;
+                   <http://www.w3.org/2004/02/skos/core#definition> "Relation between an ObservableProperty and the Sensor able to observe it."@en.
+w3foo:madeBySensor a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                   rdfs:comment "Relation between an Observation and the Sensor which made the Observation."@en;
+                   rdfs:domain w3foo:Observation;
+                   rdfs:isDefinedBy <http://www.w3.org/ns/sosa/>;
+                   rdfs:label "made by sensor"@en;
+                   rdfs:range w3foo:Sensor;
+                   <http://www.w3.org/2002/07/owl#inverseOf> w3foo:madeObservation;
+                   <http://www.w3.org/2004/02/skos/core#definition> "Relation between an Observation and the Sensor which made the Observation."@en.
+w3foo:madeObservation a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                        <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                      rdfs:comment "Relation between a Sensor and an Observation made by the Sensor."@en;
+                      rdfs:domain w3foo:Sensor;
+                      rdfs:isDefinedBy <http://www.w3.org/ns/sosa/>;
+                      rdfs:label "made observation"@en;
+                      rdfs:range w3foo:Observation;
+                      <http://www.w3.org/2002/07/owl#inverseOf> <http://www.w3.org/ns/sosa/madeBySensor>;
+                      <http://www.w3.org/2004/02/skos/core#definition> "Relation between a Sensor and an Observation made by the Sensor."@en.
+w3foo:observedProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Relation linking an Observation to the property that was observed. The ObservableProperty should be a property of the FeatureOfInterest (linked by hasFeatureOfInterest) of this Observation."@en;
+                       rdfs:domain w3foo:Observation;
+                       rdfs:isDefinedBy <http://www.w3.org/ns/sosa/>;
+                       rdfs:label "observed property"@en;
+                       rdfs:range w3foo:ObservableProperty;
+                       <http://www.w3.org/2004/02/skos/core#definition> "Relation linking an Observation to the property that was observed. The ObservableProperty should be a property of the FeatureOfInterest (linked by hasFeatureOfInterest) of this Observation."@en.
+w3foo:observes a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                 <http://www.w3.org/2002/07/owl#NamedIndividual>;
+               rdfs:comment "Relation between a Sensor and an ObservableProperty that it is capable of sensing."@en;
+               rdfs:domain w3foo:Sensor;
+               rdfs:isDefinedBy <http://www.w3.org/ns/sosa/>;
+               rdfs:label "observes"@en;
+               rdfs:range w3foo:ObservableProperty;
+               <http://www.w3.org/2004/02/skos/core#definition> "Relation between a Sensor and an ObservableProperty that it is capable of sensing."@en.
+w3foo:resultTime a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://www.bbc.co.uk/ontologies/wildlife-ontology#Animalia> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                              rdfs:comment "Animalia is the scientific grouping that includes all animals. Scientists, historians, and others classify similar things together, using a taxonomy. All members of the kingdom Animalia share three key traits. They are multicellular organisms, and they are all eukaryotic, meaning their cells have membrane-enclosed organelles and a nucleus. All animals are heterotrophic and must feed on other organisms to survive. source:https://study.com/learn/lesson animalia-kingdom-examples-characteristics-facts.html";
+                                                              rdfs:subClassOf <https://www.bbc.co.uk/ontologies/wildlife-ontology#Kingdom>.
+<https://www.bbc.co.uk/ontologies/wildlife-ontology#Carnivora> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                 <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                               rdfs:comment "Carnivora is a monophyletic order of placental mammals consisting of the most recent common ancestor of all cats and dogs, and all descendants of that ancestor. Members of this group are formally referred to as carnivorans, and have evolved to specialize in eating flesh.";
+                                                               rdfs:isDefinedBy <https://en.wikipedia.org/wiki/Carnivora>;
+                                                               rdfs:subClassOf <https://www.bbc.co.uk/ontologies/wildlife-ontology#Order>.
+<https://www.bbc.co.uk/ontologies/wildlife-ontology#Chordata> a <http://www.w3.org/2002/07/owl#Class>;
+                                                              rdfs:comment "A large phylum of animals that includes the vertebrates together with the sea squirts and lancelets. They are distinguished by the possession of a notochord at some stage during their development.";
+                                                              rdfs:label "SChordata"@en-gb;
+                                                              rdfs:subClassOf <https://www.bbc.co.uk/ontologies/wildlife-ontology#Phylum>.
+<https://www.bbc.co.uk/ontologies/wildlife-ontology#Class> <http://data.bioontology.org/metadata/prefixIRI> "wo:Class";
+                                                           a <http://www.w3.org/2002/07/owl#Class>,
+                                                             <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                           rdfs:comment "A class is a scientific way to group related organisms together, some examples of classes being jellyfish, reptiles and sea urchins. Classes are big groups and contain within them smaller groupings called orders, families, genera and species."@en-gb;
+                                                           rdfs:isDefinedBy <http://purl.org/ontology/wo/>;
+                                                           rdfs:label "Class"@en-gb;
+                                                           rdfs:seeAlso <http://www.bbc.co.uk/nature/class>,
+                                                                        <http://en.wikipedia.org/wiki/Class_%28biology%29>;
+                                                           rdfs:subClassOf <https://www.bbc.co.uk/ontologies/wildlife-ontology#TaxonRank>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+<https://www.bbc.co.uk/ontologies/wildlife-ontology#Elephantidae> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                    <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                                  rdfs:subClassOf <https://www.bbc.co.uk/ontologies/wildlife-ontology#Family>.
+<https://www.bbc.co.uk/ontologies/wildlife-ontology#Family> <http://data.bioontology.org/metadata/prefixIRI> "wo:Family";
+                                                            a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                              <http://www.w3.org/2002/07/owl#Class>;
+                                                            rdfs:comment "A family is a scientific grouping of closely related organisms. It has smaller groups, called genera and species, within it. A family can have a lot of members or only a few. Examples of families include the cats (Felidae), the gulls (Laridae) and the grasses (Poaceae)."@en-gb;
+                                                            rdfs:isDefinedBy <http://purl.org/ontology/wo/>;
+                                                            rdfs:label "Family"@en-gb;
+                                                            rdfs:seeAlso <http://www.bbc.co.uk/nature/family>,
+                                                                         <http://en.wikipedia.org/wiki/Family_%28biology%29>;
+                                                            rdfs:subClassOf <http://purl.org/ontology/wo/TaxonRank>;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+<https://www.bbc.co.uk/ontologies/wildlife-ontology#Genus> <http://data.bioontology.org/metadata/prefixIRI> "wo:Genus";
+                                                           a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                             <http://www.w3.org/2002/07/owl#Class>;
+                                                           rdfs:comment "A genus is a scientific way of showing that species are very closed related to each other. In fact the first word of the species' scientific name is its genus. So for lions (Panthera leo), Panthera is the genus and tells us that they are closely related to tigers (Panthera tigris), because they share the name"@en-gb;
+                                                           rdfs:isDefinedBy <http://purl.org/ontology/wo/>;
+                                                           rdfs:label "Genus"@en-gb;
+                                                           rdfs:seeAlso <http://www.bbc.co.uk/nature/genus>,
+                                                                        <http://en.wikipedia.org/wiki/Genus>;
+                                                           rdfs:subClassOf <https://www.bbc.co.uk/ontologies/wildlife-ontology#TaxonRank>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+<https://www.bbc.co.uk/ontologies/wildlife-ontology#Kingdom> <http://data.bioontology.org/metadata/prefixIRI> "wo:Kingdom";
+                                                             a <http://www.w3.org/2002/07/owl#Class>,
+                                                               <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                             rdfs:comment "Kingdoms are the major categories into which scientists divide up all living things. The main kingdoms are animals, plants, fungi and bacteria, although there are others. Each kingdom has its own suite of defining characteristics - for instance plants have rigid cell walls, whilst animals do not."@en-gb;
+                                                             rdfs:isDefinedBy <http://purl.org/ontology/wo/>;
+                                                             rdfs:label "Kingdom"@en-gb;
+                                                             rdfs:seeAlso <http://en.wikipedia.org/wiki/Kingdom_%28biology%29>,
+                                                                          <http://www.bbc.co.uk/nature/kingdom>;
+                                                             rdfs:subClassOf <https://www.bbc.co.uk/ontologies/wildlife-ontology#TaxonRank>;
+                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+<https://www.bbc.co.uk/ontologies/wildlife-ontology#Mammalia> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                              rdfs:label "Mammalia"@en-gb;
+                                                              rdfs:subClassOf <https://www.bbc.co.uk/ontologies/wildlife-ontology#Class>.
+<https://www.bbc.co.uk/ontologies/wildlife-ontology#Order> <http://data.bioontology.org/metadata/prefixIRI> "wo:Order";
+                                                           a <http://www.w3.org/2002/07/owl#Class>,
+                                                             <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                           rdfs:comment "An order is a scientific way to categorise related organisms. An order is a smaller grouping than a class, but bigger than a family or genus. Examples of orders are willows, cockroaches and primates."@en-gb;
+                                                           rdfs:isDefinedBy <http://purl.org/ontology/wo/>;
+                                                           rdfs:label "Order"@en-gb;
+                                                           rdfs:seeAlso <http://www.bbc.co.uk/nature/order>,
+                                                                        <http://en.wikipedia.org/wiki/Order_%28biology%29>;
+                                                           rdfs:subClassOf <https://www.bbc.co.uk/ontologies/wildlife-ontology#TaxonRank>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+<https://www.bbc.co.uk/ontologies/wildlife-ontology#Phylum> <http://data.bioontology.org/metadata/prefixIRI> "wo:Phylum";
+                                                            a <http://www.w3.org/2002/07/owl#Class>,
+                                                              <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                            rdfs:comment "A phylum - also known as a division when referring to plants - is a scientific way of grouping together related organisms. All the members of a phylum have a common ancestor and anatomical similarities. For instance, all the arthropods have external skeletons. Phlya are large groups and are further subdivided into classes, orders, families and so on."@en-gb;
+                                                            rdfs:isDefinedBy <http://purl.org/ontology/wo/>;
+                                                            rdfs:label "Phylum"@en-gb;
+                                                            rdfs:seeAlso <http://www.bbc.co.uk/nature/phylum>,
+                                                                         <http://en.wikipedia.org/wiki/Phylum>;
+                                                            rdfs:subClassOf <https://www.bbc.co.uk/ontologies/wildlife-ontology#TaxonRank>;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+<https://www.bbc.co.uk/ontologies/wildlife-ontology#Proboscidea> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                   <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                                 rdfs:comment "Any of an order (Proboscidea) of large mammals comprising the elephants and extinct related forms. Source: https://www.merriam-webster.com/dictionary/proboscidean.";
+                                                                 rdfs:subClassOf <https://www.bbc.co.uk/ontologies/wildlife-ontology#Order>.
+<https://www.bbc.co.uk/ontologies/wildlife-ontology#Reptilia> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                              rdfs:comment "Reptilia is a vertebrate animal of a class that includes snakes, lizards, crocodiles, turtles, and tortoises. They are distinguished by having a dry scaly skin and typically laying soft-shelled eggs on land.";
+                                                              rdfs:subClassOf <https://www.bbc.co.uk/ontologies/wildlife-ontology#Class>.
+<https://www.bbc.co.uk/ontologies/wildlife-ontology#Species> <http://data.bioontology.org/metadata/prefixIRI> "wo:Species";
+                                                             a <http://www.w3.org/2002/07/owl#Class>,
+                                                               <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                             rdfs:comment "Generic class defining a biological species"@en-gb;
+                                                             rdfs:isDefinedBy <http://purl.org/ontology/wo/>;
+                                                             rdfs:label "species"@en-gb;
+                                                             rdfs:seeAlso <http://www.bbc.co.uk/nature/species>,
+                                                                          <http://en.wikipedia.org/wiki/Species>;
+                                                             rdfs:subClassOf <https://www.bbc.co.uk/ontologies/wildlife-ontology#TaxonRank>;
+                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+<https://www.bbc.co.uk/ontologies/wildlife-ontology#Squamata> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<https://www.bbc.co.uk/ontologies/wildlife-ontology#TaxonRank> <http://data.bioontology.org/metadata/prefixIRI> "wo:TaxonRank";
+                                                               a <http://www.w3.org/2002/07/owl#Class>,
+                                                                 <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                               rdfs:comment "Generic concept for a taxonomic rank such as a Genus or Species."@en-gb;
+                                                               rdfs:isDefinedBy <http://purl.org/ontology/wo/>;
+                                                               rdfs:label "Taxonomic Rank"@en-gb;
+                                                               rdfs:seeAlso <http://en.wikipedia.org/wiki/Taxonomic_rank>;
+                                                               rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+<https://www.bbc.co.uk/ontologies/wildlife-ontology#Viverridae> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                  <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                                rdfs:comment "Viverridae is a family of small to medium-sized, feliform mammals. The viverrids comprise 33 species placed in 14 genera. This family was named and first described by John Edward Gray in 1821. Viverrids occur all over Africa, southern Europe, and South and Southeast Asia, across the Wallace Line.";
+                                                                rdfs:isDefinedBy <https://en.wikipedia.org/wiki/Viverridae>;
+                                                                rdfs:subClassOf <https://www.bbc.co.uk/ontologies/wildlife-ontology#Family>.

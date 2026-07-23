@@ -6,8 +6,7 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
 @prefix nie: <http://tracker.api.gnome.org/ontology/v3/nie#>.
 @prefix nrl: <http://tracker.api.gnome.org/ontology/v3/nrl#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix tnie: <http://tracker.api.gnome.org/ontology/v3/nie#>.
 
 nie: nrl:lastModified "2018-08-25T11:00:00Z";
      nrl:prefix "nie";

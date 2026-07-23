@@ -1,204 +1,201 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix atts: <https://data.nasa.gov/ontologies/atmonto/general#>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-<https://data.nasa.gov/ontologies/atmonto/general> a owl:Ontology;
-                                                   owl:versionInfo "Created with TopBraid Composer".
-atts:CircularRegion a owl:Class;
+<https://data.nasa.gov/ontologies/atmonto/general> a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                   <http://www.w3.org/2002/07/owl#versionInfo> "Created with TopBraid Composer".
+atts:CircularRegion a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "A two-dimensional region defined by a geographic centerpoint and radius.";
                     rdfs:subClassOf atts:Region2D.
-atts:FloatParameter a owl:Class;
+atts:FloatParameter a <http://www.w3.org/2002/07/owl#Class>;
                     rdfs:comment "A subclass of NumericParameter representing parameters with floating-point values.";
                     rdfs:label "Float parameter";
-                    rdfs:subClassOf [owl:onProperty atts:parameterValue ; 
-                                     owl:allValuesFrom xsd:float ; 
-                                     a owl:Restriction],
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> atts:parameterValue ; 
+                                     <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:float ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
                                     atts:NumericParameter.
-atts:GeographicRegion a owl:Class;
+atts:GeographicRegion a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "A class representing a demarcated region on or above the surface of the Earth.";
                       rdfs:subClassOf atts:Location.
-atts:IntegerParameter a owl:Class;
+atts:IntegerParameter a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "A subclass of NumericParameter representing parameters with interger values.";
                       rdfs:label "Integer Parameter";
-                      rdfs:subClassOf [owl:onProperty atts:parameterValue ; 
-                                       owl:allValuesFrom xsd:integer ; 
-                                       a owl:Restriction],
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> atts:parameterValue ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:integer ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
                                       atts:NumericParameter.
-atts:Location a owl:Class;
+atts:Location a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "A place defined by a point or a contiguous geographic region.";
               rdfs:label "Location";
-              rdfs:subClassOf owl:Thing.
-atts:NumericParameter a owl:Class;
+              rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+atts:NumericParameter a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "A class representing numeric parameters explicitly as objects (versus representing them as datatype properties). These parameters can be inserted into containers and sequenced. This enables reuse of the same parameter value in multiple sequences.";
                       rdfs:label "Numeric Parameter";
-                      rdfs:subClassOf owl:Thing.
-atts:PointLocation a owl:Class;
+                      rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+atts:PointLocation a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "A location in three-space defined by a latitude, longitude, and altitude.";
                    rdfs:subClassOf atts:SequencedItem,
                                    atts:Location.
-atts:PolygonBoundary a owl:Class;
+atts:PolygonBoundary a <http://www.w3.org/2002/07/owl#Class>;
                      rdfs:comment "An ordered sequence of point locations where the last point connects back to the first point, closing the polygon.";
                      rdfs:label "Polygon boundary";
-                     rdfs:subClassOf [owl:onProperty atts:hasSequencedItem ; 
-                                      owl:allValuesFrom atts:PointLocation ; 
-                                      a owl:Restriction],
-                                     [owl:onProperty atts:hasLastItem ; 
-                                      owl:allValuesFrom atts:PointLocation ; 
-                                      a owl:Restriction],
-                                     [owl:onProperty atts:hasFirstItem ; 
-                                      owl:allValuesFrom atts:PointLocation ; 
-                                      a owl:Restriction],
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> atts:hasSequencedItem ; 
+                                      <http://www.w3.org/2002/07/owl#allValuesFrom> atts:PointLocation ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#onProperty> atts:hasLastItem ; 
+                                      <http://www.w3.org/2002/07/owl#allValuesFrom> atts:PointLocation ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#onProperty> atts:hasFirstItem ; 
+                                      <http://www.w3.org/2002/07/owl#allValuesFrom> atts:PointLocation ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
                                      atts:Sequence.
-atts:Polygonal2DRegion a owl:Class;
+atts:Polygonal2DRegion a <http://www.w3.org/2002/07/owl#Class>;
                        rdfs:comment "A two-dimensional region defined by a polygonal boundary.";
                        rdfs:subClassOf atts:Region2D.
-atts:Region2D a owl:Class;
+atts:Region2D a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "A two-dimensional geographic region.";
               rdfs:subClassOf atts:GeographicRegion.
-atts:Region3D a owl:Class;
+atts:Region3D a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "A three-dimensional geographic region.";
               rdfs:subClassOf atts:GeographicRegion.
-atts:Sequence a owl:Class;
+atts:Sequence a <http://www.w3.org/2002/07/owl#Class>;
               rdfs:comment "An ordered sequence of items.";
               rdfs:label "Sequence";
-              rdfs:subClassOf owl:Thing.
-atts:SequencedItem a owl:Class;
+              rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+atts:SequencedItem a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment "The set of items that can be sequenced.";
                    rdfs:label "Sequenced item";
-                   rdfs:subClassOf owl:Thing.
-atts:ShearSidedPolygonalVolume a owl:Class;
+                   rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+atts:ShearSidedPolygonalVolume a <http://www.w3.org/2002/07/owl#Class>;
                                rdfs:comment "A three-dimensional volume defined by a two-dimensional polygon plus a length component that stretches the polygon along an axis perpendicular to the polygon surface.";
                                rdfs:label "Shear sided polygonal volume";
                                rdfs:subClassOf atts:Region3D.
-atts:SubSequence a owl:Class;
+atts:SubSequence a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment "Represents a subsequence of existing base sequence. The subsequence does not replicate the items of the sequence, but merely points to the start and end positions within the base sequence.";
                  rdfs:label "Subsequence";
-                 rdfs:subClassOf owl:Thing.
-atts:TimeInterval a owl:Class;
+                 rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+atts:TimeInterval a <http://www.w3.org/2002/07/owl#Class>;
                   rdfs:comment "A time interval with starting and ending time points. Intervals can be open (including the end points) or closed including the end points) or mixed including one but not the other end point).";
                   rdfs:label "Time interval";
-                  rdfs:subClassOf owl:Thing.
-atts:WKTgeoRepresentation a owl:DatatypeProperty;
+                  rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+atts:WKTgeoRepresentation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                           rdfs:comment "The WKT string representation of a location. Well-known text (WKT) is a text markup language for representing vector geometry objects on a map, spatial reference systems of spatial objects and transformations between spatial reference systems. WKT is a standards-based representation stored as an alternative to the explicit polygon boundary representation employed in the Ontology (see gen:PolygonBoundary).";
                           rdfs:domain atts:Location;
                           rdfs:label "Well-Known Text geographic representation";
                           rdfs:range xsd:string.
-atts:altitude a owl:FunctionalProperty,
-                owl:DatatypeProperty;
+atts:altitude a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:comment "The altitude of a point location.";
               rdfs:domain atts:PointLocation;
               rdfs:label "altitude";
               rdfs:range xsd:float.
-atts:centerpoint a owl:ObjectProperty,
-                   owl:FunctionalProperty;
+atts:centerpoint a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                   <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                  rdfs:comment "Links to the center point of the 2-D circular region.";
                  rdfs:domain atts:CircularRegion;
                  rdfs:label "centerpoint";
                  rdfs:range atts:PointLocation.
-atts:closedEndTimeInterval a owl:DatatypeProperty;
+atts:closedEndTimeInterval a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "A boolean property that specifies whether or not the endpoint of the time interval is closes (inclusive of the point).";
                            rdfs:domain atts:TimeInterval;
                            rdfs:label "closed end time interval";
                            rdfs:range xsd:boolean.
-atts:closedStartTimeInterval a owl:DatatypeProperty;
+atts:closedStartTimeInterval a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                              rdfs:comment "A boolean property that specifies whether or not the starting point of the time interval is closed (inclusive of the point).";
                              rdfs:domain atts:TimeInterval;
                              rdfs:label "closed start time interval";
                              rdfs:range xsd:boolean.
-atts:endTime a owl:DatatypeProperty;
+atts:endTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
              rdfs:comment "The ending time of a defined time interval.";
              rdfs:domain atts:TimeInterval;
              rdfs:label "end time";
              rdfs:range xsd:dateTime.
-atts:hasFirstItem a owl:ObjectProperty;
+atts:hasFirstItem a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "Links a sequence to the first item being sequenced.";
                   rdfs:domain atts:Sequence;
                   rdfs:label "hasFirstItem";
                   rdfs:range atts:SequencedItem;
                   rdfs:subPropertyOf atts:hasSequencedItem.
-atts:hasLastItem a owl:ObjectProperty;
+atts:hasLastItem a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "Links a sequence to the last item being sequenced.";
                  rdfs:domain atts:Sequence;
                  rdfs:label "hasLastItem";
                  rdfs:range atts:SequencedItem;
                  rdfs:subPropertyOf atts:hasSequencedItem.
-atts:hasNextItem a owl:ObjectProperty,
-                   owl:FunctionalProperty;
+atts:hasNextItem a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                   <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                  rdfs:comment "Links an item in a sequence to the subsequent item in the sequence.";
                  rdfs:domain atts:SequencedItem;
                  rdfs:label "hasNext";
                  rdfs:range atts:SequencedItem.
-atts:hasPolygonBoundary a owl:ObjectProperty;
+atts:hasPolygonBoundary a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "Links a polygonal region to its boundary representation.";
-                        rdfs:domain [owl:unionOf (atts:Polygonal2DRegion
-                                                  atts:ShearSidedPolygonalVolume) ; 
-                                     a owl:Class];
+                        rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (atts:Polygonal2DRegion
+                                                                              atts:ShearSidedPolygonalVolume) ; 
+                                     a <http://www.w3.org/2002/07/owl#Class>];
                         rdfs:label "has polygon boundary";
                         rdfs:range atts:PolygonBoundary.
-atts:hasSequencedItem a owl:ObjectProperty;
+atts:hasSequencedItem a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "Links a sequence to each of the items being sequenced.";
                       rdfs:domain atts:Sequence;
                       rdfs:label "hasSequencedItem";
                       rdfs:range atts:SequencedItem.
-atts:latitude a owl:FunctionalProperty,
-                owl:DatatypeProperty;
+atts:latitude a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:comment "The latitude of a point location.";
               rdfs:domain atts:PointLocation;
               rdfs:label "latitude";
               rdfs:range xsd:float.
-atts:longitude a owl:FunctionalProperty,
-                 owl:DatatypeProperty;
+atts:longitude a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                 <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment "The longitude of a point location.";
                rdfs:domain atts:PointLocation;
                rdfs:label "longitude";
                rdfs:range xsd:float.
-atts:parameterValue a owl:DatatypeProperty;
+atts:parameterValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "The numeric value of a parameter.";
                     rdfs:domain atts:NumericParameter;
                     rdfs:label "parameter value".
-atts:polygonHeight a owl:DatatypeProperty;
+atts:polygonHeight a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                    rdfs:comment "Specifies the length dimension of a polygonal volume.";
                    rdfs:domain atts:ShearSidedPolygonalVolume;
                    rdfs:label "polygon height";
                    rdfs:range xsd:float.
-atts:radius a owl:FunctionalProperty,
-              owl:DatatypeProperty;
+atts:radius a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
             rdfs:comment "The radius of a circular region. Note: Unfortunately, the units are currently dependent the type of circular region defined. This needs to be improved.";
             rdfs:domain atts:CircularRegion;
             rdfs:label "radius";
             rdfs:range xsd:float.
-atts:sequenceLength a owl:FunctionalProperty,
-                      owl:DatatypeProperty;
+atts:sequenceLength a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                      <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "The number of items in the ordered sequence.";
                     rdfs:domain atts:Sequence;
                     rdfs:label "sequence length";
                     rdfs:range xsd:integer.
-atts:sequenceNumber a owl:DatatypeProperty;
+atts:sequenceNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "Indicates the ordered position of this item within the sequence, where 1 signifies the first position in the sequence.";
                     rdfs:domain atts:SequencedItem;
                     rdfs:label "sequenceNumber";
                     rdfs:range xsd:integer.
-atts:startTime a owl:DatatypeProperty;
+atts:startTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment "The starting time of a defined time interval.";
                rdfs:domain atts:TimeInterval;
                rdfs:label "start time";
                rdfs:range xsd:dateTime.
-atts:subsequenceEndIndex a owl:DatatypeProperty;
+atts:subsequenceEndIndex a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                          rdfs:comment "A numeric position within a base sequence that represents the end of the subsequence.";
                          rdfs:domain atts:SubSequence;
                          rdfs:label "subsequence end index";
                          rdfs:range xsd:integer.
-atts:subsequenceOf a owl:ObjectProperty,
-                     owl:FunctionalProperty;
+atts:subsequenceOf a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
                    rdfs:comment "Links a subsequence to its base sequence.";
                    rdfs:domain atts:SubSequence;
                    rdfs:label "subsequence of";
                    rdfs:range atts:Sequence.
-atts:subsequenceStartIndex a owl:DatatypeProperty;
+atts:subsequenceStartIndex a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment "A numeric position within a base sequence that represents the start of the subsequence.";
                            rdfs:domain atts:SubSequence;
                            rdfs:label "subsequence start index";

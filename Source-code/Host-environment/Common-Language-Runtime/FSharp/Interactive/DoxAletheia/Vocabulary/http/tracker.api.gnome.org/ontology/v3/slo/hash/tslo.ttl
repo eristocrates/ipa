@@ -7,7 +7,7 @@
 @prefix nie: <http://tracker.api.gnome.org/ontology/v3/nie#>.
 @prefix nco: <http://tracker.api.gnome.org/ontology/v3/nco#>.
 @prefix slo: <http://tracker.api.gnome.org/ontology/v3/slo#>.
-@prefix w3: <http://www.w3.org/>.
+@prefix tslo: <http://tracker.api.gnome.org/ontology/v3/slo#>.
 
 slo: nrl:lastModified "2011-06-08T12:09:00Z";
      nrl:prefix "slo";

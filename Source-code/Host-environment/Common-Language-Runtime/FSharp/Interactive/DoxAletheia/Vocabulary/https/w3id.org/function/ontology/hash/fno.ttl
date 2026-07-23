@@ -6,77 +6,66 @@
 @prefix : <https://w3id.org/function/ontology#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix xml: <http://www.w3.org/XML/1998/namespace>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix voaf: <http://purl.org/vocommons/voaf#>.
-@prefix bibo: <http://purl.org/ontology/bibo/>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix w3id: <https://w3id.org/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
-@prefix schema: <http://schema.org/>.
 @prefix fno: <https://w3id.org/function/ontology#>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
 
-dc11:description a owl:AnnotationProperty.
-dc11:rights a owl:AnnotationProperty.
-dc11:source a owl:AnnotationProperty.
-dc11:title a owl:AnnotationProperty.
-dcterms:bibliographicCitation a owl:AnnotationProperty.
-dcterms:contributor a owl:AnnotationProperty.
-dcterms:created a owl:AnnotationProperty.
-dcterms:creator a owl:AnnotationProperty.
-dcterms:issued a owl:AnnotationProperty.
-dcterms:modified a owl:AnnotationProperty.
-dcterms:publisher a owl:AnnotationProperty.
-bibo:doi a owl:AnnotationProperty.
-bibo:status a owl:AnnotationProperty.
-vann:example a owl:AnnotationProperty.
-vann:preferredNamespacePrefix a owl:AnnotationProperty.
-vann:preferredNamespaceUri a owl:AnnotationProperty.
-voaf:Vocabulary a owl:Class.
-schema:license a owl:AnnotationProperty.
+<http://purl.org/dc/elements/1.1/description> a owl:AnnotationProperty.
+<http://purl.org/dc/elements/1.1/rights> a owl:AnnotationProperty.
+<http://purl.org/dc/elements/1.1/source> a owl:AnnotationProperty.
+<http://purl.org/dc/elements/1.1/title> a owl:AnnotationProperty.
+<http://purl.org/dc/terms/bibliographicCitation> a owl:AnnotationProperty.
+<http://purl.org/dc/terms/contributor> a owl:AnnotationProperty.
+<http://purl.org/dc/terms/created> a owl:AnnotationProperty.
+<http://purl.org/dc/terms/creator> a owl:AnnotationProperty.
+<http://purl.org/dc/terms/issued> a owl:AnnotationProperty.
+<http://purl.org/dc/terms/modified> a owl:AnnotationProperty.
+<http://purl.org/dc/terms/publisher> a owl:AnnotationProperty.
+<http://purl.org/ontology/bibo/doi> a owl:AnnotationProperty.
+<http://purl.org/ontology/bibo/status> a owl:AnnotationProperty.
+<http://purl.org/vocab/vann/example> a owl:AnnotationProperty.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a owl:AnnotationProperty.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a owl:AnnotationProperty.
+<http://purl.org/vocommons/voaf#Vocabulary> a owl:Class.
+<http://schema.org/license> a owl:AnnotationProperty.
 rdf:List a owl:Class.
 rdf:Property a owl:Class.
-status:term_status a owl:AnnotationProperty.
-skos:note a owl:AnnotationProperty.
-foaf:Person a owl:Class.
-foaf:depiction a owl:AnnotationProperty.
-foaf:logo a owl:AnnotationProperty.
-foaf:mbox a owl:AnnotationProperty.
-foaf:name a owl:AnnotationProperty.
-foaf:primaryTopic a owl:AnnotationProperty.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a owl:AnnotationProperty.
+<http://www.w3.org/2004/02/skos/core#note> a owl:AnnotationProperty.
+<http://xmlns.com/foaf/0.1/Person> a owl:Class.
+<http://xmlns.com/foaf/0.1/depiction> a owl:AnnotationProperty.
+<http://xmlns.com/foaf/0.1/logo> a owl:AnnotationProperty.
+<http://xmlns.com/foaf/0.1/mbox> a owl:AnnotationProperty.
+<http://xmlns.com/foaf/0.1/name> a owl:AnnotationProperty.
+<http://xmlns.com/foaf/0.1/primaryTopic> a owl:AnnotationProperty.
 <https://ben.de-meester.org/#me> a owl:NamedIndividual,
-                                   foaf:Person;
+                                   <http://xmlns.com/foaf/0.1/Person>;
                                  rdfs:label "Ben De Meester"@en;
-                                 foaf:mbox "mailto:Ben.DeMeester@UGent.be";
-                                 foaf:name "Ben De Meester"@en.
+                                 <http://xmlns.com/foaf/0.1/mbox> "mailto:Ben.DeMeester@UGent.be";
+                                 <http://xmlns.com/foaf/0.1/name> "Ben De Meester"@en.
 <https://natadimou.com/#me> a owl:NamedIndividual,
-                              foaf:Person;
+                              <http://xmlns.com/foaf/0.1/Person>;
                             rdfs:label "Anastasia Dimou"@en;
-                            foaf:mbox "mailto:Anastasia.dimou@UGent.be";
-                            foaf:name "Anastasia Dimou"@en.
-<https://w3id.org/function/ontology> dc11:description "The Function Ontology allows to declare and describe functions. The specification is online at https://w3id.org/function/spec. Copyright © Ghent University – imec – IDLab."@en;
-                                     dc11:rights "Copyright © Ghent University – imec – IDLab"@en;
-                                     dc11:source <https://w3id.org/function/spec>;
-                                     dc11:title "The Function Ontology"@en;
-                                     dcterms:bibliographicCitation "De Meester, B.; Seymoens, T.; Dimou, A. & Verborgh, R. Implementation-independent Function Reuse. Future Generation Computer Systems, Elsevier BV, 2020, 110, 946-959 ";
-                                     dcterms:contributor <http://maxime-lefrancois.info/me#>;
-                                     dcterms:created "2016-03-08"^^xsd:date;
-                                     dcterms:creator <https://ben.de-meester.org/#me>,
-                                                     <https://natadimou.com/#me>;
-                                     dcterms:issued "2016-03-08"^^xsd:date;
-                                     dcterms:modified "2020-12-22"^^xsd:date;
-                                     dcterms:publisher <https://ben.de-meester.org/#me>;
-                                     bibo:doi "10.5281/zenodo.595382";
-                                     bibo:status "stable";
-                                     vann:preferredNamespacePrefix "fno";
-                                     vann:preferredNamespaceUri "https://w3id.org/function/ontology#";
-                                     schema:license <http://creativecommons.org/license/by/3.0/>;
+                            <http://xmlns.com/foaf/0.1/mbox> "mailto:Anastasia.dimou@UGent.be";
+                            <http://xmlns.com/foaf/0.1/name> "Anastasia Dimou"@en.
+<https://w3id.org/function/ontology> <http://purl.org/dc/elements/1.1/description> "The Function Ontology allows to declare and describe functions. The specification is online at https://w3id.org/function/spec. Copyright © Ghent University – imec – IDLab."@en;
+                                     <http://purl.org/dc/elements/1.1/rights> "Copyright © Ghent University – imec – IDLab"@en;
+                                     <http://purl.org/dc/elements/1.1/source> <https://w3id.org/function/spec>;
+                                     <http://purl.org/dc/elements/1.1/title> "The Function Ontology"@en;
+                                     <http://purl.org/dc/terms/bibliographicCitation> "De Meester, B.; Seymoens, T.; Dimou, A. & Verborgh, R. Implementation-independent Function Reuse. Future Generation Computer Systems, Elsevier BV, 2020, 110, 946-959 ";
+                                     <http://purl.org/dc/terms/contributor> <http://maxime-lefrancois.info/me#>;
+                                     <http://purl.org/dc/terms/created> "2016-03-08"^^xsd:date;
+                                     <http://purl.org/dc/terms/creator> <https://ben.de-meester.org/#me>,
+                                                                        <https://natadimou.com/#me>;
+                                     <http://purl.org/dc/terms/issued> "2016-03-08"^^xsd:date;
+                                     <http://purl.org/dc/terms/modified> "2020-12-22"^^xsd:date;
+                                     <http://purl.org/dc/terms/publisher> <https://ben.de-meester.org/#me>;
+                                     <http://purl.org/ontology/bibo/doi> "10.5281/zenodo.595382";
+                                     <http://purl.org/ontology/bibo/status> "stable";
+                                     <http://purl.org/vocab/vann/preferredNamespacePrefix> "fno";
+                                     <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/function/ontology#";
+                                     <http://schema.org/license> <http://creativecommons.org/license/by/3.0/>;
                                      a owl:Ontology,
                                        owl:NamedIndividual,
-                                       voaf:Vocabulary;
+                                       <http://purl.org/vocommons/voaf#Vocabulary>;
                                      rdfs:label "The Function Ontology"@en;
                                      rdfs:seeAlso <https://w3id.org/function/spec>;
                                      owl:backwardCompatibleWith <https://w3id.org/function/ontology/0.6.0>;
@@ -90,134 +79,134 @@ foaf:primaryTopic a owl:AnnotationProperty.
                                      owl:priorVersion <https://w3id.org/function/ontology/0.6.0>;
                                      owl:versionIRI <https://w3id.org/function/ontology/1.0.0>;
                                      owl:versionInfo "1.0.0";
-                                     foaf:depiction <https://w3id.org/function/spec/resources/images/fno-full.png>;
-                                     foaf:logo <https://w3id.org/function/img/fno_favicon.png>;
-                                     foaf:primaryTopic <https://w3id.org/function/ontology>.
-:Algorithm vann:example <https://w3id.org/function/spec/#fn-algorithm>;
+                                     <http://xmlns.com/foaf/0.1/depiction> <https://w3id.org/function/spec/resources/images/fno-full.png>;
+                                     <http://xmlns.com/foaf/0.1/logo> <https://w3id.org/function/img/fno_favicon.png>;
+                                     <http://xmlns.com/foaf/0.1/primaryTopic> <https://w3id.org/function/ontology>.
+:Algorithm <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fn-algorithm>;
            a owl:Class;
            rdfs:comment "An algorithm is a specified set of instructions, independent of its implementation."@en;
            rdfs:isDefinedBy <https://w3id.org/function/ontology>;
            rdfs:label "Algorithm"@en;
-           status:term_status "testing";
-           skos:note """A function can be implemented using a known algorithm (e.g., Dijkstra's shortest path algorithm),
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing";
+           <http://www.w3.org/2004/02/skos/core#note> """A function can be implemented using a known algorithm (e.g., Dijkstra's shortest path algorithm),
 or use a combination of multiple algorithms to solve a certain problem.
 A function does not have to be implemented by any algorithm or have to be mapped one-on-one to an algorithm.
 It is not required to have a one-to-one mapping between an algorithm and a problem."""@en.
-:Execution vann:example <https://w3id.org/function/spec/#fn-execution>;
+:Execution <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fn-execution>;
            a owl:Class;
            rdfs:comment "An Execution is the connection between a Function and its Parameters and Outputs."@en;
            rdfs:isDefinedBy <https://w3id.org/function/ontology>;
            rdfs:label "Execution"@en;
-           status:term_status "stable";
-           skos:note " An Execution is the assignment of the values of the Parameters of a Function. An Execution has as result the value of the Output of the Function."@en.
-:Function vann:example <https://w3id.org/function/spec/#fn-function>;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+           <http://www.w3.org/2004/02/skos/core#note> " An Execution is the assignment of the values of the Parameters of a Function. An Execution has as result the value of the Output of the Function."@en.
+:Function <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fn-function>;
           a owl:Class;
           rdfs:comment "A Function is a process that performs a specific task by associating one or more Parameters to an Output"@en;
           rdfs:isDefinedBy <https://w3id.org/function/ontology>;
           rdfs:label "Function"@en;
-          status:term_status "stable";
-          skos:note "A Function is an actionable thing that can have input parameters, output, solve certain problems, and can be implemented using certain algorithms."@en.
-:Implementation vann:example <https://w3id.org/function/spec/#fno-implementation>;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+          <http://www.w3.org/2004/02/skos/core#note> "A Function is an actionable thing that can have input parameters, output, solve certain problems, and can be implemented using certain algorithms."@en.
+:Implementation <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fno-implementation>;
                 a owl:Class;
                 rdfs:comment "An Implementation defines the internal workings of one or more Functions"@en;
                 rdfs:isDefinedBy <https://w3id.org/function/ontology>;
                 rdfs:label "Implementation"@en;
-                status:term_status "testing";
-                skos:note "An Implementation depends on the used development context, i.e., the used programming language and execution environment. An Implementation could be, e.g., an NPM package."@en.
-:Mapping vann:example <https://w3id.org/function/spec/#fno-Mapping>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing";
+                <http://www.w3.org/2004/02/skos/core#note> "An Implementation depends on the used development context, i.e., the used programming language and execution environment. An Implementation could be, e.g., an NPM package."@en.
+:Mapping <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fno-Mapping>;
          a owl:Class;
          rdfs:comment "A Mapping links (abstract) Functions and (concrete) Implementations"@en;
          rdfs:isDefinedBy <https://w3id.org/function/ontology>;
          rdfs:label "Mapping"@en;
-         status:term_status "testing".
-:MethodMapping vann:example <https://w3id.org/function/spec/#fno-MethodMapping>;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+:MethodMapping <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fno-MethodMapping>;
                a owl:Class;
                rdfs:comment "A method mapping unambiguously specifies how the abstract function can be mapped to the implemented method. This can be, e.g., the name of the method"@en;
                rdfs:isDefinedBy <https://w3id.org/function/ontology>;
                rdfs:label "Method mapping"@en;
-               status:term_status "testing".
-:Output vann:example <https://w3id.org/function/spec/#fn-output>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+:Output <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fn-output>;
         a owl:Class;
         rdfs:comment "An Output is the description of the output value of a Function."@en;
         rdfs:isDefinedBy <https://w3id.org/function/ontology>;
         rdfs:label "Output"@en;
-        status:term_status "stable";
-        skos:note "A Function can have multiple outputs, just as, e.g., callbacks in JavaScript can return multiple results, or a function could throw multiple types of errors."@en.
-:Parameter vann:example <https://w3id.org/function/spec/#fn-parameter>;
+        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+        <http://www.w3.org/2004/02/skos/core#note> "A Function can have multiple outputs, just as, e.g., callbacks in JavaScript can return multiple results, or a function could throw multiple types of errors."@en.
+:Parameter <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fn-parameter>;
            a owl:Class;
            rdfs:comment "A Parameter is the description of the input value of a Function."@en;
            rdfs:isDefinedBy <https://w3id.org/function/ontology>;
            rdfs:label "Parameter"@en;
-           status:term_status "stable";
-           skos:note "A Function expects a list of Parameters. This description actually defines which predicates to use when binding the values to the execution of the Function. The parameters are ordered in a list, and each parameter defines the relationship that is used for the execution. For this, the fno:predicate predicate MUST be used. All predicates are allowed, except for rdf:type and fno:executes. A Parameter can have a specific type or other metadata (e.g., required or not, having a default value or not)."@en.
-:ParameterMapping vann:example <https://w3id.org/function/spec/#fno-ParameterMapping>;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+           <http://www.w3.org/2004/02/skos/core#note> "A Function expects a list of Parameters. This description actually defines which predicates to use when binding the values to the execution of the Function. The parameters are ordered in a list, and each parameter defines the relationship that is used for the execution. For this, the fno:predicate predicate MUST be used. All predicates are allowed, except for rdf:type and fno:executes. A Parameter can have a specific type or other metadata (e.g., required or not, having a default value or not)."@en.
+:ParameterMapping <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fno-ParameterMapping>;
                   a owl:Class;
                   rdfs:comment "A parameter mapping unambiguously specifies how the abstract parameter can be mapped to the implemented method's argument. For example: Parameter X is mapped to the third argument of the method (a position parameter mapping, common for programming languages), or to property with name Y of the method (a property parameter mapping, common for Web APIs)"@en;
                   rdfs:isDefinedBy <https://w3id.org/function/ontology>;
                   rdfs:label "Parameter mapping"@en;
-                  status:term_status "testing".
-:Problem vann:example <https://w3id.org/function/spec/#fn-problem>;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+:Problem <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fn-problem>;
          a owl:Class;
          rdfs:comment "A Problem is a general issue. Some problems can be solved by executing a certain Function."@en;
          rdfs:isDefinedBy <https://w3id.org/function/ontology>;
          rdfs:label "Problem"@en;
-         status:term_status "testing";
-         skos:note """For example, a Function can solve the <code>doing a sum</code> problem, however, \"global warming\" could also be perceived as a problem, with no single function to solve it."""@en.
-:ReturnMapping vann:example <https://w3id.org/function/spec/#fno-ReturnMapping>;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing";
+         <http://www.w3.org/2004/02/skos/core#note> """For example, a Function can solve the <code>doing a sum</code> problem, however, \"global warming\" could also be perceived as a problem, with no single function to solve it."""@en.
+:ReturnMapping <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fno-ReturnMapping>;
                a owl:Class;
                rdfs:comment "A return mapping unambiguously specifies how the abstract output can be mapped to the implemented method's return value. For example: the return value of the method, or the thrown error of a the method"@en;
                rdfs:isDefinedBy <https://w3id.org/function/ontology>;
                rdfs:label "Return mapping"@en;
-               status:term_status "testing".
-:executes vann:example <https://w3id.org/function/spec/#fn-execution>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+:executes <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fn-execution>;
           a owl:ObjectProperty;
           rdfs:comment "Connects a function to an execution definition"@en;
           rdfs:domain :Execution;
           rdfs:isDefinedBy <https://w3id.org/function/ontology>;
           rdfs:label "executes"@en;
           rdfs:range :Function;
-          status:term_status "stable".
-:expects vann:example <https://w3id.org/function/spec/#fn-parameter>;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+:expects <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fn-parameter>;
          a owl:ObjectProperty;
          rdfs:comment "Connects a function description to an ordered list of zero or more parameter descriptions"@en;
          rdfs:domain :Function;
          rdfs:isDefinedBy <https://w3id.org/function/ontology>;
          rdfs:label "expects"@en;
          rdfs:range rdf:List;
-         status:term_status "stable".
-:function vann:example <https://w3id.org/function/spec/#fno-Mapping>;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+:function <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fno-Mapping>;
           a owl:ObjectProperty;
           rdfs:comment "Connects a function to a mapping definition"@en;
           rdfs:domain :Mapping;
           rdfs:isDefinedBy <https://w3id.org/function/ontology>;
           rdfs:label "function"@en;
           rdfs:range :Function;
-          status:term_status "testing".
-:implementation vann:example <https://w3id.org/function/spec/#fno-Mapping>;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+:implementation <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fno-Mapping>;
                 a owl:ObjectProperty;
                 rdfs:comment "Connects an implementation to a mapping definition"@en;
                 rdfs:domain :Mapping;
                 rdfs:isDefinedBy <https://w3id.org/function/ontology>;
                 rdfs:label "implementation"@en;
                 rdfs:range :Implementation;
-                status:term_status "testing".
-:implements vann:example <https://w3id.org/function/spec/#fn-algorithm>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+:implements <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fn-algorithm>;
             a owl:ObjectProperty;
             rdfs:comment "Connects a function to an algorithm it implements. A function can implement 0..n algorithms."@en;
             rdfs:domain :Function;
             rdfs:isDefinedBy <https://w3id.org/function/ontology>;
             rdfs:label "implements"@en;
             rdfs:range :Algorithm;
-            status:term_status "testing".
-:methodMapping vann:example <https://w3id.org/function/spec/#fno-MethodMapping>;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+:methodMapping <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fno-MethodMapping>;
                a owl:ObjectProperty;
                rdfs:comment "Connects a method mapping to a mapping definition"@en;
                rdfs:domain :Mapping;
                rdfs:isDefinedBy <https://w3id.org/function/ontology>;
                rdfs:label "method mapping"@en;
                rdfs:range :MethodMapping;
-               status:term_status "testing".
-:name vann:example <https://w3id.org/function/spec/#fn-function>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+:name <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fn-function>;
       a owl:AnnotationProperty,
         owl:DatatypeProperty;
       rdfs:comment "Connects a function or a parameter to its name."@en;
@@ -226,74 +215,74 @@ It is not required to have a one-to-one mapping between an algorithm and a probl
       rdfs:label "name"@en;
       rdfs:range xsd:string;
       rdfs:subPropertyOf rdfs:label;
-      status:term_status "testing".
+      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
 :nullable a owl:DatatypeProperty;
           rdfs:comment "Defines if a parameteris nullable."@en;
           rdfs:domain :Parameter;
           rdfs:isDefinedBy <https://w3id.org/function/ontology>;
           rdfs:label "nullable"@en;
           rdfs:range xsd:boolean;
-          status:term_status "testing".
-:parameterMapping vann:example <https://w3id.org/function/spec/#fno-ParameterMapping>;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+:parameterMapping <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fno-ParameterMapping>;
                   a owl:ObjectProperty;
                   rdfs:comment "Connects a parameter mapping to a mapping definition"@en;
                   rdfs:domain :Mapping;
                   rdfs:isDefinedBy <https://w3id.org/function/ontology>;
                   rdfs:label "parameter mapping"@en;
                   rdfs:range :ParameterMapping;
-                  status:term_status "testing".
-:predicate vann:example <https://w3id.org/function/spec/#fn-parameter>;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+:predicate <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fn-parameter>;
            a owl:ObjectProperty;
            rdfs:comment "Connects a parameter description to the predicate used to link executions of this function to their parameter."@en;
            rdfs:domain :Parameter;
            rdfs:isDefinedBy <https://w3id.org/function/ontology>;
            rdfs:label "predicate"@en;
            rdfs:range rdf:Property;
-           status:term_status "stable".
-:required vann:example <https://w3id.org/function/spec/#fn-parameter>;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+:required <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fn-parameter>;
           a owl:DatatypeProperty;
           rdfs:comment "Defines if a parameter or an output is required."@en;
           rdfs:domain :Parameter;
           rdfs:isDefinedBy <https://w3id.org/function/ontology>;
           rdfs:label "required"@en;
           rdfs:range xsd:boolean;
-          status:term_status "testing".
-:returnMapping vann:example <https://w3id.org/function/spec/#fno-ReturnMapping>;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+:returnMapping <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fno-ReturnMapping>;
                a owl:ObjectProperty;
                rdfs:comment "Connects a return mapping to a mapping definition"@en;
                rdfs:domain :Mapping;
                rdfs:isDefinedBy <https://w3id.org/function/ontology>;
                rdfs:label "return mapping"@en;
                rdfs:range :ReturnMapping;
-               status:term_status "testing".
-:returns vann:example <https://w3id.org/function/spec/#fn-output>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+:returns <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fn-output>;
          a owl:ObjectProperty;
          rdfs:comment "Connects a description of a function to the description of the output"@en;
          rdfs:domain :Function;
          rdfs:isDefinedBy <https://w3id.org/function/ontology>;
          rdfs:label "returns"@en;
          rdfs:range rdf:List;
-         status:term_status "stable".
-:solves vann:example <https://w3id.org/function/spec/#fn-problem>;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+:solves <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fn-problem>;
         a owl:ObjectProperty;
         rdfs:comment "Connects a description of a function to the description of a problem it tries to solve."@en;
         rdfs:domain :Function;
         rdfs:isDefinedBy <https://w3id.org/function/ontology>;
         rdfs:label "solves"@en;
         rdfs:range :Problem;
-        status:term_status "testing".
-:type vann:example <https://w3id.org/function/spec/#fn-parameter>;
+        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+:type <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fn-parameter>;
       a owl:ObjectProperty;
       rdfs:comment "Connects an output or a parameter description to the type of instances of these parameters or outputs."@en;
       rdfs:domain :Parameter;
       rdfs:isDefinedBy <https://w3id.org/function/ontology>;
       rdfs:label "type"@en;
-      status:term_status "stable".
-:uses vann:example <https://w3id.org/function/spec/#fno-uses>;
+      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+:uses <http://purl.org/vocab/vann/example> <https://w3id.org/function/spec/#fno-uses>;
       a owl:ObjectProperty;
       rdfs:comment "Connects an execution to a mapping definition"@en;
       rdfs:domain :Execution;
       rdfs:isDefinedBy <https://w3id.org/function/ontology>;
       rdfs:label "uses"@en;
       rdfs:range :Mapping;
-      status:term_status "testing".
+      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".

@@ -6,8 +6,6 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace>.
 @prefix : <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix string: <http://www.w3.org/2000/10/swap/string#>.
 
 math:Function a rdfs:Class;
               rdfs:comment "A math:Function is unique in terms of math:EqualTo. ";
@@ -36,7 +34,7 @@ math:TwoMemberedList a rdfs:Class;
 math:Value a rdfs:Class;
            rdfs:comment "The class of things that are numeric float values as in Python.";
            rdfs:label "Value";
-           rdfs:subClassOf string:String.
+           rdfs:subClassOf <http://www.w3.org/2000/10/swap/string#String>.
 math:absoluteValue a rdf:Property;
                    rdfs:comment "The object is calulated as the absolute value of the subject.";
                    rdfs:domain math:Value;

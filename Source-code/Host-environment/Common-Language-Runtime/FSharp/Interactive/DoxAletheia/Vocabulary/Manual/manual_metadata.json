@@ -1,0 +1,688 @@
+{
+  "manual_vocabularies": [
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/Classifiers/                                ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/Classifiers.ttl                                                                                  "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/",
+      "namespace_distribution": " https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US.ttl                                                  "
+    },
+    {
+      "namespace_name": " http://purl.org/HDT/hdt#                                                     ",
+      "namespace_distribution": " https://www.w3.org/submissions/2011/SUBM-HDT-RDFS-20110330/HDT.rdf                                                                "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2011/http-headers#                                         ",
+      "namespace_distribution": " https://www.w3.org/2011/http-headers.rdf                                                                                          "
+    },
+    {
+      "namespace_name": " https://www.w3.org/ns/activitystreams#                                       ",
+      "namespace_distribution": " https://www.w3.org/ns/activitystreams-owl                                                                                         "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2007/05/powder#                                            ",
+      "namespace_distribution": " https://www.w3.org/TR/2007/WD-powder-voc-20070925/wdr.rdf                                                                         "
+    },
+    {
+      "namespace_name": " https://w3id.org/function/ontology#                                          ",
+      "namespace_distribution": " https://fno.io/ontology/ontology.ttl                                                                                              "
+    },
+    {
+      "namespace_name": " https://w3id.org/function/vocabulary/mapping#                                ",
+      "namespace_distribution": " https://fno.io/vocabulary/mapping/0.2.1/ontology.ttl                                                                              "
+    },
+    {
+      "namespace_name": " https://w3id.org/function/vocabulary/implementation#                         ",
+      "namespace_distribution": " https://fno.io/vocabulary/implementation/0.1.1/ontology.ttl                                                                       "
+    },
+    {
+      "namespace_name": " https://w3id.org/function/vocabulary/composition#                            ",
+      "namespace_distribution": " https://fno.io/vocabulary/composition/0.1.0/ontology.ttl                                                                          "
+    },
+    {
+      "namespace_name": " http://aims.fao.org/aos/agrontology#                                         ",
+      "namespace_distribution": " http://aims.fao.org/aos/agrontology                                                                                               "
+    },
+    {
+      "namespace_name": " http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#                    ",
+      "namespace_distribution": " http://www.semanticdesktop.org/ontologies/2007/03/22/nmo/nmo.trig                                                                 "
+    },
+    {
+      "namespace_name": " http://www.semanticdesktop.org/ontologies/2007/05/10/nid3#                   ",
+      "namespace_distribution": " http://www.semanticdesktop.org/ontologies/2007/05/10/nid3/nid3.trig                                                               "
+    },
+    {
+      "namespace_name": " http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#                   ",
+      "namespace_distribution": " http://www.semanticdesktop.org/ontologies/2007/11/01/pimo/pimo.trig                                                               "
+    },
+    {
+      "namespace_name": " http://tracker.api.gnome.org/ontology/v3/nrl#                                ",
+      "namespace_distribution": " https://github.com/GNOME/tinysparql/raw/refs/heads/main/src/ontologies/12-nrl.ontology                                            "
+    },
+    {
+      "namespace_name": " http://tracker.api.gnome.org/ontology/v3/nie#                                ",
+      "namespace_distribution": " https://github.com/GNOME/tinysparql/raw/refs/heads/main/src/ontologies/nepomuk/30-nie.ontology                                    "
+    },
+    {
+      "namespace_name": " http://tracker.api.gnome.org/ontology/v3/tracker#                            ",
+      "namespace_distribution": " https://github.com/GNOME/tinysparql/raw/refs/heads/main/src/ontologies/nepomuk/90-tracker.ontology                                "
+    },
+    {
+      "namespace_name": " http://tracker.api.gnome.org/ontology/v3/slo#                                ",
+      "namespace_distribution": " https://github.com/GNOME/tinysparql/raw/refs/heads/main/src/ontologies/nepomuk/92-slo.ontology                                    "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/agent#                         ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/agent                                                                               "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/bioSKOSSchemes#                ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/bioSKOSSchemes                                                                      "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/countries#                     ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/countries                                                                           "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#               ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/decisionSupport                                                                     "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/document#                      ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/document                                                                            "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/environment#                   ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/environment                                                                         "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/foster#                        ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/foster                                                                              "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#             ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality                                                                   "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/human#                         ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/human                                                                               "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/humanBody#                     ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/humanBody                                                                           "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/organism#                      ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/organism                                                                            "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/organization#                  ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/organization                                                                        "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/physicalResource#              ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/physicalResource                                                                    "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/quantities#                    ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/quantities                                                                          "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/sparql#                        ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/sparql                                                                              "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#                ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis                                                                      "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#        ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate                                                              "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/substanceForms#                ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/substanceForms                                                                      "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/time#                          ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/time                                                                                "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/units#                         ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/units                                                                               "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/weekScheme#                    ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/weekScheme                                                                          "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/workflow#                      ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/workflow                                                                            "
+    },
+    {
+      "namespace_name": " http://open-services.net/ns/auto#                                            ",
+      "namespace_distribution": " https://docs.oasis-open-projects.org/oslc-op/auto/v2.1/psd01/automation-vocab.ttl                                                 "
+    },
+    {
+      "namespace_name": " http://open-services.net/ns/cm#                                              ",
+      "namespace_distribution": " https://docs.oasis-open-projects.org/oslc-op/cm/v3.0/errata01/os/change-mgt-vocab.ttl                                             "
+    },
+    {
+      "namespace_name": " http://open-services.net/ns/config#                                          ",
+      "namespace_distribution": " https://docs.oasis-open-projects.org/oslc-op/config/v1.1/psd01/config-vocab.ttl                                                   "
+    },
+    {
+      "namespace_name": " http://open-services.net/ns/core/trs#                                        ",
+      "namespace_distribution": " https://docs.oasis-open-projects.org/oslc-op/trs/v3.0/os/trs-vocab.ttl                                                            "
+    },
+    {
+      "namespace_name": " http://open-services.net/ns/rm#                                              ",
+      "namespace_distribution": " https://docs.oasis-open-projects.org/oslc-op/rm/v2.1/os/requirements-management-vocab.ttl                                         "
+    },
+    {
+      "namespace_name": " http://open-services.net/ns/sysmlv2#                                         ",
+      "namespace_distribution": " https://docs.oasis-open-projects.org/oslc-op/sysml/v2.0/psd01/sysml-vocab.ttl                                                     "
+    },
+    {
+      "namespace_name": " http://openprovenance.org/model/opmo#                                        ",
+      "namespace_distribution": " https://openprovenance.org/opm/model/opmo-20101012.owl                                                                            "
+    },
+    {
+      "namespace_name": " http://purl.org/ontology/olo/core#                                           ",
+      "namespace_distribution": " https://github.com/smiy/orderedlistonto/raw/refs/heads/master/rdf/orderedlistontology.n3                                          "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/CodesAndCodeSets/                           ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/CodesAndCodeSets.ttl                                                                             "
+    },
+    {
+      "namespace_name": " https://schema.org/                                                          ",
+      "namespace_distribution": " https://schema.org/version/latest/schemaorg-current-https.ttl                                                                     "
+    },
+    {
+      "namespace_name": " http://www.w3.org/ns/shacl-shacl#                                            ",
+      "namespace_distribution": " https://www.w3.org/ns/shacl-shacl.ttl                                                                                             "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2000/10/swap/os#                                           ",
+      "namespace_distribution": " http://www.w3.org/2000/10/swap/os                                                                                                 "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2000/10/swap/pim/travelFig#                                ",
+      "namespace_distribution": " http://www.w3.org/2000/10/swap/pim/travelFig                                                                                      "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2000/10/swap/string#                                       ",
+      "namespace_distribution": " http://www.w3.org/2000/10/swap/string                                                                                             "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/Collections/                                ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/Collections.ttl                                                                                  "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/Documents/                                  ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/Documents.ttl                                                                                    "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/Identifiers/                                ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/Identifiers.ttl                                                                                  "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/Locations/                                  ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/Locations.ttl                                                                                    "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/Organizations/                              ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/Organizations.ttl                                                                                "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/PartiesAndSituations/                       ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/PartiesAndSituations.ttl                                                                         "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/QuantitiesAndUnits/                         ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/QuantitiesAndUnits.ttl                                                                           "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/RegistrationAuthorities/                    ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/RegistrationAuthorities.ttl                                                                      "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/RegulatoryAgencies/                         ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/RegulatoryAgencies.ttl                                                                           "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/RolesAndCompositions/                       ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/RolesAndCompositions.ttl                                                                         "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/TextDatatype/                               ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/TextDatatype.ttl                                                                                 "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/LCC/Countries/CountryRepresentation/                ",
+      "namespace_distribution": " https://www.omg.org/spec/LCC/Countries/CountryRepresentation.ttl                                                                  "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-CA/",
+      "namespace_distribution": " https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-CA.ttl                                                  "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-GB/",
+      "namespace_distribution": " https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-GB.ttl                                                  "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2011/http-statusCodes#                                     ",
+      "namespace_distribution": " http://www.w3.org/2011/http-statusCodes.rdf                                                                                       "
+    },
+    {
+      "namespace_name": " https://www.w3.org/ns/posix/stat#                                            ",
+      "namespace_distribution": " https://www.w3.org/ns/posix/stat.rdf                                                                                              "
+    },
+    {
+      "namespace_name": " http://id.loc.gov/ontologies/bflc/                                           ",
+      "namespace_distribution": " https://id.loc.gov/ontologies/bflc.rdf                                                                                            "
+    },
+    {
+      "namespace_name": " http://open-services.net/ns/am#                                              ",
+      "namespace_distribution": " https://docs.oasis-open-projects.org/oslc-op/am/v3.0/os/architecture-management-vocab.ttl                                         "
+    },
+    {
+      "namespace_name": " http://open-services.net/ns/core/trspatch#                                   ",
+      "namespace_distribution": " https://docs.oasis-open-projects.org/oslc-op/trs/v3.0/os/trs-vocab.ttl                                                            "
+    },
+    {
+      "namespace_name": " http://open-services.net/ns/qm#                                              ",
+      "namespace_distribution": " https://docs.oasis-open-projects.org/oslc-op/qm/v2.1/os/quality-management-vocab.ttl                                              "
+    },
+    {
+      "namespace_name": " http://purl.org/spar/bido/                                                   ",
+      "namespace_distribution": " http://purl.org/spar/bido.ttl                                                                                                     "
+    },
+    {
+      "namespace_name": " http://purl.org/spar/fivestars/                                              ",
+      "namespace_distribution": " http://purl.org/spar/fivestars.ttl                                                                                                "
+    },
+    {
+      "namespace_name": " http://purl.org/spar/fr/                                                     ",
+      "namespace_distribution": " http://purl.org/spar/fr.ttl                                                                                                       "
+    },
+    {
+      "namespace_name": " http://purl.org/spar/frbr/                                                   ",
+      "namespace_distribution": " http://purl.org/spar/frbr.ttl                                                                                                     "
+    },
+    {
+      "namespace_name": " http://purl.org/spar/mito/                                                   ",
+      "namespace_distribution": " http://purl.org/spar/mito.ttl                                                                                                     "
+    },
+    {
+      "namespace_name": " http://purl.org/cerif/frapo/                                                 ",
+      "namespace_distribution": " http://purl.org/spar/frapo.ttl                                                                                                    "
+    },
+    {
+      "namespace_name": " http://www.daml.org/services/owl-s/1.2/ActorDefault.owl#                     ",
+      "namespace_distribution": " http://www.daml.org/services/owl-s/1.2/ActorDefault.owl                                                                           "
+    },
+    {
+      "namespace_name": " http://www.daml.org/services/owl-s/1.2/generic/Expression.owl#               ",
+      "namespace_distribution": " http://www.daml.org/services/owl-s/1.2/generic/Expression.owl                                                                     "
+    },
+    {
+      "namespace_name": " http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl       ",
+      "namespace_distribution": " http://www.daml.org/services/owl-s/1.2/GroundingDeprecatedElements.owl                                                            "
+    },
+    {
+      "namespace_name": " http://www.daml.org/services/owl-s/1.2/Process.owl                           ",
+      "namespace_distribution": " http://www.daml.org/services/owl-s/1.2/ProcessDeprecatedElements.owl                                                              "
+    },
+    {
+      "namespace_name": " http://www.daml.org/services/owl-s/1.2/Process.owl#                          ",
+      "namespace_distribution": " http://www.daml.org/services/owl-s/1.2/Process.owl                                                                                "
+    },
+    {
+      "namespace_name": " http://www.daml.org/services/owl-s/1.2/Profile.owl#                          ",
+      "namespace_distribution": " http://www.daml.org/services/owl-s/1.2/Profile.owl                                                                                "
+    },
+    {
+      "namespace_name": " http://www.daml.org/services/owl-s/1.2/Service.owl#                          ",
+      "namespace_distribution": " https://www.daml.org/services/owl-s/1.2/Service.owl                                                                               "
+    },
+    {
+      "namespace_name": " http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#                             ",
+      "namespace_distribution": " https://github.com/iddi/sofia/raw/refs/heads/master/eu.sofia.adk.common/ontologies/foundational/DOLCE-Lite.owl                    "
+    },
+    {
+      "namespace_name": " http://www.loc.gov/premis/rdf/v3/                                            ",
+      "namespace_distribution": " https://github.com/lcnetdev/PREMIS/raw/refs/heads/master/premis3.owl                                                              "
+    },
+    {
+      "namespace_name": " http://www.lexinfo.net/ontology/3.0/lexinfo#                                 ",
+      "namespace_distribution": " http://www.lexinfo.net/ontology/3.0/lexinfo.ttl                                                                                   "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2000/10/swap/crypto#                                       ",
+      "namespace_distribution": " http://www.w3.org/2000/10/swap/crypto                                                                                             "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2000/10/swap/grammar/bnf#                                  ",
+      "namespace_distribution": " http://www.w3.org/2000/10/swap/grammar/bnf                                                                                        "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2000/10/swap/list#                                         ",
+      "namespace_distribution": " http://www.w3.org/2000/10/swap/list                                                                                               "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2000/10/swap/math#                                         ",
+      "namespace_distribution": " http://www.w3.org/2000/10/swap/math                                                                                               "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2000/10/swap/pim/doc#                                      ",
+      "namespace_distribution": " http://www.w3.org/2000/10/swap/pim/doc                                                                                            "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2000/10/swap/pim/email#                                    ",
+      "namespace_distribution": " http://www.w3.org/2000/10/swap/pim/email                                                                                          "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2000/10/swap/pim/ical#                                     ",
+      "namespace_distribution": " http://www.w3.org/2000/10/swap/pim/ical                                                                                           "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2000/10/swap/pim/qif#                                      ",
+      "namespace_distribution": " http://www.w3.org/2000/10/swap/pim/qif                                                                                            "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2000/10/swap/pim/travelTerms#                              ",
+      "namespace_distribution": " http://www.w3.org/2000/10/swap/pim/travelTerms                                                                                    "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2000/10/swap/pim/usps#                                     ",
+      "namespace_distribution": " http://www.w3.org/2000/10/swap/pim/usps                                                                                           "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2000/10/swap/reason#                                       ",
+      "namespace_distribution": " http://www.w3.org/2000/10/swap/reason                                                                                             "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2000/10/swap/set#                                          ",
+      "namespace_distribution": " http://www.w3.org/2000/10/swap/set                                                                                                "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2004/06/rei#                                               ",
+      "namespace_distribution": " http://www.w3.org/2004/06/rei#                                                                                                    "
+    },
+    {
+      "namespace_name": " http://www.w3.org/ns/solid/acp#                                              ",
+      "namespace_distribution": " http://www.w3.org/ns/solid/acp#                                                                                                   "
+    },
+    {
+      "namespace_name": " http://www.w3.org/ns/solid/interop#                                          ",
+      "namespace_distribution": " http://www.w3.org/ns/solid/interop#                                                                                               "
+    },
+    {
+      "namespace_name": " http://www.w3.org/ns/solid/notifications#                                    ",
+      "namespace_distribution": " http://www.w3.org/ns/solid/notifications#                                                                                         "
+    },
+    {
+      "namespace_name": " http://www.w3.org/ns/solid/oidc#                                             ",
+      "namespace_distribution": " http://www.w3.org/ns/solid/oidc#                                                                                                  "
+    },
+    {
+      "namespace_name": " http://www.w3.org/ns/spec#                                                   ",
+      "namespace_distribution": " http://www.w3.org/ns/spec#                                                                                                        "
+    },
+    {
+      "namespace_name": " https://globalwordnet.github.io/schemas/wn#                                  ",
+      "namespace_distribution": " https://www.w3.org/2006/03/wn/wn20/schemas/wnfull.rdfs                                                                            "
+    },
+    {
+      "namespace_name": " https://ns.dublincore.org/openwemi/                                          ",
+      "namespace_distribution": " https://dcmi.github.io/openwemi/ns/openWEMI.ttl                                                                                   "
+    },
+    {
+      "namespace_name": " http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#                            ",
+      "namespace_distribution": " https://github.com/iddi/sofia/raw/refs/heads/master/eu.sofia.adk.common/ontologies/foundational/ExtendedDnS.owl                   "
+    },
+    {
+      "namespace_name": " http://www.opengis.net/ont/sf#                                               ",
+      "namespace_distribution": " http://www.opengis.net/ont/sf#                                                                                                    "
+    },
+    {
+      "namespace_name": " http://www.essepuntato.it/2008/12/pattern#                                   ",
+      "namespace_distribution": " https://sourceforge.net/p/dwellonit/code/HEAD/tree/StructuralPattern/pattern.owl?format=raw                                       "
+    },
+    {
+      "namespace_name": " http://www.essepuntato.it/2012/04/tvc/                                       ",
+      "namespace_distribution": " https://sourceforge.net/p/dwellonit/code/HEAD/tree/TimeIndexedValueInContext/tvc.owl?format=raw                                   "
+    },
+    {
+      "namespace_name": " http://www.essepuntato.it/2013/10/vagueness/                                 ",
+      "namespace_distribution": " https://sourceforge.net/p/dwellonit/code/HEAD/tree/VaguenessOntology/model.owl?format=raw                                         "
+    },
+    {
+      "namespace_name": " http://qudt.org/vocab/constant/                                              ",
+      "namespace_distribution": " http://qudt.org/3.1.10/vocab/constant                                                                                             "
+    },
+    {
+      "namespace_name": " http://qudt.org/vocab/dimensionvector                                        ",
+      "namespace_distribution": " http://qudt.org/3.1.10/vocab/dimensionvector                                                                                      "
+    },
+    {
+      "namespace_name": " http://qudt.org/vocab/quantitykind                                           ",
+      "namespace_distribution": " http://qudt.org/3.1.10/vocab/quantitykind                                                                                         "
+    },
+    {
+      "namespace_name": " http://qudt.org/vocab/soqk                                                   ",
+      "namespace_distribution": " http://qudt.org/3.1.10/vocab/soqk                                                                                                 "
+    },
+    {
+      "namespace_name": " http://purl.org/swan/2.0/                                                    ",
+      "namespace_distribution": " https://rawcdn.githack.com/pav-ontology/swan-ontology/2.0.1/swan.owl                                                              "
+    },
+    {
+      "namespace_name": " http://purl.org/swan/2.0/collections/                                        ",
+      "namespace_distribution": " https://rawcdn.githack.com/pav-ontology/swan-ontology/2.0.1/collections.owl                                                       "
+    },
+    {
+      "namespace_name": " http://purl.org/swan/2.0/discourse-elements/                                 ",
+      "namespace_distribution": " https://rawcdn.githack.com/pav-ontology/swan-ontology/2.0.1/discourse-elements.owl                                                "
+    },
+    {
+      "namespace_name": " http://purl.org/swan/2.0/discourse-relationships/                            ",
+      "namespace_distribution": " https://rawcdn.githack.com/pav-ontology/swan-ontology/2.0.1/discourse-relationships.owl                                           "
+    },
+    {
+      "namespace_name": " http://purl.org/swan/2.0/experiment                                          ",
+      "namespace_distribution": " https://rawcdn.githack.com/pav-ontology/swan-ontology/2.0.1/experiments.owl                                                       "
+    },
+    {
+      "namespace_name": " http://purl.org/dcx/lrmi-terms/                                              ",
+      "namespace_distribution": " http://dublincore.org/specifications/lrmi/lrmi_terms/2022-06-14/lrmi-terms.ttl                                                    "
+    },
+    {
+      "namespace_name": " http://purl.org/dcx/lrmi-vocabs/alignmentType/                               ",
+      "namespace_distribution": " http://dublincore.org/vocabs/alignmentType.ttl                                                                                    "
+    },
+    {
+      "namespace_name": " http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/                     ",
+      "namespace_distribution": " http://dublincore.org/vocabs/educationalAudienceRole.ttl                                                                          "
+    },
+    {
+      "namespace_name": " http://purl.org/dcx/lrmi-vocabs/educationalUse/                              ",
+      "namespace_distribution": " \thttp://dublincore.org/vocabs/educationalUse.ttl                                                                                  "
+    },
+    {
+      "namespace_name": " http://purl.org/dcx/lrmi-vocabs/interactivityType/                           ",
+      "namespace_distribution": " http://dublincore.org/vocabs/interactivityType.ttl                                                                                "
+    },
+    {
+      "namespace_name": " http://purl.org/dcx/lrmi-vocabs/learningResourceType/                        ",
+      "namespace_distribution": " https://www.dublincore.org/vocabs/learningResourceType.ttl                                                                        "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2006/03/wn/wn20/schema/                                    ",
+      "namespace_distribution": " https://www.w3.org/2006/03/wn/wn20/schemas/wnfull.rdfs                                                                            "
+    },
+    {
+      "namespace_name": " https://www.commoncoreontologies.org/                                        ",
+      "namespace_distribution": " https://github.com/CommonCoreOntology/CommonCoreOntologies/raw/refs/heads/develop/src/cco-merged/CommonCoreOntologiesMerged.ttl   "
+    },
+    {
+      "namespace_name": " https://www.commoncoreontologies.org/BarcodeOntology/                        ",
+      "namespace_distribution": " https://github.com/CommonCoreOntology/CommonCoreOntologies/raw/refs/heads/develop/src/cco-extensions/BarcodeOntology.ttl          "
+    },
+    {
+      "namespace_name": " https://www.commoncoreontologies.org/FamilialRelationsOntology               ",
+      "namespace_distribution": " https://github.com/CommonCoreOntology/CommonCoreOntologies/raw/refs/heads/develop/src/cco-extensions/FamilialRelationsOntology.ttl"
+    },
+    {
+      "namespace_name": " https://open-metadata.org/ontology/                                          ",
+      "namespace_distribution": " https://github.com/open-metadata/OpenMetadataStandards/raw/refs/heads/main/rdf/ontology/openmetadata.ttl                          "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/ContextualDesignators/                      ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/ContextualDesignators.ttl                                                                        "
+    },
+    {
+      "namespace_name": " http://www.w3.org/ns/json-ld#                                                ",
+      "namespace_distribution": " https://www.w3.org/ns/json-ld.jsonld                                                                                              "
+    },
+    {
+      "namespace_name": " https://termlex.oeg.fi.upm.es/termlex#                                       ",
+      "namespace_distribution": " https://termlex.oeg.fi.upm.es/static/termlex.rdf                                                                                  "
+    },
+    {
+      "namespace_name": " http://www.w3.org/ns/shex#                                                   ",
+      "namespace_distribution": " https://www.w3.org/ns/shex.ttl                                                                                                    "
+    },
+    {
+      "namespace_name": " http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#                  ",
+      "namespace_distribution": " http://www.semanticdesktop.org/ontologies/2007/05/10/nexif/nexif.trig                                                             "
+    },
+    {
+      "namespace_name": " http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#                    ",
+      "namespace_distribution": " http://www.semanticdesktop.org/ontologies/2008/05/20/tmo/v1.1/tmo.trig                                                            "
+    },
+    {
+      "namespace_name": " http://tracker.api.gnome.org/ontology/v3/nco#                                ",
+      "namespace_distribution": " https://github.com/GNOME/tinysparql/raw/refs/heads/main/src/ontologies/nepomuk/32-nco.ontology                                    "
+    },
+    {
+      "namespace_name": " http://tracker.api.gnome.org/ontology/v3/nfo#                                ",
+      "namespace_distribution": " https://github.com/GNOME/tinysparql/raw/refs/heads/main/src/ontologies/nepomuk/33-nfo.ontology                                    "
+    },
+    {
+      "namespace_name": " http://tracker.api.gnome.org/ontology/v3/nmm#                                ",
+      "namespace_distribution": " https://github.com/GNOME/tinysparql/raw/refs/heads/main/src/ontologies/nepomuk/38-nmm.ontology                                    "
+    },
+    {
+      "namespace_name": " http://tracker.api.gnome.org/ontology/v3/mfo#                                ",
+      "namespace_distribution": " https://github.com/GNOME/tinysparql/raw/refs/heads/main/src/ontologies/nepomuk/41-mfo.ontology                                    "
+    },
+    {
+      "namespace_name": " http://tracker.api.gnome.org/ontology/v3/osinfo#                             ",
+      "namespace_distribution": " https://github.com/GNOME/tinysparql/raw/refs/heads/main/src/ontologies/nepomuk/93-libosinfo.ontology                              "
+    },
+    {
+      "namespace_name": " http://datashapes.org/dash#                                                  ",
+      "namespace_distribution": " https://datashapes.org/dash.ttl                                                                                                   "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/care#                          ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/care                                                                                "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/coding#                        ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/coding                                                                              "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/ContextualIdentifiers/                      ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/ContextualIdentifiers.ttl                                                                        "
+    },
+    {
+      "namespace_name": " https://spdx.org/rdf/3.1/terms/                                              ",
+      "namespace_distribution": " https://spdx.github.io/spdx-spec/3.1-RC1/rdf/spdx-model.ttl                                                                       "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/DatesAndTimes/                              ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/DatesAndTimes.ttl                                                                                "
+    },
+    {
+      "namespace_name": " http://tracker.api.gnome.org/ontology/v3/nao#                                ",
+      "namespace_distribution": " https://github.com/GNOME/tinysparql/raw/refs/heads/main/src/ontologies/nepomuk/31-nao.ontology                                    "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/Designators/                                ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/Designators.ttl                                                                                  "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/computer#                      ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/computer                                                                            "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#              ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure                                                                    "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/event#                         ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/event                                                                               "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/languages#                     ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/languages                                                                           "
+    },
+    {
+      "namespace_name": " http://eulersharp.sourceforge.net/2003/03swap/space#                         ",
+      "namespace_distribution": " http://eulersharp.sourceforge.net/2003/03swap/space                                                                               "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/BusinessAuthorizations/                     ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/BusinessAuthorizations.ttl                                                                       "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/Commons/SitesAndFacilities/                         ",
+      "namespace_distribution": " https://www.omg.org/spec/Commons/SitesAndFacilities.ttl                                                                           "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/               ",
+      "namespace_distribution": " https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes.ttl                                                                 "
+    },
+    {
+      "namespace_name": " https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-MX/",
+      "namespace_distribution": " https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-MX.ttl                                                  "
+    },
+    {
+      "namespace_name": " https://www.gleif.org/ontology/L1/                                           ",
+      "namespace_distribution": " https://www.gleif.org/ontology/pylodev2/data_file.ttl                                                                             "
+    },
+    {
+      "namespace_name": " http://kaiko.getalp.org/dbnary#                                              ",
+      "namespace_distribution": " https://kaiko.getalp.org/static/datamodel/2.1.2/ontology.ttl                                                                      "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2011/http-methods#                                         ",
+      "namespace_distribution": " http://www.w3.org/2011/http-methods.rdf                                                                                           "
+    },
+    {
+      "namespace_name": " http://www.w3.org/2001/XMLSchema#                                            ",
+      "namespace_distribution": " https://raw.githubusercontent.com/ruby-rdf/rdf/refs/heads/develop/etc/xsd.ttl                                                     "
+    },
+    {
+      "namespace_name": " http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl#               ",
+      "namespace_distribution": " http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl                                                                     "
+    },
+    {
+      "namespace_name": " http://www.daml.org/services/owl-s/1.2/Grounding.owl#                        ",
+      "namespace_distribution": " http://www.daml.org/services/owl-s/1.2/Grounding.owl                                                                              "
+    },
+    {
+      "namespace_name": " http://www.daml.org/services/owl-s/1.2/ProfileAdditionalParameters.owl#      ",
+      "namespace_distribution": " http://www.daml.org/services/owl-s/1.2/ProfileAdditionalParameters.owl                                                            "
+    },
+    {
+      "namespace_name": " http://www.daml.org/services/owl-s/1.2/Resource.owl#                         ",
+      "namespace_distribution": " http://www.daml.org/services/owl-s/1.2/Resource.owl                                                                               "
+    }
+  ]
+}

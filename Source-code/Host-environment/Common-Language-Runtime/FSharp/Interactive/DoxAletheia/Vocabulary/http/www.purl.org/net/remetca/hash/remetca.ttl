@@ -1,178 +1,168 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix dbpg: <http://dbpedia.org/page/>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix voaf: <http://purl.org/vocommons/voaf#>.
 @prefix remetca: <http://www.purl.org/net/remetca#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix ccrel: <http://creativecommons.org/ns#>.
-@prefix planet: <http://dbpedia.org/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
 
-dbpg:National_University_of_Distance_Education a foaf:Organization.
-<http://labs.mondeca.com/foaf/mondeca.rdf#elenagbg> a foaf:Person.
-dcterms:bibliographicCitation a owl:Class;
-                              rdfs:comment """Equivalent to TEI <listBibl>
+<http://dbpedia.org/page/National_University_of_Distance_Education> a <http://xmlns.com/foaf/0.1/Organization>.
+<http://labs.mondeca.com/foaf/mondeca.rdf#elenagbg> a <http://xmlns.com/foaf/0.1/Person>.
+<http://purl.org/dc/terms/bibliographicCitation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:comment """Equivalent to TEI <listBibl>
             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-listBibl.html""".
-<http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#E21> a owl:Class;
+<http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#E21> a <http://www.w3.org/2002/07/owl#Class>;
                                                          rdfs:comment """Author. Equivalent to TEI <author>
             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-author.html. Content of the VIAF
             authority file of Spanish National Library:
             http://catalogo.bne.es/uhtbin/authoritybrowse.cgi""".
-<http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#E50> a owl:Class;
+<http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#E50> a <http://www.w3.org/2002/07/owl#Class>;
                                                          rdfs:comment """Date. Equivalent to TEI <creation>
             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-creation.html""".
-<http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#E63> a owl:Class;
+<http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#E63> a <http://www.w3.org/2002/07/owl#Class>;
                                                          rdfs:comment """Data_post_quem: beginning of existence. TEI <origDate
             notBefore=\"1425\">
             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-origDate.html""";
                                                          rdfs:subClassOf <http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#E50>.
-<http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#E64> a owl:Class;
+<http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#E64> a <http://www.w3.org/2002/07/owl#Class>;
                                                          rdfs:comment """Data_ante_quem: end of existence. Equivalent to TEI <origDate
             notAfter=\"1450\">
             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-origDate.html""";
                                                          rdfs:subClassOf <http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#E50>.
-<http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#P92> a owl:DatatypeProperty;
+<http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#P92> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                                          rdfs:comment "has_date: was brought into existence";
                                                          rdfs:domain remetca:Poem,
                                                                      remetca:Complete_work,
                                                                      <http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#E21>;
                                                          rdfs:range xsd:integer.
-<http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#P94> a owl:ObjectProperty;
+<http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#P94> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                                          rdfs:comment "Composed by";
                                                          rdfs:domain remetca:Complete_work;
                                                          rdfs:range <http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#E21>;
-                                                         rdfs:subPropertyOf owl:topObjectProperty.
-<http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#has_name_of_poem> a owl:DatatypeProperty;
+                                                         rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+<http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#has_name_of_poem> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                                                       rdfs:comment """Equivalent to TEI attribute <lg subtype=\"\"> of lg type
             “poema”. Names of the possible values of the vocabulary gathered at the controlled
             vocabulary of http://vocabularios.caicyt.gov.ar/pmc/""";
                                                                       rdfs:domain remetca:Poem;
                                                                       rdfs:range xsd:string.
-<http://www.purl.org/net/remetca> ccrel:license <http://creativecommons.org/licenses/by/3.0/>;
-                                  vann:preferredNamespacePrefix "remetca";
-                                  vann:preferredNamespaceUri "http://www.purl.org/net/remetca#";
+<http://www.purl.org/net/remetca> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/3.0/>;
+                                  <http://purl.org/vocab/vann/preferredNamespacePrefix> "remetca";
+                                  <http://purl.org/vocab/vann/preferredNamespaceUri> "http://www.purl.org/net/remetca#";
                                   <http://www.purl.org/dc/termscreator> <http://labs.mondeca.com/foaf/mondeca.rdf#elenagbg>;
                                   <http://www.purl.org/dc/termsdescription> "Ontology for Poetry description"@en;
                                   <http://www.purl.org/dc/termsissued> "2014-10-12"^^xsd:date;
                                   <http://www.purl.org/dc/termsmodified> "2014-10-14"^^xsd:date;
-                                  <http://www.purl.org/dc/termspublisher> dbpg:National_University_of_Distance_Education;
+                                  <http://www.purl.org/dc/termspublisher> <http://dbpedia.org/page/National_University_of_Distance_Education>;
                                   <http://www.purl.org/dc/termsrights> "Copyright © 2014 REMETCA";
                                   <http://www.purl.org/dc/termstitle> "ReMetCa Ontology"@en;
-                                  a voaf:Vocabulary,
-                                    owl:Ontology;
+                                  a <http://purl.org/vocommons/voaf#Vocabulary>,
+                                    <http://www.w3.org/2002/07/owl#Ontology>;
                                   rdfs:comment "Version 1.1"@en;
-                                  owl:versionIRI <http://www.purl.org/net/remetca>;
-                                  owl:versionInfo 1.1.
-remetca:Accentual_versification a owl:Class;
+                                  <http://www.w3.org/2002/07/owl#versionIRI> <http://www.purl.org/net/remetca>;
+                                  <http://www.w3.org/2002/07/owl#versionInfo> 1.1.
+remetca:Accentual_versification a <http://www.w3.org/2002/07/owl#Class>;
                                 rdfs:subClassOf remetca:versification_System.
-remetca:Complete_work a owl:Class;
+remetca:Complete_work a <http://www.w3.org/2002/07/owl#Class>;
                       rdfs:comment "Complete literary work in which one or more poems are inserted".
-remetca:Edition a owl:Class;
+remetca:Edition a <http://www.w3.org/2002/07/owl#Class>;
                 rdfs:comment """Equivalent to TEI <edition>
             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-edition.html""".
-remetca:Line a owl:Class;
+remetca:Line a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment """Equivalent to TEI <l>
             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-l.html""".
-remetca:Manuscript a owl:Class;
+remetca:Manuscript a <http://www.w3.org/2002/07/owl#Class>;
                    rdfs:comment """Equivalent to TEI <idno>
             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-idno.html inside
             <msIdentifier>
             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-msIdentifier.html and inside
             <msDesc>""".
-remetca:Poem a owl:Class;
+remetca:Poem a <http://www.w3.org/2002/07/owl#Class>;
              rdfs:comment "Equivalent to TEI "@en.
-remetca:Stanza a owl:Class;
+remetca:Stanza a <http://www.w3.org/2002/07/owl#Class>;
                rdfs:comment """Equals to TEI <lg>
             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-lg.html""".
-remetca:Syllabic_versification a owl:Class;
+remetca:Syllabic_versification a <http://www.w3.org/2002/07/owl#Class>;
                                rdfs:subClassOf remetca:versification_System.
-remetca:Syllable a owl:Class;
+remetca:Syllable a <http://www.w3.org/2002/07/owl#Class>;
                  rdfs:comment """Equals to TEI <syll>
             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-syll.html or <MetSym>
             http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-metSym.html but no exact
             correspondence""".
-remetca:asonant a owl:DatatypeProperty;
+remetca:asonant a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                 rdfs:domain remetca:Stanza,
                             remetca:Poem;
                 rdfs:range xsd:boolean;
                 rdfs:subPropertyOf remetca:has_rhyme.
-remetca:consonant a owl:DatatypeProperty;
+remetca:consonant a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:domain remetca:Stanza,
                               remetca:Poem;
                   rdfs:range xsd:boolean;
                   rdfs:subPropertyOf remetca:has_rhyme.
-remetca:hasLines a owl:ObjectProperty;
+remetca:hasLines a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment "Related to TEI Attribute: "@en;
                  rdfs:domain remetca:Stanza,
                              remetca:Poem;
                  rdfs:range remetca:Line.
-remetca:hasPoems a owl:ObjectProperty;
+remetca:hasPoems a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:domain remetca:Complete_work;
                  rdfs:range remetca:Poem.
-remetca:hasStanzas a owl:ObjectProperty;
+remetca:hasStanzas a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:domain remetca:Stanza,
                                remetca:Poem.
-remetca:hasSyllables a owl:ObjectProperty;
+remetca:hasSyllables a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:domain remetca:Line;
                      rdfs:range remetca:Syllable.
-remetca:has_caesura a owl:DatatypeProperty;
+remetca:has_caesura a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:domain remetca:Line;
                     rdfs:range xsd:boolean.
-remetca:has_incipit a owl:DatatypeProperty;
+remetca:has_incipit a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:domain remetca:Complete_work;
                     rdfs:range rdfs:Literal.
-remetca:has_metrical_scheme a owl:DatatypeProperty;
+remetca:has_metrical_scheme a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                             rdfs:comment "TEI attribute met <lg met=””>";
                             rdfs:domain remetca:Stanza,
                                         remetca:Poem,
                                         remetca:Line;
                             rdfs:range rdfs:Literal.
-remetca:has_musical_notation a owl:DatatypeProperty;
+remetca:has_musical_notation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                              rdfs:domain remetca:Poem;
                              rdfs:range xsd:boolean.
-remetca:has_name_of_stanza a owl:DatatypeProperty;
+remetca:has_name_of_stanza a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                            rdfs:comment """Equivalent to TEI attribute <lg subtype=\"\"> de lg type
             “estrofa”/cabeza/estribillo\" and populated with the controlled vocabulary of
             http://vocabularios.caicyt.gov.ar/pmc/""";
                            rdfs:domain remetca:Stanza;
                            rdfs:range xsd:string.
-remetca:has_number_of_lines a owl:DatatypeProperty;
+remetca:has_number_of_lines a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                             rdfs:domain remetca:Stanza,
                                         remetca:Poem,
                                         remetca:Complete_work;
                             rdfs:range xsd:int.
-remetca:has_number_of_stanzas a owl:DatatypeProperty;
+remetca:has_number_of_stanzas a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                               rdfs:domain remetca:Stanza,
                                           remetca:Poem,
                                           remetca:Complete_work;
                               rdfs:range xsd:int.
-remetca:has_number_of_syllables a owl:DatatypeProperty;
+remetca:has_number_of_syllables a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                 rdfs:domain remetca:Line;
                                 rdfs:range xsd:int.
-remetca:has_rhyme a owl:DatatypeProperty;
+remetca:has_rhyme a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment """asonancia=\"asonante/consonante\" (not TEI, added by
             ReMetCa)""";
                   rdfs:domain remetca:Stanza,
                               remetca:Poem;
                   rdfs:range xsd:boolean.
-remetca:has_rhymeScheme a owl:DatatypeProperty;
+remetca:has_rhymeScheme a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                         rdfs:comment "Equivalent to TEI attribute <lg rhyme=””>";
                         rdfs:domain remetca:Poem;
                         rdfs:range xsd:string;
-                        rdfs:subPropertyOf owl:topDataProperty.
-remetca:has_text a owl:DatatypeProperty;
+                        rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+remetca:has_text a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:domain remetca:Line;
                  rdfs:range rdfs:Literal.
-remetca:has_title a owl:DatatypeProperty;
+remetca:has_title a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:domain remetca:Poem,
                               remetca:Complete_work;
                   rdfs:range rdfs:Literal.
-remetca:isAuthorof a owl:ObjectProperty;
+remetca:isAuthorof a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:domain <http://www.cidoc-crm.org/html/5.0.4/cidoc-crm.html#E21>;
                    rdfs:range remetca:Complete_work.
-remetca:versification_System a owl:Class.
+remetca:versification_System a <http://www.w3.org/2002/07/owl#Class>.

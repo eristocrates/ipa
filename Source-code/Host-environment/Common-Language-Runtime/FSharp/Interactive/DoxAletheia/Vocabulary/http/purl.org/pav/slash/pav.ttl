@@ -1,60 +1,52 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix orcid: <http://orcid.org/>.
 @prefix pav: <http://purl.org/pav/>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
-@prefix nsprov: <http://www.w3.org/ns/prov#>.
 
-orcid:0000-0001-6938-0820 a owl:NamedIndividual,
-                            foaf:Person;
-                          rdfs:label "Khalid Belhajjame";
-                          foaf:name "Khalid Belhajjame".
-orcid:0000-0001-9842-9718 a owl:NamedIndividual,
-                            nsprov:Person,
-                            foaf:Person;
-                          rdfs:label "Stian Soiland-Reyes";
-                          owl:sameAs <http://soiland-reyes.com/stian/#me>;
-                          foaf:name "Stian Soiland-Reyes".
-orcid:0000-0002-0643-3144 a owl:NamedIndividual,
-                            foaf:Person;
-                          rdfs:label "Simon Jupp";
-                          foaf:name "Simon Jupp".
-orcid:0000-0002-5156-2703 a owl:NamedIndividual,
-                            nsprov:Person,
-                            foaf:Person;
-                          rdfs:label "Paolo Ciccarese";
-                          owl:sameAs <http://www.hcklab.org/foaf.rdf#me>;
-                          foaf:name "Paolo Ciccarese".
-orcid:0000-0002-5711-4872 a owl:NamedIndividual,
-                            foaf:Person;
-                          rdfs:label "Alasdair J G Gray";
-                          foaf:name "Alasdair J G Gray".
-dcterms:contributor a owl:AnnotationProperty,
-                      owl:ObjectProperty;
-                    rdfs:isDefinedBy dcterms:;
-                    rdfs:label "dcterms:contributor"@en.
-dcterms:creator a owl:AnnotationProperty,
-                  owl:ObjectProperty;
-                rdfs:isDefinedBy dcterms:;
-                rdfs:label "dcterms:creator"@en;
-                rdfs:subPropertyOf dcterms:contributor.
-dcterms:hasVersion a owl:ObjectProperty;
-                   rdfs:isDefinedBy dcterms:;
-                   rdfs:label "dcterms:hasVersion"@en.
-pav: dc11:contributor "Marco Ocana",
-                      "Alasdair J G Gray",
-                      "Khalid Belhajjame",
-                      "Simon Jupp";
-     dc11:creator "Paolo Ciccarese",
-                  "Stian Soiland-Reyes";
-     dc11:description <http://pav-ontology.googlecode.com/svn/branches/2.3/images/pav-overview.svg>,
-                      """PAV supplies terms for distinguishing between the different roles of the agents contributing content in current web based systems: contributors, authors, curators and digital artifact creators. The ontology also provides terms for tracking provenance of digital entities that are published on the web and then accessed, transformed and consumed. In order to support broader interoperability, PAV specializes the general purpose W3C PROV provenance model (PROV-O).
+<http://orcid.org/0000-0001-6938-0820> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                         <http://xmlns.com/foaf/0.1/Person>;
+                                       rdfs:label "Khalid Belhajjame";
+                                       <http://xmlns.com/foaf/0.1/name> "Khalid Belhajjame".
+<http://orcid.org/0000-0001-9842-9718> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                         <http://www.w3.org/ns/prov#Person>,
+                                         <http://xmlns.com/foaf/0.1/Person>;
+                                       rdfs:label "Stian Soiland-Reyes";
+                                       <http://www.w3.org/2002/07/owl#sameAs> <http://soiland-reyes.com/stian/#me>;
+                                       <http://xmlns.com/foaf/0.1/name> "Stian Soiland-Reyes".
+<http://orcid.org/0000-0002-0643-3144> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                         <http://xmlns.com/foaf/0.1/Person>;
+                                       rdfs:label "Simon Jupp";
+                                       <http://xmlns.com/foaf/0.1/name> "Simon Jupp".
+<http://orcid.org/0000-0002-5156-2703> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                         <http://www.w3.org/ns/prov#Person>,
+                                         <http://xmlns.com/foaf/0.1/Person>;
+                                       rdfs:label "Paolo Ciccarese";
+                                       <http://www.w3.org/2002/07/owl#sameAs> <http://www.hcklab.org/foaf.rdf#me>;
+                                       <http://xmlns.com/foaf/0.1/name> "Paolo Ciccarese".
+<http://orcid.org/0000-0002-5711-4872> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                         <http://xmlns.com/foaf/0.1/Person>;
+                                       rdfs:label "Alasdair J G Gray";
+                                       <http://xmlns.com/foaf/0.1/name> "Alasdair J G Gray".
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>,
+                                         <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:isDefinedBy <http://purl.org/dc/terms/>;
+                                       rdfs:label "dcterms:contributor"@en.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>,
+                                     <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:isDefinedBy <http://purl.org/dc/terms/>;
+                                   rdfs:label "dcterms:creator"@en;
+                                   rdfs:subPropertyOf <http://purl.org/dc/terms/contributor>.
+<http://purl.org/dc/terms/hasVersion> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:isDefinedBy <http://purl.org/dc/terms/>;
+                                      rdfs:label "dcterms:hasVersion"@en.
+pav: <http://purl.org/dc/elements/1.1/contributor> "Marco Ocana",
+                                                   "Alasdair J G Gray",
+                                                   "Khalid Belhajjame",
+                                                   "Simon Jupp";
+     <http://purl.org/dc/elements/1.1/creator> "Paolo Ciccarese",
+                                               "Stian Soiland-Reyes";
+     <http://purl.org/dc/elements/1.1/description> <http://pav-ontology.googlecode.com/svn/branches/2.3/images/pav-overview.svg>,
+                                                   """PAV supplies terms for distinguishing between the different roles of the agents contributing content in current web based systems: contributors, authors, curators and digital artifact creators. The ontology also provides terms for tracking provenance of digital entities that are published on the web and then accessed, transformed and consumed. In order to support broader interoperability, PAV specializes the general purpose W3C PROV provenance model (PROV-O).
 
 PAV distinguishes between the data related to the digital artifact - named Provenance - and those related to the actual knowledge creation and therefore to the intellectual property aspects – named Authoring. The Versioning axis describes the evolution of digital entities in time.
 
@@ -86,20 +78,20 @@ Licensed under the Apache License, Version 2.0 (the \"License\"); you may not us
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.
 """@en;
-     dcterms:contributor <http://www.paolociccarese.info/foaf.rdf#marco-ocana>,
-                         orcid:0000-0002-0643-3144,
-                         orcid:0000-0002-5711-4872,
-                         orcid:0000-0001-6938-0820;
-     dcterms:creator orcid:0000-0001-9842-9718,
-                     orcid:0000-0002-5156-2703;
-     dcterms:format "application/rdf+xml";
-     dcterms:issued "2014-08-28T15:00:00Z"^^xsd:dateTime;
-     dcterms:language "en"^^xsd:language;
-     dcterms:license <http://www.apache.org/licenses/LICENSE-2.0>;
-     dcterms:modified "2014-08-28T14:41:00Z"^^xsd:dateTime;
-     dcterms:publisher <http://www.mindinformatics.org/>;
-     dcterms:title "PAV - Provenance, Authoring and Versioning"@en;
-     a owl:Ontology;
+     <http://purl.org/dc/terms/contributor> <http://www.paolociccarese.info/foaf.rdf#marco-ocana>,
+                                            <http://orcid.org/0000-0002-0643-3144>,
+                                            <http://orcid.org/0000-0002-5711-4872>,
+                                            <http://orcid.org/0000-0001-6938-0820>;
+     <http://purl.org/dc/terms/creator> <http://orcid.org/0000-0001-9842-9718>,
+                                        <http://orcid.org/0000-0002-5156-2703>;
+     <http://purl.org/dc/terms/format> "application/rdf+xml";
+     <http://purl.org/dc/terms/issued> "2014-08-28T15:00:00Z"^^xsd:dateTime;
+     <http://purl.org/dc/terms/language> "en"^^xsd:language;
+     <http://purl.org/dc/terms/license> <http://www.apache.org/licenses/LICENSE-2.0>;
+     <http://purl.org/dc/terms/modified> "2014-08-28T14:41:00Z"^^xsd:dateTime;
+     <http://purl.org/dc/terms/publisher> <http://www.mindinformatics.org/>;
+     <http://purl.org/dc/terms/title> "PAV - Provenance, Authoring and Versioning"@en;
+     a <http://www.w3.org/2002/07/owl#Ontology>;
      rdfs:comment """PAV is a lightweight ontology for tracking Provenance, Authoring and Versioning. PAV specializes the W3C provenance ontology PROV-O in order to describe authorship, curation and digital creation of online resources.
 
           This ontology describes the defined PAV properties and their usage. Note that PAV does not define any explicit classes or domain/ranges, as every property is meant to be used directly on the described online resource.
@@ -108,25 +100,25 @@ Unless required by applicable law or agreed to in writing, software distributed 
         """@en;
      rdfs:label "Provenance, Authoring and Versioning (PAV)"@en;
      rdfs:seeAlso pav:doc,
-                  nsprov:,
+                  <http://www.w3.org/ns/prov#>,
                   <http://code.google.com/p/pav-ontology/>,
                   <https://code.google.com/p/pav-ontology/wiki/Versions>,
                   <http://pav-ontology.googlecode.com/svn/trunk/1.2/pav.owl>;
-     owl:backwardCompatibleWith pav:2.1,
-                                <http://purl.org/pav/authoring/2.0/>,
-                                <http://purl.org/pav/2.0/>,
-                                <http://purl.org/pav/versioning/2.0/>,
-                                <http://purl.org/pav/provenance/2.0/>,
-                                pav:2.2;
-     owl:incompatibleWith <http://swan.mindinformatics.org/ontologies/1.2/pav.owl>;
-     owl:priorVersion pav:2.2;
-     owl:versionIRI pav:2.3;
-     owl:versionInfo "2.3.1";
-     nsprov:has_provenance pav:provenance.ttl;
-     foaf:homepage pav:home;
-     foaf:isPrimaryTopicOf <http://dx.doi.org/10.1186/2041-1480-4-37>,
-                           <http://arxiv.org/abs/1304.7224>.
-pav:authoredBy a owl:ObjectProperty;
+     <http://www.w3.org/2002/07/owl#backwardCompatibleWith> pav:2.1,
+                                                            <http://purl.org/pav/authoring/2.0/>,
+                                                            <http://purl.org/pav/2.0/>,
+                                                            <http://purl.org/pav/versioning/2.0/>,
+                                                            <http://purl.org/pav/provenance/2.0/>,
+                                                            pav:2.2;
+     <http://www.w3.org/2002/07/owl#incompatibleWith> <http://swan.mindinformatics.org/ontologies/1.2/pav.owl>;
+     <http://www.w3.org/2002/07/owl#priorVersion> pav:2.2;
+     <http://www.w3.org/2002/07/owl#versionIRI> pav:2.3;
+     <http://www.w3.org/2002/07/owl#versionInfo> "2.3.1";
+     <http://www.w3.org/ns/prov#has_provenance> pav:provenance.ttl;
+     <http://xmlns.com/foaf/0.1/homepage> pav:home;
+     <http://xmlns.com/foaf/0.1/isPrimaryTopicOf> <http://dx.doi.org/10.1186/2041-1480-4-37>,
+                                                  <http://arxiv.org/abs/1304.7224>.
+pav:authoredBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment """An agent that originated or gave existence to the work that is expressed by the digital resource.
 
 The author of the content of a resource may be different from the creator of the resource representation (although they are often the same). See pav:createdBy for a discussion.
@@ -140,10 +132,10 @@ The date of authoring can be expressed using pav:authoredOn - note however in th
                rdfs:label "Authored by"@en;
                rdfs:seeAlso pav:authoredOn,
                             pav:createdBy;
-               rdfs:subPropertyOf dcterms:creator,
+               rdfs:subPropertyOf <http://purl.org/dc/terms/creator>,
                                   pav:contributedBy;
-               owl:equivalentProperty <http://swan.mindinformatics.org/ontologies/1.2/pav/authoredBy>.
-pav:authoredOn a owl:DatatypeProperty;
+               <http://www.w3.org/2002/07/owl#equivalentProperty> <http://swan.mindinformatics.org/ontologies/1.2/pav/authoredBy>.
+pav:authoredOn a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment """The date this resource was authored.
 
 pav:authoredBy gives the authoring agent.
@@ -159,7 +151,7 @@ The value is of type xsd:dateTime, for instance \"2013-03-26T14:49:00+01:00\"^^x
                             pav:createdBy,
                             pav:createdOn;
                rdfs:subPropertyOf pav:contributedOn.
-pav:contributedBy a owl:ObjectProperty;
+pav:contributedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment """The resource was contributed to by the given agent.
 
 Specifies an agent that provided any sort of help in conceiving the work that is expressed by the digital artifact.
@@ -176,10 +168,10 @@ The date of contribution can be expressed using pav:contributedOn - note however
                   rdfs:label "Contributed by"@en;
                   rdfs:seeAlso pav:contributedOn,
                                pav:createdBy;
-                  rdfs:subPropertyOf dcterms:contributor,
-                                     nsprov:wasAttributedTo;
-                  owl:equivalentProperty <http://swan.mindinformatics.org/ontologies/1.2/pav/contributedBy>.
-pav:contributedOn a owl:DatatypeProperty;
+                  rdfs:subPropertyOf <http://purl.org/dc/terms/contributor>,
+                                     <http://www.w3.org/ns/prov#wasAttributedTo>;
+                  <http://www.w3.org/2002/07/owl#equivalentProperty> <http://swan.mindinformatics.org/ontologies/1.2/pav/contributedBy>.
+pav:contributedOn a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment """The date this resource was contributed to.
 
 pav:contributedBy provides the agent(s) that contributed.
@@ -189,12 +181,12 @@ The value is of type xsd:dateTime, for instance \"2013-03-26T14:49:00+01:00\"^^x
                   rdfs:label "Contributed on"@en;
                   rdfs:range xsd:dateTime;
                   rdfs:seeAlso pav:contributedBy.
-pav:createdAt a owl:ObjectProperty;
+pav:createdAt a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment "The geo-location of the agents when creating the resource (pav:createdBy). For instance  a photographer takes a picture of the Eiffel Tower while standing in front of it."@en;
               rdfs:isDefinedBy pav:;
               rdfs:label "Created at"@en;
               rdfs:seeAlso pav:createdBy.
-pav:createdBy a owl:ObjectProperty;
+pav:createdBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment """An agent primary responsible for making the digital artifact or resource representation.
 
 This property is distinct from forming the content, which is indicated with pav:contributedBy or its subproperties; pav:authoredBy, which identifies who authored the knowledge expressed by this resource; and pav:curatedBy, which identifies who curated the knowledge into its current form.
@@ -216,10 +208,10 @@ The location the agent was at when creating the digital resource can be made usi
                            pav:curatedBy,
                            pav:createdOn,
                            pav:authoredBy;
-              rdfs:subPropertyOf dcterms:creator,
-                                 nsprov:wasAttributedTo;
-              owl:equivalentProperty <http://swan.mindinformatics.org/ontologies/1.2/pav/createdBy>.
-pav:createdOn a owl:DatatypeProperty;
+              rdfs:subPropertyOf <http://purl.org/dc/terms/creator>,
+                                 <http://www.w3.org/ns/prov#wasAttributedTo>;
+              <http://www.w3.org/2002/07/owl#equivalentProperty> <http://swan.mindinformatics.org/ontologies/1.2/pav/createdBy>.
+pav:createdOn a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:comment """The date of creation of the resource representation.
 
 The agents responsible can be indicated with pav:createdBy.
@@ -231,15 +223,15 @@ The value is of type xsd:dateTime, for instance \"2013-03-26T14:49:00+01:00\"^^x
               rdfs:label "Created on"@en;
               rdfs:range xsd:dateTime;
               rdfs:seeAlso pav:createdBy;
-              owl:equivalentProperty <http://swan.mindinformatics.org/ontologies/1.2/pav/createdOn>.
-pav:createdWith a owl:ObjectProperty;
+              <http://www.w3.org/2002/07/owl#equivalentProperty> <http://swan.mindinformatics.org/ontologies/1.2/pav/createdOn>.
+pav:createdWith a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment """The software/tool used by the creator (pav:createdBy) when making the digital resource, for instance a word processor or an annotation tool. A more independent software agent that creates the resource without direct interaction by a human creator should instead should instead by indicated using pav:createdBy.
 """@en;
                 rdfs:isDefinedBy pav:;
                 rdfs:label "Created with"@en;
                 rdfs:seeAlso pav:createdBy;
-                rdfs:subPropertyOf nsprov:wasAttributedTo.
-pav:curatedBy a owl:ObjectProperty;
+                rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasAttributedTo>.
+pav:curatedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
               rdfs:comment """Specifies an agent specialist responsible for shaping the expression in an appropriate format. Often the primary agent responsible for ensuring the quality of the representation.
 
 The curator may be different from the author (pav:authoredBy) and creator of the digital resource (pav:createdBy).
@@ -252,8 +244,8 @@ The date of curating can be expressed using pav:curatedOn - note however in the 
               rdfs:seeAlso pav:createdBy,
                            pav:curatedOn;
               rdfs:subPropertyOf pav:contributedBy;
-              owl:equivalentProperty <http://swan.mindinformatics.org/ontologies/1.2/pav/curatedBy>.
-pav:curatedOn a owl:DatatypeProperty;
+              <http://www.w3.org/2002/07/owl#equivalentProperty> <http://swan.mindinformatics.org/ontologies/1.2/pav/curatedBy>.
+pav:curatedOn a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
               rdfs:comment """The date this resource was curated.
 
 pav:curatedBy gives the agent(s) that performed the curation.
@@ -265,13 +257,13 @@ The value is of type xsd:dateTime, for instance \"2013-03-26T14:49:00+01:00\"^^x
               rdfs:label "Curated on"@en;
               rdfs:seeAlso pav:curatedBy;
               rdfs:subPropertyOf pav:contributedOn.
-pav:curates a owl:ObjectProperty;
+pav:curates a <http://www.w3.org/2002/07/owl#ObjectProperty>;
             rdfs:comment "Provided for backwards compatibility. Use instead the inverse pav:curatedBy."@en;
             rdfs:isDefinedBy pav:;
             rdfs:label "Curates"@en;
-            owl:deprecated true;
-            owl:inverseOf pav:curatedBy.
-pav:derivedFrom a owl:ObjectProperty;
+            <http://www.w3.org/2002/07/owl#deprecated> true;
+            <http://www.w3.org/2002/07/owl#inverseOf> pav:curatedBy.
+pav:derivedFrom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment """Derived from a different resource.
 
 Derivation conserns itself with derived knowledge. If this resource has the same content as the other resource, but has simply been transcribed to fit a different model (like XML -> RDF or SQL -> CVS), use pav:importedFrom. If a resource was simply retrieved, use pav:retrievedFrom. If the content has however been further refined or modified, pav:derivedFrom should be used.
@@ -282,8 +274,8 @@ Details about who performed the derivation (e.g. who did the refining or modific
                 rdfs:label "Derived from"@en;
                 rdfs:seeAlso pav:importedFrom,
                              pav:previousVersion;
-                rdfs:subPropertyOf nsprov:wasDerivedFrom.
-pav:hasCurrentVersion a owl:ObjectProperty;
+                rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasDerivedFrom>.
+pav:hasCurrentVersion a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment """This resource has a more specific, versioned resource with equivalent content.
 
 This property is intended for relating a non-versioned or abstract resource to a single snapshot that can be used as a permalink to indicate the current version of the content.
@@ -307,9 +299,9 @@ This property is normally used in a functional way, although PAV does not formal
                       rdfs:isDefinedBy pav:;
                       rdfs:label "Has current version"@en;
                       rdfs:subPropertyOf pav:hasVersion.
-pav:hasEarlierVersion a owl:ObjectProperty,
-                        owl:AsymmetricProperty,
-                        owl:TransitiveProperty;
+pav:hasEarlierVersion a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                        <http://www.w3.org/2002/07/owl#AsymmetricProperty>,
+                        <http://www.w3.org/2002/07/owl#TransitiveProperty>;
                       rdfs:comment """This versioned resource has an earlier version.
 
 Any earlier version of this resource can be indicated with pav:hasEarlierVersion, e.g.:
@@ -329,8 +321,8 @@ This property is transitive, so it should not be necessary to repeat the earlier
 To indicate that this version is a snapshot of a more general, non-versioned resource, e.g. \"Weather Today\" vs. \"Weather Today on 2013-12-07\", see pav:hasVersion.""";
                       rdfs:isDefinedBy pav:;
                       rdfs:label "Has earlier version"@en;
-                      rdfs:subPropertyOf nsprov:alternateOf.
-pav:hasVersion a owl:ObjectProperty;
+                      rdfs:subPropertyOf <http://www.w3.org/ns/prov#alternateOf>.
+pav:hasVersion a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment """This resource has a more specific, versioned resource.
 
 This property is intended for relating a non-versioned or abstract resource to several versioned resources, e.g. snapshots. For instance, if there are two snapshots of the News page, made on 23rd and 24th of December, then:
@@ -356,9 +348,9 @@ To indicate the existence of other, non-hierarchical kind of editions and adapta
                rdfs:label "Has version"@en;
                rdfs:seeAlso pav:hasCurrentVersion,
                             pav:previousVersion;
-               rdfs:subPropertyOf dcterms:hasVersion,
-                                  nsprov:generalizationOf.
-pav:importedBy a owl:ObjectProperty;
+               rdfs:subPropertyOf <http://purl.org/dc/terms/hasVersion>,
+                                  <http://www.w3.org/ns/prov#generalizationOf>.
+pav:importedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment """An entity responsible for importing the data.
 
 The importer is usually a software entity which has done the transcription from the original source.
@@ -371,9 +363,9 @@ See pav:importedFrom for a discussion of import vs. retrieve vs. derived."""@en;
                rdfs:isDefinedBy pav:;
                rdfs:label "Imported by"@en;
                rdfs:seeAlso pav:importedFrom;
-               rdfs:subPropertyOf nsprov:wasAttributedTo;
-               owl:equivalentProperty <http://swan.mindinformatics.org/ontologies/1.2/pav/importedBy>.
-pav:importedFrom a owl:ObjectProperty;
+               rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasAttributedTo>;
+               <http://www.w3.org/2002/07/owl#equivalentProperty> <http://swan.mindinformatics.org/ontologies/1.2/pav/importedBy>.
+pav:importedFrom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                  rdfs:comment """The original source of imported information.
 
 Import means that the content has been preserved, but transcribed somehow, for instance to fit a different representation model by converting formats. Examples of import are when the original was JSON and the current resource is RDF, or where the original was an document scan, and this resource is the plain text found through OCR.
@@ -391,9 +383,9 @@ To indicate which agent(s) performed the import, use pav:importedBy. Use pav:imp
                               pav:importedBy,
                               pav:derivedFrom,
                               pav:retrievedFrom;
-                 rdfs:subPropertyOf nsprov:wasDerivedFrom;
-                 owl:equivalentProperty <http://swan.mindinformatics.org/ontologies/1.2/pav/importedFromSource>.
-pav:importedOn a owl:DatatypeProperty;
+                 rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasDerivedFrom>;
+                 <http://www.w3.org/2002/07/owl#equivalentProperty> <http://swan.mindinformatics.org/ontologies/1.2/pav/importedFromSource>.
+pav:importedOn a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                rdfs:comment """The date this resource was imported from a source (pav:importedFrom).
 
 Note that pav:importedOn may overlap with pav:createdOn, but in cases where they differ, the import time indicates the time of the retrieval and transcription of the original source, while the creation time indicates when the final resource was made, for instance after user approval.
@@ -410,8 +402,8 @@ The value is of type xsd:dateTime, for instance \"2013-03-26T14:49:00+01:00\"^^x
                rdfs:range xsd:dateTime;
                rdfs:seeAlso pav:importedBy,
                             pav:importedFrom;
-               owl:equivalentProperty <http://swan.mindinformatics.org/ontologies/1.2/pav/importedOn>.
-pav:lastRefreshedOn a owl:DatatypeProperty;
+               <http://www.w3.org/2002/07/owl#equivalentProperty> <http://swan.mindinformatics.org/ontologies/1.2/pav/importedOn>.
+pav:lastRefreshedOn a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment """The date of the last re-import of the resource. This property is used in addition to pav:importedOn if this version has been updated due to a re-import. If the re-import created a new resource rather than refreshing an existing resource, then instead use pav:importedOn together with pav:previousVersion.
 
 This property is normally used in a functional way, although PAV does not formally restrict this.
@@ -424,8 +416,8 @@ The value is of type xsd:dateTime, for instance \"2013-03-26T14:49:00+01:00\"^^x
                                  pav:importedOn,
                                  pav:importedBy,
                                  pav:importedFrom;
-                    owl:equivalentProperty <http://swan.mindinformatics.org/ontologies/1.2/pav/importedLastOn>.
-pav:lastUpdateOn a owl:DatatypeProperty;
+                    <http://www.w3.org/2002/07/owl#equivalentProperty> <http://swan.mindinformatics.org/ontologies/1.2/pav/importedLastOn>.
+pav:lastUpdateOn a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:comment """The date of the last update of the resource. An update is a change which did not warrant making a new resource related using pav:previousVersion, for instance correcting a spelling mistake.
 
 This property is normally used in a functional way, although PAV does not formally restrict this.
@@ -436,8 +428,8 @@ The value is of type xsd:dateTime, for instance \"2013-03-26T14:49:00+01:00\"^^x
                  rdfs:range xsd:dateTime;
                  rdfs:seeAlso pav:createdOn,
                               pav:previousVersion;
-                 owl:equivalentProperty <http://swan.mindinformatics.org/ontologies/1.2/pav/lastUpdateOn>.
-pav:previousVersion a owl:ObjectProperty;
+                 <http://www.w3.org/2002/07/owl#equivalentProperty> <http://swan.mindinformatics.org/ontologies/1.2/pav/lastUpdateOn>.
+pav:previousVersion a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:comment """The previous version of a resource in a lineage. For instance a news article updated to correct factual information would point to the previous version of the article with pav:previousVersion. If however the content has significantly changed so that the two resources no longer share lineage (say a new article that talks about the same facts), they can instead be related using pav:derivedFrom.
 
 This property is normally used in a functional way, although PAV does not formally restrict this. Earlier versions which are not direct ancestors of this resource may instead be provided using the superproperty pav:hasEarlierVersion.
@@ -453,16 +445,16 @@ Note that it might be confusing to indicate pav:previousVersion from a resource 
                                  pav:version,
                                  pav:hasVersion;
                     rdfs:subPropertyOf pav:hasEarlierVersion,
-                                       nsprov:wasRevisionOf;
-                    owl:equivalentProperty <http://swan.mindinformatics.org/ontologies/1.2/pav/previousVersion>.
-pav:providedBy a owl:ObjectProperty;
+                                       <http://www.w3.org/ns/prov#wasRevisionOf>;
+                    <http://www.w3.org/2002/07/owl#equivalentProperty> <http://swan.mindinformatics.org/ontologies/1.2/pav/previousVersion>.
+pav:providedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                rdfs:comment """The original provider of the encoded information (e.g. PubMed, UniProt, Science Commons).
 
 The provider might not coincide with the dct:publisher, which would describe the current publisher of the resource. For instance if the resource was retrieved, imported or derived from a source, that source was published by the original provider. pav:providedBy provides a shortcut to indicate that original provider on the new resource.  """@en;
                rdfs:isDefinedBy pav:;
                rdfs:label "Provided by"@en;
-               rdfs:seeAlso dcterms:publisher.
-pav:retrievedBy a owl:ObjectProperty;
+               rdfs:seeAlso <http://purl.org/dc/terms/publisher>.
+pav:retrievedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment """An entity responsible for retrieving the data from an external source.
 
 The retrieving agent is usually a software entity, which has done the retrieval from the original source without performing any transcription.
@@ -473,8 +465,8 @@ See pav:importedFrom for a discussion of import vs. retrieve vs. derived."""@en;
                 rdfs:isDefinedBy pav:;
                 rdfs:label "Retrieved by"@en;
                 rdfs:seeAlso pav:importedFrom;
-                rdfs:subPropertyOf nsprov:wasAttributedTo.
-pav:retrievedFrom a owl:ObjectProperty;
+                rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasAttributedTo>.
+pav:retrievedFrom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment """The URI where a resource has been retrieved from.
 
 The retrieving agent is usually a software entity, which has done the retrieval from the original source without performing any transcription.
@@ -486,8 +478,8 @@ The time of the retrieval should be indicated using pav:retrievedOn. The agent m
                   rdfs:label "Retrieved from"@en;
                   rdfs:seeAlso pav:retrievedBy,
                                pav:retrievedOn;
-                  rdfs:subPropertyOf nsprov:wasDerivedFrom.
-pav:retrievedOn a owl:DatatypeProperty;
+                  rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasDerivedFrom>.
+pav:retrievedOn a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                 rdfs:comment """The date the source for this resource was retrieved.
 
 The source that was retrieved should be indicated with pav:retrievedFrom. The agent that performed the retrieval may be specified with pav:retrievedBy.
@@ -500,7 +492,7 @@ The value is of type xsd:dateTime, for instance \"2013-03-26T14:49:00+01:00\"^^x
                 rdfs:range xsd:dateTime;
                 rdfs:seeAlso pav:retrievedBy,
                              pav:retrievedFrom.
-pav:sourceAccessedAt a owl:ObjectProperty;
+pav:sourceAccessedAt a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment """The resource is related to a given source which was accessed or consulted (but not retrieved, imported or derived from). This access can be detailed with pav:sourceAccessedBy and pav:sourceAccessedOn.
 
 For instance, a curator (pav:curatedBy) might have consulted figures in a published paper to confirm that a dataset was correctly pav:importedFrom the paper's supplementary CSV file.
@@ -513,8 +505,8 @@ Another example: I can access the page for tomorrow weather in Boston (http://ww
                                   pav:retrievedFrom,
                                   pav:importedFrom,
                                   pav:sourceAccessedOn;
-                     rdfs:subPropertyOf nsprov:wasInfluencedBy.
-pav:sourceAccessedBy a owl:ObjectProperty;
+                     rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy>.
+pav:sourceAccessedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment """The resource is related to a source which was accessed or consulted
 by the given agent. The source(s) should be specified using pav:sourceAccessedAt, and the time with pav:sourceAccessedOn.
 
@@ -522,7 +514,7 @@ For instance, the given agent could be a curator (also pav:curatedBy) which cons
                      rdfs:isDefinedBy pav:;
                      rdfs:label "Source accessed by"@en;
                      rdfs:seeAlso pav:sourceAccessedAt.
-pav:sourceAccessedOn a owl:DatatypeProperty;
+pav:sourceAccessedOn a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                      rdfs:comment """The resource is related to a source which was originally accessed or consulted on the given date as part of creating or authoring the resource. The source(s) should be specified using pav:sourceAccessedAt.
 
 For instance, if the source accessed described the weather forecast for the next day, the time of source access can be crucial information.
@@ -539,9 +531,9 @@ The value is of type xsd:dateTime, for instance \"2013-03-26T14:49:00+01:00\"^^x
                                   pav:sourceAccessedBy,
                                   pav:sourceLastAccessedOn,
                                   pav:sourceAccessedAt;
-                     owl:equivalentProperty <http://swan.mindinformatics.org/ontologies/1.2/pav/sourceAccessedOn>,
-                                            <http://swan.mindinformatics.org/ontologies/1.2/pav/sourceFirstAccessedOn>.
-pav:sourceLastAccessedOn a owl:DatatypeProperty;
+                     <http://www.w3.org/2002/07/owl#equivalentProperty> <http://swan.mindinformatics.org/ontologies/1.2/pav/sourceAccessedOn>,
+                                                                        <http://swan.mindinformatics.org/ontologies/1.2/pav/sourceFirstAccessedOn>.
+pav:sourceLastAccessedOn a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                          rdfs:comment """The resource is related to a source which was last accessed or consulted on the given date. The source(s) should be specified using pav:sourceAccessedAt. Usage of this property indicates that the source has been checked previously, which the initial time should be indicated with pav:sourceAccessedOn.
 
 This property can be useful together with pav:lastRefreshedOn or pav:lastUpdateOn in order to indicate a re-import or update, but could also be used alone, for instance when a source was simply verified and no further action was taken for the resource.
@@ -555,8 +547,8 @@ The value is of type xsd:dateTime, for instance \"2013-03-26T14:49:00+01:00\"^^x
                          rdfs:seeAlso pav:createdAt,
                                       pav:sourceAccessedAt,
                                       pav:sourceAccessedBy;
-                         owl:equivalentProperty <http://swan.mindinformatics.org/ontologies/1.2/pav/sourceLastAccessedOn>.
-pav:version a owl:DatatypeProperty;
+                         <http://www.w3.org/2002/07/owl#equivalentProperty> <http://swan.mindinformatics.org/ontologies/1.2/pav/sourceLastAccessedOn>.
+pav:version a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
             rdfs:comment """The version number of a resource. This is a freetext string, typical values are \"1.5\" or \"21\". The URI identifying the previous version can be provided using prov:previousVersion.
 
 This property is normally used in a functional way, although PAV does not formally restrict this.""";
@@ -564,41 +556,41 @@ This property is normally used in a functional way, although PAV does not formal
             rdfs:label "Version"@en;
             rdfs:range xsd:string;
             rdfs:seeAlso pav:previousVersion;
-            owl:equivalentProperty <http://swan.mindinformatics.org/ontologies/1.2/pav/versionNumber>.
-<http://www.paolociccarese.info/foaf.rdf#marco-ocana> a owl:NamedIndividual,
-                                                        nsprov:Person,
-                                                        foaf:Person;
+            <http://www.w3.org/2002/07/owl#equivalentProperty> <http://swan.mindinformatics.org/ontologies/1.2/pav/versionNumber>.
+<http://www.paolociccarese.info/foaf.rdf#marco-ocana> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                        <http://www.w3.org/ns/prov#Person>,
+                                                        <http://xmlns.com/foaf/0.1/Person>;
                                                       rdfs:label "Marco Ocana";
-                                                      foaf:name "Marco Ocana".
-nsprov:alternateOf a owl:ObjectProperty,
-                     owl:SymmetricProperty;
-                   rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
-                   rdfs:label "prov:alternateOf"@en.
-nsprov:generalizationOf a owl:ObjectProperty;
-                        rdfs:isDefinedBy <http://www.w3.org/ns/prov-o-inverses#>;
-                        rdfs:label "prov:generalizationOf"@en;
-                        owl:inverseOf nsprov:specializationOf.
-nsprov:specializationOf a owl:ObjectProperty;
-                        rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
-                        rdfs:label "prov:specializationOf"@en.
-nsprov:wasAttributedTo a owl:ObjectProperty;
-                       rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
-                       rdfs:label "prov:wasAttributedTo"@en;
-                       rdfs:subPropertyOf nsprov:wasInfluencedBy.
-nsprov:wasDerivedFrom a owl:ObjectProperty;
-                      rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
-                      rdfs:label "prov:wasDerivedFrom"@en;
-                      rdfs:subPropertyOf nsprov:wasInfluencedBy.
-nsprov:wasInfluencedBy a owl:ObjectProperty;
-                       rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
-                       rdfs:label "prov:wasInfluencedBy"@en.
-nsprov:wasRevisionOf a owl:ObjectProperty;
-                     rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
-                     rdfs:label "prov:wasRevisionOf"@en;
-                     rdfs:subPropertyOf nsprov:wasDerivedFrom.
-foaf:isPrimaryTopicOf a owl:AnnotationProperty;
-                      rdfs:isDefinedBy foaf:;
-                      rdfs:label "foaf:isPrimaryTopicOf"@en.
-foaf:name a owl:AnnotationProperty;
-          rdfs:isDefinedBy foaf:;
-          rdfs:label "foaf:name"@en.
+                                                      <http://xmlns.com/foaf/0.1/name> "Marco Ocana".
+<http://www.w3.org/ns/prov#alternateOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                          <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                                        rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                        rdfs:label "prov:alternateOf"@en.
+<http://www.w3.org/ns/prov#generalizationOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                             rdfs:isDefinedBy <http://www.w3.org/ns/prov-o-inverses#>;
+                                             rdfs:label "prov:generalizationOf"@en;
+                                             <http://www.w3.org/2002/07/owl#inverseOf> <http://www.w3.org/ns/prov#specializationOf>.
+<http://www.w3.org/ns/prov#specializationOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                             rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                             rdfs:label "prov:specializationOf"@en.
+<http://www.w3.org/ns/prov#wasAttributedTo> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                            rdfs:label "prov:wasAttributedTo"@en;
+                                            rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy>.
+<http://www.w3.org/ns/prov#wasDerivedFrom> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                           rdfs:label "prov:wasDerivedFrom"@en;
+                                           rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy>.
+<http://www.w3.org/ns/prov#wasInfluencedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                            rdfs:label "prov:wasInfluencedBy"@en.
+<http://www.w3.org/ns/prov#wasRevisionOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                          rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                          rdfs:label "prov:wasRevisionOf"@en;
+                                          rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasDerivedFrom>.
+<http://xmlns.com/foaf/0.1/isPrimaryTopicOf> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                             rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>;
+                                             rdfs:label "foaf:isPrimaryTopicOf"@en.
+<http://xmlns.com/foaf/0.1/name> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                 rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>;
+                                 rdfs:label "foaf:name"@en.

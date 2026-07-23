@@ -1,922 +1,909 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix ludo: <http://ns.inria.fr/ludo>.
-@prefix ludo-gm: <http://ns.inria.fr/ludo/v1/gamemodel#>.
 @prefix ludo-gp: <http://ns.inria.fr/ludo/v1/gamepresentation#>.
-@prefix vann: <http://purl.org/vocab/vann/>.
-@prefix void: <http://rdfs.org/ns/void#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix ccrel: <http://creativecommons.org/ns#>.
-@prefix planet: <http://dbpedia.org/>.
-@prefix resource: <http://dbpedia.org/resource/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
-@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 
-_:B072a0c4e8abd196ea6915afc95f7c800 a owl:AllDisjointClasses;
-                                    owl:members (ludo-gm:GameDimension
-                                                 ludo-gm:GamePhysics
-                                                 ludo-gm:GameTempo).
-_:B0a1620b2c561352b7d060967a897f602 a owl:AllDisjointClasses;
-                                    owl:members (ludo-gm:Animation
-                                                 ludo-gm:Motion
-                                                 ludo-gm:Sound
-                                                 ludo-gm:VitalUpdate).
-_:B1a538dba4f35ad31a54c7b84eadc15c8 a owl:AllDisjointClasses;
-                                    owl:members (ludo-gm:GameAttribute
-                                                 ludo-gm:GameControl
-                                                 ludo-gm:GameRecord).
-_:B696398cfb6f018638de048b7be341653 a owl:AllDisjointClasses;
-                                    owl:members (ludo-gm:DecidingCondition
-                                                 ludo-gm:Learn
-                                                 ludo-gm:Navigate).
-_:B7d205e6c2f8f0e88d5163649a5e3930d a owl:AllDisjointClasses;
-                                    owl:members (ludo-gm:CompleteGameStructure
-                                                 ludo-gm:Presentation-basedStructure
-                                                 ludo-gm:Scenario-basedStructure
-                                                 ludo-gm:Training-basedStructure).
-_:B8160a812e8abc2029448640ca63c8eed a owl:AllDisjointClasses;
-                                    owl:members (ludo-gm:Action
-                                                 ludo-gm:Appearance
-                                                 ludo-gm:Intelligence).
-_:B84d0527e20736bbf16b4a2cbd539b1ef a owl:AllDisjointClasses;
-                                    owl:members (ludo-gm:GameEvent
-                                                 ludo-gm:GameObject
-                                                 ludo-gm:GameObjective
-                                                 ludo-gm:GamePlayer
-                                                 ludo-gm:GamePresentation
-                                                 ludo-gm:GameRule
-                                                 ludo-gm:GameScenario
-                                                 ludo-gm:GameSimulation
-                                                 ludo-gm:GameStructure
-                                                 ludo-gm:GameTheme).
-_:Ba1aa7ea9250ca80a878f8e723aaecd4f a owl:AllDisjointClasses;
-                                    owl:members (ludo-gm:InventoryState
-                                                 ludo-gm:Mass
-                                                 ludo-gm:SoidityState).
-_:Bf27861c67a8fd3b01838b8ccc2555aed a owl:AllDisjointClasses;
-                                    owl:members (ludo-gm:Graphic
-                                                 ludo-gm:Sound
-                                                 ludo-gm:Video
-                                                 ludo-gm:hasText).
-resource:National_Institute_for_Research_in_Computer_Science_and_Control a foaf:Organization.
-<http://ns.inria.fr/ludo/v1/gamemodel> a owl:Ontology.
-ludo-gm: ccrel:license <http://creativecommons.org/licenses/by/3.0/>;
-         dc11:creator <http://www.oscarrodriguez.me/>,
-                      <https://plus.google.com/106595696646939943813>;
-         dc11:issued "2016-02-01"^^xsd:date;
-         dc11:modified "2016-08-09"^^xsd:date;
-         dc11:publisher resource:National_Institute_for_Research_in_Computer_Science_and_Control;
-         vann:preferredNamespacePrefix "gamemodel";
-         vann:preferredNamespaceUri "http://ns.inria.fr/ludo/v1/gamemodel#";
-         a owl:Ontology;
-         rdfs:comment "Given the increasing amount of structured data published on the Web, many possibilities are open for creating new types of games that use resources from the Web of Data. In particular, if we consider the subcategory of Serious Games in which the object of the game is to educate the user through the interactive discovery of real-life concepts (associated to Semantic Web resources), the inclusion of a semantic representation of the user profile and his contextual information becomes an important element to recommend the user more accurate concepts. Ludo is an ontology that allows the creation of Serious Games with those characteristics."@en;
-         owl:versionInfo 0.1.
-ludo-gm:Action a owl:Class;
-               rdfs:comment "The action of a game object, it consists of motion, animation, sound and vital updates."@en;
-               rdfs:isDefinedBy ludo-gm:;
-               rdfs:label "Action"@en;
-               rdfs:subClassOf owl:Thing;
-               status:term_status "stable".
-ludo-gm:Animation a owl:Class;
-                  rdfs:comment "An animation defines the virtual performance of a game object without reference of the position of the game object as a whole."@en;
-                  rdfs:isDefinedBy ludo-gm:;
-                  rdfs:label "Animation"@en;
-                  rdfs:subClassOf owl:Thing;
-                  status:term_status "stable".
-ludo-gm:Appearance a owl:Class;
-                   rdfs:comment "The visual appearance of a game object"@en;
-                   rdfs:isDefinedBy ludo-gm:;
-                   rdfs:label "Appearance"@en;
-                   rdfs:subClassOf owl:Thing;
-                   status:term_status "stable".
-ludo-gm:ArtRequirement a owl:Class;
-                       rdfs:comment "Art requirements related the game through expressive written text"@en;
-                       rdfs:isDefinedBy ludo-gm:;
-                       rdfs:label "Art Requirement"@en;
-                       rdfs:subClassOf owl:Thing;
-                       status:term_status "stable".
-ludo-gm:Button a owl:Class;
-               rdfs:comment "Button"@en;
-               rdfs:isDefinedBy ludo-gm:;
-               rdfs:label "Button"@en;
-               rdfs:subClassOf ludo-gm:GUIComponent,
-                               owl:Thing;
-               status:term_status "stable".
-ludo-gm:Checkbox a owl:Class;
-                 rdfs:comment "Checkbox"@en;
-                 rdfs:isDefinedBy ludo-gm:;
-                 rdfs:label "Checkbox"@en;
-                 rdfs:subClassOf ludo-gm:GUIComponent,
-                                 owl:Thing;
-                 status:term_status "stable".
-ludo-gm:CompleteGameStructure a owl:Class;
-                              rdfs:comment "Complete Game Structure"@en;
-                              rdfs:isDefinedBy ludo-gm:;
-                              rdfs:label "Complete Game Structure"@en;
-                              rdfs:subClassOf ludo-gm:GameStructure;
-                              status:term_status "stable".
-ludo-gm:ComputedResult a owl:Class;
-                       rdfs:comment "Computed result"@en;
-                       rdfs:isDefinedBy ludo-gm:;
-                       rdfs:label "Computed result"@en;
-                       rdfs:subClassOf ludo-gm:GameResult;
-                       owl:disjointWith ludo-gm:RawResult;
-                       status:term_status "stable".
-ludo-gm:Constraint a owl:Class;
-                   rdfs:comment "External forces"@en;
-                   rdfs:isDefinedBy ludo-gm:;
-                   rdfs:label "Constraint"@en;
-                   rdfs:subClassOf owl:Thing;
-                   status:term_status "stable".
-ludo-gm:DecidingCondition a owl:Class;
-                          rdfs:comment "Deciding Condition"@en;
-                          rdfs:isDefinedBy ludo-gm:;
-                          rdfs:label "Deciding Condition"@en;
-                          rdfs:subClassOf ludo-gm:Intelligence;
-                          status:term_status "stable".
-ludo-gm:DifficultyIndicator a owl:Class;
-                            rdfs:comment "A value associated to the difficulty of the game scenario"@en;
-                            rdfs:isDefinedBy ludo-gm:;
-                            rdfs:label "Difficulty Indicator"@en;
-                            rdfs:subClassOf owl:Thing;
-                            status:term_status "stable".
-ludo-gm:EventTrigger a owl:Class;
-                     rdfs:comment "Event triggers are used to invoke the transition between game sections and activate the game events within a game scenario"@en;
-                     rdfs:isDefinedBy ludo-gm:;
-                     rdfs:label "Event Trigger"@en;
-                     rdfs:subClassOf owl:Thing;
-                     status:term_status "stable".
-ludo-gm:Force a owl:Class;
-              rdfs:comment "A motion is subject to a force"@en;
-              rdfs:isDefinedBy ludo-gm:;
-              rdfs:label "Force"@en;
-              rdfs:subClassOf owl:Thing;
-              status:term_status "stable".
-ludo-gm:GameAct a owl:Class;
-                rdfs:comment "The performance of a game object in a game event. It consists of a game object and a game acting script that describe how the game object should move, animate, sound and interact with other game object in a game scenario."@en;
-                rdfs:isDefinedBy ludo-gm:;
-                rdfs:label "Game Act"@en;
-                rdfs:subClassOf owl:Thing;
-                status:term_status "stable".
-ludo-gm:GameActingScript a owl:Class;
-                         rdfs:comment "Is composed by one or more acting coordination that instruct how a specific game object act in a defined sequence."@en;
-                         rdfs:isDefinedBy ludo-gm:;
-                         rdfs:label "Game Acting Script"@en;
-                         rdfs:subClassOf owl:Thing;
-                         status:term_status "stable".
-ludo-gm:GameAttribute a owl:Class;
-                      rdfs:comment "Data properties that represent a game objects vitality, physical being, cognitive state and ownership."@en;
-                      rdfs:isDefinedBy ludo-gm:;
-                      rdfs:label "Game Attribute"@en;
-                      rdfs:subClassOf owl:Thing;
-                      status:term_status "stable".
-ludo-gm:GameContext a owl:Class;
-                    rdfs:comment "Describes the type of game content presented to game players in a game presentation or game simulation."@en;
-                    rdfs:isDefinedBy ludo-gm:;
-                    rdfs:label "Game Context"@en;
-                    rdfs:subClassOf owl:Thing;
-                    status:term_status "stable".
-ludo-gm:GameControl a owl:Class;
-                    rdfs:comment "Provides game player the channel to control game objects"@en;
-                    rdfs:isDefinedBy ludo-gm:;
-                    rdfs:label "Game Control"@en;
-                    rdfs:subClassOf owl:Thing;
-                    status:term_status "stable".
-ludo-gm:GameControlInterface a owl:Class;
-                             rdfs:comment "Game Control Interface"@en;
-                             rdfs:isDefinedBy ludo-gm:;
-                             rdfs:label "Game Control Interface"@en;
-                             rdfs:subClassOf owl:Thing;
-                             owl:disjointWith ludo-gm:InputEvent;
-                             status:term_status "stable".
-ludo-gm:GameDimension a owl:Class;
-                      rdfs:comment "Represents the virtual space in which the game simulation takes place in 2D or 3D."@en;
-                      rdfs:isDefinedBy ludo-gm:;
-                      rdfs:label "Game Dimension"@en;
-                      rdfs:subClassOf owl:Thing;
-                      status:term_status "stable".
-ludo-gm:GameEnvironment a owl:Class;
-                        rdfs:comment "Represents the composition of the virtual world by populating the virtual space with game objects."@en;
-                        rdfs:isDefinedBy ludo-gm:;
-                        rdfs:label "Game Environment"@en;
-                        rdfs:subClassOf owl:Thing;
-                        status:term_status "stable".
-ludo-gm:GameEvent a owl:Class;
-                  rdfs:comment "Is the happening associated to a game scenario. A game event is composed of a set of game act and an event trigger which initiate the game event."@en;
-                  rdfs:isDefinedBy ludo-gm:;
-                  rdfs:label "Game Event"@en;
-                  rdfs:subClassOf owl:Thing;
-                  status:term_status "stable".
-ludo-gm:GameInteractionRule a owl:Class;
-                            rdfs:comment "It dictates the outcome of the interaction from two game objects."@en;
-                            rdfs:isDefinedBy ludo-gm:;
-                            rdfs:label "Game Interaction Rule"@en;
-                            rdfs:subClassOf ludo-gm:GameRule;
-                            owl:disjointWith ludo-gm:GameScoringRule;
-                            status:term_status "stable".
-ludo-gm:GameInteractionRuleOutcome a owl:Class;
-                                   rdfs:comment "Outcome of an Interaction Rule"@en;
-                                   rdfs:isDefinedBy ludo-gm:;
-                                   rdfs:label "Interaction Rule Outcome"@en;
-                                   rdfs:subClassOf owl:Thing;
-                                   status:term_status "stable".
-ludo-gm:GameKnowledgeBase a owl:Class;
-                          rdfs:comment "A Knowledge Base to be used by the game."@en;
-                          rdfs:label "Game Knowledge Base"@en;
-                          rdfs:subClassOf void:Dataset.
-ludo-gm:GameObject a owl:Class;
-                   rdfs:comment "Represents virtual things that populate the game world and can be designed to have a combination of abilities such as decision making, moving, acting and responding to surroundings and game players input simulating their existence in the game world."@en;
-                   rdfs:isDefinedBy ludo-gm:;
-                   rdfs:label "Game Object"@en;
-                   rdfs:subClassOf owl:Thing;
-                   status:term_status "stable".
-ludo-gm:GameObjective a owl:Class;
-                      rdfs:comment "Represents the goal associated to a game scenario"@en;
-                      rdfs:isDefinedBy ludo-gm:;
-                      rdfs:label "Game Objective"@en;
-                      rdfs:subClassOf owl:Thing;
-                      status:term_status "stable".
-ludo-gm:GamePhysics a owl:Class;
-                    rdfs:comment "Defines the physicality of the game world. It encompasses the collision world and environment forces."@en;
-                    rdfs:isDefinedBy ludo-gm:;
-                    rdfs:label "Game Physics"@en;
-                    rdfs:subClassOf owl:Thing;
-                    status:term_status "stable".
-ludo-gm:GamePlayer a owl:Class;
-                   rdfs:comment "The user of the game application who provides inputs to the game system as part of the gaming activity."@en;
-                   rdfs:isDefinedBy ludo-gm:;
-                   rdfs:label "Game Player"@en;
-                   rdfs:subClassOf foaf:Person;
-                   status:term_status "stable".
-ludo-gm:GamePresentation a owl:Class;
-                         rdfs:comment "A virtual canvas that holds media components and GUI components to form a game menu, a game notification or a cut-scene to present information about the game and allow them to navigate through the game structure"@en;
-                         rdfs:isDefinedBy ludo-gm:;
-                         rdfs:label "Game Presentation"@en;
-                         rdfs:subClassOf ludo-gm:GameContext;
-                         status:term_status "stable".
-ludo-gm:GameRecord a owl:Class;
-                   rdfs:comment "A game record is a log of game players achievements in the game"@en;
-                   rdfs:isDefinedBy ludo-gm:;
-                   rdfs:label "Game Record"@en;
-                   rdfs:subClassOf owl:Thing;
-                   status:term_status "stable".
-ludo-gm:GameResult a owl:Class;
-                   rdfs:comment "Game Result"@en;
-                   rdfs:isDefinedBy ludo-gm:;
-                   rdfs:label "Game Result"@en;
-                   rdfs:subClassOf owl:Thing;
-                   status:term_status "stable".
-ludo-gm:GameRule a owl:Class;
-                 rdfs:comment "States the relationship between game objects and game world, and the effect of an interaction. It can either be a Game Scoring Rule or Game Interaction Rule."@en;
-                 rdfs:isDefinedBy ludo-gm:;
-                 rdfs:label "Game Rule"@en;
-                 rdfs:subClassOf owl:Thing;
-                 status:term_status "stable".
-ludo-gm:GameScenario a owl:Class;
-                     rdfs:comment "A description of a situation which require game player to overcome a number of challenges in order to achieve the defined objectives. It is also commonly termed as game level in gaming jargon."@en;
-                     rdfs:isDefinedBy ludo-gm:;
-                     rdfs:label "Game Scenario"@en;
-                     rdfs:subClassOf owl:Thing;
-                     status:term_status "stable".
-ludo-gm:GameScoringRule a owl:Class;
-                        rdfs:comment "Only applies to game player and it defines what to be awarded to the game player when a scoring condition is met."@en;
-                        rdfs:isDefinedBy ludo-gm:;
-                        rdfs:label "Game Scoring Rule"@en;
-                        rdfs:subClassOf ludo-gm:GameRule;
-                        status:term_status "stable".
-ludo-gm:GameSimulation a owl:Class;
-                       rdfs:comment "Represents the simulation of a game scenario and is governed by a set of rules that define the interactivity, physical and temporal properties of the virtual world. It has game rules, game dimension, game tempo and game physics."@en;
-                       rdfs:isDefinedBy ludo-gm:;
-                       rdfs:label "Game Simulation"@en;
-                       rdfs:subClassOf ludo-gm:GameContext;
-                       status:term_status "stable".
-ludo-gm:GameStructure a owl:Class;
-                      rdfs:comment "Describes the architecture and flow of the game. It segments game into game sections. A game section is composed of a game context, pedagogic event indicator and event trigger."@en;
-                      rdfs:isDefinedBy ludo-gm:;
-                      rdfs:label "Game Structure"@en;
-                      rdfs:subClassOf owl:Thing;
-                      status:term_status "stable".
-ludo-gm:GameTempo a owl:Class;
-                  rdfs:comment "Represents the realtion between the pace of the time in a game and the time in the real world."@en;
-                  rdfs:isDefinedBy ludo-gm:;
-                  rdfs:label "Game Tempo"@en;
-                  rdfs:subClassOf owl:Thing;
-                  status:term_status "stable".
-ludo-gm:GameTheme a owl:Class;
-                  rdfs:comment "Describes most of the art requirements related the game through expressive written text."@en;
-                  rdfs:isDefinedBy ludo-gm:;
-                  rdfs:label "Game Theme"@en;
-                  rdfs:subClassOf owl:Thing;
-                  status:term_status "stable".
-ludo-gm:GoalCondition a owl:Class;
-                      rdfs:comment "The goal condition checks a track-able value against a constant value defined by the game designer to determine if the game objective has been met or not. The game objective is marked as achieve once the goal condition has been satisfied."@en;
-                      rdfs:isDefinedBy ludo-gm:;
-                      rdfs:label "Goal Condition"@en;
-                      rdfs:subClassOf owl:Thing;
-                      status:term_status "stable".
-ludo-gm:Intelligence a owl:Class;
-                     rdfs:comment "Provides game object the ability to decide, navigate and even learn."@en;
-                     rdfs:isDefinedBy ludo-gm:;
-                     rdfs:label "Intelligence"@en;
-                     rdfs:subClassOf owl:Thing;
-                     status:term_status "stable".
-ludo-gm:Inventory a owl:Class;
-                  rdfs:comment "Inventory presents the idea where player can own a number of game objects in the game as part of the game play. An inventory can be a collection of weapons in a shooter game or a collection of magic spell and potions in a role-playing game. In games such as Resident Evil 5 (www.residentevil.com), a game player can hold 9 items in the inventory at any one time."@en;
-                  rdfs:isDefinedBy ludo-gm:;
-                  rdfs:label "Inventory"@en;
-                  rdfs:subClassOf owl:Thing;
-                  status:term_status "stable".
-ludo-gm:InventoryState a owl:Class;
-                       rdfs:comment "The inventory is defined to hold a limited supply of consumable for a game object."@en;
-                       rdfs:isDefinedBy ludo-gm:;
-                       rdfs:label "Inventory State"@en;
-                       rdfs:subClassOf ludo-gm:ObjectAttribute;
-                       status:term_status "stable".
-ludo-gm:Learn a owl:Class;
-              rdfs:comment "Learn"@en;
-              rdfs:isDefinedBy ludo-gm:;
-              rdfs:label "Learn"@en;
-              rdfs:subClassOf owl:Thing;
-              status:term_status "stable".
-ludo-gm:Mass a owl:Class;
-             rdfs:comment "The mass that affects the motion of the game object"@en;
-             rdfs:isDefinedBy ludo-gm:;
-             rdfs:label "Mass"@en;
-             rdfs:subClassOf ludo-gm:ObjectAttribute;
-             status:term_status "stable".
-ludo-gm:Motion a owl:Class;
-               rdfs:comment "Motion refers to the actual translation of game object position in the game world. A motion is subject to a force and also constraints (external force)."@en;
-               rdfs:isDefinedBy ludo-gm:;
-               rdfs:label "Motion"@en;
-               rdfs:subClassOf owl:Thing;
-               status:term_status "stable".
-ludo-gm:Navigate a owl:Class;
-                 rdfs:comment "Navigate"@en;
-                 rdfs:isDefinedBy ludo-gm:;
-                 rdfs:label "Navigate"@en;
-                 rdfs:subClassOf owl:Thing;
-                 status:term_status "stable".
-ludo-gm:ObjectAttribute a owl:Class;
-                        rdfs:comment "Data properties that represent a game objects vitality, physical being, cognitive state and ownership"@en;
-                        rdfs:isDefinedBy ludo-gm:;
-                        rdfs:label "Object Atrribute"@en;
-                        rdfs:subClassOf owl:Thing;
-                        status:term_status "stable".
-ludo-gm:ObjectImage a owl:Class;
-                    rdfs:comment "The object image is represented using one or more image components"@en;
-                    rdfs:isDefinedBy ludo-gm:;
-                    rdfs:label "Object Image"@en;
-                    rdfs:subClassOf ludo-gm:Appearance;
-                    status:term_status "stable".
-ludo-gm:ObjectVitality a owl:Class;
-                       rdfs:comment "Vitality of an object such as life or interrelated attributes such as health, energy, strength, social and etc."@en;
-                       rdfs:isDefinedBy ludo-gm:;
-                       rdfs:label "Object Vitality"@en;
-                       rdfs:subClassOf ludo-gm:ObjectAttribute;
-                       status:term_status "stable".
-ludo-gm:ObjectsAttribute a owl:Class;
-                         rdfs:comment "Objects attribute"@en;
-                         rdfs:isDefinedBy ludo-gm:;
-                         rdfs:label "Objects attribute"@en;
-                         rdfs:subClassOf owl:Thing;
-                         status:term_status "stable".
-ludo-gm:PedagogicEventIndicator a owl:Class;
-                                rdfs:comment "Each game section is associated with one or more pedagogic events from the Gagnes nine events of instructions"@en;
-                                rdfs:isDefinedBy ludo-gm:;
-                                rdfs:label "Pedagogic Event Indicator"@en;
-                                rdfs:subClassOf owl:Thing;
-                                status:term_status "stable".
-ludo-gm:Presentation-basedStructure a owl:Class;
-                                    rdfs:comment "Presentation-based Structure"@en;
-                                    rdfs:isDefinedBy ludo-gm:;
-                                    rdfs:label "Presentation-based Structure"@en;
-                                    rdfs:subClassOf ludo-gm:GameStructure;
-                                    status:term_status "stable".
-ludo-gm:RawResult a owl:Class;
-                  rdfs:comment "Raw result"@en;
-                  rdfs:isDefinedBy ludo-gm:;
-                  rdfs:label "Raw result"@en;
-                  rdfs:subClassOf ludo-gm:GameResult;
-                  status:term_status "stable".
-ludo-gm:Scenario-basedStructure a owl:Class;
-                                rdfs:comment "Scenario-based Structure"@en;
-                                rdfs:isDefinedBy ludo-gm:;
-                                rdfs:label "Scenario-based Structure"@en;
-                                rdfs:subClassOf ludo-gm:GameStructure;
-                                status:term_status "stable".
-ludo-gm:Score a owl:Class;
-              rdfs:comment "Score"@en;
-              rdfs:isDefinedBy ludo-gm:;
-              rdfs:label "Score"@en;
-              rdfs:subClassOf ludo-gm:GameAttribute;
-              owl:disjointWith ludo-gm:Vital;
-              status:term_status "stable".
-ludo-gm:SeriousGame a owl:Class;
-                    rdfs:comment "Serious Game"@en;
-                    rdfs:isDefinedBy ludo-gm:;
-                    rdfs:label "Serious Game"@en;
-                    rdfs:subClassOf owl:Thing;
-                    status:term_status "stable".
-ludo-gm:SoidityState a owl:Class;
-                     rdfs:comment "The solidity state defines if a game object is solid, whereas the mass affects the motion of the game object."@en;
-                     rdfs:label "Solidity State"@en;
-                     rdfs:subClassOf ludo-gm:ObjectsAttribute;
-                     status:term_status "stable".
-ludo-gm:Training-basedStructure a owl:Class;
-                                rdfs:comment "Training-based Structure"@en;
-                                rdfs:isDefinedBy ludo-gm:;
-                                rdfs:label "Training-based Structure"@en;
-                                rdfs:subClassOf ludo-gm:GameStructure;
-                                status:term_status "stable".
-ludo-gm:VirtualCamera a owl:Class;
-                      rdfs:comment "Viewport to the game world"@en;
-                      rdfs:isDefinedBy ludo-gm:;
-                      rdfs:label "Virtual Camera"@en;
-                      rdfs:subClassOf owl:Thing;
-                      status:term_status "stable".
-ludo-gm:Vital a owl:Class;
-              rdfs:comment "Game designers can choose to represent the game object using a single vital definition such as life or further elaborate the vitality of a game object into interrelated attributes such as health, energy, strength, social and etc. "@en;
-              rdfs:isDefinedBy ludo-gm:;
-              rdfs:label "Vital"@en;
-              rdfs:subClassOf ludo-gm:GameAttribute;
-              status:term_status "stable".
-ludo-gm:VitalUpdate a owl:Class;
-                    rdfs:comment "Revises the value of vitals for a game object as a measure that takes into account the cost of an action inflicted to the object or the cost of performing an action."@en;
-                    rdfs:isDefinedBy ludo-gm:;
-                    rdfs:label "Vital Update"@en;
-                    rdfs:subClassOf owl:Thing;
-                    status:term_status "stable".
-ludo-gm:hasActingCoordination a owl:DatatypeProperty;
-                              rdfs:comment "The coordination of a game object can involve appear (for generation and re- spawning of game object), animating an action, playing a sound, moving towards a checkpoint, interacting with another game object or a composition of these."@en;
-                              rdfs:domain ludo-gm:GameActingScript;
-                              rdfs:isDefinedBy ludo-gm:;
-                              rdfs:label "Has Game Acting Coordination"@en;
-                              rdfs:range xsd:string;
-                              status:term_status "stable".
-ludo-gm:hasAction a owl:ObjectProperty;
-                  rdfs:comment "Has action"@en;
-                  rdfs:domain ludo-gm:GameObject;
-                  rdfs:isDefinedBy ludo-gm:;
-                  rdfs:label "Has action"@en;
-                  rdfs:range ludo-gm:Action;
-                  status:term_status "stable".
-ludo-gm:hasAnimation a owl:ObjectProperty;
-                     rdfs:comment "Has animation"@en;
-                     rdfs:domain ludo-gm:Action;
-                     rdfs:isDefinedBy ludo-gm:;
-                     rdfs:label "Has animation"@en;
-                     rdfs:range ludo-gm:Animation;
-                     status:term_status "stable".
-ludo-gm:hasAnimationType a owl:DatatypeProperty;
-                         rdfs:comment "Defines the animation type, either 2D or 3D"@en;
-                         rdfs:domain ludo-gm:Animation;
-                         rdfs:isDefinedBy ludo-gm:;
-                         rdfs:label "Has Animation Type"@en;
-                         rdfs:range xsd:string;
-                         status:term_status "stable".
-ludo-gm:hasAppearance a owl:ObjectProperty;
-                      rdfs:comment "Has appearance"@en;
-                      rdfs:domain ludo-gm:GameObject;
-                      rdfs:isDefinedBy ludo-gm:;
-                      rdfs:label "Has appearance"@en;
-                      rdfs:range ludo-gm:Appearance;
-                      status:term_status "stable".
-ludo-gm:hasArea a owl:ObjectProperty;
-                rdfs:comment "Relates an Area with any component to be represented graphically on the game screen, sucha as GUI components and Media components"@en;
-                rdfs:isDefinedBy ludo-gm:;
-                rdfs:label "Has area"@en;
-                rdfs:range ludo-gm:Area;
-                status:term_status "stable".
-ludo-gm:hasArtRequirement a owl:ObjectProperty;
-                          rdfs:comment "Has art requirement"@en;
-                          rdfs:domain ludo-gm:GameTheme;
-                          rdfs:isDefinedBy ludo-gm:;
-                          rdfs:label "Has art requirement"@en;
-                          rdfs:range ludo-gm:ArtRequirement;
-                          status:term_status "stable".
-ludo-gm:hasConstraint a owl:ObjectProperty;
-                      rdfs:comment "Has constraint"@en;
-                      rdfs:domain ludo-gm:Motion;
-                      rdfs:isDefinedBy ludo-gm:;
-                      rdfs:label "Has constraint"@en;
-                      rdfs:range ludo-gm:Constraint;
-                      status:term_status "stable".
-ludo-gm:hasDifficultyIndicator a owl:ObjectProperty;
-                               rdfs:comment "Has difficulty indicator"@en;
-                               rdfs:domain ludo-gm:GameScenario;
-                               rdfs:isDefinedBy ludo-gm:;
-                               rdfs:label "Has difficulty indicator"@en;
-                               rdfs:range ludo-gm:DifficultyIndicator;
-                               status:term_status "stable".
-ludo-gm:hasDifficultyIndicatorValue a owl:DatatypeProperty;
-                                    rdfs:comment "Has difficulty indicator value"@en;
-                                    rdfs:domain ludo-gm:DifficultyIndicator;
-                                    rdfs:isDefinedBy ludo-gm:;
-                                    rdfs:label "Difficulty"@en;
-                                    rdfs:range xsd:integer;
-                                    status:term_status "stable".
-ludo-gm:hasEventTrigger a owl:ObjectProperty;
-                        rdfs:comment "The property to relate a Game Structure or a Game Event with an Event Trigger"@en;
-                        rdfs:isDefinedBy ludo-gm:;
-                        rdfs:label "Has event trigger"@en;
-                        rdfs:range ludo-gm:EventTrigger;
-                        status:term_status "stable".
-ludo-gm:hasEventTriggerClass a owl:DatatypeProperty;
-                             rdfs:comment "Event triggers are used to invoke the transition between game sections and activate the game events within a game scenario. They can be classified into four distinct classes, namely: Input trigger detects user input via hardware interface or graphical user interface (GUI); Time trigger is essentially a countdown timer with an interval value with frequency of once, to repeat infinitely or to repeat finitely; Proximity trigger like input trigger has a hotspot that detects the collision of a specified game object, a class of game object or a group of game objects from different classes; Game mechanics trigger is associated to a range of game application related of events such media event, game event and simulation event. Each event trigger is associated with a command that specify the transition between game sections or activation of a game event."@en;
-                             rdfs:domain ludo-gm:EventTrigger;
-                             rdfs:isDefinedBy ludo-gm:;
-                             rdfs:label "Has Event Trigger Class"@en;
-                             rdfs:range xsd:string;
-                             owl:propertyDisjointWith ludo-gm:hasEventTriggerCommand;
-                             status:term_status "stable".
-ludo-gm:hasEventTriggerCommand a owl:DatatypeProperty;
-                               rdfs:comment "Has Event trigger command"@en;
-                               rdfs:domain ludo-gm:EventTrigger;
-                               rdfs:isDefinedBy ludo-gm:;
-                               rdfs:label "Has Event trigger command"@en;
-                               rdfs:range xsd:string;
-                               status:term_status "stable".
-ludo-gm:hasForce a owl:ObjectProperty;
-                 rdfs:comment "Has force"@en;
-                 rdfs:domain ludo-gm:Motion;
-                 rdfs:isDefinedBy ludo-gm:;
-                 rdfs:label "Has force"@en;
-                 rdfs:range ludo-gm:Force;
-                 status:term_status "stable".
-ludo-gm:hasFrontEndDisplay a owl:ObjectProperty;
-                           rdfs:comment "Has front end display"@en;
-                           rdfs:domain ludo-gm:GameSimulation;
-                           rdfs:isDefinedBy ludo-gm:;
-                           rdfs:label "Has front end display"@en;
-                           rdfs:range ludo-gp:FrontEndDisplay;
-                           status:term_status "stable".
-ludo-gm:hasGameAct a owl:ObjectProperty;
-                   rdfs:comment "Has Game Act"@en;
-                   rdfs:domain ludo-gm:GameEvent;
-                   rdfs:isDefinedBy ludo-gm:;
-                   rdfs:label "Has Game Act"@en;
-                   rdfs:range ludo-gm:GameAct;
-                   status:term_status "stable".
-ludo-gm:hasGameActObject a owl:ObjectProperty;
-                         rdfs:comment "Has Game Act Object"@en;
-                         rdfs:domain ludo-gm:GameAct;
-                         rdfs:isDefinedBy ludo-gm:;
-                         rdfs:label "Has Game Act Object"@en;
-                         rdfs:range ludo-gm:GameObject;
-                         status:term_status "stable".
-ludo-gm:hasGameActingScript a owl:ObjectProperty;
-                            rdfs:comment "Game Acting Script"@en;
-                            rdfs:domain ludo-gm:GameAct;
-                            rdfs:isDefinedBy ludo-gm:;
-                            rdfs:label "Game Acting Script"@en;
-                            rdfs:range ludo-gm:GameActingScript;
-                            status:term_status "stable".
-ludo-gm:hasGameAttribute a owl:ObjectProperty;
-                         rdfs:comment "Has Game Attribute"@en;
-                         rdfs:isDefinedBy ludo-gm:;
-                         rdfs:label "Has Game Attribute"@en;
-                         status:term_status "stable".
-ludo-gm:hasGameContext a owl:ObjectProperty;
-                       rdfs:comment "Has Game Context"@en;
-                       rdfs:domain ludo-gm:GameStructure;
-                       rdfs:isDefinedBy ludo-gm:;
-                       rdfs:label "Has Game Context"@en;
-                       rdfs:range ludo-gm:GameContext;
-                       status:term_status "stable".
-ludo-gm:hasGameControl a owl:ObjectProperty;
-                       rdfs:comment "Has Game Control"@en;
-                       rdfs:domain ludo-gm:GamePlayer;
-                       rdfs:isDefinedBy ludo-gm:;
-                       rdfs:label "Has Game Control"@en;
-                       rdfs:range ludo-gm:GameControl;
-                       status:term_status "stable".
-ludo-gm:hasGameControlInterface a owl:ObjectProperty;
-                                rdfs:comment "Has Game Control Interface"@en;
-                                rdfs:domain ludo-gm:GameControl;
-                                rdfs:label "Has Game Control Interface"@en;
-                                rdfs:range ludo-gm:GameControlInterface.
-ludo-gm:hasGameDimension a owl:DatatypeProperty;
-                         rdfs:comment "The game dimension refers to the virtual space of which the game simulation takes place. It can either be 2D or 3D."@en;
-                         rdfs:domain ludo-gm:GameDimension;
-                         rdfs:isDefinedBy ludo-gm:;
-                         rdfs:label "Has Game Dimension"@en;
-                         rdfs:range xsd:string;
-                         status:term_status "stable".
-ludo-gm:hasGameDimention a owl:ObjectProperty;
-                         rdfs:comment "Has Game Dimention"@en;
-                         rdfs:domain ludo-gm:GameSimulation;
-                         rdfs:isDefinedBy ludo-gm:;
-                         rdfs:label "Has Game Dimention"@en;
-                         rdfs:range ludo-gm:GameDimension;
-                         status:term_status "stable".
-ludo-gm:hasGameEnvironment a owl:ObjectProperty;
-                           rdfs:comment "Has Game Environment"@en;
-                           rdfs:domain ludo-gm:GameScenario;
-                           rdfs:isDefinedBy ludo-gm:;
-                           rdfs:label "Has Game Environment"@en;
-                           rdfs:range ludo-gm:GameEnvironment;
-                           status:term_status "stable".
-ludo-gm:hasGameEvent a owl:ObjectProperty;
-                     rdfs:comment "Has Game Event"@en;
-                     rdfs:domain ludo-gm:GameScenario;
-                     rdfs:isDefinedBy ludo-gm:;
-                     rdfs:label "Has Game Event"@en;
-                     rdfs:range ludo-gm:GameEvent;
-                     status:term_status "stable".
-ludo-gm:hasGameKnowledgeBase a owl:ObjectProperty;
-                             rdfs:comment "Has Game Knowledge-Base"@en;
-                             rdfs:domain ludo-gm:SeriousGame;
-                             rdfs:isDefinedBy ludo-gm:;
-                             rdfs:label "Has Game Knowledge-Base"@en;
-                             rdfs:range ludo-gm:GameKnowledgeBase;
-                             status:term_status "stable".
-ludo-gm:hasGameObject a owl:ObjectProperty;
-                      rdfs:comment "This property applies for a Game Environment, a Serious Game and an Inventory"@en;
-                      rdfs:isDefinedBy ludo-gm:;
-                      rdfs:label "Has Game Object"@en;
-                      rdfs:range ludo-gm:GameObject;
-                      status:term_status "stable".
-ludo-gm:hasGameObjective a owl:ObjectProperty;
-                         rdfs:comment "This property relates with a Game Objective. Can be used for Game Scenario and Inventory objects."@en;
-                         rdfs:isDefinedBy ludo-gm:;
-                         rdfs:label "Has Game Objective"@en;
-                         rdfs:range ludo-gm:GameObjective;
-                         status:term_status "stable".
-ludo-gm:hasGamePhysics a owl:DatatypeProperty;
-                       rdfs:comment "Has Game Physics"@en;
-                       rdfs:isDefinedBy ludo-gm:;
-                       rdfs:label "Has Game Physics"@en;
-                       rdfs:range xsd:string;
-                       status:term_status "stable".
-ludo-gm:hasGamePlayer a owl:ObjectProperty;
-                      rdfs:comment "Has Game Player"@en;
-                      rdfs:domain ludo-gm:SeriousGame;
-                      rdfs:isDefinedBy ludo-gm:;
-                      rdfs:label "Has Game Player"@en;
-                      rdfs:range ludo-gm:GamePlayer;
-                      status:term_status "stable".
-ludo-gm:hasGameRecord a owl:ObjectProperty;
-                      rdfs:comment "Has Game Record"@en;
-                      rdfs:domain ludo-gm:GamePlayer;
-                      rdfs:isDefinedBy ludo-gm:;
-                      rdfs:label "Has Game Record"@en;
-                      rdfs:range ludo-gm:GameRecord;
-                      status:term_status "stable".
-ludo-gm:hasGameResult a owl:ObjectProperty;
-                      rdfs:comment "Has Game Result"@en;
-                      rdfs:domain ludo-gm:GameRecord;
-                      rdfs:isDefinedBy ludo-gm:;
-                      rdfs:label "Has Game Result"@en;
-                      rdfs:range ludo-gm:GameResult;
-                      status:term_status "stable".
-ludo-gm:hasGameRule a owl:ObjectProperty;
-                    rdfs:comment "This property relates a Game Simulation with a Game Rule"@en;
-                    rdfs:domain ludo-gm:GameSimulation;
-                    rdfs:isDefinedBy ludo-gm:;
-                    rdfs:label "Has Game Rule"@en;
-                    rdfs:range ludo-gm:GameRule;
-                    status:term_status "stable".
-ludo-gm:hasGameScenario a owl:ObjectProperty;
-                        rdfs:comment "Has Game Scenario"@en;
-                        rdfs:domain ludo-gm:GameSimulation;
-                        rdfs:isDefinedBy ludo-gm:;
-                        rdfs:label "Has Game Scenario"@en;
-                        rdfs:range ludo-gm:GameScenario;
-                        status:term_status "stable".
-ludo-gm:hasGameStructure a owl:ObjectProperty;
-                         rdfs:comment "Has Game Structure"@en;
-                         rdfs:domain ludo-gm:SeriousGame;
-                         rdfs:isDefinedBy ludo-gm:;
-                         rdfs:label "Has Game Structure"@en;
-                         rdfs:range ludo-gm:GameStructure;
-                         status:term_status "stable".
-ludo-gm:hasGameTempo a owl:ObjectProperty;
-                     rdfs:comment "Has Game Tempo"@en;
-                     rdfs:domain ludo-gm:GameSimulation;
-                     rdfs:isDefinedBy ludo-gm:;
-                     rdfs:label "Has Game Tempo"@en;
-                     rdfs:range ludo-gm:GameTempo;
-                     status:term_status "stable".
-ludo-gm:hasGameTheme a owl:ObjectProperty;
-                     rdfs:comment "Has Game Theme"@en;
-                     rdfs:domain ludo-gm:SeriousGame;
-                     rdfs:isDefinedBy ludo-gm:;
-                     rdfs:label "Has Game Theme"@en;
-                     rdfs:range ludo-gm:GameTheme;
-                     status:term_status "stable".
-ludo-gm:hasGoalCondition a owl:ObjectProperty;
-                         rdfs:comment "Has Goal Condition"@en;
-                         rdfs:domain ludo-gm:GameObjective;
-                         rdfs:isDefinedBy ludo-gm:;
-                         rdfs:label "Has Goal Condition"@en;
-                         rdfs:range ludo-gm:GoalCondition;
-                         status:term_status "stable".
-ludo-gm:hasGoalConditionDescription a owl:DatatypeProperty;
-                                    rdfs:comment "The description of the goal condition"@en;
-                                    rdfs:domain ludo-gm:GoalCondition;
-                                    rdfs:isDefinedBy ludo-gm:;
-                                    rdfs:label "Goal Condition description"@en;
-                                    rdfs:range rdfs:Literal;
-                                    status:term_status "stable".
-ludo-gm:hasHardwareInterface a owl:DatatypeProperty;
-                             rdfs:comment "Examples of hardware interface include keyboard, mouse, gamepad, joystick, motionsensor, camera and microphone."@en;
-                             rdfs:domain ludo-gm:GameControlInterface;
-                             rdfs:isDefinedBy ludo-gm:;
-                             rdfs:label "Has hardware Interface"@en;
-                             rdfs:range xsd:string;
-                             status:term_status "stable".
-ludo-gm:hasInputEvent a owl:ObjectProperty;
-                      rdfs:comment "Has Input Event"@en;
-                      rdfs:domain ludo-gm:GameControl;
-                      rdfs:isDefinedBy ludo-gm:;
-                      rdfs:label "Has Input Event"@en;
-                      rdfs:range ludo-gm:InputEvent;
-                      status:term_status "stable".
-ludo-gm:hasIntelligences a owl:ObjectProperty;
-                         rdfs:comment "Has Intelligences"@en;
-                         rdfs:domain ludo-gm:GameObject;
-                         rdfs:isDefinedBy ludo-gm:;
-                         rdfs:label "Has Intelligences"@en;
-                         rdfs:range ludo-gm:Intelligence;
-                         status:term_status "stable".
-ludo-gm:hasInteractionCondition a owl:DatatypeProperty;
-                                rdfs:comment "It refers to the state of actor or the state of the game world"@en;
-                                rdfs:domain ludo-gm:GameInteractionRule;
-                                rdfs:isDefinedBy ludo-gm:;
-                                rdfs:label "Interaction Condition"@en;
-                                rdfs:range xsd:string;
-                                status:term_status "stable".
-ludo-gm:hasInteractionRuleActor a owl:ObjectProperty;
-                                rdfs:comment "Interaction Rule Actor"@en;
-                                rdfs:domain ludo-gm:GameInteractionRule;
-                                rdfs:isDefinedBy ludo-gm:;
-                                rdfs:label "Interaction Rule Actor"@en;
-                                rdfs:range ludo-gm:GameObject;
-                                status:term_status "stable".
-ludo-gm:hasInteractionRuleOutcome a owl:ObjectProperty;
-                                  rdfs:comment "Interaction Rule Outcome"@en;
-                                  rdfs:domain ludo-gm:GameInteractionRule;
-                                  rdfs:isDefinedBy ludo-gm:;
-                                  rdfs:label "Interaction Rule Outcome"@en;
-                                  rdfs:range ludo-gm:GameInteractionRuleOutcome;
-                                  status:term_status "stable".
-ludo-gm:hasInteractionRuleOutcomeOperation a owl:DatatypeProperty;
-                                           rdfs:comment "Rewarding the player with any game object can mean give (add) or take away (subtract) an item or increase (add) or decrease (subtract) in the value of an attribute to provide the game player the advantage to succeed in the game."@en;
-                                           rdfs:domain ludo-gm:GameInteractionRuleOutcome;
-                                           rdfs:isDefinedBy ludo-gm:;
-                                           rdfs:label "Interaction Rule Outcome Operation"@en;
-                                           rdfs:range xsd:string;
-                                           status:term_status "stable".
-ludo-gm:hasInteractionRuleSubject a owl:ObjectProperty;
-                                  rdfs:comment "Interaction Rule Subject"@en;
-                                  rdfs:domain ludo-gm:GameInteractionRule;
-                                  rdfs:isDefinedBy ludo-gm:;
-                                  rdfs:label "Interaction Rule Subject"@en;
-                                  rdfs:range ludo-gm:GameObject;
-                                  status:term_status "stable".
-ludo-gm:hasInventory a owl:ObjectProperty;
-                     rdfs:comment "Has Inventory"@en;
-                     rdfs:domain ludo-gm:GamePlayer;
-                     rdfs:isDefinedBy ludo-gm:;
-                     rdfs:label "Has Inventory"@en;
-                     rdfs:range ludo-gm:Inventory;
-                     status:term_status "stable".
-ludo-gm:hasInventoryQuantity a owl:DatatypeProperty;
-                             rdfs:comment "Has inventory quantity"@en;
-                             rdfs:domain ludo-gm:InventoryState;
-                             rdfs:isDefinedBy ludo-gm:;
-                             rdfs:label "Has inventory quantity"@en;
-                             rdfs:range xsd:integer;
-                             status:term_status "stable".
-ludo-gm:hasMass a owl:DatatypeProperty;
-                rdfs:comment "The amount of matter of an object in Kilograms."@en;
-                rdfs:domain ludo-gm:Mass;
-                rdfs:isDefinedBy ludo-gm:;
-                rdfs:label "Mass"@en;
-                rdfs:range xsd:float;
-                status:term_status "stable".
-ludo-gm:hasMatter a owl:DatatypeProperty;
-                  rdfs:comment "Each game rule is paired with an outcome which has a matter and an operation to add or subtract a value from the matter. Matter in the context of game refers to an item, an attribute or permission."@en;
-                  rdfs:domain ludo-gm:GameInteractionRuleOutcome;
-                  rdfs:isDefinedBy ludo-gm:;
-                  rdfs:label "Interaction Rule Outcome Matter"@en;
-                  rdfs:range xsd:string;
-                  status:term_status "stable".
-ludo-gm:hasMotion a owl:ObjectProperty;
-                  rdfs:comment "Has Motion"@en;
-                  rdfs:domain ludo-gm:Action;
-                  rdfs:isDefinedBy ludo-gm:;
-                  rdfs:label "Has Motion"@en;
-                  rdfs:range ludo-gm:Motion;
-                  status:term_status "stable".
-ludo-gm:hasNormalForce a owl:DatatypeProperty;
-                       rdfs:comment "The normal force"@en;
-                       rdfs:domain ludo-gm:Force;
-                       rdfs:isDefinedBy ludo-gm:;
-                       rdfs:label "Normal force"@en;
-                       rdfs:range xsd:float;
-                       status:term_status "stable".
-ludo-gm:hasObjectVitality a owl:DatatypeProperty;
-                          rdfs:comment "Vitality of an object such as life or interrelated attributes such as health, energy, strength, social and etc."@en;
-                          rdfs:domain ludo-gm:ObjectVitality;
-                          rdfs:isDefinedBy ludo-gm:;
-                          rdfs:label "Has Object Vitality"@en;
-                          rdfs:range xsd:string;
-                          status:term_status "stable".
-ludo-gm:hasObjectVitalityValue a owl:DatatypeProperty;
-                               rdfs:comment "Object Vitality Value"@en;
-                               rdfs:domain ludo-gm:ObjectVitality;
-                               rdfs:isDefinedBy ludo-gm:;
-                               rdfs:label "Object Vitality Value"@en;
-                               rdfs:range xsd:integer;
-                               status:term_status "stable".
-ludo-gm:hasPedagogicEvent a owl:DatatypeProperty;
-                          rdfs:comment "Associates each game section with one or more pedagogic events from the Gagne's nine events of instructions. These events ordered in sequence are (1) gaining attention, (2) informing learning objectives, (3) recalling prior learning, (4) presenting learning content, (5) providing learning guidance, (6) eliciting performance, (7) provide feedback, (8) assess performance and, (9) enhance retention and transfer."@en;
-                          rdfs:domain ludo-gm:PedagogicEventIndicator;
-                          rdfs:isDefinedBy ludo-gm:;
-                          rdfs:label "Pedagogic Event"@en;
-                          rdfs:range xsd:string;
-                          status:term_status "stable".
-ludo-gm:hasPedagogicEventIndicator a owl:FunctionalProperty,
-                                     owl:ObjectProperty;
-                                   rdfs:comment "Has Pedagogic Event Indicator"@en;
-                                   rdfs:domain ludo-gm:GameStructure;
-                                   rdfs:isDefinedBy ludo-gm:;
-                                   rdfs:label "Has Pedagogic Event Indicator"@en;
-                                   rdfs:range ludo-gm:PedagogicEventIndicator;
-                                   status:term_status "stable".
-ludo-gm:hasScoringCondition a owl:DatatypeProperty;
-                            rdfs:comment "Every game scoring rule has a scoring condition which has no direct relation with interaction. It can be derived from the state of a game object (e.g. enemy is dead or fire is extinguished), the input statistics (e.g. accuracy is above 80%), the time (e.g. respond is less than 5 seconds or level completed in less than 5 minutes), or the game objective (e.g. objective 1, 2 and 5 are met)."@en;
-                            rdfs:domain ludo-gm:GameScoringRule;
-                            rdfs:isDefinedBy ludo-gm:;
-                            rdfs:label "Scoring Condition"@en;
-                            rdfs:range xsd:string;
-                            status:term_status "stable".
-ludo-gm:hasSoringRuleOutcome a owl:DatatypeProperty;
-                             rdfs:comment "The outcome of an Scoring Rule"@en;
-                             rdfs:domain ludo-gm:GameScoringRule;
-                             rdfs:isDefinedBy ludo-gm:;
-                             rdfs:label "Scoring Rule Outcome"@en;
-                             rdfs:range xsd:string;
-                             status:term_status "stable".
-ludo-gm:hasSound a owl:ObjectProperty;
-                 rdfs:comment "Has Sound"@en;
-                 rdfs:domain ludo-gm:Action;
-                 rdfs:isDefinedBy ludo-gm:;
-                 rdfs:label "Has Sound"@en;
-                 rdfs:range ludo-gm:Sound;
-                 status:term_status "stable".
-ludo-gm:hasTempoScale a owl:DatatypeProperty;
-                      rdfs:comment "The tempo scale at which the time is passing. This can be used for slow motion effects. When timeScale is 1.0 the time is passing as fast as realtime. When timeScale is 0.5 the time is passing 2x slower than realtime. When timeScale is set to zero the game is basically paused if all your functions are frame rate independent.y. Based on: http://docs.unity3d.com/ScriptReference/Time-timeScale.html"@en;
-                      rdfs:domain ludo-gm:GameTempo;
-                      rdfs:isDefinedBy ludo-gm:;
-                      rdfs:label "Game tempo scale"@en;
-                      rdfs:range xsd:double;
-                      status:term_status "stable".
-ludo-gm:hasText a owl:DatatypeProperty;
-                rdfs:comment "Has text"@en;
-                rdfs:isDefinedBy ludo-gm:;
-                rdfs:label "Has text"@en;
-                rdfs:range xsd:string;
-                status:term_status "stable".
-ludo-gm:hasURI a owl:ObjectProperty;
-               rdfs:comment "Uniform Resource Identifier"@en;
-               rdfs:isDefinedBy ludo-gm:;
-               rdfs:label "URI"@en;
-               status:term_status "stable".
-ludo-gm:hasVirtualCamera a owl:ObjectProperty;
-                         rdfs:comment "Has Virtual Camera"@en;
-                         rdfs:domain ludo-gm:GameScenario;
-                         rdfs:isDefinedBy ludo-gm:;
-                         rdfs:label "Has Virtual Camera"@en;
-                         rdfs:range ludo-gm:VirtualCamera;
-                         status:term_status "stable".
-ludo-gm:hasVirtualCameraPosition a owl:DatatypeProperty;
-                                 rdfs:comment "Position of the virtual camera in the game world"@en;
-                                 rdfs:domain ludo-gm:VirtualCamera;
-                                 rdfs:isDefinedBy ludo-gm:;
-                                 rdfs:label "Has Virtual Camera Position"@en;
-                                 rdfs:range xsd:string;
-                                 status:term_status "stable".
-ludo-gm:hasVitalUpdate a owl:DatatypeProperty;
-                       rdfs:comment "Has Vital Update"@en;
-                       rdfs:domain ludo-gm:Action;
-                       rdfs:isDefinedBy ludo-gm:;
-                       rdfs:label "Has Vital Update"@en;
-                       rdfs:range xsd:double;
-                       status:term_status "stable".
-ludo-gm:isSolid a owl:DatatypeProperty;
-                rdfs:comment "Solidity"@en;
-                rdfs:domain ludo-gm:SoidityState;
-                rdfs:isDefinedBy ludo-gm:;
-                rdfs:label "Solidity"@en;
-                rdfs:range xsd:boolean;
-                status:term_status "stable".
-void:Dataset a owl:Class.
-<http://www.oscarrodriguez.me/> a foaf:Person.
-foaf:Person a owl:Class.
-<https://plus.google.com/106595696646939943813> a foaf:Person.
+_:B072a0c4e8abd196ea6915afc95f7c800 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<http://ns.inria.fr/ludo/v1/gamemodel#GameDimension>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#GamePhysics>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#GameTempo>).
+_:B0a1620b2c561352b7d060967a897f602 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<http://ns.inria.fr/ludo/v1/gamemodel#Animation>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#Motion>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#Sound>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#VitalUpdate>).
+_:B1a538dba4f35ad31a54c7b84eadc15c8 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<http://ns.inria.fr/ludo/v1/gamemodel#GameAttribute>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#GameControl>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#GameRecord>).
+_:B696398cfb6f018638de048b7be341653 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<http://ns.inria.fr/ludo/v1/gamemodel#DecidingCondition>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#Learn>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#Navigate>).
+_:B7d205e6c2f8f0e88d5163649a5e3930d a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<http://ns.inria.fr/ludo/v1/gamemodel#CompleteGameStructure>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#Presentation-basedStructure>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#Scenario-basedStructure>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#Training-basedStructure>).
+_:B8160a812e8abc2029448640ca63c8eed a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<http://ns.inria.fr/ludo/v1/gamemodel#Action>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#Appearance>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#Intelligence>).
+_:B84d0527e20736bbf16b4a2cbd539b1ef a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<http://ns.inria.fr/ludo/v1/gamemodel#GameEvent>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#GameObject>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#GameObjective>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#GamePlayer>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#GamePresentation>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#GameRule>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#GameScenario>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#GameSimulation>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#GameStructure>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#GameTheme>).
+_:Ba1aa7ea9250ca80a878f8e723aaecd4f a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<http://ns.inria.fr/ludo/v1/gamemodel#InventoryState>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#Mass>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#SoidityState>).
+_:Bf27861c67a8fd3b01838b8ccc2555aed a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<http://ns.inria.fr/ludo/v1/gamemodel#Graphic>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#Sound>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#Video>
+                                                                             <http://ns.inria.fr/ludo/v1/gamemodel#hasText>).
+<http://dbpedia.org/resource/National_Institute_for_Research_in_Computer_Science_and_Control> a <http://xmlns.com/foaf/0.1/Organization>.
+<http://ns.inria.fr/ludo/v1/gamemodel> a <http://www.w3.org/2002/07/owl#Ontology>.
+<http://ns.inria.fr/ludo/v1/gamemodel#> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/3.0/>;
+                                        <http://purl.org/dc/elements/1.1/creator> <http://www.oscarrodriguez.me/>,
+                                                                                  <https://plus.google.com/106595696646939943813>;
+                                        <http://purl.org/dc/elements/1.1/issued> "2016-02-01"^^xsd:date;
+                                        <http://purl.org/dc/elements/1.1/modified> "2016-08-09"^^xsd:date;
+                                        <http://purl.org/dc/elements/1.1/publisher> <http://dbpedia.org/resource/National_Institute_for_Research_in_Computer_Science_and_Control>;
+                                        <http://purl.org/vocab/vann/preferredNamespacePrefix> "gamemodel";
+                                        <http://purl.org/vocab/vann/preferredNamespaceUri> "http://ns.inria.fr/ludo/v1/gamemodel#";
+                                        a <http://www.w3.org/2002/07/owl#Ontology>;
+                                        rdfs:comment "Given the increasing amount of structured data published on the Web, many possibilities are open for creating new types of games that use resources from the Web of Data. In particular, if we consider the subcategory of Serious Games in which the object of the game is to educate the user through the interactive discovery of real-life concepts (associated to Semantic Web resources), the inclusion of a semantic representation of the user profile and his contextual information becomes an important element to recommend the user more accurate concepts. Ludo is an ontology that allows the creation of Serious Games with those characteristics."@en;
+                                        <http://www.w3.org/2002/07/owl#versionInfo> 0.1.
+<http://ns.inria.fr/ludo/v1/gamemodel#Action> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:comment "The action of a game object, it consists of motion, animation, sound and vital updates."@en;
+                                              rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                              rdfs:label "Action"@en;
+                                              rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#Animation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:comment "An animation defines the virtual performance of a game object without reference of the position of the game object as a whole."@en;
+                                                 rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                 rdfs:label "Animation"@en;
+                                                 rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#Appearance> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:comment "The visual appearance of a game object"@en;
+                                                  rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                  rdfs:label "Appearance"@en;
+                                                  rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#ArtRequirement> a <http://www.w3.org/2002/07/owl#Class>;
+                                                      rdfs:comment "Art requirements related the game through expressive written text"@en;
+                                                      rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                      rdfs:label "Art Requirement"@en;
+                                                      rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#Button> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:comment "Button"@en;
+                                              rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                              rdfs:label "Button"@en;
+                                              rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#GUIComponent>,
+                                                              <http://www.w3.org/2002/07/owl#Thing>;
+                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#Checkbox> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:comment "Checkbox"@en;
+                                                rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                rdfs:label "Checkbox"@en;
+                                                rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#GUIComponent>,
+                                                                <http://www.w3.org/2002/07/owl#Thing>;
+                                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#CompleteGameStructure> a <http://www.w3.org/2002/07/owl#Class>;
+                                                             rdfs:comment "Complete Game Structure"@en;
+                                                             rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                             rdfs:label "Complete Game Structure"@en;
+                                                             rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#GameStructure>;
+                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#ComputedResult> a <http://www.w3.org/2002/07/owl#Class>;
+                                                      rdfs:comment "Computed result"@en;
+                                                      rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                      rdfs:label "Computed result"@en;
+                                                      rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#GameResult>;
+                                                      <http://www.w3.org/2002/07/owl#disjointWith> <http://ns.inria.fr/ludo/v1/gamemodel#RawResult>;
+                                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#Constraint> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:comment "External forces"@en;
+                                                  rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                  rdfs:label "Constraint"@en;
+                                                  rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#DecidingCondition> a <http://www.w3.org/2002/07/owl#Class>;
+                                                         rdfs:comment "Deciding Condition"@en;
+                                                         rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                         rdfs:label "Deciding Condition"@en;
+                                                         rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#Intelligence>;
+                                                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#DifficultyIndicator> a <http://www.w3.org/2002/07/owl#Class>;
+                                                           rdfs:comment "A value associated to the difficulty of the game scenario"@en;
+                                                           rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                           rdfs:label "Difficulty Indicator"@en;
+                                                           rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#EventTrigger> a <http://www.w3.org/2002/07/owl#Class>;
+                                                    rdfs:comment "Event triggers are used to invoke the transition between game sections and activate the game events within a game scenario"@en;
+                                                    rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                    rdfs:label "Event Trigger"@en;
+                                                    rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#Force> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "A motion is subject to a force"@en;
+                                             rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                             rdfs:label "Force"@en;
+                                             rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameAct> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:comment "The performance of a game object in a game event. It consists of a game object and a game acting script that describe how the game object should move, animate, sound and interact with other game object in a game scenario."@en;
+                                               rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                               rdfs:label "Game Act"@en;
+                                               rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameActingScript> a <http://www.w3.org/2002/07/owl#Class>;
+                                                        rdfs:comment "Is composed by one or more acting coordination that instruct how a specific game object act in a defined sequence."@en;
+                                                        rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                        rdfs:label "Game Acting Script"@en;
+                                                        rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameAttribute> a <http://www.w3.org/2002/07/owl#Class>;
+                                                     rdfs:comment "Data properties that represent a game objects vitality, physical being, cognitive state and ownership."@en;
+                                                     rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                     rdfs:label "Game Attribute"@en;
+                                                     rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameContext> a <http://www.w3.org/2002/07/owl#Class>;
+                                                   rdfs:comment "Describes the type of game content presented to game players in a game presentation or game simulation."@en;
+                                                   rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                   rdfs:label "Game Context"@en;
+                                                   rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameControl> a <http://www.w3.org/2002/07/owl#Class>;
+                                                   rdfs:comment "Provides game player the channel to control game objects"@en;
+                                                   rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                   rdfs:label "Game Control"@en;
+                                                   rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameControlInterface> a <http://www.w3.org/2002/07/owl#Class>;
+                                                            rdfs:comment "Game Control Interface"@en;
+                                                            rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                            rdfs:label "Game Control Interface"@en;
+                                                            rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                            <http://www.w3.org/2002/07/owl#disjointWith> <http://ns.inria.fr/ludo/v1/gamemodel#InputEvent>;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameDimension> a <http://www.w3.org/2002/07/owl#Class>;
+                                                     rdfs:comment "Represents the virtual space in which the game simulation takes place in 2D or 3D."@en;
+                                                     rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                     rdfs:label "Game Dimension"@en;
+                                                     rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameEnvironment> a <http://www.w3.org/2002/07/owl#Class>;
+                                                       rdfs:comment "Represents the composition of the virtual world by populating the virtual space with game objects."@en;
+                                                       rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                       rdfs:label "Game Environment"@en;
+                                                       rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameEvent> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:comment "Is the happening associated to a game scenario. A game event is composed of a set of game act and an event trigger which initiate the game event."@en;
+                                                 rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                 rdfs:label "Game Event"@en;
+                                                 rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameInteractionRule> a <http://www.w3.org/2002/07/owl#Class>;
+                                                           rdfs:comment "It dictates the outcome of the interaction from two game objects."@en;
+                                                           rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                           rdfs:label "Game Interaction Rule"@en;
+                                                           rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#GameRule>;
+                                                           <http://www.w3.org/2002/07/owl#disjointWith> <http://ns.inria.fr/ludo/v1/gamemodel#GameScoringRule>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameInteractionRuleOutcome> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                  rdfs:comment "Outcome of an Interaction Rule"@en;
+                                                                  rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                                  rdfs:label "Interaction Rule Outcome"@en;
+                                                                  rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameKnowledgeBase> a <http://www.w3.org/2002/07/owl#Class>;
+                                                         rdfs:comment "A Knowledge Base to be used by the game."@en;
+                                                         rdfs:label "Game Knowledge Base"@en;
+                                                         rdfs:subClassOf <http://rdfs.org/ns/void#Dataset>.
+<http://ns.inria.fr/ludo/v1/gamemodel#GameObject> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:comment "Represents virtual things that populate the game world and can be designed to have a combination of abilities such as decision making, moving, acting and responding to surroundings and game players input simulating their existence in the game world."@en;
+                                                  rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                  rdfs:label "Game Object"@en;
+                                                  rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameObjective> a <http://www.w3.org/2002/07/owl#Class>;
+                                                     rdfs:comment "Represents the goal associated to a game scenario"@en;
+                                                     rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                     rdfs:label "Game Objective"@en;
+                                                     rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GamePhysics> a <http://www.w3.org/2002/07/owl#Class>;
+                                                   rdfs:comment "Defines the physicality of the game world. It encompasses the collision world and environment forces."@en;
+                                                   rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                   rdfs:label "Game Physics"@en;
+                                                   rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GamePlayer> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:comment "The user of the game application who provides inputs to the game system as part of the gaming activity."@en;
+                                                  rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                  rdfs:label "Game Player"@en;
+                                                  rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person>;
+                                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GamePresentation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                        rdfs:comment "A virtual canvas that holds media components and GUI components to form a game menu, a game notification or a cut-scene to present information about the game and allow them to navigate through the game structure"@en;
+                                                        rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                        rdfs:label "Game Presentation"@en;
+                                                        rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#GameContext>;
+                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameRecord> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:comment "A game record is a log of game players achievements in the game"@en;
+                                                  rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                  rdfs:label "Game Record"@en;
+                                                  rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameResult> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:comment "Game Result"@en;
+                                                  rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                  rdfs:label "Game Result"@en;
+                                                  rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameRule> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:comment "States the relationship between game objects and game world, and the effect of an interaction. It can either be a Game Scoring Rule or Game Interaction Rule."@en;
+                                                rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                rdfs:label "Game Rule"@en;
+                                                rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameScenario> a <http://www.w3.org/2002/07/owl#Class>;
+                                                    rdfs:comment "A description of a situation which require game player to overcome a number of challenges in order to achieve the defined objectives. It is also commonly termed as game level in gaming jargon."@en;
+                                                    rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                    rdfs:label "Game Scenario"@en;
+                                                    rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameScoringRule> a <http://www.w3.org/2002/07/owl#Class>;
+                                                       rdfs:comment "Only applies to game player and it defines what to be awarded to the game player when a scoring condition is met."@en;
+                                                       rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                       rdfs:label "Game Scoring Rule"@en;
+                                                       rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#GameRule>;
+                                                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameSimulation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                      rdfs:comment "Represents the simulation of a game scenario and is governed by a set of rules that define the interactivity, physical and temporal properties of the virtual world. It has game rules, game dimension, game tempo and game physics."@en;
+                                                      rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                      rdfs:label "Game Simulation"@en;
+                                                      rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#GameContext>;
+                                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameStructure> a <http://www.w3.org/2002/07/owl#Class>;
+                                                     rdfs:comment "Describes the architecture and flow of the game. It segments game into game sections. A game section is composed of a game context, pedagogic event indicator and event trigger."@en;
+                                                     rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                     rdfs:label "Game Structure"@en;
+                                                     rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameTempo> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:comment "Represents the realtion between the pace of the time in a game and the time in the real world."@en;
+                                                 rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                 rdfs:label "Game Tempo"@en;
+                                                 rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GameTheme> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:comment "Describes most of the art requirements related the game through expressive written text."@en;
+                                                 rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                 rdfs:label "Game Theme"@en;
+                                                 rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#GoalCondition> a <http://www.w3.org/2002/07/owl#Class>;
+                                                     rdfs:comment "The goal condition checks a track-able value against a constant value defined by the game designer to determine if the game objective has been met or not. The game objective is marked as achieve once the goal condition has been satisfied."@en;
+                                                     rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                     rdfs:label "Goal Condition"@en;
+                                                     rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#Intelligence> a <http://www.w3.org/2002/07/owl#Class>;
+                                                    rdfs:comment "Provides game object the ability to decide, navigate and even learn."@en;
+                                                    rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                    rdfs:label "Intelligence"@en;
+                                                    rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#Inventory> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:comment "Inventory presents the idea where player can own a number of game objects in the game as part of the game play. An inventory can be a collection of weapons in a shooter game or a collection of magic spell and potions in a role-playing game. In games such as Resident Evil 5 (www.residentevil.com), a game player can hold 9 items in the inventory at any one time."@en;
+                                                 rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                 rdfs:label "Inventory"@en;
+                                                 rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#InventoryState> a <http://www.w3.org/2002/07/owl#Class>;
+                                                      rdfs:comment "The inventory is defined to hold a limited supply of consumable for a game object."@en;
+                                                      rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                      rdfs:label "Inventory State"@en;
+                                                      rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#ObjectAttribute>;
+                                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#Learn> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "Learn"@en;
+                                             rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                             rdfs:label "Learn"@en;
+                                             rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#Mass> a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:comment "The mass that affects the motion of the game object"@en;
+                                            rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                            rdfs:label "Mass"@en;
+                                            rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#ObjectAttribute>;
+                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#Motion> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:comment "Motion refers to the actual translation of game object position in the game world. A motion is subject to a force and also constraints (external force)."@en;
+                                              rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                              rdfs:label "Motion"@en;
+                                              rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#Navigate> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:comment "Navigate"@en;
+                                                rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                rdfs:label "Navigate"@en;
+                                                rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#ObjectAttribute> a <http://www.w3.org/2002/07/owl#Class>;
+                                                       rdfs:comment "Data properties that represent a game objects vitality, physical being, cognitive state and ownership"@en;
+                                                       rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                       rdfs:label "Object Atrribute"@en;
+                                                       rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#ObjectImage> a <http://www.w3.org/2002/07/owl#Class>;
+                                                   rdfs:comment "The object image is represented using one or more image components"@en;
+                                                   rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                   rdfs:label "Object Image"@en;
+                                                   rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#Appearance>;
+                                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#ObjectVitality> a <http://www.w3.org/2002/07/owl#Class>;
+                                                      rdfs:comment "Vitality of an object such as life or interrelated attributes such as health, energy, strength, social and etc."@en;
+                                                      rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                      rdfs:label "Object Vitality"@en;
+                                                      rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#ObjectAttribute>;
+                                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#ObjectsAttribute> a <http://www.w3.org/2002/07/owl#Class>;
+                                                        rdfs:comment "Objects attribute"@en;
+                                                        rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                        rdfs:label "Objects attribute"@en;
+                                                        rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#PedagogicEventIndicator> a <http://www.w3.org/2002/07/owl#Class>;
+                                                               rdfs:comment "Each game section is associated with one or more pedagogic events from the Gagnes nine events of instructions"@en;
+                                                               rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                               rdfs:label "Pedagogic Event Indicator"@en;
+                                                               rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#Presentation-basedStructure> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                   rdfs:comment "Presentation-based Structure"@en;
+                                                                   rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                                   rdfs:label "Presentation-based Structure"@en;
+                                                                   rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#GameStructure>;
+                                                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#RawResult> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:comment "Raw result"@en;
+                                                 rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                 rdfs:label "Raw result"@en;
+                                                 rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#GameResult>;
+                                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#Scenario-basedStructure> a <http://www.w3.org/2002/07/owl#Class>;
+                                                               rdfs:comment "Scenario-based Structure"@en;
+                                                               rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                               rdfs:label "Scenario-based Structure"@en;
+                                                               rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#GameStructure>;
+                                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#Score> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "Score"@en;
+                                             rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                             rdfs:label "Score"@en;
+                                             rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#GameAttribute>;
+                                             <http://www.w3.org/2002/07/owl#disjointWith> <http://ns.inria.fr/ludo/v1/gamemodel#Vital>;
+                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#SeriousGame> a <http://www.w3.org/2002/07/owl#Class>;
+                                                   rdfs:comment "Serious Game"@en;
+                                                   rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                   rdfs:label "Serious Game"@en;
+                                                   rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#SoidityState> a <http://www.w3.org/2002/07/owl#Class>;
+                                                    rdfs:comment "The solidity state defines if a game object is solid, whereas the mass affects the motion of the game object."@en;
+                                                    rdfs:label "Solidity State"@en;
+                                                    rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#ObjectsAttribute>;
+                                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#Training-basedStructure> a <http://www.w3.org/2002/07/owl#Class>;
+                                                               rdfs:comment "Training-based Structure"@en;
+                                                               rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                               rdfs:label "Training-based Structure"@en;
+                                                               rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#GameStructure>;
+                                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#VirtualCamera> a <http://www.w3.org/2002/07/owl#Class>;
+                                                     rdfs:comment "Viewport to the game world"@en;
+                                                     rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                     rdfs:label "Virtual Camera"@en;
+                                                     rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#Vital> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "Game designers can choose to represent the game object using a single vital definition such as life or further elaborate the vitality of a game object into interrelated attributes such as health, energy, strength, social and etc. "@en;
+                                             rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                             rdfs:label "Vital"@en;
+                                             rdfs:subClassOf <http://ns.inria.fr/ludo/v1/gamemodel#GameAttribute>;
+                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#VitalUpdate> a <http://www.w3.org/2002/07/owl#Class>;
+                                                   rdfs:comment "Revises the value of vitals for a game object as a measure that takes into account the cost of an action inflicted to the object or the cost of performing an action."@en;
+                                                   rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                   rdfs:label "Vital Update"@en;
+                                                   rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasActingCoordination> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                             rdfs:comment "The coordination of a game object can involve appear (for generation and re- spawning of game object), animating an action, playing a sound, moving towards a checkpoint, interacting with another game object or a composition of these."@en;
+                                                             rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameActingScript>;
+                                                             rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                             rdfs:label "Has Game Acting Coordination"@en;
+                                                             rdfs:range xsd:string;
+                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasAction> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                 rdfs:comment "Has action"@en;
+                                                 rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameObject>;
+                                                 rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                 rdfs:label "Has action"@en;
+                                                 rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#Action>;
+                                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasAnimation> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                    rdfs:comment "Has animation"@en;
+                                                    rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#Action>;
+                                                    rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                    rdfs:label "Has animation"@en;
+                                                    rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#Animation>;
+                                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasAnimationType> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                        rdfs:comment "Defines the animation type, either 2D or 3D"@en;
+                                                        rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#Animation>;
+                                                        rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                        rdfs:label "Has Animation Type"@en;
+                                                        rdfs:range xsd:string;
+                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasAppearance> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                     rdfs:comment "Has appearance"@en;
+                                                     rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameObject>;
+                                                     rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                     rdfs:label "Has appearance"@en;
+                                                     rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#Appearance>;
+                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasArea> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                               rdfs:comment "Relates an Area with any component to be represented graphically on the game screen, sucha as GUI components and Media components"@en;
+                                               rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                               rdfs:label "Has area"@en;
+                                               rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#Area>;
+                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasArtRequirement> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                         rdfs:comment "Has art requirement"@en;
+                                                         rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameTheme>;
+                                                         rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                         rdfs:label "Has art requirement"@en;
+                                                         rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#ArtRequirement>;
+                                                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasConstraint> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                     rdfs:comment "Has constraint"@en;
+                                                     rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#Motion>;
+                                                     rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                     rdfs:label "Has constraint"@en;
+                                                     rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#Constraint>;
+                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasDifficultyIndicator> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                              rdfs:comment "Has difficulty indicator"@en;
+                                                              rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameScenario>;
+                                                              rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                              rdfs:label "Has difficulty indicator"@en;
+                                                              rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#DifficultyIndicator>;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasDifficultyIndicatorValue> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                                   rdfs:comment "Has difficulty indicator value"@en;
+                                                                   rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#DifficultyIndicator>;
+                                                                   rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                                   rdfs:label "Difficulty"@en;
+                                                                   rdfs:range xsd:integer;
+                                                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasEventTrigger> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                       rdfs:comment "The property to relate a Game Structure or a Game Event with an Event Trigger"@en;
+                                                       rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                       rdfs:label "Has event trigger"@en;
+                                                       rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#EventTrigger>;
+                                                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasEventTriggerClass> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                            rdfs:comment "Event triggers are used to invoke the transition between game sections and activate the game events within a game scenario. They can be classified into four distinct classes, namely: Input trigger detects user input via hardware interface or graphical user interface (GUI); Time trigger is essentially a countdown timer with an interval value with frequency of once, to repeat infinitely or to repeat finitely; Proximity trigger like input trigger has a hotspot that detects the collision of a specified game object, a class of game object or a group of game objects from different classes; Game mechanics trigger is associated to a range of game application related of events such media event, game event and simulation event. Each event trigger is associated with a command that specify the transition between game sections or activation of a game event."@en;
+                                                            rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#EventTrigger>;
+                                                            rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                            rdfs:label "Has Event Trigger Class"@en;
+                                                            rdfs:range xsd:string;
+                                                            <http://www.w3.org/2002/07/owl#propertyDisjointWith> <http://ns.inria.fr/ludo/v1/gamemodel#hasEventTriggerCommand>;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasEventTriggerCommand> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                              rdfs:comment "Has Event trigger command"@en;
+                                                              rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#EventTrigger>;
+                                                              rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                              rdfs:label "Has Event trigger command"@en;
+                                                              rdfs:range xsd:string;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasForce> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                rdfs:comment "Has force"@en;
+                                                rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#Motion>;
+                                                rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                rdfs:label "Has force"@en;
+                                                rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#Force>;
+                                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasFrontEndDisplay> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                          rdfs:comment "Has front end display"@en;
+                                                          rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameSimulation>;
+                                                          rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                          rdfs:label "Has front end display"@en;
+                                                          rdfs:range ludo-gp:FrontEndDisplay;
+                                                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameAct> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                  rdfs:comment "Has Game Act"@en;
+                                                  rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameEvent>;
+                                                  rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                  rdfs:label "Has Game Act"@en;
+                                                  rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameAct>;
+                                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameActObject> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                        rdfs:comment "Has Game Act Object"@en;
+                                                        rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameAct>;
+                                                        rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                        rdfs:label "Has Game Act Object"@en;
+                                                        rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameObject>;
+                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameActingScript> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                           rdfs:comment "Game Acting Script"@en;
+                                                           rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameAct>;
+                                                           rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                           rdfs:label "Game Acting Script"@en;
+                                                           rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameActingScript>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameAttribute> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                        rdfs:comment "Has Game Attribute"@en;
+                                                        rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                        rdfs:label "Has Game Attribute"@en;
+                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameContext> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                      rdfs:comment "Has Game Context"@en;
+                                                      rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameStructure>;
+                                                      rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                      rdfs:label "Has Game Context"@en;
+                                                      rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameContext>;
+                                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameControl> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                      rdfs:comment "Has Game Control"@en;
+                                                      rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GamePlayer>;
+                                                      rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                      rdfs:label "Has Game Control"@en;
+                                                      rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameControl>;
+                                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameControlInterface> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                               rdfs:comment "Has Game Control Interface"@en;
+                                                               rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameControl>;
+                                                               rdfs:label "Has Game Control Interface"@en;
+                                                               rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameControlInterface>.
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameDimension> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                        rdfs:comment "The game dimension refers to the virtual space of which the game simulation takes place. It can either be 2D or 3D."@en;
+                                                        rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameDimension>;
+                                                        rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                        rdfs:label "Has Game Dimension"@en;
+                                                        rdfs:range xsd:string;
+                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameDimention> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                        rdfs:comment "Has Game Dimention"@en;
+                                                        rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameSimulation>;
+                                                        rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                        rdfs:label "Has Game Dimention"@en;
+                                                        rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameDimension>;
+                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameEnvironment> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                          rdfs:comment "Has Game Environment"@en;
+                                                          rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameScenario>;
+                                                          rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                          rdfs:label "Has Game Environment"@en;
+                                                          rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameEnvironment>;
+                                                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameEvent> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                    rdfs:comment "Has Game Event"@en;
+                                                    rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameScenario>;
+                                                    rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                    rdfs:label "Has Game Event"@en;
+                                                    rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameEvent>;
+                                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameKnowledgeBase> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                            rdfs:comment "Has Game Knowledge-Base"@en;
+                                                            rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#SeriousGame>;
+                                                            rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                            rdfs:label "Has Game Knowledge-Base"@en;
+                                                            rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameKnowledgeBase>;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameObject> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                     rdfs:comment "This property applies for a Game Environment, a Serious Game and an Inventory"@en;
+                                                     rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                     rdfs:label "Has Game Object"@en;
+                                                     rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameObject>;
+                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameObjective> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                        rdfs:comment "This property relates with a Game Objective. Can be used for Game Scenario and Inventory objects."@en;
+                                                        rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                        rdfs:label "Has Game Objective"@en;
+                                                        rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameObjective>;
+                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGamePhysics> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                      rdfs:comment "Has Game Physics"@en;
+                                                      rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                      rdfs:label "Has Game Physics"@en;
+                                                      rdfs:range xsd:string;
+                                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGamePlayer> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                     rdfs:comment "Has Game Player"@en;
+                                                     rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#SeriousGame>;
+                                                     rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                     rdfs:label "Has Game Player"@en;
+                                                     rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GamePlayer>;
+                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameRecord> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                     rdfs:comment "Has Game Record"@en;
+                                                     rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GamePlayer>;
+                                                     rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                     rdfs:label "Has Game Record"@en;
+                                                     rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameRecord>;
+                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameResult> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                     rdfs:comment "Has Game Result"@en;
+                                                     rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameRecord>;
+                                                     rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                     rdfs:label "Has Game Result"@en;
+                                                     rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameResult>;
+                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameRule> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                   rdfs:comment "This property relates a Game Simulation with a Game Rule"@en;
+                                                   rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameSimulation>;
+                                                   rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                   rdfs:label "Has Game Rule"@en;
+                                                   rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameRule>;
+                                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameScenario> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                       rdfs:comment "Has Game Scenario"@en;
+                                                       rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameSimulation>;
+                                                       rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                       rdfs:label "Has Game Scenario"@en;
+                                                       rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameScenario>;
+                                                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameStructure> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                        rdfs:comment "Has Game Structure"@en;
+                                                        rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#SeriousGame>;
+                                                        rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                        rdfs:label "Has Game Structure"@en;
+                                                        rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameStructure>;
+                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameTempo> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                    rdfs:comment "Has Game Tempo"@en;
+                                                    rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameSimulation>;
+                                                    rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                    rdfs:label "Has Game Tempo"@en;
+                                                    rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameTempo>;
+                                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGameTheme> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                    rdfs:comment "Has Game Theme"@en;
+                                                    rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#SeriousGame>;
+                                                    rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                    rdfs:label "Has Game Theme"@en;
+                                                    rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameTheme>;
+                                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGoalCondition> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                        rdfs:comment "Has Goal Condition"@en;
+                                                        rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameObjective>;
+                                                        rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                        rdfs:label "Has Goal Condition"@en;
+                                                        rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GoalCondition>;
+                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasGoalConditionDescription> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                                   rdfs:comment "The description of the goal condition"@en;
+                                                                   rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GoalCondition>;
+                                                                   rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                                   rdfs:label "Goal Condition description"@en;
+                                                                   rdfs:range rdfs:Literal;
+                                                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasHardwareInterface> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                            rdfs:comment "Examples of hardware interface include keyboard, mouse, gamepad, joystick, motionsensor, camera and microphone."@en;
+                                                            rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameControlInterface>;
+                                                            rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                            rdfs:label "Has hardware Interface"@en;
+                                                            rdfs:range xsd:string;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasInputEvent> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                     rdfs:comment "Has Input Event"@en;
+                                                     rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameControl>;
+                                                     rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                     rdfs:label "Has Input Event"@en;
+                                                     rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#InputEvent>;
+                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasIntelligences> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                        rdfs:comment "Has Intelligences"@en;
+                                                        rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameObject>;
+                                                        rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                        rdfs:label "Has Intelligences"@en;
+                                                        rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#Intelligence>;
+                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasInteractionCondition> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                               rdfs:comment "It refers to the state of actor or the state of the game world"@en;
+                                                               rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameInteractionRule>;
+                                                               rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                               rdfs:label "Interaction Condition"@en;
+                                                               rdfs:range xsd:string;
+                                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasInteractionRuleActor> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                               rdfs:comment "Interaction Rule Actor"@en;
+                                                               rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameInteractionRule>;
+                                                               rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                               rdfs:label "Interaction Rule Actor"@en;
+                                                               rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameObject>;
+                                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasInteractionRuleOutcome> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                 rdfs:comment "Interaction Rule Outcome"@en;
+                                                                 rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameInteractionRule>;
+                                                                 rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                                 rdfs:label "Interaction Rule Outcome"@en;
+                                                                 rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameInteractionRuleOutcome>;
+                                                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasInteractionRuleOutcomeOperation> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                                          rdfs:comment "Rewarding the player with any game object can mean give (add) or take away (subtract) an item or increase (add) or decrease (subtract) in the value of an attribute to provide the game player the advantage to succeed in the game."@en;
+                                                                          rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameInteractionRuleOutcome>;
+                                                                          rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                                          rdfs:label "Interaction Rule Outcome Operation"@en;
+                                                                          rdfs:range xsd:string;
+                                                                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasInteractionRuleSubject> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                 rdfs:comment "Interaction Rule Subject"@en;
+                                                                 rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameInteractionRule>;
+                                                                 rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                                 rdfs:label "Interaction Rule Subject"@en;
+                                                                 rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#GameObject>;
+                                                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasInventory> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                    rdfs:comment "Has Inventory"@en;
+                                                    rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GamePlayer>;
+                                                    rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                    rdfs:label "Has Inventory"@en;
+                                                    rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#Inventory>;
+                                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasInventoryQuantity> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                            rdfs:comment "Has inventory quantity"@en;
+                                                            rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#InventoryState>;
+                                                            rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                            rdfs:label "Has inventory quantity"@en;
+                                                            rdfs:range xsd:integer;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasMass> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                               rdfs:comment "The amount of matter of an object in Kilograms."@en;
+                                               rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#Mass>;
+                                               rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                               rdfs:label "Mass"@en;
+                                               rdfs:range xsd:float;
+                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasMatter> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                 rdfs:comment "Each game rule is paired with an outcome which has a matter and an operation to add or subtract a value from the matter. Matter in the context of game refers to an item, an attribute or permission."@en;
+                                                 rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameInteractionRuleOutcome>;
+                                                 rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                 rdfs:label "Interaction Rule Outcome Matter"@en;
+                                                 rdfs:range xsd:string;
+                                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasMotion> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                 rdfs:comment "Has Motion"@en;
+                                                 rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#Action>;
+                                                 rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                 rdfs:label "Has Motion"@en;
+                                                 rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#Motion>;
+                                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasNormalForce> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                      rdfs:comment "The normal force"@en;
+                                                      rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#Force>;
+                                                      rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                      rdfs:label "Normal force"@en;
+                                                      rdfs:range xsd:float;
+                                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasObjectVitality> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                         rdfs:comment "Vitality of an object such as life or interrelated attributes such as health, energy, strength, social and etc."@en;
+                                                         rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#ObjectVitality>;
+                                                         rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                         rdfs:label "Has Object Vitality"@en;
+                                                         rdfs:range xsd:string;
+                                                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasObjectVitalityValue> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                              rdfs:comment "Object Vitality Value"@en;
+                                                              rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#ObjectVitality>;
+                                                              rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                              rdfs:label "Object Vitality Value"@en;
+                                                              rdfs:range xsd:integer;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasPedagogicEvent> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                         rdfs:comment "Associates each game section with one or more pedagogic events from the Gagne's nine events of instructions. These events ordered in sequence are (1) gaining attention, (2) informing learning objectives, (3) recalling prior learning, (4) presenting learning content, (5) providing learning guidance, (6) eliciting performance, (7) provide feedback, (8) assess performance and, (9) enhance retention and transfer."@en;
+                                                         rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#PedagogicEventIndicator>;
+                                                         rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                         rdfs:label "Pedagogic Event"@en;
+                                                         rdfs:range xsd:string;
+                                                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasPedagogicEventIndicator> a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                                                                    <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                  rdfs:comment "Has Pedagogic Event Indicator"@en;
+                                                                  rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameStructure>;
+                                                                  rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                                  rdfs:label "Has Pedagogic Event Indicator"@en;
+                                                                  rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#PedagogicEventIndicator>;
+                                                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasScoringCondition> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                           rdfs:comment "Every game scoring rule has a scoring condition which has no direct relation with interaction. It can be derived from the state of a game object (e.g. enemy is dead or fire is extinguished), the input statistics (e.g. accuracy is above 80%), the time (e.g. respond is less than 5 seconds or level completed in less than 5 minutes), or the game objective (e.g. objective 1, 2 and 5 are met)."@en;
+                                                           rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameScoringRule>;
+                                                           rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                           rdfs:label "Scoring Condition"@en;
+                                                           rdfs:range xsd:string;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasSoringRuleOutcome> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                            rdfs:comment "The outcome of an Scoring Rule"@en;
+                                                            rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameScoringRule>;
+                                                            rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                            rdfs:label "Scoring Rule Outcome"@en;
+                                                            rdfs:range xsd:string;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasSound> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                rdfs:comment "Has Sound"@en;
+                                                rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#Action>;
+                                                rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                rdfs:label "Has Sound"@en;
+                                                rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#Sound>;
+                                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasTempoScale> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                     rdfs:comment "The tempo scale at which the time is passing. This can be used for slow motion effects. When timeScale is 1.0 the time is passing as fast as realtime. When timeScale is 0.5 the time is passing 2x slower than realtime. When timeScale is set to zero the game is basically paused if all your functions are frame rate independent.y. Based on: http://docs.unity3d.com/ScriptReference/Time-timeScale.html"@en;
+                                                     rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameTempo>;
+                                                     rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                     rdfs:label "Game tempo scale"@en;
+                                                     rdfs:range xsd:double;
+                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasText> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                               rdfs:comment "Has text"@en;
+                                               rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                               rdfs:label "Has text"@en;
+                                               rdfs:range xsd:string;
+                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasURI> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                              rdfs:comment "Uniform Resource Identifier"@en;
+                                              rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                              rdfs:label "URI"@en;
+                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasVirtualCamera> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                        rdfs:comment "Has Virtual Camera"@en;
+                                                        rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#GameScenario>;
+                                                        rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                        rdfs:label "Has Virtual Camera"@en;
+                                                        rdfs:range <http://ns.inria.fr/ludo/v1/gamemodel#VirtualCamera>;
+                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasVirtualCameraPosition> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                                rdfs:comment "Position of the virtual camera in the game world"@en;
+                                                                rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#VirtualCamera>;
+                                                                rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                                rdfs:label "Has Virtual Camera Position"@en;
+                                                                rdfs:range xsd:string;
+                                                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#hasVitalUpdate> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                      rdfs:comment "Has Vital Update"@en;
+                                                      rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#Action>;
+                                                      rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                                      rdfs:label "Has Vital Update"@en;
+                                                      rdfs:range xsd:double;
+                                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://ns.inria.fr/ludo/v1/gamemodel#isSolid> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                               rdfs:comment "Solidity"@en;
+                                               rdfs:domain <http://ns.inria.fr/ludo/v1/gamemodel#SoidityState>;
+                                               rdfs:isDefinedBy <http://ns.inria.fr/ludo/v1/gamemodel#>;
+                                               rdfs:label "Solidity"@en;
+                                               rdfs:range xsd:boolean;
+                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://rdfs.org/ns/void#Dataset> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.oscarrodriguez.me/> a <http://xmlns.com/foaf/0.1/Person>.
+<http://xmlns.com/foaf/0.1/Person> a <http://www.w3.org/2002/07/owl#Class>.
+<https://plus.google.com/106595696646939943813> a <http://xmlns.com/foaf/0.1/Person>.

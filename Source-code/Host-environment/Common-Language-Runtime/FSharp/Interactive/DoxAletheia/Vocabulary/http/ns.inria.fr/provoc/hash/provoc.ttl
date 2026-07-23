@@ -2,39 +2,24 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix provoc: <http://ns.inria.fr/provoc#>.
-@prefix gr: <http://purl.org/goodrelations/v1#>.
-@prefix voaf: <http://purl.org/vocommons/voaf#>.
-@prefix drm: <http://vocab.data.gov/def/drm#>.
-@prefix w3: <http://www.w3.org/>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix org: <http://www.w3.org/ns/org#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix ccrel: <http://creativecommons.org/ns#>.
-@prefix planet: <http://dbpedia.org/>.
-@prefix dbpedia-owl: <http://dbpedia.org/ontology/>.
-@prefix dc11: <http://purl.org/dc/elements/1.1/>.
-@prefix schema: <http://schema.org/>.
-@prefix vivo: <http://vivoweb.org/ontology/core#>.
-@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
-@prefix vcard2006: <http://www.w3.org/2006/vcard/ns#>.
 
-dbpedia-owl:formationYear a owl:DatatypeProperty;
-                          rdfs:domain gr:ProductOrService;
-                          rdfs:range xsd:string.
-<http://ns.inria.fr/provoc> ccrel:license <http://creativecommons.org/licenses/by/3.0/>;
-                            dc11:contributor <http://www.viseo.com/en/research/Cedric-Lopez>,
-                                             <http://www-sop.inria.fr/members/Elena.Cabrio/>,
-                                             <http://www-sop.inria.fr/members/Fabien.Gandon/>,
-                                             <http://www.viseo.com/en/research/Frederique-Segond>;
-                            dc11:description "ProVoc (Product Vocabulary) is a vocabulary that can be used to represent information and manipulate them through the Web. This ontology reflects: 1) The basic hierarchy of a company: Group (Company), Divisions of a Group, Brand names attached to a Division or a Group, and 2) The production of a company: products, ranges of products (attached to a Brand), the composition of a product, packages of products..."@en;
-                            dc11:issued "2016-01-01"^^xsd:date;
-                            dc11:publisher <http://wimmics.inria.fr/>,
-                                           <http://www.viseo.com/>;
-                            dc11:rights "Copyright © 2016 INRIA and VISEO";
-                            dc11:title "Product Vocabulary"@en;
-                            voaf:preferredNamespacePrefix "pv";
-                            voaf:preferredNamespaceUri "http://ns.inria.fr/provoc#";
-                            a owl:Ontology;
+<http://dbpedia.org/ontology/formationYear> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                            rdfs:domain <http://purl.org/goodrelations/v1#ProductOrService>;
+                                            rdfs:range xsd:string.
+<http://ns.inria.fr/provoc> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/3.0/>;
+                            <http://purl.org/dc/elements/1.1/contributor> <http://www.viseo.com/en/research/Cedric-Lopez>,
+                                                                          <http://www-sop.inria.fr/members/Elena.Cabrio/>,
+                                                                          <http://www-sop.inria.fr/members/Fabien.Gandon/>,
+                                                                          <http://www.viseo.com/en/research/Frederique-Segond>;
+                            <http://purl.org/dc/elements/1.1/description> "ProVoc (Product Vocabulary) is a vocabulary that can be used to represent information and manipulate them through the Web. This ontology reflects: 1) The basic hierarchy of a company: Group (Company), Divisions of a Group, Brand names attached to a Division or a Group, and 2) The production of a company: products, ranges of products (attached to a Brand), the composition of a product, packages of products..."@en;
+                            <http://purl.org/dc/elements/1.1/issued> "2016-01-01"^^xsd:date;
+                            <http://purl.org/dc/elements/1.1/publisher> <http://wimmics.inria.fr/>,
+                                                                        <http://www.viseo.com/>;
+                            <http://purl.org/dc/elements/1.1/rights> "Copyright © 2016 INRIA and VISEO";
+                            <http://purl.org/dc/elements/1.1/title> "Product Vocabulary"@en;
+                            <http://purl.org/vocommons/voaf#preferredNamespacePrefix> "pv";
+                            <http://purl.org/vocommons/voaf#preferredNamespaceUri> "http://ns.inria.fr/provoc#";
+                            a <http://www.w3.org/2002/07/owl#Ontology>;
                             rdfs:comment """ProVoc (Product Vocabulary) is a vocabulary that can be used to represent information and manipulate them through the Web. This ontology reflects: 1) The basic hierarchy of a company: Group (Company), Divisions of a Group, Brand names attached to a Division or a Group, and 2) The production of a company: products, ranges of products (attached to a Brand), the composition of a product, packages of products...
 
 
@@ -88,128 +73,128 @@ D'autres classes et propriétés sont introduites dans ProVoc dans le but de raf
 
 Concernant les propriétés classiques liées directement au produit, telles que la couleur, le prix, la référence, la description, etc, voir Good Relations.
 """@fr;
-                            owl:versionInfo 1.0.
-provoc:belongsToBrand a owl:ObjectProperty;
+                            <http://www.w3.org/2002/07/owl#versionInfo> 1.0.
+provoc:belongsToBrand a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "This specifies the brand of a range or a product."@en;
                       rdfs:domain provoc:ProductOrServiceRange,
-                                  gr:ProductOrService;
+                                  <http://purl.org/goodrelations/v1#ProductOrService>;
                       rdfs:range <http://www.heppnetz.de/ontologies/goodrelations/v1#Brand>.
-provoc:belongsToDivision a owl:ObjectProperty;
+provoc:belongsToDivision a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:comment "This specifies the division that proposes a brand."@en;
                          rdfs:domain <http://www.heppnetz.de/ontologies/goodrelations/v1#Brand>;
-                         rdfs:range vivo:Division.
-provoc:belongsToGroup a owl:ObjectProperty;
+                         rdfs:range <http://vivoweb.org/ontology/core#Division>.
+provoc:belongsToGroup a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                       rdfs:comment "This specifies the group that contains divisions."@en;
-                      rdfs:domain vivo:Division;
-                      rdfs:range org:Organization.
-provoc:belongsToPackage a owl:ObjectProperty;
+                      rdfs:domain <http://vivoweb.org/ontology/core#Division>;
+                      rdfs:range <http://www.w3.org/ns/org#Organization>.
+provoc:belongsToPackage a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                         rdfs:comment "This specifies the package that contains several products,, not neceserraly from the same pv:Range."@en;
-                        rdfs:domain gr:ProductOrService;
+                        rdfs:domain <http://purl.org/goodrelations/v1#ProductOrService>;
                         rdfs:range provoc:Package.
-provoc:belongsToProductOrServiceRange a owl:ObjectProperty;
+provoc:belongsToProductOrServiceRange a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                                       rdfs:comment "This specifies the range of products."@en;
-                                      rdfs:domain gr:ProductOrService;
+                                      rdfs:domain <http://purl.org/goodrelations/v1#ProductOrService>;
                                       rdfs:range provoc:ProductOrServiceRange.
-provoc:consistsOf a owl:ObjectProperty;
+provoc:consistsOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "This specifies the components included in a component."@en;
                   rdfs:domain provoc:Component;
                   rdfs:range provoc:Component.
-provoc:hasAmbassador a owl:ObjectProperty;
+provoc:hasAmbassador a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                      rdfs:comment "This specifies the ambassadors of a product, a range of product, a brand, a division, etc..."@en;
-                     rdfs:domain schema:brand,
-                                 org:Organization,
-                                 gr:ProductOrService,
-                                 vivo:Division,
-                                 schema:Provider,
+                     rdfs:domain <http://schema.org/brand>,
+                                 <http://www.w3.org/ns/org#Organization>,
+                                 <http://purl.org/goodrelations/v1#ProductOrService>,
+                                 <http://vivoweb.org/ontology/core#Division>,
+                                 <http://schema.org/Provider>,
                                  <http://www.heppnetz.de/ontologies/goodrelations/v1#Brand>,
-                                 gr:BusinessEntity;
+                                 <http://purl.org/goodrelations/v1#BusinessEntity>;
                      rdfs:range provoc:Ambassador;
                      rdfs:subPropertyOf provoc:hasRepresentative.
-provoc:hasComponent a owl:ObjectProperty;
+provoc:hasComponent a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                     rdfs:comment "This specifies the components included in a product."@en;
-                    rdfs:domain gr:ProductOrService;
+                    rdfs:domain <http://purl.org/goodrelations/v1#ProductOrService>;
                     rdfs:range provoc:Component.
-provoc:hasCreator a owl:ObjectProperty;
+provoc:hasCreator a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "This specifies main contributors of the creation of the product."@en;
-                  rdfs:domain gr:ProductOrService;
-                  rdfs:range foaf:Person.
-provoc:hasFounder a owl:ObjectProperty;
+                  rdfs:domain <http://purl.org/goodrelations/v1#ProductOrService>;
+                  rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+provoc:hasFounder a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                   rdfs:comment "This specifies the founder of a group."@en;
-                  rdfs:domain org:Organization;
-                  rdfs:range foaf:Person.
-provoc:hasFragranceCreator a owl:ObjectProperty;
+                  rdfs:domain <http://www.w3.org/ns/org#Organization>;
+                  rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+provoc:hasFragranceCreator a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                            rdfs:comment "This specifies the creator of a fragrance."@en;
-                           rdfs:domain gr:ProductOrService;
-                           rdfs:range foaf:Person;
+                           rdfs:domain <http://purl.org/goodrelations/v1#ProductOrService>;
+                           rdfs:range <http://xmlns.com/foaf/0.1/Person>;
                            rdfs:subPropertyOf provoc:hasCreator.
-provoc:hasFunctionality a owl:DatatypeProperty;
+provoc:hasFunctionality a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                         rdfs:comment """This specifies the functionalities/roles of a component. For instance \"sodium nitrate\" is a food preservative."""@en;
                         rdfs:domain provoc:Component;
                         rdfs:range xsd:string.
-provoc:hasModel a owl:ObjectProperty;
+provoc:hasModel a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                 rdfs:comment "This specifies the models who represent a product, a range of product, a brand, a division, etc..."@en;
-                rdfs:domain gr:BusinessEntity,
-                            gr:ProductOrService,
-                            schema:brand,
+                rdfs:domain <http://purl.org/goodrelations/v1#BusinessEntity>,
+                            <http://purl.org/goodrelations/v1#ProductOrService>,
+                            <http://schema.org/brand>,
                             <http://www.heppnetz.de/ontologies/goodrelations/v1#Brand>,
-                            org:Organization;
+                            <http://www.w3.org/ns/org#Organization>;
                 rdfs:range provoc:Model;
                 rdfs:subPropertyOf provoc:hasRepresentative.
-provoc:hasPackageDesigner a owl:ObjectProperty;
+provoc:hasPackageDesigner a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                           rdfs:comment "This specifies the designer of a fragrance."@en;
                           rdfs:range provoc:Designer;
                           rdfs:subPropertyOf provoc:hasCreator.
-provoc:hasProvider a owl:ObjectProperty;
+provoc:hasProvider a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                    rdfs:comment "This specifies providers of products incurred by a corporation. for instance Sephora is a provider of L'Oréal."@en;
-                   rdfs:domain gr:ProductOrService;
-                   rdfs:range schema:Provider.
-provoc:hasRepresentative a owl:ObjectProperty;
+                   rdfs:domain <http://purl.org/goodrelations/v1#ProductOrService>;
+                   rdfs:range <http://schema.org/Provider>.
+provoc:hasRepresentative a <http://www.w3.org/2002/07/owl#ObjectProperty>;
                          rdfs:comment "This specifies persons who represent a product, a range of product, a brand, a division, etc..."@en.
-provoc:hasTarget a owl:DatatypeProperty;
+provoc:hasTarget a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                  rdfs:comment "A product or service may have a target, for example, male or female."@en,
                               "Un produit ou service peut avoir une cible, par exemple féminine ou masculine."@fr;
-                 rdfs:domain gr:ProductOrService.
-provoc:hasVersion a owl:DatatypeProperty;
+                 rdfs:domain <http://purl.org/goodrelations/v1#ProductOrService>.
+provoc:hasVersion a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                   rdfs:comment "A product or service may have different versions."@en;
-                  rdfs:domain gr:ProductOrService;
+                  rdfs:domain <http://purl.org/goodrelations/v1#ProductOrService>;
                   rdfs:range xsd:string.
-provoc:healthImpact a owl:DatatypeProperty;
+provoc:healthImpact a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                     rdfs:comment "A component/ingredient of a product may have an impact according to health."@en;
                     rdfs:domain provoc:Component;
                     rdfs:range xsd:string.
-dc11:creator a owl:DatatypeProperty.
-dc11:date a owl:DatatypeProperty.
-dc11:source a owl:ObjectProperty,
-              owl:DatatypeProperty;
-            rdfs:comment "A related resource from which the described resource is derived."@en.
-gr:color a owl:DatatypeProperty;
-         rdfs:domain gr:ProductOrService;
-         rdfs:range xsd:string.
-drm:worksFor a owl:ObjectProperty;
-             rdfs:comment "This specifies persons who are working or who worked for a brand or a business entity."@en;
-             rdfs:domain foaf:Person;
-             rdfs:range gr:BusinessEntity,
-                        schema:brand,
-                        <http://www.heppnetz.de/ontologies/goodrelations/v1#Brand>,
-                        org:Organization.
-<http://www.heppnetz.de/ontologies/goodrelations/v1#description> a owl:DatatypeProperty;
-                                                                 rdfs:domain gr:ProductOrService;
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/dc/elements/1.1/date> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/dc/elements/1.1/source> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                           <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                         rdfs:comment "A related resource from which the described resource is derived."@en.
+<http://purl.org/goodrelations/v1#color> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                         rdfs:domain <http://purl.org/goodrelations/v1#ProductOrService>;
+                                         rdfs:range xsd:string.
+<http://vocab.data.gov/def/drm#worksFor> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                         rdfs:comment "This specifies persons who are working or who worked for a brand or a business entity."@en;
+                                         rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                                         rdfs:range <http://purl.org/goodrelations/v1#BusinessEntity>,
+                                                    <http://schema.org/brand>,
+                                                    <http://www.heppnetz.de/ontologies/goodrelations/v1#Brand>,
+                                                    <http://www.w3.org/ns/org#Organization>.
+<http://www.heppnetz.de/ontologies/goodrelations/v1#description> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                                 rdfs:domain <http://purl.org/goodrelations/v1#ProductOrService>;
                                                                  rdfs:range xsd:string.
-vcard2006:hasLogo a owl:DatatypeProperty;
-                  rdfs:domain provoc:ProductOrServiceRange,
-                              <http://www.heppnetz.de/ontologies/goodrelations/v1#Brand>,
-                              org:Organization;
-                  owl:equivalentProperty <http://xmlns.com/foaf/spec/#term_logo>.
-org:hasPrimarySite a owl:ObjectProperty;
-                   rdfs:domain org:Organization;
-                   rdfs:subPropertyOf org:hasSite.
-org:hasSite a owl:ObjectProperty.
-<http://xmlns.com/foaf/spec/#term_depiction> a owl:DatatypeProperty;
+<http://www.w3.org/2006/vcard/ns#hasLogo> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                          rdfs:domain provoc:ProductOrServiceRange,
+                                                      <http://www.heppnetz.de/ontologies/goodrelations/v1#Brand>,
+                                                      <http://www.w3.org/ns/org#Organization>;
+                                          <http://www.w3.org/2002/07/owl#equivalentProperty> <http://xmlns.com/foaf/spec/#term_logo>.
+<http://www.w3.org/ns/org#hasPrimarySite> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                          rdfs:domain <http://www.w3.org/ns/org#Organization>;
+                                          rdfs:subPropertyOf <http://www.w3.org/ns/org#hasSite>.
+<http://www.w3.org/ns/org#hasSite> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://xmlns.com/foaf/spec/#term_depiction> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                              rdfs:comment "The depiction property is a relationship between a thing and an Image that depicts it. This property can be used for the image of a product, for instance."@en;
                                              rdfs:domain provoc:ProductOrServiceRange,
-                                                         gr:ProductOrService.
-<http://xmlns.com/foaf/spec/#term_logo> a owl:DatatypeProperty;
+                                                         <http://purl.org/goodrelations/v1#ProductOrService>.
+<http://xmlns.com/foaf/spec/#term_logo> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
                                         rdfs:domain provoc:ProductOrServiceRange,
                                                     <http://www.heppnetz.de/ontologies/goodrelations/v1#Brand>,
-                                                    org:Organization;
+                                                    <http://www.w3.org/ns/org#Organization>;
                                         rdfs:subPropertyOf <http://xmlns.com/foaf/spec/#term_depiction>.
