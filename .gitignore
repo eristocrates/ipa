@@ -9,6 +9,7 @@ Source-code/Host-environment/Common-Language-Runtime/FSharp/Interactive/DoxAleth
 Source-code/Host-environment/Common-Language-Runtime/FSharp/Project/MyProvider/packages/
 Application/MMT/content/MMT/examples
 Source-code/Host-environment/Common-Language-Runtime/FSharp/Interactive/DoxAletheia/Vocabulary/http/www.w3.org/2000/10/swap/pim/contact/hash/con.ttl
+Source-code/Host-environment/Common-Language-Runtime/FSharp/Interactive/ArcGIS/test_graph/
     
 
 ## A streamlined .gitignore for modern .NET projects
@@ -73,8 +74,7 @@ nunit-*.xml
 # root: {rootFull}
 # ------------------------------------------------------------
 .git/objects/pack/pack-88ea8cb40b1997cd6e35551754c02de933a9b0a0.pack
-.git/objects/pack/pack-8ff8b05fa6a5bf0473a1bb3dcd159c22df7a13e2.pack
-.git/objects/pack/pack-f9b9b8199abe090a5206fd8521fa29b9c5fddaa8.pack
+.git/objects/pack/pack-dc845a3b547b19663cb96e6acce3e9c07ced78bc.pack
 .git/objects/pack/tmp_pack_swa5ds
 Application/MMT/content/MMT/LATIN2/.git/objects/pack/pack-43b870377222ffe65ac4f272dcb155d5f932a01c.pack
 Application/Microsoft/Edge/data_dir/ProvenanceData/2025.10.7.5/vti-b-p32-visual.quant.ort
