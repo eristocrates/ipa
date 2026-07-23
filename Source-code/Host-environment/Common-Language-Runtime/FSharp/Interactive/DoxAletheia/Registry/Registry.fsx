@@ -47,6 +47,7 @@ open ArrayErgonomics
 open RdfExtensions
 open StringExtensions
 open System.Net.Http
+open VDS.RDF.Nodes
 
 
 
@@ -353,31 +354,126 @@ let multipart_distributions =
 
 
 
+[<RequireQualifiedAccess>]
+type Language_Tag = 
+    | en
+    | en_US
+    member this.as_string = this.ToString().Replace("_","-")
+
+type Initial_Text_Direction = 
+    | Ltr
+    | Rtl
+    member this.as_string = this.ToString().ToLowerInvariant()
 
 
-
-
-type Iri = UriNode
-
-type Vocabulary_Metadata = 
+type Prefix_ID = 
     {
         namespace_prefix:string
         namespace_name:string
     }
 
-type Vocabulary(metadata: Vocabulary_Metadata) =
-    let namespace_uri = new Uri(metadata.namespace_name)
-    let namespace_iri = Iri(namespace_uri)
-    let namespace_prefix = metadata.namespace_prefix
-    member this._uri = namespace_uri
-    member this._iri = namespace_iri
-    member this._prefix = namespace_prefix
+type Iri =
+    | IRIREF of Iri_Reference
+    | NamespaceIRI of Namespace_Iri
+    | PrefixedName of Prefixed_Name
+    | SkolemIRI of Skolem_Iri
+
+and Iri_Reference(uri_string:string) =
+    let uri = new Uri(uri_string)
+    let vds_node = new UriNode(uri)
+    member this._uri = uri
+    member this._vds_node = vds_node
+    member this._iri = IRIREF this 
+
+and Namespace_Iri(prefix_id: Prefix_ID) =
+    let uri = new Uri(prefix_id.namespace_name)
+    let vds_node = new UriNode (uri)
+    let prefix_label = prefix_id.namespace_prefix
+    let iriref = Iri_Reference prefix_id.namespace_name
+    member this._uri = uri
+    member this._vds_node = vds_node
+    member this._prefix_label = prefix_label
+    member this._iriref = iriref
+    member this._iri = NamespaceIRI this
+
+
+and Prefixed_Name (prefix_id:Prefix_ID,local_name:string) =
+    let namespace_uri = new Uri (prefix_id.namespace_name)
+    let namespace_vds_node = new UriNode(namespace_uri)
+    let namespace_iri = Namespace_Iri prefix_id 
+    let uri = new Uri(prefix_id.namespace_name + local_name)
+    let vds_node = new UriNode(uri)
+    let iriref = Iri_Reference uri.OriginalString
+
+    member  this._namespace_uri = namespace_uri
+    member this._namespace_vds_node = namespace_vds_node
+    member  this._namespace_iri = namespace_iri
+    member  this._uri = uri
+    member this._vds_node = vds_node
+    member  this._iriref = iriref
+    member  this._iri = PrefixedName this
+
+
+
+and Skolem_Iri (well_known_base:string, uuid:Guid) =
+    let well_known_uri = new Uri (well_known_base)
+    let well_known_vds_node = new UriNode(well_known_uri)
+    let well_known_iri = Iri_Reference well_known_base 
+    let uri = new Uri(well_known_base + uuid.ToString("N"))
+    let vds_node = new UriNode(uri)
+    let iriref = Iri_Reference uri.OriginalString
+
+    member  this._well_known_uri = well_known_uri
+    member this._well_known_vds_node = well_known_vds_node
+    member  this._well_known_iri = well_known_iri
+    member  this._uri = uri
+    member this._vds_node = vds_node
+    member  this._iriref = iriref
+    member  this._iri = SkolemIRI this
+and Blank_Node(identifier:string) = 
+    let identifier = identifier
+    let vds_node = new BlankNode(identifier)
+    member this._identifier = identifier
+    member this._vds_node = vds_node
+
+and Literal =
+    | UntypedLiteral of Untyped_Literal
+    | TypedLiteral of Typed_Literal
+and Untyped_Literal = 
+    | SimpleLiteral of Simple_Literal
+    | LanguageString of Language_String
+    | DirectedLanguageString of Directed_Language_String
+and Simple_Literal(lexical_form:string) = 
+    let lexical_form = lexical_form
+    let vds_node = new StringNode(lexical_form)
+    member this._lexical_form = lexical_form
+    member this._vds_node = vds_node
+and Language_String(lexical_form:string,language_tag:Language_Tag) = 
+    let lexical_form = lexical_form
+    let langugage_tag = language_tag
+    let vds_node = new StringNode(lexical_form,language_tag.as_string)
+    member this._lexical_form = lexical_form
+    member this._langugage_tag = langugage_tag
+    member this._vds_node = vds_node
+and Directed_Language_String(lexical_form:string,language_tag:Language_Tag,base_direction:Initial_Text_Direction)  =
+    let lexical_form = lexical_form
+    let langugage_tag = language_tag
+    let base_direction = base_direction
+    let vds_node = new LiteralNode(lexical_form) 
+    // TODO next find how/if dotnetrdf handles language direction
+
+(*
+and Typed_Literal =
+    | DatatypedLiteral of Datatype_Literal
+    | BooleanLiteral of Boolean_Literal
+    | DateTimeLiteral of DateTime_Literal
+    | NumericLiteral of Numeric_Literal
+    | TimeSpanLiteral of TimeSpan_Literal
 
 
 
 
-
-
+*)
 
 
 type PathInfo = 
@@ -2143,7 +2239,6 @@ let multipart_content =
 
 
 File.WriteAllLines(Path.Combine(__SOURCE_DIRECTORY__, "ErroredNamespaces.txt"), log_lines)
-
 
 
 
