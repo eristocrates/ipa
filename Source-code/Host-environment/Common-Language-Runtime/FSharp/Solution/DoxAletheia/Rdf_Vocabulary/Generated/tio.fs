@@ -6,6 +6,32 @@ open type Prefix_ID
 
 module tio =
     let _namespace_iri = Namespace_Iri tio |> NamespaceIRI
+
+    /// <summary>
+    ///   <para>tio:TransportationService</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A service to transport passengers or cargo from one location to another location, with optionally intermediate stops
+    ///
+    /// Note: By design, the Tickets Ontology does not provide mechanisms for modeling rules for recurring patterns of transportation services (e.g. every Monday at 8:00). Instead, it expects that you materialize each individual connection on a given day.
+    /// Most timetable applications are complex databases, so they will have to be exposed as SPARQL endpoints anyway.</para>
+    /// labels<para>TransportationService</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#TransportationService">http://purl.org/tio/ns#TransportationService</seealso>
+    let TransportationService =
+        Prefixed_Name(tio, "TransportationService") |> PrefixedName
+
+    /// <summary>
+    ///   <para>tio:Stop</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The initial, final, or any intermediate point in time and space of a particular tio:TransportationService,
+    /// characterized by its location (tio:at), arrival time (tio:arrives), and departure time (tio:departs).
+    /// Each tio:TransportationService has at least one tio:Stop for the point and time of departure and another one for the final destination.</para>
+    /// labels<para>Stop</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#Stop">http://purl.org/tio/ns#Stop</seealso>
+    let Stop = Prefixed_Name(tio, "Stop") |> PrefixedName
     /// <summary>
     ///   <para>tio:</para>
     /// </summary>
@@ -34,15 +60,6 @@ module tio =
     /// <seealso href="http://purl.org/tio/ns#ActualTicket">http://purl.org/tio/ns#ActualTicket</seealso>
     let ActualTicket = Prefixed_Name(tio, "ActualTicket") |> PrefixedName
     /// <summary>
-    ///   <para>tio:Ticket</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A ticket is a tradeable right to access a particular event or location, or to use a particular transportation service.</para>
-    /// labels<para>Ticket (gr:ProductOrService)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#Ticket">http://purl.org/tio/ns#Ticket</seealso>
-    let Ticket = Prefixed_Name(tio, "Ticket") |> PrefixedName
-    /// <summary>
     ///   <para>tio:TicketPlaceholder</para>
     /// </summary>
     /// <remarks>
@@ -51,18 +68,6 @@ module tio =
     /// labels<para>TicketPlaceholder (gr:ProductOrService)</para></remarks>
     /// <seealso href="http://purl.org/tio/ns#TicketPlaceholder">http://purl.org/tio/ns#TicketPlaceholder</seealso>
     let TicketPlaceholder = Prefixed_Name(tio, "TicketPlaceholder") |> PrefixedName
-    /// <summary>
-    ///   <para>tio:BusinessClass</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>tio:ServiceLevel</para>
-    ///   <para>Business class as a service level / fare class for transportation by aircraft
-    ///
-    /// Note: The exact character of a particular fare class may vary by carrier or country.
-    /// You can create individual instances of tio:ServiceLevel for a particular fare class for a particular airline.</para>
-    /// labels<para>BusinessClass (tio:ServiceLevel)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#BusinessClass">http://purl.org/tio/ns#BusinessClass</seealso>
-    let BusinessClass = Prefixed_Name(tio, "BusinessClass") |> PrefixedName
     /// <summary>
     ///   <para>tio:Economy</para>
     /// </summary>
@@ -76,15 +81,6 @@ module tio =
     /// <seealso href="http://purl.org/tio/ns#Economy">http://purl.org/tio/ns#Economy</seealso>
     let Economy = Prefixed_Name(tio, "Economy") |> PrefixedName
     /// <summary>
-    ///   <para>tio:ServiceLevel</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The class of qualitative values indicating a service level oder fare class (e.g. Business Class).</para>
-    /// labels<para>ServiceLevel (gr:QualitativeValue)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#ServiceLevel">http://purl.org/tio/ns#ServiceLevel</seealso>
-    let ServiceLevel = Prefixed_Name(tio, "ServiceLevel") |> PrefixedName
-    /// <summary>
     ///   <para>tio:CoachService</para>
     /// </summary>
     /// <remarks>
@@ -93,33 +89,6 @@ module tio =
     /// labels<para>CoachService</para></remarks>
     /// <seealso href="http://purl.org/tio/ns#CoachService">http://purl.org/tio/ns#CoachService</seealso>
     let CoachService = Prefixed_Name(tio, "CoachService") |> PrefixedName
-
-    /// <summary>
-    ///   <para>tio:TransportationService</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A service to transport passengers or cargo from one location to another location, with optionally intermediate stops
-    ///
-    /// Note: By design, the Tickets Ontology does not provide mechanisms for modeling rules for recurring patterns of transportation services (e.g. every Monday at 8:00). Instead, it expects that you materialize each individual connection on a given day.
-    /// Most timetable applications are complex databases, so they will have to be exposed as SPARQL endpoints anyway.</para>
-    /// labels<para>TransportationService</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#TransportationService">http://purl.org/tio/ns#TransportationService</seealso>
-    let TransportationService =
-        Prefixed_Name(tio, "TransportationService") |> PrefixedName
-
-    /// <summary>
-    ///   <para>tio:TrainService</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A regular or individual service to transport passengers or cargo from one location to another location by means of a train, subway, or other railroad vehicle
-    ///
-    /// Note: By design, the Tickets Ontology does not provide mechanisms for modeling rules for recurring patterns of transportation services (e.g. every Monday at 8:00). Instead, it expects that you materialize each individual connection on a given day.
-    /// Most train schedule applications are complex databases, so they will have to be exposed as SPARQL endpoints anyway.</para>
-    /// labels<para>TrainService</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#TrainService">http://purl.org/tio/ns#TrainService</seealso>
-    let TrainService = Prefixed_Name(tio, "TrainService") |> PrefixedName
     /// <summary>
     ///   <para>tio:Taxi</para>
     /// </summary>
@@ -142,17 +111,6 @@ module tio =
     /// <seealso href="http://purl.org/tio/ns#Flight">http://purl.org/tio/ns#Flight</seealso>
     let Flight = Prefixed_Name(tio, "Flight") |> PrefixedName
     /// <summary>
-    ///   <para>tio:DiscountType</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The class of qualitative values indicating a discount type, audience, or group type - e.g. students, military personnel, etc.
-    ///
-    /// Note: Discount types that solely represent age ranges (e.g. children, senior citizens, ...) are better expressed using tio:ageRange.</para>
-    /// labels<para>DiscountType (gr:QualitativeValue)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#DiscountType">http://purl.org/tio/ns#DiscountType</seealso>
-    let DiscountType = Prefixed_Name(tio, "DiscountType") |> PrefixedName
-    /// <summary>
     ///   <para>tio:Event</para>
     /// </summary>
     /// <remarks>
@@ -167,26 +125,6 @@ module tio =
     /// labels<para>Event</para></remarks>
     /// <seealso href="http://purl.org/tio/ns#Event">http://purl.org/tio/ns#Event</seealso>
     let Event = Prefixed_Name(tio, "Event") |> PrefixedName
-    /// <summary>
-    ///   <para>tio:Stop</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The initial, final, or any intermediate point in time and space of a particular tio:TransportationService,
-    /// characterized by its location (tio:at), arrival time (tio:arrives), and departure time (tio:departs).
-    /// Each tio:TransportationService has at least one tio:Stop for the point and time of departure and another one for the final destination.</para>
-    /// labels<para>Stop</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#Stop">http://purl.org/tio/ns#Stop</seealso>
-    let Stop = Prefixed_Name(tio, "Stop") |> PrefixedName
-    /// <summary>
-    ///   <para>tio:ScopeOfAccess</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>This is a conceptual entity that collates all properties defining the type of access a ticket provides to a particular event, location, or transportation.</para>
-    /// labels<para>ScopeOfAccess</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#ScopeOfAccess">http://purl.org/tio/ns#ScopeOfAccess</seealso>
-    let ScopeOfAccess = Prefixed_Name(tio, "ScopeOfAccess") |> PrefixedName
     /// <summary>
     ///   <para>tio:SeatingLayout</para>
     /// </summary>
@@ -205,6 +143,146 @@ module tio =
     /// labels<para>Etix (gr:DeliveryMethod)</para></remarks>
     /// <seealso href="http://purl.org/tio/ns#Etix">http://purl.org/tio/ns#Etix</seealso>
     let Etix = Prefixed_Name(tio, "Etix") |> PrefixedName
+    /// <summary>
+    ///   <para>tio:Ticket</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A ticket is a tradeable right to access a particular event or location, or to use a particular transportation service.</para>
+    /// labels<para>Ticket (gr:ProductOrService)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#Ticket">http://purl.org/tio/ns#Ticket</seealso>
+    let Ticket = Prefixed_Name(tio, "Ticket") |> PrefixedName
+    /// <summary>
+    ///   <para>tio:ServiceLevel</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The class of qualitative values indicating a service level oder fare class (e.g. Business Class).</para>
+    /// labels<para>ServiceLevel (gr:QualitativeValue)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#ServiceLevel">http://purl.org/tio/ns#ServiceLevel</seealso>
+    let ServiceLevel = Prefixed_Name(tio, "ServiceLevel") |> PrefixedName
+    /// <summary>
+    ///   <para>tio:available</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The number of tickets of this category still available at the time of publishing the data</para>
+    /// labels<para>available (0..1)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#available">http://purl.org/tio/ns#available</seealso>
+    let available = Prefixed_Name(tio, "available") |> PrefixedName
+    /// <summary>
+    ///   <para>tio:availableSeats</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This indicates the individual seats for a given seating layout.</para>
+    /// labels<para>availableSeats (0..*)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#availableSeats">http://purl.org/tio/ns#availableSeats</seealso>
+    let availableSeats = Prefixed_Name(tio, "availableSeats") |> PrefixedName
+    /// <summary>
+    ///   <para>tio:durationOfAccess</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The eligible duration of uninterrupted attendance or access.
+    /// Typical unit code(s): HUR for hours, DAY for days, WEE for weeks, MON for months, ANN for years </para>
+    /// labels<para>durationOfAccess (0..1)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#durationOfAccess">http://purl.org/tio/ns#durationOfAccess</seealso>
+    let durationOfAccess = Prefixed_Name(tio, "durationOfAccess") |> PrefixedName
+    /// <summary>
+    ///   <para>tio:arrives</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The date and time at which the transportation service will arrive at the respective tio:Stop</para>
+    /// labels<para>arrives (0..1)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#arrives">http://purl.org/tio/ns#arrives</seealso>
+    let arrives = Prefixed_Name(tio, "arrives") |> PrefixedName
+    /// <summary>
+    ///   <para>tio:BusinessClass</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>tio:ServiceLevel</para>
+    ///   <para>Business class as a service level / fare class for transportation by aircraft
+    ///
+    /// Note: The exact character of a particular fare class may vary by carrier or country.
+    /// You can create individual instances of tio:ServiceLevel for a particular fare class for a particular airline.</para>
+    /// labels<para>BusinessClass (tio:ServiceLevel)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#BusinessClass">http://purl.org/tio/ns#BusinessClass</seealso>
+    let BusinessClass = Prefixed_Name(tio, "BusinessClass") |> PrefixedName
+    /// <summary>
+    ///   <para>tio:operatedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This indicates the business entity that actually operates the vessel used for a transportation service.</para>
+    /// labels<para>operatedBy (0..1)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#operatedBy">http://purl.org/tio/ns#operatedBy</seealso>
+    let operatedBy = Prefixed_Name(tio, "operatedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>tio:scope</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This links a tio:Ticket to the tio:ScopeOfAccess node or nodes that are included in the ticket.
+    ///
+    /// Note: For simple scenarios, you can also directly use tio:accessTo.</para>
+    /// labels<para>scope (0..*)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#scope">http://purl.org/tio/ns#scope</seealso>
+    let scope = Prefixed_Name(tio, "scope") |> PrefixedName
+    /// <summary>
+    ///   <para>tio:takesPlaceAt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This indicates the location or locations of a tio:Event.</para>
+    /// labels<para>takesPlaceAt (0..*)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#takesPlaceAt">http://purl.org/tio/ns#takesPlaceAt</seealso>
+    let takesPlaceAt = Prefixed_Name(tio, "takesPlaceAt") |> PrefixedName
+    /// <summary>
+    ///   <para>tio:TrainService</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A regular or individual service to transport passengers or cargo from one location to another location by means of a train, subway, or other railroad vehicle
+    ///
+    /// Note: By design, the Tickets Ontology does not provide mechanisms for modeling rules for recurring patterns of transportation services (e.g. every Monday at 8:00). Instead, it expects that you materialize each individual connection on a given day.
+    /// Most train schedule applications are complex databases, so they will have to be exposed as SPARQL endpoints anyway.</para>
+    /// labels<para>TrainService</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#TrainService">http://purl.org/tio/ns#TrainService</seealso>
+    let TrainService = Prefixed_Name(tio, "TrainService") |> PrefixedName
+    /// <summary>
+    ///   <para>tio:ScopeOfAccess</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>This is a conceptual entity that collates all properties defining the type of access a ticket provides to a particular event, location, or transportation.</para>
+    /// labels<para>ScopeOfAccess</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#ScopeOfAccess">http://purl.org/tio/ns#ScopeOfAccess</seealso>
+    let ScopeOfAccess = Prefixed_Name(tio, "ScopeOfAccess") |> PrefixedName
+    /// <summary>
+    ///   <para>tio:via</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This indicates the location, time of arrival, and time of departure for an intermediate stop.
+    ///
+    /// Note: When the object of the statement is a tio:Stop, one can indicate the exact date and time for a single connection.
+    /// If such a level of detail is not needed, you can directly link to a point of interest, e.g. an instance of tio:POI.</para>
+    /// labels<para>via (0..*)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#via">http://purl.org/tio/ns#via</seealso>
+    let via = Prefixed_Name(tio, "via") |> PrefixedName
+    /// <summary>
+    ///   <para>tio:DiscountType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The class of qualitative values indicating a discount type, audience, or group type - e.g. students, military personnel, etc.
+    ///
+    /// Note: Discount types that solely represent age ranges (e.g. children, senior citizens, ...) are better expressed using tio:ageRange.</para>
+    /// labels<para>DiscountType (gr:QualitativeValue)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#DiscountType">http://purl.org/tio/ns#DiscountType</seealso>
+    let DiscountType = Prefixed_Name(tio, "DiscountType") |> PrefixedName
     /// <summary>
     ///   <para>tio:FirstClass</para>
     /// </summary>
@@ -261,15 +339,6 @@ module tio =
     /// <seealso href="http://purl.org/tio/ns#ageRange">http://purl.org/tio/ns#ageRange</seealso>
     let ageRange = Prefixed_Name(tio, "ageRange") |> PrefixedName
     /// <summary>
-    ///   <para>tio:arrives</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The date and time at which the transportation service will arrive at the respective tio:Stop</para>
-    /// labels<para>arrives (0..1)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#arrives">http://purl.org/tio/ns#arrives</seealso>
-    let arrives = Prefixed_Name(tio, "arrives") |> PrefixedName
-    /// <summary>
     ///   <para>tio:at</para>
     /// </summary>
     /// <remarks>
@@ -279,15 +348,6 @@ module tio =
     /// <seealso href="http://purl.org/tio/ns#at">http://purl.org/tio/ns#at</seealso>
     let at = Prefixed_Name(tio, "at") |> PrefixedName
     /// <summary>
-    ///   <para>tio:available</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The number of tickets of this category still available at the time of publishing the data</para>
-    /// labels<para>available (0..1)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#available">http://purl.org/tio/ns#available</seealso>
-    let available = Prefixed_Name(tio, "available") |> PrefixedName
-    /// <summary>
     ///   <para>tio:availableLayouts</para>
     /// </summary>
     /// <remarks>
@@ -296,15 +356,6 @@ module tio =
     /// labels<para>availableLayouts (0..*)</para></remarks>
     /// <seealso href="http://purl.org/tio/ns#availableLayouts">http://purl.org/tio/ns#availableLayouts</seealso>
     let availableLayouts = Prefixed_Name(tio, "availableLayouts") |> PrefixedName
-    /// <summary>
-    ///   <para>tio:availableSeats</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>This indicates the individual seats for a given seating layout.</para>
-    /// labels<para>availableSeats (0..*)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#availableSeats">http://purl.org/tio/ns#availableSeats</seealso>
-    let availableSeats = Prefixed_Name(tio, "availableSeats") |> PrefixedName
 
     /// <summary>
     ///   <para>tio:availableServiceLevel</para>
@@ -318,25 +369,6 @@ module tio =
         Prefixed_Name(tio, "availableServiceLevel") |> PrefixedName
 
     /// <summary>
-    ///   <para>tio:departs</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The date and time at which the transportation service will depart from the respective tio:Stop</para>
-    /// labels<para>departs (0..1)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#departs">http://purl.org/tio/ns#departs</seealso>
-    let departs = Prefixed_Name(tio, "departs") |> PrefixedName
-    /// <summary>
-    ///   <para>tio:durationOfAccess</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>The eligible duration of uninterrupted attendance or access.
-    /// Typical unit code(s): HUR for hours, DAY for days, WEE for weeks, MON for months, ANN for years </para>
-    /// labels<para>durationOfAccess (0..1)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#durationOfAccess">http://purl.org/tio/ns#durationOfAccess</seealso>
-    let durationOfAccess = Prefixed_Name(tio, "durationOfAccess") |> PrefixedName
-    /// <summary>
     ///   <para>tio:eligibleAudience</para>
     /// </summary>
     /// <remarks>
@@ -345,41 +377,6 @@ module tio =
     /// labels<para>eligibleAudience (0..*)</para></remarks>
     /// <seealso href="http://purl.org/tio/ns#eligibleAudience">http://purl.org/tio/ns#eligibleAudience</seealso>
     let eligibleAudience = Prefixed_Name(tio, "eligibleAudience") |> PrefixedName
-
-    /// <summary>
-    ///   <para>tio:eligibleServiceLevel</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>This indicates the service level(s) or fare class(es) to which the tio:Ticket entitles.</para>
-    /// labels<para>eligibleServiceLevel (0..*)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#eligibleServiceLevel">http://purl.org/tio/ns#eligibleServiceLevel</seealso>
-    let eligibleServiceLevel =
-        Prefixed_Name(tio, "eligibleServiceLevel") |> PrefixedName
-
-    /// <summary>
-    ///   <para>tio:eligibleTimes</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>This links a tio:ScopeOfAccess node to one or more gr:OpeningHoursSpecifications that indicate the times of access.
-    ///
-    /// Note: The times of access for a particular ticket may be more constrained than the opening hours of the location, event, or transportation service. Use tio:openingHours for specifying the overall opening hours or hours of operation.</para>
-    /// labels<para>eligibleTimes (0..*)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#eligibleTimes">http://purl.org/tio/ns#eligibleTimes</seealso>
-    let eligibleTimes = Prefixed_Name(tio, "eligibleTimes") |> PrefixedName
-    /// <summary>
-    ///   <para>tio:ends</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The date and time for which the event is scheduled to end
-    ///
-    /// Note: You can attach the time and date of the event using tio:starts and tio:ends as simple datatype properties,
-    /// even if lode:Event and event:Event recommend other, more sophisticated ways of modeling the temporal aspects of events.</para>
-    /// labels<para>ends (0..1)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#ends">http://purl.org/tio/ns#ends</seealso>
-    let ends = Prefixed_Name(tio, "ends") |> PrefixedName
     /// <summary>
     ///   <para>tio:flightNo</para>
     /// </summary>
@@ -405,8 +402,8 @@ module tio =
     ///   <para>tio:includes</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:TransitiveProperty</para>
     ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
     ///   <para>This indicates that a particular area includes another area or points of interest.
     ///
     /// Note: Modeling geo-spatial relationships is non-trivial. This property is a very simple approach, sufficient for e.g. grouping all train stations in a particular fare area.</para>
@@ -435,15 +432,6 @@ module tio =
     /// <seealso href="http://purl.org/tio/ns#openingHours">http://purl.org/tio/ns#openingHours</seealso>
     let openingHours = Prefixed_Name(tio, "openingHours") |> PrefixedName
     /// <summary>
-    ///   <para>tio:operatedBy</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>This indicates the business entity that actually operates the vessel used for a transportation service.</para>
-    /// labels<para>operatedBy (0..1)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#operatedBy">http://purl.org/tio/ns#operatedBy</seealso>
-    let operatedBy = Prefixed_Name(tio, "operatedBy") |> PrefixedName
-    /// <summary>
     ///   <para>tio:participants</para>
     /// </summary>
     /// <remarks>
@@ -453,17 +441,6 @@ module tio =
     /// labels<para>participants (0..1)</para></remarks>
     /// <seealso href="http://purl.org/tio/ns#participants">http://purl.org/tio/ns#participants</seealso>
     let participants = Prefixed_Name(tio, "participants") |> PrefixedName
-    /// <summary>
-    ///   <para>tio:scope</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>This links a tio:Ticket to the tio:ScopeOfAccess node or nodes that are included in the ticket.
-    ///
-    /// Note: For simple scenarios, you can also directly use tio:accessTo.</para>
-    /// labels<para>scope (0..*)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#scope">http://purl.org/tio/ns#scope</seealso>
-    let scope = Prefixed_Name(tio, "scope") |> PrefixedName
     /// <summary>
     ///   <para>tio:seat</para>
     /// </summary>
@@ -495,15 +472,6 @@ module tio =
     /// <seealso href="http://purl.org/tio/ns#starts">http://purl.org/tio/ns#starts</seealso>
     let starts = Prefixed_Name(tio, "starts") |> PrefixedName
     /// <summary>
-    ///   <para>tio:takesPlaceAt</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>This indicates the location or locations of a tio:Event.</para>
-    /// labels<para>takesPlaceAt (0..*)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#takesPlaceAt">http://purl.org/tio/ns#takesPlaceAt</seealso>
-    let takesPlaceAt = Prefixed_Name(tio, "takesPlaceAt") |> PrefixedName
-    /// <summary>
     ///   <para>tio:ticketID</para>
     /// </summary>
     /// <remarks>
@@ -513,18 +481,6 @@ module tio =
     /// <seealso href="http://purl.org/tio/ns#ticketID">http://purl.org/tio/ns#ticketID</seealso>
     let ticketID = Prefixed_Name(tio, "ticketID") |> PrefixedName
     /// <summary>
-    ///   <para>tio:to</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>This indicates the destination and time of arrival.
-    ///
-    /// Note: When the object of the statement is a tio:Stop, one can indicate the exact date and time for a single connection.
-    /// If such a level of detail is not needed, you can directly link to a point of interest, e.g. an instance of tio:POI.</para>
-    /// labels<para>to (1..1)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#to">http://purl.org/tio/ns#to</seealso>
-    let to_ = Prefixed_Name(tio, "to") |> PrefixedName
-    /// <summary>
     ///   <para>tio:total</para>
     /// </summary>
     /// <remarks>
@@ -533,28 +489,6 @@ module tio =
     /// labels<para>total (0..1)</para></remarks>
     /// <seealso href="http://purl.org/tio/ns#total">http://purl.org/tio/ns#total</seealso>
     let total = Prefixed_Name(tio, "total") |> PrefixedName
-    /// <summary>
-    ///   <para>tio:validFrom</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>This property specifies the beginning of the validity of the access or right that the ticket grants.
-    /// It can be attached to the tio:Ticket (if meant for the ticket as a whole) and to individual tio:ScopeOfAccess entities (if meant for just a particular part of the access rights).
-    ///
-    /// A time-zone should be specified. For a time in GMT/UTC, simply add a "Z" following the time:
-    ///
-    /// 2010-11-15T09:30:10Z.
-    ///
-    /// Alternatively, you can specify an offset from the UTC time by adding a positive or negative time following the time:
-    ///
-    /// 2010-11-15T09:30:10-09:00
-    ///
-    /// or
-    ///
-    /// 2010-11-15T09:30:10+09:00.</para>
-    /// labels<para>validFrom (0..1)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#validFrom">http://purl.org/tio/ns#validFrom</seealso>
-    let validFrom = Prefixed_Name(tio, "validFrom") |> PrefixedName
     /// <summary>
     ///   <para>tio:validThrough</para>
     /// </summary>
@@ -578,14 +512,80 @@ module tio =
     /// <seealso href="http://purl.org/tio/ns#validThrough">http://purl.org/tio/ns#validThrough</seealso>
     let validThrough = Prefixed_Name(tio, "validThrough") |> PrefixedName
     /// <summary>
-    ///   <para>tio:via</para>
+    ///   <para>tio:departs</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The date and time at which the transportation service will depart from the respective tio:Stop</para>
+    /// labels<para>departs (0..1)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#departs">http://purl.org/tio/ns#departs</seealso>
+    let departs = Prefixed_Name(tio, "departs") |> PrefixedName
+
+    /// <summary>
+    ///   <para>tio:eligibleServiceLevel</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>This indicates the location, time of arrival, and time of departure for an intermediate stop.
+    ///   <para>This indicates the service level(s) or fare class(es) to which the tio:Ticket entitles.</para>
+    /// labels<para>eligibleServiceLevel (0..*)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#eligibleServiceLevel">http://purl.org/tio/ns#eligibleServiceLevel</seealso>
+    let eligibleServiceLevel =
+        Prefixed_Name(tio, "eligibleServiceLevel") |> PrefixedName
+
+    /// <summary>
+    ///   <para>tio:ends</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The date and time for which the event is scheduled to end
+    ///
+    /// Note: You can attach the time and date of the event using tio:starts and tio:ends as simple datatype properties,
+    /// even if lode:Event and event:Event recommend other, more sophisticated ways of modeling the temporal aspects of events.</para>
+    /// labels<para>ends (0..1)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#ends">http://purl.org/tio/ns#ends</seealso>
+    let ends = Prefixed_Name(tio, "ends") |> PrefixedName
+    /// <summary>
+    ///   <para>tio:eligibleTimes</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This links a tio:ScopeOfAccess node to one or more gr:OpeningHoursSpecifications that indicate the times of access.
+    ///
+    /// Note: The times of access for a particular ticket may be more constrained than the opening hours of the location, event, or transportation service. Use tio:openingHours for specifying the overall opening hours or hours of operation.</para>
+    /// labels<para>eligibleTimes (0..*)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#eligibleTimes">http://purl.org/tio/ns#eligibleTimes</seealso>
+    let eligibleTimes = Prefixed_Name(tio, "eligibleTimes") |> PrefixedName
+    /// <summary>
+    ///   <para>tio:to</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This indicates the destination and time of arrival.
     ///
     /// Note: When the object of the statement is a tio:Stop, one can indicate the exact date and time for a single connection.
     /// If such a level of detail is not needed, you can directly link to a point of interest, e.g. an instance of tio:POI.</para>
-    /// labels<para>via (0..*)</para></remarks>
-    /// <seealso href="http://purl.org/tio/ns#via">http://purl.org/tio/ns#via</seealso>
-    let via = Prefixed_Name(tio, "via") |> PrefixedName
+    /// labels<para>to (1..1)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#to">http://purl.org/tio/ns#to</seealso>
+    let to_ = Prefixed_Name(tio, "to") |> PrefixedName
+    /// <summary>
+    ///   <para>tio:validFrom</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property specifies the beginning of the validity of the access or right that the ticket grants.
+    /// It can be attached to the tio:Ticket (if meant for the ticket as a whole) and to individual tio:ScopeOfAccess entities (if meant for just a particular part of the access rights).
+    ///
+    /// A time-zone should be specified. For a time in GMT/UTC, simply add a "Z" following the time:
+    ///
+    /// 2010-11-15T09:30:10Z.
+    ///
+    /// Alternatively, you can specify an offset from the UTC time by adding a positive or negative time following the time:
+    ///
+    /// 2010-11-15T09:30:10-09:00
+    ///
+    /// or
+    ///
+    /// 2010-11-15T09:30:10+09:00.</para>
+    /// labels<para>validFrom (0..1)</para></remarks>
+    /// <seealso href="http://purl.org/tio/ns#validFrom">http://purl.org/tio/ns#validFrom</seealso>
+    let validFrom = Prefixed_Name(tio, "validFrom") |> PrefixedName

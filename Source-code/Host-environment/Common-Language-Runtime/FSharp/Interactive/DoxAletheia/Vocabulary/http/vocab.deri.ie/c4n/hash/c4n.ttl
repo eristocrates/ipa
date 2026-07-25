@@ -1,0 +1,78 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix c4n: <http://vocab.deri.ie/c4n#>.
+
+<http://vocab.deri.ie/c4n> <http://purl.org/dc/elements/1.1/creator> c4n:Michael%20Hausenblas;
+                           <http://purl.org/dc/terms/created> "2010-02-04"^^xsd:date;
+                           <http://purl.org/dc/terms/description> "A vocabulary to describe calls, such as call for tenders, call for proposals, call for papers, etc.";
+                           <http://purl.org/dc/terms/modified> "2010-02-04"^^xsd:date;
+                           <http://purl.org/dc/terms/partOf> <http://vocab.deri.ie/>;
+                           <http://purl.org/dc/terms/publisher> "http://vocab.deri.ie/c4n#LiDRC";
+                           <http://purl.org/dc/terms/status> <http://purl.org/adms/status/UnderDevelopment>;
+                           <http://purl.org/dc/terms/title> "Call for Anything vocabulary";
+                           <http://purl.org/dc/terms/type> <http://purl.org/adms/assettype/Ontology>;
+                           <http://purl.org/vocab/vann/preferredNamespacePrefix> "c4n";
+                           <http://purl.org/vocab/vann/preferredNamespaceUri> "http://vocab.deri.ie/c4n#";
+                           a <http://www.w3.org/2002/07/owl#Ontology>,
+                             <http://www.w3.org/ns/adms#SemanticAsset>;
+                           <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/c4n.html>.
+c4n:Call a rdfs:Class,
+           <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:label "a call";
+         rdfs:subClassOf rdfs:Resource.
+c4n:Condition a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "a condition under which the call event has to be understood";
+              rdfs:label "a condition";
+              rdfs:subClassOf rdfs:Resource.
+c4n:Deadline a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "a temporal condition that must be met to comply the call";
+             rdfs:label "a deadline";
+             rdfs:subClassOf c4n:Condition.
+c4n:Event a rdfs:Class,
+            <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "an event a call refers to";
+          rdfs:label "an event";
+          rdfs:subClassOf rdfs:Resource.
+c4n:Issuer a rdfs:Class,
+             <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:label "the issuer of the call";
+           rdfs:subClassOf rdfs:Resource,
+                           <http://xmlns.com/foaf/0.1/Agent>.
+c4n:LiDRC a <http://purl.org/dc/terms/Agent>;
+          <http://xmlns.com/foaf/0.1/homepage> <http://linkeddata.deri.ie/>;
+          <http://xmlns.com/foaf/0.1/member> c4n:Michael%20Hausenblas;
+          <http://xmlns.com/foaf/0.1/name> "LiDRC".
+c4n:Michael%20Hausenblas a <http://xmlns.com/foaf/0.1/Person>;
+                         <http://xmlns.com/foaf/0.1/homepage> <http://sw-app.org/about.html>;
+                         <http://xmlns.com/foaf/0.1/mbox> <mailto:michael.hausenblas@deri.org>;
+                         <http://xmlns.com/foaf/0.1/name> "Michael Hausenblas".
+c4n:SpatialScope a rdfs:Class,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "a geographic condition that must be met to comply the call";
+                 rdfs:label "a spatial scope";
+                 rdfs:subClassOf c4n:Condition.
+c4n:condition a rdf:Property;
+              rdfs:domain c4n:Event;
+              rdfs:label "must meet condition";
+              rdfs:range c4n:Condition.
+c4n:for a rdf:Property;
+        rdfs:comment "restricts the call to a certain event";
+        rdfs:domain c4n:Call;
+        rdfs:label "for";
+        rdfs:range c4n:Event.
+c4n:issues a rdf:Property,
+             <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+           rdfs:domain c4n:Issuer;
+           rdfs:label "issues";
+           rdfs:range c4n:Call.
+c4n:rdf <http://purl.org/dc/terms/FileFormat> <http://vocab.deri.ie/c4n>;
+        a <http://www.w3.org/ns/adms#SemanticDistribution>;
+        <http://www.w3.org/ns/adms#accessURL> "http://vocab.deri.ie/c4n.rdf";
+        <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.
+c4n:ttl <http://purl.org/dc/terms/FileFormat> <http://vocab.deri.ie/c4n>;
+        a <http://www.w3.org/ns/adms#SemanticDistribution>;
+        <http://www.w3.org/ns/adms#accessURL> "http://vocab.deri.ie/c4n.ttl";
+        <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.

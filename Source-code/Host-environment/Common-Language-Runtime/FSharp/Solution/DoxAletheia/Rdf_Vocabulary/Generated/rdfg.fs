@@ -18,6 +18,17 @@ module rdfg =
     /// <seealso href="http://www.w3.org/2004/03/trix/rdfg-1/equivalentGraph">http://www.w3.org/2004/03/trix/rdfg-1/equivalentGraph</seealso>
     let equivalentGraph = Prefixed_Name(rdfg, "equivalentGraph") |> PrefixedName
     /// <summary>
+    ///   <para>rdfg:Graph</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>
+    /// An RDF graph (with intensional semantics).
+    ///       </para>
+    /// labels<para>Graph</para></remarks>
+    /// <seealso href="http://www.w3.org/2004/03/trix/rdfg-1/Graph">http://www.w3.org/2004/03/trix/rdfg-1/Graph</seealso>
+    let Graph = Prefixed_Name(rdfg, "Graph") |> PrefixedName
+    /// <summary>
     ///   <para>rdfg:subGraphOf</para>
     /// </summary>
     /// <remarks>
@@ -29,14 +40,3 @@ module rdfg =
     /// labels<para>subgraph of</para></remarks>
     /// <seealso href="http://www.w3.org/2004/03/trix/rdfg-1/subGraphOf">http://www.w3.org/2004/03/trix/rdfg-1/subGraphOf</seealso>
     let subGraphOf = Prefixed_Name(rdfg, "subGraphOf") |> PrefixedName
-    /// <summary>
-    ///   <para>rdfg:Graph</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>
-    /// An RDF graph (with intensional semantics).
-    ///       </para>
-    /// labels<para>Graph</para></remarks>
-    /// <seealso href="http://www.w3.org/2004/03/trix/rdfg-1/Graph">http://www.w3.org/2004/03/trix/rdfg-1/Graph</seealso>
-    let Graph = Prefixed_Name(rdfg, "Graph") |> PrefixedName

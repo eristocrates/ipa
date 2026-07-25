@@ -1,0 +1,156 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix odv: <http://reference.data.gov.uk/def/organogram/>.
+
+<http://reference.data.gov.uk/def/organogram> <http://purl.org/dc/terms/contributor> [<http://xmlns.com/foaf/0.1/name> "Jeni Tennison" ; 
+                                                                                      <http://xmlns.com/foaf/0.1/mbox> "jeni@jenitennison.com"];
+                                              <http://purl.org/dc/terms/created> "2010-10-17"^^xsd:date;
+                                              <http://purl.org/dc/terms/license> <http://www.opendatacommons.org/licenses/pddl/1.0/>;
+                                              <http://purl.org/dc/terms/modified> "2011-06-11"^^xsd:date;
+                                              <http://purl.org/dc/terms/title> "Organogram Data Vocabulary"@en;
+                                              <http://rdfs.org/ns/void#vocabulary> <http://purl.org/linked-data/cube#>,
+                                                                                   rdfs:,
+                                                                                   <http://reference.data.gov.uk/def/central-government/>,
+                                                                                   <http://www.w3.org/2004/02/skos/core#>,
+                                                                                   <http://xmlns.com/foaf/0.1/>,
+                                                                                   <http://www.w3.org/ns/org#>,
+                                                                                   <http://www.w3.org/2006/time#>,
+                                                                                   <http://www.w3.org/2002/07/owl#>,
+                                                                                   <http://purl.org/net/opmv/ns#>,
+                                                                                   odv:;
+                                              a <http://www.w3.org/2002/07/owl#Ontology>,
+                                                <http://rdfs.org/ns/void#Dataset>;
+                                              rdfs:label "Organogram Data Vocabulary"@en.
+odv:currency <http://purl.org/linked-data/cube#concept> <http://purl.org/linked-data/sdmx/2009/concept#currency>;
+             a <http://purl.org/linked-data/cube#AttributeProperty>;
+             rdfs:comment "Currency in which the salary is paid, typically attached to the dataset for single currency datasets."@en;
+             rdfs:isDefinedBy odv:;
+             rdfs:label "currency"@en.
+odv:date a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+           <http://purl.org/linked-data/cube#DimensionProperty>,
+           rdf:Property;
+         rdfs:comment "The date that the observation relates to."@en;
+         rdfs:domain <http://purl.org/linked-data/cube#Observation>;
+         rdfs:isDefinedBy odv:;
+         rdfs:label "Date"@en;
+         rdfs:range <http://reference.data.gov.uk/def/intervals/CalendarDay>.
+odv:grade a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+            <http://purl.org/linked-data/cube#DimensionProperty>,
+            rdf:Property;
+          rdfs:comment "The grade of the junior posts."@en;
+          rdfs:domain <http://purl.org/linked-data/cube#Observation>;
+          rdfs:isDefinedBy odv:;
+          rdfs:label "Grade"@en;
+          rdfs:range <http://reference.data.gov.uk/def/civil-service-grade/Grade>.
+odv:job a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+          <http://purl.org/linked-data/cube#DimensionProperty>,
+          rdf:Property;
+        rdfs:comment "The job performed by the junior posts."@en;
+        rdfs:domain <http://purl.org/linked-data/cube#Observation>;
+        rdfs:isDefinedBy odv:;
+        rdfs:label "Job"@en;
+        rdfs:range <http://reference.data.gov.uk/def/civil-service-job/Job>.
+odv:junior-posts <http://purl.org/linked-data/cube#component> [<http://purl.org/linked-data/cube#dimension> odv:job],
+                                                              [<http://purl.org/linked-data/cube#dimension> odv:date],
+                                                              [<http://purl.org/linked-data/cube#dimension> odv:profession],
+                                                              [<http://purl.org/linked-data/cube#dimension> odv:unit],
+                                                              [<http://purl.org/linked-data/cube#measure> odv:fullTimeEquivalent],
+                                                              [<http://purl.org/linked-data/cube#dimension> odv:grade],
+                                                              [<http://purl.org/linked-data/cube#dimension> odv:reportingTo];
+                 a <http://purl.org/linked-data/cube#DataStructureDefinition>,
+                   rdfs:Resource;
+                 rdfs:comment "The structure of a cube containing data about the number of junior staff of different grades that report to a particular post from within a particular unit, with a particular job and a particular profession, on a particular day.";
+                 rdfs:isDefinedBy odv:;
+                 rdfs:label "Junior Posts Data Structure"@en.
+odv:number-of-posts <http://purl.org/linked-data/cube#component> [<http://purl.org/linked-data/cube#measure> odv:numberOfPosts],
+                                                                 [<http://purl.org/linked-data/cube#dimension> odv:date],
+                                                                 [<http://purl.org/linked-data/cube#dimension> odv:grade],
+                                                                 [<http://purl.org/linked-data/cube#dimension> odv:post];
+                    a rdfs:Resource,
+                      <http://purl.org/linked-data/cube#DataStructureDefinition>;
+                    rdfs:comment "The structure of a cube containing data about the number of posts of different grades that report to a particular post on a particular day.";
+                    rdfs:isDefinedBy odv:;
+                    rdfs:label "Number of Posts Data Structure"@en.
+odv:numberOfPosts a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                    <http://purl.org/linked-data/cube#MeasureProperty>,
+                    rdf:Property;
+                  rdfs:comment "The number of posts with this grade that report to the given post, as a full-time equivalent."@en;
+                  rdfs:domain <http://purl.org/linked-data/cube#Observation>;
+                  rdfs:isDefinedBy odv:;
+                  rdfs:label "Number of Posts"@en;
+                  rdfs:range xsd:decimal.
+odv:post a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+           <http://purl.org/linked-data/cube#DimensionProperty>,
+           rdf:Property;
+         rdfs:comment "The post whose subordinates this statistic relates to."@en;
+         rdfs:domain <http://purl.org/linked-data/cube#Observation>;
+         rdfs:isDefinedBy odv:;
+         rdfs:label "Post"@en;
+         rdfs:range <http://reference.data.gov.uk/def/central-government/Post>.
+odv:profession a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                 <http://purl.org/linked-data/cube#DimensionProperty>,
+                 rdf:Property;
+               rdfs:comment "The profession of the junior posts."@en;
+               rdfs:domain <http://purl.org/linked-data/cube#Observation>;
+               rdfs:isDefinedBy odv:;
+               rdfs:label "Profession"@en;
+               rdfs:range <http://reference.data.gov.uk/def/civil-service-profession/Profession>.
+odv:reportingTo a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  <http://purl.org/linked-data/cube#DimensionProperty>,
+                  rdf:Property;
+                rdfs:comment "The post to which the junior posts report."@en;
+                rdfs:domain <http://purl.org/linked-data/cube#Observation>;
+                rdfs:isDefinedBy odv:;
+                rdfs:label "Reporting To"@en;
+                rdfs:range <http://reference.data.gov.uk/def/central-government/Post>.
+odv:salary-costs-of-reports <http://purl.org/linked-data/cube#component> [<http://purl.org/linked-data/cube#attribute> odv:currency],
+                                                                         [<http://purl.org/linked-data/cube#measure> odv:salaryCostOfReports],
+                                                                         [<http://purl.org/linked-data/cube#dimension> odv:date],
+                                                                         [<http://purl.org/linked-data/cube#dimension> odv:post];
+                            a rdfs:Resource,
+                              <http://purl.org/linked-data/cube#DataStructureDefinition>;
+                            rdfs:comment "The structure of a cube containing data about the salary costs of the reports to a particular post on a particular day.";
+                            rdfs:isDefinedBy odv:;
+                            rdfs:label "Salary Costs Data Structure"@en.
+odv:salaryCostOfReports a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                          <http://purl.org/linked-data/cube#MeasureProperty>,
+                          rdf:Property;
+                        rdfs:comment "The total salary cost of each Deputy Director/SCS Pay Band 1 and 1A member and the non-SCS staff that report to this post. Salary costs are base pay (excluding bonuses and allowances) as at the date of the observation. To ensure that individual salaries cannot be identified from this information (for Deputy Director/SCS Pay Band 1 and 1A level and non-SCS grades), where the team is less than five people, the cost is rounded to the nearest £100,000. Where the team is one person only, the salary cost may be rounded to the nearest £100,000 or merged with the costs of another team."@en;
+                        rdfs:domain <http://purl.org/linked-data/cube#Observation>;
+                        rdfs:isDefinedBy odv:;
+                        rdfs:label "Salary Cost of Reports"@en;
+                        rdfs:range xsd:integer.
+odv:tenure a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+             <http://purl.org/linked-data/cube#DimensionProperty>,
+             rdf:Property;
+           rdfs:comment "The tenure through which pay was given."@en;
+           rdfs:domain <http://purl.org/linked-data/cube#Observation>;
+           rdfs:isDefinedBy odv:;
+           rdfs:label "Tenure"@en;
+           rdfs:range <http://reference.data.gov.uk/def/central-government/Tenure>.
+odv:total-pay <http://purl.org/linked-data/cube#component> [<http://purl.org/linked-data/cube#attribute> odv:currency],
+                                                           [<http://purl.org/linked-data/cube#measure> odv:totalPay],
+                                                           [<http://purl.org/linked-data/cube#dimension> odv:date],
+                                                           [<http://purl.org/linked-data/cube#dimension> odv:tenure];
+              a rdfs:Resource,
+                <http://purl.org/linked-data/cube#DataStructureDefinition>;
+              rdfs:comment "The structure of a cube containing data about the total pay received for a particular tenure (a person in a post) on a particular day.";
+              rdfs:isDefinedBy odv:;
+              rdfs:label "Total Pay Data Structure"@en.
+odv:totalPay a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+               <http://purl.org/linked-data/cube#MeasureProperty>,
+               rdf:Property;
+             rdfs:comment "The total pay received."@en;
+             rdfs:domain <http://purl.org/linked-data/cube#Observation>;
+             rdfs:isDefinedBy odv:;
+             rdfs:label "Total Pay"@en;
+             rdfs:range xsd:decimal.
+odv:unit a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+           <http://purl.org/linked-data/cube#DimensionProperty>,
+           rdf:Property;
+         rdfs:comment "The unit to which the junior posts belong."@en;
+         rdfs:domain <http://purl.org/linked-data/cube#Observation>;
+         rdfs:isDefinedBy odv:;
+         rdfs:label "Unit"@en;
+         rdfs:range <http://www.w3.org/ns/org#OrganizationalUnit>.

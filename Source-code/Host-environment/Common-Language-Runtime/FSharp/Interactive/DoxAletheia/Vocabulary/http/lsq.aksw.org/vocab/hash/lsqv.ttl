@@ -1,0 +1,152 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix lsqv: <http://lsq.aksw.org/vocab#>.
+
+<http://lsq.aksw.org/vocab> <http://purl.org/dc/terms/creator> <http://aidanhogan.com/foaf.rdf#me>;
+                            <http://purl.org/dc/terms/date> "2015-09-07Z"^^xsd:date;
+                            <http://purl.org/dc/terms/description> "The Linked SPARQL Queries Vocabulary (LSQ(V)), defined using RDF(S) and OWL, provides a machine readable vocabulary to help describe queries in SPARQL logs and their statistics. The vocabulary builds upon the SPIN vocabulary and the Service Description vocabulary."@en;
+                            <http://purl.org/dc/terms/title> "The Linked SPARQL Queries Vocabulary (LSQ(V))"@en;
+                            a <http://www.w3.org/2002/07/owl#Ontology>.
+lsqv:Avg a <http://www.w3.org/ns/sparql-service-description#Feature>;
+         rdfs:label "Avg"@en.
+lsqv:Bind a <http://www.w3.org/ns/sparql-service-description#Feature>;
+          rdfs:label "Bind"@en.
+lsqv:Count a <http://www.w3.org/ns/sparql-service-description#Feature>;
+           rdfs:label "Count"@en.
+lsqv:Distinct a <http://www.w3.org/ns/sparql-service-description#Feature>;
+              rdfs:label "Distinct"@en.
+lsqv:Execution a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Each instance is an execution of a particular query against a particular endpoint at a particular time by a particular agent"@en;
+               rdfs:label "Query Execution"@en.
+lsqv:Filter a <http://www.w3.org/ns/sparql-service-description#Feature>;
+            rdfs:label "Filter"@en.
+lsqv:FromNamed a <http://www.w3.org/ns/sparql-service-description#Feature>;
+               rdfs:label "FromNamed"@en.
+lsqv:GroupBy a <http://www.w3.org/ns/sparql-service-description#Feature>;
+             rdfs:label "GroupBy"@en.
+lsqv:Having a <http://www.w3.org/ns/sparql-service-description#Feature>;
+            rdfs:label "Having"@en.
+lsqv:Hybrid a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Each instance is a hybrid join vertex (position) in the query (at least one incoming edge, at least one outgoing edge, at least three edges)"@en;
+            rdfs:label "Hybrid Join Vertex"@en;
+            rdfs:subClassOf lsqv:JoinVertex.
+lsqv:JoinVertex a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Each instance is a join vertex (position) in the query"@en;
+                rdfs:label "Join Vertex"@en.
+lsqv:Limit a <http://www.w3.org/ns/sparql-service-description#Feature>;
+           rdfs:label "Limit"@en.
+lsqv:Max a <http://www.w3.org/ns/sparql-service-description#Feature>;
+         rdfs:label "Max"@en.
+lsqv:Min a <http://www.w3.org/ns/sparql-service-description#Feature>;
+         rdfs:label "Min"@en.
+lsqv:Minus a <http://www.w3.org/ns/sparql-service-description#Feature>;
+           rdfs:label "Minus"@en.
+lsqv:NamedGraph a <http://www.w3.org/ns/sparql-service-description#Feature>;
+                rdfs:label "NamedGraph"@en;
+                <http://www.w3.org/2002/07/owl#sameAs> lsqv:namedGraph.
+lsqv:Offset a <http://www.w3.org/ns/sparql-service-description#Feature>;
+            rdfs:label "Offset"@en.
+lsqv:Optional a <http://www.w3.org/ns/sparql-service-description#Feature>;
+              rdfs:label "Optional"@en.
+lsqv:OrderBy a <http://www.w3.org/ns/sparql-service-description#Feature>;
+             rdfs:label "OrderBy"@en.
+lsqv:Path a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "Each instance is a path-shaped join vertex (position) in the query (one incoming edge, one outgoing edge)"@en;
+          rdfs:label "Path Join Vertex"@en;
+          rdfs:subClassOf lsqv:JoinVertex.
+lsqv:Regex a <http://www.w3.org/ns/sparql-service-description#Feature>;
+           rdfs:label "Regex"@en.
+lsqv:Service a <http://www.w3.org/ns/sparql-service-description#Feature>;
+             rdfs:label "Service"@en.
+lsqv:Sink a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "Each instance is a sink join vertex (position) in the query (multiple incoming edges, zero outgoing edges)"@en;
+          rdfs:label "Sink Join Vertex"@en;
+          rdfs:subClassOf lsqv:JoinVertex.
+lsqv:Star a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "Each instance is a star-shaped join vertex (position) in the query (zero incoming edges, multiple outgoing edges)"@en;
+          rdfs:label "Star Join Vertex"@en;
+          rdfs:subClassOf lsqv:JoinVertex.
+lsqv:SubQuery a <http://www.w3.org/ns/sparql-service-description#Feature>;
+              rdfs:label "SubQuery"@en.
+lsqv:Sum a <http://www.w3.org/ns/sparql-service-description#Feature>;
+         rdfs:label "Sum"@en.
+lsqv:Union a <http://www.w3.org/ns/sparql-service-description#Feature>;
+           rdfs:label "Union"@en.
+lsqv:Values a <http://www.w3.org/ns/sparql-service-description#Feature>;
+            rdfs:label "Values"@en.
+lsqv:agent a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+             <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+           rdfs:comment "Links a query execution instance to the agent that initiated the execution"@en;
+           rdfs:label "run by agent"@en.
+lsqv:bgps a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+            <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+          rdfs:comment "The number of Basic Graph Patterns in a query"@en;
+          rdfs:label "number of bgps"@en;
+          rdfs:range xsd:nonNegativeInteger.
+lsqv:endpoint a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+              rdfs:comment "Links a query execution instance to the endpoint against which it was run"@en;
+              rdfs:label "run at endpoint"@en.
+lsqv:execution a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                 <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+               rdfs:comment "Links a query to an execution of it against a particular endpoint by a particular agent at a particular time"@en;
+               rdfs:label "has execution"@en.
+lsqv:executionError a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "The text of an error encountered during a query execution"@en;
+                    rdfs:label "execution error"@en.
+lsqv:joinVertex a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Links a query to a join vertex it contains"@en;
+                rdfs:label "has join vertex"@en.
+lsqv:joinVertexType a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                      <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                    rdfs:comment "Links a join vertex to the type of vertex it is"@en;
+                    rdfs:label "is of type"@en.
+lsqv:joinVertices a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                    <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                  rdfs:comment "The number of join vertices in a query"@en;
+                  rdfs:label "number of join vertices"@en;
+                  rdfs:range xsd:nonNegativeInteger.
+lsqv:meanJoinVerticesDegree a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                            rdfs:comment "The mean degree across all the join vertices"@en;
+                            rdfs:label "mean join vertex degree"@en;
+                            rdfs:range xsd:decimal.
+lsqv:meanTriplePatternSelectivity a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                  rdfs:comment "The mean selectivity of all triple patterns"@en;
+                                  rdfs:label "mean selectivity of triple patterns"@en;
+                                  rdfs:range xsd:decimal.
+lsqv:mentionsObject a rdf:Property;
+                    rdfs:comment "Links a query to a term it mentions in the object of a triple pattern"@en;
+                    rdfs:label "mentions object"@en.
+lsqv:mentionsPredicate a rdf:Property;
+                       rdfs:comment "Links a query to a term it mentions in the predicate of a triple pattern"@en;
+                       rdfs:label "mentions predicate"@en.
+lsqv:mentionsSubject a rdf:Property;
+                     rdfs:comment "Links a query to a term it mentions in the subject of a triple pattern"@en;
+                     rdfs:label "mentions subject"@en.
+lsqv:parseError a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "The text of an error encountered when parsing query"@en;
+                rdfs:label "parse error"@en.
+lsqv:resultSize a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "Number of results returned when executed locally"@en;
+                rdfs:label "result size"@en;
+                rdfs:range xsd:nonNegativeInteger.
+lsqv:runTimeMs a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment "The run time of the query in milliseconds when executed locally"@en;
+               rdfs:label "run time in milliseconds"@en;
+               rdfs:range xsd:decimal.
+lsqv:runtimeError a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "The text of an error encountered when running the query locally"@en;
+                  rdfs:label "runtime error"@en.
+lsqv:spinError a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment "The text of an error encountered when generating the SPIN description"@en;
+               rdfs:label "SPIN error"@en.
+lsqv:triplePatterns a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                      <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                    rdfs:comment "The number of triple patterns in a query"@en;
+                    rdfs:label "number of triple patterns"@en;
+                    rdfs:range xsd:nonNegativeInteger.
+lsqv:usesFeature a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "A feature used by the query"@en;
+                 rdfs:label "uses feature"@en.

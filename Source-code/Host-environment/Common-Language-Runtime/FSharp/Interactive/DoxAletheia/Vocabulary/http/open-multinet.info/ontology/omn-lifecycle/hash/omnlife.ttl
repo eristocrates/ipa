@@ -1,0 +1,273 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix omnlife: <http://open-multinet.info/ontology/omn-lifecycle#>.
+
+<http://alex.willner.ws/about#me> a <http://xmlns.com/foaf/0.1/Person>.
+<http://open-multinet.info/ontology/omn#Attribute> a <http://www.w3.org/2002/07/owl#Class>.
+<http://open-multinet.info/ontology/omn#Component> a <http://www.w3.org/2002/07/owl#Class>.
+<http://open-multinet.info/ontology/omn#Group> a <http://www.w3.org/2002/07/owl#Class>.
+<http://open-multinet.info/ontology/omn#Reservation> a <http://www.w3.org/2002/07/owl#Class>.
+<http://open-multinet.info/ontology/omn#Resource> a <http://www.w3.org/2002/07/owl#Class>.
+<http://open-multinet.info/ontology/omn#Service> a <http://www.w3.org/2002/07/owl#Class>.
+<http://open-multinet.info/ontology/omn#Topology> a <http://www.w3.org/2002/07/owl#Class>.
+<http://open-multinet.info/ontology/omn-lifecycle> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/4.0/>;
+                                                   <http://purl.org/dc/elements/1.1/contributor> <mailto:yahya.al-hazmi@tu-berlin.de>,
+                                                                                                 <https://staff.fnwi.uva.nl/p.grosso>,
+                                                                                                 <mailto:loughnane@campus.tu-berlin.de>,
+                                                                                                 <http://www.commit-nl.nl/people/morsey>,
+                                                                                                 <mailto:thijs.walcarius@intec.ugent.be>,
+                                                                                                 <mailto:jorge.lopez_vergara@uam.es>,
+                                                                                                 <mailto:ibaldin@renci.org>,
+                                                                                                 <mailto:brecht.vermeulen@iminds.be>,
+                                                                                                 <mailto:chrisap@noc.ntua.gr>,
+                                                                                                 <mailto:yxin@renci.org>;
+                                                   <http://purl.org/dc/elements/1.1/creator> <http://alex.willner.ws/about#me>;
+                                                   <http://purl.org/dc/elements/1.1/description> "This ontology defines generic concepts related to the life cycle of resource or service."@en,
+                                                                                                 <https://raw.githubusercontent.com/open-multinet/playground-rspecs-ontology/master/ontologies/pics/omn-lifecycle.png>;
+                                                   <http://purl.org/dc/elements/1.1/publisher> <http://open-multinet.org/>;
+                                                   <http://purl.org/dc/elements/1.1/rights> "This ontology is distributed under a Creative Commons Attribute License - http://creativecommons.org/licenses/by/4.0/"@en;
+                                                   <http://purl.org/dc/elements/1.1/title> "Open-Multinet Upper Lifecycle Ontology"@en;
+                                                   <http://purl.org/dc/terms/created> "2014-11-11"^^xsd:date;
+                                                   <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/4.0/>;
+                                                   <http://purl.org/dc/terms/modified> "2015-04-08"^^xsd:date;
+                                                   <http://purl.org/vocab/vann/preferredNamespacePrefix> "omn-lifecycle";
+                                                   <http://purl.org/vocab/vann/preferredNamespaceUri> omnlife:;
+                                                   a <http://purl.org/vocommons/voaf#Vocabulary>,
+                                                     <http://www.w3.org/2002/07/owl#Ontology>;
+                                                   rdfs:label "omn-lifecycle"@en;
+                                                   <http://www.w3.org/2002/07/owl#versionInfo> "2015-04-08".
+omnlife:Active a <http://www.w3.org/2002/07/owl#Class>,
+                 <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 omnlife:State;
+               rdfs:comment "The related resource/service is actively performing an action"@en;
+               rdfs:label "Active"@en;
+               rdfs:seeAlso "GENI geni_ready_busy operational state"@en;
+               rdfs:subClassOf omnlife:State.
+omnlife:Allocated a <http://www.w3.org/2002/07/owl#Class>,
+                    omnlife:ReservationState,
+                    <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                  rdfs:comment "The related resources/services are reserved"@en;
+                  rdfs:label "Allocated"@en;
+                  rdfs:seeAlso "GENI geni_allocated allocation state"@en;
+                  rdfs:subClassOf omnlife:ReservationState.
+omnlife:Cleaned a <http://www.w3.org/2002/07/owl#Class>,
+                  <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  omnlife:State;
+                rdfs:comment "The related resource/service has been cleaned"@en;
+                rdfs:label "Cleaned"@en;
+                rdfs:subClassOf omnlife:State.
+omnlife:Confirmation a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "A collection (group) of resources/services/groups confirmed to be allocated for the user."@en;
+                     rdfs:subClassOf <http://open-multinet.info/ontology/omn#Topology>.
+omnlife:Error a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                omnlife:State,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "The related resource/service is in an error state"@en;
+              rdfs:label "Error"@en;
+              rdfs:seeAlso "GENI geni_failed operational state"@en;
+              rdfs:subClassOf omnlife:State.
+omnlife:Initialized a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      omnlife:State,
+                      <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "The related resource/service has been initialized"@en;
+                    rdfs:label "Initialized"@en;
+                    rdfs:subClassOf omnlife:State.
+omnlife:Installed a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    <http://www.w3.org/2002/07/owl#Class>,
+                    omnlife:State;
+                  rdfs:comment "The related resource/service has been installed"@en;
+                  rdfs:label "Installed"@en;
+                  rdfs:subClassOf omnlife:State.
+omnlife:Manifest a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A collection (group) of resources/services/groups allocated for the user."@en;
+                 rdfs:subClassOf <http://open-multinet.info/ontology/omn#Topology>.
+omnlife:NotYetInitialized a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                            omnlife:State,
+                            <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "The related resource/service are not yet active/ready"@en;
+                          rdfs:label "NotYetInitialized"@en;
+                          rdfs:seeAlso "GENI geni_instantiating operational state"@en;
+                          rdfs:subClassOf omnlife:State.
+omnlife:Offering a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A collection (group) of services and resources provided by an Infrastructure. The collection is the result of the application of Policies."@en;
+                 rdfs:subClassOf <http://open-multinet.info/ontology/omn#Topology>.
+omnlife:Pending a <http://www.w3.org/2002/07/owl#Class>,
+                  <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  omnlife:State;
+                rdfs:comment "The related resource/service is not yet provisioned"@en;
+                rdfs:label "Pending"@en;
+                rdfs:seeAlso "GENI geni_pending_allocation operational state"@en;
+                rdfs:subClassOf omnlife:State.
+omnlife:Preinit a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  omnlife:State,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "The related resource/service is currently configuring"@en;
+                rdfs:label "Preinit"@en;
+                rdfs:seeAlso "GENI geni_configuring operational state"@en;
+                rdfs:subClassOf omnlife:State.
+omnlife:Provisioned a <http://www.w3.org/2002/07/owl#Class>,
+                      <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      omnlife:ReservationState;
+                    rdfs:comment "The related resources/services are provisioned"@en;
+                    rdfs:label "Provisioned"@en;
+                    rdfs:seeAlso "GENI geni_provisioned allocation state"@en;
+                    rdfs:subClassOf omnlife:ReservationState.
+omnlife:Ready a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                <http://www.w3.org/2002/07/owl#Class>,
+                omnlife:State;
+              rdfs:comment "The related resource/service is ready"@en;
+              rdfs:label "Ready"@en;
+              rdfs:seeAlso "GENI geni_ready operational state"@en;
+              rdfs:subClassOf omnlife:State.
+omnlife:Removing a <http://www.w3.org/2002/07/owl#Class>,
+                   <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   omnlife:State;
+                 rdfs:comment "The related resource/service gets removed"@en;
+                 rdfs:label "Removing"@en;
+                 rdfs:subClassOf omnlife:State.
+omnlife:Request a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A collection (group) of resources/services/groups requested by the user"@en;
+                rdfs:subClassOf <http://open-multinet.info/ontology/omn#Topology>.
+omnlife:ReservationState a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "The current state of a reservation"@en;
+                         rdfs:label "Reservation State"@en;
+                         rdfs:subClassOf <http://open-multinet.info/ontology/omn#Attribute>.
+omnlife:Started a omnlife:State,
+                  <http://www.w3.org/2002/07/owl#Class>,
+                  <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                rdfs:comment "The related resource/service has been started"@en;
+                rdfs:label "Started"@en;
+                rdfs:subClassOf omnlife:State.
+omnlife:State a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "The current state of the resource, service or group"@en;
+              rdfs:label "State"@en;
+              rdfs:subClassOf <http://open-multinet.info/ontology/omn#Attribute>.
+omnlife:Stopped a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  omnlife:State,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "The related resource/service is stopped"@en;
+                rdfs:label "Stopped"@en;
+                rdfs:subClassOf omnlife:State.
+omnlife:Stopping a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   <http://www.w3.org/2002/07/owl#Class>,
+                   omnlife:State;
+                 rdfs:comment "The related resource/service is stopping"@en;
+                 rdfs:label "Stopping"@en;
+                 rdfs:seeAlso "GENI geni_stopping operational state"@en;
+                 rdfs:subClassOf omnlife:State.
+omnlife:Unallocated a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      omnlife:ReservationState,
+                      <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "The related resources/services are not reserved"@en;
+                    rdfs:label "Unallocated"@en;
+                    rdfs:seeAlso "GENI geni_unallocated allocation state"@en;
+                    rdfs:subClassOf omnlife:ReservationState.
+omnlife:Uncompleted a omnlife:State,
+                      <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "The related resource/service is not complete"@en;
+                    rdfs:label "Uncompleted"@en;
+                    rdfs:subClassOf omnlife:State.
+omnlife:Updating a <http://www.w3.org/2002/07/owl#Class>,
+                   <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   omnlife:State;
+                 rdfs:comment "The related resource/service is getting updated"@en;
+                 rdfs:label "Updating"@en;
+                 rdfs:subClassOf omnlife:State.
+omnlife:hasAuthenticationInformation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                     rdfs:comment "A specific authentification information for the management system"@en;
+                                     rdfs:domain <http://open-multinet.info/ontology/omn#Resource>,
+                                                 <http://open-multinet.info/ontology/omn#Service>;
+                                     rdfs:range xsd:string;
+                                     rdfs:seeAlso "GENI Slice X.509 certificates"@en.
+omnlife:hasID a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:comment "A unique identifier set by the management system"@en;
+              rdfs:domain <http://open-multinet.info/ontology/omn#Resource>,
+                          <http://open-multinet.info/ontology/omn#Service>;
+              rdfs:range xsd:string;
+              rdfs:seeAlso "GENI Manifest RSpec v3: component_id"@en.
+omnlife:hasReservationState a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                              <http://www.w3.org/2002/07/owl#IrreflexiveProperty>,
+                              <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:domain <http://open-multinet.info/ontology/omn#Reservation>;
+                            rdfs:range omnlife:ReservationState;
+                            rdfs:subPropertyOf omnlife:hasState.
+omnlife:hasState a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                   <http://www.w3.org/2002/07/owl#IrreflexiveProperty>;
+                 rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://open-multinet.info/ontology/omn#Component>
+                                                                       <http://open-multinet.info/ontology/omn#Group>
+                                                                       <http://open-multinet.info/ontology/omn#Resource>
+                                                                       <http://open-multinet.info/ontology/omn#Service>) ; 
+                              a <http://www.w3.org/2002/07/owl#Class>];
+                 rdfs:range omnlife:State.
+omnlife:implementedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://open-multinet.info/ontology/omn#Component>
+                                                                            <http://open-multinet.info/ontology/omn#Group>
+                                                                            <http://open-multinet.info/ontology/omn#Resource>
+                                                                            <http://open-multinet.info/ontology/omn#Service>) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>];
+                      rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (<http://open-multinet.info/ontology/omn#Component>
+                                                                           <http://open-multinet.info/ontology/omn#Group>
+                                                                           <http://open-multinet.info/ontology/omn#Resource>
+                                                                           <http://open-multinet.info/ontology/omn#Service>) ; 
+                                  a <http://www.w3.org/2002/07/owl#Class>].
+omnlife:implements a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://open-multinet.info/ontology/omn#Component>
+                                                                         <http://open-multinet.info/ontology/omn#Group>
+                                                                         <http://open-multinet.info/ontology/omn#Resource>
+                                                                         <http://open-multinet.info/ontology/omn#Service>) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>];
+                   rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (<http://open-multinet.info/ontology/omn#Component>
+                                                                        <http://open-multinet.info/ontology/omn#Group>
+                                                                        <http://open-multinet.info/ontology/omn#Resource>
+                                                                        <http://open-multinet.info/ontology/omn#Service>) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>];
+                   <http://www.w3.org/2002/07/owl#inverseOf> omnlife:implementedBy.
+omnlife:isReservationStateOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain omnlife:ReservationState;
+                             rdfs:range <http://open-multinet.info/ontology/omn#Reservation>;
+                             rdfs:subPropertyOf omnlife:isStateOf.
+omnlife:isStateOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain omnlife:State;
+                  rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (<http://open-multinet.info/ontology/omn#Component>
+                                                                       <http://open-multinet.info/ontology/omn#Group>
+                                                                       <http://open-multinet.info/ontology/omn#Resource>
+                                                                       <http://open-multinet.info/ontology/omn#Service>) ; 
+                              a <http://www.w3.org/2002/07/owl#Class>];
+                  <http://www.w3.org/2002/07/owl#inverseOf> omnlife:hasState.
+omnlife:parentOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://open-multinet.info/ontology/omn#Component>
+                                                                       <http://open-multinet.info/ontology/omn#Group>
+                                                                       <http://open-multinet.info/ontology/omn#Resource>
+                                                                       <http://open-multinet.info/ontology/omn#Service>) ; 
+                              a <http://www.w3.org/2002/07/owl#Class>];
+                 rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (<http://open-multinet.info/ontology/omn#Component>
+                                                                      <http://open-multinet.info/ontology/omn#Group>
+                                                                      <http://open-multinet.info/ontology/omn#Resource>
+                                                                      <http://open-multinet.info/ontology/omn#Service>) ; 
+                             a <http://www.w3.org/2002/07/owl#Class>].
+omnlife:parentTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://open-multinet.info/ontology/omn#Component>
+                                                                       <http://open-multinet.info/ontology/omn#Group>
+                                                                       <http://open-multinet.info/ontology/omn#Resource>
+                                                                       <http://open-multinet.info/ontology/omn#Service>) ; 
+                              a <http://www.w3.org/2002/07/owl#Class>];
+                 rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (<http://open-multinet.info/ontology/omn#Component>
+                                                                      <http://open-multinet.info/ontology/omn#Group>
+                                                                      <http://open-multinet.info/ontology/omn#Resource>
+                                                                      <http://open-multinet.info/ontology/omn#Service>) ; 
+                             a <http://www.w3.org/2002/07/owl#Class>];
+                 <http://www.w3.org/2002/07/owl#inverseOf> omnlife:parentOf.
+omnlife:usesService a <http://www.w3.org/2002/07/owl#IrreflexiveProperty>,
+                      <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://open-multinet.info/ontology/omn#Component>
+                                                                          <http://open-multinet.info/ontology/omn#Group>
+                                                                          <http://open-multinet.info/ontology/omn#Resource>
+                                                                          <http://open-multinet.info/ontology/omn#Service>) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>];
+                    rdfs:range <http://open-multinet.info/ontology/omn#Service>.
+<http://www.w3.org/2002/07/owl#AllDisjointClasses> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2002/07/owl#IrreflexiveProperty> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2002/07/owl#NamedIndividual> a <http://www.w3.org/2002/07/owl#Class>.

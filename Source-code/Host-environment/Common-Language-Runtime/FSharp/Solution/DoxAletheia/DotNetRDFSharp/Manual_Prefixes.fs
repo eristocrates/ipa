@@ -1,15 +1,18 @@
 module DoxAletheia.Manual_Prefixes
 
-
 let manual_prefix_overrides =
     Map.ofArray [|
-
+        
+                   "http://www.ietf.org/rfc/", "rfc"
+                   "http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#", "infreal"
                    "http://purl.org/cwmo#", "cwmoo"
                    "http://sparql.sstu.ru/speciality/", "losp"
                    "http://purl.org/net/cartcoord#", "cartcoord"
                    "http://purl.org/net/biol/botany#", "bioltany"
                    "http://purl.org/net/biol/ns#", "biol"
                    "http://www.w3.org/ns/dcat#", "dcat"
+                   "http://www.tele.pw.edu.pl/_sims-onto/ConnectivityType.owl#", "connectype_"
+                   "http://www.tele.pw.edu.pl/~sims-onto/ConnectivityType.owl#", "connectype"
                    "http://www.w3.org/ns/sparql#", "arq"
                    "http://ontologi.es/doap-bugs#", "doabug"
                    "http://w3id.org/rml/", "rml"
@@ -25,6 +28,8 @@ let manual_prefix_overrides =
                    "http://w3id.org/rml/io/", "rml_io"
                    "http://w3id.org/rml/cc/", "rml_cc"
                    "http://w3id.org/rml/fnml/", "rml_fnml"
+                   "http://example.org/dctap#", "dctap"
+                   "http://www.unicode.org/ns/2003/ucd/1.0", "ucd"
                    "http://purl.org/limo-ontology/limo/", "limo"
                    "http://w3id.org/rml/star/", "rml_star"
                    "http://www.w3.org/2006/time#", "owl_time"
@@ -97,7 +102,6 @@ let manual_prefix_overrides =
                    "http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#", "odptimeindexedsituation"
                    "http://www.purl.org/limo-ontology/limo#", "limont"
                    "http://www.rkbexplorer.com/ontologies/acm#", "rkacm"
-                   "http://www.tele.pw.edu.pl/~sims-onto/ConnectivityType.owl#", "connectype"
                    "http://www.w3.org/2001/02pd/rec54.rdf#", "rec54rdf"
                    "http://www.w3.org/2004/03/trix/swp-2/", "trixswp-2"
                    "http://www.w3.org/ns/md#", "nsmd"
@@ -128,8 +132,6 @@ let manual_prefix_overrides =
                    "https://w3id.org/seo#", "w3seo"
                    "https://w3id.org/vocab/olca#", "w3olca"
                    "https://w3id.org/xapi/ontology#", "w3xapi"
-
-
                    "http://eulersharp.sourceforge.net/2003/03swap/coding#", "swapcoding"
                    "http://eulersharp.sourceforge.net/2003/03swap/computer#", "swapcomputer"
                    "http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#", "swapdecisionSupport"
@@ -157,14 +159,12 @@ let manual_prefix_overrides =
                    "http://open-services.net/ns/rm#", "osrm"
                    "http://open-services.net/ns/sysmlv2#", "ossysmlv2"
                    "http://purl.org/HDT/hdt#", "hdt"
-
                    "http://purl.org/dcx/lrmi-terms/", "dcxlrmi"
                    "http://purl.org/dcx/lrmi-vocabs/alignmentType/", "lrmialignmentType"
                    "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/", "lrmieducationalAudienceRole"
                    "http://purl.org/dcx/lrmi-vocabs/educationalUse/", "lrmieducationalUse"
                    "http://purl.org/dcx/lrmi-vocabs/interactivityType/", "lrmiinteractivityType"
                    "http://purl.org/dcx/lrmi-vocabs/learningResourceType/", "lrmilearningResourceType"
-
                    "http://purl.org/spar/bido/", "sparbido"
                    "http://purl.org/spar/fivestars/", "sparfivestars"
                    "http://purl.org/spar/fr/", "sparfr"
@@ -211,7 +211,6 @@ let manual_prefix_overrides =
                    "https://open-metadata.org/ontology/", "om"
                    "https://spdx.org/rdf/3.1/terms/", "spdx"
                    "http://spdx.org/rdf/terms#", "spdxterms"
-
                    "http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#", "isobserv"
                    "http://rdf.muninn-project.org/ontologies/appearances#", "appear"
                    "https://termlex.oeg.fi.upm.es/termlex#", "termlex"
@@ -251,10 +250,4 @@ let manual_prefix_overrides =
                    "ISO3166-2-SubdivisionCodes-US"
                    "https://www.w3.org/ns/posix/stat#", "stat"
                    "http://www.w3.org/ns/posix/stat#", "postat"
-
-
-
-
-
-
                     |]

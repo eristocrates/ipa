@@ -1,0 +1,314 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix pso: <http://purl.org/spar/pso/>.
+
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/date> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/rights> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/spar/pso> <http://purl.org/dc/elements/1.1/creator> "Silvio Peroni",
+                                                                     "David Shotton";
+                           <http://purl.org/dc/elements/1.1/date> "2014-02-01";
+                           <http://purl.org/dc/elements/1.1/description> """PSO, the Publishing Status Ontology, is an ontology written in OWL 2 DL for characterizing the publication status of a document or other publication entity at each of the various stages in the publishing process (e.g.  draft, submitted, under review, rejected, accepted for publication, proof, published, Version of Record, catalogued, archived).
+
+Because it is based on the Time-indexed Value in Context ontology pattern (http://www.essepuntato.it/2012/04/tvc), it is easy to extends the set of specified statuses, simply by adding new individual to the class pso:Status or its sub-class pso:PublicationStatus.
+"""@en,
+                                                                         <http://sempublishing.svn.sourceforge.net/svnroot/sempublishing/PSO/pso.png>;
+                           <http://purl.org/dc/elements/1.1/rights> "This work is distributed under a Creative Commons Attribution License (http://creativecommons.org/licenses/by/3.0/)."@en;
+                           <http://purl.org/dc/elements/1.1/title> "PSO, the Publishing Status Ontology"@en;
+                           a <http://www.w3.org/2002/07/owl#Ontology>;
+                           rdfs:comment "PSO, the Publishing Status Ontology, is an ontology for describing the status held by a bibliographic document or other publication entity at each of the various stages in the publishing process.  It forms part of SPAR, a suite of Semantic Publishing and Referencing Ontologies.  Other SPAR ontologies are described at http://purl.org/spar/."@en;
+                           <http://www.w3.org/2002/07/owl#imports> <http://www.ontologydesignpatterns.org/cp/owl/participation.owl>,
+                                                                   <http://www.essepuntato.it/2012/04/tvc>,
+                                                                   <http://purl.org/swan/2.0/foaf-essential/>;
+                           <http://www.w3.org/2002/07/owl#versionInfo> "1.7.1".
+pso:APC-fully-waived a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                       pso:ArticleProcessingChargeStatus;
+                     rdfs:comment "The status of an article for which payment of the article processing charge has been fully waived by the publisher."@en;
+                     rdfs:label "APC fully waived"@en.
+pso:APC-not-charged a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      pso:ArticleProcessingChargeStatus;
+                    rdfs:comment "The status of an article for which an article processing charge is not charged by the publisher."@en;
+                    rdfs:label "APC not charged"@en.
+pso:APC-not-required a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                       pso:ArticleProcessingChargeStatus;
+                     rdfs:comment "The status of an article for which an article processing charge is not required by the publisher."@en;
+                     rdfs:label "APC not required"@en.
+pso:APC-paid a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               pso:ArticleProcessingChargeStatus;
+             rdfs:comment "The status of an article for which the article processing charge has been paid to the publisher by the author or his/her institution."@en;
+             rdfs:label "APC paid"@en.
+pso:APC-partially-waived a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                           pso:ArticleProcessingChargeStatus;
+                         rdfs:comment "The status of an article for which payment of the article processing charge has been partially waived by the publisher."@en;
+                         rdfs:label "APC partially waived"@en.
+pso:Agent a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "An entity, such as a person, a group, an organization or a software agent, involved in one or more events."@en;
+          rdfs:label "agent"@en;
+          rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Object>,
+                          <http://xmlns.com/foaf/0.1/Agent>.
+pso:ArticleProcessingChargeStatus a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "A state or condition that a document may have that relates to a fee levied by a publisher on an author or an institution to cover the cost of publishing an Open Access journal article."@en;
+                                  rdfs:label "article processing charge status"@en;
+                                  rdfs:subClassOf pso:Status.
+pso:PublicationStatus a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "A state or condition that a document may have that relates to the publication of such document."@en;
+                      rdfs:label "publishing status"@en;
+                      rdfs:subClassOf pso:Status.
+pso:Status a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "A state or condition that a document may have."@en;
+           rdfs:label "status"@en;
+           rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+pso:StatusInTime <http://purl.org/dc/elements/1.1/description> """A status in time describes always:
+- a particular status S
+- a particular document D holding S
+- a particular time interval T in which D holds S
+- a particular event that causes the acquisition of S by D"""@en;
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A particular situation that describe a state or condition some documents may have at a particular time as consequence of one or more events."@en;
+                 rdfs:label "status in time"@en;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> pso:isStatusHeldBy ; 
+                                  <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://www.essepuntato.it/2012/04/tvc/atTime> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> pso:Status ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> pso:withStatus ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#onProperty> <http://www.essepuntato.it/2012/04/tvc/atTime> ; 
+                                  <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#intersectionOf> (<http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval>
+                                                                                                                                 [<http://www.w3.org/2002/07/owl#onProperty> <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalDate> ; 
+                                                                                                                                 <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:dateTime ; 
+                                                                                                                                 a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                 a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> pso:isAcquiredAsConsequenceOf ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 <http://www.essepuntato.it/2012/04/tvc/ValueInTime>.
+pso:accepted-for-publication a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                               pso:PublicationStatus;
+                             rdfs:comment "The status of a work (for example a document or a dataset) once it has been accepted for publication by a publisher or data repository."@en;
+                             rdfs:label "accepted for publication"@en.
+pso:anonymized a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pso:PublicationStatus;
+               rdfs:comment "The status of a document or dataset that has been subjected to anonymization, so that individual persons, for example the authors and/or people that are the subjects described in the document or dataset, cannot be identified."@en;
+               rdfs:label "anonymized"@en.
+pso:archived a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               pso:PublicationStatus;
+             rdfs:comment "The status of a work (for example a document or a dataset) that has been saved for long-term preservation in a physical or electronic archive."@en;
+             rdfs:label "archived"@en.
+pso:catalogued a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pso:PublicationStatus;
+               rdfs:comment "The status of a work (for example a document or a dataset) concerning which metadata has been stored in a physical or electronic catalogue."@en;
+               rdfs:label "catalogued"@en.
+pso:closed-access a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    pso:PublicationStatus;
+                  rdfs:comment "The status of a work (typically a private or secret paper or a confidential dataset) that is typically held unpublished in a 'dark' archive whose existence is unknown by the wider world, and that is only available to the owner or copyright holder of the asset."@en;
+                  rdfs:label "closed access"@en.
+pso:confidential a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   pso:PublicationStatus;
+                 rdfs:comment "The status of a document containing information that must be kept confidential."@en;
+                 rdfs:label "confidential"@en.
+pso:copy-edited a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  pso:PublicationStatus;
+                rdfs:comment "The status of a document that has been subjected to copy editing, i.e. alterations to the text undertaken by someone other than the author that are designed to improve the formatting, style and accuracy of text, or to bring the text into the house style of the publisher (e.g. Americanization of British spelling), but that are not designed to alter the substance or meaning of the text."@en;
+                rdfs:label "copy-edited"@en.
+pso:corrected a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                pso:PublicationStatus;
+              rdfs:comment "The status of a work (for example a document or a dataset) in which errors, that may have introduced by the author, by a publisher, or by some automated process, have been corrected."@en;
+              rdfs:label "corrected"@en.
+pso:draft a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+            pso:PublicationStatus;
+          rdfs:comment "The status of a work (for example a document or a dataset) prior to completion and publication."@en;
+          rdfs:label "draft"@en.
+pso:embargoed a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                pso:PublicationStatus;
+              rdfs:comment """The status of a work that is subjected to an embargo, which means that the work cannot be published, or in the case of a press release that it cannot be reported on, until a particular date known as the embargo date.  For open-access journal articles, an embargoed article is one in which availability of the open-access version of the article is delayed by the publisher for a substantial embargo period, typically of six or twelve months, after subscription-access availability of the published work.  
+
+"""@en;
+              rdfs:label "embargoed"@en.
+pso:enhanced a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               pso:PublicationStatus;
+             rdfs:comment "The status of a work (for example a document or a dataset) that has been updated or enhanced, for example by the provision of additional or supplementary material."@en;
+             rdfs:label "enhanced"@en.
+pso:final-draft a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  pso:PublicationStatus;
+                rdfs:comment "The status of a pre-publication work (for example a document or a dataset) when in the authors' opinion it has been brought to a stage of development that renders it suitable for publication."@en;
+                rdfs:label "final draft"@en.
+pso:gold-open-access a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                       pso:PublicationStatus;
+                     rdfs:comment "The status of a published work, typically a journal article, made available by the publisher on the publisher's own web site for third parties to read without payment of access or subscription fees.  Gold open access has the benefit that the article is findable where you expect it to be, but licensing restrictions may limit the possibilities for downloading, text mining, modification, re-publication or re-use of the published work.  Gold open-access publication typically involves payment by the author or his/her institution to the publisher of an article processing charge (aka an author publishing charge).  [See also: pso:open-access, pso:gratis-open-access, pso:libre-open-access, pso:green-open-access, pso:embargoed and pso:subscription-access.]"@en;
+                     rdfs:label "gold open access"@en.
+pso:gratis-open-access a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                         pso:PublicationStatus;
+                       rdfs:comment "The status of a published work which is free to read on-line, in contrast to subscription-access works, but to which licensing restrictions apply, limiting the possibilities for downloading, text mining, modification, re-publication or re-use of the published work.  The term Gratis Open Access thus signifies absence of a price barrier to view.  While both imply ‘free’ (a potentially ambiguous word), Gratis Open Access equates to ‘free as in beer’ while Libre Open Access (q.v.) equates to ‘free as in speech’.  Gratis Open Access is thus a necessary but not a sufficient condition for true Libre Open Access.   Many ‘open access’ publications by commercial scholarly publishers are only Gratis Open Access, while almost all publications by ‘pure’ Open Access scholarly publishers are Libre Open Access. [See also: pso:open-access, pso:libre-open-access, pso:gold-open-access, pso:green-open-access, pso:embargoed and pso:subscription-access.]"@en;
+                       rdfs:label "gratis open access"@en.
+pso:green-open-access a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        pso:PublicationStatus;
+                      rdfs:comment "The status of a published work made available by the author, by self-archiving a version of the work for free and open public use in their institutional repository, in a central repository, or elsewhere, in parallel with publication of a subscription-access Version of Record of the work by a publisher.  The green open-access version of the work may be a preprint (the version of the article as first submitted for publication) or a postprint (the pre-publication version of the article after incorporation of authors’ responses to peer reviewers’ comments).  Its availability may have an embargo restriction imposed by the publisher of the subscription-access version of the work, that prevents the green open-access version from being freely available until some substantial time after publication of the subscription-access journal issue containing that article.  A green open-access work should be accompanied by a license explicitly defining usage rights, for example a Creative Commons Attribution License.  [See also: pso:open-access, pso:gratis-open-access, pso:libre-open-access, pso:gold-open-access, pso:embargoed and pso:subscription-access.]"@en;
+                      rdfs:label "green open access"@en.
+pso:holdsStatusInTime a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "A property relating a document, a dataset or some other thing to a status that it holds at a specific time."@en;
+                      rdfs:label "holds status in time"@en;
+                      rdfs:range pso:StatusInTime;
+                      rdfs:subPropertyOf <http://www.essepuntato.it/2012/04/tvc/hasValue>.
+pso:in-press a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               pso:PublicationStatus;
+             rdfs:comment "The status of a document after it has been accepted for publication and prior to its formal publication in print.  (Note that for many journal articles that are published electronically, this status rarely exists, since there is commonly no delay between acceptance and publication.)"@en;
+             rdfs:label "in press"@en.
+pso:initial-draft a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    pso:PublicationStatus;
+                  rdfs:comment "The status of a pre-publication work (for example a document or a dataset) when in its initial stage of development."@en;
+                  rdfs:label "initial draft"@en.
+pso:intermediate-draft a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                         pso:PublicationStatus;
+                       rdfs:comment "The status of a pre-publication work (for example a document or a dataset) part-way through its development."@en;
+                       rdfs:label "intermediate draft"@en.
+pso:isAcquiredAsConsequenceOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:comment "The property relating a particular publishing status to the event that causes its acquisition."@en;
+                              rdfs:domain pso:StatusInTime;
+                              rdfs:label "is acquired as consequence of"@en;
+                              rdfs:range <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event>;
+                              rdfs:subPropertyOf <http://www.essepuntato.it/2012/04/tvc/withinContext>.
+pso:isLostAsConsequenceOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "The property relating a particular publishing status to the event that causes its loss."@en;
+                          rdfs:domain pso:StatusInTime;
+                          rdfs:label "is lost as consequence of"@en;
+                          rdfs:range <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event>;
+                          rdfs:subPropertyOf <http://www.essepuntato.it/2012/04/tvc/withinContext>.
+pso:isStatusHeldBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "A property relating a status held at a specific time to the document, dataset or other thing holding that status."@en;
+                   rdfs:domain pso:StatusInTime;
+                   rdfs:label "is status held by"@en;
+                   rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#forEntity>;
+                   <http://www.w3.org/2002/07/owl#inverseOf> pso:holdsStatusInTime.
+pso:isStatusIn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The property relating the definition of a specific status to the situation of the document, a dataset or something else holding that status at a specific time."@en;
+               rdfs:label "is status in"@en;
+               rdfs:range pso:StatusInTime;
+               rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#hasTimeIndexedSetting>;
+               <http://www.w3.org/2002/07/owl#inverseOf> pso:withStatus.
+pso:libre-open-access a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        pso:PublicationStatus;
+                      rdfs:comment "The status of a published work which is both free to read on-line, and to which additional usage rights apply, for example the right to text mine, make derivative works, re-use and re-publish the published work, such rights frequently being defined by application of an explicit license such as a Creative Commons license.  [See also: pso:open-access, pso:gratis-open-access, pso:gold-open-access, pso:green-open-access, pso:embargoed and pso:subscription-access.]"@en;
+                      rdfs:label "libre open access"@en.
+pso:non-confidential a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                       pso:PublicationStatus;
+                     rdfs:comment "The status of a document containing information that may be shared publicly."@en;
+                     rdfs:label "non-confidential"@en.
+pso:open-access a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  pso:PublicationStatus;
+                rdfs:comment "The status of a published work (typically a scholarly publication or a dataset) that is freely available via the Internet for third parties to read without payment of access or subscription fees, and (in the case of a work published under a full open-access license) that is freely available to download and reuse for any purposes including commercial ones, including modification of the original work, its integration with other material, and its re-publication, subject typically to a requirement that the original authors and the source of the original work are acknowledged in compliance with scholarly citation norms. [See also: pso:gratis-open-access, pso:libre-open-access, pso:gold-open-access, pso:green-open-access, pso:embargoed and pso:subscription-access.]"@en;
+                rdfs:label "open access"@en.
+pso:peer-reviewed a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    pso:PublicationStatus;
+                  rdfs:comment "The status of a work, typically a scholarly journal article, that has been peer reviewed, i.e. subjected to review by two or more independent reviewers (also know as referees) who are academic peers of the author(s), and judged by them to be of sufficient quality to merit publication, usually after further revision by the author to incorporate the reviewers' suggested modifications and improvements."@en;
+                  rdfs:label "peer reviewed"@en;
+                  rdfs:seeAlso pso:reviewed.
+pso:proof a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+            pso:PublicationStatus;
+          rdfs:comment "The status of a pre-publication document late in the publication process, once it has been accepted for publication by a publisher, after the inclusion of any author corrections required by the editor following peer-review, following copy editing and formatting to bring the manuscript into the house style, and prior to final checking by the editor, proof-reader and author to detect and eliminate any errors prior to publication."@en;
+          rdfs:label "proof"@en;
+          rdfs:seeAlso pso:corrected.
+pso:published a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                pso:PublicationStatus;
+              rdfs:comment "The status of material (for example a document or a dataset) that has been published, i.e. made available for people to access, read or use, either freely or for a purchase price or an access fee."@en;
+              rdfs:label "published"@en.
+pso:rejected-for-publication a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                               pso:PublicationStatus;
+                             rdfs:comment "The status of material (for example a document or a dataset) after it has been rejected for publication by a publisher or data repository."@en;
+                             rdfs:label "rejected for publication"@en.
+pso:republished a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  pso:PublicationStatus;
+                rdfs:comment "The status of a publication (for example a book) that has been republished in a different edition or in translation, or of a work (for example a journal article or a poem) that is republished as part of a collection or an anthology, or of material (for example a figure from an existing publication) that is republished as part of a quite different publication.  Where the publisher of the new work is different from the original publisher, such republication typically includes an acknowledgement of the source and copyright of the original material, and is undertaken after obtaining permission of the original copyright holder."@en;
+                rdfs:label "republished"@en.
+pso:restricted-access a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        pso:PublicationStatus;
+                      rdfs:comment "The status of a work (typically a scholarly paper or a dataset) to which access is restricted.  For example, confidential information to which access is made available only to those who have been approved by the owner or copyright holder of the asset after personal application, or to those with appropriate security clearance, or to those within a partnership."@en;
+                      rdfs:label "restricted access"@en.
+pso:resultsInAcquiring a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "The property relating an event to the consequential acquisition of a particular publishing status."@en;
+                       rdfs:label "results in acquiring"@en;
+                       rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#hasTimeIndexedSetting>;
+                       <http://www.w3.org/2002/07/owl#inverseOf> pso:isAcquiredAsConsequenceOf.
+pso:resultsInLosing a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "The property relating an event to the consequential loss of a particular publishing status."@en;
+                    rdfs:label "results in losing"@en;
+                    rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#hasTimeIndexedSetting>;
+                    <http://www.w3.org/2002/07/owl#inverseOf> pso:isLostAsConsequenceOf.
+pso:retracted-from-publication a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                 pso:PublicationStatus;
+                               rdfs:comment "The status of a publication that has been subsequently retracted by the publisher, for example because it was subsequently found to contain erroneous or fraudulent information."@en;
+                               rdfs:label "retracted from publication"@en.
+pso:reviewed a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               pso:PublicationStatus;
+             rdfs:comment "The status of a published work, for example a book or a journal article, that has been subjected to a written review giving critical analysis of its content, scope and quality.  [See also pso:peer-reviewed.]"@en;
+             rdfs:label "reviewed"@en;
+             rdfs:seeAlso pso:peer-reviewed.
+pso:revised a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              pso:PublicationStatus;
+            rdfs:comment "The status of s work (for example a document or a dataset) that has been altered or improved, typically by the original author."@en;
+            rdfs:label "revised"@en.
+pso:submitted a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                pso:PublicationStatus;
+              rdfs:comment "The status of a work (for example a document or a dataset) that has been submitted for publication by the author to a publisher or a data repository, prior to its being accepted or rejected."@en;
+              rdfs:label "submitted"@en.
+pso:subscription-access a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          pso:PublicationStatus;
+                        rdfs:comment "The status of a published work, typically an article in a journal issue, that is not available to read without payment of an article access fee or a journal subscription fee for that publication."@en;
+                        rdfs:label "subscription access"@en.
+pso:under-review a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   pso:PublicationStatus;
+                 rdfs:comment "The status of a document that has been received from the author(s) by an editor or a publisher for potential publication, and then has been sent to independent reviewers for their comments as to its suitability for publication, prior to receipt of such reviews."@en;
+                 rdfs:label "under review"@en.
+pso:unpublished a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  pso:PublicationStatus;
+                rdfs:comment "The status of a work (for example a document or a dataset) that has not been published by the author, a publisher or a data repository."@en;
+                rdfs:label "unpublished"@en.
+pso:version-of-record a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        pso:PublicationStatus;
+                      rdfs:comment "The final version of a document that has been formally published as a peer-reviewed journal article, citable via a permanent identifier, and forming an abiding component of the scholarly record."@en;
+                      rdfs:label "version of record"@en.
+pso:withStatus a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The property relating the holding of a status by a document, a dataset or something else at a specific time to the definition of that status."@en;
+               rdfs:domain pso:StatusInTime;
+               rdfs:label "with status"@en;
+               rdfs:subPropertyOf <http://www.essepuntato.it/2012/04/tvc/withValue>.
+pso:withdrawn-from-submission a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                pso:PublicationStatus;
+                              rdfs:comment "The status of a work (for example a pre-publication document or dataset) that has been voluntarily withdrawn by the author, having previously been submitted for publication, perhaps because the revisions requested by the peer-reviewers were considered impossible to achieve, or because the author wishes to submit it for publication elsewhere."@en;
+                              rdfs:label "withdrawn from submission"@en.
+<http://www.essepuntato.it/2012/04/tvc/ValueInTime> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.essepuntato.it/2012/04/tvc/atTime> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.essepuntato.it/2012/04/tvc/hasValue> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.essepuntato.it/2012/04/tvc/withValue> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.essepuntato.it/2012/04/tvc/withinContext> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                       rdfs:comment "An event that may happen during a publishing process, such as writing a draft, sending a preprint, publishing a paper, etc."@en;
+                                                                       rdfs:label "event"@en.
+<http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Object> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#TimeIndexedSituation> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#atTime> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                                                 <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                                                               rdfs:comment "A time interval during which a status is held by a document."@en;
+                                                                               rdfs:label "at time"@en.
+<http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#forEntity> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#hasTimeIndexedSetting> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                             rdfs:comment "Two (starting and ending) points in time that define a particular period of time."@en;
+                                                                             rdfs:label "time interval"@en.
+<http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalDate> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalEndDate> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalStartDate> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+rdfs:comment a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:label a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:seeAlso a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#versionInfo> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/Agent> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/Document> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "An abstract class defining any kinds of publishing work."@en;
+                                     rdfs:label "document"@en.

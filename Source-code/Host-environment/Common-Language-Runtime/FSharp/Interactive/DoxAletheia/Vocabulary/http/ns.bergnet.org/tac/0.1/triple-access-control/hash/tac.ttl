@@ -1,0 +1,82 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix tac: <http://ns.bergnet.org/tac/0.1/triple-access-control#>.
+
+<http://ns.bergnet.org/tac/0.1/triple-access-control> <http://purl.org/dc/elements/1.1/created> "2011-09-02";
+                                                      <http://purl.org/dc/elements/1.1/creator> <http://www.bergnet.org/people/bergi/card#me>;
+                                                      <http://purl.org/dc/elements/1.1/description> "TripleAccessControl extension for WebAccessControl"@en;
+                                                      <http://purl.org/dc/elements/1.1/title> "TripleAccessControl Ontology"@en;
+                                                      a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                      <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/ns/auth/acl#>,
+                                                                                              <http://www.w3.org/2006/gen/ont>,
+                                                                                              <http://xmlns.com/foaf/0.1/>,
+                                                                                              <http://purl.org/dc/elements/1.1/>,
+                                                                                              <http://www.w3.org/ns/auth/acl>,
+                                                                                              <http://www.w3.org/2004/03/trix/rdfg-1/>;
+                                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+tac:Filter a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "A triple filter."@en;
+           rdfs:label "Filter"@en;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+tac:TripleAuthorization a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "A triple authorization."@en;
+                        rdfs:label "TripleAuthorization"@en;
+                        rdfs:subClassOf <http://www.w3.org/ns/auth/acl#Authorization>;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+tac:accessToTriple a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Contains triple authorization information."@en;
+                   rdfs:domain tac:TripleAuthorization,
+                               <http://www.w3.org/ns/auth/acl#Authorization>;
+                   rdfs:label "accesToTriple"@en;
+                   rdfs:range tac:TripleAuthorization;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+tac:children a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "Contains sub triple authorization informations."@en;
+             rdfs:domain tac:TripleAuthorization;
+             rdfs:label "children"@en;
+             rdfs:range tac:Authorization;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+tac:filter a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:comment "Contains triple filter rules."@en;
+           rdfs:domain tac:TripleAuthorization;
+           rdfs:label "filter"@en;
+           rdfs:range tac:Filter;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+tac:graph a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:comment "Graph for a triple filter."@en;
+          rdfs:domain tac:Filter;
+          rdfs:label "graph";
+          rdfs:range <http://www.w3.org/2004/03/trix/rdfg-1/Graph>;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+tac:mode a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+         rdfs:comment "Access mode is defined per triple authorization."@en;
+         rdfs:domain tac:TripleAuthorization;
+         rdfs:label "mode"@en;
+         rdfs:subPropertyOf <http://www.w3.org/ns/auth/acl#mode>;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+tac:object a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:comment "Object for a triple filter"@en;
+           rdfs:domain tac:Filter;
+           rdfs:label "object"@en;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+tac:predicate a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Predicate for a triple filter."@en;
+              rdfs:domain tac:Filter;
+              rdfs:label "predicate"@en;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+tac:required a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "If this property is true access to the parent triple is only granted if childrens are found."@en;
+             rdfs:domain tac:TripleAuthorization;
+             rdfs:label "required"@en;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+tac:statement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Statement for a triple filter."@en;
+              rdfs:domain tac:Filter;
+              rdfs:label "statement"@en;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+tac:subject a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment "Subject for a triple filter."@en;
+            rdfs:domain tac:Filter;
+            rdfs:label "subject"@en;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.

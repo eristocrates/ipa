@@ -1,0 +1,284 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix akts: <http://www.aktors.org/ontology/support#>.
+
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/source> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.aktors.org/ontology/support> <http://purl.org/dc/elements/1.1/creator> "Enrico Motta (OCML version)",
+                                                                                   "AKT Project",
+                                                                                   "Nick Gibbins (OWL translation)";
+                                         <http://purl.org/dc/elements/1.1/description> """The AKT Reference Ontology has been designed to support the AKT-2 demonstrator (\"AKTive Portal\"), and subsequent activities. The ontology, designed by the AKT-2 group and codified by Enrico Motta, extends Version 1."""@en;
+                                         <http://purl.org/dc/elements/1.1/source> <http://d3e.open.ac.uk/akt/2002/ref-onto.html>;
+                                         <http://purl.org/dc/elements/1.1/title> "AKT Reference Ontology (Support Ontology)"@en;
+                                         <http://purl.org/dc/terms/created> "2003-02-10";
+                                         a <http://www.w3.org/2002/07/owl#Ontology>;
+                                         rdfs:label "AKT Reference Ontology (Support Ontology)";
+                                         rdfs:seeAlso <http://d3e.open.ac.uk/akt/2002/ref-onto.html>;
+                                         <http://www.w3.org/2002/07/owl#versionInfo> "2.0".
+akts:Calendar-Date a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "A point in time";
+                   rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                   rdfs:label "Calendar Date";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> akts:day-of ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#maxCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> akts:hour-of ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   akts:Time-Point,
+                                   [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> akts:year-of ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> akts:month-of ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#maxCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> akts:minute-of ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#maxCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> akts:second-of ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>].
+akts:Day a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+         rdfs:label "Day";
+         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> akts:twentyfour-hour-duration ; 
+                          <http://www.w3.org/2002/07/owl#onProperty> akts:has-duration ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         akts:Time-Interval.
+akts:Duration a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A measure of time, e.g., 5 hours";
+              rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+              rdfs:label "Duration";
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> akts:Time-Measure ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> akts:has-unit-of-measure ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              akts:Physical-Quantity.
+akts:Intangible-Thing a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "This comes from HPKB upper level. The collection of things that are not physical - are not made of, or encoded in, matter. Every Collection is an Intangible (even if its instances are tangible), and so are some Individuals. Caution: do not confuse `tangibility' with `perceivability' - humans can perceive light even though it's intangible - at least in a sense.";
+                      rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                      rdfs:label "Intangible Thing";
+                      rdfs:subClassOf akts:Thing.
+akts:Month a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+           rdfs:label "Month";
+           rdfs:subClassOf akts:Time-Interval.
+akts:Physical-Quantity a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "SUO: Physical Quantities are distinguished from Numbers by the fact that the former are associated with a dimension of measurement.";
+                       rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                       rdfs:label "Physical Quantity";
+                       rdfs:subClassOf akts:Quantity.
+akts:Quantity a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "From SUO: Any specification of how many or how much of something there is. Accordingly, there are two subclasses of Quantity: Number (how many) and Physical-Quantity (how much).";
+              rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+              rdfs:label "Quantity";
+              rdfs:subClassOf akts:Intangible-Thing.
+akts:Tangible-Thing a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Something which is not intangible, something which is physical, made of matter. It does not matter whether things are real of imaginary.  Therefore we consider Mickey Mouse's car and a hippogriff as  tangible things";
+                    rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                    rdfs:label "Tangible Thing";
+                    rdfs:subClassOf akts:Temporal-Thing;
+                    <http://www.w3.org/2002/07/owl#complementOf> akts:Intangible-Thing.
+akts:Temporal-Thing a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Like in Cyc, this is something which has a temporal extent.";
+                    rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                    rdfs:label "Temporal Thing";
+                    rdfs:subClassOf akts:Thing.
+akts:Thing a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "This is the top-level concept in the AKT reference ontology";
+           rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+           rdfs:label "Thing".
+akts:Time-Interval a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "An interval is defined by two time points or a duration. Classes of intervals, e.g., a day, can be defined by specifying only a duration.  A time interval has no gaps";
+                   rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                   rdfs:label "Time Interval";
+                   rdfs:subClassOf akts:Time-Position.
+akts:Time-Measure a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "The class of all unit of measures used to measure time, e.g., minute, second, hour, etc.";
+                  rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                  rdfs:label "Time Measure";
+                  rdfs:subClassOf akts:Unit-Of-Measure.
+akts:Time-Point a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A point in time";
+                rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                rdfs:label "Time Point";
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> akts:hour-of ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> akts:minute-of ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> akts:year-of ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> akts:second-of ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                akts:Time-Position,
+                                [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> akts:day-of ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> akts:month-of ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>].
+akts:Time-Position a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "A time position is either a time interval or a time point. Any time position is relative to a time zone";
+                   rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                   rdfs:label "Time Position";
+                   rdfs:subClassOf akts:Intangible-Thing.
+akts:Unit-Of-Measure a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Any kind of unit of measure, metre, dollar, kilogram, etc.";
+                     rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                     rdfs:label "Unit of Measure";
+                     rdfs:subClassOf akts:Intangible-Thing.
+akts:Week a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+          rdfs:label "Week";
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> akts:seven-day-duration ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> akts:has-duration ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          akts:Time-Interval.
+akts:Year a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+          rdfs:label "Year";
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> akts:twelve-month-duration ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> akts:has-duration ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          akts:Time-Interval.
+akts:begins-at-time-point a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain akts:Time-Interval;
+                          rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                          rdfs:label "begins at time point";
+                          rdfs:range akts:Time-Point.
+akts:day-of a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain akts:Time-Point;
+            rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+            rdfs:label "day of";
+            rdfs:range xsd:nonNegativeInteger.
+akts:ends-at-time-point a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain akts:Time-Interval;
+                        rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                        rdfs:label "ends at time point";
+                        rdfs:range akts:Time-Point.
+akts:has-duration a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain akts:Time-Interval;
+                  rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                  rdfs:label "has duration";
+                  rdfs:range akts:Duration.
+akts:has-magnitude a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:domain akts:Physical-Quantity;
+                   rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                   rdfs:label "has magnitude";
+                   rdfs:range xsd:decimal.
+akts:has-pretty-name a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "A human readable name";
+                     rdfs:domain akts:Thing;
+                     rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                     rdfs:label "has pretty name";
+                     rdfs:range xsd:string.
+akts:has-time-interval a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain akts:Temporal-Thing;
+                       rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                       rdfs:label "has time interval";
+                       rdfs:range akts:Time-Interval.
+akts:has-unit-of-measure a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain akts:Physical-Quantity;
+                         rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                         rdfs:label "has unit of measure";
+                         rdfs:range akts:Unit-Of-Measure.
+akts:has-variant-name a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "Other variants of the human readable name";
+                      rdfs:domain akts:Thing;
+                      rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                      rdfs:label "has variant name";
+                      rdfs:range xsd:string.
+akts:hour-of a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:domain akts:Time-Point;
+             rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+             rdfs:label "hour of";
+             rdfs:range xsd:nonNegativeInteger.
+akts:in-timezone a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain akts:Time-Position;
+                 rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                 rdfs:label "in timezone";
+                 rdfs:range xsd:integer.
+akts:minute-of a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain akts:Time-Point;
+               rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+               rdfs:label "minute of";
+               rdfs:range xsd:nonNegativeInteger.
+akts:month-of a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain akts:Time-Point;
+              rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+              rdfs:label "month of";
+              rdfs:range xsd:nonNegativeInteger.
+akts:second-of a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain akts:Time-Point;
+               rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+               rdfs:label "second of";
+               rdfs:range xsd:nonNegativeInteger.
+akts:seven-day-duration akts:has-magnitude 7 ;
+                        akts:has-unit-of-measure akts:time-measure-day;
+                        a akts:Duration;
+                        rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                        rdfs:label "7 day duration".
+akts:thirty-day-duration akts:has-magnitude 30 ;
+                         akts:has-unit-of-measure akts:time-measure-day;
+                         a akts:Duration;
+                         rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                         rdfs:label "30 day duration".
+akts:thirtyone-day-duration akts:has-magnitude 31 ;
+                            akts:has-unit-of-measure akts:time-measure-day;
+                            a akts:Duration;
+                            rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                            rdfs:label "31 day duration".
+akts:time-measure-day a akts:Time-Measure;
+                      rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                      rdfs:label "day".
+akts:time-measure-hour a akts:Time-Measure;
+                       rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                       rdfs:label "hour".
+akts:time-measure-minute a akts:Time-Measure;
+                         rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                         rdfs:label "minute".
+akts:time-measure-month a akts:Time-Measure;
+                        rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                        rdfs:label "month".
+akts:time-measure-second a akts:Time-Measure;
+                         rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                         rdfs:label "second".
+akts:time-measure-year a akts:Time-Measure;
+                       rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                       rdfs:label "year".
+akts:twelve-month-duration akts:has-magnitude 12 ;
+                           akts:has-unit-of-measure akts:time-measure-month;
+                           a akts:Duration;
+                           rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                           rdfs:label "12 month duration".
+akts:twentyeight-day-duration akts:has-magnitude 28 ;
+                              akts:has-unit-of-measure akts:time-measure-day;
+                              a akts:Duration;
+                              rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                              rdfs:label "28 day duration".
+akts:twentyfour-hour-duration akts:has-magnitude 24 ;
+                              akts:has-unit-of-measure akts:time-measure-hour;
+                              a akts:Duration;
+                              rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                              rdfs:label "24 hour duration".
+akts:twentynine-day-duration akts:has-magnitude 29 ;
+                             akts:has-unit-of-measure akts:time-measure-day;
+                             a akts:Duration;
+                             rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+                             rdfs:label "29 day duration".
+akts:year-of a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:domain akts:Time-Point;
+             rdfs:isDefinedBy <http://www.aktors.org/ontology/support>;
+             rdfs:label "year of";
+             rdfs:range xsd:nonNegativeInteger.
+rdfs:comment a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:isDefinedBy a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:label a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:seeAlso a <http://www.w3.org/2002/07/owl#AnnotationProperty>.

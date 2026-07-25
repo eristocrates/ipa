@@ -1,0 +1,118 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ietao: <http://vocab.deri.ie/tao#>.
+
+<http://vocab.deri.ie/tao> <http://purl.org/dc/elements/1.1/creator> ietao:owesac;
+                           <http://purl.org/dc/terms/created> "2013-02-18"^^xsd:date;
+                           <http://purl.org/dc/terms/description> "A light-weight vocabulary to describe asserted user’s subjective trust values.";
+                           <http://purl.org/dc/terms/modified> "2013-02-18"^^xsd:date;
+                           <http://purl.org/dc/terms/partOf> <http://vocab.deri.ie/>;
+                           <http://purl.org/dc/terms/publisher> "http://vocab.deri.ie/tao#DERI%2C%20NUI%20Galway";
+                           <http://purl.org/dc/terms/status> <http://purl.org/adms/status/UnderDevelopment>;
+                           <http://purl.org/dc/terms/title> "Trust Assertion Ontology (TAO)";
+                           <http://purl.org/dc/terms/type> <http://purl.org/adms/assettype/Ontology>;
+                           <http://purl.org/vocab/vann/preferredNamespacePrefix> "tao";
+                           <http://purl.org/vocab/vann/preferredNamespaceUri> "http://vocab.deri.ie/tao#";
+                           a <http://www.w3.org/2002/07/owl#Ontology>,
+                             <http://www.w3.org/ns/adms#SemanticAsset>;
+                           <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/tao.html>.
+ietao:DERI%2C%20NUI%20Galway a <http://purl.org/dc/terms/Agent>;
+                             <http://xmlns.com/foaf/0.1/homepage> <http://www.deri.ie/>;
+                             <http://xmlns.com/foaf/0.1/member> ietao:owesac;
+                             <http://xmlns.com/foaf/0.1/name> "DERI, NUI Galway".
+ietao:TrustAssertion a rdfs:Class,
+                       <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "A trust assertion describes asserted user's subjective trust values for either the source, the content or a requester based on various Social factors.".
+ietao:TrustScale a rdfs:Class,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "A class that specifies the min and max range of values for the subjective trust values.".
+ietao:TrustValue a rdfs:Class,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "A class that specifies the subjective trust value within a min and max range described by tao:TrustScale".
+ietao:appliesToAgent a rdf:Property;
+                     rdfs:domain ietao:TrustAssertion;
+                     rdfs:label "Identifies the agent (i.e. the requester) whom the user’s subjective trust value is about.";
+                     rdfs:range <http://xmlns.com/foaf/0.1/Agent>.
+ietao:appliesToContent a rdf:Property;
+                       rdfs:domain ietao:TrustAssertion;
+                       rdfs:label "Identifies the content which the user’s subjective trust value is about.";
+                       rdfs:range rdfs:Resource.
+ietao:appliesToSource a rdf:Property;
+                      rdfs:domain ietao:TrustAssertion;
+                      rdfs:label "Identifies the source which the user’s subjective trust value is about.";
+                      rdfs:range rdfs:Resource.
+ietao:assertedBy a rdf:Property;
+                 rdfs:domain ietao:TrustAssertion;
+                 rdfs:label "Identifies who assigned the trust values.";
+                 rdfs:range <http://xmlns.com/foaf/0.1/Agent>.
+ietao:hasCommentsTrust a rdf:Property;
+                       rdfs:domain ietao:TrustAssertion;
+                       rdfs:label "Specifies the user's subjective trust value based on the number of comments which friends have exchanged with the requester.";
+                       rdfs:range ietao:TrustValue.
+ietao:hasIdentityTrust a rdf:Property;
+                       rdfs:domain ietao:TrustAssertion;
+                       rdfs:label "Specifies the user's subjective trust value based on the requester's identity.";
+                       rdfs:range ietao:TrustValue.
+ietao:hasInteractionsTrust a rdf:Property;
+                           rdfs:domain ietao:TrustAssertion;
+                           rdfs:label "Specifies the user's subjective trust value based on the number of interactions between the user and the requester.";
+                           rdfs:range ietao:TrustValue.
+ietao:hasLikesTrust a rdf:Property;
+                    rdfs:domain ietao:TrustAssertion;
+                    rdfs:label "Specifies the user's subjective trust value based on the number of Likes, +1s or Favorites which friends have given to content which is being requested by the user or the number of Likes, +1s or Favorites given to other users.";
+                    rdfs:range ietao:TrustValue.
+ietao:hasMaxValue a rdf:Property,
+                    <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain ietao:TrustScale;
+                  rdfs:label "The maximum value within a trust range (i.e. a trust scale).";
+                  rdfs:range xsd:decimal.
+ietao:hasMinValue a rdf:Property,
+                    <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain ietao:TrustScale;
+                  rdfs:label "The minimum value within a trust range (i.e. a trust scale).";
+                  rdfs:range xsd:decimal.
+ietao:hasProfileSimilarityTrust a rdf:Property;
+                                rdfs:domain ietao:TrustAssertion;
+                                rdfs:label "Specifies the user's subjective trust value based on how similar the user's profile and the requester's profile are.";
+                                rdfs:range ietao:TrustValue.
+ietao:hasRelationshipTrust a rdf:Property;
+                           rdfs:domain ietao:TrustAssertion;
+                           rdfs:label "Specifies the user's subjective trust value based on the relationship type between a user and a requester.";
+                           rdfs:range ietao:TrustValue.
+ietao:hasReputationTrust a rdf:Property;
+                         rdfs:domain ietao:TrustAssertion;
+                         rdfs:label "Specifies the user's subjective trust value based on the requester's reputation within a Social Network.";
+                         rdfs:range ietao:TrustValue.
+ietao:hasResharesTrust a rdf:Property;
+                       rdfs:domain ietao:TrustAssertion;
+                       rdfs:label "Specifies the user's subjective trust value based on the number of re-shares of content which friends have re-shared.";
+                       rdfs:range ietao:TrustValue.
+ietao:hasSharesTrust a rdf:Property;
+                     rdfs:domain ietao:TrustAssertion;
+                     rdfs:label "Specifies the user's subjective trust value based on the number of shares of the content which friends have shared.";
+                     rdfs:range ietao:TrustValue.
+ietao:hasTaggingTrust a rdf:Property;
+                      rdfs:domain ietao:TrustAssertion;
+                      rdfs:label "Specifies the user's subjective trust value based on the number of tags or mentions of requesters by the user's friends.";
+                      rdfs:range ietao:TrustValue.
+ietao:hasTrustScale a rdf:Property;
+                    rdfs:domain ietao:TrustValue;
+                    rdfs:label "Identifies which trust scale range the trust values have to be within.";
+                    rdfs:range ietao:TrustScale.
+ietao:hasValue a rdf:Property,
+                 <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain ietao:TrustValue;
+               rdfs:label "The subjective trust value. ";
+               rdfs:range xsd:decimal.
+ietao:owesac a <http://xmlns.com/foaf/0.1/Person>;
+             <http://xmlns.com/foaf/0.1/homepage> <http://www.deri.ie/about/team/member/owen_sacco/>;
+             <http://xmlns.com/foaf/0.1/name> "Owen Sacco".
+ietao:rdf <http://purl.org/dc/terms/FileFormat> <http://vocab.deri.ie/tao>;
+          a <http://www.w3.org/ns/adms#SemanticDistribution>;
+          <http://www.w3.org/ns/adms#accessURL> "http://vocab.deri.ie/tao.rdf";
+          <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.
+ietao:ttl <http://purl.org/dc/terms/FileFormat> <http://vocab.deri.ie/tao>;
+          a <http://www.w3.org/ns/adms#SemanticDistribution>;
+          <http://www.w3.org/ns/adms#accessURL> "http://vocab.deri.ie/tao.ttl";
+          <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.

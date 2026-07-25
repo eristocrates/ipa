@@ -1,0 +1,20 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix coun: <http://www.daml.org/2001/09/countries/iso-3166-ont#>.
+
+<http://www.daml.org/2001/09/countries/iso-3166-ont> <http://www.daml.org/2001/03/daml+oil#versionInfo> "$Id: iso-3166-ont.daml,v 1.3 2003/08/11 23:26:13 mdean Exp $";
+                                                     a <http://www.daml.org/2001/03/daml+oil#Ontology>;
+                                                     rdfs:comment "ISO 3166 Country Codes".
+coun:Country a rdfs:Class;
+             rdfs:subClassOf [<http://www.daml.org/2001/03/daml+oil#toClass> <http://www.w3.org/2000/10/XMLSchema#string> ; 
+                              <http://www.daml.org/2001/03/daml+oil#onProperty> coun:code ; 
+                              <http://www.daml.org/2001/03/daml+oil#cardinality> "1" ; 
+                              a <http://www.daml.org/2001/03/daml+oil#Restriction>],
+                             [<http://www.daml.org/2001/03/daml+oil#toClass> <http://www.w3.org/2000/10/XMLSchema#string> ; 
+                              <http://www.daml.org/2001/03/daml+oil#onProperty> coun:name ; 
+                              <http://www.daml.org/2001/03/daml+oil#cardinality> "1" ; 
+                              a <http://www.daml.org/2001/03/daml+oil#Restriction>],
+                             <http://www.daml.org/2001/09/countries/country-ont#Country>.
+coun:code a <http://www.daml.org/2001/03/daml+oil#DatatypeProperty>.
+coun:name a <http://www.daml.org/2001/03/daml+oil#DatatypeProperty>.

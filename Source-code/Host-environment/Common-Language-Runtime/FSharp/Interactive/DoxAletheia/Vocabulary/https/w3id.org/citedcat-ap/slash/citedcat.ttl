@@ -1,0 +1,568 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix citedcat: <https://w3id.org/citedcat-ap/>.
+
+_:B24e9f8ba844aeb734184513831b15b18 a <http://xmlns.com/foaf/0.1/Person>;
+                                    <http://xmlns.com/foaf/0.1/name> "Austin, Tim".
+<https://andrea-perego.name/foaf/#me> a <http://xmlns.com/foaf/0.1/Person>;
+                                      <http://www.w3.org/2002/07/owl#sameAs> <https://orcid.org/0000-0001-9300-2694>;
+                                      <http://xmlns.com/foaf/0.1/name> "Perego, Andrea".
+citedcat: <http://purl.org/dc/terms/abstract> "CiteDCAT-AP is an extension of the DCAT application profile for data portals in Europe (DCAT-AP) for describing resources documented by using the DataCite metadata schema - the de facto standard for data citation, and used across scientific disciplines. Its basic use case is to make research data searchable on general data portals, thereby bridging the gap between scientific and public sector information. For this purpose, CiteDCAT-AP provides an RDF vocabulary and the corresponding RDF syntax binding for the metadata elements defined in DataCite."@en;
+          <http://purl.org/dc/terms/conformsTo> <http://data.europa.eu/r5r/>,
+                                                <http://data.europa.eu/s1n/>,
+                                                <http://data.europa.eu/930/>,
+                                                <https://schema.datacite.org/>,
+                                                <https://www.w3.org/TR/vocab-dcat/>;
+          <http://purl.org/dc/terms/created> "2021-03-14"^^xsd:date;
+          <http://purl.org/dc/terms/creator> [<http://xmlns.com/foaf/0.1/name> "Tsinaraki, Chrisa" ; 
+                                              a <http://xmlns.com/foaf/0.1/Person>],
+                                             _:B24e9f8ba844aeb734184513831b15b18,
+                                             [<http://xmlns.com/foaf/0.1/name> "Vaccari, Lorenzino" ; 
+                                              a <http://xmlns.com/foaf/0.1/Person>],
+                                             [<http://xmlns.com/foaf/0.1/name> "Friis-Christensen, Anders" ; 
+                                              a <http://xmlns.com/foaf/0.1/Person>],
+                                             <https://andrea-perego.name/foaf/#me>;
+          <http://purl.org/dc/terms/dateCopyrighted> "2021"^^xsd:gYear;
+          <http://purl.org/dc/terms/description> "CiteDCAT-AP is an extension of the DCAT application profile for data portals in Europe (DCAT-AP) for describing resources documented by using the DataCite metadata schema - the de facto standard for data citation, and used across scientific disciplines. Its basic use case is to make research data searchable on general data portals, thereby bridging the gap between scientific and public sector information. For this purpose, CiteDCAT-AP provides an RDF vocabulary and the corresponding RDF syntax binding for the metadata elements defined in DataCite."@en;
+          <http://purl.org/dc/terms/issued> "2021-03-28"^^xsd:date;
+          <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/>;
+          <http://purl.org/dc/terms/modified> "2021-03-31"^^xsd:date;
+          <http://purl.org/dc/terms/publisher> <http://publications.europa.eu/resource/authority/corporate-body/COM>;
+          <http://purl.org/dc/terms/rightsHolder> <http://publications.europa.eu/resource/authority/corporate-body/EURUN>;
+          <http://purl.org/dc/terms/title> "CiteDCAT-AP Vocabulary"@en;
+          <http://purl.org/dc/terms/type> <http://publications.europa.eu/resource/authority/dataset-type/APROF>,
+                                          <http://publications.europa.eu/resource/authority/asset-classification/c_89b4bdb7>,
+                                          <http://publications.europa.eu/resource/authority/dataset-type/ONTOLOGY>;
+          <http://purl.org/ontology/bibo/editor> <https://andrea-perego.name/foaf/#me>,
+                                                 _:B24e9f8ba844aeb734184513831b15b18;
+          <http://purl.org/vocab/vann/preferredNamespacePrefix> "citedcat";
+          <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/citedcat-ap/"^^xsd:anyURI;
+          <http://purl.org/vocommons/voaf#reliesOn> <http://www.w3.org/ns/org#>,
+                                                    <http://www.w3.org/ns/locn#>,
+                                                    <http://www.w3.org/ns/dcat#>,
+                                                    <http://xmlns.com/foaf/0.1/>,
+                                                    <http://www.w3.org/2006/vcard/ns#>,
+                                                    <http://purl.org/dc/dctype/>,
+                                                    <http://www.w3.org/2004/02/skos/core#>,
+                                                    <https://www.w3.org/2007/05/powder-s>,
+                                                    <http://purl.org/dc/terms/>,
+                                                    <http://www.w3.org/ns/adms#>,
+                                                    <http://www.w3.org/2002/07/owl#>,
+                                                    <http://www.opengis.net/ont/geosparql#>,
+                                                    rdfs:,
+                                                    <http://purl.org/ontology/bibo/>,
+                                                    <http://www.w3.org/ns/prov#>;
+          a <http://www.w3.org/2002/07/owl#Ontology>,
+            <http://www.w3.org/ns/adms#Asset>,
+            <http://purl.org/vocommons/voaf#Vocabulary>;
+          rdfs:comment "CiteDCAT-AP is an extension of the DCAT application profile for data portals in Europe (DCAT-AP) for describing resources documented by using the DataCite metadata schema - the de facto standard for data citation, and used across scientific disciplines. Its basic use case is to make research data searchable on general data portals, thereby bridging the gap between scientific and public sector information. For this purpose, CiteDCAT-AP provides an RDF vocabulary and the corresponding RDF syntax binding for the metadata elements defined in DataCite."@en;
+          rdfs:isDefinedBy <https://ec-jrc.github.io/datacite-to-dcat-ap/>;
+          rdfs:label "CiteDCAT-AP Vocabulary"@en;
+          <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0.0"@en;
+          <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/dataset-status/COMPLETED>;
+          <http://www.w3.org/ns/adms#versionNotes> "This version of CiteDCAT-AP is aligned with the following specifications: DCAT 2, DCAT-AP 2.0.1, GeoDCAT-AP 2.0.0, StatDCAT-AP 1.0.1, DataCite 4.4."@en,
+                                                   "First version of the CiteDCAT-AP RDF Vocabulary, including only the terms defined in the CiteDCAT-AP namespace."@en;
+          <http://www.w3.org/ns/dcat#distribution> [<http://www.w3.org/ns/dcat#mediaType> <https://www.iana.org/assignments/media-types/text/html> ; 
+                                                    <http://www.w3.org/ns/dcat#downloadURL> <https://ec-jrc.github.io/datacite-to-dcat-ap/> ; 
+                                                    <http://www.w3.org/ns/adms#representationTechnique> <http://purl.org/adms/representationtechnique/HumanLanguage> ; 
+                                                    <http://purl.org/dc/terms/title> "HTML"@en ; 
+                                                    <http://purl.org/dc/terms/format> <http://publications.europa.eu/resource/authority/file-type/HTML> ; 
+                                                    a <http://www.w3.org/ns/adms#AssetDistribution>],
+                                                   [<http://www.w3.org/ns/dcat#mediaType> <https://www.iana.org/assignments/media-types/application/ld+json> ; 
+                                                    <http://www.w3.org/ns/dcat#downloadURL> <https://ec-jrc.github.io/datacite-to-dcat-ap/citedcat-ap.jsonld> ; 
+                                                    <http://www.w3.org/ns/adms#representationTechnique> <http://purl.org/adms/representationtechnique/OWL> ; 
+                                                    <http://www.w3.org/ns/adms#representationTechnique> <http://purl.org/adms/representationtechnique/RDFSchema> ; 
+                                                    <http://purl.org/dc/terms/title> "JSON-LD"@en ; 
+                                                    <http://purl.org/dc/terms/format> <http://publications.europa.eu/resource/authority/file-type/JSON_LD> ; 
+                                                    <http://purl.org/dc/terms/format> <http://www.w3.org/ns/formats/data/JSON-LD> ; 
+                                                    a <http://www.w3.org/ns/adms#AssetDistribution>],
+                                                   [<http://www.w3.org/ns/dcat#mediaType> <https://www.iana.org/assignments/media-types/application/rdf+xml> ; 
+                                                    <http://www.w3.org/ns/dcat#downloadURL> <https://ec-jrc.github.io/datacite-to-dcat-ap/citedcat-ap.rdf> ; 
+                                                    <http://www.w3.org/ns/adms#representationTechnique> <http://purl.org/adms/representationtechnique/OWL> ; 
+                                                    <http://www.w3.org/ns/adms#representationTechnique> <http://purl.org/adms/representationtechnique/RDFSchema> ; 
+                                                    <http://purl.org/dc/terms/title> "RDF/XML"@en ; 
+                                                    <http://purl.org/dc/terms/format> <http://publications.europa.eu/resource/authority/file-type/RDF_XML> ; 
+                                                    <http://purl.org/dc/terms/format> <http://www.w3.org/ns/formats/data/RDF_XML> ; 
+                                                    a <http://www.w3.org/ns/adms#AssetDistribution>],
+                                                   [<http://www.w3.org/ns/dcat#mediaType> <https://www.iana.org/assignments/media-types/text/turtle> ; 
+                                                    <http://www.w3.org/ns/dcat#downloadURL> <https://ec-jrc.github.io/datacite-to-dcat-ap/citedcat-ap.ttl> ; 
+                                                    <http://www.w3.org/ns/adms#representationTechnique> <http://purl.org/adms/representationtechnique/OWL> ; 
+                                                    <http://www.w3.org/ns/adms#representationTechnique> <http://purl.org/adms/representationtechnique/RDFSchema> ; 
+                                                    <http://purl.org/dc/terms/title> "Turtle"@en ; 
+                                                    <http://purl.org/dc/terms/format> <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ; 
+                                                    <http://purl.org/dc/terms/format> <http://www.w3.org/ns/formats/data/Turtle> ; 
+                                                    a <http://www.w3.org/ns/adms#AssetDistribution>].
+citedcat:DataPaper a rdfs:Class,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "A factual and objective publication with a focused intent to identify and describe specific data, sets of data, or data collections to facilitate discoverability [DataCite]."@en;
+                   rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-4.1/>,
+                                    <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                    <https://schema.datacite.org/meta/kernel-4.3/>,
+                                    <https://schema.datacite.org/meta/kernel-4.2/>,
+                                    <https://schema.datacite.org/meta/kernel-4.4/>,
+                                    <https://schema.datacite.org/>;
+                   rdfs:label "Data paper"@en;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                   <http://www.w3.org/2004/02/skos/core#scopeNote> "A data paper describes data provenance and methodologies used in the gathering, processing, organizing, and representing the data [DataCite]."@en;
+                   <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:Model a rdfs:Class,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "An abstract, conceptual, graphical, mathematical or visualization model that represents empirical objects, phenomena, or physical processes [DataCite]."@en;
+               rdfs:isDefinedBy <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                <https://schema.datacite.org/meta/kernel-4.4/>,
+                                <https://schema.datacite.org/meta/kernel-4.0/>,
+                                <https://schema.datacite.org/meta/kernel-4.1/>,
+                                <https://schema.datacite.org/meta/kernel-3.1/>,
+                                <https://schema.datacite.org/meta/kernel-4.2/>,
+                                <https://schema.datacite.org/meta/kernel-3.0/>,
+                                <https://schema.datacite.org/>,
+                                <https://schema.datacite.org/meta/kernel-4.3/>;
+               rdfs:label "Model"@en;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+               <http://www.w3.org/2004/02/skos/core#scopeNote> "Modelled descriptions of, for example, different aspects of languages or a molecular biology reaction chain [DataCite]."@en;
+               <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:Workflow a rdfs:Class,
+                    <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "A structured series of steps which can be executed to produce a final outcome, allowing users a means to specify and enact their work in a more reproducible manner [DataCite]."@en;
+                  rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-4.2/>,
+                                   <https://schema.datacite.org/meta/kernel-4.0/>,
+                                   <https://schema.datacite.org/meta/kernel-4.1/>,
+                                   <https://schema.datacite.org/meta/kernel-4.4/>,
+                                   <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                   <https://schema.datacite.org/>,
+                                   <https://schema.datacite.org/meta/kernel-3.1/>,
+                                   <https://schema.datacite.org/meta/kernel-4.3/>,
+                                   <https://schema.datacite.org/meta/kernel-3.0/>;
+                  rdfs:label "Workflow"@en;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                  <http://www.w3.org/2004/02/skos/core#scopeNote> "Computational workflows involving sequential operations made on data by wrapped software and may be specified in a format belonging to a workflow management system, such as Taverna [DataCite]."@en;
+                  <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:compiles a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                    rdf:Property;
+                  rdfs:comment "Indicates B is the result of a compile or creation event using A [DataCite]."@en;
+                  rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-4.2/>,
+                                   <https://schema.datacite.org/meta/kernel-4.4/>,
+                                   <https://schema.datacite.org/meta/kernel-4.0/>,
+                                   <https://schema.datacite.org/>,
+                                   <https://schema.datacite.org/meta/kernel-4.1/>,
+                                   <https://schema.datacite.org/meta/kernel-4.3/>,
+                                   <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                   <https://schema.datacite.org/meta/kernel-3.1/>,
+                                   <https://schema.datacite.org/meta/kernel-3.0/>;
+                  rdfs:label "compiles"@en;
+                  <http://www.w3.org/2002/07/owl#inverseOf> citedcat:isCompiledBy;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                  <http://www.w3.org/2004/02/skos/core#scopeNote> "May be used for software and text, as a compiler can be a computer program or a person [DataCite]."@en;
+                  <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:continues a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     rdf:Property;
+                   rdfs:comment "Indicates A is a continuation of the work B [DataCite]."@en;
+                   rdfs:isDefinedBy <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                    <https://schema.datacite.org/meta/kernel-4.1/>,
+                                    <https://schema.datacite.org/>,
+                                    <https://schema.datacite.org/meta/kernel-4.3/>,
+                                    <https://schema.datacite.org/meta/kernel-4.2/>,
+                                    <https://schema.datacite.org/meta/kernel-4.4/>,
+                                    <https://schema.datacite.org/meta/kernel-3.1/>,
+                                    <https://schema.datacite.org/meta/kernel-4.0/>,
+                                    <https://schema.datacite.org/meta/kernel-3.0/>;
+                   rdfs:label "continues"@en;
+                   <http://www.w3.org/2002/07/owl#inverseOf> citedcat:isContinuedBy;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                   <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:dataCollector a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                         rdf:Property;
+                       rdfs:comment "Person/institution responsible for finding, gathering/collecting data under the guidelines of the author(s) or Principal Investigator (PI) [DataCite]."@en;
+                       rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-4.4/>,
+                                        <https://schema.datacite.org/meta/kernel-4.2/>,
+                                        <https://schema.datacite.org/>,
+                                        <https://schema.datacite.org/meta/kernel-4.0/>,
+                                        <https://schema.datacite.org/meta/kernel-4.3/>,
+                                        <https://schema.datacite.org/meta/kernel-4.1/>,
+                                        <https://schema.datacite.org/meta/kernel-3.1/>,
+                                        <https://schema.datacite.org/meta/kernel-3.0/>,
+                                        <https://ec-jrc.github.io/datacite-to-dcat-ap/>;
+                       rdfs:label "data collector"@en;
+                       rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                       <http://www.w3.org/2004/02/skos/core#scopeNote> "May also use when crediting survey conductors, interviewers, event or condition observers, person responsible for monitoring key instrument data [DataCite]."@en;
+                       <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:dataCurator a rdf:Property,
+                       <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Person tasked with reviewing, enhancing, cleaning, or standardizing metadata and the associated data submitted for storage, use, and maintenance within a data centre or repository [DataCite]."@en;
+                     rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-4.2/>,
+                                      <https://schema.datacite.org/meta/kernel-4.4/>,
+                                      <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                      <https://schema.datacite.org/meta/kernel-4.1/>,
+                                      <https://schema.datacite.org/meta/kernel-3.1/>,
+                                      <https://schema.datacite.org/meta/kernel-4.3/>,
+                                      <https://schema.datacite.org/>,
+                                      <https://schema.datacite.org/meta/kernel-4.0/>;
+                     rdfs:label "data curator"@en;
+                     rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                     <http://www.w3.org/2004/02/skos/core#scopeNote> "While the DataManager is concerned with digital maintenance, the DataCurator’s role encompasses quality assurance focused on content and metadata. DataCurator responsibilities include: checking completeness of the submitted dataset against the content as described by the submitter; verifying standard metadata according to the applicable system or schema; adding or verifying specialized metadata to add value and ensure access across disciplines; and determining how the metadata might map to search engines, database products, and automated feeds. Repository managers as well as data librarians working in the repository fall within this category [DataCite]."@en;
+                     <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:dataManager a rdf:Property,
+                       <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Person (or organisation with a staff of data managers, such as a data centre) responsible for maintaining the finished resource [DataCite]."@en;
+                     rdfs:isDefinedBy <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                      <https://schema.datacite.org/meta/kernel-3.0/>,
+                                      <https://schema.datacite.org/meta/kernel-3.1/>,
+                                      <https://schema.datacite.org/meta/kernel-4.4/>,
+                                      <https://schema.datacite.org/meta/kernel-4.2/>,
+                                      <https://schema.datacite.org/meta/kernel-4.3/>,
+                                      <https://schema.datacite.org/>,
+                                      <https://schema.datacite.org/meta/kernel-4.1/>,
+                                      <https://schema.datacite.org/meta/kernel-4.0/>;
+                     rdfs:label "data manager"@en;
+                     rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                     <http://www.w3.org/2004/02/skos/core#scopeNote> "The work done by this person or organisation ensures that the resource is periodically “refreshed” in terms of software/hardware support, is kept available or is protected from unauthorized access, is stored in accordance with industry standards, and is handled in accordance with the records management requirements applicable to it [DataCite]."@en;
+                     <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:describes a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     rdf:Property;
+                   rdfs:comment "Indicates A describes B [DataCite]."@en;
+                   rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-4.1/>,
+                                    <https://schema.datacite.org/meta/kernel-4.3/>,
+                                    <https://schema.datacite.org/meta/kernel-4.2/>,
+                                    <https://schema.datacite.org/meta/kernel-4.4/>,
+                                    <https://schema.datacite.org/>,
+                                    <https://ec-jrc.github.io/datacite-to-dcat-ap/>;
+                   rdfs:label "describes"@en;
+                   <http://www.w3.org/2002/07/owl#inverseOf> <http://www.w3.org/2007/05/powder-s#describedby>;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                   <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:funder a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  rdf:Property;
+                rdfs:comment "Institution that provided financial support for the development of the resource [DataCite]."@en;
+                rdfs:isDefinedBy <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                 <https://schema.datacite.org/meta/kernel-3.1/>,
+                                 <https://schema.datacite.org/>,
+                                 <https://schema.datacite.org/meta/kernel-3.0/>;
+                rdfs:label "funder"@en;
+                rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                <http://www.w3.org/2004/02/skos/core#scopeNote> "Includes organizations that provide funding via regular budget allocations, through grants or awards [DataCite]."@en;
+                <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:hostingInstitution a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                              rdf:Property;
+                            rdfs:comment "Typically, the organisation allowing the resource to be available on the Internet through the provision of its hardware/software/operating support [DataCite]."@en;
+                            rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-4.2/>,
+                                             <https://schema.datacite.org/>,
+                                             <https://schema.datacite.org/meta/kernel-3.1/>,
+                                             <https://schema.datacite.org/meta/kernel-4.1/>,
+                                             <https://schema.datacite.org/meta/kernel-4.4/>,
+                                             <https://schema.datacite.org/meta/kernel-4.3/>,
+                                             <https://schema.datacite.org/meta/kernel-4.0/>,
+                                             <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                             <https://schema.datacite.org/meta/kernel-3.0/>;
+                            rdfs:label "hosting institution"@en;
+                            rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                            <http://www.w3.org/2004/02/skos/core#scopeNote> "This role normally falls on the University, research center or organization where the data center/data repository belongs. May also be used for an organisation that stores the data offline - often a data centre if that data centre is not the “publisher” of the resource [DataCite]."@en;
+                            <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:isAwardedBy a rdf:Property,
+                       <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Agent responsible for awarding financial support to an activity (typically, a project)."@en;
+                     rdfs:isDefinedBy <https://ec-jrc.github.io/datacite-to-dcat-ap/>;
+                     rdfs:label "is awarded by"@en;
+                     rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                     <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:isCompiledBy a rdf:Property,
+                        <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "Indicates B is used to compile or create A [DataCite]."@en;
+                      rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-4.4/>,
+                                       <https://schema.datacite.org/meta/kernel-4.2/>,
+                                       <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                       <https://schema.datacite.org/meta/kernel-4.3/>,
+                                       <https://schema.datacite.org/meta/kernel-4.1/>,
+                                       <https://schema.datacite.org/meta/kernel-4.0/>,
+                                       <https://schema.datacite.org/>,
+                                       <https://schema.datacite.org/meta/kernel-3.1/>,
+                                       <https://schema.datacite.org/meta/kernel-3.0/>;
+                      rdfs:label "is compiled by"@en;
+                      <http://www.w3.org/2002/07/owl#inverseOf> citedcat:compiles;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                      <http://www.w3.org/2004/02/skos/core#scopeNote> "May be used for software and text, as a compiler can be a computer program or a person [DataCite]."@en;
+                      <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:isContinuedBy a rdf:Property,
+                         <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Indicates A is continued by the work B [DataCite]."@en;
+                       rdfs:isDefinedBy <https://schema.datacite.org/>,
+                                        <https://schema.datacite.org/meta/kernel-4.0/>,
+                                        <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                        <https://schema.datacite.org/meta/kernel-4.2/>,
+                                        <https://schema.datacite.org/meta/kernel-3.0/>,
+                                        <https://schema.datacite.org/meta/kernel-4.4/>,
+                                        <https://schema.datacite.org/meta/kernel-4.1/>,
+                                        <https://schema.datacite.org/meta/kernel-4.3/>,
+                                        <https://schema.datacite.org/meta/kernel-3.1/>;
+                       rdfs:label "is continued by"@en;
+                       <http://www.w3.org/2002/07/owl#inverseOf> citedcat:continues;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                       <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:isFundedBy a rdf:Property,
+                      <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "The activity (typically, a project) that provided financial support for the development of the resource."@en;
+                    rdfs:isDefinedBy <https://ec-jrc.github.io/datacite-to-dcat-ap/>;
+                    rdfs:label "is funded by"@en;
+                    rdfs:range <http://xmlns.com/foaf/0.1/Project>;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                    <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:isOriginalFormOf a rdf:Property,
+                            <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "Indicates A is the original form of B [DataCite]."@en;
+                          rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-3.1/>,
+                                           <https://schema.datacite.org/meta/kernel-4.2/>,
+                                           <https://schema.datacite.org/meta/kernel-4.4/>,
+                                           <https://schema.datacite.org/meta/kernel-4.1/>,
+                                           <https://schema.datacite.org/meta/kernel-4.0/>,
+                                           <https://schema.datacite.org/meta/kernel-4.3/>,
+                                           <https://schema.datacite.org/meta/kernel-3.0/>,
+                                           <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                           <https://schema.datacite.org/>;
+                          rdfs:label "is original form of"@en;
+                          <http://www.w3.org/2002/07/owl#inverseOf> citedcat:isVariantFormOf;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                          <http://www.w3.org/2004/02/skos/core#scopeNote> "May be used for different software operating systems or compiler formats, for example [DataCite]."@en;
+                          <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:isReviewedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                        rdf:Property;
+                      rdfs:comment "Indicates that A is reviewed by B [DataCite]."@en;
+                      rdfs:isDefinedBy <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                       <https://schema.datacite.org/meta/kernel-4.2/>,
+                                       <https://schema.datacite.org/meta/kernel-4.4/>,
+                                       <https://schema.datacite.org/meta/kernel-4.1/>,
+                                       <https://schema.datacite.org/meta/kernel-3.1/>,
+                                       <https://schema.datacite.org/meta/kernel-4.0/>,
+                                       <https://schema.datacite.org/meta/kernel-4.3/>,
+                                       <https://schema.datacite.org/>;
+                      rdfs:label "is reviewed by"@en;
+                      <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/ontology/bibo/reviewOf>;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                      <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:isSupplementTo a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                          rdf:Property;
+                        rdfs:comment "Indicates that A is a supplement to B [DataCite]."@en;
+                        rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-4.2/>,
+                                         <https://schema.datacite.org/meta/kernel-4.4/>,
+                                         <https://schema.datacite.org/meta/kernel-3.1/>,
+                                         <https://schema.datacite.org/meta/kernel-4.1/>,
+                                         <https://schema.datacite.org/>,
+                                         <https://schema.datacite.org/meta/kernel-4.3/>,
+                                         <https://schema.datacite.org/meta/kernel-4.0/>,
+                                         <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                         <https://schema.datacite.org/meta/kernel-3.0/>;
+                        rdfs:label "is supplement to"@en;
+                        <http://www.w3.org/2002/07/owl#inverseOf> citedcat:isSupplementedBy;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                        <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:isSupplementedBy a rdf:Property,
+                            <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "Indicates that B is a supplement to A [DataCite]."@en;
+                          rdfs:isDefinedBy <https://schema.datacite.org/>,
+                                           <https://schema.datacite.org/meta/kernel-4.4/>,
+                                           <https://schema.datacite.org/meta/kernel-3.1/>,
+                                           <https://schema.datacite.org/meta/kernel-4.0/>,
+                                           <https://schema.datacite.org/meta/kernel-3.0/>,
+                                           <https://schema.datacite.org/meta/kernel-4.3/>,
+                                           <https://schema.datacite.org/meta/kernel-4.2/>,
+                                           <https://schema.datacite.org/meta/kernel-4.1/>,
+                                           <https://ec-jrc.github.io/datacite-to-dcat-ap/>;
+                          rdfs:label "is supplemented by"@en;
+                          <http://www.w3.org/2002/07/owl#inverseOf> citedcat:isSupplementTo;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                          <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:isVariantFormOf a rdf:Property,
+                           <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "Indicates A is a variant or different form of B [DataCite]."@en;
+                         rdfs:isDefinedBy <https://schema.datacite.org/>,
+                                          <https://schema.datacite.org/meta/kernel-4.3/>,
+                                          <https://schema.datacite.org/meta/kernel-4.0/>,
+                                          <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                          <https://schema.datacite.org/meta/kernel-3.0/>,
+                                          <https://schema.datacite.org/meta/kernel-4.1/>,
+                                          <https://schema.datacite.org/meta/kernel-4.2/>,
+                                          <https://schema.datacite.org/meta/kernel-3.1/>,
+                                          <https://schema.datacite.org/meta/kernel-4.4/>;
+                         rdfs:label "is variant form or"@en;
+                         <http://www.w3.org/2002/07/owl#inverseOf> citedcat:isOriginalFormOf;
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                         <http://www.w3.org/2004/02/skos/core#scopeNote> "Use for a different form of one thing. May be used for different software operating systems or compiler formats, for example [DataCite]."@en;
+                         <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:projectLeader a rdf:Property,
+                         <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Person officially designated as head of project team or sub-project team instrumental in the work necessary to development of the resource [DataCite]."@en;
+                       rdfs:domain <http://xmlns.com/foaf/0.1/Project>;
+                       rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-3.0/>,
+                                        <https://schema.datacite.org/meta/kernel-4.0/>,
+                                        <https://schema.datacite.org/meta/kernel-4.2/>,
+                                        <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                        <https://schema.datacite.org/meta/kernel-3.1/>,
+                                        <https://schema.datacite.org/meta/kernel-4.1/>,
+                                        <https://schema.datacite.org/>,
+                                        <https://schema.datacite.org/meta/kernel-4.4/>,
+                                        <https://schema.datacite.org/meta/kernel-4.3/>;
+                       rdfs:label "project leader"@en;
+                       rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                       rdfs:subPropertyOf citedcat:projectMember;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                       <http://www.w3.org/2004/02/skos/core#scopeNote> "The Project Leader is not “removed” from the work that resulted in the resource; he or she remains intimately involved throughout the life of the particular project team [DataCite]."@en;
+                       <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:projectManager a rdf:Property,
+                          <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "Person officially designated as manager of a project. Project may consist of one or many project teams and sub-teams [DataCite]."@en;
+                        rdfs:domain <http://xmlns.com/foaf/0.1/Project>;
+                        rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-3.0/>,
+                                         <https://schema.datacite.org/meta/kernel-4.4/>,
+                                         <https://schema.datacite.org/meta/kernel-4.3/>,
+                                         <https://schema.datacite.org/meta/kernel-4.2/>,
+                                         <https://schema.datacite.org/>,
+                                         <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                         <https://schema.datacite.org/meta/kernel-4.1/>,
+                                         <https://schema.datacite.org/meta/kernel-4.0/>,
+                                         <https://schema.datacite.org/meta/kernel-3.1/>;
+                        rdfs:label "project manager"@en;
+                        rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                        rdfs:subPropertyOf citedcat:projectMember;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                        <http://www.w3.org/2004/02/skos/core#scopeNote> "The manager of a project normally has more administrative responsibility than actual work involvement [DataCite]."@en;
+                        <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:projectMember a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                         rdf:Property;
+                       rdfs:comment "Person on the membership list of a designated project/project team [DataCite]."@en;
+                       rdfs:domain <http://xmlns.com/foaf/0.1/Project>;
+                       rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-4.3/>,
+                                        <https://schema.datacite.org/meta/kernel-4.1/>,
+                                        <https://schema.datacite.org/>,
+                                        <https://schema.datacite.org/meta/kernel-4.0/>,
+                                        <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                        <https://schema.datacite.org/meta/kernel-4.4/>,
+                                        <https://schema.datacite.org/meta/kernel-4.2/>,
+                                        <https://schema.datacite.org/meta/kernel-3.0/>,
+                                        <https://schema.datacite.org/meta/kernel-3.1/>;
+                       rdfs:label "project member"@en;
+                       rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                       <http://www.w3.org/2004/02/skos/core#scopeNote> "This vocabulary may or may not indicate the quality, quantity, or substance of the person’s involvement [DataCite]."@en;
+                       <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:registrationAgency a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                              rdf:Property;
+                            rdfs:comment "Institution/organisation officially appointed by a Registration Authority to handle specific tasks within a defined area of responsibility [DataCite]."@en;
+                            rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-4.3/>,
+                                             <https://schema.datacite.org/meta/kernel-4.0/>,
+                                             <https://schema.datacite.org/meta/kernel-3.1/>,
+                                             <https://schema.datacite.org/meta/kernel-3.0/>,
+                                             <https://schema.datacite.org/meta/kernel-4.1/>,
+                                             <https://schema.datacite.org/meta/kernel-4.2/>,
+                                             <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                             <https://schema.datacite.org/>,
+                                             <https://schema.datacite.org/meta/kernel-4.4/>;
+                            rdfs:label "registration agency"@en;
+                            rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                            <http://www.w3.org/2004/02/skos/core#scopeNote> "For instance: DataCite is a Registration Agency for the International DOI Foundation (IDF). One of DataCite’s tasks is to assign DOI prefixes to the allocating agents who then assign the full, specific character string to data clients, provide metadata back to the DataCite registry, etc. [DataCite]."@en;
+                            <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:registrationAuthority a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                 rdf:Property;
+                               rdfs:comment "A standards-setting body from which Registration Agencies obtain official recognition and guidance [DataCite]."@en;
+                               rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-4.0/>,
+                                                <https://schema.datacite.org/meta/kernel-4.1/>,
+                                                <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                                <https://schema.datacite.org/meta/kernel-3.0/>,
+                                                <https://schema.datacite.org/meta/kernel-4.4/>,
+                                                <https://schema.datacite.org/meta/kernel-3.1/>,
+                                                <https://schema.datacite.org/meta/kernel-4.2/>,
+                                                <https://schema.datacite.org/>,
+                                                <https://schema.datacite.org/meta/kernel-4.3/>;
+                               rdfs:label "registration authority"@en;
+                               rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                               <http://www.w3.org/2004/02/skos/core#scopeNote> "For intance: The IDF serves as the Registration Authority for the International Standards Organisation (ISO) in the area/domain of Digital Object Identifiers [DataCite]."@en;
+                               <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:researchGroup a rdf:Property,
+                         <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Typically refers to a group of individuals with a lab, department, or division that has a specifically defined focus of activity [DataCite]."@en;
+                       rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-4.4/>,
+                                        <https://schema.datacite.org/meta/kernel-4.0/>,
+                                        <https://schema.datacite.org/>,
+                                        <https://schema.datacite.org/meta/kernel-3.1/>,
+                                        <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                        <https://schema.datacite.org/meta/kernel-4.1/>,
+                                        <https://schema.datacite.org/meta/kernel-3.0/>,
+                                        <https://schema.datacite.org/meta/kernel-4.3/>,
+                                        <https://schema.datacite.org/meta/kernel-4.2/>;
+                       rdfs:label "research group"@en;
+                       rdfs:range <http://xmlns.com/foaf/0.1/Group>;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                       <http://www.w3.org/2004/02/skos/core#scopeNote> "May operate at a narrower level of scope; may or may not hold less administrative responsibility than a project team [DataCite]."@en;
+                       <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:researcher a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                      rdf:Property;
+                    rdfs:comment "A person involved in analyzing data or the results of an experiment or formal study. May indicate an intern or assistant to one of the authors who helped with research but who was not so “key” as to be listed as an author [DataCite]."@en;
+                    rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-4.1/>,
+                                     <https://schema.datacite.org/meta/kernel-4.3/>,
+                                     <https://schema.datacite.org/meta/kernel-3.1/>,
+                                     <https://schema.datacite.org/meta/kernel-4.0/>,
+                                     <https://schema.datacite.org/meta/kernel-4.2/>,
+                                     <https://schema.datacite.org/meta/kernel-3.0/>,
+                                     <https://schema.datacite.org/meta/kernel-4.4/>,
+                                     <https://schema.datacite.org/>,
+                                     <https://ec-jrc.github.io/datacite-to-dcat-ap/>;
+                    rdfs:label "researcher"@en;
+                    rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                    <http://www.w3.org/2004/02/skos/core#scopeNote> "Should be a person, not an institution. Note that a person involved in the gathering of data would fall under the contributorType “DataCollector.” The researcher may find additional data online and correlate it to the data collected for the experiment or study, for example [DataCite]."@en;
+                    <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:sponsor a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                   rdf:Property;
+                 rdfs:comment "Person or organisation that issued a contract or under the auspices of which a work has been written, printed, published, developed, etc. [DataCite]."@en;
+                 rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-4.2/>,
+                                  <https://schema.datacite.org/meta/kernel-4.0/>,
+                                  <https://schema.datacite.org/meta/kernel-4.3/>,
+                                  <https://schema.datacite.org/>,
+                                  <https://schema.datacite.org/meta/kernel-4.1/>,
+                                  <https://schema.datacite.org/meta/kernel-3.0/>,
+                                  <https://schema.datacite.org/meta/kernel-3.1/>,
+                                  <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                  <https://schema.datacite.org/meta/kernel-4.4/>;
+                 rdfs:label "sponsor"@en;
+                 rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                 <http://www.w3.org/2004/02/skos/core#scopeNote> "Includes organisations that provide in-kind support, through donation, provision of people or a facility or instrumentation necessary for the development of the resource, etc. [DataCite]."@en;
+                 <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:supervisor a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                      rdf:Property;
+                    rdfs:comment "Designated administrator over one or more groups/teams working to produce a resource or over one or more steps of a development process [DataCite]."@en;
+                    rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-4.4/>,
+                                     <https://schema.datacite.org/meta/kernel-3.0/>,
+                                     <https://schema.datacite.org/meta/kernel-4.0/>,
+                                     <https://ec-jrc.github.io/datacite-to-dcat-ap/>,
+                                     <https://schema.datacite.org/meta/kernel-4.1/>,
+                                     <https://schema.datacite.org/>,
+                                     <https://schema.datacite.org/meta/kernel-4.3/>,
+                                     <https://schema.datacite.org/meta/kernel-3.1/>,
+                                     <https://schema.datacite.org/meta/kernel-4.2/>;
+                    rdfs:label "supervisor"@en;
+                    rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                    <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.
+citedcat:workPackageLeader a rdf:Property,
+                             <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment "A Work Package is a recognized data product, not all of which is included in publication. The package, instead, may include notes, discarded documents, etc. The Work Package Leader is responsible for ensuring the comprehensive contents, versioning, and availability of the Work Package during the development of the resource [DataCite]."@en;
+                           rdfs:isDefinedBy <https://schema.datacite.org/meta/kernel-3.1/>,
+                                            <https://schema.datacite.org/meta/kernel-4.2/>,
+                                            <https://schema.datacite.org/meta/kernel-3.0/>,
+                                            <https://schema.datacite.org/meta/kernel-4.4/>,
+                                            <https://schema.datacite.org/>,
+                                            <https://schema.datacite.org/meta/kernel-4.0/>,
+                                            <https://schema.datacite.org/meta/kernel-4.1/>,
+                                            <https://schema.datacite.org/meta/kernel-4.3/>,
+                                            <https://ec-jrc.github.io/datacite-to-dcat-ap/>;
+                           rdfs:label "work package leader"@en;
+                           rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                           <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/dataset/concept-status/CURRENT>.

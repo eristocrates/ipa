@@ -6,14 +6,6 @@ open type Prefix_ID
 
 module swapsparqlAnalysisTemplate =
     let _namespace_iri = Namespace_Iri swapsparqlAnalysisTemplate |> NamespaceIRI
-    /// <summary>
-    ///   <para>swapsparqlAnalysisTemplate:</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Ontology</para>
-    /// </remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#</seealso>
-    let _prefix_iri = Prefixed_Name(swapsparqlAnalysisTemplate, "") |> PrefixedName
 
     /// <summary>
     ///   <para>swapsparqlAnalysisTemplate:AnalysisResultBinding</para>
@@ -27,15 +19,14 @@ module swapsparqlAnalysisTemplate =
         Prefixed_Name(swapsparqlAnalysisTemplate, "AnalysisResultBinding") |> PrefixedName
 
     /// <summary>
-    ///   <para>swapsparqlAnalysisTemplate:ClinicalAnalysisQueryTemplate</para>
+    ///   <para>swapsparqlAnalysisTemplate:resultBindingOf</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>clinical analysis SPARQL query template</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#ClinicalAnalysisQueryTemplate">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#ClinicalAnalysisQueryTemplate</seealso>
-    let ClinicalAnalysisQueryTemplate =
-        Prefixed_Name(swapsparqlAnalysisTemplate, "ClinicalAnalysisQueryTemplate") |> PrefixedName
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#resultBindingOf">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#resultBindingOf</seealso>
+    let resultBindingOf =
+        Prefixed_Name(swapsparqlAnalysisTemplate, "resultBindingOf") |> PrefixedName
 
     /// <summary>
     ///   <para>swapsparqlAnalysisTemplate:ClinicalAnalysisQueryTemplateBinding</para>
@@ -49,6 +40,26 @@ module swapsparqlAnalysisTemplate =
         Prefixed_Name(swapsparqlAnalysisTemplate, "ClinicalAnalysisQueryTemplateBinding") |> PrefixedName
 
     /// <summary>
+    ///   <para>swapsparqlAnalysisTemplate:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#</seealso>
+    let _prefix_iri = Prefixed_Name(swapsparqlAnalysisTemplate, "") |> PrefixedName
+
+    /// <summary>
+    ///   <para>swapsparqlAnalysisTemplate:ClinicalAnalysisQueryTemplate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>clinical analysis SPARQL query template</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#ClinicalAnalysisQueryTemplate">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#ClinicalAnalysisQueryTemplate</seealso>
+    let ClinicalAnalysisQueryTemplate =
+        Prefixed_Name(swapsparqlAnalysisTemplate, "ClinicalAnalysisQueryTemplate") |> PrefixedName
+
+    /// <summary>
     ///   <para>swapsparqlAnalysisTemplate:ClinicalAnalysisResultBinding</para>
     /// </summary>
     /// <remarks>
@@ -58,13 +69,3 @@ module swapsparqlAnalysisTemplate =
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#ClinicalAnalysisResultBinding">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#ClinicalAnalysisResultBinding</seealso>
     let ClinicalAnalysisResultBinding =
         Prefixed_Name(swapsparqlAnalysisTemplate, "ClinicalAnalysisResultBinding") |> PrefixedName
-
-    /// <summary>
-    ///   <para>swapsparqlAnalysisTemplate:resultBindingOf</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    /// </remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#resultBindingOf">http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#resultBindingOf</seealso>
-    let resultBindingOf =
-        Prefixed_Name(swapsparqlAnalysisTemplate, "resultBindingOf") |> PrefixedName

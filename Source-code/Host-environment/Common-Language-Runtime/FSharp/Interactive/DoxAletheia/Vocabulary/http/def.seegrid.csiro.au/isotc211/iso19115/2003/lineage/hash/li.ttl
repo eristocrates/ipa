@@ -1,0 +1,179 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix li: <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage#>.
+
+<http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#Element> <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#isAbstract> true.
+<http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#Result> <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#isAbstract> true.
+<http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage> <http://purl.org/dc/elements/1.1/creator> """Simon Jonathan David COX
+CSIRO""";
+                                                             <http://purl.org/dc/elements/1.1/date> "2012-05-25T00:00:00"^^xsd:dateTime;
+                                                             <http://purl.org/dc/elements/1.1/description> "An OWL representation of parts of the Geographic Metadata model described in ISO 19115:2003 with Corrigendum 2006 - LI Package";
+                                                             <http://purl.org/dc/elements/1.1/source> """ISO 19115:2003
+ISO 19115:2006 Corrigendum""";
+                                                             <http://purl.org/dc/elements/1.1/title> "OWL representation of ISO 19115 (Geographic Information - Metadata - Lineage package)";
+                                                             <http://purl.org/dc/terms/created> "2012-05-18T00:00:00"^^xsd:dateTime;
+                                                             <http://purl.org/dc/terms/hasPart> li:Source,
+                                                                                                li:Lineage,
+                                                                                                li:description,
+                                                                                                li:processor,
+                                                                                                li:scaleDenominator,
+                                                                                                li:sourceReferenceSystem,
+                                                                                                li:ProcessStep,
+                                                                                                li:statement,
+                                                                                                li:source,
+                                                                                                li:sourceCitation,
+                                                                                                li:dateTime,
+                                                                                                li:sourceStep,
+                                                                                                li:processStep,
+                                                                                                li:sourceExtent,
+                                                                                                li:rationale;
+                                                             <http://purl.org/dc/terms/modified> "2012-10-26T00:00:00"^^xsd:dateTime;
+                                                             a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                             <http://www.w3.org/2002/07/owl#imports> <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic>;
+                                                             <http://www.w3.org/2002/07/owl#priorVersion> <https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201210/ISOTC211/HM/lineage.rdf>;
+                                                             <http://www.w3.org/2002/07/owl#versionIRI> <https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201305/ISOTC211/HM/lineage.rdf>.
+li:Lineage a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage>;
+           rdfs:label "Lineage";
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> li:processStep ; 
+                            <http://www.w3.org/2002/07/owl#allValuesFrom> li:ProcessStep ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> li:statement ; 
+                            <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> li:source ; 
+                            <http://www.w3.org/2002/07/owl#allValuesFrom> li:Source ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> li:source ; 
+                            <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> li:processStep ; 
+                            <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>];
+           <http://www.w3.org/2004/02/skos/core#notation> "LI_Lineage"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+li:ProcessStep a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage>;
+               rdfs:label "Process step";
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> li:rationale ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> li:dateTime ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> li:processor ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#ResponsibleParty> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> li:source ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> li:source ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> li:Source ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> li:description ; 
+                                <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> li:processor ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>];
+               <http://www.w3.org/2004/02/skos/core#notation> "LI_ProcessStep"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+li:Source a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage>;
+          rdfs:label "Source";
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> li:sourceExtent ; 
+                           <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#Extent> ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> li:sourceCitation ; 
+                           <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation> ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> li:sourceExtent ; 
+                           <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> li:sourceReferenceSystem ; 
+                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> li:sourceCitation ; 
+                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> li:scaleDenominator ; 
+                           <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#RepresentativeFraction> ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> li:scaleDenominator ; 
+                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> li:sourceStep ; 
+                           <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> li:sourceStep ; 
+                           <http://www.w3.org/2002/07/owl#allValuesFrom> li:ProcessStep ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> li:description ; 
+                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> li:sourceReferenceSystem ; 
+                           <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ReferenceSystem> ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>];
+          <http://www.w3.org/2004/02/skos/core#notation> "LI_Source"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+li:dateTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain li:ProcessStep;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage>;
+            rdfs:label "date time";
+            rdfs:range xsd:dateTime.
+li:description a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (li:Source
+                                                                     li:ProcessStep) ; 
+                            a <http://www.w3.org/2002/07/owl#Class>];
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage>;
+               rdfs:label "description".
+li:processStep a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain li:Lineage;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage>;
+               rdfs:label "process step";
+               rdfs:range li:ProcessStep.
+li:processor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain li:ProcessStep;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage>;
+             rdfs:label "processor";
+             rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#ResponsibleParty>.
+li:rationale a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:domain li:ProcessStep;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage>;
+             rdfs:label "rationale".
+li:scaleDenominator a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain li:Source;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage>;
+                    rdfs:label "scale denominator";
+                    rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#RepresentativeFraction>.
+li:source a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (li:Lineage
+                                                                li:ProcessStep) ; 
+                       a <http://www.w3.org/2002/07/owl#Class>];
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage>;
+          rdfs:label "source";
+          rdfs:range li:Source;
+          <http://www.w3.org/2002/07/owl#inverseOf> li:sourceStep.
+li:sourceCitation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain li:Source;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage>;
+                  rdfs:label "source citation";
+                  rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation>.
+li:sourceExtent a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain li:Source;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage>;
+                rdfs:label "source extent";
+                rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#Extent>.
+li:sourceReferenceSystem a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain li:Source;
+                         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage>;
+                         rdfs:label "source reference system";
+                         rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ReferenceSystem>.
+li:sourceStep a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain li:Source;
+              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage>;
+              rdfs:label "source step";
+              rdfs:range li:ProcessStep;
+              <http://www.w3.org/2002/07/owl#inverseOf> li:source.
+li:statement a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:domain li:Lineage;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage>;
+             rdfs:label "statement".

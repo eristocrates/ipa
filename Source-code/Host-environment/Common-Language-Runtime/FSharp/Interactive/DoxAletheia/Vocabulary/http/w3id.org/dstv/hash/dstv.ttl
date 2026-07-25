@@ -1,0 +1,243 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dstv: <http://w3id.org/dstv#>.
+
+_:B840feedf62584dd8ddf6407a8189e334 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (dstv:Depth
+                                                                             dstv:Diameter
+                                                                             dstv:Distance
+                                                                             dstv:Vertex
+                                                                             dstv:VertexX
+                                                                             dstv:VertexY).
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://schema.org/#value> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (dstv:MeasuredValues
+                                                                                 dstv:PlannedValues
+                                                                                 dstv:ToleranceValues) ; 
+                                        a <http://www.w3.org/2002/07/owl#Class>];
+                           rdfs:range rdfs:Literal.
+dstv: <http://purl.org/dc/terms/creator> "Jyrki Oraskari, Individualized Production RWTH Aachen"@en,
+                                         "Timur Kurzu, Individualized Production RWTH Aachen"@en,
+                                         "Victoria Jung, Individualized Production RWTH Aachen"@en,
+                                         "Lukas Kirner, Individualized Production RWTH Aachen"@en;
+      <http://purl.org/dc/terms/description> "dstv"@en;
+      <http://purl.org/dc/terms/issued> "2023-02-28"@en;
+      <http://purl.org/dc/terms/title> "DSTV:Steel Construction Ontology"@en;
+      <http://purl.org/vocab/vann/preferredNamespacePrefix> "dstv";
+      <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/dstv#";
+      a <http://www.w3.org/2002/07/owl#Ontology>;
+      <http://www.w3.org/2002/07/owl#versionInfo> "0.0.2".
+dstv:AdjustmentProcess a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf <http://w3id.org/ioc#Process>.
+dstv:BottomReference a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy dstv:;
+                     rdfs:subClassOf dstv:DimensionalReference.
+dstv:BottomView a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "b";
+                rdfs:subClassOf dstv:ReferenceView.
+dstv:Depth a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:subClassOf dstv:FeatureValues.
+dstv:DepthDeviation a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy dstv:;
+                    rdfs:subClassOf dstv:DeviationValues.
+dstv:DepthTolerance a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf dstv:ToleranceValues.
+dstv:DeviationValues a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy dstv:.
+dstv:Diameter a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf dstv:FeatureValues.
+dstv:DiameterDeviation a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:isDefinedBy dstv:;
+                       rdfs:subClassOf dstv:DeviationValues.
+dstv:DiameterTolerance a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf dstv:ToleranceValues.
+dstv:DimensionalReference a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:isDefinedBy dstv:.
+dstv:Distance a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf dstv:FeatureValues.
+dstv:DistanceSUM a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf dstv:Distance.
+dstv:DistanceSUMDeviation a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:isDefinedBy dstv:;
+                          rdfs:subClassOf dstv:DeviationValues.
+dstv:DistanceSUMTolerance a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:subClassOf dstv:ToleranceValues.
+dstv:DistanceX a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf dstv:Distance.
+dstv:DistanceXDeviation a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:isDefinedBy dstv:;
+                        rdfs:subClassOf dstv:DeviationValues.
+dstv:DistanceXTolerance a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf dstv:ToleranceValues.
+dstv:DistanceY a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf dstv:Distance.
+dstv:DistanceYDeviation a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:isDefinedBy dstv:;
+                        rdfs:subClassOf dstv:DeviationValues.
+dstv:DistanceYTolerance a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf dstv:ToleranceValues.
+dstv:Drill a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:subClassOf dstv:ProductionProcess.
+dstv:DrillMeasurement a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf dstv:MeasurementProcess.
+dstv:Feature a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:isDefinedBy dstv:.
+dstv:FeatureValues a <http://www.w3.org/2002/07/owl#Class>.
+dstv:FrontView a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "f";
+               rdfs:subClassOf dstv:ReferenceView.
+dstv:MeasuredDepth a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf dstv:MeasuredValues.
+dstv:MeasuredDiameter a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf dstv:MeasuredValues.
+dstv:MeasuredDistanceSUM a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf dstv:MeasuredValues.
+dstv:MeasuredDistanceX a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf dstv:MeasuredValues.
+dstv:MeasuredDistanceY a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf dstv:MeasuredValues.
+dstv:MeasuredValues a <http://www.w3.org/2002/07/owl#Class>.
+dstv:MeasurementProcess a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf <http://w3id.org/ioc#Process>.
+dstv:PlannedDepth a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf dstv:PlannedValues.
+dstv:PlannedDiameter a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf dstv:PlannedValues.
+dstv:PlannedDistanceSUM a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf dstv:PlannedValues.
+dstv:PlannedDistanceX a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf dstv:PlannedValues.
+dstv:PlannedDistanceY a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf dstv:PlannedValues.
+dstv:PlannedValues a <http://www.w3.org/2002/07/owl#Class>.
+dstv:ProductionProcess a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf <http://w3id.org/ioc#Process>.
+dstv:RearView a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "r";
+              rdfs:subClassOf dstv:ReferenceView.
+dstv:ReferenceView a <http://www.w3.org/2002/07/owl#Class>.
+dstv:SymmetricalReference a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:isDefinedBy dstv:;
+                          rdfs:subClassOf dstv:DimensionalReference.
+dstv:ThroughHoleDrill a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "The element hljob is an optional element of hl. It is created for each through hole of the corresponding reference plane.",
+                                   "hljob";
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> dstv:hasMeasurement ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> dstv:ThroughHoleDrillMeasurement ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> dstv:hasDiameter ; 
+                                       <http://www.w3.org/2002/07/owl#onClass> dstv:Diameter ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      dstv:Drill.
+dstv:ThroughHoleDrillMeasurement a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:subClassOf dstv:DrillMeasurement.
+dstv:ToleranceBool a <http://www.w3.org/2002/07/owl#Class>.
+dstv:ToleranceValues a <http://www.w3.org/2002/07/owl#Class>.
+dstv:TopReference a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:isDefinedBy dstv:;
+                  rdfs:subClassOf dstv:DimensionalReference.
+dstv:TopView a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "t";
+             rdfs:subClassOf dstv:ReferenceView.
+dstv:TroughHole a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf dstv:Feature.
+dstv:ValidationProcess a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf <http://w3id.org/ioc#Process>.
+dstv:Vertex a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf dstv:FeatureValues.
+dstv:VertexX a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf dstv:FeatureValues.
+dstv:VertexY a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf dstv:FeatureValues.
+dstv:describedInIfcFeature a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain dstv:TroughHole;
+                           rdfs:range <https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD2_TC1/OWL#IfcVoidingFeature>.
+dstv:hasDeviationValues a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain dstv:FeatureValues;
+                        rdfs:range dstv:DeviationValues.
+dstv:hasDiameter a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (dstv:AdjustmentProcess
+                                                                       dstv:ThroughHoleDrill
+                                                                       dstv:ValidationProcess) ; 
+                              a <http://www.w3.org/2002/07/owl#Class>];
+                 rdfs:range dstv:Diameter;
+                 rdfs:subPropertyOf dstv:hasFeature.
+dstv:hasDiameterDeviation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain dstv:Diameter;
+                          rdfs:range dstv:DiameterDeviation;
+                          rdfs:subPropertyOf dstv:hasDeviationValues.
+dstv:hasDiameterTolerance a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain dstv:Diameter;
+                          rdfs:range dstv:DiameterTolerance;
+                          rdfs:subPropertyOf dstv:hasTolerances.
+dstv:hasDimensionalReference a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain dstv:Drill;
+                             rdfs:range dstv:DimensionalReference.
+dstv:hasFeature a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (dstv:AdjustmentProcess
+                                                                      dstv:MeasurementProcess
+                                                                      dstv:ProductionProcess
+                                                                      dstv:ValidationProcess
+                                                                      <http://w3id.org/ioc#Process>) ; 
+                             a <http://www.w3.org/2002/07/owl#Class>];
+                rdfs:range dstv:FeatureValues.
+dstv:hasMaxBound a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain dstv:ToleranceValues;
+                 rdfs:range rdfs:Literal.
+dstv:hasMeasuredDiameter a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain dstv:Diameter;
+                         rdfs:range dstv:MeasuredDiameter;
+                         rdfs:subPropertyOf dstv:hasMeasuredValue.
+dstv:hasMeasuredValue a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain dstv:FeatureValues;
+                      rdfs:range dstv:MeasuredValues.
+dstv:hasMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain dstv:Drill;
+                    rdfs:range dstv:MeasurementProcess.
+dstv:hasMinBound a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain dstv:ToleranceValues;
+                 rdfs:range rdfs:Literal.
+dstv:hasPlannedDiameter a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain dstv:Diameter;
+                        rdfs:range dstv:PlannedDiameter;
+                        rdfs:subPropertyOf dstv:hasPlannedValue.
+dstv:hasPlannedValue a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain dstv:FeatureValues;
+                     rdfs:range dstv:PlannedValues.
+dstv:hasReferenceView a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "dstvNC Level";
+                      rdfs:domain dstv:Drill;
+                      rdfs:range dstv:ReferenceView.
+dstv:hasTolerances a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain dstv:PlannedValues;
+                   rdfs:range dstv:ToleranceValues.
+dstv:hasVertex a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (dstv:Drill
+                                                                     dstv:DrillMeasurement) ; 
+                            a <http://www.w3.org/2002/07/owl#Class>];
+               rdfs:range dstv:Vertex;
+               rdfs:subPropertyOf dstv:hasFeature.
+dstv:hasVertexX a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain dstv:Vertex;
+                rdfs:range dstv:VertexX.
+dstv:hasVertexY a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain dstv:Vertex;
+                rdfs:range dstv:VertexY.
+dstv:inTolerance a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain dstv:FeatureValues;
+                 rdfs:range dstv:ToleranceBool.
+<http://w3id.org/ioc#Process> a <http://www.w3.org/2002/07/owl#Class>.
+<http://w3id.org/ioc#hasFeatureValue> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:domain dstv:Feature;
+                                      rdfs:range dstv:FeatureValues.
+<http://w3id.org/ioc#hasOutputElement> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:domain dstv:ThroughHoleDrill;
+                                       rdfs:range dstv:TroughHole.
+<https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD2_TC1/OWL#IfcVoidingFeature> a <http://www.w3.org/2002/07/owl#Class>.

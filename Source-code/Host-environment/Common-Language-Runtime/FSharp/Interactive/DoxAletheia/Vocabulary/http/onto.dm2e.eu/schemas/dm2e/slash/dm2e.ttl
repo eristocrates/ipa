@@ -1,0 +1,209 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dm2e: <http://onto.dm2e.eu/schemas/dm2e/>.
+
+<http://onto.dm2e.eu/schemas/dm2e> <http://purl.org/dc/elements/1.1/creator> <http://onto.dm2e.eu/schemas/dm2e#s.hennicke>,
+                                                                             <http://onto.dm2e.eu/schemas/dm2e#JIwanowa>,
+                                                                             <http://onto.dm2e.eu/schemas/dm2e#Evelyn>,
+                                                                             <http://onto.dm2e.eu/schemas/dm2e#konstantin>;
+                                   <http://purl.org/dc/terms/created> "2015-01-20"^^xsd:date;
+                                   <http://purl.org/dc/terms/description> "The DM2E model is a specialisation of the Europeana Data Model (EDM) and can be used for the description of manuscripts in the cultural heritage domain.";
+                                   <http://purl.org/dc/terms/modified> "2015-01-20"^^xsd:date;
+                                   <http://purl.org/dc/terms/partOf> <http://onto.dm2e.eu/>;
+                                   <http://purl.org/dc/terms/publisher> "http://onto.dm2e.eu/schemas/dm2e#School%20for%20Library%20and%20Information%20Science";
+                                   <http://purl.org/dc/terms/status> <http://purl.org/adms/status/UnderDevelopment>;
+                                   <http://purl.org/dc/terms/title> "DM2E model";
+                                   <http://purl.org/dc/terms/type> <http://purl.org/adms/assettype/Ontology>;
+                                   <http://purl.org/vocab/vann/preferredNamespacePrefix> "dm2e";
+                                   <http://purl.org/vocab/vann/preferredNamespaceUri> "http://onto.dm2e.eu/schemas/dm2e/";
+                                   a <http://www.w3.org/2002/07/owl#Ontology>;
+                                   <http://xmlns.com/foaf/0.1/homepage> <http://onto.dm2e.eu/schemas/dm2e.html>.
+<http://onto.dm2e.eu/schemas/dm2e#Evelyn> a <http://xmlns.com/foaf/0.1/Person>;
+                                          <http://xmlns.com/foaf/0.1/homepage> <http://onto.dm2e.eu/schemas/dm2e>;
+                                          <http://xmlns.com/foaf/0.1/name> "Evelyn Dröge".
+<http://onto.dm2e.eu/schemas/dm2e#IBI> a <http://purl.org/dc/terms/Agent>;
+                                       <http://xmlns.com/foaf/0.1/homepage> <http://onto.dm2e.eu/schemas/dm2e>;
+                                       <http://xmlns.com/foaf/0.1/member> <http://onto.dm2e.eu/schemas/dm2e#s.hennicke>;
+                                       <http://xmlns.com/foaf/0.1/name> "IBI".
+<http://onto.dm2e.eu/schemas/dm2e#JIwanowa> a <http://xmlns.com/foaf/0.1/Person>;
+                                            <http://xmlns.com/foaf/0.1/homepage> <http://onto.dm2e.eu/schemas/dm2e>;
+                                            <http://xmlns.com/foaf/0.1/name> "Julia Iwanowa".
+<http://onto.dm2e.eu/schemas/dm2e#School%20for%20Library%20and%20Information%20Science> a <http://purl.org/dc/terms/Agent>;
+                                                                                        <http://xmlns.com/foaf/0.1/homepage> <http://www.ibi.hu-berlin.de/>;
+                                                                                        <http://xmlns.com/foaf/0.1/member> <http://onto.dm2e.eu/schemas/dm2e#JIwanowa>;
+                                                                                        <http://xmlns.com/foaf/0.1/name> "School for Library and Information Science".
+<http://onto.dm2e.eu/schemas/dm2e#konstantin> a <http://xmlns.com/foaf/0.1/Person>;
+                                              <http://xmlns.com/foaf/0.1/homepage> <http://onto.dm2e.eu/schemas/dm2e>;
+                                              <http://xmlns.com/foaf/0.1/name> "Konstantin Baierer".
+<http://onto.dm2e.eu/schemas/dm2e#rdf> <http://purl.org/dc/terms/FileFormat> <http://onto.dm2e.eu/schemas/dm2e>.
+<http://onto.dm2e.eu/schemas/dm2e#s.hennicke> a <http://xmlns.com/foaf/0.1/Person>;
+                                              <http://xmlns.com/foaf/0.1/homepage> <http://onto.dm2e.eu/schemas/dm2e>;
+                                              <http://xmlns.com/foaf/0.1/name> "Steffen Hennicke".
+<http://onto.dm2e.eu/schemas/dm2e#ttl> <http://purl.org/dc/terms/FileFormat> <http://onto.dm2e.eu/schemas/dm2e>.
+dm2e:Collection a rdfs:Class,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "The collection of CHOs as provided by a data provider.";
+                rdfs:label "Collection".
+dm2e:DataResource a rdfs:Class,
+                    <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "The dataset that contains the RDF statements provided in via this data resource.";
+                  rdfs:label "DataResource";
+                  rdfs:subClassOf <http://xmlns.com/foaf/0.1/Document>.
+dm2e:Document a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "ProvidedCHO of type document. Unlike foaf:Document, dm2e:Document refers to a physical document.";
+              rdfs:label "Document".
+dm2e:File a rdfs:Class,
+            <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "Archival Item.";
+          rdfs:label "File".
+dm2e:Fragment a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A physical fragment of a document, e.g. a collection of pages of a manuscript.";
+              rdfs:label "Fragment".
+dm2e:Manuscript a rdfs:Class,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "ProvidedCHO of type manuscript, e.g. Wittgensteins brown book. Not equivalent to bibo:Manuscript. Not equivalent to bibo:Manuscript.";
+                rdfs:label "Manuscript".
+dm2e:Page a rdfs:Class,
+            <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "One side of a sheet of paper. Can be part of another CHO, e.g. dm2e:Manuscript.";
+          rdfs:label "Page".
+dm2e:Paragraph a rdfs:Class,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "ProvidedCHO of type paragraph. Can be part of another (textual) CHO, e.g. dm2e:Manuscript.";
+               rdfs:label "Paragraph".
+dm2e:Photo a rdfs:Class,
+             <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "ProvidedCHO of type photo.";
+           rdfs:label "Photo";
+           rdfs:subClassOf <http://xmlns.com/foaf/0.1/Image>.
+dm2e:Poster a rdfs:Class,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "ProvidedCHO of type poster. Basically any piece of printed paper (often on a large sheet) that can be attached to a wall. dm2e:Poster does also include, but is not restricted to, conference posters.";
+            rdfs:label "Poster".
+dm2e:Work a rdfs:Class,
+            <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "A non-physical piece of work of an agent, e.g. the theoretical concept of a manuscript.";
+          rdfs:label "Work".
+dm2e:artist a rdf:Property;
+            rdfs:label "artist";
+            rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+            rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/creator>.
+dm2e:callNumber a rdf:Property,
+                  <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:label "callNumber";
+                rdfs:range rdfs:Literal;
+                rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/identifier>.
+dm2e:composer a rdf:Property;
+              rdfs:label "composer";
+              rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+              rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/creator>.
+dm2e:copyist a rdf:Property;
+             rdfs:label "copyist";
+             rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+dm2e:cover a rdf:Property;
+           rdfs:label "cover";
+           rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/description>.
+dm2e:displayLevel a rdf:Property,
+                    <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:label "displayLevel";
+                  rdfs:range xsd:boolean.
+dm2e:explicit a rdf:Property,
+                <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:comment "Final words of a manuscript. A language tag in ISO 639-2 should be added to the Literal.";
+              rdfs:label "explicit";
+              rdfs:range rdfs:Literal;
+              rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/description>.
+dm2e:genre a rdf:Property;
+           rdfs:label "genre";
+           rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/type>.
+dm2e:hasAnnotatableVersionAt a rdf:Property;
+                             rdfs:label "hasAnnotatableVersionAt".
+dm2e:holdingInstitution a rdf:Property;
+                        rdfs:label "holdingInstitution";
+                        rdfs:range <http://xmlns.com/foaf/0.1/Organization>.
+dm2e:honoree a rdf:Property;
+             rdfs:label "honoree";
+             rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+dm2e:illustration a rdf:Property;
+                  rdfs:comment "Generic description of illustrations in the CHO.";
+                  rdfs:label "illustration";
+                  rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/description>.
+dm2e:incipit a rdf:Property,
+               <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:comment "Opening words of a manuscript. A language tag in ISO 639-2 should be added to the Literal.";
+             rdfs:label "incipit";
+             rdfs:range rdfs:Literal;
+             rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/description>.
+dm2e:levelOfHierarchy a rdf:Property;
+                      rdfs:label "levelOfHierarchy".
+dm2e:mentioned a rdf:Property;
+               rdfs:label "mentioned".
+dm2e:modeOfAcquisition a rdf:Property;
+                       rdfs:label "modeOfAcquisition";
+                       rdfs:subPropertyOf <http://purl.org/dc/terms/provenance>.
+dm2e:owner a rdf:Property;
+           rdfs:label "owner".
+dm2e:pageDimension a rdf:Property,
+                     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:label "page dimension";
+                   rdfs:range rdfs:Literal;
+                   rdfs:subPropertyOf <http://purl.org/dc/terms/extent>.
+dm2e:painter a rdf:Property;
+             rdfs:label "painter";
+             rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+             rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/contributor>.
+dm2e:portrayed a rdf:Property;
+               rdfs:label "portrayed";
+               rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+               rdfs:subPropertyOf dm2e:mentioned.
+dm2e:previousOwner a rdf:Property;
+                   rdfs:label "previous owner".
+dm2e:principal a rdf:Property;
+               rdfs:label "principal".
+dm2e:printedAt a rdf:Property;
+               rdfs:label "printed at";
+               rdfs:subPropertyOf <http://purl.org/dc/terms/spatial>.
+dm2e:publishedAt a rdf:Property;
+                 rdfs:label "published at";
+                 rdfs:subPropertyOf <http://purl.org/dc/terms/spatial>.
+dm2e:refersTo a rdf:Property;
+              rdfs:label "refers to";
+              rdfs:subPropertyOf <http://purl.org/dc/terms/references>.
+dm2e:scopeNote a rdf:Property;
+               rdfs:comment "This property describes the dm2e-specific usage of the resource.";
+               rdfs:label "scopeNote".
+dm2e:shelfmarkLocation a rdf:Property,
+                         <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:label "shelfmarkLocation";
+                       rdfs:range rdfs:Literal;
+                       rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/description>.
+dm2e:sponsor a rdf:Property;
+             rdfs:label "sponsor".
+dm2e:subtitle a rdf:Property,
+                <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:label "subtitle";
+              rdfs:range rdfs:Literal;
+              rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/title>.
+dm2e:support a rdf:Property;
+             rdfs:label "support";
+             rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/description>.
+dm2e:watermark a rdf:Property,
+                 <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:label "watermark";
+               rdfs:range rdfs:Literal;
+               rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/description>.
+dm2e:writer a rdf:Property;
+            rdfs:label "writer";
+            rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+            rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/creator>.
+dm2e:writtenAreaDimension a rdf:Property,
+                            <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:label "written area dimension";
+                          rdfs:range rdfs:Literal;
+                          rdfs:subPropertyOf <http://purl.org/dc/terms/extent>.
+dm2e:writtenAt a rdf:Property;
+               rdfs:label "written at";
+               rdfs:subPropertyOf <http://purl.org/dc/terms/spatial>.

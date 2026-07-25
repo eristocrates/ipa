@@ -1,0 +1,95 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix bot: <http://swa.cefriel.it/ontologies/botdcat-ap#>.
+
+<http://swa.cefriel.it/ontologies/botdcat-ap> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/4.0/>;
+                                              <http://purl.org/dc/terms/contributor> "Paolo Cappello",
+                                                                                     "Irene Celino",
+                                                                                     "Marco Comerio";
+                                              <http://purl.org/dc/terms/creator> "Irene Celino",
+                                                                                 "Paolo Cappello",
+                                                                                 "Marco Comerio";
+                                              <http://purl.org/dc/terms/date> "2017-04-01"^^xsd:date;
+                                              <http://purl.org/dc/terms/description> "A vocabulary to describe data sources in a way they can be easily reused and accessed by chatbots."@en;
+                                              <http://purl.org/dc/terms/issued> "2017-04-01"^^xsd:date;
+                                              <http://purl.org/dc/terms/modified> "2017-04-01"^^xsd:date;
+                                              <http://purl.org/dc/terms/publisher> <http://www.cefriel.com/>;
+                                              <http://purl.org/dc/terms/rights> "Copyright © 2017 Cefriel";
+                                              <http://purl.org/dc/terms/title> "BotDCAT-AP - Data Catalogue vocabulary Application Profile for chatbots"@en;
+                                              <http://purl.org/vocab/vann/preferredNamespacePrefix> "bot";
+                                              <http://purl.org/vocab/vann/preferredNamespaceUri> "http://swa.cefriel.it/ontologies/botdcat-ap#";
+                                              a <http://www.w3.org/2002/07/owl#Ontology>,
+                                                <http://purl.org/vocommons/voaf#Vocabulary>;
+                                              rdfs:comment "A vocabulary to describe data sources in a way they can be easily reused and accessed by chatbots."@en;
+                                              <http://www.w3.org/2002/07/owl#imports> <https://www.w3.org/ns/dcat>,
+                                                                                      <https://joinup.ec.europa.eu/site/core_vocabularies/registry/dcat-ap/DCAT-AP_v1.1.rdf>;
+                                              <http://www.w3.org/2002/07/owl#versionInfo> 1.0.
+bot:EntitiesCatalog <http://purl.org/vocab/vann/usageNote> "Optional class. Represents a list of all the entities that can be associated to an Intent."@en;
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Optional class. Represents a list of all the entities that can be associated to an Intent."@en;
+                    rdfs:isDefinedBy <http://swa.cefriel.it/ontologies/botdcat-ap>;
+                    rdfs:label "Entities Catalog"@en;
+                    rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+bot:Intent <http://purl.org/vocab/vann/usageNote> "Mandatory class. An Intent exposed by the Dataset."@en;
+           a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "Mandatory class. An Intent exposed by the Dataset."@en;
+           rdfs:isDefinedBy <http://swa.cefriel.it/ontologies/botdcat-ap>;
+           rdfs:label "Intent"@en;
+           rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+bot:hasAssetURL <http://purl.org/vocab/vann/usageNote> "Optional property. Cardinality [0..1]. This property contains the access URL provided by a SPARQL endpoint handling the Intent."@en;
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Optional property. Cardinality [0..1]. This property contains the access URL provided by a SPARQL endpoint handling the Intent."@en;
+                rdfs:domain bot:Intent;
+                rdfs:isDefinedBy <http://swa.cefriel.it/ontologies/botdcat-ap>;
+                rdfs:label "has Asset URL"@en;
+                rdfs:range rdfs:Resource.
+bot:hasDocumentation <http://purl.org/vocab/vann/usageNote> "Recommended property. Cardinality [0..1]. This property refers to a Resource containg information about an Intent."@en;
+                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Recommended property. Cardinality [0..1]. This property refers to a Resource containg information about an Intent."@en;
+                     rdfs:domain bot:Intent;
+                     rdfs:isDefinedBy <http://swa.cefriel.it/ontologies/botdcat-ap>;
+                     rdfs:label "has Documentation"@en;
+                     rdfs:range rdfs:Resource.
+bot:hasEntitiesList <http://purl.org/vocab/vann/usageNote> "Optional property. Cardinality [0..n]. This property refers to an Entities Catalog describing the entities connected to an Intent."@en;
+                    a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Optional property. Cardinality [0..n]. This property refers to an Entities Catalog connected to an Intent."@en;
+                    rdfs:domain bot:Intent;
+                    rdfs:isDefinedBy <http://swa.cefriel.it/ontologies/botdcat-ap>;
+                    rdfs:label "has Entities List"@en;
+                    rdfs:range bot:EntitiesCatalog.
+bot:hasEntity <http://purl.org/vocab/vann/usageNote> "Optional property. Cardinality [0..n]. This property refers to an entity. Note that only one of bot:hasEntity, bot:hasEntityConcept and bot:hasEntityCatalog property for each entity must be used."@en;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Optional property. Cardinality [0..n]. This property refers to an entity. Note that only one of bot:hasEntity, bot:hasEntityConcept and bot:hasEntityCatalog property for each entity must be used."@en;
+              rdfs:domain bot:EntitiesCatalog;
+              rdfs:isDefinedBy <http://swa.cefriel.it/ontologies/botdcat-ap>;
+              rdfs:label "has Entity"@en;
+              rdfs:range <http://www.w3.org/2002/07/owl#Class>.
+bot:hasEntityConcept <http://purl.org/vocab/vann/usageNote> "Optional property. Cardinality [0..n]. This property refers to an entity specified as a Concept. Note that only one of bot:hasEntity, bot:hasEntityConcept and bot:hasEntityCatalog property for each entity must be used."@en;
+                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Optional property. Cardinality [0..n]. This property refers to an entity specified as a Concept. Note that only one of bot:hasEntity, bot:hasEntityConcept and bot:hasEntityCatalog property for each entity must be used."@en;
+                     rdfs:domain bot:EntitiesCatalog;
+                     rdfs:isDefinedBy <http://swa.cefriel.it/ontologies/botdcat-ap>;
+                     rdfs:label "has Entity Concept"@en;
+                     rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>.
+bot:hasEntityDataset <http://purl.org/vocab/vann/usageNote> "Optional property. Cardinality [0..n]. This property refers to a Dataset containing all the istances of an entity. Note that only one of bot:hasEntity, bot:hasEntityConcept and bot:hasEntityCatalog property for each entity must be used."@en;
+                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Optional property. Cardinality [0..n]. This property refers to a Dataset containing all the istances of an entity. Note that only one of bot:hasEntity, bot:hasEntityConcept and bot:hasEntityCatalog property for each entity must be used."@en;
+                     rdfs:domain bot:EntitiesCatalog;
+                     rdfs:isDefinedBy <http://swa.cefriel.it/ontologies/botdcat-ap>;
+                     rdfs:label "has Entity Dataset"@en;
+                     rdfs:range <http://www.w3.org/ns/dcat#Dataset>.
+bot:hasIntent <http://purl.org/vocab/vann/usageNote> "Mandatory property. Cardinality [1..n]. This property refers to an Intent handled by the Dataset."@en;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Mandatory property. Cardinality [1..n]. This property refers to an Intent handled by the Dataset."@en;
+              rdfs:domain <http://www.w3.org/ns/dcat#Dataset>;
+              rdfs:isDefinedBy <http://swa.cefriel.it/ontologies/botdcat-ap>;
+              rdfs:label "has Intent"@en;
+              rdfs:range bot:Intent.
+bot:hasMethodURL <http://purl.org/vocab/vann/usageNote> "Optional property. Cardinality [0..1]. This property contains the access URL provided by an API service handling the Intent."@en;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Optional property. Cardinality [0..1]. This property contains the access URL provided by an API service handling the Intent."@en;
+                 rdfs:domain bot:Intent;
+                 rdfs:isDefinedBy <http://swa.cefriel.it/ontologies/botdcat-ap>;
+                 rdfs:label "has Method URL"@en;
+                 rdfs:range rdfs:Resource.

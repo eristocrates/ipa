@@ -7,6 +7,15 @@ open type Prefix_ID
 module cdtype =
     let _namespace_iri = Namespace_Iri cdtype |> NamespaceIRI
     /// <summary>
+    ///   <para>cdtype:IndexingFindingAid</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A collection of records consisting of information derived from items in a second collection, regardless of the content of those items.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/cld/cdtype/IndexingFindingAid">http://purl.org/cld/cdtype/IndexingFindingAid</seealso>
+    let IndexingFindingAid = Prefixed_Name(cdtype, "IndexingFindingAid") |> PrefixedName
+    /// <summary>
     ///   <para>cdtype:AnalyticFindingAid</para>
     /// </summary>
     /// <remarks>
@@ -15,6 +24,15 @@ module cdtype =
     /// </remarks>
     /// <seealso href="http://purl.org/cld/cdtype/AnalyticFindingAid">http://purl.org/cld/cdtype/AnalyticFindingAid</seealso>
     let AnalyticFindingAid = Prefixed_Name(cdtype, "AnalyticFindingAid") |> PrefixedName
+    /// <summary>
+    ///   <para>cdtype:CatalogueOrIndex</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A catalogue for, or index of, a collection.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/cld/cdtype/CatalogueOrIndex">http://purl.org/cld/cdtype/CatalogueOrIndex</seealso>
+    let CatalogueOrIndex = Prefixed_Name(cdtype, "CatalogueOrIndex") |> PrefixedName
 
     /// <summary>
     ///   <para>cdtype:HierarchicFindingAid</para>
@@ -28,26 +46,8 @@ module cdtype =
         Prefixed_Name(cdtype, "HierarchicFindingAid") |> PrefixedName
 
     /// <summary>
-    ///   <para>cdtype:IndexingFindingAid</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A collection of records consisting of information derived from items in a second collection, regardless of the content of those items.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/cld/cdtype/IndexingFindingAid">http://purl.org/cld/cdtype/IndexingFindingAid</seealso>
-    let IndexingFindingAid = Prefixed_Name(cdtype, "IndexingFindingAid") |> PrefixedName
-    /// <summary>
     ///   <para>cdtype:</para>
     /// </summary>
     /// <remarks></remarks>
     /// <seealso href="http://purl.org/cld/cdtype/">http://purl.org/cld/cdtype/</seealso>
     let _prefix_iri = Prefixed_Name(cdtype, "") |> PrefixedName
-    /// <summary>
-    ///   <para>cdtype:CatalogueOrIndex</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A catalogue for, or index of, a collection.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/cld/cdtype/CatalogueOrIndex">http://purl.org/cld/cdtype/CatalogueOrIndex</seealso>
-    let CatalogueOrIndex = Prefixed_Name(cdtype, "CatalogueOrIndex") |> PrefixedName

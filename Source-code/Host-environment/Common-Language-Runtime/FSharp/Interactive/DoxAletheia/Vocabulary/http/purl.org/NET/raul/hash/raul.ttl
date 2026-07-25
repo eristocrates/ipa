@@ -1,0 +1,214 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix raul: <http://purl.org/NET/raul#>.
+
+raul:Button a rdfs:Class,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:label "Button";
+            rdfs:subClassOf raul:Widget.
+raul:CREATEOperation a rdfs:Class,
+                       <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "CREATEOperation";
+                     rdfs:subClassOf raul:CRUDOperation.
+raul:CRUDOperation a rdfs:Class,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "CRUDOperation";
+                   rdfs:subClassOf <http://www.w3.org/2002/07/owl#Class>.
+raul:Checkbox a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:label "Checkbox";
+              rdfs:subClassOf raul:Button.
+raul:DELETEOperation a rdfs:Class,
+                       <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "DELETEOperation";
+                     rdfs:subClassOf raul:CRUDOperation.
+raul:DynamicGroup a rdfs:Class,
+                    <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "DynamicGroup";
+                  rdfs:subClassOf raul:Widget.
+raul:Group a rdfs:Class,
+             <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:label "Group";
+           rdfs:subClassOf raul:Widget.
+raul:Listbox a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:label "Listbox";
+             rdfs:subClassOf raul:Widget.
+raul:Listitem a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:label "Listitem";
+              rdfs:subClassOf raul:Widget.
+raul:Page a rdfs:Class,
+            <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:label "Page";
+          rdfs:subClassOf <http://www.w3.org/2002/07/owl#Class>.
+raul:READOperation a rdfs:Class,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "READOperation";
+                   rdfs:subClassOf raul:CRUDOperation.
+raul:Radiobutton a rdfs:Class,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "Radiobutton";
+                 rdfs:subClassOf raul:Button.
+raul:Textbox a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:label "Textbox";
+             rdfs:subClassOf raul:Widget.
+raul:UPDATEOperation a rdfs:Class,
+                       <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "UPDATEOperation";
+                     rdfs:subClassOf raul:CRUDOperation.
+raul:Widget a rdfs:Class,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:label "Widget";
+            rdfs:subClassOf raul:Page.
+raul:WidgetContainer a rdfs:Class,
+                       <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "WidgetContainer";
+                     rdfs:subClassOf raul:Widget.
+raul:action a rdf:Property,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain raul:WidgetContainer;
+            rdfs:label "action";
+            rdfs:range xsd:string.
+raul:checked a rdf:Property,
+               <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:domain raul:Button;
+             rdfs:label "checked";
+             rdfs:range xsd:boolean.
+raul:class a rdf:Property,
+             <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain raul:Page;
+           rdfs:label "class";
+           rdfs:range xsd:string.
+raul:command a rdf:Property,
+               <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:domain raul:Button;
+             rdfs:label "command";
+             rdfs:range xsd:string.
+raul:disabled a rdf:Property,
+                <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain raul:Widget;
+              rdfs:label "disabled";
+              rdfs:range xsd:boolean.
+raul:group a rdf:Property;
+           rdfs:domain raul:Widget;
+           rdfs:label "group";
+           rdfs:range raul:Group.
+raul:hidden a rdf:Property,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain raul:Widget;
+            rdfs:label "hidden";
+            rdfs:range xsd:boolean.
+raul:id a rdf:Property,
+          <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+        rdfs:domain raul:Page;
+        rdfs:label "id";
+        rdfs:range xsd:string.
+raul:isPassword a rdf:Property,
+                  <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain raul:Textbox;
+                rdfs:label "isPassword";
+                rdfs:range xsd:boolean.
+raul:label a rdf:Property,
+             <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain raul:Widget;
+           rdfs:label "label";
+           rdfs:range xsd:string.
+raul:list a rdf:Property,
+            <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:domain raul:Page;
+          rdfs:label "list";
+          rdfs:range rdfs:Literal.
+raul:maxlength a rdf:Property,
+                 <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain raul:Textbox;
+               rdfs:label "maxlength";
+               rdfs:range xsd:int.
+raul:method a rdf:Property;
+            rdfs:domain raul:WidgetContainer;
+            rdfs:label "method";
+            rdfs:range raul:CRUDOperation.
+raul:multiple a rdf:Property,
+                <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain raul:Listbox;
+              rdfs:label "multiple";
+              rdfs:range xsd:boolean.
+raul:name a rdf:Property,
+            <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:domain raul:Widget;
+          rdfs:label "name";
+          rdfs:range xsd:string.
+raul:row a rdf:Property,
+           <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:domain raul:Widget;
+         rdfs:label "row";
+         rdfs:range xsd:integer.
+raul:selected a rdf:Property,
+                <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain raul:Listitem;
+              rdfs:label "selected";
+              rdfs:range xsd:boolean.
+raul:size a rdf:Property,
+            <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:domain raul:Textbox;
+          rdfs:label "size";
+          rdfs:range xsd:string.
+raul:title a rdf:Property,
+             <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain raul:Page;
+           rdfs:label "title";
+           rdfs:range xsd:string.
+raul:value a rdf:Property,
+             <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain raul:Widget;
+           rdfs:label "value";
+           rdfs:range xsd:string.
+<http://vocab.deri.ie/raul> <http://purl.org/dc/elements/1.1/creator> <http://vocab.deri.ie/raul#ahaller>,
+                                                                      <http://vocab.deri.ie/raul#Michael%20Hausenblas>,
+                                                                      <http://vocab.deri.ie/raul#juum>;
+                            <http://purl.org/dc/terms/created> "2010-06-30"^^xsd:date;
+                            <http://purl.org/dc/terms/description> "A vocabulary to describe Web form widgets. Strongly aligned with the meta model of HTML Web forms. A RESTful service that can render HTML Web forms from RaUL models can be found at: http://w3c.org.au/raul";
+                            <http://purl.org/dc/terms/modified> "2012-04-30"^^xsd:date;
+                            <http://purl.org/dc/terms/partOf> <http://vocab.deri.ie/>;
+                            <http://purl.org/dc/terms/publisher> "http://vocab.deri.ie/raul#LiDRC";
+                            <http://purl.org/dc/terms/status> <http://purl.org/adms/status/UnderDevelopment>;
+                            <http://purl.org/dc/terms/title> "RAUL Vocabulary";
+                            <http://purl.org/dc/terms/type> <http://purl.org/adms/assettype/Ontology>;
+                            <http://purl.org/vocab/vann/preferredNamespacePrefix> "raul";
+                            <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/NET/raul#";
+                            a <http://www.w3.org/ns/adms#SemanticAsset>,
+                              <http://www.w3.org/2002/07/owl#Ontology>;
+                            <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/raul.html>.
+<http://vocab.deri.ie/raul#CSIRO> a <http://purl.org/dc/terms/Agent>;
+                                  <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/raul>;
+                                  <http://xmlns.com/foaf/0.1/member> <http://vocab.deri.ie/raul#ahaller>;
+                                  <http://xmlns.com/foaf/0.1/name> "CSIRO".
+<http://vocab.deri.ie/raul#DERI> a <http://purl.org/dc/terms/Agent>;
+                                 <http://xmlns.com/foaf/0.1/homepage> <http://www.deri.ie/>;
+                                 <http://xmlns.com/foaf/0.1/member> <http://vocab.deri.ie/raul#juum>;
+                                 <http://xmlns.com/foaf/0.1/name> "DERI".
+<http://vocab.deri.ie/raul#LiDRC> a <http://purl.org/dc/terms/Agent>;
+                                  <http://xmlns.com/foaf/0.1/homepage> <http://linkeddata.deri.ie/>;
+                                  <http://xmlns.com/foaf/0.1/member> <http://vocab.deri.ie/raul#Michael%20Hausenblas>;
+                                  <http://xmlns.com/foaf/0.1/name> "LiDRC".
+<http://vocab.deri.ie/raul#Michael%20Hausenblas> a <http://xmlns.com/foaf/0.1/Person>;
+                                                 <http://xmlns.com/foaf/0.1/homepage> <http://sw-app.org/about.html>;
+                                                 <http://xmlns.com/foaf/0.1/mbox> <mailto:michael.hausenblas@deri.org>;
+                                                 <http://xmlns.com/foaf/0.1/name> "Michael Hausenblas".
+<http://vocab.deri.ie/raul#ahaller> a <http://xmlns.com/foaf/0.1/Person>;
+                                    <http://xmlns.com/foaf/0.1/homepage> <http://www.armin-haller.com/>;
+                                    <http://xmlns.com/foaf/0.1/mbox> <mailto:armin.haller@csiro.au>;
+                                    <http://xmlns.com/foaf/0.1/name> "Armin Haller".
+<http://vocab.deri.ie/raul#juum> a <http://xmlns.com/foaf/0.1/Person>;
+                                 <http://xmlns.com/foaf/0.1/homepage> <http://umbrich.net/>;
+                                 <http://xmlns.com/foaf/0.1/name> "Jürgen Umbrich".
+<http://vocab.deri.ie/raul#rdf> <http://purl.org/dc/terms/FileFormat> <http://vocab.deri.ie/raul>;
+                                a <http://www.w3.org/ns/adms#SemanticDistribution>;
+                                <http://www.w3.org/ns/adms#accessURL> "http://vocab.deri.ie/raul.rdf";
+                                <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.
+<http://vocab.deri.ie/raul#ttl> <http://purl.org/dc/terms/FileFormat> <http://vocab.deri.ie/raul>;
+                                a <http://www.w3.org/ns/adms#SemanticDistribution>;
+                                <http://www.w3.org/ns/adms#accessURL> "http://vocab.deri.ie/raul.ttl";
+                                <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.

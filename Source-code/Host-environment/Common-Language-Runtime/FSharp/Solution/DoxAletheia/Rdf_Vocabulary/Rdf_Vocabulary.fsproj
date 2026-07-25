@@ -8,6 +8,7 @@
 
   <ItemGroup>
 	  <Compile Include="Generate.fs" />
+	  <Compile Include="Manual\*.fs" />
 	  <Compile Include="Generated\*.fs" />
 	  
 

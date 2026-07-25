@@ -19,78 +19,6 @@ module osrm =
         Prefixed_Name(osrm, "RequirementCollection") |> PrefixedName
 
     /// <summary>
-    ///   <para>osrm:constrains</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Expresses a constraining relationship between entities, where the subject entity constrains the object entity. For example, a safety requirement constrains a functional requirement.</para>
-    /// labels<para>constrains</para></remarks>
-    /// <seealso href="http://open-services.net/ns/rm#constrains">http://open-services.net/ns/rm#constrains</seealso>
-    let constrains = Prefixed_Name(osrm, "constrains") |> PrefixedName
-    /// <summary>
-    ///   <para>osrm:decomposes</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Expresses a decomposition relationship between entities, where the subject entity decomposes the object entity. For example, a collection of system requirements decompose a system requirement.</para>
-    /// labels<para>decomposes</para></remarks>
-    /// <seealso href="http://open-services.net/ns/rm#decomposes">http://open-services.net/ns/rm#decomposes</seealso>
-    let decomposes = Prefixed_Name(osrm, "decomposes") |> PrefixedName
-    /// <summary>
-    ///   <para>osrm:elaborates</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Expresses an elaboration relationship between entities, where the subject entity elaborates the object entity. For example, a model element elaborates a requirement.</para>
-    /// labels<para>elaborates</para></remarks>
-    /// <seealso href="http://open-services.net/ns/rm#elaborates">http://open-services.net/ns/rm#elaborates</seealso>
-    let elaborates = Prefixed_Name(osrm, "elaborates") |> PrefixedName
-    /// <summary>
-    ///   <para>osrm:satisfiedBy</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>The subject is satisfied by the object. For example, a user requirement is satisfied by a system requirement.</para>
-    /// labels<para>satisfiedBy</para></remarks>
-    /// <seealso href="http://open-services.net/ns/rm#satisfiedBy">http://open-services.net/ns/rm#satisfiedBy</seealso>
-    let satisfiedBy = Prefixed_Name(osrm, "satisfiedBy") |> PrefixedName
-    /// <summary>
-    ///   <para>osrm:specifiedBy</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Expresses a specification relationship between entities, where the object entity further clarifies or specifies the subject entity. For example, a requirement is specified by a model element.</para>
-    /// labels<para>specifiedBy</para></remarks>
-    /// <seealso href="http://open-services.net/ns/rm#specifiedBy">http://open-services.net/ns/rm#specifiedBy</seealso>
-    let specifiedBy = Prefixed_Name(osrm, "specifiedBy") |> PrefixedName
-    /// <summary>
-    ///   <para>osrm:trackedBy</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Expresses a tracking relationship between entities, where the object entity in some way tracks or governs the evolution of the subject entity. For example, a requirement may be said to be tracked by a change request, in that it governs the changes to a requirement according to some process machinery.</para>
-    /// labels<para>trackedBy</para></remarks>
-    /// <seealso href="http://open-services.net/ns/rm#trackedBy">http://open-services.net/ns/rm#trackedBy</seealso>
-    let trackedBy = Prefixed_Name(osrm, "trackedBy") |> PrefixedName
-    /// <summary>
-    ///   <para>osrm:validatedBy</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Expresses a validation relationship between entities, where the object entity in some way validates the subject entity. For example, a requirement collection may be said to be validated by a test plan.</para>
-    /// labels<para>validatedBy</para></remarks>
-    /// <seealso href="http://open-services.net/ns/rm#validatedBy">http://open-services.net/ns/rm#validatedBy</seealso>
-    let validatedBy = Prefixed_Name(osrm, "validatedBy") |> PrefixedName
-    /// <summary>
-    ///   <para>osrm:</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Ontology</para>
-    ///
-    /// labels<para>OSLC Requirements Management (RM) Vocabulary</para></remarks>
-    /// <seealso href="http://open-services.net/ns/rm#">http://open-services.net/ns/rm#</seealso>
-    let _prefix_iri = Prefixed_Name(osrm, "") |> PrefixedName
-    /// <summary>
     ///   <para>osrm:Requirement</para>
     /// </summary>
     /// <remarks>
@@ -109,14 +37,14 @@ module osrm =
     /// <seealso href="http://open-services.net/ns/rm#affectedBy">http://open-services.net/ns/rm#affectedBy</seealso>
     let affectedBy = Prefixed_Name(osrm, "affectedBy") |> PrefixedName
     /// <summary>
-    ///   <para>osrm:constrainedBy</para>
+    ///   <para>osrm:constrains</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>Expresses a constraining relationship between entities, where the object entity constrains the subject entity. For example, a functional requirement is constrained by a safety requirement.</para>
-    /// labels<para>constrainedBy</para></remarks>
-    /// <seealso href="http://open-services.net/ns/rm#constrainedBy">http://open-services.net/ns/rm#constrainedBy</seealso>
-    let constrainedBy = Prefixed_Name(osrm, "constrainedBy") |> PrefixedName
+    ///   <para>Expresses a constraining relationship between entities, where the subject entity constrains the object entity. For example, a safety requirement constrains a functional requirement.</para>
+    /// labels<para>constrains</para></remarks>
+    /// <seealso href="http://open-services.net/ns/rm#constrains">http://open-services.net/ns/rm#constrains</seealso>
+    let constrains = Prefixed_Name(osrm, "constrains") |> PrefixedName
     /// <summary>
     ///   <para>osrm:decomposedBy</para>
     /// </summary>
@@ -126,6 +54,15 @@ module osrm =
     /// labels<para>decomposedBy</para></remarks>
     /// <seealso href="http://open-services.net/ns/rm#decomposedBy">http://open-services.net/ns/rm#decomposedBy</seealso>
     let decomposedBy = Prefixed_Name(osrm, "decomposedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>osrm:constrainedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Expresses a constraining relationship between entities, where the object entity constrains the subject entity. For example, a functional requirement is constrained by a safety requirement.</para>
+    /// labels<para>constrainedBy</para></remarks>
+    /// <seealso href="http://open-services.net/ns/rm#constrainedBy">http://open-services.net/ns/rm#constrainedBy</seealso>
+    let constrainedBy = Prefixed_Name(osrm, "constrainedBy") |> PrefixedName
     /// <summary>
     ///   <para>osrm:elaboratedBy</para>
     /// </summary>
@@ -144,6 +81,15 @@ module osrm =
     /// labels<para>implementedBy</para></remarks>
     /// <seealso href="http://open-services.net/ns/rm#implementedBy">http://open-services.net/ns/rm#implementedBy</seealso>
     let implementedBy = Prefixed_Name(osrm, "implementedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>osrm:decomposes</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Expresses a decomposition relationship between entities, where the subject entity decomposes the object entity. For example, a collection of system requirements decompose a system requirement.</para>
+    /// labels<para>decomposes</para></remarks>
+    /// <seealso href="http://open-services.net/ns/rm#decomposes">http://open-services.net/ns/rm#decomposes</seealso>
+    let decomposes = Prefixed_Name(osrm, "decomposes") |> PrefixedName
     /// <summary>
     ///   <para>osrm:satisfies</para>
     /// </summary>
@@ -171,3 +117,57 @@ module osrm =
     /// labels<para>uses</para></remarks>
     /// <seealso href="http://open-services.net/ns/rm#uses">http://open-services.net/ns/rm#uses</seealso>
     let uses = Prefixed_Name(osrm, "uses") |> PrefixedName
+    /// <summary>
+    ///   <para>osrm:elaborates</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Expresses an elaboration relationship between entities, where the subject entity elaborates the object entity. For example, a model element elaborates a requirement.</para>
+    /// labels<para>elaborates</para></remarks>
+    /// <seealso href="http://open-services.net/ns/rm#elaborates">http://open-services.net/ns/rm#elaborates</seealso>
+    let elaborates = Prefixed_Name(osrm, "elaborates") |> PrefixedName
+    /// <summary>
+    ///   <para>osrm:specifiedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Expresses a specification relationship between entities, where the object entity further clarifies or specifies the subject entity. For example, a requirement is specified by a model element.</para>
+    /// labels<para>specifiedBy</para></remarks>
+    /// <seealso href="http://open-services.net/ns/rm#specifiedBy">http://open-services.net/ns/rm#specifiedBy</seealso>
+    let specifiedBy = Prefixed_Name(osrm, "specifiedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>osrm:satisfiedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The subject is satisfied by the object. For example, a user requirement is satisfied by a system requirement.</para>
+    /// labels<para>satisfiedBy</para></remarks>
+    /// <seealso href="http://open-services.net/ns/rm#satisfiedBy">http://open-services.net/ns/rm#satisfiedBy</seealso>
+    let satisfiedBy = Prefixed_Name(osrm, "satisfiedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>osrm:trackedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Expresses a tracking relationship between entities, where the object entity in some way tracks or governs the evolution of the subject entity. For example, a requirement may be said to be tracked by a change request, in that it governs the changes to a requirement according to some process machinery.</para>
+    /// labels<para>trackedBy</para></remarks>
+    /// <seealso href="http://open-services.net/ns/rm#trackedBy">http://open-services.net/ns/rm#trackedBy</seealso>
+    let trackedBy = Prefixed_Name(osrm, "trackedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>osrm:validatedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Expresses a validation relationship between entities, where the object entity in some way validates the subject entity. For example, a requirement collection may be said to be validated by a test plan.</para>
+    /// labels<para>validatedBy</para></remarks>
+    /// <seealso href="http://open-services.net/ns/rm#validatedBy">http://open-services.net/ns/rm#validatedBy</seealso>
+    let validatedBy = Prefixed_Name(osrm, "validatedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>osrm:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///
+    /// labels<para>OSLC Requirements Management (RM) Vocabulary</para></remarks>
+    /// <seealso href="http://open-services.net/ns/rm#">http://open-services.net/ns/rm#</seealso>
+    let _prefix_iri = Prefixed_Name(osrm, "") |> PrefixedName

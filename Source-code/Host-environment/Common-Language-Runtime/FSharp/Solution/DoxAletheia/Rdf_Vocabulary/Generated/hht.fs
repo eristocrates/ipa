@@ -7,56 +7,14 @@ open type Prefix_ID
 module hht =
     let _namespace_iri = Namespace_Iri hht |> NamespaceIRI
     /// <summary>
-    ///   <para>hht:TemporalPrimitive</para>
+    ///   <para>hht:VoidArea</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>Any marker that could be used as temporal primitive for HHT.</para>
-    /// labels<para>Temporal Primitive</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#TemporalPrimitive">https://w3id.org/HHT#TemporalPrimitive</seealso>
-    let TemporalPrimitive = Prefixed_Name(hht, "TemporalPrimitive") |> PrefixedName
-    /// <summary>
-    ///   <para>hht:</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="https://w3id.org/HHT#">https://w3id.org/HHT#</seealso>
-    let _prefix_iri = Prefixed_Name(hht, "") |> PrefixedName
-    /// <summary>
-    ///   <para>hht:Area</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Any object characterised by a geospatial extent.</para>
-    /// labels<para>Area</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#Area">https://w3id.org/HHT#Area</seealso>
-    let Area = Prefixed_Name(hht, "Area") |> PrefixedName
-    /// <summary>
-    ///   <para>hht:AreaComplementary</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>An area defined as the geometrical complementary of a defined area with regard to another area.</para>
-    /// labels<para>AreaComplementary</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#AreaComplementary">https://w3id.org/HHT#AreaComplementary</seealso>
-    let AreaComplementary = Prefixed_Name(hht, "AreaComplementary") |> PrefixedName
-    /// <summary>
-    ///   <para>hht:SetAreaConstruction</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A superclass for all areas that result from a classical set operation.</para>
-    /// labels<para>SetAreaConstruction</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#SetAreaConstruction">https://w3id.org/HHT#SetAreaConstruction</seealso>
-    let SetAreaConstruction = Prefixed_Name(hht, "SetAreaConstruction") |> PrefixedName
-    /// <summary>
-    ///   <para>hht:TerritoryVersion</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Geographical area, which is defined by any human division.</para>
-    /// labels<para>TerritoryVersion</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#TerritoryVersion">https://w3id.org/HHT#TerritoryVersion</seealso>
-    let TerritoryVersion = Prefixed_Name(hht, "TerritoryVersion") |> PrefixedName
+    ///   <para>An area whose with no extent, meaning its geometrical extent is null.</para>
+    /// labels<para>VoidArea</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#VoidArea">https://w3id.org/HHT#VoidArea</seealso>
+    let VoidArea = Prefixed_Name(hht, "VoidArea") |> PrefixedName
     /// <summary>
     ///   <para>hht:complementaryTo</para>
     /// </summary>
@@ -98,23 +56,29 @@ module hht =
     /// <seealso href="https://w3id.org/HHT#intersectionOf">https://w3id.org/HHT#intersectionOf</seealso>
     let intersectionOf = Prefixed_Name(hht, "intersectionOf") |> PrefixedName
     /// <summary>
-    ///   <para>hht:operatorCardinality</para>
+    ///   <para>hht:</para>
     /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Denotes the expected number of areas taking part into the operatively created area.</para>
-    /// labels<para>operatorCardinality</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#operatorCardinality">https://w3id.org/HHT#operatorCardinality</seealso>
-    let operatorCardinality = Prefixed_Name(hht, "operatorCardinality") |> PrefixedName
+    /// <remarks></remarks>
+    /// <seealso href="https://w3id.org/HHT#">https://w3id.org/HHT#</seealso>
+    let _prefix_iri = Prefixed_Name(hht, "") |> PrefixedName
     /// <summary>
-    ///   <para>hht:AreaUnion</para>
+    ///   <para>hht:AreaComplementary</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>Area resulting from the geometrical union of several areas.</para>
-    /// labels<para>AreaUnion</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#AreaUnion">https://w3id.org/HHT#AreaUnion</seealso>
-    let AreaUnion = Prefixed_Name(hht, "AreaUnion") |> PrefixedName
+    ///   <para>An area defined as the geometrical complementary of a defined area with regard to another area.</para>
+    /// labels<para>AreaComplementary</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#AreaComplementary">https://w3id.org/HHT#AreaComplementary</seealso>
+    let AreaComplementary = Prefixed_Name(hht, "AreaComplementary") |> PrefixedName
+    /// <summary>
+    ///   <para>hht:TerritoryVersion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Geographical area, which is defined by any human division.</para>
+    /// labels<para>TerritoryVersion</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#TerritoryVersion">https://w3id.org/HHT#TerritoryVersion</seealso>
+    let TerritoryVersion = Prefixed_Name(hht, "TerritoryVersion") |> PrefixedName
     /// <summary>
     ///   <para>hht:unionOf</para>
     /// </summary>
@@ -182,8 +146,8 @@ module hht =
     ///   <para>hht:Level</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:NamedIndividual</para>
     ///   <para>owl:Class</para>
+    ///   <para>owl:NamedIndividual</para>
     ///   <para>Hierarchical level of a territory.</para>
     /// labels<para>Level</para></remarks>
     /// <seealso href="https://w3id.org/HHT#Level">https://w3id.org/HHT#Level</seealso>
@@ -197,27 +161,6 @@ module hht =
     /// labels<para>SubElementaryLevel</para></remarks>
     /// <seealso href="https://w3id.org/HHT#SubElementaryLevel">https://w3id.org/HHT#SubElementaryLevel</seealso>
     let SubElementaryLevel = Prefixed_Name(hht, "SubElementaryLevel") |> PrefixedName
-
-    /// <summary>
-    ///   <para>hht:ElementaryLevelVersion</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>This subclass of level version allows to define which level(s) will be considered to determine the building blocks of the geometry.</para>
-    /// labels<para>ElementaryLevelVersion</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#ElementaryLevelVersion">https://w3id.org/HHT#ElementaryLevelVersion</seealso>
-    let ElementaryLevelVersion =
-        Prefixed_Name(hht, "ElementaryLevelVersion") |> PrefixedName
-
-    /// <summary>
-    ///   <para>hht:hasVersion</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Links any versionable object to its versions. Classes of the object and its version should be coherent (ex : Unit and UnitVersion)</para>
-    /// labels<para>hasVersion</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#hasVersion">https://w3id.org/HHT#hasVersion</seealso>
-    let hasVersion = Prefixed_Name(hht, "hasVersion") |> PrefixedName
     /// <summary>
     ///   <para>hht:LevelVersion</para>
     /// </summary>
@@ -228,18 +171,6 @@ module hht =
     /// labels<para>LevelVersion</para></remarks>
     /// <seealso href="https://w3id.org/HHT#LevelVersion">https://w3id.org/HHT#LevelVersion</seealso>
     let LevelVersion = Prefixed_Name(hht, "LevelVersion") |> PrefixedName
-
-    /// <summary>
-    ///   <para>hht:HierarchicalCriterion</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Concept, principle or nomenclature inducing a hierarchical division of territories.</para>
-    /// labels<para>HierarchicalCriterion</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#HierarchicalCriterion">https://w3id.org/HHT#HierarchicalCriterion</seealso>
-    let HierarchicalCriterion =
-        Prefixed_Name(hht, "HierarchicalCriterion") |> PrefixedName
-
     /// <summary>
     ///   <para>hht:IDSource</para>
     /// </summary>
@@ -268,71 +199,26 @@ module hht =
     /// <seealso href="https://w3id.org/HHT#Version">https://w3id.org/HHT#Version</seealso>
     let Version = Prefixed_Name(hht, "Version") |> PrefixedName
     /// <summary>
-    ///   <para>hht:ManagedUnit</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A subclass of Unit to describe Units directly managed by an actor, which often is an institution.</para>
-    /// labels<para>ManagedUnit</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#ManagedUnit">https://w3id.org/HHT#ManagedUnit</seealso>
-    let ManagedUnit = Prefixed_Name(hht, "ManagedUnit") |> PrefixedName
-    /// <summary>
     ///   <para>hht:Unit</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:NamedIndividual</para>
     ///   <para>owl:Class</para>
+    ///   <para>owl:NamedIndividual</para>
     ///   <para>A territory normalized by an Actor, often taking part into a territorial hierarchy. Its state is further described using UnitVersion.</para>
     /// labels<para>Unit</para></remarks>
     /// <seealso href="https://w3id.org/HHT#Unit">https://w3id.org/HHT#Unit</seealso>
     let Unit = Prefixed_Name(hht, "Unit") |> PrefixedName
     /// <summary>
-    ///   <para>hht:ManagedUnitVersion</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Subtype of UnitVersion that adds the notion of the influence of the actors over it.</para>
-    /// labels<para>ManagedUnitVersion</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#ManagedUnitVersion">https://w3id.org/HHT#ManagedUnitVersion</seealso>
-    let ManagedUnitVersion = Prefixed_Name(hht, "ManagedUnitVersion") |> PrefixedName
-    /// <summary>
     ///   <para>hht:UnitVersion</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:Class</para>
     ///   <para>owl:NamedIndividual</para>
+    ///   <para>owl:Class</para>
     ///   <para>Time slice representing the state of a unit during a provided time interval.
     /// It is considered that the state of a unit is not affected by its upper and lower units, so long as it doesn't change its geometry.</para>
     /// labels<para>UnitVersion</para></remarks>
     /// <seealso href="https://w3id.org/HHT#UnitVersion">https://w3id.org/HHT#UnitVersion</seealso>
     let UnitVersion = Prefixed_Name(hht, "UnitVersion") |> PrefixedName
-    /// <summary>
-    ///   <para>hht:isManagedBy</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Denotes the actor managing a ManagedUnit.</para>
-    /// labels<para>isManagedBy</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#isManagedBy">https://w3id.org/HHT#isManagedBy</seealso>
-    let isManagedBy = Prefixed_Name(hht, "isManagedBy") |> PrefixedName
-    /// <summary>
-    ///   <para>hht:NonVoidArea</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Any Area with an actual extent.</para>
-    /// labels<para>NonVoidArea</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#NonVoidArea">https://w3id.org/HHT#NonVoidArea</seealso>
-    let NonVoidArea = Prefixed_Name(hht, "NonVoidArea") |> PrefixedName
-    /// <summary>
-    ///   <para>hht:VoidArea</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>An area whose with no extent, meaning its geometrical extent is null.</para>
-    /// labels<para>VoidArea</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#VoidArea">https://w3id.org/HHT#VoidArea</seealso>
-    let VoidArea = Prefixed_Name(hht, "VoidArea") |> PrefixedName
     /// <summary>
     ///   <para>hht:hasGeometry</para>
     /// </summary>
@@ -386,15 +272,6 @@ module hht =
     /// <seealso href="https://w3id.org/HHT#isMemberOf">https://w3id.org/HHT#isMemberOf</seealso>
     let isMemberOf = Prefixed_Name(hht, "isMemberOf") |> PrefixedName
     /// <summary>
-    ///   <para>hht:isDefinedBy</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Denotes the actor who normalizes the Unit and integrates it in a territorial division.</para>
-    /// labels<para>isDefinedBy</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#isDefinedBy">https://w3id.org/HHT#isDefinedBy</seealso>
-    let isDefinedBy = Prefixed_Name(hht, "isDefinedBy") |> PrefixedName
-    /// <summary>
     ///   <para>hht:validityPeriod</para>
     /// </summary>
     /// <remarks>
@@ -426,9 +303,9 @@ module hht =
     /// </summary>
     /// <remarks>
     ///   <para>owl:TransitiveProperty</para>
-    ///   <para>owl:ReflexiveProperty</para>
     ///   <para>owl:AsymmetricProperty</para>
     ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:ReflexiveProperty</para>
     ///   <para>Denotes a version geometrically included inside another unit version.</para>
     /// labels<para>contains</para></remarks>
     /// <seealso href="https://w3id.org/HHT#contains">https://w3id.org/HHT#contains</seealso>
@@ -437,8 +314,8 @@ module hht =
     ///   <para>hht:isLocatedIn</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:TransitiveProperty</para>
     ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
     ///   <para>owl:AsymmetricProperty</para>
     ///   <para>owl:IrreflexiveProperty</para>
     ///   <para>Denotes the location of a unit version inside another one.</para>
@@ -468,14 +345,82 @@ module hht =
     ///   <para>hht:hasEquivalentLevel</para>
     /// </summary>
     /// <remarks>
+    ///   <para>owl:SymmetricProperty</para>
     ///   <para>owl:TransitiveProperty</para>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>owl:SymmetricProperty</para>
     ///   <para>owl:ReflexiveProperty</para>
     ///   <para>Denotes the equivalence of levels regarding their rank in the hierarchy they take part in.</para>
     /// labels<para>hasEquivalentLevel</para></remarks>
     /// <seealso href="https://w3id.org/HHT#hasEquivalentLevel">https://w3id.org/HHT#hasEquivalentLevel</seealso>
     let hasEquivalentLevel = Prefixed_Name(hht, "hasEquivalentLevel") |> PrefixedName
+
+    /// <summary>
+    ///   <para>hht:ElementaryLevelVersion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>This subclass of level version allows to define which level(s) will be considered to determine the building blocks of the geometry.</para>
+    /// labels<para>ElementaryLevelVersion</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#ElementaryLevelVersion">https://w3id.org/HHT#ElementaryLevelVersion</seealso>
+    let ElementaryLevelVersion =
+        Prefixed_Name(hht, "ElementaryLevelVersion") |> PrefixedName
+
+    /// <summary>
+    ///   <para>hht:HierarchicalCriterion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Concept, principle or nomenclature inducing a hierarchical division of territories.</para>
+    /// labels<para>HierarchicalCriterion</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#HierarchicalCriterion">https://w3id.org/HHT#HierarchicalCriterion</seealso>
+    let HierarchicalCriterion =
+        Prefixed_Name(hht, "HierarchicalCriterion") |> PrefixedName
+
+    /// <summary>
+    ///   <para>hht:ManagedUnit</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A subclass of Unit to describe Units directly managed by an actor, which often is an institution.</para>
+    /// labels<para>ManagedUnit</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#ManagedUnit">https://w3id.org/HHT#ManagedUnit</seealso>
+    let ManagedUnit = Prefixed_Name(hht, "ManagedUnit") |> PrefixedName
+    /// <summary>
+    ///   <para>hht:ManagedUnitVersion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Subtype of UnitVersion that adds the notion of the influence of the actors over it.</para>
+    /// labels<para>ManagedUnitVersion</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#ManagedUnitVersion">https://w3id.org/HHT#ManagedUnitVersion</seealso>
+    let ManagedUnitVersion = Prefixed_Name(hht, "ManagedUnitVersion") |> PrefixedName
+    /// <summary>
+    ///   <para>hht:isManagedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Denotes the actor managing a ManagedUnit.</para>
+    /// labels<para>isManagedBy</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#isManagedBy">https://w3id.org/HHT#isManagedBy</seealso>
+    let isManagedBy = Prefixed_Name(hht, "isManagedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>hht:NonVoidArea</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Any Area with an actual extent.</para>
+    /// labels<para>NonVoidArea</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#NonVoidArea">https://w3id.org/HHT#NonVoidArea</seealso>
+    let NonVoidArea = Prefixed_Name(hht, "NonVoidArea") |> PrefixedName
+    /// <summary>
+    ///   <para>hht:hasVersion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Links any versionable object to its versions. Classes of the object and its version should be coherent (ex : Unit and UnitVersion)</para>
+    /// labels<para>hasVersion</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#hasVersion">https://w3id.org/HHT#hasVersion</seealso>
+    let hasVersion = Prefixed_Name(hht, "hasVersion") |> PrefixedName
     /// <summary>
     ///   <para>hht:hasSetGeometry</para>
     /// </summary>
@@ -523,27 +468,6 @@ module hht =
     /// <seealso href="https://w3id.org/HHT#hasLevel">https://w3id.org/HHT#hasLevel</seealso>
     let hasLevel = Prefixed_Name(hht, "hasLevel") |> PrefixedName
     /// <summary>
-    ///   <para>hht:hasLevelVersion</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///
-    /// labels<para>hasLevelVersion</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#hasLevelVersion">https://w3id.org/HHT#hasLevelVersion</seealso>
-    let hasLevelVersion = Prefixed_Name(hht, "hasLevelVersion") |> PrefixedName
-
-    /// <summary>
-    ///   <para>hht:hasManagedUnitVersion</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///
-    /// labels<para>hasManagedUnitVersion</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#hasManagedUnitVersion">https://w3id.org/HHT#hasManagedUnitVersion</seealso>
-    let hasManagedUnitVersion =
-        Prefixed_Name(hht, "hasManagedUnitVersion") |> PrefixedName
-
-    /// <summary>
     ///   <para>hht:hasUnitVersion</para>
     /// </summary>
     /// <remarks>
@@ -571,15 +495,6 @@ module hht =
     /// <seealso href="https://w3id.org/HHT#hasResident">https://w3id.org/HHT#hasResident</seealso>
     let hasResident = Prefixed_Name(hht, "hasResident") |> PrefixedName
     /// <summary>
-    ///   <para>hht:residesIn</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Denotes the residence of an actor. It may be its main or secundary residence.</para>
-    /// labels<para>residesIn</para></remarks>
-    /// <seealso href="https://w3id.org/HHT#residesIn">https://w3id.org/HHT#residesIn</seealso>
-    let residesIn = Prefixed_Name(hht, "residesIn") |> PrefixedName
-    /// <summary>
     ///   <para>hht:hasSubLevel</para>
     /// </summary>
     /// <remarks>
@@ -592,9 +507,9 @@ module hht =
     ///   <para>hht:hasSubUnit</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:IrreflexiveProperty</para>
-    ///   <para>owl:AsymmetricProperty</para>
     ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:AsymmetricProperty</para>
+    ///   <para>owl:IrreflexiveProperty</para>
     ///   <para>Denotes the hierarchical direct lower territory.</para>
     /// labels<para>hasSubUnit</para></remarks>
     /// <seealso href="https://w3id.org/HHT#hasSubUnit">https://w3id.org/HHT#hasSubUnit</seealso>
@@ -663,6 +578,72 @@ module hht =
     /// <seealso href="https://w3id.org/HHT#manages">https://w3id.org/HHT#manages</seealso>
     let manages = Prefixed_Name(hht, "manages") |> PrefixedName
     /// <summary>
+    ///   <para>hht:isDefinedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Denotes the actor who normalizes the Unit and integrates it in a territorial division.</para>
+    /// labels<para>isDefinedBy</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#isDefinedBy">https://w3id.org/HHT#isDefinedBy</seealso>
+    let isDefinedBy = Prefixed_Name(hht, "isDefinedBy") |> PrefixedName
+
+    /// <summary>
+    ///   <para>hht:hasManagedUnitVersion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>hasManagedUnitVersion</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#hasManagedUnitVersion">https://w3id.org/HHT#hasManagedUnitVersion</seealso>
+    let hasManagedUnitVersion =
+        Prefixed_Name(hht, "hasManagedUnitVersion") |> PrefixedName
+
+    /// <summary>
+    ///   <para>hht:residesIn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Denotes the residence of an actor. It may be its main or secundary residence.</para>
+    /// labels<para>residesIn</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#residesIn">https://w3id.org/HHT#residesIn</seealso>
+    let residesIn = Prefixed_Name(hht, "residesIn") |> PrefixedName
+    /// <summary>
+    ///   <para>hht:hasLevelVersion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///
+    /// labels<para>hasLevelVersion</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#hasLevelVersion">https://w3id.org/HHT#hasLevelVersion</seealso>
+    let hasLevelVersion = Prefixed_Name(hht, "hasLevelVersion") |> PrefixedName
+    /// <summary>
+    ///   <para>hht:TemporalPrimitive</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Any marker that could be used as temporal primitive for HHT.</para>
+    /// labels<para>Temporal Primitive</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#TemporalPrimitive">https://w3id.org/HHT#TemporalPrimitive</seealso>
+    let TemporalPrimitive = Prefixed_Name(hht, "TemporalPrimitive") |> PrefixedName
+    /// <summary>
+    ///   <para>hht:Area</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Any object characterised by a geospatial extent.</para>
+    /// labels<para>Area</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#Area">https://w3id.org/HHT#Area</seealso>
+    let Area = Prefixed_Name(hht, "Area") |> PrefixedName
+    /// <summary>
+    ///   <para>hht:SetAreaConstruction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A superclass for all areas that result from a classical set operation.</para>
+    /// labels<para>SetAreaConstruction</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#SetAreaConstruction">https://w3id.org/HHT#SetAreaConstruction</seealso>
+    let SetAreaConstruction = Prefixed_Name(hht, "SetAreaConstruction") |> PrefixedName
+    /// <summary>
     ///   <para>hht:properContains</para>
     /// </summary>
     /// <remarks>
@@ -671,3 +652,21 @@ module hht =
     /// labels<para>properContains</para></remarks>
     /// <seealso href="https://w3id.org/HHT#properContains">https://w3id.org/HHT#properContains</seealso>
     let properContains = Prefixed_Name(hht, "properContains") |> PrefixedName
+    /// <summary>
+    ///   <para>hht:operatorCardinality</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Denotes the expected number of areas taking part into the operatively created area.</para>
+    /// labels<para>operatorCardinality</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#operatorCardinality">https://w3id.org/HHT#operatorCardinality</seealso>
+    let operatorCardinality = Prefixed_Name(hht, "operatorCardinality") |> PrefixedName
+    /// <summary>
+    ///   <para>hht:AreaUnion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Area resulting from the geometrical union of several areas.</para>
+    /// labels<para>AreaUnion</para></remarks>
+    /// <seealso href="https://w3id.org/HHT#AreaUnion">https://w3id.org/HHT#AreaUnion</seealso>
+    let AreaUnion = Prefixed_Name(hht, "AreaUnion") |> PrefixedName

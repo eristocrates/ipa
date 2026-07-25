@@ -7,15 +7,6 @@ open type Prefix_ID
 module hlygt =
     let _namespace_iri = Namespace_Iri hlygt |> NamespaceIRI
     /// <summary>
-    ///   <para>hlygt:</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Ontology</para>
-    ///
-    /// labels<para>An ontology for tags.</para></remarks>
-    /// <seealso href="http://www.holygoat.co.uk/owl/redwood/0.1/tags/">http://www.holygoat.co.uk/owl/redwood/0.1/tags/</seealso>
-    let _prefix_iri = Prefixed_Name(hlygt, "") |> PrefixedName
-    /// <summary>
     ///   <para>hlygt:RestrictedTagging</para>
     /// </summary>
     /// <remarks>
@@ -33,15 +24,6 @@ module hlygt =
     /// labels<para>associated tag</para></remarks>
     /// <seealso href="http://www.holygoat.co.uk/owl/redwood/0.1/tags/associatedTag">http://www.holygoat.co.uk/owl/redwood/0.1/tags/associatedTag</seealso>
     let associatedTag = Prefixed_Name(hlygt, "associatedTag") |> PrefixedName
-    /// <summary>
-    ///   <para>hlygt:taggedResource</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>The object is a resource which plays a role in the subject Tagging.</para>
-    /// labels<para>tagged resource</para></remarks>
-    /// <seealso href="http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedResource">http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedResource</seealso>
-    let taggedResource = Prefixed_Name(hlygt, "taggedResource") |> PrefixedName
     /// <summary>
     ///   <para>hlygt:Tagging</para>
     /// </summary>
@@ -70,23 +52,14 @@ module hlygt =
     /// <seealso href="http://www.holygoat.co.uk/owl/redwood/0.1/tags/equivalentTag">http://www.holygoat.co.uk/owl/redwood/0.1/tags/equivalentTag</seealso>
     let equivalentTag = Prefixed_Name(hlygt, "equivalentTag") |> PrefixedName
     /// <summary>
-    ///   <para>hlygt:isTagOf</para>
+    ///   <para>hlygt:taggedResource</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>Indicates that the subject tag applies to the object resource. This does not assert by who, when, or why the tagging occurred. For that information, use a reified Tagging resource.</para>
-    /// labels<para>is tag of</para></remarks>
-    /// <seealso href="http://www.holygoat.co.uk/owl/redwood/0.1/tags/isTagOf">http://www.holygoat.co.uk/owl/redwood/0.1/tags/isTagOf</seealso>
-    let isTagOf = Prefixed_Name(hlygt, "isTagOf") |> PrefixedName
-    /// <summary>
-    ///   <para>hlygt:taggedWithTag</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Indicates that the subject has been tagged with the object tag. This does not assert by who, when, or why the tagging occurred. For that information, use a reified Tagging resource.</para>
-    /// labels<para>tagged with tag</para></remarks>
-    /// <seealso href="http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag">http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag</seealso>
-    let taggedWithTag = Prefixed_Name(hlygt, "taggedWithTag") |> PrefixedName
+    ///   <para>The object is a resource which plays a role in the subject Tagging.</para>
+    /// labels<para>tagged resource</para></remarks>
+    /// <seealso href="http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedResource">http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedResource</seealso>
+    let taggedResource = Prefixed_Name(hlygt, "taggedResource") |> PrefixedName
     /// <summary>
     ///   <para>hlygt:name</para>
     /// </summary>
@@ -106,15 +79,6 @@ module hlygt =
     /// <seealso href="http://www.holygoat.co.uk/owl/redwood/0.1/tags/relatedTag">http://www.holygoat.co.uk/owl/redwood/0.1/tags/relatedTag</seealso>
     let relatedTag = Prefixed_Name(hlygt, "relatedTag") |> PrefixedName
     /// <summary>
-    ///   <para>hlygt:tag</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>The relationship between a resource and a Tagging. Note, of course, that this allows us to tag tags and taggings themselves...</para>
-    /// labels<para>tag</para></remarks>
-    /// <seealso href="http://www.holygoat.co.uk/owl/redwood/0.1/tags/tag">http://www.holygoat.co.uk/owl/redwood/0.1/tags/tag</seealso>
-    let tag = Prefixed_Name(hlygt, "tag") |> PrefixedName
-    /// <summary>
     ///   <para>hlygt:tagName</para>
     /// </summary>
     /// <remarks>
@@ -123,6 +87,24 @@ module hlygt =
     /// labels<para>tag name</para></remarks>
     /// <seealso href="http://www.holygoat.co.uk/owl/redwood/0.1/tags/tagName">http://www.holygoat.co.uk/owl/redwood/0.1/tags/tagName</seealso>
     let tagName = Prefixed_Name(hlygt, "tagName") |> PrefixedName
+    /// <summary>
+    ///   <para>hlygt:taggedOn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The subject Tagging occurred at the subject time and date.</para>
+    /// labels<para>tagged on</para></remarks>
+    /// <seealso href="http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedOn">http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedOn</seealso>
+    let taggedOn = Prefixed_Name(hlygt, "taggedOn") |> PrefixedName
+    /// <summary>
+    ///   <para>hlygt:taggedWithTag</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Indicates that the subject has been tagged with the object tag. This does not assert by who, when, or why the tagging occurred. For that information, use a reified Tagging resource.</para>
+    /// labels<para>tagged with tag</para></remarks>
+    /// <seealso href="http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag">http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag</seealso>
+    let taggedWithTag = Prefixed_Name(hlygt, "taggedWithTag") |> PrefixedName
     /// <summary>
     ///   <para>hlygt:taggedBy</para>
     /// </summary>
@@ -133,11 +115,29 @@ module hlygt =
     /// <seealso href="http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedBy">http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedBy</seealso>
     let taggedBy = Prefixed_Name(hlygt, "taggedBy") |> PrefixedName
     /// <summary>
-    ///   <para>hlygt:taggedOn</para>
+    ///   <para>hlygt:tag</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The subject Tagging occurred at the subject time and date.</para>
-    /// labels<para>tagged on</para></remarks>
-    /// <seealso href="http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedOn">http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedOn</seealso>
-    let taggedOn = Prefixed_Name(hlygt, "taggedOn") |> PrefixedName
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The relationship between a resource and a Tagging. Note, of course, that this allows us to tag tags and taggings themselves...</para>
+    /// labels<para>tag</para></remarks>
+    /// <seealso href="http://www.holygoat.co.uk/owl/redwood/0.1/tags/tag">http://www.holygoat.co.uk/owl/redwood/0.1/tags/tag</seealso>
+    let tag = Prefixed_Name(hlygt, "tag") |> PrefixedName
+    /// <summary>
+    ///   <para>hlygt:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///
+    /// labels<para>An ontology for tags.</para></remarks>
+    /// <seealso href="http://www.holygoat.co.uk/owl/redwood/0.1/tags/">http://www.holygoat.co.uk/owl/redwood/0.1/tags/</seealso>
+    let _prefix_iri = Prefixed_Name(hlygt, "") |> PrefixedName
+    /// <summary>
+    ///   <para>hlygt:isTagOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Indicates that the subject tag applies to the object resource. This does not assert by who, when, or why the tagging occurred. For that information, use a reified Tagging resource.</para>
+    /// labels<para>is tag of</para></remarks>
+    /// <seealso href="http://www.holygoat.co.uk/owl/redwood/0.1/tags/isTagOf">http://www.holygoat.co.uk/owl/redwood/0.1/tags/isTagOf</seealso>
+    let isTagOf = Prefixed_Name(hlygt, "isTagOf") |> PrefixedName

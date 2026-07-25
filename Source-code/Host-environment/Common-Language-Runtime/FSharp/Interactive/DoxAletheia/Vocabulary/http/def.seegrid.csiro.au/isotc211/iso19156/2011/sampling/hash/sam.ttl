@@ -1,0 +1,376 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sam: <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling#>.
+
+<http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature> <http://www.w3.org/2002/07/owl#disjointUnionOf> (sam:NotSamplingFeature
+                                                                                                                         sam:SamplingFeature).
+<http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#Observation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                             rdfs:subClassOf sam:NotSamplingFeature.
+<http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#Process> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                         rdfs:subClassOf sam:NotSamplingFeature.
+<http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling> <http://purl.org/dc/elements/1.1/creator> """Simon Jonathan David COX
+CSIRO"""^^rdf:PlainLiteral;
+                                                              <http://purl.org/dc/elements/1.1/description> "An OWL representation of the Sampling Features Schema described in clauses 8-10 of ISO 19156:2011 Geographic Information - Observations and Measurements";
+                                                              <http://purl.org/dc/elements/1.1/source> "ISO 19156:2011";
+                                                              <http://purl.org/dc/elements/1.1/title> "OWL representation of ISO 19156 Sampling Features model";
+                                                              <http://purl.org/dc/terms/created> "2012-01-19T00:00:00"^^xsd:dateTime;
+                                                              <http://purl.org/dc/terms/hasPart> sam:samplingTime,
+                                                                                                 sam:member,
+                                                                                                 sam:PreparationStep,
+                                                                                                 sam:sampledFeature,
+                                                                                                 sam:Process,
+                                                                                                 sam:materialClass,
+                                                                                                 sam:preparationStep,
+                                                                                                 sam:samplingLocation,
+                                                                                                 sam:positionalAccuracy,
+                                                                                                 sam:role,
+                                                                                                 sam:relatedSamplingFeature,
+                                                                                                 sam:size,
+                                                                                                 sam:shape,
+                                                                                                 sam:SamplingPoint,
+                                                                                                 sam:parameter,
+                                                                                                 sam:SamplingSurface,
+                                                                                                 sam:NotSamplingFeature,
+                                                                                                 sam:SpatialSamplingFeature,
+                                                                                                 sam:hostedProcedure,
+                                                                                                 sam:processingDetails,
+                                                                                                 sam:processOperator,
+                                                                                                 sam:lineage,
+                                                                                                 sam:Specimen,
+                                                                                                 sam:currentLocation,
+                                                                                                 sam:samplingMethod,
+                                                                                                 sam:SamplingCurve,
+                                                                                                 sam:Location,
+                                                                                                 sam:samplingFeatureComplex,
+                                                                                                 sam:SamplingFeatureCollection,
+                                                                                                 sam:SamplingFeatureComplex,
+                                                                                                 sam:SamplingFeature,
+                                                                                                 sam:specimenType,
+                                                                                                 sam:time,
+                                                                                                 sam:SamplingSolid,
+                                                                                                 sam:relatedObservation;
+                                                              <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/3.0/>;
+                                                              <http://purl.org/dc/terms/modified> "2013-11-14T00:00:00"^^xsd:dateTime;
+                                                              <http://purl.org/vocab/vann/preferredNamespacePrefix> "sam";
+                                                              <http://purl.org/vocab/vann/preferredNamespaceUri> sam:;
+                                                              a <http://www.w3.org/2002/07/owl#Ontology>,
+                                                                <http://purl.org/vocommons/voaf#Vocabulary>;
+                                                              rdfs:comment """An OWL representation of the Sampling Features Schema described in clauses 8-10 of ISO 19156:2011 Geographic Information - Observations and Measurements. 
+
+This vocabulary is provisional, pending finalization of ISO 19150-2.
+
+NOTE: The URI stem http://def.seegrid.csiro.au/isotc211/ is temporary. The vocabulary is expected to be ultimately published in the domain http://def.isotc211.org/""";
+                                                              <http://www.w3.org/2002/07/owl#imports> <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic>;
+                                                              <http://www.w3.org/2002/07/owl#priorVersion> <https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201210/ISOTC211/HM/sampling.rdf>;
+                                                              <http://www.w3.org/2002/07/owl#versionIRI> <https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201311/ISOTC211/HM/sampling.rdf>.
+sam:Location a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Location, expressed as either a spatial object or geographic identifier";
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+             rdfs:label "Location";
+             <http://www.w3.org/2002/07/owl#unionOf> (<http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Object>
+                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#GeographicDescription>);
+             <http://www.w3.org/2004/02/skos/core#notation> "Location"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+sam:NotSamplingFeature a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Complement of SamplingFeature";
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                       rdfs:label "Not a sampling feature";
+                       rdfs:subClassOf <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+                       <http://www.w3.org/2002/07/owl#disjointWith> sam:SamplingFeature.
+sam:PreparationStep a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Discrete stage in specimen-preparation process",
+                                 "In many applications, specimen preparation procedures are applied to the material prior to its use in an observation. The class PreparationStep (Figure 13) shall link an SF_Specimen to an SF_Process that describes a phase of the specimen preparation.";
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                    rdfs:label "Preparation step"@en;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> sam:time ; 
+                                     <http://www.w3.org/2002/07/owl#onClass> <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal#Object> ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> sam:processingDetails ; 
+                                     <http://www.w3.org/2002/07/owl#onClass> sam:Process ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> sam:processOperator ; 
+                                     <http://www.w3.org/2002/07/owl#onClass> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#ResponsibleParty> ; 
+                                     <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    <http://www.w3.org/2002/07/owl#Thing>;
+                    <http://www.w3.org/2004/02/skos/core#notation> "PreparationStep"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+sam:Process a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Process involved in sampling. This may include specimen retrieval or processing, surveying a spatial sampling feature, excavation to provide access to a sampling feature, or any other process whose outcome is a new sampling feature.",
+                         "In many applications, specimen preparation procedures are applied to the material prior to its use in an observation. The class PreparationStep (Figure 13) shall link an SF_Specimen to an SF_Process that describes a phase of the specimen preparation.";
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+            rdfs:label "Sampling process"@en;
+            rdfs:subClassOf sam:NotSamplingFeature,
+                            <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+            <http://www.w3.org/2002/07/owl#disjointWith> <http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#Process>;
+            <http://www.w3.org/2004/02/skos/core#notation> "SF_Process"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+sam:SamplingCurve a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Spatial sampling feature whose shape is a 1-D manifold (Curve)";
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                  rdfs:label "Sampling curve"@en;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> sam:shape ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Curve> ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  sam:SpatialSamplingFeature;
+                  <http://www.w3.org/2004/02/skos/core#notation> "SF_SamplingCurve"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+sam:SamplingFeature a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Feature on which observations may be made, that is intended to be representative of a different (usually larger) feature that is not fully accessible for some reason. ",
+                                 """Sampling features are artefacts of an observational strategy, and have no significant function outside of their role in the observation process. The physical characteristics of the features themselves are of little interest, except perhaps to the manager of a sampling campaign.
+
+EXAMPLE A “station” is essentially an identifiable locality where a sensor system or procedure may be deployed and an observation made. In the context of the observation model, it connotes the “world in the vicinity of the station”, so the observed properties relate to the physical medium at the station, and not to any physical artefact such as a mooring, buoy, benchmark, monument, well, etc.
+
+NOTE A transient sampling feature, such as a ships-track or flight-line, might be identified and described, but is unlikely to be revisited exactly.
+
+A sampling feature is intended to sample some feature-of-interest in an application domain. However, in some cases the identity, and even the exact type, of the sampled feature may not be known when observations are made using the sampling features.""";
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                    rdfs:label "Sampling Feature"@en;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> sam:sampledFeature ; 
+                                     <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> sam:samplingFeatureComplex ; 
+                                     <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> sam:relatedObservation ; 
+                                     <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>,
+                                    [<http://www.w3.org/2002/07/owl#onProperty> sam:lineage ; 
+                                     <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>];
+                    <http://www.w3.org/2002/07/owl#disjointWith> sam:NotSamplingFeature;
+                    <http://www.w3.org/2004/02/skos/core#notation> "SF_SamplingFeature"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+sam:SamplingFeatureCollection a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "The class SF_SamplingFeatureCollection (Figure 9) is an instance of the «metaclass» GF_FeatureType (ISO 19109), which therefore represents a feature type. SF_SamplingFeatureCollection shall support one association.",
+                                           "Collection of sampling features";
+                              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                              rdfs:label "Sampling feature collection"@en;
+                              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> sam:member ; 
+                                               <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+                              <http://www.w3.org/2004/02/skos/core#notation> "SF_SamplingFeatureCollection"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+sam:SamplingFeatureComplex a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Set of sampling features related to each other in a specific and deliberate way.",
+                                        "Sampling features are frequently related to each other, as parts of complexes, through sub-sampling, and in other ways. If present, the association class SamplingFeatureComplex (Figure 9) shall link an SF_SamplingFeature to another SF_SamplingFeature.";
+                           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                           rdfs:label "Sampling feature complex"@en;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> sam:relatedSamplingFeature ; 
+                                            <http://www.w3.org/2002/07/owl#onClass> sam:SamplingFeature ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#onProperty> sam:role ; 
+                                            <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           <http://www.w3.org/2002/07/owl#Thing>;
+                           <http://www.w3.org/2004/02/skos/core#notation> "SamplingFeatureComplex"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+sam:SamplingPoint a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Spatial sampling feature whose shape is a 0-D manifold (Point)";
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                  rdfs:label "Sampling point"@en;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> sam:shape ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Point> ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  sam:SpatialSamplingFeature;
+                  <http://www.w3.org/2004/02/skos/core#notation> "SF_SamplingPoint"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+sam:SamplingSolid a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Spatial sampling feature whose shape is a 3-D manifold (Solid)";
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                  rdfs:label "Sampling solid"@en;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> sam:shape ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Solid> ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  sam:SpatialSamplingFeature;
+                  <http://www.w3.org/2004/02/skos/core#notation> "SF_SamplingSolid"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+sam:SamplingSurface a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Spatial sampling feature whose shape is a 2-D manifold (Surface)";
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                    rdfs:label "Sampling surface"@en;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> sam:shape ; 
+                                     <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Surface> ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    sam:SpatialSamplingFeature;
+                    <http://www.w3.org/2004/02/skos/core#notation> "SF_SamplingSurface"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+sam:SpatialSamplingFeature a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Sampling feature whose defining characteristic is that it samples the intended feature by geometric subsetting.",
+                                        """When observations are made to estimate properties of a geospatial feature, in particular where the value of a property varies within the scope of the feature, a spatial sampling feature is used. Depending on accessibility and on the nature of the expected property variation, the sampling feature may be extensive in one, two or three spatial dimensions. Processing and visualization methods are often dependent on the topological dimension of the sampling manifold, so this provides a natural classification system for sampling features.
+
+This classification follows common practice in focussing on conventional spatial dimensions. Properties observed on sampling features may be time-dependent, but the temporal axis does not generally contribute to the classification of sampling feature classes. Sampling feature identity is usually less time-dependent than the property value.""";
+                           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                           rdfs:label "Spatial sampling feature"@en;
+                           rdfs:subClassOf sam:SamplingFeature,
+                                           [<http://www.w3.org/2002/07/owl#onProperty> sam:positionalAccuracy ; 
+                                            <http://www.w3.org/2002/07/owl#maxCardinality> "2"^^xsd:nonNegativeInteger ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#onProperty> sam:shape ; 
+                                            <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#onProperty> sam:hostedProcedure ; 
+                                            <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>];
+                           <http://www.w3.org/2004/02/skos/core#notation> "SF_SpatialSamplingFeature"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+sam:Specimen a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A Specimen is a physical sample, obtained for observation(s) normally carried out ex-situ, sometimes in a laboratory.";
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+             rdfs:label "Specimen"@en;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> sam:size ; 
+                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> sam:currentLocation ; 
+                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> sam:specimenType ; 
+                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> sam:samplingLocation ; 
+                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             sam:SamplingFeature,
+                             [<http://www.w3.org/2002/07/owl#onProperty> sam:samplingMethod ; 
+                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> sam:samplingTime ; 
+                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> sam:materialClass ; 
+                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>];
+             <http://www.w3.org/2004/02/skos/core#notation> "SF_Specimen"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+sam:currentLocation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                    rdfs:label "current location";
+                    rdfs:range sam:Location;
+                    <http://www.w3.org/2004/02/skos/core#definition> """If present, the attribute currentLocation:Location shall describe the location of a physical specimen. This may be a storage location, such as a shelf in a warehouse or a drawer in a museum.
+
+NOTE If a specimen no longer exists, for example, it was destroyed in connection with an observation act, then the currentLocation should be omitted or carry a suitable null indicator.""".
+sam:hostedProcedure a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                    rdfs:label "hosted procedure or instrument";
+                    rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#Process>;
+                    <http://www.w3.org/2004/02/skos/core#definition> "A common role for a spatial sampling feature is to host instruments or procedures deployed repetitively or permanently. If present, the association Platform shall link the SF_SpatialSamplingFeature to an OM_Process deployed at it. The OM_Process has the role hostedProcedure with respect to the sampling feature.".
+sam:lineage a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+            rdfs:label "lineage";
+            rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage#Lineage>;
+            <http://www.w3.org/2004/02/skos/core#definition> "If present, the attribute lineage:LI_Lineage shall describe the history and provenance of the SF_SamplingFeature. This might include information relating to the handling of the specimen, or details of the survey procedure of a spatial sampling feature.".
+sam:materialClass a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                  rdfs:label "material class";
+                  <http://www.w3.org/2004/02/skos/core#definition> """The attribute materialClass:GenericName shall provide a basic classification of the material type of the specimen.
+
+EXAMPLE Soil, water, rock, aqueous, liquid, tissue, vegetation, food.""".
+sam:member a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+           rdfs:label "member sampling feature";
+           rdfs:range sam:SamplingFeature;
+           <http://www.w3.org/2004/02/skos/core#definition> "The association Collection shall link an SF_SamplingFeatureCollection to member SF_SamplingFeatures.".
+sam:parameter a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+              rdfs:label "sampling feature parameter";
+              <http://www.w3.org/2002/07/owl#equivalentProperty> <http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#parameter>;
+              <http://www.w3.org/2004/02/skos/core#definition> "the attribute parameter:NamedValue shall describe an arbitrary parameter associated with the SF_SamplingFeature. This might be a parameter that qualifies the interaction with the sampled feature, or an environmental parameter associated with the sampling process.".
+sam:positionalAccuracy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                       rdfs:label "positional accuracy";
+                       rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#PositionalAccuracy>;
+                       <http://www.w3.org/2004/02/skos/core#definition> "Positioning metadata is commonly associated with sampling features defined in the context of field surveys. If present, positionalAccuracy:DQ_PositionalAccuracy shall describe the accuracy of the positioning of the sampling feature. Up to two instances of the attribute support the independent description of horizontal and vertical accuracy.".
+sam:preparationStep a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                    rdfs:label "preparation step";
+                    rdfs:range sam:PreparationStep.
+sam:processOperator a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                    rdfs:label "process operator";
+                    <http://www.w3.org/2004/02/skos/core#definition> "the attribute processOperator:CI_ResponsibleParty shall describe the operator of the process involved in the preparation step.".
+sam:processingDetails a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                      rdfs:label "processing details";
+                      rdfs:range sam:Process.
+sam:relatedObservation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                       rdfs:label "related observation";
+                       rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#Observation>;
+                       <http://www.w3.org/2004/02/skos/core#definition> "Sampling features are distinctive compared with other features from application domains by having navigable associations to observations. If present, the association Design shall link the SF_SamplingFeature to an OM_Observation that was made utilizing the sampling feature, and the description of the sampling feature provides an intrinsic element of the observation protocol, along with the observation procedure (7.2.2) and the decomposition of the domain geometry in the case of a coverage-valued result (8.3.2). The OM_Observation has the role relatedObservation with respect to the sampling feature. Multiple observations may be made on a single sampling feature.".
+sam:relatedSamplingFeature a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+                           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                           rdfs:label "related sampling feature";
+                           rdfs:range sam:SamplingFeature.
+sam:role a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+         rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+         rdfs:label "role".
+sam:sampledFeature a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                   rdfs:label "sampled feature";
+                   rdfs:range sam:NotSamplingFeature;
+                   <http://www.w3.org/2004/02/skos/core#definition> """A sampling feature is established in order to make observations concerning some domain feature. The association Intention shall link the SF_SamplingFeature to the feature which the sampling feature was designed to sample. The target of this association has the role sampledFeature with respect to the sampling feature, and shall not be a sampling feature or observation. It is usually a real-world feature from an application domain (Figures 5 and 10).
+
+EXAMPLE A profile typically samples a water- or atmospheric-column; a well samples the water in an aquifer; a tissue specimen samples a part of an organism.""".
+sam:samplingFeatureComplex a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+                           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                           rdfs:label "sampling feature complex";
+                           rdfs:range sam:SamplingFeatureComplex.
+sam:samplingLocation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                     rdfs:label "sampling location";
+                     rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Object>;
+                     <http://www.w3.org/2004/02/skos/core#definition> """If present, the attribute samplingLocation:GM_Object shall describe the location from where the specimen was obtained.
+
+NOTE Where a specimen has a relatedSamplingFeature whose location provides an unambiguous location then this attribute is not required. However, if the specific sampling location within the sampledFeature is important, then this attribute supports its description.""".
+sam:samplingMethod a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                   rdfs:label "sampling method";
+                   rdfs:range sam:Process;
+                   <http://www.w3.org/2004/02/skos/core#definition> "If present, the attribute samplingMethod:SF_Process shall describe the method used to obtain the specimen from its sampledFeature.".
+sam:samplingTime a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                 rdfs:label "sampling time";
+                 rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal#Object>;
+                 <http://www.w3.org/2004/02/skos/core#definition> "The attribute samplingTime:TM_Object shall record when the specimen was retrieved from the sampled feature.".
+sam:shape a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+          rdfs:label "spatial sampling feature shape";
+          rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Object>;
+          <http://www.w3.org/2004/02/skos/core#definition> "The association Geometry shall link an SF_SpatialSamplingFeature to a GM_Object that describes its shape.".
+sam:size a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+         rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+         rdfs:label "specimen size";
+         rdfs:subPropertyOf <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#measure>;
+         <http://www.w3.org/2004/02/skos/core#definition> "the attribute size:Measure shall describe a physical extent of the specimen. This may be length, mass, volume, etc., as appropriate for the specimen instance and its material class.".
+sam:specimenType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature>;
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                 rdfs:label "specimen type";
+                 <http://www.w3.org/2004/02/skos/core#definition> """the attribute specimenType:GenericName shall describe the basic form of the specimen. 
+
+EXAMPLE Polished section; core; pulp; solution.""".
+sam:time a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+         rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+         rdfs:label "preparation step time";
+         rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal#Object>;
+         <http://www.w3.org/2004/02/skos/core#definition> "The attribute time:TM_Object shall describe the time that the SF_Process was applied to the SF_Specimen. It supports ordering of preparation steps.".

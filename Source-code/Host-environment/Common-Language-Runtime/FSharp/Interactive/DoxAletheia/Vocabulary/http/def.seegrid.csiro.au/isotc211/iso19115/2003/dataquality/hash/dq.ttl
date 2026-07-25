@@ -1,0 +1,404 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dq: <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#>.
+
+<http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/EvaluationMethodType> rdfs:label "Evaluation method type code".
+<http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality> <http://purl.org/dc/elements/1.1/creator> """Simon Jonathan David COX
+CSIRO""";
+                                                                 <http://purl.org/dc/elements/1.1/date> "2012-05-25T00:00:00"^^xsd:dateTime;
+                                                                 <http://purl.org/dc/elements/1.1/description> "An OWL representation of parts of the Geographic Metadata model described in ISO 19115:2003 with Corrigendum 2006 - DQ Package";
+                                                                 <http://purl.org/dc/elements/1.1/source> """ISO 19115:2003
+ISO 19115:2006 Corrigendum""";
+                                                                 <http://purl.org/dc/elements/1.1/title> "OWL representation of ISO 19115 (Geographic Information - Metadata - Data quality package)";
+                                                                 <http://purl.org/dc/terms/created> "2012-05-18T00:00:00"^^xsd:dateTime;
+                                                                 <http://purl.org/dc/terms/hasPart> dq:CompletenessOmission,
+                                                                                                    dq:DataQuality,
+                                                                                                    dq:Result,
+                                                                                                    dq:level,
+                                                                                                    dq:lineage,
+                                                                                                    dq:GriddedDataPositionalAccuracy,
+                                                                                                    dq:CompletenessCommission,
+                                                                                                    dq:AccuracyOfATimeMeasurement,
+                                                                                                    dq:QuantitativeAttributeAccuracy,
+                                                                                                    dq:evaluationMethodType,
+                                                                                                    dq:errorStatistic,
+                                                                                                    dq:FormatConsistency,
+                                                                                                    dq:RelativeInternalPositionalAccuracy,
+                                                                                                    dq:nameOfMeasure,
+                                                                                                    dq:measureDescription,
+                                                                                                    dq:TopologicalConsistency,
+                                                                                                    dq:LogicalConsistency,
+                                                                                                    dq:report,
+                                                                                                    dq:TemporalAccuracy,
+                                                                                                    dq:QuantitativeResult,
+                                                                                                    dq:ConceptualConsistency,
+                                                                                                    dq:ThematicClassificationCorrectness,
+                                                                                                    dq:evaluationMethodDescription,
+                                                                                                    dq:levelDescription,
+                                                                                                    dq:ConformanceResult,
+                                                                                                    dq:valueType,
+                                                                                                    dq:pass,
+                                                                                                    dq:TemporalConsistency,
+                                                                                                    dq:NonQuantitativeAttributeAccuracy,
+                                                                                                    dq:dateTime,
+                                                                                                    dq:measureIdentification,
+                                                                                                    dq:value,
+                                                                                                    dq:DomainConsistency,
+                                                                                                    dq:explanation,
+                                                                                                    dq:extent,
+                                                                                                    dq:PositionalAccuracy,
+                                                                                                    dq:EvaluationMethodTypeCode,
+                                                                                                    dq:scope,
+                                                                                                    dq:TemporalValidity,
+                                                                                                    dq:specification,
+                                                                                                    dq:Element,
+                                                                                                    dq:Scope,
+                                                                                                    dq:AbsoluteExternalPositionalAccuracy,
+                                                                                                    dq:evaluationProcedure,
+                                                                                                    dq:Completeness,
+                                                                                                    dq:result,
+                                                                                                    dq:ThematicAccuracy,
+                                                                                                    dq:valueUnit;
+                                                                 <http://purl.org/dc/terms/modified> "2012-10-26T00:00:00"^^xsd:dateTime;
+                                                                 a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                                 rdfs:comment "This version of the ontology uses # and /code/ patterns as agreed in ISO 19150-2 meeting in Toulouse, June 2012.";
+                                                                 <http://www.w3.org/2002/07/owl#imports> <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic>,
+                                                                                                         <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic>,
+                                                                                                         <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/EvaluationMethodType>;
+                                                                 <http://www.w3.org/2002/07/owl#priorVersion> <https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201210/ISOTC211/HM/dataquality.rdf>;
+                                                                 <http://www.w3.org/2002/07/owl#versionIRI> <https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201305/ISOTC211/HM/dataquality.rdf>.
+dq:AbsoluteExternalPositionalAccuracy a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                                      rdfs:label "Absolute external positional accuracy";
+                                      rdfs:subClassOf dq:PositionalAccuracy;
+                                      <http://www.w3.org/2004/02/skos/core#notation> "DQ_AbsoluteExternalPositionalAccuracy"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:AccuracyOfATimeMeasurement a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                              rdfs:label "Accuracy of a Time measurement";
+                              rdfs:subClassOf dq:TemporalAccuracy;
+                              <http://www.w3.org/2004/02/skos/core#notation> "DQ_AccuracyOfATimeMeasurement"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:Completeness <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#isAbstract> true;
+                a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                rdfs:label "Completeness";
+                rdfs:subClassOf dq:Element;
+                <http://www.w3.org/2004/02/skos/core#notation> "DQ_Completeness"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:CompletenessCommission a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                          rdfs:label "Completeness commission";
+                          rdfs:subClassOf dq:Completeness;
+                          <http://www.w3.org/2004/02/skos/core#notation> "DQ_CompletenessCommission"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:CompletenessOmission a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                        rdfs:label "Completeness omission";
+                        rdfs:subClassOf dq:Completeness;
+                        <http://www.w3.org/2004/02/skos/core#notation> "DQ_CompletenessOmission"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:ConceptualConsistency a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                         rdfs:label "Conceptual consistency";
+                         rdfs:subClassOf dq:LogicalConsistency;
+                         <http://www.w3.org/2004/02/skos/core#notation> "DQ_ConceptualConsistency"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:ConformanceResult a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                     rdfs:label "Conformance result";
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> dq:specification ; 
+                                      <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation> ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#onProperty> dq:explanation ; 
+                                      <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#onProperty> dq:pass ; 
+                                      <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#onProperty> dq:specification ; 
+                                      <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     dq:Result;
+                     <http://www.w3.org/2004/02/skos/core#notation> "DQ_ConformanceResult"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:DataQuality a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+               rdfs:label "Data quality";
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> dq:lineage ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage#Lineage> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> dq:lineage ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> dq:scope ; 
+                                <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> dq:report ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> dq:Element ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> dq:report ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> dq:scope ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> dq:Scope ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>];
+               <http://www.w3.org/2004/02/skos/core#notation> "DQ_DataQuality"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:DomainConsistency a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                     rdfs:label "Domain consistency";
+                     rdfs:subClassOf dq:LogicalConsistency;
+                     <http://www.w3.org/2004/02/skos/core#notation> "DQ_DomainConsistency"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:Element a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+           rdfs:label "Element";
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> dq:result ; 
+                            <http://www.w3.org/2002/07/owl#allValuesFrom> dq:Result ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> dq:evaluationProcedure ; 
+                            <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> dq:measureDescription ; 
+                            <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> dq:evaluationMethodDescription ; 
+                            <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> dq:result ; 
+                            <http://www.w3.org/2002/07/owl#maxCardinality> "2"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> dq:nameOfMeasure ; 
+                            <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> dq:evaluationProcedure ; 
+                            <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation> ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> dq:result ; 
+                            <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> dq:evaluationMethodType ; 
+                            <http://www.w3.org/2002/07/owl#allValuesFrom> dq:EvaluationMethodTypeCode ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> dq:measureIdentification ; 
+                            <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> dq:dateTime ; 
+                            <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> dq:evaluationMethodType ; 
+                            <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>];
+           <http://www.w3.org/2004/02/skos/core#notation> "DQ_Element"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:EvaluationMethodTypeCode a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                            rdfs:label "Evaluation method code";
+                            rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                            <http://www.w3.org/2004/02/skos/core#notation> "DQ_EvaluationMethodTypeCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:FormatConsistency a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                     rdfs:label "Format consistency";
+                     rdfs:subClassOf dq:LogicalConsistency;
+                     <http://www.w3.org/2004/02/skos/core#notation> "DQ_FormatConsistency"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:GriddedDataPositionalAccuracy a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                                 rdfs:label "Gridded data positional accuracy";
+                                 rdfs:subClassOf dq:PositionalAccuracy;
+                                 <http://www.w3.org/2004/02/skos/core#notation> "DQ_GriddedDataPositionalAccuracy"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:LogicalConsistency <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#isAbstract> true;
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                      rdfs:label "Logical consistency";
+                      rdfs:subClassOf dq:Element;
+                      <http://www.w3.org/2004/02/skos/core#notation> "DQ_LogicalConsistency"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:NonQuantitativeAttributeAccuracy a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                                    rdfs:label "Non quantitative attribute accuracy";
+                                    rdfs:subClassOf dq:ThematicAccuracy;
+                                    <http://www.w3.org/2004/02/skos/core#notation> "DQ_NonQuantitativeAttributeAccuracy"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:PositionalAccuracy <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#isAbstract> true;
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                      rdfs:label "Positional accuracy";
+                      rdfs:subClassOf dq:Element;
+                      <http://www.w3.org/2004/02/skos/core#notation> "DQ_PositionalAccuracy"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:QuantitativeAttributeAccuracy a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                                 rdfs:label "Quantitative attribute accuracy";
+                                 rdfs:subClassOf dq:ThematicAccuracy;
+                                 <http://www.w3.org/2004/02/skos/core#notation> "DQ_QuantitativeAttributeAccuracy".
+dq:QuantitativeResult a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                      rdfs:label "Quantitative result";
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> dq:valueUnit ; 
+                                       <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> dq:errorStatistic ; 
+                                       <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> dq:valueType ; 
+                                       <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> dq:value ; 
+                                       <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      dq:Result;
+                      <http://www.w3.org/2004/02/skos/core#notation> "DQ_QuantitativeResult"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:RelativeInternalPositionalAccuracy a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                                      rdfs:label "Relative internal positional accuracy";
+                                      rdfs:subClassOf dq:PositionalAccuracy;
+                                      <http://www.w3.org/2004/02/skos/core#notation> "DQ_RelativeInternalPositionalAccuracy"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:Result a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+          rdfs:label "Result";
+          <http://www.w3.org/2004/02/skos/core#notation> "DQ_Result"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:Scope a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+         rdfs:label "Scope";
+         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> dq:extent ; 
+                          <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#Extent> ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#onProperty> dq:levelDescription ; 
+                          <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ScopeDescription> ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#onProperty> dq:extent ; 
+                          <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#onProperty> dq:levelDescription ; 
+                          <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#onProperty> dq:level ; 
+                          <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#onProperty> dq:level ; 
+                          <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ScopeCode> ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>];
+         <http://www.w3.org/2004/02/skos/core#notation> "DQ_Scope"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:TemporalAccuracy <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#isAbstract> true;
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                    rdfs:label "Temporal accuracy";
+                    rdfs:subClassOf dq:Element;
+                    <http://www.w3.org/2004/02/skos/core#notation> "DQ_TemporalAccuracy"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:TemporalConsistency a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                       rdfs:label "Temporal consistency";
+                       rdfs:subClassOf dq:TemporalAccuracy;
+                       <http://www.w3.org/2004/02/skos/core#notation> "DQ_TemporalConsistency"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:TemporalValidity a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                    rdfs:label "Temporal validity";
+                    rdfs:subClassOf dq:TemporalAccuracy;
+                    <http://www.w3.org/2004/02/skos/core#notation> "DQ_TemporalValidity"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:ThematicAccuracy <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#isAbstract> true;
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                    rdfs:label "Thematic accuracy";
+                    rdfs:subClassOf dq:Element;
+                    <http://www.w3.org/2004/02/skos/core#notation> "DQ_ThematicAccuracy"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:ThematicClassificationCorrectness a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                                     rdfs:label "Thematic classification correctness";
+                                     rdfs:subClassOf dq:ThematicAccuracy;
+                                     <http://www.w3.org/2004/02/skos/core#notation> "DQ_ThematicClassificationCorrectness"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:TopologicalConsistency a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                          rdfs:label "Topological consistency";
+                          rdfs:subClassOf dq:LogicalConsistency;
+                          <http://www.w3.org/2004/02/skos/core#notation> "DQ_TopologicalConsistency"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+dq:dateTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain dq:Element;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+            rdfs:label "date time";
+            rdfs:range xsd:dateTime.
+dq:errorStatistic a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain dq:QuantitativeResult;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                  rdfs:label "error statistic";
+                  rdfs:range xsd:string.
+dq:evaluationMethodDescription a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                               rdfs:domain dq:Element;
+                               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                               rdfs:label "evaluation method description";
+                               rdfs:range xsd:string.
+dq:evaluationMethodType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain dq:Element;
+                        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                        rdfs:label "evaluation method type";
+                        rdfs:range dq:EvaluationMethodTypeCode.
+dq:evaluationProcedure a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain dq:Element;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                       rdfs:label "evaluation procedure";
+                       rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation>.
+dq:explanation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain dq:ConformanceResult;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+               rdfs:label "explanation";
+               rdfs:range xsd:string.
+dq:extent a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain dq:Scope;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+          rdfs:label "extent";
+          rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#Extent>.
+dq:level a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+         rdfs:domain dq:Scope;
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+         rdfs:label "level";
+         rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ScopeCode>.
+dq:levelDescription a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain dq:Scope;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                    rdfs:label "level description";
+                    rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#ScopeDescription>.
+dq:lineage a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain dq:DataQuality;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+           rdfs:label "lineage";
+           rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage#Lineage>.
+dq:measureDescription a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:domain dq:Element;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                      rdfs:label "measure description";
+                      rdfs:range xsd:string.
+dq:measureIdentification a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain dq:Element;
+                         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                         rdfs:label "measure identification".
+dq:nameOfMeasure a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain dq:Element;
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                 rdfs:label "name of measure";
+                 rdfs:range xsd:string.
+dq:pass a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+        rdfs:domain dq:ConformanceResult;
+        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+        rdfs:label "pass";
+        rdfs:range xsd:boolean.
+dq:report a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain dq:DataQuality;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+          rdfs:label "report";
+          rdfs:range dq:Element.
+dq:result a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain dq:Element;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+          rdfs:label "result";
+          rdfs:range dq:Result.
+dq:scope a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+         rdfs:domain dq:DataQuality;
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+         rdfs:label "scope";
+         rdfs:range dq:Scope.
+dq:specification a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain dq:ConformanceResult;
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+                 rdfs:label "specification";
+                 rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation>.
+dq:value a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+         rdfs:domain dq:QuantitativeResult;
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+         rdfs:label "value".
+dq:valueType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain dq:QuantitativeResult;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+             rdfs:label "value type".
+dq:valueUnit a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain dq:QuantitativeResult;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>;
+             rdfs:label "unit of measure";
+             rdfs:subPropertyOf <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#uom>.

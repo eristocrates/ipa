@@ -1,0 +1,218 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ext: <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#>.
+
+<http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent> <http://purl.org/dc/elements/1.1/creator> """Simon Jonathan David COX
+CSIRO""";
+                                                            <http://purl.org/dc/elements/1.1/date> "2012-05-25T00:00:00"^^xsd:dateTime;
+                                                            <http://purl.org/dc/elements/1.1/description> " An OWL representation of parts of the Geographic Metadata model described in ISO 19115:2003 with Corrigendum 2006 - EX Package";
+                                                            <http://purl.org/dc/elements/1.1/source> """ISO 19115:2003
+ISO 19115:2006 Corrigendum""";
+                                                            <http://purl.org/dc/elements/1.1/title> "OWL representation of ISO 19115 (Geographic Information - Metadata - Extent package)";
+                                                            <http://purl.org/dc/terms/created> "2012-05-18T00:00:00"^^xsd:dateTime;
+                                                            <http://purl.org/dc/terms/hasPart> ext:GeographicBoundingBox,
+                                                                                               ext:westBoundLongitude,
+                                                                                               ext:VerticalExtent,
+                                                                                               ext:northBoundLatitude,
+                                                                                               ext:eastBoundLongitude,
+                                                                                               ext:TemporalExtent,
+                                                                                               ext:GeographicDescription,
+                                                                                               ext:description,
+                                                                                               ext:extent,
+                                                                                               ext:GeographicExtent,
+                                                                                               ext:minumumValue,
+                                                                                               ext:geographicIdentifier,
+                                                                                               ext:extentTypeCode,
+                                                                                               ext:SpatialTemporalExtent,
+                                                                                               ext:spatialExtent,
+                                                                                               ext:temporalElement,
+                                                                                               ext:BoundingPolygon,
+                                                                                               ext:verticalCRS,
+                                                                                               ext:geographicElement,
+                                                                                               ext:southBoundLatitude,
+                                                                                               ext:maximumValue,
+                                                                                               ext:polygon,
+                                                                                               ext:verticalElement,
+                                                                                               ext:Extent;
+                                                            <http://purl.org/dc/terms/modified> "2012-10-26T00:00:00"^^xsd:dateTime;
+                                                            a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                            <http://www.w3.org/2002/07/owl#imports> <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>,
+                                                                                                    <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic>,
+                                                                                                    <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+                                                            <http://www.w3.org/2002/07/owl#priorVersion> <https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201210/ISOTC211/HM/extent.rdf>;
+                                                            <http://www.w3.org/2002/07/owl#versionIRI> <https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201305/ISOTC211/HM/extent.rdf>.
+ext:BoundingPolygon a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                    rdfs:label "Bounding polygon";
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> ext:polygon ; 
+                                     <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Object> ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> ext:polygon ; 
+                                     <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    ext:GeographicExtent;
+                    <http://www.w3.org/2004/02/skos/core#notation> "EX_BoundingPolygon"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+ext:Extent a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+           rdfs:label "Extent";
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> ext:temporalElement ; 
+                            <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> ext:description ; 
+                            <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> ext:verticalElement ; 
+                            <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> ext:geographicElement ; 
+                            <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> ext:verticalElement ; 
+                            <http://www.w3.org/2002/07/owl#allValuesFrom> ext:VerticalExtent ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> ext:geographicElement ; 
+                            <http://www.w3.org/2002/07/owl#allValuesFrom> ext:GeographicExtent ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> ext:temporalElement ; 
+                            <http://www.w3.org/2002/07/owl#allValuesFrom> ext:TemporalExtent ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>];
+           <http://www.w3.org/2004/02/skos/core#notation> "EX_Extent"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+ext:GeographicBoundingBox a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                          rdfs:label "Geographic bounding box";
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> ext:eastBoundLongitude ; 
+                                           <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> ext:northBoundLatitude ; 
+                                           <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> ext:southBoundLatitude ; 
+                                           <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> ext:westBoundLongitude ; 
+                                           <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          ext:GeographicExtent;
+                          <http://www.w3.org/2004/02/skos/core#notation> "EX_GeographicBoundingBox"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+ext:GeographicDescription a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                          rdfs:label "Geographic description"@en;
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> ext:geographicIdentifier ; 
+                                           <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          ext:GeographicExtent;
+                          <http://www.w3.org/2004/02/skos/core#notation> "EX_GeographicDescription"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+ext:GeographicExtent a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                     rdfs:label "Geographic extent";
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> ext:extentTypeCode ; 
+                                      <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>];
+                     <http://www.w3.org/2004/02/skos/core#notation> "EX_GeographicExtent"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+ext:SpatialTemporalExtent a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                          rdfs:label "Spatial and temporal extent";
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> ext:spatialExtent ; 
+                                           <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          ext:TemporalExtent;
+                          <http://www.w3.org/2004/02/skos/core#notation> "EX_SpatialTemporalExtent"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+ext:TemporalExtent a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                   rdfs:label "Temporal extent";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> ext:extent ; 
+                                    <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>];
+                   <http://www.w3.org/2004/02/skos/core#notation> "EX_TemporalExtent"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+ext:VerticalExtent a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                   rdfs:label "Vertical extent";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> ext:maximumValue ; 
+                                    <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#onProperty> ext:minumumValue ; 
+                                    <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#onProperty> ext:verticalCRS ; 
+                                    <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>];
+                   <http://www.w3.org/2004/02/skos/core#notation> "EX_VerticalExtent"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+ext:description a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain ext:Extent;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                rdfs:label "description";
+                rdfs:range xsd:string.
+ext:eastBoundLongitude a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:domain ext:GeographicBoundingBox;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                       rdfs:label "east bound longitude";
+                       rdfs:range xsd:decimal.
+ext:extent a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain ext:TemporalExtent;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+           rdfs:label "extent";
+           rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal#Primitive>.
+ext:extentTypeCode a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:domain ext:GeographicExtent;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                   rdfs:label "extent type code";
+                   rdfs:range xsd:boolean.
+ext:geographicElement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain ext:Extent;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                      rdfs:label "geographic element";
+                      rdfs:range ext:GeographicExtent.
+ext:geographicIdentifier a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain ext:GeographicDescription;
+                         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                         rdfs:label "geographic identifier".
+ext:maximumValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain ext:VerticalExtent;
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                 rdfs:label "maximum value";
+                 rdfs:range xsd:double.
+ext:minumumValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain ext:VerticalExtent;
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                 rdfs:label "minumu value";
+                 rdfs:range xsd:double.
+ext:northBoundLatitude a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:domain ext:GeographicBoundingBox;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                       rdfs:label "north bound latitude";
+                       rdfs:range xsd:decimal.
+ext:polygon a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain ext:BoundingPolygon;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+            rdfs:label "polygon";
+            rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Object>.
+ext:southBoundLatitude a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:domain ext:GeographicBoundingBox;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                       rdfs:label "south bound latitude";
+                       rdfs:range xsd:decimal.
+ext:spatialExtent a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain ext:SpatialTemporalExtent;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                  rdfs:label "spatial extent";
+                  rdfs:range ext:GeographicExtent.
+ext:temporalElement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain ext:Extent;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                    rdfs:label "temporal element";
+                    rdfs:range ext:TemporalExtent.
+ext:verticalCRS a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain ext:VerticalExtent;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                rdfs:label "vertical CRS".
+ext:verticalElement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain ext:Extent;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                    rdfs:label "vertical element";
+                    rdfs:range ext:VerticalExtent.
+ext:westBoundLongitude a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:domain ext:GeographicBoundingBox;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>;
+                       rdfs:label "west bound longitude";
+                       rdfs:range xsd:decimal.

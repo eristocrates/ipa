@@ -1,0 +1,958 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix identitorg: <http://www.identity.org/ontologies/identity.owl#>.
+
+_:B4551082a6d30a7abc7bbc49cb2bde198 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:label "Day";
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> identitorg:DateYmd;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:gDay ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> identitorg:ymdDay ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:B685a2a3bcdf0844a61b515a300aca545 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (identitorg:FaceRecognition
+                                                                             identitorg:FingerprintRecognition
+                                                                             identitorg:IrisRecognition
+                                                                             identitorg:KeystokeDynamicRecognition
+                                                                             identitorg:VoiceRecognition).
+_:B7b3e579d5bbce3bceed76e4adea9f0f8 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:label "Month";
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> identitorg:DateYmd;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:gMonth ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> identitorg:ymdMonth ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:B9caaea1b0a2493d215f10c4fca8a74d0 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:label "Second";
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> identitorg:DateHms;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:time ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> identitorg:hmsSecond ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:Bb833e70adfa931609826f391217a611f a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:label "Month/Year";
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> identitorg:DateYmd;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:gMonthYear ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> identitorg:ymdMonthYear ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:Bc736edc6fa72860d47efb3c162ba93b0 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:label "Year/Month";
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> identitorg:DateYmd;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:gYearMonth ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> identitorg:ymdYearMonth ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:Bd7edadef0a9ac48ca8d2fef7d4c5fb64 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:label "Hour";
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> identitorg:DateHms;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:time ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> identitorg:hmsHour ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:Be181f4f5652ca5863a940238142abaab a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:label "Minute";
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> identitorg:DateHms;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:time ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> identitorg:hmsMinute ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:Be628a4f9471c11132caecdc0a0a9cbfb a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:label "Year";
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> identitorg:DateYmd;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:gYear ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> identitorg:ymdYear ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:Bf02cedf1ef87799f04b2e4b00ca0ad3d a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (identitorg:AlarmClockProvider
+                                                                             identitorg:BrowserProvider
+                                                                             identitorg:CallLogProvider
+                                                                             identitorg:ContactsContractProvider
+                                                                             identitorg:LiveFoldersProvider
+                                                                             identitorg:MediaStoreProvider
+                                                                             identitorg:SearchRecentSuggestionsProvider
+                                                                             identitorg:SettingsProvider
+                                                                             identitorg:SyncStateContractProvider
+                                                                             identitorg:UserDictionaryProvider).
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/type> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.identity.org/ontologies/identity.owl> <http://purl.org/dc/elements/1.1/creator> "Maroua Borsali";
+                                                  a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                  rdfs:comment "Ontologie de l'identité numérique."@fr,
+                                                               "Ontology of digital identity."@en;
+                                                  <http://www.w3.org/2002/07/owl#versionInfo> "v.2.0 basée sur les spécifications de P3P recommandées par 3WC."@fr.
+identitorg:Action a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "Action";
+                  rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+identitorg:Agent a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "Agent";
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> identitorg:IdentityInformation ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> identitorg:hasIdentity ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> identitorg:Data ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> identitorg:hasData ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 <http://www.w3.org/2002/07/owl#Thing>.
+identitorg:AlarmClockProvider a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:subClassOf identitorg:ContentProvider.
+identitorg:BiometricData a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:label "BiometricData";
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdf:XMLLiteral ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> identitorg:bimetricFile ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         identitorg:Data.
+identitorg:BrowserProvider a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf identitorg:ContentProvider.
+identitorg:Business a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Un business est une entité morale comme une organisation, une entreprise, une association ou une agence..."@fr,
+                                 "A business is a legal entity which is permitted to enter into a contract with another entity."@en;
+                    rdfs:label "Business";
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> identitorg:BusinessInformation ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> identitorg:hasIdentity ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    identitorg:Agent.
+identitorg:BusinessInformation a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Identité associée uniquement à une personne morale."@fr;
+                               rdfs:label "BusinessInformation";
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> identitorg:businessName ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#someValuesFrom> identitorg:ContactInformation ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> identitorg:hasContactInfo ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:anyType ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> identitorg:logo ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> identitorg:businessUnit ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               identitorg:IdentityInformation.
+identitorg:CallLogProvider a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf identitorg:ContentProvider.
+identitorg:CellPhoneData a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Les données correspondant à l'appareil mobile."@fr;
+                         rdfs:label "CellPhoneData";
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> identitorg:imei ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> identitorg:cellID ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> identitorg:languageCode ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         identitorg:Data.
+identitorg:Certificate a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Il s'agit de l'élèment de l'identité qui permettera l'authentification de l'utilisateur, du fournisseur de service ainsi que l'émetteur de l'identité."@fr,
+                                    "This structure is used to specify identity certificates."@en;
+                       rdfs:label "User or Organization Identity Certificate";
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> identitorg:key ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> identitorg:format ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> identitorg:Date ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> identitorg:hasExpirationDate ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       <http://www.w3.org/2002/07/owl#Thing>.
+identitorg:ChatAccount a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Compte de discussion en ligne."@fr;
+                       rdfs:label "ChatAccount";
+                       rdfs:subClassOf identitorg:OnlineAccount.
+identitorg:Condition a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "Condition";
+                     rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+identitorg:ContactInformation a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Les informations nécessaires pour contacter un agent."@fr,
+                                           "Required information to contact an agent."@en;
+                              rdfs:label "ContactInformation";
+                              rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+identitorg:ContactsContractProvider a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:subClassOf identitorg:ContentProvider.
+identitorg:ContentProvider a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf identitorg:Data.
+identitorg:Context a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "Context";
+                   rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+identitorg:Data a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:label "Data";
+                rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+identitorg:Date a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "The date structure specifies a date. Date information can be used in different ways, depending on the context."@en;
+                rdfs:label "Date";
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:time ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> identitorg:timeZone ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:time ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> identitorg:fractionSecond ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                <http://www.w3.org/2002/07/owl#Thing>.
+identitorg:DateHms a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "Date: Hour/Minute/Second";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:time ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> identitorg:hmsHour ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:time ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> identitorg:hmsMinute ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:time ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> identitorg:hmsDate ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:time ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> identitorg:hmsSecond ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   identitorg:Date.
+identitorg:DateYmd a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "Date: Year/Month/Day";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:gMonthYear ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> identitorg:ymdMonthYear ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:gYearMonth ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> identitorg:ymdYearMonth ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:gDay ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> identitorg:ymdDay ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:gMonth ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> identitorg:ymdMonth ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:date ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> identitorg:dateYmd ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:gYear ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> identitorg:ymdYear ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   identitorg:Date.
+identitorg:EcommerceAccount a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Compte d'achat en ligne. Il peut contenir des informations critiques comme les données bancaires."@fr;
+                            rdfs:label "EcommerceAccount";
+                            rdfs:subClassOf identitorg:OnlineAccount.
+identitorg:EncryptAlgo a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "Algorithme de chiffrement."@fr,
+                                  "EncryptAlgo";
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> identitorg:algo ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       identitorg:Data.
+identitorg:FaceRecognition a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:label "FaceRecognition";
+                           rdfs:subClassOf identitorg:BiometricData.
+identitorg:Fax <http://purl.org/dc/elements/1.1/type> "Physical Contact Information"@en;
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "Fax";
+               rdfs:subClassOf identitorg:Telecommunication.
+identitorg:FingerprintRecognition a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:label "FingerprintRecognition";
+                                  rdfs:subClassOf identitorg:BiometricData.
+identitorg:ForbiddenAction a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:label "ForbiddenAction";
+                           rdfs:subClassOf identitorg:Action.
+identitorg:GamingAccount a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Compte pour des jeux en ligne (gratuit ou payant)."@fr;
+                         rdfs:label "GamingAccount";
+                         rdfs:subClassOf identitorg:OnlineAccount.
+identitorg:Group a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Un groupe des personnes qui constituent la liste des contacts d'un individu."@fr,
+                              "A group of persons that figure in the contact list of an individual."@en;
+                 rdfs:label "Group";
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> identitorg:Person ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> identitorg:hasMember ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 identitorg:Individual.
+identitorg:History a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "History";
+                   rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+identitorg:IdentityInformation a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Les informations relatives à une identité numérique d'une personne physique ou morale."@fr,
+                                            "Identity information of a legal or natural entity."@en;
+                               rdfs:label "IdentityInformation";
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> identitorg:Certificate ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> identitorg:hasCertificate ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               <http://www.w3.org/2002/07/owl#Thing>.
+identitorg:Individual a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "L'ensemble des personnes physiques."@fr,
+                                   "Indivuals or natural entities."@en;
+                      rdfs:label "Individual";
+                      rdfs:subClassOf identitorg:Agent;
+                      <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#someValuesFrom> identitorg:IndividualInformation ; 
+                                                                       <http://www.w3.org/2002/07/owl#onProperty> identitorg:hasIdentity ; 
+                                                                       a <http://www.w3.org/2002/07/owl#Restriction>].
+identitorg:IndividualInformation a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Identité associée uniquement à une personne physique."@fr;
+                                 rdfs:label "IndividualInformation";
+                                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> identitorg:jobTitle ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> identitorg:Name ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> identitorg:hasName ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> identitorg:gender ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> identitorg:ContactInformation ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> identitorg:hasHomeInfo ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> identitorg:Login ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> identitorg:hasLogin ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> identitorg:Date ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> identitorg:hasBirthDate ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 identitorg:IdentityInformation,
+                                                 [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                                                                           <http://www.w3.org/2002/07/owl#onProperty> identitorg:businessUnit ; 
+                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                                                                           <http://www.w3.org/2002/07/owl#onProperty> identitorg:employer ; 
+                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                  a <http://www.w3.org/2002/07/owl#Class>].
+identitorg:InvalidCertificate a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:label "InvalidCertificate";
+                              rdfs:subClassOf identitorg:Certificate.
+identitorg:IrisRecognition a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:label "IrisRecognition";
+                           rdfs:subClassOf identitorg:BiometricData.
+identitorg:Issuer a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "L'émetteur d'une identité numérique (opérateur téléphonique par exemple)."@fr,
+                               "This legal entity is the issuer of an individual digital identity."@en;
+                  rdfs:label "Issuer";
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> identitorg:IdentityInformation ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> identitorg:isIssuerOf ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  identitorg:Business.
+identitorg:KeystokeDynamicRecognition a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:label "KeystokeDynamicRecognition";
+                                      rdfs:subClassOf identitorg:BiometricData.
+identitorg:LiveFoldersProvider a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:subClassOf identitorg:ContentProvider.
+identitorg:LocationData a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Les données de locations permettant de localiser le porteur de l'identité."@fr;
+                        rdfs:label "LocationData";
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> identitorg:wifi ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> identitorg:gps ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> identitorg:ip ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> identitorg:latitude ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> identitorg:longitude ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        identitorg:Data.
+identitorg:LogData a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "LogInformation",
+                              "LogInfo",
+                              "LogData";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> identitorg:ip ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> identitorg:Date ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> identitorg:timestamp ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> identitorg:uri ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> identitorg:callLog ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   identitorg:Data.
+identitorg:Login <http://purl.org/dc/elements/1.1/type> "Unique Identifiers"@en;
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "IDs ans Passwords for web services which require authentification."@en;
+                 rdfs:label "User's Login Information";
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> identitorg:password ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> identitorg:id ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 <http://www.w3.org/2002/07/owl#Thing>.
+identitorg:MediaStoreProvider a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:subClassOf identitorg:ContentProvider.
+identitorg:MiscData a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Photos, videos, sms, documents, notes, call logs, cookies..."@fr;
+                    rdfs:label "MiscData";
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> identitorg:cookie ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:anyType ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> identitorg:photo ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:anyType ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> identitorg:video ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:anyType ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> identitorg:document ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    identitorg:Data.
+identitorg:Mobile <http://purl.org/dc/elements/1.1/type> "Physical Contact Information"@en;
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "Mobile";
+                  rdfs:subClassOf identitorg:Telecommunication.
+identitorg:Mode a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:label "Mode";
+                rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+identitorg:Name <http://purl.org/dc/elements/1.1/type> "Physical Contact Information, Demographic and Socieconomic Data"@en;
+                a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "The person name specifies information about the naming of a person."@en;
+                rdfs:label "User's Name";
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> identitorg:nickName ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                <http://www.w3.org/2002/07/owl#Thing>,
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> identitorg:familyName ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> identitorg:givenName ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> identitorg:title ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> identitorg:middleName ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>].
+identitorg:Online <http://purl.org/dc/elements/1.1/type> "Online Contact Information"@en;
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Les adresses électroniques pour contacter un agent."@fr,
+                               "Online information about an agent."@en;
+                  rdfs:label "Online";
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> identitorg:email ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> identitorg:uri ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  identitorg:ContactInformation.
+identitorg:OnlineAccount a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Les comptes en ligne de l'utilisateur."@fr;
+                         rdfs:label "OnlineAccount";
+                         rdfs:subClassOf identitorg:Data.
+identitorg:Pager <http://purl.org/dc/elements/1.1/type> "Physical Contact Information"@en;
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "Pager";
+                 rdfs:subClassOf identitorg:Telecommunication.
+identitorg:PermittedAction a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:label "PermittedAction";
+                           rdfs:subClassOf identitorg:Action.
+identitorg:Person a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Une personne est un individu qui possède une identité numérique et qui cherche à protéger sa vie privée."@fr,
+                               "A person is an individual who has a social identity and a technical one."@en;
+                  rdfs:label "Person";
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> identitorg:Group ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> identitorg:knows ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  identitorg:Individual.
+identitorg:Policy a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "Policy";
+                  rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+identitorg:Postal <http://purl.org/dc/elements/1.1/type> "Physical Contact Information, Demographic and Socioeconomic Data"@en;
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Postal mailing address."@en;
+                  rdfs:label "Postal";
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> identitorg:number ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:integer ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> identitorg:postalCode ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> identitorg:city ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> identitorg:country ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> identitorg:region ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> identitorg:departmentName ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> identitorg:street ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:long ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> identitorg:departmentCode ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  identitorg:ContactInformation.
+identitorg:SearchRecentSuggestionsProvider a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:subClassOf identitorg:ContentProvider.
+identitorg:SecretData a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:label "SecretData";
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> identitorg:pin ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      identitorg:Data.
+identitorg:ServiceProvider a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Le fournisseur de services mobiles (application, jeu, site Web)"@fr,
+                                        "Provider of mobile phone services."@en;
+                           rdfs:label "ServiceProvider";
+                           rdfs:subClassOf identitorg:Business.
+identitorg:SettingsProvider a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf identitorg:ContentProvider.
+identitorg:SyncStateContractProvider a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:subClassOf identitorg:ContentProvider.
+identitorg:Telecommunication <http://purl.org/dc/elements/1.1/type> "Physical Contact Information"@en;
+                             a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Telecommunication information about an agnet."@en;
+                             rdfs:label "Telecommunication";
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> identitorg:TelephoneNumber ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> identitorg:hasTelephoneNumber ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             identitorg:ContactInformation.
+identitorg:Telephone <http://purl.org/dc/elements/1.1/type> "Physical Contact Information"@en;
+                     a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "Telephone";
+                     rdfs:subClassOf identitorg:Telecommunication.
+identitorg:TelephoneNumber a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "The characteristics of a telephone number."@en;
+                           rdfs:label "TelephoneNumber";
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:long ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> identitorg:phoneNumber ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:long ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> identitorg:phoneExtension ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:long ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> identitorg:localCode ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:long ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> identitorg:intCode ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           <http://www.w3.org/2002/07/owl#Thing>.
+identitorg:UID a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "L'identifiant unique d'une entité qui possède une identité (agent).";
+               rdfs:label "UID";
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:ID ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> identitorg:uid ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               <http://www.w3.org/2002/07/owl#Thing>.
+identitorg:UserDictionaryProvider a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:subClassOf identitorg:ContentProvider.
+identitorg:ValidCertificate a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:label "ValidCertificate";
+                            rdfs:subClassOf identitorg:Certificate.
+identitorg:VoiceRecognition a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:label "VoiceRecognition";
+                            rdfs:subClassOf identitorg:BiometricData.
+identitorg:age a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain identitorg:IndividualInformation;
+               rdfs:label "age";
+               rdfs:range xsd:duration.
+identitorg:algo a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain identitorg:EncryptAlgo;
+                rdfs:label "algo";
+                rdfs:subPropertyOf identitorg:data.
+identitorg:bimetricFile a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:domain identitorg:BiometricData;
+                        rdfs:label "bimetricFile";
+                        rdfs:subPropertyOf identitorg:data.
+identitorg:businessName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:domain identitorg:BusinessInformation;
+                        rdfs:label "businessName".
+identitorg:businessUnit <http://purl.org/dc/elements/1.1/type> "Demographic and Socieconomic Data"@en;
+                        a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "Department or Division of Organization and eventually where user is employed."@en;
+                        rdfs:domain identitorg:IdentityInformation;
+                        rdfs:label "businessUnit".
+identitorg:callLog a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:domain identitorg:LogData;
+                   rdfs:label "callLog";
+                   rdfs:subPropertyOf identitorg:data.
+identitorg:cellID a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "L'identifiant de l'appareil."@fr;
+                  rdfs:domain identitorg:CellPhoneData;
+                  rdfs:label "cellID";
+                  rdfs:subPropertyOf identitorg:data.
+identitorg:city <http://purl.org/dc/elements/1.1/type> "Demographic and Socioeconomic Data"@en;
+                a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain identitorg:Postal;
+                rdfs:label "city";
+                rdfs:subPropertyOf identitorg:postalAddress.
+identitorg:conservative a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          identitorg:Mode,
+                          <http://www.w3.org/2002/07/owl#Thing>;
+                        rdfs:label "conservative".
+identitorg:controls a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain identitorg:Policy;
+                    rdfs:label "controls";
+                    rdfs:range identitorg:Action.
+identitorg:cookie a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain identitorg:MiscData;
+                  rdfs:label "cookie";
+                  rdfs:subPropertyOf identitorg:data.
+identitorg:country <http://purl.org/dc/elements/1.1/type> "Demographic and Socioeconomic Data"@en;
+                   a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:isDefinedBy "The country field represents the information of the name of the country among the countries listed in ISO3166."@en;
+                   rdfs:label "country";
+                   rdfs:subPropertyOf identitorg:postalAddress.
+identitorg:createdOn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain identitorg:Policy;
+                     rdfs:label "createdOn";
+                     rdfs:range identitorg:Date.
+identitorg:data a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:label "data".
+identitorg:dateYmd a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment ""@en;
+                   rdfs:label "dateYmd";
+                   rdfs:subPropertyOf identitorg:timeDate.
+identitorg:departmentCode <http://purl.org/dc/elements/1.1/type> "Demographic and Socioeconomic Data"@en;
+                          a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:label "departmentCode";
+                          rdfs:subPropertyOf identitorg:postalAddress.
+identitorg:departmentName <http://purl.org/dc/elements/1.1/type> "Demographic and Socioeconomic Data"@en;
+                          a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:label "departmentName";
+                          rdfs:subPropertyOf identitorg:postalAddress.
+identitorg:document a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:domain identitorg:MiscData;
+                    rdfs:label "document";
+                    rdfs:subPropertyOf identitorg:data.
+identitorg:email <http://purl.org/dc/elements/1.1/type> "Online Contact Information"@en;
+                 a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain identitorg:Online;
+                 rdfs:label "email".
+identitorg:employer <http://purl.org/dc/elements/1.1/type> "Demographic and Socieconomic Data"@en;
+                    a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:domain identitorg:IndividualInformation;
+                    rdfs:label "employer".
+identitorg:extendedAddress <http://purl.org/dc/elements/1.1/type> "Demographic and Socioeconomic Data"@en;
+                           a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:label "extendedAddress";
+                           rdfs:subPropertyOf identitorg:postalAddress.
+identitorg:familyName <http://purl.org/dc/elements/1.1/type> "Physical Contact Information"@en;
+                      a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:label "familyName";
+                      rdfs:subPropertyOf identitorg:indivName.
+identitorg:forbids a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain identitorg:Policy;
+                   rdfs:label "forbids";
+                   rdfs:range identitorg:ForbiddenAction.
+identitorg:format <http://purl.org/dc/elements/1.1/type> "Unique Identifiers"@en;
+                  a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain identitorg:Certificate;
+                  rdfs:label "Certificate Format".
+identitorg:fractionSecond a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:label "fractionSecond";
+                          rdfs:subPropertyOf identitorg:timeDate.
+identitorg:gender <http://purl.org/dc/elements/1.1/type> "Demographic and Socieconomic Data"@en;
+                  a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain identitorg:IndividualInformation;
+                  rdfs:label "gender".
+identitorg:givenName <http://purl.org/dc/elements/1.1/type> "Physical Contact Information"@en;
+                     a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:label "givenName";
+                     rdfs:subPropertyOf identitorg:indivName.
+identitorg:gps a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment "Système de positionnement mondial."@fr,
+                            "Global Positioning System"@en;
+               rdfs:domain identitorg:LocationData;
+               rdfs:label "gps";
+               rdfs:subPropertyOf identitorg:data.
+identitorg:hasAction a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain identitorg:History;
+                     rdfs:range identitorg:Action.
+identitorg:hasActionDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:domain identitorg:History;
+                         rdfs:range rdfs:Literal.
+identitorg:hasActor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain identitorg:Action;
+                    rdfs:label "hasActor";
+                    rdfs:range identitorg:Agent.
+identitorg:hasBirthDate a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "Demographic and Socieconomic Data"@fr,
+                                     "User's Birthday"@en;
+                        rdfs:domain identitorg:IndividualInformation;
+                        rdfs:label "hasBirthDate";
+                        rdfs:range identitorg:Date;
+                        rdfs:subPropertyOf identitorg:hasDate.
+identitorg:hasCertificate a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain identitorg:IdentityInformation;
+                          rdfs:label "hasCertificate";
+                          rdfs:range identitorg:Certificate.
+identitorg:hasContactInfo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "Cette propriété associe un objet à une adresse, une adresse e-mail et à un numéro de téléphone."@fr;
+                          rdfs:domain identitorg:IdentityInformation;
+                          rdfs:label "hasContactInfo";
+                          rdfs:range identitorg:ContactInformation.
+identitorg:hasContext a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain identitorg:Action;
+                      rdfs:label "hasContext";
+                      rdfs:range identitorg:Context.
+identitorg:hasCreator a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain identitorg:Policy;
+                      rdfs:label "hasCreator";
+                      rdfs:range identitorg:Agent.
+identitorg:hasData a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain identitorg:Agent;
+                   rdfs:label "hasData";
+                   rdfs:range identitorg:Data.
+identitorg:hasDate a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:label "hasDate";
+                   rdfs:range identitorg:Date.
+identitorg:hasDefaultPolicyMode a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain identitorg:Policy;
+                                rdfs:label "hasDefaultPolicyMode";
+                                rdfs:range identitorg:Mode.
+identitorg:hasExpirationDate a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain identitorg:Certificate;
+                             rdfs:label "hasExpirationDate";
+                             rdfs:range identitorg:Date;
+                             rdfs:subPropertyOf identitorg:hasDate.
+identitorg:hasHistoricTarget a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:label "hasHistoricTarget".
+identitorg:hasHomeInfo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain identitorg:IndividualInformation;
+                       rdfs:label "hasHomeInfo";
+                       rdfs:range identitorg:ContactInformation;
+                       rdfs:subPropertyOf identitorg:hasContactInfo.
+identitorg:hasIdentity a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain identitorg:Agent;
+                       rdfs:label "hasIdentity";
+                       rdfs:range identitorg:IdentityInformation.
+identitorg:hasLocation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:label "hasLocation";
+                       rdfs:range identitorg:LocationData.
+identitorg:hasLogin a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain identitorg:IndividualInformation;
+                    rdfs:label "hasLogin";
+                    rdfs:range identitorg:Login.
+identitorg:hasMember a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain identitorg:Group;
+                     rdfs:label "hasMember";
+                     rdfs:range identitorg:Person.
+identitorg:hasName a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain identitorg:IndividualInformation;
+                   rdfs:label "hasName";
+                   rdfs:range identitorg:Name.
+identitorg:hasTarget a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain identitorg:Action;
+                     rdfs:label "hasTarget";
+                     rdfs:range identitorg:Data.
+identitorg:hasTelephoneNumber a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:domain identitorg:Telecommunication;
+                              rdfs:label "hasTelephoneNumber";
+                              rdfs:range identitorg:TelephoneNumber.
+identitorg:hasWorkInfo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain identitorg:IndividualInformation;
+                       rdfs:label "hasWorkInfo";
+                       rdfs:range identitorg:ContactInformation;
+                       rdfs:subPropertyOf identitorg:hasContactInfo.
+identitorg:hmsDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:label "hmsDate";
+                   rdfs:subPropertyOf identitorg:timeDate.
+identitorg:hmsHour a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:label "hmsHour";
+                   rdfs:subPropertyOf identitorg:timeDate.
+identitorg:hmsMinute a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:label "hmsMinute";
+                     rdfs:subPropertyOf identitorg:timeDate.
+identitorg:hmsSecond a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:label "hmsSecond";
+                     rdfs:subPropertyOf identitorg:timeDate.
+identitorg:id <http://purl.org/dc/elements/1.1/type> "Unique Identifiers"@en;
+              a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain identitorg:Login;
+              rdfs:label "Login ID"@en.
+identitorg:imei a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "L'identité internationale d'équipement mobile est un numéro qui permet d'identifier de manière unique chacun des terminaux de téléphonie mobile."@fr,
+                             "International Mobile Equipment Identity."@en;
+                rdfs:domain identitorg:CellPhoneData;
+                rdfs:label "imei";
+                rdfs:subPropertyOf identitorg:data.
+identitorg:indivName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:domain identitorg:IndividualInformation;
+                     rdfs:label "indivName".
+identitorg:intCode <http://purl.org/dc/elements/1.1/type> "Physical Contact Information"@en;
+                   a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "Code international, qui permet par exemple l'accès au service Roaming à l'étranger."@fr;
+                   rdfs:label "intCode";
+                   rdfs:subPropertyOf identitorg:telephoneNum.
+identitorg:ip a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:comment "Adresse IP du mobile."@fr;
+              rdfs:domain identitorg:LocationData;
+              rdfs:label "ip";
+              rdfs:subPropertyOf identitorg:data.
+identitorg:isIssuerOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain identitorg:Issuer;
+                      rdfs:label "isIssuerOf";
+                      rdfs:range identitorg:IndividualInformation.
+identitorg:jobTitle <http://purl.org/dc/elements/1.1/type> "Demographic and Socieconomic Data"@en;
+                    a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:domain identitorg:IndividualInformation;
+                    rdfs:label "jobTitle".
+identitorg:key <http://purl.org/dc/elements/1.1/type> "Unique Identifiers"@en;
+               a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment "Les clés secrètes et publiques associées à un certificat."@fr;
+               rdfs:domain identitorg:Certificate;
+               rdfs:label "Certificate Key"@en.
+identitorg:knows a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain identitorg:Person;
+                 rdfs:label "knows";
+                 rdfs:range identitorg:Group.
+identitorg:languageCode a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "Code du langage choisi par l'utilisateur."@fr;
+                        rdfs:domain identitorg:CellPhoneData;
+                        rdfs:label "languageCode";
+                        rdfs:subPropertyOf identitorg:data.
+identitorg:latitude a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:domain identitorg:LocationData;
+                    rdfs:label "latitude";
+                    rdfs:subPropertyOf identitorg:data.
+identitorg:liberal a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     identitorg:Mode,
+                     <http://www.w3.org/2002/07/owl#Thing>;
+                   rdfs:label "liberal".
+identitorg:localCode <http://purl.org/dc/elements/1.1/type> "Physical Contact Information"@en;
+                     a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:label "localCode";
+                     rdfs:subPropertyOf identitorg:telephoneNum.
+identitorg:logo a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain identitorg:BusinessInformation;
+                rdfs:label "logo".
+identitorg:longitude a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:domain identitorg:LocationData;
+                     rdfs:label "longitude";
+                     rdfs:subPropertyOf identitorg:data.
+identitorg:metaPolicy identitorg:hasDefaultPolicyMode identitorg:conservative;
+                      a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        identitorg:Policy,
+                        <http://www.w3.org/2002/07/owl#Thing>;
+                      rdfs:label "metaPolicy".
+identitorg:middleName <http://purl.org/dc/elements/1.1/type> "Physical Contact Information"@en;
+                      a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:label "middleName";
+                      rdfs:subPropertyOf identitorg:indivName.
+identitorg:nickName <http://purl.org/dc/elements/1.1/type> "Demographic and Socioeconomic Data"@en;
+                    a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:label "nickName";
+                    rdfs:subPropertyOf identitorg:indivName.
+identitorg:number <http://purl.org/dc/elements/1.1/type> "Physical Contact Information"@en;
+                  a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:label "number";
+                  rdfs:subPropertyOf identitorg:postalAddress.
+identitorg:password <http://purl.org/dc/elements/1.1/type> "Unique Identifiers"@en;
+                    a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:domain identitorg:Login;
+                    rdfs:label "Login password"@en.
+identitorg:permits a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain identitorg:Policy;
+                   rdfs:label "permits";
+                   rdfs:range identitorg:PermittedAction.
+identitorg:phoneExtension <http://purl.org/dc/elements/1.1/type> "Physical Contact Information"@en;
+                          a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:label "phoneExtension";
+                          rdfs:subPropertyOf identitorg:telephoneNum.
+identitorg:phoneNumber <http://purl.org/dc/elements/1.1/type> "Physical Contact Information"@en;
+                       a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:domain identitorg:TelephoneNumber;
+                       rdfs:label "phoneNumber";
+                       rdfs:subPropertyOf identitorg:telephoneNum.
+identitorg:photo a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain identitorg:MiscData;
+                 rdfs:label "photo";
+                 rdfs:subPropertyOf identitorg:data.
+identitorg:pin a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment "Code secret pour authentifier le porteur de l'identité."@fr,
+                            "A secret code to identify the identity holder."@en;
+               rdfs:domain identitorg:SecretData;
+               rdfs:label "pin";
+               rdfs:subPropertyOf identitorg:data.
+identitorg:postOfficeBox <http://purl.org/dc/elements/1.1/type> "Physical Contact Information"@en;
+                         a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:label "postOfficeBox";
+                         rdfs:subPropertyOf identitorg:postalAddress.
+identitorg:postalAddress a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:domain identitorg:Postal;
+                         rdfs:label "postalAddress".
+identitorg:postalCode <http://purl.org/dc/elements/1.1/type> "Demographic and Socioeconomic Data"@en;
+                      a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:label "postalCode";
+                      rdfs:subPropertyOf identitorg:postalAddress.
+identitorg:region <http://purl.org/dc/elements/1.1/type> "Demographic and Socioeconomic Data"@en;
+                  a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:label "region";
+                  rdfs:subPropertyOf identitorg:postalAddress.
+identitorg:requires a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain identitorg:Policy;
+                    rdfs:label "requires";
+                    rdfs:range identitorg:Condition.
+identitorg:street <http://purl.org/dc/elements/1.1/type> "Physical Contact Information"@en;
+                  a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:label "street";
+                  rdfs:subPropertyOf identitorg:postalAddress.
+identitorg:telephoneNum a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:domain identitorg:TelephoneNumber;
+                        rdfs:label "telephoneNum".
+identitorg:timeDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "Time date information is described in the time standard ISO8601."@en;
+                    rdfs:domain identitorg:Date;
+                    rdfs:label "timeDate".
+identitorg:timeZone a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "";
+                    rdfs:label "timeZone";
+                    rdfs:subPropertyOf identitorg:timeDate.
+identitorg:timestamp a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain identitorg:Data;
+                     rdfs:label "timestamp";
+                     rdfs:range identitorg:Date;
+                     rdfs:subPropertyOf identitorg:hasDate.
+identitorg:title <http://purl.org/dc/elements/1.1/type> "Demographic and Socioeconomic Data"@en;
+                 a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:label "title";
+                 rdfs:subPropertyOf identitorg:indivName.
+identitorg:uid a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain identitorg:UID;
+               rdfs:label "uid".
+identitorg:uri <http://purl.org/dc/elements/1.1/type> "Online Contact Information"@en;
+               a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:label "uri".
+identitorg:video a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain identitorg:MiscData;
+                 rdfs:label "video";
+                 rdfs:subPropertyOf identitorg:data.
+identitorg:wifi a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "Les données de connexion Wifi."@fr;
+                rdfs:domain identitorg:LocationData;
+                rdfs:label "wifi";
+                rdfs:subPropertyOf identitorg:data.
+identitorg:ymdDay a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:label "ymdDay";
+                  rdfs:subPropertyOf identitorg:timeDate.
+identitorg:ymdMonth a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:label "ymdMonth";
+                    rdfs:subPropertyOf identitorg:timeDate.
+identitorg:ymdMonthYear a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:label "ymdMonthYear";
+                        rdfs:subPropertyOf identitorg:timeDate.
+identitorg:ymdYear a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:label "ymdYear";
+                   rdfs:subPropertyOf identitorg:timeDate.
+identitorg:ymdYearMonth a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:label "ymdYearMonth";
+                        rdfs:subPropertyOf identitorg:timeDate.
+rdfs:comment a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:isDefinedBy a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:label a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+xsd:ID a rdfs:Datatype.
+xsd:anyType a rdfs:Datatype.
+xsd:date a rdfs:Datatype.
+xsd:duration a rdfs:Datatype.
+xsd:gDay a rdfs:Datatype.
+xsd:gMonth a rdfs:Datatype.
+xsd:gMonthYear a rdfs:Datatype.
+xsd:gYear a rdfs:Datatype.
+xsd:gYearMonth a rdfs:Datatype.
+xsd:time a rdfs:Datatype.
+<http://www.w3.org/2002/07/owl#Thing> a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "Identité numérique, agents et données."@fr.
+<http://www.w3.org/2002/07/owl#versionInfo> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.

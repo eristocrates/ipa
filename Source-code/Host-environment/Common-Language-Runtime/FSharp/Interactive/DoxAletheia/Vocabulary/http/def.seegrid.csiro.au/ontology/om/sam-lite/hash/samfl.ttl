@@ -1,0 +1,373 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix samfl: <http://def.seegrid.csiro.au/ontology/om/sam-lite#>.
+
+<http://def.seegrid.csiro.au/ontology/om/sam-lite> <http://purl.org/dc/elements/1.1/creator> """Simon Jonathan David COX
+CSIRO"""^^rdf:PlainLiteral;
+                                                   <http://purl.org/dc/elements/1.1/description> "A simple OWL representation of the Sampling Features Schema described in clauses 9-11 of ISO 19156:2011 Geographic Information - Observations and Measurements";
+                                                   <http://purl.org/dc/elements/1.1/rights> "Copyright © 2014, 2015 CSIRO";
+                                                   <http://purl.org/dc/elements/1.1/source> "ISO 19156:2011";
+                                                   <http://purl.org/dc/elements/1.1/title> "OWL for Sampling Features";
+                                                   <http://purl.org/dc/terms/created> "2014-10-07"^^xsd:date;
+                                                   <http://purl.org/dc/terms/creator> <http://registry.it.csiro.au/people/SimonJDCox>,
+                                                                                      <http://orcid.org/0000-0002-3884-3420>;
+                                                   <http://purl.org/dc/terms/hasPart> samfl:elevation,
+                                                                                      samfl:Process,
+                                                                                      samfl:complex,
+                                                                                      samfl:samplingElevation,
+                                                                                      samfl:materialClass,
+                                                                                      samfl:Measure,
+                                                                                      samfl:SamplingCurve,
+                                                                                      samfl:SamplingFeatureComplex,
+                                                                                      samfl:GeometryObject,
+                                                                                      samfl:Elevation,
+                                                                                      samfl:SamplingPoint,
+                                                                                      samfl:size,
+                                                                                      samfl:Specimen,
+                                                                                      samfl:Surface,
+                                                                                      samfl:Curve,
+                                                                                      samfl:samplingMethod,
+                                                                                      samfl:sampledFeature,
+                                                                                      samfl:SpatialSamplingFeature,
+                                                                                      samfl:Solid,
+                                                                                      samfl:shape,
+                                                                                      samfl:Location,
+                                                                                      samfl:SamplingCollection,
+                                                                                      samfl:role,
+                                                                                      samfl:relatedSamplingFeature,
+                                                                                      samfl:ObservationProcess,
+                                                                                      samfl:hostedProcedure,
+                                                                                      samfl:verticalDatum,
+                                                                                      samfl:SamplingSolid,
+                                                                                      samfl:SamplingSurface,
+                                                                                      samfl:currentLocation,
+                                                                                      samfl:Point,
+                                                                                      samfl:samplingLocation,
+                                                                                      samfl:samplingTime,
+                                                                                      samfl:SamplingFeature;
+                                                   <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/3.0/au/>;
+                                                   <http://purl.org/dc/terms/modified> "2015-11-17"^^xsd:date;
+                                                   <http://purl.org/vocab/vann/preferredNamespacePrefix> "saml:";
+                                                   <http://purl.org/vocab/vann/preferredNamespaceUri> samfl:;
+                                                   a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                   rdfs:comment """An OWL representation of the Sampling Features Schema described in clauses 9-11 of ISO 19156:2011 Geographic Information - Observations and Measurements. 
+In contrast to previous versions developed through SSN and in conjunction with ISO 19150-2, this ontology has minimal dependencies on existing ontologies, particularly those that trigger extended chains of imports. Stub classes are provided for time, geometry and measure (scaled number), which can be substituted at run-time by a suitable concrete representation of the concept. 
+The model for Specimen has a dependency on W3C PROV-O. Specimen is modelled as a subclass of prov:Entity, so PROV can be used to describe specimen preparation chains. """;
+                                                   rdfs:label "OWL for Sampling Features";
+                                                   <http://www.w3.org/2002/07/owl#imports> <http://purl.org/dc/elements/1.1/>,
+                                                                                           <http://www.w3.org/ns/prov>;
+                                                   <http://www.w3.org/2002/07/owl#priorVersion> <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                                                   <http://www.w3.org/2004/02/skos/core#changeNote> "2015-08-18 Added samfl:SamplingCollection class to domain of samfl:sampledFeature",
+                                                                                                    "2015-08-27 Added samfl:materialClass property, rdfs:domain samfl:Specimen",
+                                                                                                    "2015-09-18 Added samfl:samplingElevation property, rdfs:domain samfl:Specimen",
+                                                                                                    "2015-11-17 Added samfl:member property, with fixed domain (SamplingCollection) and range (SamplingFeature), in place of rdfs:member, which is not liked by OWL-API. ".
+samfl:Curve <http://purl.org/dc/terms/description> "1-D geometric object";
+            a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment """1-D geometric object
+
+This stub is included in the sam: ontology to support constraints on the sam:shape property of a sam:SamplingCurve.  An existing OWL class that represents the notion of a Curve may be asserted to be a sub-class of this stub, but without requiring use of any particular representation of Curve in the context of a sam:SamplingCurve instance.""";
+            rdfs:label "Spatial curve";
+            rdfs:subClassOf samfl:GeometryObject.
+samfl:Elevation <http://purl.org/dc/terms/description> "Simple model for elevation, expressed as a vertical offset from a datum";
+                a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Simple model for elevation, expressed as a vertical offset from a datum";
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                rdfs:label "Elevation";
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> samfl:elevation ; 
+                                 <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> samfl:verticalDatum ; 
+                                 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>].
+samfl:GeometryObject <http://purl.org/dc/terms/description> "Geometry object has properties relating to geometry, incuding positional and topological attributes, reference system, accuracy and precision. Might be geolocated. ";
+                     a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment """Geometry object has properties relating to geometry, incuding positional and topological attributes, reference system, accuracy and precision. Might be geolocated. 
+
+This stub is included in the sam: ontology to support references to geometry in various places.  An existing concrete OWL class that represents the notion of a geometry may be asserted to be a sub-class of this stub, without requiring use of a specific representation of Geometry in the context of sampling.""";
+                     rdfs:label "Geometry object";
+                     rdfs:subClassOf samfl:Location,
+                                     <http://www.w3.org/2002/07/owl#Thing>;
+                     <http://www.w3.org/2002/07/owl#equivalentClass> <http://def.seegrid.csiro.au/ontology/om/om-lite#GeometryObject>.
+samfl:Location <http://purl.org/dc/terms/description> "Location, expressed as either a geometry object or feature";
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment """Location, expressed as either a geometry object or feature
+
+samfl:GeometryObject is subclass
+
+w3geo:SpatialThing, geosparql:SpatialObject are subclasses""";
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+               rdfs:label "Location".
+samfl:Measure <http://purl.org/dc/terms/description> "Scaled number. ";
+              a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment """Scaled number. 
+
+This is an abstract class, which should be substituted by a suitable concrete representation of a measure or quantity at run-tme. 
+
+oml:SimpleMeasure <http://def.seegrid.csiro.au/ontology/om/om-lite#SimpleMeasure>
+qudt:QuantityValue <http://qudt.org/schema/qudt#QuantityValue> 
+DUL:Region <http://www.loa-cnr.it/ontologies/DUL.owl#Region> 
+
+are candidates. """;
+              rdfs:label "Measure or quantity";
+              <http://www.w3.org/2002/07/owl#equivalentClass> <http://def.seegrid.csiro.au/ontology/om/om-lite#MeasureObject>.
+samfl:ObservationProcess <http://purl.org/dc/terms/description> "Process used in an observation, including sensors, algorithms, computation methods";
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment """Process used in an observation, including sensors, algorithms, computation methods
+
+The result of application of an observation process is an observation result - i.e. an estimate of a property value.""";
+                         rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                         rdfs:label "Observation process"@en;
+                         <http://www.w3.org/2002/07/owl#equivalentClass> <http://def.seegrid.csiro.au/ontology/om/om-lite#Process>.
+samfl:Point <http://purl.org/dc/terms/description> "0-D geometric object";
+            a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment """0-D geometric object
+
+This stub is included in the sam: ontology to support constraints on the sam:shape property of a sam:SamplingPoint.  An existing OWL class that represents the notion of a Point may be asserted to be a sub-class of this stub, but without requiring use of any particular representation of Point in the context of a sam:SamplingPoint instance.""";
+            rdfs:label "Spatial point";
+            rdfs:subClassOf samfl:GeometryObject.
+samfl:Process <http://purl.org/dc/terms/description> "Agent, device, protocol, or plan involved in sampling. This may include specimen retrieval or processing, surveying a spatial sampling feature, excavation to provide access to a sampling feature, or any other process whose outcome is a new sampling feature.";
+              a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment """Agent, device, protocol, or plan responsible for transforming a sampling features. 
+
+The result of a application of a sampling process is a - new or - transformed sample. """;
+              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+              rdfs:label "Sampling process"@en;
+              <http://www.w3.org/2002/07/owl#disjointWith> samfl:ObservationProcess;
+              <http://www.w3.org/2002/07/owl#equivalentClass> samfl:SampleTransformationAgent.
+samfl:SampleTransformationAgent <http://purl.org/dc/terms/description> "Agent, device, protocol, or plan involved in sampling. This may include specimen retrieval or processing, surveying a spatial sampling feature, excavation to provide access to a sampling feature, or any other process whose outcome is a new sampling feature.";
+                                a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment """Agent, device, protocol, or plan responsible for transforming a sampling features. 
+
+The result of a operation of a sample trasnformation agent is a - new or - transformed sample. """;
+                                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling>;
+                                rdfs:label "Sample transformation agent"@en;
+                                <http://www.w3.org/2002/07/owl#disjointWith> samfl:ObservationProcess;
+                                <http://www.w3.org/2002/07/owl#equivalentClass> samfl:Process.
+samfl:SamplingCollection <http://purl.org/dc/terms/description> "Collection of features on which observations may be made, which are intended to be representative of one or more features that are not fully accessible for some reason. ";
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment """Collection of features on which observations may be made, which are intended to be representative of one or more features that are not fully accessible for some reason. 
+
+The features that the member sampling features are intended to sample may be indicated by one or more sampledFeature properties. If only one is present then it may be inferred that this is the sampled feature of all the member sampling features, unless locally overridden.""";
+                         rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                         rdfs:label "Collection of sampling features"@en;
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> samfl:member ; 
+                                          <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>].
+samfl:SamplingCurve <http://purl.org/dc/terms/description> "Spatial sampling feature whose shape is a 1-D manifold (Curve)";
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment """Spatial sampling feature whose shape is a 1-D manifold (Curve)
+
+Transect, traverse, flightline, cruise, trajectory, borehole, etc""";
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                    rdfs:label "Sampling curve"@en;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> samfl:shape ; 
+                                     <http://www.w3.org/2002/07/owl#allValuesFrom> samfl:Curve ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    samfl:SpatialSamplingFeature.
+samfl:SamplingFeature <http://purl.org/dc/terms/description> "Feature on which observations may be made, which is intended to be representative of a different (usually larger) feature that is not fully accessible for some reason. ";
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment """Feature on which observations may be made, which is intended to be representative of a different (usually larger) feature that is not fully accessible for some reason. 
+
+Sampling features are artefacts of an observational strategy, and have no significant function outside of their role in the observation process. The physical characteristics of the features themselves are of little interest, except perhaps to the manager of a sampling campaign.
+
+EXAMPLE A “station” is essentially an identifiable locality where a sensor system or procedure may be deployed and an observation made. In the context of the observation model, it connotes the “world in the vicinity of the station”, so the observed properties relate to the physical medium at the station, and not to any physical artefact such as a mooring, buoy, benchmark, monument, well, etc.
+
+NOTE A transient sampling feature, such as a ships-track or flight-line, might be identified and described, but is unlikely to be revisited exactly.
+
+A sampling feature is intended to sample some feature-of-interest in an application domain, so there is an expectation of at least one sampledFeature property. However, in some cases the identity, and even the exact type, of the sampled feature may not be known when observations are made using the sampling features.""",
+                                   "The value for the property 'sampledFeature' may be inherited from a container resource.";
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                      rdfs:label "Sampling Feature"@en;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> samfl:sampledFeature ; 
+                                       <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>].
+samfl:SamplingFeatureComplex <http://purl.org/dc/terms/description> "Resource that relates a sampling feature to another sampling feature with a role indicating the nature of the relationship. ";
+                             a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment """Resource that relates a sampling feature to another sampling feature with a role indicating the nature of the relationship. 
+
+Sampling features are frequently related to each other, as parts of complexes, through sub-sampling, and in other ways. If present, the association class SamplingFeatureComplex (Figure 9) shall link an SF_SamplingFeature to another SF_SamplingFeature.""";
+                             rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                             rdfs:label "Sampling feature complex"@en;
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> samfl:role ; 
+                                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#onProperty> samfl:relatedSamplingFeature ; 
+                                              <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>].
+samfl:SamplingPoint <http://purl.org/dc/terms/description> "Spatial sampling feature whose shape is a 0-D manifold (Point)";
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment """Spatial sampling feature whose shape is a 0-D manifold (Point)
+
+Often referred to as a 'station', 'pixel', 'probe-spot' etc.""";
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                    rdfs:label "Sampling point"@en;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> samfl:shape ; 
+                                     <http://www.w3.org/2002/07/owl#allValuesFrom> samfl:Point ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    samfl:SpatialSamplingFeature.
+samfl:SamplingSolid <http://purl.org/dc/terms/description> "Spatial sampling feature whose shape is a 3-D manifold (Solid)";
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Spatial sampling feature whose shape is a 3-D manifold (Solid)";
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                    rdfs:label "Sampling solid"@en;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> samfl:shape ; 
+                                     <http://www.w3.org/2002/07/owl#allValuesFrom> samfl:Solid ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    samfl:SpatialSamplingFeature.
+samfl:SamplingSurface <http://purl.org/dc/terms/description> "Spatial sampling feature whose shape is a 2-D manifold (Surface)";
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment """Spatial sampling feature whose shape is a 2-D manifold (Surface)
+
+Scene, swath, cross-section, level, quadrat, area-of-interest, fence, etc.""";
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                      rdfs:label "Sampling surface"@en;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> samfl:shape ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> samfl:Surface ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      samfl:SpatialSamplingFeature.
+samfl:Solid <http://purl.org/dc/terms/description> "3-D geometric object, whose exterior is a shell";
+            a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment """3-D geometric object, whose exterior is a shell
+
+This stub is included in the sam: ontology to support constraints on the sam:shape property of a sam:SamplingSolid.  An existing OWL class that represents the notion of a Solid may be asserted to be a sub-class of this stub, but without requiring use of any particular representation of Solid in the context of a sam:SamplingSolid instance.""";
+            rdfs:label "Spatial solid";
+            rdfs:subClassOf samfl:GeometryObject.
+samfl:SpatialSamplingFeature <http://purl.org/dc/terms/description> "Sampling feature whose defining characteristic is that it samples the intended feature by geometric subsetting.";
+                             a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment """Sampling feature whose defining characteristic is that it samples the intended feature by geometric subsetting.
+
+When observations are made to estimate properties of a geospatial feature, in particular where the value of a property varies within the scope of the feature, a spatial sampling feature is used. Depending on accessibility and on the nature of the expected property variation, the sampling feature may be extensive in one, two or three spatial dimensions. Processing and visualization methods are often dependent on the topological dimension of the sampling manifold, so this provides a natural classification system for sampling features.
+
+This classification follows common practice in focussing on conventional spatial dimensions. Properties observed on sampling features may be time-dependent, but the temporal axis does not generally contribute to the classification of sampling feature classes. Sampling feature identity is usually less time-dependent than the property value.""";
+                             rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                             rdfs:label "Spatial sampling feature"@en;
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> samfl:shape ; 
+                                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             samfl:SamplingFeature.
+samfl:Specimen <http://purl.org/dc/terms/description> "A Specimen is a physical sample, obtained for observation(s) normally carried out ex-situ, sometimes in a laboratory.";
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A Specimen is a physical sample, obtained for observation(s) normally carried out ex-situ, sometimes in a laboratory.";
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+               rdfs:label "Specimen"@en;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> samfl:samplingTime ; 
+                                <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               samfl:SamplingFeature,
+                               <http://www.w3.org/ns/prov#Entity>.
+samfl:Surface <http://purl.org/dc/terms/description> "2-D geometric object, whose exterior is a ring or polygon";
+              a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "This stub is included in the sam: ontology to support constraints on the sam:shape property of a sam:SamplingSurface.  An existing OWL class that represents the notion of a Surface may be asserted to be a sub-class of this stub, but without requiring use of any particular representation of Surface in the context of a sam:SamplingSurface instance.";
+              rdfs:label "Spatial surface";
+              rdfs:subClassOf samfl:GeometryObject.
+samfl:complex a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain samfl:SamplingFeature;
+              rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+              rdfs:label "sampling feature complex";
+              rdfs:range samfl:SamplingFeatureComplex.
+samfl:currentLocation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment """If present, the attribute currentLocation:Location shall describe the location of a physical specimen. This may be a storage location, such as a shelf in a warehouse or a drawer in a museum.
+
+NOTE If a specimen no longer exists, for example, it was destroyed in connection with an observation act, then the currentLocation should be omitted or carry a suitable null indicator.""";
+                      rdfs:domain samfl:Specimen;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                      rdfs:label "current location";
+                      rdfs:range samfl:Location;
+                      <http://www.w3.org/2004/02/skos/core#definition> """If present, the attribute currentLocation:Location shall describe the location of a physical specimen. This may be a storage location, such as a shelf in a warehouse or a drawer in a museum.
+
+NOTE If a specimen no longer exists, for example, it was destroyed in connection with an observation act, then the currentLocation should be omitted or carry a suitable null indicator.""".
+samfl:elevation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:label "vertical offset from a datum";
+                rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (xsd:float
+                                                                     xsd:double
+                                                                     xsd:decimal) ; 
+                            a rdfs:Datatype].
+samfl:hostedProcedure a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "A common role for a spatial sampling feature is to host instruments or procedures deployed repetitively or permanently. If present, the association Platform shall link the SF_SpatialSamplingFeature to an OM_Process deployed at it. The OM_Process has the role hostedProcedure with respect to the sampling feature.";
+                      rdfs:domain samfl:SpatialSamplingFeature;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                      rdfs:label "hosted procedure or instrument";
+                      rdfs:range samfl:ObservationProcess;
+                      <http://www.w3.org/2004/02/skos/core#definition> "A common role for a spatial sampling feature is to host instruments or procedures deployed repetitively or permanently. If present, the association Platform shall link the SF_SpatialSamplingFeature to an OM_Process deployed at it. The OM_Process has the role hostedProcedure with respect to the sampling feature.".
+samfl:materialClass a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment """Value should be taken from a vocabulary of material classes. 
+
+e.g. aqueous liquid, non-aqueous liquid, soil, rock, tissue, vegetation (broad case) or finer classifications if available""";
+                    rdfs:domain samfl:Specimen;
+                    rdfs:label "class of material".
+samfl:member a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain samfl:SamplingCollection;
+             rdfs:label "has member";
+             rdfs:range samfl:SamplingFeature.
+samfl:relatedSamplingFeature a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                             rdfs:label "related sampling feature";
+                             rdfs:range samfl:SamplingFeature.
+samfl:role a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain samfl:SamplingFeatureComplex;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+           rdfs:label "role".
+samfl:sampledFeature a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment """A sampling feature is established in order to make observations concerning some domain feature. The association Intention shall link the SF_SamplingFeature to the feature which the sampling feature was designed to sample. The target of this association has the role sampledFeature with respect to the sampling feature, and shall not be a sampling feature or observation. It is usually a real-world feature from an application domain (Figures 5 and 10).
+
+EXAMPLE A profile typically samples a water- or atmospheric-column; a well samples the water in an aquifer; a tissue specimen samples a part of an organism.""";
+                     rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (samfl:SamplingFeature
+                                                                           samfl:SamplingCollection) ; 
+                                  a <http://www.w3.org/2002/07/owl#Class>];
+                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                     rdfs:label "sampled feature";
+                     <http://www.w3.org/2004/02/skos/core#definition> """A sampling feature is established in order to make observations concerning some domain feature. The association Intention shall link the SF_SamplingFeature to the feature which the sampling feature was designed to sample. The target of this association has the role sampledFeature with respect to the sampling feature, and shall not be a sampling feature or observation. It is usually a real-world feature from an application domain (Figures 5 and 10).
+
+EXAMPLE A profile typically samples a water- or atmospheric-column; a well samples the water in an aquifer; a tissue specimen samples a part of an organism.""".
+samfl:samplingElevation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment """If present, the attribute samplingElevation shall describe the elevation from where the specimen was obtained, relative to the sampling location.
+
+NOTE Where a specimen has a relatedSamplingFeature whose location provides an unambiguous elevation then this attribute is not required. However, if the specific elevationat the location, then this attribute supports its description.""";
+                        rdfs:domain samfl:Specimen;
+                        rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                        rdfs:label "sampling elevation";
+                        rdfs:range samfl:Elevation;
+                        <http://www.w3.org/2004/02/skos/core#definition> """If present, the attribute samplingElevation shall describe the elevation from where the specimen was obtained, relative to the sampling location.
+
+NOTE Where a specimen has a relatedSamplingFeature whose location provides an unambiguous elevation then this attribute is not required. However, if the specific elevationat the location, then this attribute supports its description.""".
+samfl:samplingLocation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment """If present, the attribute samplingLocation:GM_Object shall describe the location from where the specimen was obtained.
+
+NOTE Where a specimen has a relatedSamplingFeature whose location provides an unambiguous location then this attribute is not required. However, if the specific sampling location within the sampledFeature is important, then this attribute supports its description.""";
+                       rdfs:domain samfl:Specimen;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                       rdfs:label "sampling location";
+                       rdfs:range samfl:Location;
+                       <http://www.w3.org/2004/02/skos/core#definition> """If present, the attribute samplingLocation:GM_Object shall describe the location from where the specimen was obtained.
+
+NOTE Where a specimen has a relatedSamplingFeature whose location provides an unambiguous location then this attribute is not required. However, if the specific sampling location within the sampledFeature is important, then this attribute supports its description.""".
+samfl:samplingMethod a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Process used to obtain the Specimen from its sampledFeature";
+                     rdfs:domain samfl:Specimen;
+                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                     rdfs:label "sampling method";
+                     rdfs:range samfl:Process.
+samfl:samplingTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                   rdfs:comment "samplingTime records when the specimen was retrieved from the sampled feature.";
+                   rdfs:domain samfl:Specimen;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+                   rdfs:label "sampling time";
+                   rdfs:range xsd:dateTime;
+                   <http://www.w3.org/2004/02/skos/core#definition> "samplingTime records when the specimen was retrieved from the sampled feature.".
+samfl:shape a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain samfl:SpatialSamplingFeature;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+            rdfs:label "spatial sampling feature shape";
+            rdfs:range samfl:GeometryObject;
+            <http://www.w3.org/2004/02/skos/core#definition> "The association Geometry shall link an SF_SpatialSamplingFeature to a GM_Object that describes its shape.".
+samfl:size a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain samfl:Specimen;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/ontology/om/sam-lite>;
+           rdfs:label "specimen size";
+           rdfs:range samfl:Measure;
+           <http://www.w3.org/2004/02/skos/core#definition> "the attribute size:Measure shall describe a physical extent of the specimen. This may be length, mass, volume, etc., as appropriate for the specimen instance and its material class.".
+samfl:verticalDatum a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:label "vertical (elevation) datum".

@@ -1,0 +1,270 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix aiiso: <http://purl.org/vocab/aiiso/schema#>.
+
+<http://creativecommons.org/licenses/by/2.0/uk/> <http://web.resource.org/cc/permits> <http://web.resource.org/cc/Reproduction>,
+                                                                                      <http://web.resource.org/cc/Distribution>,
+                                                                                      <http://web.resource.org/cc/DerivativeWorks>;
+                                                 <http://web.resource.org/cc/requires> <http://web.resource.org/cc/Notice>,
+                                                                                       <http://web.resource.org/cc/Attribution>;
+                                                 a <http://web.resource.org/cc/License>.
+<http://purl.org/vocab/aiiso/schema> <http://purl.org/dc/elements/1.1/contributor> "Ian Corns",
+                                                                                   "Sarah Bartlett",
+                                                                                   "Chris Wallace";
+                                     <http://purl.org/dc/elements/1.1/creator> "Rob Styles",
+                                                                               "Nadeem Shabir";
+                                     <http://purl.org/dc/elements/1.1/date> "2008-05-20";
+                                     <http://purl.org/dc/elements/1.1/identifier> "http://purl.org/vocab/aiiso/schema-20080925";
+                                     <http://purl.org/dc/elements/1.1/rights> "Copyright © 2008 Talis Information Ltd";
+                                     <http://purl.org/dc/elements/1.1/title> "Academic Institution Internal Structure Ontology (AIISO)"@en;
+                                     <http://purl.org/dc/terms/hasFormat> <http://purl.org/vocab/aiiso/schema-20080925.html>,
+                                                                          <http://purl.org/vocab/aiiso/schema-20080925.rdf>;
+                                     <http://purl.org/dc/terms/isVersionOf> aiiso:;
+                                     <http://purl.org/dc/terms/issued> "2008-05-14";
+                                     <http://purl.org/dc/terms/replaces> <http://purl.org/vocab/aiiso/schema-20080520>;
+                                     <http://purl.org/vocab/vann/preferredNamespacePrefix> "aiiso";
+                                     <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/vocab/aiiso/schema#";
+                                     <http://purl.org/vocab/vann/usageNote> <http://purl.org/vocab/aiiso/usagenote.html>;
+                                     <http://web.resource.org/cc/license> <http://creativecommons.org/licenses/by/2.0/uk/>;
+                                     a <http://www.w3.org/2002/07/owl#Ontology>,
+                                       <http://web.resource.org/cc/Work>;
+                                     rdfs:comment """
+			The Academic Institution Internal Structure Ontology (AIISO) provides classes and properties to describe the internal organizational structure of an academic institution. AIISO is designed to work in partnership with Participation (http://purl.org/vocab/participation/schema), FOAF (http://xmlns.com/foaf/0.1/) and aiiso-roles (http://purl.org/vocab/aiiso-roles/schema) to describe the roles that people play within an institution.
+    	"""@en;
+                                     <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/date> "2008-05-20" ; 
+                                                                                        <http://purl.org/dc/elements/1.1/creator> "Nadeem Shabir" ; 
+                                                                                        rdf:value "Added statement of responsibility for both knowledgeGrouping and organizationalUnit"],
+                                                                                       [<http://purl.org/dc/elements/1.1/date> "2008-09-25" ; 
+                                                                                        <http://purl.org/dc/elements/1.1/creator> "Rob Styles" ; 
+                                                                                        rdf:value "Changed subclassing to subclass from foaf:Organization and deprecated organizationalUnit"],
+                                                                                       [<http://purl.org/dc/elements/1.1/date> "2008-09-25" ; 
+                                                                                        <http://purl.org/dc/elements/1.1/creator> "Rob Styles" ; 
+                                                                                        rdf:value "Deprecated name in favour of foaf:name"],
+                                                                                       [<http://purl.org/dc/elements/1.1/date> "2008-05-14" ; 
+                                                                                        <http://purl.org/dc/elements/1.1/creator> "Rob Styles" ; 
+                                                                                        rdf:value "First cut of the ontology published"],
+                                                                                       [<http://purl.org/dc/elements/1.1/date> "2008-05-20" ; 
+                                                                                        <http://purl.org/dc/elements/1.1/creator> "Rob Styles" ; 
+                                                                                        rdf:value "Corrected classes with more than one possible domain class to use owl:unionOf"].
+aiiso:Center <http://purl.org/dc/terms/issued> "2008-05-14";
+             a rdfs:Class;
+             rdfs:comment "A Center is a group of people recognised by an organization as forming a cohesive group referred to by the organization as a center.";
+             rdfs:isDefinedBy aiiso:;
+             rdfs:label "Center"@en;
+             rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization>.
+aiiso:College <http://purl.org/dc/terms/issued> "2008-05-14";
+              a rdfs:Class;
+              rdfs:comment "A College is a group of people recognised by an organization as forming a cohesive group referred to by the organization as a college.";
+              rdfs:isDefinedBy aiiso:;
+              rdfs:label "College"@en;
+              rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization>.
+aiiso:Course <http://purl.org/dc/terms/issued> "2008-05-14";
+             a rdfs:Class;
+             rdfs:comment "A Course is a KnowledgeGrouping that represents a cohesive collection of educational material referred to by the owning organization as a course.";
+             rdfs:isDefinedBy aiiso:;
+             rdfs:label "Course"@en;
+             rdfs:subClassOf aiiso:KnowledgeGrouping.
+aiiso:Department <http://purl.org/dc/terms/issued> "2008-05-14";
+                 a rdfs:Class;
+                 rdfs:comment "A Department is a group of people recognised by an organization as forming a cohesive group referred to by the organization as a department.";
+                 rdfs:isDefinedBy aiiso:;
+                 rdfs:label "Department"@en;
+                 rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization>.
+aiiso:Division <http://purl.org/dc/terms/issued> "2008-05-14";
+               a rdfs:Class;
+               rdfs:comment "A Division is a group of people recognised by an organization as forming a cohesive group referred to by the organization as a division.";
+               rdfs:isDefinedBy aiiso:;
+               rdfs:label "Division"@en;
+               rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization>.
+aiiso:Faculty <http://purl.org/dc/terms/issued> "2008-05-14";
+              a rdfs:Class;
+              rdfs:comment "A Faculty is a group of people recognised by an organization as forming a cohesive group referred to by the organization as a faculty.";
+              rdfs:isDefinedBy aiiso:;
+              rdfs:label "Faculty"@en;
+              rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization>.
+aiiso:Institute <http://purl.org/dc/terms/issued> "2008-05-14";
+                a rdfs:Class;
+                rdfs:comment "An Institute is a group of people recognised by an organization as forming a cohesive group referred to by the organization as an institute.";
+                rdfs:isDefinedBy aiiso:;
+                rdfs:label "Institute"@en;
+                rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization>.
+aiiso:Institution <http://purl.org/dc/terms/issued> "2008-05-14";
+                  a rdfs:Class;
+                  rdfs:comment "An Institution is the upper most level of an academic institution.";
+                  rdfs:isDefinedBy aiiso:;
+                  rdfs:label "Institution"@en;
+                  rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization>.
+aiiso:KnowledgeGrouping <http://purl.org/dc/terms/issued> "2008-05-14";
+                        a rdfs:Class,
+                          <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "A KnowledgeGrouping represents a collection of resources, learning objectives, timetables, and other materials. The more specific subclasses of Subject, Programme, Course and Module are preferred.";
+                        rdfs:isDefinedBy aiiso:;
+                        rdfs:label "KnowledgeGrouping"@en;
+                        <http://www.w3.org/2002/07/owl#disjointWith> <http://xmlns.com/foaf/0.1/Organization>;
+                        <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/date> "2008-09-25" ; 
+                                                                           <http://purl.org/dc/elements/1.1/creator> "Rob Styles" ; 
+                                                                           rdf:value "Deprecated in favour of foaf:Organization"].
+aiiso:Module <http://purl.org/dc/terms/issued> "2008-05-14";
+             a rdfs:Class;
+             rdfs:comment "A Module is a KnowledgeGrouping that represents a cohesive collection of educational material referred to by the owning organization as a module.";
+             rdfs:isDefinedBy aiiso:;
+             rdfs:label "Module"@en;
+             rdfs:subClassOf aiiso:KnowledgeGrouping.
+aiiso:Programme <http://purl.org/dc/terms/issued> "2008-05-14";
+                a rdfs:Class;
+                rdfs:comment "A Programme is a KnowledgeGrouping that represents a cohesive collection of educational material referred to by the owning organization as a programme.";
+                rdfs:isDefinedBy aiiso:;
+                rdfs:label "Programme"@en;
+                rdfs:subClassOf aiiso:KnowledgeGrouping.
+aiiso:ResearchGroup <http://purl.org/dc/terms/issued> "2008-05-14";
+                    a rdfs:Class;
+                    rdfs:comment "A Research Group is a group of people recognised by an organization as forming a cohesive group referred to by the organization as a research group.";
+                    rdfs:isDefinedBy aiiso:;
+                    rdfs:label "Research Group"@en;
+                    rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization>.
+aiiso:School <http://purl.org/dc/terms/issued> "2008-05-14";
+             a rdfs:Class;
+             rdfs:comment "A School is a group of people recognised by an organization as forming a cohesive group referred to by the organization as a school. This class refers schools within a higher education institution such as 'Harvard Law School' it does not refer to schools involved in earlier education.";
+             rdfs:isDefinedBy aiiso:;
+             rdfs:label "School"@en;
+             rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization>.
+aiiso:Subject <http://purl.org/dc/terms/issued> "2008-05-14";
+              a rdfs:Class;
+              rdfs:comment "A Subject is a KnowledgeGrouping that represents a cohesive collection of educational material referred to by the owning organization as a subject.";
+              rdfs:isDefinedBy aiiso:;
+              rdfs:label "Subject"@en;
+              rdfs:subClassOf aiiso:KnowledgeGrouping.
+aiiso:code <http://purl.org/dc/terms/issued> "2008-05-14";
+           a rdf:Property;
+           rdfs:comment "The code used by an Institution to refer to a KnowledgeGrouping or Organization.";
+           rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (aiiso:KnowledgeGrouping
+                                                                 <http://xmlns.com/foaf/0.1/Organization>) ; 
+                        a <http://www.w3.org/2002/07/owl#Class>];
+           rdfs:isDefinedBy aiiso:;
+           rdfs:label "code"@en;
+           rdfs:range xsd:string;
+           <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/date> "2008-05-20" ; 
+                                                              <http://purl.org/dc/elements/1.1/creator> "Rob Styles" ; 
+                                                              rdf:value "Corrected the domain to use an owl:unionOf the two classes, allowing subjects of this property to be either a Knowledge Grouping or an organizational Unit rather than having to be both."].
+aiiso:description <http://purl.org/dc/terms/issued> "2008-05-14";
+                  a rdf:Property;
+                  rdfs:comment "A Description of the KnowledgeGrouping or Organization.";
+                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (aiiso:KnowledgeGrouping
+                                                                        <http://xmlns.com/foaf/0.1/Organization>) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>];
+                  rdfs:isDefinedBy aiiso:;
+                  rdfs:label "description"@en;
+                  rdfs:range xsd:string;
+                  <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/date> "2008-05-20" ; 
+                                                                     <http://purl.org/dc/elements/1.1/creator> "Rob Styles" ; 
+                                                                     rdf:value "Corrected the domain to use an owl:unionOf the two classes, allowing subjects of this property to be either a Knowledge Grouping or an organizational Unit rather than having to be both."].
+aiiso:knowledgeGrouping <http://purl.org/dc/terms/issued> "2008-05-14";
+                        a rdf:Property;
+                        rdfs:comment "A KnowledgeGrouping may be contained by another KnowledgeGrouping or an organizationalUnit using knowledgeGrouping.";
+                        rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (aiiso:KnowledgeGrouping
+                                                                              <http://xmlns.com/foaf/0.1/Organization>) ; 
+                                     a <http://www.w3.org/2002/07/owl#Class>];
+                        rdfs:isDefinedBy aiiso:;
+                        rdfs:label "knowledgeGrouping"@en;
+                        rdfs:range aiiso:KnowledgeGrouping;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Deprecated";
+                        <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/date> "2008-05-20" ; 
+                                                                           <http://purl.org/dc/elements/1.1/creator> "Rob Styles" ; 
+                                                                           rdf:value "Corrected the domain to use an owl:unionOf the two classes, allowing subjects of this property to be either a Knowledge Grouping or an organizational Unit rather than having to be both."],
+                                                                          [<http://purl.org/dc/elements/1.1/date> "2008-09-25" ; 
+                                                                           <http://purl.org/dc/elements/1.1/creator> "Rob Styles" ; 
+                                                                           rdf:value "Deprecated due to poor and ambiguous naming"].
+aiiso:name <http://purl.org/dc/terms/issued> "2008-05-14";
+           a rdf:Property;
+           rdfs:comment "Deprecated in favour of foaf:name. The name given to a KnowledgeGrouping or Organization.";
+           rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (aiiso:KnowledgeGrouping
+                                                                 <http://xmlns.com/foaf/0.1/Organization>) ; 
+                        a <http://www.w3.org/2002/07/owl#Class>];
+           rdfs:isDefinedBy aiiso:;
+           rdfs:label "name"@en;
+           rdfs:range xsd:string;
+           rdfs:subPropertyOf rdfs:Label;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Deprecated";
+           <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/date> "2008-09-25" ; 
+                                                              <http://purl.org/dc/elements/1.1/creator> "Rob Styles" ; 
+                                                              rdf:value "Deprecated in favour of foaf:name"],
+                                                             [<http://purl.org/dc/elements/1.1/date> "2008-05-20" ; 
+                                                              <http://purl.org/dc/elements/1.1/creator> "Rob Styles" ; 
+                                                              rdf:value "Corrected the domain to use an owl:unionOf the two classes, allowing subjects of this property to be either a Knowledge Grouping or an organizational Unit rather than having to be both."].
+aiiso:organization <http://purl.org/dc/terms/issued> "2008-09-25";
+                   a rdf:Property;
+                   rdfs:comment "A foaf Organization may contain other subsidiary Organizations using organization.";
+                   rdfs:domain <http://xmlns.com/foaf/0.1/Organization>;
+                   rdfs:isDefinedBy aiiso:;
+                   rdfs:label "organization"@en;
+                   rdfs:range <http://xmlns.com/foaf/0.1/Organization>;
+                   <http://www.w3.org/2002/07/owl#inverseOf> aiiso:part_of;
+                   <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/date> "2008-09-25" ; 
+                                                                      <http://purl.org/dc/elements/1.1/creator> "Rob Styles" ; 
+                                                                      rdf:value "introduced to replace organizationalUnit"].
+aiiso:organizationalUnit <http://purl.org/dc/terms/issued> "2008-05-14";
+                         a rdf:Property,
+                           rdfs:Class;
+                         rdfs:comment "Deprecated due to poor naming, you should use organization and part_of instead. An organizationalUnit may contain other organizationalUnits using organizationalUnit.",
+                                      "organizationalUnit is now deprecated, it was used to describe a group of people that form a part of an organizations institutional hierarchy. More specific classes of Institution, Department, Faculty, School, College, Center, Division and Institute exist were previously subclassed from here. They now subclass foaf:Organization.";
+                         rdfs:domain <http://xmlns.com/foaf/0.1/Organization>;
+                         rdfs:isDefinedBy aiiso:;
+                         rdfs:label "organizational Unit"@en,
+                                    "organizationalUnit"@en;
+                         rdfs:range <http://xmlns.com/foaf/0.1/Organization>;
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Deprecated";
+                         <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/date> "2008-09-25" ; 
+                                                                            <http://purl.org/dc/elements/1.1/creator> "Rob Styles" ; 
+                                                                            rdf:value "Deprecated due to poor and ambiguous naming"],
+                                                                           [<http://purl.org/dc/elements/1.1/date> "2008-09-25" ; 
+                                                                            <http://purl.org/dc/elements/1.1/creator> "Rob Styles" ; 
+                                                                            rdf:value "Deprecated in favour of foaf:Organization"].
+aiiso:part_of <http://purl.org/dc/terms/issued> "2008-09-25";
+              a rdf:Property;
+              rdfs:comment "A foaf Organization may refer to its parent Organizations using part_of.";
+              rdfs:domain <http://xmlns.com/foaf/0.1/Organization>;
+              rdfs:isDefinedBy aiiso:;
+              rdfs:label "part of"@en;
+              rdfs:range <http://xmlns.com/foaf/0.1/Organization>;
+              <http://www.w3.org/2002/07/owl#inverseOf> aiiso:organization;
+              <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/date> "2008-09-25" ; 
+                                                                 <http://purl.org/dc/elements/1.1/creator> "Rob Styles" ; 
+                                                                 rdf:value "introduced to replace organizationalUnit"].
+aiiso:responsibilityOf <http://purl.org/dc/terms/issued> "2008-05-20";
+                       a rdf:Property;
+                       rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (aiiso:KnowledgeGrouping
+                                                                             <http://xmlns.com/foaf/0.1/Organization>) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>];
+                       rdfs:isDefinedBy aiiso:;
+                       rdfs:label "responsibility of"@en;
+                       rdfs:range <http://xmlns.com/foaf/spec/Agent>;
+                       <http://www.w3.org/2002/07/owl#inverseOf> aiiso:responsibleFor.
+aiiso:responsibleFor <http://purl.org/dc/terms/issued> "2008-09-25";
+                     a rdf:Property;
+                     rdfs:domain <http://xmlns.com/foaf/spec/Agent>;
+                     rdfs:isDefinedBy aiiso:;
+                     rdfs:label "responsible for"@en;
+                     rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (aiiso:KnowledgeGrouping
+                                                                          <http://xmlns.com/foaf/0.1/Organization>) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>];
+                     <http://www.w3.org/2002/07/owl#inverseOf> aiiso:responsibilityOf;
+                     <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/date> "2008-09-25" ; 
+                                                                        <http://purl.org/dc/elements/1.1/creator> "Rob Styles" ; 
+                                                                        rdf:value "Added as inverse of Responsibility Of"].
+aiiso:teaches <http://purl.org/dc/terms/issued> "2008-09-25";
+              a rdf:Property;
+              rdfs:comment "An organization may specify the Knowledge Groupings that it teaches using this property.";
+              rdfs:domain <http://xmlns.com/foaf/0.1/Organization>;
+              rdfs:isDefinedBy aiiso:;
+              rdfs:label "teaches"@en;
+              rdfs:range aiiso:KnowledgeGrouping.
+<http://purl.org/vocab/aiiso/schema-20080925.html> <http://purl.org/dc/elements/1.1/format> [rdfs:label "HTML"@en ; 
+                                                                                             rdf:value "text/html" ; 
+                                                                                             a <http://purl.org/dc/terms/IMT>];
+                                                   a <http://purl.org/dc/dcmitype/Text>.
+<http://purl.org/vocab/aiiso/schema-20080925.rdf> <http://purl.org/dc/elements/1.1/format> [rdfs:label "RDF"@en ; 
+                                                                                            rdf:value "application/rdf+xml" ; 
+                                                                                            a <http://purl.org/dc/terms/IMT>];
+                                                  a <http://purl.org/dc/dcmitype/Text>.
+<http://xmlns.com/foaf/0.1/Organization> a <http://www.w3.org/2002/07/owl#Class>.

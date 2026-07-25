@@ -1,0 +1,53 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix uneskos: <http://purl.org/umu/uneskos#>.
+
+<http://purl.org/umu/uneskos> <http://purl.org/dc/elements/1.1/date> "2015-09-10"^^xsd:date;
+                              <http://purl.org/dc/terms/created> "2014-05-23"^^xsd:date;
+                              <http://purl.org/dc/terms/creator> [<http://xmlns.com/foaf/0.1/name> "Juan-Antonio Pastor-Sánchez"];
+                              <http://purl.org/dc/terms/description> "An RDF vocabulary for extending some SKOS and ISO-THES functions in order to improve the linked data consumption of SKOS datasets"@en;
+                              <http://purl.org/dc/terms/modified> "2015-09-10"^^xsd:date;
+                              <http://purl.org/dc/terms/title> "UNESKOS Vocabulary"@en;
+                              a <http://www.w3.org/2002/07/owl#Ontology>;
+                              rdfs:seeAlso <http://skos.um.es/TR/uneskos>,
+                                           <http://skos.um.es/TR/uneskos-reference/>;
+                              <http://www.w3.org/2002/07/owl#imports> <http://purl.org/iso25964/skos-thes>,
+                                                                      <http://www.w3.org/2004/02/skos/core>.
+uneskos:contains a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                 rdfs:isDefinedBy <http://purl.org/umu/uneskos>;
+                 rdfs:label "contains element"@en;
+                 <http://www.w3.org/2002/07/owl#inverseOf> <http://www.w3.org/2004/02/skos/core#inScheme>;
+                 <http://www.w3.org/2004/02/skos/core#definition> "Relates a concept scheme with any resource."@en.
+uneskos:hasMainConcept a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain <http://www.w3.org/2004/02/skos/core#Collection>;
+                       rdfs:isDefinedBy <http://purl.org/umu/uneskos>;
+                       rdfs:label "has main concept"@en;
+                       rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>;
+                       rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#member>;
+                       <http://www.w3.org/2004/02/skos/core#definition> "Identifies access point concepts into a skos:Collection."@en.
+uneskos:hasMicroThesaurus a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                          rdfs:isDefinedBy <http://purl.org/umu/uneskos>;
+                          rdfs:label "has Microthesaurus"@en;
+                          rdfs:range <http://purl.org/iso25964/skos-thes#ConceptGroup>;
+                          <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/iso25964/skos-thes#microThesaurusOf>;
+                          <http://www.w3.org/2004/02/skos/core#definition> "Relates a Concept Scheme with a ConceptGroup."@en.
+uneskos:mainConceptOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain <http://www.w3.org/2004/02/skos/core#Concept>;
+                      rdfs:isDefinedBy <http://skos.um.es/voc/uneskos>;
+                      rdfs:label "is main concept in Collection"@en;
+                      rdfs:range <http://www.w3.org/2004/02/skos/core#Collection>;
+                      rdfs:subPropertyOf uneskos:memberOf;
+                      <http://www.w3.org/2002/07/owl#inverseOf> uneskos:hasMainConcept;
+                      <http://www.w3.org/2004/02/skos/core#definition> "Relates a concept to a Collection as a access point."@en.
+uneskos:memberOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://www.w3.org/2004/02/skos/core#Collection>
+                                                                       <http://www.w3.org/2004/02/skos/core#Concept>) ; 
+                              a <http://www.w3.org/2002/07/owl#Class>];
+                 rdfs:isDefinedBy <http://purl.org/umu/uneskos>;
+                 rdfs:label "member of"@en;
+                 rdfs:range <http://www.w3.org/2004/02/skos/core#Collection>;
+                 <http://www.w3.org/2002/07/owl#inverseOf> <http://www.w3.org/2004/02/skos/core#member>;
+                 <http://www.w3.org/2004/02/skos/core#definition> "Identifies a concept collection."@en.

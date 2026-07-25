@@ -19,15 +19,6 @@ module environ =
         Prefixed_Name(environ, "CommunityEnvironment") |> PrefixedName
 
     /// <summary>
-    ///   <para>environ:Home</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>home</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/environment#Home">http://eulersharp.sourceforge.net/2003/03swap/environment#Home</seealso>
-    let Home = Prefixed_Name(environ, "Home") |> PrefixedName
-    /// <summary>
     ///   <para>environ:hasEnvironment</para>
     /// </summary>
     /// <remarks>
@@ -35,12 +26,6 @@ module environ =
     /// </remarks>
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/environment#hasEnvironment">http://eulersharp.sourceforge.net/2003/03swap/environment#hasEnvironment</seealso>
     let hasEnvironment = Prefixed_Name(environ, "hasEnvironment") |> PrefixedName
-    /// <summary>
-    ///   <para>environ:</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/environment#">http://eulersharp.sourceforge.net/2003/03swap/environment#</seealso>
-    let _prefix_iri = Prefixed_Name(environ, "") |> PrefixedName
     /// <summary>
     ///   <para>environ:Environment</para>
     /// </summary>
@@ -50,6 +35,21 @@ module environ =
     /// labels<para>environment</para></remarks>
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/environment#Environment">http://eulersharp.sourceforge.net/2003/03swap/environment#Environment</seealso>
     let Environment = Prefixed_Name(environ, "Environment") |> PrefixedName
+    /// <summary>
+    ///   <para>environ:Home</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>home</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/environment#Home">http://eulersharp.sourceforge.net/2003/03swap/environment#Home</seealso>
+    let Home = Prefixed_Name(environ, "Home") |> PrefixedName
+    /// <summary>
+    ///   <para>environ:</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/environment#">http://eulersharp.sourceforge.net/2003/03swap/environment#</seealso>
+    let _prefix_iri = Prefixed_Name(environ, "") |> PrefixedName
 
     /// <summary>
     ///   <para>environ:HumanCommunityEnvironment</para>

@@ -1,0 +1,122 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix llont: <http://www.linklion.org/ontology#>.
+
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://rdfs.org/ns/void#Dataset> a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:subClassOf <http://www.w3.org/ns/prov#Entity>.
+<http://usefulinc.com/ns/doap#Project> a <http://www.w3.org/2002/07/owl#Class>.
+<http://usefulinc.com/ns/doap#Version> a <http://www.w3.org/2002/07/owl#Class>.
+<http://usefulinc.com/ns/doap#release> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                         <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>.
+<http://usefulinc.com/ns/doap#revision> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.linklion.org/ontology> a <http://www.w3.org/2002/07/owl#Ontology>;
+                                   rdfs:isDefinedBy "http://www.linklion.org/ontology";
+                                   rdfs:label "LinkLion - the Link Discovery Portal"@en;
+                                   <http://www.w3.org/2002/07/owl#versionInfo> "0.1"@en.
+llont:Algorithm a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:label "Algorithm"@en;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> llont:parameters ; 
+                                 <http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#wasAssociatedWith> ; 
+                                 <http://www.w3.org/2002/07/owl#onClass> llont:LDFrameworkVersion ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> <http://xmlns.com/foaf/0.1/name> ; 
+                                 <http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#generatedAtTime> ; 
+                                 <http://www.w3.org/2002/07/owl#onDataRange> xsd:dateTime ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                <http://www.w3.org/ns/prov#Activity>.
+llont:LDFramework a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "Link Discovery Framework"@en;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> <http://xmlns.com/foaf/0.1/name> ; 
+                                   <http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  <http://usefulinc.com/ns/doap#Project>,
+                                  <http://www.w3.org/ns/prov#Agent>.
+llont:LDFrameworkVersion a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:label "Link Discovery Framework Version"@en;
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/dc/terms/license> ; 
+                                          <http://www.w3.org/2002/07/owl#onDataRange> xsd:anyURI ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> <http://xmlns.com/foaf/0.1/name> ; 
+                                          <http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         <http://usefulinc.com/ns/doap#Version>,
+                                         <http://www.w3.org/ns/prov#Agent>.
+llont:Link a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:label "Link"@en;
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> rdf:predicate ; 
+                            <http://www.w3.org/2002/07/owl#onClass> rdfs:Resource ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> rdf:subject ; 
+                            <http://www.w3.org/2002/07/owl#onClass> rdfs:Resource ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> rdf:object ; 
+                            <http://www.w3.org/2002/07/owl#onClass> rdfs:Resource ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#wasDerivedFrom> ; 
+                            <http://www.w3.org/2002/07/owl#onClass> llont:Mapping ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           <http://www.w3.org/ns/prov#Entity>.
+llont:Mapping a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:label "Mapping"@en;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> llont:storedAt ; 
+                               <http://www.w3.org/2002/07/owl#onDataRange> xsd:anyURI ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> llont:hasSource ; 
+                               <http://www.w3.org/2002/07/owl#onClass> <http://rdfs.org/ns/void#Dataset> ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#generatedAtTime> ; 
+                               <http://www.w3.org/2002/07/owl#onDataRange> xsd:dateTime ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> llont:hasTarget ; 
+                               <http://www.w3.org/2002/07/owl#onClass> <http://rdfs.org/ns/void#Dataset> ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              <http://www.w3.org/ns/prov#Entity>.
+llont:hasSource a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain llont:Mapping;
+                rdfs:range <http://rdfs.org/ns/void#Dataset>.
+llont:hasTarget a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain llont:Mapping;
+                rdfs:range <http://rdfs.org/ns/void#Dataset>.
+llont:parameters a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain llont:Algorithm;
+                 rdfs:range xsd:string.
+llont:storedAt a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain llont:Mapping;
+               rdfs:range xsd:anyURI.
+rdf:object a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+rdf:predicate a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+rdf:subject a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+rdfs:Resource a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/ns/prov#Activity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/ns/prov#Agent> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/ns/prov#Entity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/ns/prov#generatedAtTime> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (llont:Algorithm
+                                                                                                  llont:Mapping) ; 
+                                                         a <http://www.w3.org/2002/07/owl#Class>];
+                                            rdfs:range xsd:dateTime.
+<http://www.w3.org/ns/prov#wasAssociatedWith> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.w3.org/ns/prov#wasDerivedFrom> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.w3.org/ns/prov#wasGeneratedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://xmlns.com/foaf/0.1/name> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.

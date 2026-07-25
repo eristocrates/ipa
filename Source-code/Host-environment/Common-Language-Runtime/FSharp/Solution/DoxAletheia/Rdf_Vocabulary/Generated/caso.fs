@@ -6,6 +6,29 @@ open type Prefix_ID
 
 module caso =
     let _namespace_iri = Namespace_Iri caso |> NamespaceIRI
+
+    /// <summary>
+    ///   <para>caso:hasClosedLowerBoundary</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>has closed lower boundary - Relation from a State to its lower Boundary. The State is reached when the associated state value is equal or superior to the lower Boundary value.</para>
+    /// labels<para>has closed lower boundary</para></remarks>
+    /// <seealso href="http://www.w3id.org/def/caso#hasClosedLowerBoundary">http://www.w3id.org/def/caso#hasClosedLowerBoundary</seealso>
+    let hasClosedLowerBoundary =
+        Prefixed_Name(caso, "hasClosedLowerBoundary") |> PrefixedName
+
+    /// <summary>
+    ///   <para>caso:hasOpenLowerBoundary</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>has open lower boundary - Relation from a State to its lower Boundary. The State is reached when the associated state value is superior to the lower Boundary value.</para>
+    /// labels<para>has open lower boundary</para></remarks>
+    /// <seealso href="http://www.w3id.org/def/caso#hasOpenLowerBoundary">http://www.w3id.org/def/caso#hasOpenLowerBoundary</seealso>
+    let hasOpenLowerBoundary =
+        Prefixed_Name(caso, "hasOpenLowerBoundary") |> PrefixedName
+
     /// <summary>
     ///   <para>caso:hasResultState</para>
     /// </summary>
@@ -25,68 +48,23 @@ module caso =
     /// <seealso href="http://www.w3id.org/def/caso#hasValidTime">http://www.w3id.org/def/caso#hasValidTime</seealso>
     let hasValidTime = Prefixed_Name(caso, "hasValidTime") |> PrefixedName
     /// <summary>
-    ///   <para>caso:hasState</para>
+    ///   <para>caso:triggersFunction</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>has state - Relation from a Property to one of the possible States of that Property</para>
-    /// labels<para>has state</para></remarks>
-    /// <seealso href="http://www.w3id.org/def/caso#hasState">http://www.w3id.org/def/caso#hasState</seealso>
-    let hasState = Prefixed_Name(caso, "hasState") |> PrefixedName
-
+    ///   <para>triggers function - Relation from an Actuation to a Function. The Actuation trigger the operation of the Function.</para>
+    /// labels<para>triggers function</para></remarks>
+    /// <seealso href="http://www.w3id.org/def/caso#triggersFunction">http://www.w3id.org/def/caso#triggersFunction</seealso>
+    let triggersFunction = Prefixed_Name(caso, "triggersFunction") |> PrefixedName
     /// <summary>
-    ///   <para>caso:hasClosedLowerBoundary</para>
+    ///   <para>caso:lesserThanOrEqualTo</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>has closed lower boundary - Relation from a State to its lower Boundary. The State is reached when the associated state value is equal or superior to the lower Boundary value.</para>
-    /// labels<para>has closed lower boundary</para></remarks>
-    /// <seealso href="http://www.w3id.org/def/caso#hasClosedLowerBoundary">http://www.w3id.org/def/caso#hasClosedLowerBoundary</seealso>
-    let hasClosedLowerBoundary =
-        Prefixed_Name(caso, "hasClosedLowerBoundary") |> PrefixedName
-
-    /// <summary>
-    ///   <para>caso:hasClosedUpperBoundary</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>has closed upper boundary - Relation from a State to its upper Boundary. The State is reached when the associated state value is equal or inferior  to the upper Boundary value.</para>
-    /// labels<para>has closed upper boundary</para></remarks>
-    /// <seealso href="http://www.w3id.org/def/caso#hasClosedUpperBoundary">http://www.w3id.org/def/caso#hasClosedUpperBoundary</seealso>
-    let hasClosedUpperBoundary =
-        Prefixed_Name(caso, "hasClosedUpperBoundary") |> PrefixedName
-
-    /// <summary>
-    ///   <para>caso:hasOpenLowerBoundary</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>has open lower boundary - Relation from a State to its lower Boundary. The State is reached when the associated state value is superior to the lower Boundary value.</para>
-    /// labels<para>has open lower boundary</para></remarks>
-    /// <seealso href="http://www.w3id.org/def/caso#hasOpenLowerBoundary">http://www.w3id.org/def/caso#hasOpenLowerBoundary</seealso>
-    let hasOpenLowerBoundary =
-        Prefixed_Name(caso, "hasOpenLowerBoundary") |> PrefixedName
-
-    /// <summary>
-    ///   <para>caso:hasOpenUpperBoundary</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>has open upper boundary - Relation from a State to its upper Boundary. The State is reached when the associated state value is inferior to the upper Boundary value.</para>
-    /// labels<para>has open upper boundary</para></remarks>
-    /// <seealso href="http://www.w3id.org/def/caso#hasOpenUpperBoundary">http://www.w3id.org/def/caso#hasOpenUpperBoundary</seealso>
-    let hasOpenUpperBoundary =
-        Prefixed_Name(caso, "hasOpenUpperBoundary") |> PrefixedName
-
-    /// <summary>
-    ///   <para>caso:Actuation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Actuation - Act of carrying out an (Actuation) Procedure to change the state of world  using an Actuator. This act is performed during the context exploitation phase of a context aware system. An Actuation links to an Actuator to describe what made the Actuation and how; links to an ActuatableProperty to describe the target that the Actuation change; links to a FeatureOfInterest to detail what that property was associated with; links to a Deduction by the wasInfluencedBy property when the act is performed based on the given Deduction; and links to the Function that is triggered by the Actuation by the triggersFunction property.</para>
-    /// labels<para>Actuation</para></remarks>
-    /// <seealso href="http://www.w3id.org/def/caso#Actuation">http://www.w3id.org/def/caso#Actuation</seealso>
-    let Actuation = Prefixed_Name(caso, "Actuation") |> PrefixedName
+    ///   <para>lesser than or equal to - Relation between States to define an order. The domain State is lesser than or equal to the range State.</para>
+    /// labels<para>lesser than or equal to</para></remarks>
+    /// <seealso href="http://www.w3id.org/def/caso#lesserThanOrEqualTo">http://www.w3id.org/def/caso#lesserThanOrEqualTo</seealso>
+    let lesserThanOrEqualTo = Prefixed_Name(caso, "lesserThanOrEqualTo") |> PrefixedName
     /// <summary>
     ///   <para>caso:Boundary</para>
     /// </summary>
@@ -106,6 +84,15 @@ module caso =
     /// <seealso href="http://www.w3id.org/def/caso#Deduction">http://www.w3id.org/def/caso#Deduction</seealso>
     let Deduction = Prefixed_Name(caso, "Deduction") |> PrefixedName
     /// <summary>
+    ///   <para>caso:Actuation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Actuation - Act of carrying out an (Actuation) Procedure to change the state of world  using an Actuator. This act is performed during the context exploitation phase of a context aware system. An Actuation links to an Actuator to describe what made the Actuation and how; links to an ActuatableProperty to describe the target that the Actuation change; links to a FeatureOfInterest to detail what that property was associated with; links to a Deduction by the wasInfluencedBy property when the act is performed based on the given Deduction; and links to the Function that is triggered by the Actuation by the triggersFunction property.</para>
+    /// labels<para>Actuation</para></remarks>
+    /// <seealso href="http://www.w3id.org/def/caso#Actuation">http://www.w3id.org/def/caso#Actuation</seealso>
+    let Actuation = Prefixed_Name(caso, "Actuation") |> PrefixedName
+    /// <summary>
     ///   <para>caso:Observation</para>
     /// </summary>
     /// <remarks>
@@ -115,15 +102,6 @@ module caso =
     /// <seealso href="http://www.w3id.org/def/caso#Observation">http://www.w3id.org/def/caso#Observation</seealso>
     let Observation = Prefixed_Name(caso, "Observation") |> PrefixedName
     /// <summary>
-    ///   <para>caso:Property</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Property - A quality of an entity. An aspect of an entity that is intrinsic to and cannot exist without the entity.The possible quality values should be expressed by State. A Property is linked to its possible States using the hasState property.</para>
-    /// labels<para>Property</para></remarks>
-    /// <seealso href="http://www.w3id.org/def/caso#Property">http://www.w3id.org/def/caso#Property</seealso>
-    let Property = Prefixed_Name(caso, "Property") |> PrefixedName
-    /// <summary>
     ///   <para>caso:State</para>
     /// </summary>
     /// <remarks>
@@ -132,6 +110,15 @@ module caso =
     /// labels<para>State</para></remarks>
     /// <seealso href="http://www.w3id.org/def/caso#State">http://www.w3id.org/def/caso#State</seealso>
     let State = Prefixed_Name(caso, "State") |> PrefixedName
+    /// <summary>
+    ///   <para>caso:Property</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Property - A quality of an entity. An aspect of an entity that is intrinsic to and cannot exist without the entity.The possible quality values should be expressed by State. A Property is linked to its possible States using the hasState property.</para>
+    /// labels<para>Property</para></remarks>
+    /// <seealso href="http://www.w3id.org/def/caso#Property">http://www.w3id.org/def/caso#Property</seealso>
+    let Property = Prefixed_Name(caso, "Property") |> PrefixedName
     /// <summary>
     ///   <para>caso:boundaryValue</para>
     /// </summary>
@@ -163,6 +150,15 @@ module caso =
         Prefixed_Name(caso, "greaterThanOrEqualTo") |> PrefixedName
 
     /// <summary>
+    ///   <para>caso:hasState</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>has state - Relation from a Property to one of the possible States of that Property</para>
+    /// labels<para>has state</para></remarks>
+    /// <seealso href="http://www.w3id.org/def/caso#hasState">http://www.w3id.org/def/caso#hasState</seealso>
+    let hasState = Prefixed_Name(caso, "hasState") |> PrefixedName
+    /// <summary>
     ///   <para>caso:lesserThan</para>
     /// </summary>
     /// <remarks>
@@ -171,21 +167,25 @@ module caso =
     /// labels<para>lesser than</para></remarks>
     /// <seealso href="http://www.w3id.org/def/caso#lesserThan">http://www.w3id.org/def/caso#lesserThan</seealso>
     let lesserThan = Prefixed_Name(caso, "lesserThan") |> PrefixedName
+
     /// <summary>
-    ///   <para>caso:lesserThanOrEqualTo</para>
+    ///   <para>caso:hasClosedUpperBoundary</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>lesser than or equal to - Relation between States to define an order. The domain State is lesser than or equal to the range State.</para>
-    /// labels<para>lesser than or equal to</para></remarks>
-    /// <seealso href="http://www.w3id.org/def/caso#lesserThanOrEqualTo">http://www.w3id.org/def/caso#lesserThanOrEqualTo</seealso>
-    let lesserThanOrEqualTo = Prefixed_Name(caso, "lesserThanOrEqualTo") |> PrefixedName
+    ///   <para>has closed upper boundary - Relation from a State to its upper Boundary. The State is reached when the associated state value is equal or inferior  to the upper Boundary value.</para>
+    /// labels<para>has closed upper boundary</para></remarks>
+    /// <seealso href="http://www.w3id.org/def/caso#hasClosedUpperBoundary">http://www.w3id.org/def/caso#hasClosedUpperBoundary</seealso>
+    let hasClosedUpperBoundary =
+        Prefixed_Name(caso, "hasClosedUpperBoundary") |> PrefixedName
+
     /// <summary>
-    ///   <para>caso:triggersFunction</para>
+    ///   <para>caso:hasOpenUpperBoundary</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>triggers function - Relation from an Actuation to a Function. The Actuation trigger the operation of the Function.</para>
-    /// labels<para>triggers function</para></remarks>
-    /// <seealso href="http://www.w3id.org/def/caso#triggersFunction">http://www.w3id.org/def/caso#triggersFunction</seealso>
-    let triggersFunction = Prefixed_Name(caso, "triggersFunction") |> PrefixedName
+    ///   <para>has open upper boundary - Relation from a State to its upper Boundary. The State is reached when the associated state value is inferior to the upper Boundary value.</para>
+    /// labels<para>has open upper boundary</para></remarks>
+    /// <seealso href="http://www.w3id.org/def/caso#hasOpenUpperBoundary">http://www.w3id.org/def/caso#hasOpenUpperBoundary</seealso>
+    let hasOpenUpperBoundary =
+        Prefixed_Name(caso, "hasOpenUpperBoundary") |> PrefixedName

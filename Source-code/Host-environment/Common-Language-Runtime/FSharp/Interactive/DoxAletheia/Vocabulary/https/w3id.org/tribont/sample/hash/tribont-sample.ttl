@@ -1,0 +1,442 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix tribont-sample: <https://w3id.org/tribont/sample#>.
+
+_:B0ebac22feb30caef553b00ac50d36e46 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<https://w3id.org/tribont/core#OperationProperty>
+                                                                             <https://w3id.org/tribont/core#SystemProperty>
+                                                                             <https://w3id.org/tribont/core#TechnicalProperty>
+                                                                             <https://w3id.org/tribont/material#ElementConcentration>
+                                                                             tribont-sample:CoatingProperty).
+_:B155df76579c2647241752f1c95f1a139 a <http://www.w3.org/2003/11/swrl#AtomList>.
+[] <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger.
+([<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#s> ; 
+ <http://www.w3.org/2003/11/swrl#classPredicate> tribont-sample:Sample ; 
+ a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#sb> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#s> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://w3id.org/isCharacterisedBy#belongsTo> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#m> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#sb> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> tribont-sample:hasCoreMaterial ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B27e30da9989b67fb885fe09a34e7f8b1 a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#m> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#s> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> tribont-sample:preparationDate ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B2ce78ae433b481526f66ce6bfbca0e21 a <http://www.w3.org/2003/11/swrl#AtomList>.
+[] <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger.
+_:B5304c5b2e9d745381e65ea3b937884ca a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ([<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#s> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#classPredicate> tribont-sample:Sample ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#sb> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#s> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://w3id.org/isCharacterisedBy#belongsTo> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#m> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#sb> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> tribont-sample:preparationDate ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]);
+                                    <http://www.w3.org/2003/11/swrl#head> ().
+[] <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B645e1b15bc30afbac8c9fdc43b56712a a <http://www.w3.org/2003/11/swrl#AtomList>.
+[] <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger.
+_:B71e49e93c67208a806a6873cb8a75e4f a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ([<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#ss> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#classPredicate> tribont-sample:SampleSystem ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#ms> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#ss> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> tribont-sample:hasMovingSample ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#sts> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#ss> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> tribont-sample:hasStaticSample ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]);
+                                    <http://www.w3.org/2003/11/swrl#head> ([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#sts> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#ms> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> tribont-sample:interactsWith ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#ms> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#sts> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> tribont-sample:interactsWith ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]).
+[] <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger.
+_:B7ecaaa4c07eb115880d5dd793af29318 a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#c> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#s> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> tribont-sample:hasCoating ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B8676ec6dac7987b7416ddad7b1fc5a9a a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B8b10cc03307f48f56f860bb82091017f a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B9c3ee6306996f912e40365aa33109841 a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ([<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#s> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#classPredicate> tribont-sample:Sample ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#sb> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#s> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://w3id.org/isCharacterisedBy#belongsTo> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#b> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#sb> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> tribont-sample:hasBody ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]);
+                                    <http://www.w3.org/2003/11/swrl#head> ([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#b> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#s> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> tribont-sample:hasBody ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]).
+([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#m> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#s> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> tribont-sample:hasCoreMaterial ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B9d6c96a8b9cc11cd61b0976d63ee28fb a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B9f210034750f4d6b406e31713924df82 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Ba1ddf44e2f5c96f3e95a63cd11b88c03 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Ba2804676aef446ce8b5c4f7a73317cfe a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ();
+                                    <http://www.w3.org/2003/11/swrl#head> ().
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bb197501fdc205f0a535ca81e4b189e25 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<https://w3id.org/tribont/core#Body>
+                                                                             <https://w3id.org/tribont/material#Material>
+                                                                             tribont-sample:Coating
+                                                                             tribont-sample:Sample
+                                                                             tribont-sample:SampleBatch
+                                                                             tribont-sample:SampleSystem).
+[] <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger.
+[] <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bd649db21708031dc02363ce17282eff3 a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ([<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#s> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#classPredicate> tribont-sample:Sample ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#sb> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#s> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://w3id.org/isCharacterisedBy#belongsTo> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#c> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#sb> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> tribont-sample:hasCoating ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]);
+                                    <http://www.w3.org/2003/11/swrl#head> ().
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Be940f35b3e419ffc82370621cdc22360 a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+[] <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger.
+<http://creativecommons.org/ns#license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#cardinality> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#maxCardinality> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#qualifiedCardinality> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://w3id.org/isCharacterisedBy#Property> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/isCharacterisedBy#SubjectOfInterest> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/isCharacterisedBy#belongsTo> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://w3id.org/isCharacterisedBy#isCharacterisedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://w3id.org/tribont/core#Body> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/core#OperationProperty> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/core#Role> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/core#SystemProperty> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/core#TechnicalProperty> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/material#ElementConcentration> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/material#ElementRole> a <http://www.w3.org/2002/07/owl#Class>;
+                                                <http://www.w3.org/2002/07/owl#disjointWith> tribont-sample:SampleRole.
+<https://w3id.org/tribont/material#FluidLubricant> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/material#Material> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/material#SolidLubricant> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/sample> <http://creativecommons.org/ns#license> <https://creativecommons.org/licenses/by-nc/4.0/>;
+                                  <http://gbol.life/ontology/bibo#status> "published";
+                                  <http://purl.org/dc/terms/bibliographicCitation> "Work in progress";
+                                  <http://purl.org/dc/terms/contributor> """Izaskun Fernandez (Tekniker) 
+Domain expert:Iban Quintana (Tekniker) 
+Domain expert:Xana Fernandez (Tekniker)"""@en;
+                                  <http://purl.org/dc/terms/created> "2023-05-30";
+                                  <http://purl.org/dc/terms/creator> "Patricia Casla (Tekniker)"@en;
+                                  <http://purl.org/dc/terms/description> "The goal of this module is to represent the sample systems , and the undelaying samples, involved in the tribological experiments."@en;
+                                  <http://purl.org/dc/terms/issued> "2023-05-30";
+                                  <http://purl.org/dc/terms/publisher> "Tekniker";
+                                  <http://purl.org/dc/terms/title> "Sample module";
+                                  <http://purl.org/vocab/vann/preferredNamespacePrefix> "sample";
+                                  <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/tribont/sample";
+                                  a <http://www.w3.org/2002/07/owl#Ontology>;
+                                  <http://www.w3.org/2002/07/owl#imports> <https://w3id.org/tribont/material>;
+                                  <http://www.w3.org/2002/07/owl#versionInfo> 1.0.
+tribont-sample:CoatedSample a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Sample body which has a coating moterial.";
+                            rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                            rdfs:label "CoatedSample";
+                            rdfs:subClassOf tribont-sample:Sample;
+                            <http://www.w3.org/2002/07/owl#equivalentClass> [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                                                             <http://www.w3.org/2002/07/owl#intersectionOf> (tribont-sample:Sample
+                                                                                                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> tribont-sample:Coating ; 
+                                                                                                                             <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasCoating ; 
+                                                                                                                             a <http://www.w3.org/2002/07/owl#Restriction>])];
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:Coating a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "A thin layer covering of something.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "Coating";
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/tribont/material#Material> ; 
+                                        <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasCoreMaterial ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/material#Material> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasCoreMaterial ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#allValuesFrom> tribont-sample:CoatingProperty ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/isCharacterisedBy#isCharacterisedBy> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       <https://w3id.org/isCharacterisedBy#SubjectOfInterest>;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:CoatingProperty a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Qualifiable or quantifiable attribute, or characteristic of a coating.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                               rdfs:label "CoatingProperty";
+                               rdfs:subClassOf <https://w3id.org/isCharacterisedBy#Property>;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:CoatingThickness a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Thickness of a coating.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                                rdfs:label "CoatingThickness";
+                                rdfs:subClassOf tribont-sample:CoatingProperty;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:CoatingType a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Type of coating.";
+                           rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                           rdfs:label "CoatingType";
+                           rdfs:subClassOf tribont-sample:CoatingProperty;
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:LubricatedSampleSystem a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "Sample system that includes a lubricant as part of it.";
+                                      rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                                      rdfs:label "LubricatedSampleSystem";
+                                      rdfs:subClassOf tribont-sample:SampleSystem;
+                                      <http://www.w3.org/2002/07/owl#equivalentClass> [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                                                                       <http://www.w3.org/2002/07/owl#intersectionOf> (tribont-sample:SampleSystem
+                                                                                                                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> tribont-sample:LubricationSample ; 
+                                                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasLubricationSample ; 
+                                                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>])];
+                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:LubricationSample a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Portion of lubricant material selected from a larger quantity of lubricant material for Testing purposes. Lubricant material can be fluid or solid lubricants ";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                                 rdfs:label "LubricationSample";
+                                 rdfs:subClassOf tribont-sample:Sample;
+                                 <http://www.w3.org/2002/07/owl#equivalentClass> [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                                                                  <http://www.w3.org/2002/07/owl#intersectionOf> (tribont-sample:Sample
+                                                                                                                                  [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/tribont/material#FluidLubricant> ; 
+                                                                                                                                                                           <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasCoreMaterial ; 
+                                                                                                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/tribont/material#SolidLubricant> ; 
+                                                                                                                                                                           <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasCoreMaterial ; 
+                                                                                                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                                                                  a <http://www.w3.org/2002/07/owl#Class>])];
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:Sample a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Portion of material which can be transformed or not for Testing purposes. For example the moving and static samples in a tribological tests are transformed following a specific manufacturing process to achieve the required body characteristics, while lubricants acting as lubrication body are not transformed.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                      rdfs:label "Sample";
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/material#Material> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasCoreMaterial ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/tribont/core#Body> ; 
+                                       <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasBody ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      <https://w3id.org/isCharacterisedBy#SubjectOfInterest>,
+                                      [<http://www.w3.org/2002/07/owl#onClass> tribont-sample:Coating ; 
+                                       <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasCoating ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#Body> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasBody ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#allValuesFrom> tribont-sample:Coating ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasCoating ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onClass> tribont-sample:SampleRole ; 
+                                       <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasSampleRole ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:dateTime ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:preparationDate ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#allValuesFrom> tribont-sample:SampleRole ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasSampleRole ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#TechnicalProperty> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/isCharacterisedBy#isCharacterisedBy> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>];
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:SampleBatch a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "An aggrupation of samples which have been transformed at the same time using a same material and share a set of common atributes of characteristics.";
+                           rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                           rdfs:label "SampleBatch";
+                           rdfs:subClassOf <https://w3id.org/isCharacterisedBy#SubjectOfInterest>,
+                                           [<http://www.w3.org/2002/07/owl#onClass> tribont-sample:Coating ; 
+                                            <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasCoating ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#onDataRange> xsd:dateTime ; 
+                                            <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:preparationDate ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/material#Material> ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasCoreMaterial ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/tribont/core#Body> ; 
+                                            <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasBody ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#allValuesFrom> tribont-sample:Coating ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasCoating ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#Body> ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasBody ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>];
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:SampleRole a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "The position or purpose that a sample has in a situation.";
+                          rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                          rdfs:label "SampleRole";
+                          rdfs:subClassOf <https://w3id.org/tribont/core#Role>;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:SampleSystem a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Object aggregate that has two or more elements that interact with each other, and it is used for Testing purposes. For example, a tribological sample system aggregates at least a static and a moving sample body and can include or not a lubrication sample body.";
+                            rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                            rdfs:label "SampleSystem";
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> tribont-sample:LubricationSample ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasLubricationSample ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            <https://w3id.org/isCharacterisedBy#SubjectOfInterest>,
+                                            [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#SystemProperty> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/isCharacterisedBy#isCharacterisedBy> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#allValuesFrom> tribont-sample:Sample ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasMovingSample ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#allValuesFrom> tribont-sample:Sample ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> tribont-sample:hasStaticSample ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>];
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:executionDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                             rdfs:comment "Data when something has been executed.";
+                             rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                             rdfs:label "executionDate";
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:hasBody a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Relationship between something  and its body configuration..";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                       rdfs:label "hasBody";
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:hasCoating a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "Relationship between a sample  and its coating.";
+                          rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                          rdfs:label "hasCoating";
+                          <http://www.w3.org/2002/07/owl#inverseOf> tribont-sample:isCoatingFor;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:hasCoreMaterial a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:comment "Relationship between something and the material of which it is made";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                               rdfs:label "hasCoreMaterial";
+                               <http://www.w3.org/2002/07/owl#inverseOf> tribont-sample:isCoreMaterialFor;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:hasLubricationSample a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                    rdfs:comment "Relationship between a sample system and a lubricant material that is part of it.";
+                                    rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                                    rdfs:label "hasLubricationSample";
+                                    <http://www.w3.org/2002/07/owl#inverseOf> tribont-sample:isLubricationSampleFor;
+                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:hasMovingSample a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:comment "Relationship between a sample system and a moving sample body that is part of it.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                               rdfs:label "hasMovingSample";
+                               <http://www.w3.org/2002/07/owl#inverseOf> tribont-sample:isMovingSampleFor;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:hasSampleRole a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:comment "Relationship between a sample and its role.";
+                             rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                             rdfs:label "hasSampleRole";
+                             <http://www.w3.org/2002/07/owl#inverseOf> tribont-sample:isSampleRoleFor;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:hasStaticSample a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:comment "Relationship between a sample system and a static sample body that is part of it.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                               rdfs:label "hasStaticSample";
+                               <http://www.w3.org/2002/07/owl#inverseOf> tribont-sample:isStaticSampleFor;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:interactsWith a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:comment "Releation between sveral samples interacting one with each other.";
+                             rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                             rdfs:label "interactsWith";
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:isCoatingFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "Relationship between a coating  and the sample  of which it is a part.";
+                            rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                            rdfs:label "isCoatingFor";
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:isCoreMaterialFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:comment "Relationship between  the material it is made of and something";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                                 rdfs:label "isCoreMaterialFor";
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:isLubricationSampleFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:comment "Relationship between a lubrication sample  and the sample system of which it is a part.";
+                                      rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                                      rdfs:label "isLubricationSampleFor";
+                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:isMovingSampleFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:comment "Relationship between a moving sample  and the sample system of which it is a part.";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                                 rdfs:label "isMovingSampleFor";
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:isSampleRoleFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:comment "Relationship between a role and the sample to which it applies,";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                               rdfs:label "isSampleRoleFor";
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:isStaticSampleFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:comment "Relationship between a static sample  and the sample system of which it is a part.";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                                 rdfs:label "isStaticSampleFor";
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:preparationDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                               rdfs:comment "Data when something has been prepared.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                               rdfs:label "preparationDate";
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:reference a tribont-sample:SampleRole,
+                           <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                         rdfs:comment "A reference against which the sample is tested.";
+                         rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                         rdfs:label "reference";
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-sample:target a tribont-sample:SampleRole,
+                        <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                      rdfs:comment "Target sample for the  testing  activity.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                      rdfs:label "target";
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+<urn:swrl:var#b> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl:var#c> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl:var#m> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl:var#ms> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl:var#s> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl:var#sb> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl:var#ss> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl:var#sts> a <http://www.w3.org/2003/11/swrl#Variable>.

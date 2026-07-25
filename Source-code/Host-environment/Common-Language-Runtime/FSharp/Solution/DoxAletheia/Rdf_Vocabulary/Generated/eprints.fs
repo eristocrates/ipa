@@ -7,13 +7,15 @@ open type Prefix_ID
 module eprints =
     let _namespace_iri = Namespace_Iri eprints |> NamespaceIRI
     /// <summary>
-    ///   <para>eprints:</para>
+    ///   <para>eprints:Repository</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:Ontology</para>
-    /// </remarks>
-    /// <seealso href="http://eprints.org/ontology/">http://eprints.org/ontology/</seealso>
-    let _prefix_iri = Prefixed_Name(eprints, "") |> PrefixedName
+    ///   <para>owl:Class</para>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An EPrints Repository. This will have a number of EPrints records associated with it via the ep:hasEPrint predicate, and the records will generally be expressed as BIBO &amp; Dublin Core, plus EPrints extensions to describe the attached documents and files. Resolving the URI of this class using a client which prefers RDF XML (or text/n3) will return an RDF document describing the repository using voID and Dublin Core, plus a ep:hasEPrint link to every current record in the public part of the repository. See ep:EPrint for more description about such records. EPrints generally supports a sitemap.xml file which describes a set of data-dump-locations. Resolving these is the fastest way to obtain every bit of RDF data from an EPrints repository.</para>
+    /// labels<para>EPrints Repository</para></remarks>
+    /// <seealso href="http://eprints.org/ontology/Repository">http://eprints.org/ontology/Repository</seealso>
+    let Repository = Prefixed_Name(eprints, "Repository") |> PrefixedName
     /// <summary>
     ///   <para>eprints:EPrint</para>
     /// </summary>
@@ -25,15 +27,55 @@ module eprints =
     /// <seealso href="http://eprints.org/ontology/EPrint">http://eprints.org/ontology/EPrint</seealso>
     let EPrint = Prefixed_Name(eprints, "EPrint") |> PrefixedName
     /// <summary>
-    ///   <para>eprints:Repository</para>
+    ///   <para>eprints:hasConceptScheme</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdfs:Class</para>
+    ///   <para>rdf:Property</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>A SKOS concept scheme employed by this dataset.</para>
+    /// labels<para>SKOS Concept Scheme</para></remarks>
+    /// <seealso href="http://eprints.org/ontology/hasConceptScheme">http://eprints.org/ontology/hasConceptScheme</seealso>
+    let hasConceptScheme = Prefixed_Name(eprints, "hasConceptScheme") |> PrefixedName
+    /// <summary>
+    ///   <para>eprints:Document</para>
+    /// </summary>
+    /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>An EPrints Repository. This will have a number of EPrints records associated with it via the ep:hasEPrint predicate, and the records will generally be expressed as BIBO &amp; Dublin Core, plus EPrints extensions to describe the attached documents and files. Resolving the URI of this class using a client which prefers RDF XML (or text/n3) will return an RDF document describing the repository using voID and Dublin Core, plus a ep:hasEPrint link to every current record in the public part of the repository. See ep:EPrint for more description about such records. EPrints generally supports a sitemap.xml file which describes a set of data-dump-locations. Resolving these is the fastest way to obtain every bit of RDF data from an EPrints repository.</para>
-    /// labels<para>EPrints Repository</para></remarks>
-    /// <seealso href="http://eprints.org/ontology/Repository">http://eprints.org/ontology/Repository</seealso>
-    let Repository = Prefixed_Name(eprints, "Repository") |> PrefixedName
+    ///   <para>rdfs:Class</para>
+    ///   <para>A single document that is part of an ep:EPrint record. It may be a machine generated version of another document,  eg. a thumbnail, in which case this will be expressed with relations from the http://eprints.org/relation/ namespace. It will have one or more files associated. Some documents can have multilple files, such as an HTML page plus image files. Resolving a document URI will redirect you to the primary file of the document.</para>
+    /// labels<para>Document</para></remarks>
+    /// <seealso href="http://eprints.org/ontology/Document">http://eprints.org/ontology/Document</seealso>
+    let Document = Prefixed_Name(eprints, "Document") |> PrefixedName
+    /// <summary>
+    ///   <para>eprints:OAIPMH2</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The base URL to use to query this repository via OAI-PMH. Note that the domain is set to any dataset, not just an EPrints Repository, so as not to limit use by non-eprints repositories.</para>
+    /// labels<para>OAI-PMH URL</para></remarks>
+    /// <seealso href="http://eprints.org/ontology/OAIPMH2">http://eprints.org/ontology/OAIPMH2</seealso>
+    let OAIPMH2 = Prefixed_Name(eprints, "OAIPMH2") |> PrefixedName
+    /// <summary>
+    ///   <para>eprints:hasEPrint</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>rdf:Property</para>
+    ///   <para>An EPrint record which is part of this Repository.</para>
+    /// labels<para>has EPrint Record</para></remarks>
+    /// <seealso href="http://eprints.org/ontology/hasEPrint">http://eprints.org/ontology/hasEPrint</seealso>
+    let hasEPrint = Prefixed_Name(eprints, "hasEPrint") |> PrefixedName
+    /// <summary>
+    ///   <para>eprints:hasDocument</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>rdf:Property</para>
+    ///   <para>A Document which is part of this EPrint Record.</para>
+    /// labels<para>has Document</para></remarks>
+    /// <seealso href="http://eprints.org/ontology/hasDocument">http://eprints.org/ontology/hasDocument</seealso>
+    let hasDocument = Prefixed_Name(eprints, "hasDocument") |> PrefixedName
     /// <summary>
     ///   <para>eprints:hasFile</para>
     /// </summary>
@@ -45,52 +87,10 @@ module eprints =
     /// <seealso href="http://eprints.org/ontology/hasFile">http://eprints.org/ontology/hasFile</seealso>
     let hasFile = Prefixed_Name(eprints, "hasFile") |> PrefixedName
     /// <summary>
-    ///   <para>eprints:Document</para>
+    ///   <para>eprints:</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>owl:Class</para>
-    ///   <para>A single document that is part of an ep:EPrint record. It may be a machine generated version of another document,  eg. a thumbnail, in which case this will be expressed with relations from the http://eprints.org/relation/ namespace. It will have one or more files associated. Some documents can have multilple files, such as an HTML page plus image files. Resolving a document URI will redirect you to the primary file of the document.</para>
-    /// labels<para>Document</para></remarks>
-    /// <seealso href="http://eprints.org/ontology/Document">http://eprints.org/ontology/Document</seealso>
-    let Document = Prefixed_Name(eprints, "Document") |> PrefixedName
-    /// <summary>
-    ///   <para>eprints:OAIPMH2</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>rdf:Property</para>
-    ///   <para>The base URL to use to query this repository via OAI-PMH. Note that the domain is set to any dataset, not just an EPrints Repository, so as not to limit use by non-eprints repositories.</para>
-    /// labels<para>OAI-PMH URL</para></remarks>
-    /// <seealso href="http://eprints.org/ontology/OAIPMH2">http://eprints.org/ontology/OAIPMH2</seealso>
-    let OAIPMH2 = Prefixed_Name(eprints, "OAIPMH2") |> PrefixedName
-    /// <summary>
-    ///   <para>eprints:hasConceptScheme</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>A SKOS concept scheme employed by this dataset.</para>
-    /// labels<para>SKOS Concept Scheme</para></remarks>
-    /// <seealso href="http://eprints.org/ontology/hasConceptScheme">http://eprints.org/ontology/hasConceptScheme</seealso>
-    let hasConceptScheme = Prefixed_Name(eprints, "hasConceptScheme") |> PrefixedName
-    /// <summary>
-    ///   <para>eprints:hasDocument</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>A Document which is part of this EPrint Record.</para>
-    /// labels<para>has Document</para></remarks>
-    /// <seealso href="http://eprints.org/ontology/hasDocument">http://eprints.org/ontology/hasDocument</seealso>
-    let hasDocument = Prefixed_Name(eprints, "hasDocument") |> PrefixedName
-    /// <summary>
-    ///   <para>eprints:hasEPrint</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>An EPrint record which is part of this Repository.</para>
-    /// labels<para>has EPrint Record</para></remarks>
-    /// <seealso href="http://eprints.org/ontology/hasEPrint">http://eprints.org/ontology/hasEPrint</seealso>
-    let hasEPrint = Prefixed_Name(eprints, "hasEPrint") |> PrefixedName
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://eprints.org/ontology/">http://eprints.org/ontology/</seealso>
+    let _prefix_iri = Prefixed_Name(eprints, "") |> PrefixedName

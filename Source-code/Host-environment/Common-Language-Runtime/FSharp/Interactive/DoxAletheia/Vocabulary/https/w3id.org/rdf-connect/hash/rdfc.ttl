@@ -1,0 +1,117 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfc: <https://w3id.org/rdf-connect#>.
+
+<http://creativecommons.org/ns#license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/author> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:subClassOf a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+xsd:date a rdfs:Datatype.
+<http://www.w3.org/ns/prov#Activity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/ns/prov#Entity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/ns/prov#SoftwareAgent> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/Person> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/name> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfc:CommandRunner a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "A runner that executes processors via shell commands."@en;
+                   rdfs:label "Command Runner"@en;
+                   rdfs:subClassOf rdfc:Runner.
+rdfc:ExecutionContext a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Entity that defines an execution context used by a pipeline, which is composed by a runner and a set of processor instances."@en;
+                      rdfs:label "Execution Context"@en.
+rdfc:Pipeline a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A sequence of processors and runners forming a data processing workflow."@en;
+              rdfs:label "Pipeline"@en;
+              rdfs:subClassOf <http://www.w3.org/ns/prov#Entity>.
+rdfc:Processor a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A processing unit that performs an action within a pipeline."@en;
+               rdfs:label "Processor"@en;
+               rdfs:subClassOf <http://www.w3.org/ns/prov#Activity>.
+rdfc:Reader a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A component that provides input data to a processor."@en;
+            rdfs:label "Reader"@en.
+rdfc:Runner a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "An agent responsible for executing processors based on specific implementations."@en;
+            rdfs:label "Runner"@en;
+            rdfs:subClassOf <http://www.w3.org/ns/prov#SoftwareAgent>.
+rdfc:Writer a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A component that handles output data from a processor."@en;
+            rdfs:label "Writer"@en.
+rdfc:class a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:comment "The class name of a processor. Applicable for any object-oriented programming language."@en;
+           rdfs:label "class"@en;
+           rdfs:range xsd:string.
+rdfc:command a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:comment "Shell command used by an orchestrator to execute a runner instance."@en;
+             rdfs:label "command"@en;
+             rdfs:range xsd:string.
+rdfc:consistsOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Relates a pipeline to an execution context (runner and processors) it uses."@en;
+                rdfs:domain rdfc:Pipeline;
+                rdfs:label "consists of"@en;
+                rdfs:range rdfc:ExecutionContext.
+rdfc:entrypoint a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "The folder location of the main script or module entry point of a JavaScript processor."@en;
+                rdfs:label "entrypoint"@en;
+                rdfs:range xsd:anyURI.
+rdfc:file a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:comment "The file name containing the processor logic of a JavaScript processor."@en;
+          rdfs:label "file"@en;
+          rdfs:range xsd:anyURI.
+rdfc:handlesSubjectsOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "The property that defines which type of processors a runner can handle, typically linked to a specific implementation property."@en;
+                       rdfs:domain rdfc:Runner;
+                       rdfs:label "handle subjects of"@en.
+rdfc:implementationOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "Abstract property that conveys the implementation language of a processor."@en;
+                      rdfs:domain rdfc:Processor;
+                      rdfs:label "implementation of"@en;
+                      rdfs:range rdfc:Processor;
+                      rdfs:subPropertyOf rdfs:subClassOf.
+rdfc:instantiates a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "Declares the runner instance used in an execution context."@en;
+                  rdfs:domain rdfc:ExecutionContext;
+                  rdfs:label "instantiates"@en;
+                  rdfs:range rdfc:Runner.
+rdfc:jar a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:comment "Path to the JAR file containing the processor logic of a Java processor."@en;
+         rdfs:label "jar"@en;
+         rdfs:range xsd:anyURI.
+rdfc:javaImplementationOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "Indicates that a processor is implemented in Java and is a specialization of implementationOf."@en;
+                          rdfs:label "Java Implementation Of"@en;
+                          rdfs:subPropertyOf rdfc:implementationOf.
+rdfc:jsImplementationOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "Indicates that a processor is implemented in JavaScript and is a specialization of implementationOf."@en;
+                        rdfs:label "JavaScript Implementation Of"@en;
+                        rdfs:subPropertyOf rdfc:implementationOf.
+rdfc:module_path a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:comment "The module path of a processor implemented in Python."@en;
+                 rdfs:label "module path"@en;
+                 rdfs:range xsd:string.
+rdfc:processor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "Declares a processor instance used in an execution context, part of a pipeline."@en;
+               rdfs:domain rdfc:ExecutionContext;
+               rdfs:label "processor"@en;
+               rdfs:range rdfc:Processor.
+rdfc:pyImplementationOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "Indicates that a processor is implemented in Python and is a specialization of implementationOf."@en;
+                        rdfs:label "Python Implementation Of"@en;
+                        rdfs:subPropertyOf rdfc:implementationOf.
+<https://w3id.org/rdf-connect/ontology> <http://creativecommons.org/ns#license> <https://creativecommons.org/licenses/by/4.0/>;
+                                        <http://purl.org/dc/terms/author> [a <http://xmlns.com/foaf/0.1/Person> ; 
+                                                                           <http://xmlns.com/foaf/0.1/name> "Arthur Vercruysse"];
+                                        <http://purl.org/dc/terms/contributor> <https://smessaert.be/#me>,
+                                                                               <https://pietercolpaert.be/#me>,
+                                                                               [a <http://xmlns.com/foaf/0.1/Person> ; 
+                                                                                <http://xmlns.com/foaf/0.1/name> "Jens Pots"],
+                                                                               <https://julianrojas.org/#me>;
+                                        <http://purl.org/dc/terms/issued> "2024-07-29"^^xsd:date;
+                                        <http://purl.org/dc/terms/modified> "2025-09-02"^^xsd:date;
+                                        a <http://www.w3.org/2002/07/owl#Ontology>;
+                                        rdfs:comment "An ontology for describing programming language-specific runners, processors and pipelines in RDF-based data processing frameworks."@en;
+                                        rdfs:label "RDF Connect Ontology"@en;
+                                        <http://www.w3.org/2002/07/owl#versionInfo> "0.2.1".

@@ -1,0 +1,740 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix cito: <http://purl.org/spar/cito/>.
+
+<http://purl.org/dc/elements/1.1/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/date> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/rights> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/spar/cito> <http://purl.org/dc/elements/1.1/contributor> "Tim Clark",
+                                                                          "Paolo Ciccarese";
+                            <http://purl.org/dc/elements/1.1/creator> "Silvio Peroni",
+                                                                      "David Shotton";
+                            <http://purl.org/dc/elements/1.1/date> "2018-02-16";
+                            <http://purl.org/dc/elements/1.1/description> """CiTO, the Citation Typing Ontology, is an ontology written in OWL 2 DL to enable characterization of the nature or type of citations, both factually and rhetorically, and to permit these descriptions to be published on the Web.  
+
+The citations characterized may be either direct and explicit (as in the reference list of a journal article), indirect (e.g. a citation to a more recent paper by the same research group on the same topic), or implicit (e.g. as in artistic quotations or parodies, or in cases of plagiarism).
+
+CiTO contains the object property cito:cites and its sub-properties, and its inverse property cito:isCitedBy, from the original Citation Typing Ontology, CiTO v1.6.  Upon the creation of version 2.0 of CiTO, a number of new sub-properties of cito:cites were added, and the inverse properties of all the sub-properties of cito:cites were created, all of which are sub-properties of cito:isCitedBy.  The ontology has also been integrated with the SWAN Discourse Relationships Ontology by making cito:cites a sub-property of http://purl.org/swan/2.0/discourse-relationships/refersTo.
+
+Restrictions of domain and range present in the previous version of CiTO were removed from the object properties when creating CiTO v 2.0, permitting its independent use in other contexts, in addition to conventional bibliographic citations.  
+
+So that they can be used independently, other entities that were previously included in CiTO v1.6 have now been made components of other SPAR ontologies: FaBiO, the FRBR-aligned Bibliographic Ontology; C4O, the Citation Counting and Context Characterization Ontology; and PSO, the Publication Status Ontology. 
+
+The addition of two new properties:cito:usesConclusionsFrom and its inverse cito:providesConclusionsFor on 09Dec2011 led to a version number increment from v2.0 to v2.1.
+
+The addition of two additional properties, cito:compiles and cito:isCompiledBy, previously in the deprecated CiTO4Data ontology, on 03 July 2012 led to a version increment from v2.1 to v2.2.
+
+Subsequent expansions include:
+
+in versions 2.3 and 2.4 the addition of the object properties cito:citesAsPotentialSolution, cito:citesAsRecommendedReading, cito:repliesTo, cito:retracts, cito:speculates on, and their inverse properties;
+
+in v2.5 the addition of cito:CitationAct, cito:hasCitationEvent, cito:hasCitedEntity and cito:hasCitingEntity;
+
+in v 2.6: 
+renaming cito:hasCitationEvent to become cito:hasCitationCharacterization;
+improving definitions of cito:CitationAct, cito:hasCitationCharacterization, cito:hasCitedEntity and cito:hasCitingEntity;
+revising the definition of cito:isCompiledBy to correct it and bring it into line with the DataCite Metadata Kernel v2.2 definition;
+changing the definition of cito:sharesAuthorsWith from 'An object property indicating that the citing entity has at least one author in common with the cited entity.' to 'An object property between two entities indicating that they have at least one author in common.' so that it can be used when one entity does not actually cite the other;
+adding the object properties cito:hasRelatedEntity, cito:sharesFundingAgencyWith and cito:sharesAuthorInstitutionWith;
+and adding the text 'An object property indicating that . . .' at the beginning of the textual definition (rdfs:comment) for each CiTO object property.
+
+in v 2.6.1:
+Removed text 'An object property indicating that . . .' added in v 2.6 at the beginning of the textual definition (rdfs:comment) for each CiTO object property, so that each definition is just a direct statement of the relationship.  
+Removed the property cito:hasRelatedEntity (in favour of using dcterms:relation).
+Renamed cito:hasReply to become cito:hasReplyFrom.
+Improved the textual definitions of cito:derides and its inverse property.
+
+in v 2.6.2:
+Improved definitions of of cito:CitationAct, cito:hasCitationCharacterization, cito:hasCitedEntity and cito:hasCitingEntity.
+
+in v 2.6.3:
+Added examples for each citation type (i.e., all the subproperties of cito:cites).
+
+in v 2.6.4:
+Added alignment with schema:citation.
+
+in v 2.7.0:
+Added new property cito:linksTo, and corrected some property URL.
+
+in v 2.7.1
+Corrected some typos in property comments.
+
+in v 2.7.2
+The name of the class cito:CitationAct has been changed to cito:Citation, and its definition has been modified. The property cito:hasCitationTimeSpan has been added.
+
+in v 2.7.3
+Added the class cito:SelfCitation, i.e. citation in which the citing and the cited entities have at least one author in common.
+
+in v 2.8
+Renamed the class cito:SelfCitation in cito:AuthorSelfCitation. Created a new class cito:SelfCitation with a more general definition (citation in which the citing and the cited entities have something significant in common with one another), which now includes five subclasses: cito:AuthorSelfCitation, cito:JournalSelfCitation, cito:FunderSelfCitation, cito:AffiliationSelfCitation, cito:AuthorNetworkSelfCitation. The latter class is also accompanied by the new data property cito:hasCoAuthorCitationLevel, which specifies the minimal distance that one of the authors of a citing entity has with regards to one of the authors of a cited entity according to their co-author network. Added the object properties cito:sharesPublicationVenueWith and its subproperty cito:sharesJournalWith. Added the data property cito:hasCitationCreationDate, and changed the domain of cito:hasCitationTimeSpan with xsd:duration.
+
+in v 2.8.1
+Renamed the property cito:hasCoAuthorCitationLevel in cito:hasCoAuthorshipCitationLevel.""";
+                            <http://purl.org/dc/elements/1.1/rights> "This work is distributed under a Creative Commons Attribution License (http://creativecommons.org/licenses/by/3.0/)."@en;
+                            <http://purl.org/dc/elements/1.1/title> "CiTO, the Citation Typing Ontology"@en;
+                            a <http://www.w3.org/2002/07/owl#Ontology>;
+                            rdfs:comment """The Citation Typing Ontology (CiTO) is an ontology that enables characterization of the nature or type of citations, both factually and rhetorically.
+
+**URL:** http://purl.org/spar/cito
+
+**Creators**: [David Shotton](http://orcid.org/0000-0001-5506-523X), [Silvio Peroni](http://orcid.org/0000-0003-0530-4305)
+
+**Contributors:** [Paolo Ciccarese](https://orcid.org/0000-0002-5156-2703), [Tim Clark](https://orcid.org/0000-0003-4060-7360)
+
+**License:** [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/legalcode)
+
+**Website:** http://www.sparontologies.net/ontologies/cito
+
+**Cite as:** Peroni, S., Shotton, D. (2012). FaBiO and CiTO: ontologies for describing bibliographic resources and citations. In Journal of Web Semantics, 17: 33-43. https://doi.org/10.1016/j.websem.2012.08.001. Open Access at: http://speroni.web.cs.unibo.it/publications/peroni-2012-fabio-cito-ontologies.pdf"""@en;
+                            <http://www.w3.org/2002/07/owl#imports> <http://www.ontologydesignpatterns.org/cp/owl/situation.owl>;
+                            <http://www.w3.org/2002/07/owl#priorVersion> cito:2018-02-12;
+                            <http://www.w3.org/2002/07/owl#versionIRI> cito:2018-02-16;
+                            <http://www.w3.org/2002/07/owl#versionInfo> "2.8.1".
+cito:AffilationSelfCitation a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment """A citation in which at least one author from each of the citing and the cited entities is affiliated with the same academic institution.
+
+In particular, like the ancestor class cito:Citation, cito:AffiliationSelfCitation and its accompanying object properties cito:hasCitingEntity, cito:hasCitedEntity and cito:hasCitationCharacterization can be employed to reify direct citation statements made using the CiTO citation object property cito:cites or one of its sub-properties, accompanied by an additional statement using cito:sharesAuthorInstitutionWith for linking the citing paper and the cited paper. 
+
+For example, the following cito:AffiliationSelfCitation resource
+
+     :thisCitation a cito:AffiliationSelfCitation ; 
+          cito:hasCitingEntity :paperA ;
+          cito:hasCitationCharacterization cito:extends ;
+          cito:hasCitedEntity :paperB .
+
+can be alternatively described as follows
+
+     :paperA cito:extends :paperB .
+     :paperA cito:sharesAuthorInstitutionWith :paperB ."""@en;
+                            rdfs:label "affilation self citation"@en;
+                            rdfs:subClassOf cito:SelfCitation.
+cito:AuthorNetworkSelfCitation <http://purl.org/dc/elements/1.1/description> "Derived from the article 'A Small World of Citations? The Influence of Collaboration Networks on Citation Practices' by Matthew L. Wallace, Vincent Larivière and Yves Gingras, published in PLOS One (https://doi.org/10.1371/journal.pone.0033339)."@en;
+                               a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "A citation in which at least one author of the citing entity has direct or indirect co-authorship links with one of the authors of the cited entity."@en;
+                               rdfs:label "author network self citation"@en;
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> cito:hasCoAuthorshipCitationLevel ; 
+                                                <http://www.w3.org/2002/07/owl#onDataRange> xsd:positiveInteger ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               cito:SelfCitation.
+cito:AuthorSelfCitation a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment """A citation in which the citing and the cited entities have at least one author in common.
+
+In particular, like the ancestor class cito:Citation, cito:AuthorSelfCitation and its accompanying object properties cito:hasCitingEntity, cito:hasCitedEntity and cito:hasCitationCharacterization can be employed to reify direct citation statements made using the CiTO citation object property cito:cites or one of its sub-properties, accompanied by an additional statement using cito:sharesAuthorWith for linking the citing paper and the cited paper. 
+
+For example, the following cito:AuthorSelfCitation resource
+
+     :thisCitation a cito:AuthorSelfCitation ; 
+          cito:hasCitingEntity :paperA ;
+          cito:hasCitationCharacterization cito:extends ;
+          cito:hasCitedEntity :paperB .
+
+can be alternatively described as follows
+
+     :paperA cito:extends :paperB .
+     :paperA cito:sharesAuthorWith :paperB ."""@en;
+                        rdfs:label "author self citation"@en;
+                        rdfs:subClassOf cito:SelfCitation.
+cito:Citation a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment """A citation is a conceptual directional link from a citing entity to a cited entity, created by a human performative act of making a citation, typically instantiated by the inclusion of a bibliographic reference (biro:BibliographicReference) in the reference list of the citing entity, or by the inclusion within the citing entity of a link, in the form of an HTTP Uniform Resource Locator (URL), to a resource on the World Wide Web.
+
+The time span of a citation, i.e. the interval between the publication year of the citing entity and the publication year of the cited entity, can be recorded using the data property cito:hasCitationTimeSpan.
+
+The nature or type of a citation can be characterized by using CiTO object properties, e.g. http://purl.org/spar/cito/citesAsDataSource (definition: “The citing entity cites the cited entity as a source of data”).  
+
+This CiTO class cito:Citation and its accompanying object properties cito:hasCitingEntity, cito:hasCitedEntity and cito:hasCitationCharacterization can be employed to reify direct citation statements made using the CiTO citation object property cito:cites or one of its sub-properties. 
+
+For example, the following RDF statement
+
+     :paperA cito:extends :paperB .
+
+can be alternatively described as follows
+
+     :thisCitation a cito:Citation ; 
+          cito:hasCitingEntity :paperA ;
+          cito:hasCitationCharacterization cito:extends ;
+          cito:hasCitedEntity :paperB .
+
+This usage involved OWL2 punning, whereby a CiTO object property, such as the aforementioned cito:extends, is used as the object of the OWL assertion.
+
+     :thisCitation cito:hasCitationCharacterization cito:extends .
+
+Using such OWL2 punning (described at http://www.w3.org/TR/2009/WD-owl2-new-features-20090611/#F12:_Punning), the CiTO object property is considered as a proper named individual of the class owl:Thing. 
+
+Such reification of citation acts can be very useful, since it permits one to combine these CiTO properties with other vocabularies, or to handle situations in which none of the citation characterizations available in CiTO are applicable.  
+
+Such situations can be resolved by the creation of a user-defined citation characterization, for example by using the Open Annotation Data Model, as explained at http://semanticpublishing.wordpress.com/2013/07/03/extending-cito-for-open-annotations/."""@en;
+              rdfs:label "citation"@en;
+              <http://www.w3.org/2002/07/owl#equivalentClass> [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                                               <http://www.w3.org/2002/07/owl#intersectionOf> (<http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation>
+                                                                                                               [a <http://www.w3.org/2002/07/owl#Restriction> ; 
+                                                                                                               <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                               <http://www.w3.org/2002/07/owl#onProperty> cito:hasCitationCharacterization]
+                                                                                                               [a <http://www.w3.org/2002/07/owl#Restriction> ; 
+                                                                                                               <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                               <http://www.w3.org/2002/07/owl#onProperty> cito:hasCitedEntity]
+                                                                                                               [<http://www.w3.org/2002/07/owl#onProperty> cito:hasCitingEntity ; 
+                                                                                                               <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                               a <http://www.w3.org/2002/07/owl#Restriction>])].
+cito:DistantCitation <http://purl.org/dc/elements/1.1/description> "Derived from the article 'A Small World of Citations? The Influence of Collaboration Networks on Citation Practices' by Matthew L. Wallace, Vincent Larivière and Yves Gingras, published in PLOS One (https://doi.org/10.1371/journal.pone.0033339)."@en;
+                     a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "A citation in which the citing and the cited entities have nothing significant in common with one another (for example authors, journal, institutional affiliation, or funding agency) over and beyond their subject matter."@en;
+                     rdfs:label "distant citation"@en;
+                     rdfs:subClassOf cito:Citation.
+cito:FunderSelfCitation a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment """A citation in which the works reported in the citing and the cited entities were funded by the same funding agency.
+
+In particular, like the ancestor class cito:Citation, cito:FunderSelfCitation and its accompanying object properties cito:hasCitingEntity, cito:hasCitedEntity and cito:hasCitationCharacterization can be employed to reify direct citation statements made using the CiTO citation object property cito:cites or one of its sub-properties, accompanied by an additional statement using cito:sharesFundingAgencyWith for linking the citing paper and the cited paper. 
+
+For example, the following cito:FundingSelfCitation resource
+
+     :thisCitation a cito:FundingSelfCitation ; 
+          cito:hasCitingEntity :paperA ;
+          cito:hasCitationCharacterization cito:extends ;
+          cito:hasCitedEntity :paperB .
+
+can be alternatively described as follows
+
+     :paperA cito:extends :paperB .
+     :paperA cito:sharesFundingAgencyWith :paperB ."""@en;
+                        rdfs:label "funder self citation"@en;
+                        rdfs:subClassOf cito:SelfCitation.
+cito:JournalCartelCitation <http://purl.org/dc/elements/1.1/description> "Derived from the blog post 'What do we know about journal citation cartels? A call for information' by Philippe Mongeon, Ludo Waltman and Sarah de Rijcke (https://www.cwts.nl/blog?article=n-q2w2b4)."@en;
+                           a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "A citation from one journal to another journal which forms one of a very large number of citations from the citing journal to recent articles in the cited journal, possibly undertaken as part of a citation cartel for the purpose of gaming the impact factor of the cited journal."@en;
+                           rdfs:label "journal cartel citation"@en;
+                           rdfs:subClassOf cito:Citation.
+cito:JournalSelfCitation <http://purl.org/dc/elements/1.1/description> "Derived from the blog post 'Journal self-citations are increasingly biased toward impact factor years' by Ludo Waltman and Caspar Chorus (https://www.cwts.nl/blog?article=n-q2x264)."@en;
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment """A citation in which the citing and the cited entities are published in the same journal.
+
+In particular, like the ancestor class cito:Citation, cito:JournalSelfCitation and its accompanying object properties cito:hasCitingEntity, cito:hasCitedEntity and cito:hasCitationCharacterization can be employed to reify direct citation statements made using the CiTO citation object property cito:cites or one of its sub-properties, accompanied by an additional statement using cito:sharesJournalWith for linking the citing paper and the cited paper. 
+
+For example, the following cito:JournalSelfCitation resource
+
+     :thisCitation a cito:JournalSelfCitation ; 
+          cito:hasCitingEntity :paperA ;
+          cito:hasCitationCharacterization cito:extends ;
+          cito:hasCitedEntity :paperB .
+
+can be alternatively described as follows
+
+     :paperA cito:extends :paperB .
+     :paperA cito:sharesJournalWith :paperB ."""@en;
+                         rdfs:label "journal self citation"@en;
+                         rdfs:subClassOf cito:SelfCitation.
+cito:SelfCitation a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "A citation in which the citing and the cited entities have something significant in common with one another, over and beyond their subject matter, for example authors, journal, institutional affiliation, or funding agency."@en;
+                  rdfs:label "self citation"@en;
+                  rdfs:subClassOf cito:Citation.
+cito:agreesWith <http://purl.org/dc/elements/1.1/description> "Example: We share Galileo's opinion: the Earth moves [X]."@en;
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "The citing entity agrees with statements, ideas or conclusions presented in the cited entity."@en;
+                rdfs:label "agrees with"@en;
+                rdfs:subPropertyOf cito:cites;
+                <http://www.w3.org/2002/07/owl#inverseOf> cito:isAgreedWithBy.
+cito:cites a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:comment "The citing entity cites the cited entity, either directly and explicitly (as in the reference list of a journal article), indirectly (e.g. by citing a more recent paper by the same group on the same topic), or implicitly (e.g. as in artistic quotations or parodies, or in cases of plagiarism)."@en;
+           rdfs:label "cites"@en;
+           rdfs:subPropertyOf <http://purl.org/swan/2.0/discourse-relationships/refersTo>;
+           <http://www.w3.org/2002/07/owl#inverseOf> cito:isCitedBy.
+cito:citesAsAuthority <http://purl.org/dc/elements/1.1/description> "Example: Newton asserted that we are like dwarfs standing on the shoulders of giants [X]."@en;
+                      a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "The citing entity cites the cited entity as one that provides an authoritative description or definition of the subject under discussion."@en;
+                      rdfs:label "cites as authority"@en;
+                      rdfs:subPropertyOf cito:cites;
+                      <http://www.w3.org/2002/07/owl#inverseOf> cito:isCitedAsAuthorityBy.
+cito:citesAsDataSource <http://purl.org/dc/elements/1.1/description> "Example: Italy has more than ten thousand kilometers of shoreline: see [X]."@en;
+                       a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "The citing entity cites the cited entity as source of data."@en;
+                       rdfs:label "cites as data source"@en;
+                       rdfs:subPropertyOf cito:cites;
+                       <http://www.w3.org/2002/07/owl#inverseOf> cito:isCitedAsDataSourceBy.
+cito:citesAsEvidence <http://purl.org/dc/elements/1.1/description> "Example: We found an unquestionable demonstration of our hypothesis in [X]."@en;
+                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "The citing entity cites the cited entity as source of factual evidence for statements it contains."@en;
+                     rdfs:label "cites as evidence"@en;
+                     rdfs:subPropertyOf cito:cites;
+                     <http://www.w3.org/2002/07/owl#inverseOf> cito:isCitedAsEvidenceBy.
+cito:citesAsMetadataDocument <http://purl.org/dc/elements/1.1/description> "Example: Basic bibliographic, entity and project metadata relating to this article, recorded in a structured machine-readable form, is available as an additional file [X] accompanying this paper."@en;
+                             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:comment "The citing entity cites the cited entity as being the container of metadata describing the citing entity."@en;
+                             rdfs:label "cites as metadata document"@en;
+                             rdfs:subPropertyOf cito:cites;
+                             <http://www.w3.org/2002/07/owl#inverseOf> cito:isCitedAsMetadataDocumentBy.
+cito:citesAsPotentialSolution <http://purl.org/dc/elements/1.1/description> "Example: This risk could be avoided using the approach shown in [X]."@en;
+                              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:comment "The citing entity cites the cited entity as providing or containing a possible solution to the issues being discussed."@en;
+                              rdfs:label "cites as potential solution"@en;
+                              rdfs:subPropertyOf cito:cites;
+                              <http://www.w3.org/2002/07/owl#inverseOf> cito:isCitedAsPontentialSolutionBy.
+cito:citesAsRecommendedReading <http://purl.org/dc/elements/1.1/description> "Example: To our knowledge, [X] is the best source of exercises about UML, making it a valuable proposal for beginners."@en;
+                               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:comment "The citing entity cites the cited entity as an item of recommended reading.  This property can be used, for example, to describe references in a lecture reading list, where the cited references are relevant to the general topic of the lecture, but might not be individually cited within the text of the lecture.  Similarly, it could be used to describe items in a 'Suggested further reading' list at the end of a book chapter."@en;
+                               rdfs:label "cites as recommended reading"@en;
+                               rdfs:subPropertyOf cito:cites;
+                               <http://www.w3.org/2002/07/owl#inverseOf> cito:isCitedAsRecommendedReadingBy.
+cito:citesAsRelated <http://purl.org/dc/elements/1.1/description> "Example: An analysis similar to what we proposed here is presented in [X]."@en;
+                    a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "The citing entity cites the cited entity as one that is related."@en;
+                    rdfs:label "cites as related"@en;
+                    rdfs:subPropertyOf cito:cites;
+                    <http://www.w3.org/2002/07/owl#inverseOf> cito:isCitedAsRelatedBy.
+cito:citesAsSourceDocument <http://purl.org/dc/elements/1.1/description> "Example: Several sections of this work are based on our literature review of the topic published as journal article [X]."@en;
+                           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment "The citing entity cites the cited entity as being the entity from which the citing entity is derived, or about which the citing entity contains metadata."@en;
+                           rdfs:label "cites as source document"@en;
+                           rdfs:subPropertyOf cito:cites;
+                           <http://www.w3.org/2002/07/owl#inverseOf> cito:isCitedAsSourceDocumentBy.
+cito:citesForInformation <http://purl.org/dc/elements/1.1/description> "Example: The grammar of Pascal was introduced in [X]."@en;
+                         a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "The citing entity cites the cited entity as a source of information on the subject under discussion."@en;
+                         rdfs:label "cites for information"@en;
+                         rdfs:subPropertyOf cito:cites;
+                         <http://www.w3.org/2002/07/owl#inverseOf> cito:isCitedForInformationBy.
+cito:compiles <http://purl.org/dc/elements/1.1/description> "Note: This property has been imported from the CiTO4Data ontology, usage of which has been deprecated."@en,
+                                                            "Example: This book gathers interviews with academic researchers of several disciplines [X]."@en;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "The citing entity is used to create or compile the cited entity."@en;
+              rdfs:label "compiles"@en;
+              rdfs:subPropertyOf cito:cites;
+              <http://www.w3.org/2002/07/owl#inverseOf> cito:isCompiledBy.
+cito:confirms <http://purl.org/dc/elements/1.1/description> "Example: Our findings are similar to those published in [X]."@en;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "The citing entity confirms facts, ideas or statements presented in the cited entity."@en;
+              rdfs:label "confirms"@en;
+              rdfs:subPropertyOf cito:cites;
+              <http://www.w3.org/2002/07/owl#inverseOf> cito:isConfirmedBy.
+cito:containsAssertionFrom <http://purl.org/dc/elements/1.1/description> "Example: We think that to stand on the top of giants [X] is a valuable principle to follow for our own research."@en;
+                           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment "The citing entity contains a statement of fact or a logical assertion (or a collection of such facts and/or assertions) originally present in the cited entity.   This object property is designed to be used to relate a separate abstract, summary or nanopublication to the cited entity upon which it is based."@en;
+                           rdfs:label "contains assertion from"@en;
+                           rdfs:subPropertyOf cito:cites;
+                           <http://www.w3.org/2002/07/owl#inverseOf> cito:providesAssertionFor.
+cito:corrects <http://purl.org/dc/elements/1.1/description> "Example: The result published in [X] is partially wrong, the correct result is 42."@en;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "The citing entity corrects statements, ideas or conclusions presented in the cited entity."@en;
+              rdfs:label "corrects"@en;
+              rdfs:subPropertyOf cito:cites;
+              <http://www.w3.org/2002/07/owl#inverseOf> cito:isCorrectedBy.
+cito:credits <http://purl.org/dc/elements/1.1/description> "Example: Galileo was the first to observe Jupiter's satellites [X]."@en;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "The citing entity acknowledges contributions made by the cited entity."@en;
+             rdfs:label "credits"@en;
+             rdfs:subPropertyOf cito:cites;
+             <http://www.w3.org/2002/07/owl#inverseOf> cito:isCreditedBy.
+cito:critiques <http://purl.org/dc/elements/1.1/description> "Example: The ideas presented in [X] are badly substantantiated."@en;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The citing entity critiques statements, ideas or conclusions presented in the cited entity."@en;
+               rdfs:label "critiques"@en;
+               rdfs:subPropertyOf cito:cites;
+               <http://www.w3.org/2002/07/owl#inverseOf> cito:isCritiquedBy.
+cito:derides <http://purl.org/dc/elements/1.1/description> "Example: The ideas published in [X] are incredibly stupid."@en;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "The citing entity express derision for the cited entity, or for ideas or conclusions contained within it."@en;
+             rdfs:label "derides"@en;
+             rdfs:subPropertyOf cito:cites;
+             <http://www.w3.org/2002/07/owl#inverseOf> cito:isDeridedBy.
+cito:describes <http://purl.org/dc/elements/1.1/description> "Example: Galileo's book [X] is a dialog among three scientists about Copernicus' eliocentric theory."@en;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The citing entity describes the cited entity."@en;
+               rdfs:label "describes"@en;
+               rdfs:subPropertyOf cito:cites;
+               <http://www.w3.org/2002/07/owl#inverseOf> cito:isDescribedBy.
+cito:disagreesWith <http://purl.org/dc/elements/1.1/description> "Example: We do not share Galileo's opinion [X]: the Earth does not move."@en;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The citing entity disagrees with statements, ideas or conclusions presented in the cited entity."@en;
+                   rdfs:label "disagrees with"@en;
+                   rdfs:subPropertyOf cito:cites;
+                   <http://www.w3.org/2002/07/owl#inverseOf> cito:isDisagreedWithBy.
+cito:discusses <http://purl.org/dc/elements/1.1/description> "Example: We now examine if Galileo is right when he writes [X] that the Earth moves."@en;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The citing entity discusses statements, ideas or conclusions presented in the cited entity."@en;
+               rdfs:label "discusses"@en;
+               rdfs:subPropertyOf cito:cites;
+               <http://www.w3.org/2002/07/owl#inverseOf> cito:isDiscussedBy.
+cito:disputes <http://purl.org/dc/elements/1.1/description> "Example: We doubt that Galileo is right when he writes [X] that the Earth moves."@en;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "The citing entity disputes statements, ideas or conclusions presented in the cited entity."@en;
+              rdfs:label "disputes"@en;
+              rdfs:subPropertyOf cito:cites;
+              <http://www.w3.org/2002/07/owl#inverseOf> cito:isDisputedBy.
+cito:documents <http://purl.org/dc/elements/1.1/description> "Example: Herein we report in detail the complete set of ontological rules defined in the Overlapping Ontology [X]."@en;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The citing entity documents information about the cited entity.";
+               rdfs:label "documents"@en;
+               rdfs:subPropertyOf cito:cites;
+               <http://www.w3.org/2002/07/owl#inverseOf> cito:isDocumentedBy.
+cito:extends <http://purl.org/dc/elements/1.1/description> "Example: We add to Galileo's findings concerning the Earth [X] that also the Moon moves."@en;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "The citing entity extends facts, ideas or understandings presented in the cited entity."@en;
+             rdfs:label "extends"@en;
+             rdfs:subPropertyOf cito:cites;
+             <http://www.w3.org/2002/07/owl#inverseOf> cito:isExtendedBy.
+cito:givesBackgroundTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "The cited entity provides background information for the citing entity."@en;
+                       rdfs:label "gives background to"@en;
+                       rdfs:subPropertyOf cito:isCitedBy;
+                       <http://www.w3.org/2002/07/owl#inverseOf> cito:obtainsBackgroundFrom.
+cito:givesSupportTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "The cited entity provides intellectual or factual support for the citing entity."@en;
+                    rdfs:label "gives support to"@en;
+                    rdfs:subPropertyOf cito:isCitedBy;
+                    <http://www.w3.org/2002/07/owl#inverseOf> cito:obtainsSupportFrom.
+cito:hasCitationCharacterization a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:comment """A property that links a citation to its characterization made by using a CiTO citation characterization property such as cito:extends. This usage involved OWL2 punning, whenby a CiTO object property, such as the aforementioned cito:extends, is used as the object of an OWL assertion:
+
+     :thisCitation cito:hasCitationCharacterization cito:extends .
+
+In such cases of OWL punning, the CiTO object properties are simultaneously considered both as normal object properties and also as proper named individuals of the class owl:Thing."""@en;
+                                 rdfs:label "has citation characterization"@en;
+                                 rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#isSettingFor>.
+cito:hasCitationCreationDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                             rdfs:comment "The date on which the citation was created. This has the same numerical value as the publication date of the citing bibliographic resource, but is a property of the citation itself.  When combined with the citation time span, it permits that citation to be located in history."@en;
+                             rdfs:label "has citation creation date"@en.
+cito:hasCitationTimeSpan a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:comment "The temporal characteristic of a citation, namely the interval between the publication date of the cited entity and the publication date of the citing entity. Note that when one or both of the publication dates is given as just 'year', then the citation time span is rounded to the nearest year, and when one or both of the publication dates is given as just 'year and month', then the citation time span is rounded to the nearest month, with the inherent inaccuracies that such rounding involves."@en;
+                         rdfs:domain cito:Citation;
+                         rdfs:label "has citation time span"@en;
+                         rdfs:range xsd:duration.
+cito:hasCitedEntity a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "A property that relates a citation to the cited entity."@en;
+                    rdfs:label "has cited entity"@en;
+                    rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#isSettingFor>.
+cito:hasCitingEntity a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "A property that relates a citation to the citing entity."@en;
+                     rdfs:label "has citing entity"@en;
+                     rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#isSettingFor>.
+cito:hasCoAuthorshipCitationLevel a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                    <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                  rdfs:comment """This property specifies the minimal distance that one of the authors of the citing entity has with regards to one of the authors of the cited entity, according to their co-authorship network.
+
+For instance, a citation has a co-authorship citation level equal to 1 if at least one author of the citing entity has previously published as co-author with one of the authors of the cited entity. Similarly, we say that a citation has a co-authorship citation level equal to 2 if at least one author of the citing entity has previously published as co-author with someone who him/herself has previously published as co-author with one of the authors of the cited entity. And so on."""@en;
+                                  rdfs:domain cito:AuthorNetworkSelfCitation;
+                                  rdfs:label "has co-authorship citation level"@en;
+                                  rdfs:range xsd:positiveInteger.
+cito:hasReplyFrom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "The cited entity evokes a reply from the citing entity."@en;
+                  rdfs:label "has reply from"@en;
+                  rdfs:subPropertyOf cito:isCitedBy;
+                  <http://www.w3.org/2002/07/owl#inverseOf> cito:repliesTo.
+cito:includesExcerptFrom <http://purl.org/dc/elements/1.1/description> "Example: In her work, the author states that even though most Human Information Behaviour researchers are familiar with the literature related to their studies, it is not uncommon for investigators to fail to see the benefits they may gain from previous mistakes [X]."@en,
+                                                                       """An excerpt is more general than a quotation. It is generally used to indicate a re-published extract from a book, instruction manual, film, radio programme, etc, that need not be what someone said.  For example:
+
+Oxford 01865
+Oxshott 01372
+Oxted 01883
+Oxton 01578
+
+is an excerpt from the UK Dialling Codes section of the Oxford Telephone Directory."""@en;
+                         a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "The citing entity includes one or more excerpts from the cited entity."@en;
+                         rdfs:label "includes excerpt from"@en;
+                         rdfs:subPropertyOf cito:cites;
+                         <http://www.w3.org/2002/07/owl#inverseOf> cito:providesExcerptFor.
+cito:includesQuotationFrom <http://purl.org/dc/elements/1.1/description> """A quotation is a repetition of what someone has said, and is presented \"within quotation marks\", for example:
+
+On June 4th 1940, Winston Churchill made a speech on the radio that has since become famous, that included the words: \" . . . we shall fight on the beaches, we shall fight on the landing grounds, we shall fight in the fields and in the streets, we shall fight in the hills; we shall never surrender . . .\""""@en,
+                                                                         """Example: As Newton wrote in [X]: \"We are like dwarfs standing on the shoulders of giants\"."""@en;
+                           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment "The citing entity includes one or more quotations from the cited entity."@en;
+                           rdfs:label "includes quotation from"@en;
+                           rdfs:subPropertyOf cito:cites;
+                           <http://www.w3.org/2002/07/owl#inverseOf> cito:providesQuotationFor.
+cito:isAgreedWithBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "The cited entity contains statements, ideas or conclusions with which the citing entity agrees."@en;
+                    rdfs:label "is agreed with by"@en;
+                    rdfs:subPropertyOf cito:isCitedBy.
+cito:isCitedAsAuthorityBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "The cited entity is cited as providing an authoritative description or definition of the subject under discussion in the citing entity."@en;
+                          rdfs:label "is cited as authority by"@en;
+                          rdfs:subPropertyOf cito:isCitedBy.
+cito:isCitedAsDataSourceBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment "The cited entity is cited as a data source by the citing entity."@en;
+                           rdfs:label "is cited as data source by"@en;
+                           rdfs:subPropertyOf cito:isCitedBy.
+cito:isCitedAsEvidenceBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "The cited entity is cited for providing factual evidence to the citing entity."@en;
+                         rdfs:label "is cited as evidence by"@en;
+                         rdfs:subPropertyOf cito:isCitedBy.
+cito:isCitedAsMetadataDocumentBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:comment "The cited entity is cited as being the container of metadata relating to the citing entity."@en;
+                                 rdfs:label "is cited as metadata document by"@en;
+                                 rdfs:subPropertyOf cito:isCitedBy.
+cito:isCitedAsPontentialSolutionBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:comment "The cited entity is cited as providing or containing a possible solution to the issues being discussed in the citing entity."@en;
+                                   rdfs:label "is cited as potential solution by"@en;
+                                   rdfs:subPropertyOf cito:isCitedBy.
+cito:isCitedAsRecommendedReadingBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:comment "The cited entity is cited by the citing entity as an item of recommended reading.  This property can be used, for example, to describe references in a lecture reading list, where the cited references are relevant to the general topic of the lecture, but might not be individually cited within the text of the lecture.  Similarly, it could be used to describe items in a 'Suggested further reading' list at the end of a book chapter."@en;
+                                   rdfs:label "is cited as recommended reading by"@en;
+                                   rdfs:subPropertyOf cito:isCitedBy.
+cito:isCitedAsRelatedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "The cited entity is cited as being related to the citing entity."@en;
+                        rdfs:label "is cited as related by"@en;
+                        rdfs:subPropertyOf cito:isCitedBy.
+cito:isCitedAsSourceDocumentBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:comment "The cited entity is cited as being the entity from which the citing entity is derived, or about which the citing entity contains metadata."@en;
+                               rdfs:label "is cited as source document by"@en;
+                               rdfs:subPropertyOf cito:isCitedBy.
+cito:isCitedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The cited entity (the subject of the RDF triple) is cited by the citing entity (the object of the triple)."@en;
+               rdfs:label "is cited by"@en.
+cito:isCitedForInformationBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:comment "The cited entity is cited as a source of information on the subject under discussion in the citing entity."@en;
+                             rdfs:label "is cited for information by"@en;
+                             rdfs:subPropertyOf cito:isCitedBy.
+cito:isCompiledBy <http://purl.org/dc/elements/1.1/description> "Note: This property has been imported from the CiTO4Data ontology, usage of which has been deprecated."@en;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "The cited entity is the result of a compile or creation event using the citing entity."@en;
+                  rdfs:label "is compiled by"@en;
+                  rdfs:subPropertyOf cito:isCitedBy.
+cito:isConfirmedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The cited entity presents facts, ideas or statements that are confirmed by the citing entity."@en;
+                   rdfs:label "is confirmed by"@en;
+                   rdfs:subPropertyOf cito:isCitedBy.
+cito:isCorrectedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The cited entity presents statements, ideas or conclusions that are corrected by the citing entity."@en;
+                   rdfs:label "is corrected by"@en;
+                   rdfs:subPropertyOf cito:isCitedBy.
+cito:isCreditedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "The cited entity makes contributions that are acknowledged by the citing entity."@en;
+                  rdfs:label "is credited by"@en;
+                  rdfs:subPropertyOf cito:isCitedBy.
+cito:isCritiquedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The cited entity presents statements, ideas or conclusions that are critiqued by the citing entity."@en;
+                   rdfs:label "is critiqued by"@en;
+                   rdfs:subPropertyOf cito:isCitedBy.
+cito:isDeridedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "The cited entity contains ideas or conclusions for which the citing entity express derision."@en;
+                 rdfs:label "is derided by"@en;
+                 rdfs:subPropertyOf cito:isCitedBy.
+cito:isDescribedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The cited entity is described by the citing entity."@en;
+                   rdfs:label "is described by"@en;
+                   rdfs:subPropertyOf cito:isCitedBy.
+cito:isDisagreedWithBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "The cited entity presents statements, ideas or conclusions that are disagreed with by the citing entity."@en;
+                       rdfs:label "is disagreed with by"@en;
+                       rdfs:subPropertyOf cito:isCitedBy.
+cito:isDiscussedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The cited entity presents statements, ideas or conclusions that are discussed by the citing entity."@en;
+                   rdfs:label "is discussed by"@en;
+                   rdfs:subPropertyOf cito:isCitedBy.
+cito:isDisputedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "The cited entity presents statements, ideas or conclusions that are disputed by the citing entity."@en;
+                  rdfs:label "is disputed by"@en;
+                  rdfs:subPropertyOf cito:isCitedBy.
+cito:isDocumentedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Information about the cited entity is documented by the citing entity."@en;
+                    rdfs:label "is documented by"@en;
+                    rdfs:subPropertyOf cito:isCitedBy.
+cito:isExtendedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "The cited entity presents facts, ideas or understandings that are extended by the citing entity."@en;
+                  rdfs:label "is extended by"@en;
+                  rdfs:subPropertyOf cito:isCitedBy.
+cito:isLinkedToBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "The cited entity is the target for an HTTP Uniform Resource Locator (URL) link within the citing entity."@en;
+                  rdfs:label "is linked to by"@en;
+                  rdfs:subPropertyOf cito:isCitedBy;
+                  <http://www.w3.org/2002/07/owl#inverseOf> cito:linksTo.
+cito:isParodiedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "The characteristic style or content of the cited entity is imitated by the citing entity for comic effect, usually without explicit citation."@en;
+                  rdfs:label "is parodied by"@en;
+                  rdfs:subPropertyOf cito:isCitedBy;
+                  <http://www.w3.org/2002/07/owl#inverseOf> cito:parodies.
+cito:isPlagiarizedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "The cited entity is plagiarized by the author of the citing entity, who includes within the citing entity textual or other elements from the cited entity without formal acknowledgement of their source. The cited entity is thus not explicitly cited from within the citing entity, according to the norms of scholarly practice, but is cited implicitly."@en;
+                     rdfs:label "is plagiarized by"@en;
+                     rdfs:subPropertyOf cito:isCitedBy;
+                     <http://www.w3.org/2002/07/owl#inverseOf> cito:plagiarizes.
+cito:isQualifiedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The cited entity presents statements, ideas or conclusions that are qualified or have conditions placed upon them by the citing entity."@en;
+                   rdfs:label "is qualified by"@en;
+                   rdfs:subPropertyOf cito:isCitedBy;
+                   <http://www.w3.org/2002/07/owl#inverseOf> cito:qualifies.
+cito:isRefutedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "The cited entity presents statements, ideas or conclusions that are refuted by the citing entity."@en;
+                 rdfs:label "is refuted by"@en;
+                 rdfs:subPropertyOf cito:isCitedBy;
+                 <http://www.w3.org/2002/07/owl#inverseOf> cito:refutes.
+cito:isRetractedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The cited entity is formally retracted by the citing entity."@en;
+                   rdfs:label "is retracted by"@en;
+                   rdfs:subPropertyOf cito:isCitedBy;
+                   <http://www.w3.org/2002/07/owl#inverseOf> cito:retracts.
+cito:isReviewedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "The cited entity presents statements, ideas or conclusions that are reviewed by the citing entity."@en;
+                  rdfs:label "is reviewed by"@en;
+                  rdfs:subPropertyOf cito:isCitedBy;
+                  <http://www.w3.org/2002/07/owl#inverseOf> cito:reviews.
+cito:isRidiculedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The cited entity or aspects of its contents are ridiculed by the citing entity."@en;
+                   rdfs:label "is ridiculed by"@en;
+                   rdfs:subPropertyOf cito:isCitedBy;
+                   <http://www.w3.org/2002/07/owl#inverseOf> cito:ridicules.
+cito:isSpeculatedOnBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "The cited entity is cited because the citing article contains speculations on its content or ideas."@en;
+                      rdfs:label "is speculated on by"@en;
+                      rdfs:subPropertyOf cito:isCitedBy;
+                      <http://www.w3.org/2002/07/owl#inverseOf> cito:speculatesOn.
+cito:isSupportedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The cited entity receives intellectual or factual support from the citing entity."@en;
+                   rdfs:label "is supported by"@en;
+                   rdfs:subPropertyOf cito:isCitedBy;
+                   <http://www.w3.org/2002/07/owl#inverseOf> cito:supports.
+cito:isUpdatedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "The cited entity presents statements, ideas, hypotheses or understanding that are updated by the cited entity."@en;
+                 rdfs:label "is updated by"@en;
+                 rdfs:subPropertyOf cito:isCitedBy;
+                 <http://www.w3.org/2002/07/owl#inverseOf> cito:updates.
+cito:likes a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:comment "A property that permits you to express appreciation of or interest in something that is the object of the RDF triple, or to express that it is worth thinking about even if you do not agree with its content, enabling social media 'likes' statements to be encoded in RDF.  Use of this property does NOT imply the existence of a formal citation of the entity that is 'liked'."@en;
+           rdfs:label "likes"@en.
+cito:linksTo <http://purl.org/dc/elements/1.1/description> "Example: The BioSharing registry (https://biosharing.org) can be of use as it describes the standards in detail, including versions where applicable."@en;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "The citing entity provides a link, in the form of an HTTP Uniform Resource Locator (URL), to the cited entity."@en;
+             rdfs:label "links to"@en;
+             rdfs:subPropertyOf cito:cites.
+cito:obtainsBackgroundFrom <http://purl.org/dc/elements/1.1/description> "Example: There is a need for more observational studies and studies using narrative causation to describe the potential contribution of information in problem-solving and decision-making [X]; our work addresses these needs."@en;
+                           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment "The citing entity obtains background information from the cited entity."@en;
+                           rdfs:label "obtains background from"@en;
+                           rdfs:subPropertyOf cito:cites.
+cito:obtainsSupportFrom <http://purl.org/dc/elements/1.1/description> "Example: Our ideas were also shared by Doe et al. [X]."@en;
+                        a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "The citing entity obtains intellectual or factual support from the cited entity."@en;
+                        rdfs:label "obtains support from"@en;
+                        rdfs:subPropertyOf cito:cites.
+cito:parodies <http://purl.org/dc/elements/1.1/description> "Example: We act as giants on the shoulders of dwarfs [X]!"@en;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "The citing entity imitates the characteristic style or content of the cited entity for comic effect, usually without explicit citation."@en;
+              rdfs:label "parodies"@en;
+              rdfs:subPropertyOf cito:cites.
+cito:plagiarizes <http://purl.org/dc/elements/1.1/description> "Example: The conclusion of our dissertation can be summarised by the following motto, we created specifically for this purpose: we are like dwarfs standing on the shoulders of giants."@en;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "A property indicating that the author of the citing entity plagiarizes the cited entity, by including textual or other elements from the cited entity without formal acknowledgement of their source.  The citing entity thus contains no explicit citation of the cited entity, according to the norms of scholarly practice, but cites it implicitly."@en;
+                 rdfs:label "plagiarizes"@en;
+                 rdfs:subPropertyOf cito:cites.
+cito:providesAssertionFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "The cited entity contains and is the original source of a statement of fact or a logical assertion (or a collection of such facts and/or assertions) that is to be found in the citing entity.   This inverse object property is designed to be used to relate a cited entity to a separate abstract, summary or nanopublication based upon it."@en;
+                          rdfs:label "provides assertion for"@en;
+                          rdfs:subPropertyOf cito:isCitedBy.
+cito:providesConclusionsFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "The cited entity presents conclusions that are used in work described in the citing entity."@en;
+                            rdfs:label "provides conclusions for"@en;
+                            rdfs:subPropertyOf cito:isCitedBy;
+                            <http://www.w3.org/2002/07/owl#inverseOf> cito:usesConclusionsFrom.
+cito:providesDataFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "The cited entity presents data that are used in work described in the citing entity."@en;
+                     rdfs:label "provides data for"@en;
+                     rdfs:subPropertyOf cito:isCitedBy;
+                     <http://www.w3.org/2002/07/owl#inverseOf> cito:usesDataFrom.
+cito:providesExcerptFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "The cited entity contains information, usually of a textual nature, that is excerpted by (used as an excerpt within) the citing entity."@en;
+                        rdfs:label "provides excerpt for"@en;
+                        rdfs:subPropertyOf cito:isCitedBy.
+cito:providesMethodFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "The cited entity details a method that is used in work described by the citing entity."@en;
+                       rdfs:label "provides method for"@en;
+                       rdfs:subPropertyOf cito:isCitedBy;
+                       <http://www.w3.org/2002/07/owl#inverseOf> cito:usesMethodIn.
+cito:providesQuotationFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "The cited entity contains information, usually of a textual nature, that is quoted by (used as a quotation within) the citing entity."@en;
+                          rdfs:label "provides quotation for"@en;
+                          rdfs:subPropertyOf cito:isCitedBy.
+cito:qualifies <http://purl.org/dc/elements/1.1/description> "Example: Galileo's masterpiece 'Dialogo sopra i due massimi sistemi del mondo' [X] is formally a dialog and substantially a scientific pamphlet."@en;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The citing entity qualifies or places conditions or restrictions upon statements, ideas or conclusions presented in the cited entity."@en;
+               rdfs:label "qualifies"@en;
+               rdfs:subPropertyOf cito:cites.
+cito:refutes <http://purl.org/dc/elements/1.1/description> "Example: We do not think that all their arguments in favour of their own and against the other strategies are equally convincing [X]."@en;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "The citing entity refutes statements, ideas or conclusions presented in the cited entity."@en;
+             rdfs:label "refutes"@en;
+             rdfs:subPropertyOf cito:cites.
+cito:repliesTo <http://purl.org/dc/elements/1.1/description> "Example: We will not investigate the issues of the approach proposed in [X] here, but rather we introduce yet another alternative."@en;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The citing entity replies to statements, ideas or criticisms presented in the cited entity."@en;
+               rdfs:label "replies to"@en;
+               rdfs:subPropertyOf cito:cites.
+cito:retracts <http://purl.org/dc/elements/1.1/description> "Example: We wrote that the Earth moves in [X]; we now retire such statement."@en;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "The citing entity constitutes a formal retraction of the cited entity."@en;
+              rdfs:label "retracts"@en;
+              rdfs:subPropertyOf cito:cites.
+cito:reviews <http://purl.org/dc/elements/1.1/description> "Example: This paper discusses Toulmin's methodology in modelling argumentation [X], focussing on highlighting advantages and drawbacks of the application of such a methodology in the Social Web."@en;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "The citing entity reviews statements, ideas or conclusions presented in the cited entity."@en;
+             rdfs:label "reviews"@en;
+             rdfs:subPropertyOf cito:cites.
+cito:ridicules <http://purl.org/dc/elements/1.1/description> """Example: Galileo said that the Earth \"moves\" [X]; really? And where is it going?"""@en;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The citing entity ridicules the cited entity or aspects of its contents."@en;
+               rdfs:label "ridicules"@en;
+               rdfs:subPropertyOf cito:cites.
+cito:sharesAuthorInstitutionWith a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:comment "Each entity has at least one author that shares a common institutional affiliation with an author of the other entity."@en;
+                                 rdfs:label "shares author institution with"@en.
+cito:sharesAuthorWith a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                        <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "Each entity has at least one author in common with the other entity."@en;
+                      rdfs:label "shares author with"@en;
+                      rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+cito:sharesFundingAgencyWith a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                               <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                             rdfs:comment "The two entities result from activities that have been funded by the same funding agency."@en;
+                             rdfs:label "shares funding agency with"@en.
+cito:sharesJournalWith a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "The citing and cited bibliographic resources are published in the same journal."@en;
+                       rdfs:label "shares journal with"@en;
+                       rdfs:subPropertyOf cito:sharesPublicationVenueWith.
+cito:sharesPublicationVenueWith a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:comment "The citing and cited bibliographic resources are published in same publication venue."@en;
+                                rdfs:label "shares publication venue with"@en.
+cito:speculatesOn <http://purl.org/dc/elements/1.1/description> "Example: We believe that if Galileo believed that Earth goes around the Sun [X], he also should believe that Moon goes around Earth."@en;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "The citing entity speculates on something within or related to the cited entity, without firm evidence."@en;
+                  rdfs:label "speculates on"@en;
+                  rdfs:subPropertyOf cito:cites.
+cito:supports <http://purl.org/dc/elements/1.1/description> "Example: We support Galileo's statement [X], that Earth moves."@en;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "The citing entity provides intellectual or factual support for statements, ideas or conclusions presented in the cited entity."@en;
+              rdfs:label "supports"@en;
+              rdfs:subPropertyOf cito:cites.
+cito:updates <http://purl.org/dc/elements/1.1/description> "Example: Earth moves, said Galileo [X]; in addition, we can say now it moves very fast."@en;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "The citing entity updates statements, ideas, hypotheses or understanding presented in the cited entity."@en;
+             rdfs:label "updates"@en;
+             rdfs:subPropertyOf cito:cites.
+cito:usesConclusionsFrom <http://purl.org/dc/elements/1.1/description> "Example: Building upon Galileo's findings [X], we discovered that all the planets move."@en;
+                         a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "The citing entity describes work that uses conclusions presented in the cited entity."@en;
+                         rdfs:label "uses conclusions from"@en;
+                         rdfs:subPropertyOf cito:cites.
+cito:usesDataFrom <http://purl.org/dc/elements/1.1/description> "Example: Using the information collected from our recent study [X], we can estimate that there are tens of millions of HTML forms with potentially useful deep-web content."@en;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "The citing entity describes work that uses data presented in the cited entity."@en;
+                  rdfs:label "uses data from"@en;
+                  rdfs:subPropertyOf cito:cites.
+cito:usesMethodIn <http://purl.org/dc/elements/1.1/description> "Example: We follow [X] in using design patterns for testing."@en;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "The citing entity describes work that uses a method detailed in the cited entity."@en;
+                  rdfs:label "uses method in"@en;
+                  rdfs:subPropertyOf cito:cites.
+<http://purl.org/swan/2.0/discourse-relationships/refersTo> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://schema.org/citation> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:comment "This property is defined in schema.org and has been added here to align schema.org with CiTO. The object property schema:citation expresses similar semantics to cito:cites except for the explicit definition of domain and range classes, that are schema:CreativeWork according to schema.org. For that reason, it is here defined as a subproperty of cito:cites."@en;
+                             rdfs:label "citation";
+                             rdfs:subPropertyOf cito:cites.
+rdfs:comment a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:label a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+xsd:duration a rdfs:Datatype.
+<http://www.w3.org/2002/07/owl#priorVersion> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#topObjectProperty> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.w3.org/2002/07/owl#versionInfo> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.

@@ -17,23 +17,24 @@ module cld =
     /// <seealso href="http://purl.org/cld/terms/AccrualMethod">http://purl.org/cld/terms/AccrualMethod</seealso>
     let AccrualMethod = Prefixed_Name(cld, "AccrualMethod") |> PrefixedName
     /// <summary>
-    ///   <para>cld:Frequency</para>
+    ///   <para>cld:CDType</para>
     /// </summary>
     /// <remarks>
     ///   <para>dcam:VocabularyEncodingScheme</para>
     ///   <para>skos:ConceptScheme</para>
-    ///   <para>A set of frequencies with which a repeatable event occurs..</para>
-    /// labels<para>Collection Description Frequency Vocabulary</para></remarks>
-    /// <seealso href="http://purl.org/cld/terms/Frequency">http://purl.org/cld/terms/Frequency</seealso>
-    let Frequency = Prefixed_Name(cld, "Frequency") |> PrefixedName
+    ///   <para>A set of types of collection description.</para>
+    /// labels<para>Collection Description Type Vocabulary</para></remarks>
+    /// <seealso href="http://purl.org/cld/terms/CDType">http://purl.org/cld/terms/CDType</seealso>
+    let CDType = Prefixed_Name(cld, "CDType") |> PrefixedName
     /// <summary>
-    ///   <para>cld:RKMS-ISO8601</para>
+    ///   <para>cld:catalogueOrIndex</para>
     /// </summary>
     /// <remarks>
-    ///   <para>Instances of this datatype are dates or periods of time represented as literals according to the rules specified in Recordkeeping Metadata Schema Extension to ISO8601.</para>
-    /// labels<para>Recordkeeping Metadata Schema Extension to ISO8601</para></remarks>
-    /// <seealso href="http://purl.org/cld/terms/RKMS-ISO8601">http://purl.org/cld/terms/RKMS-ISO8601</seealso>
-    let RKMS_ISO8601 = Prefixed_Name(cld, "RKMS-ISO8601") |> PrefixedName
+    ///   <para>rdf:Property</para>
+    ///   <para>A catalogue for, or index of, the collection.</para>
+    /// labels<para>Catalogue or Index</para></remarks>
+    /// <seealso href="http://purl.org/cld/terms/catalogueOrIndex">http://purl.org/cld/terms/catalogueOrIndex</seealso>
+    let catalogueOrIndex = Prefixed_Name(cld, "catalogueOrIndex") |> PrefixedName
 
     /// <summary>
     ///   <para>cld:associatedCollection</para>
@@ -46,15 +47,6 @@ module cld =
     let associatedCollection =
         Prefixed_Name(cld, "associatedCollection") |> PrefixedName
 
-    /// <summary>
-    ///   <para>cld:catalogueOrIndex</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>A catalogue for, or index of, the collection.</para>
-    /// labels<para>Catalogue or Index</para></remarks>
-    /// <seealso href="http://purl.org/cld/terms/catalogueOrIndex">http://purl.org/cld/terms/catalogueOrIndex</seealso>
-    let catalogueOrIndex = Prefixed_Name(cld, "catalogueOrIndex") |> PrefixedName
     /// <summary>
     ///   <para>cld:describedCollection</para>
     /// </summary>
@@ -74,6 +66,29 @@ module cld =
     /// <seealso href="http://purl.org/cld/terms/isLocatedAt">http://purl.org/cld/terms/isLocatedAt</seealso>
     let isLocatedAt = Prefixed_Name(cld, "isLocatedAt") |> PrefixedName
     /// <summary>
+    ///   <para>cld:RKMS-ISO8601</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>Instances of this datatype are dates or periods of time represented as literals according to the rules specified in Recordkeeping Metadata Schema Extension to ISO8601.</para>
+    /// labels<para>Recordkeeping Metadata Schema Extension to ISO8601</para></remarks>
+    /// <seealso href="http://purl.org/cld/terms/RKMS-ISO8601">http://purl.org/cld/terms/RKMS-ISO8601</seealso>
+    let RKMS_ISO8601 = Prefixed_Name(cld, "RKMS-ISO8601") |> PrefixedName
+    /// <summary>
+    ///   <para>cld:itemFormat</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The media type, physical or digital, of one or more items within the collection.</para>
+    /// labels<para>Item Format</para></remarks>
+    /// <seealso href="http://purl.org/cld/terms/itemFormat">http://purl.org/cld/terms/itemFormat</seealso>
+    let itemFormat = Prefixed_Name(cld, "itemFormat") |> PrefixedName
+    /// <summary>
+    ///   <para>cld:</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/cld/terms/">http://purl.org/cld/terms/</seealso>
+    let _prefix_iri = Prefixed_Name(cld, "") |> PrefixedName
+    /// <summary>
     ///   <para>cld:AccrualPolicy</para>
     /// </summary>
     /// <remarks>
@@ -84,15 +99,15 @@ module cld =
     /// <seealso href="http://purl.org/cld/terms/AccrualPolicy">http://purl.org/cld/terms/AccrualPolicy</seealso>
     let AccrualPolicy = Prefixed_Name(cld, "AccrualPolicy") |> PrefixedName
     /// <summary>
-    ///   <para>cld:CDType</para>
+    ///   <para>cld:Frequency</para>
     /// </summary>
     /// <remarks>
-    ///   <para>skos:ConceptScheme</para>
     ///   <para>dcam:VocabularyEncodingScheme</para>
-    ///   <para>A set of types of collection description.</para>
-    /// labels<para>Collection Description Type Vocabulary</para></remarks>
-    /// <seealso href="http://purl.org/cld/terms/CDType">http://purl.org/cld/terms/CDType</seealso>
-    let CDType = Prefixed_Name(cld, "CDType") |> PrefixedName
+    ///   <para>skos:ConceptScheme</para>
+    ///   <para>A set of frequencies with which a repeatable event occurs..</para>
+    /// labels<para>Collection Description Frequency Vocabulary</para></remarks>
+    /// <seealso href="http://purl.org/cld/terms/Frequency">http://purl.org/cld/terms/Frequency</seealso>
+    let Frequency = Prefixed_Name(cld, "Frequency") |> PrefixedName
     /// <summary>
     ///   <para>cld:dateItemsCreated</para>
     /// </summary>
@@ -102,15 +117,6 @@ module cld =
     /// labels<para>Date Items Created</para></remarks>
     /// <seealso href="http://purl.org/cld/terms/dateItemsCreated">http://purl.org/cld/terms/dateItemsCreated</seealso>
     let dateItemsCreated = Prefixed_Name(cld, "dateItemsCreated") |> PrefixedName
-    /// <summary>
-    ///   <para>cld:itemFormat</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>The media type, physical or digital, of one or more items within the collection.</para>
-    /// labels<para>Item Format</para></remarks>
-    /// <seealso href="http://purl.org/cld/terms/itemFormat">http://purl.org/cld/terms/itemFormat</seealso>
-    let itemFormat = Prefixed_Name(cld, "itemFormat") |> PrefixedName
     /// <summary>
     ///   <para>cld:isAccessedVia</para>
     /// </summary>
@@ -129,9 +135,3 @@ module cld =
     /// labels<para>Item Type</para></remarks>
     /// <seealso href="http://purl.org/cld/terms/itemType">http://purl.org/cld/terms/itemType</seealso>
     let itemType = Prefixed_Name(cld, "itemType") |> PrefixedName
-    /// <summary>
-    ///   <para>cld:</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://purl.org/cld/terms/">http://purl.org/cld/terms/</seealso>
-    let _prefix_iri = Prefixed_Name(cld, "") |> PrefixedName

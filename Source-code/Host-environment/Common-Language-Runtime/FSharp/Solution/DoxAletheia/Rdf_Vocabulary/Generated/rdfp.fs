@@ -6,22 +6,44 @@ open type Prefix_ID
 
 module rdfp =
     let _namespace_iri = Namespace_Iri rdfp |> NamespaceIRI
-
     /// <summary>
-    ///   <para>rdfp:RepresentationValidationRule</para>
+    ///   <para>rdfp:rdfp-1.0</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="https://w3id.org/rdfp/rdfp-1.0">https://w3id.org/rdfp/rdfp-1.0</seealso>
+    let ``rdfp_1.0`` = Prefixed_Name(rdfp, "rdfp-1.0") |> PrefixedName
+    /// <summary>
+    ///   <para>rdfp:GraphDescription</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>The class of representation validation rules resources. Such resources may have various representations:
+    ///   <para>Instances of rdfp:GraphDescription describe RDF Graphs in terms of validation and presentation.
     ///
-    /// - a JSON Schema for JSON representations;
-    /// - a XML Schema for XML representations;
-    /// - a XPath query that must retrieve an element to validate.</para>
-    /// labels<para>Representation Validation Rule</para></remarks>
-    /// <seealso href="https://w3id.org/rdfp/RepresentationValidationRule">https://w3id.org/rdfp/RepresentationValidationRule</seealso>
-    let RepresentationValidationRule =
-        Prefixed_Name(rdfp, "RepresentationValidationRule") |> PrefixedName
-
+    ///   A rdfp:GraphDescription may be linked to one or more validation rules.
+    ///   A rdfp:GraphDescription may be linked to one or more instances or rdfp:Presentation.
+    ///
+    ///    For example,
+    ///
+    /// ```
+    ///    &lt;https://w3id.org/rdfp/example/graph&gt; a rdfp:GraphDescription ;
+    ///      rdfp:validationRule &lt;some_sparql_ask_rule&gt; ;
+    ///      rdfp:presentedBy &lt;some_presentation_description&gt; .
+    /// ```
+    ///
+    /// We propose an alignment of this resource with sd:Graph, but this is part of [another document](https://w3id.org/rdfp/align/sd).
+    /// </para>
+    /// labels<para>Graph Description</para></remarks>
+    /// <seealso href="https://w3id.org/rdfp/GraphDescription">https://w3id.org/rdfp/GraphDescription</seealso>
+    let GraphDescription = Prefixed_Name(rdfp, "GraphDescription") |> PrefixedName
+    /// <summary>
+    ///   <para>rdfp:Representation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The class of web representations. A representation is also a resource.</para>
+    /// labels<para>Representation</para></remarks>
+    /// <seealso href="https://w3id.org/rdfp/Representation">https://w3id.org/rdfp/Representation</seealso>
+    let Representation = Prefixed_Name(rdfp, "Representation") |> PrefixedName
     /// <summary>
     ///   <para>rdfp:liftingRule</para>
     /// </summary>
@@ -32,14 +54,14 @@ module rdfp =
     /// <seealso href="https://w3id.org/rdfp/liftingRule">https://w3id.org/rdfp/liftingRule</seealso>
     let liftingRule = Prefixed_Name(rdfp, "liftingRule") |> PrefixedName
     /// <summary>
-    ///   <para>rdfp:representedBy</para>
+    ///   <para>rdfp:describedBy</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>Links a resource to one of its representations. It is expected that the representation has a media type.</para>
-    /// labels<para>represented by</para></remarks>
-    /// <seealso href="https://w3id.org/rdfp/representedBy">https://w3id.org/rdfp/representedBy</seealso>
-    let representedBy = Prefixed_Name(rdfp, "representedBy") |> PrefixedName
+    ///   <para>Links a RDF graph to its description.</para>
+    /// labels<para>described by</para></remarks>
+    /// <seealso href="https://w3id.org/rdfp/describedBy">https://w3id.org/rdfp/describedBy</seealso>
+    let describedBy = Prefixed_Name(rdfp, "describedBy") |> PrefixedName
     /// <summary>
     ///   <para>rdfp:presentationFor</para>
     /// </summary>
@@ -50,40 +72,14 @@ module rdfp =
     /// <seealso href="https://w3id.org/rdfp/presentationFor">https://w3id.org/rdfp/presentationFor</seealso>
     let presentationFor = Prefixed_Name(rdfp, "presentationFor") |> PrefixedName
     /// <summary>
-    ///   <para>rdfp:presentedBy</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Links a RDF graph description to one of its presentation means.</para>
-    /// labels<para>presented by</para></remarks>
-    /// <seealso href="https://w3id.org/rdfp/presentedBy">https://w3id.org/rdfp/presentedBy</seealso>
-    let presentedBy = Prefixed_Name(rdfp, "presentedBy") |> PrefixedName
-    /// <summary>
-    ///   <para>rdfp:validationRule</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Links a graph description (resp. a presentation) to a validation rule against which graphs conforming to this description (resp. representations conforming to this presentation) should validate. Such resources may have various representations.
-    ///
-    /// For example, resource identified by `&lt;some_validation_rule&gt;` may have a representation as a [SPARQL ASK query](https://www.w3.org/TR/sparql11-query/#ask), as a [ShEx expression](http://shexspec.github.io/), or as a [SHACL shape](https://www.w3.org/TR/shacl/).</para>
-    /// labels<para>validation rule</para></remarks>
-    /// <seealso href="https://w3id.org/rdfp/validationRule">https://w3id.org/rdfp/validationRule</seealso>
-    let validationRule = Prefixed_Name(rdfp, "validationRule") |> PrefixedName
-    /// <summary>
     ///   <para>rdfp:</para>
     /// </summary>
     /// <remarks>
-    ///   <para>voaf:Vocabulary</para>
     ///   <para>owl:Ontology</para>
+    ///   <para>voaf:Vocabulary</para>
     /// </remarks>
     /// <seealso href="https://w3id.org/rdfp/">https://w3id.org/rdfp/</seealso>
     let _prefix_iri = Prefixed_Name(rdfp, "") |> PrefixedName
-    /// <summary>
-    ///   <para>rdfp:rdfp-1.0</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="https://w3id.org/rdfp/rdfp-1.0">https://w3id.org/rdfp/rdfp-1.0</seealso>
-    let ``rdfp_1.0`` = Prefixed_Name(rdfp, "rdfp-1.0") |> PrefixedName
     /// <summary>
     ///   <para>rdfp:Graph</para>
     /// </summary>
@@ -113,29 +109,6 @@ module rdfp =
     /// labels<para>Resource</para></remarks>
     /// <seealso href="https://w3id.org/rdfp/Resource">https://w3id.org/rdfp/Resource</seealso>
     let Resource = Prefixed_Name(rdfp, "Resource") |> PrefixedName
-    /// <summary>
-    ///   <para>rdfp:GraphDescription</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Instances of rdfp:GraphDescription describe RDF Graphs in terms of validation and presentation.
-    ///
-    ///   A rdfp:GraphDescription may be linked to one or more validation rules.
-    ///   A rdfp:GraphDescription may be linked to one or more instances or rdfp:Presentation.
-    ///
-    ///    For example,
-    ///
-    /// ```
-    ///    &lt;https://w3id.org/rdfp/example/graph&gt; a rdfp:GraphDescription ;
-    ///      rdfp:validationRule &lt;some_sparql_ask_rule&gt; ;
-    ///      rdfp:presentedBy &lt;some_presentation_description&gt; .
-    /// ```
-    ///
-    /// We propose an alignment of this resource with sd:Graph, but this is part of [another document](https://w3id.org/rdfp/align/sd).
-    /// </para>
-    /// labels<para>Graph Description</para></remarks>
-    /// <seealso href="https://w3id.org/rdfp/GraphDescription">https://w3id.org/rdfp/GraphDescription</seealso>
-    let GraphDescription = Prefixed_Name(rdfp, "GraphDescription") |> PrefixedName
     /// <summary>
     ///   <para>rdfp:GraphPresentation</para>
     /// </summary>
@@ -202,15 +175,22 @@ module rdfp =
     /// labels<para>Lowering Rule</para></remarks>
     /// <seealso href="https://w3id.org/rdfp/LoweringRule">https://w3id.org/rdfp/LoweringRule</seealso>
     let LoweringRule = Prefixed_Name(rdfp, "LoweringRule") |> PrefixedName
+
     /// <summary>
-    ///   <para>rdfp:Representation</para>
+    ///   <para>rdfp:RepresentationValidationRule</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>The class of web representations. A representation is also a resource.</para>
-    /// labels<para>Representation</para></remarks>
-    /// <seealso href="https://w3id.org/rdfp/Representation">https://w3id.org/rdfp/Representation</seealso>
-    let Representation = Prefixed_Name(rdfp, "Representation") |> PrefixedName
+    ///   <para>The class of representation validation rules resources. Such resources may have various representations:
+    ///
+    /// - a JSON Schema for JSON representations;
+    /// - a XML Schema for XML representations;
+    /// - a XPath query that must retrieve an element to validate.</para>
+    /// labels<para>Representation Validation Rule</para></remarks>
+    /// <seealso href="https://w3id.org/rdfp/RepresentationValidationRule">https://w3id.org/rdfp/RepresentationValidationRule</seealso>
+    let RepresentationValidationRule =
+        Prefixed_Name(rdfp, "RepresentationValidationRule") |> PrefixedName
+
     /// <summary>
     ///   <para>rdfp:alias</para>
     /// </summary>
@@ -222,15 +202,6 @@ module rdfp =
     /// labels<para>alias</para></remarks>
     /// <seealso href="https://w3id.org/rdfp/alias">https://w3id.org/rdfp/alias</seealso>
     let alias = Prefixed_Name(rdfp, "alias") |> PrefixedName
-    /// <summary>
-    ///   <para>rdfp:describedBy</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Links a RDF graph to its description.</para>
-    /// labels<para>described by</para></remarks>
-    /// <seealso href="https://w3id.org/rdfp/describedBy">https://w3id.org/rdfp/describedBy</seealso>
-    let describedBy = Prefixed_Name(rdfp, "describedBy") |> PrefixedName
     /// <summary>
     ///   <para>rdfp:GraphRepresentation</para>
     /// </summary>
@@ -255,3 +226,32 @@ module rdfp =
     /// labels<para>media type</para></remarks>
     /// <seealso href="https://w3id.org/rdfp/mediaType">https://w3id.org/rdfp/mediaType</seealso>
     let mediaType = Prefixed_Name(rdfp, "mediaType") |> PrefixedName
+    /// <summary>
+    ///   <para>rdfp:presentedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Links a RDF graph description to one of its presentation means.</para>
+    /// labels<para>presented by</para></remarks>
+    /// <seealso href="https://w3id.org/rdfp/presentedBy">https://w3id.org/rdfp/presentedBy</seealso>
+    let presentedBy = Prefixed_Name(rdfp, "presentedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>rdfp:representedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Links a resource to one of its representations. It is expected that the representation has a media type.</para>
+    /// labels<para>represented by</para></remarks>
+    /// <seealso href="https://w3id.org/rdfp/representedBy">https://w3id.org/rdfp/representedBy</seealso>
+    let representedBy = Prefixed_Name(rdfp, "representedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>rdfp:validationRule</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Links a graph description (resp. a presentation) to a validation rule against which graphs conforming to this description (resp. representations conforming to this presentation) should validate. Such resources may have various representations.
+    ///
+    /// For example, resource identified by `&lt;some_validation_rule&gt;` may have a representation as a [SPARQL ASK query](https://www.w3.org/TR/sparql11-query/#ask), as a [ShEx expression](http://shexspec.github.io/), or as a [SHACL shape](https://www.w3.org/TR/shacl/).</para>
+    /// labels<para>validation rule</para></remarks>
+    /// <seealso href="https://w3id.org/rdfp/validationRule">https://w3id.org/rdfp/validationRule</seealso>
+    let validationRule = Prefixed_Name(rdfp, "validationRule") |> PrefixedName

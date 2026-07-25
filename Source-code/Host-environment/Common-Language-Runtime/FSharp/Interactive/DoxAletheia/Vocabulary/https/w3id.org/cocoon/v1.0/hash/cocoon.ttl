@@ -1,0 +1,554 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix cocoon: <https://w3id.org/cocoon/v1.0#>.
+
+_:B1c15cb0471fa3dbfc22908bebcb57dd1 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (cocoon:Network
+                                                                             cocoon:Storage
+                                                                             cocoon:VM).
+_:B1c8618ebc7a6dd075e2e317b39a5f81b a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment """VM storage transaction price specification.
+There is a data access fees on local disk of Azure VM.
+For example, every single block access incurs a transaction. The default block size is 4 Megabytes, meaning uploading a 32Mb file will incur 8 Storage Transactions. Deleting the file will also incur 8 transactions, so will updating it, and any other time the file is touched. The transactions are charged at a cost of around $0.00036 USD per 10,000 transactions. So 32Mb file will cost $0.000000368 AUD.
+The only exception to Storage Transactions is when Premium Storage (persistent SSD storage) is used. That is, when you provision a P10, P20 or a P30 disk for your Virtual Machine those disks are exempt from Storage Transactions.
+
+https://github.com/miranda-zhang/cloud-computing-schema/blob/master/example/azure/vm.md#storage-transactions"""@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:VM;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#onClass> cocoon:StorageTransactionsPriceSpecification ; 
+                                                                                     <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/goodrelations/v1#hasPriceSpecification> ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:B26d28c9e69342b20d66d52d34adf80c7 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "Google specifies the maximum number of disk allowed to attach to a VM."@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:VM;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#onClass> cocoon:QuantityOfThings ; 
+                                                                                     <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasMaxNumberOfDisk ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:B2ff4bae8a99a1ac37c92c236764ae4ed a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment """Optional, if not sure the exact type of thing,
+like only know it is 8GB of Memory, but there is not a definition in ontology for the exact memory type.
+One usage example, `cocoon:ofObjectType cocoon:LocalStorage` ,
+quantifies the type of object should be `LocalStorage`"""@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:QuantityOfThings;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:ofObjectType ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:B3357e2a9c8af5ce892ccf334bba69b0d a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (cocoon:NetworkPriceSpecification
+                                                                             cocoon:OSPriceSpecification
+                                                                             cocoon:StorageTransactionsPriceSpecification).
+_:B38b7f1f516e69ddf647057520e91bf2b a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "NetworkPriceSpecification use other properties to sepecify destination, and this property may not be useful."@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> <http://purl.org/goodrelations/v1#UnitPriceSpecification>;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#onClass> cocoon:Region ; 
+                                                                                     <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasRegion ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:B38c326bf9a0c8cb70f35bed89fd008e3 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "Local storage   available on this VM, or netowrk storage attached to this VM."@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:VM;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#someValuesFrom> cocoon:QuantityOfThings ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasStorage ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:B3a5f03e8c154d57df1cfb97c8adcaea5 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "i.e. Gcloud Cloud Composer"@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:comment;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:SaaS;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> "Software as a Service"@en.
+_:B4e8a70e0af8cbb892dce97704ff05cf8 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "Google also specifies the maximum total disk size allowed to attach to a VM."@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:VM;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#onClass> cocoon:QuantityOfThings ; 
+                                                                                     <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasMaxStorageSize ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:B55fd6ffb200ca9df16d3c58c5453db36 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "Some regions can be in multiple locations, i.e. nam-eur-asia1, they can be in multiple jurisdictions. Other region should have at most 1 phisical location associated with it.";
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:Region;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.geonames.org/ontology#Feature> ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:inJurisdiction ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:B5d0c1d2bc39c125387f5d985bf23cebe a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "Describe price for machines with less than orequal to the specified number of cores."@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:OSPriceSpecification;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#onDataRange> xsd:decimal ; 
+                                                                                     <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:forCoresLessEqual ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:B655a395cdc4179e28efe61ad314e7692 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "i.e. Egress between zones in the same region; Egress between regions within the US; Egress to Google products (such as YouTube, Maps, Drive)"@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:NetworkPriceSpecification;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                                                                     <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:specialRateType ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:B69fba77eb1f3a39e2d3b292096a65d0d a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "Disks can have different throughput caps, i.e. 200 MB/second"@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:Storage;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#onClass> cocoon:QuantityOfThings ; 
+                                                                                     <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasStorageThroughputMax ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:B83b7768bae3024437cced88db4e0a855 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (cocoon:Internet
+                                                                             cocoon:LoadBalancing
+                                                                             cocoon:StaticIP).
+_:B90fce1f310834703d4209845144ccb64 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "Size of Memory"@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:VM;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#onClass> cocoon:QuantityOfThings ; 
+                                                                                     <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasMemory ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:B92f3bda246f28a08c88b87a7004d0e0b a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "Describe  the price  for  machines  with  more  than  specified  number  of  cores."@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:OSPriceSpecification;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#onDataRange> xsd:decimal ; 
+                                                                                     <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:forCoresMoreThan ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:B98e5981a1fc1fa19453e14318a1da088 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "CPU power of VM"@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:VM;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#onClass> cocoon:QuantityOfThings ; 
+                                                                                     <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasCPUcapacity ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:Ba5e798a7bf25a5ed130070d195cc5446 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "Disks can have different input/output operations per sec (IOPs)."@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:Storage;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#onClass> cocoon:QuantityOfThings ; 
+                                                                                     <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasStorageIOMax ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:Bb7a30923bf58c1e587676256108a6b0a a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "If a definite location or address is known, physical location can be set, otherwise cocoon:inJurisdiction can be used to describe where it is in approximately."@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:Region;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#onClass> <http://www.geonames.org/ontology#Feature> ; 
+                                                                                     <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:inPhysicalLocation ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:Bc7238882930d5ba4c0dd581b3a31f9a1 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "The number of cores available on this VM."@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:VM;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#onDataRange> xsd:decimal ; 
+                                                                                     <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:numberOfCores ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:Bd533a91f2ba041335d20fbc20736bfe4 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "Available snapshot options."@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:Storage;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#someValuesFrom> cocoon:Storage ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:canHaveSnapshot ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:Bdf128208814120707f1d6edcbdf2abba a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "gr:hasCurrencyValue seems only allow float value, extended to allow more precision with double floating-point numbers."@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> <http://purl.org/goodrelations/v1#UnitPriceSpecification>;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#unionOf> (xsd:double
+                                                                                                                                                                           xsd:float) ; 
+                                                                                                                                  a rdfs:Datatype] ; 
+                                                                                     <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasCurrencyValue ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:Be1d72dc17872d7657a5db824ded4c1c8 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "Price specification for Cloud Service"@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:CloudService;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/goodrelations/v1#UnitPriceSpecification> ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/goodrelations/v1#hasPriceSpecification> ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+_:Bff8a9eeb11495b0c48e434c41ae9386a a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment """For example on Google Cloud, Windows Server images on some machine types are charged based on the number of CPUs, i.e., n1-standard-4, n1-highcpu-4, and n1-highmem-4 are machine-types with 4 vCPUs,
+and are charged at $0.16 USD/hour (4 times $0.04 USD/hour).
+
+https://github.com/miranda-zhang/cloud-computing-schema/blob/master/example/gcloud/os.md#windows-server-images"""@en;
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subClassOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> cocoon:OSPriceSpecification;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> [<http://www.w3.org/2002/07/owl#onDataRange> xsd:boolean ; 
+                                                                                     <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:chargedPerCore ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/goodrelations/v1#BusinessEntity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/goodrelations/v1#UnitPriceSpecification> a <http://www.w3.org/2002/07/owl#Class>;
+                                                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#unionOf> (xsd:double
+                                                                                                                                                                 xsd:float) ; 
+                                                                                                                        a rdfs:Datatype] ; 
+                                                                           <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                           <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasCurrencyValue ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                          [<http://www.w3.org/2002/07/owl#onClass> cocoon:Region ; 
+                                                                           <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                           <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasRegion ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Restriction>].
+<http://purl.org/goodrelations/v1#hasPriceSpecification> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://purl.org/goodrelations/v1#name> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://qudt.org/schema/qudt#DataRateUnit> a <http://www.w3.org/2002/07/owl#Class>.
+<http://qudt.org/schema/qudt#DerivedUnit> a <http://www.w3.org/2002/07/owl#Class>.
+<http://qudt.org/schema/qudt#InformationEntropyUnit> a <http://www.w3.org/2002/07/owl#Class>.
+<http://qudt.org/schema/qudt#Unit> a <http://www.w3.org/2002/07/owl#Class>;
+                                   <http://www.w3.org/2002/07/owl#equivalentClass> cocoon:UnitOfMeasure.
+<http://www.geonames.org/ontology#Feature> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.semanticweb.org/owl/owlapi/turtle#location> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://xmlns.com/foaf/0.1/Person> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/givenname> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/homepage> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/lastName> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/mbox> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/name> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/nick> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/page> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/workInfoHomepage> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://w3id.org/cocoon/v1.0> <http://creativecommons.org/ns#attributionName> "Qian ZHANG";
+                               <http://creativecommons.org/ns#attributionURL> <http://w3id.org/cocoon/v1.0>;
+                               <http://purl.org/dc/terms/created> "2012-10-01"^^xsd:date;
+                               <http://purl.org/dc/terms/creator> cocoon:mirandazhangqian;
+                               <http://purl.org/dc/terms/description> "Simple ontology for Cloud Computing Services. This ontology allows to define model of prices used in large cloud computing providers such as Google, Amazon, Azure, etc., including options for regions, type of instances, prices specification, etc. "@en;
+                               <http://purl.org/dc/terms/issued> "2019-02-04"^^xsd:date;
+                               <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by-nc/4.0/>;
+                               <http://purl.org/dc/terms/modified> "2018-09-17";
+                               <http://purl.org/dc/terms/rights> "Copyright © 2018 Qian ZHANG"@en;
+                               <http://purl.org/dc/terms/title> "Vocabulary in Cloud Computing Services"@en;
+                               <http://purl.org/vocab/vann/preferredNamespacePrefix> "cocoon";
+                               <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/cocoon/v1.0#";
+                               a <http://www.w3.org/2002/07/owl#Ontology>;
+                               rdfs:label "Cloud Computing Services Ontology"@en;
+                               rdfs:seeAlso <https://github.com/miranda-zhang/cloud-computing-schema>;
+                               <http://www.w3.org/2002/07/owl#versionInfo> 1.0.
+cocoon:10TB a cocoon:QuantityOfThings,
+              <http://www.w3.org/2002/07/owl#NamedIndividual>;
+            cocoon:hasUnitOfMeasurement cocoon:GB;
+            cocoon:numericValue "10240"^^xsd:nonNegativeInteger.
+cocoon:1TB a cocoon:QuantityOfThings,
+             <http://www.w3.org/2002/07/owl#NamedIndividual>;
+           cocoon:hasUnitOfMeasurement cocoon:GB;
+           cocoon:numericValue "1024"^^xsd:nonNegativeInteger.
+cocoon:90TB a cocoon:QuantityOfThings,
+              <http://www.w3.org/2002/07/owl#NamedIndividual>;
+            cocoon:hasUnitOfMeasurement cocoon:GB;
+            cocoon:numericValue "92160"^^xsd:nonNegativeInteger.
+cocoon:CloudService a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> <http://purl.org/goodrelations/v1#BusinessEntity> ; 
+                                     <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasProvider ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/goodrelations/v1#UnitPriceSpecification> ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/goodrelations/v1#hasPriceSpecification> ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    cocoon:Service.
+cocoon:Database a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf cocoon:SaaS.
+cocoon:Egress a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf cocoon:TrafficDirection;
+              <http://www.w3.org/2002/07/owl#disjointWith> cocoon:Ingress.
+cocoon:ForwardingRule a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf cocoon:LoadBalancing.
+cocoon:GB <http://purl.org/dc/terms/description> "Gigabyte (GB): There are 1024MB in one gigabyte."@en;
+          a cocoon:UnitOfMeasure,
+            <http://qudt.org/schema/qudt#InformationEntropyUnit>,
+            <http://qudt.org/schema/qudt#DerivedUnit>,
+            <http://www.w3.org/2002/07/owl#NamedIndividual>;
+          rdfs:label "Gigabyte"@en.
+cocoon:GBPerMonth <http://purl.org/dc/terms/description> "Often describe 1 GB per Month usage."@en;
+                  a cocoon:UnitOfMeasure,
+                    <http://qudt.org/schema/qudt#DerivedUnit>,
+                    <http://qudt.org/schema/qudt#DataRateUnit>,
+                    <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                  rdfs:label "Gigabyte per Month"@en.
+cocoon:IOPs <http://purl.org/dc/terms/description> "Azure Managed Disks provide different input/output operations per sec (IOPs)"@en;
+            a cocoon:UnitOfMeasure,
+              <http://qudt.org/schema/qudt#DerivedUnit>,
+              <http://qudt.org/schema/qudt#DataRateUnit>,
+              <http://www.w3.org/2002/07/owl#NamedIndividual>;
+            rdfs:label "Input/output operations per sec"@en.
+cocoon:IaaS a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Infrastructure as a Service"@en;
+            rdfs:subClassOf cocoon:CloudService.
+cocoon:Ingress a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf cocoon:TrafficDirection.
+cocoon:Internet a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> cocoon:TrafficDirection ; 
+                                 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasDirection ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> cocoon:Location ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasDestination ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> cocoon:Location ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> cocoon:excludesDestination ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                cocoon:Network.
+cocoon:LBData a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> cocoon:TrafficDirection ; 
+                               <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasDirection ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              cocoon:LoadBalancing.
+cocoon:LoadBalancing a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf cocoon:Network.
+cocoon:LocalStorage a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Storage that is not detachable from VM"@en;
+                    rdfs:subClassOf cocoon:Storage.
+cocoon:Location a <http://www.w3.org/2002/07/owl#Class>.
+cocoon:MBPerSec <http://purl.org/dc/terms/description> "Azure Managed Disks throughput caps per disk."@en;
+                a cocoon:UnitOfMeasure,
+                  <http://qudt.org/schema/qudt#DerivedUnit>,
+                  <http://qudt.org/schema/qudt#DataRateUnit>,
+                  <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                rdfs:label "MB/second"@en.
+cocoon:Network a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf cocoon:IaaS.
+cocoon:NetworkPriceSpecification a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                                  <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> cocoon:specialRateType ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#onClass> cocoon:QuantityOfThings ; 
+                                                  <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> cocoon:forUsageMoreThan ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#onClass> cocoon:QuantityOfThings ; 
+                                                  <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> cocoon:forUsageLessEqual ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 <http://purl.org/goodrelations/v1#UnitPriceSpecification>.
+cocoon:NetworkStorage a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Storage can exist independent from VM"@en;
+                      rdfs:subClassOf cocoon:Storage.
+cocoon:OSPriceSpecification a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> xsd:decimal ; 
+                                             <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> cocoon:forCoresMoreThan ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#onDataRange> xsd:decimal ; 
+                                             <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> cocoon:forCoresLessEqual ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#onDataRange> xsd:boolean ; 
+                                             <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> cocoon:chargedPerCore ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            <http://purl.org/goodrelations/v1#UnitPriceSpecification>.
+cocoon:PaaS a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Platform as a Service, i.e. Google App Engine, Heroku."@en;
+            rdfs:subClassOf cocoon:CloudService.
+cocoon:QuantityOfThings a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Composition of value, unit, and type of object, i.e., 2 GB of Memory, 10 GB of local storage, 3 TB of network storage."@en;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#unionOf> (xsd:decimal
+                                                                                                                               xsd:double
+                                                                                                                               xsd:nonNegativeInteger) ; 
+                                                                                      a rdfs:Datatype] ; 
+                                         <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> cocoon:numericValue ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> cocoon:ofObjectType ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onClass> cocoon:UnitOfMeasure ; 
+                                         <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasUnitOfMeasurement ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>].
+cocoon:Region a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                               <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> cocoon:continent ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onClass> <http://www.geonames.org/ontology#Feature> ; 
+                               <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> cocoon:inPhysicalLocation ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onClass> <http://purl.org/goodrelations/v1#BusinessEntity> ; 
+                               <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasProvider ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.geonames.org/ontology#Feature> ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> cocoon:inJurisdiction ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              cocoon:Location.
+cocoon:SaaS a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Software as a Service"@en;
+            rdfs:subClassOf cocoon:CloudService.
+cocoon:Service a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> cocoon:ServiceLevelAgreement ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasServiceLevelAgreement ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>].
+cocoon:ServiceLevelAgreement a <http://www.w3.org/2002/07/owl#Class>.
+cocoon:StaticIP a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> xsd:boolean ; 
+                                 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> cocoon:inUse ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                cocoon:Network.
+cocoon:Storage a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> cocoon:QuantityOfThings ; 
+                                <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasStorageThroughputMax ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onClass> cocoon:QuantityOfThings ; 
+                                <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasStorageSize ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onClass> cocoon:QuantityOfThings ; 
+                                <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasStorageIOMax ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> cocoon:Storage ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> cocoon:canHaveSnapshot ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               cocoon:IaaS.
+cocoon:StorageTransactionsPriceSpecification a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment """Can be used to define a common price spec for multiple cloud service individuals,
+i.e. the storage transaction spec has a different price in a different region,
+but there is a common transaction price spec for a group of cloud storage offers."""@en;
+                                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/goodrelations/v1#UnitPriceSpecification> ; 
+                                                              <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/goodrelations/v1#hasPriceSpecification> ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                             <http://purl.org/goodrelations/v1#UnitPriceSpecification>.
+cocoon:SystemImage <http://purl.org/dc/terms/description> """A system image is a serialized copy of the entire state of a computer system.
+System images can be used for backup.""";
+                   a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf cocoon:SaaS.
+cocoon:TB <http://purl.org/dc/terms/description> "Terabyte is more precisely defined as 1,024 gigabytes (GB)"@en;
+          a cocoon:UnitOfMeasure,
+            <http://qudt.org/schema/qudt#InformationEntropyUnit>,
+            <http://qudt.org/schema/qudt#DerivedUnit>,
+            <http://www.w3.org/2002/07/owl#NamedIndividual>;
+          rdfs:label "Terabyte"@en.
+cocoon:TrafficDirection a <http://www.w3.org/2002/07/owl#Class>.
+cocoon:UnitOfMeasure a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Defines custome units."@en.
+cocoon:VM a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> xsd:decimal ; 
+                           <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> cocoon:numberOfCores ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onClass> cocoon:QuantityOfThings ; 
+                           <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasMemory ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onClass> cocoon:QuantityOfThings ; 
+                           <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasMaxStorageSize ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onClass> cocoon:QuantityOfThings ; 
+                           <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasMaxNumberOfDisk ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onClass> cocoon:QuantityOfThings ; 
+                           <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasCPUcapacity ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onClass> cocoon:StorageTransactionsPriceSpecification ; 
+                           <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/goodrelations/v1#hasPriceSpecification> ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#someValuesFrom> cocoon:QuantityOfThings ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> cocoon:hasStorage ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          cocoon:IaaS.
+cocoon:Zone a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf cocoon:Region.
+cocoon:azure <http://purl.org/goodrelations/v1#name> "Microsoft Azure Cloud";
+             a <http://purl.org/goodrelations/v1#BusinessEntity>,
+               <http://www.w3.org/2002/07/owl#NamedIndividual>;
+             rdfs:label "Azure"@en;
+             <http://xmlns.com/foaf/0.1/page> <https://azure.microsoft.com/>.
+cocoon:canHaveSnapshot a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+cocoon:chargedPerCore a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "For Google Cloud, cost of SQL server image is charged on per core basis."@en;
+                      rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+cocoon:continent a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:comment "Similar to location, this property specifies the continent."@en;
+                 rdfs:subPropertyOf <http://www.semanticweb.org/owl/owlapi/turtle#location>.
+cocoon:excludesDestination a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+cocoon:forCoresLessEqual a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:comment """Google Cloud OS price for VM with different number of cores are different.
+It is used to describe price for machines with less than or
+equal to the specified number of cores."""@en;
+                         rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+cocoon:forCoresMoreThan a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment """Google Cloud OS price for VM with different number of cores are different.
+This is used to describe the price for machines with more than specified
+number of cores."""@en;
+                        rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+cocoon:forUsageLessEqual a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+cocoon:forUsageMoreThan a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+cocoon:gceu <http://purl.org/dc/terms/description> "GCEU (Google Compute Engine Unit), or GQ for short, is a unit of CPU capacity that we use to describe the compute power of our instance types. We chose 2.75 GQ's to represent the minimum power of one logical core (a hardware hyper-thread) on our Sandy Bridge platform."@en;
+            a cocoon:UnitOfMeasure,
+              <http://www.w3.org/2002/07/owl#NamedIndividual>;
+            rdfs:label "Google Compute Engine Unit"@en.
+cocoon:gcloud <http://purl.org/goodrelations/v1#name> "Google Cloud";
+              a <http://purl.org/goodrelations/v1#BusinessEntity>,
+                <http://www.w3.org/2002/07/owl#NamedIndividual>;
+              rdfs:label "Gcloud"@en;
+              <http://xmlns.com/foaf/0.1/page> <https://cloud.google.com/>.
+cocoon:hasCPUcapacity a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "The power or capacity of CPU available for this type of VM."@en;
+                      rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+cocoon:hasCurrencyValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+cocoon:hasDestination a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+cocoon:hasDirection a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+cocoon:hasMaxNumberOfDisk a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+cocoon:hasMaxStorageSize a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+cocoon:hasMemory a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+cocoon:hasProvider a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+cocoon:hasRegion a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+cocoon:hasServiceLevelAgreement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+cocoon:hasStorage a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+cocoon:hasStorageIOMax a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+cocoon:hasStorageSize a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+cocoon:hasStorageThroughputMax a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+cocoon:hasUnitOfMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+cocoon:inJurisdiction a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+cocoon:inPhysicalLocation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+cocoon:inUse a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+cocoon:mirandazhangqian a <http://xmlns.com/foaf/0.1/Person>,
+                          <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                        <http://xmlns.com/foaf/0.1/givenname> "Qian";
+                        <http://xmlns.com/foaf/0.1/homepage> <https://github.com/miranda-zhang>;
+                        <http://xmlns.com/foaf/0.1/lastName> "Zhang";
+                        <http://xmlns.com/foaf/0.1/mbox> <mailto:miranda.zhang.q@gmail.com>;
+                        <http://xmlns.com/foaf/0.1/nick> "Miranda";
+                        <http://xmlns.com/foaf/0.1/title> "Miss";
+                        <http://xmlns.com/foaf/0.1/workInfoHomepage> <https://www.linkedin.com/in/mirandazhangq/>.
+cocoon:numberOfCores a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "For Google Cloud, cores and vCPU referes to the same thing.".
+cocoon:numericValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+cocoon:ofObjectType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+cocoon:specialRateType a <http://www.w3.org/2002/07/owl#DatatypeProperty>.

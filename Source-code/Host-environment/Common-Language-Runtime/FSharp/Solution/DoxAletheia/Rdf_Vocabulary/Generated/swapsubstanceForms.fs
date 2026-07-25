@@ -6,14 +6,6 @@ open type Prefix_ID
 
 module swapsubstanceForms =
     let _namespace_iri = Namespace_Iri swapsubstanceForms |> NamespaceIRI
-    /// <summary>
-    ///   <para>swapsubstanceForms:</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Ontology</para>
-    /// </remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/substanceForms#">http://eulersharp.sourceforge.net/2003/03swap/substanceForms#</seealso>
-    let _prefix_iri = Prefixed_Name(swapsubstanceForms, "") |> PrefixedName
 
     /// <summary>
     ///   <para>swapsubstanceForms:GranularSubstance</para>
@@ -35,3 +27,11 @@ module swapsubstanceForms =
     /// labels<para>powder</para></remarks>
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/substanceForms#Powder">http://eulersharp.sourceforge.net/2003/03swap/substanceForms#Powder</seealso>
     let Powder = Prefixed_Name(swapsubstanceForms, "Powder") |> PrefixedName
+    /// <summary>
+    ///   <para>swapsubstanceForms:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/substanceForms#">http://eulersharp.sourceforge.net/2003/03swap/substanceForms#</seealso>
+    let _prefix_iri = Prefixed_Name(swapsubstanceForms, "") |> PrefixedName

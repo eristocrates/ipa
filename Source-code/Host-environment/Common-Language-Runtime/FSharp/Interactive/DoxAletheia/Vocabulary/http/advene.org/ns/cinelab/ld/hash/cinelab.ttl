@@ -1,0 +1,325 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix cinelab: <http://advene.org/ns/cinelab/ld#>.
+
+<http://advene.org/ns/cinelab/ld> <http://purl.org/dc/terms/contributor> "Yannick Prié",
+                                                                         "Olivier Aubert";
+                                  <http://purl.org/dc/terms/created> "2014-03-26T21:31:42CET";
+                                  <http://purl.org/dc/terms/creator> <http://champin.net/#pa>;
+                                  <http://purl.org/dc/terms/date> "2015-03-28";
+                                  <http://purl.org/dc/terms/description> """Le projet Advene a pour objectif de fournir un modèle et plusieurs formats de données pour partager des annotations sur des vidéos numériques (films, cours, conférences...), ainsi que des outils pour éditer et visualiser les hypérvidéos générées à partir de ces vidéos et des annotations. Les enseignants, les amateurs de cinéma, etc., peuvent les utiliser pour échanger leurs commentaires et analyse de documents audiovisuels.
+
+Le modèle Cinelab permet non seulement de représenter les annotations vidéos, mais aussi d'expliciter leur structure (à travers les notions de schéma et de type d'annotation), ainsi que leur présentations à l'aide de vues (modèles appliqués aux données pour produire des hypervidéos) et de requêtes.
+
+Ce modèle a été développé par les partenaires du projet Cinelab (2007-2008, financé par l'ANR), et utilisé par la suite dans plusieurs projets et applications, dont Advene (LIRIS) et Ligne de temps (IRI)."""@fr,
+                                                                         """The Advene project aims at providing a model and various formats to share annotations about digital video documents (movies, courses, conferences...), as well as tools to edit and visualize the hypervideos generated from both the annotations and the audiovisual documents. Teachers, moviegoers, etc. can use them to exchange multimedia comments and analyses about video documents.
+
+The Cinelab model allows not only to represent video annotations, but also an elicitation of their structure (through notions of schema and annotation type), as well as their presentations with views (templates applied on data to produce hypervideos) and queries.
+
+This model has been developed by the partners of the Cinelab project (2007-2008, funded by the french national research agency), and used afterwards in a number of projects and applications, including Advene (LIRIS) and Ligne de temps (IRI)."""@en;
+                                  <http://purl.org/dc/terms/modified> "2015-03-28T19:32:00CET";
+                                  <http://purl.org/dc/terms/title> "Cinelab ontology";
+                                  <http://purl.org/vocab/vann/preferredNamespacePrefix> "cl";
+                                  <http://purl.org/vocab/vann/preferredNamespaceUri> "http://advene.org/ns/cinelab/ld#";
+                                  a <http://www.w3.org/2002/07/owl#Ontology>,
+                                    <http://purl.org/vocab/vann/Vocabulary>;
+                                  rdfs:comment "This ontology allows to represent in RDF the Cinelab model <http://advene.org/cinelab/>."@en,
+                                               "Cette ontologie permet de représenter en RDF le modèle Cinelab <http://advene.org/cinelab/>."@fr;
+                                  rdfs:isDefinedBy <http://advene.org/cinelab/>;
+                                  <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/ns/oa#>,
+                                                                          <http://www.w3.org/ns/ma-ont>.
+cinelab:Annotation a rdfs:Class,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "Annotation"@en,
+                              "Annotation"@fr;
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> cinelab:hasAnnotationContent ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   cinelab:Element,
+                                   cinelab:WithContent,
+                                   <http://www.w3.org/ns/oa#Annotation>.
+cinelab:AnnotationType a rdfs:Class,
+                         <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "Annotation Type"@en,
+                                  "Type d'Annotation"@fr;
+                       rdfs:subClassOf cinelab:Tag.
+cinelab:Content a rdfs:Class,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:label "Content"@en,
+                           "Contenu"@fr;
+                rdfs:subClassOf <http://www.w3.org/2011/content#ContentAsText>.
+cinelab:Element a rdfs:Class,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:label "Element"@en,
+                           "Élément"@fr.
+cinelab:FrameOfReference a rdfs:Class,
+                           <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:label "Frame of Reference"@en,
+                                    "Référenciel"@fr.
+cinelab:Group a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Aspect of all elements acting as collections of other elements"@en;
+              rdfs:label "Group"@en,
+                         "Groupe"@fr.
+cinelab:Import a rdfs:Class,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "Import"@en,
+                          "Import"@fr;
+               rdfs:subClassOf cinelab:Element.
+cinelab:List a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:label "List"@en,
+                        "Liste"@fr;
+             rdfs:subClassOf cinelab:Element,
+                             cinelab:Group.
+cinelab:Media a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:label "Media"@en,
+                         "Média"@fr;
+              rdfs:subClassOf cinelab:Element.
+cinelab:Package a rdfs:Class,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:label "Package"@en,
+                           "Recueil"@fr;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> cinelab:hasElement ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#complementOf> cinelab:Annotation]
+                                                                                                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                                                                                                         <http://www.w3.org/2002/07/owl#onProperty> cinelab:hasAType ; 
+                                                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>])] ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> cinelab:hasElement ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#complementOf> cinelab:Relation]
+                                                                                                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                                                                                                         <http://www.w3.org/2002/07/owl#onProperty> cinelab:hasRType ; 
+                                                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>])] ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>].
+cinelab:Pipe a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Aspect of all elements able to transform other elements"@en;
+             rdfs:label "Pipe"@en,
+                        "Tube"@fr.
+cinelab:Query a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:label "Query"@en,
+                         "Requête"@fr;
+              rdfs:subClassOf cinelab:Element,
+                              cinelab:Pipe,
+                              cinelab:WithContent.
+cinelab:Relation a rdfs:Class,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "Relation"@en,
+                            "Relation"@fr;
+                 rdfs:subClassOf cinelab:Element,
+                                 cinelab:Group,
+                                 cinelab:WithContent.
+cinelab:RelationType a rdfs:Class,
+                       <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "Relation Type"@en,
+                                "Type de Relation"@fr;
+                     rdfs:subClassOf cinelab:Tag.
+cinelab:Resource a rdfs:Class,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "Resource"@en,
+                            "Ressource"@fr;
+                 rdfs:subClassOf cinelab:Element,
+                                 cinelab:WithContent.
+cinelab:Schema a rdfs:Class,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "Schema"@en,
+                          "Schéma"@fr;
+               rdfs:subClassOf cinelab:List.
+cinelab:Tag a rdfs:Class,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:label "Tag"@en,
+                       "Tag"@fr;
+            rdfs:subClassOf cinelab:Element,
+                            cinelab:Group.
+cinelab:Test a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:label "Test"@en,
+                        "Test"@fr;
+             rdfs:subClassOf cinelab:View.
+cinelab:UserList a rdfs:Class,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "User List"@en,
+                            "Liste Utilisateur"@fr;
+                 rdfs:subClassOf cinelab:List.
+cinelab:UserTag a rdfs:Class,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:label "User Tag"@en,
+                           "Tag Utilisateur"@fr;
+                rdfs:subClassOf cinelab:Tag.
+cinelab:View a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:label "View"@en,
+                        "Vue"@fr;
+             rdfs:subClassOf cinelab:Element,
+                             cinelab:Pipe,
+                             cinelab:WithContent.
+cinelab:WithContent a rdfs:Class,
+                      <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Aspect of all elements supporting the :hasContent property"@en;
+                    rdfs:label "With Content"@en,
+                               "Ayant un Contenu"@fr;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> cinelab:hasContent ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+cinelab:base64 a rdfs:Datatype;
+               rdfs:comment "A literal datatype to represent base64-encoded binary data."@en;
+               rdfs:label "base64 encoded data"@en,
+                          "données encodées en base64"@fr;
+               rdfs:seeAlso cinelab:data.
+cinelab:begin a rdf:Property,
+                <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:comment "Start-time of the fragment, in milliseconds."@en;
+              rdfs:domain <http://www.w3.org/ns/ma-ont#MediaFragment>;
+              rdfs:label "has begin"@en,
+                         "a pour début"@fr;
+              rdfs:range xsd:integer.
+cinelab:data a rdf:Property,
+               <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:domain cinelab:Content;
+             rdfs:label "has value"@en,
+                        "a pour valeur"@fr;
+             rdfs:range xsd:string;
+             rdfs:seeAlso cinelab:base64;
+             rdfs:subPropertyOf <http://www.w3.org/2011/content#chars>.
+cinelab:end a rdf:Property,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "End-time of the fragment, in milliseconds."@en;
+            rdfs:domain <http://www.w3.org/ns/ma-ont#MediaFragment>;
+            rdfs:label "has end"@en,
+                       "a pour fin"@fr;
+            rdfs:range xsd:integer.
+cinelab:fragDimId a rdf:Property,
+                    <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "This metadata of an annotation encodes the 'id' dimension of its fragment."@en;
+                  rdfs:domain cinelab:Annotation;
+                  rdfs:label "Fragment Dimension 'id'".
+cinelab:fragDimTrack a rdf:Property,
+                       <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "This metadata of an annotation encodes the 'track' dimension of its fragment."@en;
+                     rdfs:domain cinelab:Annotation;
+                     rdfs:label "Fragment Dimension 'track'".
+cinelab:fragDimXywh a rdf:Property,
+                      <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "This metadata of an annotation encodes the 'xywh' dimension of its fragment."@en;
+                    rdfs:domain cinelab:Annotation;
+                    rdfs:label "Fragment Dimension 'xywh'".
+cinelab:hasAType a rdf:Property,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                   <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                 rdfs:domain cinelab:Annotation;
+                 rdfs:label "has annotation type"@en,
+                            "a pour type d'annotation"@fr;
+                 rdfs:range cinelab:AnnotationType;
+                 rdfs:subPropertyOf cinelab:taggedWith.
+cinelab:hasAnnotationContent a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain cinelab:Annotation;
+                             rdfs:subPropertyOf <http://www.w3.org/ns/oa#hasBody>,
+                                                cinelab:hasContent.
+cinelab:hasContent a rdf:Property,
+                     <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                   rdfs:domain cinelab:WithContent;
+                   rdfs:label "has content"@en,
+                              "a pour contenu"@fr;
+                   rdfs:range cinelab:Content.
+cinelab:hasElement a rdf:Property,
+                     <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain cinelab:Package;
+                   rdfs:label "has element"@en,
+                              "a pour élément"@fr;
+                   rdfs:range cinelab:Element.
+cinelab:hasFragment a rdf:Property,
+                      <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain cinelab:Annotation;
+                    rdfs:label "has fragment"@en,
+                               "a pour fragment"@fr;
+                    rdfs:range <http://www.w3.org/ns/ma-ont#MediaFragment>;
+                    rdfs:subPropertyOf <http://www.w3.org/ns/oa#hasTarget>.
+cinelab:hasFrameOfReference a rdf:Property,
+                              <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:domain cinelab:Media;
+                            rdfs:label "has frame of reference"@en,
+                                       "a pour référenciel"@fr;
+                            rdfs:range cinelab:FrameOfReference.
+cinelab:hasImportedPackage a rdf:Property,
+                             <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain cinelab:Import;
+                           rdfs:label "has imported package"@en,
+                                      "a pour recueil importé"@fr;
+                           rdfs:range cinelab:Package.
+cinelab:hasItems a rdf:Property,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain cinelab:List;
+                 rdfs:label "has items"@en,
+                            "a pour éléments"@fr;
+                 rdfs:range rdf:List.
+cinelab:hasMediaElement a rdf:Property,
+                          <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain <http://www.w3.org/ns/ma-ont#MediaFragment>;
+                        rdfs:label "has media element"@en,
+                                   "a pour élément média"@fr;
+                        rdfs:range cinelab:Media.
+cinelab:hasMembers a rdf:Property,
+                     <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain cinelab:Relation;
+                   rdfs:label "has members"@en,
+                              "a pour membres"@fr;
+                   rdfs:range rdf:List.
+cinelab:hasModel a rdf:Property,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain cinelab:Content;
+                 rdfs:label "has content model"@en,
+                            "a pour modèle de contenu"@fr;
+                 rdfs:range cinelab:Resource.
+cinelab:hasPackage a rdf:Property,
+                     <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain cinelab:Element;
+                   rdfs:label "has package"@en,
+                              "a pour recueil"@fr;
+                   rdfs:range cinelab:Package;
+                   <http://www.w3.org/2002/07/owl#inverseOf> cinelab:hasElement.
+cinelab:hasRType a rdf:Property,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                   <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                 rdfs:domain cinelab:Relation;
+                 rdfs:label "has relation type"@en,
+                            "a pour type d'relation"@fr;
+                 rdfs:range cinelab:RelationType;
+                 rdfs:subPropertyOf cinelab:taggedWith.
+cinelab:imports a rdf:Property,
+                  <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain cinelab:Package;
+                rdfs:label "imports"@en,
+                           "importe"@fr;
+                rdfs:range cinelab:Package.
+cinelab:mimeType a rdf:Property,
+                   <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain cinelab:Content;
+                 rdfs:label "has MIME type"@en,
+                            "a pour type MIME"@fr;
+                 rdfs:range xsd:string;
+                 rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/format>.
+cinelab:represents a rdf:Property,
+                     <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain cinelab:Media;
+                   rdfs:label "represents"@en,
+                              "représente"@fr;
+                   rdfs:range <http://www.w3.org/ns/ma-ont#MediaResource>.
+cinelab:taggedWith a rdf:Property,
+                     <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain cinelab:Element;
+                   rdfs:label "tagged with"@en,
+                              "tagué avec"@fr;
+                   rdfs:range cinelab:Tag.
+cinelab:url a rdf:Property,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain cinelab:Package;
+            rdfs:label "URL"@en,
+                       "URL"@fr;
+            rdfs:range xsd:anyURI.
+<http://champin.net/#pa> rdfs:label "Pierre-Antoine Champin".
+<http://www.w3.org/ns/ma-ont#MediaFragment> a <http://www.w3.org/2002/07/owl#Class>.

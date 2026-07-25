@@ -6,14 +6,6 @@ open type Prefix_ID
 
 module lrmilearningResourceType =
     let _namespace_iri = Namespace_Iri lrmilearningResourceType |> NamespaceIRI
-    /// <summary>
-    ///   <para>lrmilearningResourceType:</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>skos:ConceptScheme</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/dcx/lrmi-vocabs/learningResourceType/">http://purl.org/dcx/lrmi-vocabs/learningResourceType/</seealso>
-    let _prefix_iri = Prefixed_Name(lrmilearningResourceType, "") |> PrefixedName
 
     /// <summary>
     ///   <para>lrmilearningResourceType:activityPlan</para>
@@ -56,16 +48,6 @@ module lrmilearningResourceType =
         Prefixed_Name(lrmilearningResourceType, "educatorCurriculumGuide") |> PrefixedName
 
     /// <summary>
-    ///   <para>lrmilearningResourceType:lessonPlan</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>skos:Concept</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/dcx/lrmi-vocabs/learningResourceType/lessonPlan">http://purl.org/dcx/lrmi-vocabs/learningResourceType/lessonPlan</seealso>
-    let lessonPlan =
-        Prefixed_Name(lrmilearningResourceType, "lessonPlan") |> PrefixedName
-
-    /// <summary>
     ///   <para>lrmilearningResourceType:physicalLearningResource</para>
     /// </summary>
     /// <remarks>
@@ -76,14 +58,14 @@ module lrmilearningResourceType =
         Prefixed_Name(lrmilearningResourceType, "physicalLearningResource") |> PrefixedName
 
     /// <summary>
-    ///   <para>lrmilearningResourceType:recordedLesson</para>
+    ///   <para>lrmilearningResourceType:lessonPlan</para>
     /// </summary>
     /// <remarks>
     ///   <para>skos:Concept</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/dcx/lrmi-vocabs/learningResourceType/recordedLesson">http://purl.org/dcx/lrmi-vocabs/learningResourceType/recordedLesson</seealso>
-    let recordedLesson =
-        Prefixed_Name(lrmilearningResourceType, "recordedLesson") |> PrefixedName
+    /// <seealso href="http://purl.org/dcx/lrmi-vocabs/learningResourceType/lessonPlan">http://purl.org/dcx/lrmi-vocabs/learningResourceType/lessonPlan</seealso>
+    let lessonPlan =
+        Prefixed_Name(lrmilearningResourceType, "lessonPlan") |> PrefixedName
 
     /// <summary>
     ///   <para>lrmilearningResourceType:supportingDocument</para>
@@ -94,6 +76,16 @@ module lrmilearningResourceType =
     /// <seealso href="http://purl.org/dcx/lrmi-vocabs/learningResourceType/supportingDocument">http://purl.org/dcx/lrmi-vocabs/learningResourceType/supportingDocument</seealso>
     let supportingDocument =
         Prefixed_Name(lrmilearningResourceType, "supportingDocument") |> PrefixedName
+
+    /// <summary>
+    ///   <para>lrmilearningResourceType:recordedLesson</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>skos:Concept</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/dcx/lrmi-vocabs/learningResourceType/recordedLesson">http://purl.org/dcx/lrmi-vocabs/learningResourceType/recordedLesson</seealso>
+    let recordedLesson =
+        Prefixed_Name(lrmilearningResourceType, "recordedLesson") |> PrefixedName
 
     /// <summary>
     ///   <para>lrmilearningResourceType:textbook</para>
@@ -111,3 +103,11 @@ module lrmilearningResourceType =
     /// </remarks>
     /// <seealso href="http://purl.org/dcx/lrmi-vocabs/learningResourceType/unitPlan">http://purl.org/dcx/lrmi-vocabs/learningResourceType/unitPlan</seealso>
     let unitPlan = Prefixed_Name(lrmilearningResourceType, "unitPlan") |> PrefixedName
+    /// <summary>
+    ///   <para>lrmilearningResourceType:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>skos:ConceptScheme</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/dcx/lrmi-vocabs/learningResourceType/">http://purl.org/dcx/lrmi-vocabs/learningResourceType/</seealso>
+    let _prefix_iri = Prefixed_Name(lrmilearningResourceType, "") |> PrefixedName

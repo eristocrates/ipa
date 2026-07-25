@@ -1,0 +1,307 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix synsem: <http://www.w3.org/ns/lemon/synsem#>.
+
+rdfs:comment a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:isDefinedBy a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#topDataProperty> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                rdfs:range xsd:boolean.
+<http://www.w3.org/2002/07/owl#topObjectProperty> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/lemon/synsem> <http://creativecommons.org/ns#license> <https://creativecommons.org/publicdomain/zero/1.0/>;
+                                    <http://purl.org/dc/elements/1.1/contributor> <http://www.oeg-upm.net/index.php/teachers/53-lupe>,
+                                                                                  <http://art.uniroma2.it/fiorelli/>,
+                                                                                  <http://www.dfki.de/~declerck/>,
+                                                                                  <http://art.uniroma2.it/stellato/>,
+                                                                                  <http://mayor2.dia.fi.upm.es/oeg-upm/index.php/en/teachers/52-emontiel>,
+                                                                                  <https://sites.google.com/site/francescafrontini/>,
+                                                                                  <http://www.istc.cnr.it/people/aldo-gangemi>,
+                                                                                  <http://www.ilc.cnr.it/en/content/anas-fahad-khan>,
+                                                                                  <http://www.paulbuitelaar.net/>,
+                                                                                  <http://jogracia.url.ph/web/>;
+                                    <http://purl.org/dc/elements/1.1/creator> <http://www.cimiano.de/>,
+                                                                              <http://john.mccr.ae/>;
+                                    <http://purl.org/dc/elements/1.1/description> "A model for the representation of lexical information relative to ontologies. Syntax and semantics module."@en;
+                                    <http://purl.org/dc/elements/1.1/issued> "2016-01-10"^^xsd:date;
+                                    <http://purl.org/dc/elements/1.1/modified> "2016-01-10"^^xsd:date;
+                                    <http://purl.org/dc/elements/1.1/publisher> <http://www.w3.org/community/ontolex>;
+                                    <http://purl.org/dc/elements/1.1/rights> "CC-Zero";
+                                    <http://purl.org/dc/elements/1.1/title> "Lexicon Model for Ontologies - Synsem"@en;
+                                    <http://purl.org/vocab/vann/preferredNamespacePrefix> "synsem";
+                                    <http://purl.org/vocab/vann/preferredNamespaceUri> "http://www.w3.org/ns/lemon/synsem#";
+                                    a <http://www.w3.org/2002/07/owl#Ontology>,
+                                      <http://purl.org/vocommons/voaf#Vocabulary>;
+                                    rdfs:comment """-Version 1.0: depreciation with minor change in metadata for LOV publication
+-Version 1.1: creation"""@en;
+                                    <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/ns/lemon/ontolex>;
+                                    <http://www.w3.org/2002/07/owl#versionInfo> 1.1.
+synsem:OntoMap a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "'Отображение онтологии' (OntoMap для краткости) определяет, как синтаксический фрейм и его синтаксические аргументы сопоставляются с набором понятий и свойств в онтологии, которые вместе определяют значение синтаксического фрейма."@ru,
+                            "An 'ontology mapping' (OntoMap for short) specifies how a syntactic frame and its syntactic arguments map to a set of concepts and properties in the ontology that together specify the meaning of the syntactic frame."@en;
+               rdfs:isDefinedBy <http://www.w3.org/ns/lemon/synsem>;
+               rdfs:label "Ontologieabbildung"@de,
+                          "ontologieafbeelding"@nl,
+                          "applicación de l'ontología"@es,
+                          "отображение онтологии"@ru,
+                          "ontology mapping"@en,
+                          "mappa de l'ontologia"@it,
+                          "application de l'ontologie"@fr;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+synsem:SyntacticArgument a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "'Синтаксический аргумент' представляет собой слот, который необходимо заполнить для получения определенного синтаксического фрейма. Синтаксические аргументы обычно реализуют определенную грамматическую функцию (например, субъект, прямой объект, косвенный объект, предпозиционный объект и т.д.)."@ru,
+                                      "A 'syntactic argument' represents a slot that needs to be filled for a certain syntactic frame to be complete. Syntactic arguments typically realize a certain grammatical function (e.g. subject, direct object, indirect object, prepositional object, etc.)."@en;
+                         rdfs:isDefinedBy <http://www.w3.org/ns/lemon/synsem>;
+                         rdfs:label "syntaktiskt argument"@sv,
+                                    "actant syntaxique"@fr,
+                                    "argumento sintáctico"@es,
+                                    "argomento sintattico"@it,
+                                    "синтаксический аргумент"@ru,
+                                    "syntactisch argument"@nl,
+                                    "argument sintactic"@ro,
+                                    "sintaktiese argument"@af,
+                                    "syntaktisches Argument"@de,
+                                    "Syntactic Argument"@en,
+                                    "argumento sintatico"@pt;
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+synsem:SyntacticFrame a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "A 'syntactic frame' represents the syntactic behavior of an open class word in terms of the (syntactic) arguments it requires. It essentially describes the so called subcategorization structure of the word in question, in particular the syntactic arguments it requires."@en,
+                                   "'Синтаксический фрейм' представляет синтаксическое поведение открытого слова класса в терминах (синтаксических) аргументов, которые ему необходимы. Он по существу описывает так называемую структуру подкатегоризации рассматриваемого слова, в частности синтаксические аргументы, которые он требует."@ru;
+                      rdfs:isDefinedBy <http://www.w3.org/ns/lemon/synsem>;
+                      rdfs:label "cadre syntaxique"@fr,
+                                 "синтаксический фрейм"@ru,
+                                 "ram"@sv,
+                                 "syntaktisches Frame"@de,
+                                 "cadru"@ro,
+                                 "Syntactic Frame"@en,
+                                 "raam"@nl,
+                                 "marco sintáctico"@es,
+                                 "raam"@af,
+                                 "frame"@it;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+synsem:condition a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "The 'condition' property defines an evaluable constraint that derives from using a certain lexical entry to express a given ontological predicate."@en,
+                              "Свойство 'состояние' определяет оценочное ограничение, которое получается из использования определенной словарной единицы для выражения заданного онтологического предиката."@ru;
+                 rdfs:domain synsem:OntoMap;
+                 rdfs:isDefinedBy <http://www.w3.org/ns/lemon/synsem>;
+                 rdfs:label "состояние"@ru,
+                            "condiție"@ro,
+                            "condição"@pt,
+                            "villkor"@sv,
+                            "Bedingung"@de,
+                            "voorwaarde"@nl,
+                            "voorwaarde"@af,
+                            "condizione"@it,
+                            "condition"@fr,
+                            "condition"@en,
+                            "condición"@es;
+                 rdfs:subPropertyOf <http://www.w3.org/ns/lemon/ontolex#usage>;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+synsem:isA a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:comment "Свойство 'экземпляр' представляет одиночный аргумент класса или унарный предикат."@ru,
+                        "The 'is a' property represents the single argument of a class or unary  predicate."@en;
+           rdfs:isDefinedBy <http://www.w3.org/ns/lemon/synsem>;
+           rdfs:label "instantie van"@nl,
+                      "instanz von"@de,
+                      "é um"@pt,
+                      "instansie van"@af,
+                      "instanță a"@ro,
+                      "istanza di"@it,
+                      "экземпляр"@ru,
+                      "Instance de"@fr,
+                      "är en"@sv,
+                      "Instancia de"@es;
+           rdfs:subPropertyOf synsem:ontoCorrespondence;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+synsem:marker a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "The 'marker' property indicates the marker of a syntactic argument; this can be a case marker or some other lexical entry such as a preposition or particle."@en,
+                           "Свойство 'маркер' указывает маркер синтаксического аргумента; Это может быть маркер падежа или какая-то другая словарная единица, такая как предлог или частица."@ru;
+              rdfs:domain synsem:SyntacticArgument;
+              rdfs:isDefinedBy <http://www.w3.org/ns/lemon/synsem>;
+              rdfs:label "Marker"@de,
+                         "marqueur"@fr,
+                         "маркер"@ru,
+                         "marcator"@ro,
+                         "marcatore"@it,
+                         "markör"@sv,
+                         "marcador"@es,
+                         "merker"@nl,
+                         "merker"@af,
+                         "marker"@en,
+                         "marcado"@pt;
+              rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+synsem:objOfProp a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "The 'objOfProp' represents the 2nd argument or object of a binary predicate (property) in the ontology."@en,
+                              "'Объект свойства' представляет 2-й аргумент или объект бинарного предиката (свойства) в онтологии."@ru;
+                 rdfs:isDefinedBy <http://www.w3.org/ns/lemon/synsem>;
+                 rdfs:label "obiect al proprietății"@ro,
+                            "object of property"@en,
+                            "voorwerp van predikaat"@af,
+                            "objekt av predikat"@sv,
+                            "complemento de la propiedad"@es,
+                            "complément de la propriété"@fr,
+                            "oggetto della proprietà"@it,
+                            "объект свойства"@ru,
+                            "object van predikaat"@nl,
+                            "objekt des Prädikats"@de;
+                 rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>,
+                                    synsem:ontoCorrespondence;
+                 <http://www.w3.org/2002/07/owl#propertyChainAxiom> (synsem:ontoMapping
+                                                                     synsem:objOfProp);
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+synsem:ontoCorrespondence a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "Свойство 'онтологическая переписка' связывает аргумент предиката, определенного в онтологии, с синтаксическим аргументом, который синтаксически реализует этот предикат."@ru,
+                                       "The 'ontoCorrespondence' property binds an argument of a predicate defined in the ontology to a syntactic argument that realizes this predicate argument syntactically."@en;
+                          rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://www.w3.org/ns/lemon/ontolex#LexicalSense>
+                                                                                synsem:OntoMap) ; 
+                                       a <http://www.w3.org/2002/07/owl#Class>];
+                          rdfs:isDefinedBy <http://www.w3.org/ns/lemon/synsem>;
+                          rdfs:label "correspondencia ontológica"@es,
+                                     "ontologische correspondentie"@nl,
+                                     "correspondance ontologique"@fr,
+                                     "онтологическая переписка"@ru,
+                                     "corrispondenza ontologica"@it,
+                                     "ontological correspondence"@en,
+                                     "ontologische Korrespondenz"@de;
+                          rdfs:range synsem:SyntacticArgument;
+                          rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+synsem:ontoMapping a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>,
+                     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                   rdfs:comment "The 'ontoMapping'  property relates an ontology mapping to its corresponding lexical sense."@en,
+                                "Свойство 'onMapping' связывает отображение онтологии с соответствующим ему лексическим смыслом."@ru;
+                   rdfs:domain synsem:OntoMap;
+                   rdfs:isDefinedBy <http://www.w3.org/ns/lemon/synsem>;
+                   rdfs:label "ontologieafbeelding"@nl,
+                              "Ontologieabbildung"@de,
+                              "application de l'ontologie"@fr,
+                              "отображение онтологии"@ru,
+                              "applicación de l'ontología"@es,
+                              "mappa de l'ontologia"@it;
+                   rdfs:range <http://www.w3.org/ns/lemon/ontolex#LexicalSense>;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+synsem:optional a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "The 'optional' property indicates whether a syntactic argument is optional, that is, it can be syntactically omitted."@en,
+                             "Свойство 'опциональный' указывает, является ли синтаксический аргумент необязательным, то есть его можно синтаксически исключить."@ru;
+                rdfs:domain synsem:SyntacticArgument;
+                rdfs:isDefinedBy <http://www.w3.org/ns/lemon/synsem>;
+                rdfs:label "optional"@en,
+                           "optional"@de,
+                           "optionnel"@fr,
+                           "opsioneel"@af,
+                           "optionell"@sv,
+                           "опциональный"@ru,
+                           "optioneel"@nl,
+                           "opcional"@pt,
+                           "opcional"@es,
+                           "facultativ"@ro,
+                           "opzionale"@it;
+                rdfs:range xsd:boolean;
+                rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+synsem:propertyDomain a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "'Свойство домена' обеспечивает прагматическое ограничение на область свойства, на которое ссылается этот смысл."@ru,
+                                   "'Property domain' provides a pragmatic restriction on the domain of the property referred to by this sense."@en;
+                      rdfs:isDefinedBy <http://www.w3.org/ns/lemon/synsem>;
+                      rdfs:label "dominio di proprietà"@it,
+                                 "property domain"@en,
+                                 "domeniul proprietății"@ro,
+                                 "dominio de la propiedad"@es,
+                                 "Definitionsbereich des Prädikats"@de,
+                                 "relationsdomän"@sv,
+                                 "domein van predikaat"@nl,
+                                 "predikaatdefinisiegebied"@af,
+                                 "свойство домена"@ru,
+                                 "ensemble de la propriété"@fr;
+                      rdfs:subPropertyOf synsem:condition;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+synsem:propertyRange a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "'Property domain' provides a pragmatic restriction on the range of the property referred to by this sense."@en,
+                                  "'Диапазон свойства' обеспечивает прагматическое ограничение на область диапазона,на которое ссылается этот смысл."@ru;
+                     rdfs:isDefinedBy <http://www.w3.org/ns/lemon/synsem>;
+                     rdfs:label "rango de la propiedad"@es,
+                                "relationsräckvidd"@sv,
+                                "Wertemenge des Prädikats"@de,
+                                "codominio di proprietà"@it,
+                                "predikaatwaardegebied"@af,
+                                "bereik van predikaat"@nl,
+                                "property range"@en,
+                                "gama proprietății"@ro,
+                                "image de la propriété"@fr,
+                                "диапазон свойства"@ru;
+                     rdfs:subPropertyOf synsem:condition;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+synsem:subjOfProp a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "Свойство 'subjOfProp' представляет 1-й аргумент или субъект бинарного предиката (свойства) в онтологии."@ru,
+                               "The 'subjOfProp' property represents the 1st argument or subject of a binary predicate (property) in the ontology."@en;
+                  rdfs:isDefinedBy <http://www.w3.org/ns/lemon/synsem>;
+                  rdfs:label "subiectul proprietații"@ro,
+                             "sujet de la propriété"@fr,
+                             "subject of property"@en,
+                             "subjekt av predikat"@sv,
+                             "Subjekt des Prädikats"@de,
+                             "onderwerp van predikaat"@nl,
+                             "onderwerp van predikaat"@af,
+                             "субъект свойства"@ru,
+                             "sujeto de la propiedad"@es,
+                             "soggetto della proprietà"@it;
+                  rdfs:subPropertyOf synsem:ontoCorrespondence;
+                  <http://www.w3.org/2002/07/owl#propertyChainAxiom> (synsem:ontoMapping
+                                                                      synsem:subjOfProp);
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+synsem:submap a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "The 'submap' property relates a (complex) ontological mapping to a set of bindings that together bind the arguments of the involved predicates to a set of syntactic arguments that realize them syntactically."@en,
+                           "Свойство 'submap' связывает (сложное) онтологическое отображение с набором привязок, которые вместе связывают аргументы задействованных предикатов с набором синтаксических аргументов, которые реализуют их синтаксически."@ru;
+              rdfs:domain synsem:OntoMap;
+              rdfs:isDefinedBy <http://www.w3.org/ns/lemon/synsem>;
+              rdfs:label "cadre composante"@fr,
+                         "subframe"@it,
+                         "underbetydelse"@sv,
+                         "parte del marco"@es,
+                         "Subframe"@de,
+                         "deelraam"@nl,
+                         "submap"@en;
+              rdfs:range synsem:OntoMap;
+              rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+synsem:synArg a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "The object property synArg relates a syntactic frame to one of its syntactic arguments."@en,
+                           "Свойство объекта 'synArg' связывает синтаксический фрейм с одним из его синтаксических аргументов."@ru;
+              rdfs:domain synsem:SyntacticFrame;
+              rdfs:isDefinedBy <http://www.w3.org/ns/lemon/synsem>;
+              rdfs:label "syntactic argument"@en,
+                         "syntaktiskt argument"@sv,
+                         "syntactisch argument"@nl,
+                         "argument sintactic"@ro,
+                         "argomento sintattico"@it,
+                         "argumento sintatico"@pt,
+                         "синтаксический аргумент"@ru,
+                         "sintaktiese argument"@af,
+                         "actant syntaxique"@fr,
+                         "syntaktisches Argument"@de,
+                         "argumento sintáctico"@es;
+              rdfs:range synsem:SyntacticArgument;
+              rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+synsem:synBehavior a <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>,
+                     <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Свойство 'синтаксическое поведение' связывает лексическую запись с одним из ее синтаксических типов поведения, захваченных синтаксическим фреймом."@ru,
+                                "The 'syntactic behavior' property relates a lexical entry to one of its syntactic behaviors as captured by a syntactic frame."@en;
+                   rdfs:domain <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>;
+                   rdfs:isDefinedBy <http://www.w3.org/ns/lemon/synsem>;
+                   rdfs:label "comportament sintactic"@ro,
+                              "syntaktiskt beteende"@sv,
+                              "syntaktisches Verhalten"@de,
+                              "синтаксическое поведение"@ru,
+                              "syntactic behavior"@en,
+                              "sintaktiese dedrag"@af,
+                              "comportamento sintattico"@it,
+                              "funcionamiento sintáctico"@es,
+                              "comportamento sintatico"@pt,
+                              "syntactisch optreden"@nl,
+                              "conduite syntaxique"@fr;
+                   rdfs:range synsem:SyntacticFrame;
+                   rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".

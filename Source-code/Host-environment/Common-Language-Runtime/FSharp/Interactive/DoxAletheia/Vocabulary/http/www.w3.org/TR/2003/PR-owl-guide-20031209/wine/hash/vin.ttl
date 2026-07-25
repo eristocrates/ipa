@@ -1,0 +1,1301 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vin: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#>.
+
+_:B29ccdee1b44cd74a2b7d00b08b2811dc a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (vin:Red
+                                                                                     vin:White
+                                                                                     vin:Rose).
+_:B3b7b4632a0b435bcf3747e773505f724 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (vin:Light
+                                                                                     vin:Medium
+                                                                                     vin:Full).
+_:B9237eb25b009427eb39b719b5a307f89 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (vin:Bancroft
+                                                                                     vin:ChateauChevalBlanc
+                                                                                     vin:ChateauDYchem
+                                                                                     vin:ChateauDeMeursault
+                                                                                     vin:ChateauLafiteRothschild
+                                                                                     vin:ChateauMargauxWinery
+                                                                                     vin:ChateauMorgon
+                                                                                     vin:ClosDeLaPoussie
+                                                                                     vin:ClosDeVougeot
+                                                                                     vin:CongressSprings
+                                                                                     vin:Corbans
+                                                                                     vin:CortonMontrachet
+                                                                                     vin:Cotturi
+                                                                                     vin:DAnjou
+                                                                                     vin:Elyse
+                                                                                     vin:Forman
+                                                                                     vin:Foxen
+                                                                                     vin:GaryFarrell
+                                                                                     vin:KalinCellars
+                                                                                     vin:KathrynKennedy
+                                                                                     vin:LaneTanner
+                                                                                     vin:Longridge
+                                                                                     vin:Marietta
+                                                                                     vin:McGuinnesso
+                                                                                     vin:MountEdenVineyard
+                                                                                     vin:Mountadam
+                                                                                     vin:PageMillWinery
+                                                                                     vin:PeterMccoy
+                                                                                     vin:PulignyMontrachet
+                                                                                     vin:SantaCruzMountainVineyard
+                                                                                     vin:SaucelitoCanyon
+                                                                                     vin:SchlossRothermel
+                                                                                     vin:SchlossVolrad
+                                                                                     vin:SeanThackrey
+                                                                                     vin:Selaks
+                                                                                     vin:SevreEtMaine
+                                                                                     vin:StGenevieve
+                                                                                     vin:Stonleigh
+                                                                                     vin:Taylor
+                                                                                     vin:Ventana
+                                                                                     vin:WhitehallLane).
+_:B998d7e734b1b42250bd940dcbec6c572 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (vin:Delicate
+                                                                                     vin:Moderate
+                                                                                     vin:Strong).
+_:Be6e47c80fffacd1e69c84b4ed70fa8ff a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (vin:Sweet
+                                                                                     vin:OffDry
+                                                                                     vin:Dry).
+<http://www.w3.org/TR/2003/CR-owl-guide-20030818/wine> a <http://www.w3.org/2002/07/owl#Ontology>.
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine> a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                       rdfs:comment "An example OWL ontology",
+                                                                    """Derived from the DAML Wine ontology at 
+      http://ontolingua.stanford.edu/doc/chimaera/ontologies/wines.daml
+      Substantially changed, in particular the Region based relations.
+    """;
+                                                       rdfs:label "Wine Ontology";
+                                                       <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food>;
+                                                       <http://www.w3.org/2002/07/owl#priorVersion> <http://www.w3.org/TR/2003/CR-owl-guide-20030818/wine>.
+vin:AlsaceRegion a vin:Region;
+                 vin:locatedIn vin:FrenchRegion.
+vin:AlsatianWine a <http://www.w3.org/2002/07/owl#Class>;
+                 <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                                 [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                                 <http://www.w3.org/2002/07/owl#hasValue> vin:AlsaceRegion ; 
+                                                                 a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:AmericanWine a <http://www.w3.org/2002/07/owl#Class>;
+                 <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                                 [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                                 <http://www.w3.org/2002/07/owl#hasValue> vin:USRegion ; 
+                                                                 a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:Anjou a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                           <http://www.w3.org/2002/07/owl#hasValue> vin:Rose ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                           <http://www.w3.org/2002/07/owl#hasValue> vin:Light ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                           <http://www.w3.org/2002/07/owl#hasValue> vin:Delicate ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                           <http://www.w3.org/2002/07/owl#hasValue> vin:OffDry ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>];
+          <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Loire
+                                                          [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                          <http://www.w3.org/2002/07/owl#hasValue> vin:AnjouRegion ; 
+                                                          a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:AnjouRegion a vin:Region;
+                vin:locatedIn vin:LoireRegion.
+vin:ArroyoGrandeRegion a vin:Region;
+                       vin:locatedIn vin:CaliforniaRegion.
+vin:AustralianRegion a vin:Region.
+vin:Bancroft a vin:Winery.
+vin:BancroftChardonnay a vin:Chardonnay;
+                       vin:hasBody vin:Medium;
+                       vin:hasFlavor vin:Moderate;
+                       vin:hasMaker vin:Bancroft;
+                       vin:hasSugar vin:Dry;
+                       vin:locatedIn vin:NapaRegion.
+vin:Beaujolais a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                                <http://www.w3.org/2002/07/owl#hasValue> vin:Red ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                                <http://www.w3.org/2002/07/owl#hasValue> vin:Light ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                                <http://www.w3.org/2002/07/owl#hasValue> vin:Dry ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                                <http://www.w3.org/2002/07/owl#hasValue> vin:Delicate ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                <http://www.w3.org/2002/07/owl#hasValue> vin:GamayGrape ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>];
+               <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                               [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                               <http://www.w3.org/2002/07/owl#hasValue> vin:BeaujolaisRegion ; 
+                                                               a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:BeaujolaisRegion a vin:Region;
+                     vin:locatedIn vin:FrenchRegion.
+vin:Beringer a vin:Winery.
+vin:Bordeaux a <http://www.w3.org/2002/07/owl#Class>;
+             <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                             [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                             <http://www.w3.org/2002/07/owl#hasValue> vin:BordeauxRegion ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:BordeauxRegion a vin:Region;
+                   vin:locatedIn vin:FrenchRegion.
+vin:BourgogneRegion a vin:Region;
+                    vin:locatedIn vin:FrenchRegion.
+vin:Burgundy a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> vin:Dry ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>];
+             <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                             [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                             <http://www.w3.org/2002/07/owl#hasValue> vin:BourgogneRegion ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:CabernetFranc a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                                   <http://www.w3.org/2002/07/owl#hasValue> vin:Red ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                                   <http://www.w3.org/2002/07/owl#hasValue> vin:Moderate ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                                   <http://www.w3.org/2002/07/owl#hasValue> vin:Medium ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                                   <http://www.w3.org/2002/07/owl#hasValue> vin:Dry ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>];
+                  <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                                  [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                                  <http://www.w3.org/2002/07/owl#hasValue> vin:CabernetFrancGrape ; 
+                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                  [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                                  <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:CabernetFrancGrape a <http://www.w3.org/2002/07/owl#Thing>,
+                         vin:WineGrape.
+vin:CabernetSauvignon a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                                       <http://www.w3.org/2002/07/owl#hasValue> vin:Red ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                                       <http://www.w3.org/2002/07/owl#hasValue> vin:Dry ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Moderate
+                                                                                                                             vin:Strong) ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Medium
+                                                                                                                             vin:Full) ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>];
+                      <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                                      [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                                      <http://www.w3.org/2002/07/owl#hasValue> vin:CabernetSauvignonGrape ; 
+                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                      [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                                      <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:CabernetSauvignonGrape a <http://www.w3.org/2002/07/owl#Thing>,
+                             vin:WineGrape.
+vin:CaliforniaRegion a vin:Region;
+                     vin:locatedIn vin:USRegion.
+vin:CaliforniaWine a <http://www.w3.org/2002/07/owl#Class>;
+                   <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                                   [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                                   <http://www.w3.org/2002/07/owl#hasValue> vin:CaliforniaRegion ; 
+                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:CentralCoastRegion a vin:Region;
+                       vin:locatedIn vin:CaliforniaRegion.
+vin:CentralTexasRegion a vin:Region;
+                       vin:locatedIn vin:TexasRegion.
+vin:Chardonnay a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                                <http://www.w3.org/2002/07/owl#hasValue> vin:White ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Full
+                                                                                                                      vin:Medium) ; 
+                                                                               a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Strong
+                                                                                                                      vin:Moderate) ; 
+                                                                               a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>];
+               <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                               [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                               <http://www.w3.org/2002/07/owl#hasValue> vin:ChardonnayGrape ; 
+                                                               a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                               [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                               a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:ChardonnayGrape a vin:WineGrape.
+vin:ChateauChevalBlanc a vin:Winery.
+vin:ChateauChevalBlancStEmilion a vin:StEmilion;
+                                vin:hasMaker vin:ChateauChevalBlanc.
+vin:ChateauDYchem a vin:Winery.
+vin:ChateauDYchemSauterne a vin:Sauternes;
+                          vin:hasFlavor vin:Strong;
+                          vin:hasMaker vin:ChateauDYchem;
+                          vin:madeFromGrape vin:SauvignonBlancGrape,
+                                            vin:SemillonGrape.
+vin:ChateauDeMeursault a vin:Winery.
+vin:ChateauDeMeursaultMeursault a vin:Meursault;
+                                vin:hasFlavor vin:Moderate;
+                                vin:hasMaker vin:ChateauDeMeursault.
+vin:ChateauLafiteRothschild a vin:Winery.
+vin:ChateauLafiteRothschildPauillac a vin:Pauillac;
+                                    vin:hasMaker vin:ChateauLafiteRothschild.
+vin:ChateauMargaux a vin:Margaux;
+                   vin:hasMaker vin:ChateauMargauxWinery.
+vin:ChateauMargauxWinery a vin:Winery.
+vin:ChateauMorgon a vin:Winery.
+vin:ChateauMorgonBeaujolais a vin:Beaujolais;
+                            vin:hasMaker vin:ChateauMorgon.
+vin:CheninBlanc a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                                 <http://www.w3.org/2002/07/owl#hasValue> vin:White ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                                 <http://www.w3.org/2002/07/owl#hasValue> vin:Moderate ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Full
+                                                                                                                       vin:Medium) ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Dry
+                                                                                                                       vin:OffDry) ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>];
+                <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                                [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                                <http://www.w3.org/2002/07/owl#hasValue> vin:CheninBlancGrape ; 
+                                                                a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:CheninBlancGrape a <http://www.w3.org/2002/07/owl#Thing>,
+                       vin:WineGrape.
+vin:Chianti a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                             <http://www.w3.org/2002/07/owl#hasValue> vin:ChiantiRegion ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                             <http://www.w3.org/2002/07/owl#hasValue> vin:Red ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                             <http://www.w3.org/2002/07/owl#hasValue> vin:SangioveseGrape ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                             <http://www.w3.org/2002/07/owl#hasValue> vin:Moderate ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                             <http://www.w3.org/2002/07/owl#hasValue> vin:Dry ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Light
+                                                                                                                   vin:Medium) ; 
+                                                                            a <http://www.w3.org/2002/07/owl#Class>] ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            vin:ItalianWine.
+vin:ChiantiClassico a vin:Chianti;
+                    vin:hasBody vin:Medium;
+                    vin:hasMaker vin:McGuinnesso.
+vin:ChiantiRegion a vin:Region;
+                  vin:locatedIn vin:ItalianRegion.
+vin:ClosDeLaPoussie a vin:Winery.
+vin:ClosDeLaPoussieSancerre a vin:Sancerre;
+                            vin:hasMaker vin:ClosDeLaPoussie.
+vin:ClosDeVougeot a vin:Winery.
+vin:ClosDeVougeotCotesDOr a vin:CotesDOr;
+                          vin:hasMaker vin:ClosDeVougeot.
+vin:CongressSprings a vin:Winery.
+vin:CongressSpringsSemillon a vin:Semillon;
+                            vin:hasBody vin:Medium;
+                            vin:hasFlavor vin:Moderate;
+                            vin:hasMaker vin:CongressSprings;
+                            vin:hasSugar vin:Dry.
+vin:Corbans a vin:Winery.
+vin:CorbansDryWhiteRiesling a vin:Riesling;
+                            vin:hasBody vin:Medium;
+                            vin:hasFlavor vin:Moderate;
+                            vin:hasMaker vin:Corbans;
+                            vin:hasSugar vin:OffDry;
+                            vin:locatedIn vin:NewZealandRegion.
+vin:CorbansPrivateBinSauvignonBlanc a vin:SauvignonBlanc;
+                                    vin:hasBody vin:Full;
+                                    vin:hasFlavor vin:Strong;
+                                    vin:hasMaker vin:Corbans;
+                                    vin:hasSugar vin:Dry;
+                                    vin:locatedIn vin:NewZealandRegion.
+vin:CorbansSauvignonBlanc a vin:SauvignonBlanc;
+                          vin:hasBody vin:Medium;
+                          vin:hasFlavor vin:Strong;
+                          vin:hasMaker vin:Corbans;
+                          vin:hasSugar vin:Dry;
+                          vin:locatedIn vin:NewZealandRegion.
+vin:CortonMontrachet a vin:Winery.
+vin:CortonMontrachetWhiteBurgundy a vin:WhiteBurgundy;
+                                  vin:hasBody vin:Full;
+                                  vin:hasFlavor vin:Strong;
+                                  vin:hasMaker vin:CortonMontrachet;
+                                  vin:hasSugar vin:Dry.
+vin:CotesDOr a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> vin:Moderate ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>];
+             <http://www.w3.org/2002/07/owl#intersectionOf> (vin:RedBurgundy
+                                                             [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                             <http://www.w3.org/2002/07/owl#hasValue> vin:CotesDOrRegion ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:CotesDOrRegion a vin:Region;
+                   vin:locatedIn vin:BourgogneRegion.
+vin:Cotturi a vin:Winery.
+vin:CotturiZinfandel a vin:Zinfandel;
+                     vin:hasBody vin:Full;
+                     vin:hasFlavor vin:Strong;
+                     vin:hasMaker vin:Cotturi;
+                     vin:hasSugar vin:Dry;
+                     vin:locatedIn vin:SonomaRegion.
+vin:DAnjou a vin:Winery.
+vin:Delicate a <http://www.w3.org/2002/07/owl#Thing>,
+               vin:WineFlavor.
+vin:DessertWine a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:OffDry
+                                                                                                                       vin:Sweet) ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                vin:Wine.
+vin:Dry a <http://www.w3.org/2002/07/owl#Thing>,
+          vin:WineSugar.
+vin:DryRedWine a <http://www.w3.org/2002/07/owl#Class>;
+               <http://www.w3.org/2002/07/owl#intersectionOf> (vin:DryWine
+                                                               vin:RedWine).
+vin:DryRiesling a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                                 <http://www.w3.org/2002/07/owl#hasValue> vin:White ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                                 <http://www.w3.org/2002/07/owl#hasValue> vin:Delicate ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Light
+                                                                                                                       vin:Medium) ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>];
+                <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Riesling
+                                                                [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                                                                <http://www.w3.org/2002/07/owl#hasValue> vin:Dry ; 
+                                                                a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:DryWhiteWine a <http://www.w3.org/2002/07/owl#Class>;
+                 <http://www.w3.org/2002/07/owl#intersectionOf> (vin:DryWine
+                                                                 vin:WhiteWine).
+vin:DryWine a <http://www.w3.org/2002/07/owl#Class>;
+            <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                            [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                                                            <http://www.w3.org/2002/07/owl#hasValue> vin:Dry ; 
+                                                            a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:EarlyHarvest a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                                  <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Dry
+                                                                                                                        vin:OffDry) ; 
+                                                                                 a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 vin:Wine.
+vin:EdnaValleyRegion a vin:Region;
+                     vin:locatedIn vin:CaliforniaRegion.
+vin:Elyse a vin:Winery.
+vin:ElyseZinfandel a vin:Zinfandel;
+                   vin:hasBody vin:Full;
+                   vin:hasFlavor vin:Moderate;
+                   vin:hasMaker vin:Elyse;
+                   vin:hasSugar vin:Dry;
+                   vin:locatedIn vin:NapaRegion.
+vin:Forman a vin:Winery.
+vin:FormanCabernetSauvignon a vin:CabernetSauvignon;
+                            vin:hasBody vin:Medium;
+                            vin:hasFlavor vin:Strong;
+                            vin:hasMaker vin:Forman;
+                            vin:hasSugar vin:Dry;
+                            vin:locatedIn vin:NapaRegion.
+vin:FormanChardonnay a vin:Chardonnay;
+                     vin:hasBody vin:Full;
+                     vin:hasFlavor vin:Moderate;
+                     vin:hasMaker vin:Forman;
+                     vin:hasSugar vin:Dry;
+                     vin:locatedIn vin:NapaRegion.
+vin:Foxen a vin:Winery.
+vin:FoxenCheninBlanc a vin:CheninBlanc;
+                     vin:hasBody vin:Full;
+                     vin:hasFlavor vin:Moderate;
+                     vin:hasMaker vin:Foxen;
+                     vin:hasSugar vin:Dry;
+                     vin:locatedIn vin:SantaBarbaraRegion.
+vin:FrenchRegion a vin:Region.
+vin:FrenchWine a <http://www.w3.org/2002/07/owl#Class>;
+               <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                               [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                               <http://www.w3.org/2002/07/owl#hasValue> vin:FrenchRegion ; 
+                                                               a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:Full a <http://www.w3.org/2002/07/owl#Thing>,
+           vin:WineBody.
+vin:FullBodiedWine a <http://www.w3.org/2002/07/owl#Class>;
+                   <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                                   [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                                                                   <http://www.w3.org/2002/07/owl#hasValue> vin:Full ; 
+                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:Gamay a <http://www.w3.org/2002/07/owl#Class>;
+          <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                          [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                          <http://www.w3.org/2002/07/owl#hasValue> vin:GamayGrape ; 
+                                                          a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                          [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                          <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                          a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:GamayGrape a vin:WineGrape.
+vin:GaryFarrell a vin:Winery.
+vin:GaryFarrellMerlot a vin:Merlot;
+                      vin:hasBody vin:Medium;
+                      vin:hasFlavor vin:Moderate;
+                      vin:hasMaker vin:GaryFarrell;
+                      vin:hasSugar vin:Dry;
+                      vin:locatedIn vin:SonomaRegion.
+vin:GermanWine a <http://www.w3.org/2002/07/owl#Class>;
+               <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                               [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                               <http://www.w3.org/2002/07/owl#hasValue> vin:GermanyRegion ; 
+                                                               a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:GermanyRegion a vin:Region.
+vin:Handley a vin:Winery.
+vin:IceWine a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Medium
+                                                                                                                   vin:Full) ; 
+                                                                            a <http://www.w3.org/2002/07/owl#Class>] ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Moderate
+                                                                                                                   vin:Strong) ; 
+                                                                            a <http://www.w3.org/2002/07/owl#Class>] ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>];
+            <http://www.w3.org/2002/07/owl#intersectionOf> (vin:LateHarvest
+                                                            vin:DessertWine
+                                                            [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                                                            <http://www.w3.org/2002/07/owl#hasValue> vin:White ; 
+                                                            a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:ItalianRegion a vin:Region.
+vin:ItalianWine a <http://www.w3.org/2002/07/owl#Class>;
+                <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                                [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                                <http://www.w3.org/2002/07/owl#hasValue> vin:ItalianRegion ; 
+                                                                a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:KalinCellars a vin:Winery.
+vin:KalinCellarsSemillon a vin:Semillon;
+                         vin:hasBody vin:Full;
+                         vin:hasFlavor vin:Strong;
+                         vin:hasMaker vin:KalinCellars;
+                         vin:hasSugar vin:Dry.
+vin:KathrynKennedy a vin:Winery.
+vin:KathrynKennedyLateral a vin:Meritage;
+                          vin:hasBody vin:Medium;
+                          vin:hasFlavor vin:Delicate;
+                          vin:hasMaker vin:KathrynKennedy;
+                          vin:hasSugar vin:Dry.
+vin:LaneTanner a vin:Winery.
+vin:LaneTannerPinotNoir a vin:PinotNoir;
+                        vin:hasBody vin:Light;
+                        vin:hasFlavor vin:Delicate;
+                        vin:hasMaker vin:LaneTanner;
+                        vin:hasSugar vin:Dry;
+                        vin:locatedIn vin:SantaBarbaraRegion.
+vin:LateHarvest a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                                 <http://www.w3.org/2002/07/owl#hasValue> vin:Sweet ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Moderate
+                                                                                                                       vin:Strong) ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                vin:Wine;
+                <http://www.w3.org/2002/07/owl#disjointWith> vin:EarlyHarvest.
+vin:Light a <http://www.w3.org/2002/07/owl#Thing>,
+            vin:WineBody.
+vin:Loire a <http://www.w3.org/2002/07/owl#Class>;
+          <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                          [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                          <http://www.w3.org/2002/07/owl#hasValue> vin:LoireRegion ; 
+                                                          a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:LoireRegion a vin:Region;
+                vin:locatedIn vin:FrenchRegion.
+vin:Longridge a vin:Winery.
+vin:LongridgeMerlot a vin:Merlot;
+                    vin:hasBody vin:Light;
+                    vin:hasFlavor vin:Moderate;
+                    vin:hasMaker vin:Longridge;
+                    vin:hasSugar vin:Dry;
+                    vin:locatedIn vin:NewZealandRegion.
+vin:MalbecGrape a <http://www.w3.org/2002/07/owl#Thing>,
+                  vin:WineGrape.
+vin:Margaux a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                             <http://www.w3.org/2002/07/owl#hasValue> vin:Delicate ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                             <http://www.w3.org/2002/07/owl#hasValue> vin:MerlotGrape ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                             <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>];
+            <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Medoc
+                                                            [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                            <http://www.w3.org/2002/07/owl#hasValue> vin:MargauxRegion ; 
+                                                            a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:MargauxRegion a vin:Region;
+                  vin:locatedIn vin:MedocRegion.
+vin:Marietta a vin:Winery.
+vin:MariettaCabernetSauvignon a vin:CabernetSauvignon;
+                              vin:hasBody vin:Medium;
+                              vin:hasFlavor vin:Moderate;
+                              vin:hasMaker vin:Marietta;
+                              vin:hasSugar vin:Dry;
+                              vin:locatedIn vin:SonomaRegion.
+vin:MariettaOldVinesRed a vin:RedTableWine;
+                        vin:hasBody vin:Medium;
+                        vin:hasFlavor vin:Moderate;
+                        vin:hasMaker vin:Marietta;
+                        vin:hasSugar vin:Dry;
+                        vin:locatedIn vin:SonomaRegion.
+vin:MariettaPetiteSyrah a vin:PetiteSyrah;
+                        vin:hasBody vin:Medium;
+                        vin:hasFlavor vin:Moderate;
+                        vin:hasMaker vin:Marietta;
+                        vin:hasSugar vin:Dry;
+                        vin:locatedIn vin:SonomaRegion.
+vin:MariettaZinfandel a vin:Zinfandel;
+                      vin:hasBody vin:Medium;
+                      vin:hasFlavor vin:Moderate;
+                      vin:hasMaker vin:Marietta;
+                      vin:hasSugar vin:Dry;
+                      vin:locatedIn vin:SonomaRegion.
+vin:McGuinnesso a vin:Winery.
+vin:Medium a <http://www.w3.org/2002/07/owl#Thing>,
+             vin:WineBody.
+vin:Medoc a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                           <http://www.w3.org/2002/07/owl#hasValue> vin:Red ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                           <http://www.w3.org/2002/07/owl#hasValue> vin:Dry ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>];
+          <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Bordeaux
+                                                          [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                          <http://www.w3.org/2002/07/owl#hasValue> vin:MedocRegion ; 
+                                                          a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:MedocRegion a vin:Region;
+                vin:locatedIn vin:BordeauxRegion.
+vin:MendocinoRegion a vin:Region;
+                    vin:adjacentRegion vin:SonomaRegion;
+                    vin:locatedIn vin:CaliforniaRegion.
+vin:Meritage a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> vin:Red ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>];
+             <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                             [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                             <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:CabernetSauvignonGrape
+                                                                                                                                                   vin:CabernetFrancGrape
+                                                                                                                                                   vin:MalbecGrape
+                                                                                                                                                   vin:PetiteVerdotGrape
+                                                                                                                                                   vin:MerlotGrape) ; 
+                                                                                                            a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                             [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                             <http://www.w3.org/2002/07/owl#minCardinality> "2"^^xsd:nonNegativeInteger ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:Merlot a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                            <http://www.w3.org/2002/07/owl#hasValue> vin:Red ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                            <http://www.w3.org/2002/07/owl#hasValue> vin:Dry ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                            <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Moderate
+                                                                                                                  vin:Delicate) ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Class>] ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                            <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Light
+                                                                                                                  vin:Medium) ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Class>] ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>];
+           <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                           [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                           <http://www.w3.org/2002/07/owl#hasValue> vin:MerlotGrape ; 
+                                                           a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                           [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                           a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:MerlotGrape a <http://www.w3.org/2002/07/owl#Thing>,
+                  vin:WineGrape.
+vin:Meursault a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                               <http://www.w3.org/2002/07/owl#hasValue> vin:Full ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>];
+              <http://www.w3.org/2002/07/owl#intersectionOf> (vin:WhiteBurgundy
+                                                              [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                              <http://www.w3.org/2002/07/owl#hasValue> vin:MeursaultRegion ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:MeursaultRegion a vin:Region;
+                    vin:locatedIn vin:BourgogneRegion.
+vin:Moderate a <http://www.w3.org/2002/07/owl#Thing>,
+               vin:WineFlavor.
+vin:MountEdenVineyard a vin:Winery.
+vin:MountEdenVineyardEdnaValleyChardonnay a vin:Chardonnay;
+                                          vin:hasBody vin:Medium;
+                                          vin:hasFlavor vin:Moderate;
+                                          vin:hasMaker vin:MountEdenVineyard;
+                                          vin:hasSugar vin:Dry;
+                                          vin:locatedIn vin:EdnaValleyRegion.
+vin:MountEdenVineyardEstatePinotNoir a vin:PinotNoir;
+                                     vin:hasBody vin:Full;
+                                     vin:hasFlavor vin:Strong;
+                                     vin:hasMaker vin:MountEdenVineyard;
+                                     vin:hasSugar vin:Dry;
+                                     vin:locatedIn vin:EdnaValleyRegion.
+vin:Mountadam a vin:Winery.
+vin:MountadamChardonnay a vin:Chardonnay;
+                        vin:hasBody vin:Full;
+                        vin:hasFlavor vin:Strong;
+                        vin:hasMaker vin:Mountadam;
+                        vin:hasSugar vin:Dry;
+                        vin:locatedIn vin:SouthAustraliaRegion.
+vin:MountadamPinotNoir a vin:PinotNoir;
+                       vin:hasBody vin:Medium;
+                       vin:hasFlavor vin:Moderate;
+                       vin:hasMaker vin:Mountadam;
+                       vin:hasSugar vin:Dry;
+                       vin:locatedIn vin:SouthAustraliaRegion.
+vin:MountadamRiesling a vin:DryRiesling;
+                      vin:hasBody vin:Medium;
+                      vin:hasFlavor vin:Delicate;
+                      vin:hasMaker vin:Mountadam;
+                      vin:hasSugar vin:Dry;
+                      vin:locatedIn vin:SouthAustraliaRegion.
+vin:Muscadet a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> vin:Light ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> vin:Delicate ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> vin:Dry ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> vin:PinotBlancGrape ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>];
+             <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Loire
+                                                             [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                             <http://www.w3.org/2002/07/owl#hasValue> vin:MuscadetRegion ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:MuscadetRegion a vin:Region;
+                   vin:locatedIn vin:LoireRegion.
+vin:NapaRegion a vin:Region;
+               vin:locatedIn vin:CaliforniaRegion.
+vin:NewZealandRegion a vin:Region.
+vin:OffDry a <http://www.w3.org/2002/07/owl#Thing>,
+             vin:WineSugar;
+           <http://www.w3.org/2002/07/owl#differentFrom> vin:Dry,
+                                                         vin:Sweet.
+vin:PageMillWinery a vin:Winery.
+vin:PageMillWineryCabernetSauvignon a vin:CabernetSauvignon;
+                                    vin:hasBody vin:Medium;
+                                    vin:hasFlavor vin:Moderate;
+                                    vin:hasMaker vin:PageMillWinery;
+                                    vin:hasSugar vin:Dry;
+                                    vin:locatedIn vin:NapaRegion.
+vin:Pauillac a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> vin:Full ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> vin:Strong ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> vin:CabernetSauvignonGrape ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>];
+             <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Medoc
+                                                             [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                             <http://www.w3.org/2002/07/owl#hasValue> vin:PauillacRegion ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:PauillacRegion a vin:Region;
+                   vin:locatedIn vin:MedocRegion.
+vin:PeterMccoy a vin:Winery.
+vin:PeterMccoyChardonnay a vin:Chardonnay;
+                         vin:hasBody vin:Medium;
+                         vin:hasFlavor vin:Moderate;
+                         vin:hasMaker vin:PeterMccoy;
+                         vin:hasSugar vin:Dry;
+                         vin:locatedIn vin:SonomaRegion.
+vin:PetiteSyrah a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                                 <http://www.w3.org/2002/07/owl#hasValue> vin:Red ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                                 <http://www.w3.org/2002/07/owl#hasValue> vin:Dry ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Moderate
+                                                                                                                       vin:Strong) ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Medium
+                                                                                                                       vin:Full) ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>];
+                <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                                [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                                <http://www.w3.org/2002/07/owl#hasValue> vin:PetiteSyrahGrape ; 
+                                                                a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:PetiteSyrahGrape a vin:WineGrape.
+vin:PetiteVerdotGrape a <http://www.w3.org/2002/07/owl#Thing>,
+                        vin:WineGrape.
+vin:PinotBlanc a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                                <http://www.w3.org/2002/07/owl#hasValue> vin:White ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>];
+               <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                               [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                               <http://www.w3.org/2002/07/owl#hasValue> vin:PinotBlancGrape ; 
+                                                               a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                               [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                               a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:PinotBlancGrape a <http://www.w3.org/2002/07/owl#Thing>,
+                      vin:WineGrape.
+vin:PinotNoir a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                               <http://www.w3.org/2002/07/owl#hasValue> vin:Red ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>];
+              <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                              [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                              <http://www.w3.org/2002/07/owl#hasValue> vin:PinotNoirGrape ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                              [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:PinotNoirGrape a vin:WineGrape.
+vin:Port a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                          <http://www.w3.org/2002/07/owl#hasValue> vin:PortugalRegion ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                          <http://www.w3.org/2002/07/owl#hasValue> vin:Full ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                          <http://www.w3.org/2002/07/owl#hasValue> vin:Strong ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                          <http://www.w3.org/2002/07/owl#hasValue> vin:Sweet ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         vin:RedWine.
+vin:PortugalRegion a vin:Region.
+vin:PulignyMontrachet a vin:Winery.
+vin:PulignyMontrachetWhiteBurgundy a vin:WhiteBurgundy;
+                                   vin:hasBody vin:Medium;
+                                   vin:hasFlavor vin:Moderate;
+                                   vin:hasMaker vin:PulignyMontrachet;
+                                   vin:hasSugar vin:Dry.
+vin:Red a <http://www.w3.org/2002/07/owl#Thing>,
+          vin:WineColor.
+vin:RedBordeaux a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:CabernetSauvignonGrape
+                                                                                                                       vin:MerlotGrape) ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>];
+                <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Bordeaux
+                                                                vin:RedWine).
+vin:RedBurgundy a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                 <http://www.w3.org/2002/07/owl#hasValue> vin:PinotNoirGrape ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>];
+                <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Burgundy
+                                                                vin:RedWine).
+vin:RedTableWine a <http://www.w3.org/2002/07/owl#Class>;
+                 <http://www.w3.org/2002/07/owl#intersectionOf> (vin:TableWine
+                                                                 [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                                                                 <http://www.w3.org/2002/07/owl#hasValue> vin:Red ; 
+                                                                 a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:RedWine a <http://www.w3.org/2002/07/owl#Class>;
+            <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                            [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                                                            <http://www.w3.org/2002/07/owl#hasValue> vin:Red ; 
+                                                            a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:Region a <http://www.w3.org/2002/07/owl#Class>.
+vin:Riesling a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> vin:White ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>];
+             <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                             [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                             <http://www.w3.org/2002/07/owl#hasValue> vin:RieslingGrape ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                             [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                             <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:RieslingGrape a vin:WineGrape.
+vin:Rose a <http://www.w3.org/2002/07/owl#Thing>,
+           vin:WineColor.
+vin:RoseDAnjou a vin:Anjou;
+               vin:hasMaker vin:DAnjou.
+vin:RoseWine a <http://www.w3.org/2002/07/owl#Class>;
+             <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                             [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                                                             <http://www.w3.org/2002/07/owl#hasValue> vin:Rose ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:Sancerre a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> vin:Medium ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> vin:OffDry ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> vin:Delicate ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                              <http://www.w3.org/2002/07/owl#hasValue> vin:SauvignonBlancGrape ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>];
+             <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Loire
+                                                             [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                             <http://www.w3.org/2002/07/owl#hasValue> vin:SancerreRegion ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:SancerreRegion a vin:Region;
+                   vin:locatedIn vin:LoireRegion.
+vin:SangioveseGrape a vin:WineGrape.
+vin:SantaBarbaraRegion a vin:Region;
+                       vin:locatedIn vin:CaliforniaRegion.
+vin:SantaCruzMountainVineyard a vin:Winery.
+vin:SantaCruzMountainVineyardCabernetSauvignon a vin:CabernetSauvignon;
+                                               vin:hasBody vin:Full;
+                                               vin:hasFlavor vin:Strong;
+                                               vin:hasMaker vin:SantaCruzMountainVineyard;
+                                               vin:hasSugar vin:Dry;
+                                               vin:locatedIn vin:SantaCruzMountainsRegion.
+vin:SantaCruzMountainsRegion a vin:Region;
+                             vin:locatedIn vin:CaliforniaRegion.
+vin:SaucelitoCanyon a vin:Winery.
+vin:SaucelitoCanyonZinfandel a vin:Zinfandel;
+                             vin:hasBody vin:Medium;
+                             vin:hasFlavor vin:Moderate;
+                             vin:hasMaker vin:SaucelitoCanyon;
+                             vin:hasSugar vin:Dry;
+                             vin:locatedIn vin:ArroyoGrandeRegion.
+vin:SaucelitoCanyonZinfandel1998 a vin:Zinfandel;
+                                 vin:hasBody vin:Medium;
+                                 vin:hasFlavor vin:Moderate;
+                                 vin:hasMaker vin:SaucelitoCanyon;
+                                 vin:hasSugar vin:Dry;
+                                 vin:hasVintageYear vin:Year1998;
+                                 vin:locatedIn vin:ArroyoGrandeRegion.
+vin:SauterneRegion a vin:Region;
+                   vin:locatedIn vin:BordeauxRegion.
+vin:Sauternes a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                               <http://www.w3.org/2002/07/owl#hasValue> vin:SauterneRegion ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                               <http://www.w3.org/2002/07/owl#hasValue> vin:Medium ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                               <http://www.w3.org/2002/07/owl#hasValue> vin:White ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              vin:LateHarvest,
+                              vin:Bordeaux.
+vin:SauvignonBlanc a <http://www.w3.org/2002/07/owl#Class>;
+                   <http://www.w3.org/2002/07/owl#intersectionOf> (vin:SemillonOrSauvignonBlanc
+                                                                   [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                                   <http://www.w3.org/2002/07/owl#hasValue> vin:SauvignonBlancGrape ; 
+                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                   [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                                   <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:SauvignonBlancGrape a <http://www.w3.org/2002/07/owl#Thing>,
+                          vin:WineGrape.
+vin:SchlossRothermel a vin:Winery.
+vin:SchlossRothermelTrochenbierenausleseRiesling a vin:SweetRiesling;
+                                                 vin:hasBody vin:Full;
+                                                 vin:hasFlavor vin:Strong;
+                                                 vin:hasMaker vin:SchlossRothermel;
+                                                 vin:hasSugar vin:Sweet;
+                                                 vin:locatedIn vin:GermanyRegion.
+vin:SchlossVolrad a vin:Winery.
+vin:SchlossVolradTrochenbierenausleseRiesling a vin:SweetRiesling;
+                                              vin:hasBody vin:Full;
+                                              vin:hasFlavor vin:Moderate;
+                                              vin:hasMaker vin:SchlossVolrad;
+                                              vin:hasSugar vin:Sweet;
+                                              vin:locatedIn vin:GermanyRegion.
+vin:SeanThackrey a vin:Winery.
+vin:SeanThackreySiriusPetiteSyrah a vin:PetiteSyrah;
+                                  vin:hasBody vin:Full;
+                                  vin:hasFlavor vin:Strong;
+                                  vin:hasMaker vin:SeanThackrey;
+                                  vin:hasSugar vin:Dry;
+                                  vin:locatedIn vin:NapaRegion.
+vin:Selaks a vin:Winery.
+vin:SelaksIceWine a vin:IceWine;
+                  vin:hasBody vin:Medium;
+                  vin:hasColor vin:White;
+                  vin:hasFlavor vin:Moderate;
+                  vin:hasMaker vin:Selaks;
+                  vin:locatedIn vin:NewZealandRegion.
+vin:SelaksSauvignonBlanc a vin:SauvignonBlanc;
+                         vin:hasBody vin:Medium;
+                         vin:hasFlavor vin:Moderate;
+                         vin:hasMaker vin:Selaks;
+                         vin:hasSugar vin:Dry;
+                         vin:locatedIn vin:NewZealandRegion.
+vin:Semillon a <http://www.w3.org/2002/07/owl#Class>;
+             <http://www.w3.org/2002/07/owl#intersectionOf> (vin:SemillonOrSauvignonBlanc
+                                                             [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                             <http://www.w3.org/2002/07/owl#hasValue> vin:SemillonGrape ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                             [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                             <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:SemillonGrape a <http://www.w3.org/2002/07/owl#Thing>,
+                    vin:WineGrape.
+vin:SemillonOrSauvignonBlanc a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                                              <http://www.w3.org/2002/07/owl#hasValue> vin:White ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                                              <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Medium
+                                                                                                                                    vin:Full) ; 
+                                                                                             a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>];
+                             <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                                             [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                                             <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:SemillonGrape
+                                                                                                                                                                   vin:SauvignonBlancGrape) ; 
+                                                                                                                            a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:SevreEtMaine a vin:Winery.
+vin:SevreEtMaineMuscadet a vin:Muscadet;
+                         vin:hasMaker vin:SevreEtMaine.
+vin:SonomaRegion a vin:Region;
+                 vin:locatedIn vin:CaliforniaRegion.
+vin:SouthAustraliaRegion a vin:Region;
+                         vin:locatedIn vin:AustralianRegion.
+vin:StEmilion a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                               <http://www.w3.org/2002/07/owl#hasValue> vin:Red ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                               <http://www.w3.org/2002/07/owl#hasValue> vin:Strong ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                               <http://www.w3.org/2002/07/owl#hasValue> vin:CabernetSauvignonGrape ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>];
+              <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Bordeaux
+                                                              [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                              <http://www.w3.org/2002/07/owl#hasValue> vin:StEmilionRegion ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:StEmilionRegion a vin:Region;
+                    vin:locatedIn vin:BordeauxRegion.
+vin:StGenevieve a vin:Winery.
+vin:StGenevieveTexasWhite a vin:WhiteWine;
+                          vin:hasFlavor vin:Moderate;
+                          vin:hasMaker vin:StGenevieve;
+                          vin:hasSugar vin:Dry;
+                          vin:locatedIn vin:CentralTexasRegion.
+vin:Stonleigh a vin:Winery.
+vin:StonleighSauvignonBlanc a vin:SauvignonBlanc;
+                            vin:hasBody vin:Medium;
+                            vin:hasFlavor vin:Delicate;
+                            vin:hasMaker vin:Stonleigh;
+                            vin:hasSugar vin:Dry;
+                            vin:locatedIn vin:NewZealandRegion.
+vin:Strong a <http://www.w3.org/2002/07/owl#Thing>,
+             vin:WineFlavor.
+vin:Sweet a <http://www.w3.org/2002/07/owl#Thing>,
+            vin:WineSugar;
+          <http://www.w3.org/2002/07/owl#differentFrom> vin:Dry.
+vin:SweetRiesling a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                                   <http://www.w3.org/2002/07/owl#hasValue> vin:Full ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Moderate
+                                                                                                                         vin:Strong) ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  vin:DessertWine;
+                  <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Riesling
+                                                                  [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                                                                  <http://www.w3.org/2002/07/owl#hasValue> vin:Sweet ; 
+                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:SweetWine a <http://www.w3.org/2002/07/owl#Class>;
+              <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                              [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                                                              <http://www.w3.org/2002/07/owl#hasValue> vin:Sweet ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:TableWine a <http://www.w3.org/2002/07/owl#Class>;
+              <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                              [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                                                              <http://www.w3.org/2002/07/owl#hasValue> vin:Dry ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:Taylor a vin:Winery.
+vin:TaylorPort a vin:Port;
+               vin:hasMaker vin:Taylor.
+vin:TexasRegion a vin:Region;
+                vin:locatedIn vin:USRegion.
+vin:TexasWine a <http://www.w3.org/2002/07/owl#Class>;
+              <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                              [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                              <http://www.w3.org/2002/07/owl#hasValue> vin:TexasRegion ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:Tours a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                           <http://www.w3.org/2002/07/owl#hasValue> vin:CheninBlancGrape ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>];
+          <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Loire
+                                                          [<http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                                                          <http://www.w3.org/2002/07/owl#hasValue> vin:ToursRegion ; 
+                                                          a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:ToursRegion a vin:Region;
+                vin:locatedIn vin:LoireRegion.
+vin:USRegion a vin:Region.
+vin:Ventana a vin:Winery.
+vin:VentanaCheninBlanc a vin:CheninBlanc;
+                       vin:hasBody vin:Medium;
+                       vin:hasFlavor vin:Moderate;
+                       vin:hasMaker vin:Ventana;
+                       vin:hasSugar vin:OffDry;
+                       vin:locatedIn vin:CentralCoastRegion.
+vin:Vintage a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasVintageYear ; 
+                             <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>].
+vin:VintageYear a <http://www.w3.org/2002/07/owl#Class>.
+vin:White a <http://www.w3.org/2002/07/owl#Thing>,
+            vin:WineColor.
+vin:WhiteBordeaux a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:SemillonGrape
+                                                                                                                         vin:SauvignonBlancGrape) ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>];
+                  <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Bordeaux
+                                                                  vin:WhiteWine).
+vin:WhiteBurgundy a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                   <http://www.w3.org/2002/07/owl#hasValue> vin:ChardonnayGrape ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                   <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>];
+                  <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Burgundy
+                                                                  vin:WhiteWine).
+vin:WhiteLoire a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:CheninBlancGrape
+                                                                                                                      vin:PinotBlancGrape
+                                                                                                                      vin:SauvignonBlancGrape) ; 
+                                                                               a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>];
+               <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Loire
+                                                               vin:WhiteWine).
+vin:WhiteNonSweetWine a <http://www.w3.org/2002/07/owl#Class>;
+                      <http://www.w3.org/2002/07/owl#intersectionOf> (vin:WhiteWine
+                                                                      [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                                                                      <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Dry
+                                                                                                                                                            vin:OffDry) ; 
+                                                                                                                     a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:WhiteTableWine a <http://www.w3.org/2002/07/owl#Class>;
+                   <http://www.w3.org/2002/07/owl#intersectionOf> (vin:TableWine
+                                                                   [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                                                                   <http://www.w3.org/2002/07/owl#hasValue> vin:White ; 
+                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:WhiteWine a <http://www.w3.org/2002/07/owl#Class>;
+              <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                              [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                                                              <http://www.w3.org/2002/07/owl#hasValue> vin:White ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:WhitehallLane a vin:Winery.
+vin:WhitehallLaneCabernetFranc a vin:CabernetFranc;
+                               vin:hasBody vin:Medium;
+                               vin:hasFlavor vin:Moderate;
+                               vin:hasMaker vin:WhitehallLane;
+                               vin:hasSugar vin:Dry;
+                               vin:locatedIn vin:NapaRegion.
+vin:WhitehallLanePrimavera a vin:DessertWine;
+                           vin:hasBody vin:Light;
+                           vin:hasFlavor vin:Delicate;
+                           vin:hasSugar vin:Sweet;
+                           vin:locatedIn vin:NapaRegion.
+vin:Wine a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:label "vin"@fr,
+                    "wine"@en;
+         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                          <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                          <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                          <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#onProperty> vin:hasMaker ; 
+                          <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PotableLiquid>,
+                         [<http://www.w3.org/2002/07/owl#onProperty> vin:hasMaker ; 
+                          <http://www.w3.org/2002/07/owl#allValuesFrom> vin:Winery ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                          <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                          <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#someValuesFrom> vin:Region ; 
+                          <http://www.w3.org/2002/07/owl#onProperty> vin:locatedIn ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>].
+vin:WineBody a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf vin:WineTaste;
+             <http://www.w3.org/2002/07/owl#oneOf> (vin:Light
+                                                    vin:Medium
+                                                    vin:Full).
+vin:WineColor a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf vin:WineDescriptor;
+              <http://www.w3.org/2002/07/owl#oneOf> (vin:White
+                                                     vin:Rose
+                                                     vin:Red).
+vin:WineDescriptor a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Made WineDescriptor unionType of tastes and color";
+                   <http://www.w3.org/2002/07/owl#unionOf> (vin:WineTaste
+                                                            vin:WineColor).
+vin:WineFlavor a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf vin:WineTaste;
+               <http://www.w3.org/2002/07/owl#oneOf> (vin:Delicate
+                                                      vin:Moderate
+                                                      vin:Strong).
+vin:WineGrape a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Grape>.
+vin:WineSugar a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf vin:WineTaste;
+              <http://www.w3.org/2002/07/owl#oneOf> (vin:Sweet
+                                                     vin:OffDry
+                                                     vin:Dry).
+vin:WineTaste a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf vin:WineDescriptor.
+vin:Winery a <http://www.w3.org/2002/07/owl#Class>.
+vin:Year1998 a vin:VintageYear;
+             vin:yearValue "1998"^^xsd:positiveInteger.
+vin:Zinfandel a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> vin:hasColor ; 
+                               <http://www.w3.org/2002/07/owl#hasValue> vin:Red ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> vin:hasSugar ; 
+                               <http://www.w3.org/2002/07/owl#hasValue> vin:Dry ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> vin:hasBody ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Full
+                                                                                                                     vin:Medium) ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Class>] ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> vin:hasFlavor ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (vin:Moderate
+                                                                                                                     vin:Strong) ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Class>] ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>];
+              <http://www.w3.org/2002/07/owl#intersectionOf> (vin:Wine
+                                                              [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                              <http://www.w3.org/2002/07/owl#hasValue> vin:ZinfandelGrape ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                              [<http://www.w3.org/2002/07/owl#onProperty> vin:madeFromGrape ; 
+                                                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>]).
+vin:ZinfandelGrape a vin:WineGrape.
+vin:adjacentRegion a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                   rdfs:domain vin:Region;
+                   rdfs:range vin:Region.
+vin:hasBody a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+            rdfs:range vin:WineBody;
+            rdfs:subPropertyOf vin:hasWineDescriptor.
+vin:hasColor a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+               <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+             rdfs:domain vin:Wine;
+             rdfs:range vin:WineColor;
+             rdfs:subPropertyOf vin:hasWineDescriptor.
+vin:hasFlavor a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+              rdfs:range vin:WineFlavor;
+              rdfs:subPropertyOf vin:hasWineDescriptor.
+vin:hasMaker a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+               <http://www.w3.org/2002/07/owl#FunctionalProperty>.
+vin:hasSugar a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+               <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+             rdfs:range vin:WineSugar;
+             rdfs:subPropertyOf vin:hasWineDescriptor.
+vin:hasVintageYear a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                   rdfs:domain vin:Vintage;
+                   rdfs:range vin:VintageYear.
+vin:hasWineDescriptor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain vin:Wine;
+                      rdfs:range vin:WineDescriptor.
+vin:locatedIn a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+              rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+              rdfs:range vin:Region.
+vin:madeFromGrape a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain vin:Wine;
+                  rdfs:range vin:WineGrape;
+                  rdfs:subPropertyOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#madeFromFruit>.
+vin:madeIntoWine a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 <http://www.w3.org/2002/07/owl#inverseOf> vin:madeFromGrape.
+vin:producesWine a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 <http://www.w3.org/2002/07/owl#inverseOf> vin:hasMaker.
+vin:yearValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain vin:VintageYear;
+              rdfs:range xsd:positiveInteger.

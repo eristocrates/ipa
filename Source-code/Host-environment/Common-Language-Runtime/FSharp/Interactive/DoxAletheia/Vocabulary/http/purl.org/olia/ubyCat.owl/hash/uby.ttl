@@ -1,0 +1,1110 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix uby: <http://purl.org/olia/ubyCat.owl#>.
+
+<http://purl.org/olia/system.owl#Feature> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/olia/system.owl#UnitOfAnnotation> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/olia/system.owl#hasFeature> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://purl.org/olia/ubyCat.owl> a <http://www.w3.org/2002/07/owl#Ontology>;
+                                  rdfs:comment """OLiA Annotation Model for Uby Parts of Speech (Gurevych et al, 2012)
+extracted from the Uby DTD (http://purl.org/olia/ubyCat.owl, version of Nov 21th, 2012).
+
+References
+Iryna Gurevych, Judith Eckle-Kohler, Silvana Hartmann, Michael Matuschek, Christian M. Meyer and Christian Wirth, 2012, Uby - A Large-Scale Unified Lexical-Semantic Resource, Proceedings of the 13th Conference of the European Chapter of the Association for Computational Linguistics (EACL 2012), Avignon, France.
+
+The DTD is made available under a Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0) license which is available at http://creativecommons.org/licenses/by-sa/3.0/
+You are free to share (copy, distribute and transmit) the work, to develop your own extensions (adapt, remix) of the work, and to make commercial use of the work."""@en;
+                                  rdfs:label "ubyCat.owl";
+                                  <http://www.w3.org/2002/07/owl#imports> <http://purl.org/olia/system.owl>,
+                                                                          <http://www.monnet-project.eu/lemon>;
+                                  <http://www.w3.org/2002/07/owl#versionInfo> """2012, Nov 14 created (CC)
+2013, Mar 20 extended by Data Categories from UBY-LMF not related to Parts-of-Speech, reorganized (JEK)
+2013, Jun 21 reorganized: converted terminal classes (encoding attribute values) to individuals, eliminated inferred Part-of-Speech hierarchy (JEK)
+2013, Jun 24-25 Class MultiWordFeature to DatatypeProperty multiWordFeature;
+			 Class Index to DatatypeProperty hasIndex;
+			 Class IsIncorporated to DatatypeProperty isIncorporated; eliminate hasIsIncorporated, hasIsHead, hasIsBreakBefore;
+			 Class Lexicalized to DatatypeProperty lexicalized; eliminate hasLexicalized;
+			 Class OptionalArgument to DatatypeProperty optionalArgument;
+			 Class Perspectivalized to DatatypeProperty perspectivalized; eliminate hasPerspectivalized;
+			 Class TransparentMeaning to DatatypeProperty transparentMeaning; eliminate yes, no;
+			 (CC)
+2013, Jun 25 hasIndex to index (JMC)
+2013, Jun 26 IsHead to isHead, IsBreakBefore to isBreakBefore
+	introduced LexicalDataStructure, reintroduced sense, LexicalEntry, Lexicon, Sense, SemanticPredicate, Definition, Lemma, Context, SubcategorizationFrame, SyntacticArgument, senseRelation, SenseExample, SemanticArgument (these are not actually used in the RDF data, but in the original DTD, hence marked as deprecated here, however, having them in the ontology would allow Uby users to easily rediscover the equivalent lemon concepts)
+	hasSeparableParticle, SeparableParticle to separableParticle, (has)GeographicalVariant to Dataprop geographicalVariant, (has)Hyphenation to Datprop hyphenation, (has)PhoneticForm to Dp phoneticForm, (has)Transliteration to Dp transliteration, (has)Usage to Dp usage, writtenForm to Dp, (has)IncorporatedSemArg to Dp incorporatedSemArg, (has)SemanticRole to Dp semanticRole, (has)Lexeme to Dp lexeme, (has)Preposition to Dp preposition, (has)PrepositionType to Dp prepositionType
+	(has)ExternalReference to externalReference, (has)ExternalSystem, (has)Generator, (has)Corpus, (has)Label, (has)OrthographyName, (has)Quantification, (has)Sound, (has)Type
+	(has)LanguageIdentifier to dp languageIdentifier (deprecated)
+	dp hasMonolingualExternalRef to OP monolingualExternalRef
+	Frequency subClassOf LexicalFeatureStructure (deprecated)
+	(has)DerivationType deprecated, JMC: relType ... decides the property to use in the mapping, hence deprecated.
+	merged ComplexLexicalFeature and LexicalDataStructure to LexicalFeatureStructure
+	(CC)
+
+TODO: ObjectProperties and Classes for quantification, semanticRole, incorporatedSemArg, Type
+	  consistent naming conventions for properties: hasXY for ObjectProperties, isXY for boolean DataProperties, xY for other DataProperties
+	  domain and range restrictions on properties
+	  check properties generated from DerivationType (relType)
+
+Christian Chiarcos, chiarcos@cs.uni-frankfurt.de
+Judith Eckle-Kohler, eckle-kohler@ukp.informatik.tu-darmstadt.de
+John McCrae, jmccrae@cit-ec.uni-bielefeld.de
+"""@en.
+uby:Case a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2720";
+         rdfs:label "case";
+         rdfs:subClassOf uby:WordFormAttribute.
+uby:Complementizer a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3124";
+                   rdfs:label "complementizer";
+                   rdfs:subClassOf uby:SyntacticFeature.
+uby:Context a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:isDefinedBy "http://uby.googlecode.com/files/UBY_LMF_0_2_0.dtd";
+            rdfs:subClassOf uby:LexicalFeatureStructure;
+            <http://www.w3.org/2002/07/owl#deprecated> true;
+            <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.monnet-project.eu/lemon#LexicalContext>;
+            <http://www.w3.org/2002/07/owl#versionInfo> "superseded by lemon:LexicalContext".
+uby:CoreType a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4461";
+             rdfs:label "coreType";
+             rdfs:subClassOf uby:SemanticFeature.
+uby:Definition a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:isDefinedBy "http://uby.googlecode.com/files/UBY_LMF_0_2_0.dtd";
+               rdfs:subClassOf uby:LexicalFeatureStructure;
+               <http://www.w3.org/2002/07/owl#deprecated> true;
+               <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.monnet-project.eu/lemon#SenseDefinition>;
+               <http://www.w3.org/2002/07/owl#versionInfo> "superseded by lemon:SenseDefinition".
+uby:DefinitionType a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "definitionType";
+                   rdfs:subClassOf uby:DictionaryFeature.
+uby:Degree a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2779";
+           rdfs:label "degree";
+           rdfs:subClassOf uby:WordFormAttribute.
+uby:DerivationType a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "In UBY-LMF, relType is an attribute of the RelatedForm class which encodes links to derivationally related lexical entries or senses.";
+                   rdfs:label "relType";
+                   rdfs:subClassOf uby:DerivationalMorphology;
+                   <http://www.w3.org/2002/07/owl#deprecated> true;
+                   <http://www.w3.org/2002/07/owl#versionInfo> """It decides the property to use in the mapping, hence deprecated.
+relType=\"xxx\" is normally uby:xxx
+(with some exceptions, .e.g, relType=\"seeAlso\" is rdfs:seeAlso)""".
+uby:DerivationalMorphology a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf uby:LexicalFeature.
+uby:Determiner a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment """In UBY-LMF, determiner is an attribute of the LMF class SyntacticArgument. For noun phrase arguments, this attribute encodes specific constraints on the determiner to be used (possessive or indefinite).
+
+Example given in VerbNet (possessive): They allow our smoking.
+Example from VerbNet (indefinite): an indefinite determiner is required for the noun phrase complement of \"echo\" as in 
+There echoed voices through the hall. (verb class sound_existence-47.4)""";
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3159",
+                                "http://www.isocat.org/datcat/DC-1272";
+               rdfs:label "determiner";
+               rdfs:subClassOf uby:SyntacticFeature.
+uby:DictionaryFeature a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf uby:LexicalFeature.
+uby:ExampleType a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:label "exampleType";
+                rdfs:subClassOf uby:DictionaryFeature.
+uby:Frequency a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "This owl:Class corresponds to the LMF-class Frequency which has been introduced in UBY-LMF as an extension of ISO-LMF.";
+              rdfs:subClassOf uby:LexicalFeatureStructure.
+uby:GrammaticalFunction a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1296";
+                        rdfs:label "grammaticalFunction";
+                        rdfs:subClassOf uby:SyntacticFeature.
+uby:GrammaticalGender a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3217";
+                      rdfs:label "grammaticalGender";
+                      rdfs:subClassOf uby:WordFormAttribute.
+uby:GrammaticalNumber a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment """In UBY-LMF, number is also an attribute of the UBY-LMF class SyntacticArgument and specifies the grammatical number of an argument.
+Example: These types of fish mix well together.""";
+                      rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-251";
+                      rdfs:label "grammaticalNumber";
+                      rdfs:subClassOf uby:SyntacticFeature,
+                                      uby:WordFormAttribute.
+uby:Lemma a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:isDefinedBy "http://uby.googlecode.com/files/UBY_LMF_0_2_0.dtd";
+          rdfs:subClassOf <http://purl.org/olia/system.owl#UnitOfAnnotation>,
+                          <http://www.monnet-project.eu/lemon#Form>;
+          <http://www.w3.org/2002/07/owl#deprecated> true;
+          <http://www.w3.org/2002/07/owl#versionInfo> "superseded by lemon:canonicalForm".
+uby:LexicalAnnotation a <http://www.w3.org/2002/07/owl#Class>.
+uby:LexicalEntry a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:isDefinedBy "http://uby.googlecode.com/files/UBY_LMF_0_2_0.dtd";
+                 rdfs:subClassOf <http://purl.org/olia/system.owl#UnitOfAnnotation>;
+                 <http://www.w3.org/2002/07/owl#deprecated> true;
+                 <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.monnet-project.eu/lemon#LexicalEntry>;
+                 <http://www.w3.org/2002/07/owl#versionInfo> "superseded by lemon:LexicalEntry".
+uby:LexicalFeature a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "LexicalFeature groups different kinds of lexical feaures, which correspond to attributes of UBY-LMF classes.";
+                   rdfs:subClassOf uby:LexicalAnnotation.
+uby:LexicalFeatureStructure a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "LexicalFeatureStructure is a complex lexical Feature Structure (with features and feature values) and corresponds to a class in LMF."@en;
+                            rdfs:label "complex lexical feature",
+                                       "lexical feature structure",
+                                       "lexical data structure";
+                            rdfs:subClassOf uby:LexicalAnnotation;
+                            <http://www.w3.org/2002/07/owl#deprecated> true;
+                            <http://www.w3.org/2002/07/owl#versionInfo> "TODO: check whether these may be LexicalFeatureStructures",
+                                                                        "superseded by lemon data structures, left here only as a reference"@en.
+uby:Lexicon a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:isDefinedBy "http://uby.googlecode.com/files/UBY_LMF_0_2_0.dtd";
+            rdfs:subClassOf uby:LexicalFeatureStructure;
+            <http://www.w3.org/2002/07/owl#deprecated> true;
+            <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.monnet-project.eu/lemon#Lexicon>;
+            <http://www.w3.org/2002/07/owl#versionInfo> "superseded by lemon:Lexicon".
+uby:LinkingFeature a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf uby:LexicalFeature.
+uby:MetaFeature a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf uby:LexicalFeature.
+uby:MonolingualExternalRef a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1975";
+                           rdfs:label "monolingualExternalRef";
+                           rdfs:subClassOf uby:LexicalFeatureStructure.
+uby:PartOfSpeech a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "As a convention, the relation is called has_partOfSpeech, partOfSpeech is the top-level *class* of parts of speech";
+                 rdfs:isDefinedBy "http://purl.org/olia/ubyCat.owl";
+                 rdfs:label "partOfSpeech";
+                 rdfs:subClassOf <http://purl.org/olia/system.owl#Feature>,
+                                 uby:LexicalFeature.
+uby:Person a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3385";
+           rdfs:label "person";
+           rdfs:subClassOf uby:WordFormAttribute.
+uby:Position a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2237";
+             rdfs:label "position";
+             rdfs:range xsd:int;
+             rdfs:subPropertyOf uby:multiwordFeature.
+uby:Quantification a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment """In UBY-LMF, quantification is an attribute of the class SemanticLabel. It can be used, if the value of the semantic label is annotated with a score, e.g. type=sentiment, label=positive, quantification=strong.
+""";
+                   rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2211";
+                   rdfs:label "quantification";
+                   rdfs:subClassOf uby:MetaFeature;
+                   <http://www.w3.org/2002/07/owl#versionInfo> "should be used together with hasQuantification to replace the DatatypeProperty quantification".
+uby:RelType a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1971";
+            rdfs:label "relType";
+            rdfs:subClassOf uby:SemanticFeature.
+uby:SemanticArgument a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy "http://uby.googlecode.com/files/UBY_LMF_0_2_0.dtd";
+                     rdfs:subClassOf <http://purl.org/olia/system.owl#UnitOfAnnotation>,
+                                     <http://www.monnet-project.eu/lemon#Argument>;
+                     <http://www.w3.org/2002/07/owl#versionInfo> "subclass of lemon:semArg".
+uby:SemanticFeature a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf uby:LexicalFeature.
+uby:SemanticLabel a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "This owl:Class corresponds to the LMF-class SemanticLabel which has been introduced in UBY-LMF as an extension of ISO-LMF.";
+                  rdfs:subClassOf uby:LexicalFeatureStructure;
+                  <http://www.w3.org/2002/07/owl#deprecated> true;
+                  <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.monnet-project.eu/lemon#SemanticLabel>;
+                  <http://www.w3.org/2002/07/owl#versionInfo> "superseded by lemon:SemanticLabel".
+uby:SemanticPredicate a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy "http://uby.googlecode.com/files/UBY_LMF_0_2_0.dtd";
+                      rdfs:subClassOf <http://purl.org/olia/system.owl#UnitOfAnnotation>,
+                                      <http://www.monnet-project.eu/lemon#LexicalSense>;
+                      <http://www.w3.org/2002/07/owl#versionInfo> "subClass of lemon:LexicalSense".
+uby:Sense a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:isDefinedBy "http://uby.googlecode.com/files/UBY_LMF_0_2_0.dtd",
+                           "http://www.monnet-project.eu/lemon#LexicalSense";
+          rdfs:subClassOf <http://purl.org/olia/system.owl#UnitOfAnnotation>,
+                          uby:LexicalFeatureStructure;
+          <http://www.w3.org/2002/07/owl#deprecated> true;
+          <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.monnet-project.eu/lemon#LexicalSense>;
+          <http://www.w3.org/2002/07/owl#versionInfo> "superseded by lemon:LexicalSense".
+uby:SenseAxisType a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "In Uby-LMF, the attribute senseAxisType of the SenseAxis class indicates, whether the type of linking between to senses or between two synsets. Example values are monolingualSenseAlignment and crosslingualSenseAlignment";
+                  rdfs:label "senseAxisType";
+                  rdfs:subClassOf uby:LinkingFeature.
+uby:SenseExample a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:isDefinedBy "http://uby.googlecode.com/files/UBY_LMF_0_2_0.dtd";
+                 rdfs:subClassOf uby:LexicalFeatureStructure;
+                 <http://www.w3.org/2002/07/owl#deprecated> true;
+                 <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.monnet-project.eu/lemon#UsageExample>;
+                 <http://www.w3.org/2002/07/owl#versionInfo> "superseded by lemon:UsageExample".
+uby:SubcategorizationFrame a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:isDefinedBy "http://uby.googlecode.com/files/UBY_LMF_0_2_0.dtd";
+                           rdfs:subClassOf <http://purl.org/olia/system.owl#UnitOfAnnotation>;
+                           <http://www.w3.org/2002/07/owl#deprecated> true;
+                           <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.monnet-project.eu/lemon#Frame>;
+                           <http://www.w3.org/2002/07/owl#versionInfo> "superseded by lemon:Frame".
+uby:Synset a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "This owl:Class corresponds to the ISO LMF-class Synset.";
+           rdfs:subClassOf uby:LexicalFeatureStructure,
+                           <http://www.w3.org/2004/02/skos/core#Concept>;
+           <http://www.w3.org/2002/07/owl#versionInfo> "mapped onto skos:Concept".
+uby:SyntacticArgument a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy "http://uby.googlecode.com/files/UBY_LMF_0_2_0.dtd";
+                      rdfs:subClassOf <http://purl.org/olia/system.owl#UnitOfAnnotation>,
+                                      <http://www.monnet-project.eu/lemon#Argument>;
+                      <http://www.w3.org/2002/07/owl#versionInfo> "see lemon:synArg".
+uby:SyntacticCategory a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1506";
+                      rdfs:label "syntacticCategory";
+                      rdfs:subClassOf uby:SyntacticFeature.
+uby:SyntacticFeature a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "SyntacticFeature groups attributes of UBY-LMF classes from the ISO LMF Syntax extension package.";
+                     rdfs:subClassOf uby:LexicalFeature.
+uby:SyntacticProperty a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Attribute of the UBY-LMF class SubcategorizationFrame.";
+                      rdfs:label "syntacticProperty";
+                      rdfs:subClassOf uby:SyntacticFeature.
+uby:Tense a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3519";
+          rdfs:label "tense";
+          rdfs:subClassOf uby:WordFormAttribute.
+uby:Type a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment """Type is an attribute of the UBY-LMF class SemanticLabel. It encodes the name of a SemanticLabel type, e.g.
+type=semanticField (from WordNet or GermaNet).
+The label attribute of SemanticLabel holds the corresponding value of the SemanticLabel, e.g. 
+label=animate (for type=semanticField).""";
+         rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1971";
+         rdfs:label "type";
+         rdfs:subClassOf uby:MetaFeature;
+         <http://www.w3.org/2002/07/owl#versionInfo> "Should replace the DatatypeProperty type".
+uby:VerbForm a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Specifies the verb form to be used in a verb phrase complement.";
+             rdfs:label "verbForm";
+             rdfs:subClassOf uby:SyntacticFeature.
+uby:VerbFormMood a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1427";
+                 rdfs:label "verbFormMood";
+                 rdfs:subClassOf uby:WordFormAttribute.
+uby:WordForm a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:isDefinedBy "http://purl.org/olia/ubyCat.owl";
+             rdfs:label "WordForm";
+             rdfs:subClassOf <http://purl.org/olia/system.owl#UnitOfAnnotation>.
+uby:WordFormAttribute a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy "http://purl.org/olia/ubyCat.owl";
+                      rdfs:label "WordFormAttribute";
+                      rdfs:subClassOf <http://purl.org/olia/system.owl#Feature>,
+                                      uby:LexicalFeature.
+uby:abbreviation a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   uby:PartOfSpeech;
+                 rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-329";
+                 rdfs:label "abbreviation".
+uby:abbreviationAcronym a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          uby:PartOfSpeech;
+                        rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-334";
+                        rdfs:label "abbreviationAcronym".
+uby:abbreviationInitialism a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                             uby:PartOfSpeech;
+                           rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-333";
+                           rdfs:label "abbreviationInitialism".
+uby:accusative a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 uby:Case;
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2724";
+               rdfs:label "accusative".
+uby:adjective a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                uby:PartOfSpeech;
+              rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1230";
+              rdfs:label "adjective".
+uby:adjectivePhrase a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      uby:SyntacticCategory;
+                    rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2258";
+                    rdfs:label "adjectivePhrase".
+uby:adjectivePhrase_nounPhrase a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                 uby:SyntacticCategory;
+                               rdfs:label "adjectivePhrase_nounPhrase".
+uby:adposition a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 uby:PartOfSpeech;
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1231";
+               rdfs:label "adposition".
+uby:adpositionCircumposition a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                               uby:PartOfSpeech;
+                             rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1906";
+                             rdfs:label "adpositionCircumposition".
+uby:adpositionPostposition a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                             uby:PartOfSpeech;
+                           rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1360";
+                           rdfs:label "adpositionPostposition".
+uby:adpositionPreposition a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                            uby:PartOfSpeech;
+                          rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1366";
+                          rdfs:label "adpositionPreposition".
+uby:adverb a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             uby:PartOfSpeech;
+           rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1232";
+           rdfs:label "adverb".
+uby:adverbPhrase a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   uby:SyntacticCategory;
+                 rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2259";
+                 rdfs:label "adverbPhrase".
+uby:adverbPronominal a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                       uby:PartOfSpeech;
+                     rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2998";
+                     rdfs:label "adverbPronominal".
+uby:adverbialComplement a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          uby:GrammaticalFunction;
+                        rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4639";
+                        rdfs:label "adverbialComplement".
+uby:affix a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+            uby:PartOfSpeech;
+          rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1234";
+          rdfs:label "affix".
+uby:affixPrefix a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  uby:PartOfSpeech;
+                rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1365";
+                rdfs:label "affixPrefix".
+uby:affixSuffix a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  uby:PartOfSpeech;
+                rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1395";
+                rdfs:label "affixSuffix".
+uby:association a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  uby:RelType;
+                rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-438";
+                rdfs:label "association".
+uby:bareInfinitive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     uby:VerbForm;
+                   rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4163";
+                   rdfs:label "bareInfinitive".
+uby:comparative a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  uby:Degree;
+                rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2781";
+                rdfs:label "comparative".
+uby:complement a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 uby:GrammaticalFunction;
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1257";
+               rdfs:label "complement".
+uby:complementary a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    uby:RelType;
+                  rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-83";
+                  rdfs:label "complementary".
+uby:compound a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               uby:DerivationType;
+             rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3127";
+             rdfs:label "compound".
+uby:compoundRoot a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   uby:DerivationType;
+                 rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-357";
+                 rdfs:label "compoundRoot".
+uby:conjunction a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  uby:PartOfSpeech;
+                rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3132";
+                rdfs:label "conjunction".
+uby:conjunctionCoordinating a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                              uby:PartOfSpeech;
+                            rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1262";
+                            rdfs:label "conjunctionCoordinating".
+uby:conjunctionSubordinating a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                               uby:PartOfSpeech;
+                             rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1393";
+                             rdfs:label "conjunctionSubordinating".
+uby:contraction a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  uby:PartOfSpeech;
+                rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-354";
+                rdfs:label "contraction".
+uby:core a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+           uby:CoreType;
+         rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4462";
+         rdfs:label "core".
+uby:coreUnexpressed a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      uby:CoreType;
+                    rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4464";
+                    rdfs:label "coreUnexpressed".
+uby:corpus a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4361";
+           rdfs:label "corpus";
+           rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:crosslingualSenseAlignment a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                 uby:SenseAxisType;
+                               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4628";
+                               rdfs:label "crosslingualSenseAlignment".
+uby:dative a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             uby:Case;
+           rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2723";
+           rdfs:label "dative".
+uby:declarativeClause a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        uby:SyntacticCategory;
+                      rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2300";
+                      rdfs:label "declarativeClause".
+uby:derivationBase a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     uby:DerivationType;
+                   rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4612";
+                   rdfs:label "derivationBase".
+uby:derivationBaseAdj a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        uby:DerivationType;
+                      rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4616";
+                      rdfs:label "derivationBaseAdj".
+uby:derivationBaseNoun a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                         uby:DerivationType;
+                       rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4615";
+                       rdfs:label "derivationBaseNoun".
+uby:derivationBaseVerb a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                         uby:DerivationType;
+                       rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4614";
+                       rdfs:label "derivationBaseVerb".
+uby:derivative a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 uby:DerivationType;
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4611";
+               rdfs:label "derivative".
+uby:determiner a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 uby:PartOfSpeech;
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1272";
+               rdfs:label "determiner".
+uby:determinerDefinite a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                         uby:PartOfSpeech;
+                       rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1430";
+                       rdfs:label "determinerDefinite".
+uby:determinerDemonstrative a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                              uby:PartOfSpeech;
+                            rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1269";
+                            rdfs:label "determinerDemonstrative".
+uby:determinerIndefinite a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                           uby:PartOfSpeech;
+                         rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1307";
+                         rdfs:label "determinerIndefinite".
+uby:determinerInterrogative a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                              uby:PartOfSpeech;
+                            rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1320";
+                            rdfs:label "determinerInterrogative".
+uby:determinerPossessive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                           uby:PartOfSpeech;
+                         rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1357";
+                         rdfs:label "determinerPossessive".
+uby:directObject a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   uby:GrammaticalFunction;
+                 rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1274";
+                 rdfs:label "directObject".
+uby:etymology a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                uby:DerivationType;
+              rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-221";
+              rdfs:label "etymology".
+uby:expletive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                uby:SyntacticCategory;
+              rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3187";
+              rdfs:label "expletive".
+uby:extensionalDefinition a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                            uby:DefinitionType;
+                          rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-171";
+                          rdfs:label "extensionalDefinition".
+uby:externalReference a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1975";
+                      rdfs:label "externalReference";
+                      rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:externalSystem a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1974";
+                   rdfs:label "externalSystem";
+                   rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:extraThematic a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    uby:CoreType;
+                  rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4465";
+                  rdfs:label "extraThematic".
+uby:feminine a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               uby:GrammaticalGender;
+             rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3197";
+             rdfs:label "feminine".
+uby:first a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+            uby:Person;
+          rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3198";
+          rdfs:label "first".
+uby:generator a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2511";
+              rdfs:label "generator";
+              rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:genitive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               uby:Case;
+             rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2722";
+             rdfs:label "genitive".
+uby:geographicalVariant a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1851";
+                        rdfs:label "geographicalVariant";
+                        rdfs:subPropertyOf uby:hasUbyDatatypeProperty;
+                        <http://www.w3.org/2002/07/owl#deprecated> true;
+                        <http://www.w3.org/2002/07/owl#versionInfo> "moved into language tags (JMC)".
+uby:hasComplementizer a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:label "complementizer";
+                      rdfs:range uby:Complementizer;
+                      rdfs:subPropertyOf uby:hasUbyObjectProperty.
+uby:hasCoreType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:label "coreType";
+                rdfs:range uby:CoreType;
+                rdfs:subPropertyOf uby:hasUbyObjectProperty.
+uby:hasDefinitionType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:label "definitionType";
+                      rdfs:range uby:DefinitionType;
+                      rdfs:subPropertyOf uby:hasUbyObjectProperty.
+uby:hasDerivationType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "In UBY-LMF, relType is an attribute of the RelatedForm class which encodes links to derivationally related lexical entries or senses.";
+                      rdfs:range uby:DerivationType;
+                      rdfs:subPropertyOf uby:hasUbyObjectProperty;
+                      <http://www.w3.org/2002/07/owl#deprecated> true;
+                      <http://www.w3.org/2002/07/owl#versionInfo> """It decides the property to use in the mapping, hence deprecated.
+relType=\"xxx\" is normally uby:xxx
+(with some exceptions, .e.g, relType=\"seeAlso\" is rdfs:seeAlso)""".
+uby:hasDeterminer a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:label "determiner";
+                  rdfs:range uby:Determiner;
+                  rdfs:subPropertyOf uby:hasUbyObjectProperty.
+uby:hasExampleType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:label "exampleType";
+                   rdfs:range uby:ExampleType;
+                   rdfs:subPropertyOf uby:hasUbyObjectProperty.
+uby:hasGrammaticalFunction a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:label "grammaticalFunction";
+                           rdfs:range uby:GrammaticalFunction;
+                           rdfs:subPropertyOf uby:hasUbyObjectProperty.
+uby:hasPosition a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:label "position";
+                rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:hasQuantification a <http://www.w3.org/2002/07/owl#AnnotationProperty>,
+                        <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment """In UBY-LMF, quantification is an attribute of the class SemanticLabel. It can be used, if the value of the semantic label is annotated with a score, e.g. type=sentiment, label=positive, quantification=strong.
+""";
+                      rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2211";
+                      rdfs:label "quantification";
+                      rdfs:subPropertyOf uby:hasUbyDatatypeProperty;
+                      <http://www.w3.org/2002/07/owl#versionInfo> "Should be used to replace the DatatypeProperty quantification".
+uby:hasRelType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:label "relType";
+               rdfs:range uby:RelType;
+               rdfs:subPropertyOf uby:hasUbyObjectProperty.
+uby:hasSenseAxisType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:range uby:SenseAxisType;
+                     rdfs:subPropertyOf uby:hasUbyObjectProperty.
+uby:hasSyntacticCategory a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:label "syntacticCategory";
+                         rdfs:range uby:SyntacticCategory;
+                         rdfs:subPropertyOf uby:hasUbyObjectProperty.
+uby:hasSyntacticProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:label "syntacticProperty";
+                         rdfs:range uby:SyntacticProperty;
+                         rdfs:subPropertyOf uby:hasUbyObjectProperty.
+uby:hasType a <http://www.w3.org/2002/07/owl#AnnotationProperty>,
+              <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment """Type is an attribute of the UBY-LMF class SemanticLabel. It encodes the name of a SemanticLabel type, e.g.
+type=semanticField (from WordNet or GermaNet).
+The label attribute of SemanticLabel holds the corresponding value of the SemanticLabel, e.g. 
+label=animate (for type=semanticField).""";
+            rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1971";
+            rdfs:label "type";
+            rdfs:subPropertyOf uby:hasUbyDatatypeProperty;
+            <http://www.w3.org/2002/07/owl#versionInfo> "Should replace the DatatypeProperty type".
+uby:hasUbyDatatypeProperty a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:comment """This DatatypeProperty could also be named \"hasSimpleLexicalFeature\".
+The current name \"hasUbyDatatypeProperty\" indicates that it groups Data Properties used in UBY-LMF.""".
+uby:hasUbyObjectProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment """This ObjectProperty could also be named \"hasTypedLexicalFeature\".
+The current name \"hasUbyObjectProperty\" indicates that it groups Object Properties used in UBY-LMF.""";
+                         rdfs:subPropertyOf <http://www.monnet-project.eu/lemon#property>.
+uby:hasVerbForm a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:label "verbForm";
+                rdfs:range uby:VerbForm;
+                rdfs:subPropertyOf uby:hasUbyObjectProperty.
+uby:has_WordFormAttribute a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:isDefinedBy "http://purl.org/olia/ubyCat.owl";
+                          rdfs:label "WordFormAttribute";
+                          rdfs:subPropertyOf <http://purl.org/olia/system.owl#hasFeature>.
+uby:has_case a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:label "case";
+             rdfs:range uby:Case;
+             rdfs:subPropertyOf uby:has_WordFormAttribute.
+uby:has_degree a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:label "degree";
+               rdfs:range uby:Degree;
+               rdfs:subPropertyOf uby:has_WordFormAttribute.
+uby:has_grammaticalGender a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:label "grammaticalGender";
+                          rdfs:range uby:GrammaticalGender;
+                          rdfs:subPropertyOf uby:has_WordFormAttribute.
+uby:has_grammaticalNumber a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:label "grammaticalNumber";
+                          rdfs:range uby:GrammaticalNumber;
+                          rdfs:subPropertyOf uby:has_WordFormAttribute.
+uby:has_partOfSpeech a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-396";
+                     rdfs:label "partOfSpeech";
+                     rdfs:subPropertyOf <http://purl.org/olia/system.owl#hasFeature>.
+uby:has_person a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:label "person";
+               rdfs:range uby:Person;
+               rdfs:subPropertyOf uby:has_WordFormAttribute.
+uby:has_tense a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:label "tense";
+              rdfs:range uby:Tense;
+              rdfs:subPropertyOf uby:has_WordFormAttribute.
+uby:has_verbFormMood a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:label "verbFormMood";
+                     rdfs:range uby:VerbFormMood;
+                     rdfs:subPropertyOf uby:has_WordFormAttribute.
+uby:hyphenation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-264";
+                rdfs:label "hyphenation";
+                rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:idiomaticExpression a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          uby:ExampleType;
+                        rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-351";
+                        rdfs:label "idiomaticExpression".
+uby:imperative a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 uby:VerbFormMood;
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1844";
+               rdfs:label "imperative".
+uby:incorporatedSemArg a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                         <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4151";
+                       rdfs:label "incorporatedSemArg";
+                       rdfs:subPropertyOf uby:hasUbyObjectProperty.
+uby:indefinite a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 uby:Determiner;
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1307";
+               rdfs:label "indefinite".
+uby:index a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:comment """Index is an attribute of the UBY-LMF class Sense.
+It encodes a ranking of the senses according to their frequency which is provided, e.g., by WordNet.""";
+          rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-233";
+          rdfs:label "index";
+          rdfs:range xsd:int;
+          rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:indicative a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 uby:VerbFormMood;
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1885";
+               rdfs:label "indicative".
+uby:infinitive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 uby:VerbFormMood;
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1312";
+               rdfs:label "infinitive".
+uby:infinitiveZu a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   uby:VerbFormMood;
+                 rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2897";
+                 rdfs:label "infinitiveZu".
+uby:ingForm a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              uby:VerbForm,
+              uby:VerbFormMood;
+            rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4108";
+            rdfs:label "ingForm".
+uby:intensionalDefinition a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                            uby:DefinitionType;
+                          rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-170";
+                          rdfs:label "intensionalDefinition".
+uby:interjection a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   uby:PartOfSpeech;
+                 rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1318";
+                 rdfs:label "interjection".
+uby:isBreakBefore a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4626";
+                  rdfs:label "isBreakBefore";
+                  rdfs:range xsd:boolean;
+                  rdfs:subPropertyOf uby:multiwordFeature.
+uby:isHead a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4617";
+           rdfs:label "isHead";
+           rdfs:range xsd:boolean;
+           rdfs:subPropertyOf uby:multiwordFeature.
+uby:isIncorporated a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4151";
+                   rdfs:label "isIncorporated";
+                   rdfs:range xsd:boolean;
+                   rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:label a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:comment "Label encodes a name (short - like a tag) and is an attribute of the UBY-LMF class SemanticLabel, SemanticPredicate, ";
+          rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1857";
+          rdfs:label "label";
+          rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:languageIdentifier a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-279";
+                       rdfs:label "languageIdentifier";
+                       rdfs:subPropertyOf uby:hasUbyDatatypeProperty;
+                       <http://www.w3.org/2002/07/owl#deprecated> true;
+                       <http://www.w3.org/2002/07/owl#versionInfo> "replaced by a lang-tag".
+uby:lexeme a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:comment """Lexeme is an attribute of the UBY-LMF class SyntacticArgument and specifies a particular lexeme to be used in realizations of particular complements.
+Example (lexeme = es, ObjectComplement realized as zu-infinitive): Er schafft es, den Termin einzuhalten.
+* Er schafft, den Termin einzuhalten.""";
+           rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1325";
+           rdfs:label "lexeme";
+           rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:lexicalized a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3295";
+                rdfs:label "lexicalized";
+                rdfs:range xsd:boolean;
+                rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:loanWord a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               uby:DerivationType;
+             rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-511";
+             rdfs:label "loanWord".
+uby:masculine a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                uby:GrammaticalGender;
+              rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3312";
+              rdfs:label "masculine".
+uby:monolingualExternalRef a <http://www.w3.org/2002/07/owl#AnnotationProperty>,
+                             <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain uby:Synset;
+                           rdfs:label "monolingualExternalRef";
+                           rdfs:range uby:MonolingualExternalRef;
+                           rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:monolingualSenseAlignment a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                uby:SenseAxisType;
+                              rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4627";
+                              rdfs:label "monolingualSenseAlignment".
+uby:multiwordFeature a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:neuter a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             uby:GrammaticalGender;
+           rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3336";
+           rdfs:label "neuter".
+uby:nominative a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 uby:Case;
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2721";
+               rdfs:label "nominative".
+uby:nonPredicativeAdjective a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                              uby:SyntacticProperty;
+                            rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4618";
+                            rdfs:label "nonPredicativeAdjective".
+uby:noun a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+           uby:PartOfSpeech;
+         rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3347";
+         rdfs:label "noun".
+uby:nounCommon a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 uby:PartOfSpeech;
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-385";
+               rdfs:label "nounCommon".
+uby:nounPhrase a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 uby:SyntacticCategory;
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2256";
+               rdfs:label "nounPhrase".
+uby:nounProper a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 uby:PartOfSpeech;
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1371";
+               rdfs:label "nounProper".
+uby:nounProperFamilyName a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                           uby:PartOfSpeech;
+                         rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4195";
+                         rdfs:label "nounProperLastName".
+uby:nounProperGivenName a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          uby:PartOfSpeech;
+                        rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4194";
+                        rdfs:label "nounProperFirstName".
+uby:numeral a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              uby:PartOfSpeech;
+            rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1334";
+            rdfs:label "numeral".
+uby:objectComplement a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                       uby:GrammaticalFunction;
+                     rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4625";
+                     rdfs:label "objectComplement".
+uby:objectControl a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    uby:SyntacticProperty;
+                  rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4189";
+                  rdfs:label "objectControl".
+uby:objectRaising a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    uby:SyntacticProperty;
+                  rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4190";
+                  rdfs:label "objectRaising".
+uby:optionalArgument a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4622";
+                     rdfs:label "optional";
+                     rdfs:range xsd:boolean;
+                     rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:orthographyName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2176";
+                    rdfs:label "orthographyName";
+                    rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:other a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+            uby:ExampleType;
+          rdfs:label "other".
+uby:partWhole a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                uby:RelType;
+              rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-397";
+              rdfs:label "partWhole".
+uby:participle a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 uby:VerbForm,
+                 uby:VerbFormMood;
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3371";
+               rdfs:label "participle".
+uby:particle a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               uby:PartOfSpeech;
+             rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3372";
+             rdfs:label "particle".
+uby:particleAnswer a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     uby:PartOfSpeech;
+                   rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2891";
+                   rdfs:label "particleAnswer".
+uby:particleComparative a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          uby:PartOfSpeech;
+                        rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1922";
+                        rdfs:label "particleComparative".
+uby:particleInfinitive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                         uby:PartOfSpeech;
+                       rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1896";
+                       rdfs:label "particleInfinitive".
+uby:particleNegative a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                       uby:PartOfSpeech;
+                     rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1894";
+                     rdfs:label "particleNegative".
+uby:partitiveDefinition a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          uby:DefinitionType;
+                        rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-172";
+                        rdfs:label "partitiveDefinition".
+uby:past a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+           uby:Tense;
+         rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3378";
+         rdfs:label "past".
+uby:peripheral a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 uby:CoreType;
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4463";
+               rdfs:label "peripheral".
+uby:perspectivalized a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4391";
+                     rdfs:label "perspectivalized";
+                     rdfs:range xsd:boolean;
+                     rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:phoneticForm a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1837";
+                 rdfs:label "phoneticForm";
+                 rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:phraseme a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               uby:PartOfSpeech;
+             rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-339";
+             rdfs:label "phraseme".
+uby:plural a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             uby:GrammaticalNumber;
+           rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-253";
+           rdfs:label "plural".
+uby:positive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               uby:Degree;
+             rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2780";
+             rdfs:label "positive".
+uby:possessive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 uby:Determiner;
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1357";
+               rdfs:label "possessive".
+uby:postpositiveAdjective a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                            uby:SyntacticProperty;
+                          rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4619";
+                          rdfs:label "postpositiveAdjective".
+uby:predicativeAdjective a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                           uby:SyntacticProperty;
+                         rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2710";
+                         rdfs:label "predicativeAdjective".
+uby:preposition a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment """Preposition is an attribute of the UBY-LMF class SyntacticArgument and specifies the particular preposition to be used in prepositional complements that can either be realized as PP or as preposition and subordinate clause.
+Example: That depends on who did it.""";
+                rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1366";
+                rdfs:label "preposition";
+                rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:prepositionType a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment """PrepositionType is an attribute of the UBY-LMF class SyntacticArgument and specifies the particular preposition type (e.g. locative, directional) to be used in prepositional complements.
+The preposition type is specified in VerbNet.""";
+                    rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4621";
+                    rdfs:label "prepositionType";
+                    rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:prepositionalComplement a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                              uby:GrammaticalFunction;
+                            rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4638";
+                            rdfs:label "prepositionalComplement".
+uby:prepositionalPhrase a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          uby:SyntacticCategory;
+                        rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2257";
+                        rdfs:label "prepositionalPhrase".
+uby:present a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              uby:Tense;
+            rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3421";
+            rdfs:label "present".
+uby:pronoun a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              uby:PartOfSpeech;
+            rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1370";
+            rdfs:label "pronoun".
+uby:pronounDemonstrative a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                           uby:PartOfSpeech;
+                         rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1270";
+                         rdfs:label "pronounDemonstrative".
+uby:pronounIndefinite a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        uby:PartOfSpeech;
+                      rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1309";
+                      rdfs:label "pronounIndefinite".
+uby:pronounInterrogative a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                           uby:PartOfSpeech;
+                         rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1321";
+                         rdfs:label "pronounInterrogative".
+uby:pronounPersonal a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      uby:PartOfSpeech;
+                    rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3013";
+                    rdfs:label "pronounPersonal".
+uby:pronounPersonalIrreflexive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                 uby:PartOfSpeech;
+                               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3013";
+                               rdfs:label "pronounPersonalIrreflexive".
+uby:pronounPersonalReflexive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                               uby:PartOfSpeech;
+                             rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3014";
+                             rdfs:label "pronounPersonalReflexive".
+uby:pronounPossessive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        uby:PartOfSpeech;
+                      rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1359";
+                      rdfs:label "pronounPossessive".
+uby:pronounRelative a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      uby:PartOfSpeech;
+                    rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1380";
+                    rdfs:label "pronounRelative".
+uby:quantification a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment """In UBY-LMF, quantification is an attribute of the class SemanticLabel. It can be used, if the value of the semantic label is annotated with a score, e.g. type=sentiment, label=positive, quantification=strong.
+""";
+                   rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2211";
+                   rdfs:label "quantification";
+                   rdfs:subPropertyOf uby:hasUbyDatatypeProperty;
+                   <http://www.w3.org/2002/07/owl#versionInfo> "Should be remodelled as an ObjectProperty in future versions".
+uby:reflexive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                uby:SyntacticCategory;
+              rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3014";
+              rdfs:label "reflexive".
+uby:second a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             uby:Person;
+           rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3464";
+           rdfs:label "second".
+uby:semanticRole a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3466";
+                 rdfs:label "semanticRole";
+                 rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:sense a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:isDefinedBy "http://www.monnet-project.eu/lemon#sense",
+                           "http://uby.googlecode.com/files/UBY_LMF_0_2_0.dtd";
+          rdfs:range uby:Sense;
+          <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.monnet-project.eu/lemon#sense>.
+uby:senseInstance a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    uby:ExampleType;
+                  rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3778";
+                  rdfs:label "senseInstance".
+uby:senseRelation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:isDefinedBy "http://uby.googlecode.com/files/UBY_LMF_0_2_0.dtd";
+                  rdfs:label "SenseRelation";
+                  <http://www.w3.org/2002/07/owl#deprecated> true;
+                  <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.monnet-project.eu/lemon#senseRelation>;
+                  <http://www.w3.org/2002/07/owl#versionInfo> "superseded by lemon:senseRelation".
+uby:separableParticle a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3546";
+                      rdfs:label "separableParticle";
+                      rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:singular a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               uby:GrammaticalNumber;
+             rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-252";
+             rdfs:label "singular".
+uby:sound a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2250";
+          rdfs:label "sound";
+          rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:subcatFrame a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  uby:ExampleType;
+                rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4630";
+                rdfs:label "subcatFrame".
+uby:subject a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              uby:GrammaticalFunction;
+            rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1391";
+            rdfs:label "subject".
+uby:subjectComplement a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        uby:GrammaticalFunction;
+                      rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4624";
+                      rdfs:label "subjectComplement".
+uby:subjectControl a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     uby:SyntacticProperty;
+                   rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4187";
+                   rdfs:label "subjectControl".
+uby:subjectRaising a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     uby:SyntacticProperty;
+                   rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4188";
+                   rdfs:label "subjectRaising".
+uby:subjunctive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  uby:VerbFormMood;
+                rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1843";
+                rdfs:label "subjunctive".
+uby:subordinateClause a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        uby:SyntacticCategory;
+                      rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3496";
+                      rdfs:label "subordinateClause".
+uby:superlative a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  uby:Degree;
+                rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2782";
+                rdfs:label "superlative".
+uby:supports a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               uby:DerivationType;
+             rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3003";
+             rdfs:label "supports".
+uby:symbol a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             uby:PartOfSpeech;
+           rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1398";
+           rdfs:label "symbol".
+uby:syntacticUsage a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     uby:ExampleType;
+                   rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-455";
+                   rdfs:label "syntacticUsage".
+uby:taxonomic a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                uby:RelType;
+              rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4039";
+              rdfs:label "taxonomic".
+uby:thatType a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               uby:Complementizer;
+             rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4623";
+             rdfs:label "thatType".
+uby:third a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+            uby:Person;
+          rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3526";
+          rdfs:label "third".
+uby:toInfinitive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   uby:VerbForm;
+                 rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4162";
+                 rdfs:label "toInfinitive".
+uby:translatedDefinition a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                           uby:DefinitionType;
+                         rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-173";
+                         rdfs:label "translatedDefinition".
+uby:transliteration a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1848";
+                    rdfs:label "transliteration";
+                    rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:transparentMeaning a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-4390";
+                       rdfs:label "transparentMeaning";
+                       rdfs:range xsd:boolean;
+                       rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:type a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:comment """Type is an attribute of the UBY-LMF class SemanticLabel. It encodes the name of a SemanticLabel type, e.g.
+type=semanticField (from WordNet or GermaNet).
+The label attribute of SemanticLabel holds the corresponding value of the SemanticLabel, e.g. 
+label=animate (for type=semanticField).""";
+         rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1971";
+         rdfs:label "type";
+         rdfs:subPropertyOf uby:hasUbyDatatypeProperty;
+         <http://www.w3.org/2002/07/owl#versionInfo> "Should be replaced by the ObjectProperty hasType and the Class Type".
+uby:usage a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-3764";
+          rdfs:label "usage";
+          rdfs:subPropertyOf uby:hasUbyDatatypeProperty;
+          <http://www.w3.org/2002/07/owl#versionInfo> "Never used".
+uby:verb a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+           uby:PartOfSpeech;
+         rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1424";
+         rdfs:label "verb".
+uby:verbAuxiliary a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    uby:PartOfSpeech;
+                  rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1244";
+                  rdfs:label "verbAuxiliary".
+uby:verbMain a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               uby:PartOfSpeech;
+             rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1400";
+             rdfs:label "verbMain".
+uby:verbModal a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                uby:PartOfSpeech;
+              rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1329";
+              rdfs:label "verbModal".
+uby:verbPhrase a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 uby:SyntacticCategory;
+               rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2255";
+               rdfs:label "verbPhrase".
+uby:whType a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             uby:Complementizer;
+           rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2296";
+           rdfs:label "whType".
+uby:writtenForm a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-1836";
+                rdfs:label "writtenForm";
+                rdfs:subPropertyOf uby:hasUbyDatatypeProperty.
+uby:yesNoType a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                uby:Complementizer;
+              rdfs:isDefinedBy "http://www.isocat.org/datcat/DC-2297";
+              rdfs:label "yesNoType".
+<http://www.monnet-project.eu/lemon#LexicalContext> a <http://www.w3.org/2002/07/owl#Class>;
+                                                    rdfs:subClassOf uby:LexicalFeatureStructure.
+<http://www.monnet-project.eu/lemon#SemanticLabel> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2004/02/skos/core#Concept> a <http://www.w3.org/2002/07/owl#Class>.

@@ -35,23 +35,33 @@ open System.Collections.Generic
 #r "nuget: Fss-lib.Core"
 #r "nuget: Fabulous.AST"
 #r "nuget: HtmlToOpenXml.dll"
-#I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Unicodepoint\obj\Release\net10.0"
-#I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Interval_Range\obj\Release\net10.0"
 #I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Ergonomic_Extensions\obj\Release\net10.0"
-#I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\ParserCombinator\obj\Release\net10.0"
-#I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Rdf_Registry\obj\Release\net10.0"
+#I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\DotNetRDFSharp\obj\Release\net10.0"
 #I @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Solution\DoxAletheia\Rdf_Vocabulary\obj\Release\net10.0"
-#r "Unicodepoint.dll"
-#r "Interval_Range.dll"
 #r "Ergonomic_Extensions.dll"
-#r "ParserCombinator.dll"
-#r "Rdf_Registry.dll"
 #r "Rdf_Vocabulary.dll"
+#r "DotNetRDFSharp.dll"
 open DoxAletheia
+open DotNetRDFSharp
+open type Prefix_ID
+open NamespaceRegistry
+open PrettierNaming
+open PrettierNaming.FSharp_Keywords
+open JsonErgonomics
+open IOExtensions
+open ArrayErgonomics
+open RdfExtensions
 open StringExtensions
+open System.Net.Http
+open VDS.RDF.Nodes
+open DotNetRDFSharp
+open RDF_Shorthand
+open RDF_Query
+open Graph_Data
+open XmlErgonomics
 open HtmlErgonomics
-open Rdf_Shorthand
-open Rdf_Document
+
+
 
 open http.www.w3.org._1999._02._22_rdf_syntax_ns.hash
 open http.www.w3.org._2000._01.rdf_schema.hash
@@ -186,13 +196,6 @@ open http.www.w3.org._2006.vcard.ns.hash
 open https.schema.org.slash 
 
 
-let global_prefix_map =     
-    JsonProvider<prefix_file_path>.Load(prefix_file_path).Mappings
-    |> Array.map (fun Mapping -> Mapping.NamespaceName, Mapping.PrefixLabel)
-    |> Map.ofArray
-
-
-
 
 
 
@@ -209,11 +212,8 @@ let test_directory = Path.Combine(__SOURCE_DIRECTORY__, test_name)
 let a = rdf.type_
 
 module dbug =
-    let _namespace_name = "https://eristocrates.dev/ontology/dbug/"
-
-    let _prefix (local_name:string) =
-        Namespaced_IRI.parse _namespace_name local_name.low_lined
-        |> NamespacedName
+    let _namespace_iri = Namespace_Iri dbug |> NamespaceIRI
+    let _prefix (local_name:string) = Prefixed_Name(xsi, local_name) |> PrefixedName  
 
     let this_ = _prefix "this"
     let example = _prefix "example"
@@ -228,9 +228,8 @@ module Esri =
       module ArcGISRuntime = 
 
         let _namespace_name = "https://developers.arcgis.com/net/api-reference/api/net/Esri.ArcGISRuntime/"
-        let _prefix (local_name:string) =
-            Namespaced_IRI.parse _namespace_name local_name.low_lined
-            |> NamespacedName
+        let _prefix_id = {namespace_name = _namespace_name ; namespace_prefix = "ArcGISRuntime"}
+        let _prefix (local_name:string) = Prefixed_Name(_prefix_id, local_name) |> PrefixedName  
         let service_info = _prefix "service_info"
         let sublayer = _prefix "sublayer"
 
@@ -244,10 +243,9 @@ module interraster =
 
         module MapServices = 
             let _namespace_name = $"https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/"
+            let _prefix_id = {namespace_name = _namespace_name ; namespace_prefix = "interraster"}
 
-            let _prefix (local_name:string) =
-                Namespaced_IRI.parse _namespace_name local_name.low_lined
-                |> NamespacedName
+            let _prefix (local_name:string) = Prefixed_Name(_prefix_id, local_name) |> PrefixedName  
             module LCPW_OverlayStormwaterInfrastructure_D_WM =
                 let pjson = JsonProvider<"https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/MapServer?f=pjson">.Load "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/MapServer?f=pjson"
                 let MapServer =
@@ -260,6 +258,8 @@ open VDS.RDF.Query.Datasets
 open VDS.RDF.Query
 open VDS.RDF.Query.Builder
 open VDS.RDF.Query.Patterns
+
+
 MapServer.LoadTablesAndLayersAsync()
     |> Async.AwaitTask
     |> Async.RunSynchronously
@@ -301,7 +301,7 @@ let id_predicates =
         "id"
         "service_layer_id"
     ]
-
+// TODO next reconcile this with updated dotnetrdfsharp
 let inline predicateObjectList (value:'Type) =  
 
         value.GetType().GetProperties()

@@ -1,0 +1,23 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix nanopub: <http://www.nanopub.org/nschema#>.
+
+<http://www.nanopub.org/nschema> <http://purl.org/dc/elements/1.1/created> "2012-10-26"^^xsd:date;
+                                 <http://purl.org/dc/elements/1.1/description> <http://www.nanopub.org/2013/WD-guidelines-20131215/>;
+                                 <http://purl.org/dc/elements/1.1/modified> "2013-10-23"^^xsd:date;
+                                 a <http://www.w3.org/2002/07/owl#Ontology>;
+                                 <http://www.w3.org/2002/07/owl#priorVersion> <http://www.nanopub.org/nschema-1.9>.
+nanopub:Assertion rdfs:subClassOf <http://www.w3.org/2004/03/trix/rdfg-1/Graph>.
+nanopub:Nanopublication a <http://www.w3.org/2002/07/owl#Class>.
+nanopub:Provenance rdfs:subClassOf <http://www.w3.org/2004/03/trix/rdfg-1/Graph>.
+nanopub:PublicationInfo rdfs:subClassOf <http://www.w3.org/2004/03/trix/rdfg-1/Graph>.
+nanopub:hasAssertion a <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                     rdfs:domain nanopub:Nanopublication;
+                     rdfs:range nanopub:Assertion.
+nanopub:hasProvenance a <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                      rdfs:domain nanopub:Nanopublication;
+                      rdfs:range nanopub:Provenance.
+nanopub:hasPublicationInfo a <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                           rdfs:domain nanopub:Nanopublication;
+                           rdfs:range nanopub:PublicationInfo.

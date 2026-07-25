@@ -1,0 +1,184 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix icb: <https://w3id.org/isCharacterisedBy#>.
+
+_:B0ca4782d610bd4c76684358561887f75 a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ([<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#p> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#classPredicate> icb:Property ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#soi> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#classPredicate> icb:SubjectOfInterest ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#p> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#soc> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> icb:isCharacterisedBy ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#soc> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#classPredicate> icb:SubjectOfInterest ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#soc> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#soi> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> icb:belongsTo ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]);
+                                    <http://www.w3.org/2003/11/swrl#head> ([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#p> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#soi> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> icb:isCharacterisedBy ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]).
+_:B1377fe2954f247cb1b593ddc27a46f49 a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B671913febc1a5e524f1dcf54dc33a80c a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B6980941f01b56effcef1efbd74364195 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (icb:Property
+                                                                             icb:SubjectOfInterest
+                                                                             icb:Unit).
+_:B748383fc1eaee9c470e9b5a908718c3a a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bc56d413e16eaad4194286445276039c8 a <http://www.w3.org/2003/11/swrl#AtomList>.
+<http://creativecommons.org/ns#license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://gbol.life/ontology/bibo#status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/bibliographicCitation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/identifier> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                      rdfs:comment "An unambiguous reference to the resource within a given context.";
+                                      rdfs:isDefinedBy "http://purl.org/dc/terms";
+                                      rdfs:label "identifier".
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                   <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                 rdfs:comment "A name given to the resource.";
+                                 rdfs:isDefinedBy "http://purl.org/dc/terms";
+                                 rdfs:label "title";
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "".
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#qualifiedCardinality> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://w3id.org/isCharacterisedBy> <http://creativecommons.org/ns#license> <https://creativecommons.org/licenses/by-nc/4.0/>;
+                                     <http://gbol.life/ontology/bibo#status> "published";
+                                     <http://purl.org/dc/terms/bibliographicCitation> "Work in progress";
+                                     <http://purl.org/dc/terms/contributor> """Izaskun Fernandez (Tekniker) 
+Iban Quintana (Tekniker) 
+Xana Fernandez (Tekniker)"""@en;
+                                     <http://purl.org/dc/terms/created> "2023-05-30";
+                                     <http://purl.org/dc/terms/creator> "Patricia Casla (Tekniker)"@en;
+                                     <http://purl.org/dc/terms/description> "The goal of this ontology design pattern is to characterise a subject or group of subjects of interest by assigning qualifiable or quantifiable attributes or characteristics."@en;
+                                     <http://purl.org/dc/terms/issued> "2023-05-30";
+                                     <http://purl.org/dc/terms/publisher> "Tekniker";
+                                     <http://purl.org/dc/terms/title> "isCharacterisedBy ontology design pattern ";
+                                     <http://purl.org/vocab/vann/preferredNamespacePrefix> "icb";
+                                     <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/isCharacterisedBy";
+                                     a <http://www.w3.org/2002/07/owl#Ontology>;
+                                     <http://www.w3.org/2002/07/owl#versionInfo> 1.0.
+icb:Property a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Property is a qualifiable or quantifiable attribute, or characteristic of something. or somebody";
+             rdfs:isDefinedBy "https://w3id.org/isCharacterisedBy";
+             rdfs:label "Property";
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> icb:SubjectOfInterest ; 
+                              <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> icb:characterises ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:double ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> icb:minValue ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#allValuesFrom> icb:Unit ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> icb:hasUnit ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onClass> icb:Unit ; 
+                              <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> icb:hasUnit ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/dc/terms/identifier> ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:double ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> icb:value ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:double ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> icb:maxValue ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/dc/terms/title> ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>];
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+icb:SubjectOfInterest a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "A subject of interest is an abstraction of a real world phenomena (thing, person, event, etc).";
+                      rdfs:isDefinedBy "https://w3id.org/isCharacterisedBy";
+                      rdfs:label "SubjectOfInterest";
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/dc/terms/title> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/dc/terms/identifier> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#allValuesFrom> icb:SubjectOfInterest ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> icb:isGroupingOf ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#allValuesFrom> icb:Property ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> icb:isCharacterisedBy ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>];
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+icb:Unit a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "A reference to the unit of measure of a quantifiable aspect (attribute or characteristic).";
+         rdfs:isDefinedBy "https://w3id.org/isCharacterisedBy";
+         rdfs:label "Unit";
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+icb:belongsTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Relationship between a member and the group it belongs to.";
+              rdfs:isDefinedBy "https://w3id.org/isCharacterisedBy";
+              rdfs:label "belongsTo";
+              <http://www.w3.org/2002/07/owl#inverseOf> icb:isGroupingOf;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+icb:characterises a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "Relationship between a Property and the SubjectOfInterest it characterises.";
+                  rdfs:isDefinedBy "https://w3id.org/isCharacterisedBy";
+                  rdfs:label "characterises";
+                  rdfs:range icb:SubjectOfInterest;
+                  <http://www.w3.org/2002/07/owl#inverseOf> icb:isCharacterisedBy;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+icb:hasUnit a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment "Relationship between a quantifiable property and a unit of measurement";
+            rdfs:isDefinedBy "https://w3id.org/isCharacterisedBy";
+            rdfs:label "hasUnit";
+            rdfs:range icb:Unit;
+            <http://www.w3.org/2002/07/owl#inverseOf> icb:isUnitFor;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+icb:isCharacterisedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "Relationship between a SubjectOfInterest and the Property that characterises it.";
+                      rdfs:domain icb:SubjectOfInterest;
+                      rdfs:isDefinedBy "https://w3id.org/isCharacterisedBy";
+                      rdfs:label "isCharacterisedBy";
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+icb:isGroupingOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Relationship between a group and the members of such group. All the members of a group have the same charabterists or attributes.";
+                 rdfs:isDefinedBy "https://w3id.org/isCharacterisedBy";
+                 rdfs:label "isGroupingOf";
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+icb:isUnitFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Relationship between an unit and the property of which it is a unit of measurement.";
+              rdfs:domain icb:Unit;
+              rdfs:isDefinedBy "https://w3id.org/isCharacterisedBy";
+              rdfs:label "isUnitFor";
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+icb:maxValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:comment "Maximum permissible value.";
+             rdfs:isDefinedBy "https://w3id.org/isCharacterisedBy";
+             rdfs:label "maxValue";
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+icb:minValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:comment "Minimun permissible value.";
+             rdfs:isDefinedBy "https://w3id.org/isCharacterisedBy";
+             rdfs:label "minValue";
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+icb:value a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:comment "Specific value.";
+          rdfs:isDefinedBy "https://w3id.org/isCharacterisedBy";
+          rdfs:label "value";
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+<urn:swrl:var#p> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl:var#soc> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl:var#soi> a <http://www.w3.org/2003/11/swrl#Variable>.

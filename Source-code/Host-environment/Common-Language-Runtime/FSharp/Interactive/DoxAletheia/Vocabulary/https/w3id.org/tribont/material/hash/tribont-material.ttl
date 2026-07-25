@@ -1,0 +1,1324 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix tribont-material: <https://w3id.org/tribont/material#>.
+
+_:B03e49f30b99211427fe4ceb03a470e66 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (tribont-material:Ag
+                                                                             tribont-material:Al
+                                                                             tribont-material:Al203
+                                                                             tribont-material:AlN
+                                                                             tribont-material:ArsenicOxide
+                                                                             tribont-material:As
+                                                                             tribont-material:Au
+                                                                             tribont-material:B
+                                                                             tribont-material:B203
+                                                                             tribont-material:B4C
+                                                                             tribont-material:BN
+                                                                             tribont-material:BaO
+                                                                             tribont-material:Be
+                                                                             tribont-material:BeO
+                                                                             tribont-material:Bi
+                                                                             tribont-material:C
+                                                                             tribont-material:Ca
+                                                                             tribont-material:CaCO3
+                                                                             tribont-material:CaO
+                                                                             tribont-material:Cd
+                                                                             tribont-material:CdS
+                                                                             tribont-material:Ce
+                                                                             tribont-material:Co
+                                                                             tribont-material:Cr
+                                                                             tribont-material:Cr203
+                                                                             tribont-material:Cu
+                                                                             tribont-material:Dy
+                                                                             tribont-material:Er
+                                                                             tribont-material:Eu
+                                                                             tribont-material:F
+                                                                             tribont-material:Fe
+                                                                             tribont-material:Fe203
+                                                                             tribont-material:Gd
+                                                                             tribont-material:Ge
+                                                                             tribont-material:H
+                                                                             tribont-material:H2O
+                                                                             tribont-material:Hf
+                                                                             tribont-material:Hg
+                                                                             tribont-material:Ho
+                                                                             tribont-material:In
+                                                                             tribont-material:Ir
+                                                                             tribont-material:La
+                                                                             tribont-material:Li
+                                                                             tribont-material:Li2O
+                                                                             tribont-material:Lu
+                                                                             tribont-material:Mg
+                                                                             tribont-material:Mn
+                                                                             tribont-material:Mo
+                                                                             tribont-material:N
+                                                                             tribont-material:Na2O
+                                                                             tribont-material:NaCl
+                                                                             tribont-material:Nb
+                                                                             tribont-material:Nd
+                                                                             tribont-material:Ni
+                                                                             tribont-material:O
+                                                                             tribont-material:O2
+                                                                             tribont-material:Os
+                                                                             tribont-material:P
+                                                                             tribont-material:Pb
+                                                                             tribont-material:PbO
+                                                                             tribont-material:Pd
+                                                                             tribont-material:Pr
+                                                                             tribont-material:Pt
+                                                                             tribont-material:Re
+                                                                             tribont-material:Rh
+                                                                             tribont-material:Ru
+                                                                             tribont-material:S
+                                                                             tribont-material:Sb
+                                                                             tribont-material:Sc
+                                                                             tribont-material:Se
+                                                                             tribont-material:Si
+                                                                             tribont-material:Si3N4
+                                                                             tribont-material:SiC
+                                                                             tribont-material:SiO2
+                                                                             tribont-material:Sm
+                                                                             tribont-material:Sn
+                                                                             tribont-material:Sr
+                                                                             tribont-material:Ta
+                                                                             tribont-material:TaC
+                                                                             tribont-material:Tb
+                                                                             tribont-material:Te
+                                                                             tribont-material:ThO2
+                                                                             tribont-material:Ti
+                                                                             tribont-material:TiB2
+                                                                             tribont-material:TiC
+                                                                             tribont-material:TiO2
+                                                                             tribont-material:Tl
+                                                                             tribont-material:Tm
+                                                                             tribont-material:U
+                                                                             tribont-material:V
+                                                                             tribont-material:W
+                                                                             tribont-material:WC
+                                                                             tribont-material:Y
+                                                                             tribont-material:Y203
+                                                                             tribont-material:Yb
+                                                                             tribont-material:Zn
+                                                                             tribont-material:ZnO
+                                                                             tribont-material:Zr
+                                                                             tribont-material:ZrO2).
+[] <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger.
+[] <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger.
+_:B3d81af5a30460db139412198c66cb083 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<https://w3id.org/isCharacterisedBy#Property>
+                                                                             <https://w3id.org/isCharacterisedBy#SubjectOfInterest>
+                                                                             <https://w3id.org/isCharacterisedBy#Unit>
+                                                                             <https://w3id.org/tribont/core#Company>
+                                                                             <https://w3id.org/tribont/core#Document>
+                                                                             <https://w3id.org/tribont/core#Role>
+                                                                             <https://w3id.org/tribont/core#Standard>
+                                                                             tribont-material:MaterialApplication
+                                                                             tribont-material:MaterialIdentification).
+[] <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger.
+[] <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger.
+[] <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger.
+[] <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger.
+_:B84ec810290411be195b91e18eaba5d80 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<https://w3id.org/tribont/core#OperationProperty>
+                                                                             <https://w3id.org/tribont/core#SystemProperty>
+                                                                             <https://w3id.org/tribont/core#TechnicalProperty>
+                                                                             tribont-material:ElementConcentration).
+[] <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger.
+[] <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger.
+[] <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger.
+[] <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger.
+[] <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger.
+<http://gbol.life/ontology/bibo#status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/bibliographicCitation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#cardinality> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#maxCardinality> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#qualifiedCardinality> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://w3id.org/isCharacterisedBy#hasUnit> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://w3id.org/isCharacterisedBy#isCharacterisedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://w3id.org/tribont/core#Body> a <http://www.w3.org/2002/07/owl#Class>;
+                                     <http://www.w3.org/2002/07/owl#disjointWith> tribont-material:Material.
+<https://w3id.org/tribont/core#name> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<https://w3id.org/tribont/core#percentage> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<https://w3id.org/tribont/core#shortNam> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<https://w3id.org/tribont/material> <http://creativecommons.org/ns#license> <https://creativecommons.org/licenses/by-nc/4.0/>;
+                                    <http://gbol.life/ontology/bibo#status> "published";
+                                    <http://purl.org/dc/terms/bibliographicCitation> "Work in progress";
+                                    <http://purl.org/dc/terms/contributor> """Izaskun Fernandez (Tekniker) 
+Domain expert:Iban Quintana (Tekniker) 
+Domain expert:Xana Fernandez (Tekniker)"""@en;
+                                    <http://purl.org/dc/terms/created> "2023-06-02";
+                                    <http://purl.org/dc/terms/creator> "Patricia Casla (Tekniker)"@en;
+                                    <http://purl.org/dc/terms/description> "The goal of this module is to represent the materials  that can be involved in the tribological experiments as part of the tested samples."@en;
+                                    <http://purl.org/dc/terms/publisher> "Tekniker";
+                                    <http://purl.org/dc/terms/title> "Material module";
+                                    <http://purl.org/vocab/vann/preferredNamespacePrefix> "material";
+                                    <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/tribont/material";
+                                    a <http://www.w3.org/2002/07/owl#Ontology>;
+                                    <http://www.w3.org/2002/07/owl#imports> <https://w3id.org/tribont/core>;
+                                    <http://www.w3.org/2002/07/owl#versionInfo> 1.0.
+tribont-material:AISI_52100 a tribont-material:MaterialStandard,
+                              <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                            rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                            rdfs:label "AISI_52100";
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:ASTM_A295 a tribont-material:MaterialStandard,
+                             <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                           rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                           rdfs:label "ASTM_A295";
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Ag a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Ag in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ag";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Al a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Al in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Al";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Al203 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Content of Al203 in a material.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "Al203";
+                       rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:AlN a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Content of AlN in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "AlN";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Alluminium-Flake a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "Content of Alluminium-Flake in a material.";
+                                  rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                  rdfs:label "Alluminium-Flake";
+                                  rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:AlluminiumAlloy a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Alluminium alloy.";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                 rdfs:label "AlluminiumAlloy";
+                                 rdfs:subClassOf tribont-material:MetallicMaterial;
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:AntifrictionLubricant a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:comment "Content of Anti-friction/wearLubricant in a material.";
+                                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                       rdfs:label "Anti-friction/wearLubricant";
+                                       rdfs:subClassOf tribont-material:OtherElementConcentration;
+                                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Antioxidant a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Antioxidant content for something.";
+                             rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                             rdfs:label "Antioxidant";
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/tribont/core#PercentageUnit> ; 
+                                              <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/isCharacterisedBy#hasUnit> ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#PercentageUnit> ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/isCharacterisedBy#hasUnit> ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             tribont-material:OtherElementConcentration;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Aramid-Fiber a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Content of Aramid-Fiber in a material.";
+                              rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                              rdfs:label "Aramid-Fiber";
+                              rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:ArsenicOxide a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Content of ArsenicOxide in a material.";
+                              rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                              rdfs:label "ArsenicOxide";
+                              rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:As a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of As in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "As";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Au a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Au in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Au";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:B a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Content of B in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "B";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:B203 a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Content of B203 in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "B203";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:B4C a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Content of B4C in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "B4C";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:BN a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of BN in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "BN";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:BS_970 a tribont-material:MaterialStandard,
+                          <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                        rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                        rdfs:label "BS_970";
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:BaO a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Content of BaO in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "BaO";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:BaSO4 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Content of BaSO4 in a material.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "BaSO4";
+                       rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Be a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Be in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Be";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:BeO a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Content of BeO in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "BeO";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Bi a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Biin a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Bi";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:C a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Content of C in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "C";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:CAS_Number a tribont-material:MaterialStandard,
+                              <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                            rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                            rdfs:label "CAS_Number";
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Ca a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Ca in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ca";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:CaCO3 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Content of CaCO3 in a material.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "CaCO3";
+                       rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:CaO a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Content of CaO in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "CaO";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:CalciumCarbonate-Powder a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:comment "Content of CalciumCarbonate-Powder in a material.";
+                                         rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                         rdfs:label "CalciumCarbonate-Powder";
+                                         rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Carbon-Fiber a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Content of Carbon-Fiber in a material.";
+                              rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                              rdfs:label "Carbon-Fiber";
+                              rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Carbon-Powder a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Content of Carbon-Powder in a material.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                               rdfs:label "Carbon-Powder";
+                               rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Cd a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Cd in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Cd";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:CdS a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Content of CdS in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "CdS";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Ce a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Ce in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ce";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Cellulose a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Content of Cellulose in a material.";
+                           rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                           rdfs:label "Cellulose";
+                           rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:CeramicMaterial a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Ceramic material.";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                 rdfs:label "CeramicMaterial";
+                                 rdfs:subClassOf tribont-material:SolidMaterial;
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:ChemicalElementConcentration a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:comment "Concentration of chemical element in a material.";
+                                              rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                              rdfs:label "ChemicalElementConcentration";
+                                              rdfs:subClassOf tribont-material:ElementConcentration;
+                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Co a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Co in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Co";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:CompositeMaterial a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Composite material.";
+                                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                   rdfs:label "CompositeMaterial";
+                                   rdfs:subClassOf tribont-material:SolidMaterial;
+                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Cr a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Cr in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Cr";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Cr203 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Content of Cr203 in a material.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "Cr203";
+                       rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Cu a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Cu in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Cu";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:DIN_17230 a tribont-material:MaterialStandard,
+                             <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                           rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                           rdfs:label "DIN_17230";
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Dy a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Dy in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Dy";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:ElastomerThermoplastic a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:comment "Elastomer thermoplastic material.";
+                                        rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                        rdfs:label "ElastomerThermoplastic";
+                                        rdfs:subClassOf tribont-material:PolymerMaterial;
+                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:ElastomerThermoset a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "Elastomer thermoset material.";
+                                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                    rdfs:label "ElastomerThermoset";
+                                    rdfs:subClassOf tribont-material:PolymerMaterial;
+                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:ElementConcentration a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "Concentration of an specific element in a material.";
+                                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                      rdfs:label "ElementConcentration";
+                                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> tribont-material:ElementRole ; 
+                                                       <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                       <http://www.w3.org/2002/07/owl#onProperty> tribont-material:hasElementRole ; 
+                                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                      [<http://www.w3.org/2002/07/owl#allValuesFrom> tribont-material:ElementRole ; 
+                                                       <http://www.w3.org/2002/07/owl#onProperty> tribont-material:hasElementRole ; 
+                                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                      <https://w3id.org/isCharacterisedBy#Property>;
+                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:ElementRole a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "The position or purpose that an element has in a situation or relationship.";
+                             rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                             rdfs:label "ElementRole";
+                             rdfs:subClassOf <https://w3id.org/tribont/core#Role>;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Er a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Er in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Er";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Eu a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Eu in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Eu";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:F a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Content of F in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "F";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Fe a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Fe in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Fe";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Fe203 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Content of Fe203 in a material.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "Fe203";
+                       rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:FlameRetardant a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Content of FlameRetardant in a material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "FlameRetardant";
+                                rdfs:subClassOf tribont-material:OtherElementConcentration;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:FluidLubricant a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Fluid lubricant material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "FluidLubricant";
+                                rdfs:subClassOf tribont-material:LiquidMaterial;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Gd a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Gd in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Gd";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Ge a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Ge in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ge";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Glass a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Glass material.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "Glass";
+                       rdfs:subClassOf tribont-material:CeramicMaterial;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Glass-Fiber a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Content of Glass-Fiber in a material.";
+                             rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                             rdfs:label "Glass-Fiber";
+                             rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Glass-MatFabric a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Content of Glass-MatFabric in a material.";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                 rdfs:label "Glass-MatFabric";
+                                 rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Glycol a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Content of glycol of something.";
+                        rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                        rdfs:label "Glycol";
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/tribont/core#ContentUnit> ; 
+                                         <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/isCharacterisedBy#hasUnit> ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#ContentUnit> ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/isCharacterisedBy#hasUnit> ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        tribont-material:OtherElementConcentration;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Graphite-Powder a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Content of Graphite-Powder in a material.";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                 rdfs:label "Graphite-Powder";
+                                 rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Grease a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Grease material.";
+                        rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                        rdfs:label "Grease";
+                        rdfs:subClassOf tribont-material:FluidLubricant;
+                        <http://www.w3.org/2002/07/owl#disjointWith> tribont-material:Oil;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:H a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Content of H in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "H";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:H2O a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Content of H2O in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "H2O";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Hf a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Hf in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Hf";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Hg a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Hg in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Hg";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:HighAlloySteel a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "High alloy steel material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "HighAlloySteel";
+                                rdfs:subClassOf tribont-material:Steel;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Ho a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Ho in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ho";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:ImpactModifier a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Content of ImpactModifier in a material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "ImpactModifier";
+                                rdfs:subClassOf tribont-material:PolymerElementConcentration,
+                                                tribont-material:OtherElementConcentration;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:In a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of In in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "In";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Ir a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Ir in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ir";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:JIS_G4805 a tribont-material:MaterialStandard,
+                             <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                           rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                           rdfs:label "JIS_G4805";
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:La a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of La in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "La";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Li a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Li in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Li";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Li2O a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Content of Li2O in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "Li2O";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:LiquidMaterial a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Liquid material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "LiquidMaterial";
+                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (<https://w3id.org/tribont/core#ElectricalProperty>
+                                                                                                                                         <https://w3id.org/tribont/core#LiquidPhysicalProperty>
+                                                                                                                                         <https://w3id.org/tribont/core#LiquidThermalProperty>
+                                                                                                                                         tribont-material:ElementConcentration) ; 
+                                                                                                a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/isCharacterisedBy#isCharacterisedBy> ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                tribont-material:Material;
+                                <http://www.w3.org/2002/07/owl#disjointWith> tribont-material:SolidMaterial;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:LowAlloySteel a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Low alloy steel material.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                               rdfs:label "LowAlloySteel";
+                               rdfs:subClassOf tribont-material:Steel;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Lu a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Lu in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Lu";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Material a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "The basic material from which something is made.";
+                          rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                          rdfs:label "Material";
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> tribont-material:MaterialApplication ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> tribont-material:hasTypicalUse ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#allValuesFrom> tribont-material:MaterialIdentification ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> tribont-material:hasNaming ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (<https://w3id.org/tribont/core#ElectricalProperty>
+                                                                                                                                   <https://w3id.org/tribont/core#MechanicalProperty>
+                                                                                                                                   <https://w3id.org/tribont/core#PhysicalProperty>
+                                                                                                                                   <https://w3id.org/tribont/core#ThermalProperty>
+                                                                                                                                   tribont-material:ElementConcentration) ; 
+                                                                                          a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/isCharacterisedBy#isCharacterisedBy> ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          <https://w3id.org/isCharacterisedBy#SubjectOfInterest>;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:MaterialApplication a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "The possible uses of a material.";
+                                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                     rdfs:label "MaterialApplication";
+                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:MaterialIdentification a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:comment "Something that identifies a material.";
+                                        rdfs:isDefinedBy "MaterialIdentification";
+                                        rdfs:label "MaterialIdentification";
+                                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                                         <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#shortNam> ; 
+                                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                        [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                                         <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#name> ; 
+                                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                        [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                                         <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#longName> ; 
+                                                         a <http://www.w3.org/2002/07/owl#Restriction>];
+                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:MaterialNaming a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "A unique name asssigned to a material independently of the manufacturer.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "MaterialNaming";
+                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                                 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> tribont-material:number ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                                 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#name> ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                tribont-material:MaterialIdentification;
+                                <http://www.w3.org/2002/07/owl#disjointWith> tribont-material:MaterialTradename;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:MaterialStandard a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "A document approved by a recognized body that provides common to by fullfiled by a material.";
+                                  rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                  rdfs:label "MaterialStandard";
+                                  rdfs:subClassOf <https://w3id.org/tribont/core#Standard>;
+                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:MaterialTradename a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Commercial name of a material defined by the manufactuer company.";
+                                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                   rdfs:label "MaterialTradename";
+                                   rdfs:subClassOf tribont-material:MaterialIdentification;
+                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:MetallicMaterial a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "Metal and alloy material.";
+                                  rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                  rdfs:label "MetallicMaterial";
+                                  rdfs:subClassOf tribont-material:SolidMaterial;
+                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Mg a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Mg in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Mg";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Mica a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Content of Mica in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "Mica";
+                      rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Mineral a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Content of Mineral in a material.";
+                         rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                         rdfs:label "Mineral";
+                         rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Mn a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Mn in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Mn";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Mo a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Mo in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Mo";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:MoS2 a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Content of MoS2 in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "MoS2";
+                      rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:N a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Content of N in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "N";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Na2O a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Content of Na2O in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "Na2O";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:NaCl a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Content of NaCl in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "NaCl";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Nb a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Nb in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Nb";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Nd a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Nd in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Nd";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Ni a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Ni in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ni";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:NonFerrousMetalInhibitor a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment "Any Non Ferrous Metal Inhibitors Content.";
+                                          rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                          rdfs:label "NonFerrousMetalInhibitor";
+                                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/tribont/core#PercentageUnit> ; 
+                                                           <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                           <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/isCharacterisedBy#hasUnit> ; 
+                                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                          [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#PercentageUnit> ; 
+                                                           <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/isCharacterisedBy#hasUnit> ; 
+                                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                          tribont-material:OtherElementConcentration;
+                                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:O a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Content of O in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "O";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:O2 a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of O2 in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "O2";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Oil a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Oil material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "Oil";
+                     rdfs:subClassOf tribont-material:FluidLubricant;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Os a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Os in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Os";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:OtherElementConcentration a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:comment "Concentration  of an additive element in a material.";
+                                           rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                           rdfs:label "OtherElementConcentration";
+                                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> tribont-material:additive ; 
+                                                            <http://www.w3.org/2002/07/owl#onProperty> tribont-material:hasElementRole ; 
+                                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                           tribont-material:ElementConcentration;
+                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:P a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Content of P in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "P";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:PTFE-Lubricant a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "PTFE-Lubricant material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "PTFE-Lubricant";
+                                rdfs:subClassOf tribont-material:SolidLubricant;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Pb a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Pb in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Pb";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:PbO a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Content of PbO in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "PbO";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Pd a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Pd in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Pd";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:PlasticThermoplastic a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "Plastic thermoplastic material.";
+                                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                      rdfs:label "PlasticThermoplastic";
+                                      rdfs:subClassOf tribont-material:PolymerMaterial;
+                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:PlasticThermoset a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "Plastic Thermoset material.";
+                                  rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                  rdfs:label "PlasticThermoset";
+                                  rdfs:subClassOf tribont-material:PolymerMaterial;
+                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:PlasticizerOil a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Content of Plasticizer/Oil in a material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "Plasticizer/Oil";
+                                rdfs:subClassOf tribont-material:OtherElementConcentration;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:PolymerElementConcentration a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "Concentration of polymer element in a material.";
+                                             rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                             rdfs:label "PolymerElementConcentration";
+                                             rdfs:subClassOf tribont-material:ElementConcentration;
+                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:PolymerMaterial a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Any polymer";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                 rdfs:label "PolymerMaterial";
+                                 rdfs:subClassOf tribont-material:SolidMaterial;
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Pr a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Pr in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Pr";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Pt a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Pt in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Pt";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Rag-Cotton-Fabric a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Content of Rag-Cotton-Fabric in a material.";
+                                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                   rdfs:label "Rag-Cotton-Fabric";
+                                   rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Re a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Re in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Re";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Rh a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Rh in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Rh";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Ru a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Ru in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ru";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:S a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Content of S in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "S";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Sb a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Sb in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Sb";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Sc a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Sc in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Sc";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Se a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Se in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Se";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Si a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Si in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Si";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Si3N4 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Content of Si3N4 in a material.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "Si3N4";
+                       rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:SiC a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Content of SiC in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "SiC";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:SiO2 a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Content of SiO2 in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "SiO2";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Silica-Fumed a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Content of Silica-Fumed in a material.";
+                              rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                              rdfs:label "Silica-Fumed";
+                              rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Silicone-Lubricant a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "Silicone-Lubricant material.";
+                                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                    rdfs:label "Silicone-Lubricant";
+                                    rdfs:subClassOf tribont-material:SolidLubricant;
+                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Sm a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Sm  in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Sm";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Sn a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Sn in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Sn";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:SolidContaminants a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Solid contaminants.";
+                                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                   rdfs:label "SolidContaminants";
+                                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> <https://w3id.org/tribont/core#percentage> ; 
+                                                    <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/isCharacterisedBy#hasUnit> ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                   tribont-material:OtherElementConcentration;
+                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:SolidLubricant a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Solid lubricant material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "SolidLubricant";
+                                rdfs:subClassOf tribont-material:SolidMaterial;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:SolidMaterial a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Solid material.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                               rdfs:label "SolidMaterial";
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (<https://w3id.org/tribont/core#ElectricalProperty>
+                                                                                                                                        <https://w3id.org/tribont/core#MechanicalProperty>
+                                                                                                                                        <https://w3id.org/tribont/core#SolidPhysicalProperty>
+                                                                                                                                        <https://w3id.org/tribont/core#SolidThermalProperty>
+                                                                                                                                        tribont-material:ElementConcentration) ; 
+                                                                                               a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/isCharacterisedBy#isCharacterisedBy> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               tribont-material:Material;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Sr a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Sr in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Sr";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:StainlessSteel a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Stainless steel material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "StainlessSteel";
+                                rdfs:subClassOf tribont-material:Steel;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:StainlessSteel-Fiber a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "Content of StainlessSteel-Fiber in a material.";
+                                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                      rdfs:label "StainlessSteel-Fiber";
+                                      rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Steel a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Steel material.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "Steel";
+                       rdfs:subClassOf tribont-material:MetallicMaterial;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:SulfateAsh a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Sulfate ash .";
+                            rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                            rdfs:label "SulfateAsh";
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> <https://w3id.org/tribont/core#percentage> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/isCharacterisedBy#hasUnit> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            tribont-material:OtherElementConcentration;
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Ta a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Ta in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ta";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:TaC a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Content of TaC in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "TaC";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Talc a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Content of Talc in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "Talc";
+                      rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Tb a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Tb in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Tb";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Te a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Te in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Te";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:ThO2 a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Content of ThO2 in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "ThO2";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Ti a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Ti in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ti";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:TiB2 a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Content of TiB2 in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "TiB2";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:TiC a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Content of TiC in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "TiC";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:TiO2 a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Content of TiO2 in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "TiO2";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:TitaniumAlloy a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Titanium alloy material.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                               rdfs:label "TitaniumAlloy";
+                               rdfs:subClassOf tribont-material:MetallicMaterial;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Tl a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Tl in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Tl";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Tm a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Tm in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Tm";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Tolyltriazole a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Tolyltriazole concentration";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                               rdfs:label "Tolyltriazole";
+                               rdfs:subClassOf tribont-material:NonFerrousMetalInhibitor;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:ToolSteel a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Steel used for tooling.";
+                           rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                           rdfs:label "ToolSteel";
+                           rdfs:subClassOf tribont-material:Steel;
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:U a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Content of U in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "U";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:UVStabilizer a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Content of UVStabilizer in a material.";
+                              rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                              rdfs:label "UVStabilizer";
+                              rdfs:subClassOf tribont-material:OtherElementConcentration;
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:V a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Content of V in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "V";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:W a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Content of W in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "W";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:WC a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of WC in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "WC";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Water a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Water content of something.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "Water";
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#ContentUnit> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/isCharacterisedBy#hasUnit> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       tribont-material:OtherElementConcentration;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Y a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Content of Y in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "Y";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Y203 a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Content of Y203 in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "Y203";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Yb a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Yb in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Yb";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Zn a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Zn in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Zn";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:ZnO a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Content of ZnO in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "ZnO";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:Zr a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Content of Zr in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Zr";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:ZrO2 a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Content of ZrO2 in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "ZrO2";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:additive a tribont-material:ElementRole,
+                            <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                          rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                          rdfs:label "additive";
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:basic a tribont-material:ElementRole,
+                         <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "basic";
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:filler a tribont-material:ElementRole,
+                          <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                        rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                        rdfs:label "filler";
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:hasElementRole a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:comment "Relationship between an element and its role,";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "hasElementRole";
+                                rdfs:range tribont-material:ElementRole;
+                                <http://www.w3.org/2002/07/owl#inverseOf> tribont-material:isElementRoleFor;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:hasNaming a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment "Relationship between something and the name identifying it.";
+                           rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                           rdfs:label "hasNaming";
+                           <http://www.w3.org/2002/07/owl#inverseOf> tribont-material:isNamingFor;
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:hasSupplier a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:comment "Relationship between a company and what it supplies..";
+                             rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                             rdfs:label "hasSupplier";
+                             <http://www.w3.org/2002/07/owl#inverseOf> tribont-material:isSuppliedBy;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:hasTypicalUse a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:comment "Relationship between something and  its typical application.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                               rdfs:label "hasTypicalUse";
+                               <http://www.w3.org/2002/07/owl#inverseOf> tribont-material:isTypicalUseFor;
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:isElementRoleFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:comment "Relationship between a role and the  element to which it applies.";
+                                  rdfs:domain tribont-material:ElementRole;
+                                  rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                  rdfs:label "isElementRoleFor";
+                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:isNamingFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:comment "Relationship between a name and what it identifies..";
+                             rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                             rdfs:label "isNamingFor";
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:isSuppliedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:comment "Relationship between something and the company supplying it.";
+                              rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                              rdfs:label "isSuppliedBy";
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:isTypicalUseFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:comment "Relationship between an application and what it is usually applied to,";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                 rdfs:label "isTypicalUseFor";
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-material:number a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "Defined number for the unique designation of materials.";
+                        rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                        rdfs:label "number";
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".

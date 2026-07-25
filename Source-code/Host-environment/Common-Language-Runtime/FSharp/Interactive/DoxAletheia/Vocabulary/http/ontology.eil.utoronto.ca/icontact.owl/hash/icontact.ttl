@@ -1,0 +1,411 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix icontact: <http://ontology.eil.utoronto.ca/icontact.owl#>.
+
+_:B8c8014a31a30c1475eddc86854b88a44 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (icontact:Address
+                                                                             icontact:AddressType
+                                                                             icontact:DaysOfWeek
+                                                                             icontact:HoursOfOperation
+                                                                             icontact:PhoneNumber
+                                                                             icontact:PhoneType
+                                                                             icontact:StreetDirection
+                                                                             icontact:StreetType).
+<http://creativecommons.org/ns#license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://ontology.eil.utoronto.ca/icontact.owl> <http://creativecommons.org/ns#license> "http://creativecommons.org/licenses/by/3.0/";
+                                               <http://purl.org/dc/terms/creator> """Mark S. Fox, http://eil.utoronto.ca/profiles/foxpro.html
+Enterprise Integration Laboratory, http://eil.utoronto.ca
+University of Toronto, 
+msf@eil.utoronto.ca"""@en;
+                                               <http://purl.org/dc/terms/description> """International Contact Ontology: 
+
+http://ontology.eil.utoronto.ca/icontact.html
+
+This ontology provides basic classes and more detailed properties for  representating international street addresses, phone numbers and emails.  Rather than using existing ontologies, such as vcard, it was decided to create a new one as the vcard and foaf ignore the details of international addresses, phone numbers, etc.
+
+The important part of the ontology are the object and data properties used to describe addresses primarily and phone numbers."""@en;
+                                               <http://purl.org/dc/terms/modified> "16 April 2015"@en;
+                                               <http://purl.org/dc/terms/title> "International Contact (Address) Ontology: Addresses, phone numbers and emails."@en;
+                                               <http://purl.org/vocab/vann/preferredNamespacePrefix> "ic";
+                                               <http://purl.org/vocab/vann/preferredNamespaceUri> "http://ontology.eil.utoronto.ca/icontact.owl#";
+                                               a <http://www.w3.org/2002/07/owl#Ontology>;
+                                               <http://www.w3.org/ns/adms#relatedDocumentation> "http://ontology.eil.utoronto.ca/icontact.html".
+icontact:Address <http://purl.org/dc/terms/description> """Address is the main concept for a contact.  It has been designed to represent any type of address in the world, including India and the UK.  For example, the property hasBuilding is important in many UK and Indian addresses to further identify the person or business location.
+
+Street information is divided into separate properties to fully indentify direction (hasStreetDirection), Type (hasStreetType), etc.  See the associated list of properties for more."""@en;
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "Address"@en;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> icontact:hasBuilding ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> icontact:hasUnitNumber ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> icontact:hasCitySection ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onClass> <http://schema.org/Country> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> icontact:hasCountry ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 icontact:iContactThing,
+                                 [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onClass> <http://schema.org/City> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> icontact:hasCity ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                  <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> icontact:StreetDirection ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> icontact:hasStreetDirection ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> icontact:hasPostalCode ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onClass> <http://schema.org/State> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> icontact:hasState ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> icontact:hasStreet ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                  <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2003/01/geo/wgs84_pos#long> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#onDataRange> xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> icontact:hasStreetNumber ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> icontact:StreetType ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> icontact:hasStreetType ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>].
+icontact:AddressType <http://purl.org/dc/terms/description> "Different type for home, office, cottage, etc."@en;
+                     a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "Address Type"@en;
+                     rdfs:subClassOf icontact:iContactThing;
+                     <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#oneOf> (icontact:Cottage
+                                                                                                             icontact:Home
+                                                                                                             icontact:Work) ; 
+                                                                      a <http://www.w3.org/2002/07/owl#Class>].
+icontact:Avenue a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                rdfs:label "Avenue"@en.
+icontact:Boulevard a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                   rdfs:label "Boulevard"@en.
+icontact:CellNumber a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:label "Mobile Telephone Number"@en;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> icontact:CellPhone ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> icontact:hasPhoneType ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    icontact:PhoneNumber.
+icontact:CellPhone a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                   rdfs:label "Cell Phone"@en.
+icontact:Circle a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                rdfs:label "Circle"@en.
+icontact:Cottage a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                 rdfs:label "Cottage Address"@en.
+icontact:CottageAddress a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:label "Cottage Address"@en;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> icontact:Cottage ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> icontact:hasAddressType ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        icontact:Address.
+icontact:Crescent a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                  rdfs:label "Crescent"@en.
+icontact:DaysOfWeek a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:label "Days of the Week"@en;
+                    rdfs:subClassOf icontact:iContactThing.
+icontact:Drive a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+               rdfs:label "Drive"@en.
+icontact:East a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+              rdfs:label "East"@en.
+icontact:FaxNumber a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "Fax Telephone Number"@en;
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> icontact:FaxPhone ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> icontact:hasPhoneType ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   icontact:PhoneNumber.
+icontact:FaxPhone a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                  rdfs:label "Fax Line"@en.
+icontact:Friday a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  icontact:DaysOfWeek;
+                rdfs:label "Friday"@en.
+icontact:Home a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+              rdfs:label "Home Address"@en.
+icontact:HomeAddress a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "Home Address"@en;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> icontact:Home ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> icontact:hasAddressType ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     icontact:Address.
+icontact:HomeNumber a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:label "Home Telephone Number"@en;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> icontact:HomePhone ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> icontact:hasPhoneType ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    icontact:PhoneNumber.
+icontact:HomePhone a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                   rdfs:label "Home Phone"@en.
+icontact:HoursOfOperation <http://purl.org/dc/terms/description> """HoursOfOperation class provides the ability to define when the contact \"opens\" and \"closes\". Used for businesses."""@en;
+                          a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> xsd:dateTime ; 
+                                           <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> icontact:hasClosingTime ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> icontact:DaysOfWeek ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> icontact:dayofWeek ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onDataRange> xsd:dateTime ; 
+                                           <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> icontact:hasOpeningTime ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          icontact:iContactThing.
+icontact:Monday a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  icontact:DaysOfWeek;
+                rdfs:label "Monday"@en.
+icontact:North a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+               rdfs:label "North"@en.
+icontact:OperatingProperty <http://purl.org/dc/terms/description> "Properties that define the hours of operation of the contact."@en;
+                           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:subPropertyOf icontact:contactProperty.
+icontact:PhoneNumber <http://purl.org/dc/terms/description> "PhoneNumber is another core class. It is divided into country code, and phone number."@en;
+                     a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "Phone Number"@en;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> icontact:hasPhoneNumber ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#onDataRange> xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> icontact:hasCountryCode ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onClass> icontact:PhoneType ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> icontact:hasPhoneType ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#onDataRange> xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> icontact:hasAreaCode ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     icontact:iContactThing.
+icontact:PhoneType <http://purl.org/dc/terms/description> "Types of phoned include home, cell, work, etc."@en;
+                   a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "Phone Type"@en;
+                   rdfs:subClassOf icontact:iContactThing;
+                   <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#oneOf> (icontact:TollFreePhone
+                                                                                                           icontact:CellPhone
+                                                                                                           icontact:FaxPhone
+                                                                                                           icontact:WorkPhone
+                                                                                                           icontact:HomePhone) ; 
+                                                                    a <http://www.w3.org/2002/07/owl#Class>].
+icontact:Road a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+              rdfs:label "Road"@en.
+icontact:Saturday a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    icontact:DaysOfWeek;
+                  rdfs:label "Saturday"@en.
+icontact:SchemaOrgThing a <http://www.w3.org/2002/07/owl#Class>.
+icontact:South a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+               rdfs:label "South"@en.
+icontact:Street a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                rdfs:label "Street"@en.
+icontact:StreetDirection a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:label "Street Direction"@en;
+                         rdfs:subClassOf icontact:iContactThing;
+                         <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#oneOf> (icontact:South
+                                                                                                                 icontact:West
+                                                                                                                 icontact:East
+                                                                                                                 icontact:North) ; 
+                                                                          a <http://www.w3.org/2002/07/owl#Class>].
+icontact:StreetType a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:label "Street Type"@en;
+                    rdfs:subClassOf icontact:iContactThing;
+                    <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#oneOf> (icontact:Drive
+                                                                                                            icontact:Circle
+                                                                                                            icontact:Boulevard
+                                                                                                            icontact:Crescent
+                                                                                                            icontact:Avenue
+                                                                                                            icontact:Road
+                                                                                                            icontact:Street) ; 
+                                                                     a <http://www.w3.org/2002/07/owl#Class>].
+icontact:Sunday a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  icontact:DaysOfWeek;
+                rdfs:label "Sunday"@en.
+icontact:Thursday a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    icontact:DaysOfWeek;
+                  rdfs:label "Thursday"@en.
+icontact:TollFreeNumber a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:label "Toll  Free Telephone Number"@en;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> icontact:TollFreePhone ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> icontact:hasPhoneType ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        icontact:PhoneNumber.
+icontact:TollFreePhone a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                       rdfs:label "Toll Free Number"@en.
+icontact:Tuesday a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   icontact:DaysOfWeek;
+                 rdfs:label "Tuesday"@en.
+icontact:Wednesday a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     icontact:DaysOfWeek;
+                   rdfs:label "Wednesday"@en.
+icontact:West a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+              rdfs:label "West"@en.
+icontact:Work a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+              rdfs:label "WorkAddress"@en.
+icontact:WorkAddress a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "Work Address"@en;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> icontact:Work ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> icontact:hasAddressType ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     icontact:Address.
+icontact:WorkNumber a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:label "Work Telephone Number"@en;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> icontact:WorkPhone ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> icontact:hasPhoneType ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    icontact:PhoneNumber.
+icontact:WorkPhone a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                   rdfs:label "Work Phone"@en.
+icontact:addressDataProperty a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                             rdfs:subPropertyOf icontact:hasContactDataProperty.
+icontact:addressProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain icontact:Address;
+                         rdfs:subPropertyOf icontact:contactProperty.
+icontact:contactProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+icontact:dayofWeek a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment """Specifies the day of the week, e.g., Monday, that the times apply to.  This is the default for that day and can be overidden by the \"hasDate\" property."""@en;
+                   rdfs:range icontact:DaysOfWeek;
+                   rdfs:subPropertyOf icontact:OperatingProperty.
+icontact:emailDataProperty a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:subPropertyOf icontact:hasContactDataProperty.
+icontact:hasAddress a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "hasAddress links any class to the Address class."@en;
+                    rdfs:range icontact:Address;
+                    rdfs:subPropertyOf icontact:contactProperty.
+icontact:hasAddressType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:label "has Address Type"@en;
+                        rdfs:range icontact:AddressType;
+                        rdfs:subPropertyOf icontact:addressProperty.
+icontact:hasAreaCode a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:label "has Area Code"@en;
+                     rdfs:subPropertyOf icontact:telephoneDataProperty.
+icontact:hasBuilding <http://purl.org/dc/terms/description> "The building where the address is located.  Often used in countries like England, India and Japan."@en;
+                     a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:label "has Building"@en;
+                     rdfs:subPropertyOf icontact:addressDataProperty.
+icontact:hasCity <http://purl.org/dc/terms/description> "has City"@en;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:subPropertyOf icontact:addressProperty.
+icontact:hasCitySection <http://purl.org/dc/terms/description> "The section of the city where the address is located.  Often used in countries like England, India and Japan."@en;
+                        a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:label "has City Section"@en;
+                        rdfs:subPropertyOf icontact:addressDataProperty.
+icontact:hasClosingTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:label "has Closing Time"@en;
+                        rdfs:range xsd:dateTime;
+                        rdfs:subPropertyOf icontact:operatingDataProperty.
+icontact:hasContactDataProperty a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+icontact:hasCountry a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:label "has Country"@en;
+                    rdfs:subPropertyOf icontact:addressProperty.
+icontact:hasCountryCode a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:label "has Country Code"@en;
+                        rdfs:subPropertyOf icontact:telephoneDataProperty.
+icontact:hasDate <http://purl.org/dc/terms/description> "Specifies the opening and closing times for a specific date.  For example, used to provide times for a holiday which deviates from the norm."@en;
+                 a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:label "has Date"@en;
+                 rdfs:range xsd:dateTime;
+                 rdfs:subPropertyOf icontact:operatingDataProperty.
+icontact:hasEmail a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:label "has Email"@en;
+                  rdfs:subPropertyOf icontact:contactProperty.
+icontact:hasGeoCoordinates a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:label "has Geo Coordinates"@en;
+                           rdfs:subPropertyOf icontact:addressProperty.
+icontact:hasLocation <http://purl.org/dc/terms/description> "Closet street intersection for the organization."@en;
+                     a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:label "has Location"@en;
+                     rdfs:range xsd:string;
+                     rdfs:subPropertyOf icontact:hasContactDataProperty.
+icontact:hasOpeningTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:label "has Opening Time"@en;
+                        rdfs:range xsd:dateTime;
+                        rdfs:subPropertyOf icontact:operatingDataProperty.
+icontact:hasOperatingHours a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:label "has Operating Hours"@en;
+                           rdfs:range icontact:HoursOfOperation;
+                           rdfs:subPropertyOf icontact:OperatingProperty.
+icontact:hasPersonalEmail a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:label "has Personal Email"@en;
+                          rdfs:subPropertyOf icontact:emailDataProperty.
+icontact:hasPhoneNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:label "has Phone Number"@en;
+                        rdfs:subPropertyOf icontact:telephoneDataProperty.
+icontact:hasPhoneType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:label "has Phone Type"@en;
+                      rdfs:range icontact:PhoneType;
+                      rdfs:subPropertyOf icontact:contactProperty.
+icontact:hasPostalCode a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:label "has Postal Code"@en;
+                       rdfs:subPropertyOf icontact:addressDataProperty.
+icontact:hasState a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:label "has State"@en;
+                  rdfs:subPropertyOf icontact:addressProperty.
+icontact:hasStreet a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:label "has Street"@en;
+                   rdfs:subPropertyOf icontact:addressDataProperty.
+icontact:hasStreetDirection a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:domain icontact:Address;
+                            rdfs:label "has Street Direction"@en;
+                            rdfs:range icontact:StreetDirection;
+                            rdfs:subPropertyOf icontact:addressProperty.
+icontact:hasStreetNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:label "has Street Number"@en;
+                         rdfs:subPropertyOf icontact:addressDataProperty.
+icontact:hasStreetType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain icontact:Address;
+                       rdfs:label "has Street Type"@en;
+                       rdfs:range icontact:StreetType;
+                       rdfs:subPropertyOf icontact:addressProperty.
+icontact:hasTelephone a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:label "has Telephone"@en;
+                      rdfs:subPropertyOf icontact:contactProperty.
+icontact:hasUnitNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:label "has Unit Number"@en;
+                       rdfs:subPropertyOf icontact:addressDataProperty.
+icontact:hasWebSite a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:label "has Web Site"@en;
+                    rdfs:range xsd:string;
+                    rdfs:subPropertyOf icontact:hasContactDataProperty.
+icontact:hasWorkEmail a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:label "has Work Email"@en;
+                      rdfs:subPropertyOf icontact:emailDataProperty.
+icontact:iContactThing a <http://www.w3.org/2002/07/owl#Class>.
+icontact:operatingDataProperty a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                               rdfs:subPropertyOf icontact:hasContactDataProperty.
+icontact:telephoneDataProperty a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                               rdfs:subPropertyOf icontact:hasContactDataProperty.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://schema.org/City> a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf icontact:SchemaOrgThing.
+<http://schema.org/Country> a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf icontact:SchemaOrgThing.
+<http://schema.org/GeoCoordinates> a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:subClassOf icontact:SchemaOrgThing.
+<http://schema.org/State> a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:subClassOf icontact:SchemaOrgThing.
+<http://www.w3.org/2003/01/geo/wgs84_pos#lat> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                              rdfs:label "lattitude"@en;
+                                              rdfs:range xsd:string;
+                                              rdfs:subPropertyOf icontact:addressDataProperty.
+<http://www.w3.org/2003/01/geo/wgs84_pos#long> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                               rdfs:label "longitude"@en;
+                                               rdfs:range xsd:string;
+                                               rdfs:subPropertyOf icontact:addressDataProperty.
+<http://www.w3.org/ns/adms#relatedDocumentation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.

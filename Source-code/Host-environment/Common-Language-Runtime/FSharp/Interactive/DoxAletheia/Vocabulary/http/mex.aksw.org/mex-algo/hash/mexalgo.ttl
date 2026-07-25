@@ -1,0 +1,790 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix mexalgo: <http://mex.aksw.org/mex-algo#>.
+
+_:B412b9c2af83d64ebe5f59e5fe8bc79fa a mexalgo:AllDisjointClasses;
+                                    <http://www.w3.org/2002/07/owl#members> (mexalgo:C
+                                                                             mexalgo:DLLearner
+                                                                             mexalgo:FAMa
+                                                                             mexalgo:Java
+                                                                             mexalgo:LibLinear
+                                                                             mexalgo:LibSVM
+                                                                             mexalgo:Matlab
+                                                                             mexalgo:Octave
+                                                                             mexalgo:Other
+                                                                             mexalgo:Python
+                                                                             mexalgo:R
+                                                                             mexalgo:SASEnterpriseMiner
+                                                                             mexalgo:SPSS
+                                                                             mexalgo:Weka
+                                                                             mexalgo:DotNet).
+_:B9452c3dd2b0dc125020573353a336135 a mexalgo:AllDisjointClasses;
+                                    <http://www.w3.org/2002/07/owl#members> (mexalgo:Metaheuristic
+                                                                             mexalgo:Association
+                                                                             mexalgo:Classification
+                                                                             mexalgo:Clustering
+                                                                             mexalgo:Regression
+                                                                             mexalgo:Summarization).
+_:Babe5bf2437b7f4078f9e6cbcf0e71b1a a mexalgo:AllDisjointClasses;
+                                    <http://www.w3.org/2002/07/owl#members> (mexalgo:Boosting
+                                                                             mexalgo:Clustering
+                                                                             mexalgo:ArtificialNeuralNetwork
+                                                                             mexalgo:BayesTheory
+                                                                             mexalgo:DecisionTrees
+                                                                             mexalgo:GeneticAlgorithms
+                                                                             mexalgo:RegressionFunctions
+                                                                             mexalgo:SupportVectorNetworks).
+_:Bbe621eaca80c58e0e82ec6192edc18de a mexalgo:AllDisjointClasses;
+                                    <http://www.w3.org/2002/07/owl#members> (mexalgo:Reinforcement
+                                                                             mexalgo:SemiSupervised
+                                                                             mexalgo:Supervised
+                                                                             mexalgo:Unsupervised).
+_:Bd0f5ab46c4eaed5885ed11ba8564d53d a mexalgo:AllDisjointClasses;
+                                    <http://www.w3.org/2002/07/owl#members> (mexalgo:Algorithm
+                                                                             mexalgo:AlgorithmParameterCollection
+                                                                             mexalgo:AlgorithmClass
+                                                                             mexalgo:AlgorithmParameter
+                                                                             mexalgo:Implementation
+                                                                             mexalgo:LearningMethod
+                                                                             mexalgo:LearningProblem).
+<http://mex.aksw.org/mex-algo> <http://purl.org/dc/elements/1.1/contributor> "Sebastian Hellmann",
+                                                                             "Jens Lehmann",
+                                                                             "Maria Claudia Cavalcanti Reis",
+                                                                             "Julio Cesar Duarte",
+                                                                             "Diego Moussallem",
+                                                                             "Markus Ackermann",
+                                                                             "Ricardo Usbeck";
+                               <http://purl.org/dc/elements/1.1/creator> "Diego Esteves";
+                               <http://purl.org/dc/elements/1.1/publisher> "AKSW Research Group - Leipzig University"@en,
+                                                                           "AKSW - Universidade de Leipzig"@pt;
+                               <http://purl.org/dc/terms/created> "2014-02-02"^^xsd:date;
+                               <http://purl.org/dc/terms/modified> "2014-04-05"^^xsd:date;
+                               <http://purl.org/dc/terms/title> "MEX Algorithm Ontology (mex-algo)"@en;
+                               a <http://www.w3.org/2002/07/owl#Ontology>;
+                               rdfs:comment "MEX e um vocabulario modelado para facilitar a interoperabilidade entre resultados de experimentos de aprendizado de maquinas publicados na Web. A camada mex-algo representa informacaos de algoritmos existentes em um experimento de aprendizado de maquina."@pt,
+                                            "MEX is an RDF vocabulary designed to facilitate interoperability between published machine learning experiments results on the Web. The mex-algo layer represents the algorithm information existing into a basic machine learning experiment."@en;
+                               rdfs:label "Vocabulario MEX (mex-algo)"@pt,
+                                          "The MEX Vocabulary (mex-algo)"@en;
+                               <http://www.w3.org/2002/07/owl#imports> <http://usefulinc.com/ns/doap#>,
+                                                                       rdfs:,
+                                                                       <http://www.w3.org/ns/prov#>;
+                               <http://www.w3.org/2002/07/owl#versionInfo> "1.0.0".
+mexalgo:ADTree a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:DecisionTrees ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               mexalgo:NamedAlgorithm.
+mexalgo:AODE a mexalgo:NamedIndividual.
+mexalgo:AQ a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                            <http://www.w3.org/2002/07/owl#onClass> mexalgo:Rules ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           mexalgo:NamedAlgorithm.
+mexalgo:AdaBoost a mexalgo:NamedIndividual.
+mexalgo:AdaptativeBoost a <http://www.w3.org/2002/07/owl#Class>,
+                          mexalgo:NamedIndividual;
+                        rdfs:label "AdaBoost"@en;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                         <http://www.w3.org/2002/07/owl#onClass> mexalgo:Boosting ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        mexalgo:NamedAlgorithm.
+mexalgo:Algorithm a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:LearningMethod ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningMethod ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:AlgorithmClass ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:LearningProblem ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningProblem ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  <http://www.w3.org/ns/prov#Entity>.
+mexalgo:AlgorithmClass a <http://www.w3.org/2002/07/owl#Class>;
+                       <http://www.w3.org/2002/07/owl#disjointWith> mexalgo:AlgorithmParameter,
+                                                                    mexalgo:LearningMethod,
+                                                                    mexalgo:LearningProblem.
+mexalgo:AlgorithmParameter a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf <http://www.w3.org/ns/prov#Entity>;
+                           <http://www.w3.org/2002/07/owl#disjointWith> mexalgo:LearningMethod,
+                                                                        mexalgo:LearningProblem.
+mexalgo:AlgorithmParameterCollection a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:subClassOf <http://www.w3.org/ns/prov#Collection>.
+mexalgo:ApacheMahout a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf mexalgo:Implementation.
+mexalgo:Apriori a <http://www.w3.org/2002/07/owl#Class>,
+                  mexalgo:NamedIndividual;
+                rdfs:subClassOf mexalgo:NamedAlgorithm.
+mexalgo:ArtificialNeuralNetwork a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "ANN"@en;
+                                rdfs:subClassOf mexalgo:AlgorithmClass.
+mexalgo:Association a <http://www.w3.org/2002/07/owl#Class>,
+                      mexalgo:NamedIndividual;
+                    rdfs:subClassOf mexalgo:LearningProblem.
+mexalgo:AutoregressiveIntegratedMovingAverage a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:label "ARIMA"@en;
+                                              rdfs:subClassOf mexalgo:NamedAlgorithm.
+mexalgo:AutoregressiveMovingAverage a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:label "ARMA"@en;
+                                    rdfs:subClassOf mexalgo:NamedAlgorithm.
+mexalgo:AverageOneDependenceEstimators a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:label "AODE"@en;
+                                       rdfs:subClassOf mexalgo:NamedAlgorithm.
+mexalgo:BFTree a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:DecisionTrees ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               mexalgo:NamedAlgorithm.
+mexalgo:BIRCH a <http://www.w3.org/2002/07/owl#Class>,
+                mexalgo:NamedIndividual;
+              rdfs:subClassOf mexalgo:NamedAlgorithm.
+mexalgo:BackPropagation a mexalgo:NamedIndividual,
+                          <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:label "NNBP"@en;
+                        rdfs:subClassOf mexalgo:NamedAlgorithm,
+                                        [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                         <http://www.w3.org/2002/07/owl#onClass> mexalgo:ArtificialNeuralNetwork ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>];
+                        <http://www.w3.org/2002/07/owl#disjointWith> mexalgo:RandomForest,
+                                                                     mexalgo:SupportVectorMachines,
+                                                                     mexalgo:LogisticRegression,
+                                                                     mexalgo:RegressionAnalysis,
+                                                                     mexalgo:Kmeans,
+                                                                     mexalgo:NaiveBayes.
+mexalgo:Bagging a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf mexalgo:AlgorithmClass.
+mexalgo:Baseline a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf mexalgo:NamedAlgorithm.
+mexalgo:Bayes a mexalgo:NamedIndividual.
+mexalgo:BayesTheory a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf mexalgo:AlgorithmClass.
+mexalgo:BayesTheoryAlgorithms a <http://www.w3.org/2002/07/owl#Class>;
+                              <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mexalgo:Algorithm
+                                                                                                                               [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:BayesTheory ; 
+                                                                                                                               <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                                                                                                               a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                               a <http://www.w3.org/2002/07/owl#Class>].
+mexalgo:Boosting a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf mexalgo:AlgorithmClass.
+mexalgo:Bootstrap a mexalgo:NamedIndividual.
+mexalgo:C a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:subClassOf mexalgo:Library.
+mexalgo:C-SVM a <http://www.w3.org/2002/07/owl#Class>,
+                mexalgo:NamedIndividual;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningProblem ; 
+                               <http://www.w3.org/2002/07/owl#onClass> mexalgo:Classification ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              mexalgo:SupportVectorMachines.
+mexalgo:C45 a <http://www.w3.org/2002/07/owl#Class>,
+              mexalgo:NamedIndividual;
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:DecisionTrees ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            mexalgo:NamedAlgorithm;
+            <http://www.w3.org/2002/07/owl#disjointWith> mexalgo:LogisticRegression,
+                                                         mexalgo:RegressionAnalysis,
+                                                         mexalgo:Kmeans,
+                                                         mexalgo:BackPropagation,
+                                                         mexalgo:RandomForest,
+                                                         mexalgo:SupportVectorMachines,
+                                                         mexalgo:NaiveBayes.
+mexalgo:CART a <http://www.w3.org/2002/07/owl#Class>,
+               mexalgo:NamedIndividual;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                              <http://www.w3.org/2002/07/owl#onClass> mexalgo:DecisionTrees ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             mexalgo:NamedAlgorithm.
+mexalgo:CHAID a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf mexalgo:NamedAlgorithm.
+mexalgo:CHAMELEON a <http://www.w3.org/2002/07/owl#Class>,
+                    mexalgo:NamedIndividual;
+                  rdfs:subClassOf mexalgo:NamedAlgorithm.
+mexalgo:CLARA a <http://www.w3.org/2002/07/owl#Class>,
+                mexalgo:NamedIndividual;
+              rdfs:subClassOf mexalgo:NamedAlgorithm.
+mexalgo:CLARANS a <http://www.w3.org/2002/07/owl#Class>,
+                  mexalgo:NamedIndividual;
+                rdfs:subClassOf mexalgo:NamedAlgorithm.
+mexalgo:CPlusPlus a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf mexalgo:Library.
+mexalgo:CURE a <http://www.w3.org/2002/07/owl#Class>,
+               mexalgo:NamedIndividual;
+             rdfs:subClassOf mexalgo:NamedAlgorithm.
+mexalgo:Centura a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf mexalgo:Library.
+mexalgo:Classification a <http://www.w3.org/2002/07/owl#Class>,
+                         mexalgo:NamedIndividual;
+                       rdfs:subClassOf mexalgo:LearningProblem.
+mexalgo:Clustering a <http://www.w3.org/2002/07/owl#Class>,
+                     mexalgo:NamedIndividual;
+                   rdfs:subClassOf mexalgo:AlgorithmClass,
+                                   mexalgo:LearningProblem.
+mexalgo:CrossValidation a mexalgo:NamedIndividual.
+mexalgo:DL-Learner a mexalgo:NamedIndividual.
+mexalgo:DL-Learning a mexalgo:NamedIndividual.
+mexalgo:DLLearner a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf mexalgo:Implementation.
+mexalgo:DecisionStump a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:DecisionTrees ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      mexalgo:NamedAlgorithm.
+mexalgo:DecisionTrees a <http://www.w3.org/2002/07/owl#Class>,
+                        mexalgo:NamedIndividual;
+                      rdfs:subClassOf mexalgo:AlgorithmClass.
+mexalgo:DecisionTreesAlgorithms a <http://www.w3.org/2002/07/owl#Class>;
+                                <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mexalgo:Algorithm
+                                                                                                                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:DecisionTrees ; 
+                                                                                                                                 <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                                                                                                                 a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                 a <http://www.w3.org/2002/07/owl#Class>].
+mexalgo:DescriptiveMethod a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "are typically unsupervised and are used to induce interesting patterns (such as association rules) from unlabeled data. The induced patterns are useful in exploratory data analysis."@en;
+                          <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mexalgo:Algorithm
+                                                                                                                           [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                           <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningMethod ; 
+                                                                                                                           <http://www.w3.org/2002/07/owl#onClass> mexalgo:Unsupervised ; 
+                                                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Class>].
+mexalgo:DotNet a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf mexalgo:Library.
+mexalgo:ELKI a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf mexalgo:Implementation.
+mexalgo:EViews a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf mexalgo:Implementation.
+mexalgo:Encog a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf mexalgo:Implementation.
+mexalgo:EnsambleTechnique a <http://www.w3.org/2002/07/owl#Class>;
+                          <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mexalgo:Algorithm
+                                                                                                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:Bagging ; 
+                                                                                                                           <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Class>],
+                                                                          [<http://www.w3.org/2002/07/owl#intersectionOf> (mexalgo:Algorithm
+                                                                                                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:Boosting ; 
+                                                                                                                           <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Class>].
+mexalgo:FAMa a <http://www.w3.org/2002/07/owl#Class>,
+               mexalgo:NamedIndividual;
+             rdfs:subClassOf mexalgo:Implementation.
+mexalgo:FP a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:DecisionTrees ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           mexalgo:NamedAlgorithm.
+mexalgo:FP-growth a mexalgo:NamedIndividual.
+mexalgo:ForClassificationProblem a <http://www.w3.org/2002/07/owl#Class>;
+                                 <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mexalgo:Algorithm
+                                                                                                                                  [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                                  <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningProblem ; 
+                                                                                                                                  <http://www.w3.org/2002/07/owl#onClass> mexalgo:Classification ; 
+                                                                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Class>].
+mexalgo:GA a mexalgo:NamedIndividual.
+mexalgo:GaussianRBF a mexalgo:NamedIndividual.
+mexalgo:GeneticAlgorithm a mexalgo:NamedIndividual.
+mexalgo:GeneticAlgorithms a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:subClassOf mexalgo:AlgorithmClass.
+mexalgo:GraphKernel a mexalgo:NamedIndividual.
+mexalgo:H2O a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf mexalgo:Implementation.
+mexalgo:Holdout a mexalgo:NamedIndividual.
+mexalgo:HybridAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf mexalgo:NamedAlgorithm.
+mexalgo:IBMMiner a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf mexalgo:Implementation.
+mexalgo:ID3 a <http://www.w3.org/2002/07/owl#Class>,
+              mexalgo:NamedIndividual;
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                             <http://www.w3.org/2002/07/owl#onClass> mexalgo:DecisionTrees ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            mexalgo:NamedAlgorithm.
+mexalgo:INDUCE a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                <http://www.w3.org/2002/07/owl#onClass> mexalgo:Rules ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               mexalgo:NamedAlgorithm.
+mexalgo:Implementation a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf <http://www.w3.org/ns/prov#SoftwareAgent>,
+                                       <http://usefulinc.com/ns/doap#Project>,
+                                       <http://usefulinc.com/ns/doap#Version>.
+mexalgo:InductiveLogicProgramming a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:label "ILP"@en;
+                                  rdfs:subClassOf mexalgo:AlgorithmClass.
+mexalgo:J48 a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:DecisionTrees ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            mexalgo:NamedAlgorithm.
+mexalgo:J48Graft a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:DecisionTrees ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 mexalgo:NamedAlgorithm.
+mexalgo:Java a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf mexalgo:Library.
+mexalgo:JavaScript a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf mexalgo:Library.
+mexalgo:Julia a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf mexalgo:Implementation.
+mexalgo:K-means a mexalgo:NamedIndividual.
+mexalgo:KNIME a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf mexalgo:Implementation.
+mexalgo:KXEN a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf mexalgo:Implementation.
+mexalgo:Kmeans a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                <http://www.w3.org/2002/07/owl#onClass> mexalgo:Clustering ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               mexalgo:NamedAlgorithm;
+               <http://www.w3.org/2002/07/owl#disjointWith> mexalgo:LogisticRegression,
+                                                            mexalgo:NaiveBayes,
+                                                            mexalgo:RandomForest,
+                                                            mexalgo:RegressionAnalysis,
+                                                            mexalgo:SupportVectorMachines.
+mexalgo:LADTree a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:DecisionTrees ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                mexalgo:NamedAlgorithm.
+mexalgo:LIONsolver a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf mexalgo:Implementation.
+mexalgo:LMT a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:DecisionTrees ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            mexalgo:NamedAlgorithm.
+mexalgo:LearningMethod a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Supervised Learning, Unsupervised Learning, Semi-supervised Learning, Reinforcement Learning, ..."@en.
+mexalgo:LearningProblem a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "A ValuePartition that describes only values from Regression, Classification or Clustering. NB Subclasses can themselves be divided up into further partitions."@en.
+mexalgo:LibLinear a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf mexalgo:Implementation.
+mexalgo:LibSVM a <http://www.w3.org/2002/07/owl#Class>,
+                 mexalgo:NamedIndividual;
+               rdfs:subClassOf mexalgo:Implementation.
+mexalgo:Library a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf mexalgo:Implementation.
+mexalgo:Linear a mexalgo:NamedIndividual.
+mexalgo:LinearRegression a <http://www.w3.org/2002/07/owl#Class>,
+                           mexalgo:NamedIndividual;
+                         rdfs:subClassOf mexalgo:RegressionAnalysis.
+mexalgo:Linear_Regression a mexalgo:NamedIndividual.
+mexalgo:LogicalRepresentations a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:subClassOf mexalgo:AlgorithmClass.
+mexalgo:LogisticRegression a <http://www.w3.org/2002/07/owl#Class>,
+                             mexalgo:NamedIndividual;
+                           rdfs:subClassOf mexalgo:RegressionAnalysis;
+                           <http://www.w3.org/2002/07/owl#disjointWith> mexalgo:NaiveBayes,
+                                                                        mexalgo:RandomForest,
+                                                                        mexalgo:SupportVectorMachines.
+mexalgo:Logistic_Regression a mexalgo:NamedIndividual.
+mexalgo:MARS a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf mexalgo:NamedAlgorithm.
+mexalgo:MLPACK a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf mexalgo:Implementation.
+mexalgo:Markov a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf mexalgo:NamedAlgorithm.
+mexalgo:MassiveOnlineAnalysis a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:label "MOA"@en;
+                              rdfs:subClassOf mexalgo:Implementation.
+mexalgo:Mathematica a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf mexalgo:Implementation.
+mexalgo:Matlab a <http://www.w3.org/2002/07/owl#Class>,
+                 mexalgo:NamedIndividual;
+               rdfs:subClassOf mexalgo:Implementation.
+mexalgo:Metaheuristic a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf mexalgo:LearningProblem.
+mexalgo:MicrosoftAzureMachineLearning a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:label "AZURE"@en;
+                                      rdfs:subClassOf mexalgo:Implementation.
+mexalgo:Microsoft_SQL_Server a mexalgo:NamedIndividual.
+mexalgo:MonteCarloMachineLearningLibrary a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:subClassOf mexalgo:Implementation.
+mexalgo:NBTree a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                <http://www.w3.org/2002/07/owl#onClass> mexalgo:DecisionTrees ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               mexalgo:NamedAlgorithm.
+mexalgo:NN-BackPropagation a mexalgo:NamedIndividual.
+mexalgo:NaiveBayes a <http://www.w3.org/2002/07/owl#Class>,
+                     mexalgo:NamedIndividual;
+                   rdfs:comment """In machine learning, naive Bayes classifiers are a family of simple probabilistic classifiers based on applying Bayes' theorem with strong (naive) independence assumptions between the features.
+
+Naive Bayes has been studied extensively since the 1950s. It was introduced under a different name into the text retrieval community in the early 1960s:488 and remains a popular (baseline) method for text categorization, the problem of judging documents as belonging to one category or the other (such as spam or legitimate, sports or politics, etc.) with word frequencies as the features. With appropriate preprocessing, it is competitive in this domain with more advanced methods including support vector machines.It also finds application in automatic medical diagnosis.
+
+Naive Bayes classifiers are highly scalable, requiring a number of parameters linear in the number of variables (features/predictors) in a learning problem. Maximum-likelihood training can be done by evaluating a closed-form expression, which takes linear time, rather than by expensive iterative approximation as used for many other types of classifiers.
+
+In the statistics and computer science literature, Naive Bayes models are known under a variety of names, including simple Bayes and independence Bayes.[4] All these names reference the use of Bayes' theorem in the classifier's decision rule, but naive Bayes is not (necessarily) a Bayesian method Russell and Norvig note that \"[naive Bayes] is sometimes called a Bayesian classifier, a somewhat careless usage that has prompted true Bayesians to call it the idiot Bayes model."""@en;
+                   rdfs:subClassOf mexalgo:NamedAlgorithm,
+                                   [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningMethod ; 
+                                    <http://www.w3.org/2002/07/owl#onClass> mexalgo:Supervised ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningProblem ; 
+                                    <http://www.w3.org/2002/07/owl#onClass> mexalgo:Regression ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:BayesTheory ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>];
+                   <http://www.w3.org/2002/07/owl#disjointWith> mexalgo:SupportVectorMachines,
+                                                                mexalgo:RegressionAnalysis,
+                                                                mexalgo:RandomForest.
+mexalgo:Naive_Bayes a mexalgo:NamedIndividual.
+mexalgo:NamedAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "The basic information regarding the algorithms used into the experiment"@en;
+                       rdfs:subClassOf mexalgo:Algorithm.
+mexalgo:NearestNeigbour a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf mexalgo:NamedAlgorithm.
+mexalgo:NearestNeighbour a mexalgo:NamedIndividual.
+mexalgo:Nearest_Neighbour a mexalgo:NamedIndividual;
+                          rdfs:comment "k-NN".
+mexalgo:NeuralNetwork a mexalgo:NamedIndividual.
+mexalgo:NeuroSolutions a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf mexalgo:Implementation.
+mexalgo:NodeJS a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf mexalgo:Library.
+mexalgo:OPTICS a <http://www.w3.org/2002/07/owl#Class>,
+                 mexalgo:NamedIndividual;
+               rdfs:subClassOf mexalgo:NamedAlgorithm.
+mexalgo:Octave a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf mexalgo:Implementation.
+mexalgo:OpenCV a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf mexalgo:Implementation.
+mexalgo:OpenNN a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf mexalgo:Implementation.
+mexalgo:OracleDataMining a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf mexalgo:Implementation.
+mexalgo:Orange a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf mexalgo:Implementation.
+mexalgo:Other a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf mexalgo:Library.
+mexalgo:PHP a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf mexalgo:Library.
+mexalgo:PathKernel a mexalgo:NamedIndividual.
+mexalgo:Polynomial a mexalgo:NamedIndividual.
+mexalgo:PredictiveMethod a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "they are used to induce models or theories from class-labeled data"@en;
+                         <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mexalgo:Algorithm
+                                                                                                                          [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningMethod ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#onClass> mexalgo:Supervised ; 
+                                                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                          a <http://www.w3.org/2002/07/owl#Class>].
+mexalgo:ProbabilisticSoftLogic a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:subClassOf mexalgo:NamedAlgorithm.
+mexalgo:Python a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf mexalgo:Library.
+mexalgo:R a <http://www.w3.org/2002/07/owl#Class>,
+            mexalgo:NamedIndividual;
+          rdfs:subClassOf mexalgo:Implementation.
+mexalgo:R-SVM a <http://www.w3.org/2002/07/owl#Class>,
+                mexalgo:NamedIndividual;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningProblem ; 
+                               <http://www.w3.org/2002/07/owl#onClass> mexalgo:Regression ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              mexalgo:SupportVectorMachines.
+mexalgo:RCASE a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf mexalgo:Implementation.
+mexalgo:REPTree a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                 <http://www.w3.org/2002/07/owl#onClass> mexalgo:DecisionTrees ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                mexalgo:NamedAlgorithm.
+mexalgo:RandomCrossValidation a mexalgo:NamedIndividual.
+mexalgo:RandomForest a <http://www.w3.org/2002/07/owl#Class>,
+                       mexalgo:NamedIndividual;
+                     rdfs:comment "Random forests are an ensemble learning method for classification, regression and other tasks, that operate by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes (classification) or mean prediction (regression) of the individual trees. Random forests correct for decision trees' habit of overfitting to their training set."@en;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:DecisionTrees ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     mexalgo:NamedAlgorithm;
+                     <http://www.w3.org/2002/07/owl#disjointWith> mexalgo:RegressionAnalysis,
+                                                                  mexalgo:SupportVectorMachines.
+mexalgo:RapidMiner a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf mexalgo:Implementation.
+mexalgo:Regression a <http://www.w3.org/2002/07/owl#Class>,
+                     mexalgo:NamedIndividual;
+                   rdfs:subClassOf mexalgo:LearningProblem.
+mexalgo:RegressionAnalysis a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                            <http://www.w3.org/2002/07/owl#onClass> mexalgo:RegressionFunctions ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           mexalgo:NamedAlgorithm;
+                           <http://www.w3.org/2002/07/owl#disjointWith> mexalgo:SupportVectorMachines.
+mexalgo:RegressionFunctions a <http://www.w3.org/2002/07/owl#Class>,
+                              mexalgo:NamedIndividual;
+                            rdfs:subClassOf mexalgo:AlgorithmClass.
+mexalgo:Reinforcement a <http://www.w3.org/2002/07/owl#Class>,
+                        mexalgo:NamedIndividual;
+                      rdfs:subClassOf mexalgo:LearningMethod.
+mexalgo:Ruby a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf mexalgo:Library.
+mexalgo:Rules a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf mexalgo:AlgorithmClass.
+mexalgo:SAP a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf mexalgo:Implementation.
+mexalgo:SAS a mexalgo:NamedIndividual.
+mexalgo:SASEnterpriseMiner a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:label "SAS"@en;
+                           rdfs:subClassOf mexalgo:Implementation.
+mexalgo:SPSS a <http://www.w3.org/2002/07/owl#Class>,
+               mexalgo:NamedIndividual;
+             rdfs:subClassOf mexalgo:Implementation.
+mexalgo:SQLServerAnalysisServices a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:subClassOf mexalgo:Implementation.
+mexalgo:STATISTICADataMiner a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:label "STATISTICA"@en;
+                            rdfs:subClassOf mexalgo:Implementation.
+mexalgo:SVM a mexalgo:NamedIndividual.
+mexalgo:SemiSupervised a <http://www.w3.org/2002/07/owl#Class>,
+                         mexalgo:NamedIndividual;
+                       rdfs:subClassOf mexalgo:LearningMethod.
+mexalgo:Shogun a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf mexalgo:Implementation.
+mexalgo:Sigmoid a mexalgo:NamedIndividual.
+mexalgo:SimpleCart a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                    <http://www.w3.org/2002/07/owl#onClass> mexalgo:DecisionTrees ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   mexalgo:NamedAlgorithm.
+mexalgo:Stata a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf mexalgo:Implementation.
+mexalgo:StatisticalApproach a <http://www.w3.org/2002/07/owl#Class>;
+                            <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mexalgo:Algorithm
+                                                                                                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:SupportVectorNetworks ; 
+                                                                                                                             <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                                                                                                             a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>],
+                                                                            [<http://www.w3.org/2002/07/owl#intersectionOf> (mexalgo:Algorithm
+                                                                                                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:BayesTheory ; 
+                                                                                                                             <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                                                                                                             a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>],
+                                                                            [<http://www.w3.org/2002/07/owl#intersectionOf> (mexalgo:Algorithm
+                                                                                                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:ArtificialNeuralNetwork ; 
+                                                                                                                             <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                                                                                                             a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>].
+mexalgo:StringKernel a mexalgo:NamedIndividual.
+mexalgo:Summarization a <http://www.w3.org/2002/07/owl#Class>,
+                        mexalgo:NamedIndividual;
+                      rdfs:subClassOf mexalgo:LearningProblem.
+mexalgo:Supervised a <http://www.w3.org/2002/07/owl#Class>,
+                     mexalgo:NamedIndividual;
+                   rdfs:comment "Supervised learning assumes that trainning examples are classified (labeled by class labels)"@en;
+                   rdfs:subClassOf mexalgo:LearningMethod.
+mexalgo:SupervisedApproach a <http://www.w3.org/2002/07/owl#Class>;
+                           <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mexalgo:Algorithm
+                                                                                                                            [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                            <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningMethod ; 
+                                                                                                                            <http://www.w3.org/2002/07/owl#onClass> mexalgo:Supervised ; 
+                                                                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                            a <http://www.w3.org/2002/07/owl#Class>],
+                                                                           [<http://www.w3.org/2002/07/owl#intersectionOf> (mexalgo:Algorithm
+                                                                                                                            [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                                                                     <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningProblem ; 
+                                                                                                                                                                     <http://www.w3.org/2002/07/owl#onClass> mexalgo:Classification ; 
+                                                                                                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                                                     [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                                                                     <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningProblem ; 
+                                                                                                                                                                     <http://www.w3.org/2002/07/owl#onClass> mexalgo:Regression ; 
+                                                                                                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                                                            a <http://www.w3.org/2002/07/owl#Class>]) ; 
+                                                                            a <http://www.w3.org/2002/07/owl#Class>].
+mexalgo:SupportVectorMachines a <http://www.w3.org/2002/07/owl#Class>,
+                                mexalgo:NamedIndividual;
+                              rdfs:comment """In machine learning, support vector machines (SVMs, also support vector networks) are supervised learning models with associated learning algorithms that analyze data and recognize patterns, used for classification and regression analysis. Given a set of training examples, each marked as belonging to one of two categories, an SVM training algorithm builds a model that assigns new examples into one category or the other, making it a non-probabilistic binary linear classifier. An SVM model is a representation of the examples as points in space, mapped so that the examples of the separate categories are divided by a clear gap that is as wide as possible. New examples are then mapped into that same space and predicted to belong to a category based on which side of the gap they fall on.
+
+In addition to performing linear classification, SVMs can efficiently perform a non-linear classification using what is called the kernel trick, implicitly mapping their inputs into high-dimensional feature spaces."""@en;
+                              rdfs:label "SVM"@en;
+                              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                        <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningProblem ; 
+                                                                                        <http://www.w3.org/2002/07/owl#onClass> mexalgo:Classification ; 
+                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                        [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                        <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningProblem ; 
+                                                                                        <http://www.w3.org/2002/07/owl#onClass> mexalgo:Regression ; 
+                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                               a <http://www.w3.org/2002/07/owl#Class>],
+                                              [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                               <http://www.w3.org/2002/07/owl#onClass> mexalgo:SupportVectorNetworks ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                        <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningMethod ; 
+                                                                                        <http://www.w3.org/2002/07/owl#onClass> mexalgo:SemiSupervised ; 
+                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                        [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                        <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningMethod ; 
+                                                                                        <http://www.w3.org/2002/07/owl#onClass> mexalgo:Supervised ; 
+                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                               a <http://www.w3.org/2002/07/owl#Class>],
+                                              mexalgo:NamedAlgorithm.
+mexalgo:SupportVectorNetworks a <http://www.w3.org/2002/07/owl#Class>,
+                                mexalgo:NamedIndividual;
+                              rdfs:subClassOf mexalgo:AlgorithmClass.
+mexalgo:SymbolicApproach a <http://www.w3.org/2002/07/owl#Class>;
+                         <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mexalgo:Algorithm
+                                                                                                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:LogicalRepresentations ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                          a <http://www.w3.org/2002/07/owl#Class>],
+                                                                         [<http://www.w3.org/2002/07/owl#intersectionOf> (mexalgo:Algorithm
+                                                                                                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:DecisionTrees ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                          a <http://www.w3.org/2002/07/owl#Class>],
+                                                                         [<http://www.w3.org/2002/07/owl#intersectionOf> (mexalgo:Algorithm
+                                                                                                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> mexalgo:Rules ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                          a <http://www.w3.org/2002/07/owl#Class>].
+mexalgo:Test a mexalgo:NamedIndividual.
+mexalgo:Trainning a mexalgo:NamedIndividual.
+mexalgo:TreeKernel a mexalgo:NamedIndividual.
+mexalgo:Unsupervised a <http://www.w3.org/2002/07/owl#Class>,
+                       mexalgo:NamedIndividual;
+                     rdfs:comment "Unsupervised learning concerns the analysis of unclassified examples"@en;
+                     rdfs:subClassOf mexalgo:LearningMethod.
+mexalgo:UnsupervisedApproach a <http://www.w3.org/2002/07/owl#Class>;
+                             <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mexalgo:Algorithm
+                                                                                                                              [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                              <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningMethod ; 
+                                                                                                                              <http://www.w3.org/2002/07/owl#onClass> mexalgo:Unsupervised ; 
+                                                                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Class>],
+                                                                             [<http://www.w3.org/2002/07/owl#intersectionOf> (mexalgo:Algorithm
+                                                                                                                              [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningProblem ; 
+                                                                                                                                                                       <http://www.w3.org/2002/07/owl#onClass> mexalgo:Association ; 
+                                                                                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                                                       [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningProblem ; 
+                                                                                                                                                                       <http://www.w3.org/2002/07/owl#onClass> mexalgo:Clustering ; 
+                                                                                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                                                       [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasLearningProblem ; 
+                                                                                                                                                                       <http://www.w3.org/2002/07/owl#onClass> mexalgo:Summarization ; 
+                                                                                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                                                              a <http://www.w3.org/2002/07/owl#Class>]) ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Class>].
+mexalgo:UserClassifier a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> mexalgo:hasClass ; 
+                                        <http://www.w3.org/2002/07/owl#onClass> mexalgo:DecisionTrees ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       mexalgo:NamedAlgorithm.
+mexalgo:Validation a mexalgo:NamedIndividual.
+mexalgo:WEKA a mexalgo:NamedIndividual.
+mexalgo:Weka a <http://www.w3.org/2002/07/owl#Class>,
+               mexalgo:NamedIndividual;
+             rdfs:subClassOf mexalgo:Implementation.
+mexalgo:YALE a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf mexalgo:Implementation.
+mexalgo:Yooreeka a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf mexalgo:Implementation.
+mexalgo:acronym a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain mexalgo:NamedAlgorithm;
+                rdfs:range xsd:string.
+mexalgo:hasAlgorithmConfiguration a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                    <http://www.w3.org/2002/07/owl#TransitiveProperty>.
+mexalgo:hasAlgorithmParameterCollection a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                                          <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>,
+                                          <http://www.w3.org/2002/07/owl#IrreflexiveProperty>,
+                                          <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:domain mexalgo:Algorithm;
+                                        rdfs:range mexalgo:AlgorithmParameterCollection;
+                                        rdfs:subPropertyOf mexalgo:hasAlgorithmConfiguration.
+mexalgo:hasClass a <http://www.w3.org/2002/07/owl#IrreflexiveProperty>,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain mexalgo:Algorithm;
+                 rdfs:range mexalgo:AlgorithmClass;
+                 rdfs:subPropertyOf mexalgo:hasAlgorithmConfiguration.
+mexalgo:hasImplementation a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                            <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>,
+                            <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain mexalgo:Algorithm;
+                          rdfs:range mexalgo:Implementation;
+                          rdfs:subPropertyOf mexalgo:hasAlgorithmConfiguration.
+mexalgo:hasLearningMethod a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                            <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>,
+                            <http://www.w3.org/2002/07/owl#IrreflexiveProperty>,
+                            <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain mexalgo:Algorithm;
+                          rdfs:range mexalgo:LearningMethod;
+                          rdfs:subPropertyOf mexalgo:hasAlgorithmConfiguration.
+mexalgo:hasLearningProblem a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                             <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>,
+                             <http://www.w3.org/2002/07/owl#IrreflexiveProperty>,
+                             <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain mexalgo:Algorithm;
+                           rdfs:range mexalgo:LearningProblem;
+                           rdfs:subPropertyOf mexalgo:hasAlgorithmConfiguration.
+mexalgo:isAlgorithmConfigurationOf a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                     <http://www.w3.org/2002/07/owl#TransitiveProperty>.
+mexalgo:isAlgorithmParameterCollectionOf a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                                           <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>,
+                                           <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                         rdfs:domain mexalgo:AlgorithmParameter;
+                                         rdfs:range mexalgo:Algorithm;
+                                         rdfs:subPropertyOf mexalgo:isAlgorithmConfigurationOf;
+                                         <http://www.w3.org/2002/07/owl#inverseOf> mexalgo:hasAlgorithmParameterCollection.
+mexalgo:isClassOf a <http://www.w3.org/2002/07/owl#IrreflexiveProperty>,
+                    <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain mexalgo:AlgorithmClass;
+                  rdfs:range mexalgo:Algorithm;
+                  rdfs:subPropertyOf mexalgo:isAlgorithmConfigurationOf;
+                  <http://www.w3.org/2002/07/owl#inverseOf> mexalgo:hasClass.
+mexalgo:isImplementationOf a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                             <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>,
+                             <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain mexalgo:Implementation;
+                           rdfs:range mexalgo:Algorithm;
+                           rdfs:subPropertyOf mexalgo:isAlgorithmConfigurationOf;
+                           <http://www.w3.org/2002/07/owl#inverseOf> mexalgo:hasImplementation.
+mexalgo:isLearningMethodOf a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                             <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>,
+                             <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain mexalgo:LearningMethod;
+                           rdfs:range mexalgo:Algorithm;
+                           rdfs:subPropertyOf mexalgo:isAlgorithmConfigurationOf;
+                           <http://www.w3.org/2002/07/owl#inverseOf> mexalgo:hasLearningMethod.
+mexalgo:isLearningProblemOf a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                              <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>,
+                              <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:domain mexalgo:LearningProblem;
+                            rdfs:range mexalgo:Algorithm;
+                            rdfs:subPropertyOf mexalgo:isAlgorithmConfigurationOf;
+                            <http://www.w3.org/2002/07/owl#inverseOf> mexalgo:hasLearningProblem.
+mexalgo:k-means a mexalgo:NamedIndividual.
+mexalgo:mlpy a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf mexalgo:Implementation.
+mexalgo:parametro1 a mexalgo:NamedIndividual.
+mexalgo:parametro2 a mexalgo:NamedIndividual.
+mexalgo:scikit-learn a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf mexalgo:Implementation.
+<http://www.w3.org/ns/prov#hadMember> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:domain <http://www.w3.org/ns/prov#Collection>;
+                                      rdfs:label "had member"@en;
+                                      rdfs:range <http://www.w3.org/ns/prov#Entity>.
+<http://www.w3.org/ns/prov#wasDerivedFrom> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:comment "Entity the experiment was derived from"@en;
+                                           rdfs:domain <http://www.w3.org/ns/prov#Entity>;
+                                           rdfs:label "was derived from"@en;
+                                           rdfs:range <http://www.w3.org/ns/prov#Entity>.

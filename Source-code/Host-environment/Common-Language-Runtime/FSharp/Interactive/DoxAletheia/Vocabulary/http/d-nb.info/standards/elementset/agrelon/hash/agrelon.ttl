@@ -1,0 +1,1586 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<https://d-nb.info/standards/elementset/agrelon#> <http://creativecommons.org/ns#license> <http://creativecommons.org/publicdomain/zero/1.0/>;
+                                                  <http://purl.org/dc/elements/1.1/description> """
+The ontology of agent relationships, AgRelOn, defines relations of persons to other persons and to organisations, since agents (persons, organisations) and their interconnections are important in the cultural heritage domain. AgRelOn is developed to foster uniform cataloging as well as semantic searchability of and via relations between agents. Therefore, a general set of nearly 70 relationhip types is provided. AgRelOn discerns private acquaintanceship, group affiliation, correspondence, occupational contact,  kinship, spiritual contact, and vital/lethal contact. For these kinds of relations more specific sub-relations are formulated.
+Meta statements are supported to obtain transparency of reliability and provenance as well as validity period of facts.
+The modelled relations are determined on the one hand by exemplary knowledge base searches, on the other hand by available data sources. Hence, the model consciously is incomplete and pertinent to a cultural area and period."""@en,
+                                                                                                """
+Die Ontology of Agent Relationships (AgRelOn) definiert Beziehungen von Personen zu anderen Personen
+und zu Körperschaften, da Agenten (Personen und Körperschaften) und ihre Beziehungen wichtig sind
+im Kulturerbeberech. AgRelOn wurde entwickelt, um die Erschließung von und die semantische Suche nach 
+Beziehungen zwischen Agenten zu verbessern. Dazu wurden etwa 70 verschiedene Beziehungstypen definiert.
+AgRelOn umfasst private Bekanntschaften, Zugehörigkeit zu Gruppen, Korrespondenzen, berufliche Beziehungen,
+Verwandschaftsrelationen, spirituelle und vitale/letale Kontakte. Für diese Arten von Beziehungen sind
+auch spezifische Subtypen von Relationen vorhanden.
+Um weitere Informationen wie z. B. Provenance und Konfidenzwerte transportieren zu können, sind in
+AgRelOn auch Meta-Statements vorgesehen.
+Die modellierten Beziehungen basieren sowohl auf beispielhafte Suchen in verschiedenen Wissensbasen, als
+auch auf zugängliche Datenquellen. Insofern ist das Modell bewusst unvollständig und bezogen auf einen 
+bestimmten zeitlichen und räumlichen kulturellen Raum.
+"""@de,
+                                                                                                """
+The ontology of agent relationships (AgRelOn) defines relations of persons to other persons
+and to organisations, since agents (persons, organisations) and their interconnections are important 
+in the cultural heritage domain. AgRelOn is developed to foster uniform cataloging as well as 
+semantic searchability of and via relations between agents. Therefore, a general set of nearly 
+70 relationhip types is provided. AgRelOn discerns private acquaintanceship, group affiliation, 
+correspondence, occupational contact, kinship, spiritual contact, and vital/lethal contact. 
+For these kinds of relations more specific sub-relations are formulated.
+Meta statements are supported to obtain transparency of reliability and provenance as well as validity 
+period of facts.
+The modelled relations are determined on the one hand by exemplary knowledge base searches, on the other 
+hand by available data sources. Hence, the model consciously is incomplete and pertinent to a cultural 
+area and period."""@en;
+                                                  <http://purl.org/dc/elements/1.1/title> "AgRelOn, an Agent Relationship Ontology"@en;
+                                                  <http://purl.org/dc/terms/available> "2019-10-15"^^xsd:date;
+                                                  <http://purl.org/dc/terms/contributor> <https://d-nb.info/standards/elementset/agrelon#berenikeLitz>,
+                                                                                         <https://d-nb.info/standards/elementset/agrelon#larsGSvensson>;
+                                                  <http://purl.org/dc/terms/creator> <https://d-nb.info/standards/elementset/agrelon#aenneLoehden>;
+                                                  <http://purl.org/dc/terms/issued> "2011-06-30"^^xsd:date;
+                                                  <http://purl.org/dc/terms/license> <http://creativecommons.org/publicdomain/zero/1.0/>;
+                                                  <http://purl.org/dc/terms/modified> "2019-06-13T10:24:00+02:00"^^xsd:dateTime;
+                                                  <http://purl.org/dc/terms/publisher> <http://ld.zdb-services.de/resource/organisations/DE-101>;
+                                                  <http://purl.org/dc/terms/rights> "Copyright 2013-2019 Deutsche Nationalbibliothek";
+                                                  <http://purl.org/vocab/vann/preferredNamespacePrefix> "agrelon";
+                                                  <http://purl.org/vocab/vann/preferredNamespaceUri> "https://d-nb.info/standards/elementset/agrelon#";
+                                                  a <http://purl.org/vocommons/voaf#Vocabulary>,
+                                                    <http://www.w3.org/2002/07/owl#Ontology>;
+                                                  rdfs:comment """
+			Changes from 2019-06-18 to 2019-10-15
+			All d-nb.info-URIs changed from http to https
+			
+			Changes from 2018-10-16
+			Updated labels in agrelon:hasGrandParent, agrelon:hasStepParent,
+				agrelon:HasAdoptiveChildParent, agrelon:HasChildParentInlaw, 
+				agrelon:hasFosterParent, agrelon:HasStepChildParent,
+				agrelon:HasFosterChildParent, agrelon:hasAdoptiveParent,
+				agrelon:HasGrandChildParent, agrelon:HasFosterParent,
+				agrelon:HasBiologicalChildParent, agrelon:hasIllegitimateParent,
+				agrelon:hasBiologicalParent, agrelon:HasIllegitimateChildParent
+			
+			Changes from 2018-05-15
+			Minor terminology changes in labels
+			Added alignments to GNDO:
+			agrelon:relatedAgent rdfs:subPropertyOf gndo:relatedTerm
+			agrelon:hasAcquaintance owl:equivalentProperty gndo:acquaintanceshipOrFriendship (beza)
+			agrelon:hasAssociate owl:equivalentProperty gndo:affiliation (affi)
+			agrelon:hasCorrespondent owl:equivalentProperty gndo:correspondent (gndo:correspondent == corr -- in AgRelOn zu ergänzen)
+			agrelon:hasProfessionalContact owl:equivalentProperty gndo:professionalRelationship (bezb)
+			agrelon:hasPatron rdfs:subPropertyOf gndo:sponsorOrPatron
+			agrelon:hasRelative owl:equivalentProperty gndo:familialRelationship (bezf)
+			agrelon:hasBeginDate rdfs:subPropertyOf gndo:associatedDate
+			agrelon:hasEndDate rdfs:subPropertyOf gndo:associatedDate
+			
+            Changes from 2017-01-17
+            agrelon:hasGodChild and agrelon:hasGodParent are now subproperties of agrelon:hasRelative and not of agrelon:hasNieceOrNephew resp. agrelon:hasAuntOrUncle  
+			
+            Changes from 2013-06-30
+			
+			agrelon:hasGndCode is now an annotation property
+			minor bugfix to ensure that the correct datatype is used for dates.
+		"""@en,
+                                                               """∼∼∼ Modelling Guidelines ∼∼∼ 
+Vocabulary elements (properties and concepts) are conceived gender neutral.
+The identifiers of properties are preferably hasProperty and invers isPropertyOf or hasInverseProperty. 
+Domains and ranges of properties are mostly not fixed.
+Instance relations (object properties) are mostly specified bidirectionally.
+Implicit, deducable instance relations are explicitly formulated.
+Properties partly allow imperfect information (e.g. fragmentary dates, names instead of object URIs).
+Correlations between instance relations, like inversity, transitivity, symmetry, hierarchie, are marked.
+Meta statements are exhibited by modelling person relations as n-ary concepts as well as as properties, corresponding n-ary concepts and properties are correlated.
+"""@en;
+                                                  <http://www.w3.org/2002/07/owl#priorVersion> <http://d-nb.info/standards/elementset/agrelon2018-10-16>;
+                                                  <http://www.w3.org/2002/07/owl#versionIRI> <https://d-nb.info/standards/elementset/agrelon_20190618>;
+                                                  <http://www.w3.org/2002/07/owl#versionInfo> "1.5".
+<https://d-nb.info/standards/elementset/agrelon#HasAcquaintance> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                   rdfs:Class;
+                                                                 rdfs:comment "This is the n-ary concept for the property hasAcquaintance"@en;
+                                                                 rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                 rdfs:label "ha conoscente"@it,
+                                                                            "hat Bekannte(n)"@de,
+                                                                            "tiene conocido(a)"@es,
+                                                                            "has acquaintance"@en;
+                                                                 rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasAcquaintance>;
+                                                                 rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#RelatedAgent>;
+                                                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasAdoptiveChildParent> a rdfs:Class,
+                                                                          <http://www.w3.org/2002/07/owl#Class>;
+                                                                        rdfs:comment "This is the n-ary concept for the properties hasAdoptiveChild and hasAdoptiveParent"@en;
+                                                                        rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                        rdfs:label "has adoptive child / adoptive parent"@en,
+                                                                                   "ha figlio(a) / genitore adottivo(a)"@it,
+                                                                                   "tiene hijo(a) / padre / madre adoptivo(a)"@es,
+                                                                                   "hat Adoptivkind / Adoptivelternteil"@de;
+                                                                        rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasAdoptiveParent>,
+                                                                                     <https://d-nb.info/standards/elementset/agrelon#hasAdoptiveChild>;
+                                                                        rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasChildParent>;
+                                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasAdoptiveSibling> a rdfs:Class,
+                                                                      <http://www.w3.org/2002/07/owl#Class>;
+                                                                    rdfs:comment "This is the n-ary concept for the property hasAdoptiveSibling"@en;
+                                                                    rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                    rdfs:label "tiene hermano(a) adoptivo(a)"@es,
+                                                                               "hat Adoptivgeschwister"@de,
+                                                                               "ha fratello adottato o sorella adottata"@it,
+                                                                               "has adoptive sibling"@en;
+                                                                    rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasAdoptiveSibling>;
+                                                                    rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasSibling>;
+                                                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasAssociate> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                rdfs:Class;
+                                                              rdfs:comment "This is the n-ary concept for the property hasAssociate"@en;
+                                                              rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                              rdfs:label "ha gruppo di appartenenza"@it,
+                                                                         "hat Gruppenzugehörigkeit"@de,
+                                                                         "tiene grupo de afiliación"@es,
+                                                                         "has group affiliation"@en;
+                                                              rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasAssociate>;
+                                                              rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#RelatedAgent>;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasBiologicalChildParent> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                            rdfs:Class;
+                                                                          rdfs:comment "This is the n-ary concept for the properties hasBiologicalChild and hasBiologicalParent"@en;
+                                                                          rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                          rdfs:label "ha figlio(a) / genitore biologico(a)"@it,
+                                                                                     "tiene hijo(a) / padre / madre biológico(a)"@es,
+                                                                                     "has biological child / parent"@en,
+                                                                                     "hat biologisches Kind / biologischen Elternteil"@de;
+                                                                          rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasBiologicalChild>,
+                                                                                       <https://d-nb.info/standards/elementset/agrelon#hasBiologicalParent>;
+                                                                          rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasChildParent>;
+                                                                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasBiologicalSibling> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                        rdfs:Class;
+                                                                      rdfs:comment "This is the n-ary concept for the property hasBiologicalSibling"@en;
+                                                                      rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                      rdfs:label "has biological sibling"@en,
+                                                                                 "hat biologisches Geschwister"@de,
+                                                                                 "tiene hermano(a) biológico(a)"@es,
+                                                                                 "ha fratello biologico o sorella biologica"@it;
+                                                                      rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasBiologicalSibling>;
+                                                                      rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasSibling>;
+                                                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasChildParent> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                  rdfs:Class;
+                                                                rdfs:comment "This is the n-ary concept for the properties hasChild and hasParent"@en;
+                                                                rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                rdfs:label "has child / parent"@en,
+                                                                           "ha figlio(a) / genitore"@it,
+                                                                           "hat Kind / Elternteil"@de,
+                                                                           "tiene hijo(a) / padre o madre"@es;
+                                                                rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasChild>,
+                                                                             <https://d-nb.info/standards/elementset/agrelon#hasParent>;
+                                                                rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasOffspringAncestor>;
+                                                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasChildParentInlaw> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                       rdfs:Class;
+                                                                     rdfs:comment "This is the n-ary concept for the properties hasChildInlaw and hasParentInlaw"@en;
+                                                                     rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                     rdfs:label "has child/parent-in-law"@en,
+                                                                                "ha genero o nuora / suocero(a)"@it,
+                                                                                "tiene yerno o nuera / suegro(a)"@es,
+                                                                                "hat Schwiegerkind / -elternteil"@de;
+                                                                     rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasParentInlaw>,
+                                                                                  <https://d-nb.info/standards/elementset/agrelon#hasChildInlaw>;
+                                                                     rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasInlaw>;
+                                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasCohabitee> a rdfs:Class,
+                                                                <http://www.w3.org/2002/07/owl#Class>;
+                                                              rdfs:comment "This is the n-ary concept for the property hasCohabitee"@en;
+                                                              rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                              rdfs:label "ha compagno(a) di vita"@it,
+                                                                         "has cohabitee"@en,
+                                                                         "hat Lebensgefährte"@de,
+                                                                         "tiene cohabitante"@es;
+                                                              rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasCohabitee>;
+                                                              rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasAcquaintance>;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasColleague> a rdfs:Class,
+                                                                <http://www.w3.org/2002/07/owl#Class>;
+                                                              rdfs:comment "This is the n-ary concept for the property hasColleague"@en;
+                                                              rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                              rdfs:label "has colleague"@en,
+                                                                         "hat Kollege"@de,
+                                                                         "ha collega"@it,
+                                                                         "tiene colega"@es;
+                                                              rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasColleague>;
+                                                              rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasProfessionalContact>;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasCooperator> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                 rdfs:Class;
+                                                               rdfs:comment "This is the n-ary concept for the property hasCooperator"@en;
+                                                               rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                               rdfs:label "tiene colaborador(a)"@es,
+                                                                          "has collaborator"@en,
+                                                                          "ha collaboratore o collaboratrice"@it,
+                                                                          "hat Kollaborator"@de;
+                                                               rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasCooperator>;
+                                                               rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasProfessionalContact>;
+                                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasCorrespondent> a rdfs:Class,
+                                                                    <http://www.w3.org/2002/07/owl#Class>;
+                                                                  rdfs:comment "This is the n-ary concept for the property hasCorrespondent"@en;
+                                                                  rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                  rdfs:label "ha corrispondente"@it,
+                                                                             "tiene correspondente"@es,
+                                                                             "has correspondent"@en,
+                                                                             "hat Korrespondent"@de;
+                                                                  rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasCorrespondent>;
+                                                                  rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#RelatedAgent>;
+                                                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasCousin> a rdfs:Class,
+                                                             <http://www.w3.org/2002/07/owl#Class>;
+                                                           rdfs:comment "This is the n-ary concept for the property hasCousin"@en;
+                                                           rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                           rdfs:label "ha cugino(a)"@it,
+                                                                      "hat Cousin"@de,
+                                                                      "tiene primo o prima"@es,
+                                                                      "has cousin"@en;
+                                                           rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasCousin>;
+                                                           rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasRelative>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasEmployeeEmployer> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                       rdfs:Class;
+                                                                     rdfs:comment "This is the n-ary concept for the properties hasEmployee and hasEmployer"@en;
+                                                                     rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                     rdfs:label "ha impiegato(a) / datore di lavoro"@it,
+                                                                                "tiene empleado(a) / empleador(a)"@es,
+                                                                                "hat Arbeitnehmer / Arbeitgeber"@de,
+                                                                                "has employee / employer"@en;
+                                                                     rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasEmployer>,
+                                                                                  <https://d-nb.info/standards/elementset/agrelon#hasEmployee>;
+                                                                     rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasProfessionalContact>;
+                                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasFianceeFiance> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                    rdfs:Class;
+                                                                  rdfs:comment "This is the n-ary concept for the property hasFianceeFiance"@en;
+                                                                  rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                  rdfs:label "hat Verlobte(n)"@de,
+                                                                             "ha fidanzato(a)"@it,
+                                                                             "has fiancee  or fiance"@en,
+                                                                             "tiene prometido(a)"@es;
+                                                                  rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasFianceeFiance>;
+                                                                  rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasInlaw>;
+                                                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasFosterChildParent> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                        rdfs:Class;
+                                                                      rdfs:comment "This is the n-ary concept for the properties hasFosterChild and hasFosterParent"@en;
+                                                                      rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                      rdfs:label "has foster child / parent"@en,
+                                                                                 "ha pupillo(a) / genitore"@it,
+                                                                                 "tiene hijo(a) / padre o madre de crianza"@es,
+                                                                                 "hat Pflegekind / -elternteil"@de;
+                                                                      rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasFosterParent>,
+                                                                                   <https://d-nb.info/standards/elementset/agrelon#hasFosterChild>;
+                                                                      rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasChildParent>;
+                                                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasFosterSibling> a rdfs:Class,
+                                                                    <http://www.w3.org/2002/07/owl#Class>;
+                                                                  rdfs:comment "This is the n-ary concept for the property hasFosterSibling"@en;
+                                                                  rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                  rdfs:label "has foster sibling"@en,
+                                                                             "hat Pflegegeschwister"@de,
+                                                                             "tiene hermano(a) de crianza"@es,
+                                                                             "ha fratello o sorella di latte"@it;
+                                                                  rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasFosterSibling>;
+                                                                  rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasSibling>;
+                                                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasFriend> a rdfs:Class,
+                                                             <http://www.w3.org/2002/07/owl#Class>;
+                                                           rdfs:comment "This is the n-ary concept for the property hasFriend"@en;
+                                                           rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                           rdfs:label "hat Freund"@de,
+                                                                      "tiene amigo(a)"@es,
+                                                                      "has friend"@en,
+                                                                      "ha amico(a)"@it;
+                                                           rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasFriend>;
+                                                           rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasAcquaintance>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasGodChildParent> a rdfs:Class,
+                                                                     <http://www.w3.org/2002/07/owl#Class>;
+                                                                   rdfs:comment "This is the n-ary concept for the properties hasGodChild and hasGodParent"@en;
+                                                                   rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                   rdfs:label "has godchild / godparent"@en,
+                                                                              "tiene ahijado(a) / padrino o madrina"@es,
+                                                                              "ha figlioccio o figlioccia / padrino o padrina"@it,
+                                                                              "hat Patenkind / Pate"@de;
+                                                                   rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasGodChild>,
+                                                                                <https://d-nb.info/standards/elementset/agrelon#hasGodParent>;
+                                                                   rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasNieceNephewAuntUncle>;
+                                                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasGrandChildParent> a rdfs:Class,
+                                                                       <http://www.w3.org/2002/07/owl#Class>;
+                                                                     rdfs:comment "This is the n-ary concept for the properties hasGrandChild and hasGrandParent"@en;
+                                                                     rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                     rdfs:label "has grandchild / grandparent"@en,
+                                                                                "ha nipote (di nonni) / nonno(a)"@it,
+                                                                                "tiene nieto(a) / abuelo(a)"@es,
+                                                                                "hat Enkel / Großelternteil"@de;
+                                                                     rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasGrandParent>,
+                                                                                  <https://d-nb.info/standards/elementset/agrelon#hasGrandChild>;
+                                                                     rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasOffspringAncestor>;
+                                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasHalfSibling> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                  rdfs:Class;
+                                                                rdfs:comment "This is the n-ary concept for the property hasHalfSibling"@en;
+                                                                rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                rdfs:label "tiene medio hermano(a)"@es,
+                                                                           "has half sibling"@en,
+                                                                           "ha fratellastro a sorellastra"@it,
+                                                                           "hat Halbgeschwister"@de;
+                                                                rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasHalfSibling>;
+                                                                rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasSibling>;
+                                                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasIllegitimateChildParent> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                              rdfs:Class;
+                                                                            rdfs:comment "This is the n-ary concept for the properties hasIllegitimateChild / hasIllegitimateParent"@en;
+                                                                            rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                            rdfs:label "hat illegitimes Kind / illegitimen Elternteil"@de,
+                                                                                       "tiene hijo(a) / padre o madre illegítimo(a)"@es,
+                                                                                       "has illegitimate child / parent"@en,
+                                                                                       "ha figlio(a) / genitore illegittimo(a)"@it;
+                                                                            rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasIllegitimateParent>,
+                                                                                         <https://d-nb.info/standards/elementset/agrelon#hasIllegitimateChild>;
+                                                                            rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasBiologicalChildParent>;
+                                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasInfluenceDoneeDonor> a rdfs:Class,
+                                                                          <http://www.w3.org/2002/07/owl#Class>;
+                                                                        rdfs:comment "This is the n-ary concept for the properties hasInfluenceDonee / hasInfluenceDonor"@en;
+                                                                        rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                        rdfs:label "hat Einfluss auf / ist beeinflusst durch"@de,
+                                                                                   "tiene influencia sobre / es influenciado(a) por"@es,
+                                                                                   "has influence on / is influenced by"@en,
+                                                                                   "ha influenza su / è influenzato(a) da"@it;
+                                                                        rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasInfluenceDonee>,
+                                                                                     <https://d-nb.info/standards/elementset/agrelon#hasInfluenceDonor>;
+                                                                        rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasProfessionalContact>;
+                                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasInlaw> a rdfs:Class,
+                                                            <http://www.w3.org/2002/07/owl#Class>;
+                                                          rdfs:comment "This is the n-ary concept for the property hasInlaw"@en;
+                                                          rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                          rdfs:label "tiene pariente político"@es,
+                                                                     "has in-law"@en,
+                                                                     "hat angeheiratete(n) Verwandte(n)"@de,
+                                                                     "ha parente per matrimonio"@it;
+                                                          rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasInlaw>;
+                                                          rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasRelative>;
+                                                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasIsChannel> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                rdfs:Class;
+                                                              rdfs:comment "This is the n-ary concept for the properties hasChannel / isChannelOf"@en;
+                                                              rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                              rdfs:label "hat Medium / ist Medium von"@de,
+                                                                         "tiene médium / es médium de"@es,
+                                                                         "has channel / is channel of"@en,
+                                                                         "ha sensitivo(a) / è sensitivo(a) di"@it;
+                                                              rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#isChannelOf>,
+                                                                           <https://d-nb.info/standards/elementset/agrelon#hasChannel>;
+                                                              rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasSpiritualContact>;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasIsChief> a rdfs:Class,
+                                                              <http://www.w3.org/2002/07/owl#Class>;
+                                                            rdfs:comment "This is the n-ary concept for the properties hasChief / isChiefOf"@en;
+                                                            rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                            rdfs:label "hat Chef / ist Chef von"@de,
+                                                                       "has chief / is chief of"@en,
+                                                                       "tiene jefe / es jefe de"@es,
+                                                                       "ha capo / è capo di"@it;
+                                                            rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasChief>,
+                                                                         <https://d-nb.info/standards/elementset/agrelon#isChiefOf>;
+                                                            rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasAssociate>;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasIsFounder> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                rdfs:Class;
+                                                              rdfs:comment "This is the n-ary concept for the properties hasFounder / isFounderOf"@en;
+                                                              rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                              rdfs:label "has founder / is founder of"@en,
+                                                                         "tiene fundador(a) / es fundador(a) de"@es,
+                                                                         "hat Gründer / ist Gründer von"@de,
+                                                                         "ha fondatore o fondatrice / è fondatore o fondatrice di"@it;
+                                                              rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#isFounderOf>,
+                                                                           <https://d-nb.info/standards/elementset/agrelon#hasFounder>;
+                                                              rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasAssociate>;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasIsMember> a <http://www.w3.org/2002/07/owl#Class>,
+                                                               rdfs:Class;
+                                                             rdfs:comment "This is the n-ary concept for the properties hasMember / isMemberOf"@en;
+                                                             rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                             rdfs:label "ha membro / è membro di"@it,
+                                                                        "has member / is member of"@en,
+                                                                        "tiene membrio / es miembro de"@es,
+                                                                        "hat Mitglied / ist Mitglied von"@de;
+                                                             rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#isMemberOf>,
+                                                                          <https://d-nb.info/standards/elementset/agrelon#hasMember>;
+                                                             rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasAssociate>;
+                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasIsMuse> a rdfs:Class,
+                                                             <http://www.w3.org/2002/07/owl#Class>;
+                                                           rdfs:comment "This is the n-ary concept for the properties hasMuse / isMuseOf"@en;
+                                                           rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                           rdfs:label "has muse / is muse of"@en,
+                                                                      "tiene musa / es musa de"@es,
+                                                                      "hat Muse / ist Muse von"@de,
+                                                                      "ha musa / è musa di"@it;
+                                                           rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#isMuseOf>,
+                                                                        <https://d-nb.info/standards/elementset/agrelon#hasMuse>;
+                                                           rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasProfessionalContact>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasLover> a <http://www.w3.org/2002/07/owl#Class>,
+                                                            rdfs:Class;
+                                                          rdfs:comment "This is the n-ary concept for the property hasLover"@en;
+                                                          rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                          rdfs:label "hat Geliebte(n)"@de,
+                                                                     "ha amante"@it,
+                                                                     "has lover"@en,
+                                                                     "tiene amante"@es;
+                                                          rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasLover>;
+                                                          rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasAcquaintance>;
+                                                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasMultipleBirthSibling> a rdfs:Class,
+                                                                           <http://www.w3.org/2002/07/owl#Class>;
+                                                                         rdfs:comment "This is the n-ary concept for the property hasMultipleBirthSibling"@en;
+                                                                         rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                         rdfs:label "tiene hermano(a) gemelo(a)"@es,
+                                                                                    "hat Mehrlingsgeschwister"@de,
+                                                                                    "ha fratello o sorella plurigemellare"@it,
+                                                                                    "has multiple birth sibling"@en;
+                                                                         rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasMultipleBirthSibling>;
+                                                                         rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasSibling>;
+                                                                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasMurdereeMurderer> a rdfs:Class,
+                                                                       <http://www.w3.org/2002/07/owl#Class>;
+                                                                     rdfs:comment "This is the n-ary concept for the properties hasMurderee / hasMurderer"@en;
+                                                                     rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                     rdfs:label "hat Mordopfer / Mörder"@de,
+                                                                                "ha vittima domicidio / assassino(a)"@it,
+                                                                                "tiene víctima / asesino(a)"@es,
+                                                                                "has murder victim / murderer"@en;
+                                                                     rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasMurderer>,
+                                                                                  <https://d-nb.info/standards/elementset/agrelon#hasMurderee>;
+                                                                     rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasVitalLethalContact>;
+                                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasNieceNephewAuntUncle> a rdfs:Class,
+                                                                           <http://www.w3.org/2002/07/owl#Class>;
+                                                                         rdfs:comment "This is the n-ary concept for the properties hasAuntUncle / hasNieceNephew"@en;
+                                                                         rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                         rdfs:label "hat Tante oder Onkel / Nichte oder Neffe"@de,
+                                                                                    "has aunt or uncle / niece or nephew"@en,
+                                                                                    "tiene tío o tía / sobrino(a)"@es,
+                                                                                    "ha zia o zio / nipote (di zii)"@it;
+                                                                         rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasAuntUncle>,
+                                                                                      <https://d-nb.info/standards/elementset/agrelon#hasNieceNephew>;
+                                                                         rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasRelative>;
+                                                                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasOffspringAncestor> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                        rdfs:Class;
+                                                                      rdfs:comment "This is the n-ary concept for the properties hasAncestor / hasOffspring"@en;
+                                                                      rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                      rdfs:label "has ancestor / offspring"@en,
+                                                                                 "tiene ancestro / heredero(a)"@es,
+                                                                                 "hat Vorfahr / Nachkomme"@de,
+                                                                                 "ha antenato / discendente"@it;
+                                                                      rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasAncestor>,
+                                                                                   <https://d-nb.info/standards/elementset/agrelon#hasOffspring>;
+                                                                      rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasRelative>;
+                                                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasProfessionalContact> a rdfs:Class,
+                                                                          <http://www.w3.org/2002/07/owl#Class>;
+                                                                        rdfs:comment "This is the n-ary concept for the property hasProfessionalContact"@en;
+                                                                        rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                        rdfs:label "has professional contact"@en,
+                                                                                   "ha contatto professionale"@it,
+                                                                                   "hat Berufskontakt"@de,
+                                                                                   "tiene relación profesional"@es;
+                                                                        rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasProfessionalContact>;
+                                                                        rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#RelatedAgent>;
+                                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasRelative> a rdfs:Class,
+                                                               <http://www.w3.org/2002/07/owl#Class>;
+                                                             rdfs:comment "This is the n-ary concept for the property hasRelative"@en;
+                                                             rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                             rdfs:label "hat Verwandte(n)"@de,
+                                                                        "tiene pariente"@es,
+                                                                        "has relative"@en,
+                                                                        "ha parente"@it;
+                                                             rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasRelative>;
+                                                             rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#RelatedAgent>;
+                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasSibling> a rdfs:Class,
+                                                              <http://www.w3.org/2002/07/owl#Class>;
+                                                            rdfs:comment "This is the n-ary concept for the property hasSibling"@en;
+                                                            rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                            rdfs:label "hat Geschwister"@de,
+                                                                       "has sibling"@en,
+                                                                       "ha fratello o sorella"@it,
+                                                                       "tiene hermano(a)"@es;
+                                                            rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasSibling>;
+                                                            rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasRelative>;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasSiblingInlaw> a rdfs:Class,
+                                                                   <http://www.w3.org/2002/07/owl#Class>;
+                                                                 rdfs:comment "This is the n-ary concept for the property hasSiblingInlaw"@en;
+                                                                 rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                 rdfs:label "ha cognato(a)"@it,
+                                                                            "tiene cuñado(a)"@es,
+                                                                            "has sibling-in-law"@en,
+                                                                            "hat Schwager oder Schwägerin"@de;
+                                                                 rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasSiblingInlaw>;
+                                                                 rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasInlaw>;
+                                                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasSpiritualContact> a rdfs:Class,
+                                                                       <http://www.w3.org/2002/07/owl#Class>;
+                                                                     rdfs:comment "This is the n-ary concept for the property hasSpiritualContact"@en;
+                                                                     rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                     rdfs:label "has spiritual contact"@en,
+                                                                                "ha contatto spirituale"@it,
+                                                                                "tiene guía espiritual"@es,
+                                                                                "hat spirituellen Kontakt"@de;
+                                                                     rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasSpiritualContact>;
+                                                                     rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#RelatedAgent>;
+                                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasSpouse> a rdfs:Class,
+                                                             <http://www.w3.org/2002/07/owl#Class>;
+                                                           rdfs:comment "This is the n-ary concept for the property hasSpouse"@en;
+                                                           rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                           rdfs:label "ha coniuge"@it,
+                                                                      "has spouse"@en,
+                                                                      "tiene esposo(a)"@es,
+                                                                      "hat Ehepartner"@de;
+                                                           rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasSpouse>;
+                                                           rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasInlaw>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasStepChildParent> a rdfs:Class,
+                                                                      <http://www.w3.org/2002/07/owl#Class>;
+                                                                    rdfs:comment "This is the n-ary concept for the properties hasStepChild / hasStepParent"@en;
+                                                                    rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                    rdfs:label "hat Stiefkind / Stiefelternteil"@de,
+                                                                               "tiene hijo(a) / padre o madre adoptivo(a)"@es,
+                                                                               "has stepchild / stepparent"@en,
+                                                                               "ha figliastro(a) / padrigno o madrigna"@it;
+                                                                    rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasStepChild>,
+                                                                                 <https://d-nb.info/standards/elementset/agrelon#hasStepParent>;
+                                                                    rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasChildParent>;
+                                                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasStepSibling> a rdfs:Class,
+                                                                  <http://www.w3.org/2002/07/owl#Class>;
+                                                                rdfs:comment "This is the n-ary concept for the property hasStepSibling"@en;
+                                                                rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                rdfs:label "ha fratellastro o sorellastra"@it,
+                                                                           "hat Stiefgeschwister"@de,
+                                                                           "tiene hermano(a) adoptivo(a)"@es,
+                                                                           "has stepsibling"@en;
+                                                                rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasStepSibling>;
+                                                                rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasSibling>;
+                                                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasStudentTeacher> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                     rdfs:Class;
+                                                                   rdfs:comment "This is the n-ary concept for the properties hasStudent / hasTeacher"@en;
+                                                                   rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                   rdfs:label "hat Schüler / Lehrer"@de,
+                                                                              "ha scolaro(a) / insegnante"@it,
+                                                                              "tiene estudiante / maestro(a)"@es,
+                                                                              "has Student / teacher"@en;
+                                                                   rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasTeacher>,
+                                                                                <https://d-nb.info/standards/elementset/agrelon#hasStudent>;
+                                                                   rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasProfessionalContact>;
+                                                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#HasVitalLethalContact> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                         rdfs:Class;
+                                                                       rdfs:comment "This is the n-ary concept for the property hasVitalLethalContact"@en;
+                                                                       rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                       rdfs:label "ha contatto vitale o letale"@it,
+                                                                                  "tiene contacto vital o letal"@es,
+                                                                                  "hat vitalen oder letalen Kontakt"@de,
+                                                                                  "has vital or lethal contact"@en;
+                                                                       rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#hasVitalLethalContact>;
+                                                                       rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#RelatedAgent>;
+                                                                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#IsHasPatron> a rdfs:Class,
+                                                               <http://www.w3.org/2002/07/owl#Class>;
+                                                             rdfs:comment "This is the n-ary concept for the properties hasPatron / isPatronOf"@en;
+                                                             rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                             rdfs:label "has patron / is patron of"@en,
+                                                                        "ha mecenateè mecenate di"@it,
+                                                                        "tiene mecenas / es mecenas de"@es,
+                                                                        "hat Mäzen / ist Mäzen von"@de;
+                                                             rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#isPatronOf>,
+                                                                          <https://d-nb.info/standards/elementset/agrelon#hasPatron>;
+                                                             rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasProfessionalContact>;
+                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#IsHasPhysician> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                  rdfs:Class;
+                                                                rdfs:comment "This is the n-ary concept for the properties hasPhysician / isPhysicianOf"@en;
+                                                                rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                rdfs:label "has physician / is physician of"@en,
+                                                                           "tiene médico / es médico de"@es,
+                                                                           "hat Arzt / ist Arzt von"@de,
+                                                                           "ha medico / è medico di"@it;
+                                                                rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#isPhysicianOf>,
+                                                                             <https://d-nb.info/standards/elementset/agrelon#hasPhysician>;
+                                                                rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#HasVitalLethalContact>;
+                                                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#NAries> a <http://www.w3.org/2002/07/owl#Class>,
+                                                          rdfs:Class;
+                                                        rdfs:comment "This is the top class for all n-ary classes"@en;
+                                                        rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                        rdfs:label "n-ary Klassen"@de,
+                                                                   "n-ary classes"@en;
+                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#RelatedAgent> a <http://www.w3.org/2002/07/owl#Class>,
+                                                                rdfs:Class;
+                                                              rdfs:comment "This is the n-ary concept for the property relatedAgent"@en;
+                                                              rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                              rdfs:label "agente connesso"@it,
+                                                                         "related Agent"@en,
+                                                                         "agente relacionado"@es,
+                                                                         "verknüpfter Agens"@de;
+                                                              rdfs:seeAlso <https://d-nb.info/standards/elementset/agrelon#relatedAgent>;
+                                                              rdfs:subClassOf <https://d-nb.info/standards/elementset/agrelon#NAries>;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#aenneLoehden> a <http://xmlns.com/foaf/0.1/Person>;
+                                                              rdfs:label "Aenne Löhden".
+<https://d-nb.info/standards/elementset/agrelon#berenikeLitz> a <http://xmlns.com/foaf/0.1/Person>;
+                                                              rdfs:label "Berenike Litz";
+                                                              <http://www.w3.org/2002/07/owl#sameAs> <https://d-nb.info/gnd/141919701>.
+<https://d-nb.info/standards/elementset/agrelon#correspondsTo> a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                                                                 rdf:Property;
+                                                               rdfs:comment """A normal property's (type rdf:Property) to-direction matches an n-ary concept (type rdfs:Class). 
+2 mutually inverse normal properties match only 1 n-ary concept, because the meta statements must be identical for both 'to-direction' and 'fro-direction' of the relationship. 
+The normal property's fro-direction is related to the n-ary concept via correspondsToInverse."""@en;
+                                                               rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                               rdfs:label "korrespondiert mit"@de,
+                                                                          "corresponds to"@en,
+                                                                          "corresponde con"@es,
+                                                                          "corrisponde a"@it;
+                                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                                                                        rdf:Property;
+                                                                      rdfs:comment """A normal property's (type rdf:Property) fro-direction matches an n-ary concept (type rdfs:Class). 
+2 mutually inverse normal properties match only 1 n-ary concept, because the meta statements must be identical for both 'to-direction' and 'fro-direction' of the relationship. 
+The normal property's to-direction is related to the n-ary concept via correspondsTo."""@en;
+                                                                      rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                      rdfs:label "korrespondiert invers mit"@de,
+                                                                                 "corresponds to inverse"@en,
+                                                                                 "corresponde inversamente con"@es,
+                                                                                 "corrisponde inversamente a"@it;
+                                                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#hasAcquaintance> a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                                                                   rdf:Property;
+                                                                 rdfs:comment "A person (subject) privately knows a person (object)."@en;
+                                                                 rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                 rdfs:label "hat Bekannte(n)"@de,
+                                                                            "ha conoscente"@it,
+                                                                            "has acquaintance"@en,
+                                                                            "tiene conocido(a)"@es;
+                                                                 rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#relatedAgent>;
+                                                                 <http://www.w3.org/2002/07/owl#equivalentProperty> <https://d-nb.info/standards/elementset/gnd#acquaintanceshipOrFriendship>;
+                                                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                 <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasAcquaintance>;
+                                                                 <https://d-nb.info/standards/elementset/agrelon#hasGndCode> "beza".
+<https://d-nb.info/standards/elementset/agrelon#hasAdoptiveChild> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                                    rdf:Property;
+                                                                  rdfs:comment "A person (subject) adopted a person (object)."@en;
+                                                                  rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                  rdfs:label "ha figlio(a) adottivo(a)"@it,
+                                                                             "tiene hijo(a) adoptivo(a)"@es,
+                                                                             "has adoptive child"@en,
+                                                                             "hat Adoptivkind"@de;
+                                                                  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasChild>;
+                                                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                  <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasAdoptiveChildParent>.
+<https://d-nb.info/standards/elementset/agrelon#hasAdoptiveParent> a rdf:Property,
+                                                                     <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                   rdfs:comment "A person (subject) was adopted by a person (object)."@en;
+                                                                   rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                   rdfs:label "has adoptive parent"@en,
+                                                                              "tiene padre o madre adoptivo(a)"@es,
+                                                                              "ha genitore adottivo"@it,
+                                                                              "hat Adoptivelternteil"@de;
+                                                                   rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasParent>;
+                                                                   <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasAdoptiveChild>;
+                                                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                   <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasAdoptiveChildParent>.
+<https://d-nb.info/standards/elementset/agrelon#hasAdoptiveSibling> a rdf:Property,
+                                                                      <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                                                                    rdfs:comment "A person (subject) has as sibling a person (object), where at least one of the two siblings is adoptive child of a joint parent."@en;
+                                                                    rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                    rdfs:label "hat Adoptivgeschwister"@de,
+                                                                               "has adoptive sibling"@en,
+                                                                               "tiene hermano(a) adoptivo(a)"@es,
+                                                                               "ha fratello adottato o sorella adottata"@it;
+                                                                    rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasSibling>;
+                                                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                    <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasAdoptiveSibling>.
+<https://d-nb.info/standards/elementset/agrelon#hasAncestor> a rdf:Property,
+                                                               <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+                                                             rdfs:comment "A person (subject) has an ancestor (object), where the chain of parent-relations might include adoptive, foster, illegitimate, step relations."@en;
+                                                             rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                             rdfs:label "tiene ancestro"@es,
+                                                                        "hat Vorfahr"@de,
+                                                                        "has ancestor"@en,
+                                                                        "ha antenato"@it;
+                                                             rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasRelative>;
+                                                             <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasOffspring>;
+                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                             <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasOffspringAncestor>.
+<https://d-nb.info/standards/elementset/agrelon#hasAssociate> a rdf:Property,
+                                                                <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                              rdfs:comment "A person (subject) is associated with a group (object), or a group (subject) is associated with a person (object)."@en;
+                                                              rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                              rdfs:label "hat Gruppenzugehörigkeit"@de,
+                                                                         "ha gruppo di appartenenza"@it,
+                                                                         "tiene grupo de afiliación"@es,
+                                                                         "has group affiliation"@en;
+                                                              rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#relatedAgent>;
+                                                              <http://www.w3.org/2002/07/owl#equivalentProperty> <https://d-nb.info/standards/elementset/gnd#affiliation>;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                              <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasAssociate>;
+                                                              <https://d-nb.info/standards/elementset/agrelon#hasGndCode> "affi".
+<https://d-nb.info/standards/elementset/agrelon#hasAuntUncle> a rdf:Property,
+                                                                <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                              rdfs:comment "A person (subject) has an aunt or uncle (object)."@en;
+                                                              rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                              rdfs:label "hat Tante oder Onkel"@de,
+                                                                         "tiene tío o tía"@es,
+                                                                         "has aunt or uncle"@en,
+                                                                         "ha zia o zio"@it;
+                                                              rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasRelative>;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                              <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasNieceNephewAuntUncle>.
+<https://d-nb.info/standards/elementset/agrelon#hasBeginDate> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                                                rdf:Property;
+                                                              rdfs:comment "A metadata period or phase (subject) has a temporal start (date). The phase might e.g. concern a relationship between agents."@en;
+                                                              rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                              rdfs:label "tiene fecha inicial"@es,
+                                                                         "has begin date"@en,
+                                                                         "ha data dinizio"@it,
+                                                                         "hat Anfangsdatum"@de;
+                                                              rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#associatedDate>;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#hasBiologicalChild> a rdf:Property,
+                                                                      <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                    rdfs:comment "A person (subject) begot/conceived a person (object)."@en;
+                                                                    rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                    rdfs:label "ha figlio(a) biologico(a)"@it,
+                                                                               "tiene hijo(a) biológico(a)"@es,
+                                                                               "hat biologisches Kind"@de,
+                                                                               "has biological child"@en;
+                                                                    rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasChild>;
+                                                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                    <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasBiologicalChildParent>.
+<https://d-nb.info/standards/elementset/agrelon#hasBiologicalParent> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                                       rdf:Property;
+                                                                     rdfs:comment "A person (subject) was begotten/conceived by a person (object)."@en;
+                                                                     rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                     rdfs:label "has biological parent"@en,
+                                                                                "hat biologischen Elternteil"@de,
+                                                                                "ha genitore biologico"@it,
+                                                                                "tiene padre o madre biológico(a)"@es;
+                                                                     rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasParent>;
+                                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                     <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasBiologicalChildParent>.
+<https://d-nb.info/standards/elementset/agrelon#hasBiologicalSibling> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                                        rdf:Property;
+                                                                      rdfs:comment "A person (subject) has as sibling a person (object), where the two siblings share both biological parents."@en;
+                                                                      rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                      rdfs:label "ha fratello biologico o sorella biologica"@it,
+                                                                                 "has biological sibling"@en,
+                                                                                 "hat biologisches Geschwister"@de,
+                                                                                 "tiene hermano(a) biológico(a)"@es;
+                                                                      rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasSibling>;
+                                                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                      <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasBiologicalSibling>.
+<https://d-nb.info/standards/elementset/agrelon#hasChannel> a rdf:Property,
+                                                              <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                            rdfs:comment "A person or spiritual entity (subject), e.g. a dead person, spirit, angel etc. has as a channel or medium a person or spiritual entity (object). I.e. the subject transmits messages to the object."@en;
+                                                            rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                            rdfs:label "tiene médium"@es,
+                                                                       "hat Medium"@de,
+                                                                       "has channel"@en,
+                                                                       "ha sensitivo(a)"@it;
+                                                            rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasSpiritualContact>;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                            <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasIsChannel>.
+<https://d-nb.info/standards/elementset/agrelon#hasChief> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                            rdf:Property;
+                                                          rdfs:comment "A group (subject) has as a chief a person (object)."@en;
+                                                          rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                          rdfs:label "hat Chef"@de,
+                                                                     "tiene jefe"@es,
+                                                                     "has chief"@en,
+                                                                     "ha capo"@it;
+                                                          rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasAssociate>;
+                                                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                          <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasIsChief>.
+<https://d-nb.info/standards/elementset/agrelon#hasChild> a rdf:Property,
+                                                            <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                          rdfs:comment "A person has as some kind of child a person (object)."@en;
+                                                          rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                          rdfs:label "tiene hijo(a)"@es,
+                                                                     "hat Kind"@de,
+                                                                     "ha figlio(a)"@it,
+                                                                     "has child"@en;
+                                                          rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasOffspring>;
+                                                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                          <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasChildParent>.
+<https://d-nb.info/standards/elementset/agrelon#hasChildInlaw> a rdf:Property,
+                                                                 <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                               rdfs:comment "A person's (subject) child is married with a person (object)."@en;
+                                                               rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                               rdfs:label "has child-in-law"@en,
+                                                                          "ha genero o nuora"@it,
+                                                                          "tiene yerno o nuera"@es,
+                                                                          "hat Schwiegerkind"@de;
+                                                               rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasInlaw>;
+                                                               <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasParentInlaw>;
+                                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                               <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasChildParentInlaw>.
+<https://d-nb.info/standards/elementset/agrelon#hasCohabitee> a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                                                                rdf:Property;
+                                                              rdfs:comment "A person (subject) lives together with and/or is companion of a person (object), without being married."@en;
+                                                              rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                              rdfs:label "hat Lebensgefährte"@de,
+                                                                         "tiene cohabitante"@es,
+                                                                         "has cohabitee"@en,
+                                                                         "ha compagno(a) di vita"@it;
+                                                              rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasAcquaintance>;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                              <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasCohabitee>.
+<https://d-nb.info/standards/elementset/agrelon#hasColleague> a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                                                                rdf:Property;
+                                                              rdfs:comment "A person (subject) works together with a person (object) at the same corporation."@en;
+                                                              rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                              rdfs:label "has colleague"@en,
+                                                                         "ha collega"@it,
+                                                                         "hat Kollege"@de,
+                                                                         "tiene colega"@es;
+                                                              rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasProfessionalContact>;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                              <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasColleague>.
+<https://d-nb.info/standards/elementset/agrelon#hasCooperator> a rdf:Property,
+                                                                 <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                                                               rdfs:comment "A person (subject) works together with a person or corporation (object)."@en;
+                                                               rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                               rdfs:label "hat Kollaborator"@de,
+                                                                          "has collaborator"@en,
+                                                                          "ha collaboratore o collaboratrice"@it,
+                                                                          "tiene colaborador(a)"@es;
+                                                               rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasProfessionalContact>;
+                                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                               <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasCooperator>.
+<https://d-nb.info/standards/elementset/agrelon#hasCorrespondent> a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                                                                    rdf:Property;
+                                                                  rdfs:comment "A person or corporation (subject) exchanges letters with a person or corporation (object)."@en;
+                                                                  rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                  rdfs:label "hat Korrespondent"@de,
+                                                                             "has correspondent"@en,
+                                                                             "ha corrispondente"@it,
+                                                                             "tiene correspondente"@es;
+                                                                  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#relatedAgent>;
+                                                                  <http://www.w3.org/2002/07/owl#equivalentProperty> <https://d-nb.info/standards/elementset/gnd#correspondent>;
+                                                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                  <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasCorrespondent>;
+                                                                  <https://d-nb.info/standards/elementset/agrelon#hasGndCode> "corr".
+<https://d-nb.info/standards/elementset/agrelon#hasCousin> a rdf:Property,
+                                                             <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                                                           rdfs:comment "A person (subject) has a cousin (object)."@en;
+                                                           rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                           rdfs:label "hat Cousin"@de,
+                                                                      "ha cugino(a)"@it,
+                                                                      "tiene primo o prima"@es,
+                                                                      "has cousin"@en;
+                                                           rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasRelative>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                           <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasCousin>.
+<https://d-nb.info/standards/elementset/agrelon#hasEmployee> a rdf:Property,
+                                                               <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                             rdfs:comment "A person or corporation (subject) for whom/which a person (object) works."@en;
+                                                             rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                             rdfs:label "tiene empleado(a)"@es,
+                                                                        "hat Arbeitnehmer"@de,
+                                                                        "has employee"@en,
+                                                                        "ha impiegato(a)"@it;
+                                                             rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasProfessionalContact>;
+                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                             <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasEmployeeEmployer>.
+<https://d-nb.info/standards/elementset/agrelon#hasEmployer> a rdf:Property,
+                                                               <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                             rdfs:comment "A person (subject) works for a person or corporation (object)."@en;
+                                                             rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                             rdfs:label "ha datore di lavoro"@it,
+                                                                        "hat Arbeitgeber"@de,
+                                                                        "tiene empleador(a)"@es,
+                                                                        "has employer"@en;
+                                                             rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasProfessionalContact>;
+                                                             <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasEmployee>;
+                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                             <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasEmployeeEmployer>.
+<https://d-nb.info/standards/elementset/agrelon#hasEndDate> a rdf:Property,
+                                                              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                            rdfs:comment "A metadata period or phase (subject) has a temporal end (date). The phase might e.g. concern a relationship between agents."@en;
+                                                            rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                            rdfs:label "has end date"@en,
+                                                                       "tiene fecha final"@es,
+                                                                       "hat Enddatum"@de,
+                                                                       "ha data finale"@it;
+                                                            rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#associatedDate>;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#hasFianceeFiance> a rdf:Property,
+                                                                    <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                  rdfs:comment "A person (subject) is engaged with a person (object)."@en;
+                                                                  rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                  rdfs:label "has fiancee  or fiance"@en,
+                                                                             "hat Verlobte(n)"@de,
+                                                                             "tiene prometido(a)"@es,
+                                                                             "ha fidanzato(a)"@it;
+                                                                  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasInlaw>;
+                                                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                  <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasFianceeFiance>.
+<https://d-nb.info/standards/elementset/agrelon#hasFosterChild> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                                  rdf:Property;
+                                                                rdfs:comment "A person (subject) fostered a person (object), without being a biological parent."@en;
+                                                                rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                rdfs:label "hat Pflegekind"@de,
+                                                                           "has foster child"@en,
+                                                                           "tiene hijo(a) de crianza"@es,
+                                                                           "ha pupillo(a)"@it;
+                                                                rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasChild>;
+                                                                <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasFosterParent>;
+                                                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasFosterChildParent>.
+<https://d-nb.info/standards/elementset/agrelon#hasFosterParent> a rdf:Property,
+                                                                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                 rdfs:comment "A person (subject) was fostered by a person (object), without being a biological child."@en;
+                                                                 rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                 rdfs:label "hat Pflegeelternteil"@de,
+                                                                            "ha foster genitore"@it,
+                                                                            "tiene padre o madre de crianza"@es,
+                                                                            "has foster parent"@en;
+                                                                 rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasParent>;
+                                                                 <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasFosterChild>;
+                                                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                 <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasFosterChildParent>.
+<https://d-nb.info/standards/elementset/agrelon#hasFosterSibling> a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                                                                    rdf:Property;
+                                                                  rdfs:comment "A person (subject) has as sibling a person (object), where at least one of the two siblings is foster child of a joint parent."@en;
+                                                                  rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                  rdfs:label "tiene hermano(a) de crianza"@es,
+                                                                             "hat Pflegegeschwister"@de,
+                                                                             "has foster sibling"@en,
+                                                                             "ha fratello o sorella di latte"@it;
+                                                                  rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasSibling>;
+                                                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                  <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasFosterSibling>.
+<https://d-nb.info/standards/elementset/agrelon#hasFounder> a rdf:Property,
+                                                              <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                            rdfs:comment "A group (subject) has as a founder a person (object)."@en;
+                                                            rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                            rdfs:label "ha fondatore o fondatrice"@it,
+                                                                       "has founder"@en,
+                                                                       "hat Gründer"@de,
+                                                                       "tiene fundador(a)"@es;
+                                                            rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasAssociate>;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                            <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasIsFounder>.
+<https://d-nb.info/standards/elementset/agrelon#hasFriend> a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                                                             rdf:Property;
+                                                           rdfs:comment "A person (subject) is friends with a person (object)."@en;
+                                                           rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                           rdfs:label "has friend"@en,
+                                                                      "hat Freund"@de,
+                                                                      "tiene amigo(a)"@es,
+                                                                      "ha amico(a)"@it;
+                                                           rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasAcquaintance>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                           <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasFriend>.
+<https://d-nb.info/standards/elementset/agrelon#hasGndCode> a <http://www.w3.org/2002/07/owl#AnnotationProperty>,
+                                                              rdf:Property;
+                                                            rdfs:comment "A relationship type (subject) has a correlating GND code (literal). In the context of the project GND (Gemeinsame Normdatei), codes for agent relations correlating to AgRelOn are successively determined in cooperation with the Library of Congress or rather NDMSO (Network Development and MARC Standards Office) to supplement MARC. The codes will be indicated in AgRelOn when they are available."@en;
+                                                            rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                            rdfs:label "ha chiave di accesso GND"@it,
+                                                                       "has GND code"@en,
+                                                                       "tiene código de GND"@es,
+                                                                       "hat GND Code"@de;
+                                                            rdfs:range xsd:string;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#hasGodChild> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                               rdf:Property;
+                                                             rdfs:comment "A person (subject) obtains as godchild a person (object) at the godchild's christening."@en;
+                                                             rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                             rdfs:label "tiene ahijado(a)"@es,
+                                                                        "has godchild"@en,
+                                                                        "hat Patenkind"@de,
+                                                                        "ha figlioccio o figlioccia"@it;
+                                                             rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasRelative>;
+                                                             <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasGodParent>;
+                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                             <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasGodChildParent>.
+<https://d-nb.info/standards/elementset/agrelon#hasGodParent> a rdf:Property,
+                                                                <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                              rdfs:comment "A person (subject) obtains as godparent a person (object) at the godchild's christening."@en;
+                                                              rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                              rdfs:label "hat Pate"@de,
+                                                                         "ha padrino o padrina"@it,
+                                                                         "has godparent"@en,
+                                                                         "tiene padrino o madrina"@es;
+                                                              rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasRelative>;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                              <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasGodChildParent>.
+<https://d-nb.info/standards/elementset/agrelon#hasGrandChild> a rdf:Property,
+                                                                 <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                               rdfs:comment "A person's (subject) child has a child (object)."@en;
+                                                               rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                               rdfs:label "has grandchild"@en,
+                                                                          "tiene nieto(a)"@es,
+                                                                          "ha nipote (di nonni)"@it,
+                                                                          "hat Enkel"@de;
+                                                               rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasOffspring>;
+                                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                               <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasGrandChildParent>.
+<https://d-nb.info/standards/elementset/agrelon#hasGrandParent> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                                  rdf:Property;
+                                                                rdfs:comment "A person (subject) has as grandparent a person (object), where the two parent-relations might include adoptive, foster, illegitimate, step relations."@en;
+                                                                rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                rdfs:label "hat Großelternteil"@de,
+                                                                           "ha nonno(a)"@it,
+                                                                           "has grandparent"@en,
+                                                                           "tiene abuelo(a)"@es;
+                                                                rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasAncestor>;
+                                                                <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasGrandChild>;
+                                                                <http://www.w3.org/2002/07/owl#propertyChainAxiom> (<https://d-nb.info/standards/elementset/agrelon#hasParent>
+                                                                                                                    <https://d-nb.info/standards/elementset/agrelon#hasParent>);
+                                                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasGrandChildParent>.
+<https://d-nb.info/standards/elementset/agrelon#hasHalfSibling> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                                  rdf:Property;
+                                                                rdfs:comment "A person (subject) has as sibling a person (object), where the two siblings share only one biological parent."@en;
+                                                                rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                rdfs:label "tiene medio hermano(a)"@es,
+                                                                           "ha fratellastro a sorellastra"@it,
+                                                                           "has half sibling"@en,
+                                                                           "hat Halbgeschwister"@de;
+                                                                rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasSibling>;
+                                                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasHalfSibling>.
+<https://d-nb.info/standards/elementset/agrelon#hasIllegitimateChild> a rdf:Property,
+                                                                        <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                      rdfs:comment "A person (subject) begot/conceived a person (object), without the two biological parents being married at the child's day of birth."@en;
+                                                                      rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                      rdfs:label "tiene hijo(a) illegítimo(a)"@es,
+                                                                                 "has illegitimate child"@en,
+                                                                                 "hat illegitimes Kind"@de,
+                                                                                 "ha figlio(a) illegittimo(a)"@it;
+                                                                      rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasBiologicalChild>;
+                                                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                      <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasIllegitimateChildParent>.
+<https://d-nb.info/standards/elementset/agrelon#hasIllegitimateParent> a rdf:Property,
+                                                                         <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                       rdfs:comment "A person (subject) was begotten/conceived by a person (object), without the two biological parents being married at the child's day of birth."@en;
+                                                                       rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                       rdfs:label "tiene padre o madre ilegítimo(a)"@es,
+                                                                                  "has illegitimate parent"@en,
+                                                                                  "ha genitore illegittimo"@it,
+                                                                                  "hat illegitimen Elternteil"@de;
+                                                                       rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasBiologicalParent>;
+                                                                       <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasIllegitimateChild>;
+                                                                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                       <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasIllegitimateChildParent>.
+<https://d-nb.info/standards/elementset/agrelon#hasInfluenceDonee> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                                     rdf:Property;
+                                                                   rdfs:comment "A person or corporation (subject) who influences a person or corporation (object)."@en;
+                                                                   rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                   rdfs:label "hat Einfluss auf"@de,
+                                                                              "tiene influencia sobre"@es,
+                                                                              "ha influenza su"@it,
+                                                                              "has influence on"@en;
+                                                                   rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasProfessionalContact>;
+                                                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                   <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasInfluenceDoneeDonor>.
+<https://d-nb.info/standards/elementset/agrelon#hasInfluenceDonor> a rdf:Property,
+                                                                     <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                   rdfs:comment "A person or corporation (subject) who is influenced by a person or corporation (object)."@en;
+                                                                   rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                   rdfs:label "is influenced by"@en,
+                                                                              "ist beeinflusst durch"@de,
+                                                                              "es influenciado(a) por"@es,
+                                                                              "è influenzato(a) da"@it;
+                                                                   rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasProfessionalContact>;
+                                                                   <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasInfluenceDonee>;
+                                                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                   <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasInfluenceDoneeDonor>.
+<https://d-nb.info/standards/elementset/agrelon#hasInlaw> a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                                                            rdf:Property;
+                                                          rdfs:comment "A person (subject) is related with a person (object) by a marriage between themselves or between relatives."@en;
+                                                          rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                          rdfs:label "tiene pariente político"@es,
+                                                                     "has in-law"@en,
+                                                                     "hat angeheiratete(n) Verwandte(n)"@de,
+                                                                     "ha parente per matrimonio"@it;
+                                                          rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasRelative>;
+                                                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                          <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasInlaw>.
+<https://d-nb.info/standards/elementset/agrelon#hasLover> a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                                                            rdf:Property;
+                                                          rdfs:comment "A person (subject) has a liaison with a person (object), without being married."@en;
+                                                          rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                          rdfs:label "has lover"@en,
+                                                                     "ha amante"@it,
+                                                                     "tiene amante"@es,
+                                                                     "hat Geliebte(n)"@de;
+                                                          rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasAcquaintance>;
+                                                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                          <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasLover>.
+<https://d-nb.info/standards/elementset/agrelon#hasMember> a rdf:Property,
+                                                             <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                           rdfs:comment "A goup (subject) has as a member a person (object)."@en;
+                                                           rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                           rdfs:label "has member"@en,
+                                                                      "hat Mitglied"@de,
+                                                                      "ha membro"@it,
+                                                                      "tiene membrio"@es;
+                                                           rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasAssociate>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                           <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasIsMember>.
+<https://d-nb.info/standards/elementset/agrelon#hasMultipleBirthSibling> a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                                                                           rdf:Property;
+                                                                         rdfs:comment "A person (subject) has as sibling a person (object), where both siblings where carried together in a joint pregnancy. This denotes not only twins, but also triplets etc.. Mostly, multiple birth siblings are biolological siblings, i.e. share both biological parents, but this doesn't have to be the case."@en;
+                                                                         rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                         rdfs:label "has multiple birth sibling"@en,
+                                                                                    "ha fratello o sorella plurigemellare"@it,
+                                                                                    "tiene hermano(a) gemelo(a)"@es,
+                                                                                    "hat Mehrlingsgeschwister"@de;
+                                                                         rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasSibling>;
+                                                                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                         <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasMultipleBirthSibling>.
+<https://d-nb.info/standards/elementset/agrelon#hasMurderee> a rdf:Property,
+                                                               <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                             rdfs:comment "A person or corporate body (subject) murders a person (object)."@en;
+                                                             rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                             rdfs:label "tiene víctima"@es,
+                                                                        "has murder victim"@en,
+                                                                        "hat Mordopfer"@de,
+                                                                        "ha vittima domicidio"@it;
+                                                             rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasVitalLethalContact>;
+                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                             <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasMurdereeMurderer>.
+<https://d-nb.info/standards/elementset/agrelon#hasMurderer> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                               rdf:Property;
+                                                             rdfs:comment "A person (subject) is murdered by a person or corporate body (object)."@en;
+                                                             rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                             rdfs:label "tiene asesino(a)"@es,
+                                                                        "has murderer"@en,
+                                                                        "ha assassino(a)"@it,
+                                                                        "hat Mörder"@de;
+                                                             rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasVitalLethalContact>;
+                                                             <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasMurderee>;
+                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                             <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasMurdereeMurderer>.
+<https://d-nb.info/standards/elementset/agrelon#hasMuse> a rdf:Property,
+                                                           <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                         rdfs:comment "A person or corporation (subject; e.g. an artist or group of artists) who is inspired by a person (object)."@en;
+                                                         rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                         rdfs:label "has muse"@en,
+                                                                    "ha musa"@it,
+                                                                    "hat Muse"@de,
+                                                                    "tiene musa"@es;
+                                                         rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasProfessionalContact>;
+                                                         <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#isMuseOf>;
+                                                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                         <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasIsMuse>.
+<https://d-nb.info/standards/elementset/agrelon#hasNieceNephew> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                                  rdf:Property;
+                                                                rdfs:comment "A person (subject) has a niece or nephew (object)."@en;
+                                                                rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                rdfs:label "ha nipote (di zii)"@it,
+                                                                           "tiene sobrino(a)"@es,
+                                                                           "has niece or nephew"@en,
+                                                                           "hat Nichte oder Neffe"@de;
+                                                                rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasRelative>;
+                                                                <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasAuntUncle>;
+                                                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasNieceNephewAuntUncle>.
+<https://d-nb.info/standards/elementset/agrelon#hasObject> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                             rdf:Property;
+                                                           rdfs:comment """At an n-ary concept's instance (subject), something (object) takes the object role of the asymmetric relationship meant by the n-ary concept. 
+For inverse relationsships, the subject and object role follow the naming of the n-ary concept when reading quasi just the first part of the n-ary concept name."""@en;
+                                                           rdfs:domain <https://d-nb.info/standards/elementset/agrelon#NAries>;
+                                                           rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                           rdfs:label "has object"@en,
+                                                                      "tiene objeto"@es,
+                                                                      "hat Objekt"@de,
+                                                                      "ha oggetto"@it;
+                                                           <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#isObject>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#hasOffspring> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                                rdf:Property;
+                                                              rdfs:comment "A person (subject) has an offspring (object), where the chain of child-relations might include adoptive, foster, illegitimate, step relations."@en;
+                                                              rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                              rdfs:label "hat Nachkomme"@de,
+                                                                         "has offspring"@en,
+                                                                         "tiene heredero(a)"@es,
+                                                                         "ha discendente"@it;
+                                                              rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasRelative>;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                              <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasOffspringAncestor>.
+<https://d-nb.info/standards/elementset/agrelon#hasParent> a rdf:Property,
+                                                             <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                           rdfs:comment "A person has as some kind of parent a person (object)."@en;
+                                                           rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                           rdfs:label "has parent"@en,
+                                                                      "tiene padre o madre"@es,
+                                                                      "hat Elternteil"@de,
+                                                                      "ha genitore"@it;
+                                                           rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasAncestor>;
+                                                           <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasChild>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                           <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasChildParent>.
+<https://d-nb.info/standards/elementset/agrelon#hasParentInlaw> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                                  rdf:Property;
+                                                                rdfs:comment "A person's (subject) spouse has a parent (object)."@en;
+                                                                rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                rdfs:label "has parent-in-law"@en,
+                                                                           "tiene suegro(a)"@es,
+                                                                           "ha suocero(a)"@it,
+                                                                           "hat Schwiegerelternteil"@de;
+                                                                rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasInlaw>;
+                                                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasChildParentInlaw>.
+<https://d-nb.info/standards/elementset/agrelon#hasPatron> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                             rdf:Property;
+                                                           rdfs:comment "A person or corporation (subject; e.g. an artist or group of artists) who is sponsored/favoured by a person or corporation (object)."@en;
+                                                           rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                           rdfs:label "tiene mecenas"@es,
+                                                                      "has patron"@en,
+                                                                      "ha mecenate"@it,
+                                                                      "hat Mäzen"@de;
+                                                           rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasProfessionalContact>,
+                                                                              <https://d-nb.info/standards/elementset/gnd#sponsorOrPatron>;
+                                                           <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#isPatronOf>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                           <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#IsHasPatron>.
+<https://d-nb.info/standards/elementset/agrelon#hasPhysician> a rdf:Property,
+                                                                <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                              rdfs:comment "A person or corporate body (subject) has as physician a person or corporate body (object)."@en;
+                                                              rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                              rdfs:label "tiene médico"@es,
+                                                                         "hat Arzt"@de,
+                                                                         "has physician"@en,
+                                                                         "ha medico"@it;
+                                                              rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasVitalLethalContact>;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                              <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#IsHasPhysician>.
+<https://d-nb.info/standards/elementset/agrelon#hasProfessionalContact> a rdf:Property,
+                                                                          <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                                                                        rdfs:comment "A person or corporation (subject) has some business/profession/occupation related relation with a person or corporation (object)."@en;
+                                                                        rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                        rdfs:label "hat Berufskontakt"@de,
+                                                                                   "ha contatto professionale"@it,
+                                                                                   "tiene relación profesional"@es,
+                                                                                   "has professional contact"@en;
+                                                                        rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#relatedAgent>;
+                                                                        <http://www.w3.org/2002/07/owl#equivalentProperty> <https://d-nb.info/standards/elementset/gnd#professionalRelationship>;
+                                                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                        <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasProfessionalContact>;
+                                                                        <https://d-nb.info/standards/elementset/agrelon#hasGndCode> "bezb".
+<https://d-nb.info/standards/elementset/agrelon#hasRelative> a rdf:Property,
+                                                               <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                                                             rdfs:comment "A person (subject) is kin to a person (object). This denotes not only biological kinship, but also inlaw, adoptive, step, foster relationships."@en;
+                                                             rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                             rdfs:label "hat Verwandte(n)"@de,
+                                                                        "ha parente"@it,
+                                                                        "tiene pariente"@es,
+                                                                        "has relative"@en;
+                                                             rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#relatedAgent>;
+                                                             <http://www.w3.org/2002/07/owl#equivalentProperty> <https://d-nb.info/standards/elementset/gnd#familialRelationship>;
+                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                             <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasRelative>;
+                                                             <https://d-nb.info/standards/elementset/agrelon#hasGndCode> "bezf".
+<https://d-nb.info/standards/elementset/agrelon#hasSibling> a rdf:Property,
+                                                              <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                                                            rdfs:comment "A person has as some kind of sibling a person (object)."@en;
+                                                            rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                            rdfs:label "hat Geschwister"@de,
+                                                                       "has sibling"@en,
+                                                                       "tiene hermano(a)"@es,
+                                                                       "ha fratello o sorella"@it;
+                                                            rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasRelative>;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                            <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasSibling>.
+<https://d-nb.info/standards/elementset/agrelon#hasSiblingInlaw> a rdf:Property,
+                                                                   <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                                                                 rdfs:comment "A person's (subject) spouse has a sibling (object)."@en;
+                                                                 rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                 rdfs:label "ha cognato(a)"@it,
+                                                                            "tiene cuñado(a)"@es,
+                                                                            "hat Schwager oder Schwägerin"@de,
+                                                                            "has sibling-in-law"@en;
+                                                                 rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasInlaw>;
+                                                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                 <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasSiblingInlaw>.
+<https://d-nb.info/standards/elementset/agrelon#hasSpiritualContact> a rdf:Property,
+                                                                       <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                                                                     rdfs:comment "A person or spiritual entity (subject) has some kind of spiritual relation with a person or spiritual entity (object). The relationship may e.g. be channelling, guru-devotee, or a psychoanalyst-patient."@en;
+                                                                     rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                     rdfs:label "hat spirituellen Kontakt"@de,
+                                                                                "has spiritual contact"@en,
+                                                                                "ha contatto spirituale"@it,
+                                                                                "tiene guía espiritual"@es;
+                                                                     rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#relatedAgent>;
+                                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                     <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasSpiritualContact>.
+<https://d-nb.info/standards/elementset/agrelon#hasSpouse> a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                                                             rdf:Property;
+                                                           rdfs:comment "A person (subject) is married with a person (object)."@en;
+                                                           rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                           rdfs:label "ha coniuge"@it,
+                                                                      "has spouse"@en,
+                                                                      "hat Ehepartner"@de,
+                                                                      "tiene esposo(a)"@es;
+                                                           rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasInlaw>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                           <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasSpouse>.
+<https://d-nb.info/standards/elementset/agrelon#hasStepChild> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                                rdf:Property;
+                                                              rdfs:comment "A person's (subject) spouse has a child (object)."@en;
+                                                              rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                              rdfs:label "has stepchild"@en,
+                                                                         "hat Stiefkind"@de,
+                                                                         "ha figliastro(a)"@it,
+                                                                         "tiene hijo(a) adoptivo(a)"@es;
+                                                              rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasChild>;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                              <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasStepChildParent>.
+<https://d-nb.info/standards/elementset/agrelon#hasStepParent> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                                 rdf:Property;
+                                                               rdfs:comment "A person's (subject) biological parent is married with or cohabits with a person (object)."@en;
+                                                               rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                               rdfs:label "tiene padre o madre adoptivo(a)"@es,
+                                                                          "has stepparent"@en,
+                                                                          "ha padrigno o madrigna"@it,
+                                                                          "hat Stiefelternteil"@de;
+                                                               rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasParent>;
+                                                               <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasStepChild>;
+                                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                               <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasStepChildParent>.
+<https://d-nb.info/standards/elementset/agrelon#hasStepSibling> a rdf:Property,
+                                                                  <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                                                                rdfs:comment "A person (subject) has as sibling a person (object), where at least one of the two siblings is step child of a joint parent."@en;
+                                                                rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                rdfs:label "has stepsibling"@en,
+                                                                           "tiene hermano(a) adoptivo(a)"@es,
+                                                                           "ha fratellastro o sorellastra"@it,
+                                                                           "hat Stiefgeschwister"@de;
+                                                                rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasSibling>;
+                                                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasStepSibling>.
+<https://d-nb.info/standards/elementset/agrelon#hasStudent> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                              rdf:Property;
+                                                            rdfs:comment "A person (subject) trains a person (object)."@en;
+                                                            rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                            rdfs:label "tiene estudiante"@es,
+                                                                       "has Student"@en,
+                                                                       "ha scolaro(a)"@it,
+                                                                       "hat Schüler"@de;
+                                                            rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasProfessionalContact>;
+                                                            <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasTeacher>;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                            <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasStudentTeacher>.
+<https://d-nb.info/standards/elementset/agrelon#hasSubject> a rdf:Property,
+                                                              <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                            rdfs:comment """At an n-ary concept's instance (subject), something (object) takes the subject role of the asymmetric relationship meant by the n-ary concept. 
+For inverse relationsships, the subject and object role follow the naming of the n-ary concept when reading quasi just the first part of the n-ary concept name."""@en;
+                                                            rdfs:domain <https://d-nb.info/standards/elementset/agrelon#NAries>;
+                                                            rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                            rdfs:label "tiene sujeto"@es,
+                                                                       "hat Subjekt"@de,
+                                                                       "ha soggetto"@it,
+                                                                       "has subject"@en;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#hasSubjectObject> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                                    rdf:Property;
+                                                                  rdfs:comment """At an n-ary concept's instance (subject), something (object) takes the subject or object role of the symmetric relationship meant by the n-ary concept. 
+For inverse relationsships, the subject and object role follow the naming of the n-ary concept when reading quasi just the first part of the n-ary concept name."""@en;
+                                                                  rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                  rdfs:label "has subject or object"@en,
+                                                                             "tiene sujeto u objeto"@es,
+                                                                             "hat Subjekt oder Objekt"@de,
+                                                                             "ha soggetto o oggetto"@it;
+                                                                  <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#isSubjectObject>;
+                                                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#hasTeacher> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                              rdf:Property;
+                                                            rdfs:comment "A person (subject) who is trained by a person (object)."@en;
+                                                            rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                            rdfs:label "tiene maestro(a)"@es,
+                                                                       "ha insegnante"@it,
+                                                                       "hat Lehrer"@de,
+                                                                       "has teacher"@en;
+                                                            rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasProfessionalContact>;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                            <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasStudentTeacher>.
+<https://d-nb.info/standards/elementset/agrelon#hasVitalLethalContact> a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                                                                         rdf:Property;
+                                                                       rdfs:comment "A person or corporate body (subject) has som kind of vital or lethal relation with a person or corporate body (object). The relationship may e.g. include healing, mutilating, life saving, killing."@en;
+                                                                       rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                       rdfs:label "hat vitalen oder letalen Kontakt"@de,
+                                                                                  "ha contatto vitale o letale"@it,
+                                                                                  "tiene contacto vital o letal"@es,
+                                                                                  "has vital or lethal contact"@en;
+                                                                       rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#relatedAgent>;
+                                                                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                                       <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#HasVitalLethalContact>.
+<https://d-nb.info/standards/elementset/agrelon#isChannelOf> a rdf:Property,
+                                                               <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                             rdfs:comment "A person or spiritual entity (subject) is a channel or medium of a person or spiritual entity (object), e.g. a dead person, spirit, angel etc. I.e. the subject receives messages from the object."@en;
+                                                             rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                             rdfs:label "es médium de"@es,
+                                                                        "è sensitivo(a) di"@it,
+                                                                        "is channel of"@en,
+                                                                        "ist Medium von"@de;
+                                                             rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasSpiritualContact>;
+                                                             <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasChannel>;
+                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                             <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasIsChannel>.
+<https://d-nb.info/standards/elementset/agrelon#isChiefOf> a rdf:Property,
+                                                             <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                           rdfs:comment "A person (subject) ist chief of a group (object)."@en;
+                                                           rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                           rdfs:label "è capo di"@it,
+                                                                      "es jefe de"@es,
+                                                                      "ist Chef von"@de,
+                                                                      "is chief of"@en;
+                                                           rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasAssociate>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                           <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasIsChief>.
+<https://d-nb.info/standards/elementset/agrelon#isFounderOf> a rdf:Property,
+                                                               <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                             rdfs:comment "A person (subject) ist founder of a group (object)."@en;
+                                                             rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                             rdfs:label "è fondatore o fondatrice di"@it,
+                                                                        "es fundador(a) de"@es,
+                                                                        "ist Gründer von"@de,
+                                                                        "is founder of"@en;
+                                                             rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasAssociate>;
+                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                             <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasIsFounder>.
+<https://d-nb.info/standards/elementset/agrelon#isMemberOf> a rdf:Property,
+                                                              <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                            rdfs:comment "A person (subject) ist member of a group (object)."@en;
+                                                            rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                            rdfs:label "è membro di"@it,
+                                                                       "ist Mitglied von"@de,
+                                                                       "is member of"@en,
+                                                                       "es miembro de"@es;
+                                                            rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasAssociate>;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                            <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasIsMember>.
+<https://d-nb.info/standards/elementset/agrelon#isMuseOf> a rdf:Property,
+                                                            <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                          rdfs:comment "A person (subject) inspires a person or corporation (object)."@en;
+                                                          rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                          rdfs:label "is muse of"@en,
+                                                                     "ist Muse von"@de,
+                                                                     "è musa di"@it,
+                                                                     "es musa de"@es;
+                                                          rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasProfessionalContact>;
+                                                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                          <https://d-nb.info/standards/elementset/agrelon#correspondsToInverse> <https://d-nb.info/standards/elementset/agrelon#HasIsMuse>.
+<https://d-nb.info/standards/elementset/agrelon#isObject> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                            rdf:Property;
+                                                          rdfs:comment """Something (subject) takes the object role at an n-ary concept's instance (object) of the asymmetric relationship meant by the n-ary concept. 
+For inverse relationsships, the subject and object role follow the naming of the n-ary concept when reading quasi just the first part of the n-ary concept name."""@en;
+                                                          rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                          rdfs:label "ist Objekt"@de,
+                                                                     "is object"@en,
+                                                                     "es objeto"@es,
+                                                                     "è oggetto"@it;
+                                                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#isPatronOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                              rdf:Property;
+                                                            rdfs:comment "A person or corporation (subject) sponsors/favours a person or corporation (object; e.g. an artist or group of artists)."@en;
+                                                            rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                            rdfs:label "es mecenas de"@es,
+                                                                       "is patron of"@en,
+                                                                       "ist Mäzen von"@de,
+                                                                       "è mecenate di"@it;
+                                                            rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasProfessionalContact>;
+                                                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                            <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#IsHasPatron>.
+<https://d-nb.info/standards/elementset/agrelon#isPhysicianOf> a rdf:Property,
+                                                                 <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                               rdfs:comment "A person or corporate body (subject) is physician of a person or corporate body (object)."@en;
+                                                               rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                               rdfs:label "is physician of"@en,
+                                                                          "ist Arzt von"@de,
+                                                                          "es médico de"@es,
+                                                                          "è medico di"@it;
+                                                               rdfs:subPropertyOf <https://d-nb.info/standards/elementset/agrelon#hasVitalLethalContact>;
+                                                               <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasPhysician>;
+                                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                               <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#IsHasPhysician>.
+<https://d-nb.info/standards/elementset/agrelon#isSubject> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                             rdf:Property;
+                                                           rdfs:comment """Something (subject) takes the subject role at an n-ary concept's instance (object) of the asymmetric relationship meant by the n-ary concept. 
+For inverse relationsships, the subject and object role follow the naming of the n-ary concept when reading quasi just the first part of the n-ary concept name."""@en;
+                                                           rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                           rdfs:label "is subject"@en,
+                                                                      "es sujeto"@es,
+                                                                      "è soggetto di"@it,
+                                                                      "ist Subjekt"@de;
+                                                           <http://www.w3.org/2002/07/owl#inverseOf> <https://d-nb.info/standards/elementset/agrelon#hasSubject>;
+                                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#isSubjectObject> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                                   rdf:Property;
+                                                                 rdfs:comment """Something (subject) takes the subject or object role at an n-ary concept's instance (object) of the symmetric relationship meant by the n-ary concept. 
+For inverse relationsships, the subject and object role follow the naming of the n-ary concept when reading quasi just the first part of the n-ary concept name."""@en;
+                                                                 rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                 rdfs:label "ist Subjekt oder Objekt"@de,
+                                                                            "is subject or object"@en,
+                                                                            "es sujeto u objeto"@es,
+                                                                            "è soggetto o oggetto"@it;
+                                                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#larsGSvensson> a <http://xmlns.com/foaf/0.1/Person>;
+                                                               rdfs:label "Lars G. Svensson";
+                                                               <http://www.w3.org/2002/07/owl#sameAs> <https://d-nb.info/gnd/124903959>.
+<https://d-nb.info/standards/elementset/agrelon#metadataConfidence> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                                                      rdf:Property;
+                                                                    rdfs:comment "A statement or fact (subject) has a value indicating the statement's confidence or trustworthiness."@en;
+                                                                    rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                    rdfs:label "hat Konfidenzwert"@de,
+                                                                               "has confidence value"@en,
+                                                                               "valor de confianza"@es,
+                                                                               "ha valore di fiducia"@it;
+                                                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#metadataPeriod> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                                  rdf:Property;
+                                                                rdfs:comment "An n−ary instance (subject) is valid/true in a period (object). The period should be manifested in a blank node, with data properties hasBeginDate or/and hasEndDate set."@en;
+                                                                rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                rdfs:label "hat Gültigkeitszeitraum"@de,
+                                                                           "has validity period"@en,
+                                                                           "tiene periodo de validez"@es,
+                                                                           "ha tempo di validità"@it;
+                                                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#metadataProvenance> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                                                      rdf:Property;
+                                                                    rdfs:comment "A statement or fact (subject) originates from a source."@en;
+                                                                    rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                                    rdfs:label "hat Herkunft"@de,
+                                                                               "has provenance"@en,
+                                                                               "tiene origen"@es,
+                                                                               "ha provenienza"@it;
+                                                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<https://d-nb.info/standards/elementset/agrelon#relatedAgent> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                                                rdf:Property;
+                                                              rdfs:comment "A person or corporation (subject) has some kind of relation with a person or corporation (object)."@en;
+                                                              rdfs:isDefinedBy <https://d-nb.info/standards/elementset/agrelon#>;
+                                                              rdfs:label "verknüpfter Agens"@de,
+                                                                         "agente connesso"@it,
+                                                                         "related Agent"@en,
+                                                                         "agente relacionado"@es;
+                                                              rdfs:subPropertyOf <https://d-nb.info/standards/elementset/gnd#relatedTerm>;
+                                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                                                              <https://d-nb.info/standards/elementset/agrelon#correspondsTo> <https://d-nb.info/standards/elementset/agrelon#RelatedAgent>.

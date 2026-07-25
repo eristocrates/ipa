@@ -25,6 +25,24 @@ module ore =
     /// <seealso href="http://www.openarchives.org/ore/terms/Proxy">http://www.openarchives.org/ore/terms/Proxy</seealso>
     let Proxy = Prefixed_Name(ore, "Proxy") |> PrefixedName
     /// <summary>
+    ///   <para>ore:Aggregation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A set of related resources (Aggregated Resources), grouped together such that the set can be treated as a single resource. This is the entity described within the ORE interoperability framework by a Resource Map.</para>
+    /// labels<para>Aggregation</para></remarks>
+    /// <seealso href="http://www.openarchives.org/ore/terms/Aggregation">http://www.openarchives.org/ore/terms/Aggregation</seealso>
+    let Aggregation = Prefixed_Name(ore, "Aggregation") |> PrefixedName
+    /// <summary>
+    ///   <para>ore:ResourceMap</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A description of an Aggregation according to the OAI-ORE data model. Resource Maps are serialised to a machine readable format according to the implementation guidelines.</para>
+    /// labels<para>Resource Map</para></remarks>
+    /// <seealso href="http://www.openarchives.org/ore/terms/ResourceMap">http://www.openarchives.org/ore/terms/ResourceMap</seealso>
+    let ResourceMap = Prefixed_Name(ore, "ResourceMap") |> PrefixedName
+    /// <summary>
     ///   <para>ore:aggregates</para>
     /// </summary>
     /// <remarks>
@@ -33,6 +51,24 @@ module ore =
     /// labels<para>Aggregates</para></remarks>
     /// <seealso href="http://www.openarchives.org/ore/terms/aggregates">http://www.openarchives.org/ore/terms/aggregates</seealso>
     let aggregates = Prefixed_Name(ore, "aggregates") |> PrefixedName
+    /// <summary>
+    ///   <para>ore:describes</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>This relationship asserts that the subject (a Resource Map) describes the object (an Aggregation).</para>
+    /// labels<para>Describes</para></remarks>
+    /// <seealso href="http://www.openarchives.org/ore/terms/describes">http://www.openarchives.org/ore/terms/describes</seealso>
+    let describes = Prefixed_Name(ore, "describes") |> PrefixedName
+    /// <summary>
+    ///   <para>ore:isDescribedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The inverse relationship of ore:describes, in this case the object of the relationship is the Resource Map and the subject is the Aggregation which it describes.</para>
+    /// labels<para>Is Described By</para></remarks>
+    /// <seealso href="http://www.openarchives.org/ore/terms/isDescribedBy">http://www.openarchives.org/ore/terms/isDescribedBy</seealso>
+    let isDescribedBy = Prefixed_Name(ore, "isDescribedBy") |> PrefixedName
     /// <summary>
     ///   <para>ore:isAggregatedBy</para>
     /// </summary>
@@ -43,14 +79,14 @@ module ore =
     /// <seealso href="http://www.openarchives.org/ore/terms/isAggregatedBy">http://www.openarchives.org/ore/terms/isAggregatedBy</seealso>
     let isAggregatedBy = Prefixed_Name(ore, "isAggregatedBy") |> PrefixedName
     /// <summary>
-    ///   <para>ore:describes</para>
+    ///   <para>ore:proxyFor</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>This relationship asserts that the subject (a Resource Map) describes the object (an Aggregation).</para>
-    /// labels<para>Describes</para></remarks>
-    /// <seealso href="http://www.openarchives.org/ore/terms/describes">http://www.openarchives.org/ore/terms/describes</seealso>
-    let describes = Prefixed_Name(ore, "describes") |> PrefixedName
+    ///   <para>Proxy objects are used to represent a Resource as it is aggregated in a particular Aggregation. The ore:proxyFor relationship is used to link the proxy to the Aggregated Resource it is a proxy for. The subject of the relationship is a Proxy object, and the object of the relationship is the Aggregated Resource.</para>
+    /// labels<para>Proxy For</para></remarks>
+    /// <seealso href="http://www.openarchives.org/ore/terms/proxyFor">http://www.openarchives.org/ore/terms/proxyFor</seealso>
+    let proxyFor = Prefixed_Name(ore, "proxyFor") |> PrefixedName
     /// <summary>
     ///   <para>ore:lineage</para>
     /// </summary>
@@ -70,33 +106,6 @@ module ore =
     /// <seealso href="http://www.openarchives.org/ore/terms/proxyIn">http://www.openarchives.org/ore/terms/proxyIn</seealso>
     let proxyIn = Prefixed_Name(ore, "proxyIn") |> PrefixedName
     /// <summary>
-    ///   <para>ore:similarTo</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>The subject of this relationship MUST be an Aggregation.  This Aggregation should be considered an expression within the ORE context of the object of the relationship, as it is broadly equivalent to the resource. For example, the Aggregation may consist of the resources which, together, make up a journal article which has a DOI assigned to it. The Aggregation is not the article to which the DOI was assigned, but is a representation of it in some manner.</para>
-    /// labels<para>Similar To</para></remarks>
-    /// <seealso href="http://www.openarchives.org/ore/terms/similarTo">http://www.openarchives.org/ore/terms/similarTo</seealso>
-    let similarTo = Prefixed_Name(ore, "similarTo") |> PrefixedName
-    /// <summary>
-    ///   <para>ore:Aggregation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A set of related resources (Aggregated Resources), grouped together such that the set can be treated as a single resource. This is the entity described within the ORE interoperability framework by a Resource Map.</para>
-    /// labels<para>Aggregation</para></remarks>
-    /// <seealso href="http://www.openarchives.org/ore/terms/Aggregation">http://www.openarchives.org/ore/terms/Aggregation</seealso>
-    let Aggregation = Prefixed_Name(ore, "Aggregation") |> PrefixedName
-    /// <summary>
-    ///   <para>ore:ResourceMap</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A description of an Aggregation according to the OAI-ORE data model. Resource Maps are serialised to a machine readable format according to the implementation guidelines.</para>
-    /// labels<para>Resource Map</para></remarks>
-    /// <seealso href="http://www.openarchives.org/ore/terms/ResourceMap">http://www.openarchives.org/ore/terms/ResourceMap</seealso>
-    let ResourceMap = Prefixed_Name(ore, "ResourceMap") |> PrefixedName
-    /// <summary>
     ///   <para>ore:</para>
     /// </summary>
     /// <remarks>
@@ -105,20 +114,11 @@ module ore =
     /// <seealso href="http://www.openarchives.org/ore/terms/">http://www.openarchives.org/ore/terms/</seealso>
     let _prefix_iri = Prefixed_Name(ore, "") |> PrefixedName
     /// <summary>
-    ///   <para>ore:isDescribedBy</para>
+    ///   <para>ore:similarTo</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>The inverse relationship of ore:describes, in this case the object of the relationship is the Resource Map and the subject is the Aggregation which it describes.</para>
-    /// labels<para>Is Described By</para></remarks>
-    /// <seealso href="http://www.openarchives.org/ore/terms/isDescribedBy">http://www.openarchives.org/ore/terms/isDescribedBy</seealso>
-    let isDescribedBy = Prefixed_Name(ore, "isDescribedBy") |> PrefixedName
-    /// <summary>
-    ///   <para>ore:proxyFor</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Proxy objects are used to represent a Resource as it is aggregated in a particular Aggregation. The ore:proxyFor relationship is used to link the proxy to the Aggregated Resource it is a proxy for. The subject of the relationship is a Proxy object, and the object of the relationship is the Aggregated Resource.</para>
-    /// labels<para>Proxy For</para></remarks>
-    /// <seealso href="http://www.openarchives.org/ore/terms/proxyFor">http://www.openarchives.org/ore/terms/proxyFor</seealso>
-    let proxyFor = Prefixed_Name(ore, "proxyFor") |> PrefixedName
+    ///   <para>The subject of this relationship MUST be an Aggregation.  This Aggregation should be considered an expression within the ORE context of the object of the relationship, as it is broadly equivalent to the resource. For example, the Aggregation may consist of the resources which, together, make up a journal article which has a DOI assigned to it. The Aggregation is not the article to which the DOI was assigned, but is a representation of it in some manner.</para>
+    /// labels<para>Similar To</para></remarks>
+    /// <seealso href="http://www.openarchives.org/ore/terms/similarTo">http://www.openarchives.org/ore/terms/similarTo</seealso>
+    let similarTo = Prefixed_Name(ore, "similarTo") |> PrefixedName

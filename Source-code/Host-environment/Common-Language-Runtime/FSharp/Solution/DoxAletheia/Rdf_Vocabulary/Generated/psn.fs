@@ -16,50 +16,14 @@ module psn =
     /// <seealso href="https://purl.org/psn/vocab#Product">https://purl.org/psn/vocab#Product</seealso>
     let Product = Prefixed_Name(psn, "Product") |> PrefixedName
     /// <summary>
-    ///   <para>psn:quantity</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The quantity of a product required in the creation of another product as described by a psn:Derivation. Has to regard the psn:unit property of the products.</para>
-    /// labels<para>quantity</para></remarks>
-    /// <seealso href="https://purl.org/psn/vocab#quantity">https://purl.org/psn/vocab#quantity</seealso>
-    let quantity = Prefixed_Name(psn, "quantity") |> PrefixedName
-    /// <summary>
-    ///   <para>psn:sells</para>
+    ///   <para>psn:into</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>Product offered for sale by the enterprise to (potential) customers.</para>
-    /// labels<para>sells</para></remarks>
-    /// <seealso href="https://purl.org/psn/vocab#sells">https://purl.org/psn/vocab#sells</seealso>
-    let sells = Prefixed_Name(psn, "sells") |> PrefixedName
-    /// <summary>
-    ///   <para>psn:Derivation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The dependency relation between products in a supply network, characterized by the (partial) consumption of one product for the creation of another. This does not necessitate that a product becomes part of a (physical) presence of the created product. Such examples are chemicals used for cleaning in the manufacturing of microchip or a foundry service (time)slot. Neither example becomes a microchip, but without them, no new microchip are created. The derivation usually expresses the relation between two products, but may include multiple psn:from properties to express alternatives.</para>
-    /// labels<para>Derivation</para></remarks>
-    /// <seealso href="https://purl.org/psn/vocab#Derivation">https://purl.org/psn/vocab#Derivation</seealso>
-    let Derivation = Prefixed_Name(psn, "Derivation") |> PrefixedName
-    /// <summary>
-    ///   <para>psn:from</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Product that is (partially) consumed for the creation of another product. The latter derives from the former. If a psn:Derivation has multiple psn:from properties, these products are alternatives.</para>
-    /// labels<para>from</para></remarks>
-    /// <seealso href="https://purl.org/psn/vocab#from">https://purl.org/psn/vocab#from</seealso>
-    let from = Prefixed_Name(psn, "from") |> PrefixedName
-    /// <summary>
-    ///   <para>psn:Enterprise</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>An enterprise that supervises the creation of products and sells products to (potential) customers.</para>
-    /// labels<para>Enterprise</para></remarks>
-    /// <seealso href="https://purl.org/psn/vocab#Enterprise">https://purl.org/psn/vocab#Enterprise</seealso>
-    let Enterprise = Prefixed_Name(psn, "Enterprise") |> PrefixedName
+    ///   <para>Product that is created while (partially) consuming another product. The latter derives into the former.</para>
+    /// labels<para>into</para></remarks>
+    /// <seealso href="https://purl.org/psn/vocab#into">https://purl.org/psn/vocab#into</seealso>
+    let into = Prefixed_Name(psn, "into") |> PrefixedName
     /// <summary>
     ///   <para>psn:</para>
     /// </summary>
@@ -70,14 +34,41 @@ module psn =
     /// <seealso href="https://purl.org/psn/vocab#">https://purl.org/psn/vocab#</seealso>
     let _prefix_iri = Prefixed_Name(psn, "") |> PrefixedName
     /// <summary>
-    ///   <para>psn:into</para>
+    ///   <para>psn:Derivation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The dependency relation between products in a supply network, characterized by the (partial) consumption of one product for the creation of another. This does not necessitate that a product becomes part of a (physical) presence of the created product. Such examples are chemicals used for cleaning in the manufacturing of microchip or a foundry service (time)slot. Neither example becomes a microchip, but without them, no new microchip are created. The derivation usually expresses the relation between two products, but may include multiple psn:from properties to express alternatives.</para>
+    /// labels<para>Derivation</para></remarks>
+    /// <seealso href="https://purl.org/psn/vocab#Derivation">https://purl.org/psn/vocab#Derivation</seealso>
+    let Derivation = Prefixed_Name(psn, "Derivation") |> PrefixedName
+    /// <summary>
+    ///   <para>psn:Enterprise</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An enterprise that supervises the creation of products and sells products to (potential) customers.</para>
+    /// labels<para>Enterprise</para></remarks>
+    /// <seealso href="https://purl.org/psn/vocab#Enterprise">https://purl.org/psn/vocab#Enterprise</seealso>
+    let Enterprise = Prefixed_Name(psn, "Enterprise") |> PrefixedName
+    /// <summary>
+    ///   <para>psn:from</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>Product that is created while (partially) consuming another product. The latter derives into the former.</para>
-    /// labels<para>into</para></remarks>
-    /// <seealso href="https://purl.org/psn/vocab#into">https://purl.org/psn/vocab#into</seealso>
-    let into = Prefixed_Name(psn, "into") |> PrefixedName
+    ///   <para>Product that is (partially) consumed for the creation of another product. The latter derives from the former. If a psn:Derivation has multiple psn:from properties, these products are alternatives.</para>
+    /// labels<para>from</para></remarks>
+    /// <seealso href="https://purl.org/psn/vocab#from">https://purl.org/psn/vocab#from</seealso>
+    let from = Prefixed_Name(psn, "from") |> PrefixedName
+    /// <summary>
+    ///   <para>psn:quantity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The quantity of a product required in the creation of another product as described by a psn:Derivation. Has to regard the psn:unit property of the products.</para>
+    /// labels<para>quantity</para></remarks>
+    /// <seealso href="https://purl.org/psn/vocab#quantity">https://purl.org/psn/vocab#quantity</seealso>
+    let quantity = Prefixed_Name(psn, "quantity") |> PrefixedName
     /// <summary>
     ///   <para>psn:unit</para>
     /// </summary>
@@ -87,3 +78,12 @@ module psn =
     /// labels<para>unit</para></remarks>
     /// <seealso href="https://purl.org/psn/vocab#unit">https://purl.org/psn/vocab#unit</seealso>
     let unit = Prefixed_Name(psn, "unit") |> PrefixedName
+    /// <summary>
+    ///   <para>psn:sells</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Product offered for sale by the enterprise to (potential) customers.</para>
+    /// labels<para>sells</para></remarks>
+    /// <seealso href="https://purl.org/psn/vocab#sells">https://purl.org/psn/vocab#sells</seealso>
+    let sells = Prefixed_Name(psn, "sells") |> PrefixedName

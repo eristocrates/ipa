@@ -24,16 +24,6 @@ module gleif_elf =
     /// labels<para>entity legal form</para></remarks>
     /// <seealso href="https://www.gleif.org/ontology/EntityLegalForm/EntityLegalForm">https://www.gleif.org/ontology/EntityLegalForm/EntityLegalForm</seealso>
     let EntityLegalForm = Prefixed_Name(gleif_elf, "EntityLegalForm") |> PrefixedName
-    /// <summary>
-    ///   <para>gleif-elf:</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Ontology</para>
-    ///   <para>voaf:Vocabulary</para>
-    ///
-    /// labels<para>Entity Legal Form Ontology</para></remarks>
-    /// <seealso href="https://www.gleif.org/ontology/EntityLegalForm/">https://www.gleif.org/ontology/EntityLegalForm/</seealso>
-    let _prefix_iri = Prefixed_Name(gleif_elf, "") |> PrefixedName
 
     /// <summary>
     ///   <para>gleif-elf:EntityLegalFormIdentifier</para>
@@ -45,3 +35,14 @@ module gleif_elf =
     /// <seealso href="https://www.gleif.org/ontology/EntityLegalForm/EntityLegalFormIdentifier">https://www.gleif.org/ontology/EntityLegalForm/EntityLegalFormIdentifier</seealso>
     let EntityLegalFormIdentifier =
         Prefixed_Name(gleif_elf, "EntityLegalFormIdentifier") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gleif-elf:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>voaf:Vocabulary</para>
+    ///
+    /// labels<para>Entity Legal Form Ontology</para></remarks>
+    /// <seealso href="https://www.gleif.org/ontology/EntityLegalForm/">https://www.gleif.org/ontology/EntityLegalForm/</seealso>
+    let _prefix_iri = Prefixed_Name(gleif_elf, "") |> PrefixedName

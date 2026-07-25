@@ -1,0 +1,80 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix arch: <http://purl.org/archival/vocab/arch#>.
+
+<http://purl.org/archival/vocab/arch> <http://purl.org/dc/elements/1.1/creator> "Aaron Rubinstein";
+                                      <http://purl.org/dc/elements/1.1/description> "An RDF vocabulary for describing archival collections and the names associated with them";
+                                      <http://purl.org/dc/elements/1.1/title> "Archival";
+                                      a <http://www.w3.org/2002/07/owl#Ontology>.
+arch:Archive a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "An organization that holds archival collections.";
+             rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization>.
+arch:Collection a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A collection of documents organized according to the principle of provenance.".
+arch:Family a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "For representing a family, a subclass of foaf:Group.  This class might be equivalent to a similar class in genealogical vocabularies.";
+            rdfs:subClassOf <http://xmlns.com/foaf/0.1/Group>.
+arch:Manuscript a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "An unpublished document in an arch:Collection";
+                rdfs:subClassOf arch:Collection.
+arch:appearsWith a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Name appears with another name in an archival collection";
+                 rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/knows>.
+arch:bulkEnd a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "The end of a collection's bulk dates";
+             rdfs:subPropertyOf <http://purl.org/dc/terms/created>.
+arch:bulkStart a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The beginning of a collection's bulk dates";
+               rdfs:subPropertyOf <http://purl.org/dc/terms/created>.
+arch:correspondedWith a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                        <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/knows>.
+arch:hasProvenance a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Property relating a arch:Collection to the names that are the provenance of that collection.  Inverse of arch:primaryProvenanceOf.";
+                   rdfs:domain arch:Collection;
+                   rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+                   <http://www.w3.org/2002/07/owl#inverseOf> arch:primaryProvenanceOf.
+arch:heldBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment "Relates a arch:Collection to the archive that holds it.  Inverse of arch:holds";
+            rdfs:domain arch:Collection;
+            rdfs:range arch:Archive;
+            <http://www.w3.org/2002/07/owl#inverseOf> arch:holds.
+arch:holds a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:comment "Relates an arch:Archive to a collection that it holds.  Inverse of arch:heldBy";
+           rdfs:domain arch:Archive;
+           rdfs:range arch:Collection.
+arch:inclusiveEnd a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "The end of a collection's inclusive dates";
+                  rdfs:subPropertyOf <http://purl.org/dc/terms/created>.
+arch:inclusiveStart a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "The beginning of a collection's inclusive dates";
+                    rdfs:subPropertyOf <http://purl.org/dc/terms/created>.
+arch:primaryProvenanceOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "Relates a foaf:Person, foaf:Organization, or arch:Family to the arch:Collection that they created.  This might be more than one entity.  Inverse of arch:hasProvenance.";
+                         rdfs:domain <http://xmlns.com/foaf/0.1/Agent>;
+                         rdfs:range arch:Collection.
+arch:referencedIn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "Relates a foaf:Person, foaf:Organization, or arch:Family to a arch:Collection that they are referenced in.";
+                  rdfs:domain <http://xmlns.com/foaf/0.1/Person>,
+                              <http://xmlns.com/foaf/0.1/Organization>,
+                              arch:Family;
+                  rdfs:range arch:Collection.
+arch:relatedSubject a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Related Subject",
+                                 "Subjects related to a name in an archival collection.  Usually represents the subjects from a collection that a name is the arch:primaryProvenanceOf";
+                    rdfs:subPropertyOf <http://purl.org/dc/terms/subject>.
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://purl.org/dc/terms/subject> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://xmlns.com/foaf/0.1/Agent> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/Group> a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent>.
+<http://xmlns.com/foaf/0.1/Organization> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent>.
+<http://xmlns.com/foaf/0.1/Person> a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent>.
+<http://xmlns.com/foaf/0.1/knows> a <http://www.w3.org/2002/07/owl#ObjectProperty>.

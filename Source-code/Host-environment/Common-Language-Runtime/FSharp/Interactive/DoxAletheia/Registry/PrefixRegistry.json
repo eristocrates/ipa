@@ -1073,10 +1073,6 @@
       "namespace_name": "http://purl.org/NET/biol/botany#"
     },
     {
-      "namespace_prefix": "biol",
-      "namespace_name": "http://purl.org/NET/biol/ns#"
-    },
-    {
       "namespace_prefix": "taxon",
       "namespace_name": "http://purl.org/biodiversity/taxon/"
     },
@@ -1673,10 +1669,6 @@
       "namespace_name": "http://dati.san.beniculturali.it/SAN/"
     },
     {
-      "namespace_prefix": "losp",
-      "namespace_name": "http://sparql.sstu.ru:3030/speciality/"
-    },
-    {
       "namespace_prefix": "cwmo",
       "namespace_name": "http://purl.org/cwmo/#"
     },
@@ -2129,28 +2121,416 @@
       "namespace_name": "https://w3id.org/fossr/ontology/bdi/"
     },
     {
+      "namespace_prefix": "geop",
+      "namespace_name": "http://aims.fao.org/aos/geopolitical.owl#"
+    },
+    {
+      "namespace_prefix": "va",
+      "namespace_name": "http://code-research.eu/ontology/visual-analytics#"
+    },
+    {
+      "namespace_prefix": "pproc",
+      "namespace_name": "http://contsem.unizar.es/def/sector-publico/pproc#"
+    },
+    {
+      "namespace_prefix": "courseware",
+      "namespace_name": "http://courseware.rkbexplorer.com/ontologies/courseware#"
+    },
+    {
+      "namespace_prefix": "ccrel",
+      "namespace_name": "http://creativecommons.org/ns#"
+    },
+    {
+      "namespace_prefix": "agrelon",
+      "namespace_name": "http://d-nb.info/standards/elementset/agrelon#"
+    },
+    {
+      "namespace_prefix": "geofla",
+      "namespace_name": "http://data.ign.fr/def/geofla#"
+    },
+    {
+      "namespace_prefix": "geom",
+      "namespace_name": "http://data.ign.fr/def/geometrie#"
+    },
+    {
+      "namespace_prefix": "ignf",
+      "namespace_name": "http://data.ign.fr/def/ignf#"
+    },
+    {
+      "namespace_prefix": "topo",
+      "namespace_name": "http://data.ign.fr/def/topo#"
+    },
+    {
+      "namespace_prefix": "food",
+      "namespace_name": "http://data.lirmm.fr/ontologies/food#"
+    },
+    {
+      "namespace_prefix": "oan",
+      "namespace_name": "http://data.lirmm.fr/ontologies/oan/"
+    },
+    {
+      "namespace_prefix": "osp",
+      "namespace_name": "http://data.lirmm.fr/ontologies/osp#"
+    },
+    {
+      "namespace_prefix": "passim",
+      "namespace_name": "http://data.lirmm.fr/ontologies/passim#"
+    },
+    {
+      "namespace_prefix": "poste",
+      "namespace_name": "http://data.lirmm.fr/ontologies/poste#"
+    },
+    {
+      "namespace_prefix": "vdpp",
+      "namespace_name": "http://data.lirmm.fr/ontologies/vdpp#"
+    },
+    {
+      "namespace_prefix": "swc",
+      "namespace_name": "http://data.semanticweb.org/ns/swc/ontology#"
+    },
+    {
+      "namespace_prefix": "basic",
+      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#"
+    },
+    {
+      "namespace_prefix": "gm",
+      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#"
+    },
+    {
+      "namespace_prefix": "tm",
+      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal#"
+    },
+    {
+      "namespace_prefix": "gf",
+      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#"
+    },
+    {
+      "namespace_prefix": "dq",
+      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#"
+    },
+    {
+      "namespace_prefix": "ext",
+      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#"
+    },
+    {
+      "namespace_prefix": "li",
+      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage#"
+    },
+    {
+      "namespace_prefix": "md",
+      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#"
+    },
+    {
+      "namespace_prefix": "h2o",
+      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#"
+    },
+    {
+      "namespace_prefix": "isobserv",
+      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#"
+    },
+    {
+      "namespace_prefix": "sam",
+      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling#"
+    },
+    {
+      "namespace_prefix": "poder",
+      "namespace_name": "http://dev.poderopedia.com/vocab/"
+    },
+    {
+      "namespace_prefix": "dogont",
+      "namespace_name": "http://elite.polito.it/ontologies/dogont"
+    },
+    {
+      "namespace_prefix": "op",
+      "namespace_name": "http://environment.data.gov.au/def/op#"
+    },
+    {
+      "namespace_prefix": "ngeo",
+      "namespace_name": "http://geovocab.org/geometry#"
+    },
+    {
+      "namespace_prefix": "spatial",
+      "namespace_name": "http://geovocab.org/spatial#"
+    },
+    {
+      "namespace_prefix": "marcrole",
+      "namespace_name": "http://id.loc.gov/vocabulary/relators/"
+    },
+    {
+      "namespace_prefix": "turismo",
+      "namespace_name": "http://idi.fundacionctic.org/cruzar/turismo#"
+    },
+    {
+      "namespace_prefix": "dso",
+      "namespace_name": "http://inference-web.org/2.0/ds.owl#"
+    },
+    {
+      "namespace_prefix": "pmlp",
+      "namespace_name": "http://inference-web.org/2.0/pml-provenance.owl#"
+    },
+    {
+      "namespace_prefix": "hr",
+      "namespace_name": "http://iserve.kmi.open.ac.uk/ns/hrests#"
+    },
+    {
+      "namespace_prefix": "msm",
+      "namespace_name": "http://iserve.kmi.open.ac.uk/ns/msm#"
+    },
+    {
+      "namespace_prefix": "spfood",
+      "namespace_name": "http://kmi.open.ac.uk/projects/smartproducts/ontologies/food.owl#"
+    },
+    {
+      "namespace_prefix": "ends",
+      "namespace_name": "http://labs.mondeca.com/vocab/endpointStatus#"
+    },
+    {
+      "namespace_prefix": "lemon",
+      "namespace_name": "http://lemon-model.net/lemon#"
+    },
+    {
+      "namespace_prefix": "lexvo",
+      "namespace_name": "http://lexvo.org/ontology#"
+    },
+    {
+      "namespace_prefix": "lgdo",
+      "namespace_name": "http://linkedgeodata.org/ontology/"
+    },
+    {
+      "namespace_prefix": "bag2",
+      "namespace_name": "http://bag.basisregistraties.overheid.nl/def/bag#"
+    },
+    {
+      "namespace_prefix": "scip",
+      "namespace_name": "http://lod.taxonconcept.org/ontology/sci_people.owl#"
+    },
+    {
+      "namespace_prefix": "txn",
+      "namespace_name": "http://lod.taxonconcept.org/ontology/txn.owl#"
+    },
+    {
+      "namespace_prefix": "loted",
+      "namespace_name": "http://loted.eu/ontology#"
+    },
+    {
+      "namespace_prefix": "rdarel2",
+      "namespace_name": "http://metadataregistry.org/uri/schema/RDARelationshipsGR2/"
+    },
+    {
+      "namespace_prefix": "tac",
+      "namespace_name": "http://ns.bergnet.org/tac/0.1/triple-access-control#"
+    },
+    {
+      "namespace_prefix": "smg",
+      "namespace_name": "http://ns.cerise-project.nl/energy/def/cim-smartgrid#"
+    },
+    {
+      "namespace_prefix": "emotion",
+      "namespace_name": "http://ns.inria.fr/emoca#"
+    },
+    {
+      "namespace_prefix": "ntag",
+      "namespace_name": "http://ns.inria.fr/nicetag/2010/09/09/voc#"
+    },
+    {
+      "namespace_prefix": "s4ac",
+      "namespace_name": "http://ns.inria.fr/s4ac/v2#"
+    },
+    {
       "namespace_prefix": "ogp",
       "namespace_name": "http://ogp.me/ns#"
+    },
+    {
+      "namespace_prefix": "itsmo",
+      "namespace_name": "http://ontology.it/itsmo/v1#"
+    },
+    {
+      "namespace_prefix": "open",
+      "namespace_name": "http://open.vocab.org/terms/"
+    },
+    {
+      "namespace_prefix": "opmo",
+      "namespace_name": "http://openprovenance.org/model/opmo#"
+    },
+    {
+      "namespace_prefix": "of",
+      "namespace_name": "http://owlrep.eu01.aws.af.cm/fridge#"
+    },
+    {
+      "namespace_prefix": "mvco",
+      "namespace_name": "http://purl.oclc.org/NET/mvco.owl#"
+    },
+    {
+      "namespace_prefix": "aws",
+      "namespace_name": "http://purl.oclc.org/NET/ssnx/meteo/aws#"
+    },
+    {
+      "namespace_prefix": "qu",
+      "namespace_name": "http://purl.oclc.org/NET/ssnx/qu/qu#"
+    },
+    {
+      "namespace_prefix": "event",
+      "namespace_name": "http://purl.org/NET/c4dm/event.owl#"
+    },
+    {
+      "namespace_prefix": "keys",
+      "namespace_name": "http://purl.org/NET/c4dm/keys.owl#"
+    },
+    {
+      "namespace_prefix": "timeline",
+      "namespace_name": "http://purl.org/NET/c4dm/timeline.owl#"
+    },
+    {
+      "namespace_prefix": "accom",
+      "namespace_name": "http://purl.org/acco/ns#"
+    },
+    {
+      "namespace_prefix": "arch",
+      "namespace_name": "http://purl.org/archival/vocab/arch#"
+    },
+    {
+      "namespace_prefix": "biotop",
+      "namespace_name": "http://purl.org/biotop/biotop.owl#"
     },
     {
       "namespace_prefix": "coll",
       "namespace_name": "http://purl.org/co/"
     },
     {
+      "namespace_prefix": "cold",
+      "namespace_name": "http://purl.org/configurationontology#"
+    },
+    {
+      "namespace_prefix": "emp",
+      "namespace_name": "http://purl.org/ctic/empleo/oferta#"
+    },
+    {
+      "namespace_prefix": "ctic",
+      "namespace_name": "http://purl.org/ctic/infraestructuras/localizacion#"
+    },
+    {
+      "namespace_prefix": "ctorg",
+      "namespace_name": "http://purl.org/ctic/infraestructuras/organizacion#"
+    },
+    {
+      "namespace_prefix": "elec",
+      "namespace_name": "http://purl.org/ctic/sector-publico/elecciones#"
+    },
+    {
+      "namespace_prefix": "dqm",
+      "namespace_name": "http://purl.org/dqm-vocabulary/v1/dqm#"
+    },
+    {
+      "namespace_prefix": "gr",
+      "namespace_name": "http://purl.org/goodrelations/v1#"
+    },
+    {
+      "namespace_prefix": "dicom",
+      "namespace_name": "http://purl.org/healthcarevocab/v1#"
+    },
+    {
+      "namespace_prefix": "ru",
+      "namespace_name": "http://purl.org/imbi/ru-meta.owl#"
+    },
+    {
+      "namespace_prefix": "inno",
+      "namespace_name": "http://purl.org/innovation/ns#"
+    },
+    {
+      "namespace_prefix": "iso-thes",
+      "namespace_name": "http://purl.org/iso25964/skos-thes#"
+    },
+    {
+      "namespace_prefix": "gold",
+      "namespace_name": "http://purl.org/linguistics/gold/"
+    },
+    {
+      "namespace_prefix": "qb",
+      "namespace_name": "http://purl.org/linked-data/cube#"
+    },
+    {
       "namespace_prefix": "sdmx",
       "namespace_name": "http://purl.org/linked-data/sdmx#"
+    },
+    {
+      "namespace_prefix": "sdmx-code",
+      "namespace_name": "http://purl.org/linked-data/sdmx/2009/code#"
+    },
+    {
+      "namespace_prefix": "sdmx-dimension",
+      "namespace_name": "http://purl.org/linked-data/sdmx/2009/dimension#"
+    },
+    {
+      "namespace_prefix": "lv",
+      "namespace_name": "http://purl.org/lobid/lv#"
     },
     {
       "namespace_prefix": "media",
       "namespace_name": "http://purl.org/media#"
     },
     {
+      "namespace_prefix": "muto",
+      "namespace_name": "http://purl.org/muto/core#"
+    },
+    {
+      "namespace_prefix": "lio",
+      "namespace_name": "http://purl.org/net/lio#"
+    },
+    {
+      "namespace_prefix": "bibtex",
+      "namespace_name": "http://purl.org/net/nknouf/ns/bibtex#"
+    },
+    {
+      "namespace_prefix": "ex",
+      "namespace_name": "http://purl.org/net/ns/ex#"
+    },
+    {
+      "namespace_prefix": "ont",
+      "namespace_name": "http://purl.org/net/ns/ontology-annot#"
+    },
+    {
+      "namespace_prefix": "label",
+      "namespace_name": "http://purl.org/net/vocab/2004/03/label#"
+    },
+    {
+      "namespace_prefix": "wf-invoc",
+      "namespace_name": "http://purl.org/net/wf-invocation#"
+    },
+    {
+      "namespace_prefix": "wfm",
+      "namespace_name": "http://purl.org/net/wf-motifs#"
+    },
+    {
       "namespace_prefix": "daia",
       "namespace_name": "http://purl.org/ontology/daia/"
     },
     {
+      "namespace_prefix": "docso",
+      "namespace_name": "http://purl.org/ontology/dso#"
+    },
+    {
+      "namespace_prefix": "dviont",
+      "namespace_name": "http://purl.org/ontology/dvia#"
+    },
+    {
       "namespace_prefix": "places",
       "namespace_name": "http://purl.org/ontology/places#"
+    },
+    {
+      "namespace_prefix": "service",
+      "namespace_name": "http://purl.org/ontology/service#"
+    },
+    {
+      "namespace_prefix": "ssso",
+      "namespace_name": "http://purl.org/ontology/ssso#"
+    },
+    {
+      "namespace_prefix": "nsl",
+      "namespace_name": "http://purl.org/ontology/storyline/"
+    },
+    {
+      "namespace_prefix": "oslo",
+      "namespace_name": "http://purl.org/oslo/ns/localgov#"
     },
     {
       "namespace_prefix": "pco",
@@ -2161,8 +2541,96 @@
       "namespace_name": "http://purl.org/rss/1.0/"
     },
     {
+      "namespace_prefix": "saws",
+      "namespace_name": "http://purl.org/saws/ontology#"
+    },
+    {
+      "namespace_prefix": "biro",
+      "namespace_name": "http://purl.org/spar/biro/"
+    },
+    {
+      "namespace_prefix": "c4o",
+      "namespace_name": "http://purl.org/spar/c4o/"
+    },
+    {
+      "namespace_prefix": "cito",
+      "namespace_name": "http://purl.org/spar/cito/"
+    },
+    {
+      "namespace_prefix": "datacite",
+      "namespace_name": "http://purl.org/spar/datacite/"
+    },
+    {
+      "namespace_prefix": "deo",
+      "namespace_name": "http://purl.org/spar/deo/"
+    },
+    {
+      "namespace_prefix": "doco",
+      "namespace_name": "http://purl.org/spar/doco/"
+    },
+    {
+      "namespace_prefix": "fabio",
+      "namespace_name": "http://purl.org/spar/fabio/"
+    },
+    {
+      "namespace_prefix": "pro",
+      "namespace_name": "http://purl.org/spar/pro/"
+    },
+    {
+      "namespace_prefix": "pso",
+      "namespace_name": "http://purl.org/spar/pso/"
+    },
+    {
+      "namespace_prefix": "pwo",
+      "namespace_name": "http://purl.org/spar/pwo/"
+    },
+    {
+      "namespace_prefix": "cmo",
+      "namespace_name": "http://purl.org/twc/ontologies/cmo.owl#"
+    },
+    {
+      "namespace_prefix": "aiiso",
+      "namespace_name": "http://purl.org/vocab/aiiso/schema#"
+    },
+    {
+      "namespace_prefix": "changeset",
+      "namespace_name": "http://purl.org/vocab/changeset/schema#"
+    },
+    {
+      "namespace_prefix": "frbrcore",
+      "namespace_name": "http://purl.org/vocab/frbr/core#"
+    },
+    {
+      "namespace_prefix": "frbre",
+      "namespace_name": "http://purl.org/vocab/frbr/extended#"
+    },
+    {
+      "namespace_prefix": "lifecycle",
+      "namespace_name": "http://purl.org/vocab/lifecycle/schema#"
+    },
+    {
+      "namespace_prefix": "particip",
+      "namespace_name": "http://purl.org/vocab/participation/schema#"
+    },
+    {
+      "namespace_prefix": "voaf",
+      "namespace_name": "http://purl.org/vocommons/voaf#"
+    },
+    {
+      "namespace_prefix": "vso",
+      "namespace_name": "http://purl.org/vso/ns#"
+    },
+    {
+      "namespace_prefix": "qudt",
+      "namespace_name": "http://qudt.org/schema/qudt/"
+    },
+    {
       "namespace_prefix": "rdaa",
       "namespace_name": "http://rdaregistry.info/Elements/a/"
+    },
+    {
+      "namespace_prefix": "rdac",
+      "namespace_name": "http://rdaregistry.info/Elements/c/"
     },
     {
       "namespace_prefix": "rdae",
@@ -2177,40 +2645,576 @@
       "namespace_name": "http://rdaregistry.info/Elements/m/"
     },
     {
+      "namespace_prefix": "rdau",
+      "namespace_name": "http://rdaregistry.info/Elements/u/"
+    },
+    {
       "namespace_prefix": "rdaw",
       "namespace_name": "http://rdaregistry.info/Elements/w/"
+    },
+    {
+      "namespace_prefix": "disco",
+      "namespace_name": "http://rdf-vocabulary.ddialliance.org/discovery#"
+    },
+    {
+      "namespace_prefix": "phdd",
+      "namespace_name": "http://rdf-vocabulary.ddialliance.org/phdd#"
+    },
+    {
+      "namespace_prefix": "xkos",
+      "namespace_name": "http://rdf-vocabulary.ddialliance.org/xkos#"
+    },
+    {
+      "namespace_prefix": "obsm",
+      "namespace_name": "http://rdf.geospecies.org/methods/observationMethod#"
+    },
+    {
+      "namespace_prefix": "geospecies",
+      "namespace_name": "http://rdf.geospecies.org/ont/geospecies#"
+    },
+    {
+      "namespace_prefix": "idemo",
+      "namespace_name": "http://rdf.insee.fr/def/demo#"
+    },
+    {
+      "namespace_prefix": "igeo",
+      "namespace_name": "http://rdf.insee.fr/def/geo#"
+    },
+    {
+      "namespace_prefix": "appear",
+      "namespace_name": "http://rdf.muninn-project.org/ontologies/appearances#"
+    },
+    {
+      "namespace_prefix": "mil",
+      "namespace_name": "http://rdf.muninn-project.org/ontologies/military#"
     },
     {
       "namespace_prefix": "rdagr1",
       "namespace_name": "http://rdvocab.info/Elements/"
     },
     {
+      "namespace_prefix": "rdag2",
+      "namespace_name": "http://rdvocab.info/ElementsGr2/"
+    },
+    {
+      "namespace_prefix": "rdag3",
+      "namespace_name": "http://rdvocab.info/ElementsGr3/"
+    },
+    {
+      "namespace_prefix": "rdarel",
+      "namespace_name": "http://rdvocab.info/RDARelationshipsWEMI/"
+    },
+    {
+      "namespace_prefix": "rdarole",
+      "namespace_name": "http://rdvocab.info/roles/"
+    },
+    {
+      "namespace_prefix": "rdafrbr",
+      "namespace_name": "http://rdvocab.info/uri/schema/FRBRentitiesRDA/"
+    },
+    {
+      "namespace_prefix": "reegle",
+      "namespace_name": "http://reegle.info/schema#"
+    },
+    {
+      "namespace_prefix": "cgov",
+      "namespace_name": "http://reference.data.gov.uk/def/central-government/"
+    },
+    {
+      "namespace_prefix": "intervals",
+      "namespace_name": "http://reference.data.gov.uk/def/intervals/"
+    },
+    {
+      "namespace_prefix": "odv",
+      "namespace_name": "http://reference.data.gov.uk/def/organogram/"
+    },
+    {
+      "namespace_prefix": "parl",
+      "namespace_name": "http://reference.data.gov.uk/def/parliament/"
+    },
+    {
+      "namespace_prefix": "gts",
+      "namespace_name": "http://resource.geosciml.org/ontology/timescale/gts#"
+    },
+    {
+      "namespace_prefix": "thors",
+      "namespace_name": "http://resource.geosciml.org/ontology/timescale/thors#"
+    },
+    {
+      "namespace_prefix": "copyright",
+      "namespace_name": "http://rhizomik.net/ontologies/copyrightonto.owl#"
+    },
+    {
+      "namespace_prefix": "sao",
+      "namespace_name": "http://salt.semanticauthoring.org/ontologies/sao#"
+    },
+    {
+      "namespace_prefix": "sdo",
+      "namespace_name": "http://salt.semanticauthoring.org/ontologies/sdo#"
+    },
+    {
+      "namespace_prefix": "odrs",
+      "namespace_name": "http://schema.theodi.org/odrs#"
+    },
+    {
+      "namespace_prefix": "maso",
+      "namespace_name": "http://securitytoolbox.appspot.com/MASO#"
+    },
+    {
+      "namespace_prefix": "security",
+      "namespace_name": "http://securitytoolbox.appspot.com/securityMain#"
+    },
+    {
+      "namespace_prefix": "stac",
+      "namespace_name": "http://securitytoolbox.appspot.com/stac#"
+    },
+    {
+      "namespace_prefix": "sio",
+      "namespace_name": "http://semanticscience.org/resource/"
+    },
+    {
+      "namespace_prefix": "apps4X",
+      "namespace_name": "http://semweb.mmlab.be/ns/apps4X#"
+    },
+    {
+      "namespace_prefix": "odapps",
+      "namespace_name": "http://semweb.mmlab.be/ns/odapps#"
+    },
+    {
+      "namespace_prefix": "oh",
+      "namespace_name": "http://semweb.mmlab.be/ns/oh#"
+    },
+    {
+      "namespace_prefix": "spcm",
+      "namespace_name": "http://spi-fm.uca.es/spdef/models/deployment/spcm/1.0#"
+    },
+    {
+      "namespace_prefix": "swpm",
+      "namespace_name": "http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0#"
+    },
+    {
+      "namespace_prefix": "itm",
+      "namespace_name": "http://spi-fm.uca.es/spdef/models/genericTools/itm/1.0#"
+    },
+    {
+      "namespace_prefix": "vmm",
+      "namespace_name": "http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0#"
+    },
+    {
+      "namespace_prefix": "wikim",
+      "namespace_name": "http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#"
+    },
+    {
       "namespace_prefix": "sp",
       "namespace_name": "http://spinrdf.org/sp#"
+    },
+    {
+      "namespace_prefix": "spin",
+      "namespace_name": "http://spinrdf.org/spin#"
+    },
+    {
+      "namespace_prefix": "spt",
+      "namespace_name": "http://spitfire-project.eu/ontology/ns/"
+    },
+    {
+      "namespace_prefix": "swpo",
+      "namespace_name": "http://sw-portal.deri.org/ontologies/swportal#"
+    },
+    {
+      "namespace_prefix": "swrc",
+      "namespace_name": "http://swrc.ontoware.org/ontology#"
     },
     {
       "namespace_prefix": "umbel",
       "namespace_name": "http://umbel.org/umbel#"
     },
     {
+      "namespace_prefix": "uri4uri",
+      "namespace_name": "http://uri4uri.net/vocab#"
+    },
+    {
+      "namespace_prefix": "vivo",
+      "namespace_name": "http://vivoweb.org/ontology/core#"
+    },
+    {
+      "namespace_prefix": "voagm",
+      "namespace_name": "http://voag.linkedmodel.org/voag#"
+    },
+    {
+      "namespace_prefix": "drm",
+      "namespace_name": "http://vocab.data.gov/def/drm#"
+    },
+    {
+      "namespace_prefix": "fea",
+      "namespace_name": "http://vocab.data.gov/def/fea#"
+    },
+    {
+      "namespace_prefix": "gd",
+      "namespace_name": "http://reference.data.gov/def/govdata/"
+    },
+    {
+      "namespace_prefix": "br",
+      "namespace_name": "http://vocab.deri.ie/br#"
+    },
+    {
+      "namespace_prefix": "c4n",
+      "namespace_name": "http://vocab.deri.ie/c4n#"
+    },
+    {
+      "namespace_prefix": "cogs",
+      "namespace_name": "http://vocab.deri.ie/cogs#"
+    },
+    {
+      "namespace_prefix": "csp",
+      "namespace_name": "http://vocab.deri.ie/csp#"
+    },
+    {
+      "namespace_prefix": "dady",
+      "namespace_name": "http://purl.org/NET/dady#"
+    },
+    {
+      "namespace_prefix": "odapp",
+      "namespace_name": "http://vocab.deri.ie/odapp#"
+    },
+    {
+      "namespace_prefix": "pdo",
+      "namespace_name": "http://ontologies.smile.deri.ie/pdo#"
+    },
+    {
+      "namespace_prefix": "ppo",
+      "namespace_name": "http://vocab.deri.ie/ppo#"
+    },
+    {
+      "namespace_prefix": "raul",
+      "namespace_name": "http://purl.org/NET/raul#"
+    },
+    {
+      "namespace_prefix": "scovo",
+      "namespace_name": "http://purl.org/NET/scovo#"
+    },
+    {
+      "namespace_prefix": "scsv",
+      "namespace_name": "http://purl.org/NET/schema-org-csv#"
+    },
+    {
+      "namespace_prefix": "search",
+      "namespace_name": "http://sindice.com/vocab/search#"
+    },
+    {
+      "namespace_prefix": "ietao",
+      "namespace_name": "http://vocab.deri.ie/tao#"
+    },
+    {
+      "namespace_prefix": "void",
+      "namespace_name": "http://rdfs.org/ns/void#"
+    },
+    {
+      "namespace_prefix": "gvp",
+      "namespace_name": "http://vocab.getty.edu/ontology#"
+    },
+    {
+      "namespace_prefix": "ngeoi",
+      "namespace_name": "http://vocab.lenka.no/geo-deling#"
+    },
+    {
+      "namespace_prefix": "whisky",
+      "namespace_name": "http://vocab.org/whisky/terms/"
+    },
+    {
+      "namespace_prefix": "comm",
+      "namespace_name": "http://vocab.resc.info/communication#"
+    },
+    {
+      "namespace_prefix": "vrank",
+      "namespace_name": "http://purl.org/voc/vrank#"
+    },
+    {
+      "namespace_prefix": "agls",
+      "namespace_name": "http://www.agls.gov.au/agls/terms/"
+    },
+    {
+      "namespace_prefix": "akt",
+      "namespace_name": "http://www.aktors.org/ontology/portal#"
+    },
+    {
+      "namespace_prefix": "akts",
+      "namespace_name": "http://www.aktors.org/ontology/support#"
+    },
+    {
+      "namespace_prefix": "bbc",
+      "namespace_name": "http://www.bbc.co.uk/ontologies/bbc/"
+    },
+    {
+      "namespace_prefix": "bbccms",
+      "namespace_name": "http://www.bbc.co.uk/ontologies/cms/"
+    },
+    {
+      "namespace_prefix": "bbccore",
+      "namespace_name": "http://www.bbc.co.uk/ontologies/coreconcepts/"
+    },
+    {
+      "namespace_prefix": "cwork",
+      "namespace_name": "http://www.bbc.co.uk/ontologies/creativework/"
+    },
+    {
+      "namespace_prefix": "bbcprov",
+      "namespace_name": "http://www.bbc.co.uk/ontologies/provenance/"
+    },
+    {
+      "namespace_prefix": "bbcsport",
+      "namespace_name": "http://www.bbc.co.uk/ontologies/sport/"
+    },
+    {
+      "namespace_prefix": "biopax",
+      "namespace_name": "http://www.biopax.org/release/biopax-level3.owl#"
+    },
+    {
+      "namespace_prefix": "blt",
+      "namespace_name": "http://www.bl.uk/schemas/bibliographic/blterms#"
+    },
+    {
+      "namespace_prefix": "coun",
+      "namespace_name": "http://www.daml.org/2001/09/countries/iso-3166-ont#"
+    },
+    {
+      "namespace_prefix": "demlab",
+      "namespace_name": "http://www.demcare.eu/ontologies/demlab.owl#"
+    },
+    {
+      "namespace_prefix": "ebucore",
+      "namespace_name": "http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#"
+    },
+    {
+      "namespace_prefix": "conel",
+      "namespace_name": "http://www.ebusiness-unibw.org/ontologies/consumerelectronics/v1#"
+    },
+    {
+      "namespace_prefix": "identitorg",
+      "namespace_name": "http://www.identity.org/ontologies/identity.owl#"
+    },
+    {
+      "namespace_prefix": "pattern",
+      "namespace_name": "http://www.essepuntato.it/2008/12/pattern#"
+    },
+    {
+      "namespace_prefix": "tvc",
+      "namespace_name": "http://www.essepuntato.it/2012/04/tvc/"
+    },
+    {
       "namespace_prefix": "cito-func",
       "namespace_name": "http://www.essepuntato.it/2013/03/cito-functions/"
+    },
+    {
+      "namespace_prefix": "vag",
+      "namespace_name": "http://www.essepuntato.it/2013/10/vagueness/"
     },
     {
       "namespace_prefix": "geonames",
       "namespace_name": "http://www.geonames.org/ontology#"
     },
     {
+      "namespace_prefix": "marl",
+      "namespace_name": "http://www.gsi.dit.upm.es/ontologies/marl/ns#"
+    },
+    {
+      "namespace_prefix": "onyx",
+      "namespace_name": "http://www.gsi.dit.upm.es/ontologies/onyx/ns#"
+    },
+    {
+      "namespace_prefix": "mtlo",
+      "namespace_name": "http://www.ics.forth.gr/isl/MarineTLO/v4/marinetlo.owl#"
+    },
+    {
       "namespace_prefix": "voidwh",
       "namespace_name": "http://www.ics.forth.gr/isl/VoIDWarehouse/VoID_Extension_Schema.owl"
+    },
+    {
+      "namespace_prefix": "kanzaki",
+      "namespace_name": "http://www.kanzaki.com/ns/music#"
+    },
+    {
+      "namespace_prefix": "whois",
+      "namespace_name": "http://www.kanzaki.com/ns/whois#"
+    },
+    {
+      "namespace_prefix": "lexinfo",
+      "namespace_name": "http://www.lexinfo.net/ontology/2.0/lexinfo#"
+    },
+    {
+      "namespace_prefix": "w3olca",
+      "namespace_name": "https://w3id.org/vocab/olca#"
+    },
+    {
+      "namespace_prefix": "lingvo",
+      "namespace_name": "https://w3id.org/vocab/lingvoj#"
+    },
+    {
+      "namespace_prefix": "semio",
+      "namespace_name": "http://www.lingvoj.org/semio#"
+    },
+    {
+      "namespace_prefix": "dtype",
+      "namespace_name": "http://www.linkedmodel.org/schema/dtype#"
+    },
+    {
+      "namespace_prefix": "vaem",
+      "namespace_name": "http://www.linkedmodel.org/schema/vaem#"
+    },
+    {
+      "namespace_prefix": "madsrdf",
+      "namespace_name": "http://www.loc.gov/mads/rdf/v1#"
+    },
+    {
+      "namespace_prefix": "premis",
+      "namespace_name": "http://www.loc.gov/premis/rdf/v1#"
+    },
+    {
+      "namespace_prefix": "geof",
+      "namespace_name": "http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#"
+    },
+    {
+      "namespace_prefix": "oecc",
+      "namespace_name": "http://www.oegov.org/core/owl/cc#"
+    },
+    {
+      "namespace_prefix": "gc",
+      "namespace_name": "http://www.oegov.org/core/owl/gc#"
+    },
+    {
+      "namespace_prefix": "infreal",
+      "namespace_name": "http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#"
+    },
+    {
+      "namespace_prefix": "odpart",
+      "namespace_name": "http://www.ontologydesignpatterns.org/cp/owl/participation.owl#"
+    },
+    {
+      "namespace_prefix": "seq",
+      "namespace_name": "http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#"
+    },
+    {
+      "namespace_prefix": "situ",
+      "namespace_name": "http://www.ontologydesignpatterns.org/cp/owl/situation.owl#"
     },
     {
       "namespace_prefix": "tis",
       "namespace_name": "http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl"
     },
     {
-      "namespace_prefix": "xhtmlvocab",
-      "namespace_name": "http://www.w3.org/1999/xhtml/vocab/"
+      "namespace_prefix": "ti",
+      "namespace_name": "http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#"
+    },
+    {
+      "namespace_prefix": "dul",
+      "namespace_name": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
+    },
+    {
+      "namespace_prefix": "iol",
+      "namespace_name": "http://www.ontologydesignpatterns.org/ont/dul/IOLite.owl#"
+    },
+    {
+      "namespace_prefix": "ontopic",
+      "namespace_name": "http://www.ontologydesignpatterns.org/ont/dul/ontopic.owl#"
+    },
+    {
+      "namespace_prefix": "lmm1",
+      "namespace_name": "http://www.ontologydesignpatterns.org/ont/lmm/LMM_L1.owl#"
+    },
+    {
+      "namespace_prefix": "lmm2",
+      "namespace_name": "http://www.ontologydesignpatterns.org/ont/lmm/LMM_L2.owl#"
+    },
+    {
+      "namespace_prefix": "irw",
+      "namespace_name": "http://www.ontologydesignpatterns.org/ont/web/irw.owl#"
+    },
+    {
+      "namespace_prefix": "cpa",
+      "namespace_name": "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#"
+    },
+    {
+      "namespace_prefix": "pext",
+      "namespace_name": "http://www.ontotext.com/proton/protonext#"
+    },
+    {
+      "namespace_prefix": "ptop",
+      "namespace_name": "http://www.ontotext.com/proton/protontop#"
+    },
+    {
+      "namespace_prefix": "geosparql",
+      "namespace_name": "http://www.opengis.net/ont/geosparql#"
+    },
+    {
+      "namespace_prefix": "gml",
+      "namespace_name": "http://www.opengis.net/ont/gml#"
+    },
+    {
+      "namespace_prefix": "sf",
+      "namespace_name": "http://www.opengis.net/ont/sf#"
+    },
+    {
+      "namespace_prefix": "ostop",
+      "namespace_name": "http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#"
+    },
+    {
+      "namespace_prefix": "acm",
+      "namespace_name": "http://acm.rkbexplorer.com/ontologies/acm#"
+    },
+    {
+      "namespace_prefix": "hdo",
+      "namespace_name": "http://www.samos.gr/ontologies/helpdeskOnto.owl#"
+    },
+    {
+      "namespace_prefix": "nie",
+      "namespace_name": "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#"
+    },
+    {
+      "namespace_prefix": "nco",
+      "namespace_name": "http://www.semanticdesktop.org/ontologies/2007/03/22/nco#"
+    },
+    {
+      "namespace_prefix": "nfo",
+      "namespace_name": "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#"
+    },
+    {
+      "namespace_prefix": "ncal",
+      "namespace_name": "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#"
+    },
+    {
+      "namespace_prefix": "nao",
+      "namespace_name": "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#"
+    },
+    {
+      "namespace_prefix": "nrl",
+      "namespace_name": "http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#"
+    },
+    {
+      "namespace_prefix": "ontosec",
+      "namespace_name": "http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#"
+    },
+    {
+      "namespace_prefix": "traffic",
+      "namespace_name": "http://www.sensormeasurement.appspot.com/ont/transport/traffic#"
+    },
+    {
+      "namespace_prefix": "connectype",
+      "namespace_name": "http://www.tele.pw.edu.pl/~sims-onto/ConnectivityType.owl#"
+    },
+    {
+      "namespace_prefix": "xhv",
+      "namespace_name": "http://www.w3.org/1999/xhtml/vocab#"
+    },
+    {
+      "namespace_prefix": "log",
+      "namespace_name": "http://www.w3.org/2000/10/swap/log#"
+    },
+    {
+      "namespace_prefix": "contact",
+      "namespace_name": "http://www.w3.org/2000/10/swap/pim/contact#"
+    },
+    {
+      "namespace_prefix": "swap_doc",
+      "namespace_name": "http://www.w3.org/2000/10/swap/pim/doc#"
     },
     {
       "namespace_prefix": "owl",
@@ -2221,60 +3225,1076 @@
       "namespace_name": "http://www.w3.org/2002/12/cal/ical#"
     },
     {
+      "namespace_prefix": "w3cgeo",
+      "namespace_name": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+    },
+    {
+      "namespace_prefix": "status",
+      "namespace_name": "http://www.w3.org/2003/06/sw-vocab-status/ns#"
+    },
+    {
       "namespace_prefix": "swrl",
       "namespace_name": "http://www.w3.org/2003/11/swrl#"
+    },
+    {
+      "namespace_prefix": "grddl",
+      "namespace_name": "http://www.w3.org/2003/g/data-view#"
+    },
+    {
+      "namespace_prefix": "skos",
+      "namespace_name": "http://www.w3.org/2004/02/skos/core#"
+    },
+    {
+      "namespace_prefix": "swp",
+      "namespace_name": "http://www.w3.org/2004/03/trix/swp-1/"
+    },
+    {
+      "namespace_prefix": "fresnel",
+      "namespace_name": "http://www.w3.org/2004/09/fresnel#"
+    },
+    {
+      "namespace_prefix": "test-description",
+      "namespace_name": "http://www.w3.org/2006/03/test-description#"
+    },
+    {
+      "namespace_prefix": "gso",
+      "namespace_name": "http://www.w3.org/2006/gen/ont#"
     },
     {
       "namespace_prefix": "owl_time",
       "namespace_name": "http://www.w3.org/2006/time#"
     },
     {
+      "namespace_prefix": "te",
+      "namespace_name": "http://www.w3.org/2006/time-entry#"
+    },
+    {
+      "namespace_prefix": "tzont",
+      "namespace_name": "http://www.w3.org/2006/timezone#"
+    },
+    {
+      "namespace_prefix": "vcard2006",
+      "namespace_name": "http://www.w3.org/2006/vcard/ns#"
+    },
+    {
+      "namespace_prefix": "wdrs",
+      "namespace_name": "http://www.w3.org/2007/05/powder-s#"
+    },
+    {
+      "namespace_prefix": "skosxl",
+      "namespace_name": "http://www.w3.org/2008/05/skos-xl#"
+    },
+    {
+      "namespace_prefix": "cnt",
+      "namespace_name": "http://www.w3.org/2011/content#"
+    },
+    {
       "namespace_prefix": "htir",
       "namespace_name": "http://www.w3.org/2011/http#"
+    },
+    {
+      "namespace_prefix": "vin",
+      "namespace_name": "http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#"
+    },
+    {
+      "namespace_prefix": "fowl",
+      "namespace_name": "http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#"
+    },
+    {
+      "namespace_prefix": "adms",
+      "namespace_name": "http://www.w3.org/ns/adms#"
+    },
+    {
+      "namespace_prefix": "acl",
+      "namespace_name": "http://www.w3.org/ns/auth/acl#"
+    },
+    {
+      "namespace_prefix": "dcat",
+      "namespace_name": "http://www.w3.org/ns/dcat#"
+    },
+    {
+      "namespace_prefix": "earl",
+      "namespace_name": "http://www.w3.org/ns/earl#"
+    },
+    {
+      "namespace_prefix": "hydra",
+      "namespace_name": "http://www.w3.org/ns/hydra/core#"
+    },
+    {
+      "namespace_prefix": "locn",
+      "namespace_name": "http://www.w3.org/ns/locn#"
+    },
+    {
+      "namespace_prefix": "ma-ont",
+      "namespace_name": "http://www.w3.org/ns/ma-ont#"
+    },
+    {
+      "namespace_prefix": "person",
+      "namespace_name": "http://www.w3.org/ns/person#"
+    },
+    {
+      "namespace_prefix": "regorg",
+      "namespace_name": "http://www.w3.org/ns/regorg#"
+    },
+    {
+      "namespace_prefix": "sd",
+      "namespace_name": "http://www.w3.org/ns/sparql-service-description#"
+    },
+    {
+      "namespace_prefix": "ui",
+      "namespace_name": "http://www.w3.org/ns/ui#"
+    },
+    {
+      "namespace_prefix": "d2rq",
+      "namespace_name": "http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#"
+    },
+    {
+      "namespace_prefix": "zbwext",
+      "namespace_name": "http://zbw.eu/namespaces/zbw-extensions/"
+    },
+    {
+      "namespace_prefix": "decision",
+      "namespace_name": "https://decision-ontology.googlecode.com/svn/trunk/decision.owl#"
+    },
+    {
+      "namespace_prefix": "hw",
+      "namespace_name": "https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl"
     },
     {
       "namespace_prefix": "ro",
       "namespace_name": "http://purl.org/wf4ever/ro#"
     },
     {
+      "namespace_prefix": "wfdesc",
+      "namespace_name": "http://purl.org/wf4ever/wfdesc#"
+    },
+    {
+      "namespace_prefix": "r4r",
+      "namespace_name": "http://guava.iis.sinica.edu.tw/r4r/"
+    },
+    {
       "namespace_prefix": "omn",
       "namespace_name": "http://open-multinet.info/ontology/omn#"
+    },
+    {
+      "namespace_prefix": "wfprov",
+      "namespace_name": "http://purl.org/wf4ever/wfprov#"
+    },
+    {
+      "namespace_prefix": "dm2e",
+      "namespace_name": "http://onto.dm2e.eu/schemas/dm2e/"
+    },
+    {
+      "namespace_prefix": "llont",
+      "namespace_name": "http://www.linklion.org/ontology#"
+    },
+    {
+      "namespace_prefix": "onc",
+      "namespace_name": "http://www.ics.forth.gr/isl/oncm/core#"
+    },
+    {
+      "namespace_prefix": "oae",
+      "namespace_name": "http://www.ics.forth.gr/isl/oae/core#"
+    },
+    {
+      "namespace_prefix": "ecpo",
+      "namespace_name": "http://purl.org/ontology/ecpo#"
+    },
+    {
+      "namespace_prefix": "cerif13",
+      "namespace_name": "http://www.eurocris.org/ontologies/cerif/1.3#"
+    },
+    {
+      "namespace_prefix": "holding",
+      "namespace_name": "http://purl.org/ontology/holding#"
+    },
+    {
+      "namespace_prefix": "cinelab",
+      "namespace_name": "http://advene.org/ns/cinelab/ld#"
+    },
+    {
+      "namespace_prefix": "lom",
+      "namespace_name": "http://data.opendiscoveryspace.eu/lom_ontology_ods.owl#"
+    },
+    {
+      "namespace_prefix": "cff",
+      "namespace_name": "http://purl.oclc.org/NET/ssnx/cf/cf-feature#"
+    },
+    {
+      "namespace_prefix": "cfp",
+      "namespace_name": "http://purl.oclc.org/NET/ssnx/cf/cf-property#"
+    },
+    {
+      "namespace_prefix": "omnfed",
+      "namespace_name": "http://open-multinet.info/ontology/omn-federation#"
+    },
+    {
+      "namespace_prefix": "omnlife",
+      "namespace_name": "http://open-multinet.info/ontology/omn-lifecycle#"
+    },
+    {
+      "namespace_prefix": "iso37120",
+      "namespace_name": "http://ontology.eil.utoronto.ca/ISO37120.owl#"
+    },
+    {
+      "namespace_prefix": "gci",
+      "namespace_name": "http://ontology.eil.utoronto.ca/GCI/Foundation/GCI-Foundation.owl#"
+    },
+    {
+      "namespace_prefix": "icontact",
+      "namespace_name": "http://ontology.eil.utoronto.ca/icontact.owl#"
+    },
+    {
+      "namespace_prefix": "ipo",
+      "namespace_name": "http://purl.org/ipo/core#"
+    },
+    {
+      "namespace_prefix": "eem",
+      "namespace_name": "http://purl.org/eem#"
+    },
+    {
+      "namespace_prefix": "vgo",
+      "namespace_name": "http://purl.org/net/VideoGameOntology#"
+    },
+    {
+      "namespace_prefix": "dqc",
+      "namespace_name": "http://semwebquality.org/ontologies/dq-constraints#"
+    },
+    {
+      "namespace_prefix": "qb4olap",
+      "namespace_name": "http://purl.org/qb4olap/cubes#"
+    },
+    {
+      "namespace_prefix": "mexalgo",
+      "namespace_name": "http://mex.aksw.org/mex-algo#"
+    },
+    {
+      "namespace_prefix": "mexcore",
+      "namespace_name": "http://mex.aksw.org/mex-core#"
+    },
+    {
+      "namespace_prefix": "mexperf",
+      "namespace_name": "http://mex.aksw.org/mex-perf#"
+    },
+    {
+      "namespace_prefix": "sor",
+      "namespace_name": "http://purl.org/net/soron/"
+    },
+    {
+      "namespace_prefix": "tp",
+      "namespace_name": "http://tour-pedia.org/download/tp.owl#"
+    },
+    {
+      "namespace_prefix": "gov",
+      "namespace_name": "http://gov.genealogy.net/ontology.owl#"
+    },
+    {
+      "namespace_prefix": "cdao",
+      "namespace_name": "http://purl.obolibrary.org/obo/"
+    },
+    {
+      "namespace_prefix": "km4c",
+      "namespace_name": "http://www.disit.org/km4city/schema#"
+    },
+    {
+      "namespace_prefix": "incident",
+      "namespace_name": "http://vocab.resc.info/incident#"
+    },
+    {
+      "namespace_prefix": "mmlab",
+      "namespace_name": "http://semweb.mmlab.be/ns/stoptimes#"
+    },
+    {
+      "namespace_prefix": "uby",
+      "namespace_name": "http://purl.org/olia/ubyCat.owl#"
+    },
+    {
+      "namespace_prefix": "uneskos",
+      "namespace_name": "http://purl.org/umu/uneskos#"
+    },
+    {
+      "namespace_prefix": "lsmap",
+      "namespace_name": "http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#"
+    },
+    {
+      "namespace_prefix": "lswmo",
+      "namespace_name": "http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-modelling.owl#"
+    },
+    {
+      "namespace_prefix": "ctxdesc",
+      "namespace_name": "http://www.demcare.eu/ontologies/contextdescriptor.owl#"
+    },
+    {
+      "namespace_prefix": "step",
+      "namespace_name": "http://purl.org/net/step#"
+    },
+    {
+      "namespace_prefix": "dio",
+      "namespace_name": "https://w3id.org/dio#"
+    },
+    {
+      "namespace_prefix": "hto",
+      "namespace_name": "http://vcharpenay.github.io/hto/hto.xml#"
+    },
+    {
+      "namespace_prefix": "edac",
+      "namespace_name": "http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#"
+    },
+    {
+      "namespace_prefix": "lslife",
+      "namespace_name": "http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper.owl#"
+    },
+    {
+      "namespace_prefix": "lswpm",
+      "namespace_name": "http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#"
+    },
+    {
+      "namespace_prefix": "oml",
+      "namespace_name": "http://def.seegrid.csiro.au/ontology/om/om-lite#"
+    },
+    {
+      "namespace_prefix": "samfl",
+      "namespace_name": "http://def.seegrid.csiro.au/ontology/om/sam-lite#"
     },
     {
       "namespace_prefix": "provoc",
       "namespace_name": "http://ns.inria.fr/provoc#"
     },
     {
+      "namespace_prefix": "jup",
+      "namespace_name": "http://w3id.org/charta77/jup/"
+    },
+    {
+      "namespace_prefix": "ioto",
+      "namespace_name": "http://www.irit.fr/recherches/MELODI/ontologies/IoT-O#"
+    },
+    {
+      "namespace_prefix": "kees",
+      "namespace_name": "http://linkeddata.center/kees/v1#"
+    },
+    {
+      "namespace_prefix": "SAN",
+      "namespace_name": "http://www.irit.fr/recherches/MELODI/ontologies/SAN#"
+    },
+    {
+      "namespace_prefix": "obws",
+      "namespace_name": "http://delicias.dia.fi.upm.es/ontologies/ObjectWithStates.owl#"
+    },
+    {
+      "namespace_prefix": "dpn",
+      "namespace_name": "http://purl.org/dpn#"
+    },
+    {
       "namespace_prefix": "ludo",
       "namespace_name": "http://ns.inria.fr/ludo"
     },
     {
-      "namespace_prefix": "solid",
-      "namespace_name": "http://www.w3.org/ns/solid/terms"
+      "namespace_prefix": "ludo-xapi",
+      "namespace_name": "http://ns.inria.fr/ludo/v1/xapi#"
+    },
+    {
+      "namespace_prefix": "lsqv",
+      "namespace_name": "http://lsq.aksw.org/vocab#"
+    },
+    {
+      "namespace_prefix": "dbowl",
+      "namespace_name": "http://ontology.cybershare.utep.edu/dbowl/relational-to-ontology-mapping-primitive.owl#"
+    },
+    {
+      "namespace_prefix": "multont",
+      "namespace_name": "https://w3id.org/multidimensional-interface/ontology#"
+    },
+    {
+      "namespace_prefix": "personlink",
+      "namespace_name": "http://cedric.cnam.fr/isid/ontologies/PersonLink.owl#"
+    },
+    {
+      "namespace_prefix": "hosp",
+      "namespace_name": "http://health.data.gov/def/hospital/"
+    },
+    {
+      "namespace_prefix": "duv",
+      "namespace_name": "http://www.w3.org/ns/duv#"
+    },
+    {
+      "namespace_prefix": "eli",
+      "namespace_name": "http://data.europa.eu/eli/ontology#"
+    },
+    {
+      "namespace_prefix": "mls",
+      "namespace_name": "http://www.w3.org/ns/mls#"
+    },
+    {
+      "namespace_prefix": "xbrll",
+      "namespace_name": "https://w3id.org/vocab/xbrll#"
+    },
+    {
+      "namespace_prefix": "bci",
+      "namespace_name": "https://w3id.org/BCI-ontology#"
+    },
+    {
+      "namespace_prefix": "ieorca",
+      "namespace_name": "http://vocab.deri.ie/orca#"
+    },
+    {
+      "namespace_prefix": "foio",
+      "namespace_name": "https://w3id.org/seas/FeatureOfInterestOntology/"
+    },
+    {
+      "namespace_prefix": "w3c-ssn",
+      "namespace_name": "https://www.w3.org/ns/ssn/"
+    },
+    {
+      "namespace_prefix": "dqv",
+      "namespace_name": "http://www.w3.org/ns/dqv#"
+    },
+    {
+      "namespace_prefix": "aml",
+      "namespace_name": "https://w3id.org/i40/aml#"
+    },
+    {
+      "namespace_prefix": "fiesta-priv",
+      "namespace_name": "http://purl.org/iot/ontology/fiesta-iot#"
+    },
+    {
+      "namespace_prefix": "rsctx",
+      "namespace_name": "http://softeng.polito.it/rsctx#"
+    },
+    {
+      "namespace_prefix": "rooms",
+      "namespace_name": "http://vocab.deri.ie/rooms#"
+    },
+    {
+      "namespace_prefix": "bot",
+      "namespace_name": "http://swa.cefriel.it/ontologies/botdcat-ap#"
+    },
+    {
+      "namespace_prefix": "cwrc",
+      "namespace_name": "http://sparql.cwrc.ca/ontologies/cwrc#"
+    },
+    {
+      "namespace_prefix": "cis",
+      "namespace_name": "http://dati.beniculturali.it/cis/"
+    },
+    {
+      "namespace_prefix": "nrv",
+      "namespace_name": "http://ns.inria.fr/nrv#"
+    },
+    {
+      "namespace_prefix": "pmofn",
+      "namespace_name": "http://premon.fbk.eu/ontology/fn#"
+    },
+    {
+      "namespace_prefix": "pmovn",
+      "namespace_name": "http://premon.fbk.eu/ontology/vn#"
+    },
+    {
+      "namespace_prefix": "pmonb",
+      "namespace_name": "http://premon.fbk.eu/ontology/nb#"
+    },
+    {
+      "namespace_prefix": "pmopb",
+      "namespace_name": "http://premon.fbk.eu/ontology/pb#"
+    },
+    {
+      "namespace_prefix": "spvqa",
+      "namespace_name": "https://bmake.th-brandenburg.de/spv#"
+    },
+    {
+      "namespace_prefix": "dnbt",
+      "namespace_name": "http://d-nb.info/standards/elementset/dnb#"
+    },
+    {
+      "namespace_prefix": "faldo",
+      "namespace_name": "http://biohackathon.org/resource/faldo#"
+    },
+    {
+      "namespace_prefix": "dave",
+      "namespace_name": "http://theme-e.adaptcentre.ie/dave#"
+    },
+    {
+      "namespace_prefix": "bperson",
+      "namespace_name": "http://data.vlaanderen.be/ns/persoon#"
+    },
+    {
+      "namespace_prefix": "agr",
+      "namespace_name": "http://promsns.org/def/agr#"
+    },
+    {
+      "namespace_prefix": "dprov",
+      "namespace_name": "http://promsns.org/def/do#"
+    },
+    {
+      "namespace_prefix": "isoadr",
+      "namespace_name": "http://reference.data.gov.au/def/ont/iso19160-1-address#"
+    },
+    {
+      "namespace_prefix": "arp",
+      "namespace_name": "http://www.arpenteur.org/ontology/Arpenteur.owl#"
+    },
+    {
+      "namespace_prefix": "bto",
+      "namespace_name": "https://w3id.org/bot#"
+    },
+    {
+      "namespace_prefix": "imo",
+      "namespace_name": "http://imgpedia.dcc.uchile.cl/ontology#"
+    },
+    {
+      "namespace_prefix": "w3seo",
+      "namespace_name": "https://w3id.org/seo#"
+    },
+    {
+      "namespace_prefix": "brt",
+      "namespace_name": "http://brt.basisregistraties.overheid.nl/def/top10nl#"
+    },
+    {
+      "namespace_prefix": "brk",
+      "namespace_name": "http://brk.basisregistraties.overheid.nl/def/brk#"
+    },
+    {
+      "namespace_prefix": "donto",
+      "namespace_name": "http://reference.data.gov.au/def/ont/dataset#"
+    },
+    {
+      "namespace_prefix": "ccsla",
+      "namespace_name": "http://cookingbigdata.com/linkeddata/ccsla#"
+    },
+    {
+      "namespace_prefix": "ccp",
+      "namespace_name": "http://cookingbigdata.com/linkeddata/ccpricing#"
+    },
+    {
+      "namespace_prefix": "cci",
+      "namespace_name": "http://cookingbigdata.com/linkeddata/ccinstances#"
+    },
+    {
+      "namespace_prefix": "ccr",
+      "namespace_name": "http://cookingbigdata.com/linkeddata/ccregions#"
+    },
+    {
+      "namespace_prefix": "cbs",
+      "namespace_name": "http://betalinkeddata.cbs.nl/def/cbs#"
+    },
+    {
+      "namespace_prefix": "ocds",
+      "namespace_name": "http://purl.org/onto-ocds/ocds#"
+    },
+    {
+      "namespace_prefix": "eupont",
+      "namespace_name": "http://elite.polito.it/ontologies/eupont.owl#"
+    },
+    {
+      "namespace_prefix": "otl",
+      "namespace_name": "https://w3id.org/opentrafficlights#"
+    },
+    {
+      "namespace_prefix": "ei2a",
+      "namespace_name": "http://opendata.aragon.es/def/ei2a#"
+    },
+    {
+      "namespace_prefix": "gcon",
+      "namespace_name": "https://w3id.org/GConsent#"
+    },
+    {
+      "namespace_prefix": "gdprtext",
+      "namespace_name": "https://w3id.org/GDPRtEXT#"
+    },
+    {
+      "namespace_prefix": "gdprov",
+      "namespace_name": "https://w3id.org/GDPRov#"
+    },
+    {
+      "namespace_prefix": "nno",
+      "namespace_name": "https://w3id.org/nno/ontology#"
+    },
+    {
+      "namespace_prefix": "epplan",
+      "namespace_name": "https://w3id.org/ep-plan#"
+    },
+    {
+      "namespace_prefix": "ctrl",
+      "namespace_name": "https://w3id.org/ibp/CTRLont#"
+    },
+    {
+      "namespace_prefix": "mod",
+      "namespace_name": "http://www.isibang.ac.in/ns/mod#"
+    },
+    {
+      "namespace_prefix": "usability",
+      "namespace_name": "https://w3id.org/usability#"
+    },
+    {
+      "namespace_prefix": "arco",
+      "namespace_name": "https://w3id.org/arco/ontology/core/"
+    },
+    {
+      "namespace_prefix": "cocoon",
+      "namespace_name": "https://w3id.org/cocoon/v1.0#"
+    },
+    {
+      "namespace_prefix": "fog",
+      "namespace_name": "https://w3id.org/fog#"
+    },
+    {
+      "namespace_prefix": "caresses",
+      "namespace_name": "http://caressesrobot.org/ontology#"
+    },
+    {
+      "namespace_prefix": "esco",
+      "namespace_name": "http://data.europa.eu/esco/model#"
+    },
+    {
+      "namespace_prefix": "omg",
+      "namespace_name": "https://w3id.org/omg#"
+    },
+    {
+      "namespace_prefix": "common",
+      "namespace_name": "http://www.w3.org/2007/uwa/context/common.owl#"
+    },
+    {
+      "namespace_prefix": "cdesc",
+      "namespace_name": "https://w3id.org/arco/ontology/context-description/"
+    },
+    {
+      "namespace_prefix": "ddesc",
+      "namespace_name": "https://w3id.org/arco/ontology/denotative-description/"
+    },
+    {
+      "namespace_prefix": "ctlog",
+      "namespace_name": "https://w3id.org/arco/ontology/catalogue/"
+    },
+    {
+      "namespace_prefix": "cevent",
+      "namespace_name": "https://w3id.org/arco/ontology/cultural-event/"
+    },
+    {
+      "namespace_prefix": "a-loc",
+      "namespace_name": "https://w3id.org/arco/ontology/location/"
+    },
+    {
+      "namespace_prefix": "r-arco",
+      "namespace_name": "https://w3id.org/arco/ontology/arco/"
+    },
+    {
+      "namespace_prefix": "gom",
+      "namespace_name": "https://w3id.org/gom#"
+    },
+    {
+      "namespace_prefix": "drammar",
+      "namespace_name": "http://www.purl.org/drammar#"
+    },
+    {
+      "namespace_prefix": "voidext",
+      "namespace_name": "http://purl.org/query/voidext#"
+    },
+    {
+      "namespace_prefix": "td",
+      "namespace_name": "https://www.w3.org/2019/wot/td#"
+    },
+    {
+      "namespace_prefix": "tb",
+      "namespace_name": "https://w3id.org/timebank#"
+    },
+    {
+      "namespace_prefix": "datafoodconsortium",
+      "namespace_name": "http://static.datafoodconsortium.org/ontologies/DFC_FullModel.owl#"
+    },
+    {
+      "namespace_prefix": "dfc-b",
+      "namespace_name": "http://static.datafoodconsortium.org/ontologies/DFC_BusinessOntology.owl#"
+    },
+    {
+      "namespace_prefix": "amlo-core",
+      "namespace_name": "http://w3id.org/amlo/core#"
+    },
+    {
+      "namespace_prefix": "ifcadd",
+      "namespace_name": "https://w3id.org/ifc/IFC4_ADD1#"
+    },
+    {
+      "namespace_prefix": "mdr",
+      "namespace_name": "http://semanticturkey.uniroma2.it/ns/mdr#"
+    },
+    {
+      "namespace_prefix": "sdm",
+      "namespace_name": "https://w3id.org/vocab/sdm#"
+    },
+    {
+      "namespace_prefix": "sur",
+      "namespace_name": "https://w3id.org/survey-ontology#"
+    },
+    {
+      "namespace_prefix": "prof",
+      "namespace_name": "http://www.w3.org/ns/dx/prof/"
+    },
+    {
+      "namespace_prefix": "uiote",
+      "namespace_name": "http://www.w3id.org/urban-iot/electric#"
+    },
+    {
+      "namespace_prefix": "eeo",
+      "namespace_name": "https://w3id.org/eeo#"
+    },
+    {
+      "namespace_prefix": "uiot",
+      "namespace_name": "http://www.w3id.org/urban-iot/core#"
+    },
+    {
+      "namespace_prefix": "ids",
+      "namespace_name": "https://w3id.org/idsa/core/"
+    },
+    {
+      "namespace_prefix": "dfc-t",
+      "namespace_name": "http://static.datafoodconsortium.org/ontologies/DFC_TechnicalOntology.owl#"
+    },
+    {
+      "namespace_prefix": "dfc-p",
+      "namespace_name": "http://static.datafoodconsortium.org/ontologies/DFC_ProductGlossary.owl#"
+    },
+    {
+      "namespace_prefix": "sbeo",
+      "namespace_name": "https://w3id.org/sbeo#"
+    },
+    {
+      "namespace_prefix": "contax",
+      "namespace_name": "https://w3id.org/con-tax#"
+    },
+    {
+      "namespace_prefix": "cdc",
+      "namespace_name": "https://w3id.org/cdc#"
+    },
+    {
+      "namespace_prefix": "cto",
+      "namespace_name": "https://w3id.org/cto#"
+    },
+    {
+      "namespace_prefix": "rico",
+      "namespace_name": "https://www.ica.org/standards/RiC/ontology#"
+    },
+    {
+      "namespace_prefix": "irao",
+      "namespace_name": "http://ontology.ethereal.cz/irao/"
+    },
+    {
+      "namespace_prefix": "ontolex",
+      "namespace_name": "http://www.w3.org/ns/lemon/ontolex#"
+    },
+    {
+      "namespace_prefix": "semiotics",
+      "namespace_name": "http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#"
+    },
+    {
+      "namespace_prefix": "vartrans",
+      "namespace_name": "http://www.w3.org/ns/lemon/vartrans#"
+    },
+    {
+      "namespace_prefix": "synsem",
+      "namespace_name": "http://www.w3.org/ns/lemon/synsem#"
+    },
+    {
+      "namespace_prefix": "lexdcp",
+      "namespace_name": "http://www.w3.org/ns/lemon/decomp#"
+    },
+    {
+      "namespace_prefix": "lime",
+      "namespace_name": "http://www.w3.org/ns/lemon/lime#"
+    },
+    {
+      "namespace_prefix": "rdft",
+      "namespace_name": "http://www.w3.org/ns/rdftest#"
+    },
+    {
+      "namespace_prefix": "bcom",
+      "namespace_name": "https://w3id.org/bcom#"
+    },
+    {
+      "namespace_prefix": "lc",
+      "namespace_name": "http://semweb.mmlab.be/ns/linkedconnections#"
+    },
+    {
+      "namespace_prefix": "tddom",
+      "namespace_name": "https://w3id.org/todo/tododom#"
+    },
+    {
+      "namespace_prefix": "tddial",
+      "namespace_name": "https://w3id.org/todo/tododial#"
     },
     {
       "namespace_prefix": "todo",
       "namespace_name": "https://w3id.org/todo#"
     },
     {
-      "namespace_prefix": "w3amv",
-      "namespace_name": "https://w3id.org/amv/"
+      "namespace_prefix": "tddm",
+      "namespace_name": "https://w3id.org/todo/tododm#"
+    },
+    {
+      "namespace_prefix": "tddw",
+      "namespace_name": "https://w3id.org/todo/tododw#"
+    },
+    {
+      "namespace_prefix": "tddt",
+      "namespace_name": "https://w3id.org/todo/tododt#"
+    },
+    {
+      "namespace_prefix": "tddfa",
+      "namespace_name": "https://w3id.org/todo/tododfa#"
+    },
+    {
+      "namespace_prefix": "w3dco",
+      "namespace_name": "https://w3id.org/dco#"
+    },
+    {
+      "namespace_prefix": "wikibase",
+      "namespace_name": "http://wikiba.se/ontology#"
+    },
+    {
+      "namespace_prefix": "cbcm",
+      "namespace_name": "http://w3id.org/um/cbcm/eu-cm-ontology#"
+    },
+    {
+      "namespace_prefix": "saont",
+      "namespace_name": "https://w3id.org/sao#"
+    },
+    {
+      "namespace_prefix": "rains",
+      "namespace_name": "https://w3id.org/rains#"
+    },
+    {
+      "namespace_prefix": "nanopub",
+      "namespace_name": "http://www.nanopub.org/nschema#"
+    },
+    {
+      "namespace_prefix": "dsd",
+      "namespace_name": "https://w3id.org/dsd#"
+    },
+    {
+      "namespace_prefix": "taxref-ld",
+      "namespace_name": "http://taxref.mnhn.fr/lod/"
+    },
+    {
+      "namespace_prefix": "react",
+      "namespace_name": "https://w3id.org/react#"
+    },
+    {
+      "namespace_prefix": "hpont",
+      "namespace_name": "https://w3id.org/hpont#"
+    },
+    {
+      "namespace_prefix": "roh",
+      "namespace_name": "http://w3id.org/roh#"
+    },
+    {
+      "namespace_prefix": "airo",
+      "namespace_name": "https://w3id.org/airo#"
+    },
+    {
+      "namespace_prefix": "dtx_srti",
+      "namespace_name": "http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#"
+    },
+    {
+      "namespace_prefix": "envpuv",
+      "namespace_name": "https://w3id.org/env/puv#"
+    },
+    {
+      "namespace_prefix": "cem",
+      "namespace_name": "https://w3id.org/CEMontology/"
+    },
+    {
+      "namespace_prefix": "iadopt",
+      "namespace_name": "https://w3id.org/iadopt/ont/"
+    },
+    {
+      "namespace_prefix": "tax",
+      "namespace_name": "https://w3id.org/EUTaxO#"
+    },
+    {
+      "namespace_prefix": "iddo",
+      "namespace_name": "https://w3id.org/iddo#"
+    },
+    {
+      "namespace_prefix": "tempo",
+      "namespace_name": "http://purl.org/tempo/"
+    },
+    {
+      "namespace_prefix": "ecfo",
+      "namespace_name": "https://w3id.org/ecfo#"
+    },
+    {
+      "namespace_prefix": "peco",
+      "namespace_name": "https://w3id.org/peco#"
+    },
+    {
+      "namespace_prefix": "rbdoc",
+      "namespace_name": "https://w3id.org/riverbench/schema/documentation#"
+    },
+    {
+      "namespace_prefix": "rb",
+      "namespace_name": "https://w3id.org/riverbench/schema/metadata#"
+    },
+    {
+      "namespace_prefix": "legalhtml",
+      "namespace_name": "https://w3id.org/legalhtml/ov#"
+    },
+    {
+      "namespace_prefix": "pimsii",
+      "namespace_name": "http://www.molmod.info/semantics/pims-ii.ttl#"
+    },
+    {
+      "namespace_prefix": "ivoam",
+      "namespace_name": "http://www.ivoa.net/rdf/messenger#"
+    },
+    {
+      "namespace_prefix": "apco",
+      "namespace_name": "https://purl.org/cm/onto/apco#"
+    },
+    {
+      "namespace_prefix": "tree",
+      "namespace_name": "https://w3id.org/tree#"
+    },
+    {
+      "namespace_prefix": "IIoT",
+      "namespace_name": "https://w3id.org/IIoT#"
+    },
+    {
+      "namespace_prefix": "swemls",
+      "namespace_name": "https://w3id.org/semsys/ns/swemls#"
+    },
+    {
+      "namespace_prefix": "amv",
+      "namespace_name": "https://w3id.org/amv#"
     },
     {
       "namespace_prefix": "ontouml",
       "namespace_name": "https://w3id.org/ontouml#"
     },
     {
+      "namespace_prefix": "nen3610",
+      "namespace_name": "http://modellen.geostandaarden.nl/def/nen3610#"
+    },
+    {
       "namespace_prefix": "sdont",
       "namespace_name": "https://w3id.org/okn/o/sd#"
+    },
+    {
+      "namespace_prefix": "citedcat",
+      "namespace_name": "https://w3id.org/citedcat-ap/"
+    },
+    {
+      "namespace_prefix": "rml",
+      "namespace_name": "http://w3id.org/rml/"
+    },
+    {
+      "namespace_prefix": "kgc",
+      "namespace_name": "http://kgc.knowledge-graph.jp/ontology/kgc.owl#"
     },
     {
       "namespace_prefix": "tribont",
       "namespace_name": "https://w3id.org/tribont#"
     },
     {
+      "namespace_prefix": "tribont-core",
+      "namespace_name": "https://w3id.org/tribont/core#"
+    },
+    {
+      "namespace_prefix": "tribont-material",
+      "namespace_name": "https://w3id.org/tribont/material#"
+    },
+    {
+      "namespace_prefix": "tribont-equipment",
+      "namespace_name": "https://w3id.org/tribont/equipment#"
+    },
+    {
+      "namespace_prefix": "tribont-sample",
+      "namespace_name": "https://w3id.org/tribont/sample#"
+    },
+    {
+      "namespace_prefix": "wfont",
+      "namespace_name": "https://w3id.org/wfont#"
+    },
+    {
+      "namespace_prefix": "dpo",
+      "namespace_name": "http://purl.org/twc/dpo/ont/"
+    },
+    {
+      "namespace_prefix": "sou",
+      "namespace_name": "http://qudt.org/2.1/vocab/sou/"
+    },
+    {
+      "namespace_prefix": "sri",
+      "namespace_name": "https://w3id.org/sri#"
+    },
+    {
+      "namespace_prefix": "coreo",
+      "namespace_name": "http://purl.org/coreo#"
+    },
+    {
+      "namespace_prefix": "CPSWatch",
+      "namespace_name": "https://w3id.org/CPSWatch#"
+    },
+    {
+      "namespace_prefix": "modp",
+      "namespace_name": "https://w3id.org/mod#"
+    },
+    {
+      "namespace_prefix": "sdom",
+      "namespace_name": "https://w3id.org/okn/o/sdm#"
+    },
+    {
+      "namespace_prefix": "ocmv",
+      "namespace_name": "https://w3id.org/ontouml-models/vocabulary#"
+    },
+    {
+      "namespace_prefix": "stax",
+      "namespace_name": "https://w3id.org/stax/ontology#"
+    },
+    {
+      "namespace_prefix": "icb",
+      "namespace_name": "https://w3id.org/isCharacterisedBy#"
+    },
+    {
+      "namespace_prefix": "space",
+      "namespace_name": "http://www.w3.org/ns/pim/space#"
+    },
+    {
+      "namespace_prefix": "edifact-o",
+      "namespace_name": "https://purl.org/edifact/ontology#"
+    },
+    {
       "namespace_prefix": "tro",
       "namespace_name": "https://w3id.org/TRO#"
+    },
+    {
+      "namespace_prefix": "chameo",
+      "namespace_name": "https://w3id.org/emmo/domain/characterisation-methodology/chameo#"
+    },
+    {
+      "namespace_prefix": "hpo",
+      "namespace_name": "http://w3id.org/emmo-hpo/hpo#"
+    },
+    {
+      "namespace_prefix": "maeo",
+      "namespace_name": "http://w3id.org/emmo-maeo/maeo#"
+    },
+    {
+      "namespace_prefix": "bato",
+      "namespace_name": "http://w3id.org/emmo-bto/bto#"
+    },
+    {
+      "namespace_prefix": "okh",
+      "namespace_name": "https://w3id.org/oseg/ont/okh#"
+    },
+    {
+      "namespace_prefix": "isoprops",
+      "namespace_name": "https://w3id.org/isoprops#"
+    },
+    {
+      "namespace_prefix": "w3dt",
+      "namespace_name": "https://w3id.org/dt#"
+    },
+    {
+      "namespace_prefix": "w3loin",
+      "namespace_name": "https://w3id.org/loin#"
     },
     {
       "namespace_prefix": "hht",
@@ -2287,6 +4307,98 @@
     {
       "namespace_prefix": "w3dpv",
       "namespace_name": "https://w3id.org/dpv#"
+    },
+    {
+      "namespace_prefix": "dpvpd",
+      "namespace_name": "https://w3id.org/dpv/pd#"
+    },
+    {
+      "namespace_prefix": "dstv",
+      "namespace_name": "http://w3id.org/dstv#"
+    },
+    {
+      "namespace_prefix": "ioc",
+      "namespace_name": "http://w3id.org/ioc#"
+    },
+    {
+      "namespace_prefix": "mso-em",
+      "namespace_name": "https://www.purl.org/mso-em#"
+    },
+    {
+      "namespace_prefix": "vair",
+      "namespace_name": "https://w3id.org/vair#"
+    },
+    {
+      "namespace_prefix": "intro",
+      "namespace_name": "https://w3id.org/lso/intro/beta202408#"
+    },
+    {
+      "namespace_prefix": "gtm",
+      "namespace_name": "https://www.goudatijdmachine.nl/def#"
+    },
+    {
+      "namespace_prefix": "ishi",
+      "namespace_name": "https://w3id.org/ishikawa-diagram-ontology#"
+    },
+    {
+      "namespace_prefix": "a4bdg",
+      "namespace_name": "https://w3id.org/aerOS/building#"
+    },
+    {
+      "namespace_prefix": "pko",
+      "namespace_name": "https://w3id.org/pko#"
+    },
+    {
+      "namespace_prefix": "ekc",
+      "namespace_name": "http://dh.aks.ac.kr/ontologies/ekc#"
+    },
+    {
+      "namespace_prefix": "gsn",
+      "namespace_name": "https://w3id.org/OntoGSN/ontology#"
+    },
+    {
+      "namespace_prefix": "glc",
+      "namespace_name": "https://glaciation-project.eu/MetadataReferenceModel#"
+    },
+    {
+      "namespace_prefix": "rdfc",
+      "namespace_name": "https://w3id.org/rdf-connect#"
+    },
+    {
+      "namespace_prefix": "opti",
+      "namespace_name": "https://w3id.org/optimar#"
+    },
+    {
+      "namespace_prefix": "vpa",
+      "namespace_name": "https://w3id.org/vpa#"
+    },
+    {
+      "namespace_prefix": "attack",
+      "namespace_name": "http://w3id.org/sepses/vocab/ref/attack#"
+    },
+    {
+      "namespace_prefix": "fwo",
+      "namespace_name": "https://w3id.org/foodwaste/ontology#"
+    },
+    {
+      "namespace_prefix": "ce",
+      "namespace_name": "https://purl.org/cityexplorer#"
+    },
+    {
+      "namespace_prefix": "vas",
+      "namespace_name": "https://robotica.uv.es/proyectos/ASOTVAS/def/ciencia-tecnologia/vas#"
+    },
+    {
+      "namespace_prefix": "pghdprovo",
+      "namespace_name": "https://w3id.org/pghdprovo#"
+    },
+    {
+      "namespace_prefix": "dsgraphql",
+      "namespace_name": "http://datashapes.org/graphql#"
+    },
+    {
+      "namespace_prefix": "oso",
+      "namespace_name": "https://w3id.org/earthsemantics/OSO#"
     },
     {
       "namespace_prefix": "omg-ann",
@@ -2689,10 +4801,6 @@
       "namespace_name": "http://open-services.net/ns/sysmlv2#"
     },
     {
-      "namespace_prefix": "opmo",
-      "namespace_name": "http://openprovenance.org/model/opmo#"
-    },
-    {
       "namespace_prefix": "sparbido",
       "namespace_name": "http://purl.org/spar/bido/"
     },
@@ -2789,10 +4897,6 @@
       "namespace_name": "http://www.w3.org/2000/10/swap/os#"
     },
     {
-      "namespace_prefix": "swap_doc",
-      "namespace_name": "http://www.w3.org/2000/10/swap/pim/doc#"
-    },
-    {
       "namespace_prefix": "swapemail",
       "namespace_name": "http://www.w3.org/2000/10/swap/pim/email#"
     },
@@ -2867,22 +4971,6 @@
     {
       "namespace_prefix": "ExtendedDnS",
       "namespace_name": "http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#"
-    },
-    {
-      "namespace_prefix": "sf",
-      "namespace_name": "http://www.opengis.net/ont/sf#"
-    },
-    {
-      "namespace_prefix": "pattern",
-      "namespace_name": "http://www.essepuntato.it/2008/12/pattern#"
-    },
-    {
-      "namespace_prefix": "tvc",
-      "namespace_name": "http://www.essepuntato.it/2012/04/tvc/"
-    },
-    {
-      "namespace_prefix": "vag",
-      "namespace_name": "http://www.essepuntato.it/2013/10/vagueness/"
     },
     {
       "namespace_prefix": "constant",
@@ -2989,20 +5077,12 @@
       "namespace_name": "http://academic-meta-tool.xyz/vocab#"
     },
     {
-      "namespace_prefix": "acm",
-      "namespace_name": "http://acm.rkbexplorer.com/ontologies/acm#"
-    },
-    {
       "namespace_prefix": "apods",
       "namespace_name": "http://activitypods.org/ns/core#"
     },
     {
       "namespace_prefix": "cl",
       "namespace_name": "http://advene.org/ns/cinelab/"
-    },
-    {
-      "namespace_prefix": "cinelab",
-      "namespace_name": "http://advene.org/ns/cinelab/ld#"
     },
     {
       "namespace_prefix": "aers",
@@ -3023,10 +5103,6 @@
     {
       "namespace_prefix": "aims",
       "namespace_name": "http://aims.fao.org/aos/common/"
-    },
-    {
-      "namespace_prefix": "geop",
-      "namespace_name": "http://aims.fao.org/aos/geopolitical.owl#"
     },
     {
       "namespace_prefix": "jita",
@@ -3105,10 +5181,6 @@
       "namespace_name": "http://bag.basisregistraties.overheid.nl/bag/id/pand/"
     },
     {
-      "namespace_prefix": "bag2",
-      "namespace_name": "http://bag.basisregistraties.overheid.nl/def/bag#"
-    },
-    {
       "namespace_prefix": "bblfish",
       "namespace_name": "http://bblfish.net/people/henry/card#"
     },
@@ -3123,10 +5195,6 @@
     {
       "namespace_prefix": "beer",
       "namespace_name": "http://beer.com/"
-    },
-    {
-      "namespace_prefix": "cbs",
-      "namespace_name": "http://betalinkeddata.cbs.nl/def/cbs#"
     },
     {
       "namespace_prefix": "bgdbp",
@@ -3193,10 +5261,6 @@
       "namespace_name": "http://bioentity.io/vocab/"
     },
     {
-      "namespace_prefix": "faldo",
-      "namespace_name": "http://biohackathon.org/resource/faldo#"
-    },
-    {
       "namespace_prefix": "coeus",
       "namespace_name": "http://bioinformatics.ua.pt/coeus/"
     },
@@ -3215,14 +5279,6 @@
     {
       "namespace_prefix": "bu",
       "namespace_name": "http://borhan-onto.ir/ontology/upper#"
-    },
-    {
-      "namespace_prefix": "brk",
-      "namespace_name": "http://brk.basisregistraties.overheid.nl/def/brk#"
-    },
-    {
-      "namespace_prefix": "brt",
-      "namespace_name": "http://brt.basisregistraties.overheid.nl/def/top10nl#"
     },
     {
       "namespace_prefix": "bsdd",
@@ -3265,24 +5321,12 @@
       "namespace_name": "http://callimachusproject.org/rdf/2009/framework#"
     },
     {
-      "namespace_prefix": "caresses",
-      "namespace_name": "http://caressesrobot.org/ontology#"
-    },
-    {
       "namespace_prefix": "cpm",
       "namespace_name": "http://catalogus-professorum.org/cpm/2/"
     },
     {
       "namespace_prefix": "cb",
       "namespace_name": "http://cbasewrap.ontologycentral.com/vocab#"
-    },
-    {
-      "namespace_prefix": "personlink",
-      "namespace_name": "http://cedric.cnam.fr/isid/ontologies/PersonLink.owl#"
-    },
-    {
-      "namespace_prefix": "dtx_srti",
-      "namespace_name": "http://cef.uv.es/lodroadtran18/def/transporte/dtx_srti#"
     },
     {
       "namespace_prefix": "granatum",
@@ -3325,10 +5369,6 @@
       "namespace_name": "http://clirio.kaerle.com/clirio.owl#"
     },
     {
-      "namespace_prefix": "va",
-      "namespace_name": "http://code-research.eu/ontology/visual-analytics#"
-    },
-    {
       "namespace_prefix": "dgfr",
       "namespace_name": "http://colin.maudry.com/ontologies/dgfr#"
     },
@@ -3365,36 +5405,8 @@
       "namespace_name": "http://contsem.unizar.es/def/sector-publico/contratacion#"
     },
     {
-      "namespace_prefix": "pproc",
-      "namespace_name": "http://contsem.unizar.es/def/sector-publico/pproc#"
-    },
-    {
-      "namespace_prefix": "cci",
-      "namespace_name": "http://cookingbigdata.com/linkeddata/ccinstances#"
-    },
-    {
-      "namespace_prefix": "ccp",
-      "namespace_name": "http://cookingbigdata.com/linkeddata/ccpricing#"
-    },
-    {
-      "namespace_prefix": "ccr",
-      "namespace_name": "http://cookingbigdata.com/linkeddata/ccregions#"
-    },
-    {
-      "namespace_prefix": "ccsla",
-      "namespace_name": "http://cookingbigdata.com/linkeddata/ccsla#"
-    },
-    {
       "namespace_prefix": "cordis",
       "namespace_name": "http://cordis.europa.eu/projects/"
-    },
-    {
-      "namespace_prefix": "courseware",
-      "namespace_name": "http://courseware.rkbexplorer.com/ontologies/courseware#"
-    },
-    {
-      "namespace_prefix": "ccrel",
-      "namespace_name": "http://creativecommons.org/ns#"
     },
     {
       "namespace_prefix": "drs",
@@ -3411,14 +5423,6 @@
     {
       "namespace_prefix": "dnb",
       "namespace_name": "http://d-nb.info/gnd/"
-    },
-    {
-      "namespace_prefix": "agrelon",
-      "namespace_name": "http://d-nb.info/standards/elementset/agrelon#"
-    },
-    {
-      "namespace_prefix": "dnbt",
-      "namespace_name": "http://d-nb.info/standards/elementset/dnb#"
     },
     {
       "namespace_prefix": "jdbc",
@@ -3493,14 +5497,6 @@
       "namespace_name": "http://data.europa.eu/c4p/data/"
     },
     {
-      "namespace_prefix": "eli",
-      "namespace_name": "http://data.europa.eu/eli/ontology#"
-    },
-    {
-      "namespace_prefix": "esco",
-      "namespace_name": "http://data.europa.eu/esco/model#"
-    },
-    {
       "namespace_prefix": "qms",
       "namespace_name": "http://data.europa.eu/esco/qms#"
     },
@@ -3549,22 +5545,6 @@
       "namespace_name": "http://data.ifs.tuwien.ac.at/study/resource/"
     },
     {
-      "namespace_prefix": "geofla",
-      "namespace_name": "http://data.ign.fr/def/geofla#"
-    },
-    {
-      "namespace_prefix": "geom",
-      "namespace_name": "http://data.ign.fr/def/geometrie#"
-    },
-    {
-      "namespace_prefix": "ignf",
-      "namespace_name": "http://data.ign.fr/def/ignf#"
-    },
-    {
-      "namespace_prefix": "topo",
-      "namespace_name": "http://data.ign.fr/def/topo#"
-    },
-    {
       "namespace_prefix": "geofr",
       "namespace_name": "http://data.ign.fr/ontologies/geofla#"
     },
@@ -3605,32 +5585,8 @@
       "namespace_name": "http://data.linkedmdb.org/resource/movie/"
     },
     {
-      "namespace_prefix": "food",
-      "namespace_name": "http://data.lirmm.fr/ontologies/food#"
-    },
-    {
       "namespace_prefix": "laposte",
       "namespace_name": "http://data.lirmm.fr/ontologies/laposte#"
-    },
-    {
-      "namespace_prefix": "oan",
-      "namespace_name": "http://data.lirmm.fr/ontologies/oan/"
-    },
-    {
-      "namespace_prefix": "osp",
-      "namespace_name": "http://data.lirmm.fr/ontologies/osp#"
-    },
-    {
-      "namespace_prefix": "passim",
-      "namespace_name": "http://data.lirmm.fr/ontologies/passim#"
-    },
-    {
-      "namespace_prefix": "poste",
-      "namespace_name": "http://data.lirmm.fr/ontologies/poste#"
-    },
-    {
-      "namespace_prefix": "vdpp",
-      "namespace_name": "http://data.lirmm.fr/ontologies/vdpp#"
     },
     {
       "namespace_prefix": "nprl",
@@ -3663,10 +5619,6 @@
     {
       "namespace_prefix": "obeu",
       "namespace_name": "http://data.openbudgets.eu/ontology/"
-    },
-    {
-      "namespace_prefix": "lom",
-      "namespace_name": "http://data.opendiscoveryspace.eu/lom_ontology_ods.owl#"
     },
     {
       "namespace_prefix": "osgb",
@@ -3709,10 +5661,6 @@
       "namespace_name": "http://data.semanticweb.org/conference/ekaw/2012/complete/"
     },
     {
-      "namespace_prefix": "swc",
-      "namespace_name": "http://data.semanticweb.org/ns/swc/ontology#"
-    },
-    {
       "namespace_prefix": "swperson",
       "namespace_name": "http://data.semanticweb.org/person/"
     },
@@ -3741,10 +5689,6 @@
       "namespace_name": "http://data.vlaanderen.be/ns/mandaat#"
     },
     {
-      "namespace_prefix": "bperson",
-      "namespace_name": "http://data.vlaanderen.be/ns/persoon#"
-    },
-    {
       "namespace_prefix": "wb",
       "namespace_name": "http://data.worldbank.org/"
     },
@@ -3767,14 +5711,6 @@
     {
       "namespace_prefix": "dm",
       "namespace_name": "http://datamusee.givingsense.eu/onto/"
-    },
-    {
-      "namespace_prefix": "dsgraphql",
-      "namespace_name": "http://datashapes.org/graphql#"
-    },
-    {
-      "namespace_prefix": "cis",
-      "namespace_name": "http://dati.beniculturali.it/cis/"
     },
     {
       "namespace_prefix": "clapit",
@@ -3973,62 +5909,6 @@
       "namespace_name": "http://def.esd.org.uk/"
     },
     {
-      "namespace_prefix": "basic",
-      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#"
-    },
-    {
-      "namespace_prefix": "gm",
-      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#"
-    },
-    {
-      "namespace_prefix": "tm",
-      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal#"
-    },
-    {
-      "namespace_prefix": "gf",
-      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#"
-    },
-    {
-      "namespace_prefix": "dq",
-      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#"
-    },
-    {
-      "namespace_prefix": "ext",
-      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#"
-    },
-    {
-      "namespace_prefix": "li",
-      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage#"
-    },
-    {
-      "namespace_prefix": "md",
-      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#"
-    },
-    {
-      "namespace_prefix": "h2o",
-      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#"
-    },
-    {
-      "namespace_prefix": "isobserv",
-      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#"
-    },
-    {
-      "namespace_prefix": "sam",
-      "namespace_name": "http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling#"
-    },
-    {
-      "namespace_prefix": "oml",
-      "namespace_name": "http://def.seegrid.csiro.au/ontology/om/om-lite#"
-    },
-    {
-      "namespace_prefix": "samfl",
-      "namespace_name": "http://def.seegrid.csiro.au/ontology/om/sam-lite#"
-    },
-    {
-      "namespace_prefix": "obws",
-      "namespace_name": "http://delicias.dia.fi.upm.es/ontologies/ObjectWithStates.owl#"
-    },
-    {
       "namespace_prefix": "oauth",
       "namespace_name": "http://demiblog.org/vocab/oauth#"
     },
@@ -4037,16 +5917,8 @@
       "namespace_name": "http://demo.openlinksw.com/schemas/Northwind/"
     },
     {
-      "namespace_prefix": "poder",
-      "namespace_name": "http://dev.poderopedia.com/vocab/"
-    },
-    {
       "namespace_prefix": "quak",
       "namespace_name": "http://dev.w3.org/cvsweb/2000/quacken/vocab#"
-    },
-    {
-      "namespace_prefix": "ekc",
-      "namespace_name": "http://dh.aks.ac.kr/ontologies/ekc#"
     },
     {
       "namespace_prefix": "air",
@@ -4157,16 +6029,8 @@
       "namespace_name": "http://edgarwrap.ontologycentral.com/vocab/edgar#"
     },
     {
-      "namespace_prefix": "dogont",
-      "namespace_name": "http://elite.polito.it/ontologies/dogont"
-    },
-    {
       "namespace_prefix": "dogontowl",
       "namespace_name": "http://elite.polito.it/ontologies/dogont.owl#"
-    },
-    {
-      "namespace_prefix": "eupont",
-      "namespace_name": "http://elite.polito.it/ontologies/eupont.owl#"
     },
     {
       "namespace_prefix": "doam",
@@ -4183,10 +6047,6 @@
     {
       "namespace_prefix": "wiki",
       "namespace_name": "http://en.wikipedia.org/wiki/"
-    },
-    {
-      "namespace_prefix": "op",
-      "namespace_name": "http://environment.data.gov.au/def/op#"
     },
     {
       "namespace_prefix": "efrbroo",
@@ -4287,6 +6147,10 @@
     {
       "namespace_prefix": "ckg",
       "namespace_name": "http://example.org/ckg#"
+    },
+    {
+      "namespace_prefix": "dctap",
+      "namespace_name": "http://example.org/dctap#"
     },
     {
       "namespace_prefix": "dd",
@@ -4405,14 +6269,6 @@
       "namespace_name": "http://geovocab.org/"
     },
     {
-      "namespace_prefix": "ngeo",
-      "namespace_name": "http://geovocab.org/geometry#"
-    },
-    {
-      "namespace_prefix": "spatial",
-      "namespace_name": "http://geovocab.org/spatial#"
-    },
-    {
       "namespace_prefix": "value",
       "namespace_name": "http://gfgfd.vs/"
     },
@@ -4437,20 +6293,12 @@
       "namespace_name": "http://google.com/"
     },
     {
-      "namespace_prefix": "gov",
-      "namespace_name": "http://gov.genealogy.net/ontology.owl#"
-    },
-    {
       "namespace_prefix": "govwild",
       "namespace_name": "http://govwild.org/0.6/GWOntology.rdf/"
     },
     {
       "namespace_prefix": "gaf",
       "namespace_name": "http://groundedannotationframework.org/"
-    },
-    {
-      "namespace_prefix": "r4r",
-      "namespace_name": "http://guava.iis.sinica.edu.tw/r4r/"
     },
     {
       "namespace_prefix": "guez",
@@ -4479,10 +6327,6 @@
     {
       "namespace_prefix": "harrisons",
       "namespace_name": "http://harrisons.cc/"
-    },
-    {
-      "namespace_prefix": "hosp",
-      "namespace_name": "http://health.data.gov/def/hospital/"
     },
     {
       "namespace_prefix": "dummy",
@@ -4545,10 +6389,6 @@
       "namespace_name": "http://id.loc.gov/vocabulary/iso639-1/"
     },
     {
-      "namespace_prefix": "marcrole",
-      "namespace_name": "http://id.loc.gov/vocabulary/relators/"
-    },
-    {
       "namespace_prefix": "datmm",
       "namespace_name": "http://id.nlm.nih.gov/datmm/"
     },
@@ -4583,10 +6423,6 @@
     {
       "namespace_prefix": "pmc",
       "namespace_name": "http://identifiers.org/pmc/"
-    },
-    {
-      "namespace_prefix": "turismo",
-      "namespace_name": "http://idi.fundacionctic.org/cruzar/turismo#"
     },
     {
       "namespace_prefix": "master1",
@@ -4649,10 +6485,6 @@
       "namespace_name": "http://imf.270a.info/dataset/"
     },
     {
-      "namespace_prefix": "imo",
-      "namespace_name": "http://imgpedia.dcc.uchile.cl/ontology#"
-    },
-    {
       "namespace_prefix": "im",
       "namespace_name": "http://imgpedia.dcc.uchile.cl/resource/"
     },
@@ -4661,16 +6493,8 @@
       "namespace_name": "http://imi.go.jp/ns/core/rdf#"
     },
     {
-      "namespace_prefix": "dso",
-      "namespace_name": "http://inference-web.org/2.0/ds.owl#"
-    },
-    {
       "namespace_prefix": "pmlj",
       "namespace_name": "http://inference-web.org/2.0/pml-justification.owl#"
-    },
-    {
-      "namespace_prefix": "pmlp",
-      "namespace_name": "http://inference-web.org/2.0/pml-provenance.owl#"
     },
     {
       "namespace_prefix": "pmlr",
@@ -4727,14 +6551,6 @@
     {
       "namespace_prefix": "rnews",
       "namespace_name": "http://iptc.org/std/rNews/2011-10-07#"
-    },
-    {
-      "namespace_prefix": "hr",
-      "namespace_name": "http://iserve.kmi.open.ac.uk/ns/hrests#"
-    },
-    {
-      "namespace_prefix": "msm",
-      "namespace_name": "http://iserve.kmi.open.ac.uk/ns/msm#"
     },
     {
       "namespace_prefix": "jats",
@@ -4829,10 +6645,6 @@
       "namespace_name": "http://kg.artsdata.ca/resource/"
     },
     {
-      "namespace_prefix": "kgc",
-      "namespace_name": "http://kgc.knowledge-graph.jp/ontology/kgc.owl#"
-    },
-    {
       "namespace_prefix": "quran",
       "namespace_name": "http://khalidaloufi.sa/quran#"
     },
@@ -4847,10 +6659,6 @@
     {
       "namespace_prefix": "kmgeo",
       "namespace_name": "http://km.aifb.kit.edu/services/geo/ontology#"
-    },
-    {
-      "namespace_prefix": "spfood",
-      "namespace_name": "http://kmi.open.ac.uk/projects/smartproducts/ontologies/food.owl#"
     },
     {
       "namespace_prefix": "provenir",
@@ -4879,10 +6687,6 @@
     {
       "namespace_prefix": "l4a",
       "namespace_name": "http://labels4all.info/ns/"
-    },
-    {
-      "namespace_prefix": "ends",
-      "namespace_name": "http://labs.mondeca.com/vocab/endpointStatus#"
     },
     {
       "namespace_prefix": "lrcommon",
@@ -4933,20 +6737,12 @@
       "namespace_name": "http://lei.info/gleio/"
     },
     {
-      "namespace_prefix": "lemon",
-      "namespace_name": "http://lemon-model.net/lemon#"
-    },
-    {
       "namespace_prefix": "lemonuby",
       "namespace_name": "http://lemon-model.net/lexica/uby/"
     },
     {
       "namespace_prefix": "oils",
       "namespace_name": "http://lemon-model.net/oils#"
-    },
-    {
-      "namespace_prefix": "lexvo",
-      "namespace_name": "http://lexvo.org/ontology#"
     },
     {
       "namespace_prefix": "bitl",
@@ -4973,10 +6769,6 @@
       "namespace_name": "http://linked.data.gov.au/def/loci#"
     },
     {
-      "namespace_prefix": "kees",
-      "namespace_name": "http://linkeddata.center/kees/v1#"
-    },
-    {
       "namespace_prefix": "ldqm",
       "namespace_name": "http://linkeddata.es/resource/ldqm/"
     },
@@ -4999,10 +6791,6 @@
     {
       "namespace_prefix": "lgdm",
       "namespace_name": "http://linkedgeodata.org/meta/"
-    },
-    {
-      "namespace_prefix": "lgdo",
-      "namespace_name": "http://linkedgeodata.org/ontology/"
     },
     {
       "namespace_prefix": "lgdt",
@@ -5081,14 +6869,6 @@
       "namespace_name": "http://lod.taxonconcept.org/ontology/p01/Mammalia/index.owl#"
     },
     {
-      "namespace_prefix": "scip",
-      "namespace_name": "http://lod.taxonconcept.org/ontology/sci_people.owl#"
-    },
-    {
-      "namespace_prefix": "txn",
-      "namespace_name": "http://lod.taxonconcept.org/ontology/txn.owl#"
-    },
-    {
       "namespace_prefix": "ses",
       "namespace_name": "http://lod.taxonconcept.org/ses/"
     },
@@ -5117,16 +6897,8 @@
       "namespace_name": "http://lodlaundromat.org/resource/"
     },
     {
-      "namespace_prefix": "loted",
-      "namespace_name": "http://loted.eu/ontology#"
-    },
-    {
       "namespace_prefix": "lsqr",
       "namespace_name": "http://lsq.aksw.org/"
-    },
-    {
-      "namespace_prefix": "lsqv",
-      "namespace_name": "http://lsq.aksw.org/vocab#"
     },
     {
       "namespace_prefix": "lomv1p",
@@ -5225,22 +6997,6 @@
       "namespace_name": "http://meta-pfarrerbuch.evangelische-archive.de/vocabulary#"
     },
     {
-      "namespace_prefix": "rdarel2",
-      "namespace_name": "http://metadataregistry.org/uri/schema/RDARelationshipsGR2/"
-    },
-    {
-      "namespace_prefix": "mexalgo",
-      "namespace_name": "http://mex.aksw.org/mex-algo#"
-    },
-    {
-      "namespace_prefix": "mexcore",
-      "namespace_name": "http://mex.aksw.org/mex-core#"
-    },
-    {
-      "namespace_prefix": "mexperf",
-      "namespace_name": "http://mex.aksw.org/mex-perf#"
-    },
-    {
       "namespace_prefix": "mged",
       "namespace_name": "http://mged.sourceforge.net/ontologies/MGEDOntology.owl#"
     },
@@ -5259,10 +7015,6 @@
     {
       "namespace_prefix": "mmoon",
       "namespace_name": "http://mmoon.org/mmoon/"
-    },
-    {
-      "namespace_prefix": "nen3610",
-      "namespace_name": "http://modellen.geostandaarden.nl/def/nen3610#"
     },
     {
       "namespace_prefix": "cpg",
@@ -5377,18 +7129,6 @@
       "namespace_name": "http://ns.aksw.org/spatialHierarchy/"
     },
     {
-      "namespace_prefix": "tac",
-      "namespace_name": "http://ns.bergnet.org/tac/0.1/triple-access-control#"
-    },
-    {
-      "namespace_prefix": "smg",
-      "namespace_name": "http://ns.cerise-project.nl/energy/def/cim-smartgrid#"
-    },
-    {
-      "namespace_prefix": "emotion",
-      "namespace_name": "http://ns.inria.fr/emoca#"
-    },
-    {
       "namespace_prefix": "huto",
       "namespace_name": "http://ns.inria.fr/huto/"
     },
@@ -5405,18 +7145,6 @@
       "namespace_name": "http://ns.inria.fr/ludo/v1#"
     },
     {
-      "namespace_prefix": "ludo-xapi",
-      "namespace_name": "http://ns.inria.fr/ludo/v1/xapi#"
-    },
-    {
-      "namespace_prefix": "ntag",
-      "namespace_name": "http://ns.inria.fr/nicetag/2010/09/09/voc#"
-    },
-    {
-      "namespace_prefix": "nrv",
-      "namespace_name": "http://ns.inria.fr/nrv#"
-    },
-    {
       "namespace_prefix": "prissma",
       "namespace_name": "http://ns.inria.fr/prissma/v1#"
     },
@@ -5431,10 +7159,6 @@
     {
       "namespace_prefix": "r4ta",
       "namespace_name": "http://ns.inria.fr/ratio4ta/v1#"
-    },
-    {
-      "namespace_prefix": "s4ac",
-      "namespace_name": "http://ns.inria.fr/s4ac/v2#"
     },
     {
       "namespace_prefix": "edupro",
@@ -5573,10 +7297,6 @@
       "namespace_name": "http://ont.matchdeck.com/"
     },
     {
-      "namespace_prefix": "dm2e",
-      "namespace_name": "http://onto.dm2e.eu/schemas/dm2e/"
-    },
-    {
       "namespace_prefix": "oj",
       "namespace_name": "http://ontojob.at/"
     },
@@ -5625,56 +7345,12 @@
       "namespace_name": "http://ontologies.smile.deri.ie/2009/02/27/memo#"
     },
     {
-      "namespace_prefix": "pdo",
-      "namespace_name": "http://ontologies.smile.deri.ie/pdo#"
-    },
-    {
       "namespace_prefix": "cubeont",
       "namespace_name": "http://ontology.cube.global/"
     },
     {
-      "namespace_prefix": "lsmap",
-      "namespace_name": "http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#"
-    },
-    {
-      "namespace_prefix": "edac",
-      "namespace_name": "http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#"
-    },
-    {
-      "namespace_prefix": "lswpm",
-      "namespace_name": "http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl#"
-    },
-    {
-      "namespace_prefix": "lslife",
-      "namespace_name": "http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper.owl#"
-    },
-    {
-      "namespace_prefix": "lswmo",
-      "namespace_name": "http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-modelling.owl#"
-    },
-    {
-      "namespace_prefix": "dbowl",
-      "namespace_name": "http://ontology.cybershare.utep.edu/dbowl/relational-to-ontology-mapping-primitive.owl#"
-    },
-    {
-      "namespace_prefix": "gci",
-      "namespace_name": "http://ontology.eil.utoronto.ca/GCI/Foundation/GCI-Foundation.owl#"
-    },
-    {
-      "namespace_prefix": "iso37120",
-      "namespace_name": "http://ontology.eil.utoronto.ca/ISO37120.owl#"
-    },
-    {
-      "namespace_prefix": "icontact",
-      "namespace_name": "http://ontology.eil.utoronto.ca/icontact.owl#"
-    },
-    {
       "namespace_prefix": "open311",
       "namespace_name": "http://ontology.eil.utoronto.ca/open311#"
-    },
-    {
-      "namespace_prefix": "irao",
-      "namespace_name": "http://ontology.ethereal.cz/irao/"
     },
     {
       "namespace_prefix": "dl",
@@ -5687,10 +7363,6 @@
     {
       "namespace_prefix": "irsteaont",
       "namespace_name": "http://ontology.irstea.fr/weather/ontology#"
-    },
-    {
-      "namespace_prefix": "itsmo",
-      "namespace_name": "http://ontology.it/itsmo/v1#"
     },
     {
       "namespace_prefix": "oghamonto",
@@ -5733,20 +7405,8 @@
       "namespace_name": "http://opacplus.bsb-muenchen.de/title/"
     },
     {
-      "namespace_prefix": "omnfed",
-      "namespace_name": "http://open-multinet.info/ontology/omn-federation#"
-    },
-    {
-      "namespace_prefix": "omnlife",
-      "namespace_name": "http://open-multinet.info/ontology/omn-lifecycle#"
-    },
-    {
       "namespace_prefix": "crtv",
       "namespace_name": "http://open-services.net/ns/crtv#"
-    },
-    {
-      "namespace_prefix": "open",
-      "namespace_name": "http://open.vocab.org/terms/"
     },
     {
       "namespace_prefix": "ocoinage",
@@ -5755,10 +7415,6 @@
     {
       "namespace_prefix": "k",
       "namespace_name": "http://opencyc.sourceforge.net/daml/cyc.daml#"
-    },
-    {
-      "namespace_prefix": "ei2a",
-      "namespace_name": "http://opendata.aragon.es/def/ei2a#"
     },
     {
       "namespace_prefix": "onmunpio",
@@ -5835,10 +7491,6 @@
     {
       "namespace_prefix": "refe",
       "namespace_name": "http://orion.tw.rpi.edu/~xgmatwc/refe/"
-    },
-    {
-      "namespace_prefix": "of",
-      "namespace_name": "http://owlrep.eu01.aws.af.cm/fridge#"
     },
     {
       "namespace_prefix": "plg",
@@ -5945,22 +7597,6 @@
       "namespace_name": "http://premon.fbk.eu/ontology/core#"
     },
     {
-      "namespace_prefix": "pmofn",
-      "namespace_name": "http://premon.fbk.eu/ontology/fn#"
-    },
-    {
-      "namespace_prefix": "pmonb",
-      "namespace_name": "http://premon.fbk.eu/ontology/nb#"
-    },
-    {
-      "namespace_prefix": "pmopb",
-      "namespace_name": "http://premon.fbk.eu/ontology/pb#"
-    },
-    {
-      "namespace_prefix": "pmovn",
-      "namespace_name": "http://premon.fbk.eu/ontology/vn#"
-    },
-    {
       "namespace_prefix": "pm",
       "namespace_name": "http://premon.fbk.eu/resource/"
     },
@@ -5985,16 +7621,8 @@
       "namespace_name": "http://project-haystack.org/hto#"
     },
     {
-      "namespace_prefix": "agr",
-      "namespace_name": "http://promsns.org/def/agr#"
-    },
-    {
       "namespace_prefix": "decprov",
       "namespace_name": "http://promsns.org/def/decprov#"
-    },
-    {
-      "namespace_prefix": "dprov",
-      "namespace_name": "http://promsns.org/def/do#"
     },
     {
       "namespace_prefix": "proms",
@@ -6099,10 +7727,6 @@
     {
       "namespace_prefix": "glycan",
       "namespace_name": "http://purl.jp/bio/12/glyco/glycan#"
-    },
-    {
-      "namespace_prefix": "cdao",
-      "namespace_name": "http://purl.obolibrary.org/obo/"
     },
     {
       "namespace_prefix": "aao",
@@ -6853,28 +8477,8 @@
       "namespace_name": "http://purl.oclc.org/NET/muo/muo#"
     },
     {
-      "namespace_prefix": "mvco",
-      "namespace_name": "http://purl.oclc.org/NET/mvco.owl#"
-    },
-    {
       "namespace_prefix": "sism",
       "namespace_name": "http://purl.oclc.org/NET/sism/0.1/"
-    },
-    {
-      "namespace_prefix": "cff",
-      "namespace_name": "http://purl.oclc.org/NET/ssnx/cf/cf-feature#"
-    },
-    {
-      "namespace_prefix": "cfp",
-      "namespace_name": "http://purl.oclc.org/NET/ssnx/cf/cf-property#"
-    },
-    {
-      "namespace_prefix": "aws",
-      "namespace_name": "http://purl.oclc.org/NET/ssnx/meteo/aws#"
-    },
-    {
-      "namespace_prefix": "qu",
-      "namespace_name": "http://purl.oclc.org/NET/ssnx/qu/qu#"
     },
     {
       "namespace_prefix": "ssnx",
@@ -6909,18 +8513,6 @@
       "namespace_name": "http://purl.org/NET/book/vocab#"
     },
     {
-      "namespace_prefix": "event",
-      "namespace_name": "http://purl.org/NET/c4dm/event.owl#"
-    },
-    {
-      "namespace_prefix": "keys",
-      "namespace_name": "http://purl.org/NET/c4dm/keys.owl#"
-    },
-    {
-      "namespace_prefix": "timeline",
-      "namespace_name": "http://purl.org/NET/c4dm/timeline.owl#"
-    },
-    {
       "namespace_prefix": "cidoccrm",
       "namespace_name": "http://purl.org/NET/cidoc-crm/core#"
     },
@@ -6931,10 +8523,6 @@
     {
       "namespace_prefix": "cpant",
       "namespace_name": "http://purl.org/NET/cpan-uri/terms#"
-    },
-    {
-      "namespace_prefix": "dady",
-      "namespace_name": "http://purl.org/NET/dady#"
     },
     {
       "namespace_prefix": "ddc",
@@ -6957,24 +8545,12 @@
       "namespace_name": "http://purl.org/NET/puc#"
     },
     {
-      "namespace_prefix": "raul",
-      "namespace_name": "http://purl.org/NET/raul#"
-    },
-    {
       "namespace_prefix": "chess",
       "namespace_name": "http://purl.org/NET/rdfchess/ontology/"
     },
     {
       "namespace_prefix": "rulz",
       "namespace_name": "http://purl.org/NET/rulz#"
-    },
-    {
-      "namespace_prefix": "scsv",
-      "namespace_name": "http://purl.org/NET/schema-org-csv#"
-    },
-    {
-      "namespace_prefix": "scovo",
-      "namespace_name": "http://purl.org/NET/scovo#"
     },
     {
       "namespace_prefix": "emtr",
@@ -6993,20 +8569,12 @@
       "namespace_name": "http://purl.org/a-proc#"
     },
     {
-      "namespace_prefix": "accom",
-      "namespace_name": "http://purl.org/acco/ns#"
-    },
-    {
       "namespace_prefix": "admssw",
       "namespace_name": "http://purl.org/adms/sw/"
     },
     {
       "namespace_prefix": "arecipe",
       "namespace_name": "http://purl.org/amicroformat/arecipe/"
-    },
-    {
-      "namespace_prefix": "arch",
-      "namespace_name": "http://purl.org/archival/vocab/arch#"
     },
     {
       "namespace_prefix": "aspect",
@@ -7019,10 +8587,6 @@
     {
       "namespace_prefix": "eol",
       "namespace_name": "http://purl.org/biodiversity/eol/"
-    },
-    {
-      "namespace_prefix": "biotop",
-      "namespace_name": "http://purl.org/biotop/biotop.owl#"
     },
     {
       "namespace_prefix": "cvbase",
@@ -7061,14 +8625,6 @@
       "namespace_name": "http://purl.org/commerce/product#"
     },
     {
-      "namespace_prefix": "cold",
-      "namespace_name": "http://purl.org/configurationontology#"
-    },
-    {
-      "namespace_prefix": "coreo",
-      "namespace_name": "http://purl.org/coreo#"
-    },
-    {
       "namespace_prefix": "coin",
       "namespace_name": "http://purl.org/court/def/2009/coin#"
     },
@@ -7093,20 +8649,8 @@
       "namespace_name": "http://purl.org/ctdl/terms/"
     },
     {
-      "namespace_prefix": "emp",
-      "namespace_name": "http://purl.org/ctic/empleo/oferta#"
-    },
-    {
-      "namespace_prefix": "ctic",
-      "namespace_name": "http://purl.org/ctic/infraestructuras/localizacion#"
-    },
-    {
-      "namespace_prefix": "ctorg",
-      "namespace_name": "http://purl.org/ctic/infraestructuras/organizacion#"
-    },
-    {
-      "namespace_prefix": "elec",
-      "namespace_name": "http://purl.org/ctic/sector-publico/elecciones#"
+      "namespace_prefix": "cwmoo",
+      "namespace_name": "http://purl.org/cwmo#"
     },
     {
       "namespace_prefix": "misp",
@@ -7145,14 +8689,6 @@
       "namespace_name": "http://purl.org/derecho#"
     },
     {
-      "namespace_prefix": "dpn",
-      "namespace_name": "http://purl.org/dpn#"
-    },
-    {
-      "namespace_prefix": "dqm",
-      "namespace_name": "http://purl.org/dqm-vocabulary/v1/dqm#"
-    },
-    {
       "namespace_prefix": "dsw",
       "namespace_name": "http://purl.org/dsw/"
     },
@@ -7163,10 +8699,6 @@
     {
       "namespace_prefix": "rtedurp",
       "namespace_name": "http://purl.org/eduo/rtedurp/"
-    },
-    {
-      "namespace_prefix": "eem",
-      "namespace_name": "http://purl.org/eem#"
     },
     {
       "namespace_prefix": "scor",
@@ -7221,14 +8753,6 @@
       "namespace_name": "http://purl.org/germplasm/terms#"
     },
     {
-      "namespace_prefix": "gr",
-      "namespace_name": "http://purl.org/goodrelations/v1#"
-    },
-    {
-      "namespace_prefix": "dicom",
-      "namespace_name": "http://purl.org/healthcarevocab/v1#"
-    },
-    {
       "namespace_prefix": "asio",
       "namespace_name": "http://purl.org/hercules/asio/core#"
     },
@@ -7241,28 +8765,8 @@
       "namespace_name": "http://purl.org/ibis#"
     },
     {
-      "namespace_prefix": "ru",
-      "namespace_name": "http://purl.org/imbi/ru-meta.owl#"
-    },
-    {
-      "namespace_prefix": "inno",
-      "namespace_name": "http://purl.org/innovation/ns#"
-    },
-    {
-      "namespace_prefix": "fiesta-priv",
-      "namespace_name": "http://purl.org/iot/ontology/fiesta-iot#"
-    },
-    {
-      "namespace_prefix": "ipo",
-      "namespace_name": "http://purl.org/ipo/core#"
-    },
-    {
       "namespace_prefix": "isaterms",
       "namespace_name": "http://purl.org/isaterms/"
-    },
-    {
-      "namespace_prefix": "iso-thes",
-      "namespace_name": "http://purl.org/iso25964/skos-thes#"
     },
     {
       "namespace_prefix": "kpd",
@@ -7281,14 +8785,6 @@
       "namespace_name": "http://purl.org/lex/cz#"
     },
     {
-      "namespace_prefix": "gold",
-      "namespace_name": "http://purl.org/linguistics/gold/"
-    },
-    {
-      "namespace_prefix": "qb",
-      "namespace_name": "http://purl.org/linked-data/cube#"
-    },
-    {
       "namespace_prefix": "reg",
       "namespace_name": "http://purl.org/linked-data/registry#"
     },
@@ -7297,16 +8793,8 @@
       "namespace_name": "http://purl.org/linked-data/sdmx/2009/attribute#"
     },
     {
-      "namespace_prefix": "sdmx-code",
-      "namespace_name": "http://purl.org/linked-data/sdmx/2009/code#"
-    },
-    {
       "namespace_prefix": "sdmxc",
       "namespace_name": "http://purl.org/linked-data/sdmx/2009/concept#"
-    },
-    {
-      "namespace_prefix": "sdmx-dimension",
-      "namespace_name": "http://purl.org/linked-data/sdmx/2009/dimension#"
     },
     {
       "namespace_prefix": "sdmxm",
@@ -7315,10 +8803,6 @@
     {
       "namespace_prefix": "lpeu",
       "namespace_name": "http://purl.org/linkedpolitics/vocabulary/eu/plenary/"
-    },
-    {
-      "namespace_prefix": "lv",
-      "namespace_name": "http://purl.org/lobid/lv#"
     },
     {
       "namespace_prefix": "locwd",
@@ -7349,16 +8833,8 @@
       "namespace_name": "http://purl.org/momayo/mmo/"
     },
     {
-      "namespace_prefix": "muto",
-      "namespace_name": "http://purl.org/muto/core#"
-    },
-    {
       "namespace_prefix": "doce",
       "namespace_name": "http://purl.org/nemo/doce#"
-    },
-    {
-      "namespace_prefix": "vgo",
-      "namespace_name": "http://purl.org/net/VideoGameOntology#"
     },
     {
       "namespace_prefix": "aozora",
@@ -7373,8 +8849,20 @@
       "namespace_name": "http://purl.org/net/biblio#"
     },
     {
+      "namespace_prefix": "bioltany",
+      "namespace_name": "http://purl.org/net/biol/botany#"
+    },
+    {
+      "namespace_prefix": "biol",
+      "namespace_name": "http://purl.org/net/biol/ns#"
+    },
+    {
       "namespace_prefix": "biordf",
       "namespace_name": "http://purl.org/net/biordfmicroarray/ns#"
+    },
+    {
+      "namespace_prefix": "cartcoord",
+      "namespace_name": "http://purl.org/net/cartcoord#"
     },
     {
       "namespace_prefix": "literature",
@@ -7405,24 +8893,8 @@
       "namespace_name": "http://purl.org/net/ldap/"
     },
     {
-      "namespace_prefix": "lio",
-      "namespace_name": "http://purl.org/net/lio#"
-    },
-    {
       "namespace_prefix": "multionto",
       "namespace_name": "http://purl.org/net/multionto/"
-    },
-    {
-      "namespace_prefix": "bibtex",
-      "namespace_name": "http://purl.org/net/nknouf/ns/bibtex#"
-    },
-    {
-      "namespace_prefix": "ex",
-      "namespace_name": "http://purl.org/net/ns/ex#"
-    },
-    {
-      "namespace_prefix": "ont",
-      "namespace_name": "http://purl.org/net/ns/ontology-annot#"
     },
     {
       "namespace_prefix": "wordmap",
@@ -7457,32 +8929,12 @@
       "namespace_name": "http://purl.org/net/schemarama#"
     },
     {
-      "namespace_prefix": "sor",
-      "namespace_name": "http://purl.org/net/soron/"
-    },
-    {
-      "namespace_prefix": "step",
-      "namespace_name": "http://purl.org/net/step#"
-    },
-    {
       "namespace_prefix": "videogame",
       "namespace_name": "http://purl.org/net/vgo#"
     },
     {
-      "namespace_prefix": "label",
-      "namespace_name": "http://purl.org/net/vocab/2004/03/label#"
-    },
-    {
       "namespace_prefix": "visit",
       "namespace_name": "http://purl.org/net/vocab/2004/07/visit#"
-    },
-    {
-      "namespace_prefix": "wf-invoc",
-      "namespace_name": "http://purl.org/net/wf-invocation#"
-    },
-    {
-      "namespace_prefix": "wfm",
-      "namespace_name": "http://purl.org/net/wf-motifs#"
     },
     {
       "namespace_prefix": "wro",
@@ -7533,16 +8985,8 @@
       "namespace_name": "http://purl.org/olia/system.owl#"
     },
     {
-      "namespace_prefix": "uby",
-      "namespace_name": "http://purl.org/olia/ubyCat.owl#"
-    },
-    {
       "namespace_prefix": "omapi",
       "namespace_name": "http://purl.org/omapi/0.2/#"
-    },
-    {
-      "namespace_prefix": "ocds",
-      "namespace_name": "http://purl.org/onto-ocds/ocds#"
     },
     {
       "namespace_prefix": "oup",
@@ -7561,24 +9005,8 @@
       "namespace_name": "http://purl.org/ontology/daia/Service/"
     },
     {
-      "namespace_prefix": "docso",
-      "namespace_name": "http://purl.org/ontology/dso#"
-    },
-    {
-      "namespace_prefix": "dviont",
-      "namespace_name": "http://purl.org/ontology/dvia#"
-    },
-    {
-      "namespace_prefix": "ecpo",
-      "namespace_name": "http://purl.org/ontology/ecpo#"
-    },
-    {
       "namespace_prefix": "gbv",
       "namespace_name": "http://purl.org/ontology/gbv/"
-    },
-    {
-      "namespace_prefix": "holding",
-      "namespace_name": "http://purl.org/ontology/holding#"
     },
     {
       "namespace_prefix": "iron",
@@ -7625,20 +9053,8 @@
       "namespace_name": "http://purl.org/ontology/sco#"
     },
     {
-      "namespace_prefix": "service",
-      "namespace_name": "http://purl.org/ontology/service#"
-    },
-    {
       "namespace_prefix": "sport",
       "namespace_name": "http://purl.org/ontology/sport/"
-    },
-    {
-      "namespace_prefix": "ssso",
-      "namespace_name": "http://purl.org/ontology/ssso#"
-    },
-    {
-      "namespace_prefix": "nsl",
-      "namespace_name": "http://purl.org/ontology/storyline/"
     },
     {
       "namespace_prefix": "video",
@@ -7677,10 +9093,6 @@
       "namespace_name": "http://purl.org/org/iode/po/voc/cruise-summary-reports#"
     },
     {
-      "namespace_prefix": "oslo",
-      "namespace_name": "http://purl.org/oslo/ns/localgov#"
-    },
-    {
       "namespace_prefix": "vph",
       "namespace_name": "http://purl.org/ozo/vph.owl#"
     },
@@ -7707,14 +9119,6 @@
     {
       "namespace_prefix": "rgml",
       "namespace_name": "http://purl.org/puninj/2001/05/rgml-schema#"
-    },
-    {
-      "namespace_prefix": "qb4olap",
-      "namespace_name": "http://purl.org/qb4olap/cubes#"
-    },
-    {
-      "namespace_prefix": "voidext",
-      "namespace_name": "http://purl.org/query/voidext#"
     },
     {
       "namespace_prefix": "stats",
@@ -7749,56 +9153,12 @@
       "namespace_name": "http://purl.org/rvl/"
     },
     {
-      "namespace_prefix": "saws",
-      "namespace_name": "http://purl.org/saws/ontology#"
-    },
-    {
       "namespace_prefix": "sig",
       "namespace_name": "http://purl.org/signature#"
     },
     {
       "namespace_prefix": "signify",
       "namespace_name": "http://purl.org/signify/ns#"
-    },
-    {
-      "namespace_prefix": "biro",
-      "namespace_name": "http://purl.org/spar/biro/"
-    },
-    {
-      "namespace_prefix": "c4o",
-      "namespace_name": "http://purl.org/spar/c4o/"
-    },
-    {
-      "namespace_prefix": "cito",
-      "namespace_name": "http://purl.org/spar/cito/"
-    },
-    {
-      "namespace_prefix": "datacite",
-      "namespace_name": "http://purl.org/spar/datacite/"
-    },
-    {
-      "namespace_prefix": "deo",
-      "namespace_name": "http://purl.org/spar/deo/"
-    },
-    {
-      "namespace_prefix": "doco",
-      "namespace_name": "http://purl.org/spar/doco/"
-    },
-    {
-      "namespace_prefix": "fabio",
-      "namespace_name": "http://purl.org/spar/fabio/"
-    },
-    {
-      "namespace_prefix": "pro",
-      "namespace_name": "http://purl.org/spar/pro/"
-    },
-    {
-      "namespace_prefix": "pso",
-      "namespace_name": "http://purl.org/spar/pso/"
-    },
-    {
-      "namespace_prefix": "pwo",
-      "namespace_name": "http://purl.org/spar/pwo/"
     },
     {
       "namespace_prefix": "prj",
@@ -7849,10 +9209,6 @@
       "namespace_name": "http://purl.org/telmap/"
     },
     {
-      "namespace_prefix": "tempo",
-      "namespace_name": "http://purl.org/tempo/"
-    },
-    {
       "namespace_prefix": "tgfm",
       "namespace_name": "http://purl.org/terminology-guide-for-move/testvocab/"
     },
@@ -7869,20 +9225,12 @@
       "namespace_name": "http://purl.org/twc/cabig/model/HINTS2005-1.owl#"
     },
     {
-      "namespace_prefix": "dpo",
-      "namespace_name": "http://purl.org/twc/dpo/ont/"
-    },
-    {
       "namespace_prefix": "health",
       "namespace_name": "http://purl.org/twc/health/vocab/"
     },
     {
       "namespace_prefix": "agg",
       "namespace_name": "http://purl.org/twc/health/vocab/aggregate/"
-    },
-    {
-      "namespace_prefix": "cmo",
-      "namespace_name": "http://purl.org/twc/ontologies/cmo.owl#"
     },
     {
       "namespace_prefix": "identity",
@@ -7945,10 +9293,6 @@
       "namespace_name": "http://purl.org/uF/hCard/terms/"
     },
     {
-      "namespace_prefix": "uneskos",
-      "namespace_name": "http://purl.org/umu/uneskos#"
-    },
-    {
       "namespace_prefix": "viso",
       "namespace_name": "http://purl.org/viso/"
     },
@@ -7961,36 +9305,8 @@
       "namespace_name": "http://purl.org/voc/uneskos#"
     },
     {
-      "namespace_prefix": "vrank",
-      "namespace_name": "http://purl.org/voc/vrank#"
-    },
-    {
-      "namespace_prefix": "aiiso",
-      "namespace_name": "http://purl.org/vocab/aiiso/schema#"
-    },
-    {
-      "namespace_prefix": "changeset",
-      "namespace_name": "http://purl.org/vocab/changeset/schema#"
-    },
-    {
       "namespace_prefix": "cpsv",
       "namespace_name": "http://purl.org/vocab/cpsv#"
-    },
-    {
-      "namespace_prefix": "frbrcore",
-      "namespace_name": "http://purl.org/vocab/frbr/core#"
-    },
-    {
-      "namespace_prefix": "frbre",
-      "namespace_name": "http://purl.org/vocab/frbr/extended#"
-    },
-    {
-      "namespace_prefix": "lifecycle",
-      "namespace_name": "http://purl.org/vocab/lifecycle/schema#"
-    },
-    {
-      "namespace_prefix": "particip",
-      "namespace_name": "http://purl.org/vocab/participation/schema#"
     },
     {
       "namespace_prefix": "psych",
@@ -8029,16 +9345,8 @@
       "namespace_name": "http://purl.org/vocommons/bv#"
     },
     {
-      "namespace_prefix": "voaf",
-      "namespace_name": "http://purl.org/vocommons/voaf#"
-    },
-    {
       "namespace_prefix": "vra",
       "namespace_name": "http://purl.org/vra/"
-    },
-    {
-      "namespace_prefix": "vso",
-      "namespace_name": "http://purl.org/vso/ns#"
     },
     {
       "namespace_prefix": "cpv",
@@ -8067,14 +9375,6 @@
     {
       "namespace_prefix": "wf4ever",
       "namespace_name": "http://purl.org/wf4ever/wf4ever#"
-    },
-    {
-      "namespace_prefix": "wfdesc",
-      "namespace_name": "http://purl.org/wf4ever/wfdesc#"
-    },
-    {
-      "namespace_prefix": "wfprov",
-      "namespace_name": "http://purl.org/wf4ever/wfprov#"
     },
     {
       "namespace_prefix": "wild",
@@ -8117,16 +9417,8 @@
       "namespace_name": "http://qudt.org/2.1/vocab/currency/"
     },
     {
-      "namespace_prefix": "sou",
-      "namespace_name": "http://qudt.org/2.1/vocab/sou/"
-    },
-    {
       "namespace_prefix": "quantity",
       "namespace_name": "http://qudt.org/schema/quantity#"
-    },
-    {
-      "namespace_prefix": "qudt",
-      "namespace_name": "http://qudt.org/schema/qudt/"
     },
     {
       "namespace_prefix": "coord",
@@ -8171,10 +9463,6 @@
     {
       "namespace_prefix": "rdaao",
       "namespace_name": "http://rdaregistry.info/Elements/a/object/"
-    },
-    {
-      "namespace_prefix": "rdac",
-      "namespace_name": "http://rdaregistry.info/Elements/c/"
     },
     {
       "namespace_prefix": "rdaed",
@@ -8235,10 +9523,6 @@
     {
       "namespace_prefix": "rdato",
       "namespace_name": "http://rdaregistry.info/Elements/t/object/"
-    },
-    {
-      "namespace_prefix": "rdau",
-      "namespace_name": "http://rdaregistry.info/Elements/u/"
     },
     {
       "namespace_prefix": "rdawd",
@@ -8533,18 +9817,6 @@
       "namespace_name": "http://rdaregistry.info/termList/videoFormat/"
     },
     {
-      "namespace_prefix": "disco",
-      "namespace_name": "http://rdf-vocabulary.ddialliance.org/discovery#"
-    },
-    {
-      "namespace_prefix": "phdd",
-      "namespace_name": "http://rdf-vocabulary.ddialliance.org/phdd#"
-    },
-    {
-      "namespace_prefix": "xkos",
-      "namespace_name": "http://rdf-vocabulary.ddialliance.org/xkos#"
-    },
-    {
       "namespace_prefix": "cerealstoo",
       "namespace_name": "http://rdf.ag/o/cerealstoo#"
     },
@@ -8609,24 +9881,8 @@
       "namespace_name": "http://rdf.freebase.com/ns/location/geocode/"
     },
     {
-      "namespace_prefix": "obsm",
-      "namespace_name": "http://rdf.geospecies.org/methods/observationMethod#"
-    },
-    {
-      "namespace_prefix": "geospecies",
-      "namespace_name": "http://rdf.geospecies.org/ont/geospecies#"
-    },
-    {
       "namespace_prefix": "hg",
       "namespace_name": "http://rdf.histograph.io/"
-    },
-    {
-      "namespace_prefix": "idemo",
-      "namespace_name": "http://rdf.insee.fr/def/demo#"
-    },
-    {
-      "namespace_prefix": "igeo",
-      "namespace_name": "http://rdf.insee.fr/def/geo#"
     },
     {
       "namespace_prefix": "frgeo",
@@ -8637,20 +9893,12 @@
       "namespace_name": "http://rdf.jpostdb.org/ontology/jpost.owl#"
     },
     {
-      "namespace_prefix": "appear",
-      "namespace_name": "http://rdf.muninn-project.org/ontologies/appearances#"
-    },
-    {
       "namespace_prefix": "graves",
       "namespace_name": "http://rdf.muninn-project.org/ontologies/graves#"
     },
     {
       "namespace_prefix": "jp1",
       "namespace_name": "http://rdf.muninn-project.org/ontologies/jp1/"
-    },
-    {
-      "namespace_prefix": "mil",
-      "namespace_name": "http://rdf.muninn-project.org/ontologies/military#"
     },
     {
       "namespace_prefix": "naval",
@@ -8701,10 +9949,6 @@
       "namespace_name": "http://rdfs.co/juso/kr/0.1"
     },
     {
-      "namespace_prefix": "void",
-      "namespace_name": "http://rdfs.org/ns/void#"
-    },
-    {
       "namespace_prefix": "extvoid",
       "namespace_name": "http://rdfs.org/ns/void-ext#"
     },
@@ -8737,22 +9981,6 @@
       "namespace_name": "http://rds.posccaesar.org/ontology/plm/ds/"
     },
     {
-      "namespace_prefix": "rdag2",
-      "namespace_name": "http://rdvocab.info/ElementsGr2/"
-    },
-    {
-      "namespace_prefix": "rdag3",
-      "namespace_name": "http://rdvocab.info/ElementsGr3/"
-    },
-    {
-      "namespace_prefix": "rdarel",
-      "namespace_name": "http://rdvocab.info/RDARelationshipsWEMI/"
-    },
-    {
-      "namespace_prefix": "rdarole",
-      "namespace_name": "http://rdvocab.info/roles/"
-    },
-    {
       "namespace_prefix": "rdacarrier",
       "namespace_name": "http://rdvocab.info/termList/RDACarrierType/"
     },
@@ -8765,10 +9993,6 @@
       "namespace_name": "http://rdvocab.info/termList/RDAMediaType/"
     },
     {
-      "namespace_prefix": "rdafrbr",
-      "namespace_name": "http://rdvocab.info/uri/schema/FRBRentitiesRDA/"
-    },
-    {
       "namespace_prefix": "piero",
       "namespace_name": "http://reactionontology.org/piero/"
     },
@@ -8777,44 +10001,12 @@
       "namespace_name": "http://redfoot.net/2005/session#"
     },
     {
-      "namespace_prefix": "reegle",
-      "namespace_name": "http://reegle.info/schema#"
-    },
-    {
-      "namespace_prefix": "donto",
-      "namespace_name": "http://reference.data.gov.au/def/ont/dataset#"
-    },
-    {
-      "namespace_prefix": "isoadr",
-      "namespace_name": "http://reference.data.gov.au/def/ont/iso19160-1-address#"
-    },
-    {
-      "namespace_prefix": "cgov",
-      "namespace_name": "http://reference.data.gov.uk/def/central-government/"
-    },
-    {
-      "namespace_prefix": "intervals",
-      "namespace_name": "http://reference.data.gov.uk/def/intervals/"
-    },
-    {
-      "namespace_prefix": "odv",
-      "namespace_name": "http://reference.data.gov.uk/def/organogram/"
-    },
-    {
-      "namespace_prefix": "parl",
-      "namespace_name": "http://reference.data.gov.uk/def/parliament/"
-    },
-    {
       "namespace_prefix": "pbody",
       "namespace_name": "http://reference.data.gov.uk/def/public-body/"
     },
     {
       "namespace_prefix": "pronom",
       "namespace_name": "http://reference.data.gov.uk/technical-registry/"
-    },
-    {
-      "namespace_prefix": "gd",
-      "namespace_name": "http://reference.data.gov/def/govdata/"
     },
     {
       "namespace_prefix": "faostat",
@@ -8837,24 +10029,12 @@
       "namespace_name": "http://resex.rkbexplorer.com/ontologies/resex#"
     },
     {
-      "namespace_prefix": "gts",
-      "namespace_name": "http://resource.geosciml.org/ontology/timescale/gts#"
-    },
-    {
-      "namespace_prefix": "thors",
-      "namespace_name": "http://resource.geosciml.org/ontology/timescale/thors#"
-    },
-    {
       "namespace_prefix": "mpeg7",
       "namespace_name": "http://rhizomik.net/ontologies/2005/03/Mpeg7-2001.owl#"
     },
     {
       "namespace_prefix": "phto",
       "namespace_name": "http://rhizomik.net/ontologies/PlantHealthThreats.owl.ttl#"
-    },
-    {
-      "namespace_prefix": "copyright",
-      "namespace_name": "http://rhizomik.net/ontologies/copyrightonto.owl#"
     },
     {
       "namespace_prefix": "kontakt",
@@ -8909,14 +10089,6 @@
       "namespace_name": "http://sa.aktivespace.org/ontologies/aktivesa#"
     },
     {
-      "namespace_prefix": "sao",
-      "namespace_name": "http://salt.semanticauthoring.org/ontologies/sao#"
-    },
-    {
-      "namespace_prefix": "sdo",
-      "namespace_name": "http://salt.semanticauthoring.org/ontologies/sdo#"
-    },
-    {
       "namespace_prefix": "sro",
       "namespace_name": "http://salt.semanticauthoring.org/ontologies/sro#"
     },
@@ -8963,10 +10135,6 @@
     {
       "namespace_prefix": "stencila",
       "namespace_name": "http://schema.stenci.la/"
-    },
-    {
-      "namespace_prefix": "odrs",
-      "namespace_name": "http://schema.theodi.org/odrs#"
     },
     {
       "namespace_prefix": "vocnet",
@@ -9029,18 +10197,6 @@
       "namespace_name": "http://search.yahoo.com/searchmonkey/media/"
     },
     {
-      "namespace_prefix": "maso",
-      "namespace_name": "http://securitytoolbox.appspot.com/MASO#"
-    },
-    {
-      "namespace_prefix": "security",
-      "namespace_name": "http://securitytoolbox.appspot.com/securityMain#"
-    },
-    {
-      "namespace_prefix": "stac",
-      "namespace_name": "http://securitytoolbox.appspot.com/stac#"
-    },
-    {
       "namespace_prefix": "encargado",
       "namespace_name": "http://semRAT.edu/"
     },
@@ -9073,16 +10229,8 @@
       "namespace_name": "http://semantics.id/ns/example/film/"
     },
     {
-      "namespace_prefix": "sio",
-      "namespace_name": "http://semanticscience.org/resource/"
-    },
-    {
       "namespace_prefix": "SIO",
       "namespace_name": "http://semanticscience.org/resource/SIO_"
-    },
-    {
-      "namespace_prefix": "mdr",
-      "namespace_name": "http://semanticturkey.uniroma2.it/ns/mdr#"
     },
     {
       "namespace_prefix": "semtweet",
@@ -9105,28 +10253,12 @@
       "namespace_name": "http://semweb.datasciencelab.be/ns/sfn#"
     },
     {
-      "namespace_prefix": "apps4X",
-      "namespace_name": "http://semweb.mmlab.be/ns/apps4X#"
-    },
-    {
       "namespace_prefix": "dicera",
       "namespace_name": "http://semweb.mmlab.be/ns/dicera#"
     },
     {
       "namespace_prefix": "fnml",
       "namespace_name": "http://semweb.mmlab.be/ns/fnml#"
-    },
-    {
-      "namespace_prefix": "lc",
-      "namespace_name": "http://semweb.mmlab.be/ns/linkedconnections#"
-    },
-    {
-      "namespace_prefix": "odapps",
-      "namespace_name": "http://semweb.mmlab.be/ns/odapps#"
-    },
-    {
-      "namespace_prefix": "oh",
-      "namespace_name": "http://semweb.mmlab.be/ns/oh#"
     },
     {
       "namespace_prefix": "comp",
@@ -9139,14 +10271,6 @@
     {
       "namespace_prefix": "crml",
       "namespace_name": "http://semweb.mmlab.be/ns/rml/condition#"
-    },
-    {
-      "namespace_prefix": "mmlab",
-      "namespace_name": "http://semweb.mmlab.be/ns/stoptimes#"
-    },
-    {
-      "namespace_prefix": "dqc",
-      "namespace_name": "http://semwebquality.org/ontologies/dq-constraints#"
     },
     {
       "namespace_prefix": "m3",
@@ -9181,10 +10305,6 @@
       "namespace_name": "http://sindice.com/hlisting/0.1/"
     },
     {
-      "namespace_prefix": "search",
-      "namespace_name": "http://sindice.com/vocab/search#"
-    },
-    {
       "namespace_prefix": "marshall",
       "namespace_name": "http://sites.google.com/site/xgmaitc/"
     },
@@ -9213,14 +10333,6 @@
       "namespace_name": "http://socialarchive.iath.virginia.edu/"
     },
     {
-      "namespace_prefix": "rsctx",
-      "namespace_name": "http://softeng.polito.it/rsctx#"
-    },
-    {
-      "namespace_prefix": "cwrc",
-      "namespace_name": "http://sparql.cwrc.ca/ontologies/cwrc#"
-    },
-    {
       "namespace_prefix": "genre",
       "namespace_name": "http://sparql.cwrc.ca/ontologies/genre#"
     },
@@ -9231,6 +10343,10 @@
     {
       "namespace_prefix": "cacwrc",
       "namespace_name": "http://sparql.cwrc.ca/ontology/cwrc#"
+    },
+    {
+      "namespace_prefix": "losp",
+      "namespace_name": "http://sparql.sstu.ru/speciality/"
     },
     {
       "namespace_prefix": "xyz",
@@ -9257,26 +10373,6 @@
       "namespace_name": "http://spi-fm.uca.es/neologism/cerif#"
     },
     {
-      "namespace_prefix": "spcm",
-      "namespace_name": "http://spi-fm.uca.es/spdef/models/deployment/spcm/1.0#"
-    },
-    {
-      "namespace_prefix": "swpm",
-      "namespace_name": "http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0#"
-    },
-    {
-      "namespace_prefix": "itm",
-      "namespace_name": "http://spi-fm.uca.es/spdef/models/genericTools/itm/1.0#"
-    },
-    {
-      "namespace_prefix": "vmm",
-      "namespace_name": "http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0#"
-    },
-    {
-      "namespace_prefix": "wikim",
-      "namespace_name": "http://spi-fm.uca.es/spdef/models/genericTools/wikim/1.0#"
-    },
-    {
       "namespace_prefix": "arg",
       "namespace_name": "http://spinrdf.org/arg#"
     },
@@ -9285,16 +10381,8 @@
       "namespace_name": "http://spinrdf.org/spif#"
     },
     {
-      "namespace_prefix": "spin",
-      "namespace_name": "http://spinrdf.org/spin#"
-    },
-    {
       "namespace_prefix": "spl",
       "namespace_name": "http://spinrdf.org/spl#"
-    },
-    {
-      "namespace_prefix": "spt",
-      "namespace_name": "http://spitfire-project.eu/ontology/ns/"
     },
     {
       "namespace_prefix": "dis",
@@ -9317,22 +10405,6 @@
       "namespace_name": "http://standaarden.overheid.nl/owms/terms/"
     },
     {
-      "namespace_prefix": "dfc-b",
-      "namespace_name": "http://static.datafoodconsortium.org/ontologies/DFC_BusinessOntology.owl#"
-    },
-    {
-      "namespace_prefix": "datafoodconsortium",
-      "namespace_name": "http://static.datafoodconsortium.org/ontologies/DFC_FullModel.owl#"
-    },
-    {
-      "namespace_prefix": "dfc-p",
-      "namespace_name": "http://static.datafoodconsortium.org/ontologies/DFC_ProductGlossary.owl#"
-    },
-    {
-      "namespace_prefix": "dfc-t",
-      "namespace_name": "http://static.datafoodconsortium.org/ontologies/DFC_TechnicalOntology.owl#"
-    },
-    {
       "namespace_prefix": "sdterms",
       "namespace_name": "http://statisticaldata.linkedwidgets.org/terms/"
     },
@@ -9353,10 +10425,6 @@
       "namespace_name": "http://stream-ontology.com/matvoc/"
     },
     {
-      "namespace_prefix": "swpo",
-      "namespace_name": "http://sw-portal.deri.org/ontologies/swportal#"
-    },
-    {
       "namespace_prefix": "cycann",
       "namespace_name": "http://sw.cyc.com/CycAnnotations_v1#"
     },
@@ -9371,10 +10439,6 @@
     {
       "namespace_prefix": "opencyc",
       "namespace_name": "http://sw.opencyc.org/concept/"
-    },
-    {
-      "namespace_prefix": "bot",
-      "namespace_name": "http://swa.cefriel.it/ontologies/botdcat-ap#"
     },
     {
       "namespace_prefix": "collections",
@@ -10325,10 +11389,6 @@
       "namespace_name": "http://swpatho.ag-nbi.de/context/meta.owl#"
     },
     {
-      "namespace_prefix": "swrc",
-      "namespace_name": "http://swrc.ontoware.org/ontology#"
-    },
-    {
       "namespace_prefix": "geodata",
       "namespace_name": "http://sws.geonames.org/"
     },
@@ -10359,10 +11419,6 @@
     {
       "namespace_prefix": "tarql",
       "namespace_name": "http://tarql.github.io/tarql#"
-    },
-    {
-      "namespace_prefix": "taxref-ld",
-      "namespace_name": "http://taxref.mnhn.fr/lod/"
     },
     {
       "namespace_prefix": "taxrefprop",
@@ -10399,10 +11455,6 @@
     {
       "namespace_prefix": "biogrid",
       "namespace_name": "http://thebiogrid.org/"
-    },
-    {
-      "namespace_prefix": "dave",
-      "namespace_name": "http://theme-e.adaptcentre.ie/dave#"
     },
     {
       "namespace_prefix": "test2",
@@ -10447,10 +11499,6 @@
     {
       "namespace_prefix": "tix",
       "namespace_name": "http://toptix.com/2010/esro/"
-    },
-    {
-      "namespace_prefix": "tp",
-      "namespace_name": "http://tour-pedia.org/download/tp.owl#"
     },
     {
       "namespace_prefix": "viskoo",
@@ -10525,10 +11573,6 @@
       "namespace_name": "http://uptheasset.org/ontology#"
     },
     {
-      "namespace_prefix": "uri4uri",
-      "namespace_name": "http://uri4uri.net/vocab#"
-    },
-    {
       "namespace_prefix": "play",
       "namespace_name": "http://uriplay.org/spec/ontology/#"
     },
@@ -10555,10 +11599,6 @@
     {
       "namespace_prefix": "vapour",
       "namespace_name": "http://vapour.sourceforge.net/vocab.rdf#"
-    },
-    {
-      "namespace_prefix": "hto",
-      "namespace_name": "http://vcharpenay.github.io/hto/hto.xml#"
     },
     {
       "namespace_prefix": "vsw",
@@ -10589,16 +11629,8 @@
       "namespace_name": "http://vitro.mannlib.cornell.edu/ns/vitro/public#"
     },
     {
-      "namespace_prefix": "vivo",
-      "namespace_name": "http://vivoweb.org/ontology/core#"
-    },
-    {
       "namespace_prefix": "voag",
       "namespace_name": "http://voag.linkedmodel.org/schema/voag#"
-    },
-    {
-      "namespace_prefix": "voagm",
-      "namespace_name": "http://voag.linkedmodel.org/voag#"
     },
     {
       "namespace_prefix": "voc",
@@ -10641,32 +11673,8 @@
       "namespace_name": "http://vocab.ciudadesabiertas.es/def/transporte/trafico#"
     },
     {
-      "namespace_prefix": "drm",
-      "namespace_name": "http://vocab.data.gov/def/drm#"
-    },
-    {
-      "namespace_prefix": "fea",
-      "namespace_name": "http://vocab.data.gov/def/fea#"
-    },
-    {
       "namespace_prefix": "ieam",
       "namespace_name": "http://vocab.deri.ie/am#"
-    },
-    {
-      "namespace_prefix": "br",
-      "namespace_name": "http://vocab.deri.ie/br#"
-    },
-    {
-      "namespace_prefix": "c4n",
-      "namespace_name": "http://vocab.deri.ie/c4n#"
-    },
-    {
-      "namespace_prefix": "cogs",
-      "namespace_name": "http://vocab.deri.ie/cogs#"
-    },
-    {
-      "namespace_prefix": "csp",
-      "namespace_name": "http://vocab.deri.ie/csp#"
     },
     {
       "namespace_prefix": "fingal",
@@ -10677,32 +11685,12 @@
       "namespace_name": "http://vocab.deri.ie/nocal#"
     },
     {
-      "namespace_prefix": "odapp",
-      "namespace_name": "http://vocab.deri.ie/odapp#"
-    },
-    {
-      "namespace_prefix": "ieorca",
-      "namespace_name": "http://vocab.deri.ie/orca#"
-    },
-    {
-      "namespace_prefix": "ppo",
-      "namespace_name": "http://vocab.deri.ie/ppo#"
-    },
-    {
       "namespace_prefix": "ieraul",
       "namespace_name": "http://vocab.deri.ie/raul#"
     },
     {
-      "namespace_prefix": "rooms",
-      "namespace_name": "http://vocab.deri.ie/rooms#"
-    },
-    {
       "namespace_prefix": "sad",
       "namespace_name": "http://vocab.deri.ie/sad#"
-    },
-    {
-      "namespace_prefix": "ietao",
-      "namespace_name": "http://vocab.deri.ie/tao#"
     },
     {
       "namespace_prefix": "fam",
@@ -10717,10 +11705,6 @@
       "namespace_name": "http://vocab.getty.edu/aat/"
     },
     {
-      "namespace_prefix": "gvp",
-      "namespace_name": "http://vocab.getty.edu/ontology#"
-    },
-    {
       "namespace_prefix": "tgn",
       "namespace_name": "http://vocab.getty.edu/tgn/"
     },
@@ -10731,10 +11715,6 @@
     {
       "namespace_prefix": "lh",
       "namespace_name": "http://vocab.inf.ed.ac.uk/library/holdings#"
-    },
-    {
-      "namespace_prefix": "ngeoi",
-      "namespace_name": "http://vocab.lenka.no/geo-deling#"
     },
     {
       "namespace_prefix": "escom",
@@ -10801,10 +11781,6 @@
       "namespace_name": "http://vocab.org/waiver/terms/"
     },
     {
-      "namespace_prefix": "whisky",
-      "namespace_name": "http://vocab.org/whisky/terms/"
-    },
-    {
       "namespace_prefix": "arpfo",
       "namespace_name": "http://vocab.ouls.ox.ac.uk/projectfunding#"
     },
@@ -10827,14 +11803,6 @@
     {
       "namespace_prefix": "bleadapter",
       "namespace_name": "http://vocab.rapidthings.eu/ns/ble/adapter.ttl#"
-    },
-    {
-      "namespace_prefix": "comm",
-      "namespace_name": "http://vocab.resc.info/communication#"
-    },
-    {
-      "namespace_prefix": "incident",
-      "namespace_name": "http://vocab.resc.info/incident#"
     },
     {
       "namespace_prefix": "whyis",
@@ -10925,10 +11893,6 @@
       "namespace_name": "http://w3id.org/aiup#"
     },
     {
-      "namespace_prefix": "amlo-core",
-      "namespace_name": "http://w3id.org/amlo/core#"
-    },
-    {
       "namespace_prefix": "art",
       "namespace_name": "http://w3id.org/art/terms/1.0/"
     },
@@ -10945,10 +11909,6 @@
       "namespace_name": "http://w3id.org/bodi#"
     },
     {
-      "namespace_prefix": "jup",
-      "namespace_name": "http://w3id.org/charta77/jup/"
-    },
-    {
       "namespace_prefix": "coso",
       "namespace_name": "http://w3id.org/coso/v1/contaminoso#"
     },
@@ -10957,24 +11917,8 @@
       "namespace_name": "http://w3id.org/def/och/"
     },
     {
-      "namespace_prefix": "dstv",
-      "namespace_name": "http://w3id.org/dstv#"
-    },
-    {
       "namespace_prefix": "dt",
       "namespace_name": "http://w3id.org/dt#"
-    },
-    {
-      "namespace_prefix": "bato",
-      "namespace_name": "http://w3id.org/emmo-bto/bto#"
-    },
-    {
-      "namespace_prefix": "hpo",
-      "namespace_name": "http://w3id.org/emmo-hpo/hpo#"
-    },
-    {
-      "namespace_prefix": "maeo",
-      "namespace_name": "http://w3id.org/emmo-maeo/maeo#"
     },
     {
       "namespace_prefix": "evorao",
@@ -10995,10 +11939,6 @@
     {
       "namespace_prefix": "i40fd",
       "namespace_name": "http://w3id.org/iaam/i40fd#"
-    },
-    {
-      "namespace_prefix": "ioc",
-      "namespace_name": "http://w3id.org/ioc#"
     },
     {
       "namespace_prefix": "loin",
@@ -11041,24 +11981,12 @@
       "namespace_name": "http://w3id.org/podio#"
     },
     {
-      "namespace_prefix": "rml",
-      "namespace_name": "http://w3id.org/rml/"
-    },
-    {
-      "namespace_prefix": "roh",
-      "namespace_name": "http://w3id.org/roh#"
-    },
-    {
       "namespace_prefix": "s3n",
       "namespace_name": "http://w3id.org/s3n/"
     },
     {
       "namespace_prefix": "semiot",
       "namespace_name": "http://w3id.org/semiot/ontologies/semiot#"
-    },
-    {
-      "namespace_prefix": "attack",
-      "namespace_name": "http://w3id.org/sepses/vocab/ref/attack#"
     },
     {
       "namespace_prefix": "sgfn",
@@ -11079,10 +12007,6 @@
     {
       "namespace_prefix": "top",
       "namespace_name": "http://w3id.org/topologicpy#"
-    },
-    {
-      "namespace_prefix": "cbcm",
-      "namespace_name": "http://w3id.org/um/cbcm/eu-cm-ontology#"
     },
     {
       "namespace_prefix": "wab",
@@ -11139,10 +12063,6 @@
     {
       "namespace_prefix": "pop",
       "namespace_name": "http://wiki.dbpedia.org/"
-    },
-    {
-      "namespace_prefix": "wikibase",
-      "namespace_name": "http://wikiba.se/ontology#"
     },
     {
       "namespace_prefix": "wikterms",
@@ -11229,10 +12149,6 @@
       "namespace_name": "http://www.agfa.com/w3c/2009/malignantNeoplasm#"
     },
     {
-      "namespace_prefix": "agls",
-      "namespace_name": "http://www.agls.gov.au/agls/terms/"
-    },
-    {
       "namespace_prefix": "aifb",
       "namespace_name": "http://www.aifb.kit.edu/id/"
     },
@@ -11245,20 +12161,8 @@
       "namespace_name": "http://www.aifb.uni-karlsruhe.de/WBS/uhe/ontologies#"
     },
     {
-      "namespace_prefix": "akt",
-      "namespace_name": "http://www.aktors.org/ontology/portal#"
-    },
-    {
-      "namespace_prefix": "akts",
-      "namespace_name": "http://www.aktors.org/ontology/support#"
-    },
-    {
       "namespace_prefix": "apb",
       "namespace_name": "http://www.analysispartners.org/businessmodel/"
-    },
-    {
-      "namespace_prefix": "arp",
-      "namespace_name": "http://www.arpenteur.org/ontology/Arpenteur.owl#"
     },
     {
       "namespace_prefix": "card",
@@ -11269,32 +12173,8 @@
       "namespace_name": "http://www.astro.umd.edu/~eshaya/astro-onto/owl/physics.owl#"
     },
     {
-      "namespace_prefix": "bbc",
-      "namespace_name": "http://www.bbc.co.uk/ontologies/bbc/"
-    },
-    {
-      "namespace_prefix": "bbccms",
-      "namespace_name": "http://www.bbc.co.uk/ontologies/cms/"
-    },
-    {
-      "namespace_prefix": "bbccore",
-      "namespace_name": "http://www.bbc.co.uk/ontologies/coreconcepts/"
-    },
-    {
-      "namespace_prefix": "cwork",
-      "namespace_name": "http://www.bbc.co.uk/ontologies/creativework/"
-    },
-    {
       "namespace_prefix": "bbcnews",
       "namespace_name": "http://www.bbc.co.uk/ontologies/news/"
-    },
-    {
-      "namespace_prefix": "bbcprov",
-      "namespace_name": "http://www.bbc.co.uk/ontologies/provenance/"
-    },
-    {
-      "namespace_prefix": "bbcsport",
-      "namespace_name": "http://www.bbc.co.uk/ontologies/sport/"
     },
     {
       "namespace_prefix": "bd",
@@ -11311,14 +12191,6 @@
     {
       "namespace_prefix": "bao",
       "namespace_name": "http://www.bioassayontology.org/bao#"
-    },
-    {
-      "namespace_prefix": "biopax",
-      "namespace_name": "http://www.biopax.org/release/biopax-level3.owl#"
-    },
-    {
-      "namespace_prefix": "blt",
-      "namespace_name": "http://www.bl.uk/schemas/bibliographic/blterms#"
     },
     {
       "namespace_prefix": "gro",
@@ -11373,10 +12245,6 @@
       "namespace_name": "http://www.daml.org/2001/03/daml+oil#"
     },
     {
-      "namespace_prefix": "coun",
-      "namespace_name": "http://www.daml.org/2001/09/countries/iso-3166-ont#"
-    },
-    {
       "namespace_prefix": "airport",
       "namespace_name": "http://www.daml.org/2001/10/html/airport-ont#"
     },
@@ -11397,20 +12265,8 @@
       "namespace_name": "http://www.dbs.cs.uni-duesseldorf.de/RDF/relational#"
     },
     {
-      "namespace_prefix": "ctxdesc",
-      "namespace_name": "http://www.demcare.eu/ontologies/contextdescriptor.owl#"
-    },
-    {
-      "namespace_prefix": "demlab",
-      "namespace_name": "http://www.demcare.eu/ontologies/demlab.owl#"
-    },
-    {
       "namespace_prefix": "ddb",
       "namespace_name": "http://www.deutsche-digitale-bibliothek.de/edm/"
-    },
-    {
-      "namespace_prefix": "km4c",
-      "namespace_name": "http://www.disit.org/km4city/schema#"
     },
     {
       "namespace_prefix": "dnr",
@@ -11445,16 +12301,8 @@
       "namespace_name": "http://www.ebsemantics.net/gastro#"
     },
     {
-      "namespace_prefix": "ebucore",
-      "namespace_name": "http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#"
-    },
-    {
       "namespace_prefix": "ecp",
       "namespace_name": "http://www.ebu.ch/metadata/ontologies/ebucoreplus#"
-    },
-    {
-      "namespace_prefix": "conel",
-      "namespace_name": "http://www.ebusiness-unibw.org/ontologies/consumerelectronics/v1#"
     },
     {
       "namespace_prefix": "cpi",
@@ -11499,10 +12347,6 @@
     {
       "namespace_prefix": "citof",
       "namespace_name": "http://www.essepuntato.it/2013/03/cito-functions#"
-    },
-    {
-      "namespace_prefix": "cerif13",
-      "namespace_name": "http://www.eurocris.org/ontologies/cerif/1.3#"
     },
     {
       "namespace_prefix": "myv",
@@ -11585,14 +12429,6 @@
       "namespace_name": "http://www.grenoble.prabi.fr/obiwarehouse/unipathway/upa?upid="
     },
     {
-      "namespace_prefix": "marl",
-      "namespace_name": "http://www.gsi.dit.upm.es/ontologies/marl/ns#"
-    },
-    {
-      "namespace_prefix": "onyx",
-      "namespace_name": "http://www.gsi.dit.upm.es/ontologies/onyx/ns#"
-    },
-    {
       "namespace_prefix": "pgterms",
       "namespace_name": "http://www.gutenberg.org/2009/pgterms/"
     },
@@ -11617,28 +12453,16 @@
       "namespace_name": "http://www.ics.forth.gr/isl/CRMgeo/"
     },
     {
-      "namespace_prefix": "mtlo",
-      "namespace_name": "http://www.ics.forth.gr/isl/MarineTLO/v4/marinetlo.owl#"
-    },
-    {
       "namespace_prefix": "VoIDWarehouse",
       "namespace_name": "http://www.ics.forth.gr/isl/VoIDWarehouse/VoID_Extension_Schema.owl#"
     },
     {
-      "namespace_prefix": "oae",
-      "namespace_name": "http://www.ics.forth.gr/isl/oae/core#"
-    },
-    {
-      "namespace_prefix": "onc",
-      "namespace_name": "http://www.ics.forth.gr/isl/oncm/core#"
-    },
-    {
-      "namespace_prefix": "identitorg",
-      "namespace_name": "http://www.identity.org/ontologies/identity.owl#"
-    },
-    {
       "namespace_prefix": "ideotalex",
       "namespace_name": "http://www.ideotalex.eu/datos/recurso/"
+    },
+    {
+      "namespace_prefix": "rfc",
+      "namespace_name": "http://www.ietf.org/rfc/"
     },
     {
       "namespace_prefix": "span",
@@ -11677,28 +12501,12 @@
       "namespace_name": "http://www.ipaw.info/ns/picaso#"
     },
     {
-      "namespace_prefix": "ioto",
-      "namespace_name": "http://www.irit.fr/recherches/MELODI/ontologies/IoT-O#"
-    },
-    {
-      "namespace_prefix": "SAN",
-      "namespace_name": "http://www.irit.fr/recherches/MELODI/ontologies/SAN#"
-    },
-    {
-      "namespace_prefix": "mod",
-      "namespace_name": "http://www.isibang.ac.in/ns/mod#"
-    },
-    {
       "namespace_prefix": "isocat",
       "namespace_name": "http://www.isocat.org/datcat/"
     },
     {
       "namespace_prefix": "dcr",
       "namespace_name": "http://www.isocat.org/ns/dcr.rdf#"
-    },
-    {
-      "namespace_prefix": "ivoam",
-      "namespace_name": "http://www.ivoa.net/rdf/messenger#"
     },
     {
       "namespace_prefix": "jjd",
@@ -11719,14 +12527,6 @@
     {
       "namespace_prefix": "exif",
       "namespace_name": "http://www.kanzaki.com/ns/exif#"
-    },
-    {
-      "namespace_prefix": "kanzaki",
-      "namespace_name": "http://www.kanzaki.com/ns/music#"
-    },
-    {
-      "namespace_prefix": "whois",
-      "namespace_name": "http://www.kanzaki.com/ns/whois#"
     },
     {
       "namespace_prefix": "condition",
@@ -11753,10 +12553,6 @@
       "namespace_name": "http://www.lexinfo.net/lmf#"
     },
     {
-      "namespace_prefix": "lexinfo",
-      "namespace_name": "http://www.lexinfo.net/ontology/2.0/lexinfo#"
-    },
-    {
       "namespace_prefix": "lido",
       "namespace_name": "http://www.lido-schema.org/"
     },
@@ -11767,10 +12563,6 @@
     {
       "namespace_prefix": "lingvoj",
       "namespace_name": "http://www.lingvoj.org/ontology#"
-    },
-    {
-      "namespace_prefix": "semio",
-      "namespace_name": "http://www.lingvoj.org/semio#"
     },
     {
       "namespace_prefix": "l2sp",
@@ -11785,24 +12577,12 @@
       "namespace_name": "http://www.linkedmodel.org/1.0/schema/decl#"
     },
     {
-      "namespace_prefix": "dtype",
-      "namespace_name": "http://www.linkedmodel.org/schema/dtype#"
-    },
-    {
-      "namespace_prefix": "vaem",
-      "namespace_name": "http://www.linkedmodel.org/schema/vaem#"
-    },
-    {
       "namespace_prefix": "llalg",
       "namespace_name": "http://www.linklion.org/algorithm/"
     },
     {
       "namespace_prefix": "lden",
       "namespace_name": "http://www.linklion.org/lden/"
-    },
-    {
-      "namespace_prefix": "llont",
-      "namespace_name": "http://www.linklion.org/ontology#"
     },
     {
       "namespace_prefix": "p2",
@@ -11817,20 +12597,12 @@
       "namespace_name": "http://www.loc.gov/MARC21/slim/"
     },
     {
-      "namespace_prefix": "madsrdf",
-      "namespace_name": "http://www.loc.gov/mads/rdf/v1#"
-    },
-    {
       "namespace_prefix": "modsrdf",
       "namespace_name": "http://www.loc.gov/mods/rdf/v1#"
     },
     {
       "namespace_prefix": "mods",
       "namespace_name": "http://www.loc.gov/mods/v3#"
-    },
-    {
-      "namespace_prefix": "premis",
-      "namespace_name": "http://www.loc.gov/premis/rdf/v1#"
     },
     {
       "namespace_prefix": "sru",
@@ -11885,20 +12657,12 @@
       "namespace_name": "http://www.mico-project.eu/ns/platform/1.0/schema#"
     },
     {
-      "namespace_prefix": "geof",
-      "namespace_name": "http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#"
-    },
-    {
       "namespace_prefix": "qa",
       "namespace_name": "http://www.mit.jyu.fi/ai/TRUST_Ontologies/QA.owl#"
     },
     {
       "namespace_prefix": "my",
       "namespace_name": "http://www.mobile.com/model/"
-    },
-    {
-      "namespace_prefix": "pimsii",
-      "namespace_name": "http://www.molmod.info/semantics/pims-ii.ttl#"
     },
     {
       "namespace_prefix": "swrcfe",
@@ -11929,10 +12693,6 @@
       "namespace_name": "http://www.mygrid.org.uk/ontology#"
     },
     {
-      "namespace_prefix": "nanopub",
-      "namespace_name": "http://www.nanopub.org/nschema#"
-    },
-    {
       "namespace_prefix": "nxs",
       "namespace_name": "http://www.neclimateus.org/"
     },
@@ -11947,14 +12707,6 @@
     {
       "namespace_prefix": "ali",
       "namespace_name": "http://www.niso.org/schemas/ali/1.0/"
-    },
-    {
-      "namespace_prefix": "oecc",
-      "namespace_name": "http://www.oegov.org/core/owl/cc#"
-    },
-    {
-      "namespace_prefix": "gc",
-      "namespace_name": "http://www.oegov.org/core/owl/gc#"
     },
     {
       "namespace_prefix": "ogbd",
@@ -11977,48 +12729,12 @@
       "namespace_name": "http://www.ontologydesignpatterns.org/cp/owl/informationobjectsandrepresentationlanguages.owl#"
     },
     {
-      "namespace_prefix": "infor",
-      "namespace_name": "http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#"
-    },
-    {
-      "namespace_prefix": "odpart",
-      "namespace_name": "http://www.ontologydesignpatterns.org/cp/owl/participation.owl#"
-    },
-    {
-      "namespace_prefix": "semiotics",
-      "namespace_name": "http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#"
-    },
-    {
-      "namespace_prefix": "seq",
-      "namespace_name": "http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#"
-    },
-    {
-      "namespace_prefix": "situ",
-      "namespace_name": "http://www.ontologydesignpatterns.org/cp/owl/situation.owl#"
-    },
-    {
       "namespace_prefix": "odptimeindexedsituation",
       "namespace_name": "http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#"
     },
     {
-      "namespace_prefix": "ti",
-      "namespace_name": "http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#"
-    },
-    {
       "namespace_prefix": "ire",
       "namespace_name": "http://www.ontologydesignpatterns.org/cpont/ire.owl#"
-    },
-    {
-      "namespace_prefix": "dul",
-      "namespace_name": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
-    },
-    {
-      "namespace_prefix": "iol",
-      "namespace_name": "http://www.ontologydesignpatterns.org/ont/dul/IOLite.owl#"
-    },
-    {
-      "namespace_prefix": "ontopic",
-      "namespace_name": "http://www.ontologydesignpatterns.org/ont/dul/ontopic.owl#"
     },
     {
       "namespace_prefix": "fnabox",
@@ -12043,22 +12759,6 @@
     {
       "namespace_prefix": "fred",
       "namespace_name": "http://www.ontologydesignpatterns.org/ont/fred/domain.owl#"
-    },
-    {
-      "namespace_prefix": "lmm1",
-      "namespace_name": "http://www.ontologydesignpatterns.org/ont/lmm/LMM_L1.owl#"
-    },
-    {
-      "namespace_prefix": "lmm2",
-      "namespace_name": "http://www.ontologydesignpatterns.org/ont/lmm/LMM_L2.owl#"
-    },
-    {
-      "namespace_prefix": "irw",
-      "namespace_name": "http://www.ontologydesignpatterns.org/ont/web/irw.owl#"
-    },
-    {
-      "namespace_prefix": "cpa",
-      "namespace_name": "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#"
     },
     {
       "namespace_prefix": "opwn",
@@ -12089,16 +12789,8 @@
       "namespace_name": "http://www.ontotext.com/proton/"
     },
     {
-      "namespace_prefix": "pext",
-      "namespace_name": "http://www.ontotext.com/proton/protonext#"
-    },
-    {
       "namespace_prefix": "pkm",
       "namespace_name": "http://www.ontotext.com/proton/protonkm#"
-    },
-    {
-      "namespace_prefix": "ptop",
-      "namespace_name": "http://www.ontotext.com/proton/protontop#"
     },
     {
       "namespace_prefix": "ofn",
@@ -12139,14 +12831,6 @@
     {
       "namespace_prefix": "ns349",
       "namespace_name": "http://www.opengis.net/ont/"
-    },
-    {
-      "namespace_prefix": "geosparql",
-      "namespace_name": "http://www.opengis.net/ont/geosparql#"
-    },
-    {
-      "namespace_prefix": "gml",
-      "namespace_name": "http://www.opengis.net/ont/gml#"
     },
     {
       "namespace_prefix": "wscaim",
@@ -12325,10 +13009,6 @@
       "namespace_name": "http://www.ordnancesurvey.co.uk/ontology/SpatialRelations/v0.2/SpatialRelations.owl#"
     },
     {
-      "namespace_prefix": "ostop",
-      "namespace_name": "http://www.ordnancesurvey.co.uk/ontology/Topography/v0.1/Topography.owl#"
-    },
-    {
       "namespace_prefix": "ordo",
       "namespace_name": "http://www.orpha.net/ORDO/"
     },
@@ -12359,10 +13039,6 @@
     {
       "namespace_prefix": "bk",
       "namespace_name": "http://www.provbook.org/ns/#"
-    },
-    {
-      "namespace_prefix": "drammar",
-      "namespace_name": "http://www.purl.org/drammar#"
     },
     {
       "namespace_prefix": "limont",
@@ -12441,10 +13117,6 @@
       "namespace_name": "http://www.s3db.org/core#"
     },
     {
-      "namespace_prefix": "hdo",
-      "namespace_name": "http://www.samos.gr/ontologies/helpdeskOnto.owl#"
-    },
-    {
       "namespace_prefix": "scho",
       "namespace_name": "http://www.scholarlydata.org/ontology/conference-ontology.owl#"
     },
@@ -12455,30 +13127,6 @@
     {
       "namespace_prefix": "sl",
       "namespace_name": "http://www.semanlink.net/2001/00/semanlink-schema#"
-    },
-    {
-      "namespace_prefix": "nie",
-      "namespace_name": "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#"
-    },
-    {
-      "namespace_prefix": "nco",
-      "namespace_name": "http://www.semanticdesktop.org/ontologies/2007/03/22/nco#"
-    },
-    {
-      "namespace_prefix": "nfo",
-      "namespace_name": "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#"
-    },
-    {
-      "namespace_prefix": "ncal",
-      "namespace_name": "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#"
-    },
-    {
-      "namespace_prefix": "nao",
-      "namespace_name": "http://www.semanticdesktop.org/ontologies/2007/08/15/nao#"
-    },
-    {
-      "namespace_prefix": "nrl",
-      "namespace_name": "http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#"
     },
     {
       "namespace_prefix": "mocanal",
@@ -12517,10 +13165,6 @@
       "namespace_name": "http://www.semanticweb.org/ontologia_EA#"
     },
     {
-      "namespace_prefix": "ontosec",
-      "namespace_name": "http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#"
-    },
-    {
       "namespace_prefix": "remus",
       "namespace_name": "http://www.semanticweb.org/ontologies/2010/6/Ontology1279614123500.owl#"
     },
@@ -12549,10 +13193,6 @@
       "namespace_name": "http://www.semanticweb.org/syllabus/data/"
     },
     {
-      "namespace_prefix": "traffic",
-      "namespace_name": "http://www.sensormeasurement.appspot.com/ont/transport/traffic#"
-    },
-    {
       "namespace_prefix": "smiley",
       "namespace_name": "http://www.smileyontology.com/ns#"
     },
@@ -12577,8 +13217,8 @@
       "namespace_name": "http://www.tei-c.org/ns/1.0/"
     },
     {
-      "namespace_prefix": "connectype",
-      "namespace_name": "http://www.tele.pw.edu.pl/~sims-onto/ConnectivityType.owl#"
+      "namespace_prefix": "connectype_",
+      "namespace_name": "http://www.tele.pw.edu.pl/_sims-onto/ConnectivityType.owl#"
     },
     {
       "namespace_prefix": "geos",
@@ -12599,6 +13239,10 @@
     {
       "namespace_prefix": "rating",
       "namespace_name": "http://www.tvblob.com/ratings/#"
+    },
+    {
+      "namespace_prefix": "ucd",
+      "namespace_name": "http://www.unicode.org/ns/2003/ucd/1.0"
     },
     {
       "namespace_prefix": "organ",
@@ -12641,8 +13285,8 @@
       "namespace_name": "http://www.w3.org/1999/xhtml/"
     },
     {
-      "namespace_prefix": "xhv",
-      "namespace_name": "http://www.w3.org/1999/xhtml/vocab#"
+      "namespace_prefix": "xhtmlvocab",
+      "namespace_name": "http://www.w3.org/1999/xhtml/vocab/"
     },
     {
       "namespace_prefix": "doc",
@@ -12651,14 +13295,6 @@
     {
       "namespace_prefix": "ann",
       "namespace_name": "http://www.w3.org/2000/10/annotation-ns#"
-    },
-    {
-      "namespace_prefix": "log",
-      "namespace_name": "http://www.w3.org/2000/10/swap/log#"
-    },
-    {
-      "namespace_prefix": "contact",
-      "namespace_name": "http://www.w3.org/2000/10/swap/pim/contact#"
     },
     {
       "namespace_prefix": "ss",
@@ -12709,48 +13345,24 @@
       "namespace_name": "http://www.w3.org/2002/xforms/"
     },
     {
-      "namespace_prefix": "w3cgeo",
-      "namespace_name": "http://www.w3.org/2003/01/geo/wgs84_pos#"
-    },
-    {
       "namespace_prefix": "soap",
       "namespace_name": "http://www.w3.org/2003/05/soap-envelope/"
-    },
-    {
-      "namespace_prefix": "status",
-      "namespace_name": "http://www.w3.org/2003/06/sw-vocab-status/ns#"
     },
     {
       "namespace_prefix": "swrlb",
       "namespace_name": "http://www.w3.org/2003/11/swrlb#"
     },
     {
-      "namespace_prefix": "grddl",
-      "namespace_name": "http://www.w3.org/2003/g/data-view#"
-    },
-    {
       "namespace_prefix": "imreg",
       "namespace_name": "http://www.w3.org/2004/02/image-regions#"
-    },
-    {
-      "namespace_prefix": "skos",
-      "namespace_name": "http://www.w3.org/2004/02/skos/core#"
     },
     {
       "namespace_prefix": "skosm",
       "namespace_name": "http://www.w3.org/2004/02/skos/mapping#"
     },
     {
-      "namespace_prefix": "swp",
-      "namespace_name": "http://www.w3.org/2004/03/trix/swp-1/"
-    },
-    {
       "namespace_prefix": "trixswp-2",
       "namespace_name": "http://www.w3.org/2004/03/trix/swp-2/"
-    },
-    {
-      "namespace_prefix": "fresnel",
-      "namespace_name": "http://www.w3.org/2004/09/fresnel#"
     },
     {
       "namespace_prefix": "delta",
@@ -12789,10 +13401,6 @@
       "namespace_name": "http://www.w3.org/2005/xpath-functions#"
     },
     {
-      "namespace_prefix": "test-description",
-      "namespace_name": "http://www.w3.org/2006/03/test-description#"
-    },
-    {
       "namespace_prefix": "wn20",
       "namespace_name": "http://www.w3.org/2006/03/wn/wn20/"
     },
@@ -12801,28 +13409,8 @@
       "namespace_name": "http://www.w3.org/2006/12/owl2-xml#"
     },
     {
-      "namespace_prefix": "gso",
-      "namespace_name": "http://www.w3.org/2006/gen/ont#"
-    },
-    {
       "namespace_prefix": "httpvoc",
       "namespace_name": "http://www.w3.org/2006/http#"
-    },
-    {
-      "namespace_prefix": "te",
-      "namespace_name": "http://www.w3.org/2006/time-entry#"
-    },
-    {
-      "namespace_prefix": "tzont",
-      "namespace_name": "http://www.w3.org/2006/timezone#"
-    },
-    {
-      "namespace_prefix": "vcard2006",
-      "namespace_name": "http://www.w3.org/2006/vcard/ns#"
-    },
-    {
-      "namespace_prefix": "wdrs",
-      "namespace_name": "http://www.w3.org/2007/05/powder-s#"
     },
     {
       "namespace_prefix": "wdrd",
@@ -12851,10 +13439,6 @@
     {
       "namespace_prefix": "func",
       "namespace_name": "http://www.w3.org/2007/rif-builtin-function#"
-    },
-    {
-      "namespace_prefix": "common",
-      "namespace_name": "http://www.w3.org/2007/uwa/context/common.owl#"
     },
     {
       "namespace_prefix": "dcn",
@@ -12889,10 +13473,6 @@
       "namespace_name": "http://www.w3.org/2008/05/skos#"
     },
     {
-      "namespace_prefix": "skosxl",
-      "namespace_name": "http://www.w3.org/2008/05/skos-xl#"
-    },
-    {
       "namespace_prefix": "ttl",
       "namespace_name": "http://www.w3.org/2008/turtle#"
     },
@@ -12901,24 +13481,12 @@
       "namespace_name": "http://www.w3.org/2009/pointers#"
     },
     {
-      "namespace_prefix": "cnt",
-      "namespace_name": "http://www.w3.org/2011/content#"
-    },
-    {
       "namespace_prefix": "xmlns",
       "namespace_name": "http://www.w3.org/2021/XMLSchema#"
     },
     {
       "namespace_prefix": "tblcard",
       "namespace_name": "http://www.w3.org/People/Berners-Lee/card#"
-    },
-    {
-      "namespace_prefix": "fowl",
-      "namespace_name": "http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#"
-    },
-    {
-      "namespace_prefix": "vin",
-      "namespace_name": "http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#"
     },
     {
       "namespace_prefix": "sgv",
@@ -12937,14 +13505,6 @@
       "namespace_name": "http://www.w3.org/XML/1998/namespace/"
     },
     {
-      "namespace_prefix": "adms",
-      "namespace_name": "http://www.w3.org/ns/adms#"
-    },
-    {
-      "namespace_prefix": "acl",
-      "namespace_name": "http://www.w3.org/ns/auth/acl#"
-    },
-    {
       "namespace_prefix": "rsa",
       "namespace_name": "http://www.w3.org/ns/auth/rsa#"
     },
@@ -12953,44 +13513,16 @@
       "namespace_name": "http://www.w3.org/ns/bde/docker/"
     },
     {
-      "namespace_prefix": "aerdcat",
-      "namespace_name": "http://www.w3.org/ns/dcat#"
-    },
-    {
       "namespace_prefix": "dpv",
       "namespace_name": "http://www.w3.org/ns/dpv#"
-    },
-    {
-      "namespace_prefix": "dqv",
-      "namespace_name": "http://www.w3.org/ns/dqv#"
-    },
-    {
-      "namespace_prefix": "duv",
-      "namespace_name": "http://www.w3.org/ns/duv#"
-    },
-    {
-      "namespace_prefix": "prof",
-      "namespace_name": "http://www.w3.org/ns/dx/prof/"
-    },
-    {
-      "namespace_prefix": "earl",
-      "namespace_name": "http://www.w3.org/ns/earl#"
     },
     {
       "namespace_prefix": "formats",
       "namespace_name": "http://www.w3.org/ns/formats/"
     },
     {
-      "namespace_prefix": "hydra",
-      "namespace_name": "http://www.w3.org/ns/hydra/core#"
-    },
-    {
       "namespace_prefix": "legal",
       "namespace_name": "http://www.w3.org/ns/legal#"
-    },
-    {
-      "namespace_prefix": "lexdcp",
-      "namespace_name": "http://www.w3.org/ns/lemon/decomp#"
     },
     {
       "namespace_prefix": "frac",
@@ -13001,36 +13533,8 @@
       "namespace_name": "http://www.w3.org/ns/lemon/lexicog#"
     },
     {
-      "namespace_prefix": "lime",
-      "namespace_name": "http://www.w3.org/ns/lemon/lime#"
-    },
-    {
-      "namespace_prefix": "ontolex",
-      "namespace_name": "http://www.w3.org/ns/lemon/ontolex#"
-    },
-    {
-      "namespace_prefix": "synsem",
-      "namespace_name": "http://www.w3.org/ns/lemon/synsem#"
-    },
-    {
-      "namespace_prefix": "vartrans",
-      "namespace_name": "http://www.w3.org/ns/lemon/vartrans#"
-    },
-    {
-      "namespace_prefix": "locn",
-      "namespace_name": "http://www.w3.org/ns/locn#"
-    },
-    {
-      "namespace_prefix": "ma-ont",
-      "namespace_name": "http://www.w3.org/ns/ma-ont#"
-    },
-    {
       "namespace_prefix": "nsmd",
       "namespace_name": "http://www.w3.org/ns/md#"
-    },
-    {
-      "namespace_prefix": "mls",
-      "namespace_name": "http://www.w3.org/ns/mls#"
     },
     {
       "namespace_prefix": "oax",
@@ -13041,16 +13545,8 @@
       "namespace_name": "http://www.w3.org/ns/people#"
     },
     {
-      "namespace_prefix": "person",
-      "namespace_name": "http://www.w3.org/ns/person#"
-    },
-    {
       "namespace_prefix": "mee",
       "namespace_name": "http://www.w3.org/ns/pim/meeting#"
-    },
-    {
-      "namespace_prefix": "space",
-      "namespace_name": "http://www.w3.org/ns/pim/space#"
     },
     {
       "namespace_prefix": "postat",
@@ -13061,32 +13557,20 @@
       "namespace_name": "http://www.w3.org/ns/rad#"
     },
     {
-      "namespace_prefix": "rdft",
-      "namespace_name": "http://www.w3.org/ns/rdftest#"
-    },
-    {
-      "namespace_prefix": "regorg",
-      "namespace_name": "http://www.w3.org/ns/regorg#"
-    },
-    {
       "namespace_prefix": "sawsdl",
       "namespace_name": "http://www.w3.org/ns/sawsdl#"
     },
     {
-      "namespace_prefix": "sparql",
-      "namespace_name": "http://www.w3.org/ns/sparql#"
+      "namespace_prefix": "solid",
+      "namespace_name": "http://www.w3.org/ns/solid/terms"
     },
     {
-      "namespace_prefix": "sd",
-      "namespace_name": "http://www.w3.org/ns/sparql-service-description#"
+      "namespace_prefix": "arq",
+      "namespace_name": "http://www.w3.org/ns/sparql#"
     },
     {
       "namespace_prefix": "tdm",
       "namespace_name": "http://www.w3.org/ns/tdmrep#"
-    },
-    {
-      "namespace_prefix": "ui",
-      "namespace_name": "http://www.w3.org/ns/ui#"
     },
     {
       "namespace_prefix": "wsdl",
@@ -13107,14 +13591,6 @@
     {
       "namespace_prefix": "sim",
       "namespace_name": "http://www.w3id.org/simulation/ontology/"
-    },
-    {
-      "namespace_prefix": "uiot",
-      "namespace_name": "http://www.w3id.org/urban-iot/core#"
-    },
-    {
-      "namespace_prefix": "uiote",
-      "namespace_name": "http://www.w3id.org/urban-iot/electric#"
     },
     {
       "namespace_prefix": "uiots",
@@ -13155,10 +13631,6 @@
     {
       "namespace_prefix": "wdv",
       "namespace_name": "http://www.wikidata.org/value/"
-    },
-    {
-      "namespace_prefix": "d2rq",
-      "namespace_name": "http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#"
     },
     {
       "namespace_prefix": "dannet",
@@ -13249,10 +13721,6 @@
       "namespace_name": "http://zbw.eu/beta/p20/vocab/"
     },
     {
-      "namespace_prefix": "zbwext",
-      "namespace_name": "http://zbw.eu/namespaces/zbw-extensions/"
-    },
-    {
       "namespace_prefix": "bib",
       "namespace_name": "http://zeitkunst.org/bibtex/0.1/bibtex.owl#"
     },
@@ -13295,10 +13763,6 @@
     {
       "namespace_prefix": "bioschemas",
       "namespace_name": "https://bioschemas.org/"
-    },
-    {
-      "namespace_prefix": "spvqa",
-      "namespace_name": "https://bmake.th-brandenburg.de/spv#"
     },
     {
       "namespace_prefix": "freespins",
@@ -13489,10 +13953,6 @@
       "namespace_name": "https://dbpedia.org/page/Cergy/"
     },
     {
-      "namespace_prefix": "decision",
-      "namespace_name": "https://decision-ontology.googlecode.com/svn/trunk/decision.owl#"
-    },
-    {
       "namespace_prefix": "ns1127",
       "namespace_name": "https://defs.opengis.net/org/"
     },
@@ -13571,10 +14031,6 @@
     {
       "namespace_prefix": "sz",
       "namespace_name": "https://github.com/senzing-garage/sz-semantics/wiki/ns#"
-    },
-    {
-      "namespace_prefix": "glc",
-      "namespace_name": "https://glaciation-project.eu/MetadataReferenceModel#"
     },
     {
       "namespace_prefix": "gont",
@@ -13949,18 +14405,6 @@
       "namespace_name": "https://purl.net/climatesense/lack/ns#"
     },
     {
-      "namespace_prefix": "ce",
-      "namespace_name": "https://purl.org/cityexplorer#"
-    },
-    {
-      "namespace_prefix": "apco",
-      "namespace_name": "https://purl.org/cm/onto/apco#"
-    },
-    {
-      "namespace_prefix": "edifact-o",
-      "namespace_name": "https://purl.org/edifact/ontology#"
-    },
-    {
       "namespace_prefix": "bdsubj",
       "namespace_name": "https://purl.org/fidbaudigital/subjects#"
     },
@@ -14051,10 +14495,6 @@
     {
       "namespace_prefix": "regcomp",
       "namespace_name": "https://regulacomp.unige.ch/ns/regcomp#"
-    },
-    {
-      "namespace_prefix": "vas",
-      "namespace_name": "https://robotica.uv.es/proyectos/ASOTVAS/def/ciencia-tecnologia/vas#"
     },
     {
       "namespace_prefix": "ror",
@@ -14341,18 +14781,6 @@
       "namespace_name": "https://w3id.org/"
     },
     {
-      "namespace_prefix": "bci",
-      "namespace_name": "https://w3id.org/BCI-ontology#"
-    },
-    {
-      "namespace_prefix": "cem",
-      "namespace_name": "https://w3id.org/CEMontology/"
-    },
-    {
-      "namespace_prefix": "CPSWatch",
-      "namespace_name": "https://w3id.org/CPSWatch#"
-    },
-    {
       "namespace_prefix": "covido",
       "namespace_name": "https://w3id.org/CovidO#"
     },
@@ -14361,28 +14789,8 @@
       "namespace_name": "https://w3id.org/DQA#"
     },
     {
-      "namespace_prefix": "tax",
-      "namespace_name": "https://w3id.org/EUTaxO#"
-    },
-    {
-      "namespace_prefix": "gcon",
-      "namespace_name": "https://w3id.org/GConsent#"
-    },
-    {
-      "namespace_prefix": "gdprov",
-      "namespace_name": "https://w3id.org/GDPRov#"
-    },
-    {
-      "namespace_prefix": "gdprtext",
-      "namespace_name": "https://w3id.org/GDPRtEXT#"
-    },
-    {
       "namespace_prefix": "hhtchange",
       "namespace_name": "https://w3id.org/HHT/Change#"
-    },
-    {
-      "namespace_prefix": "IIoT",
-      "namespace_name": "https://w3id.org/IIoT#"
     },
     {
       "namespace_prefix": "ncl",
@@ -14397,20 +14805,12 @@
       "namespace_name": "https://w3id.org/OSDU#"
     },
     {
-      "namespace_prefix": "gsn",
-      "namespace_name": "https://w3id.org/OntoGSN/ontology#"
-    },
-    {
       "namespace_prefix": "w3TRO",
       "namespace_name": "https://w3id.org/TRO/"
     },
     {
       "namespace_prefix": "ttrpg",
       "namespace_name": "https://w3id.org/TTRpg#"
-    },
-    {
-      "namespace_prefix": "a4bdg",
-      "namespace_name": "https://w3id.org/aerOS/building#"
     },
     {
       "namespace_prefix": "aff",
@@ -14425,10 +14825,6 @@
       "namespace_name": "https://w3id.org/aimaix#"
     },
     {
-      "namespace_prefix": "airo",
-      "namespace_name": "https://w3id.org/airo#"
-    },
-    {
       "namespace_prefix": "aix",
       "namespace_name": "https://w3id.org/aix#"
     },
@@ -14441,36 +14837,8 @@
       "namespace_name": "https://w3id.org/aksw/norse#"
     },
     {
-      "namespace_prefix": "amv",
-      "namespace_name": "https://w3id.org/amv#"
-    },
-    {
-      "namespace_prefix": "r-arco",
-      "namespace_name": "https://w3id.org/arco/ontology/arco/"
-    },
-    {
-      "namespace_prefix": "ctlog",
-      "namespace_name": "https://w3id.org/arco/ontology/catalogue/"
-    },
-    {
-      "namespace_prefix": "cdesc",
-      "namespace_name": "https://w3id.org/arco/ontology/context-description/"
-    },
-    {
-      "namespace_prefix": "arco",
-      "namespace_name": "https://w3id.org/arco/ontology/core/"
-    },
-    {
-      "namespace_prefix": "cevent",
-      "namespace_name": "https://w3id.org/arco/ontology/cultural-event/"
-    },
-    {
-      "namespace_prefix": "ddesc",
-      "namespace_name": "https://w3id.org/arco/ontology/denotative-description/"
-    },
-    {
-      "namespace_prefix": "a-loc",
-      "namespace_name": "https://w3id.org/arco/ontology/location/"
+      "namespace_prefix": "w3amv",
+      "namespace_name": "https://w3id.org/amv/"
     },
     {
       "namespace_prefix": "asb",
@@ -14485,10 +14853,6 @@
       "namespace_name": "https://w3id.org/baf#"
     },
     {
-      "namespace_prefix": "bcom",
-      "namespace_name": "https://w3id.org/bcom#"
-    },
-    {
       "namespace_prefix": "beo",
       "namespace_name": "https://w3id.org/beo#"
     },
@@ -14499,10 +14863,6 @@
     {
       "namespace_prefix": "bop",
       "namespace_name": "https://w3id.org/bop#"
-    },
-    {
-      "namespace_prefix": "bto",
-      "namespace_name": "https://w3id.org/bot#"
     },
     {
       "namespace_prefix": "bpo",
@@ -14521,28 +14881,12 @@
       "namespace_name": "https://w3id.org/cc#"
     },
     {
-      "namespace_prefix": "cdc",
-      "namespace_name": "https://w3id.org/cdc#"
-    },
-    {
       "namespace_prefix": "cdt",
       "namespace_name": "https://w3id.org/cdt/"
     },
     {
       "namespace_prefix": "chemrof",
       "namespace_name": "https://w3id.org/chemrof/"
-    },
-    {
-      "namespace_prefix": "citedcat",
-      "namespace_name": "https://w3id.org/citedcat-ap/"
-    },
-    {
-      "namespace_prefix": "cocoon",
-      "namespace_name": "https://w3id.org/cocoon/v1.0#"
-    },
-    {
-      "namespace_prefix": "contax",
-      "namespace_name": "https://w3id.org/con-tax#"
     },
     {
       "namespace_prefix": "consolid",
@@ -14555,10 +14899,6 @@
     {
       "namespace_prefix": "csro",
       "namespace_name": "https://w3id.org/csro/ontology#"
-    },
-    {
-      "namespace_prefix": "cto",
-      "namespace_name": "https://w3id.org/cto#"
     },
     {
       "namespace_prefix": "cwl",
@@ -14581,10 +14921,6 @@
       "namespace_name": "https://w3id.org/d2s/"
     },
     {
-      "namespace_prefix": "w3dco",
-      "namespace_name": "https://w3id.org/dco#"
-    },
-    {
       "namespace_prefix": "norma",
       "namespace_name": "https://w3id.org/def/norma-o#"
     },
@@ -14603,10 +14939,6 @@
     {
       "namespace_prefix": "dg",
       "namespace_name": "https://w3id.org/dingo#"
-    },
-    {
-      "namespace_prefix": "dio",
-      "namespace_name": "https://w3id.org/dio#"
     },
     {
       "namespace_prefix": "dmo",
@@ -14629,44 +14961,20 @@
       "namespace_name": "https://w3id.org/dob/voc/prop#"
     },
     {
-      "namespace_prefix": "dpvpd",
-      "namespace_name": "https://w3id.org/dpv/pd#"
-    },
-    {
-      "namespace_prefix": "dsd",
-      "namespace_name": "https://w3id.org/dsd#"
-    },
-    {
       "namespace_prefix": "dseco",
       "namespace_name": "https://w3id.org/dseco/ontology/"
-    },
-    {
-      "namespace_prefix": "w3dt",
-      "namespace_name": "https://w3id.org/dt#"
     },
     {
       "namespace_prefix": "duodrl",
       "namespace_name": "https://w3id.org/duodrl#"
     },
     {
-      "namespace_prefix": "oso",
-      "namespace_name": "https://w3id.org/earthsemantics/OSO#"
-    },
-    {
       "namespace_prefix": "eb",
       "namespace_name": "https://w3id.org/eb#"
     },
     {
-      "namespace_prefix": "ecfo",
-      "namespace_name": "https://w3id.org/ecfo#"
-    },
-    {
       "namespace_prefix": "esgs",
       "namespace_name": "https://w3id.org/edwin/ontology/"
-    },
-    {
-      "namespace_prefix": "eeo",
-      "namespace_name": "https://w3id.org/eeo#"
     },
     {
       "namespace_prefix": "eep",
@@ -14681,24 +14989,12 @@
       "namespace_name": "https://w3id.org/emmo/domain/battery/battery#"
     },
     {
-      "namespace_prefix": "chameo",
-      "namespace_name": "https://w3id.org/emmo/domain/characterisation-methodology/chameo#"
-    },
-    {
       "namespace_prefix": "chems",
       "namespace_name": "https://w3id.org/emmo/domain/chemical-substance#"
     },
     {
       "namespace_prefix": "echem",
       "namespace_name": "https://w3id.org/emmo/domain/electrochemistry#"
-    },
-    {
-      "namespace_prefix": "envpuv",
-      "namespace_name": "https://w3id.org/env/puv#"
-    },
-    {
-      "namespace_prefix": "epplan",
-      "namespace_name": "https://w3id.org/ep-plan#"
     },
     {
       "namespace_prefix": "exo",
@@ -14725,14 +15021,6 @@
       "namespace_name": "https://w3id.org/fdp/fdp-o#"
     },
     {
-      "namespace_prefix": "fog",
-      "namespace_name": "https://w3id.org/fog#"
-    },
-    {
-      "namespace_prefix": "fwo",
-      "namespace_name": "https://w3id.org/foodwaste/ontology#"
-    },
-    {
       "namespace_prefix": "fr",
       "namespace_name": "https://w3id.org/fr/def/core#"
     },
@@ -14757,32 +15045,8 @@
       "namespace_name": "https://w3id.org/golem/ontology#"
     },
     {
-      "namespace_prefix": "gom",
-      "namespace_name": "https://w3id.org/gom#"
-    },
-    {
       "namespace_prefix": "hdgi",
       "namespace_name": "https://w3id.org/hdgi#"
-    },
-    {
-      "namespace_prefix": "hpont",
-      "namespace_name": "https://w3id.org/hpont#"
-    },
-    {
-      "namespace_prefix": "aml",
-      "namespace_name": "https://w3id.org/i40/aml#"
-    },
-    {
-      "namespace_prefix": "iadopt",
-      "namespace_name": "https://w3id.org/iadopt/ont/"
-    },
-    {
-      "namespace_prefix": "ctrl",
-      "namespace_name": "https://w3id.org/ibp/CTRLont#"
-    },
-    {
-      "namespace_prefix": "iddo",
-      "namespace_name": "https://w3id.org/iddo#"
     },
     {
       "namespace_prefix": "idpo",
@@ -14791,14 +15055,6 @@
     {
       "namespace_prefix": "idsc",
       "namespace_name": "https://w3id.org/idsa/code/"
-    },
-    {
-      "namespace_prefix": "ids",
-      "namespace_name": "https://w3id.org/idsa/core/"
-    },
-    {
-      "namespace_prefix": "ifcadd",
-      "namespace_name": "https://w3id.org/ifc/IFC4_ADD1#"
     },
     {
       "namespace_prefix": "iig",
@@ -14815,18 +15071,6 @@
     {
       "namespace_prefix": "iottta",
       "namespace_name": "https://w3id.org/iot-tta#"
-    },
-    {
-      "namespace_prefix": "icb",
-      "namespace_name": "https://w3id.org/isCharacterisedBy#"
-    },
-    {
-      "namespace_prefix": "ishi",
-      "namespace_name": "https://w3id.org/ishikawa-diagram-ontology#"
-    },
-    {
-      "namespace_prefix": "isoprops",
-      "namespace_name": "https://w3id.org/isoprops#"
     },
     {
       "namespace_prefix": "opa",
@@ -14865,10 +15109,6 @@
       "namespace_name": "https://w3id.org/legal_form#"
     },
     {
-      "namespace_prefix": "legalhtml",
-      "namespace_name": "https://w3id.org/legalhtml/ov#"
-    },
-    {
       "namespace_prefix": "libeas",
       "namespace_name": "https://w3id.org/libeas#"
     },
@@ -14885,20 +15125,12 @@
       "namespace_name": "https://w3id.org/lodsight/rdf-path#"
     },
     {
-      "namespace_prefix": "w3loin",
-      "namespace_name": "https://w3id.org/loin#"
-    },
-    {
       "namespace_prefix": "lovc",
       "namespace_name": "https://w3id.org/lovcube/ns/lovcube#"
     },
     {
       "namespace_prefix": "rls",
       "namespace_name": "https://w3id.org/lovcube/ns/relovstats#"
-    },
-    {
-      "namespace_prefix": "intro",
-      "namespace_name": "https://w3id.org/lso/intro/beta202408#"
     },
     {
       "namespace_prefix": "mbl",
@@ -14921,10 +15153,6 @@
       "namespace_name": "https://w3id.org/mobilitydcat-ap#"
     },
     {
-      "namespace_prefix": "modp",
-      "namespace_name": "https://w3id.org/mod#"
-    },
-    {
       "namespace_prefix": "moont",
       "namespace_name": "https://w3id.org/moont/"
     },
@@ -14937,16 +15165,8 @@
       "namespace_name": "https://w3id.org/msl#"
     },
     {
-      "namespace_prefix": "multont",
-      "namespace_name": "https://w3id.org/multidimensional-interface/ontology#"
-    },
-    {
       "namespace_prefix": "navm",
       "namespace_name": "https://w3id.org/navigation_menu#"
-    },
-    {
-      "namespace_prefix": "nno",
-      "namespace_name": "https://w3id.org/nno/ontology#"
     },
     {
       "namespace_prefix": "nsd",
@@ -14961,28 +15181,12 @@
       "namespace_name": "https://w3id.org/oc/ontology/"
     },
     {
-      "namespace_prefix": "sdom",
-      "namespace_name": "https://w3id.org/okn/o/sdm#"
-    },
-    {
-      "namespace_prefix": "omg",
-      "namespace_name": "https://w3id.org/omg#"
-    },
-    {
       "namespace_prefix": "ontop",
       "namespace_name": "https://w3id.org/ontop/"
     },
     {
-      "namespace_prefix": "ocmv",
-      "namespace_name": "https://w3id.org/ontouml-models/vocabulary#"
-    },
-    {
       "namespace_prefix": "obom",
       "namespace_name": "https://w3id.org/open-bom/ont/open-bom#"
-    },
-    {
-      "namespace_prefix": "otl",
-      "namespace_name": "https://w3id.org/opentrafficlights#"
     },
     {
       "namespace_prefix": "opm",
@@ -14991,14 +15195,6 @@
     {
       "namespace_prefix": "ops",
       "namespace_name": "https://w3id.org/ops#"
-    },
-    {
-      "namespace_prefix": "opti",
-      "namespace_name": "https://w3id.org/optimar#"
-    },
-    {
-      "namespace_prefix": "okh",
-      "namespace_name": "https://w3id.org/oseg/ont/okh#"
     },
     {
       "namespace_prefix": "osh",
@@ -15025,24 +15221,12 @@
       "namespace_name": "https://w3id.org/pbac#"
     },
     {
-      "namespace_prefix": "peco",
-      "namespace_name": "https://w3id.org/peco#"
-    },
-    {
       "namespace_prefix": "az",
       "namespace_name": "https://w3id.org/people/az/"
     },
     {
       "namespace_prefix": "pfeepsa",
       "namespace_name": "https://w3id.org/pfeepsa#"
-    },
-    {
-      "namespace_prefix": "pghdprovo",
-      "namespace_name": "https://w3id.org/pghdprovo#"
-    },
-    {
-      "namespace_prefix": "pko",
-      "namespace_name": "https://w3id.org/pko#"
     },
     {
       "namespace_prefix": "plasma",
@@ -15073,16 +15257,8 @@
       "namespace_name": "https://w3id.org/rail/topo#"
     },
     {
-      "namespace_prefix": "rains",
-      "namespace_name": "https://w3id.org/rains#"
-    },
-    {
       "namespace_prefix": "rc",
       "namespace_name": "https://w3id.org/rc#"
-    },
-    {
-      "namespace_prefix": "rdfc",
-      "namespace_name": "https://w3id.org/rdf-connect#"
     },
     {
       "namespace_prefix": "rdfl",
@@ -15091,10 +15267,6 @@
     {
       "namespace_prefix": "tensor",
       "namespace_name": "https://w3id.org/rdf-tensor/vocab#"
-    },
-    {
-      "namespace_prefix": "react",
-      "namespace_name": "https://w3id.org/react#"
     },
     {
       "namespace_prefix": "reloc",
@@ -15113,14 +15285,6 @@
       "namespace_name": "https://w3id.org/riskman/ontology#"
     },
     {
-      "namespace_prefix": "rbdoc",
-      "namespace_name": "https://w3id.org/riverbench/schema/documentation#"
-    },
-    {
-      "namespace_prefix": "rb",
-      "namespace_name": "https://w3id.org/riverbench/schema/metadata#"
-    },
-    {
       "namespace_prefix": "roc",
       "namespace_name": "https://w3id.org/ro/curate#"
     },
@@ -15137,16 +15301,8 @@
       "namespace_name": "https://w3id.org/role/"
     },
     {
-      "namespace_prefix": "saont",
-      "namespace_name": "https://w3id.org/sao#"
-    },
-    {
       "namespace_prefix": "s4ee",
       "namespace_name": "https://w3id.org/saref4ee#"
-    },
-    {
-      "namespace_prefix": "sbeo",
-      "namespace_name": "https://w3id.org/sbeo#"
     },
     {
       "namespace_prefix": "conference",
@@ -15161,10 +15317,6 @@
       "namespace_name": "https://w3id.org/sds#"
     },
     {
-      "namespace_prefix": "foio",
-      "namespace_name": "https://w3id.org/seas/FeatureOfInterestOntology/"
-    },
-    {
       "namespace_prefix": "sec",
       "namespace_name": "https://w3id.org/security#"
     },
@@ -15173,16 +15325,8 @@
       "namespace_name": "https://w3id.org/semapv/vocab/"
     },
     {
-      "namespace_prefix": "swemls",
-      "namespace_name": "https://w3id.org/semsys/ns/swemls#"
-    },
-    {
       "namespace_prefix": "sense",
       "namespace_name": "https://w3id.org/sense#"
-    },
-    {
-      "namespace_prefix": "w3seo",
-      "namespace_name": "https://w3id.org/seo#"
     },
     {
       "namespace_prefix": "hyr",
@@ -15221,10 +15365,6 @@
       "namespace_name": "https://w3id.org/squap/SoftwareQuality/"
     },
     {
-      "namespace_prefix": "sri",
-      "namespace_name": "https://w3id.org/sri#"
-    },
-    {
       "namespace_prefix": "srmo",
       "namespace_name": "https://w3id.org/srmo#"
     },
@@ -15241,10 +15381,6 @@
       "namespace_name": "https://w3id.org/ssv/"
     },
     {
-      "namespace_prefix": "stax",
-      "namespace_name": "https://w3id.org/stax/ontology#"
-    },
-    {
       "namespace_prefix": "steel",
       "namespace_name": "https://w3id.org/steel/ProcessOntology/"
     },
@@ -15253,64 +15389,12 @@
       "namespace_name": "https://w3id.org/stirdata/vocabulary/"
     },
     {
-      "namespace_prefix": "sur",
-      "namespace_name": "https://w3id.org/survey-ontology#"
-    },
-    {
       "namespace_prefix": "tfn",
       "namespace_name": "https://w3id.org/time-fn#"
     },
     {
-      "namespace_prefix": "tb",
-      "namespace_name": "https://w3id.org/timebank#"
-    },
-    {
-      "namespace_prefix": "tddfa",
-      "namespace_name": "https://w3id.org/todo/tododfa#"
-    },
-    {
-      "namespace_prefix": "tddial",
-      "namespace_name": "https://w3id.org/todo/tododial#"
-    },
-    {
-      "namespace_prefix": "tddm",
-      "namespace_name": "https://w3id.org/todo/tododm#"
-    },
-    {
-      "namespace_prefix": "tddom",
-      "namespace_name": "https://w3id.org/todo/tododom#"
-    },
-    {
-      "namespace_prefix": "tddt",
-      "namespace_name": "https://w3id.org/todo/tododt#"
-    },
-    {
-      "namespace_prefix": "tddw",
-      "namespace_name": "https://w3id.org/todo/tododw#"
-    },
-    {
-      "namespace_prefix": "tree",
-      "namespace_name": "https://w3id.org/tree#"
-    },
-    {
       "namespace_prefix": "trek",
       "namespace_name": "https://w3id.org/trek/"
-    },
-    {
-      "namespace_prefix": "tribont-core",
-      "namespace_name": "https://w3id.org/tribont/core#"
-    },
-    {
-      "namespace_prefix": "tribont-equipment",
-      "namespace_name": "https://w3id.org/tribont/equipment#"
-    },
-    {
-      "namespace_prefix": "tribont-material",
-      "namespace_name": "https://w3id.org/tribont/material#"
-    },
-    {
-      "namespace_prefix": "tribont-sample",
-      "namespace_name": "https://w3id.org/tribont/sample#"
     },
     {
       "namespace_prefix": "tso",
@@ -15319,14 +15403,6 @@
     {
       "namespace_prefix": "ttla",
       "namespace_name": "https://w3id.org/ttla/"
-    },
-    {
-      "namespace_prefix": "usability",
-      "namespace_name": "https://w3id.org/usability#"
-    },
-    {
-      "namespace_prefix": "vair",
-      "namespace_name": "https://w3id.org/vair#"
     },
     {
       "namespace_prefix": "valueflows",
@@ -15347,30 +15423,6 @@
     {
       "namespace_prefix": "vhbieo",
       "namespace_name": "https://w3id.org/vhbieo#"
-    },
-    {
-      "namespace_prefix": "lingvo",
-      "namespace_name": "https://w3id.org/vocab/lingvoj#"
-    },
-    {
-      "namespace_prefix": "w3olca",
-      "namespace_name": "https://w3id.org/vocab/olca#"
-    },
-    {
-      "namespace_prefix": "sdm",
-      "namespace_name": "https://w3id.org/vocab/sdm#"
-    },
-    {
-      "namespace_prefix": "xbrll",
-      "namespace_name": "https://w3id.org/vocab/xbrll#"
-    },
-    {
-      "namespace_prefix": "vpa",
-      "namespace_name": "https://w3id.org/vpa#"
-    },
-    {
-      "namespace_prefix": "wfont",
-      "namespace_name": "https://w3id.org/wfont#"
     },
     {
       "namespace_prefix": "whg",
@@ -15399,10 +15451,6 @@
     {
       "namespace_prefix": "atcc",
       "namespace_name": "https://www.atcc.org/products/"
-    },
-    {
-      "namespace_prefix": "hw",
-      "namespace_name": "https://www.auto.tuwien.ac.at/downloads/thinkhome/ontology/WeatherOntology.owl"
     },
     {
       "namespace_prefix": "fs",
@@ -15453,20 +15501,12 @@
       "namespace_name": "https://www.geo7.ch/"
     },
     {
-      "namespace_prefix": "gtm",
-      "namespace_name": "https://www.goudatijdmachine.nl/def#"
-    },
-    {
       "namespace_prefix": "iab",
       "namespace_name": "https://www.iab.com/guidelines/taxonomy/"
     },
     {
       "namespace_prefix": "mime",
       "namespace_name": "https://www.iana.org/assignments/media-types/"
-    },
-    {
-      "namespace_prefix": "rico",
-      "namespace_name": "https://www.ica.org/standards/RiC/ontology#"
     },
     {
       "namespace_prefix": "srtun",
@@ -15545,10 +15585,6 @@
       "namespace_name": "https://www.openstreetmap.org/wiki/Key:"
     },
     {
-      "namespace_prefix": "mso-em",
-      "namespace_name": "https://www.purl.org/mso-em#"
-    },
-    {
       "namespace_prefix": "qualityze",
       "namespace_name": "https://www.qualityze.com/document-management/"
     },
@@ -15581,10 +15617,6 @@
       "namespace_name": "https://www.w3.org/2018/credentials/v1/"
     },
     {
-      "namespace_prefix": "td",
-      "namespace_name": "https://www.w3.org/2019/wot/td#"
-    },
-    {
       "namespace_prefix": "activity",
       "namespace_name": "https://www.w3.org/TR/activitystreams-vocabulary/"
     },
@@ -15603,10 +15635,6 @@
     {
       "namespace_prefix": "ldt",
       "namespace_name": "https://www.w3.org/ns/ldt#"
-    },
-    {
-      "namespace_prefix": "w3c-ssn",
-      "namespace_name": "https://www.w3.org/ns/ssn/"
     },
     {
       "namespace_prefix": "risk",

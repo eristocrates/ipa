@@ -7,15 +7,6 @@ open type Prefix_ID
 module iot_lite =
     let _namespace_iri = Namespace_Iri iot_lite |> NamespaceIRI
     /// <summary>
-    ///   <para>iot-lite:ActuatingDevice</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Device that can actuate over an object or QuantityKind.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#ActuatingDevice">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#ActuatingDevice</seealso>
-    let ActuatingDevice = Prefixed_Name(iot_lite, "ActuatingDevice") |> PrefixedName
-    /// <summary>
     ///   <para>iot-lite:Circle</para>
     /// </summary>
     /// <remarks>
@@ -25,14 +16,58 @@ module iot_lite =
     /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Circle">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Circle</seealso>
     let Circle = Prefixed_Name(iot_lite, "Circle") |> PrefixedName
     /// <summary>
-    ///   <para>iot-lite:Object</para>
+    ///   <para>iot-lite:Metadata</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>IoT entity</para>
+    ///   <para>Class used to describe properties that cannot be described by QuantityKind and Units. i.e. the resolution of a sensor.</para>
     /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Object">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Object</seealso>
-    let Object = Prefixed_Name(iot_lite, "Object") |> PrefixedName
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Metadata">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Metadata</seealso>
+    let Metadata = Prefixed_Name(iot_lite, "Metadata") |> PrefixedName
+    /// <summary>
+    ///   <para>iot-lite:altRelative</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:AnnotationProperty</para>
+    /// </remarks>
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#altRelative">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#altRelative</seealso>
+    let altRelative = Prefixed_Name(iot_lite, "altRelative") |> PrefixedName
+    /// <summary>
+    ///   <para>iot-lite:exposes</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>For service-oriented queries. The inverse of exposedBy.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#exposes">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#exposes</seealso>
+    let exposes = Prefixed_Name(iot_lite, "exposes") |> PrefixedName
+    /// <summary>
+    ///   <para>iot-lite:hasMetadata</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Links any concept with metadata about that concept.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasMetadata">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasMetadata</seealso>
+    let hasMetadata = Prefixed_Name(iot_lite, "hasMetadata") |> PrefixedName
+    /// <summary>
+    ///   <para>iot-lite:hasSensingDevice</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Links a sensor with a sensing device the same way as SSN.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasSensingDevice">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasSensingDevice</seealso>
+    let hasSensingDevice = Prefixed_Name(iot_lite, "hasSensingDevice") |> PrefixedName
+    /// <summary>
+    ///   <para>iot-lite:Attribute</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An attribute of an IoT object that can be exposed by an IoT service (i.e. a room (IoT Object) has a temperature (Attribute), that can be exposed by a temperature sensor (IoT device).</para>
+    /// </remarks>
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Attribute">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Attribute</seealso>
+    let Attribute = Prefixed_Name(iot_lite, "Attribute") |> PrefixedName
     /// <summary>
     ///   <para>iot-lite:Polygon</para>
     /// </summary>
@@ -52,68 +87,6 @@ module iot_lite =
     /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#TagDevice">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#TagDevice</seealso>
     let TagDevice = Prefixed_Name(iot_lite, "TagDevice") |> PrefixedName
     /// <summary>
-    ///   <para>iot-lite:altRelative</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:AnnotationProperty</para>
-    /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#altRelative">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#altRelative</seealso>
-    let altRelative = Prefixed_Name(iot_lite, "altRelative") |> PrefixedName
-    /// <summary>
-    ///   <para>iot-lite:exposedBy</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>A device is exposed by a service.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#exposedBy">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#exposedBy</seealso>
-    let exposedBy = Prefixed_Name(iot_lite, "exposedBy") |> PrefixedName
-    /// <summary>
-    ///   <para>iot-lite:hasAttribute</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Links the devices with their attributes.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasAttribute">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasAttribute</seealso>
-    let hasAttribute = Prefixed_Name(iot_lite, "hasAttribute") |> PrefixedName
-    /// <summary>
-    ///   <para>iot-lite:hasCoverage</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Links the devices with their coverages.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasCoverage">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasCoverage</seealso>
-    let hasCoverage = Prefixed_Name(iot_lite, "hasCoverage") |> PrefixedName
-    /// <summary>
-    ///   <para>iot-lite:hasSensingDevice</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Links a sensor with a sensing device the same way as SSN.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasSensingDevice">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasSensingDevice</seealso>
-    let hasSensingDevice = Prefixed_Name(iot_lite, "hasSensingDevice") |> PrefixedName
-    /// <summary>
-    ///   <para>iot-lite:hasUnit</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Links the sensor with the units of the quantity kind it measures (e.g. A sensor -sensor1- measures temperature in Celsius: senso1 hasUnit celsius).</para>
-    /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasUnit">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasUnit</seealso>
-    let hasUnit = Prefixed_Name(iot_lite, "hasUnit") |> PrefixedName
-    /// <summary>
-    ///   <para>iot-lite:interfaceType</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Defines the type of interface of the service endpoint.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#interfaceType">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#interfaceType</seealso>
-    let interfaceType = Prefixed_Name(iot_lite, "interfaceType") |> PrefixedName
-    /// <summary>
     ///   <para>iot-lite:isAssociatedWith</para>
     /// </summary>
     /// <remarks>
@@ -122,33 +95,6 @@ module iot_lite =
     /// </remarks>
     /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#isAssociatedWith">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#isAssociatedWith</seealso>
     let isAssociatedWith = Prefixed_Name(iot_lite, "isAssociatedWith") |> PrefixedName
-    /// <summary>
-    ///   <para>iot-lite:metadataType</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Defines the type pf the metadata value (e.g. resolution of the sensor).</para>
-    /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#metadataType">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#metadataType</seealso>
-    let metadataType = Prefixed_Name(iot_lite, "metadataType") |> PrefixedName
-    /// <summary>
-    ///   <para>iot-lite:metadataValue</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Value of the metadata</para>
-    /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#metadataValue">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#metadataValue</seealso>
-    let metadataValue = Prefixed_Name(iot_lite, "metadataValue") |> PrefixedName
-    /// <summary>
-    ///   <para>iot-lite:Coverage</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The coverage of an IoT device (i.e. a temperature sensor inside a room has a coverage of that room).</para>
-    /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Coverage">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Coverage</seealso>
-    let Coverage = Prefixed_Name(iot_lite, "Coverage") |> PrefixedName
     /// <summary>
     ///   <para>iot-lite:Service</para>
     /// </summary>
@@ -159,23 +105,41 @@ module iot_lite =
     /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Service">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Service</seealso>
     let Service = Prefixed_Name(iot_lite, "Service") |> PrefixedName
     /// <summary>
-    ///   <para>iot-lite:exposes</para>
+    ///   <para>iot-lite:Object</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>For service-oriented queries. The inverse of exposedBy.</para>
+    ///   <para>owl:Class</para>
+    ///   <para>IoT entity</para>
     /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#exposes">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#exposes</seealso>
-    let exposes = Prefixed_Name(iot_lite, "exposes") |> PrefixedName
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Object">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Object</seealso>
+    let Object = Prefixed_Name(iot_lite, "Object") |> PrefixedName
     /// <summary>
-    ///   <para>iot-lite:hasQuantityKind</para>
+    ///   <para>iot-lite:endpoint</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Endpoint of the service. It is usually a URL where the service is available.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#endpoint">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#endpoint</seealso>
+    let endpoint = Prefixed_Name(iot_lite, "endpoint") |> PrefixedName
+    /// <summary>
+    ///   <para>iot-lite:hasCoverage</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>Links a sensor or an attribute with the quantity  kind it measures (e.g. A sensor -sensor1- measures temperature: sensor1 hasQuantityKind temperature).</para>
+    ///   <para>Links the devices with their coverages.</para>
     /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasQuantityKind">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasQuantityKind</seealso>
-    let hasQuantityKind = Prefixed_Name(iot_lite, "hasQuantityKind") |> PrefixedName
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasCoverage">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasCoverage</seealso>
+    let hasCoverage = Prefixed_Name(iot_lite, "hasCoverage") |> PrefixedName
+    /// <summary>
+    ///   <para>iot-lite:hasUnit</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Links the sensor with the units of the quantity kind it measures (e.g. A sensor -sensor1- measures temperature in Celsius: senso1 hasUnit celsius).</para>
+    /// </remarks>
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasUnit">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasUnit</seealso>
+    let hasUnit = Prefixed_Name(iot_lite, "hasUnit") |> PrefixedName
     /// <summary>
     ///   <para>iot-lite:id</para>
     /// </summary>
@@ -184,6 +148,23 @@ module iot_lite =
     /// </remarks>
     /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#id">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#id</seealso>
     let id = Prefixed_Name(iot_lite, "id") |> PrefixedName
+    /// <summary>
+    ///   <para>iot-lite:radius</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Specifies the radius of a circle coverage defined by a point -the center of the circle- and its radius.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#radius">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#radius</seealso>
+    let radius = Prefixed_Name(iot_lite, "radius") |> PrefixedName
+    /// <summary>
+    ///   <para>iot-lite:relativeLocation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:AnnotationProperty</para>
+    /// </remarks>
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#relativeLocation">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#relativeLocation</seealso>
+    let relativeLocation = Prefixed_Name(iot_lite, "relativeLocation") |> PrefixedName
 
     /// <summary>
     ///   <para>iot-lite:interfaceDescription</para>
@@ -205,6 +186,15 @@ module iot_lite =
     /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#isMobile">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#isMobile</seealso>
     let isMobile = Prefixed_Name(iot_lite, "isMobile") |> PrefixedName
     /// <summary>
+    ///   <para>iot-lite:interfaceType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Defines the type of interface of the service endpoint.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#interfaceType">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#interfaceType</seealso>
+    let interfaceType = Prefixed_Name(iot_lite, "interfaceType") |> PrefixedName
+    /// <summary>
     ///   <para>iot-lite:isSubSystemOf</para>
     /// </summary>
     /// <remarks>
@@ -213,31 +203,23 @@ module iot_lite =
     /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#isSubSystemOf">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#isSubSystemOf</seealso>
     let isSubSystemOf = Prefixed_Name(iot_lite, "isSubSystemOf") |> PrefixedName
     /// <summary>
-    ///   <para>iot-lite:relativeLocation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:AnnotationProperty</para>
-    /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#relativeLocation">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#relativeLocation</seealso>
-    let relativeLocation = Prefixed_Name(iot_lite, "relativeLocation") |> PrefixedName
-    /// <summary>
-    ///   <para>iot-lite:Metadata</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Class used to describe properties that cannot be described by QuantityKind and Units. i.e. the resolution of a sensor.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Metadata">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Metadata</seealso>
-    let Metadata = Prefixed_Name(iot_lite, "Metadata") |> PrefixedName
-    /// <summary>
-    ///   <para>iot-lite:radius</para>
+    ///   <para>iot-lite:metadataType</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Specifies the radius of a circle coverage defined by a point -the center of the circle- and its radius.</para>
+    ///   <para>Defines the type pf the metadata value (e.g. resolution of the sensor).</para>
     /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#radius">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#radius</seealso>
-    let radius = Prefixed_Name(iot_lite, "radius") |> PrefixedName
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#metadataType">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#metadataType</seealso>
+    let metadataType = Prefixed_Name(iot_lite, "metadataType") |> PrefixedName
+    /// <summary>
+    ///   <para>iot-lite:metadataValue</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Value of the metadata</para>
+    /// </remarks>
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#metadataValue">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#metadataValue</seealso>
+    let metadataValue = Prefixed_Name(iot_lite, "metadataValue") |> PrefixedName
     /// <summary>
     ///   <para>iot-lite:</para>
     /// </summary>
@@ -248,14 +230,23 @@ module iot_lite =
     /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#</seealso>
     let _prefix_iri = Prefixed_Name(iot_lite, "") |> PrefixedName
     /// <summary>
-    ///   <para>iot-lite:Attribute</para>
+    ///   <para>iot-lite:ActuatingDevice</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>An attribute of an IoT object that can be exposed by an IoT service (i.e. a room (IoT Object) has a temperature (Attribute), that can be exposed by a temperature sensor (IoT device).</para>
+    ///   <para>Device that can actuate over an object or QuantityKind.</para>
     /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Attribute">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Attribute</seealso>
-    let Attribute = Prefixed_Name(iot_lite, "Attribute") |> PrefixedName
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#ActuatingDevice">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#ActuatingDevice</seealso>
+    let ActuatingDevice = Prefixed_Name(iot_lite, "ActuatingDevice") |> PrefixedName
+    /// <summary>
+    ///   <para>iot-lite:Coverage</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The coverage of an IoT device (i.e. a temperature sensor inside a room has a coverage of that room).</para>
+    /// </remarks>
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Coverage">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Coverage</seealso>
+    let Coverage = Prefixed_Name(iot_lite, "Coverage") |> PrefixedName
     /// <summary>
     ///   <para>iot-lite:Entity</para>
     /// </summary>
@@ -282,20 +273,29 @@ module iot_lite =
     /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#VirtualEntity">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#VirtualEntity</seealso>
     let VirtualEntity = Prefixed_Name(iot_lite, "VirtualEntity") |> PrefixedName
     /// <summary>
-    ///   <para>iot-lite:endpoint</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Endpoint of the service. It is usually a URL where the service is available.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#endpoint">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#endpoint</seealso>
-    let endpoint = Prefixed_Name(iot_lite, "endpoint") |> PrefixedName
-    /// <summary>
-    ///   <para>iot-lite:hasMetadata</para>
+    ///   <para>iot-lite:exposedBy</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>Links any concept with metadata about that concept.</para>
+    ///   <para>A device is exposed by a service.</para>
     /// </remarks>
-    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasMetadata">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasMetadata</seealso>
-    let hasMetadata = Prefixed_Name(iot_lite, "hasMetadata") |> PrefixedName
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#exposedBy">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#exposedBy</seealso>
+    let exposedBy = Prefixed_Name(iot_lite, "exposedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>iot-lite:hasAttribute</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Links the devices with their attributes.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasAttribute">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasAttribute</seealso>
+    let hasAttribute = Prefixed_Name(iot_lite, "hasAttribute") |> PrefixedName
+    /// <summary>
+    ///   <para>iot-lite:hasQuantityKind</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Links a sensor or an attribute with the quantity  kind it measures (e.g. A sensor -sensor1- measures temperature: sensor1 hasQuantityKind temperature).</para>
+    /// </remarks>
+    /// <seealso href="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasQuantityKind">http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasQuantityKind</seealso>
+    let hasQuantityKind = Prefixed_Name(iot_lite, "hasQuantityKind") |> PrefixedName

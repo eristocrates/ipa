@@ -1,0 +1,179 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix courseware: <http://courseware.rkbexplorer.com/ontologies/courseware#>.
+
+<http://courseware.rkbexplorer.com/ontologies/courseware> <http://purl.org/dc/elements/1.1/created> "2006-05-03";
+                                                          <http://purl.org/dc/elements/1.1/creator> "Bene Rodriguez",
+                                                                                                    "Ian Millard";
+                                                          <http://purl.org/dc/elements/1.1/description> "The ReSIST Courseware Ontology represents the various eduacational courses and resources within the ReSIST project"@en;
+                                                          <http://purl.org/dc/elements/1.1/title> "ReSIST Courseware Ontology"@en;
+                                                          a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                          rdfs:label "ReSIST Courseware Ontology";
+                                                          <http://www.w3.org/2002/07/owl#imports> <http://www.aktors.org/ontology/portal>;
+                                                          <http://www.w3.org/2002/07/owl#versionInfo> "0.1".
+courseware:Assessment-Method a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "A method by which a student is assessed; instances of this class may include examination, coursework, etc.";
+                             rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                             rdfs:label "Assessment Method".
+courseware:Course a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "This class encapsulates a course that is taught to students";
+                  rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                  rdfs:label "Course";
+                  rdfs:subClassOf <http://www.aktors.org/ontology/portal#Abstract-Information>.
+courseware:Pre-requisite a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "This class encapsulates a body of previous knowledge required to undertake a course.";
+                         rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                         rdfs:label "Pre-requisite".
+courseware:Student-Interaction-Type a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "A type of interaction in which a student engages whilst undertaking a course; instances of this class may include lectures, laboratory sessions, and group or individual projects.";
+                                    rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                                    rdfs:label "Student Interaction Type".
+courseware:course-duration a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:comment "The total duration of the course (in hours)";
+                           rdfs:domain courseware:Course;
+                           rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                           rdfs:label "course duration";
+                           rdfs:range xsd:integer.
+courseware:course-objectives a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                             rdfs:comment "The objectives of this course";
+                             rdfs:domain courseware:Course;
+                             rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                             rdfs:label "course objectives";
+                             rdfs:range xsd:string.
+courseware:detailed-description a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                rdfs:comment "A detailed description of the content conveyed within the course";
+                                rdfs:domain courseware:Course;
+                                rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                                rdfs:label "detailed description";
+                                rdfs:range xsd:string.
+courseware:has-assessment-method a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:domain courseware:Course;
+                                 rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                                 rdfs:label "has assessment method";
+                                 rdfs:range courseware:Assessment-Method.
+courseware:has-author a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "A person which is involved with the creation of the course";
+                      rdfs:domain courseware:Course;
+                      rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                      rdfs:label "has author";
+                      rdfs:range <http://www.aktors.org/ontology/portal#Generic-Agent>.
+courseware:has-courseware a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "Courseware used by the Resist-Course (reference texts, personal hand-outs, slides, etc).";
+                          rdfs:domain courseware:Course;
+                          rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                          rdfs:label "has courseware";
+                          rdfs:range <http://www.aktors.org/ontology/portal#Publication-Reference>.
+courseware:has-infrastructure-requirement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                          rdfs:comment "An infrastructure requirement that is needed to carry out the course";
+                                          rdfs:domain courseware:Course;
+                                          rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                                          rdfs:label "has infrastructure requirement";
+                                          rdfs:range <http://www.aktors.org/ontology/portal#Technology>.
+courseware:has-instructor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "A person delivering tuition as part of the course";
+                          rdfs:domain courseware:Course;
+                          rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                          rdfs:label "has instructor";
+                          rdfs:range <http://www.aktors.org/ontology/portal#Person>.
+courseware:has-language a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "The language in which an item of abstract information is written, expressed or delivered.";
+                        rdfs:domain <http://www.aktors.org/ontology/portal#Abstract-Information>;
+                        rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                        rdfs:label "has language";
+                        rdfs:range xsd:language.
+courseware:has-prerequisite a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:domain courseware:Course;
+                            rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                            rdfs:label "has pre-requisite";
+                            rdfs:range courseware:Pre-requisite.
+courseware:has-rights a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "This property describes the intellectual property rights and conditions of use for this learning object. ";
+                      rdfs:domain <http://www.aktors.org/ontology/portal#Abstract-Information>;
+                      rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>.
+courseware:has-rights-copyright a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                rdfs:comment "Whether copyright or other restrictions apply to the use of this learning resource.";
+                                rdfs:domain <http://www.aktors.org/ontology/portal#Abstract-Information>;
+                                rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                                rdfs:range [<http://www.w3.org/2002/07/owl#oneOf> ("false"
+                                                                                   "true") ; 
+                                            a <http://www.w3.org/2002/07/owl#DataRange>].
+courseware:has-rights-cost a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:comment "Whether use of this learning resource requires payment";
+                           rdfs:domain <http://www.aktors.org/ontology/portal#Abstract-Information>;
+                           rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                           rdfs:range [<http://www.w3.org/2002/07/owl#oneOf> ("false"
+                                                                              "true") ; 
+                                       a <http://www.w3.org/2002/07/owl#DataRange>].
+courseware:has-rights-description a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                  rdfs:comment "Comments on the conditions of use of this learning resource.";
+                                  rdfs:domain <http://www.aktors.org/ontology/portal#Abstract-Information>;
+                                  rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                                  rdfs:range xsd:string.
+courseware:has-student-interaction-type a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:comment "Identifies a course as having the prescribed interaction type";
+                                        rdfs:domain courseware:Course;
+                                        rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                                        rdfs:label "has student interaction type";
+                                        rdfs:range courseware:Student-Interaction-Type.
+courseware:has-title a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "The title of this course";
+                     rdfs:domain courseware:Course;
+                     rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                     rdfs:label "title";
+                     rdfs:range xsd:string;
+                     rdfs:subPropertyOf rdfs:label.
+courseware:hours-of-labs a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:comment "The total number of hours of laboratory sessions in this course";
+                         rdfs:domain courseware:Course;
+                         rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                         rdfs:label "hours of labs";
+                         rdfs:range xsd:float.
+courseware:hours-of-lectures a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                             rdfs:comment "The total number of hours of lectures delivered in this course";
+                             rdfs:domain courseware:Course;
+                             rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                             rdfs:label "hours of lectures";
+                             rdfs:range xsd:float.
+courseware:hours-of-personal-study a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                   rdfs:comment "The total number of hours of personal study in this course";
+                                   rdfs:domain courseware:Course;
+                                   rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                                   rdfs:label "hours of personal study";
+                                   rdfs:range xsd:float.
+courseware:involves-organization a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:comment "The association of an organisation which is involved in delivering a course";
+                                 rdfs:domain courseware:Course;
+                                 rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                                 rdfs:label "involves organisation";
+                                 rdfs:range <http://www.aktors.org/ontology/portal#Organization>.
+courseware:is-taught-present a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                             rdfs:domain courseware:Course;
+                             rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                             rdfs:range [<http://www.w3.org/2002/07/owl#oneOf> ("false"
+                                                                                "true") ; 
+                                         a <http://www.w3.org/2002/07/owl#DataRange>].
+courseware:number-of-credits a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                             rdfs:comment "The number of EU BS/MS program credits";
+                             rdfs:domain courseware:Course;
+                             rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                             rdfs:label "number of credits";
+                             rdfs:range xsd:float.
+courseware:submitted-by a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "The ReSIST Project member who has submitted and is the point of contact for this course";
+                        rdfs:domain courseware:Course;
+                        rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                        rdfs:label "submitted by";
+                        rdfs:range <http://www.aktors.org/ontology/portal#Generic-Agent>.
+courseware:taught-at a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "The organization at which this course is taught";
+                     rdfs:domain courseware:Course;
+                     rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                     rdfs:label "taught at";
+                     rdfs:range <http://www.aktors.org/ontology/portal#Organization>.
+courseware:total-hours-engagement a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                  rdfs:comment "The total number of hours of engagement while undertaking this course";
+                                  rdfs:domain courseware:Course;
+                                  rdfs:isDefinedBy <http://courseware.rkbexplorer.com/ontologies/courseware>;
+                                  rdfs:label "total hours of engagement";
+                                  rdfs:range xsd:float.

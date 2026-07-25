@@ -1,0 +1,72 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ex: <http://purl.org/net/ns/ex#>.
+
+_:B832cfdf54f199966eaef7b221acf5aec ex:code """
+<ex:Example>
+ <rdfs:comment>An example to use Dublin Core vocabulary.</rdfs:comment>
+ <rdfs:comment xml:lang=\"ja\">ダブリンコア語彙を使う例</rdfs:comment>
+ <ex:pfx>dc:</ex:pfx>
+ <ex:code rdf:parseType=\"Literal\">
+  <rdf:Description rdf:about=\"http://www.kanzaki.com/\">
+   <dc:title>The Web KANZAKI</dc:title>
+   <dc:creator>Masahide Kanzaki</dc:creator>
+  </rdf:Description>
+ </ex:code>
+ <ex:exampleOf rdf:resource=\"\"/>
+</ex:Example>
+ """;
+                                    ex:exampleOf <http://purl.org/net/ns/ex>;
+                                    ex:pfx "ex:";
+                                    a ex:Example;
+                                    rdfs:comment "An example included in a schema definition.",
+                                                 "スキーマに例を埋め込む例。"@ja.
+<http://purl.org/net/ns/ex> <http://purl.org/net/ns/ontology-annot#created> "2003-07-04";
+                            <http://purl.org/net/ns/ontology-annot#creator> <urn:pin:MK705>;
+                            <http://purl.org/net/ns/ontology-annot#modified> "2007-12-13";
+                            a <http://www.w3.org/2002/07/owl#Ontology>;
+                            rdfs:comment "Vocabulary to include sample codes in a schema. Can work with XSLT (http://purl.org/net/ns/ns-schema.xsl) to present schema as XHTML list with examples.",
+                                         "スキーマにサンプルコードを埋め込むための語彙。XSLTを使って、XHTMLの中で例を表示させることができる。"@ja;
+                            rdfs:label "Example vocabulary";
+                            <http://www.w3.org/2002/07/owl#imports> <http://www.kanzaki.com/ns/dliser.rdf>;
+                            <http://www.w3.org/2002/07/owl#versionInfo> "Version 0.35".
+ex:Example a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "A class represents one example.",
+                        "ひとつの例を表すクラス"@ja;
+           rdfs:isDefinedBy <http://purl.org/net/ns/ex>;
+           rdfs:label "Example".
+ex:code a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+        rdfs:comment """Has an example code of an RDF/XML statements that use the schema. Content may be CDATA section or rdf:parseType=\"Literal\".""",
+                     """スキーマを使ったRDF/XMLのサンプルを記述する。CDATAセクションもしくはrdf:parseType=\"Literal\"にすると、タグをそのまま記述できて便利。"""@ja;
+        rdfs:isDefinedBy <http://purl.org/net/ns/ex>;
+        rdfs:label "Code".
+ex:example a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+           rdfs:comment "The subject has an Example. Use to include example(s) in a term definition.",
+                        "主語となる語彙定義が例を持つ。"@ja;
+           rdfs:isDefinedBy <http://purl.org/net/ns/ex>;
+           rdfs:label "Example".
+ex:exampleOf a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+             rdfs:comment "The subject is an example of the object vocabulary.",
+                          "主語は目的語語彙の用例である。"@ja;
+             rdfs:isDefinedBy <http://purl.org/net/ns/ex>;
+             rdfs:label "Example of".
+ex:image a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+         rdfs:comment "A pointer to an image that helps to understand the vocabulary.",
+                      "語彙の理解を助ける画像へのポインタ。"@ja;
+         rdfs:isDefinedBy <http://purl.org/net/ns/ex>;
+         rdfs:label "Image".
+ex:pfx a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+       rdfs:comment "A prefix used in the example to represent the schema namespace. A rendaring application may use this value to distinguish target terms in the example.",
+                    "例の中でスキーマを表すために用いている名前空間接頭辞。例をレンダリングする場合、この値を使ってスキーマの語彙を他の語彙と区別することができる。"@ja;
+       rdfs:isDefinedBy <http://purl.org/net/ns/ex>;
+       rdfs:label "Prefix".
+ex:trial a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+         rdfs:comment "A pointer to a real example or a trial page.",
+                      "語彙が使われている実例、あるいはトライアルページへのポインタ。"@ja;
+         rdfs:isDefinedBy <http://purl.org/net/ns/ex>;
+         rdfs:label "Trial".
+<urn:pin:MK705> a <http://xmlns.com/foaf/0.1/Person>;
+                rdfs:seeAlso <http://www.kanzaki.com/info/webwho.rdf>;
+                <http://xmlns.com/foaf/0.1/homepage> <http://www.kanzaki.com/>;
+                <http://xmlns.com/foaf/0.1/name> "神崎正英"@ja.

@@ -1,0 +1,58 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vdpp: <http://data.lirmm.fr/ontologies/vdpp#>.
+
+<http://data.lirmm.fr/ontologies/vdpp> <http://purl.org/dc/elements/1.1/creator> vdpp:fran%C3%A7ois;
+                                       <http://purl.org/dc/terms/created> "2011-03-27"^^xsd:date;
+                                       <http://purl.org/dc/terms/description> "The Vocabulary of Dataset Publication Projects (VDPP) allows to represent the status of a dataset publication project. It is mainly based on the Provenance Vocabulary (PRV), the Dataset Provenance Vocabulary (VOIDP), the Vocabulary of Interlinked Datasets (VoID), and the Description of a Project (DOAP) vocabulary.";
+                                       <http://purl.org/dc/terms/modified> "2011-03-27"^^xsd:date;
+                                       <http://purl.org/dc/terms/partOf> <http://data.lirmm.fr/ontologies>;
+                                       <http://purl.org/dc/terms/publisher> "http://data.lirmm.fr/ontologies/vdpp#LIRMM";
+                                       <http://purl.org/dc/terms/status> <http://purl.org/adms/status/UnderDevelopment>;
+                                       <http://purl.org/dc/terms/title> "Vocabulary for Dataset Publication Projects";
+                                       <http://purl.org/dc/terms/type> <http://purl.org/adms/assettype/Ontology>;
+                                       <http://purl.org/vocab/vann/preferredNamespacePrefix> "vdpp";
+                                       <http://purl.org/vocab/vann/preferredNamespaceUri> "http://data.lirmm.fr/ontologies/vdpp#";
+                                       a <http://www.w3.org/2002/07/owl#Ontology>,
+                                         <http://www.w3.org/ns/adms#SemanticAsset>;
+                                       <http://xmlns.com/foaf/0.1/homepage> <http://data.lirmm.fr/ontologies/vdpp.html>.
+vdpp:Convertion a rdfs:Class,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Describe the process of a converting the source data. The result of the transformation will be a new datset that can be further processed, published and interlinked.";
+                rdfs:label "Convertion".
+vdpp:Interlinking a rdfs:Class,
+                    <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Describe the process of interlinking a vocabulary with another. The result of the interlinking will be a void:Linkset containing links between the two datasets.";
+                  rdfs:label "Interlinking".
+vdpp:LIRMM a <http://purl.org/dc/terms/Agent>;
+           <http://xmlns.com/foaf/0.1/homepage> <http://www.lirmm.fr/>;
+           <http://xmlns.com/foaf/0.1/member> vdpp:fran%C3%A7ois;
+           <http://xmlns.com/foaf/0.1/name> "LIRMM".
+vdpp:Project a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Datasets publication projects. This class makes the link between a DOAP project, and VoIDP provenance events.";
+             rdfs:label "Dataset publication project".
+vdpp:Publication a rdfs:Class,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Describe the process of publishing a RDF dataset on the Web. The result of the publication is a URI where the dataset is accessible as linked-data.";
+                 rdfs:label "Publication".
+vdpp:Selection a rdfs:Class,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Describe the process of a selection of vocabularies to represent a dataset. This selection will result in a set of vocabularies that will be used to describe the published data.";
+               rdfs:label "Selection".
+vdpp:fran%C3%A7ois a <http://xmlns.com/foaf/0.1/Person>;
+                   <http://xmlns.com/foaf/0.1/homepage> <http://www.scharffe.fr/>;
+                   <http://xmlns.com/foaf/0.1/name> "François Scharffe".
+vdpp:process a rdf:Property;
+             rdfs:comment "A process performed during a dataset publication project.";
+             rdfs:domain vdpp:Project;
+             rdfs:label "Process".
+vdpp:rdf <http://purl.org/dc/terms/FileFormat> <http://data.lirmm.fr/ontologies/vdpp>;
+         a <http://www.w3.org/ns/adms#SemanticDistribution>;
+         <http://www.w3.org/ns/adms#accessURL> "http://data.lirmm.fr/ontologies/vdpp.rdf";
+         <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.
+vdpp:ttl <http://purl.org/dc/terms/FileFormat> <http://data.lirmm.fr/ontologies/vdpp>;
+         a <http://www.w3.org/ns/adms#SemanticDistribution>;
+         <http://www.w3.org/ns/adms#accessURL> "http://data.lirmm.fr/ontologies/vdpp.ttl";
+         <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.

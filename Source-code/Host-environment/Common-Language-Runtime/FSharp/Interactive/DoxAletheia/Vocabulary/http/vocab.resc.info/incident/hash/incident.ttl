@@ -1,0 +1,114 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix incident: <http://vocab.resc.info/incident#>.
+
+<http://vocab.resc.info/incident> <http://purl.org/dc/elements/1.1/creator> incident:bart;
+                                  <http://purl.org/dc/elements/1.1/license> "http://creativecommons.org/publicdomain/zero/1.0/";
+                                  <http://purl.org/dc/terms/created> "2014-12-19"^^xsd:date;
+                                  <http://purl.org/dc/terms/description> """Vocabulary to describe the response to a incident by emergency services.
+This is NOT intended to describe the incident itself, it describes the response""";
+                                  <http://purl.org/dc/terms/isPartOf> <http://vocab.resc.info/>;
+                                  <http://purl.org/dc/terms/modified> "2015-06-22"^^xsd:date;
+                                  <http://purl.org/dc/terms/title> "Vocabulary to describe incident response by emergency respose services";
+                                  <http://purl.org/dc/terms/type> <http://purl.org/adms/assettype/Ontology>;
+                                  <http://purl.org/vocab/vann/preferredNamespacePrefix> "incident";
+                                  <http://purl.org/vocab/vann/preferredNamespaceUri> "http://vocab.resc.info/incident#";
+                                  a <http://www.w3.org/2002/07/owl#Ontology>,
+                                    <http://www.w3.org/ns/adms#Asset>;
+                                  <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/UnderDevelopment>;
+                                  <http://xmlns.com/foaf/0.1/homepage> <http://vocab.resc.info/incident.html>.
+incident:Characteristic a rdfs:Class,
+                          <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Holds characteristics of a Incident";
+                        rdfs:label "Characteristic".
+incident:Deployment a rdfs:Class,
+                      <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "The actual sending of a responding unit to a Incident.";
+                    rdfs:label "Deployment".
+incident:IncidentRecord a rdfs:Class,
+                          <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "A class to record the response to a incident by emergency response services.";
+                        rdfs:label "Incident Record".
+incident:Note a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A text note for the incident, in general the CAD system log book. Should contain dcterms:modified instead of semtimestamp";
+              rdfs:label "Note".
+incident:arrivalTimestamp a rdf:Property,
+                            <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:comment "The time the unit arrived at the incident location, this might not be automatically generated";
+                          rdfs:domain incident:Deployment;
+                          rdfs:label "Arrival timestamp";
+                          rdfs:range xsd:dateTime.
+incident:bart a <http://xmlns.com/foaf/0.1/Person>;
+              <http://xmlns.com/foaf/0.1/nick> "bart".
+incident:characteristicType a rdf:Property;
+                            rdfs:comment "The type of the recorded characteristic, preferably points to a SKOS concept";
+                            rdfs:domain incident:Characteristic;
+                            rdfs:label "Characteristic Type".
+incident:deployedUnit a rdf:Property;
+                      rdfs:comment "The unit deployed to a incident";
+                      rdfs:domain incident:Deployment;
+                      rdfs:label "Unit deployed";
+                      rdfs:range rdfs:Resource.
+incident:deploymentEndTimestamp a rdf:Property,
+                                  <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                rdfs:comment "The time the unit was no longer needed at the incident.";
+                                rdfs:domain incident:Deployment;
+                                rdfs:label "End of the deployment";
+                                rdfs:range xsd:dateTime.
+incident:deploymentStartTimestamp a rdf:Property,
+                                    <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                  rdfs:comment "The time that a unit is send out to a incident";
+                                  rdfs:domain incident:Deployment;
+                                  rdfs:label "Deployment Start";
+                                  rdfs:range xsd:dateTime.
+incident:hasCharacteristic a rdf:Property;
+                           rdfs:comment "Relation between characteristics and incidents";
+                           rdfs:domain incident:IncidentRecord;
+                           rdfs:label "has Characteristic";
+                           rdfs:range incident:Characteristic.
+incident:hasDeployment a rdf:Property;
+                       rdfs:comment "a deployment of a unit to a incident";
+                       rdfs:domain incident:IncidentRecord;
+                       rdfs:label "Has Deployment";
+                       rdfs:range incident:Deployment.
+incident:hasNote a rdf:Property;
+                 rdfs:comment "The relation between a incident and the text notes";
+                 rdfs:domain incident:IncidentRecord;
+                 rdfs:label "hasNote";
+                 rdfs:range incident:Note.
+incident:incidentRecordEndTimestamp a rdf:Property,
+                                      <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                    rdfs:comment "the time the emergency response services are no longer involved in the incident.";
+                                    rdfs:domain incident:IncidentRecord;
+                                    rdfs:label "Incident Record end timestamp";
+                                    rdfs:range xsd:dateTime.
+incident:incidentRecordStartTimestamp a rdf:Property,
+                                        <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                      rdfs:comment "The time the recordinf of the incident response begins";
+                                      rdfs:domain incident:IncidentRecord;
+                                      rdfs:label "Incident Record timestamp";
+                                      rdfs:range xsd:dateTime.
+incident:isDeploymentOf a rdf:Property;
+                        rdfs:comment "This is a deployment to a specific incident";
+                        rdfs:domain incident:Deployment;
+                        rdfs:label "is Deployment of";
+                        rdfs:range incident:IncidentRecord.
+incident:location a rdf:Property;
+                  rdfs:comment "The location of the incident";
+                  rdfs:label "Location".
+incident:mobilizationTimestamp a rdf:Property,
+                                 <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                               rdfs:comment "The time the unit is mobilized, when it starts heading to the incident";
+                               rdfs:domain incident:Deployment;
+                               rdfs:label "Mobilization timestamp";
+                               rdfs:range xsd:dateTime.
+incident:rdf <http://purl.org/dc/terms/FileFormat> <http://vocab.resc.info/incident>;
+             <http://purl.org/dc/terms/license> <http://creativecommons.org/publicdomain/zero/1.0/>;
+             a <http://www.w3.org/ns/adms#AssetDistribution>;
+             <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.
+incident:ttl <http://purl.org/dc/terms/FileFormat> <http://vocab.resc.info/incident>;
+             <http://purl.org/dc/terms/license> <http://creativecommons.org/publicdomain/zero/1.0/>;
+             a <http://www.w3.org/ns/adms#AssetDistribution>;
+             <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.

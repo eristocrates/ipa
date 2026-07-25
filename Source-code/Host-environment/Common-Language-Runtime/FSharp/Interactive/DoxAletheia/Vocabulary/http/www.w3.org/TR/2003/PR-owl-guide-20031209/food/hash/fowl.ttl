@@ -1,0 +1,644 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix fowl: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#>.
+
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food> a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                       rdfs:comment """
+      Derived from the DAML Wine ontology at 
+      http://ontolingua.stanford.edu/doc/chimaera/ontologies/wines.daml
+      Substantially modified.
+    """;
+                                                       <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine>.
+fowl:Bananas a fowl:SweetFruit.
+fowl:BeefCurry a fowl:SpicyRedMeat.
+fowl:BlandFish a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf fowl:Fish;
+               <http://www.w3.org/2002/07/owl#disjointWith> fowl:NonBlandFish.
+fowl:BlandFishCourse a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                      <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor> ; 
+                                                                                     <http://www.w3.org/2002/07/owl#hasValue> fowl:Delicate ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>];
+                     <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                     [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                     <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:BlandFish ; 
+                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:Cake a fowl:SweetDessert.
+fowl:Cheese a fowl:CheeseNutsDessert.
+fowl:CheeseNutsDessert a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf fowl:Dessert;
+                       <http://www.w3.org/2002/07/owl#disjointWith> fowl:SweetDessert.
+fowl:CheeseNutsDessertCourse a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                              <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor> ; 
+                                                                                             <http://www.w3.org/2002/07/owl#hasValue> fowl:Red ; 
+                                                                                             a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>];
+                             <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                             [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                             <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:CheeseNutsDessert ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:Chicken a fowl:LightMeatFowl.
+fowl:Clams a fowl:NonOysterShellfish.
+fowl:ConsumableThing a <http://www.w3.org/2002/07/owl#Class>.
+fowl:Crab a fowl:NonOysterShellfish.
+fowl:DarkMeatFowl a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf fowl:Fowl;
+                  <http://www.w3.org/2002/07/owl#disjointWith> fowl:LightMeatFowl.
+fowl:DarkMeatFowlCourse a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor> ; 
+                                                                                        <http://www.w3.org/2002/07/owl#hasValue> fowl:Red ; 
+                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody> ; 
+                                                                                        <http://www.w3.org/2002/07/owl#hasValue> fowl:Light ; 
+                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor> ; 
+                                                                                        <http://www.w3.org/2002/07/owl#hasValue> fowl:Delicate ; 
+                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar> ; 
+                                                                                        <http://www.w3.org/2002/07/owl#hasValue> fowl:Dry ; 
+                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>];
+                        <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                        [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                        <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:DarkMeatFowl ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:Delicate a <http://www.w3.org/2002/07/owl#Thing>;
+              <http://www.w3.org/2002/07/owl#sameAs> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Delicate>.
+fowl:Dessert a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf fowl:EdibleThing;
+             <http://www.w3.org/2002/07/owl#disjointWith> fowl:Fruit.
+fowl:DessertCourse a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                    <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody> ; 
+                                                                                   <http://www.w3.org/2002/07/owl#hasValue> fowl:Full ; 
+                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                    <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor> ; 
+                                                                                   <http://www.w3.org/2002/07/owl#hasValue> fowl:Strong ; 
+                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                    <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar> ; 
+                                                                                   <http://www.w3.org/2002/07/owl#hasValue> fowl:Sweet ; 
+                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>];
+                   <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                   [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                   <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:Dessert ; 
+                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:Dry a <http://www.w3.org/2002/07/owl#Thing>;
+         <http://www.w3.org/2002/07/owl#sameAs> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Dry>.
+fowl:Duck a fowl:DarkMeatFowl.
+fowl:EatingGrape a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf fowl:Grape.
+fowl:EdibleThing a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf fowl:ConsumableThing.
+fowl:FettucineAlfRedo a fowl:PastaWithHeavyCreamSauce.
+fowl:Fish a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:subClassOf fowl:Seafood;
+          <http://www.w3.org/2002/07/owl#disjointWith> fowl:Shellfish.
+fowl:FishCourse a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody> ; 
+                                                                                <http://www.w3.org/2002/07/owl#hasValue> fowl:Medium ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar> ; 
+                                                                                <http://www.w3.org/2002/07/owl#hasValue> fowl:Dry ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>];
+                <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:Fish ; 
+                                                                a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:Flounder a fowl:BlandFish.
+fowl:Fowl a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:subClassOf fowl:EdibleThing;
+          <http://www.w3.org/2002/07/owl#disjointWith> fowl:Seafood,
+                                                       fowl:Dessert,
+                                                       fowl:Fruit.
+fowl:FraDiavolo a fowl:PastaWithSpicyRedSauce.
+fowl:Fruit a <http://www.w3.org/2002/07/owl#Class>;
+           <http://www.w3.org/2002/07/owl#unionOf> (fowl:SweetFruit
+                                                    fowl:NonSweetFruit).
+fowl:FruitCourse a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                  <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor> ; 
+                                                                                 <http://www.w3.org/2002/07/owl#hasValue> fowl:White ; 
+                                                                                 a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                  <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody> ; 
+                                                                                 <http://www.w3.org/2002/07/owl#hasValue> fowl:Medium ; 
+                                                                                 a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>];
+                 <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                 [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                 <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:Fruit ; 
+                                                                 a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:Full a <http://www.w3.org/2002/07/owl#Thing>;
+          <http://www.w3.org/2002/07/owl#sameAs> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Full>.
+fowl:GarlickyRoast a fowl:SpicyRedMeat.
+fowl:Goose a fowl:DarkMeatFowl.
+fowl:Grape a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:subClassOf fowl:SweetFruit.
+fowl:Halibut a fowl:BlandFish.
+fowl:Juice a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:madeFromFruit ; 
+                            <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           fowl:PotableLiquid.
+fowl:Light a <http://www.w3.org/2002/07/owl#Thing>;
+           <http://www.w3.org/2002/07/owl#sameAs> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Light>.
+fowl:LightMeatFowl a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf fowl:Fowl.
+fowl:LightMeatFowlCourse a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor> ; 
+                                                                                         <http://www.w3.org/2002/07/owl#hasValue> fowl:White ; 
+                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody> ; 
+                                                                                         <http://www.w3.org/2002/07/owl#hasValue> fowl:Medium ; 
+                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor> ; 
+                                                                                         <http://www.w3.org/2002/07/owl#hasValue> fowl:Moderate ; 
+                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar> ; 
+                                                                                         <http://www.w3.org/2002/07/owl#hasValue> fowl:Dry ; 
+                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>];
+                         <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                         [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                         <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:LightMeatFowl ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:Lobster a fowl:NonOysterShellfish.
+fowl:Meal a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:course ; 
+                           <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> fowl:course ; 
+                           <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:MealCourse ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          fowl:ConsumableThing;
+          <http://www.w3.org/2002/07/owl#disjointWith> fowl:MealCourse,
+                                                       fowl:PotableLiquid,
+                                                       fowl:EdibleThing.
+fowl:MealCourse a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                 <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                 <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:Wine ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                fowl:ConsumableThing;
+                <http://www.w3.org/2002/07/owl#disjointWith> fowl:PotableLiquid,
+                                                             fowl:EdibleThing.
+fowl:Meat a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:subClassOf fowl:EdibleThing;
+          <http://www.w3.org/2002/07/owl#disjointWith> fowl:Fowl,
+                                                       fowl:Seafood,
+                                                       fowl:Dessert,
+                                                       fowl:Fruit.
+fowl:Medium a <http://www.w3.org/2002/07/owl#Thing>;
+            <http://www.w3.org/2002/07/owl#sameAs> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Medium>.
+fowl:MixedFruit a fowl:SweetFruit.
+fowl:Moderate a <http://www.w3.org/2002/07/owl#Thing>;
+              <http://www.w3.org/2002/07/owl#sameAs> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Moderate>.
+fowl:Mussels a fowl:NonOysterShellfish.
+fowl:NonBlandFish a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf fowl:Fish.
+fowl:NonBlandFishCourse a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor> ; 
+                                                                                        <http://www.w3.org/2002/07/owl#hasValue> fowl:Moderate ; 
+                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>];
+                        <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                        [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                        <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:NonBlandFish ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:NonConsumableThing a <http://www.w3.org/2002/07/owl#Class>;
+                        <http://www.w3.org/2002/07/owl#complementOf> fowl:ConsumableThing.
+fowl:NonOysterShellfish a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf fowl:Shellfish;
+                        <http://www.w3.org/2002/07/owl#disjointWith> fowl:OysterShellfish.
+fowl:NonOysterShellfishCourse a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                               <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar> ; 
+                                                                                              <http://www.w3.org/2002/07/owl#hasValue> fowl:Dry ; 
+                                                                                              a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>];
+                              <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                              [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                              <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:NonOysterShellfish ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:NonRedMeat a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf fowl:Meat;
+                <http://www.w3.org/2002/07/owl#disjointWith> fowl:RedMeat.
+fowl:NonRedMeatCourse a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor> ; 
+                                                                                      <http://www.w3.org/2002/07/owl#hasValue> fowl:White ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody> ; 
+                                                                                      <http://www.w3.org/2002/07/owl#hasValue> fowl:Medium ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor> ; 
+                                                                                      <http://www.w3.org/2002/07/owl#hasValue> fowl:Strong ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar> ; 
+                                                                                      <http://www.w3.org/2002/07/owl#hasValue> fowl:Dry ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>];
+                      <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                      [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                      <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:NonRedMeat ; 
+                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:NonSpicyRedMeat a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf fowl:RedMeat;
+                     <http://www.w3.org/2002/07/owl#disjointWith> fowl:SpicyRedMeat.
+fowl:NonSpicyRedMeatCourse a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                            <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor> ; 
+                                                                                           <http://www.w3.org/2002/07/owl#hasValue> fowl:Red ; 
+                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                            <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody> ; 
+                                                                                           <http://www.w3.org/2002/07/owl#hasValue> fowl:Medium ; 
+                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                            <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar> ; 
+                                                                                           <http://www.w3.org/2002/07/owl#hasValue> fowl:Dry ; 
+                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                            <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor> ; 
+                                                                                           <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (fowl:Strong
+                                                                                                                                                                                 fowl:Moderate) ; 
+                                                                                                                                          a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>];
+                           <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                           [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                           <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:NonSpicyRedMeat ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:NonSweetFruit a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf fowl:EdibleThing;
+                   <http://www.w3.org/2002/07/owl#disjointWith> fowl:SweetFruit.
+fowl:NonSweetFruitCourse a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor> ; 
+                                                                                         <http://www.w3.org/2002/07/owl#hasValue> fowl:Delicate ; 
+                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar> ; 
+                                                                                         <http://www.w3.org/2002/07/owl#hasValue> fowl:OffDry ; 
+                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>];
+                         <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                         [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                         <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:NonSweetFruit ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:Nuts a fowl:CheeseNutsDessert.
+fowl:OffDry a <http://www.w3.org/2002/07/owl#Thing>;
+            <http://www.w3.org/2002/07/owl#sameAs> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#OffDry>.
+fowl:OtherTomatoBasedFood a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:subClassOf fowl:EdibleThing;
+                          <http://www.w3.org/2002/07/owl#disjointWith> fowl:Pasta,
+                                                                       fowl:Meat,
+                                                                       fowl:Fowl,
+                                                                       fowl:Seafood,
+                                                                       fowl:Dessert,
+                                                                       fowl:Fruit.
+fowl:OtherTomatoBasedFoodCourse a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                 <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor> ; 
+                                                                                                <http://www.w3.org/2002/07/owl#hasValue> fowl:Red ; 
+                                                                                                a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                 <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody> ; 
+                                                                                                <http://www.w3.org/2002/07/owl#hasValue> fowl:Medium ; 
+                                                                                                a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                 <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor> ; 
+                                                                                                <http://www.w3.org/2002/07/owl#hasValue> fowl:Moderate ; 
+                                                                                                a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                 <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar> ; 
+                                                                                                <http://www.w3.org/2002/07/owl#hasValue> fowl:Dry ; 
+                                                                                                a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>];
+                                <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                                [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                                <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:OtherTomatoBasedFood ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:OysterShellfish a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf fowl:Shellfish.
+fowl:OysterShellfishCourse a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                            <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar> ; 
+                                                                                           <http://www.w3.org/2002/07/owl#hasValue> fowl:Sweet ; 
+                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>];
+                           <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                           [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                           <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:OysterShellfish ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:Oysters a fowl:OysterShellfish.
+fowl:Pasta a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:subClassOf fowl:EdibleThing;
+           <http://www.w3.org/2002/07/owl#disjointWith> fowl:Meat,
+                                                        fowl:Fowl,
+                                                        fowl:Seafood,
+                                                        fowl:Dessert,
+                                                        fowl:Fruit.
+fowl:PastaWithHeavyCreamCourse a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor> ; 
+                                                                                               <http://www.w3.org/2002/07/owl#hasValue> fowl:White ; 
+                                                                                               a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody> ; 
+                                                                                               <http://www.w3.org/2002/07/owl#hasValue> fowl:Medium ; 
+                                                                                               a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor> ; 
+                                                                                               <http://www.w3.org/2002/07/owl#hasValue> fowl:Moderate ; 
+                                                                                               a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar> ; 
+                                                                                               <http://www.w3.org/2002/07/owl#hasValue> fowl:Dry ; 
+                                                                                               a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>];
+                               <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                               [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                               <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:PastaWithHeavyCreamSauce ; 
+                                                                               a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:PastaWithHeavyCreamSauce a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:subClassOf fowl:PastaWithWhiteSauce.
+fowl:PastaWithLightCreamCourse a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor> ; 
+                                                                                               <http://www.w3.org/2002/07/owl#hasValue> fowl:White ; 
+                                                                                               a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody> ; 
+                                                                                               <http://www.w3.org/2002/07/owl#hasValue> fowl:Light ; 
+                                                                                               a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor> ; 
+                                                                                               <http://www.w3.org/2002/07/owl#hasValue> fowl:Delicate ; 
+                                                                                               a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar> ; 
+                                                                                               <http://www.w3.org/2002/07/owl#hasValue> fowl:Dry ; 
+                                                                                               a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>];
+                               <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                               [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                               <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:PastaWithLightCreamSauce ; 
+                                                                               a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:PastaWithLightCreamSauce a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:subClassOf fowl:PastaWithWhiteSauce;
+                              <http://www.w3.org/2002/07/owl#disjointWith> fowl:PastaWithHeavyCreamSauce.
+fowl:PastaWithNonSpicyRedSauce a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:subClassOf fowl:PastaWithRedSauce;
+                               <http://www.w3.org/2002/07/owl#disjointWith> fowl:PastaWithSpicyRedSauce.
+fowl:PastaWithNonSpicyRedSauceCourse a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                      <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor> ; 
+                                                                                                     <http://www.w3.org/2002/07/owl#hasValue> fowl:Red ; 
+                                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                      <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody> ; 
+                                                                                                     <http://www.w3.org/2002/07/owl#hasValue> fowl:Medium ; 
+                                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                      <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor> ; 
+                                                                                                     <http://www.w3.org/2002/07/owl#hasValue> fowl:Moderate ; 
+                                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                      <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar> ; 
+                                                                                                     <http://www.w3.org/2002/07/owl#hasValue> fowl:Dry ; 
+                                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>];
+                                     <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                                     [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                                     <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:PastaWithNonSpicyRedSauce ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:PastaWithRedSauce a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf fowl:Pasta.
+fowl:PastaWithSpicyRedSauce a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf fowl:PastaWithRedSauce.
+fowl:PastaWithSpicyRedSauceCourse a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                   <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor> ; 
+                                                                                                  <http://www.w3.org/2002/07/owl#hasValue> fowl:Red ; 
+                                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                   <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody> ; 
+                                                                                                  <http://www.w3.org/2002/07/owl#hasValue> fowl:Full ; 
+                                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                   <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor> ; 
+                                                                                                  <http://www.w3.org/2002/07/owl#hasValue> fowl:Strong ; 
+                                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                                   <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar> ; 
+                                                                                                  <http://www.w3.org/2002/07/owl#hasValue> fowl:Dry ; 
+                                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>];
+                                  <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                                  [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                                  <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:PastaWithSpicyRedSauce ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:PastaWithWhiteClamSauce a fowl:PastaWithLightCreamSauce.
+fowl:PastaWithWhiteSauce a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf fowl:Pasta;
+                         <http://www.w3.org/2002/07/owl#disjointWith> fowl:PastaWithRedSauce.
+fowl:Peaches a fowl:SweetFruit.
+fowl:Pie a fowl:SweetDessert.
+fowl:Pizza a fowl:OtherTomatoBasedFood.
+fowl:Pork a fowl:NonRedMeat.
+fowl:PotableLiquid a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf fowl:ConsumableThing;
+                   <http://www.w3.org/2002/07/owl#disjointWith> fowl:EdibleThing.
+fowl:Red a <http://www.w3.org/2002/07/owl#Thing>;
+         <http://www.w3.org/2002/07/owl#sameAs> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Red>.
+fowl:RedMeat a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf fowl:Meat.
+fowl:RedMeatCourse a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                    <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor> ; 
+                                                                                   <http://www.w3.org/2002/07/owl#hasValue> fowl:Red ; 
+                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>];
+                   <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                   [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                   <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:RedMeat ; 
+                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:RoastBeef a fowl:NonSpicyRedMeat.
+fowl:Rose a <http://www.w3.org/2002/07/owl#Thing>;
+          <http://www.w3.org/2002/07/owl#sameAs> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Rose>.
+fowl:Scrod a fowl:BlandFish.
+fowl:Seafood a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf fowl:EdibleThing;
+             <http://www.w3.org/2002/07/owl#disjointWith> fowl:Dessert,
+                                                          fowl:Fruit.
+fowl:SeafoodCourse a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                    <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor> ; 
+                                                                                   <http://www.w3.org/2002/07/owl#hasValue> fowl:White ; 
+                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>];
+                   <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                   [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                   <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:Seafood ; 
+                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:Shellfish a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf fowl:Seafood.
+fowl:ShellfishCourse a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                      <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor> ; 
+                                                                                     <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#oneOf> (fowl:Moderate
+                                                                                                                                                                           fowl:Strong) ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                      <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody> ; 
+                                                                                     <http://www.w3.org/2002/07/owl#hasValue> fowl:Full ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>];
+                     <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                     [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                     <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:Shellfish ; 
+                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:SpaghettiWithTomatoSauce a fowl:PastaWithNonSpicyRedSauce.
+fowl:SpicyRedMeat a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf fowl:RedMeat.
+fowl:SpicyRedMeatCourse a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor> ; 
+                                                                                        <http://www.w3.org/2002/07/owl#hasValue> fowl:Red ; 
+                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody> ; 
+                                                                                        <http://www.w3.org/2002/07/owl#hasValue> fowl:Full ; 
+                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor> ; 
+                                                                                        <http://www.w3.org/2002/07/owl#hasValue> fowl:Moderate ; 
+                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar> ; 
+                                                                                        <http://www.w3.org/2002/07/owl#hasValue> fowl:Dry ; 
+                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>];
+                        <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                        [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                        <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:SpicyRedMeat ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:Steak a fowl:NonSpicyRedMeat.
+fowl:Strong a <http://www.w3.org/2002/07/owl#Thing>;
+            <http://www.w3.org/2002/07/owl#sameAs> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Strong>.
+fowl:Sweet a <http://www.w3.org/2002/07/owl#Thing>;
+           <http://www.w3.org/2002/07/owl#sameAs> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Sweet>.
+fowl:SweetDessert a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf fowl:Dessert.
+fowl:SweetDessertCourse a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor> ; 
+                                                                                        <http://www.w3.org/2002/07/owl#hasValue> fowl:White ; 
+                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>];
+                        <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                        [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                        <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:SweetDessert ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:SweetFruit a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf fowl:EdibleThing.
+fowl:SweetFruitCourse a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor> ; 
+                                                                                      <http://www.w3.org/2002/07/owl#hasValue> fowl:Moderate ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasDrink ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar> ; 
+                                                                                      <http://www.w3.org/2002/07/owl#hasValue> fowl:Sweet ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>];
+                      <http://www.w3.org/2002/07/owl#intersectionOf> (fowl:MealCourse
+                                                                      [<http://www.w3.org/2002/07/owl#onProperty> fowl:hasFood ; 
+                                                                      <http://www.w3.org/2002/07/owl#allValuesFrom> fowl:SweetFruit ; 
+                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]).
+fowl:Swordfish a fowl:NonBlandFish.
+fowl:ThompsonSeedless a fowl:EatingGrape.
+fowl:Tuna a fowl:NonBlandFish.
+fowl:Turkey a fowl:LightMeatFowl.
+fowl:Veal a fowl:NonSpicyRedMeat.
+fowl:White a <http://www.w3.org/2002/07/owl#Thing>;
+           <http://www.w3.org/2002/07/owl#sameAs> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#White>.
+fowl:Wine a <http://www.w3.org/2002/07/owl#Class>;
+          <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine>.
+fowl:course a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain fowl:Meal;
+            rdfs:range fowl:MealCourse.
+fowl:hasDrink a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain fowl:MealCourse;
+              rdfs:range fowl:PotableLiquid.
+fowl:hasFood a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain fowl:MealCourse;
+             rdfs:range fowl:EdibleThing.
+fowl:madeFromFruit a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain fowl:ConsumableThing;
+                   rdfs:range fowl:Fruit.

@@ -1,0 +1,179 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dviont: <http://purl.org/ontology/dvia#>.
+
+<http://purl.org/ontology/dvia> <http://purl.org/dc/terms/contributor> [<http://xmlns.com/foaf/0.1/name> "Raphael Troncy" ; 
+                                                                        <http://xmlns.com/foaf/0.1/mbox> "rtroncy@eurecom.fr"],
+                                                                       [<http://xmlns.com/foaf/0.1/name> "Raphael Troncy" ; 
+                                                                        <http://xmlns.com/foaf/0.1/mbox> "rtroncy@eurecom.fr"];
+                                <http://purl.org/dc/terms/creator> [<http://xmlns.com/foaf/0.1/name> "Ghislain Atemezing" ; 
+                                                                    <http://xmlns.com/foaf/0.1/mbox> "atemezin@eurecom.fr"],
+                                                                   [<http://xmlns.com/foaf/0.1/name> "Ghislain Atemezing" ; 
+                                                                    <http://xmlns.com/foaf/0.1/mbox> "atemezin@eurecom.fr"];
+                                <http://purl.org/dc/terms/description> "dvia is an RDF vocabulary designed to facilitate interoperability between visualization applications published on the Web."@en;
+                                <http://purl.org/dc/terms/issued> "2012-07-25"^^xsd:date;
+                                <http://purl.org/dc/terms/license> <http://www.opendatacommons.org/licenses/pddl/1.0/>;
+                                <http://purl.org/dc/terms/modified> "2013-10-09"^^xsd:date,
+                                                                    "2012-11-27"^^xsd:date,
+                                                                    "2013-02-01"^^xsd:date,
+                                                                    "2012-10-31"^^xsd:date;
+                                <http://purl.org/dc/terms/title> "The visualization vocabulary for LOD applications"@en,
+                                                                 "Ontologie des applications de visualisation sur le web"@fr;
+                                a <http://www.w3.org/2002/07/owl#Ontology>;
+                                rdfs:comment "dvia is an RDF vocabulary designed to facilitate interoperability between visualization applications published on the Web."@en.
+dviont:Application a <http://www.w3.org/2002/07/owl#Class>,
+                     rdfs:Class;
+                   rdfs:comment "The aplication or the mashup developed for demo-ing or consuming data in LD fashion"@en;
+                   rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+                   rdfs:label "Application"@fr,
+                              "Application"@en;
+                   rdfs:subClassOf <http://purl.org/dc/dcmitype/Software>.
+dviont:Platform a <http://www.w3.org/2002/07/owl#Class>,
+                  rdfs:Class;
+                rdfs:comment "The platform where to host or use the application, could be on the web (firefox, chrome, IE, etc..) or mobile (android, etc..) or event desktop"@en;
+                rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+                rdfs:label "Platform"@en,
+                           "Plate forme"@fr.
+dviont:VisualTool a <http://www.w3.org/2002/07/owl#Class>,
+                    rdfs:Class;
+                  rdfs:comment "The tool or library used to build the application"@en;
+                  rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+                  rdfs:label "Outil de visualisation"@fr,
+                             "visual Tool"@en;
+                  <http://www.w3.org/2002/07/owl#disjointWith> dviont:Application.
+dviont:alternativeNavigator a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                              rdf:Property;
+                            rdfs:comment "The name of the alternate navigator if applicable"@en;
+                            rdfs:domain dviont:platform;
+                            rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+                            rdfs:label "navigateur alternatif"@fr,
+                                       "alternative navigator"@en;
+                            rdfs:range xsd:string.
+dviont:author a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                rdf:Property;
+              rdfs:comment "links to the authors of the application or the tools, libraries"@en;
+              rdfs:domain dviont:Application;
+              rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+              rdfs:label "auteur"@fr,
+                         "author"@en;
+              rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+dviont:businessValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                       rdf:Property;
+                     rdfs:comment "The business value of the application; generally could be commercial of free. Also depending on the license"@en;
+                     rdfs:domain dviont:Application;
+                     rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+                     rdfs:label "valeur commerciale"@fr,
+                                "businessValue"@en;
+                     rdfs:range xsd:string.
+dviont:consumes a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  rdf:Property;
+                rdfs:comment "links to the dataset used to make the application, and could be of different types or formats"@en;
+                rdfs:domain dviont:Application;
+                rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+                rdfs:label "consomme"@fr,
+                           "consumes"@en;
+                rdfs:range <http://www.w3.org/ns/dcat#Dataset>.
+dviont:datasetDescription a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                            rdf:Property;
+                          rdfs:comment "Property for a given descriptive informations of the datasets used for making the application. It could be used when no more details are given on the datasets like URL, formats, etc."@en;
+                          rdfs:domain dviont:Application;
+                          rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+                          rdfs:label "dataset description"@en,
+                                     "description du jeu de donn�es"@fr.
+dviont:designBy a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  rdf:Property;
+                rdfs:comment "links to the organization which builds the application"@en;
+                rdfs:domain dviont:Application;
+                rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+                rdfs:label "impl�menter par"@fr,
+                           "design By"@en;
+                rdfs:range <http://www.w3.org/ns/org#Organization>.
+dviont:downloadUrl a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                     rdf:Property;
+                   rdfs:comment "The download url of the tool for visualization."@en;
+                   rdfs:domain dviont:VisualTool;
+                   rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+                   rdfs:label "url t�l�chargement"@fr,
+                              "download url"@en;
+                   rdfs:range xsd:anyURI.
+dviont:hasLicense a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                    rdf:Property;
+                  rdfs:comment "This property links to the license of the application"@en;
+                  rdfs:domain dviont:Application;
+                  rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+                  rdfs:label "a pour license"@fr,
+                             "hasLicense"@en;
+                  rdfs:range <http://purl.org/dc/terms/License>.
+dviont:keyword a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                 rdf:Property;
+               rdfs:comment "keywords used for the application."@en;
+               rdfs:domain dviont:Application;
+               rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+               rdfs:label "mot cl�"@fr,
+                          "keyword"@en;
+               rdfs:range xsd:string.
+dviont:libUrl a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                rdf:Property;
+              rdfs:comment "The url to the page describing the library or the tool for visualization."@en;
+              rdfs:domain dviont:VisualTool;
+              rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+              rdfs:label "url de la librairie"@fr,
+                         "library url"@en;
+              rdfs:range xsd:anyURI.
+dviont:platform a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  rdf:Property;
+                rdfs:comment "This property links the application to a platform to actually use the application."@en;
+                rdfs:domain dviont:Application;
+                rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+                rdfs:label "plate forme"@fr,
+                           "platform"@en;
+                rdfs:range dviont:Platform.
+dviont:preferredNavigator a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                            rdf:Property;
+                          rdfs:comment "The name of the preferred navigator to be usd by the application"@en;
+                          rdfs:domain dviont:platform;
+                          rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+                          rdfs:label "navigateur pr�f�rr�"@fr,
+                                     "preferred navigator"@en;
+                          rdfs:range xsd:string.
+dviont:scope a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+               rdf:Property;
+             rdfs:comment "The scope or domain of the application."@en;
+             rdfs:domain dviont:Application;
+             rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+             rdfs:label "domain d'usage"@fr,
+                        "scope"@en;
+             rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>.
+dviont:system a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                rdf:Property;
+              rdfs:comment "The operating system where the application runs."@en;
+              rdfs:domain dviont:Platform;
+              rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+              rdfs:label "syst�me"@fr,
+                         "system"@en;
+              rdfs:range xsd:string.
+dviont:url a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+             rdf:Property;
+           rdfs:comment "the url of the application."@en;
+           rdfs:domain dviont:Application;
+           rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+           rdfs:label "url"@fr,
+                      "url"@en;
+           rdfs:range xsd:anyURI.
+dviont:usesTool a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  rdf:Property;
+                rdfs:comment "This property links to the tools or libraries used for the application"@en;
+                rdfs:domain dviont:Application;
+                rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+                rdfs:label "utilise l'outil"@fr,
+                           "uses Tool"@en;
+                rdfs:range dviont:VisualTool.
+dviont:view a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+              rdf:Property;
+            rdfs:comment "The types of view available in the application, such as maps, charts, graphs, etc."@en;
+            rdfs:domain dviont:Application;
+            rdfs:isDefinedBy <http://purl.org/ontology/dvia>;
+            rdfs:label "vue"@fr,
+                       "view"@en;
+            rdfs:range xsd:string.

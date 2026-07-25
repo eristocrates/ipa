@@ -1,0 +1,122 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix search: <http://sindice.com/vocab/search#>.
+
+search:Page a rdfs:Class,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A page in a paged list of search results";
+            rdfs:label "Page".
+search:Query a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A search query";
+             rdfs:label "Query".
+search:Result a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "An individual result in a list of ranked search results to a search query";
+              rdfs:label "Result".
+search:cache a rdf:Property;
+             rdfs:comment "Link to a cached copy of a search result";
+             rdfs:domain rdfs:Resource;
+             rdfs:label "Cache";
+             rdfs:range rdfs:Resource.
+search:first a rdf:Property;
+             rdfs:comment "A link to the first page of results to a search query";
+             rdfs:domain rdfs:Resource;
+             rdfs:label "First";
+             rdfs:range rdfs:Resource.
+search:itemsPerPage a rdf:Property,
+                      <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "The number of items found on each page in a paged list of search results";
+                    rdfs:domain rdfs:Resource;
+                    rdfs:label "Items per Page";
+                    rdfs:range xsd:integer.
+search:last a rdf:Property;
+            rdfs:comment "A link to the last page of results to a search query";
+            rdfs:domain rdfs:Resource;
+            rdfs:label "Last";
+            rdfs:range rdfs:Resource.
+search:link a rdf:Property;
+            rdfs:comment "A link to a resource that was found as a search result";
+            rdfs:domain rdfs:Resource;
+            rdfs:label "Link";
+            rdfs:range rdfs:Resource.
+search:next a rdf:Property;
+            rdfs:comment "A link from one page of a paged search result to the following page";
+            rdfs:domain rdfs:Resource;
+            rdfs:label "Next";
+            rdfs:range rdfs:Resource.
+search:openSearchDescription a rdf:Property;
+                             rdfs:comment "A link to an OpenSearch XML description of a search service";
+                             rdfs:domain rdfs:Resource;
+                             rdfs:label "OpenSearch Description";
+                             rdfs:range rdfs:Resource.
+search:page a rdf:Property;
+            rdfs:comment "A link from a paged list of search results to one page within that list";
+            rdfs:domain rdfs:Resource;
+            rdfs:label "Page";
+            rdfs:range rdfs:Resource.
+search:previous a rdf:Property;
+                rdfs:comment "A link from one page of a paged search result to the preceding page";
+                rdfs:domain rdfs:Resource;
+                rdfs:label "Previous";
+                rdfs:range rdfs:Resource.
+search:rank a rdf:Property,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "The rank (or index) of an individual search result item within the list of search results";
+            rdfs:domain rdfs:Resource;
+            rdfs:label "Rank";
+            rdfs:range xsd:integer.
+search:result a rdf:Property;
+              rdfs:comment "A link from a search query to an individual search result of that query";
+              rdfs:domain rdfs:Resource;
+              rdfs:label "Result";
+              rdfs:range rdfs:Resource.
+search:searchTerms a rdf:Property,
+                     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "The search terms used in a search query";
+                   rdfs:domain rdfs:Resource;
+                   rdfs:label "Search Terms";
+                   rdfs:range rdfs:Literal.
+search:startIndex a rdf:Property,
+                    <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "The rank (or index) of the first result on a page of search results";
+                  rdfs:domain rdfs:Resource;
+                  rdfs:label "Start Index";
+                  rdfs:range xsd:integer.
+search:totalResults a rdf:Property,
+                      <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "The total number of results of a search query";
+                    rdfs:domain rdfs:Resource;
+                    rdfs:label "Total Results";
+                    rdfs:range xsd:integer.
+<http://vocab.deri.ie/search> <http://purl.org/dc/elements/1.1/creator> <http://vocab.deri.ie/search#cygri>;
+                              <http://purl.org/dc/terms/created> "2010-09-26"^^xsd:date;
+                              <http://purl.org/dc/terms/description> "A vocabulary for ranked search results, for use in the Sindice API.";
+                              <http://purl.org/dc/terms/modified> "2010-09-26"^^xsd:date;
+                              <http://purl.org/dc/terms/partOf> <http://vocab.deri.ie/>;
+                              <http://purl.org/dc/terms/publisher> "http://vocab.deri.ie/search#Digital%20Enterprise%20Research%20Institute%2C%20NUI%20Galway";
+                              <http://purl.org/dc/terms/status> <http://purl.org/adms/status/UnderDevelopment>;
+                              <http://purl.org/dc/terms/title> "Sindice Search Vocabulary";
+                              <http://purl.org/dc/terms/type> <http://purl.org/adms/assettype/Ontology>;
+                              <http://purl.org/vocab/vann/preferredNamespacePrefix> "search";
+                              <http://purl.org/vocab/vann/preferredNamespaceUri> "http://sindice.com/vocab/search#";
+                              a <http://www.w3.org/2002/07/owl#Ontology>,
+                                <http://www.w3.org/ns/adms#SemanticAsset>;
+                              <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/search.html>.
+<http://vocab.deri.ie/search#Digital%20Enterprise%20Research%20Institute%2C%20NUI%20Galway> a <http://purl.org/dc/terms/Agent>;
+                                                                                            <http://xmlns.com/foaf/0.1/homepage> <http://www.deri.ie/>;
+                                                                                            <http://xmlns.com/foaf/0.1/member> <http://vocab.deri.ie/search#cygri>;
+                                                                                            <http://xmlns.com/foaf/0.1/name> "Digital Enterprise Research Institute, NUI Galway".
+<http://vocab.deri.ie/search#cygri> a <http://xmlns.com/foaf/0.1/Person>;
+                                    <http://xmlns.com/foaf/0.1/homepage> <http://richard.cyganiak.de/>;
+                                    <http://xmlns.com/foaf/0.1/mbox> <mailto:richard.cyganiak@deri.org>;
+                                    <http://xmlns.com/foaf/0.1/name> "Richard Cyganiak".
+<http://vocab.deri.ie/search#rdf> <http://purl.org/dc/terms/FileFormat> <http://vocab.deri.ie/search>;
+                                  a <http://www.w3.org/ns/adms#SemanticDistribution>;
+                                  <http://www.w3.org/ns/adms#accessURL> "http://vocab.deri.ie/search.rdf";
+                                  <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.
+<http://vocab.deri.ie/search#ttl> <http://purl.org/dc/terms/FileFormat> <http://vocab.deri.ie/search>;
+                                  a <http://www.w3.org/ns/adms#SemanticDistribution>;
+                                  <http://www.w3.org/ns/adms#accessURL> "http://vocab.deri.ie/search.ttl";
+                                  <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.

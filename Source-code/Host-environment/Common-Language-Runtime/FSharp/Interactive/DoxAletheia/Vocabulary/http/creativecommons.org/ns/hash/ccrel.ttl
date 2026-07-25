@@ -1,0 +1,151 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+
+ccrel:Attribution a ccrel:Requirement;
+                  rdfs:comment """credit be given to
+		    copyright holder and/or author"""@en-us;
+                  rdfs:label "Attribution"@en-us.
+ccrel:CommercialUse a ccrel:Prohibition;
+                    rdfs:comment """exercising rights for
+		    commercial purposes"""@en-us;
+                    rdfs:label "Commercial Use"@en-us.
+ccrel:Copyleft a ccrel:Requirement;
+               rdfs:comment """derivative and
+		    combined works must be licensed under specified
+		    terms, similar to those on the original
+		    work"""@en-us;
+               rdfs:label "Copyleft"@en-us.
+ccrel:DerivativeWorks a ccrel:Permission;
+                      rdfs:comment """distribution of
+		    derivative works"""@en-us;
+                      rdfs:label "Derivative Works"@en-us.
+ccrel:Distribution a ccrel:Permission;
+                   rdfs:comment """distribution, public
+		    display, and publicly performance"""@en-us;
+                   rdfs:label "Distribution"@en-us.
+ccrel:HighIncomeNationUse a ccrel:Prohibition;
+                          rdfs:comment """use in a
+		    non-developing country"""@en-us;
+                          rdfs:label "High Income Nation Use"@en-us.
+ccrel:Jurisdiction a rdfs:Class;
+                   rdfs:comment """the legal jurisdiction
+		    of a license"""@en-us;
+                   rdfs:label "Jurisdiction"@en-us.
+ccrel:LesserCopyleft a ccrel:Requirement;
+                     rdfs:comment """derivative works must
+		    be licensed under specified terms, with at least
+		    the same conditions as the original work;
+		    combinations with the work may be licensed under
+		    different terms"""@en-us;
+                     rdfs:label "Lesser Copyleft"@en-us.
+ccrel:License a rdfs:Class;
+              rdfs:comment """a set of
+		    requests/permissions to users of a Work, e.g. a
+		    copyright license, the public domain, information
+		    for distributors"""@en-us;
+              rdfs:label "License"@en-us;
+              rdfs:subClassOf <http://purl.org/dc/terms/LicenseDocument>.
+ccrel:Notice a ccrel:Requirement;
+             rdfs:comment """copyright and license
+		    notices be kept intact"""@en-us;
+             rdfs:label "Notice"@en-us.
+ccrel:Permission a rdfs:Class;
+                 rdfs:comment """an action that may or
+		    may not be allowed or desired"""@en-us;
+                 rdfs:label "Permission"@en-us.
+ccrel:Prohibition a rdfs:Class;
+                  rdfs:comment """something you may be
+		    asked not to do"""@en-us;
+                  rdfs:label "Prohibition"@en-us.
+ccrel:Reproduction a ccrel:Permission;
+                   rdfs:comment """making multiple
+		    copies"""@en-us;
+                   rdfs:label "Reproduction"@en-us.
+ccrel:Requirement a rdfs:Class;
+                  rdfs:comment """an action that may or
+		    may not be requested of you"""@en-us;
+                  rdfs:label "Requirement"@en-us.
+ccrel:ShareAlike a ccrel:Requirement;
+                 rdfs:comment """derivative works be
+		    licensed under the same terms or compatible terms
+		    as the original work"""@en-us;
+                 rdfs:label "Share Alike"@en-us.
+ccrel:Sharing a ccrel:Permission;
+              rdfs:comment """permits commercial
+		    derivatives, but only non-commercial
+		    distribution"""@en-us;
+              rdfs:label "Sharing"@en-us.
+ccrel:SourceCode a ccrel:Requirement;
+                 rdfs:comment """source code (the
+		    preferred form for making modifications) must be
+		    provided when exercising some rights granted by
+		    the license."""@en-us;
+                 rdfs:label "Source Code"@en-us.
+ccrel:Work a rdfs:Class;
+           rdfs:comment """a potentially
+		    copyrightable work"""@en-us;
+           rdfs:label "Work"@en-us.
+ccrel:attributionName a rdf:Property;
+                      rdfs:domain ccrel:Work;
+                      rdfs:range rdfs:Literal.
+ccrel:attributionURL a rdf:Property;
+                     rdfs:domain ccrel:Work;
+                     rdfs:range rdfs:Resource.
+ccrel:deprecatedOn a rdf:Property;
+                   rdfs:domain ccrel:License;
+                   rdfs:label """deprecated
+		  on"""@en-us;
+                   rdfs:range <http://www.w3.org/2001/XMLSchema-datatypes#date>.
+ccrel:jurisdiction a rdf:Property;
+                   rdfs:domain ccrel:License;
+                   rdfs:label "jurisdiction"@en-us;
+                   rdfs:range ccrel:Jurisdiction.
+ccrel:legalcode a rdf:Property;
+                rdfs:domain ccrel:License;
+                rdfs:range rdfs:Resource.
+ccrel:license a rdf:Property;
+              rdfs:domain ccrel:Work;
+              rdfs:label """has
+		  license"""@en-us;
+              rdfs:range ccrel:License;
+              rdfs:subPropertyOf <http://purl.org/dc/terms/license>;
+              <http://www.w3.org/2002/07/owl#sameAs> <http://www.w3.org/1999/xhtml/vocab#license>.
+ccrel:morePermissions a rdf:Property;
+                      rdfs:domain ccrel:Work;
+                      rdfs:range rdfs:Resource;
+                      rdfs:subPropertyOf <http://purl.org/dc/terms/relation>.
+ccrel:permits a rdf:Property;
+              rdfs:domain ccrel:License;
+              rdfs:label "permits"@en-us;
+              rdfs:range ccrel:Permission.
+ccrel:prohibits a rdf:Property;
+                rdfs:domain ccrel:License;
+                rdfs:label "prohibits"@en-us;
+                rdfs:range ccrel:Prohibition.
+ccrel:requires a rdf:Property;
+               rdfs:domain ccrel:License;
+               rdfs:label "requires"@en-us;
+               rdfs:range ccrel:Requirement.
+ccrel:useGuidelines a rdf:Property;
+                    rdfs:domain ccrel:Work;
+                    rdfs:range rdfs:Resource;
+                    rdfs:subPropertyOf <http://purl.org/dc/terms/relation>.
+<http://web.resource.org/cc/Attribution> <http://www.w3.org/2002/07/owl#equivalentClass> ccrel:Attribution.
+<http://web.resource.org/cc/CommercialUse> <http://www.w3.org/2002/07/owl#equivalentClass> ccrel:CommercialUse.
+<http://web.resource.org/cc/DerivativeWorks> <http://www.w3.org/2002/07/owl#equivalentClass> ccrel:DerivativeWorks.
+<http://web.resource.org/cc/Distribution> <http://www.w3.org/2002/07/owl#equivalentClass> ccrel:Distribution.
+<http://web.resource.org/cc/License> <http://www.w3.org/2002/07/owl#equivalentClass> ccrel:License.
+<http://web.resource.org/cc/Notice> <http://www.w3.org/2002/07/owl#equivalentClass> ccrel:Notice.
+<http://web.resource.org/cc/Permission> <http://www.w3.org/2002/07/owl#equivalentClass> ccrel:Permission.
+<http://web.resource.org/cc/Prohibition> <http://www.w3.org/2002/07/owl#equivalentClass> ccrel:Prohibition.
+<http://web.resource.org/cc/Reproduction> <http://www.w3.org/2002/07/owl#equivalentClass> ccrel:Reproduction.
+<http://web.resource.org/cc/Requirement> <http://www.w3.org/2002/07/owl#equivalentClass> ccrel:Requirement.
+<http://web.resource.org/cc/ShareAlike> <http://www.w3.org/2002/07/owl#equivalentClass> ccrel:ShareAlike.
+<http://web.resource.org/cc/SourceCode> <http://www.w3.org/2002/07/owl#equivalentClass> ccrel:SourceCode.
+<http://web.resource.org/cc/Work> <http://www.w3.org/2002/07/owl#equivalentClass> ccrel:Work.
+<http://web.resource.org/cc/license> <http://www.w3.org/2002/07/owl#equivalentProperty> ccrel:license.
+<http://web.resource.org/cc/permits> <http://www.w3.org/2002/07/owl#equivalentProperty> ccrel:permits.
+<http://web.resource.org/cc/prohibits> <http://www.w3.org/2002/07/owl#equivalentProperty> ccrel:prohibits.
+<http://web.resource.org/cc/requires> <http://www.w3.org/2002/07/owl#equivalentProperty> ccrel:requires.

@@ -1,0 +1,207 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix marl: <http://www.gsi.dit.upm.es/ontologies/marl/ns#>.
+
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+_:B052e4c530447375a16b90e30c13bbc94 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> _:Bebbdb1a9b0b80b45bf1cd346648a424a.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+_:B255a0b876373555d5407bf8a95804dbb a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> _:B67be6e9fcfb8e5b0477f09d68f697c5f.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+_:B4185250f57203ec6329a8c4f4d2f247a rdf:first marl:Neutral;
+                                    rdf:rest _:B9e3785c551b0bbfa37811008c25fe72b.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+_:B58ec815dc990a1b4d14efd4ce1f4cdbf rdf:first marl:Positive.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+_:B67be6e9fcfb8e5b0477f09d68f697c5f rdf:first marl:Negative;
+                                    rdf:rest _:B6cdcc7ffb8f11abc8b5e149e3d382b13.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+_:B6cdcc7ffb8f11abc8b5e149e3d382b13 rdf:first marl:Neutral;
+                                    rdf:rest _:B58ec815dc990a1b4d14efd4ce1f4cdbf.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+_:B9e3785c551b0bbfa37811008c25fe72b rdf:first marl:Positive.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+_:Bebbdb1a9b0b80b45bf1cd346648a424a rdf:first marl:Negative;
+                                    rdf:rest _:B4185250f57203ec6329a8c4f4d2f247a.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+[] a <http://www.w3.org/2002/07/owl#Axiom>.
+<http://www.gsi.dit.upm.es/ontologies/marl/ns> <http://purl.org/dc/terms/description> "Marl is an ontology designed to use for publishing the results of the opinion mining process in a form of structured data on the Web. The goal is to unify the access the numerical approximation of the opinion concept and allow extensive reasoning and search over multiple resources from different content providers."@en;
+                                               a <http://www.w3.org/2002/07/owl#Ontology>;
+                                               rdfs:comment "Marl is an ontology designed to use for publishing the results of the opinion mining process in a form of structured data on the Web. The goal is to unify the access the numerical approximation of the opinion concept and allow extensive reasoning and search over multiple resources from different content providers."@en;
+                                               rdfs:label "Marl Opinion Ontology"@en;
+                                               rdfs:seeAlso "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                                               <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/ns/prov-o#>;
+                                               <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+marl:AggregatedOpinion a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment """The same as Opinion class but indicates that the properties of this class aggregate all the opinions specified in the \"extractedFrom\" source. Optionally, if the aggregatesOpinion property is used this class could be created to aggregate only certain opinions (e.g. in a text about political scene it there could be many AggregatedOpinion classes each with opinions per different politician)."""@en;
+                       rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                       rdfs:label "AggregatedOpinion"@en;
+                       rdfs:subClassOf marl:Opinion.
+marl:Negative a marl:Polarity;
+              rdfs:comment "Negative polarity."@en;
+              rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+              rdfs:label "Negative"@en.
+marl:Neutral a marl:Polarity;
+             rdfs:comment "Neutral polarity"@en;
+             rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+             rdfs:label "Neutral"@en.
+marl:Opinion a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Describes the concept of opinion expressed in a certain text."@en;
+             rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+             rdfs:label "Opinion"@en;
+             rdfs:subClassOf <http://www.w3.org/ns/prov#Entity>.
+marl:Polarity a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Class that represents the opinion polarity. Use instances to express if the polarity is positive, neutral or negative."@en;
+              rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+              rdfs:label "Polarity"@en.
+marl:Positive a marl:Polarity;
+              rdfs:comment "Positive polarity"@en;
+              rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+              rdfs:label "Positive"@en.
+marl:SentimentAnalysis a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment """<p style=\"margin-top: 0\">
+      The action of analysing the sentiment in an entity. It produces a 
+      marl:opinion
+    </p>"""@en;
+                       rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                       rdfs:label "SentimentAnalysis";
+                       rdfs:subClassOf <http://www.w3.org/ns/prov#Activity>.
+marl:aggregatesOpinion a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Indicates that the polarity described with the class is a calculation (eg. sum) of other opinions polarity (eg. aggregated opinion about the movie derived from many sentiments expressed in one text)."@en;
+                       rdfs:domain marl:AggregatedOpinion;
+                       rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                       rdfs:label "aggregatesOpinion"@en;
+                       rdfs:range marl:Opinion.
+marl:algorithm a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The algorithm used in the Sentiment Analysis."@en;
+               rdfs:domain marl:SentimentAnalysis;
+               rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+               rdfs:label "algorithm".
+marl:algorithmConfidence a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:comment "A numerical value that describe how much the algorithm was confident of the assessment of the opinion (eg. how much the opinion matches a gives object/product)."@en;
+                         rdfs:domain marl:Opinion;
+                         rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                         rdfs:label "algorithmConfidence"@en;
+                         rdfs:range xsd:float.
+marl:describesFeature a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "Indicates a feature of an object or object part that the opinion refers to (eg. laptop battery life or laptop battery size etc.)."@en;
+                      rdfs:domain marl:Opinion;
+                      rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                      rdfs:label "describesFeature"@en.
+marl:describesObject a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Indicates the object that the opinion refers to."@en;
+                     rdfs:domain marl:Opinion;
+                     rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                     rdfs:label "describesObject"@en.
+marl:describesObjectPart a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "Indicates a particular element or part of the object that the opinion refers to (eg. laptop screen or camera battery)."@en;
+                         rdfs:domain marl:Opinion;
+                         rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                         rdfs:label "describesObjectPart"@en.
+marl:domain a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain marl:Opinion;
+            rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+            rdfs:label "domain".
+marl:extractedFrom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Indicates the text from which the opinion has been extracted."@en;
+                   rdfs:domain marl:Opinion;
+                   rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                   rdfs:label "extractedFrom"@en;
+                   <http://www.w3.org/2002/07/owl#inverseOf> marl:hasOpinion.
+marl:hasOpinion a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Indicates that a certain text has a subjective opinion expressed in it."@en;
+                rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                rdfs:label "hasOpinion"@en;
+                rdfs:range marl:Opinion;
+                <http://www.w3.org/2002/07/owl#inverseOf> marl:extractedFrom.
+marl:hasPolarity a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Indicates if the opinion is positive/negative or neutral. Use instances of class marl:Polarity."@en;
+                 rdfs:domain marl:Opinion;
+                 rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                 rdfs:label "hasPolarity"@en;
+                 rdfs:range marl:Polarity.
+marl:maxPolarityValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "Maximal possible numerical value for the opinion."@en;
+                      rdfs:domain marl:SentimentAnalysis;
+                      rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                      rdfs:label "algorithmConfidence"@en.
+marl:minPolarityValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "Lowest possible numerical value of the opinion."@en;
+                      rdfs:domain marl:SentimentAnalysis;
+                      rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                      rdfs:label "minPolarityValue"@en.
+marl:negativeOpinionCount a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:comment "Amount of negative opinions aggregated."@en;
+                          rdfs:domain marl:AggregatedOpinion;
+                          rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                          rdfs:label "negativeOpinionCount"@en.
+marl:neutralOpinionCount a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:comment "Amount of neutral opinions aggregated."@en;
+                         rdfs:domain marl:AggregatedOpinion;
+                         rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                         rdfs:label "neutralOpinionCount"@en.
+marl:opinionCount a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "Amount of all aggregated opinions."@en;
+                  rdfs:domain marl:AggregatedOpinion;
+                  rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                  rdfs:label "opinionCount"@en.
+marl:opinionText a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:comment """The exact text extract that expresses the opinion. This can be used when entity/text pointed by extractedFrom contains many opinions. 
+
+For example extractedFrom can point to a comment that contains many opinions about a movie, each opinion should have a separate marl:Opinion and optionally an opinionText  property to indicate the specific text fragment of the comment."""@en;
+                 rdfs:domain marl:Opinion;
+                 rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                 rdfs:label "opinionText"@en.
+marl:polarityValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "A numerical representation of the polarity value. The recommended use is by specifying % by using a real number from 0..1. In case this is not feasible in a given solution use minOpinionValue and maxOpinionValue to provide additional information."@en;
+                   rdfs:domain marl:Opinion;
+                   rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                   rdfs:label "polarityValue"@en.
+marl:positiveOpinionsCount a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:comment "Amount of positive opinions aggregated."@en;
+                           rdfs:domain marl:AggregatedOpinion;
+                           rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                           rdfs:label "positiveOpinionCount"@en.
+marl:source a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment "Source from which the opinion was extracted (URL, Site, Entity...)";
+            rdfs:domain marl:SentimentAnalysis;
+            rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+            rdfs:label "source".
+marl:sourceText a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Text analysed";
+                rdfs:isDefinedBy "http://www.gsi.dit.upm.es/ontologies/marl/ns#";
+                rdfs:label "sourceText".

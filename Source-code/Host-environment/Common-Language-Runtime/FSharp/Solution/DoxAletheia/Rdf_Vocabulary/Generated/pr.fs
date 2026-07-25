@@ -7,6 +7,16 @@ open type Prefix_ID
 module pr =
     let _namespace_iri = Namespace_Iri pr |> NamespaceIRI
     /// <summary>
+    ///   <para>pr:PropertyReification</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The class, which describes the relations of a property reification. That means, its "shortcut relation", its
+    /// reification class, and the properties that are relating to the subject and object of the "shortcut relation".</para>
+    /// labels<para>Property Reification</para></remarks>
+    /// <seealso href="http://purl.org/ontology/prv/core#PropertyReification">http://purl.org/ontology/prv/core#PropertyReification</seealso>
+    let PropertyReification = Prefixed_Name(pr, "PropertyReification") |> PrefixedName
+    /// <summary>
     ///   <para>pr:object_property</para>
     /// </summary>
     /// <remarks>
@@ -34,6 +44,15 @@ module pr =
     /// <seealso href="http://purl.org/ontology/prv/core#shortcut">http://purl.org/ontology/prv/core#shortcut</seealso>
     let shortcut = Prefixed_Name(pr, "shortcut") |> PrefixedName
     /// <summary>
+    ///   <para>pr:subject_property</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Relates to the property of the reification class, which relates to the subject of the "shortcut relation".</para>
+    /// labels<para>has subject property</para></remarks>
+    /// <seealso href="http://purl.org/ontology/prv/core#subject_property">http://purl.org/ontology/prv/core#subject_property</seealso>
+    let subject_property = Prefixed_Name(pr, "subject_property") |> PrefixedName
+    /// <summary>
     ///   <para>pr:reification_class</para>
     /// </summary>
     /// <remarks>
@@ -56,15 +75,6 @@ module pr =
     /// <seealso href="http://purl.org/ontology/prv/core#shortcut_property">http://purl.org/ontology/prv/core#shortcut_property</seealso>
     let shortcut_property = Prefixed_Name(pr, "shortcut_property") |> PrefixedName
     /// <summary>
-    ///   <para>pr:subject_property</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Relates to the property of the reification class, which relates to the subject of the "shortcut relation".</para>
-    /// labels<para>has subject property</para></remarks>
-    /// <seealso href="http://purl.org/ontology/prv/core#subject_property">http://purl.org/ontology/prv/core#subject_property</seealso>
-    let subject_property = Prefixed_Name(pr, "subject_property") |> PrefixedName
-    /// <summary>
     ///   <para>pr:</para>
     /// </summary>
     /// <remarks>
@@ -72,13 +82,3 @@ module pr =
     /// </remarks>
     /// <seealso href="http://purl.org/ontology/prv/core#">http://purl.org/ontology/prv/core#</seealso>
     let _prefix_iri = Prefixed_Name(pr, "") |> PrefixedName
-    /// <summary>
-    ///   <para>pr:PropertyReification</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>The class, which describes the relations of a property reification. That means, its "shortcut relation", its
-    /// reification class, and the properties that are relating to the subject and object of the "shortcut relation".</para>
-    /// labels<para>Property Reification</para></remarks>
-    /// <seealso href="http://purl.org/ontology/prv/core#PropertyReification">http://purl.org/ontology/prv/core#PropertyReification</seealso>
-    let PropertyReification = Prefixed_Name(pr, "PropertyReification") |> PrefixedName

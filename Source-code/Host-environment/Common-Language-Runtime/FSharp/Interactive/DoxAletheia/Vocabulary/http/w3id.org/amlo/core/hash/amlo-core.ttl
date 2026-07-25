@@ -1,0 +1,261 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix amlo-core: <http://w3id.org/amlo/core#>.
+
+[] <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger.
+<http://purl.org/dc/elements/1.1/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/date> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/rights> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://w3id.org/amlo/core> <http://purl.org/dc/elements/1.1/creator> "Andrea Danielli",
+                                                                      "Enrico Fagnoni";
+                            <http://purl.org/dc/elements/1.1/date> "2020-01-01";
+                            <http://purl.org/dc/elements/1.1/description> <https://gitlab.com/mopso/amlo/raw/master/core/uml.png>,
+                                                                          """The AMLO-core is the main module of the AMLO projects that extends the Financial Industry Business Ontology (FIBO) with some concepts to describe the Anti Money Laundering (AML) knowledge and facts.
+
+AMLO-core can be used as an upper ontology to derive taxonomies and axioms as well as a way to exchange information among investigators."""@en;
+                            <http://purl.org/dc/elements/1.1/rights> "The amlo-core  vocabulary was developed by developed by  Enrico Fagnoni and Andrea Danielli in the scope of AMLO project Copyright (c) by 2019-2020 by LinkedDataCenter and it is available under the Creative Commons Attribution 4.0.  This work is an extension of the FIBO ontology Copyright (c) by 2014-2019 EDM Council, Inc. and Object Management Group, Inc."@en;
+                            <http://purl.org/dc/elements/1.1/title> "Anti Money Laundering Ontology core vocabulary  (AMLO-core)"@en;
+                            <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/4.0/>;
+                            a <http://www.w3.org/2002/07/owl#Ontology>;
+                            rdfs:comment """AMLO-core is a formal conceptual model that defines the main terms used in Anti Money Laundering (AML) investigations. 
+
+AMLO-core  is developed by a multidisciplinary group of domain experts and data scientists as part of the AMLO project hosted by LinkedData.Center."""@en;
+                            rdfs:label "AMLO-core vocabulary"@en;
+                            rdfs:seeAlso <https://linkeddata.center/>,
+                                         <https://gitlab.com/mopso/amlo>;
+                            <http://www.w3.org/2002/07/owl#versionIRI> <https://gitlab.com/mopso/amlo/raw/master/core/core.rdf#ontology>;
+                            <http://www.w3.org/2002/07/owl#versionInfo> "dev-1.0.1".
+amlo-core:Accountable a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "identifica un agente come   responsabile di una operatività inattesa"@it;
+                      rdfs:subClassOf <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/ResponsibleParty>,
+                                      <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/PartyInRole>.
+amlo-core:Analyst a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "identifica un agente preposto alla valutazione di una operatività inattesa"@it;
+                  rdfs:subClassOf <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/ResponsibleParty>,
+                                  <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/RatingIssuer>,
+                                  <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/RatingParty>,
+                                  <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/PartyInRole>.
+amlo-core:Book a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "identifica un qualsiasi registro usato per annotare record"@it;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/hasIdentity> ; 
+                                <http://www.w3.org/2002/07/owl#onClass> [<http://www.w3.org/2002/07/owl#someValuesFrom> <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/Record> ; 
+                                                                         <http://www.w3.org/2002/07/owl#onProperty> <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/comprises> ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/ThingInRole>.
+amlo-core:Cash a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "un ammotare di denaro in banconote o monete"@it;
+               rdfs:subClassOf <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/AmountOfMoney>.
+amlo-core:Gender a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A person Gender";
+                 rdfs:label "".
+amlo-core:IntangibleAsset a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "qualsiasi bene intangibile che non sia denaro o immobili"@it.
+amlo-core:OriginatorBook a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "identifica un registro  (es. libro mastro) usato  usato per annotare un trasferimento  da parte dell'ordinate"@it;
+                         rdfs:subClassOf amlo-core:Book.
+amlo-core:OriginatorParty a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "identifica  un agente che ordina un trasferimento"@it;
+                          rdfs:subClassOf <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/PartyInRole>.
+amlo-core:Reasoner a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "identifica un un agente che ragionando su dati esistenti inferisce nuove informazioni"@it;
+                   rdfs:subClassOf <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/PartyInRole>.
+amlo-core:RecipientBook a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "identifica un registro  (es. libro mastro) usato  usato per annotare un trasferimento  dala parte del ricevente"@it;
+                        rdfs:subClassOf amlo-core:Book.
+amlo-core:RecipientParty a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "identifica un agente  come destinatario di un trasferimento"@it;
+                         rdfs:subClassOf <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/PartyInRole>.
+amlo-core:RiskEstimator a rdfs:Datatype;
+                        rdfs:comment "un valore probabilistico che esclude certezze"@it;
+                        <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0 ]
+                                                                                                                           [xsd:maxInclusive 1 ]) ; 
+                                                                         <http://www.w3.org/2002/07/owl#onDatatype> xsd:decimal ; 
+                                                                         a rdfs:Datatype].
+amlo-core:RiskEvaluation a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "un opinione espressa su un rischio"@it;
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing> ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> amlo-core:assessedOn ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2004/02/skos/core#Concept> ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> amlo-core:onRiskFactor ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/Opinion>.
+amlo-core:RiskRating a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "una stima di un  fattore di rischio associato a qualcosa"@it;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> amlo-core:hasRiskEstimator ; 
+                                      <http://www.w3.org/2002/07/owl#onDataRange> amlo-core:RiskEstimator ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     amlo-core:RiskEvaluation.
+amlo-core:RiskSizing a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "un dimensionamento del rischio basato su una o più quantità misurabili associato a qualcosa"@it;
+                     rdfs:subClassOf amlo-core:RiskEvaluation.
+amlo-core:SuspectRating a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "rappresenta l'esito di un’attività di investigazione su una operatività inattesa  finalizzata a valutarne il grado di sospetto"@it;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> amlo-core:hasSuspectRatingScore ; 
+                                         <http://www.w3.org/2002/07/owl#onClass> amlo-core:SuspectRatingScore ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/Rating>.
+amlo-core:SuspectRatingScore a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "definisce qualitativamente il grado di sospetto che grava su qualcosa"@it;
+                             rdfs:subClassOf <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/QualitativeRatingScore>.
+amlo-core:Transfer a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "un trasferimento di denaro o di un altro valore che coinvolge un ordinate, un ricevente e eventuali registri su cui è annotato il trasferimento"@it;
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/involves> ; 
+                                    <http://www.w3.org/2002/07/owl#onClass> amlo-core:Book ; 
+                                    <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> amlo-core:transfers ; 
+                                    <http://www.w3.org/2002/07/owl#onClass> [<http://www.w3.org/2002/07/owl#unionOf> (amlo-core:IntangibleAsset
+                                                                                                                      <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/AmountOfMoney>
+                                                                                                                      <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Locations/RealEstate>
+                                                                                                                      <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Good>) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#onProperty> <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/hasPartyInRole> ; 
+                                    <http://www.w3.org/2002/07/owl#onClass> amlo-core:OriginatorParty ; 
+                                    <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#onProperty> <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/hasPartyInRole> ; 
+                                    <http://www.w3.org/2002/07/owl#onClass> amlo-core:RecipientParty ; 
+                                    <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/Occurrence>.
+amlo-core:UnexpectedActivity a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "evidenzia un insieme di movimenti, eventi o azioni non usuali che sono attribuiti ad un agente"@it;
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> amlo-core:Accountable ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/hasPartyInRole> ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/Record>.
+amlo-core:UnexpectedActivityReport a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "un documento che riporta una operatività inattesa da segnalare ad un agente preposto alla sua valutazione"@it;
+                                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> amlo-core:UnexpectedActivity ; 
+                                                    <http://www.w3.org/2002/07/owl#onProperty> <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Reporting/reportsOn> ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                   [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                    <http://www.w3.org/2002/07/owl#onProperty> <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Reporting/isReportedTo> ; 
+                                                    <http://www.w3.org/2002/07/owl#onClass> amlo-core:Analyst ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                   <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/AssessmentReport>.
+amlo-core:assessedOn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "si riferisce all'oggetto di una valutazione"@it;
+                     <http://www.w3.org/2002/07/owl#inverseOf> amlo-core:hasEvaluation.
+amlo-core:detects a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "rileva una operatività inattesa"@it;
+                  rdfs:range amlo-core:UnexpectedActivity;
+                  <http://www.w3.org/2002/07/owl#inverseOf> amlo-core:isDetectedBy.
+amlo-core:female a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   amlo-core:Gender;
+                 rdfs:comment "a female person"@en.
+amlo-core:hasEvaluation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "collega un soggetto ad una valutazione"@it.
+amlo-core:hasGender a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                      <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                    rdfs:domain <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/Person>;
+                    rdfs:range amlo-core:Gender.
+amlo-core:hasRiskEstimator a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:comment "un valore copreso tra 0 e 1 che rappresenta lo stimatore di un rischio"@it;
+                           rdfs:range amlo-core:RiskEstimator.
+amlo-core:hasSizeEstimator a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment "collega una stima quantitativa ad un rischio"@it.
+amlo-core:hasSuspectRatingScore a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:comment "collega un valore qualitativo espresso su un rischio"@it;
+                                rdfs:range amlo-core:SuspectRatingScore;
+                                rdfs:subPropertyOf <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/hasRatingScore>.
+amlo-core:isDetectedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "è rilevata da une evento di ricerca operatività sospetta"@it;
+                       rdfs:domain amlo-core:UnexpectedActivity.
+amlo-core:isRecordedIn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "identifica un libro utilizzato per registrare un trasferimento"@it;
+                       rdfs:domain amlo-core:Transfer.
+amlo-core:male a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 amlo-core:Gender;
+               rdfs:comment "a male person"@en.
+amlo-core:not-enough-data a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                            amlo-core:SuspectRatingScore;
+                          rdfs:comment "valutazione non effettuata per mancanza di dati"@it.
+amlo-core:not-suspicious a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                           amlo-core:SuspectRatingScore;
+                         rdfs:comment "il soggetto annotato non è sospetto"@it.
+amlo-core:onRiskFactor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "collega qualcosa ald un concetto di rischio astratto"@it;
+                       rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>.
+amlo-core:suspect-codes a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Codes/CodeSet>;
+                        rdfs:comment "definisce i possibili gradi di sospetto"@it.
+amlo-core:suspect-rating-scale a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                 <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/RatingScale>;
+                               rdfs:comment "la scala di gradazione  gradazione del sospetto"@it.
+amlo-core:suspicious a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                       amlo-core:SuspectRatingScore;
+                     rdfs:comment "il soggetto annotato è sospetto"@it.
+amlo-core:to-be-ignored a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          amlo-core:SuspectRatingScore;
+                        rdfs:comment "il grado di sospetto non è valutato perchè una direttiva impedisce esplicitamente la valutazione del soggetto"@it.
+amlo-core:transfers a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "trasferisce qualcosa"@it;
+                    rdfs:domain amlo-core:Transfer;
+                    rdfs:range <http://www.w3.org/2002/07/owl#Thing>.
+amlo-core:unexpected a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                       amlo-core:SuspectRatingScore;
+                     rdfs:comment "il soggetto è potenzialmente sospetto a causa della presenza di indici di anomalia o altri elementi di attenzione"@it.
+<http://www.w3.org/2002/07/owl#qualifiedCardinality> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#Concept> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2004/02/skos/core#definition> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/FunctionalEntity> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/ResponsibleParty> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/Bank> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/Account> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/BankAccount> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                                   <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (<https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/Account>
+                                                                                                                                                                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/BankAccountIdentifier> ; 
+                                                                                                                                                                                                    <http://www.w3.org/2002/07/owl#onProperty> <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/Agents/isIdentifiedBy> ; 
+                                                                                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                                                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/Bank> ; 
+                                                                                                                                                                                                    <http://www.w3.org/2002/07/owl#onProperty> <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/hasPartyInRole> ; 
+                                                                                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                                                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/Bank> ; 
+                                                                                                                                                                                                    <http://www.w3.org/2002/07/owl#onProperty> <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isProvidedBy> ; 
+                                                                                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                                                                                    a <http://www.w3.org/2002/07/owl#Class>].
+<https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/BankAccountIdentifier> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/AmountOfMoney> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/Agents/isIdentifiedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/Person> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/AssessmentActivity> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/AssessmentReport> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/Opinion> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Codes/CodeSet> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/Record> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/Record> ; 
+                                                                                               <http://www.w3.org/2002/07/owl#onProperty> <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/comprises> ; 
+                                                                                               a <http://www.w3.org/2002/07/owl#Restriction>].
+<https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/QualitativeRatingScore> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/QuantitativeRatingScore> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/Rating> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/RatingIssuer> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/RatingParty> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/RatingScale> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/hasRatingScore> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Reporting/isReportedTo> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Reporting/reportsOn> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/CombinedDateTime> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/Occurrence> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/PartyInRole> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/hasPartyInRole> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/ThingInRole> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Places/Locations/RealEstate> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Good> a <http://www.w3.org/2002/07/owl#Class>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/comprises> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/hasIdentity> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/involves> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isProvidedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>.

@@ -7,15 +7,6 @@ open type Prefix_ID
 module veo =
     let _namespace_iri = Namespace_Iri veo |> NamespaceIRI
     /// <summary>
-    ///   <para>veo:</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Ontology</para>
-    ///   <para>An ontology for describing vehicles and their emissions.</para>
-    /// </remarks>
-    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#">http://linkeddata.finki.ukim.mk/lod/ontology/veo#</seealso>
-    let _prefix_iri = Prefixed_Name(veo, "") |> PrefixedName
-    /// <summary>
     ///   <para>veo:Train</para>
     /// </summary>
     /// <remarks>
@@ -23,27 +14,6 @@ module veo =
     /// </remarks>
     /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#Train">http://linkeddata.finki.ukim.mk/lod/ontology/veo#Train</seealso>
     let Train = Prefixed_Name(veo, "Train") |> PrefixedName
-
-    /// <summary>
-    ///   <para>veo:emissionsPerPassenger</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    /// </remarks>
-    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#emissionsPerPassenger">http://linkeddata.finki.ukim.mk/lod/ontology/veo#emissionsPerPassenger</seealso>
-    let emissionsPerPassenger =
-        Prefixed_Name(veo, "emissionsPerPassenger") |> PrefixedName
-
-    /// <summary>
-    ///   <para>veo:hasElectricEnergyConsumtion</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>This property represents the electric energy consumption of a vehicle measured in Wh/km.</para>
-    /// </remarks>
-    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasElectricEnergyConsumtion">http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasElectricEnergyConsumtion</seealso>
-    let hasElectricEnergyConsumtion =
-        Prefixed_Name(veo, "hasElectricEnergyConsumtion") |> PrefixedName
 
     /// <summary>
     ///   <para>veo:hasEmissionsReduction</para>
@@ -57,14 +27,27 @@ module veo =
         Prefixed_Name(veo, "hasEmissionsReduction") |> PrefixedName
 
     /// <summary>
-    ///   <para>veo:hasEngineCapacity</para>
+    ///   <para>veo:hasManufacturerHarmonisedName</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:DatatypeProperty</para>
-    ///   <para>This property shows the capacity of the engine of a vehicle measured in cm3</para>
+    ///   <para>This property represents a manufacturer harmonised name.</para>
     /// </remarks>
-    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasEngineCapacity">http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasEngineCapacity</seealso>
-    let hasEngineCapacity = Prefixed_Name(veo, "hasEngineCapacity") |> PrefixedName
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasManufacturerHarmonisedName">http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasManufacturerHarmonisedName</seealso>
+    let hasManufacturerHarmonisedName =
+        Prefixed_Name(veo, "hasManufacturerHarmonisedName") |> PrefixedName
+
+    /// <summary>
+    ///   <para>veo:hasElectricEnergyConsumtion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property represents the electric energy consumption of a vehicle measured in Wh/km.</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasElectricEnergyConsumtion">http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasElectricEnergyConsumtion</seealso>
+    let hasElectricEnergyConsumtion =
+        Prefixed_Name(veo, "hasElectricEnergyConsumtion") |> PrefixedName
+
     /// <summary>
     ///   <para>veo:hasFuelMode</para>
     /// </summary>
@@ -74,6 +57,26 @@ module veo =
     /// </remarks>
     /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasFuelMode">http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasFuelMode</seealso>
     let hasFuelMode = Prefixed_Name(veo, "hasFuelMode") |> PrefixedName
+
+    /// <summary>
+    ///   <para>veo:emissionsPerPassenger</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#emissionsPerPassenger">http://linkeddata.finki.ukim.mk/lod/ontology/veo#emissionsPerPassenger</seealso>
+    let emissionsPerPassenger =
+        Prefixed_Name(veo, "emissionsPerPassenger") |> PrefixedName
+
+    /// <summary>
+    ///   <para>veo:hasEngineCapacity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property shows the capacity of the engine of a vehicle measured in cm3</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasEngineCapacity">http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasEngineCapacity</seealso>
+    let hasEngineCapacity = Prefixed_Name(veo, "hasEngineCapacity") |> PrefixedName
 
     /// <summary>
     ///   <para>veo:hasInnovativeTechnology</para>
@@ -87,28 +90,6 @@ module veo =
         Prefixed_Name(veo, "hasInnovativeTechnology") |> PrefixedName
 
     /// <summary>
-    ///   <para>veo:hasMSRegManufacturerName</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>This property represents a manufacturer name as in the registry of Member States of the European Environment Agency.</para>
-    /// </remarks>
-    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasMSRegManufacturerName">http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasMSRegManufacturerName</seealso>
-    let hasMSRegManufacturerName =
-        Prefixed_Name(veo, "hasMSRegManufacturerName") |> PrefixedName
-
-    /// <summary>
-    ///   <para>veo:hasManufacturerHarmonisedName</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>This property represents a manufacturer harmonised name.</para>
-    /// </remarks>
-    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasManufacturerHarmonisedName">http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasManufacturerHarmonisedName</seealso>
-    let hasManufacturerHarmonisedName =
-        Prefixed_Name(veo, "hasManufacturerHarmonisedName") |> PrefixedName
-
-    /// <summary>
     ///   <para>veo:hasManufacturerPooling</para>
     /// </summary>
     /// <remarks>
@@ -120,14 +101,15 @@ module veo =
         Prefixed_Name(veo, "hasManufacturerPooling") |> PrefixedName
 
     /// <summary>
-    ///   <para>veo:hasOtherAxleWidth</para>
+    ///   <para>veo:hasMSRegManufacturerName</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:DatatypeProperty</para>
-    ///   <para>This property represents the width of the other steering axle of a vehicle measured in mm.</para>
+    ///   <para>This property represents a manufacturer name as in the registry of Member States of the European Environment Agency.</para>
     /// </remarks>
-    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasOtherAxleWidth">http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasOtherAxleWidth</seealso>
-    let hasOtherAxleWidth = Prefixed_Name(veo, "hasOtherAxleWidth") |> PrefixedName
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasMSRegManufacturerName">http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasMSRegManufacturerName</seealso>
+    let hasMSRegManufacturerName =
+        Prefixed_Name(veo, "hasMSRegManufacturerName") |> PrefixedName
 
     /// <summary>
     ///   <para>veo:hasSteeringAxleWidth</para>
@@ -152,6 +134,25 @@ module veo =
         Prefixed_Name(veo, "hasTotalNewRegistrations") |> PrefixedName
 
     /// <summary>
+    ///   <para>veo:hasOtherAxleWidth</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property represents the width of the other steering axle of a vehicle measured in mm.</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasOtherAxleWidth">http://linkeddata.finki.ukim.mk/lod/ontology/veo#hasOtherAxleWidth</seealso>
+    let hasOtherAxleWidth = Prefixed_Name(veo, "hasOtherAxleWidth") |> PrefixedName
+    /// <summary>
+    ///   <para>veo:type</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property represents an internal type of vehicle.</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#type">http://linkeddata.finki.ukim.mk/lod/ontology/veo#type</seealso>
+    let type_ = Prefixed_Name(veo, "type") |> PrefixedName
+
+    /// <summary>
     ///   <para>veo:hasTypeApprovalNumber</para>
     /// </summary>
     /// <remarks>
@@ -162,23 +163,6 @@ module veo =
     let hasTypeApprovalNumber =
         Prefixed_Name(veo, "hasTypeApprovalNumber") |> PrefixedName
 
-    /// <summary>
-    ///   <para>veo:numberOfPassengers</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    /// </remarks>
-    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#numberOfPassengers">http://linkeddata.finki.ukim.mk/lod/ontology/veo#numberOfPassengers</seealso>
-    let numberOfPassengers = Prefixed_Name(veo, "numberOfPassengers") |> PrefixedName
-    /// <summary>
-    ///   <para>veo:type</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>This property represents an internal type of vehicle.</para>
-    /// </remarks>
-    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#type">http://linkeddata.finki.ukim.mk/lod/ontology/veo#type</seealso>
-    let type_ = Prefixed_Name(veo, "type") |> PrefixedName
     /// <summary>
     ///   <para>veo:variant</para>
     /// </summary>
@@ -209,3 +193,20 @@ module veo =
     /// </remarks>
     /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#version">http://linkeddata.finki.ukim.mk/lod/ontology/veo#version</seealso>
     let version = Prefixed_Name(veo, "version") |> PrefixedName
+    /// <summary>
+    ///   <para>veo:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>An ontology for describing vehicles and their emissions.</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#">http://linkeddata.finki.ukim.mk/lod/ontology/veo#</seealso>
+    let _prefix_iri = Prefixed_Name(veo, "") |> PrefixedName
+    /// <summary>
+    ///   <para>veo:numberOfPassengers</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://linkeddata.finki.ukim.mk/lod/ontology/veo#numberOfPassengers">http://linkeddata.finki.ukim.mk/lod/ontology/veo#numberOfPassengers</seealso>
+    let numberOfPassengers = Prefixed_Name(veo, "numberOfPassengers") |> PrefixedName

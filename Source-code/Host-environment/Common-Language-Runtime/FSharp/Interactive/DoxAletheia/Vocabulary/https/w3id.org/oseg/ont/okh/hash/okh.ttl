@@ -1,0 +1,433 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix okh: <https://w3id.org/oseg/ont/okh#>.
+
+<https://w3id.org/oseg/ont/okh> <http://creativecommons.org/ns#license> <https://www.gnu.org/licenses/gpl-3.0.txt>;
+                                <http://purl.org/dc/elements/1.1/creator> "Robin Vobruba <hoijui.quaero@gmail.com>",
+                                                                          "Martin Häuer <martin.haeuer@ose-germany.de>";
+                                <http://purl.org/dc/elements/1.1/issued> "2021-08-24 16:32:33";
+                                <http://purl.org/dc/elements/1.1/modified> "2022-02-22 12:01:28";
+                                <http://purl.org/dc/elements/1.1/publisher> "Robin Vobruba (Open Source Ecology Germany e.V.) <hoijui.quaero@gmail.com>";
+                                <http://purl.org/dc/elements/1.1/source> "https://github.com/OPEN-NEXT/OKH-LOSH/master/OKH-LOSH.ttl";
+                                <http://purl.org/dc/terms/creator> <https://orcid.org/0009-0004-3559-6542>,
+                                                                   <https://orcid.org/0000-0002-1611-7129>;
+                                <http://purl.org/dc/terms/description> "Used for indexing, searching and comparing Open Source Hardware projects"@en;
+                                <http://purl.org/dc/terms/language> <http://id.loc.gov/vocabulary/iso639-1/en>;
+                                <http://purl.org/dc/terms/license> <https://www.gnu.org/licenses/gpl-3.0.txt>;
+                                <http://purl.org/dc/terms/title> "Open Know How (OKH) ontology"@en;
+                                <http://purl.org/vocab/vann/preferredNamespacePrefix> "okh";
+                                <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/oseg/ont/okh#";
+                                <http://schema.org/comment> """Regarding the use of `schema:domainIncludes`
+and `schema:rangeIncludes` in this ontology:
+Looking at the definitions for the RDFS version
+of the two, `rdfs:domain` and `rdfs:range`:
+* https://www.w3.org/TR/rdf-schema/#ch_domain
+* https://www.w3.org/TR/rdf-schema/#ch_range
+and as described in this StackOverflow answer:
+<https://stackoverflow.com/a/74782257/586229>,
+multiple objects for the two RDFS properties mean,
+that *all of them* apply, simultaneously,
+not *one of them*.
+You may think of this as an `AND` coupling.
+We want the *one of them* meaning though (`OR`).
+The `schema:*` properties give us just that."""@en;
+                                <http://spdx.org/rdf/terms#ListedLicense> "GPL-3.0-or-later";
+                                a <http://www.w3.org/2002/07/owl#Ontology>;
+                                <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/oseg/ont/1.1.0/okh>;
+                                <http://www.w3.org/2002/07/owl#versionInfo> "1.1.0".
+okh:AuxiliaryFile a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "auxiliary file (neither source nor export)";
+                  rdfs:subClassOf okh:File.
+okh:BoM a <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:label "Bill of Materials";
+        rdfs:subClassOf okh:File.
+okh:Component a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Either a module (MOSH) or Part (POSH); more component types may be added in the future"@en;
+              rdfs:label "Component"@en.
+okh:ComponentReference <http://creativecommons.org/ns#deprecatedOn> "2023-08-19"^^xsd:date;
+                       a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment """
+    others shall be able to identify/procure this component only by the given reference(s),
+    MOSH → URL to corresponding release
+    POSH → URL to containing folder
+    STD  → standard designation (preferably naming the _latest_ standard)
+    BUY  → unambiguous reference"""@en;
+                       rdfs:label "Component Reference";
+                       rdfs:subClassOf okh:Reference;
+                       <http://www.w3.org/2002/07/owl#deprecated> true;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+okh:ContributionGuide a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:label "Contribution Guide";
+                      rdfs:subClassOf okh:File.
+okh:ExportFile a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "exported source file";
+               rdfs:subClassOf okh:File.
+okh:File a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "A file that forms part of the project, specified/located either by a URL (okh:url) or a repo-/project-relative path (okh:relativePath).";
+         rdfs:label "File".
+okh:FileUrl <http://creativecommons.org/ns#deprecatedOn> "2023-07-11"^^xsd:date;
+            <http://schema.org/supersededBy> okh:File;
+            a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:label "permanent URL to file";
+            rdfs:subClassOf <http://schema.org/URL>,
+                            okh:ComponentReference;
+            <http://www.w3.org/2002/07/owl#deprecated> true;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+okh:Image a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:label "Image";
+          rdfs:subClassOf okh:File.
+okh:ManifestFile a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "file holding the metadata";
+                 rdfs:label "manifest file";
+                 rdfs:subClassOf okh:File.
+okh:ManufacturingInstructions a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:label "Manufacturing Instructions";
+                              rdfs:subClassOf okh:File.
+okh:Mass a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "…of a module or a part"@en;
+         rdfs:label "mass"@en.
+okh:Module a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "Module of Open Source Hardware (MOSH)"@en;
+           rdfs:label "Module"@en;
+           rdfs:subClassOf okh:Component.
+okh:OuterDimensions a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "…of a module or a part"@en;
+                    rdfs:label "outer dimensions"@en.
+okh:Part a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "Piece of Open Source Hardware (POSH)"@en;
+         rdfs:label "Part"@en;
+         rdfs:subClassOf okh:Component.
+okh:Publication a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "_scientific_ (that is: peer reviewed) publication that _contains_ the design files";
+                rdfs:label "Scientific Publication";
+                rdfs:subClassOf <http://ns.nature.com/terms/Publication>.
+okh:Readme a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:label "Readme";
+           rdfs:subClassOf okh:File.
+okh:Reference a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:label "unambiguous reference".
+okh:Software a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Software (including firmware) needed to run & use the OSH";
+             rdfs:label "Software"@en;
+             rdfs:subClassOf okh:Component.
+okh:SourceFile a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "source file";
+               rdfs:subClassOf okh:File.
+okh:Standard a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "official standard used in the _design_ (not e.g. DIN SPEC 3105-1)";
+             rdfs:label "Technical Standard"@en.
+okh:UserManual a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "User Manual";
+               rdfs:subClassOf okh:File.
+okh:WebsiteUrl a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "Website URL";
+               rdfs:subClassOf <http://schema.org/URL>,
+                               okh:Reference.
+okh:alternativeLicense <http://schema.org/domainIncludes> okh:Module;
+                       <http://schema.org/rangeIncludes> okh:File;
+                       a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "URL to legal code of a license without SPDX identifier, hence OSHWA-compliance is to be checked manually";
+                       rdfs:label "non-SPDX license";
+                       <http://www.w3.org/2002/07/owl#cardinality> 1 .
+okh:attestation <http://schema.org/domainIncludes> okh:Module;
+                <http://schema.org/rangeIncludes> okh:WebsiteUrl;
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "permanent URL to evidence of compliance (OSHWA, FSF, DIN SPEC 3105)";
+                rdfs:label "attestation".
+okh:auxiliary <http://schema.org/domainIncludes> okh:Part,
+                                                 okh:Module;
+              <http://schema.org/rangeIncludes> okh:AuxiliaryFile;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "reference to an auxiliary file";
+              rdfs:label "has auxiliary file".
+okh:compliesWith <http://schema.org/domainIncludes> okh:Component;
+                 <http://schema.org/rangeIncludes> okh:Standard;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:label "complies with a technical standard".
+okh:cpcPatentClass <http://schema.org/domainIncludes> okh:Module;
+                   <http://schema.org/rangeIncludes> xsd:string;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "International Patent Classification (IPC)";
+                   rdfs:label "Patent Class";
+                   rdfs:subPropertyOf <http://data.epo.org/linked-data/def/patent/classificationIPCInventive>.
+okh:dataSource <http://schema.org/domainIncludes> okh:Module;
+               a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment "platform, where the crawler found the metadata (e.g. GitHub, Wikifactory)"@en;
+               rdfs:label "Metadata Source";
+               rdfs:subPropertyOf <http://schema.org/url>;
+               <http://www.w3.org/2002/07/owl#cardinality> 1 .
+okh:documentationLanguage <http://schema.org/domainIncludes> okh:Part,
+                                                             okh:Module;
+                          a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:comment """
+   IETF language tag
+   following the BCP 47 standard e.g. en-GB
+   denotes the language of the documentation for the component subject """@en;
+                          rdfs:label "documentation language";
+                          rdfs:subPropertyOf <http://schema.org/inLanguage>;
+                          <http://www.w3.org/2002/07/owl#cardinality> 1 .
+okh:documentationReadinessLevel <http://schema.org/domainIncludes> okh:Module;
+                                <http://schema.org/rangeIncludes> <https://w3id.org/oseg/ont/otrl#ODRL>;
+                                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:comment "…using the ODRL definitions";
+                                rdfs:label "Documentation Readiness Level (DLR)";
+                                <http://www.w3.org/2002/07/owl#cardinality> 1 .
+okh:doi <http://schema.org/domainIncludes> okh:Publication;
+        a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+        rdfs:comment "this publication has a digital object identifier (DOI)"@en;
+        rdfs:label "DOI"@en;
+        rdfs:subPropertyOf <http://ns.nature.com/terms/doi>.
+okh:export <http://schema.org/domainIncludes> okh:Part,
+                                              okh:Module;
+           <http://schema.org/rangeIncludes> okh:ExportFile;
+           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:comment "URL to a (generated) exported source file";
+           rdfs:label "exported source file".
+okh:fileFormat <http://schema.org/domainIncludes> okh:File;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:label "file format";
+               rdfs:subPropertyOf <http://schema.org/encodingFormat>.
+okh:fileUrl <http://creativecommons.org/ns#deprecatedOn> "2023-07-11"^^xsd:date;
+            <http://schema.org/domainIncludes> okh:File;
+            <http://schema.org/supersededBy> okh:url;
+            a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:label "file URL";
+            rdfs:subPropertyOf <http://schema.org/url>;
+            <http://www.w3.org/2002/07/owl#deprecated> true;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+okh:forkOf <http://schema.org/domainIncludes> okh:Part,
+                                              okh:Module;
+           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:label "fork of";
+           rdfs:subPropertyOf <http://schema.org/isBasedOn>;
+           <http://www.w3.org/2002/07/owl#cardinality> 1 .
+okh:function <http://schema.org/domainIncludes> okh:Module;
+             <http://schema.org/rangeIncludes> xsd:string;
+             a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:comment """
+    functional description, e.g. what it actually does, what problem it solves, for whom, under which conditions etc.
+    so if you wish that someone finds & uses your okh specifically e.g. for COVID-19-crisis response, include relevant keywords in this field
+    optional: description of input, output and interfaces"""@en;
+             rdfs:label "functional description";
+             rdfs:subPropertyOf <http://purl.obolibrary.org/obo/BFO_0000016>;
+             <http://www.w3.org/2002/07/owl#cardinality> 1 .
+okh:functionalMetadata <http://schema.org/domainIncludes> okh:Module;
+                       <http://schema.org/rangeIncludes> <http://schema.org/StructuredValue>;
+                       a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:comment "Metadata addressing functionality, such as dimensions, material, weight, RPM,… (not standardized)";
+                       rdfs:label "functionality metadata";
+                       rdfs:subPropertyOf <http://schema.org/value>.
+okh:hasBoM <http://schema.org/domainIncludes> okh:Module;
+           <http://schema.org/rangeIncludes> okh:BoM;
+           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:comment "links to the corresponding Bill of Materials";
+           rdfs:label "has Bill of Materials".
+okh:hasComponent <http://schema.org/domainIncludes> okh:Module;
+                 <http://schema.org/rangeIncludes> okh:WebsiteUrl,
+                                                   okh:Module,
+                                                   okh:Part;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Links to sub-components of the Module. In the case of that sub-component being an external Module, it has to refer to a snapshot of the RDF object representing that OKH Module. Each sub-component should also appear in the BoM.";
+                 rdfs:label "has Component".
+okh:hasContributionGuide <http://schema.org/domainIncludes> okh:Module;
+                         <http://schema.org/rangeIncludes> okh:ContributionGuide;
+                         a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "links to the corresponding Contribution Guide";
+                         rdfs:label "has Contribution Guide".
+okh:hasImage <http://schema.org/domainIncludes> okh:Component;
+             <http://schema.org/rangeIncludes> okh:Image;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "links to the corresponding Image";
+             rdfs:label "has image";
+             rdfs:subPropertyOf <http://schema.org/image>.
+okh:hasManifestFile <http://schema.org/domainIncludes> okh:Part,
+                                                       okh:Module;
+                    <http://schema.org/rangeIncludes> okh:ManifestFile;
+                    a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:label "has manifest file".
+okh:hasManufacturingInstructions <http://schema.org/domainIncludes> okh:Part,
+                                                                    okh:Module;
+                                 <http://schema.org/rangeIncludes> okh:ManufacturingInstructions;
+                                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:label "has Manufacturing Instructions".
+okh:hasMass <http://schema.org/rangeIncludes> okh:Mass;
+            a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:label "mass of the component";
+            rdfs:subPropertyOf okh:productionMetadata.
+okh:hasOuterDimensions <http://schema.org/rangeIncludes> okh:OuterDimensions;
+                       a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Primitive_Solids";
+                       rdfs:label "outer dimensions using OpenSCAD primitives";
+                       rdfs:subPropertyOf okh:productionMetadata.
+okh:hasPublication <http://schema.org/domainIncludes> okh:Module;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "design files of this OSH modules have been peer reviewed in a scientific publication";
+                   rdfs:label "has Publication";
+                   rdfs:subPropertyOf <http://ns.nature.com/terms/hasPublication>.
+okh:hasReadme <http://schema.org/domainIncludes> okh:Module;
+              <http://schema.org/rangeIncludes> okh:Readme;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "links to the corresponding Readme";
+              rdfs:label "has Readme".
+okh:hasSoftware <http://schema.org/domainIncludes> okh:Module;
+                <http://schema.org/rangeIncludes> okh:Software;
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:label "has Software".
+okh:hasUserManual <http://schema.org/domainIncludes> okh:Module;
+                  <http://schema.org/rangeIncludes> okh:UserManual;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:label "has User Manual".
+okh:installationGuide <http://schema.org/domainIncludes> okh:Software;
+                      a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:label "Installation Guide".
+okh:licensor <http://schema.org/domainIncludes> okh:Module;
+             <http://schema.org/rangeIncludes> <http://schema.org/Person>,
+                                               <http://schema.org/Organization>;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "organization/individual behind the hardware design (holder of intellectual property)";
+             rdfs:label "licensor";
+             rdfs:subPropertyOf <http://schema.org/copyrightHolder>;
+             <http://www.w3.org/2002/07/owl#cardinality> 1 .
+okh:manufacturingProcess a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:label "manufacturing process";
+                         rdfs:subPropertyOf okh:productionMetadata.
+okh:material a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:label "material";
+             rdfs:subPropertyOf okh:productionMetadata.
+okh:okhv <http://schema.org/domainIncludes> okh:ManifestFile;
+         a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:comment "version of OKH specification the metadata is following (different version → different data fields)";
+         rdfs:label "OKH version";
+         rdfs:subPropertyOf <http://schema.org/version>;
+         <http://www.w3.org/2002/07/owl#cardinality> 1 .
+okh:openSCAD <http://schema.org/domainIncludes> okh:OuterDimensions;
+             <http://schema.org/rangeIncludes> xsd:string;
+             a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:label "OpenSCAD code defining a shape".
+okh:openScad <http://creativecommons.org/ns#deprecatedOn> "2023-07-06"^^xsd:date;
+             <http://schema.org/supersededBy> okh:openSCAD;
+             <http://www.w3.org/2002/07/owl#deprecated> true;
+             <http://www.w3.org/2002/07/owl#sameAs> okh:openSCAD;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+okh:organization <http://schema.org/domainIncludes> okh:Module;
+                 <http://schema.org/rangeIncludes> <http://schema.org/Organization>;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "organization representing (most) contributors of this project";
+                 rdfs:label "organization".
+okh:permaURL <http://creativecommons.org/ns#deprecatedOn> "2023-07-11"^^xsd:date;
+             <http://schema.org/domainIncludes> okh:File;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:label "Permanent file URL - It was not 'permanent', but rather 'frozen in time', and it was alsoThis was used in the karwler, but badly. Things simply should not be done that way, but rather with a separate manifest file, where either everything is frozen, or nothing is, and the manifest file (internally) itsself being marked accordingly.";
+             <http://www.w3.org/2002/07/owl#deprecated> true;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+okh:productionMetadata <http://schema.org/domainIncludes> okh:Part,
+                                                          okh:Module;
+                       a rdf:Property;
+                       rdfs:comment "production-relevant metadata, such as material, manufacturing technology, outer dimensions, smallest tolerance, finest surface roughness";
+                       rdfs:label "production metadata";
+                       rdfs:subPropertyOf <http://schema.org/value>.
+okh:relatedTsdc <http://creativecommons.org/ns#deprecatedOn> "2023-07-10"^^xsd:date;
+                <http://schema.org/supersededBy> okh:tsdc;
+                <http://www.w3.org/2002/07/owl#deprecated> true;
+                <http://www.w3.org/2002/07/owl#sameAs> okh:tsdc;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+okh:relativePath <http://schema.org/domainIncludes> okh:File;
+                 <http://schema.org/rangeIncludes> xsd:string;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:label "Project-/Repo-relative file path, directly starting with the first path element, *NOT* with '/' or './'";
+                 rdfs:subPropertyOf <http://schema.org/url>.
+okh:release <http://schema.org/domainIncludes> okh:Software,
+                                               okh:Module;
+            a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "URL to release";
+            rdfs:label "release".
+okh:repo <http://schema.org/domainIncludes> okh:Module;
+         <http://schema.org/rangeIncludes> okh:WebsiteUrl;
+         a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+         rdfs:comment """
+    URL to the place where development happens (typically the repository)\" ;
+    following this link people shall be able to contribute to the development
+    (reporting issues, suggesting changes, connecting to the team etc.)\" """@en;
+         rdfs:label "repository";
+         rdfs:subPropertyOf <http://schema.org/codeRepository>;
+         <http://www.w3.org/2002/07/owl#cardinality> 1 .
+okh:repoHost <http://schema.org/domainIncludes> okh:Module;
+             a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:comment "platform where the OSH documentation is located (e.g. GitLab, Wikifactory or any self-hosted website or wiki)"@en;
+             rdfs:label "Repository Host";
+             rdfs:subPropertyOf <http://schema.org/url>;
+             <http://www.w3.org/2002/07/owl#cardinality> 1 .
+okh:repoSnapshot <http://schema.org/domainIncludes> okh:Module;
+                 <http://schema.org/rangeIncludes> okh:WebsiteUrl;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Repoistory snapshot (=specific version) URL";
+                 rdfs:label "respository snapshot";
+                 rdfs:subPropertyOf okh:repo;
+                 <http://www.w3.org/2002/07/owl#cardinality> 1 .
+okh:smallestToleranceClass <http://schema.org/domainIncludes> okh:Part;
+                           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:label "smallest tolerance class (following ISO 286)";
+                           rdfs:subPropertyOf okh:productionMetadata.
+okh:source <http://schema.org/domainIncludes> okh:Part,
+                                              okh:Module;
+           <http://schema.org/rangeIncludes> okh:SourceFile;
+           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:comment "relative link to a source file";
+           rdfs:label "source file".
+okh:spdxLicense <http://schema.org/domainIncludes> okh:Module;
+                <http://schema.org/rangeIncludes> <http://spdx.org/rdf/terms#ListedLicense>;
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "view complete list under https://spdx.org/licenses/";
+                rdfs:label "SPDX license identifier";
+                <http://www.w3.org/2002/07/owl#cardinality> 1 .
+okh:standardID <http://schema.org/domainIncludes> okh:Standard;
+               <http://schema.org/rangeIncludes> xsd:string;
+               a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:label "Document identifier for the technical standard".
+okh:technologyReadinessLevel <http://schema.org/domainIncludes> okh:Module;
+                             <http://schema.org/rangeIncludes> <https://w3id.org/oseg/ont/otrl#OTRL>;
+                             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:comment "…using the OTRL definitions";
+                             rdfs:label "Technology Readiness Level (TRL)";
+                             <http://www.w3.org/2002/07/owl#cardinality> 1 .
+okh:timestamp <http://schema.org/domainIncludes> okh:Module;
+              <http://schema.org/rangeIncludes> xsd:dateTimeStamp;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "following ISO 8601; see: <https://www.w3.org/TR/xmlschema11-2/#dateTimeStamp>";
+              rdfs:label "timestamp".
+okh:tsdc <http://schema.org/domainIncludes> okh:Component;
+         <http://schema.org/rangeIncludes> <https://w3id.org/oseg/ont/tsdc/core#OHTsDC>;
+         a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+         rdfs:comment "Applicable Technology-specific Documentation Criteria, according to DIN SPEC 3105-1, e.g. `tsdc:3DP`";
+         rdfs:label "TsDC".
+okh:unit <http://schema.org/domainIncludes> okh:OuterDimensions,
+                                            okh:Mass;
+         a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:comment "mm, cm, m, g, kg";
+         rdfs:label "unit".
+okh:uploadMethod <http://schema.org/domainIncludes> okh:Component;
+                 <http://schema.org/rangeIncludes> xsd:string;
+                 a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:comment "e.g. auto (fully integrated platforms) or manifest file (for connected platforms)"@en;
+                 rdfs:label "Upload Method";
+                 <http://www.w3.org/2002/07/owl#cardinality> 1 .
+okh:url <http://schema.org/domainIncludes> okh:File;
+        a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+        rdfs:comment "Global file locator, using either the HTTP or the HTTPS protocol."@en;
+        rdfs:label "file URL"@en;
+        rdfs:subPropertyOf <http://schema.org/url>.
+okh:value <http://schema.org/domainIncludes> okh:Mass;
+          a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:label "value".
+okh:version <http://schema.org/domainIncludes> okh:Module;
+            a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "version of this Component, preferably in the semantic versioning scheme (semver.org)";
+            rdfs:label "version";
+            rdfs:subPropertyOf <http://schema.org/version>;
+            <http://www.w3.org/2002/07/owl#cardinality> 1 .
+okh:versionOf <http://schema.org/domainIncludes> okh:Module;
+              <http://schema.org/rangeIncludes> okh:Module;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "connects specific versions of Modules with their versionless superclass";
+              rdfs:label "version of".

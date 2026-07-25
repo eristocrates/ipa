@@ -1,0 +1,278 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix drm: <http://vocab.data.gov/def/drm#>.
+
+<http://vocab.data.gov/def/drm> <http://purl.org/dc/elements/1.1/creator> drm:;
+                                <http://purl.org/dc/elements/1.1/description> "A metamodel for government data";
+                                <http://purl.org/dc/elements/1.1/modified> "2014-11-22"^^xsd:date;
+                                <http://purl.org/dc/elements/1.1/title> "Data Reference Model";
+                                <http://purl.org/vocab/vann/preferredNamespacePrefix> "drm";
+                                <http://purl.org/vocab/vann/preferredNamespaceUri> "http://vocab.data.gov/def/drm#";
+                                a <http://www.w3.org/2002/07/owl#Ontology>;
+                                <http://xmlns.com/foaf/0.1/page> <http://vocab.data.gov/def/drm.html>.
+drm: a <http://xmlns.com/foaf/0.1/Person>.
+drm:Attribute a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Example: The “SSN” Attribute of a “Person” Entity may have a Data Type of “string” (if hyphens are included with the SSN) or “integer” (if hyphens are not included).";
+              rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+              rdfs:label "Attribute";
+              rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+drm:Consumer a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "An entity (person or organization) that consumes data that is supplied by a Supplier.";
+             rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+             rdfs:label "Consumer".
+drm:DataAccess a rdfs:Class,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Requests for data services, such as a query of a Data Asset.  These requests are supported by Data Access Services";
+               rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+               rdfs:label "Data access";
+               rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+drm:DataAsset a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "The term “data asset” is synonymous with “data source”";
+              rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+              rdfs:label "Data asset".
+drm:DataSchema a rdfs:Class,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A representation of metadata, often in the form of data artifacts such as logical data models or conceptual data models. The Data Schema concept group is comprised of those concepts pertaining to the representation of structured data. A Data Schema provides a means to provision data sharing services that is independent of the values of the data in the data resource that it describes.";
+               rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+               rdfs:label "Data schema";
+               rdfs:subClassOf drm:StructuredDataResource.
+drm:DataSteward a rdfs:Class,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A person responsible for managing a Data Asset.";
+                rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                rdfs:label "Data steward";
+                rdfs:subClassOf drm:Person.
+drm:DataType a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment """A constraint on the type of data that an instance of an Attribute may hold (e.g. \"string\" or \"integer\").""";
+             rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+             rdfs:label "Data type";
+             rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+drm:DigitalDataResource a rdfs:Class,
+                          <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "A digital container of information, typically known as a file. A Digital Data Resource may be one of three specific types of data resources, each corresponding to one of the three types of data described earlier, and each described below (see “Structured Data Resource”, “Semi-Structured Data Resource”, and “Unstructured Data Resource”). It will be a container for the metadata about the data resource.";
+                        rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                        rdfs:label "Digital data resource".
+drm:Document a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "While a Document can contain structured data, it normally has explanatory material included, which would cause it to therefore be considered semi-structured.  It is for this reason that there is no “contains” relationship from Document to Structured Data Resource. It is very important to separate Documents from Structured Data Resources because they are processed very differently. The difference between a Document and a Digital Data Resource, therefore, is that a Digital Data Resource can contained structured data.";
+             rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+             rdfs:label "Document";
+             rdfs:subClassOf drm:DigitalDataResource.
+drm:Entity a rdfs:Class,
+             <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "An abstraction for a person, place, object, event, or concept described (or characterized) by common Attributes. For example, “Person” and “Agency” are Entities. An instance of an Entity represents one particular occurrence of the Entity, such as a specific person or a specific agency.";
+           rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+           rdfs:label "Entity";
+           rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+drm:ExchangePackage a rdfs:Class,
+                      <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "A description of a specific recurring data exchange between a Supplier and a Consumer. An Exchange Package contains information (metadata) relating to the exchange (such as Supplier ID, Consumer ID, validity period for data, etc.), as well as a reference to the Payload (message content) for the exchange. An Exchange Package can also be used to define the result format for a query that is accepted and processed by a Query Point in a data sharing scenario.";
+                    rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                    rdfs:label "Exchange package";
+                    rdfs:subClassOf drm:StructuredDataResource.
+drm:ExternalDataSchema a rdfs:Class,
+                         <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "This is a schema not described using DRM built-in concepts, but just pointed to. For example, XML Schema file";
+                       rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                       rdfs:label "External data schema";
+                       rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+drm:InternalDataSchema a rdfs:Class,
+                         <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "This is the data schema described using DRM built-in concepts";
+                       rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                       rdfs:label "Internal data schema";
+                       rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+drm:PayloadDefinition a rdfs:Class,
+                        <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Example: A specific message set expressed as an XML schema or an EDI transaction set that contains information about a “Person” entity.";
+                      rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                      rdfs:label "Payload definition";
+                      rdfs:subClassOf drm:StructuredDataResource.
+drm:Person a rdfs:Class,
+             <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+           rdfs:label "Person".
+drm:QueryPoint a rdfs:Class,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "An endpoint that provides an interface for accessing and querying a Data Asset. A concrete representation of a Query Point may be a specific URL at which a query Web Service may be invoked.";
+               rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+               rdfs:label "Query point";
+               rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+drm:Relationship a rdfs:Class,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Describes the relationship between two Entities.";
+                 rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                 rdfs:label "Relationship";
+                 rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+drm:SemistructuredDataResource a rdfs:Class,
+                                 <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "A Digital Data Resource containing semi-structured data. This will generally consist in part of structured data and in part of unstructured data.";
+                               rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                               rdfs:label "Semistructured data resource";
+                               rdfs:subClassOf drm:Document.
+drm:Stewardship a rdfs:Class,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "The concept of managing a data resource";
+                rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                rdfs:label "Stewardship";
+                rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+drm:StructuredDataResource a rdfs:Class,
+                             <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "A Digital Data Resource containing structured data. This data can be accessed in a uniform manner, independent of data values, once the Data Schema is known.";
+                           rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                           rdfs:label "Structured data resource";
+                           rdfs:subClassOf drm:DigitalDataResource.
+drm:Supplier a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "An entity (person or organization) that supplies data to a Consumer.";
+             rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+             rdfs:label "Supplier".
+drm:Taxonomy a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A collection of controlled vocabulary terms organized into a hierarchical structure. Taxonomies provide a means for categorizing or classifying information within a reasonably well-defined associative structure, in which each term in a Taxonomy is in one or more parent/child (broader/narrower) relationships to other terms in the Taxonomy.";
+             rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+             rdfs:label "Taxonomy";
+             rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+drm:Topic a rdfs:Class,
+            <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "A category within a Taxonomy. A Topic is the central concept for applying context to data. For example, an agency may have a Taxonomy that represents their organizational structure. In such a Taxonomy, each role in the organizational structure (e.g. CIO) represents a Topic. Topic is often synonymous with “node”.";
+          rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+          rdfs:label "Topic";
+          rdfs:subClassOf drm:Entity.
+drm:UnstructuredDataResource a rdfs:Class,
+                               <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "A Digital Data Resource containing unstructured data. Unstructured data is collection of data values that are likely to be processed only by specialized application programs.";
+                             rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                             rdfs:label "Unstructured data resource";
+                             rdfs:subClassOf drm:Document.
+drm:accesses a rdf:Property;
+             rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+             rdfs:label "accesses".
+drm:acronym a rdf:Property;
+            rdfs:comment "Reference model acronym.";
+            rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+            rdfs:label "acronym";
+            rdfs:subPropertyOf <http://vocab.data.gov/def/fea#mnemonic>.
+drm:categorizedBy a rdf:Property;
+                  rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                  rdfs:label "categorized by".
+drm:categorizes a rdf:Property;
+                rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                rdfs:label "categorizes".
+drm:classification a rdf:Property;
+                   rdfs:comment "The security classification for an Exchange Package.";
+                   rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                   rdfs:label "classification".
+drm:constrainedBy a rdf:Property;
+                  rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                  rdfs:label "constrained by".
+drm:contains a rdf:Property;
+             rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+             rdfs:label "contains".
+drm:defines a rdf:Property;
+            rdfs:domain drm:DataSchema;
+            rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+            rdfs:label "defines";
+            rdfs:range drm:StructuredDataResource.
+drm:destination a rdf:Property;
+                rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                rdfs:label "destination";
+                rdfs:subPropertyOf drm:relates.
+drm:disseminatedTo a rdf:Property;
+                   rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                   rdfs:label "disseminated to".
+drm:employeeID a rdf:Property;
+               rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+               rdfs:label "employee iD".
+drm:frequency a rdf:Property;
+              rdfs:comment "The frequency at which the exchange occurs.";
+              rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+              rdfs:label "frequency".
+drm:geospatialEnabled a rdf:Property,
+                        <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "Designates whether or not the Data Asset supports or provides Geospatial data.";
+                      rdfs:domain drm:DataAsset;
+                      rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                      rdfs:label "geospatial enabled";
+                      rdfs:range xsd:boolean.
+drm:hasSchemaElement a rdf:Property;
+                     rdfs:comment "This relationship is not explicitly stated in the DRM document. It has been created because there was a need to connect the schema with the entities, relationships, etc.";
+                     rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                     rdfs:label "has schema element".
+drm:hasStewardship a rdf:Property;
+                   rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                   rdfs:label "has stewardship".
+drm:identifier a rdf:Property;
+               rdfs:comment "The “Identifier” attribute is described at an abstract level in order to be consistent with the abstract nature of the reference model. Therefore, there are no references to aspects such as identifier uniqueness, representation format, or similar. Implementations based on the DRM will introduce such aspects as needed according to their requirements.";
+               rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+               rdfs:label "identifier".
+drm:initialDate a rdf:Property,
+                  <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "The date that the Data Steward became associated with the Data Asset.";
+                rdfs:domain drm:DataSteward;
+                rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                rdfs:label "initial date";
+                rdfs:range xsd:date.
+drm:isElementOf a rdf:Property;
+                rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                rdfs:label "is element of".
+drm:locationPointer a rdf:Property;
+                    rdfs:comment "This is a link to location of a digital resource";
+                    rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                    rdfs:label "location pointer".
+drm:managedBy a rdf:Property;
+              rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+              rdfs:label "managed by".
+drm:manages a rdf:Property;
+            rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+            rdfs:label "manages".
+drm:name a rdf:Property;
+         rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+         rdfs:label "name".
+drm:origin a rdf:Property;
+           rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+           rdfs:label "origin";
+           rdfs:subPropertyOf drm:relates.
+drm:participatesIn a rdf:Property;
+                   rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                   rdfs:label "participates in".
+drm:producedBy a rdf:Property;
+               rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+               rdfs:label "produced by".
+drm:produces a rdf:Property;
+             rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+             rdfs:label "produces".
+drm:providesManagementContext a rdf:Property;
+                              rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                              rdfs:label "provides management context".
+drm:queries a rdf:Property;
+            rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+            rdfs:label "queries".
+drm:refersTo a rdf:Property;
+             rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+             rdfs:label "refers to".
+drm:refersToEntity a rdf:Property;
+                   rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                   rdfs:label "refers to entity";
+                   rdfs:subPropertyOf drm:refersTo.
+drm:refersToPayload a rdf:Property;
+                    rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                    rdfs:label "refers to payload";
+                    rdfs:subPropertyOf drm:refersTo.
+drm:relates a rdf:Property;
+            rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+            rdfs:label "relates".
+drm:representedAs a rdf:Property;
+                  rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                  rdfs:label "represented as".
+drm:returnsResultSetSpecifiedIn a rdf:Property;
+                                rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+                                rdfs:label "returns result set specified in".
+drm:worksFor a rdf:Property;
+             rdfs:isDefinedBy <http://vocab.data.gov/def/drm>;
+             rdfs:label "works for".

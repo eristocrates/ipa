@@ -1,0 +1,389 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix inno: <http://purl.org/innovation/ns#>.
+
+<http://purl.org/dc/elements/1.1/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/rights> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/innovation/ns> <http://purl.org/dc/elements/1.1/creator> "William Greenly, mailto:admin@lexicater.co.uk"@en;
+                                <http://purl.org/dc/elements/1.1/modified> "2011-05-08"@en;
+                                <http://purl.org/dc/elements/1.1/rights> "The Ontology for Innovation is available under the Creative Commons Attribution 3.0 Unported license; see http://creativecommons.org/licenses/by/3.0/. In a nutshell, you are free to copy, distribute and transmit the work; to remix/adapt the work (e.g. to import the ontology and create specializations of its elements), as long as you attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work). This copyright applies to the specification and accompanying documentation in RDF. Regarding underlying technology, this ontology uses W3C's RDF technology, an open Web standard that can be freely used by anyone."@en;
+                                <http://purl.org/dc/elements/1.1/title> "Ontology for Innovation"@en;
+                                a <http://www.w3.org/2002/07/owl#Ontology>;
+                                rdfs:comment "The exact definition of innovation is debatable both in the academic and pratical sense. Neither an art or a science, its core function is to meet the wants and needs of others. It should be seen as separate but invaluable to enterprise, being concerned more with the application rather than the capitalisation of an idea."@en;
+                                <http://www.w3.org/2002/07/owl#versionInfo> "Version 0.1, 10 April 2011"@en.
+inno:Benefit a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A benefit to something or someone."@en;
+             rdfs:label "Benefit"@en;
+             rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+             <http://www.w3.org/2002/07/owl#disjointWith> inno:Symptom,
+                                                          inno:Usage,
+                                                          inno:Innovation,
+                                                          inno:Problem,
+                                                          inno:Embodiment,
+                                                          inno:Improvement,
+                                                          inno:DevelopmentStage,
+                                                          inno:Need.
+inno:DevelopmentStage a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment """A stage of development. An example set of development stages, but equally those used to describe software lifecylces, music production lifecylces or anything creative can be used.
+
+e.g
+
+Define a need, 
+Design a solution, 
+Develop the opportunity, 
+Demonstrate the benefits, 
+Distribute the product.
+
+(taken from the 5 D's defined by the National Innovation Centre, 2011)"""@en;
+                      rdfs:label "DevelopmentStage"@en;
+                      rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                      <http://www.w3.org/2002/07/owl#disjointWith> inno:DevelopmentStage,
+                                                                   inno:Embodiment,
+                                                                   inno:Symptom,
+                                                                   inno:Innovation,
+                                                                   inno:Need,
+                                                                   inno:Problem,
+                                                                   inno:Benefit,
+                                                                   inno:Usage,
+                                                                   inno:Improvement.
+inno:Embodiment a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment """The physical or tangible manfestiation of some idea, invention or innovation.
+A device, process, service, or product that emobodies some idea, invention or innovation.
+
+e.g The Firefox web browser is an embodiment of the innovation HTTP
+e.g Amoxicillin is an embodiment of the innovation Anibiotic"""@en;
+                rdfs:label "Embodiment"@en;
+                <http://www.w3.org/2002/07/owl#disjointWith> inno:Problem,
+                                                             inno:Innovation,
+                                                             inno:Need,
+                                                             inno:DevelopmentStage,
+                                                             inno:Symptom,
+                                                             inno:Benefit,
+                                                             inno:Usage,
+                                                             inno:Improvement.
+inno:Improvement a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment """The class of things that are improvements to something i.e making something better than it was.
+
+Specific improvements include those that provide improved efficiency, effectiveness, value or quality."""@en;
+                 rdfs:label "Improvement"@en;
+                 <http://www.w3.org/2002/07/owl#disjointWith> inno:DevelopmentStage,
+                                                              inno:Symptom,
+                                                              inno:Need,
+                                                              inno:Problem,
+                                                              inno:Embodiment,
+                                                              inno:Usage,
+                                                              inno:Benefit,
+                                                              inno:Innovation.
+inno:Innovation a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "The innovation is a conceptual entity, concerned with the idea. Its application comes in the form of benefits and improvements and the things that embody it."@en;
+                rdfs:label "Innovation"@en;
+                <http://www.w3.org/2002/07/owl#disjointWith> inno:Improvement,
+                                                             inno:Benefit,
+                                                             inno:Usage,
+                                                             inno:DevelopmentStage,
+                                                             inno:Embodiment,
+                                                             inno:Symptom,
+                                                             inno:Need,
+                                                             inno:Problem.
+inno:Innovator a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A person, groups or organisation that can think out of the box, show great expertise or most importantly can find solutions to problems and meet the wants and needs of others."@en;
+               rdfs:label "Innovator"@en;
+               rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent>.
+inno:Need a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "A need of a particular group or indivual of or for something that is lacking or requires improvement or problem solving."@en;
+          rdfs:label "Need"@en;
+          <http://www.w3.org/2002/07/owl#disjointWith> inno:Problem,
+                                                       inno:Embodiment,
+                                                       inno:Improvement,
+                                                       inno:Usage,
+                                                       inno:DevelopmentStage,
+                                                       inno:Benefit,
+                                                       inno:Symptom,
+                                                       inno:Innovation.
+inno:Problem a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "The manifestation of a need. This is represented by a set of symptoms (general phenoma) affecting groups of things."@en;
+             rdfs:label "Problem"@en;
+             <http://www.w3.org/2002/07/owl#disjointWith> inno:Need,
+                                                          inno:Benefit,
+                                                          inno:DevelopmentStage,
+                                                          inno:Innovation,
+                                                          inno:Usage,
+                                                          inno:Improvement,
+                                                          inno:Symptom,
+                                                          inno:Embodiment.
+inno:Symptom a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A symptom of a problem. This class is intended to comprise of SKOS concepts belonging to different schemes."@en;
+             rdfs:label "Symptom"@en;
+             rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+             <http://www.w3.org/2002/07/owl#disjointWith> inno:Embodiment,
+                                                          inno:DevelopmentStage,
+                                                          inno:Improvement,
+                                                          inno:Problem,
+                                                          inno:Need,
+                                                          inno:Innovation,
+                                                          inno:Usage,
+                                                          inno:Benefit.
+inno:Usage a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment """The application or usage of a device or process.
+
+Typically this is described using the properties usedBy, usedOn and usedWith"""@en;
+           rdfs:label "Usage"@en;
+           <http://www.w3.org/2002/07/owl#disjointWith> inno:Symptom,
+                                                        inno:Problem,
+                                                        inno:Embodiment,
+                                                        inno:Innovation,
+                                                        inno:Improvement,
+                                                        inno:Need,
+                                                        inno:DevelopmentStage,
+                                                        inno:Benefit.
+inno:affects a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "The group of things affected by a problem. Again it is recommended that a SKOS model is used for such instances."@en;
+             rdfs:domain inno:Problem;
+             rdfs:label "affects"@en.
+inno:buildsOn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "It is common for one innovation to build upon others. It doesn't neccessarily denote or infer that the subject has improvements on the object or is enabled by the object."@en;
+              rdfs:domain inno:Innovation;
+              rdfs:label "buildsOn"@en;
+              rdfs:range inno:Innovation.
+inno:d1-defining-the-need a <http://www.w3.org/2004/02/skos/core#Concept>,
+                            <http://www.w3.org/2002/07/owl#Thing>,
+                            inno:DevelopmentStage;
+                          rdfs:comment "A solution will have the best the chance of success if there is a clear and accurate understanding of the users needs."@en;
+                          rdfs:label "d1-defining-the-need"@en;
+                          <http://www.w3.org/2004/02/skos/core#inScheme> inno:stages-of-innovation;
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Defining the need"@en.
+inno:d2-designing-the-solution a <http://www.w3.org/2004/02/skos/core#Concept>,
+                                 inno:DevelopmentStage,
+                                 <http://www.w3.org/2002/07/owl#Thing>;
+                               rdfs:comment "A well designed innovation is more likely to succeed. Looking at your users needs, work out how your innovatiion can meet them. Indentify the benefits, considering the users or recipients that will gain from your innovation. Outline final designs for your innovation and how they will meet the users’ needs. Decide when to stop designing and, if appropriate, start developing the idea."@en;
+                               rdfs:label "d2-designing-the-solution"@en;
+                               <http://www.w3.org/2004/02/skos/core#inScheme> inno:stages-of-innovation;
+                               <http://www.w3.org/2004/02/skos/core#prefLabel> "Designing the solution"@en.
+inno:d3-developing-the-opportunity a <http://www.w3.org/2004/02/skos/core#Concept>,
+                                     <http://www.w3.org/2002/07/owl#Thing>,
+                                     inno:DevelopmentStage;
+                                   rdfs:comment "Develop a prototype allowing for some ‘user preference’ analysis which can be fed back to the designers."@en;
+                                   rdfs:label "d3-developing-the-opportunity"@en;
+                                   <http://www.w3.org/2004/02/skos/core#inScheme> inno:stages-of-innovation;
+                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Developing the opportunity"@en.
+inno:d4-demonstrating-the-benefits a <http://www.w3.org/2004/02/skos/core#Concept>,
+                                     inno:DevelopmentStage,
+                                     <http://www.w3.org/2002/07/owl#Thing>;
+                                   rdfs:comment "Test and demonstrate both the functional and non-functional qualities of the solution, emphasising the beneftis to the user."@en;
+                                   rdfs:label "d4-demonstrating-the-benefits"@en;
+                                   <http://www.w3.org/2004/02/skos/core#inScheme> inno:stages-of-innovation;
+                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Demonstrating the benefits"@en.
+inno:d5-distributing-the-product a <http://www.w3.org/2004/02/skos/core#Concept>,
+                                   <http://www.w3.org/2002/07/owl#Thing>,
+                                   inno:DevelopmentStage;
+                                 rdfs:comment "Execute marketing plan and conducting key post-launch checks."@en;
+                                 rdfs:label "d5-distributing-the-product"@en;
+                                 <http://www.w3.org/2004/02/skos/core#inScheme> inno:stages-of-innovation;
+                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Distributing the product"@en.
+inno:developedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment """Relates an innovation to the innovator or innovators who developed it.
+
+Innovators are generally groups, organisations or people"""@en;
+                 rdfs:domain inno:Innovation;
+                 rdfs:label "developedBy"@en;
+                 rdfs:range inno:Innovator;
+                 rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/maker>.
+inno:economic-benefits a <http://www.w3.org/2004/02/skos/core#ConceptScheme>,
+                         <http://www.w3.org/2002/07/owl#Thing>;
+                       rdfs:comment "Those benefits that are of an economic nature."@en;
+                       rdfs:label "economic-benefits"@en;
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Economic benefits"@en.
+inno:economic-symptoms a <http://www.w3.org/2002/07/owl#Thing>,
+                         <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                       rdfs:comment "Those symptons that are of an economic nature."@en;
+                       rdfs:label "economic-symptoms"@en;
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Economic symptoms"@en.
+inno:embodiedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment """Relates an innovation to a device, process, product, or service (make, model or brand) that embodies the innovation
+
+e.g The innovation HTTP is emobdied by the browser Firefox
+e.g The innovation anibiotic is embodied by Amoxicillin"""@en;
+                rdfs:domain inno:Innovation;
+                rdfs:label "embodiedBy"@en;
+                rdfs:range inno:Embodiment.
+inno:embodies a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment """Relates a device, process, product, or service (make, model or brand) to an innovation that it embodies
+
+e.g The Firefox web browser embodies the innovation HTTP
+e.g Amoxicillin embodies the innovation Anibiotic"""@en;
+              rdfs:domain inno:Embodiment;
+              rdfs:label "embodies"@en;
+              rdfs:range inno:Innovation;
+              <http://www.w3.org/2002/07/owl#inverseOf> inno:embodiedBy.
+inno:enabledBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "Where one innovation is enabled by another innovation or innovations. It is common for innovators to have a solution to a problem that is dependent on something else not yet known, discovered, invented or innovated."@en;
+               rdfs:domain inno:Innovation;
+               rdfs:label "enabledBy"@en;
+               rdfs:range inno:Innovation;
+               <http://www.w3.org/2002/07/owl#inverseOf> inno:enables.
+inno:enables a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "Where one innovation enables a different innovation or innovations."@en;
+             rdfs:domain inno:Innovation;
+             rdfs:label "enables"@en;
+             rdfs:range inno:Innovation.
+inno:expectedMarketEntry a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:comment "The expected date of introduction into the market. Mass production, commoditisation or  availability for sale."@en;
+                         rdfs:domain inno:Innovation;
+                         rdfs:label "expectedMarketEntry"@en;
+                         rdfs:range xsd:dateTime.
+inno:fulfils a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "The applicabiity of an idea can be tested by its ability to fulfil a need. This property therefore links an innovation to a need."@en;
+             rdfs:domain inno:Innovator;
+             rdfs:label "fulfils"@en;
+             rdfs:range inno:Need.
+inno:hasBenefit a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Relates an innovation to some benefit or benefts of that innovation."@en;
+                rdfs:domain inno:Innovation;
+                rdfs:label "hasBenefit"@en;
+                rdfs:range inno:Benefit.
+inno:hasDeveloped a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment """Relates innovator to the innovations they have developed.
+
+Innovators can be groups, organisations or people."""@en;
+                  rdfs:domain inno:Innovator;
+                  rdfs:label "hasDeveloped"@en;
+                  rdfs:range inno:Innovation;
+                  rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/made>.
+inno:hasImprovement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Links an innovation to some improvement or improvements it provides."@en;
+                    rdfs:domain inno:Innovation;
+                    rdfs:label "hasImprovement"@en;
+                    rdfs:range inno:Improvement.
+inno:hasSympton a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "A symptom of a problem. It is recommended that Symptoms follow a SKOS hierarchy."@en;
+                rdfs:domain inno:Problem;
+                rdfs:label "hasSympton"@en;
+                rdfs:range inno:Sympton.
+inno:hasUsage a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "The problem or need of some individual, group or organisation."@en;
+              rdfs:domain inno:Embodiment;
+              rdfs:label "hasUsage"@en;
+              rdfs:range inno:Usage.
+inno:health-benefits a <http://www.w3.org/2002/07/owl#Thing>,
+                       <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                     rdfs:comment "Those benefits that are of a health related nature."@en;
+                     rdfs:label "health-benefits"@en;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Health benefits"@en.
+inno:health-symptoms a <http://www.w3.org/2004/02/skos/core#ConceptScheme>,
+                       <http://www.w3.org/2002/07/owl#Thing>;
+                     rdfs:comment "Those symptons that are health related."@en;
+                     rdfs:label "health-symptoms"@en;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Health symptoms"@en.
+inno:improves a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Links an improvement to something it improves."@en;
+              rdfs:domain inno:Improvement;
+              rdfs:label "improves"@en.
+inno:improvesEffectivenessOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:comment """An improvement to the effectiveness of the object i.e effectuates an increase in the desired result.
+
+e.g the combustion engine improves the effectiveness of a vehicle.
+
+Without consideration for cost of increase i.e does not necessitate an improvement in efficiciency."""@en;
+                             rdfs:domain inno:Improvement;
+                             rdfs:label "improvesEffectivenessOf"@en;
+                             rdfs:subPropertyOf inno:improves.
+inno:improvesEfficiencyOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment """An improvement to the efficiency of the of the object. i.e reducing the cost, waste, time or skill required to produce the desired (same) results
+
+e.g
+
+Compared to other modes of transportation, a bicycle is efficient because it enables people to get to their destination with less effort."""@en;
+                          rdfs:domain inno:Improvement;
+                          rdfs:label "improvesEfficiencyOf"@en;
+                          rdfs:subPropertyOf inno:improves.
+inno:improvesQualityOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "An improvement to the reliability, durability, accessibility, usability or some other non-functional aspect of the object."@en;
+                       rdfs:domain inno:Improvement;
+                       rdfs:label "improvesQualityOf"@en;
+                       rdfs:subPropertyOf inno:improves.
+inno:improvesValueOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment """An improvement to the worth or value of the object i.e as a result of the improvement something becomes more valuable or worthwhile. 
+e.g:
+
+Nuclear Fission improves the value of Uranium.
+HTTP improves the value of the internet."""@en;
+                     rdfs:domain inno:Improvement;
+                     rdfs:label "improvesValueOf"@en;
+                     rdfs:subPropertyOf inno:improves.
+inno:isDeveloping a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "Relates an innovator to a current innovation that they are developing."@en;
+                  rdfs:domain inno:Innovator;
+                  rdfs:label "isDeveloping"@en;
+                  rdfs:range inno:Innovation.
+inno:legal-benefits a <http://www.w3.org/2002/07/owl#Thing>,
+                      <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                    rdfs:comment "Those benefits that are of a legal nature."@en;
+                    rdfs:label "legal-benefits"@en;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Legal benefits"@en.
+inno:legal-symptoms a <http://www.w3.org/2002/07/owl#Thing>,
+                      <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                    rdfs:comment "Those symptons that are of a legal nature."@en;
+                    rdfs:label "legal-symptoms"@en;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Legal symptoms"@en.
+inno:manifestedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "The problems that manifest a particular need. A need is generally described by its problems."@en;
+                  rdfs:domain inno:Need;
+                  rdfs:label "manifestedBy"@en;
+                  rdfs:range inno:Problem.
+inno:manifests a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The problem that manifests a need. The problem defines the characteristics of the need."@en;
+               rdfs:domain inno:Problem;
+               rdfs:label "manifests"@en;
+               rdfs:range inno:Need;
+               <http://www.w3.org/2002/07/owl#inverseOf> inno:manifestedBy.
+inno:scientific-benefits a <http://www.w3.org/2002/07/owl#Thing>,
+                           <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                         rdfs:comment "Those benefits that are of a scientific nature."@en;
+                         rdfs:label "scientific-benefits"@en;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Scientific benefits"@en.
+inno:scientific-symptoms a <http://www.w3.org/2002/07/owl#Thing>,
+                           <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                         rdfs:comment "Those symptons that are of a scientific nature."@en;
+                         rdfs:label "scientific-symptoms"@en;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Scientific symptoms"@en.
+inno:social-benefits a <http://www.w3.org/2002/07/owl#Thing>,
+                       <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                     rdfs:comment "Those benefits that are of a social nature."@en;
+                     rdfs:label "social-benefits"@en;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Social benefits"@en.
+inno:social-symptoms a <http://www.w3.org/2004/02/skos/core#ConceptScheme>,
+                       <http://www.w3.org/2002/07/owl#Thing>;
+                     rdfs:comment "Those symptons that are of a social nature."@en;
+                     rdfs:label "social-symptoms"@en;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Social symptoms"@en.
+inno:solves a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment "Connects an innovation to the problems it solves. Generally speaking, innovations that solve a need do so by solving similar problems associated with the need."@en;
+            rdfs:domain inno:Innovation;
+            rdfs:label "solves"@en;
+            rdfs:range inno:Problem.
+inno:stages-of-innovation a <http://www.w3.org/2002/07/owl#Thing>,
+                            <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                          rdfs:comment "A scheme consisting of the the stages of development, comprised by the National Innovation Centre. It could be inferred by the asserted facts about an innovation what stage it qualifies for e.g if it is asserted that an innovation fulfils a particular need, then it qualifies as beingat least at development stage 1 (defining the need)."@en;
+                          rdfs:label "stages-of-innovation"@en;
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Stages of innovation"@en.
+inno:usedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment "Relates a usage node to the thing that makes use of the device or process i.e the activator or implementor."@en;
+            rdfs:domain inno:Usage;
+            rdfs:label "usedBy"@en.
+inno:usedOn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment "Defines the recipient use."@en;
+            rdfs:domain inno:Usage;
+            rdfs:label "usedOn"@en.
+inno:usedWith a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Where something is used in conjunction with something else."@en;
+              rdfs:domain inno:Usage;
+              rdfs:label "usedWith"@en.
+<http://www.w3.org/2002/07/owl#Thing> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2004/02/skos/core#Concept> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2004/02/skos/core#ConceptScheme> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2004/02/skos/core#inScheme> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.w3.org/2004/02/skos/core#prefLabel> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.

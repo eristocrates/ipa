@@ -1,0 +1,1832 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix appear: <http://rdf.muninn-project.org/ontologies/appearances#>.
+
+<http://dbpedia.org/resource/Eye_color> <http://rdf.muninn-project.org/ontologies/muninn#wikipedia_version> "525009236".
+<http://dbpedia.org/resource/Federal_Bureau_of_Investigation> <http://rdf.muninn-project.org/ontologies/muninn#wikipedia_version> "525946586".
+<http://dbpedia.org/resource/Human_hair_color> <http://rdf.muninn-project.org/ontologies/muninn#wikipedia_version> "523702648".
+<http://dbpedia.org/resource/IC_codes> <http://rdf.muninn-project.org/ontologies/muninn#wikipedia_version> "524218658".
+<http://dbpedia.org/resource/ISO_5218> <http://rdf.muninn-project.org/ontologies/muninn#wikipedia_version> "523615489".
+<http://dbpedia.org/resource/Inch> <http://rdf.muninn-project.org/ontologies/muninn#wikipedia_version> "523886520".
+<http://dbpedia.org/resource/Kinsey_scale> <http://rdf.muninn-project.org/ontologies/muninn#wikipedia_version> "533434457".
+<http://dbpedia.org/resource/Martin-Schultz_scale> <http://rdf.muninn-project.org/ontologies/muninn#wikipedia_version> "512522477".
+<http://dbpedia.org/resource/Metre> <http://rdf.muninn-project.org/ontologies/muninn#wikipedia_version> "524933016".
+<http://dbpedia.org/resource/Royal_Canadian_Mounted_Police> <http://rdf.muninn-project.org/ontologies/muninn#wikipedia_version> "524420530".
+<http://dbpedia.org/resource/Self_Defined_Ethnicity> <http://rdf.muninn-project.org/ontologies/muninn#wikipedia_version> "516873922".
+<http://dbpedia.org/resource/Von_Luschan_scale> <http://rdf.muninn-project.org/ontologies/muninn#wikipedia_version> "523615489".
+<http://rdf.muninn-project.org/ontologies/FBI> a <http://xmlns.com/foaf/spec/Group>;
+                                               <http://www.w3.org/2002/07/owl#sameAs> <http://dbpedia.org/resource/Federal_Bureau_of_Investigation>;
+                                               <http://xmlns.com/foaf/spec/homepage> <http://www.fbi.gov/>;
+                                               <http://xmlns.com/foaf/spec/name> "Federal Bureau of Investigation";
+                                               <http://xmlns.com/foaf/spec/nick> "FBI".
+<http://rdf.muninn-project.org/ontologies/NebraskaDMV> a <http://xmlns.com/foaf/spec/Group>;
+                                                       <http://xmlns.com/foaf/spec/homepage> <http://www.dmv.state.ne.us/>;
+                                                       <http://xmlns.com/foaf/spec/name> "Nebraska Department of Motor Vehicle";
+                                                       <http://xmlns.com/foaf/spec/nick> "DMV".
+<http://rdf.muninn-project.org/ontologies/RCMP> a <http://xmlns.com/foaf/spec/Group>;
+                                                <http://www.w3.org/2002/07/owl#sameAs> <http://dbpedia.org/resource/Royal_Canadian_Mounted_Police>;
+                                                <http://xmlns.com/foaf/spec/homepage> <http://www.rcmp-grc.gc.ca/>;
+                                                <http://xmlns.com/foaf/spec/name> "Royal Canadian Mounted Police";
+                                                <http://xmlns.com/foaf/spec/nick> "RCMP".
+<http://rdf.muninn-project.org/ontologies/appearances> <http://purl.org/dc/elements/1.1/creator> <http://rdf.muninn-project.org/ww1/2011/11/11/Person/Warren>,
+                                                                                                 appear:adriel;
+                                                       <http://purl.org/dc/elements/1.1/date> "2012-11-15"^^xsd:date;
+                                                       <http://purl.org/dc/elements/1.1/description> "This ontology is meant to record individual's sex, gender identities as well as their preferences, desires and relationships.";
+                                                       <http://purl.org/dc/elements/1.1/title> "Sex, Genders, Preferences and Desires Ontology";
+                                                       a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                       rdfs:comment "This ontology is meant to record individual's sex, gender identities as well as their preferences, desires and relationships."@en;
+                                                       rdfs:label "Sex, Genders, Preferences and Desires Ontology"@en;
+                                                       <http://www.w3.org/2002/07/owl#versionInfo> 0.1;
+                                                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+appear:AHG_AHG2288 <http://swrc.ontoware.org/ontology#author> appear:riddell_w_j_b;
+                   <http://swrc.ontoware.org/ontology#date-added> "2012-11-29 12:01:29 -0500";
+                   <http://swrc.ontoware.org/ontology#date-modified> "2012-11-29 12:01:29 -0500";
+                   <http://swrc.ontoware.org/ontology#doi> "10.1111/j.1469-1809.1941.tb02288.x";
+                   <http://swrc.ontoware.org/ontology#issn> "2050-1439";
+                   <http://swrc.ontoware.org/ontology#journal> "Annals of Eugenics";
+                   <http://swrc.ontoware.org/ontology#number> "1";
+                   <http://swrc.ontoware.org/ontology#pages> "245-259";
+                   <http://swrc.ontoware.org/ontology#publisher> appear:blackwell_publishing_ltd;
+                   <http://swrc.ontoware.org/ontology#title> "STUDIES IN THE CLASSIFICATION OF EYE COLOUR";
+                   <http://swrc.ontoware.org/ontology#url> <http://dx.doi.org/10.1111/j.1469-1809.1941.tb02288.x>;
+                   <http://swrc.ontoware.org/ontology#volume> "11";
+                   <http://swrc.ontoware.org/ontology#year> "1941";
+                   <http://www.cs.vu.nl/~mcaklein/onto/swrc-ext/2005/05#authorList> <http://www.cs.vu.nl/~mcaklein/bib2rdf//tempid#f05b76dc9e07b58e359dc17dd5175e384b8bfcf4>;
+                   a <http://swrc.ontoware.org/ontology#Article>,
+                     <http://swrc.ontoware.org/ontology#Publication>;
+                   rdfs:label "RIDDELL, W. J. B.. STUDIES IN THE CLASSIFICATION OF EYE COLOUR. Annals of Eugenics 11(1), Blackwell Publishing Ltd, 1941".
+appear:AHG_AHG2354 <http://swrc.ontoware.org/ontology#author> appear:morant_g_m,
+                                                              appear:grieve_j;
+                   <http://swrc.ontoware.org/ontology#date-added> "2012-11-29 11:44:48 -0500";
+                   <http://swrc.ontoware.org/ontology#date-modified> "2012-11-29 11:44:48 -0500";
+                   <http://swrc.ontoware.org/ontology#doi> "10.1111/j.1469-1809.1946.tb02354.x";
+                   <http://swrc.ontoware.org/ontology#issn> "2050-1439";
+                   <http://swrc.ontoware.org/ontology#journal> "Annals of Eugenics";
+                   <http://swrc.ontoware.org/ontology#number> "1";
+                   <http://swrc.ontoware.org/ontology#pages> "161-171";
+                   <http://swrc.ontoware.org/ontology#publisher> appear:blackwell_publishing_ltd;
+                   <http://swrc.ontoware.org/ontology#title> "RECORDS OF EYE COLOURS FOR BRITISH POPULATIONS AND A DESCRIPTION OF A NEW EYE-COLOUR SCALE";
+                   <http://swrc.ontoware.org/ontology#url> <http://dx.doi.org/10.1111/j.1469-1809.1946.tb02354.x>;
+                   <http://swrc.ontoware.org/ontology#volume> "13";
+                   <http://swrc.ontoware.org/ontology#year> "1946";
+                   <http://www.cs.vu.nl/~mcaklein/onto/swrc-ext/2005/05#authorList> <http://www.cs.vu.nl/~mcaklein/bib2rdf//tempid#d53f411bfcf81f200c5c9f96b2a7464541af494c>;
+                   a <http://swrc.ontoware.org/ontology#Publication>,
+                     <http://swrc.ontoware.org/ontology#Article>;
+                   rdfs:label "GRIEVE, J., MORANT, G. M.. RECORDS OF EYE COLOURS FOR BRITISH POPULATIONS AND A DESCRIPTION OF A NEW EYE-COLOUR SCALE. Annals of Eugenics 13(1), Blackwell Publishing Ltd, 1946".
+appear:Appearance a <http://www.w3.org/2002/07/owl#Class>;
+                  <http://xmlns.com/foaf/spec/name> "Appearance".
+appear:EthnicityUKCensusCode a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "S"@en;
+                             rdfs:label "UK CensusCodes"@en;
+                             rdfs:subClassOf appear:PerceivedEthnicity;
+                             <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/resource/Self_Defined_Ethnicity>;
+                             <http://xmlns.com/foaf/spec/name> "EthnicityUKCensusCode Census Codes".
+appear:EthnicityUKCensusCodeA1 a appear:EthnicityUKCensusCode;
+                               rdfs:label "Indian"@en;
+                               <http://xmlns.com/foaf/spec/name> "A1".
+appear:EthnicityUKCensusCodeA2 a appear:EthnicityUKCensusCode;
+                               rdfs:label "Pakistani"@en;
+                               <http://xmlns.com/foaf/spec/name> "A2".
+appear:EthnicityUKCensusCodeA3 a appear:EthnicityUKCensusCode;
+                               rdfs:label "Bangladeshi"@en;
+                               <http://xmlns.com/foaf/spec/name> "A3".
+appear:EthnicityUKCensusCodeA9 a appear:EthnicityUKCensusCode;
+                               rdfs:label "Any other Asian ethnic background"@en;
+                               <http://xmlns.com/foaf/spec/name> "A9".
+appear:EthnicityUKCensusCodeB1 a appear:EthnicityUKCensusCode;
+                               rdfs:label "Caribbean"@en;
+                               <http://xmlns.com/foaf/spec/name> "B1".
+appear:EthnicityUKCensusCodeB2 a appear:EthnicityUKCensusCode;
+                               rdfs:label "African"@en;
+                               <http://xmlns.com/foaf/spec/name> "B2".
+appear:EthnicityUKCensusCodeB9 a appear:EthnicityUKCensusCode;
+                               rdfs:label "Any other Black ethnic background"@en;
+                               <http://xmlns.com/foaf/spec/name> "B9".
+appear:EthnicityUKCensusCodeM1 a appear:EthnicityUKCensusCode;
+                               rdfs:label "White and Black Caribbean"@en;
+                               <http://xmlns.com/foaf/spec/name> "M1".
+appear:EthnicityUKCensusCodeM2 a appear:EthnicityUKCensusCode;
+                               rdfs:label "White and Black African"@en;
+                               <http://xmlns.com/foaf/spec/name> "M2".
+appear:EthnicityUKCensusCodeM3 a appear:EthnicityUKCensusCode;
+                               rdfs:label "White and Asian"@en;
+                               <http://xmlns.com/foaf/spec/name> "M3".
+appear:EthnicityUKCensusCodeM9 a appear:EthnicityUKCensusCode;
+                               rdfs:label "Any other Mixed ethnic background"@en;
+                               <http://xmlns.com/foaf/spec/name> "M9".
+appear:EthnicityUKCensusCodeNS a appear:EthnicityUKCensusCode;
+                               rdfs:label "Not Stated"@en;
+                               <http://xmlns.com/foaf/spec/name> "NS".
+appear:EthnicityUKCensusCodeO1 a appear:EthnicityUKCensusCode;
+                               rdfs:label "Chinese"@en;
+                               <http://xmlns.com/foaf/spec/name> "O1".
+appear:EthnicityUKCensusCodeO9 a appear:EthnicityUKCensusCode;
+                               rdfs:label "Any other ethnic group"@en;
+                               <http://xmlns.com/foaf/spec/name> "O9".
+appear:EthnicityUKCensusCodeW1 a appear:EthnicityUKCensusCode;
+                               rdfs:label "British"@en;
+                               <http://xmlns.com/foaf/spec/name> "W1".
+appear:EthnicityUKCensusCodeW2 a appear:EthnicityUKCensusCode;
+                               rdfs:label "Irish"@en;
+                               <http://xmlns.com/foaf/spec/name> "W2".
+appear:EthnicityUKCensusCodeW9 a appear:EthnicityUKCensusCode;
+                               rdfs:label "Any other White ethnic background"@en;
+                               <http://xmlns.com/foaf/spec/name> "W9".
+appear:EthnicityUKICCode a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Simple F/M coding of Gender types."@en;
+                         rdfs:label "UK IC-Codes"@en;
+                         rdfs:subClassOf appear:PerceivedEthnicity;
+                         <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/resource/IC_codes>;
+                         <http://xmlns.com/foaf/spec/name> "IC Codes".
+appear:EthnicityUKICCodeIC0 a appear:EthnicityUKICCode;
+                            rdfs:label "Origin unknown"@en;
+                            <http://xmlns.com/foaf/spec/name> "IC0".
+appear:EthnicityUKICCodeIC1 a appear:EthnicityUKICCode;
+                            rdfs:label "White person, northern European type"@en;
+                            <http://xmlns.com/foaf/spec/name> "IC1".
+appear:EthnicityUKICCodeIC2 a appear:EthnicityUKICCode;
+                            rdfs:label "Mediterranean European/Hispanic"@en;
+                            <http://xmlns.com/foaf/spec/name> "IC2".
+appear:EthnicityUKICCodeIC3 a appear:EthnicityUKICCode;
+                            rdfs:label "African/Afro-Caribbean person"@en;
+                            <http://xmlns.com/foaf/spec/name> "IC3".
+appear:EthnicityUKICCodeIC4 a appear:EthnicityUKICCode;
+                            rdfs:label "Indian, Pakistani, Nepalese, Maldivian, Sri Lankan, Bangladeshi, or any other (South) Asian person"@en;
+                            <http://xmlns.com/foaf/spec/name> "IC4".
+appear:EthnicityUKICCodeIC5 a appear:EthnicityUKICCode;
+                            rdfs:label "Chinese, Japanese, or South-East Asian person"@en;
+                            <http://xmlns.com/foaf/spec/name> "IC5".
+appear:EthnicityUKICCodeIC6 a appear:EthnicityUKICCode;
+                            rdfs:label "Arab person"@en;
+                            <http://xmlns.com/foaf/spec/name> "IC6".
+appear:EyeColor a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:label "Eye Color"@en;
+                <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/resource/Eye_color>;
+                <http://www.w3.org/2002/07/owl#subClassOf> appear:Appearance;
+                <http://xmlns.com/foaf/spec/name> "Eye Color".
+appear:EyeColorFBI a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "FBI Eye Color Reference - Essentially the same as used by the RCMP."@en;
+                   rdfs:label "FBI Eye Color Reference"@en;
+                   <http://www.w3.org/2002/07/owl#subClassOf> appear:EyeColor;
+                   <http://www.w3.org/2004/02/skos/core#inScheme> appear:FBIStandards;
+                   <http://xmlns.com/foaf/spec/name> "EyeColorFBI".
+appear:EyeColorFBIBLK a appear:EyeColorFBI;
+                      rdf:value "BLK";
+                      rdfs:label "Black"@en;
+                      <http://xmlns.com/foaf/spec/name> "BLK".
+appear:EyeColorFBIBLU a appear:EyeColorFBI;
+                      rdf:value "BLU";
+                      rdfs:label "Blue"@en;
+                      <http://xmlns.com/foaf/spec/name> "BLU".
+appear:EyeColorFBIBRO a appear:EyeColorFBI;
+                      rdf:value "BRO";
+                      rdfs:label "Brown"@en;
+                      <http://xmlns.com/foaf/spec/name> "BRO".
+appear:EyeColorFBIGRN a appear:EyeColorFBI;
+                      rdf:value "GRN";
+                      rdfs:label "Green"@en;
+                      <http://xmlns.com/foaf/spec/name> "GRN".
+appear:EyeColorFBIGRY a appear:EyeColorFBI;
+                      rdf:value "GRY";
+                      rdfs:label "Gray"@en;
+                      <http://xmlns.com/foaf/spec/name> "GRY".
+appear:EyeColorFBIHAZ a appear:EyeColorFBI;
+                      rdf:value "HAZ";
+                      rdfs:label "Hazel"@en;
+                      <http://xmlns.com/foaf/spec/name> "HAZ".
+appear:EyeColorFBIMAR a appear:EyeColorFBI;
+                      rdf:value "MAR";
+                      rdfs:label "Maroon"@en;
+                      <http://xmlns.com/foaf/spec/name> "MAR".
+appear:EyeColorGrieveMorant a <http://www.w3.org/2002/07/owl#Class>,
+                              <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                            rdfs:comment "Grieve Morant Eye Color Reference."@en;
+                            rdfs:label " Grieve Morant Eye Color Reference"@en;
+                            <http://www.w3.org/2002/07/owl#subClassOf> appear:EyeColor;
+                            <http://www.w3.org/2004/02/skos/core#hasTopConcept> appear:EyeColorGrieveMorantPureBrown,
+                                                                                appear:EyeColorGrieveMorantMoreBrownThanBlueGrey,
+                                                                                appear:EyeColorGrieveMorantMoreBlueGreyThanBrown,
+                                                                                appear:EyeColorGrieveMorantNoBrown;
+                            <http://xmlns.com/foaf/spec/isPrimaryTopicOf> appear:AHG_AHG2354;
+                            <http://xmlns.com/foaf/spec/name> "EyeColorGrieveMorant".
+appear:EyeColorGrieveMorantA a appear:EyeColorGrieveMorant;
+                             rdf:value "A";
+                             rdfs:label "Light Blue"@en;
+                             <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorGrieveMorantNoBrown;
+                             <http://www.w3.org/2004/02/skos/core#equivalent> appear:EyeColorMartinSchultz1;
+                             <http://xmlns.com/foaf/spec/name> "Light Blue".
+appear:EyeColorGrieveMorantB a appear:EyeColorGrieveMorant;
+                             rdf:value "B";
+                             rdfs:label "Light Grey"@en;
+                             <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorGrieveMorantNoBrown;
+                             <http://www.w3.org/2004/02/skos/core#equivalent> appear:EyeColorMartinSchultz5;
+                             <http://www.w3.org/2004/02/skos/core#note> "This color is rather lighter than MartinSchultz3Eye.";
+                             <http://xmlns.com/foaf/spec/name> "Light Grey".
+appear:EyeColorGrieveMorantC a appear:EyeColorGrieveMorant;
+                             rdf:value "C";
+                             rdfs:label "Dark Blue"@en;
+                             <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorGrieveMorantNoBrown;
+                             <http://www.w3.org/2004/02/skos/core#equivalent> appear:EyeColorMartinSchultz3;
+                             <http://xmlns.com/foaf/spec/name> "Dark Blue".
+appear:EyeColorGrieveMorantD a appear:EyeColorGrieveMorant;
+                             rdf:value "D";
+                             rdfs:label "Dark Grey"@en;
+                             <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorGrieveMorantNoBrown;
+                             <http://www.w3.org/2004/02/skos/core#equivalent> appear:EyeColorMartinSchultz5;
+                             <http://www.w3.org/2004/02/skos/core#note> "This color is rather darker than MartinSchultz5Eye.";
+                             <http://xmlns.com/foaf/spec/name> "Dark Grey".
+appear:EyeColorGrieveMorantE a appear:EyeColorGrieveMorant;
+                             rdf:value "E";
+                             rdfs:label "Traces of Brown"@en;
+                             <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorGrieveMorantMoreBlueGreyThanBrown;
+                             <http://www.w3.org/2004/02/skos/core#equivalent> appear:EyeColorMartinSchultz4;
+                             <http://xmlns.com/foaf/spec/name> "Traces of Brown".
+appear:EyeColorGrieveMorantF a appear:EyeColorGrieveMorant;
+                             rdf:value "F";
+                             rdfs:label "More Brown"@en;
+                             <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorGrieveMorantMoreBlueGreyThanBrown;
+                             <http://www.w3.org/2004/02/skos/core#equivalent> appear:EyeColorMartinSchultz7;
+                             <http://xmlns.com/foaf/spec/name> "More Brown".
+appear:EyeColorGrieveMorantG a appear:EyeColorGrieveMorant;
+                             rdf:value "G";
+                             rdfs:label "Still more Brown"@en;
+                             <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorGrieveMorantMoreBlueGreyThanBrown;
+                             <http://www.w3.org/2004/02/skos/core#equivalent> appear:EyeColorMartinSchultz8;
+                             <http://xmlns.com/foaf/spec/name> "Still more Brown".
+appear:EyeColorGrieveMorantH a appear:EyeColorGrieveMorant;
+                             rdf:value "H";
+                             rdfs:label "Most Brown"@en;
+                             <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorGrieveMorantMoreBlueGreyThanBrown;
+                             <http://www.w3.org/2004/02/skos/core#equivalent> appear:EyeColorMartinSchultz8;
+                             <http://www.w3.org/2004/02/skos/core#note> "This color has more brown pigment than MartinSchultz8Eye.";
+                             <http://xmlns.com/foaf/spec/name> "Most Brown".
+appear:EyeColorGrieveMorantI a appear:EyeColorGrieveMorant;
+                             rdf:value "I";
+                             rdfs:label "Least Brown"@en;
+                             <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorGrieveMorantMoreBrownThanBlueGrey;
+                             <http://www.w3.org/2004/02/skos/core#equivalent> appear:EyeColorMartinSchultz10;
+                             <http://xmlns.com/foaf/spec/name> "Least Brown".
+appear:EyeColorGrieveMorantJ a appear:EyeColorGrieveMorant;
+                             rdf:value "J";
+                             rdfs:label "More Brown (J)"@en;
+                             <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorGrieveMorantMoreBrownThanBlueGrey;
+                             <http://www.w3.org/2004/02/skos/core#equivalent> appear:EyeColorMartinSchultz12;
+                             <http://xmlns.com/foaf/spec/name> "More Brown".
+appear:EyeColorGrieveMorantK a appear:EyeColorGrieveMorant;
+                             rdf:value "K";
+                             rdfs:label "Most Brown (K)"@en;
+                             <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorGrieveMorantMoreBrownThanBlueGrey;
+                             <http://www.w3.org/2004/02/skos/core#equivalent> appear:EyeColorMartinSchultz12;
+                             <http://xmlns.com/foaf/spec/name> "Most Brown".
+appear:EyeColorGrieveMorantL a appear:EyeColorGrieveMorant;
+                             rdf:value "L";
+                             rdfs:label "Light"@en;
+                             <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorGrieveMorantNoBrown;
+                             <http://www.w3.org/2004/02/skos/core#equivalent> appear:EyeColorMartinSchultz13;
+                             <http://www.w3.org/2004/02/skos/core#note> "This color is lighter than MartinSchultz13Eye.";
+                             <http://xmlns.com/foaf/spec/name> "Light".
+appear:EyeColorGrieveMorantM a appear:EyeColorGrieveMorant;
+                             rdf:value "M";
+                             rdfs:label "Medium"@en;
+                             <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorGrieveMorantNoBrown;
+                             <http://www.w3.org/2004/02/skos/core#equivalent> appear:EyeColorMartinSchultz13;
+                             <http://xmlns.com/foaf/spec/name> "Medium".
+appear:EyeColorGrieveMorantMoreBlueGreyThanBrown a appear:EyeColorGrieveMorant;
+                                                 rdf:value "Black";
+                                                 rdfs:label "More Blue or Grey than Brown"@en;
+                                                 <http://xmlns.com/foaf/spec/name> "More Blue or Grey than Brown".
+appear:EyeColorGrieveMorantMoreBrownThanBlueGrey a appear:EyeColorGrieveMorant;
+                                                 rdf:value "Black";
+                                                 rdfs:label "More Brown Than Blue or Grey"@en;
+                                                 <http://xmlns.com/foaf/spec/name> "More Brown Than Blue or Grey".
+appear:EyeColorGrieveMorantN a appear:EyeColorGrieveMorant;
+                             rdf:value "N";
+                             rdfs:label "Dark"@en;
+                             <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorGrieveMorantNoBrown;
+                             <http://www.w3.org/2004/02/skos/core#equivalent> appear:EyeColorMartinSchultz14;
+                             <http://xmlns.com/foaf/spec/name> "Dark".
+appear:EyeColorGrieveMorantNoBrown a appear:EyeColorGrieveMorant;
+                                   rdf:value "Black";
+                                   rdfs:label "No Brown"@en;
+                                   <http://xmlns.com/foaf/spec/name> "No Brown".
+appear:EyeColorGrieveMorantPureBrown a appear:EyeColorGrieveMorant;
+                                     rdf:value "Black";
+                                     rdfs:label "Pure Brown"@en;
+                                     <http://xmlns.com/foaf/spec/name> "Pure Brown".
+appear:EyeColorICCS a <http://www.w3.org/2004/02/skos/core#ConceptScheme>,
+                      <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Iris Color Classification System"@en;
+                    rdfs:label "Iris Color Classification System"@en;
+                    <http://www.w3.org/2002/07/owl#subClassOf> appear:EyeColor;
+                    <http://www.w3.org/2004/02/skos/core#hasTopConcept> appear:EyeColorICCS1,
+                                                                        appear:EyeColorICCS2,
+                                                                        appear:EyeColorICCS3,
+                                                                        appear:EyeColorICCS5,
+                                                                        appear:EyeColorICCS4;
+                    <http://xmlns.com/foaf/spec/isPrimaryTopicOf> appear:seddon;
+                    <http://xmlns.com/foaf/spec/name> "Iris Color Classification System".
+appear:EyeColorICCS1 a appear:EyeColorICCS;
+                     rdf:value "1";
+                     rdfs:label "Blue with Brown Specks (ICCS #1)"@en,
+                                "Gray with Brown Specks (ICCS #1)"@en,
+                                "Blue with Yellow Specks (ICCS #1)"@en,
+                                "Gray with Yellow Specks (ICCS #1)"@en;
+                     <http://xmlns.com/foaf/spec/name> "Blue or gray iris with brown or yellow specks".
+appear:EyeColorICCS2 a appear:EyeColorICCS;
+                     rdf:value "2";
+                     rdfs:label "Blue with Brown Specks (ICCS #2)"@en,
+                                "Gray with Brown Specks (ICCS #2)"@en,
+                                "Green with Brown Specks (ICCS #2)"@en,
+                                "Blue with Yellow Specks (ICCS #2)"@en,
+                                "Gray with Yellow Specks (ICCS #2)"@en,
+                                "Green with Yellow Specks (ICCS #2)"@en;
+                     <http://xmlns.com/foaf/spec/name> "Blue, gray, or green iris with brown or yellow specks".
+appear:EyeColorICCS3 a appear:EyeColorICCS;
+                     rdf:value "3";
+                     rdfs:label "Light Brown with Brown Specks (ICCS #3)"@en,
+                                "Green with Brown Specks (ICCS #3)"@en,
+                                "Light Brown with Yellow Specks (ICCS #3)"@en,
+                                "Green with Yellow Specks (ICCS #3)"@en;
+                     <http://xmlns.com/foaf/spec/name> "Green or light brown iris with brown or yellow specks".
+appear:EyeColorICCS4 a appear:EyeColorICCS;
+                     rdf:value "4";
+                     rdfs:label "Brown (ICCS #4)"@en;
+                     <http://xmlns.com/foaf/spec/name> "Brown".
+appear:EyeColorICCS5 a appear:EyeColorICCS;
+                     rdf:value "5";
+                     rdfs:label "Brown (ICCS #5)"@en;
+                     <http://xmlns.com/foaf/spec/name> "Brown".
+appear:EyeColorMartinSchultz <http://purl.org/dc/elements/1.1/creator> <http://dbpdia.org/resource/Rudolf_Martin_(anthropologist)>;
+                             a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:label "EyeColorMartinSchultz"@en;
+                             <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/resource/Martin-Schultz_scale>;
+                             <http://www.w3.org/2002/07/owl#subClassOf> appear:EyeColor;
+                             <http://xmlns.com/foaf/spec/name> "EyeColorMartinSchultz".
+appear:EyeColorMartinSchultz10 a appear:EyeColorMartinSchultz;
+                               rdfs:label "Yellow Brown and Brown Green (10)"@en;
+                               <http://xmlns.com/foaf/spec/name> "10".
+appear:EyeColorMartinSchultz11 a appear:EyeColorMartinSchultz;
+                               rdfs:label "Yellow Brown and Brown Green (11)"@en;
+                               <http://xmlns.com/foaf/spec/name> "11".
+appear:EyeColorMartinSchultz12 a appear:EyeColorMartinSchultz;
+                               rdfs:label "Dark Brown and Brown Black (12)"@en;
+                               <http://xmlns.com/foaf/spec/name> "12".
+appear:EyeColorMartinSchultz13 a appear:EyeColorMartinSchultz;
+                               rdfs:label "Dark Brown and Brown Black (13)"@en;
+                               <http://xmlns.com/foaf/spec/name> "13".
+appear:EyeColorMartinSchultz14 a appear:EyeColorMartinSchultz;
+                               rdfs:label "Dark Brown and Brown Black (14)"@en;
+                               <http://xmlns.com/foaf/spec/name> "14".
+appear:EyeColorMartinSchultz15 a appear:EyeColorMartinSchultz;
+                               rdfs:label "Dark Brown and Brown Black (15)"@en;
+                               <http://xmlns.com/foaf/spec/name> "15".
+appear:EyeColorMartinSchultz16 a appear:EyeColorMartinSchultz;
+                               rdfs:label "Dark Brown and Brown Black (16)"@en;
+                               <http://xmlns.com/foaf/spec/name> "16".
+appear:EyeColorMartinSchultz1a a appear:EyeColorMartinSchultz;
+                               rdfs:label "Light Blue Iris (1a)"@en;
+                               <http://xmlns.com/foaf/spec/name> "1a".
+appear:EyeColorMartinSchultz1b a appear:EyeColorMartinSchultz;
+                               rdfs:label "Light Blue Iris (1b)"@en;
+                               <http://xmlns.com/foaf/spec/name> "1b".
+appear:EyeColorMartinSchultz1c a appear:EyeColorMartinSchultz;
+                               rdfs:label "Light Blue Iris (1c)"@en;
+                               <http://xmlns.com/foaf/spec/name> "1c".
+appear:EyeColorMartinSchultz2a a appear:EyeColorMartinSchultz;
+                               rdfs:label "Light Blue Iris (2a)"@en;
+                               <http://xmlns.com/foaf/spec/name> "2a".
+appear:EyeColorMartinSchultz2b a appear:EyeColorMartinSchultz;
+                               rdfs:label "Dark Blue Iris (2b)"@en;
+                               <http://xmlns.com/foaf/spec/name> "2b".
+appear:EyeColorMartinSchultz3 a appear:EyeColorMartinSchultz;
+                              rdfs:label "Blue Gray Iris (3)"@en;
+                              <http://xmlns.com/foaf/spec/name> "3".
+appear:EyeColorMartinSchultz4a a appear:EyeColorMartinSchultz;
+                               rdfs:label "Gray Iris (4a)"@en;
+                               <http://xmlns.com/foaf/spec/name> "4a".
+appear:EyeColorMartinSchultz4b a appear:EyeColorMartinSchultz;
+                               rdfs:label "Gray Iris (4b)"@en;
+                               <http://xmlns.com/foaf/spec/name> "4b".
+appear:EyeColorMartinSchultz5 a appear:EyeColorMartinSchultz;
+                              rdfs:label "Blue Gray Iris (5)"@en;
+                              <http://xmlns.com/foaf/spec/name> "5".
+appear:EyeColorMartinSchultz6 a appear:EyeColorMartinSchultz;
+                              rdfs:label "Gray (6)"@en;
+                              <http://xmlns.com/foaf/spec/name> "6".
+appear:EyeColorMartinSchultz7 a appear:EyeColorMartinSchultz;
+                              rdfs:label "Yellow Brown and Brown Green (7)"@en;
+                              <http://xmlns.com/foaf/spec/name> "7".
+appear:EyeColorMartinSchultz8 a appear:EyeColorMartinSchultz;
+                              rdfs:label "Yellow Brown and Brown Green (8)"@en;
+                              <http://xmlns.com/foaf/spec/name> "8".
+appear:EyeColorMartinSchultz9 a appear:EyeColorMartinSchultz;
+                              rdfs:label "Yellow Brown and Brown Green (9)"@en;
+                              <http://xmlns.com/foaf/spec/name> "9".
+appear:EyeColorMartinSchultzLightBlue a appear:EyeColorMartinSchultz;
+                                      rdfs:label "Light Blue Iris"@en;
+                                      <http://www.w3.org/2004/02/skos/core#narrower> appear:EyeColorMartinSchultz1a,
+                                                                                     appear:EyeColorMartinSchultz1b,
+                                                                                     appear:EyeColorMartinSchultz1c,
+                                                                                     appear:EyeColorMartinSchultz2a;
+                                      <http://xmlns.com/foaf/spec/name> "Light Blue Iris".
+appear:EyeColorNebraskaDMV a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:label "EyeColorNebraskaDMV"@en;
+                           <http://www.w3.org/2002/07/owl#subClassOf> appear:EyeColor;
+                           <http://www.w3.org/2004/02/skos/core#inScheme> appear:NebraskaDMVStandards;
+                           <http://xmlns.com/foaf/spec/name> "EyeColorNebraskaDMV".
+appear:EyeColorNebraskaDMVBlack a appear:EyeColorNebraskaDMV;
+                                rdfs:label "Black"@en;
+                                <http://xmlns.com/foaf/spec/name> "BLK".
+appear:EyeColorNebraskaDMVBlue a appear:EyeColorNebraskaDMV;
+                               rdfs:label "Blue"@en;
+                               <http://xmlns.com/foaf/spec/name> "BLU".
+appear:EyeColorNebraskaDMVBrown a appear:EyeColorNebraskaDMV;
+                                rdfs:label "Brown"@en;
+                                <http://xmlns.com/foaf/spec/name> "BRO".
+appear:EyeColorNebraskaDMVDichromatic a appear:EyeColorNebraskaDMV;
+                                      rdfs:label "Dichromatic"@en;
+                                      <http://xmlns.com/foaf/spec/name> "DIC".
+appear:EyeColorNebraskaDMVGray a appear:EyeColorNebraskaDMV;
+                               rdfs:label "Gray"@en;
+                               <http://xmlns.com/foaf/spec/name> "GRY".
+appear:EyeColorNebraskaDMVGreen a appear:EyeColorNebraskaDMV;
+                                rdfs:label "Green"@en;
+                                <http://xmlns.com/foaf/spec/name> "GRN".
+appear:EyeColorNebraskaDMVHazel a appear:EyeColorNebraskaDMV;
+                                rdfs:label "Hazel"@en;
+                                <http://xmlns.com/foaf/spec/name> "HAZ".
+appear:EyeColorNebraskaDMVPink a appear:EyeColorNebraskaDMV;
+                               rdfs:label "Pink"@en;
+                               <http://xmlns.com/foaf/spec/name> "DNK".
+appear:EyeColorNebraskaDMVUnknown a appear:EyeColorNebraskaDMV;
+                                  rdfs:label "Unknown"@en;
+                                  <http://xmlns.com/foaf/spec/name> "UNK".
+appear:EyeColorPetrequin <http://purl.org/dc/elements/1.1/createdBy> appear:j_petrequin;
+                         a <http://www.w3.org/2004/02/skos/core#ConceptScheme>,
+                           <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Pétrequin Eye Color Reference."@en;
+                         rdfs:label "Pétrequin Eye Color Reference"@en;
+                         <http://www.w3.org/2002/07/owl#subClassOf> appear:EyeColor;
+                         <http://www.w3.org/2004/02/skos/core#hasTopConcept> appear:EyeColorPetrequinBruns,
+                                                                             appear:EyeColorPetrequinRoux,
+                                                                             appear:EyeColorPetrequinNoirs,
+                                                                             appear:EyeColorPetrequinGris,
+                                                                             appear:EyeColorPetrequinBleus;
+                         <http://xmlns.com/foaf/spec/isPrimaryTopicOf> appear:petrequin;
+                         <http://xmlns.com/foaf/spec/name> "Pétrequin Eye Color Reference".
+appear:EyeColorPetrequinBleus a appear:EyeColorPetrequin;
+                              rdf:value "Bleus";
+                              rdfs:label "Bleus (Pétrequin)"@fr,
+                                         "Blue (Pétrequin)"@en;
+                              <http://xmlns.com/foaf/spec/name> "Bleus".
+appear:EyeColorPetrequinBruns a appear:EyeColorPetrequin;
+                              rdf:value "Brown";
+                              rdfs:label "Bruns (Pétrequin)"@fr,
+                                         "Brown (Pétrequin)"@en;
+                              <http://xmlns.com/foaf/spec/name> "Bruns".
+appear:EyeColorPetrequinGris a appear:EyeColorPetrequin;
+                             rdf:value "Gris";
+                             rdfs:label "Gris (Pétrequin)"@fr,
+                                        "Grey (Pétrequin)"@en,
+                                        "Gray (Pétrequin)"@en;
+                             <http://xmlns.com/foaf/spec/name> "Gris".
+appear:EyeColorPetrequinNoirs a appear:EyeColorPetrequin;
+                              rdf:value "Noirs";
+                              rdfs:label "Noirs (Pétrequin)"@fr,
+                                         "Black (Pétrequin)"@en;
+                              <http://xmlns.com/foaf/spec/name> "Noirs".
+appear:EyeColorPetrequinRoux a appear:EyeColorPetrequin;
+                             rdf:value "Roux";
+                             rdfs:label "Roux (Pétrequin)"@fr,
+                                        "Red (Pétrequin)"@en;
+                             <http://xmlns.com/foaf/spec/name> "Roux".
+appear:EyeColorRiddell a <http://www.w3.org/2002/07/owl#Class>,
+                         <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                       rdfs:comment "Riddell Eye Color Reference. The Riddell standard makes use of a three part scale that marks up the main colour of the eye, the diffuse color of the eye and any colour spots within the eye."@en;
+                       rdfs:label "Riddell Eye Color Reference"@en;
+                       <http://www.w3.org/2002/07/owl#subClassOf> appear:EyeColor;
+                       <http://xmlns.com/foaf/spec/isPrimaryTopicOf> appear:AHG_AHG2288;
+                       <http://xmlns.com/foaf/spec/name> "Riddell Eye Color Reference".
+appear:EyeColorSimple a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Simple eye color reference."@en;
+                      rdfs:label "Simple Eye Color Reference"@en;
+                      <http://www.w3.org/2002/07/owl#subClassOf> appear:EyeColor;
+                      <http://xmlns.com/foaf/spec/name> "Simple Eye Color".
+appear:EyeColorSimpleBlack a appear:EyeColorSimple;
+                           rdf:value "Black";
+                           rdfs:label "Black"@en;
+                           <http://xmlns.com/foaf/spec/name> "Black".
+appear:EyeColorSimpleBlue a appear:EyeColorSimple;
+                          rdf:value "Blue";
+                          rdfs:label "Blue"@en;
+                          <http://xmlns.com/foaf/spec/name> "Blue".
+appear:EyeColorSimpleBrown a appear:EyeColorSimple;
+                           rdf:value "Brown";
+                           rdfs:label "Brown"@en;
+                           <http://xmlns.com/foaf/spec/name> "Brown".
+appear:EyeColorSimpleGreen a appear:EyeColorSimple;
+                           rdf:value "Green";
+                           rdfs:label "Green"@en;
+                           <http://xmlns.com/foaf/spec/name> "Green".
+appear:EyeColorSimpleGrey a appear:EyeColorSimple;
+                          rdf:value "Grey";
+                          rdfs:label "Grey"@en;
+                          <http://xmlns.com/foaf/spec/name> "Grey".
+appear:EyeColorSimpleRed a appear:EyeColorSimple;
+                         rdf:value "Red";
+                         rdfs:label "Red"@en;
+                         <http://xmlns.com/foaf/spec/name> "Red".
+appear:EyeColorWilde <http://purl.org/dc/elements/1.1/creator> <http://dbpedia.org/resource/William_Wilde>;
+                     a <http://www.w3.org/2004/02/skos/core#ConceptScheme>,
+                       <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Wilde Eye Color Reference."@en;
+                     rdfs:label "Wilde Eye Color Reference"@en;
+                     <http://www.w3.org/2002/07/owl#subClassOf> appear:EyeColor;
+                     <http://www.w3.org/2004/02/skos/core#hasTopConcept> appear:EyeColorWildeLight,
+                                                                         appear:EyeColorWildeDark,
+                                                                         appear:EyeColorWildeHazel;
+                     <http://xmlns.com/foaf/spec/isPrimaryTopicOf> appear:wilde1862;
+                     <http://xmlns.com/foaf/spec/name> "Wilde Eye Color Reference".
+appear:EyeColorWildeBlack a appear:EyeColorWilde;
+                          rdf:value "Black";
+                          rdfs:label "Black (Wilde)"@en;
+                          <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorWildeDark;
+                          <http://xmlns.com/foaf/spec/name> "Black".
+appear:EyeColorWildeBlue a appear:EyeColorWilde;
+                         rdf:value "Blue";
+                         rdfs:label "Blue (Wilde)"@en;
+                         <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorWildeLight;
+                         <http://xmlns.com/foaf/spec/name> "Blue".
+appear:EyeColorWildeBrown a appear:EyeColorWilde;
+                          rdf:value "Brown";
+                          rdfs:label "Brown (Wilde)"@en;
+                          <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorWildeDark;
+                          <http://xmlns.com/foaf/spec/name> "Brown".
+appear:EyeColorWildeDark a appear:EyeColorWilde;
+                         rdf:value "Dark";
+                         rdfs:label "Dark (Wilde)"@en;
+                         <http://xmlns.com/foaf/spec/name> "Dark".
+appear:EyeColorWildeGray a appear:EyeColorWilde;
+                         rdf:value "Gray";
+                         rdfs:label "Gray (Wilde)"@en;
+                         <http://www.w3.org/2004/02/skos/core#broader> appear:EyeColorWildeLight;
+                         <http://xmlns.com/foaf/spec/name> "Gray".
+appear:EyeColorWildeHazel a appear:EyeColorWilde;
+                          rdf:value "Hazel";
+                          rdfs:label "Hazel (Wilde)"@en;
+                          <http://xmlns.com/foaf/spec/name> "Hazel".
+appear:FBIStandards <http://purl.org/dc/elements/1.1/creator> appear:FBI;
+                    a <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                    rdfs:label "FBI Standards"@en;
+                    <http://xmlns.com/foaf/spec/name> "FBI Standards".
+appear:FemaleBodyMeasurement a <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                             rdfs:label "Female Body Measurement"@en;
+                             rdfs:subClassOf appear:SexISO5218-2;
+                             <http://xmlns.com/foaf/spec/name> "Female Body Measurement".
+appear:Gender a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:label "Gender (Generic)"@en;
+              <http://xmlns.com/foaf/spec/name> "Gender".
+appear:GenderSimple a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Simple F/M coding of Gender types."@en;
+                    rdfs:label "SimplebGender"@en;
+                    rdfs:subClassOf appear:Gender;
+                    <http://xmlns.com/foaf/spec/name> "Gender".
+appear:GenderSimple-F a appear:GenderSimple;
+                      rdfs:label "Woman"@en,
+                                 "Femme"@en,
+                                 "Frau"@en;
+                      <http://xmlns.com/foaf/spec/name> "F".
+appear:GenderSimple-M a appear:GenderSimple;
+                      rdfs:label "Man"@en,
+                                 "Homme"@en,
+                                 "Mann"@en;
+                      <http://xmlns.com/foaf/spec/name> "M".
+appear:GenderStrict a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Strict F/M coding of Gender types, with restriction."@en;
+                    rdfs:label "Gender (Strict)"@en;
+                    rdfs:subClassOf appear:GenderSimple;
+                    <http://xmlns.com/foaf/spec/name> "Gender".
+appear:HairColor a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "Hair Color"@en;
+                 rdfs:subClassOf appear:Appearance;
+                 <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/resource/Human_hair_color>;
+                 <http://xmlns.com/foaf/spec/name> "Hair Color".
+appear:HairColorAtlas a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:label "HairColorAtlas"@en;
+                      rdfs:subClassOf appear:HairColor;
+                      <http://www.w3.org/2004/02/skos/core#hasTopConcept> appear:HairColorAtlasBrown,
+                                                                          appear:HairColorAtlasBlond,
+                                                                          appear:HairColorAtlasAbsent,
+                                                                          appear:HairColorAtlasRedBrown,
+                                                                          appear:HairColorAtlasGoldenBrown,
+                                                                          appear:HairColorAtlasGrayBrown,
+                                                                          appear:HairColorAtlasRed,
+                                                                          appear:HairColorAtlasOther;
+                      <http://xmlns.com/foaf/spec/isPrimaryTopicOf> appear:Ogle_1999fk;
+                      <http://xmlns.com/foaf/spec/name> "Human Hair Atlas Color".
+appear:HairColorAtlasAbsent a appear:HairColorAtlas;
+                            rdf:value "D0";
+                            rdfs:label "White (Human Hair Atlas)"@en,
+                                       "Gray (Human Hair Atlas)"@en;
+                            <http://xmlns.com/foaf/spec/name> "Color Absent".
+appear:HairColorAtlasBlond a appear:HairColorAtlas;
+                           rdfs:label "Blond (Human Hair Atlas)"@en;
+                           <http://xmlns.com/foaf/spec/name> "Blond".
+appear:HairColorAtlasBlondDark a appear:HairColorAtlas;
+                               rdf:value "D04";
+                               rdfs:label "Dark Blond (Human Hair Atlas)"@en;
+                               <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasBlond;
+                               <http://xmlns.com/foaf/spec/name> "Dark Blond".
+appear:HairColorAtlasBlondLight a appear:HairColorAtlas;
+                                rdf:value "D01";
+                                rdfs:label "Light Blond (Human Hair Atlas)"@en;
+                                <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasBlond;
+                                <http://xmlns.com/foaf/spec/name> "Light Blond".
+appear:HairColorAtlasBlondLightMedium a appear:HairColorAtlas;
+                                      rdf:value "D02";
+                                      rdfs:label "Light Blond to Medium (Human Hair Atlas)"@en;
+                                      <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasBlond;
+                                      <http://xmlns.com/foaf/spec/name> "Light Blond to Medium".
+appear:HairColorAtlasBlondMediumDark a appear:HairColorAtlas;
+                                     rdf:value "D03";
+                                     rdfs:label "Medium to Dark Blond (Human Hair Atlas)"@en;
+                                     <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasBlond;
+                                     <http://xmlns.com/foaf/spec/name> "Medium to Dark Blond".
+appear:HairColorAtlasBrown a appear:HairColorAtlas;
+                           rdfs:label "Brown (Human Hair Atlas)"@en;
+                           <http://xmlns.com/foaf/spec/name> "Brown".
+appear:HairColorAtlasDarkGoldenBrown a appear:HairColorAtlas;
+                                     rdf:value "D14";
+                                     rdfs:label "Dark Golden Brown (Human Hair Atlas)"@en;
+                                     <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasGoldenBrown;
+                                     <http://xmlns.com/foaf/spec/name> "Dark Golden Brown".
+appear:HairColorAtlasDarkOpaqueBrown a appear:HairColorAtlas;
+                                     rdf:value "D24";
+                                     rdfs:label "Dark to Opaque Brown (Human Hair Atlas)"@en;
+                                     <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasBrown;
+                                     <http://xmlns.com/foaf/spec/name> "Dark to Opaque Brown".
+appear:HairColorAtlasDarkOpaqueGrayBrown a appear:HairColorAtlas;
+                                         rdf:value "D34";
+                                         rdfs:label "Black, Dark Gray Brown to Opaque Gray Brown (Human Hair Atlas)"@en;
+                                         <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasGrayBrown;
+                                         <http://xmlns.com/foaf/spec/name> "Black, Dark Gray Brown to Opaque Gray Brown".
+appear:HairColorAtlasDarkRed a appear:HairColorAtlas;
+                             rdf:value "D44";
+                             rdfs:label "Dark Red (Human Hair Atlas)"@en;
+                             <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasRed;
+                             <http://xmlns.com/foaf/spec/name> "Dark Red".
+appear:HairColorAtlasDarkRedBrown a appear:HairColorAtlas;
+                                  rdf:value "D54";
+                                  rdfs:label "Dark Red Brown (Human Hair Atlas)"@en;
+                                  <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasRedBrown;
+                                  <http://xmlns.com/foaf/spec/name> "Dark Red Brown".
+appear:HairColorAtlasGoldenBrown a appear:HairColorAtlas;
+                                 rdfs:label "Golden Brown (Human Hair Atlas)"@en;
+                                 <http://xmlns.com/foaf/spec/name> "Golden Brown".
+appear:HairColorAtlasGrayBrown a appear:HairColorAtlas;
+                               rdfs:label "Gray Brown (Human Hair Atlas)"@en;
+                               <http://xmlns.com/foaf/spec/name> "Gray Brown".
+appear:HairColorAtlasLightBrown a appear:HairColorAtlas;
+                                rdf:value "D21";
+                                rdfs:label "Light Brown (Human Hair Atlas)"@en;
+                                <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasBrown;
+                                <http://xmlns.com/foaf/spec/name> "Light Brown".
+appear:HairColorAtlasLightGoldenBrown a appear:HairColorAtlas;
+                                      rdf:value "D11";
+                                      rdfs:label "Light Golden Brown (Human Hair Atlas)"@en;
+                                      <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasGoldenBrown;
+                                      <http://xmlns.com/foaf/spec/name> "Light Golden Brown".
+appear:HairColorAtlasLightGrayBrown a appear:HairColorAtlas;
+                                    rdf:value "D31";
+                                    rdfs:label "Light Gray Brown (Human Hair Atlas)"@en;
+                                    <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasGrayBrown;
+                                    <http://xmlns.com/foaf/spec/name> "Light Gray Brown".
+appear:HairColorAtlasLightMediumBrown a appear:HairColorAtlas;
+                                      rdf:value "D22";
+                                      rdfs:label "Light to Medium Brown (Human Hair Atlas)"@en;
+                                      <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasBrown;
+                                      <http://xmlns.com/foaf/spec/name> "Light to Medium Brown".
+appear:HairColorAtlasLightMediumGoldenBrown a appear:HairColorAtlas;
+                                            rdf:value "D12";
+                                            rdfs:label "Light to Medium Golden Brown (Human Hair Atlas)"@en;
+                                            <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasGoldenBrown;
+                                            <http://xmlns.com/foaf/spec/name> "Light to Medium Golden Brown".
+appear:HairColorAtlasLightMediumGrayBrown a appear:HairColorAtlas;
+                                          rdf:value "D32";
+                                          rdfs:label "Light to Medium Gray Brown (Human Hair Atlas)"@en;
+                                          <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasGrayBrown;
+                                          <http://xmlns.com/foaf/spec/name> "Light to Medium Gray Brown".
+appear:HairColorAtlasLightMediumRed a appear:HairColorAtlas;
+                                    rdf:value "D42";
+                                    rdfs:label "Light to Medium Red (Human Hair Atlas)"@en;
+                                    <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasRed;
+                                    <http://xmlns.com/foaf/spec/name> "Light to Medium Red".
+appear:HairColorAtlasLightMediumRedBrown a appear:HairColorAtlas;
+                                         rdf:value "D52";
+                                         rdfs:label "Light to Medium Red Brown (Human Hair Atlas)"@en;
+                                         <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasRedBrown;
+                                         <http://xmlns.com/foaf/spec/name> "Light to Medium Red Brown".
+appear:HairColorAtlasLightRed a appear:HairColorAtlas;
+                              rdf:value "D41";
+                              rdfs:label "Light Red (Human Hair Atlas)"@en;
+                              <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasRed;
+                              <http://xmlns.com/foaf/spec/name> "Light Red".
+appear:HairColorAtlasLightRedBrown a appear:HairColorAtlas;
+                                   rdf:value "D51";
+                                   rdfs:label "Light Red Brown (Human Hair Atlas)"@en;
+                                   <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasRedBrown;
+                                   <http://xmlns.com/foaf/spec/name> "Light Red Brown".
+appear:HairColorAtlasMediumDarkBrown a appear:HairColorAtlas;
+                                     rdf:value "D23";
+                                     rdfs:label "Medium to Dark Brown (Human Hair Atlas)"@en;
+                                     <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasBrown;
+                                     <http://xmlns.com/foaf/spec/name> "Medium to Dark Brown".
+appear:HairColorAtlasMediumDarkGoldenBrown a appear:HairColorAtlas;
+                                           rdf:value "D13";
+                                           rdfs:label "Medium to Dark Golden Brown (Human Hair Atlas)"@en;
+                                           <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasGoldenBrown;
+                                           <http://xmlns.com/foaf/spec/name> "Medium to Dark Golden Brown".
+appear:HairColorAtlasMediumDarkGrayBrown a appear:HairColorAtlas;
+                                         rdf:value "D33";
+                                         rdfs:label "Medium to Dark Gray Brown, Black (Human Hair Atlas)"@en;
+                                         <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasGrayBrown;
+                                         <http://xmlns.com/foaf/spec/name> "Medium to Dark Gray Brown, Black".
+appear:HairColorAtlasMediumDarkRed a appear:HairColorAtlas;
+                                   rdf:value "D43";
+                                   rdfs:label "Medium to Dark Red (Human Hair Atlas)"@en;
+                                   <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasRed;
+                                   <http://xmlns.com/foaf/spec/name> "Medium to Dark Red".
+appear:HairColorAtlasMediumDarkRedBrown a appear:HairColorAtlas;
+                                        rdf:value "D53";
+                                        rdfs:label "Medium to Dark Red Brown (Human Hair Atlas)"@en;
+                                        <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasRedBrown;
+                                        <http://xmlns.com/foaf/spec/name> "Medium to Dark Red Brown".
+appear:HairColorAtlasOpaqueBrown a appear:HairColorAtlas;
+                                 rdf:value "D25";
+                                 rdfs:label "Opaque Brown (Human Hair Atlas)"@en;
+                                 <http://www.w3.org/2004/02/skos/core#narrower> appear:HairColorAtlasBrown;
+                                 <http://xmlns.com/foaf/spec/name> "Opaque Brown".
+appear:HairColorAtlasOther a appear:HairColorAtlas;
+                           rdfs:label "Other Color(Human Hair Atlas)"@en;
+                           <http://xmlns.com/foaf/spec/name> "Other Color".
+appear:HairColorAtlasRed a appear:HairColorAtlas;
+                         rdfs:label "Red (Human Hair Atlas)"@en;
+                         <http://xmlns.com/foaf/spec/name> "Red".
+appear:HairColorAtlasRedBrown a appear:HairColorAtlas;
+                              rdfs:label "Red Brown (Human Hair Atlas)"@en;
+                              <http://xmlns.com/foaf/spec/name> "Red Brown".
+appear:HairColorDyed a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "Dyed Hair Color"@en;
+                     rdfs:subClassOf appear:HairColor;
+                     <http://www.w3.org/2002/07/owl#disjointWith> appear:HairColorNatural;
+                     <http://xmlns.com/foaf/spec/name> "Dyed Hair Color".
+appear:HairColorFBI a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:label "FBI Hair Color"@en;
+                    rdfs:subClassOf appear:HairColor;
+                    <http://www.w3.org/2004/02/skos/core#inScheme> appear:FBIStandards;
+                    <http://xmlns.com/foaf/spec/name> "FBI Hair Color".
+appear:HairColorFBIBLD a appear:HairColorFBI;
+                       rdf:value "BLD";
+                       rdfs:label "Bald"@en;
+                       <http://xmlns.com/foaf/spec/name> "BLD".
+appear:HairColorFBIBLK a appear:HairColorFBI;
+                       rdf:value "BLK";
+                       rdfs:label "Black"@en;
+                       <http://xmlns.com/foaf/spec/name> "BLK".
+appear:HairColorFBIBLN a appear:HairColorFBI;
+                       rdf:value "BLN";
+                       rdfs:label "Blonde / Strawberry"@en;
+                       <http://xmlns.com/foaf/spec/name> "BLN".
+appear:HairColorFBIBLU a appear:HairColorFBI,
+                         appear:HairColorDyed;
+                       rdf:value "BLU";
+                       rdfs:label "Blue"@en;
+                       <http://xmlns.com/foaf/spec/name> "BLU".
+appear:HairColorFBIBRO a appear:HairColorFBI;
+                       rdf:value "BRO";
+                       rdfs:label "Brown"@en;
+                       <http://xmlns.com/foaf/spec/name> "BRO".
+appear:HairColorFBIGRN a appear:HairColorFBI,
+                         appear:HairColorDyed;
+                       rdf:value "GRN";
+                       rdfs:label "Green"@en;
+                       <http://xmlns.com/foaf/spec/name> "GRN".
+appear:HairColorFBIGRY a appear:HairColorFBI;
+                       rdf:value "GRY";
+                       rdfs:comment "Includes partially gray."@en;
+                       rdfs:label "Grey/Gray"@en;
+                       <http://xmlns.com/foaf/spec/name> "GRY".
+appear:HairColorFBIONG a appear:HairColorFBI,
+                         appear:HairColorDyed;
+                       rdf:value "ONG";
+                       rdfs:label "Orange"@en;
+                       <http://xmlns.com/foaf/spec/name> "ONG".
+appear:HairColorFBIPLE a appear:HairColorFBI,
+                         appear:HairColorDyed;
+                       rdf:value "PLE";
+                       rdfs:label "Purple"@en;
+                       <http://xmlns.com/foaf/spec/name> "PLE".
+appear:HairColorFBIPNK a appear:HairColorFBI,
+                         appear:HairColorDyed;
+                       rdf:value "PNK";
+                       rdfs:label "Pink"@en;
+                       <http://xmlns.com/foaf/spec/name> "PNK".
+appear:HairColorFBIRED a appear:HairColorFBI;
+                       rdf:value "RED";
+                       rdfs:label "Red/Auburn"@en;
+                       <http://xmlns.com/foaf/spec/name> "RED".
+appear:HairColorFBISDY a appear:HairColorFBI;
+                       rdf:value "SDY";
+                       rdfs:label "Sandy"@en;
+                       <http://xmlns.com/foaf/spec/name> "SDY".
+appear:HairColorFBIUNKNOWN a appear:HairColorFBI;
+                           rdf:value "UNKNOWN";
+                           rdfs:label "Unknown"@en;
+                           <http://xmlns.com/foaf/spec/name> "UNKNOWN".
+appear:HairColorFBIWHI a appear:HairColorFBI;
+                       rdf:value "WHI";
+                       rdfs:label "White"@en;
+                       <http://xmlns.com/foaf/spec/name> "WHI".
+appear:HairColorNatural a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:label "Natural Hair Color"@en;
+                        rdfs:subClassOf appear:HairColor;
+                        <http://xmlns.com/foaf/spec/name> "Natural Hair Color".
+appear:HairColorNebraskaDMV a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:label "NebraskaDMVHairColor"@en;
+                            rdfs:subClassOf appear:HairColor;
+                            <http://www.w3.org/2004/02/skos/core#inScheme> appear:NebraskaDMVStandards;
+                            <http://xmlns.com/foaf/spec/name> "NebraskaDMVHairColor".
+appear:HairColorNebraskaDMVBald a appear:HairColorNebraskaDMV;
+                                rdfs:label "Bald"@en;
+                                <http://xmlns.com/foaf/spec/name> "BAL".
+appear:HairColorNebraskaDMVBlonde a appear:HairColorNebraskaDMV;
+                                  rdfs:label "Blonde"@en;
+                                  <http://xmlns.com/foaf/spec/name> "BLN".
+appear:HairColorNebraskaDMVBrown a appear:HairColorNebraskaDMV;
+                                 rdfs:label "Brown"@en;
+                                 <http://xmlns.com/foaf/spec/name> "BRO".
+appear:HairColorNebraskaDMVGray a appear:HairColorNebraskaDMV;
+                                rdfs:label "Gray"@en;
+                                <http://xmlns.com/foaf/spec/name> "GRY".
+appear:HairColorNebraskaDMVRed a appear:HairColorNebraskaDMV;
+                               rdfs:label "Red"@en;
+                               <http://xmlns.com/foaf/spec/name> "RED".
+appear:HairColorNebraskaDMVSandy a appear:HairColorNebraskaDMV;
+                                 rdfs:label "Sandy"@en;
+                                 <http://xmlns.com/foaf/spec/name> "SDY".
+appear:HairColorNebraskaDMVUnknown a appear:HairColorNebraskaDMV;
+                                   rdfs:label "Unknown"@en;
+                                   <http://xmlns.com/foaf/spec/name> "UNK".
+appear:HairColorNebraskaDMVWhite a appear:HairColorNebraskaDMV;
+                                 rdfs:label "White"@en;
+                                 <http://xmlns.com/foaf/spec/name> "WHI".
+appear:HairColorRCMP a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "RCMP Hair Color"@en;
+                     rdfs:subClassOf appear:HairColor;
+                     <http://www.w3.org/2004/02/skos/core#inScheme> appear:RCMPStandards;
+                     <http://xmlns.com/foaf/spec/name> "RCMP Hair Color".
+appear:HairColorRCMPBald a appear:HairColorRCMP;
+                         rdf:value "Bald";
+                         rdfs:label "Bald"@en;
+                         <http://xmlns.com/foaf/spec/name> "Bald".
+appear:HairColorRCMPBlack a appear:HairColorRCMP;
+                          rdf:value "Black";
+                          rdfs:label "Black"@en;
+                          <http://xmlns.com/foaf/spec/name> "Black".
+appear:HairColorRCMPBlond a appear:HairColorRCMP;
+                          rdf:value "Blond";
+                          rdfs:label "Blond"@en;
+                          <http://xmlns.com/foaf/spec/name> "Blond".
+appear:HairColorRCMPBrown a appear:HairColorRCMP;
+                          rdf:value "Brown";
+                          rdfs:label "Brown"@en;
+                          <http://xmlns.com/foaf/spec/name> "Brown".
+appear:HairColorRCMPGrey a appear:HairColorRCMP;
+                         rdf:value "Grey";
+                         rdfs:label "Grey / Gray"@en;
+                         <http://xmlns.com/foaf/spec/name> "Grey".
+appear:HairColorRCMPLightBrown a appear:HairColorRCMP;
+                               rdf:value "Light Brown";
+                               rdfs:label "Light Brown"@en;
+                               <http://xmlns.com/foaf/spec/name> "Light Brown".
+appear:HairColorRCMPLightRed a appear:HairColorRCMP;
+                             rdf:value "Red";
+                             rdfs:label "Red"@en;
+                             <http://xmlns.com/foaf/spec/name> "Red".
+appear:HairColorRCMPLightStrawberryRed a appear:HairColorRCMP;
+                                       rdf:value "Strawberry Red";
+                                       rdfs:label "Strawberry Red"@en;
+                                       <http://xmlns.com/foaf/spec/name> "Strawberry Red".
+appear:HairColorRCMPWhite a appear:HairColorRCMP;
+                          rdf:value "White";
+                          rdfs:label "White"@en;
+                          <http://xmlns.com/foaf/spec/name> "White".
+appear:KinseyScale a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "Kinsey Scale"@en;
+                   <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/resource/Kinsey_scale>;
+                   <http://xmlns.com/foaf/spec/isPrimaryTopicOf> <http://rdf.muninn-project.org/ontologies/appearances>;
+                   <http://xmlns.com/foaf/spec/name> "Kinsey Scale".
+appear:KinseyScale0 a appear:KinseyScale;
+                    rdf:value "0";
+                    rdfs:label "Exclusively heterosexual"@en;
+                    <http://xmlns.com/foaf/spec/name> "Exclusively heterosexual".
+appear:KinseyScale1 a appear:KinseyScale;
+                    rdf:value "1";
+                    rdfs:label "Predominantly heterosexual, only incidentally homosexual"@en;
+                    <http://xmlns.com/foaf/spec/name> "Predominantly heterosexual, only incidentally homosexual".
+appear:KinseyScale2 a appear:KinseyScale;
+                    rdf:value "2";
+                    rdfs:label "Predominantly heterosexual, but more than incidentally homosexual"@en;
+                    <http://xmlns.com/foaf/spec/name> "Predominantly heterosexual, but more than incidentally homosexual".
+appear:KinseyScale3 a appear:KinseyScale;
+                    rdf:value "3";
+                    rdfs:label "Equally heterosexual and homosexual"@en;
+                    <http://xmlns.com/foaf/spec/name> "Equally heterosexual and homosexual".
+appear:KinseyScale4 a appear:KinseyScale;
+                    rdf:value "4";
+                    rdfs:label "Predominantly homosexual, but more than incidentally heterosexual"@en;
+                    <http://xmlns.com/foaf/spec/name> "Predominantly homosexual, but more than incidentally heterosexual".
+appear:KinseyScale5 a appear:KinseyScale;
+                    rdf:value "5";
+                    rdfs:label "Predominantly homosexual, only incidentally heterosexual"@en;
+                    <http://xmlns.com/foaf/spec/name> "Predominantly homosexual, only incidentally heterosexual".
+appear:KinseyScale6 a appear:KinseyScale;
+                    rdf:value "6";
+                    rdfs:label "Exclusively homosexual"@en;
+                    <http://xmlns.com/foaf/spec/name> "Exclusively homosexual".
+appear:KinseyScaleX a appear:KinseyScale;
+                    rdf:value "X";
+                    rdfs:label "Non-sexual"@en;
+                    <http://xmlns.com/foaf/spec/name> "Non-sexual".
+appear:MaleBodyMeasurement a <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                           rdfs:label "Male Body Measurement"@en;
+                           rdfs:subClassOf appear:SexISO5218-1;
+                           <http://xmlns.com/foaf/spec/name> "Male Body Measurement".
+appear:Nationality a <http://www.w3.org/2002/07/owl#Class>;
+                   <http://www.w3.org/2002/07/owl#subClass> appear:macroEthnicity;
+                   <http://xmlns.com/foaf/spec/name> "Nationality".
+appear:NebraskaDMVStandards <http://purl.org/dc/elements/1.1/creator> appear:NebraskaDMV;
+                            a <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                            rdfs:label "Nebraska DMV Standards"@en;
+                            <http://xmlns.com/foaf/spec/isPrimaryTopicOf> <http://www.nebraska.gov/demo/mvr/codes.html>;
+                            <http://xmlns.com/foaf/spec/name> "Nebraska DMV Standards".
+appear:Observation a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "Observation"@en;
+                   <http://xmlns.com/foaf/spec/name> "Observation".
+appear:Ogle_1999fk <http://swrc.ontoware.org/ontology#address> "Boca Raton, Fla.";
+                   <http://swrc.ontoware.org/ontology#annote> "LDR 01103cam 2200277 a 4500 001 4981035 005 20060728201408.0 008 980722s1999 flua b 001 0 eng 906 $a7$bcbc$corignew$d1$eocip$f19$gy-gencatlg 955 $apc17 to ja00 07-22-98; jc04 07-23-98; jc02 to technician 07-23-98; jc03 07-23-98; CIP ver. pv10 02-25-99 035 $9(DLC) 98034752 010 $a 98034752 020 $a0849381347 (alk. paper) 040 $aDLC$cDLC$dDLC 050 00 $aRA1061$b.O37 1999 082 00 $a614/.1$221 100 1 $aOgle, Robert R. 245 10 $aAtlas of human hair microscopic characteristics /$cRobert R. Ogle, Jr., Michelle J. Fox. 260 $aBoca Raton, Fla. :$bCRC Press,$cc1999. 300 $axi, 83 p. :$bill. (some col.) ;$c24 cm. 504 $aIncludes bibliographical references (p. 65-79) and index. 650 0 $aHair$xAnalysis$xAtlases. 650 0 $aForensic dermatology$xAtlases. 700 1 $aFox, Michelle J. 856 42 $3Publisher description$uhttp://www.loc.gov/catdir/enhancements/fy0646/98034752-d.html 991 $bc-GenColl$hRA1061$i.O37 1999$tCopy 1$wBOOKS";
+                   <http://swrc.ontoware.org/ontology#author> appear:fox_michelle_j,
+                                                              appear:ogle_robert_r;
+                   <http://swrc.ontoware.org/ontology#call-number> "RA1061";
+                   <http://swrc.ontoware.org/ontology#date-added> "2012-11-27 20:54:52 -0500";
+                   <http://swrc.ontoware.org/ontology#date-modified> "2012-11-27 20:54:52 -0500";
+                   <http://swrc.ontoware.org/ontology#dewey-call-number> "614/.1";
+                   <http://swrc.ontoware.org/ontology#genre> "Hair";
+                   <http://swrc.ontoware.org/ontology#isbn> "0849381347 (alk. paper)";
+                   <http://swrc.ontoware.org/ontology#library-id> "98034752";
+                   <http://swrc.ontoware.org/ontology#publisher> appear:crc_press;
+                   <http://swrc.ontoware.org/ontology#title> "Atlas of human hair microscopic characteristics";
+                   <http://swrc.ontoware.org/ontology#url> <http://www.loc.gov/catdir/enhancements/fy0646/98034752-d.html>;
+                   <http://swrc.ontoware.org/ontology#year> "1999";
+                   <http://www.cs.vu.nl/~mcaklein/onto/swrc-ext/2005/05#authorList> <http://www.cs.vu.nl/~mcaklein/bib2rdf//tempid#3ac977d8028c35e5daa29914841cdc598a20146e>;
+                   a <http://swrc.ontoware.org/ontology#Publication>,
+                     <http://swrc.ontoware.org/ontology#Book>;
+                   rdfs:label "Ogle, Robert R, Fox, Michelle J. Atlas of human hair microscopic characteristics, CRC Press, 1999".
+appear:Person a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:label "Natural Person"@en;
+              <http://xmlns.com/foaf/spec/name> "Person".
+appear:RCMPStandards <http://purl.org/dc/elements/1.1/creator> appear:RCMP;
+                     a <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                     rdfs:label "RCMP Standards"@en;
+                     <http://xmlns.com/foaf/spec/name> "RCMP Standards".
+appear:Race a <http://www.w3.org/2002/07/owl#Class>;
+            <http://www.w3.org/2002/07/owl#subClass> appear:macroEthnicity;
+            <http://xmlns.com/foaf/spec/name> "Race".
+appear:Religion a <http://www.w3.org/2002/07/owl#Class>;
+                <http://www.w3.org/2002/07/owl#sameAs> <http://rdf.muninn-project.org/ontologies/religion#Religion>;
+                <http://www.w3.org/2002/07/owl#subClass> appear:macroEthnicity;
+                <http://xmlns.com/foaf/spec/name> "Religion".
+appear:RiddellColor a <http://www.w3.org/2002/07/owl#Class>,
+                      <http://www.w3.org/2004/02/skos/core#ConceptScheme>;
+                    rdfs:comment "Riddell Color Reference."@en;
+                    rdfs:label "Riddell Color Reference"@en;
+                    <http://xmlns.com/foaf/spec/isPrimaryTopicOf> appear:wilde1862;
+                    <http://xmlns.com/foaf/spec/name> "RiddellColorScheme".
+appear:RiddellColorBlue a appear:RiddellColor;
+                        rdf:value "1";
+                        rdfs:label "Blue (Riddell)"@en;
+                        <http://xmlns.com/foaf/spec/name> "Blue".
+appear:RiddellColorChocolate a appear:RiddellColor;
+                             rdf:value "6";
+                             rdfs:label "Chocolate (Riddell)"@en;
+                             <http://xmlns.com/foaf/spec/name> "Chocolate".
+appear:RiddellColorGreen a appear:RiddellColor;
+                         rdf:value "3";
+                         rdfs:label "Green (Riddell)"@en;
+                         <http://xmlns.com/foaf/spec/name> "Green".
+appear:RiddellColorGrey a appear:RiddellColor;
+                        rdf:value "2";
+                        rdfs:label "Grey (Riddell)"@en;
+                        <http://xmlns.com/foaf/spec/name> "Grey".
+appear:RiddellColorNil a appear:RiddellColor;
+                       rdf:value "0";
+                       rdfs:label "No color (Riddell)"@en;
+                       <http://xmlns.com/foaf/spec/name> "Nil".
+appear:RiddellColorTan a appear:RiddellColor;
+                       rdf:value "5";
+                       rdfs:label "Tan (Riddell)"@en;
+                       <http://xmlns.com/foaf/spec/name> "Tan".
+appear:RiddellColorYellow a appear:RiddellColor;
+                          rdf:value "4";
+                          rdfs:label "Yellow (Riddell)"@en;
+                          <http://xmlns.com/foaf/spec/name> "Yellow".
+appear:RiddellDiffuseColor a <http://www.w3.org/2002/07/owl#DataProperty>;
+                           rdfs:domain appear:EyeColorRiddell;
+                           rdfs:label "Riddell Diffuse Eye Color"@en;
+                           rdfs:range appear:RiddellColor;
+                           <http://xmlns.com/foaf/spec/name> "Riddell Diffuse Color".
+appear:RiddellGeneralColor a <http://www.w3.org/2002/07/owl#DataProperty>;
+                           rdfs:domain appear:EyeColorRiddell;
+                           rdfs:label "Riddell General Eye Color"@en;
+                           rdfs:range appear:RiddellColor;
+                           <http://xmlns.com/foaf/spec/name> "Riddell General Color".
+appear:RiddellSpotsColor a <http://www.w3.org/2002/07/owl#DataProperty>;
+                         rdfs:domain appear:EyeColorRiddell;
+                         rdfs:label "Riddell Spots Eye Color"@en;
+                         rdfs:range appear:RiddellColor;
+                         <http://xmlns.com/foaf/spec/name> "Riddell Spots Color".
+appear:SelfReported a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:label "Self Reported"@en;
+                    <http://xmlns.com/foaf/spec/name> "Self Reported".
+appear:Sex a <http://www.w3.org/2002/07/owl#Class>;
+           <http://xmlns.com/foaf/spec/name> "Sex".
+appear:SexISO5218 a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Strict F/M coding of Gender types, with restriction."@en;
+                  rdfs:label "Sex (ISO/IEC 5218)"@en;
+                  rdfs:subClassOf appear:Sex;
+                  <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/resource/ISO_5218>;
+                  <http://xmlns.com/foaf/spec/name> "Sex".
+appear:SexISO5218-0 a appear:SexISO5218;
+                    rdfs:label "Gender Unknown"@en,
+                               "Sex Inconnu"@en,
+                               "Mann"@en;
+                    <http://www.w3.org/2002/07/owl#disjointWith> appear:SexISO5218-2,
+                                                                 appear:SexISO5218-1,
+                                                                 appear:SexISO5218-9;
+                    <http://xmlns.com/foaf/spec/name> "0".
+appear:SexISO5218-1 a appear:SexISO5218;
+                    rdfs:label "Man"@en,
+                               "Homme"@en,
+                               "Mann"@en;
+                    <http://www.w3.org/2002/07/owl#disjointWith> appear:SexISO5218-2,
+                                                                 appear:SexISO5218-0,
+                                                                 appear:SexISO5218-9;
+                    <http://xmlns.com/foaf/spec/name> "1".
+appear:SexISO5218-2 a appear:SexISO5218;
+                    rdfs:label "Woman"@en,
+                               "Femme"@en,
+                               "Frau"@en;
+                    <http://www.w3.org/2002/07/owl#disjointWith> appear:SexISO5218-1,
+                                                                 appear:SexISO5218-0,
+                                                                 appear:SexISO5218-9;
+                    <http://xmlns.com/foaf/spec/name> "2".
+appear:SexISO5218-9 a appear:SexISO5218;
+                    rdfs:label "Not Available"@en;
+                    <http://xmlns.com/foaf/spec/name> "9".
+appear:SexTyping a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf appear:Sex;
+                 <http://xmlns.com/foaf/spec/name> "SexGenomeTyping".
+appear:SexTypingXX a appear:SexTyping;
+                   rdfs:label "XX"@en;
+                   <http://www.w3.org/2002/07/owl#disjointWith> appear:SexTypingXY;
+                   <http://www.w3.org/2002/07/owl#sameAs> appear:SexISO5218-2;
+                   <http://xmlns.com/foaf/spec/name> "XX".
+appear:SexTypingXY a appear:SexTyping;
+                   rdfs:label "XY"@en;
+                   <http://www.w3.org/2002/07/owl#disjointWith> appear:SexTypingXX;
+                   <http://www.w3.org/2002/07/owl#sameAs> appear:SexISO5218-1;
+                   <http://xmlns.com/foaf/spec/name> "XY".
+appear:SkinColor a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "Skin Color"@en;
+                 rdfs:subClassOf appear:Appearance;
+                 <http://xmlns.com/foaf/spec/name> "Skin Color".
+appear:SkinColorFitzpatrickType a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "Fitzpatrick Scale Type"@en;
+                                rdfs:subClassOf appear:FitzpatrickSkinColor;
+                                <http://xmlns.com/foaf/spec/isPrimaryTopicOf> <http://www.arpansa.gov.au/RadiationProtection/Solaria/Offline/05/07.html>;
+                                <http://xmlns.com/foaf/spec/name> "Fitzpatrick scale".
+appear:SkinColorFitzpatrickTypeI a appear:SkinColorFitzpatrickType;
+                                 rdf:value "I";
+                                 rdfs:label "Albino"@en,
+                                            "White"@en,
+                                            "Very Fair"@en,
+                                            "Freckles"@en;
+                                 <http://www.w3.org/2004/02/skos/core#equivalent> <http://en.wikipedia.org/wiki/Celts_(modern)>;
+                                 <http://www.w3.org/2004/02/skos/core#narrower> appear:SkinColorVonLuschan3,
+                                                                                appear:SkinColorVonLuschan2,
+                                                                                appear:SkinColorVonLuschan5,
+                                                                                appear:SkinColorVonLuschan4,
+                                                                                appear:SkinColorVonLuschan1;
+                                 <http://xmlns.com/foaf/spec/name> "Albino".
+appear:SkinColorFitzpatrickTypeII a appear:SkinColorFitzpatrickType;
+                                  rdf:value "II";
+                                  rdfs:label "Fair"@en,
+                                             "White"@en,
+                                             "Light-skinned European"@en;
+                                  <http://www.w3.org/2004/02/skos/core#narrower> appear:SkinColorVonLuschan8,
+                                                                                 appear:SkinColorVonLuschan10,
+                                                                                 appear:SkinColorVonLuschan6,
+                                                                                 appear:SkinColorVonLuschan9,
+                                                                                 appear:SkinColorVonLuschan7;
+                                  <http://xmlns.com/foaf/spec/name> "White".
+appear:SkinColorFitzpatrickTypeIII a appear:SkinColorFitzpatrickType;
+                                   rdf:value "III";
+                                   rdfs:label "Dark-skinned European"@en,
+                                              "Light intermediate"@en;
+                                   <http://www.w3.org/2004/02/skos/core#narrower> appear:SkinColorVonLuschan12,
+                                                                                  appear:SkinColorVonLuschan14,
+                                                                                  appear:SkinColorVonLuschan15,
+                                                                                  appear:SkinColorVonLuschan11,
+                                                                                  appear:SkinColorVonLuschan13;
+                                   <http://xmlns.com/foaf/spec/name> "Beige".
+appear:SkinColorFitzpatrickTypeIV a appear:SkinColorFitzpatrickType;
+                                  rdf:value "IV";
+                                  rdfs:label "Olive Skin"@en,
+                                             "Mediterranean"@en,
+                                             "Mediterranean Caucasian"@en,
+                                             "Dark intermediate"@en,
+                                             "Beige with a brown tint"@en;
+                                  <http://www.w3.org/2004/02/skos/core#equivalent> <http://en.wikipedia.org/wiki/Olive_skin>,
+                                                                                   <http://en.wikipedia.org/wiki/Mediterranean_race>;
+                                  <http://www.w3.org/2004/02/skos/core#narrower> appear:SkinColorVonLuschan17,
+                                                                                 appear:SkinColorVonLuschan16,
+                                                                                 appear:SkinColorVonLuschan19,
+                                                                                 appear:SkinColorVonLuschan20,
+                                                                                 appear:SkinColorVonLuschan21,
+                                                                                 appear:SkinColorVonLuschan18;
+                                  <http://xmlns.com/foaf/spec/name> "Beige with a brown tint".
+appear:SkinColorFitzpatrickTypeV a appear:SkinColorFitzpatrickType;
+                                 rdf:value "V";
+                                 rdfs:label "Brown"@en,
+                                            "Dark brown"@en,
+                                            "Dark"@en;
+                                 <http://www.w3.org/2004/02/skos/core#equivalent> <http://en.wikipedia.org/wiki/Brown_people>;
+                                 <http://www.w3.org/2004/02/skos/core#narrower> appear:SkinColorVonLuschan23,
+                                                                                appear:SkinColorVonLuschan26,
+                                                                                appear:SkinColorVonLuschan28,
+                                                                                appear:SkinColorVonLuschan25,
+                                                                                appear:SkinColorVonLuschan22,
+                                                                                appear:SkinColorVonLuschan24,
+                                                                                appear:SkinColorVonLuschan27;
+                                 <http://xmlns.com/foaf/spec/name> "Dark brown".
+appear:SkinColorFitzpatrickTypeVI a appear:SkinColorFitzpatrickType;
+                                  rdf:value "VI";
+                                  rdfs:label "Black"@en,
+                                             "Very Dark"@en;
+                                  <http://www.w3.org/2004/02/skos/core#equivalent> <http://en.wikipedia.org/wiki/Black_people>;
+                                  <http://www.w3.org/2004/02/skos/core#narrower> appear:SkinColorVonLuschan35,
+                                                                                 appear:SkinColorVonLuschan34,
+                                                                                 appear:SkinColorVonLuschan31,
+                                                                                 appear:SkinColorVonLuschan36,
+                                                                                 appear:SkinColorVonLuschan30,
+                                                                                 appear:SkinColorVonLuschan32,
+                                                                                 appear:SkinColorVonLuschan29,
+                                                                                 appear:SkinColorVonLuschan33;
+                                  <http://xmlns.com/foaf/spec/name> "Black".
+appear:SkinColorSimple a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "Simple Skin Color"@en;
+                       rdfs:subClassOf appear:SkinColor;
+                       <http://xmlns.com/foaf/spec/name> "Simple Skin Color".
+appear:SkinColorSimpleAlbino appear:htmlColor "FFFFFF";
+                             a appear:SkinColorSimple;
+                             rdfs:label "Simple Skin Color Albino"@en;
+                             <http://www.w3.org/2002/07/owl#rdfValue> "Albino";
+                             <http://www.w3.org/2004/02/skos/core#equivalent> appear:VonLuschan1;
+                             <http://xmlns.com/foaf/spec/name> "Abino".
+appear:SkinColorSimpleBlack appear:htmlColor "000000";
+                            a appear:SkinColorSimple;
+                            rdfs:label "Simple Skin Color Black"@en;
+                            <http://www.w3.org/2002/07/owl#rdfValue> "Black";
+                            <http://www.w3.org/2004/02/skos/core#broader> appear:FitzpatrickSkinColorTypeVI;
+                            <http://xmlns.com/foaf/spec/name> "Black".
+appear:SkinColorSimpleBrown appear:htmlColor "663300";
+                            a appear:SkinColorSimple;
+                            rdfs:label "Simple Skin Color Brown"@en;
+                            <http://www.w3.org/2002/07/owl#rdfValue> "Black";
+                            <http://www.w3.org/2004/02/skos/core#broader> appear:FitzpatrickSkinColorTypeV;
+                            <http://xmlns.com/foaf/spec/name> "Brown".
+appear:SkinColorSimpleOlive appear:htmlColor "95945e";
+                            a appear:SkinColorSimple;
+                            rdfs:label "Simple Skin Color Olive"@en;
+                            <http://www.w3.org/2002/07/owl#rdfValue> "Olive";
+                            <http://www.w3.org/2004/02/skos/core#broader> appear:FitzpatrickSkinColorTypeIV;
+                            <http://xmlns.com/foaf/spec/name> "Olive".
+appear:SkinColorSimpleWhite appear:htmlColor "FFFFFF";
+                            a appear:SkinColorSimple;
+                            rdfs:label "Simple Skin Color White"@en;
+                            <http://www.w3.org/2002/07/owl#rdfValue> "White";
+                            <http://www.w3.org/2004/02/skos/core#broader> appear:FitzpatrickSkinColorTypeIII,
+                                                                          appear:FitzpatrickSkinColorTypeII;
+                            <http://xmlns.com/foaf/spec/name> "White".
+appear:SkinColorVonLuschan a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:label "Skin Color"@en;
+                           rdfs:subClassOf appear:SkinColor;
+                           <http://www.w3.org/2002/07/owl#equivalentClass> <http://dbpedia.org/resource/Von_Luschan_scale>;
+                           <http://xmlns.com/foaf/spec/depiction> <http://upload.wikimedia.org/wikipedia/commons/1/1e/Felix_von_Luschan_Skin_Color_Chart.JPG>;
+                           <http://xmlns.com/foaf/spec/name> "Von_Luschan_scale".
+appear:SkinColorVonLuschan1 appear:htmlColor "F4F2F5";
+                            a appear:SkinColorVonLuschan;
+                            rdfs:label "Von Luschan Skin Color 1"@en;
+                            <http://xmlns.com/foaf/spec/name> "1".
+appear:SkinColorVonLuschan10 appear:htmlColor "FBFCF4";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 10"@en;
+                             <http://xmlns.com/foaf/spec/name> "10".
+appear:SkinColorVonLuschan11 appear:htmlColor "FBF7EB";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 11"@en;
+                             <http://xmlns.com/foaf/spec/name> "11".
+appear:SkinColorVonLuschan12 appear:htmlColor "FEF6E3";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 12"@en;
+                             <http://xmlns.com/foaf/spec/name> "12".
+appear:SkinColorVonLuschan13 appear:htmlColor "FFF9E1";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:comment "This skin color is the same as number 14. "@en;
+                             rdfs:label "Von Luschan Skin Color 13"@en;
+                             <http://xmlns.com/foaf/spec/name> "13".
+appear:SkinColorVonLuschan14 appear:htmlColor "FFF9E1";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:comment "This skin color is the same as number 13. "@en;
+                             rdfs:label "Von Luschan Skin Color 14"@en;
+                             <http://xmlns.com/foaf/spec/name> "14".
+appear:SkinColorVonLuschan15 appear:htmlColor "F1E7C3";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 15"@en;
+                             <http://xmlns.com/foaf/spec/name> "15".
+appear:SkinColorVonLuschan16 appear:htmlColor "EFE2AD";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 16"@en;
+                             <http://xmlns.com/foaf/spec/name> "16".
+appear:SkinColorVonLuschan17 appear:htmlColor "E0D293";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 17"@en;
+                             <http://xmlns.com/foaf/spec/name> "17".
+appear:SkinColorVonLuschan18 appear:htmlColor "EFE39B";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 18"@en;
+                             <http://xmlns.com/foaf/spec/name> "18".
+appear:SkinColorVonLuschan19 appear:htmlColor "E7D39E";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 19"@en;
+                             <http://xmlns.com/foaf/spec/name> "19".
+appear:SkinColorVonLuschan2 appear:htmlColor "EEEDEB";
+                            a appear:SkinColorVonLuschan;
+                            rdfs:label "Von Luschan Skin Color 2"@en;
+                            <http://xmlns.com/foaf/spec/name> "2".
+appear:SkinColorVonLuschan20 appear:htmlColor "EED885";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 20"@en;
+                             <http://xmlns.com/foaf/spec/name> "20".
+appear:SkinColorVonLuschan21 appear:htmlColor "E3C467";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 21"@en;
+                             <http://xmlns.com/foaf/spec/name> "21".
+appear:SkinColorVonLuschan22 appear:htmlColor "E1C16A";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 22"@en;
+                             <http://xmlns.com/foaf/spec/name> "22".
+appear:SkinColorVonLuschan23 appear:htmlColor "DFC17B";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 23"@en;
+                             <http://xmlns.com/foaf/spec/name> "23".
+appear:SkinColorVonLuschan24 appear:htmlColor "DEBB67";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 24"@en;
+                             <http://xmlns.com/foaf/spec/name> "24".
+appear:SkinColorVonLuschan25 appear:htmlColor "C7A464";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 25"@en;
+                             <http://xmlns.com/foaf/spec/name> "25".
+appear:SkinColorVonLuschan26 appear:htmlColor "BC9762";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 26"@en;
+                             <http://xmlns.com/foaf/spec/name> "26".
+appear:SkinColorVonLuschan27 appear:htmlColor "9C6B43";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 27"@en;
+                             <http://xmlns.com/foaf/spec/name> "27".
+appear:SkinColorVonLuschan28 appear:htmlColor "8E583E";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 28"@en;
+                             <http://xmlns.com/foaf/spec/name> "28".
+appear:SkinColorVonLuschan29 appear:htmlColor "7B4C2E";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 29"@en;
+                             <http://xmlns.com/foaf/spec/name> "29".
+appear:SkinColorVonLuschan3 appear:htmlColor "FAF9F7";
+                            a appear:SkinColorVonLuschan;
+                            rdfs:label "Von Luschan Skin Color 3"@en;
+                            <http://xmlns.com/foaf/spec/name> "3".
+appear:SkinColorVonLuschan30 appear:htmlColor "613214";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 30"@en;
+                             <http://xmlns.com/foaf/spec/name> "30".
+appear:SkinColorVonLuschan31 appear:htmlColor "672E23";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 31"@en;
+                             <http://xmlns.com/foaf/spec/name> "31".
+appear:SkinColorVonLuschan32 appear:htmlColor "603121";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 32"@en;
+                             <http://xmlns.com/foaf/spec/name> "32".
+appear:SkinColorVonLuschan33 appear:htmlColor "573229";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 33"@en;
+                             <http://xmlns.com/foaf/spec/name> "33".
+appear:SkinColorVonLuschan34 appear:htmlColor "402015";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 34"@en;
+                             <http://xmlns.com/foaf/spec/name> "34".
+appear:SkinColorVonLuschan35 appear:htmlColor "312529";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 35"@en;
+                             <http://xmlns.com/foaf/spec/name> "35".
+appear:SkinColorVonLuschan36 appear:htmlColor "1B1C2E";
+                             a appear:SkinColorVonLuschan;
+                             rdfs:label "Von Luschan Skin Color 36"@en;
+                             <http://xmlns.com/foaf/spec/name> "36".
+appear:SkinColorVonLuschan4 appear:htmlColor "FDFBE6";
+                            a appear:SkinColorVonLuschan;
+                            rdfs:label "Von Luschan Skin Color 4"@en;
+                            <http://xmlns.com/foaf/spec/name> "4".
+appear:SkinColorVonLuschan5 appear:htmlColor "FDF6E6";
+                            a appear:SkinColorVonLuschan;
+                            rdfs:label "Von Luschan Skin Color 5"@en;
+                            <http://xmlns.com/foaf/spec/name> "5".
+appear:SkinColorVonLuschan6 appear:htmlColor "FEF7E5";
+                            a appear:SkinColorVonLuschan;
+                            rdfs:label "Von Luschan Skin Color 6"@en;
+                            <http://xmlns.com/foaf/spec/name> "6".
+appear:SkinColorVonLuschan7 appear:htmlColor "FAF0EF";
+                            a appear:SkinColorVonLuschan;
+                            rdfs:label "Von Luschan Skin Color 7"@en;
+                            <http://xmlns.com/foaf/spec/name> "7".
+appear:SkinColorVonLuschan8 appear:htmlColor "F3EAE5";
+                            a appear:SkinColorVonLuschan;
+                            rdfs:label "Von Luschan Skin Color 8"@en;
+                            <http://xmlns.com/foaf/spec/name> "8".
+appear:SkinColorVonLuschan9 appear:htmlColor "F4F1EA";
+                            a appear:SkinColorVonLuschan;
+                            rdfs:label "Von Luschan Skin Color 9"@en;
+                            <http://xmlns.com/foaf/spec/name> "9".
+appear:adriel a <http://xmlns.com/foaf/spec/Person>;
+              <http://xmlns.com/foaf/spec/firstName> "Adriel";
+              <http://xmlns.com/foaf/spec/lastName> "Dean-Hall";
+              <http://xmlns.com/foaf/spec/name> "Adriel Dean-Hall".
+appear:blackwell_publishing_ltd <http://swrc.ontoware.org/ontology#name> "Blackwell Publishing Ltd";
+                                a <http://swrc.ontoware.org/ontology#Organization>.
+appear:c_r_sahagian a <http://xmlns.com/foaf/spec/Person>,
+                      <http://swrc.ontoware.org/ontology#Person>;
+                    <http://xmlns.com/foaf/spec/name> "C. R. Sahagian".
+appear:crc_press <http://swrc.ontoware.org/ontology#name> "CRC Press";
+                 a <http://swrc.ontoware.org/ontology#Organization>.
+appear:e_s_gragoudas a <http://xmlns.com/foaf/spec/Person>,
+                       <http://swrc.ontoware.org/ontology#Person>;
+                     <http://xmlns.com/foaf/spec/name> "E. S. Gragoudas".
+appear:florent_cunier <http://swrc.ontoware.org/ontology#name> "Florent Cunier";
+                      a <http://swrc.ontoware.org/ontology#Organization>.
+appear:fox_michelle_j a <http://xmlns.com/foaf/spec/Person>,
+                        <http://swrc.ontoware.org/ontology#Person>;
+                      <http://xmlns.com/foaf/spec/name> "Fox, Michelle J".
+appear:grieve_j a <http://xmlns.com/foaf/spec/Person>,
+                  <http://swrc.ontoware.org/ontology#Person>;
+                <http://xmlns.com/foaf/spec/name> "GRIEVE, J.".
+appear:hasAppearance a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain appear:Person;
+                     rdfs:label "has Appearance"@en;
+                     rdfs:range appear:Appearance;
+                     <http://xmlns.com/foaf/spec/name> "hasAppearance".
+appear:hasArmMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain appear:Person;
+                         rdfs:label "Has Arm Measurement"@en;
+                         rdfs:subPropertyOf appear:hasBodyMeasurement;
+                         <http://www.w3.org/2004/02/skos/core#inScheme> appear:MaleBodyMeasurement,
+                                                                        appear:FemaleBodyMeasurement;
+                         <http://xmlns.com/foaf/spec/name> "Arm Measurement".
+appear:hasArmMeasurementInches a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:domain appear:Person;
+                               rdfs:label "Has Arm Measurement in Inches"@en;
+                               rdfs:range xsd:decimal;
+                               rdfs:subPropertyOf appear:hasArmMeasurement;
+                               <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Inch>;
+                               <http://xmlns.com/foaf/spec/name> "Arm Measurement Inches".
+appear:hasArmMeasurementMeters a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:domain appear:Person;
+                               rdfs:label "Has Arm Measurement in Meters"@en;
+                               rdfs:range xsd:decimal;
+                               rdfs:subPropertyOf appear:hasArmMeasurement;
+                               <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Metre>;
+                               <http://xmlns.com/foaf/spec/name> "Arm Measurement Meters".
+appear:hasBandMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain appear:Person;
+                          rdfs:label "Has Band Measurement"@en;
+                          rdfs:subPropertyOf appear:hasBodyMeasurement;
+                          <http://www.w3.org/2004/02/skos/core#inScheme> appear:FemaleBodyMeasurement;
+                          <http://xmlns.com/foaf/spec/depiction> <http://rdf.muninn-project.org/ontologies/images/female-band.png>;
+                          <http://xmlns.com/foaf/spec/name> "Band Measurement".
+appear:hasBandMeasurementInches a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain appear:Person;
+                                rdfs:label "Has Band Measurement in Inches"@en;
+                                rdfs:range xsd:decimal;
+                                rdfs:subPropertyOf appear:hasBandMeasurement;
+                                <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Inch>;
+                                <http://xmlns.com/foaf/spec/name> "Band Measurement Inches".
+appear:hasBandMeasurementMeters a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain appear:Person;
+                                rdfs:label "Has Band Measurement in Meters"@en;
+                                rdfs:range xsd:decimal;
+                                rdfs:subPropertyOf appear:hasBandMeasurement;
+                                <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Metre>;
+                                <http://xmlns.com/foaf/spec/name> "Band Measurement Meters".
+appear:hasBodyMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain appear:Person;
+                          rdfs:label "Has Body Measurement"@en;
+                          rdfs:subPropertyOf appear:hasAppearance;
+                          <http://xmlns.com/foaf/spec/name> "Body Measurement".
+appear:hasChestMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain appear:Person;
+                           rdfs:label "Has Chest Measurement"@en;
+                           rdfs:subPropertyOf appear:hasBodyMeasurement;
+                           <http://www.w3.org/2004/02/skos/core#inScheme> appear:MaleBodyMeasurement;
+                           <http://xmlns.com/foaf/spec/depiction> <http://rdf.muninn-project.org/ontologies/images/man-chest.png>;
+                           <http://xmlns.com/foaf/spec/name> "Over Chest Measurement".
+appear:hasChestMeasurementInches a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:domain appear:Person;
+                                 rdfs:label "Has Chest Measurement in Inches"@en;
+                                 rdfs:range xsd:decimal;
+                                 rdfs:subPropertyOf appear:hasChestMeasurement;
+                                 <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Inch>;
+                                 <http://xmlns.com/foaf/spec/name> "Chest Measurement Inches".
+appear:hasChestMeasurementMeters a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:domain appear:Person;
+                                 rdfs:label "Has Chest Measurement in Meters"@en;
+                                 rdfs:range xsd:decimal;
+                                 rdfs:subPropertyOf appear:hasChestMeasurement;
+                                 <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Metre>;
+                                 <http://xmlns.com/foaf/spec/name> "Chest Measurement Meters".
+appear:hasEntertaimentAversion a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:domain appear:Person;
+                               rdfs:label "has Entertaiment Aversion"@en;
+                               rdfs:range appear:Sex,
+                                          appear:Gender,
+                                          appear:Appearance;
+                               <http://xmlns.com/foaf/spec/name> "hasEntertaimentAversion".
+appear:hasEntertaimentPreference a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:domain appear:Person;
+                                 rdfs:label "has Entertaiment Preference"@en;
+                                 rdfs:range appear:Sex,
+                                            appear:Gender,
+                                            appear:Appearance;
+                                 <http://xmlns.com/foaf/spec/name> "hasEntertaimentPreference".
+appear:hasGender a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain appear:Person;
+                 rdfs:label "Has Gender"@en;
+                 rdfs:range appear:Gender;
+                 <http://xmlns.com/foaf/spec/name> "Gender".
+appear:hasHeightMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:domain appear:Person;
+                            rdfs:label "Height Measurement"@en;
+                            rdfs:subPropertyOf appear:hasBodyMeasurement;
+                            <http://www.w3.org/2004/02/skos/core#inScheme> appear:FemaleBodyMeasurement,
+                                                                           appear:MaleBodyMeasurement;
+                            <http://xmlns.com/foaf/spec/name> "Height Measurement".
+appear:hasHeightMeasurementInches a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain appear:Person;
+                                  rdfs:label "Has Height Measurement in Inches"@en;
+                                  rdfs:range xsd:decimal;
+                                  rdfs:subPropertyOf appear:hasHeightMeasurement;
+                                  <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Inch>;
+                                  <http://xmlns.com/foaf/spec/name> "Height Measurement Inches".
+appear:hasHeightMeasurementMeters a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain appear:Person;
+                                  rdfs:label "has Height Measurement in Meters"@en;
+                                  rdfs:range xsd:decimal;
+                                  rdfs:subPropertyOf appear:hasHeightMeasurement;
+                                  <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Metre>;
+                                  <http://xmlns.com/foaf/spec/name> "Height Measurement Meters".
+appear:hasHipsMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain appear:Person;
+                          rdfs:label "Has Hips Measurement"@en;
+                          rdfs:subPropertyOf appear:hasBodyMeasurement;
+                          <http://www.w3.org/2004/02/skos/core#inScheme> appear:MaleBodyMeasurement,
+                                                                         appear:FemaleBodyMeasurement;
+                          <http://xmlns.com/foaf/spec/depiction> <http://rdf.muninn-project.org/ontologies/images/female-hips.png>,
+                                                                 <http://rdf.muninn-project.org/ontologies/images/male-hips.png>;
+                          <http://xmlns.com/foaf/spec/name> "Hips Measurement".
+appear:hasHipsMeasurementInches a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain appear:Person;
+                                rdfs:label "Has Hips Measurement in Inches"@en;
+                                rdfs:range xsd:decimal;
+                                rdfs:subPropertyOf appear:hasHipsMeasurement;
+                                <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Inch>;
+                                <http://xmlns.com/foaf/spec/name> "Hips Measurement Inches".
+appear:hasHipsMeasurementMeters a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain appear:Person;
+                                rdfs:label "Has Hips Measurement in Meters"@en;
+                                rdfs:range xsd:decimal;
+                                rdfs:subPropertyOf appear:hasHipsMeasurement;
+                                <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Metre>;
+                                <http://xmlns.com/foaf/spec/name> "Hips Measurement Meters".
+appear:hasInseamMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:domain appear:Person;
+                            rdfs:label "Has Inseam Measurement"@en;
+                            rdfs:subPropertyOf appear:hasBodyMeasurement;
+                            <http://www.w3.org/2004/02/skos/core#inScheme> appear:MaleBodyMeasurement,
+                                                                           appear:FemaleBodyMeasurement;
+                            <http://xmlns.com/foaf/spec/depiction> <http://rdf.muninn-project.org/ontologies/images/female-inseam.png>,
+                                                                   <http://rdf.muninn-project.org/ontologies/images/man-inseam.png>;
+                            <http://xmlns.com/foaf/spec/name> "Inseam Measurement".
+appear:hasInseamMeasurementInches a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain appear:Person;
+                                  rdfs:label "Has Inseam Measurement in Inches"@en;
+                                  rdfs:range xsd:decimal;
+                                  rdfs:subPropertyOf appear:hasInseamMeasurement;
+                                  <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Inch>;
+                                  <http://xmlns.com/foaf/spec/name> "Inseam Measurement Inches".
+appear:hasInseamMeasurementMeters a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain appear:Person;
+                                  rdfs:label "Has Inseam Measurement in Meters"@en;
+                                  rdfs:range xsd:decimal;
+                                  rdfs:subPropertyOf appear:hasInseamMeasurement;
+                                  <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Metre>;
+                                  <http://xmlns.com/foaf/spec/name> "Inseam Measurement Meters".
+appear:hasKneeLengthMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain appear:Person;
+                                rdfs:label "Has Knee Length Measurement"@en;
+                                rdfs:subPropertyOf appear:hasBodyMeasurement;
+                                <http://www.w3.org/2004/02/skos/core#inScheme> appear:FemaleBodyMeasurement;
+                                <http://xmlns.com/foaf/spec/depiction> <http://rdf.muninn-project.org/ontologies/images/female-kneelength.png>;
+                                <http://xmlns.com/foaf/spec/name> "Knee Length Measurement".
+appear:hasKneeLengthMeasurementInches a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:domain appear:Person;
+                                      rdfs:label "Has Knee Length Measurement in Inches"@en;
+                                      rdfs:range xsd:decimal;
+                                      rdfs:subPropertyOf appear:hasKneeLengthMeasurement;
+                                      <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Inch>;
+                                      <http://xmlns.com/foaf/spec/name> "Knee Length Measurement Inches".
+appear:hasKneeLengthMeasurementMeters a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:domain appear:Person;
+                                      rdfs:label "Has Knee Length Measurement in Meters"@en;
+                                      rdfs:range xsd:decimal;
+                                      rdfs:subPropertyOf appear:hasKneeLengthMeasurement;
+                                      <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Metre>;
+                                      <http://xmlns.com/foaf/spec/name> "Knee Length Measurement Meters".
+appear:hasNeckMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain appear:Person;
+                          rdfs:label "Has Neck Measurement"@en;
+                          rdfs:subPropertyOf appear:hasBodyMeasurement;
+                          <http://www.w3.org/2004/02/skos/core#inScheme> appear:MaleBodyMeasurement;
+                          <http://xmlns.com/foaf/spec/depiction> <http://rdf.muninn-project.org/ontologies/images/man-neck.png>;
+                          <http://xmlns.com/foaf/spec/name> "Neck Measurement".
+appear:hasNeckMeasurementInches a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain appear:Person;
+                                rdfs:label "Has Neck Measurement in Inches"@en;
+                                rdfs:range xsd:decimal;
+                                rdfs:subPropertyOf appear:hasNeckMeasurement;
+                                <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Inch>;
+                                <http://xmlns.com/foaf/spec/name> "Neck Measurement Inches".
+appear:hasNeckMeasurementMeters a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain appear:Person;
+                                rdfs:label "Has Neck Measurement in Meters"@en;
+                                rdfs:range xsd:decimal;
+                                rdfs:subPropertyOf appear:hasNeckMeasurement;
+                                <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Metre>;
+                                <http://xmlns.com/foaf/spec/name> "Neck Measurement Meters".
+appear:hasOverArmMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain appear:Person;
+                             rdfs:label "Has Over Arm Measurement"@en;
+                             rdfs:subPropertyOf appear:hasBodyMeasurement;
+                             <http://www.w3.org/2004/02/skos/core#inScheme> appear:MaleBodyMeasurement;
+                             <http://xmlns.com/foaf/spec/depiction> <http://rdf.muninn-project.org/ontologies/images/man-overarm.png>;
+                             <http://xmlns.com/foaf/spec/name> "Over Arm Measurement".
+appear:hasOverArmMeasurementInches a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:domain appear:Person;
+                                   rdfs:label "Has Over Arm Measurement in Inches"@en;
+                                   rdfs:range xsd:decimal;
+                                   rdfs:subPropertyOf appear:hasOverArmMeasurement;
+                                   <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Inch>;
+                                   <http://xmlns.com/foaf/spec/name> "Over Arm Measurement Inches".
+appear:hasOverArmMeasurementMeters a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:domain appear:Person;
+                                   rdfs:label "Has Over Arm Measurement in Meters"@en;
+                                   rdfs:range xsd:decimal;
+                                   rdfs:subPropertyOf appear:hasOverArmMeasurement;
+                                   <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Metre>;
+                                   <http://xmlns.com/foaf/spec/name> "Over Arm Measurement Meters".
+appear:hasPantLengthMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain appear:Person;
+                                rdfs:label "Has Pant Length Measurement"@en;
+                                rdfs:subPropertyOf appear:hasBodyMeasurement;
+                                <http://www.w3.org/2004/02/skos/core#inScheme> appear:MaleBodyMeasurement,
+                                                                               appear:FemaleBodyMeasurement;
+                                <http://xmlns.com/foaf/spec/depiction> <http://rdf.muninn-project.org/ontologies/images/man-pantleg.png>,
+                                                                       <http://rdf.muninn-project.org/ontologies/images/female-pantleg.png>;
+                                <http://xmlns.com/foaf/spec/name> "Pant Length Measurement".
+appear:hasPantLengthMeasurementInches a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:domain appear:Person;
+                                      rdfs:label "Has Pant Length Measurement in Inches"@en;
+                                      rdfs:range xsd:decimal;
+                                      rdfs:subPropertyOf appear:hasPantLengthMeasurement;
+                                      <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Inch>;
+                                      <http://xmlns.com/foaf/spec/name> "Pant Length Measurement Inches".
+appear:hasPantLengthMeasurementMeters a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:domain appear:Person;
+                                      rdfs:label "Has Pant Length Measurement in Meters"@en;
+                                      rdfs:range xsd:decimal;
+                                      rdfs:subPropertyOf appear:hasPantLengthMeasurement;
+                                      <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Metre>;
+                                      <http://xmlns.com/foaf/spec/name> "Pant Length Measurement Meters".
+appear:hasRomanticAversion a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain appear:Person;
+                           rdfs:label "has Romantic Aversion"@en;
+                           rdfs:range appear:Sex,
+                                      appear:Gender,
+                                      appear:Appearance;
+                           <http://xmlns.com/foaf/spec/name> "hasRomanticAversion".
+appear:hasRomanticPreference a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain appear:Person;
+                             rdfs:label "has Romantic Preference"@en;
+                             rdfs:range appear:Sex,
+                                        appear:Gender,
+                                        appear:Appearance;
+                             <http://xmlns.com/foaf/spec/name> "hasRomanticPreference".
+appear:hasSex a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain appear:Person;
+              rdfs:label "Has Sex"@en;
+              rdfs:range appear:Sex;
+              <http://xmlns.com/foaf/spec/name> "Sex".
+appear:hasSexualAversion a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain appear:Person;
+                         rdfs:label "has Sexual Aversion"@en;
+                         rdfs:range appear:Sex,
+                                    appear:Gender,
+                                    appear:Appearance;
+                         <http://xmlns.com/foaf/spec/name> "hasSexualAversion".
+appear:hasSexualPreference a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain appear:Person;
+                           rdfs:label "has Sexual Preference"@en;
+                           rdfs:range appear:Sex,
+                                      appear:Gender,
+                                      appear:Appearance;
+                           <http://xmlns.com/foaf/spec/name> "hasSexualPreference".
+appear:hasThighMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain appear:Person;
+                           rdfs:label "Has Thigh Measurement"@en;
+                           rdfs:subPropertyOf appear:hasBodyMeasurement;
+                           <http://www.w3.org/2004/02/skos/core#inScheme> appear:MaleBodyMeasurement,
+                                                                          appear:FemaleBodyMeasurement;
+                           <http://xmlns.com/foaf/spec/depiction> <http://rdf.muninn-project.org/ontologies/images/man-thigh.png>,
+                                                                  <http://rdf.muninn-project.org/ontologies/images/female-thigh.png>;
+                           <http://xmlns.com/foaf/spec/name> "Thigh Measurement".
+appear:hasThighMeasurementInches a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:domain appear:Person;
+                                 rdfs:label "Has Thigh Measurement in Inches"@en;
+                                 rdfs:range xsd:decimal;
+                                 rdfs:subPropertyOf appear:hasThighMeasurement;
+                                 <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Inch>;
+                                 <http://xmlns.com/foaf/spec/name> "Thigh Measurement Inches".
+appear:hasThighMeasurementMeters a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:domain appear:Person;
+                                 rdfs:label "Has Thigh Measurement in Meters"@en;
+                                 rdfs:range xsd:decimal;
+                                 rdfs:subPropertyOf appear:hasThighMeasurement;
+                                 <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Metre>;
+                                 <http://xmlns.com/foaf/spec/name> "Thigh Measurement Meters".
+appear:hasWaistMeasurement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain appear:Person;
+                           rdfs:label "Has Waist Measurement"@en;
+                           rdfs:subPropertyOf appear:hasBodyMeasurement;
+                           <http://www.w3.org/2004/02/skos/core#inScheme> appear:MaleBodyMeasurement,
+                                                                          appear:FemaleBodyMeasurement;
+                           <http://xmlns.com/foaf/spec/depiction> <http://rdf.muninn-project.org/ontologies/images/man-waist.png>,
+                                                                  <http://rdf.muninn-project.org/ontologies/images/female-waist.png>;
+                           <http://xmlns.com/foaf/spec/name> "Waist Measurement".
+appear:hasWaistMeasurementInches a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:domain appear:Person;
+                                 rdfs:label "Has Waist Measurement in Inches"@en;
+                                 rdfs:range xsd:decimal;
+                                 rdfs:subPropertyOf appear:hasWaistMeasurement;
+                                 <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Inch>;
+                                 <http://xmlns.com/foaf/spec/name> "Waist Measurement Inches".
+appear:hasWaistMeasurementMeters a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:domain appear:Person;
+                                 rdfs:label "Has Waist Measurement in Meters"@en;
+                                 rdfs:range xsd:decimal;
+                                 rdfs:subPropertyOf appear:hasWaistMeasurement;
+                                 <http://www.w3.org/2004/02/skos/core#inScheme> <http://dbpedia.org/resource/Metre>;
+                                 <http://xmlns.com/foaf/spec/name> "Waist Measurement Meters".
+appear:htmlColor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:label "htmlColor"@en;
+                 rdfs:range xsd:String;
+                 <http://xmlns.com/foaf/spec/name> "htmlColor".
+appear:j_m_seddon a <http://xmlns.com/foaf/spec/Person>,
+                    <http://swrc.ontoware.org/ontology#Person>;
+                  <http://xmlns.com/foaf/spec/name> "J. M. Seddon".
+appear:j_petrequin a <http://xmlns.com/foaf/spec/Person>,
+                     <http://swrc.ontoware.org/ontology#Person>;
+                   <http://xmlns.com/foaf/spec/name> "J. Petrequin".
+appear:john_churchill <http://swrc.ontoware.org/ontology#name> "John Churchill";
+                      a <http://swrc.ontoware.org/ontology#Organization>.
+appear:macroEthnicity a <http://www.w3.org/2002/07/owl#Class>;
+                      <http://xmlns.com/foaf/spec/name> "Macro Ethnicity".
+appear:morant_g_m a <http://xmlns.com/foaf/spec/Person>,
+                    <http://swrc.ontoware.org/ontology#Person>;
+                  <http://xmlns.com/foaf/spec/name> "MORANT, G. M.".
+appear:ogle_robert_r a <http://xmlns.com/foaf/spec/Person>,
+                       <http://swrc.ontoware.org/ontology#Person>;
+                     <http://xmlns.com/foaf/spec/name> "Ogle, Robert R".
+appear:petrequin <http://swrc.ontoware.org/ontology#address> "13 Montagne Sainte Elisabeth, Bruxelles";
+                 <http://swrc.ontoware.org/ontology#author> appear:j_petrequin;
+                 <http://swrc.ontoware.org/ontology#date-added> "2012-11-29 14:04:24 -0500";
+                 <http://swrc.ontoware.org/ontology#date-modified> "2012-11-29 14:09:28 -0500";
+                 <http://swrc.ontoware.org/ontology#journal> "Annales D'oculistique";
+                 <http://swrc.ontoware.org/ontology#pages> "120-125";
+                 <http://swrc.ontoware.org/ontology#publisher> appear:florent_cunier;
+                 <http://swrc.ontoware.org/ontology#title> "Sur les diverses couleurs de l'iris et leurs proportions dens nos climats.";
+                 <http://swrc.ontoware.org/ontology#url> <http://books.google.ca/books?id=WLwhAQAAMAAJ&pg=PA3#v=onepage&q&f=false>;
+                 <http://swrc.ontoware.org/ontology#volume> "10";
+                 <http://swrc.ontoware.org/ontology#year> "1843";
+                 <http://www.cs.vu.nl/~mcaklein/onto/swrc-ext/2005/05#authorList> <http://www.cs.vu.nl/~mcaklein/bib2rdf//tempid#daa85e6aef77a7feb6f6d8e71c1dd290e25deb41>;
+                 a <http://swrc.ontoware.org/ontology#Publication>,
+                   <http://swrc.ontoware.org/ontology#Article>;
+                 rdfs:label "J. Petrequin. Sur les diverses couleurs de l'iris et leurs proportions dens nos climats.. Annales D'oculistique 10, Florent Cunier, 1843".
+appear:r_d_sperduto a <http://xmlns.com/foaf/spec/Person>,
+                      <http://swrc.ontoware.org/ontology#Person>;
+                    <http://xmlns.com/foaf/spec/name> "R. D. Sperduto".
+appear:r_j_glynn a <http://xmlns.com/foaf/spec/Person>,
+                   <http://swrc.ontoware.org/ontology#Person>;
+                 <http://xmlns.com/foaf/spec/name> "R. J. Glynn".
+appear:riddell_w_j_b a <http://xmlns.com/foaf/spec/Person>,
+                       <http://swrc.ontoware.org/ontology#Person>;
+                     <http://xmlns.com/foaf/spec/name> "RIDDELL, W. J. B.".
+appear:seddon <http://swrc.ontoware.org/ontology#author> appear:j_m_seddon,
+                                                         appear:c_r_sahagian,
+                                                         appear:r_j_glynn,
+                                                         appear:e_s_gragoudas,
+                                                         appear:r_d_sperduto;
+              <http://swrc.ontoware.org/ontology#date-added> "2012-11-29 17:12:32 -0500";
+              <http://swrc.ontoware.org/ontology#date-modified> "2012-11-29 17:15:03 -0500";
+              <http://swrc.ontoware.org/ontology#journal> "Investigative Ophthalmology & Visual Science";
+              <http://swrc.ontoware.org/ontology#month> "August";
+              <http://swrc.ontoware.org/ontology#number> "8";
+              <http://swrc.ontoware.org/ontology#pages> "1592-1598";
+              <http://swrc.ontoware.org/ontology#title> "Evaluation of an iris color classification system. The Eye Disorders Case-Control Study Group.";
+              <http://swrc.ontoware.org/ontology#volume> "31";
+              <http://swrc.ontoware.org/ontology#year> "1990";
+              <http://www.cs.vu.nl/~mcaklein/onto/swrc-ext/2005/05#authorList> <http://www.cs.vu.nl/~mcaklein/bib2rdf//tempid#e7efff97fb9f249c9d8e246e55b655841293452c>;
+              a <http://swrc.ontoware.org/ontology#Article>,
+                <http://swrc.ontoware.org/ontology#Publication>;
+              rdfs:label "J. M. Seddon, C. R. Sahagian, R. J. Glynn, R. D. Sperduto, E. S. Gragoudas. Evaluation of an iris color classification system. The Eye Disorders Case-Control Study Group.. Investigative Ophthalmology & Visual Science 31(8), August, 1990".
+appear:wilde1862 <http://swrc.ontoware.org/ontology#address> "Princess-Street, Soho, London";
+                 <http://swrc.ontoware.org/ontology#author> <http://dbpedia.org/resource/William_Wilde>;
+                 <http://swrc.ontoware.org/ontology#date-added> "2012-11-29 14:27:12 -0500";
+                 <http://swrc.ontoware.org/ontology#date-modified> "2012-11-29 14:30:46 -0500";
+                 <http://swrc.ontoware.org/ontology#publisher> appear:john_churchill;
+                 <http://swrc.ontoware.org/ontology#title> "An Essay on the malformations and congenital diseases of the organs of sight";
+                 <http://swrc.ontoware.org/ontology#url> <http://books.google.ca/books?id=V9NTbjjA_o8C&pg=PR5#v=onepage&q&f=false>;
+                 <http://swrc.ontoware.org/ontology#year> "1862";
+                 a <http://swrc.ontoware.org/ontology#Publication>,
+                   <http://swrc.ontoware.org/ontology#Book>;
+                 rdfs:label "William Robert Wilde. An Essay on the malformations and congenital diseases of the organs of sight, John Churchill, 1862".
+<http://rdf.muninn-project.org/ontologies/organization#GenderStrict-F> a appear:GenderStrict;
+                                                                       rdfs:label "Woman"@en,
+                                                                                  "Femme"@en,
+                                                                                  "Frau"@en;
+                                                                       <http://www.w3.org/2002/07/owl#disjointWith> <http://rdf.muninn-project.org/ontologies/organization#GenderStrict-M>;
+                                                                       <http://www.w3.org/2004/02/skos/core#related> appear:GenderSimple-F;
+                                                                       <http://xmlns.com/foaf/spec/name> "F".
+<http://rdf.muninn-project.org/ontologies/organization#GenderStrict-M> a appear:GenderStrict;
+                                                                       rdfs:label "Man"@en,
+                                                                                  "Homme"@en,
+                                                                                  "Mann"@en;
+                                                                       <http://www.w3.org/2002/07/owl#disjointWith> <http://rdf.muninn-project.org/ontologies/organization#GenderStrict-F>;
+                                                                       <http://www.w3.org/2004/02/skos/core#related> appear:GenderSimple-M;
+                                                                       <http://xmlns.com/foaf/spec/name> "M".
+<http://www.cs.vu.nl/~mcaklein/bib2rdf//tempid#3ac977d8028c35e5daa29914841cdc598a20146e> rdf:_1 appear:ogle_robert_r;
+                                                                                         rdf:_2 appear:fox_michelle_j;
+                                                                                         a rdf:Seq.
+<http://www.cs.vu.nl/~mcaklein/bib2rdf//tempid#d53f411bfcf81f200c5c9f96b2a7464541af494c> rdf:_1 appear:grieve_j;
+                                                                                         rdf:_2 appear:morant_g_m;
+                                                                                         a rdf:Seq.
+<http://www.cs.vu.nl/~mcaklein/bib2rdf//tempid#daa85e6aef77a7feb6f6d8e71c1dd290e25deb41> rdf:_1 appear:j_petrequin;
+                                                                                         a rdf:Seq.
+<http://www.cs.vu.nl/~mcaklein/bib2rdf//tempid#e7efff97fb9f249c9d8e246e55b655841293452c> rdf:_1 appear:j_m_seddon;
+                                                                                         rdf:_2 appear:c_r_sahagian;
+                                                                                         rdf:_3 appear:r_j_glynn;
+                                                                                         rdf:_4 appear:r_d_sperduto;
+                                                                                         rdf:_5 appear:e_s_gragoudas;
+                                                                                         a rdf:Seq.
+<http://www.cs.vu.nl/~mcaklein/bib2rdf//tempid#f05b76dc9e07b58e359dc17dd5175e384b8bfcf4> rdf:_1 appear:riddell_w_j_b;
+                                                                                         a rdf:Seq.

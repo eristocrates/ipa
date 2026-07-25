@@ -1,0 +1,335 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix nao: <http://www.semanticdesktop.org/ontologies/2007/08/15/nao#>.
+
+<http://purl.org/dc/elements/1.1/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+nao:Agent a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "An agent is the artificial counterpart to nao:Party. It can be a software component or some service.";
+          rdfs:label "agent";
+          rdfs:subClassOf rdfs:Resource.
+nao:FreeDesktopIcon a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Represents a desktop icon as defined in the FreeDesktop Icon Naming Standard (http://standards.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html).";
+                    rdfs:label "freedesktopicon";
+                    rdfs:subClassOf nao:Symbol.
+nao:Party a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "Represents a single or a group of individuals";
+          rdfs:label "party";
+          rdfs:subClassOf rdfs:Resource.
+nao:Symbol a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "Represents a symbol, a visual representation of a resource. Typically a local or remote file would be double-typed to be used as a symbol. An alternative is nao:FreeDesktopIcon.";
+           rdfs:label "symbol";
+           rdfs:subClassOf rdfs:Resource.
+nao:Tag a <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:comment "Represents a generic tag";
+        rdfs:label "tag";
+        rdfs:subClassOf rdfs:Resource.
+nao:altLabel a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+             rdfs:comment "An alternative label alongside the preferred label for a resource";
+             rdfs:label "alternative label";
+             rdfs:range rdfs:Literal;
+             rdfs:subPropertyOf rdfs:label.
+nao:altSymbol a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "An alternative symbol representation for a resource";
+              rdfs:domain rdfs:Resource;
+              rdfs:label "alternative symbol";
+              rdfs:range nao:Symbol;
+              rdfs:subPropertyOf nao:hasSymbol.
+nao:annotation a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+               rdfs:comment "Generic annotation for a resource";
+               rdfs:domain rdfs:Resource;
+               rdfs:label "annotation".
+nao:contributor a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                rdfs:comment "Refers to a single or a group of individuals that contributed to a resource";
+                rdfs:domain rdfs:Resource;
+                rdfs:label "contributor";
+                rdfs:range nao:Party;
+                rdfs:subPropertyOf nao:annotation,
+                                   <http://purl.org/dc/elements/1.1/contributor>.
+nao:created <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#maxCardinality> "1"^^xsd:nonNegativeInteger;
+            a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "States the creation, or first modification time for a resource";
+            rdfs:domain rdfs:Resource;
+            rdfs:label "created at";
+            rdfs:range xsd:dateTime;
+            rdfs:subPropertyOf nao:modified.
+nao:creator <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#maxCardinality> "1"^^xsd:nonNegativeInteger;
+            a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+              <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+            rdfs:comment "Refers to the single or group of individuals that created the resource";
+            rdfs:domain rdfs:Resource;
+            rdfs:label "creator";
+            rdfs:range nao:Party;
+            rdfs:subPropertyOf nao:annotation,
+                               <http://purl.org/dc/elements/1.1/creator>.
+nao:deprecated <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#maxCardinality> "1"^^xsd:nonNegativeInteger;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "If this property is assigned, the subject class, property, or resource, is deprecated and should not be used in production systems any longer. It may be removed without further notice.";
+               rdfs:domain rdfs:Resource;
+               rdfs:label "deprecated";
+               rdfs:range rdfs:Resource.
+nao:description a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                rdfs:comment "A non-technical textual annotation for a resource";
+                rdfs:label "description";
+                rdfs:range rdfs:Literal;
+                rdfs:subPropertyOf rdfs:comment,
+                                   nao:annotation.
+nao:directTrust a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                rdfs:comment "A direct trust value assigned to an agent, either manually by a user or semi-/automatically by a system. Allowed values range from 0 (no trust) to 1 (very high trust).";
+                rdfs:domain <http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Agent>;
+                rdfs:label "direct trust";
+                rdfs:range xsd:double;
+                rdfs:subPropertyOf nao:trustLevel.
+nao:endorsedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "Signifies social endorsment of a resource by a specific agent. Endorsement includes social actions like favouriting, liking, voting for, starring a resource.";
+               rdfs:domain rdfs:Resource;
+               rdfs:label "endorsed by";
+               rdfs:range nao:Party.
+nao:engineeringTool a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                    rdfs:comment "Specifies the engineering tool used to generate the graph";
+                    rdfs:domain <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#Data>;
+                    rdfs:label "engineering tool";
+                    rdfs:range rdfs:Literal;
+                    rdfs:subPropertyOf nao:annotation.
+nao:externalIdentifier a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                         <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                       rdfs:comment "An external identifier for a resource that has been retreived from an external source.";
+                       rdfs:domain rdfs:Resource;
+                       rdfs:label "external identifier";
+                       rdfs:range rdfs:Literal;
+                       rdfs:subPropertyOf nao:identifier.
+nao:favouritedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Signifies social endorsment by an agent, by way of marking the resource as a favourite.";
+                 rdfs:domain rdfs:Resource;
+                 rdfs:label "favourited by";
+                 rdfs:range nao:Party;
+                 rdfs:subPropertyOf nao:endorsedBy.
+nao:hasDataGraph <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#inverseProperty> nao:isDataGraphFor;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Links a resource to the graph which contains its metadata. Its typical usage would be to link the file resource to the graph containing its extracted file metadata. This allows for easy maintenance later on. Inverse property of nao:isDataGraphFor.";
+                 rdfs:domain rdfs:Resource;
+                 rdfs:label "has data graph";
+                 rdfs:range <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#InstanceBase>.
+nao:hasDefaultNamespace <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#maxCardinality> "1"^^xsd:nonNegativeInteger;
+                        a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                          <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                        rdfs:comment "Defines the default static namespace for a graph";
+                        rdfs:domain <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#Data>;
+                        rdfs:label "has default namespace";
+                        rdfs:range rdfs:Literal;
+                        rdfs:subPropertyOf nao:annotation.
+nao:hasDefaultNamespaceAbbreviation <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#maxCardinality> "1"^^xsd:nonNegativeInteger;
+                                    a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                      <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                    rdfs:comment "Defines the default static namespace abbreviation for a graph";
+                                    rdfs:domain <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#Data>;
+                                    rdfs:label "has default namespace abbreviation";
+                                    rdfs:range rdfs:Literal;
+                                    rdfs:subPropertyOf nao:annotation.
+nao:hasSubResource <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#inverseProperty> nao:hasSuperResource;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Defines a relationship between a resource and one or more sub resources. Descriptions of sub-resources are only interpretable when the super-resource exists. Deleting a super-resource should then also delete all sub-resources, and transferring a super-resource (for example, sending it to another user) must also include the sub-resource.";
+                   rdfs:label "has Subresource";
+                   rdfs:range rdfs:Resource;
+                   rdfs:subPropertyOf nao:isRelated.
+nao:hasSuperResource <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#inverseProperty> nao:hasSubResource;
+                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Defines a relationship between a resource and one or more super resources";
+                     rdfs:label "has Superresource";
+                     rdfs:range rdfs:Resource;
+                     rdfs:subPropertyOf nao:isRelated.
+nao:hasSymbol a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Annotation for a resource in the form of a visual representation. Typically the symbol is a double-typed image file or a nao:FreeDesktopIcon.";
+              rdfs:domain rdfs:Resource;
+              rdfs:label "has symbol";
+              rdfs:range nao:Symbol.
+nao:hasTag <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#inverseProperty> nao:isTagFor;
+           a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+             <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+           rdfs:comment "Defines an existing tag for a resource";
+           rdfs:domain rdfs:Resource;
+           rdfs:label "has tag";
+           rdfs:range nao:Tag;
+           rdfs:subPropertyOf nao:annotation.
+nao:hasTopic <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#inverseProperty> nao:isTopicOf;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "Defines a relationship between two resources, where the object is a topic of the subject";
+             rdfs:label "has topic";
+             rdfs:range rdfs:Resource;
+             rdfs:subPropertyOf nao:isRelated.
+nao:iconName <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#minCardinality> "1"^^xsd:nonNegativeInteger;
+             a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+               <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+             rdfs:comment "Defines a name for a FreeDesktop Icon as defined in the FreeDesktop Icon Naming Standard";
+             rdfs:domain nao:FreeDesktopIcon;
+             rdfs:label "iconname";
+             rdfs:range rdfs:Literal;
+             rdfs:subPropertyOf nao:identifier.
+nao:identifier a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+               rdfs:comment "Defines a generic identifier for a resource";
+               rdfs:domain rdfs:Resource;
+               rdfs:label "identifier".
+nao:isDataGraphFor <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#inverseProperty> nao:hasDataGraph;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Links a named graph to the resource for which it contains metadata. Its typical usage would be to link the graph containing extracted file metadata to the file resource. This allows for easy maintenance later on. Inverse property of nao:hasDataGraph.";
+                   rdfs:domain <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#InstanceBase>;
+                   rdfs:label "is data graph for";
+                   rdfs:range rdfs:Resource.
+nao:isRelated a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#SymmetricProperty>,
+                <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+              rdfs:comment "Defines an annotation for a resource in the form of a relationship between the subject resource and another resource";
+              rdfs:label "is related to";
+              rdfs:range rdfs:Resource;
+              rdfs:subPropertyOf nao:annotation.
+nao:isTagFor <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#inverseProperty> nao:hasTag;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+               <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+             rdfs:comment "States which resources a tag is associated with";
+             rdfs:domain nao:Tag;
+             rdfs:label "is tag for";
+             rdfs:range rdfs:Resource;
+             rdfs:subPropertyOf nao:annotation.
+nao:isTopicOf <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#inverseProperty> nao:hasTopic;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Defines a relationship between two resources, where the subject is a topic of the object";
+              rdfs:label "is topic of";
+              rdfs:range rdfs:Resource;
+              rdfs:subPropertyOf nao:isRelated.
+nao:lastModified <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#maxCardinality> "1"^^xsd:nonNegativeInteger;
+                 a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:comment "States the last modification time for a resource";
+                 rdfs:domain rdfs:Resource;
+                 rdfs:label "last modified at";
+                 rdfs:range xsd:dateTime;
+                 rdfs:subPropertyOf nao:modified.
+nao:maintainedBy a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                 rdfs:comment "The agent that maintains this resource, ie. created it and knows what to do with it.";
+                 rdfs:domain rdfs:Resource;
+                 rdfs:label "maintained by";
+                 rdfs:range nao:Agent;
+                 rdfs:subPropertyOf nao:annotation.
+nao:modified a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+               <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+             rdfs:comment "States the modification time for a resource";
+             rdfs:domain rdfs:Resource;
+             rdfs:label "modified at";
+             rdfs:range xsd:dateTime;
+             rdfs:subPropertyOf nao:annotation,
+                                <http://purl.org/dc/terms/modified>.
+nao:networkTrust a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                 rdfs:comment "A network-derived trust value assigned to an agent, based on the shared direct trust values for the same agent, as set by participating agents in a network. Allowed values range from 0 (no trust) to 1 (very high trust).";
+                 rdfs:domain <http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Agent>;
+                 rdfs:label "network trust";
+                 rdfs:range xsd:double;
+                 rdfs:subPropertyOf nao:trustLevel.
+nao:numericRating <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#maxCardinality> "1"^^xsd:nonNegativeInteger;
+                  a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                    <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                  rdfs:comment " Annotation for a resource in the form of a numeric rating (float value), allowed values are between 1 and 10 whereas 0 is interpreted as not set";
+                  rdfs:domain rdfs:Resource;
+                  rdfs:label "numeric rating";
+                  rdfs:range xsd:integer;
+                  rdfs:subPropertyOf nao:scoreParameter,
+                                     nao:rating.
+nao:personalIdentifier a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                         <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#InverseFunctionalProperty>,
+                         <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                         <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                       rdfs:comment "Defines a personal string identifier for a resource";
+                       rdfs:label "personal identifier";
+                       rdfs:range rdfs:Literal;
+                       rdfs:subPropertyOf nao:identifier.
+nao:pluralPrefLabel <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#maxCardinality> "1"^^xsd:nonNegativeInteger;
+                    a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                    rdfs:comment "The plural form of the preferred label for a resource";
+                    rdfs:label "preferred label plural form";
+                    rdfs:range rdfs:Literal;
+                    rdfs:subPropertyOf rdfs:label.
+nao:prefLabel <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#maxCardinality> "1"^^xsd:nonNegativeInteger;
+              a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+              rdfs:comment "A preferred label for a resource";
+              rdfs:label "preferred label";
+              rdfs:range rdfs:Literal;
+              rdfs:subPropertyOf rdfs:label.
+nao:prefSymbol <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#maxCardinality> "1"^^xsd:nonNegativeInteger;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "A unique preferred symbol representation for a resource";
+               rdfs:domain rdfs:Resource;
+               rdfs:label "preferred symbol";
+               rdfs:range nao:Symbol;
+               rdfs:subPropertyOf nao:hasSymbol.
+nao:privacyLevel a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                 rdfs:comment "A privacy level as defined for a resource. Allowed values range from 0 (private) to 1 (public).";
+                 rdfs:domain rdfs:Resource;
+                 rdfs:label "privacy level";
+                 rdfs:range xsd:double;
+                 rdfs:subPropertyOf nao:annotation.
+nao:rating a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+           rdfs:comment "Annotation for a resource in the form of an unrestricted rating";
+           rdfs:domain rdfs:Resource;
+           rdfs:label "rating";
+           rdfs:subPropertyOf nao:annotation.
+nao:score <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#maxCardinality> "1"^^xsd:nonNegativeInteger;
+          a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+            <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+          rdfs:comment "An authoritative score for an item valued between 0 and 1";
+          rdfs:domain rdfs:Resource;
+          rdfs:label "score";
+          rdfs:range xsd:float;
+          rdfs:subPropertyOf nao:annotation.
+nao:scoreParameter a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                     <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                   rdfs:comment "A marker property to mark selected properties which are input to a mathematical algorithm to generate scores for resources. Properties are marked by being defined as subproperties of this property";
+                   rdfs:domain rdfs:Resource;
+                   rdfs:label "scoreparameter";
+                   rdfs:range xsd:float;
+                   rdfs:subPropertyOf nao:annotation.
+nao:serializationLanguage <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#maxCardinality> "1"^^xsd:nonNegativeInteger;
+                          a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                            <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                          rdfs:comment "States the serialization language for a named graph that is represented within a document";
+                          rdfs:domain <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#DocumentGraph>;
+                          rdfs:label "serialization language";
+                          rdfs:range rdfs:Literal.
+nao:status <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#maxCardinality> "1"^^xsd:nonNegativeInteger;
+           a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+             <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+           rdfs:comment "Specifies the status of a graph, stable, unstable or testing";
+           rdfs:domain <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#Data>;
+           rdfs:label "status";
+           rdfs:range rdfs:Literal;
+           rdfs:subPropertyOf nao:annotation.
+nao:trustLevel a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+               rdfs:comment "A generalised trust level assigned to an agent, based on a combination of direct and network trust values it possesses. Allowed values range from 0 (no trust) to 1 (very high trust).";
+               rdfs:domain <http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Agent>;
+               rdfs:label "trust level";
+               rdfs:range xsd:double;
+               rdfs:subPropertyOf nao:annotation.
+nao:userVisible nao:userVisible false;
+                <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#maxCardinality> 1 ;
+                a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "Mark a property, class, or even resource as user visible or not. Non-user-visible entities should never be presented to the user. By default everything is user-visible.";
+                rdfs:domain rdfs:Resource;
+                rdfs:label "user visible";
+                rdfs:range xsd:boolean.
+nao:version <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#maxCardinality> "1"^^xsd:nonNegativeInteger;
+            a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+              <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+            rdfs:comment "Specifies the version of a graph, in numeric format";
+            rdfs:domain <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#Data>;
+            rdfs:label "version";
+            rdfs:range xsd:float;
+            rdfs:subPropertyOf nao:annotation.
+<http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#InstanceBase> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#InverseFunctionalProperty> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#SymmetricProperty> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#inverseProperty> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#maxCardinality> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#minCardinality> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:Resource a <http://www.w3.org/2002/07/owl#Class>.

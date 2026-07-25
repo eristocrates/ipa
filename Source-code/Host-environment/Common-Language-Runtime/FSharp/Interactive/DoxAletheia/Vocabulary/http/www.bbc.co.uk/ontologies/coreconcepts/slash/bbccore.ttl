@@ -1,0 +1,174 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix bbccore: <http://www.bbc.co.uk/ontologies/coreconcepts/>.
+
+<http://www.bbc.co.uk/ontologies/coreconcepts> <http://purl.org/dc/elements/1.1/creator> <mailto:LinkedData@bbc.co.uk>;
+                                               <http://purl.org/dc/elements/1.1/date> "2015-10-06"^^xsd:date;
+                                               <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/4.0/>;
+                                               <http://www.bbc.co.uk/ontologies/provenance/canonicalLocation> "https://github.com/bbc/ontologies/blob/master/core/coreconcepts.ttl";
+                                               <http://www.bbc.co.uk/ontologies/provenance/changeReason> "Adding property core:label and clarifying usage of preferredLabel."@en-gb;
+                                               <http://www.bbc.co.uk/ontologies/provenance/provided> "2015-10-12T10:51:43+00:00"^^xsd:dateTime;
+                                               <http://www.bbc.co.uk/ontologies/provenance/provider> <mailto:Matthew.Gamble@bbc.co.uk>;
+                                               <http://www.bbc.co.uk/ontologies/provenance/public> true;
+                                               <http://www.bbc.co.uk/ontologies/provenance/slug> "coreconcepts";
+                                               <http://www.bbc.co.uk/ontologies/provenance/version> "1.12";
+                                               a <http://www.w3.org/2002/07/owl#Ontology>,
+                                                 <http://www.bbc.co.uk/ontologies/provenance/Ontology>;
+                                               rdfs:comment "The generic BBC ontology for people, places, events, organisations, themes which represent things that make sense across the BBC. This model is meant to be generic enough, and allow clients (domain experts) link their own concepts e.g., athletes or politicians using rdfs:sublClassOf the particular concept."@en-gb;
+                                               rdfs:label "Core Concepts Ontology"@en-gb;
+                                               <http://www.w3.org/2002/07/owl#imports> <http://purl.org/dc/terms/>,
+                                                                                       <http://www.bbc.co.uk/ontologies/provenance>,
+                                                                                       <http://purl.org/dc/elements/1.1/>;
+                                               <http://www.w3.org/2002/07/owl#priorVersion> bbccore:1.11;
+                                               <http://www.w3.org/2002/07/owl#versionIRI> bbccore:1.12;
+                                               <http://www.w3.org/2002/07/owl#versionInfo> "1.12".
+bbccore:Event a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "The class of events in the BBC. This is a generic class to represent events (music events, historic events, sports events, politics events, e.t.c.)."@en-gb;
+              rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+              rdfs:label "Event"@en-gb;
+              rdfs:subClassOf bbccore:Thing.
+bbccore:Organisation a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "The class of organisations in the BBC. E.g., Businesses."@en-gb;
+                     rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+                     rdfs:label "Organisation"@en-gb;
+                     rdfs:subClassOf bbccore:Thing.
+bbccore:Person a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "The class of people in the BBC. Subclasses of this can be all types of people such as politicians, athletes, historic figures, contributors in programmes e.t.c."@en-gb;
+               rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+               rdfs:label "Person"@en-gb;
+               rdfs:subClassOf bbccore:Thing.
+bbccore:Place a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "The class of places in the BBC."@en-gb;
+              rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+              rdfs:label "Place"@en-gb;
+              rdfs:subClassOf bbccore:Thing.
+bbccore:Theme a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "This concept is used to represent intangible things or abstract concepts.  For example, Financial Crisis, Midwifery, Happiness."@en-gb;
+              rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+              rdfs:label "Theme"@en-gb;
+              rdfs:subClassOf bbccore:Thing.
+bbccore:Thing a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "The superclass of all things the BBC creates or talks about."@en-gb;
+              rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+              rdfs:label "Thing"@en-gb;
+              rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+bbccore:dateOfBirth a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "A person's date of birth."@en-gb;
+                    rdfs:domain bbccore:Person;
+                    rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+                    rdfs:label "dateOfBirth"@en-gb;
+                    rdfs:range xsd:dateTime.
+bbccore:dateOfDeath a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "A person's date of death."@en-gb;
+                    rdfs:domain bbccore:Person;
+                    rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+                    rdfs:label "dateOfDeath"@en-gb;
+                    rdfs:range xsd:dateTime.
+bbccore:disambiguationHint a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:comment "One or two words to distinguish between entities that have similar labels - often displayed to both internal and external audiences."@en-gb;
+                           rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+                           rdfs:label "disambiguationHint"@en-gb;
+                           rdfs:range xsd:string.
+bbccore:eventOrganisation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "organisation as agent in an event"@en-gb;
+                          rdfs:domain bbccore:Event;
+                          rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+                          rdfs:label "eventOrganisation";
+                          rdfs:range bbccore:Organisation;
+                          rdfs:subPropertyOf bbccore:notablyAssociatedWith.
+bbccore:eventPerson a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "person as agent in an event"@en-gb;
+                    rdfs:domain bbccore:Event;
+                    rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+                    rdfs:label "eventPerson";
+                    rdfs:range bbccore:Person;
+                    rdfs:subPropertyOf bbccore:notablyAssociatedWith.
+bbccore:eventPlace a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "place as location of an event"@en-gb;
+                   rdfs:domain bbccore:Event;
+                   rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+                   rdfs:label "eventPlace";
+                   rdfs:range bbccore:Place;
+                   rdfs:subPropertyOf bbccore:notablyAssociatedWith.
+bbccore:eventTheme a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "theme as factor in an event"@en-gb;
+                   rdfs:domain bbccore:Event;
+                   rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+                   rdfs:label "eventTheme";
+                   rdfs:range bbccore:Theme;
+                   rdfs:subPropertyOf bbccore:notablyAssociatedWith.
+bbccore:gender a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "This property is required to distinguish people by gender."@en-gb;
+               rdfs:domain bbccore:Person;
+               rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+               rdfs:label "gender"@en-gb.
+bbccore:knownFor a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:comment "A short summary of what a person is notably known for"@en-gb;
+                 rdfs:domain bbccore:Person;
+                 rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+                 rdfs:label "knownFor"@en-gb;
+                 rdfs:range xsd:string.
+bbccore:label a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:comment "The a label for a thing. A thing may have one label per language."@en-gb;
+              rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+              rdfs:label "label"@en-gb;
+              rdfs:range xsd:string.
+bbccore:notablyAssociatedWith a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:comment "This is a high level property aiming to associate any core thing to any other core thing. For example that Tom Daley is notablyAssociatedWith diving or Glastonbury is notablyAssociatedWith music."@en-gb;
+                              rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+                              rdfs:label "notablyAssociatedWith"@en-gb.
+bbccore:occupation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "This property associates a person with a thematic area he or she worked in, for example Annie Lennox with Music."@en-gb;
+                   rdfs:domain bbccore:Person;
+                   rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+                   rdfs:label "occupation"@en-gb;
+                   rdfs:range bbccore:Theme;
+                   rdfs:subPropertyOf bbccore:notablyAssociatedWith.
+bbccore:placeOfBirth a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "A person's place of birth."@en-gb;
+                     rdfs:domain bbccore:Person;
+                     rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+                     rdfs:label "placeOfBirth"@en-gb;
+                     rdfs:range bbccore:Place;
+                     rdfs:subPropertyOf bbccore:notablyAssociatedWith.
+bbccore:placeOfDeath a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "A person's place of death"@en-gb;
+                     rdfs:domain bbccore:Person;
+                     rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+                     rdfs:label "placeOfDeath"@en-gb;
+                     rdfs:range bbccore:Place;
+                     rdfs:subPropertyOf bbccore:notablyAssociatedWith.
+bbccore:preferredLabel a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:comment "The BBC editorially preferred label for a thing. A thing may have one and only one preferredLabel"@en-gb;
+                       rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+                       rdfs:label "preferredLabel"@en-gb;
+                       rdfs:range xsd:string;
+                       rdfs:subPropertyOf bbccore:label.
+bbccore:primaryTopic a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Represents the fact that a thing (usually concept, e.g., Tom Daley) is the primary topic of a web document."@en-gb;
+                     rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+                     rdfs:label "primaryTopic"@en-gb;
+                     rdfs:range bbccore:Thing;
+                     <http://www.w3.org/2002/07/owl#inverseOf> bbccore:primaryTopicOf.
+bbccore:primaryTopicOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Represents the fact that a thing (usually concept, e.g., Tom Daley) is the primary topic of a web document."@en-gb;
+                       rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+                       rdfs:label "primaryTopicOf"@en-gb;
+                       rdfs:range <http://www.bbc.co.uk/ontologies/bbc/WebDocument>;
+                       <http://www.w3.org/2002/07/owl#inverseOf> bbccore:primaryTopic.
+bbccore:sameAs a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "Indicates that something is the same as something else, but in a way that is slightly weaker than owl:sameAs. It's purpose is to connect separate identities of the same thing, whilst keeping separation between the original statements of each."@en-gb;
+               rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+               rdfs:label "sameAs"@en-gb;
+               rdfs:range <http://www.w3.org/2002/07/owl#Thing>.
+bbccore:shortLabel a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "A short label for a thing usually needed for presentation purposes."@en-gb;
+                   rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+                   rdfs:label "shortLabel"@en-gb;
+                   rdfs:range xsd:string.
+bbccore:slug a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:comment "Human readable keywords that may be used in a programmatic fashion e.g., manchester-city."@en-gb;
+             rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts>;
+             rdfs:label "slug"@en-gb;
+             rdfs:range xsd:string.

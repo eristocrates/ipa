@@ -1,0 +1,106 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix lexdcp: <http://www.w3.org/ns/lemon/decomp#>.
+
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/lemon/decomp> <http://creativecommons.org/ns#license> <https://creativecommons.org/publicdomain/zero/1.0/>;
+                                    <http://purl.org/dc/elements/1.1/contributor> <http://www.oeg-upm.net/index.php/teachers/53-lupe>,
+                                                                                  <http://www.paulbuitelaar.net/>,
+                                                                                  <http://www.istc.cnr.it/people/aldo-gangemi>,
+                                                                                  <http://art.uniroma2.it/stellato/>,
+                                                                                  <https://sites.google.com/site/francescafrontini/>,
+                                                                                  <http://jogracia.url.ph/web/>,
+                                                                                  <http://www.ilc.cnr.it/en/content/anas-fahad-khan>,
+                                                                                  <http://art.uniroma2.it/fiorelli/>,
+                                                                                  <http://www.dfki.de/~declerck/>,
+                                                                                  <http://mayor2.dia.fi.upm.es/oeg-upm/index.php/en/teachers/52-emontiel>;
+                                    <http://purl.org/dc/elements/1.1/creator> <http://www.cimiano.de/>,
+                                                                              <http://john.mccr.ae/>;
+                                    <http://purl.org/dc/elements/1.1/description> "A model for the representation of lexical information relative to ontologies. Decomposition module."@en;
+                                    <http://purl.org/dc/elements/1.1/issued> "2016-01-10"^^xsd:date;
+                                    <http://purl.org/dc/elements/1.1/modified> "2016-01-10"^^xsd:date;
+                                    <http://purl.org/dc/elements/1.1/publisher> <http://www.w3.org/community/ontolex>;
+                                    <http://purl.org/dc/elements/1.1/rights> "CC-Zero";
+                                    <http://purl.org/dc/elements/1.1/title> "Lexicon Model for Ontologies - Decomp"@en;
+                                    <http://purl.org/vocab/vann/preferredNamespacePrefix> "decomp";
+                                    <http://purl.org/vocab/vann/preferredNamespaceUri> "http://www.w3.org/ns/lemon/decomp#";
+                                    a <http://purl.org/vocommons/voaf#Vocabulary>,
+                                      <http://www.w3.org/2002/07/owl#Ontology>;
+                                    rdfs:comment """-Version 1.0: depreciation with minor change in metadata for LOV publication
+-Version 1.1: creation"""@en;
+                                    <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/ns/lemon/ontolex>;
+                                    <http://www.w3.org/2002/07/owl#versionInfo> 1.1.
+lexdcp:Component a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A component is a particular realization of a lexical entry that forms part of a compound lexical entry."@en,
+                              "Компонент является конкретной реализацией лексического элемента, который образует часть составной лексической записи."@ru;
+                 rdfs:isDefinedBy <http://www.w3.org/ns/lemon/decomp>;
+                 rdfs:label "компонент"@ru,
+                            "composant"@fr,
+                            "component"@ro,
+                            "component"@en,
+                            "bestanddeel"@nl,
+                            "komponent"@sv,
+                            "komponent"@af,
+                            "Komponente"@de,
+                            "componente"@pt,
+                            "componente"@es,
+                            "componente"@it;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+lexdcp:constituent a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Свойство 'составной' связывает словарную единицу или компонент с компонентом, который он образует."@ru,
+                                "The property 'constituent' relates a lexical entry or component to a component that it is constituted by."@en;
+                   rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (lexdcp:Component
+                                                                         <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>];
+                   rdfs:isDefinedBy <http://www.w3.org/ns/lemon/decomp>;
+                   rdfs:label "constituent"@nl,
+                              "constituent"@fr,
+                              "constituent"@en,
+                              "constituent"@ro,
+                              "costituente"@it,
+                              "Konstituente"@de,
+                              "составной"@ru,
+                              "konstituent"@sv,
+                              "konstituent"@af,
+                              "constituinte"@pt,
+                              "constituyente"@es;
+                   rdfs:range lexdcp:Component;
+                   rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+lexdcp:correspondsTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "The property 'correspondsTo' links a component to a corresponding lexical entry or argument."@en,
+                                  "Свойство 'соответствие' связывает компонент с соответствующей словарной единицей или аргументом."@ru;
+                     rdfs:domain lexdcp:Component;
+                     rdfs:isDefinedBy <http://www.w3.org/ns/lemon/decomp>;
+                     rdfs:label "соответствие"@ru,
+                                "corresponds to"@en,
+                                "correspond à"@fr,
+                                "corrisponde a"@it,
+                                "komt overeen met"@nl,
+                                "corresponde a"@es,
+                                "entspricht"@de;
+                     rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (<http://www.w3.org/ns/lemon/ontolex#LexicalEntry>
+                                                                          <http://www.w3.org/ns/lemon/synsem#SyntacticArgument>) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>];
+                     rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+lexdcp:subterm a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The property 'subterm' relates a compound lexical entry to one of the lexical entries it is composed of."@en,
+                            "Свойство 'подчинение' связывает составную словарную единицу с одной из словарных единиц, из которых она состоит."@en;
+               rdfs:domain <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>;
+               rdfs:isDefinedBy <http://www.w3.org/ns/lemon/decomp>;
+               rdfs:label "sotto-termine"@it,
+                          "subtermo"@pt,
+                          "Teilterm"@de,
+                          "subterm"@nl,
+                          "sous-terme"@fr,
+                          "subterm"@af,
+                          "subtermen"@ro,
+                          "подчинение"@ru,
+                          "underterm"@sv,
+                          "sub-término"@es;
+               rdfs:range <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>;
+               rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://www.w3.org/ns/lemon/synsem#SyntacticArgument> a <http://www.w3.org/2002/07/owl#Class>.

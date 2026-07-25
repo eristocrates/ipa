@@ -1,0 +1,205 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix react: <https://w3id.org/react#>.
+
+<http://creativecommons.org/ns#license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/date> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/ontology/bibo/status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocommons/voaf#Vocabulary> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2002/07/owl#versionInfo> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://w3id.org/bot#Space> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/hpont#HeatPumpSystem> rdfs:subClassOf <https://w3id.org/eep#Executor>.
+<https://w3id.org/react> <http://creativecommons.org/ns#license> <https://creativecommons.org/licenses/by-nc/4.0/>;
+                         <http://purl.org/dc/terms/contributor> """Ignacio Lazaro <mailto:ignacio.lazar@tekniker.es>
+Nikola Tomasevic <mailto:nikola.tomasevic@pupin.rs>
+Marko Jelic <mailto:marko.jelic@pupin.rs>
+Dea Pujic <mailto:dea.pujic@pupin.rs>
+Lluis Millet <mailto:lluis.millet.biosca@ise.fraunhofer.de>""";
+                         <http://purl.org/dc/terms/created> "2021-06-01";
+                         <http://purl.org/dc/terms/creator> "Iker Esnaola-Gonzalez <mailto:iker.esnaola@tekniker.es>";
+                         <http://purl.org/dc/terms/description> """The REACT ontology aims to represent all the necessary knowledge to support the achievement of island energy independence through renewable energy generation and storage, a demand response platform, and promoting user engagement in a local energy community.
+
+The REACT ontology has been developed as part of the REACT project which has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement no. 824395."""@en,
+                                                                "The REACT Ontology";
+                         <http://purl.org/dc/terms/issued> "2021-09-14"@en;
+                         <http://purl.org/dc/terms/title> "The REACT Ontology"@en;
+                         <http://purl.org/ontology/bibo/status> "Work in Progress"@en;
+                         <http://purl.org/vocab/vann/preferredNamespacePrefix> "react";
+                         <http://purl.org/vocab/vann/preferredNamespaceUri> react:;
+                         a <http://www.w3.org/2002/07/owl#Ontology>;
+                         <http://www.w3.org/2002/07/owl#imports> <https://w3id.org/affectedBy>,
+                                                                 <https://w3id.org/eep>,
+                                                                 <https://w3id.org/bot-0.3.2>,
+                                                                 <https://w3id.org/hpont>;
+                         <http://www.w3.org/2002/07/owl#versionInfo> "0.3"@en.
+react: a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+         <http://purl.org/vocommons/voaf#Vocabulary>.
+react:Battery a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A unit that creates electrical energy from stored chemical energy"@en;
+              rdfs:isDefinedBy react:;
+              rdfs:label "Battery"@en;
+              rdfs:subClassOf <https://w3id.org/eep#Executor>;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+react:PVSystem a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A system composed of one or more solar panels combined that use energy from the sun to generate electricity"@en;
+               rdfs:isDefinedBy react:;
+               rdfs:label "PV System"@en;
+               rdfs:subClassOf <https://w3id.org/eep#Executor>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing"@en.
+react:equipmentCategory a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "Category to which a given equipment (eep:Executor) belongs to"@en;
+                        rdfs:domain <https://w3id.org/eep#Executor>;
+                        rdfs:isDefinedBy react:;
+                        rdfs:label "equipment Category"@en;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+react:hasAccessType a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "The type of acces of a given Execution"@en;
+                    rdfs:domain <https://w3id.org/eep#Execution>;
+                    rdfs:isDefinedBy react:;
+                    rdfs:label "has Access Type"@en;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+react:hasBatteryCapacity a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:comment "The nominal charge stored by a given Battery."@en;
+                         rdfs:domain react:Battery;
+                         rdfs:isDefinedBy react:;
+                         rdfs:label "has Battery Capacity"@en;
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+react:hasDemandEnergyCarrier a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                             rdfs:comment "Energy carriers present in a given facility (bot:Space) as demand"@en;
+                             rdfs:domain <https://w3id.org/bot#Space>;
+                             rdfs:isDefinedBy react:;
+                             rdfs:label "has Demand Energy Carrier"@en;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+react:hasElectricitySupplier a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                             rdfs:comment "Information of the Electricity Supplier of a given facility (bot:Space)"@en;
+                             rdfs:domain <https://w3id.org/bot#Space>;
+                             rdfs:isDefinedBy react:;
+                             rdfs:label "has Electricity Supplier"@en;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+react:hasEnergy a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "The nominal energy of a given Equipment (eep:Executor)"@en;
+                rdfs:domain <https://w3id.org/eep#Executor>;
+                rdfs:isDefinedBy react:;
+                rdfs:label "has Energy"@en;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+react:hasGenerationEnergyCarrier a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                 rdfs:comment "Energy carriers present in a given facility (bot:Space) as local generators"@en;
+                                 rdfs:domain <https://w3id.org/bot#Space>;
+                                 rdfs:isDefinedBy react:;
+                                 rdfs:label "has Generation Energy Carrier"@en;
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+react:hasGridCode a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "Code to uniquely identify electricity supply points such as individual domestic residences"@en;
+                  rdfs:domain <https://w3id.org/bot#Space>;
+                  rdfs:isDefinedBy react:;
+                  rdfs:label "has Grid Code"@en;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+react:hasGridType a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+react:hasInstallationDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:comment "Date when a given Equipment (eep:Executor) was installed."@en;
+                          rdfs:domain <https://w3id.org/eep#Executor>;
+                          rdfs:isDefinedBy react:;
+                          rdfs:label "has Installation Date";
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+react:hasMaxChargePower a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "Maximum charging power"@en;
+                        rdfs:domain react:Battery;
+                        rdfs:isDefinedBy react:;
+                        rdfs:label "has Max Charge Power"@en;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+react:hasMaxDischargePower a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:comment "Maximum discharging power"@en;
+                           rdfs:domain react:Battery;
+                           rdfs:isDefinedBy react:;
+                           rdfs:label "has Max Discharge Power"@en;
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+react:hasMaxGridExport a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:comment "Maximum power fed"@en;
+                       rdfs:domain <https://w3id.org/bot#Space>;
+                       rdfs:isDefinedBy react:;
+                       rdfs:label "has Max Grid Export"@en;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+react:hasMaxGridImport a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:comment "Maximum power drawn from the grid"@en;
+                       rdfs:domain <https://w3id.org/bot#Space>;
+                       rdfs:isDefinedBy react:;
+                       rdfs:label "has Max Grid Import"@en;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+react:hasMeasurementIndex a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:comment "Measurement index of an Execution or a set of Executions. Measurement index for scalar values is set to 1. For vector values (e.g. 3-phase measurement), it is set to the corresponding value: 1,2,3…"@en;
+                          rdfs:domain <https://w3id.org/eep#Execution>;
+                          rdfs:isDefinedBy react:;
+                          rdfs:label "has Measurement Index"@en;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+react:hasModuleQuantity a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "The quantity of modules that composes a given energy storage or production system"@en;
+                        rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (react:Battery
+                                                                              react:PVSystem) ; 
+                                     a <http://www.w3.org/2002/07/owl#Class>];
+                        rdfs:isDefinedBy react:;
+                        rdfs:label "has Module Quantity"@en;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+react:hasSamplingMethod a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "Sampling method of a given Execution"@en;
+                        rdfs:domain <https://w3id.org/eep#Execution>;
+                        rdfs:isDefinedBy react:;
+                        rdfs:label "has Sampling Method"@en;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+react:hasSerialNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "Unique identifier of a phyisical equipment (eep:Executor)"@en;
+                      rdfs:domain <https://w3id.org/eep#Executor>;
+                      rdfs:isDefinedBy react:;
+                      rdfs:label "has Serial Number"@en;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+react:hasTechnology a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "Base technology of a given Equipment (eep:Executor)"@en;
+                    rdfs:domain <https://w3id.org/eep#Executor>;
+                    rdfs:isDefinedBy react:;
+                    rdfs:label "has Technology"@en;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+react:hasTotalProductionCapacity a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                 rdfs:comment "The nominal total production capacity of a given production system"@en;
+                                 rdfs:domain react:PVSystem;
+                                 rdfs:isDefinedBy react:;
+                                 rdfs:label "has Total Production Capacity"@en;
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+react:hasTotalStorageCapacity a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                              rdfs:comment "The nominal total storage capacity of a given storage system"@en;
+                              rdfs:domain react:Battery;
+                              rdfs:isDefinedBy react:;
+                              rdfs:label "has Total Storage Capacity"@en;
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+react:hasVoltage a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:comment "The nominal voltage of a Battery."@en;
+                 rdfs:domain react:Battery;
+                 rdfs:isDefinedBy react:;
+                 rdfs:label "has Voltage";
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+react:isCurtailable a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "Whether a PV system has the possibility of curtailment or not"@en;
+                    rdfs:domain react:PVSystem;
+                    rdfs:isDefinedBy react:;
+                    rdfs:label "is Curtailable"@en;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+react:isManagedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "Relationship between an Executor and another Executor that manages it."@en;
+                  rdfs:domain <https://w3id.org/eep#Executor>;
+                  rdfs:isDefinedBy react:;
+                  rdfs:label "isManagedBy"@en;
+                  rdfs:range <https://w3id.org/eep#Executor>;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".

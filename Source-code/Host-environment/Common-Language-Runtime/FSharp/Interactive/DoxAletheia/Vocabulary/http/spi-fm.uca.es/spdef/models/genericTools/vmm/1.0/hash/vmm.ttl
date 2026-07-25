@@ -1,0 +1,142 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vmm: <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0#>.
+
+<http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0> <http://purl.org/dc/elements/1.1/creator> vmm:ruizrube;
+                                                         <http://purl.org/dc/elements/1.1/description> """<p>En Ingeniería del Software, así como en otras disciplinas, es habitual la utilización de herramientas de edición de diagramas mediante algún lenguaje visual. En particular, las herramientas de edición UML permiten construir modelos de software, de tal forma que permiten gestionar gran parte de los productos de trabajo de un proyecto. </p>
+
+<p>A partir del análisis de varias herramientas UML como Enterprise Architect, Visual Paradigm for UML o Rational Rose se ha diseñado este vocabulario. Este vocabulario permite representar la estructura básica de estas herramientas UML, aunque no excluye aquellas otras que permiten utilizar otros lenguajes visuales para el modelado de sistemas software u otras entidades.</p>""";
+                                                         <http://purl.org/dc/elements/1.1/modified> "2013-12-19"^^xsd:date;
+                                                         <http://purl.org/dc/elements/1.1/title> "Visual Modeling tool Model";
+                                                         <http://purl.org/vocab/vann/preferredNamespacePrefix> "vmm";
+                                                         <http://purl.org/vocab/vann/preferredNamespaceUri> "http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0#";
+                                                         a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                         <http://xmlns.com/foaf/0.1/page> <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0.html>.
+vmm:Connector a <http://www.w3.org/2002/07/owl#Class>,
+                rdfs:Class;
+              rdfs:comment """Clase que representa a una determinada relación entre
+   dos elementos de modelado.""";
+              rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0>;
+              rdfs:label "The Connector entity".
+vmm:Diagram a <http://www.w3.org/2002/07/owl#Class>,
+              rdfs:Class;
+            rdfs:comment """Clase que representa a un determinado diagrama modelado
+   con algún lenguaje visual.""";
+            rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0>;
+            rdfs:label "The Diagram entity";
+            rdfs:subClassOf <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0#Model>.
+vmm:Element a <http://www.w3.org/2002/07/owl#Class>,
+              rdfs:Class;
+            rdfs:comment """Enumeración con los posibles tipos de elementos que
+   pueden participar en un diagrama. Casos de uso, clases o componentes
+   son ejemplos de tipos de elementos en modelos UML.""";
+            rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0>;
+            rdfs:label "The Element entity".
+vmm:ModelRepository a <http://www.w3.org/2002/07/owl#Class>,
+                      rdfs:Class;
+                    rdfs:comment """Clase contenedora de todos los proyectos gestionados con
+   la herramienta de modelado.""";
+                    rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0>;
+                    rdfs:label "The ModelRepository entity".
+vmm:Package a <http://www.w3.org/2002/07/owl#Class>,
+              rdfs:Class;
+            rdfs:comment """Clase que representa a un paquete de modelos, con el
+   cual organizar los diferentes modelos.""";
+            rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0>;
+            rdfs:label "The Package entity".
+vmm:Project a <http://www.w3.org/2002/07/owl#Class>,
+              rdfs:Class;
+            rdfs:comment """Clase contenedora de todos los modelos generados para un
+   determinado proyecto.""";
+            rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0>;
+            rdfs:label "The Project entity";
+            rdfs:subClassOf <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0#Project>,
+                            <http://usefulinc.com/ns/doap#Project>.
+vmm:connectors a rdf:Property;
+               rdfs:comment "Conectores de un determinado elemento de modelado";
+               rdfs:domain vmm:Element;
+               rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0>;
+               rdfs:label "The connectors reference";
+               rdfs:range vmm:Connector.
+vmm:containedElements a rdf:Property;
+                      rdfs:comment "Elementos de modelado contenidos en un determinado diagrama";
+                      rdfs:domain vmm:Diagram;
+                      rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0>;
+                      rdfs:label "The containedElements reference";
+                      rdfs:range vmm:Element.
+vmm:description a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                  rdf:Property;
+                rdfs:comment "Descripción de un paquete, diagrama, elemento, conector o proyecto";
+                rdfs:domain vmm:Package,
+                            vmm:Project,
+                            vmm:Diagram,
+                            vmm:Element,
+                            vmm:Connector;
+                rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0>;
+                rdfs:label "The description attribute";
+                rdfs:range xsd:string;
+                rdfs:subPropertyOf <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0#description>,
+                                   <http://purl.org/dc/elements/1.1/description>.
+vmm:diagrams a rdf:Property;
+             rdfs:comment "Diagramas (modelos) includos en un paquete";
+             rdfs:domain vmm:Package;
+             rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0>;
+             rdfs:label "The diagrams reference";
+             rdfs:range vmm:Diagram;
+             rdfs:subClassOf <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0#models>.
+vmm:elements a rdf:Property;
+             rdfs:comment "Elementos de modelado incluidos en un paquete";
+             rdfs:domain vmm:Package;
+             rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0>;
+             rdfs:label "The elements reference";
+             rdfs:range vmm:Element.
+vmm:embeddedPackages a rdf:Property;
+                     rdfs:comment "Paquetes incluidos dentro de un paquete de modelos";
+                     rdfs:domain vmm:Package;
+                     rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0>;
+                     rdfs:label "The embeddedPackages reference";
+                     rdfs:range vmm:Package.
+vmm:name a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+           rdf:Property;
+         rdfs:comment "Nombre de un paquete, diagrama, elemento, conector o proyecto";
+         rdfs:domain vmm:Diagram,
+                     vmm:Package,
+                     vmm:Project,
+                     vmm:Element,
+                     vmm:Connector;
+         rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0>;
+         rdfs:label "The name attribute";
+         rdfs:range xsd:string;
+         rdfs:subPropertyOf <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0#name>,
+                            <http://purl.org/dc/elements/1.1/title>.
+vmm:packages a rdf:Property;
+             rdfs:comment "Paquetes de modelos de un determinado proyecto";
+             rdfs:domain vmm:Project;
+             rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0>;
+             rdfs:label "The packages reference";
+             rdfs:range vmm:Package.
+vmm:projects a rdf:Property;
+             rdfs:comment "Proyectos registrados en la herramienta de modelado visual";
+             rdfs:domain vmm:ModelRepository;
+             rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0>;
+             rdfs:label "The projects reference";
+             rdfs:range vmm:Project.
+vmm:ruizrube a <http://xmlns.com/foaf/0.1/Person>;
+             <http://xmlns.com/foaf/0.1/name> "Iván Ruiz Rube".
+vmm:target a rdf:Property;
+           rdfs:comment "Elemento destino de un conector entre dos elementos de modelado";
+           rdfs:domain vmm:Connector;
+           rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0>;
+           rdfs:label "The target reference";
+           rdfs:range vmm:Element.
+vmm:type a rdf:Property;
+         rdfs:comment "Tipo de un diagrama, elemento o conector entre elementos de modelado";
+         rdfs:domain vmm:Element,
+                     vmm:Diagram,
+                     vmm:Connector;
+         rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/genericTools/vmm/1.0>;
+         rdfs:label "The type attribute";
+         rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>;
+         rdfs:subClassOf <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0#type>;
+         rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/subject>.

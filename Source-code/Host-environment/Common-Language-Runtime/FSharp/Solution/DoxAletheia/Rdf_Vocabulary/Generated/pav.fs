@@ -7,40 +7,43 @@ open type Prefix_ID
 module pav =
     let _namespace_iri = Namespace_Iri pav |> NamespaceIRI
     /// <summary>
-    ///   <para>pav:retrievedBy</para>
+    ///   <para>pav:</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>An entity responsible for retrieving the data from an external source.
+    ///   <para>owl:Ontology</para>
+    ///   <para>PAV is a lightweight ontology for tracking Provenance, Authoring and Versioning. PAV specializes the W3C provenance ontology PROV-O in order to describe authorship, curation and digital creation of online resources.
     ///
-    /// The retrieving agent is usually a software entity, which has done the retrieval from the original source without performing any transcription.
+    ///           This ontology describes the defined PAV properties and their usage. Note that PAV does not define any explicit classes or domain/ranges, as every property is meant to be used directly on the described online resource.
     ///
-    /// The source that was retrieved should be given with pav:retrievedFrom. The time of the retrieval should be indicated using pav:retrievedOn.
-    ///
-    /// See pav:importedFrom for a discussion of import vs. retrieve vs. derived.</para>
-    /// labels<para>Retrieved by</para></remarks>
-    /// <seealso href="http://purl.org/pav/retrievedBy">http://purl.org/pav/retrievedBy</seealso>
-    let retrievedBy = Prefixed_Name(pav, "retrievedBy") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:derivedFrom</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Derived from a different resource.
-    ///
-    /// Derivation conserns itself with derived knowledge. If this resource has the same content as the other resource, but has simply been transcribed to fit a different model (like XML -&gt; RDF or SQL -&gt; CVS), use pav:importedFrom. If a resource was simply retrieved, use pav:retrievedFrom. If the content has however been further refined or modified, pav:derivedFrom should be used.
-    ///
-    /// Details about who performed the derivation (e.g. who did the refining or modifications) may be indicated with pav:contributedBy and its subproperties.
-    /// </para>
-    /// labels<para>Derived from</para></remarks>
-    /// <seealso href="http://purl.org/pav/derivedFrom">http://purl.org/pav/derivedFrom</seealso>
-    let derivedFrom = Prefixed_Name(pav, "derivedFrom") |> PrefixedName
+    ///           Cite as: Paolo Ciccarese, Stian Soiland-Reyes, Khalid Belhajjame, Alasdair JG Gray, Carole Goble, Tim Clark (2013): PAV ontology: provenance, authoring and versioning. Journal of biomedical semantics 4 (1), 37. doi:10.1186/2041-1480-4-37
+    ///         </para>
+    /// labels<para>Provenance, Authoring and Versioning (PAV)</para></remarks>
+    /// <seealso href="http://purl.org/pav/">http://purl.org/pav/</seealso>
+    let _prefix_iri = Prefixed_Name(pav, "") |> PrefixedName
     /// <summary>
     ///   <para>pav:doc</para>
     /// </summary>
     /// <remarks></remarks>
     /// <seealso href="http://purl.org/pav/doc">http://purl.org/pav/doc</seealso>
     let doc = Prefixed_Name(pav, "doc") |> PrefixedName
+    /// <summary>
+    ///   <para>pav:2.1</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/pav/2.1">http://purl.org/pav/2.1</seealso>
+    let ``_2.1`` = Prefixed_Name(pav, "2.1") |> PrefixedName
+    /// <summary>
+    ///   <para>pav:authoring/2.0/</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/pav/authoring/2.0/">http://purl.org/pav/authoring/2.0/</seealso>
+    let ``authoring/2.0/`` = Prefixed_Name(pav, "authoring/2.0/") |> PrefixedName
+    /// <summary>
+    ///   <para>pav:2.0/</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/pav/2.0/">http://purl.org/pav/2.0/</seealso>
+    let ``_2.0/`` = Prefixed_Name(pav, "2.0/") |> PrefixedName
     /// <summary>
     ///   <para>pav:versioning/2.0/</para>
     /// </summary>
@@ -54,17 +57,46 @@ module pav =
     /// <seealso href="http://purl.org/pav/provenance/2.0/">http://purl.org/pav/provenance/2.0/</seealso>
     let ``provenance/2.0/`` = Prefixed_Name(pav, "provenance/2.0/") |> PrefixedName
     /// <summary>
+    ///   <para>pav:2.2</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/pav/2.2">http://purl.org/pav/2.2</seealso>
+    let ``_2.2`` = Prefixed_Name(pav, "2.2") |> PrefixedName
+    /// <summary>
     ///   <para>pav:2.3</para>
     /// </summary>
     /// <remarks></remarks>
     /// <seealso href="http://purl.org/pav/2.3">http://purl.org/pav/2.3</seealso>
     let ``_2.3`` = Prefixed_Name(pav, "2.3") |> PrefixedName
     /// <summary>
+    ///   <para>pav:provenance.ttl</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/pav/provenance.ttl">http://purl.org/pav/provenance.ttl</seealso>
+    let ``provenance.ttl`` = Prefixed_Name(pav, "provenance.ttl") |> PrefixedName
+    /// <summary>
     ///   <para>pav:home</para>
     /// </summary>
     /// <remarks></remarks>
     /// <seealso href="http://purl.org/pav/home">http://purl.org/pav/home</seealso>
     let home = Prefixed_Name(pav, "home") |> PrefixedName
+    /// <summary>
+    ///   <para>pav:authoredBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>An agent that originated or gave existence to the work that is expressed by the digital resource.
+    ///
+    /// The author of the content of a resource may be different from the creator of the resource representation (although they are often the same). See pav:createdBy for a discussion.
+    ///
+    /// pav:authoredBy is more specific than its superproperty dct:creator - which might or might not be interpreted to also cover the creation of the representation of the artifact.
+    ///
+    /// The author is usually not a software agent (which would be indicated with pav:createdWith, pav:createdBy or pav:importedBy), unless the software actually authored the content itself; for instance an artificial intelligence algorithm which authored a piece of music or a machine learning algorithm that authored a classification of a tumor sample.
+    ///
+    /// The date of authoring can be expressed using pav:authoredOn - note however in the case of multiple authors that there is no relationship in PAV identifying which agent contributed when or what. If capturing such lineage is desired, it should be additionally expressed using PROV relationships like prov:qualifiedAttribution or prov:wasGeneratedBy.</para>
+    /// labels<para>Authored by</para></remarks>
+    /// <seealso href="http://purl.org/pav/authoredBy">http://purl.org/pav/authoredBy</seealso>
+    let authoredBy = Prefixed_Name(pav, "authoredBy") |> PrefixedName
     /// <summary>
     ///   <para>pav:authoredOn</para>
     /// </summary>
@@ -106,6 +138,26 @@ module pav =
     /// <seealso href="http://purl.org/pav/createdBy">http://purl.org/pav/createdBy</seealso>
     let createdBy = Prefixed_Name(pav, "createdBy") |> PrefixedName
     /// <summary>
+    ///   <para>pav:contributedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The resource was contributed to by the given agent.
+    ///
+    /// Specifies an agent that provided any sort of help in conceiving the work that is expressed by the digital artifact.
+    ///
+    /// Contributions can take many forms, of which PAV define the subproperties pav:authoredBy and pav:curatedBy; however other specific roles could also be specified by pav:contributedBy or custom subproperties, such as illustrating, investigating or managing the underlying data source. Contributions can additionally be expressed in detail using prov:qualifiedAttribution and prov:hadRole.
+    ///
+    /// Note that pav:contributedBy identifies only agents that contributed to the work, knowledge or intellectual property, and not agents that made the digital artifact or representation (pav:createdBy), thus the considerations for software agents is similar to for pav:authoredBy and pav:curatedBy.
+    ///
+    /// pav:contributedBy is more specific than its superproperty dct:contributor - which might or might not be interpreted to also cover contributions to making the representation of the artifact.
+    ///
+    ///
+    /// The date of contribution can be expressed using pav:contributedOn - note however in the case of multiple contributors that there is no relationship in PAV identifying which agent contributed when or what. If capturing such lineage is desired, it should be additionally expressed using PROV relationships like prov:qualifiedAttribution or prov:wasGeneratedBy.</para>
+    /// labels<para>Contributed by</para></remarks>
+    /// <seealso href="http://purl.org/pav/contributedBy">http://purl.org/pav/contributedBy</seealso>
+    let contributedBy = Prefixed_Name(pav, "contributedBy") |> PrefixedName
+    /// <summary>
     ///   <para>pav:createdOn</para>
     /// </summary>
     /// <remarks>
@@ -134,298 +186,6 @@ module pav =
     /// <seealso href="http://purl.org/pav/contributedOn">http://purl.org/pav/contributedOn</seealso>
     let contributedOn = Prefixed_Name(pav, "contributedOn") |> PrefixedName
     /// <summary>
-    ///   <para>pav:lastUpdateOn</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The date of the last update of the resource. An update is a change which did not warrant making a new resource related using pav:previousVersion, for instance correcting a spelling mistake.
-    ///
-    /// This property is normally used in a functional way, although PAV does not formally restrict this.
-    ///
-    /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.</para>
-    /// labels<para>Last updated on</para></remarks>
-    /// <seealso href="http://purl.org/pav/lastUpdateOn">http://purl.org/pav/lastUpdateOn</seealso>
-    let lastUpdateOn = Prefixed_Name(pav, "lastUpdateOn") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:providedBy</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>The original provider of the encoded information (e.g. PubMed, UniProt, Science Commons).
-    ///
-    /// The provider might not coincide with the dct:publisher, which would describe the current publisher of the resource. For instance if the resource was retrieved, imported or derived from a source, that source was published by the original provider. pav:providedBy provides a shortcut to indicate that original provider on the new resource.  </para>
-    /// labels<para>Provided by</para></remarks>
-    /// <seealso href="http://purl.org/pav/providedBy">http://purl.org/pav/providedBy</seealso>
-    let providedBy = Prefixed_Name(pav, "providedBy") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:sourceAccessedAt</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>The resource is related to a given source which was accessed or consulted (but not retrieved, imported or derived from). This access can be detailed with pav:sourceAccessedBy and pav:sourceAccessedOn.
-    ///
-    /// For instance, a curator (pav:curatedBy) might have consulted figures in a published paper to confirm that a dataset was correctly pav:importedFrom the paper's supplementary CSV file.
-    ///
-    /// Another example: I can access the page for tomorrow weather in Boston (http://www.weather.com/weather/tomorrow/Boston+MA+02143)  and I can blog ‘tomorrow is going to be nice’. The source does not make any claims about the nice weather, that is my interpretation; therefore the blog post has pav:sourceAccessedAt the weather page. </para>
-    /// labels<para>Source accessed at</para></remarks>
-    /// <seealso href="http://purl.org/pav/sourceAccessedAt">http://purl.org/pav/sourceAccessedAt</seealso>
-    let sourceAccessedAt = Prefixed_Name(pav, "sourceAccessedAt") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:sourceAccessedOn</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The resource is related to a source which was originally accessed or consulted on the given date as part of creating or authoring the resource. The source(s) should be specified using pav:sourceAccessedAt.
-    ///
-    /// For instance, if the source accessed described the weather forecast for the next day, the time of source access can be crucial information.
-    ///
-    /// This property is normally used in a functional way, although PAV does not formally restrict this. If the source is subsequently checked again (say to verify validity), this should be indicated with pav:sourceLastAccessedOn.
-    ///
-    /// In the case multiple sources being accessed at different times or by different agents, PAV does not distinguish who accessed when what. If such details are required, they may be provided by additionally using prov:qualifiedInfluence.
-    ///
-    /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.</para>
-    /// labels<para>Source accessed on</para></remarks>
-    /// <seealso href="http://purl.org/pav/sourceAccessedOn">http://purl.org/pav/sourceAccessedOn</seealso>
-    let sourceAccessedOn = Prefixed_Name(pav, "sourceAccessedOn") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:createdWith</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>The software/tool used by the creator (pav:createdBy) when making the digital resource, for instance a word processor or an annotation tool. A more independent software agent that creates the resource without direct interaction by a human creator should instead should instead by indicated using pav:createdBy.
-    /// </para>
-    /// labels<para>Created with</para></remarks>
-    /// <seealso href="http://purl.org/pav/createdWith">http://purl.org/pav/createdWith</seealso>
-    let createdWith = Prefixed_Name(pav, "createdWith") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:retrievedOn</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The date the source for this resource was retrieved.
-    ///
-    /// The source that was retrieved should be indicated with pav:retrievedFrom. The agent that performed the retrieval may be specified with pav:retrievedBy.
-    ///
-    /// This property is normally used in a functional way, although PAV does not formally restrict this.
-    ///
-    /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.</para>
-    /// labels<para>Retrieved on</para></remarks>
-    /// <seealso href="http://purl.org/pav/retrievedOn">http://purl.org/pav/retrievedOn</seealso>
-    let retrievedOn = Prefixed_Name(pav, "retrievedOn") |> PrefixedName
-
-    /// <summary>
-    ///   <para>pav:sourceLastAccessedOn</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The resource is related to a source which was last accessed or consulted on the given date. The source(s) should be specified using pav:sourceAccessedAt. Usage of this property indicates that the source has been checked previously, which the initial time should be indicated with pav:sourceAccessedOn.
-    ///
-    /// This property can be useful together with pav:lastRefreshedOn or pav:lastUpdateOn in order to indicate a re-import or update, but could also be used alone, for instance when a source was simply verified and no further action was taken for the resource.
-    ///
-    /// This property is normally used in a functional way, although PAV does not formally restrict this.
-    ///
-    /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.</para>
-    /// labels<para>Source last accessed on</para></remarks>
-    /// <seealso href="http://purl.org/pav/sourceLastAccessedOn">http://purl.org/pav/sourceLastAccessedOn</seealso>
-    let sourceLastAccessedOn =
-        Prefixed_Name(pav, "sourceLastAccessedOn") |> PrefixedName
-
-    /// <summary>
-    ///   <para>pav:sourceAccessedBy</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>The resource is related to a source which was accessed or consulted
-    /// by the given agent. The source(s) should be specified using pav:sourceAccessedAt, and the time with pav:sourceAccessedOn.
-    ///
-    /// For instance, the given agent could be a curator (also pav:curatedBy) which consulted figures in a published paper to confirm that a dataset was correctly pav:importedFrom the paper's supplementary CSV file.</para>
-    /// labels<para>Source accessed by</para></remarks>
-    /// <seealso href="http://purl.org/pav/sourceAccessedBy">http://purl.org/pav/sourceAccessedBy</seealso>
-    let sourceAccessedBy = Prefixed_Name(pav, "sourceAccessedBy") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:hasEarlierVersion</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:TransitiveProperty</para>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>owl:AsymmetricProperty</para>
-    ///   <para>This versioned resource has an earlier version.
-    ///
-    /// Any earlier version of this resource can be indicated with pav:hasEarlierVersion, e.g.:
-    ///
-    /// &lt;http://example.com/v4&gt; pav:hasEarlierVersion &lt;http://example.com/v2&gt; ;
-    ///     pav:hasEarlierVersion &lt;http://example.com/v1&gt; .
-    ///
-    ///
-    /// The subproperty pav:previousVersion SHOULD be used if the earlier version is the direct ancestor of this version.
-    ///
-    /// &lt;http://example.com/v4&gt; pav:previousVersion &lt;http://example.com/v3&gt; .
-    ///
-    ///
-    /// This property is transitive, so it should not be necessary to repeat the earlier versions of an earlier version. A chain of previous versions can be declared using the subproperty pav:previousVersion, implying that the previous previous version is also an earlier version. It might however still be useful to declare an earlier version explicitly, for instance because it is an earlier version of high relevance or because the complete chain of pav:previousVersion is not available.
-    ///
-    ///
-    /// To indicate that this version is a snapshot of a more general, non-versioned resource, e.g. "Weather Today" vs. "Weather Today on 2013-12-07", see pav:hasVersion.</para>
-    /// labels<para>Has earlier version</para></remarks>
-    /// <seealso href="http://purl.org/pav/hasEarlierVersion">http://purl.org/pav/hasEarlierVersion</seealso>
-    let hasEarlierVersion = Prefixed_Name(pav, "hasEarlierVersion") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:importedBy</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>An entity responsible for importing the data.
-    ///
-    /// The importer is usually a software entity which has done the transcription from the original source.
-    ///
-    /// Note that pav:importedBy may overlap with pav:createdWith.
-    ///
-    /// The source for the import should be given with pav:importedFrom. The time of the import should be given with pav:importedOn.
-    ///
-    /// See pav:importedFrom for a discussion of import vs. retrieve vs. derived.</para>
-    /// labels<para>Imported by</para></remarks>
-    /// <seealso href="http://purl.org/pav/importedBy">http://purl.org/pav/importedBy</seealso>
-    let importedBy = Prefixed_Name(pav, "importedBy") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:importedOn</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The date this resource was imported from a source (pav:importedFrom).
-    ///
-    /// Note that pav:importedOn may overlap with pav:createdOn, but in cases where they differ, the import time indicates the time of the retrieval and transcription of the original source, while the creation time indicates when the final resource was made, for instance after user approval.
-    ///
-    /// This property is normally used in a functional way, indicating the first import date, although PAV does not formally restrict this. If the resource is later reimported, this should instead be indicated with pav:lastRefreshedOn.
-    ///
-    /// The source of the import should be given with pav:importedFrom. The agent that performed the import should be given with pav:importedBy.
-    ///
-    /// See pav:importedFrom for a discussion about import vs. retrieval.
-    ///
-    /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.</para>
-    /// labels<para>Imported on</para></remarks>
-    /// <seealso href="http://purl.org/pav/importedOn">http://purl.org/pav/importedOn</seealso>
-    let importedOn = Prefixed_Name(pav, "importedOn") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:retrievedFrom</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>The URI where a resource has been retrieved from.
-    ///
-    /// The retrieving agent is usually a software entity, which has done the retrieval from the original source without performing any transcription.
-    ///
-    /// Retrieval indicates that this resource has the same representation as the original resource. If the resource has been somewhat transformed, use pav:importedFrom instead.
-    ///
-    /// The time of the retrieval should be indicated using pav:retrievedOn. The agent may be indicated with pav:retrievedBy.</para>
-    /// labels<para>Retrieved from</para></remarks>
-    /// <seealso href="http://purl.org/pav/retrievedFrom">http://purl.org/pav/retrievedFrom</seealso>
-    let retrievedFrom = Prefixed_Name(pav, "retrievedFrom") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:lastRefreshedOn</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The date of the last re-import of the resource. This property is used in addition to pav:importedOn if this version has been updated due to a re-import. If the re-import created a new resource rather than refreshing an existing resource, then instead use pav:importedOn together with pav:previousVersion.
-    ///
-    /// This property is normally used in a functional way, although PAV does not formally restrict this.
-    ///
-    /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.</para>
-    /// labels<para>Last refreshed on</para></remarks>
-    /// <seealso href="http://purl.org/pav/lastRefreshedOn">http://purl.org/pav/lastRefreshedOn</seealso>
-    let lastRefreshedOn = Prefixed_Name(pav, "lastRefreshedOn") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:version</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The version number of a resource. This is a freetext string, typical values are "1.5" or "21". The URI identifying the previous version can be provided using prov:previousVersion.
-    ///
-    /// This property is normally used in a functional way, although PAV does not formally restrict this.</para>
-    /// labels<para>Version</para></remarks>
-    /// <seealso href="http://purl.org/pav/version">http://purl.org/pav/version</seealso>
-    let version = Prefixed_Name(pav, "version") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Ontology</para>
-    ///   <para>PAV is a lightweight ontology for tracking Provenance, Authoring and Versioning. PAV specializes the W3C provenance ontology PROV-O in order to describe authorship, curation and digital creation of online resources.
-    ///
-    ///           This ontology describes the defined PAV properties and their usage. Note that PAV does not define any explicit classes or domain/ranges, as every property is meant to be used directly on the described online resource.
-    ///
-    ///           Cite as: Paolo Ciccarese, Stian Soiland-Reyes, Khalid Belhajjame, Alasdair JG Gray, Carole Goble, Tim Clark (2013): PAV ontology: provenance, authoring and versioning. Journal of biomedical semantics 4 (1), 37. doi:10.1186/2041-1480-4-37
-    ///         </para>
-    /// labels<para>Provenance, Authoring and Versioning (PAV)</para></remarks>
-    /// <seealso href="http://purl.org/pav/">http://purl.org/pav/</seealso>
-    let _prefix_iri = Prefixed_Name(pav, "") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:2.1</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://purl.org/pav/2.1">http://purl.org/pav/2.1</seealso>
-    let ``_2.1`` = Prefixed_Name(pav, "2.1") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:authoring/2.0/</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://purl.org/pav/authoring/2.0/">http://purl.org/pav/authoring/2.0/</seealso>
-    let ``authoring/2.0/`` = Prefixed_Name(pav, "authoring/2.0/") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:2.0/</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://purl.org/pav/2.0/">http://purl.org/pav/2.0/</seealso>
-    let ``_2.0/`` = Prefixed_Name(pav, "2.0/") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:2.2</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://purl.org/pav/2.2">http://purl.org/pav/2.2</seealso>
-    let ``_2.2`` = Prefixed_Name(pav, "2.2") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:provenance.ttl</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://purl.org/pav/provenance.ttl">http://purl.org/pav/provenance.ttl</seealso>
-    let ``provenance.ttl`` = Prefixed_Name(pav, "provenance.ttl") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:authoredBy</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>An agent that originated or gave existence to the work that is expressed by the digital resource.
-    ///
-    /// The author of the content of a resource may be different from the creator of the resource representation (although they are often the same). See pav:createdBy for a discussion.
-    ///
-    /// pav:authoredBy is more specific than its superproperty dct:creator - which might or might not be interpreted to also cover the creation of the representation of the artifact.
-    ///
-    /// The author is usually not a software agent (which would be indicated with pav:createdWith, pav:createdBy or pav:importedBy), unless the software actually authored the content itself; for instance an artificial intelligence algorithm which authored a piece of music or a machine learning algorithm that authored a classification of a tumor sample.
-    ///
-    /// The date of authoring can be expressed using pav:authoredOn - note however in the case of multiple authors that there is no relationship in PAV identifying which agent contributed when or what. If capturing such lineage is desired, it should be additionally expressed using PROV relationships like prov:qualifiedAttribution or prov:wasGeneratedBy.</para>
-    /// labels<para>Authored by</para></remarks>
-    /// <seealso href="http://purl.org/pav/authoredBy">http://purl.org/pav/authoredBy</seealso>
-    let authoredBy = Prefixed_Name(pav, "authoredBy") |> PrefixedName
-    /// <summary>
-    ///   <para>pav:contributedBy</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>The resource was contributed to by the given agent.
-    ///
-    /// Specifies an agent that provided any sort of help in conceiving the work that is expressed by the digital artifact.
-    ///
-    /// Contributions can take many forms, of which PAV define the subproperties pav:authoredBy and pav:curatedBy; however other specific roles could also be specified by pav:contributedBy or custom subproperties, such as illustrating, investigating or managing the underlying data source. Contributions can additionally be expressed in detail using prov:qualifiedAttribution and prov:hadRole.
-    ///
-    /// Note that pav:contributedBy identifies only agents that contributed to the work, knowledge or intellectual property, and not agents that made the digital artifact or representation (pav:createdBy), thus the considerations for software agents is similar to for pav:authoredBy and pav:curatedBy.
-    ///
-    /// pav:contributedBy is more specific than its superproperty dct:contributor - which might or might not be interpreted to also cover contributions to making the representation of the artifact.
-    ///
-    ///
-    /// The date of contribution can be expressed using pav:contributedOn - note however in the case of multiple contributors that there is no relationship in PAV identifying which agent contributed when or what. If capturing such lineage is desired, it should be additionally expressed using PROV relationships like prov:qualifiedAttribution or prov:wasGeneratedBy.</para>
-    /// labels<para>Contributed by</para></remarks>
-    /// <seealso href="http://purl.org/pav/contributedBy">http://purl.org/pav/contributedBy</seealso>
-    let contributedBy = Prefixed_Name(pav, "contributedBy") |> PrefixedName
-    /// <summary>
     ///   <para>pav:createdAt</para>
     /// </summary>
     /// <remarks>
@@ -450,6 +210,16 @@ module pav =
     /// <seealso href="http://purl.org/pav/curatedBy">http://purl.org/pav/curatedBy</seealso>
     let curatedBy = Prefixed_Name(pav, "curatedBy") |> PrefixedName
     /// <summary>
+    ///   <para>pav:createdWith</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The software/tool used by the creator (pav:createdBy) when making the digital resource, for instance a word processor or an annotation tool. A more independent software agent that creates the resource without direct interaction by a human creator should instead should instead by indicated using pav:createdBy.
+    /// </para>
+    /// labels<para>Created with</para></remarks>
+    /// <seealso href="http://purl.org/pav/createdWith">http://purl.org/pav/createdWith</seealso>
+    let createdWith = Prefixed_Name(pav, "createdWith") |> PrefixedName
+    /// <summary>
     ///   <para>pav:curatedOn</para>
     /// </summary>
     /// <remarks>
@@ -473,6 +243,20 @@ module pav =
     /// labels<para>Curates</para></remarks>
     /// <seealso href="http://purl.org/pav/curates">http://purl.org/pav/curates</seealso>
     let curates = Prefixed_Name(pav, "curates") |> PrefixedName
+    /// <summary>
+    ///   <para>pav:derivedFrom</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Derived from a different resource.
+    ///
+    /// Derivation conserns itself with derived knowledge. If this resource has the same content as the other resource, but has simply been transcribed to fit a different model (like XML -&gt; RDF or SQL -&gt; CVS), use pav:importedFrom. If a resource was simply retrieved, use pav:retrievedFrom. If the content has however been further refined or modified, pav:derivedFrom should be used.
+    ///
+    /// Details about who performed the derivation (e.g. who did the refining or modifications) may be indicated with pav:contributedBy and its subproperties.
+    /// </para>
+    /// labels<para>Derived from</para></remarks>
+    /// <seealso href="http://purl.org/pav/derivedFrom">http://purl.org/pav/derivedFrom</seealso>
+    let derivedFrom = Prefixed_Name(pav, "derivedFrom") |> PrefixedName
     /// <summary>
     ///   <para>pav:importedFrom</para>
     /// </summary>
@@ -566,3 +350,219 @@ module pav =
     /// labels<para>Has version</para></remarks>
     /// <seealso href="http://purl.org/pav/hasVersion">http://purl.org/pav/hasVersion</seealso>
     let hasVersion = Prefixed_Name(pav, "hasVersion") |> PrefixedName
+    /// <summary>
+    ///   <para>pav:hasEarlierVersion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:AsymmetricProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This versioned resource has an earlier version.
+    ///
+    /// Any earlier version of this resource can be indicated with pav:hasEarlierVersion, e.g.:
+    ///
+    /// &lt;http://example.com/v4&gt; pav:hasEarlierVersion &lt;http://example.com/v2&gt; ;
+    ///     pav:hasEarlierVersion &lt;http://example.com/v1&gt; .
+    ///
+    ///
+    /// The subproperty pav:previousVersion SHOULD be used if the earlier version is the direct ancestor of this version.
+    ///
+    /// &lt;http://example.com/v4&gt; pav:previousVersion &lt;http://example.com/v3&gt; .
+    ///
+    ///
+    /// This property is transitive, so it should not be necessary to repeat the earlier versions of an earlier version. A chain of previous versions can be declared using the subproperty pav:previousVersion, implying that the previous previous version is also an earlier version. It might however still be useful to declare an earlier version explicitly, for instance because it is an earlier version of high relevance or because the complete chain of pav:previousVersion is not available.
+    ///
+    ///
+    /// To indicate that this version is a snapshot of a more general, non-versioned resource, e.g. "Weather Today" vs. "Weather Today on 2013-12-07", see pav:hasVersion.</para>
+    /// labels<para>Has earlier version</para></remarks>
+    /// <seealso href="http://purl.org/pav/hasEarlierVersion">http://purl.org/pav/hasEarlierVersion</seealso>
+    let hasEarlierVersion = Prefixed_Name(pav, "hasEarlierVersion") |> PrefixedName
+    /// <summary>
+    ///   <para>pav:importedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>An entity responsible for importing the data.
+    ///
+    /// The importer is usually a software entity which has done the transcription from the original source.
+    ///
+    /// Note that pav:importedBy may overlap with pav:createdWith.
+    ///
+    /// The source for the import should be given with pav:importedFrom. The time of the import should be given with pav:importedOn.
+    ///
+    /// See pav:importedFrom for a discussion of import vs. retrieve vs. derived.</para>
+    /// labels<para>Imported by</para></remarks>
+    /// <seealso href="http://purl.org/pav/importedBy">http://purl.org/pav/importedBy</seealso>
+    let importedBy = Prefixed_Name(pav, "importedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>pav:importedOn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The date this resource was imported from a source (pav:importedFrom).
+    ///
+    /// Note that pav:importedOn may overlap with pav:createdOn, but in cases where they differ, the import time indicates the time of the retrieval and transcription of the original source, while the creation time indicates when the final resource was made, for instance after user approval.
+    ///
+    /// This property is normally used in a functional way, indicating the first import date, although PAV does not formally restrict this. If the resource is later reimported, this should instead be indicated with pav:lastRefreshedOn.
+    ///
+    /// The source of the import should be given with pav:importedFrom. The agent that performed the import should be given with pav:importedBy.
+    ///
+    /// See pav:importedFrom for a discussion about import vs. retrieval.
+    ///
+    /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.</para>
+    /// labels<para>Imported on</para></remarks>
+    /// <seealso href="http://purl.org/pav/importedOn">http://purl.org/pav/importedOn</seealso>
+    let importedOn = Prefixed_Name(pav, "importedOn") |> PrefixedName
+    /// <summary>
+    ///   <para>pav:retrievedFrom</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The URI where a resource has been retrieved from.
+    ///
+    /// The retrieving agent is usually a software entity, which has done the retrieval from the original source without performing any transcription.
+    ///
+    /// Retrieval indicates that this resource has the same representation as the original resource. If the resource has been somewhat transformed, use pav:importedFrom instead.
+    ///
+    /// The time of the retrieval should be indicated using pav:retrievedOn. The agent may be indicated with pav:retrievedBy.</para>
+    /// labels<para>Retrieved from</para></remarks>
+    /// <seealso href="http://purl.org/pav/retrievedFrom">http://purl.org/pav/retrievedFrom</seealso>
+    let retrievedFrom = Prefixed_Name(pav, "retrievedFrom") |> PrefixedName
+    /// <summary>
+    ///   <para>pav:lastRefreshedOn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The date of the last re-import of the resource. This property is used in addition to pav:importedOn if this version has been updated due to a re-import. If the re-import created a new resource rather than refreshing an existing resource, then instead use pav:importedOn together with pav:previousVersion.
+    ///
+    /// This property is normally used in a functional way, although PAV does not formally restrict this.
+    ///
+    /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.</para>
+    /// labels<para>Last refreshed on</para></remarks>
+    /// <seealso href="http://purl.org/pav/lastRefreshedOn">http://purl.org/pav/lastRefreshedOn</seealso>
+    let lastRefreshedOn = Prefixed_Name(pav, "lastRefreshedOn") |> PrefixedName
+    /// <summary>
+    ///   <para>pav:lastUpdateOn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The date of the last update of the resource. An update is a change which did not warrant making a new resource related using pav:previousVersion, for instance correcting a spelling mistake.
+    ///
+    /// This property is normally used in a functional way, although PAV does not formally restrict this.
+    ///
+    /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.</para>
+    /// labels<para>Last updated on</para></remarks>
+    /// <seealso href="http://purl.org/pav/lastUpdateOn">http://purl.org/pav/lastUpdateOn</seealso>
+    let lastUpdateOn = Prefixed_Name(pav, "lastUpdateOn") |> PrefixedName
+    /// <summary>
+    ///   <para>pav:version</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The version number of a resource. This is a freetext string, typical values are "1.5" or "21". The URI identifying the previous version can be provided using prov:previousVersion.
+    ///
+    /// This property is normally used in a functional way, although PAV does not formally restrict this.</para>
+    /// labels<para>Version</para></remarks>
+    /// <seealso href="http://purl.org/pav/version">http://purl.org/pav/version</seealso>
+    let version = Prefixed_Name(pav, "version") |> PrefixedName
+    /// <summary>
+    ///   <para>pav:providedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The original provider of the encoded information (e.g. PubMed, UniProt, Science Commons).
+    ///
+    /// The provider might not coincide with the dct:publisher, which would describe the current publisher of the resource. For instance if the resource was retrieved, imported or derived from a source, that source was published by the original provider. pav:providedBy provides a shortcut to indicate that original provider on the new resource.  </para>
+    /// labels<para>Provided by</para></remarks>
+    /// <seealso href="http://purl.org/pav/providedBy">http://purl.org/pav/providedBy</seealso>
+    let providedBy = Prefixed_Name(pav, "providedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>pav:retrievedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>An entity responsible for retrieving the data from an external source.
+    ///
+    /// The retrieving agent is usually a software entity, which has done the retrieval from the original source without performing any transcription.
+    ///
+    /// The source that was retrieved should be given with pav:retrievedFrom. The time of the retrieval should be indicated using pav:retrievedOn.
+    ///
+    /// See pav:importedFrom for a discussion of import vs. retrieve vs. derived.</para>
+    /// labels<para>Retrieved by</para></remarks>
+    /// <seealso href="http://purl.org/pav/retrievedBy">http://purl.org/pav/retrievedBy</seealso>
+    let retrievedBy = Prefixed_Name(pav, "retrievedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>pav:retrievedOn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The date the source for this resource was retrieved.
+    ///
+    /// The source that was retrieved should be indicated with pav:retrievedFrom. The agent that performed the retrieval may be specified with pav:retrievedBy.
+    ///
+    /// This property is normally used in a functional way, although PAV does not formally restrict this.
+    ///
+    /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.</para>
+    /// labels<para>Retrieved on</para></remarks>
+    /// <seealso href="http://purl.org/pav/retrievedOn">http://purl.org/pav/retrievedOn</seealso>
+    let retrievedOn = Prefixed_Name(pav, "retrievedOn") |> PrefixedName
+    /// <summary>
+    ///   <para>pav:sourceAccessedAt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The resource is related to a given source which was accessed or consulted (but not retrieved, imported or derived from). This access can be detailed with pav:sourceAccessedBy and pav:sourceAccessedOn.
+    ///
+    /// For instance, a curator (pav:curatedBy) might have consulted figures in a published paper to confirm that a dataset was correctly pav:importedFrom the paper's supplementary CSV file.
+    ///
+    /// Another example: I can access the page for tomorrow weather in Boston (http://www.weather.com/weather/tomorrow/Boston+MA+02143)  and I can blog ‘tomorrow is going to be nice’. The source does not make any claims about the nice weather, that is my interpretation; therefore the blog post has pav:sourceAccessedAt the weather page. </para>
+    /// labels<para>Source accessed at</para></remarks>
+    /// <seealso href="http://purl.org/pav/sourceAccessedAt">http://purl.org/pav/sourceAccessedAt</seealso>
+    let sourceAccessedAt = Prefixed_Name(pav, "sourceAccessedAt") |> PrefixedName
+
+    /// <summary>
+    ///   <para>pav:sourceLastAccessedOn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The resource is related to a source which was last accessed or consulted on the given date. The source(s) should be specified using pav:sourceAccessedAt. Usage of this property indicates that the source has been checked previously, which the initial time should be indicated with pav:sourceAccessedOn.
+    ///
+    /// This property can be useful together with pav:lastRefreshedOn or pav:lastUpdateOn in order to indicate a re-import or update, but could also be used alone, for instance when a source was simply verified and no further action was taken for the resource.
+    ///
+    /// This property is normally used in a functional way, although PAV does not formally restrict this.
+    ///
+    /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.</para>
+    /// labels<para>Source last accessed on</para></remarks>
+    /// <seealso href="http://purl.org/pav/sourceLastAccessedOn">http://purl.org/pav/sourceLastAccessedOn</seealso>
+    let sourceLastAccessedOn =
+        Prefixed_Name(pav, "sourceLastAccessedOn") |> PrefixedName
+
+    /// <summary>
+    ///   <para>pav:sourceAccessedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The resource is related to a source which was accessed or consulted
+    /// by the given agent. The source(s) should be specified using pav:sourceAccessedAt, and the time with pav:sourceAccessedOn.
+    ///
+    /// For instance, the given agent could be a curator (also pav:curatedBy) which consulted figures in a published paper to confirm that a dataset was correctly pav:importedFrom the paper's supplementary CSV file.</para>
+    /// labels<para>Source accessed by</para></remarks>
+    /// <seealso href="http://purl.org/pav/sourceAccessedBy">http://purl.org/pav/sourceAccessedBy</seealso>
+    let sourceAccessedBy = Prefixed_Name(pav, "sourceAccessedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>pav:sourceAccessedOn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The resource is related to a source which was originally accessed or consulted on the given date as part of creating or authoring the resource. The source(s) should be specified using pav:sourceAccessedAt.
+    ///
+    /// For instance, if the source accessed described the weather forecast for the next day, the time of source access can be crucial information.
+    ///
+    /// This property is normally used in a functional way, although PAV does not formally restrict this. If the source is subsequently checked again (say to verify validity), this should be indicated with pav:sourceLastAccessedOn.
+    ///
+    /// In the case multiple sources being accessed at different times or by different agents, PAV does not distinguish who accessed when what. If such details are required, they may be provided by additionally using prov:qualifiedInfluence.
+    ///
+    /// The value is of type xsd:dateTime, for instance "2013-03-26T14:49:00+01:00"^^xsd:dateTime. The timezone information (Z for UTC, +01:00 for UTC+1, etc) SHOULD be included unless unknown. If the time (or parts of time) is unknown, use 00:00:00Z. If the day/month is unknown, use 01-01, for instance, if we only know September 1983, then use "1983-09-01T00:00:00Z"^^xsd:dateTime.</para>
+    /// labels<para>Source accessed on</para></remarks>
+    /// <seealso href="http://purl.org/pav/sourceAccessedOn">http://purl.org/pav/sourceAccessedOn</seealso>
+    let sourceAccessedOn = Prefixed_Name(pav, "sourceAccessedOn") |> PrefixedName

@@ -7,17 +7,37 @@ open type Prefix_ID
 module lode =
     let _namespace_iri = Namespace_Iri lode |> NamespaceIRI
     /// <summary>
-    ///   <para>lode:</para>
+    ///   <para>lode:atPlace</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:Ontology</para>
+    ///   <para>owl:ObjectProperty</para>
     ///   <para>
-    /// This document describes an ontology for publishing descriptions of
-    /// historical events as Linked Data, and for mapping between other
-    /// event-related vocabularies and ontologies.</para>
-    /// labels<para>LODE: An ontology for Linking Open Descriptions of Events</para></remarks>
-    /// <seealso href="http://linkedevents.org/ontology/">http://linkedevents.org/ontology/</seealso>
-    let _prefix_iri = Prefixed_Name(lode, "") |> PrefixedName
+    /// This property relates an event to some meaningful place, which may
+    /// have a name (e.g. "Paris") or may be defined relative to some other
+    /// entity or entities (e.g. "the unincorporated area between Carson and
+    /// Harbor Gateway"). An event may be related to more than one such
+    /// place.</para>
+    /// labels<para>at place</para></remarks>
+    /// <seealso href="http://linkedevents.org/ontology/atPlace">http://linkedevents.org/ontology/atPlace</seealso>
+    let atPlace = Prefixed_Name(lode, "atPlace") |> PrefixedName
+    /// <summary>
+    ///   <para>lode:atTime</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>
+    /// Equivalent definitions from other ontologies:
+    ///
+    /// * C4DM Event ontology: "Relates an event to a time object, classifying
+    ///   a time region (either instantaneous or having an extent)."</para>
+    ///   <para>
+    /// This property relates an event to some subjectively imposed temporal
+    /// boundaries, i.e. a span of time. An event can be related to only one
+    /// such span of time.</para>
+    /// labels<para>at time</para></remarks>
+    /// <seealso href="http://linkedevents.org/ontology/atTime">http://linkedevents.org/ontology/atTime</seealso>
+    let atTime = Prefixed_Name(lode, "atTime") |> PrefixedName
     /// <summary>
     ///   <para>lode:illustrate</para>
     /// </summary>
@@ -56,19 +76,29 @@ module lode =
     /// <seealso href="http://linkedevents.org/ontology/involvedAgent">http://linkedevents.org/ontology/involvedAgent</seealso>
     let involvedAgent = Prefixed_Name(lode, "involvedAgent") |> PrefixedName
     /// <summary>
-    ///   <para>lode:atPlace</para>
+    ///   <para>lode:rdfxml/</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://linkedevents.org/ontology/rdfxml/">http://linkedevents.org/ontology/rdfxml/</seealso>
+    let ``rdfxml/`` = Prefixed_Name(lode, "rdfxml/") |> PrefixedName
+    /// <summary>
+    ///   <para>lode:Event</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:Class</para>
     ///   <para>
-    /// This property relates an event to some meaningful place, which may
-    /// have a name (e.g. "Paris") or may be defined relative to some other
-    /// entity or entities (e.g. "the unincorporated area between Carson and
-    /// Harbor Gateway"). An event may be related to more than one such
-    /// place.</para>
-    /// labels<para>at place</para></remarks>
-    /// <seealso href="http://linkedevents.org/ontology/atPlace">http://linkedevents.org/ontology/atPlace</seealso>
-    let atPlace = Prefixed_Name(lode, "atPlace") |> PrefixedName
+    /// Note that, unlike some defintions of "event," this definition does not
+    /// specify that an event involves a change of state, nor does it attempt
+    /// to distinguish events from processes or states.</para>
+    ///   <para>
+    /// An event consists of some temporal and spatial boundaries subjectively
+    /// imposed on the flux of reality or imagination, that we wish to treat
+    /// as an entity for the purposes of making statements about it. In
+    /// particular, we may wish to make statements that relate people, places,
+    /// or things to an event.</para>
+    /// labels<para>Event</para></remarks>
+    /// <seealso href="http://linkedevents.org/ontology/Event">http://linkedevents.org/ontology/Event</seealso>
+    let Event = Prefixed_Name(lode, "Event") |> PrefixedName
     /// <summary>
     ///   <para>lode:circa</para>
     /// </summary>
@@ -102,50 +132,20 @@ module lode =
     /// <seealso href="http://linkedevents.org/ontology/inSpace">http://linkedevents.org/ontology/inSpace</seealso>
     let inSpace = Prefixed_Name(lode, "inSpace") |> PrefixedName
     /// <summary>
-    ///   <para>lode:rdfxml/</para>
+    ///   <para>lode:</para>
     /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://linkedevents.org/ontology/rdfxml/">http://linkedevents.org/ontology/rdfxml/</seealso>
-    let ``rdfxml/`` = Prefixed_Name(lode, "rdfxml/") |> PrefixedName
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>
+    /// This document describes an ontology for publishing descriptions of
+    /// historical events as Linked Data, and for mapping between other
+    /// event-related vocabularies and ontologies.</para>
+    /// labels<para>LODE: An ontology for Linking Open Descriptions of Events</para></remarks>
+    /// <seealso href="http://linkedevents.org/ontology/">http://linkedevents.org/ontology/</seealso>
+    let _prefix_iri = Prefixed_Name(lode, "") |> PrefixedName
     /// <summary>
     ///   <para>lode:html/</para>
     /// </summary>
     /// <remarks></remarks>
     /// <seealso href="http://linkedevents.org/ontology/html/">http://linkedevents.org/ontology/html/</seealso>
     let ``html/`` = Prefixed_Name(lode, "html/") |> PrefixedName
-    /// <summary>
-    ///   <para>lode:Event</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>
-    /// Note that, unlike some defintions of "event," this definition does not
-    /// specify that an event involves a change of state, nor does it attempt
-    /// to distinguish events from processes or states.</para>
-    ///   <para>
-    /// An event consists of some temporal and spatial boundaries subjectively
-    /// imposed on the flux of reality or imagination, that we wish to treat
-    /// as an entity for the purposes of making statements about it. In
-    /// particular, we may wish to make statements that relate people, places,
-    /// or things to an event.</para>
-    /// labels<para>Event</para></remarks>
-    /// <seealso href="http://linkedevents.org/ontology/Event">http://linkedevents.org/ontology/Event</seealso>
-    let Event = Prefixed_Name(lode, "Event") |> PrefixedName
-    /// <summary>
-    ///   <para>lode:atTime</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>owl:FunctionalProperty</para>
-    ///   <para>
-    /// Equivalent definitions from other ontologies:
-    ///
-    /// * C4DM Event ontology: "Relates an event to a time object, classifying
-    ///   a time region (either instantaneous or having an extent)."</para>
-    ///   <para>
-    /// This property relates an event to some subjectively imposed temporal
-    /// boundaries, i.e. a span of time. An event can be related to only one
-    /// such span of time.</para>
-    /// labels<para>at time</para></remarks>
-    /// <seealso href="http://linkedevents.org/ontology/atTime">http://linkedevents.org/ontology/atTime</seealso>
-    let atTime = Prefixed_Name(lode, "atTime") |> PrefixedName

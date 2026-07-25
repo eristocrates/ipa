@@ -7,69 +7,6 @@ open type Prefix_ID
 module swapdigitalProcedure =
     let _namespace_iri = Namespace_Iri swapdigitalProcedure |> NamespaceIRI
     /// <summary>
-    ///   <para>swapdigitalProcedure:Input</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>digital computer input</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Input">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Input</seealso>
-    let Input = Prefixed_Name(swapdigitalProcedure, "Input") |> PrefixedName
-    /// <summary>
-    ///   <para>swapdigitalProcedure:Procedure</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>digital computer procedure</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Procedure">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Procedure</seealso>
-    let Procedure = Prefixed_Name(swapdigitalProcedure, "Procedure") |> PrefixedName
-    /// <summary>
-    ///   <para>swapdigitalProcedure:LoggingIn</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>logging in</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#LoggingIn">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#LoggingIn</seealso>
-    let LoggingIn = Prefixed_Name(swapdigitalProcedure, "LoggingIn") |> PrefixedName
-    /// <summary>
-    ///   <para>swapdigitalProcedure:Output</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>digital computer output</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Output">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Output</seealso>
-    let Output = Prefixed_Name(swapdigitalProcedure, "Output") |> PrefixedName
-    /// <summary>
-    ///   <para>swapdigitalProcedure:</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#</seealso>
-    let _prefix_iri = Prefixed_Name(swapdigitalProcedure, "") |> PrefixedName
-
-    /// <summary>
-    ///   <para>swapdigitalProcedure:QueryLanguage</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>digital query language</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#QueryLanguage">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#QueryLanguage</seealso>
-    let QueryLanguage =
-        Prefixed_Name(swapdigitalProcedure, "QueryLanguage") |> PrefixedName
-
-    /// <summary>
-    ///   <para>swapdigitalProcedure:Query</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>digital query</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Query">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Query</seealso>
-    let Query = Prefixed_Name(swapdigitalProcedure, "Query") |> PrefixedName
-    /// <summary>
     ///   <para>swapdigitalProcedure:QueryPlan</para>
     /// </summary>
     /// <remarks>
@@ -110,6 +47,87 @@ module swapdigitalProcedure =
     let SearchResult =
         Prefixed_Name(swapdigitalProcedure, "SearchResult") |> PrefixedName
 
+    /// <summary>
+    ///   <para>swapdigitalProcedure:</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#</seealso>
+    let _prefix_iri = Prefixed_Name(swapdigitalProcedure, "") |> PrefixedName
+    /// <summary>
+    ///   <para>swapdigitalProcedure:LoggingIn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>logging in</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#LoggingIn">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#LoggingIn</seealso>
+    let LoggingIn = Prefixed_Name(swapdigitalProcedure, "LoggingIn") |> PrefixedName
+    /// <summary>
+    ///   <para>swapdigitalProcedure:Procedure</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>digital computer procedure</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Procedure">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Procedure</seealso>
+    let Procedure = Prefixed_Name(swapdigitalProcedure, "Procedure") |> PrefixedName
+    /// <summary>
+    ///   <para>swapdigitalProcedure:Output</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>digital computer output</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Output">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Output</seealso>
+    let Output = Prefixed_Name(swapdigitalProcedure, "Output") |> PrefixedName
+    /// <summary>
+    ///   <para>swapdigitalProcedure:Query</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>digital query</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Query">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Query</seealso>
+    let Query = Prefixed_Name(swapdigitalProcedure, "Query") |> PrefixedName
+
+    /// <summary>
+    ///   <para>swapdigitalProcedure:QueryLanguage</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>digital query language</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#QueryLanguage">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#QueryLanguage</seealso>
+    let QueryLanguage =
+        Prefixed_Name(swapdigitalProcedure, "QueryLanguage") |> PrefixedName
+
+    /// <summary>
+    ///   <para>swapdigitalProcedure:Querying</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>digital querying</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Querying">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Querying</seealso>
+    let Querying = Prefixed_Name(swapdigitalProcedure, "Querying") |> PrefixedName
+    /// <summary>
+    ///   <para>swapdigitalProcedure:Result</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>digital result</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Result">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Result</seealso>
+    let Result = Prefixed_Name(swapdigitalProcedure, "Result") |> PrefixedName
+    /// <summary>
+    ///   <para>swapdigitalProcedure:Searching</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>digital searching</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Searching">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Searching</seealso>
+    let Searching = Prefixed_Name(swapdigitalProcedure, "Searching") |> PrefixedName
     /// <summary>
     ///   <para>swapdigitalProcedure:Template</para>
     /// </summary>
@@ -183,33 +201,6 @@ module swapdigitalProcedure =
     /// </remarks>
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#resultOf">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#resultOf</seealso>
     let resultOf = Prefixed_Name(swapdigitalProcedure, "resultOf") |> PrefixedName
-    /// <summary>
-    ///   <para>swapdigitalProcedure:Querying</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>digital querying</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Querying">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Querying</seealso>
-    let Querying = Prefixed_Name(swapdigitalProcedure, "Querying") |> PrefixedName
-    /// <summary>
-    ///   <para>swapdigitalProcedure:Result</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>digital result</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Result">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Result</seealso>
-    let Result = Prefixed_Name(swapdigitalProcedure, "Result") |> PrefixedName
-    /// <summary>
-    ///   <para>swapdigitalProcedure:Searching</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>digital searching</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Searching">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Searching</seealso>
-    let Searching = Prefixed_Name(swapdigitalProcedure, "Searching") |> PrefixedName
 
     /// <summary>
     ///   <para>swapdigitalProcedure:searchingDuring</para>
@@ -221,3 +212,13 @@ module swapdigitalProcedure =
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#searchingDuring">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#searchingDuring</seealso>
     let searchingDuring =
         Prefixed_Name(swapdigitalProcedure, "searchingDuring") |> PrefixedName
+
+    /// <summary>
+    ///   <para>swapdigitalProcedure:Input</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>digital computer input</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Input">http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#Input</seealso>
+    let Input = Prefixed_Name(swapdigitalProcedure, "Input") |> PrefixedName

@@ -7,14 +7,11 @@ open type Prefix_ID
 module care =
     let _namespace_iri = Namespace_Iri care |> NamespaceIRI
     /// <summary>
-    ///   <para>care:Caring</para>
+    ///   <para>care:</para>
     /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>caring</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/care#Caring">http://eulersharp.sourceforge.net/2003/03swap/care#Caring</seealso>
-    let Caring = Prefixed_Name(care, "Caring") |> PrefixedName
+    /// <remarks></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/care#">http://eulersharp.sourceforge.net/2003/03swap/care#</seealso>
+    let _prefix_iri = Prefixed_Name(care, "") |> PrefixedName
     /// <summary>
     ///   <para>care:Environment</para>
     /// </summary>
@@ -25,13 +22,14 @@ module care =
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/care#Environment">http://eulersharp.sourceforge.net/2003/03swap/care#Environment</seealso>
     let Environment = Prefixed_Name(care, "Environment") |> PrefixedName
     /// <summary>
-    ///   <para>care:caresFor</para>
+    ///   <para>care:Caring</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    /// </remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/care#caresFor">http://eulersharp.sourceforge.net/2003/03swap/care#caresFor</seealso>
-    let caresFor = Prefixed_Name(care, "caresFor") |> PrefixedName
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>caring</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/care#Caring">http://eulersharp.sourceforge.net/2003/03swap/care#Caring</seealso>
+    let Caring = Prefixed_Name(care, "Caring") |> PrefixedName
     /// <summary>
     ///   <para>care:ElderlyHome</para>
     /// </summary>
@@ -42,8 +40,10 @@ module care =
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/care#ElderlyHome">http://eulersharp.sourceforge.net/2003/03swap/care#ElderlyHome</seealso>
     let ElderlyHome = Prefixed_Name(care, "ElderlyHome") |> PrefixedName
     /// <summary>
-    ///   <para>care:</para>
+    ///   <para>care:caresFor</para>
     /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/care#">http://eulersharp.sourceforge.net/2003/03swap/care#</seealso>
-    let _prefix_iri = Prefixed_Name(care, "") |> PrefixedName
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/care#caresFor">http://eulersharp.sourceforge.net/2003/03swap/care#caresFor</seealso>
+    let caresFor = Prefixed_Name(care, "caresFor") |> PrefixedName

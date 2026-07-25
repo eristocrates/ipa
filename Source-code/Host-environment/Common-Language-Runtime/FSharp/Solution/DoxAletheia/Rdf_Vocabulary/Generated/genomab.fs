@@ -28,15 +28,37 @@ module genomab =
         Prefixed_Name(genomab, "ChromosomeAbnormality") |> PrefixedName
 
     /// <summary>
-    ///   <para>genomab:SingleChromosomeMutation</para>
+    ///   <para>genomab:ChromosomeDeletion</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdfs:Class</para>
     ///
-    /// labels<para>single chromosome mutation</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#SingleChromosomeMutation">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#SingleChromosomeMutation</seealso>
-    let SingleChromosomeMutation =
-        Prefixed_Name(genomab, "SingleChromosomeMutation") |> PrefixedName
+    /// labels<para>chromosome deletion</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeDeletion">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeDeletion</seealso>
+    let ChromosomeDeletion =
+        Prefixed_Name(genomab, "ChromosomeDeletion") |> PrefixedName
+
+    /// <summary>
+    ///   <para>genomab:ChromosomeDuplication</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>chromosome duplication</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeDuplication">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeDuplication</seealso>
+    let ChromosomeDuplication =
+        Prefixed_Name(genomab, "ChromosomeDuplication") |> PrefixedName
+
+    /// <summary>
+    ///   <para>genomab:TwoChromosomeMutation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>two chromosome mutation</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#TwoChromosomeMutation">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#TwoChromosomeMutation</seealso>
+    let TwoChromosomeMutation =
+        Prefixed_Name(genomab, "TwoChromosomeMutation") |> PrefixedName
 
     /// <summary>
     ///   <para>genomab:ChromosomeInsertion</para>
@@ -72,48 +94,6 @@ module genomab =
         Prefixed_Name(genomab, "ChromosomeTranslocation") |> PrefixedName
 
     /// <summary>
-    ///   <para>genomab:MonogenicMutation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>monogenic mutation</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#MonogenicMutation">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#MonogenicMutation</seealso>
-    let MonogenicMutation = Prefixed_Name(genomab, "MonogenicMutation") |> PrefixedName
-    /// <summary>
-    ///   <para>genomab:Mutated</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>events:State</para>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>mutated</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#Mutated">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#Mutated</seealso>
-    let Mutated = Prefixed_Name(genomab, "Mutated") |> PrefixedName
-
-    /// <summary>
-    ///   <para>genomab:ChromosomeDeletion</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>chromosome deletion</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeDeletion">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeDeletion</seealso>
-    let ChromosomeDeletion =
-        Prefixed_Name(genomab, "ChromosomeDeletion") |> PrefixedName
-
-    /// <summary>
-    ///   <para>genomab:ChromosomeInversion</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>chromosome inversion</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeInversion">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeInversion</seealso>
-    let ChromosomeInversion =
-        Prefixed_Name(genomab, "ChromosomeInversion") |> PrefixedName
-
-    /// <summary>
     ///   <para>genomab:GeneAbnormality</para>
     /// </summary>
     /// <remarks>
@@ -123,6 +103,25 @@ module genomab =
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#GeneAbnormality">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#GeneAbnormality</seealso>
     let GeneAbnormality = Prefixed_Name(genomab, "GeneAbnormality") |> PrefixedName
     /// <summary>
+    ///   <para>genomab:Mutated</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>events:State</para>
+    ///
+    /// labels<para>mutated</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#Mutated">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#Mutated</seealso>
+    let Mutated = Prefixed_Name(genomab, "Mutated") |> PrefixedName
+    /// <summary>
+    ///   <para>genomab:MonogenicMutation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>monogenic mutation</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#MonogenicMutation">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#MonogenicMutation</seealso>
+    let MonogenicMutation = Prefixed_Name(genomab, "MonogenicMutation") |> PrefixedName
+    /// <summary>
     ///   <para>genomab:PolygenicMutation</para>
     /// </summary>
     /// <remarks>
@@ -131,6 +130,16 @@ module genomab =
     /// labels<para>polygenic mutation</para></remarks>
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#PolygenicMutation">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#PolygenicMutation</seealso>
     let PolygenicMutation = Prefixed_Name(genomab, "PolygenicMutation") |> PrefixedName
+    /// <summary>
+    ///   <para>genomab:Unmutated</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>events:State</para>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>unmutated</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#Unmutated">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#Unmutated</seealso>
+    let Unmutated = Prefixed_Name(genomab, "Unmutated") |> PrefixedName
     /// <summary>
     ///   <para>genomab:</para>
     /// </summary>
@@ -150,34 +159,23 @@ module genomab =
     let GenomeAbnormality = Prefixed_Name(genomab, "GenomeAbnormality") |> PrefixedName
 
     /// <summary>
-    ///   <para>genomab:ChromosomeDuplication</para>
+    ///   <para>genomab:SingleChromosomeMutation</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdfs:Class</para>
     ///
-    /// labels<para>chromosome duplication</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeDuplication">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeDuplication</seealso>
-    let ChromosomeDuplication =
-        Prefixed_Name(genomab, "ChromosomeDuplication") |> PrefixedName
+    /// labels<para>single chromosome mutation</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#SingleChromosomeMutation">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#SingleChromosomeMutation</seealso>
+    let SingleChromosomeMutation =
+        Prefixed_Name(genomab, "SingleChromosomeMutation") |> PrefixedName
 
     /// <summary>
-    ///   <para>genomab:TwoChromosomeMutation</para>
+    ///   <para>genomab:ChromosomeInversion</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdfs:Class</para>
     ///
-    /// labels<para>two chromosome mutation</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#TwoChromosomeMutation">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#TwoChromosomeMutation</seealso>
-    let TwoChromosomeMutation =
-        Prefixed_Name(genomab, "TwoChromosomeMutation") |> PrefixedName
-
-    /// <summary>
-    ///   <para>genomab:Unmutated</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>events:State</para>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>unmutated</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#Unmutated">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#Unmutated</seealso>
-    let Unmutated = Prefixed_Name(genomab, "Unmutated") |> PrefixedName
+    /// labels<para>chromosome inversion</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeInversion">http://eulersharp.sourceforge.net/2003/03swap/genomeAbnormality#ChromosomeInversion</seealso>
+    let ChromosomeInversion =
+        Prefixed_Name(genomab, "ChromosomeInversion") |> PrefixedName

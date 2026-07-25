@@ -16,6 +16,42 @@ module ostrs =
     /// <seealso href="http://open-services.net/ns/core/trs#Base">http://open-services.net/ns/core/trs#Base</seealso>
     let Base = Prefixed_Name(ostrs, "Base") |> PrefixedName
     /// <summary>
+    ///   <para>ostrs:changeLog</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A Change Log providing an order series of incremental adjustments to the Resource Set.</para>
+    /// labels<para>changeLog</para></remarks>
+    /// <seealso href="http://open-services.net/ns/core/trs#changeLog">http://open-services.net/ns/core/trs#changeLog</seealso>
+    let changeLog = Prefixed_Name(ostrs, "changeLog") |> PrefixedName
+    /// <summary>
+    ///   <para>ostrs:changed</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The Resource that has changed.</para>
+    /// labels<para>changed</para></remarks>
+    /// <seealso href="http://open-services.net/ns/core/trs#changed">http://open-services.net/ns/core/trs#changed</seealso>
+    let changed = Prefixed_Name(ostrs, "changed") |> PrefixedName
+    /// <summary>
+    ///   <para>ostrs:trackedResourceSet</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A Tracked Resource Set.</para>
+    /// labels<para>trackedResourceSet</para></remarks>
+    /// <seealso href="http://open-services.net/ns/core/trs#trackedResourceSet">http://open-services.net/ns/core/trs#trackedResourceSet</seealso>
+    let trackedResourceSet = Prefixed_Name(ostrs, "trackedResourceSet") |> PrefixedName
+    /// <summary>
+    ///   <para>ostrs:Creation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Represents a resource creation or modification change event.</para>
+    /// labels<para>Creation</para></remarks>
+    /// <seealso href="http://open-services.net/ns/core/trs#Creation">http://open-services.net/ns/core/trs#Creation</seealso>
+    let Creation = Prefixed_Name(ostrs, "Creation") |> PrefixedName
+    /// <summary>
     ///   <para>ostrs:Deletion</para>
     /// </summary>
     /// <remarks>
@@ -33,6 +69,24 @@ module ostrs =
     /// labels<para>Modification</para></remarks>
     /// <seealso href="http://open-services.net/ns/core/trs#Modification">http://open-services.net/ns/core/trs#Modification</seealso>
     let Modification = Prefixed_Name(ostrs, "Modification") |> PrefixedName
+    /// <summary>
+    ///   <para>ostrs:TrackedResourceSet</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A Tracked Resource Set provides a representation of the current state of a Resource Set.</para>
+    /// labels<para>Tracked Resource Set</para></remarks>
+    /// <seealso href="http://open-services.net/ns/core/trs#TrackedResourceSet">http://open-services.net/ns/core/trs#TrackedResourceSet</seealso>
+    let TrackedResourceSet = Prefixed_Name(ostrs, "TrackedResourceSet") |> PrefixedName
+    /// <summary>
+    ///   <para>ostrs:base</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>An enumeration of the Resources in the Resource Set.</para>
+    /// labels<para>base</para></remarks>
+    /// <seealso href="http://open-services.net/ns/core/trs#base">http://open-services.net/ns/core/trs#base</seealso>
+    let base_ = Prefixed_Name(ostrs, "base") |> PrefixedName
     /// <summary>
     ///   <para>ostrs:change</para>
     /// </summary>
@@ -52,32 +106,14 @@ module ostrs =
     /// <seealso href="http://open-services.net/ns/core/trs#cutoffEvent">http://open-services.net/ns/core/trs#cutoffEvent</seealso>
     let cutoffEvent = Prefixed_Name(ostrs, "cutoffEvent") |> PrefixedName
     /// <summary>
-    ///   <para>ostrs:Creation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>Represents a resource creation or modification change event.</para>
-    /// labels<para>Creation</para></remarks>
-    /// <seealso href="http://open-services.net/ns/core/trs#Creation">http://open-services.net/ns/core/trs#Creation</seealso>
-    let Creation = Prefixed_Name(ostrs, "Creation") |> PrefixedName
-    /// <summary>
-    ///   <para>ostrs:base</para>
+    ///   <para>ostrs:order</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>An enumeration of the Resources in the Resource Set.</para>
-    /// labels<para>base</para></remarks>
-    /// <seealso href="http://open-services.net/ns/core/trs#base">http://open-services.net/ns/core/trs#base</seealso>
-    let base_ = Prefixed_Name(ostrs, "base") |> PrefixedName
-    /// <summary>
-    ///   <para>ostrs:changed</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>The Resource that has changed.</para>
-    /// labels<para>changed</para></remarks>
-    /// <seealso href="http://open-services.net/ns/core/trs#changed">http://open-services.net/ns/core/trs#changed</seealso>
-    let changed = Prefixed_Name(ostrs, "changed") |> PrefixedName
+    ///   <para>The sequence in time of the Change Event.</para>
+    /// labels<para>order</para></remarks>
+    /// <seealso href="http://open-services.net/ns/core/trs#order">http://open-services.net/ns/core/trs#order</seealso>
+    let order = Prefixed_Name(ostrs, "order") |> PrefixedName
     /// <summary>
     ///   <para>ostrs:previous</para>
     /// </summary>
@@ -105,39 +141,3 @@ module ostrs =
     /// labels<para>Change Log</para></remarks>
     /// <seealso href="http://open-services.net/ns/core/trs#ChangeLog">http://open-services.net/ns/core/trs#ChangeLog</seealso>
     let ChangeLog = Prefixed_Name(ostrs, "ChangeLog") |> PrefixedName
-    /// <summary>
-    ///   <para>ostrs:TrackedResourceSet</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A Tracked Resource Set provides a representation of the current state of a Resource Set.</para>
-    /// labels<para>Tracked Resource Set</para></remarks>
-    /// <seealso href="http://open-services.net/ns/core/trs#TrackedResourceSet">http://open-services.net/ns/core/trs#TrackedResourceSet</seealso>
-    let TrackedResourceSet = Prefixed_Name(ostrs, "TrackedResourceSet") |> PrefixedName
-    /// <summary>
-    ///   <para>ostrs:changeLog</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>A Change Log providing an order series of incremental adjustments to the Resource Set.</para>
-    /// labels<para>changeLog</para></remarks>
-    /// <seealso href="http://open-services.net/ns/core/trs#changeLog">http://open-services.net/ns/core/trs#changeLog</seealso>
-    let changeLog = Prefixed_Name(ostrs, "changeLog") |> PrefixedName
-    /// <summary>
-    ///   <para>ostrs:order</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>The sequence in time of the Change Event.</para>
-    /// labels<para>order</para></remarks>
-    /// <seealso href="http://open-services.net/ns/core/trs#order">http://open-services.net/ns/core/trs#order</seealso>
-    let order = Prefixed_Name(ostrs, "order") |> PrefixedName
-    /// <summary>
-    ///   <para>ostrs:trackedResourceSet</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>A Tracked Resource Set.</para>
-    /// labels<para>trackedResourceSet</para></remarks>
-    /// <seealso href="http://open-services.net/ns/core/trs#trackedResourceSet">http://open-services.net/ns/core/trs#trackedResourceSet</seealso>
-    let trackedResourceSet = Prefixed_Name(ostrs, "trackedResourceSet") |> PrefixedName

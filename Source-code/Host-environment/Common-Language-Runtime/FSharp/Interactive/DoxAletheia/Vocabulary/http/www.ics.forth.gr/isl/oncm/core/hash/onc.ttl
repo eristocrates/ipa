@@ -1,0 +1,109 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix onc: <http://www.ics.forth.gr/isl/oncm/core#>.
+
+<http://www.ics.forth.gr/isl/oncm/core> <http://purl.org/dc/terms/contributor> <http://users.ics.forth.gr/~tzitzik>;
+                                        <http://purl.org/dc/terms/creator> <http://users.ics.forth.gr/~fafalios>;
+                                        <http://purl.org/dc/terms/description> """The Open NEE Configuration Model defines a Linked Data-based model for describing a configuration supported by a Named Entity Extraction (NEE) service. It is based on the model proposed in \"Configuring Named Entity Extraction through Real-Time Exploitation of Linked Data\" (http://dl.acm.org/citation.cfm?doid=2611040.2611085) for configuring such services, and allows a NEE service to describe and publish as Linked Data its entity mining capabilities, but also to be dynamically configured."""@en;
+                                        <http://purl.org/dc/terms/title> "The Open NEE Configuration Model"@en;
+                                        a <http://www.w3.org/2002/07/owl#Ontology>;
+                                        rdfs:comment """The Open NEE Configuration Model defines a Linked Data-based model for describing a configuration supported by a Named Entity Extraction (NEE) service. It is based on the model proposed in \"Configuring Named Entity Extraction through Real-Time Exploitation of Linked Data\" (http://dl.acm.org/citation.cfm?doid=2611040.2611085) for configuring such services, and allows a NEE service to describe and publish as Linked Data its entity mining capabilities, but also to be dynamically configured."""@en;
+                                        rdfs:label "Open NEE Configuration Model"@en;
+                                        rdfs:seeAlso <http://dl.acm.org/citation.cfm?doid=2611040.2611085>;
+                                        <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/2004/02/skos/core>;
+                                        <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+onc:Category <http://purl.org/dc/terms/description> "A category/class of entities supported by a configuration."@en;
+             a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:label "category"@en;
+             rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+onc:Configuration <http://purl.org/dc/terms/description> "The configuration supported by a NEE service."@en;
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "configuration"@en.
+onc:EntityEnrichmentSpec <http://purl.org/dc/terms/description> "Specification of the extra information that should be fetched for an entity URI."@en;
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:label "entity enrichment specification"@en.
+onc:EntityLinkingSpec <http://purl.org/dc/terms/description> "Specification of how an entity name corresponds to entity URIs."@en;
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:label "entity linking specification"@en.
+onc:EntityNamesSpec <http://purl.org/dc/terms/description> "Specification of the entity names of a category."@en;
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:label "entity names specification"@en.
+onc:KBM <http://purl.org/dc/terms/description> "A Knowledge Base Mirror (KBM): the gateway for accessing a Knowledge Base."@en;
+        a <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:label "knowledge base mirror"@en.
+onc:NEEService <http://purl.org/dc/terms/description> "A Named Entity Extraction (NEE) service"@en;
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "named entity extraction service"@en.
+onc:RankingMethod <http://purl.org/dc/terms/description> "A method used for ranking the entities or the entity URIs."@en;
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "ranking method"@en.
+onc:accessibleThrough <http://purl.org/dc/terms/description> "Relates a NEE service to a resource, e.g. to a URL describing the API of a service."@en;
+                      a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain onc:NEEService;
+                      rdfs:label "accessible through"@en;
+                      rdfs:range rdfs:Resource.
+onc:endpoint <http://purl.org/dc/terms/description> "Relates a KBM to the URL of a SPARQL endpoint."@en;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain onc:KBM;
+             rdfs:label "endpoint"@en;
+             rdfs:range rdfs:Resource.
+onc:entitiesSpecFrom <http://purl.org/dc/terms/description> "Relates a category to a KBM."@en;
+                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain onc:Category;
+                     rdfs:label "entities specification from"@en;
+                     rdfs:range onc:KBM.
+onc:isDefinedBy <http://purl.org/dc/terms/description> "Relates a ranking method to a resource, e.g. to a URL describing the ranking approach."@en;
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain onc:RankingMethod;
+                rdfs:label "is defined by"@en;
+                rdfs:range rdfs:Resource.
+onc:ranksEntitiesUsing <http://purl.org/dc/terms/description> "Relates a configuration to a method for ranking entities."@en;
+                       a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain onc:Configuration;
+                       rdfs:label "ranks entities using"@en;
+                       rdfs:range onc:RankingMethod.
+onc:ranksResourcesUsing <http://purl.org/dc/terms/description> "Relates a configuration to a method for ranking resources."@en;
+                        a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain onc:Configuration;
+                        rdfs:label "ranks resources using"@en;
+                        rdfs:range onc:RankingMethod.
+onc:supports <http://purl.org/dc/terms/description> "Relates a NEE service to a configuration, or a configuration to a supported category."@en;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain onc:Configuration,
+                         onc:NEEService;
+             rdfs:label "supports"@en;
+             rdfs:range onc:Category,
+                        onc:Configuration.
+onc:usesEntityEnrichmentSpec <http://purl.org/dc/terms/description> "Relates a KBM to an entity-enrichment specification."@en;
+                             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain onc:KBM;
+                             rdfs:label "uses entity enrichment specification"@en;
+                             rdfs:range onc:EntityEnrichmentSpec.
+onc:usesEntityLinkingSpec <http://purl.org/dc/terms/description> "Relates a KBM to an entity-linking specification."@en;
+                          a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain onc:KBM;
+                          rdfs:label "uses entity linking specification"@en;
+                          rdfs:range onc:EntityLinkingSpec.
+onc:usesEntityNamesSpec <http://purl.org/dc/terms/description> "Relates a KBM to specification of entity names."@en;
+                        a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain onc:KBM;
+                        rdfs:label "uses entity names specification"@en;
+                        rdfs:range onc:EntityNamesSpec.
+onc:usesSparqlQuery <http://purl.org/dc/terms/description> "Relates a specification of entity names to a SPARQL query."@en;
+                    a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:domain onc:EntityNamesSpec;
+                    rdfs:label "uses SPARQL query"@en;
+                    rdfs:range rdfs:Literal.
+onc:usesSparqlTemplateParam <http://purl.org/dc/terms/description> "Relates an entity-linking or entity-enrichment specification to a SPARQL template parameter."@en;
+                            a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:domain onc:EntityEnrichmentSpec,
+                                        onc:EntityLinkingSpec;
+                            rdfs:label "uses SPARQL template parameter"@en;
+                            rdfs:range rdfs:Literal.
+onc:usesSparqlTemplateQuery <http://purl.org/dc/terms/description> "Relates an entity-linking or entity-enrichment specification to a SPARQL template query."@en;
+                            a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:domain onc:EntityEnrichmentSpec,
+                                        onc:EntityLinkingSpec;
+                            rdfs:label "uses SPARQL template query"@en;
+                            rdfs:range rdfs:Literal.

@@ -1,0 +1,1599 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix voagm: <http://voag.linkedmodel.org/voag#>.
+
+<http://purl.org/dc/elements/1.1/subject> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                          rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                                          rdfs:label "subject";
+                                          rdfs:range xsd:string.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                        rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                                        rdfs:label "title";
+                                        rdfs:range xsd:string.
+<http://rdfs.org/ns/void#Dataset> <http://www.linkedmodel.org/schema/vaem#description> "A set of RDF triples that are published, maintained or aggregated by a single provider.";
+                                  a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                                  rdfs:label "VOID Dataset";
+                                  rdfs:subClassOf voagm:GovernedObject.
+<http://voag.linkedmodel.org/schema/voag> <http://purl.org/dc/elements/1.1/author> "Ralph Hodgson";
+                                          <http://purl.org/dc/elements/1.1/subject> "Licensing, Attribution and Governance";
+                                          <http://purl.org/dc/elements/1.1/title> "Vocabulary Of Attribution and Governance";
+                                          voagm:intent "Provides a schema for intellectual capital rights, attribution and governance. Uses the PROVO ontology for provenance.  Typical use of the ontology is to refer to its resources, as opposed to importing the ontology.";
+                                          <http://www.linkedmodel.org/schema/vaem#dateCreated> "2011-01-31T10:00:00"^^xsd:dateTime;
+                                          <http://www.linkedmodel.org/schema/vaem#description> """VOAG stands for \"Vocabulary Of Attribution and Governance\". The ontology is intended to specify licensing, attribution, provenance and governance of an ontology. VOAG captures many common license types and their restrictions. Where a license requires attribution, VOAG provides resources that allow the attribution should be made. Provenance is defined in terms of source and pedigree. A miminal model of governance is provided based on how issues, releases and changes are managed. VOAG does not import, but makes uses of some concepts from VOID (http://vocab.deri.ie/void), notably void:Dataset.""";
+                                          <http://www.linkedmodel.org/schema/vaem#hasCatalogEntry> voagm:VOAG-CatalogEntry;
+                                          <http://www.linkedmodel.org/schema/vaem#hasGraphRole> <http://www.linkedmodel.org/schema/vaem#SchemaGraph>;
+                                          <http://www.linkedmodel.org/schema/vaem#lastUpdated> "2012-11-01"^^xsd:date;
+                                          <http://www.linkedmodel.org/schema/vaem#name> "VOAG";
+                                          <http://www.linkedmodel.org/schema/vaem#namespace> "http://voag.linkedmodel.org/voag";
+                                          <http://www.linkedmodel.org/schema/vaem#namespacePrefix> "voag";
+                                          <http://www.linkedmodel.org/schema/vaem#revision> "1.0";
+                                          <http://www.linkedmodel.org/schema/vaem#url> "http://voag.linkedmodel.org/1.0/owl/schema/voag"^^xsd:anyURI;
+                                          <http://www.linkedmodel.org/schema/vaem#usesNonImportedResource> voagm:TopQuadrantAttribution,
+                                                                                                           <http://purl.org/dc/elements/1.1/title>,
+                                                                                                           voagm:VOAG-CatalogEntry,
+                                                                                                           <http://purl.org/dc/elements/1.1/subject>,
+                                                                                                           <http://purl.org/dc/elements/1.1/contributor>,
+                                                                                                           <http://purl.org/dc/elements/1.1/author>,
+                                                                                                           <http://purl.org/dc/elements/1.1/description>;
+                                          <http://www.linkedmodel.org/schema/vaem#withAttributionTo> voagm:TopQuadrantAttribution;
+                                          a <http://www.w3.org/2002/07/owl#Ontology>;
+                                          rdfs:label "Vocabulary Of Attribution and Governance";
+                                          <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/ns/20120724/prov>,
+                                                                                  <http://www.linkedmodel.org/1.2/schema/vaem-xics>,
+                                                                                  <http://www.linkedmodel.org/schema/vaem-xina>,
+                                                                                  <http://rdfs.org/ns/void>,
+                                                                                  <http://www.linkedmodel.org/schema/dtype>,
+                                                                                  <http://www.linkedmodel.org/schema/vaem>;
+                                          <http://www.w3.org/2002/07/owl#versionIRI> <http://voag.linkedmodel.org/schema/voag>.
+voagm:Accredidation a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "Accredidation";
+                    rdfs:subClassOf voagm:Qualifier.
+voagm:AdministrativeEvent <http://purl.org/dc/elements/1.1/description> "An event that is associated with the admistration aspect of governance. Typically these are curation events.";
+                          a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                          rdfs:label "Administrative Event";
+                          rdfs:subClassOf voagm:Event.
+voagm:Annually <http://www.linkedmodel.org/schema/dtype#value> "annual";
+               a voagm:ChangeFrequency;
+               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+               rdfs:label "Annually".
+voagm:AppendChange a voagm:ChangeType;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "Append change".
+voagm:ApprovalEvent <http://www.linkedmodel.org/schema/vaem#description> """A \"Governance Event\".""";
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "Approval Event";
+                    rdfs:subClassOf voagm:Event;
+                    <http://www.w3.org/2002/07/owl#disjointWith> voagm:RejectionEvent.
+voagm:ApprovalProcess <http://www.linkedmodel.org/schema/vaem#description> """A \"Governance Process\".""";
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                      rdfs:label "Approval Process";
+                      rdfs:subClassOf voagm:GovernanceProcess.
+voagm:ApprovedIssue <http://www.linkedmodel.org/schema/dtype#value> "approved";
+                    a voagm:IssueStatus;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "Approved Issue".
+voagm:AssignedRole a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "Assigned role";
+                   rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+voagm:Attribution <http://purl.org/dc/elements/1.1/description> "An 'Attribution' specifies how credit should be given when citing the creators of a piece of work. Attribution must use the specified attribution text and optionally use logos that are provided in the attribution details below., with the names of points of contact.",
+                                                                "The name, url and other details of an attribution.";
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "Attributed Source";
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#name> ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> voagm:pointOfContact ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> voagm:hasLogo ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  voagm:Qualifier,
+                                  [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:AttributionLogo ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> voagm:hasLogo ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> voagm:url ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:AttributionLogo a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                      rdfs:label "Attribution logo";
+                      rdfs:subClassOf voagm:Logo.
+voagm:BiMonthly <http://www.linkedmodel.org/schema/dtype#value> "bi-monthly";
+                a voagm:ChangeFrequency;
+                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                rdfs:label "Bi monthly".
+voagm:BiQuarterly <http://www.linkedmodel.org/schema/dtype#value> "bi-quarterly";
+                  a voagm:ChangeFrequency;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "Bi quarterly".
+voagm:BiWeekly <http://www.linkedmodel.org/schema/dtype#value> "bi-weekly";
+               a voagm:ChangeFrequency;
+               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+               rdfs:label "Bi-Weekly".
+voagm:CC-SHAREALIKE_3PT0-US a voagm:LicenseModel;
+                            rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                            rdfs:label "Creative Commons Attribution-Share Alike 3.0 United States License".
+voagm:CCPH_CommercialUse <http://www.linkedmodel.org/schema/vaem#description> "Exercising rights for commercial purposes"@en-us;
+                         a voagm:CreativeCommonsProhibition;
+                         rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                         rdfs:label "Creative Commons Commercial Use"@en-us.
+voagm:CCPH_HighIncomeNationUse <http://www.linkedmodel.org/schema/vaem#description> "Use in a non-developing country"@en-us;
+                               a voagm:CreativeCommonsProhibition;
+                               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                               rdfs:label "Creative Commons High Income Nation Use"@en-us,
+                                          "High income nation use".
+voagm:CCP_DerivativeWorks <http://www.linkedmodel.org/schema/vaem#description> "Distribution of derivative works"@en-us;
+                          a voagm:CreativeCommonsPermission;
+                          rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                          rdfs:label "Creative Commons Derivative Works"@en-us,
+                                     "Derivative works".
+voagm:CCP_Distribution <http://www.linkedmodel.org/schema/vaem#description> "Creative Commons - distribution, public display, and publicly performance"@en-us;
+                       a voagm:CreativeCommonsPermission;
+                       rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                       rdfs:label "Creative Commons Distribution"@en-us,
+                                  "Distribution".
+voagm:CCP_Reproduction <http://www.linkedmodel.org/schema/vaem#description> "making multiple copies"@en-us;
+                       a voagm:CreativeCommonsPermission;
+                       rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                       rdfs:label "Creative Commons Reproduction"@en-us,
+                                  "Reproduction".
+voagm:CCP_Sharing <http://www.linkedmodel.org/schema/vaem#description> "permits commercial derivatives, but only non-commercial distribution"@en-us;
+                  a voagm:CreativeCommonsPermission;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "Creative Commons Sharing"@en-us,
+                             "Sharing".
+voagm:CCR_Attribution <http://www.linkedmodel.org/schema/vaem#description> "Credit to be given to copyright holder and/or author"@en-us;
+                      a voagm:CreativeCommonsRequirement;
+                      rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                      rdfs:label "Creative Commons Attribution"@en-us.
+voagm:CCR_Copyleft <http://www.linkedmodel.org/schema/vaem#description> "Copyleft is a general method for making a program (or other work) free, and requiring all modified and extended versions of the program to be free as well. The simplest way to make a program free software is to put it in the public domain, uncopyrighted. This allows people to share the program and their improvements, if they are so minded. But it also allows uncooperative people to convert the program into proprietary software. They can make changes, many or few, and distribute the result as a proprietary product. People who receive the program in that modified form do not have the freedom that the original author gave them; the middleman has stripped it away.  In the GNU project, Copyleft says that anyone who redistributes the software, with or without changes, must pass along the freedom to further copy and change it. Copyleft guarantees that every user has freedom.",
+                                                                        "combined works must be licensed under specified terms, similar to those on the original work"@en-us;
+                   <http://www.linkedmodel.org/schema/vaem#url> "http://www.gnu.org/copyleft/copyleft.html"^^xsd:anyURI;
+                   a voagm:CreativeCommonsRequirement;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "Creative Commons Copyleft"@en-us.
+voagm:CCR_LesserCopyleft <http://www.linkedmodel.org/schema/vaem#description> "derivative works must be licensed under specified terms, with at least the same conditions as the original work; combinations with the work may be licensed under different terms"@en-us;
+                         a voagm:CreativeCommonsRequirement;
+                         rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                         rdfs:label "Creative Commons Lesser Copyleft"@en-us.
+voagm:CCR_Notice <http://www.linkedmodel.org/schema/vaem#description> "copyright and license notices be kept intact"@en-us;
+                 a voagm:CreativeCommonsRequirement;
+                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                 rdfs:label "Creative Commons Notice"@en-us.
+voagm:CCR_ShareAlike <http://www.linkedmodel.org/schema/vaem#description> "derivative works be licensed under the same terms or compatible terms as the original work"@en-us;
+                     a voagm:CreativeCommonsRequirement;
+                     rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                     rdfs:label "Creative Commons Share Alike"@en-us.
+voagm:CCR_SourceCode <http://www.linkedmodel.org/schema/vaem#description> "Source code (the preferred form for making modifications) must be provided when exercising some rights granted by the license."@en-us;
+                     a voagm:CreativeCommonsRequirement;
+                     rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                     rdfs:label "Creative Commons Source Code"@en-us.
+voagm:CL_None <http://www.linkedmodel.org/schema/dtype#code> 0 ;
+              <http://www.linkedmodel.org/schema/dtype#order> "1"^^xsd:int;
+              <http://www.linkedmodel.org/schema/dtype#value> "none";
+              a voagm:ConfidentialityLevel;
+              rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+              rdfs:label "None".
+voagm:CL_Restricted <http://www.linkedmodel.org/schema/dtype#code> 1 ;
+                    <http://www.linkedmodel.org/schema/dtype#order> "2"^^xsd:int;
+                    <http://www.linkedmodel.org/schema/dtype#value> "restricted";
+                    <http://www.linkedmodel.org/schema/vaem#description> """During and before World War II, the U.S. had a category of classified information called restricted, which was below confidential. The U.S. no longer has a restricted classification, but many other nations and NATO do. The U.S. treats \"restricted\" information it receives from other governments as confidential. The U.S. does use the term restricted data in a completely different way to refer to nuclear secrets.""";
+                    a voagm:ConfidentialityLevel;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "Restricted".
+voagm:CL_Secret <http://www.linkedmodel.org/schema/dtype#code> 5 ;
+                <http://www.linkedmodel.org/schema/dtype#order> "6"^^xsd:int;
+                <http://www.linkedmodel.org/schema/dtype#value> "secret";
+                <http://www.linkedmodel.org/schema/vaem#description> """\"Secret\" shall be applied to information, the unauthorized disclosure of which reasonably could be expected to cause serious damage to the national security that the original classification authority is able to identify or describe [US Executive Order 12958].""";
+                a voagm:ConfidentialityLevel;
+                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                rdfs:label "Secret".
+voagm:CL_SensitiveButUnclassified <http://www.linkedmodel.org/schema/dtype#code> 3 ;
+                                  <http://www.linkedmodel.org/schema/dtype#order> "4"^^xsd:int;
+                                  <http://www.linkedmodel.org/schema/dtype#value> "sbu";
+                                  <http://www.linkedmodel.org/schema/vaem#description> "Sensitive but Unclassified (SBU) information should not be disclosed but is not national security information and cannot be classified according to Executive Order (EO)12958, as amended. These materials must be: properly marked, locked up when not under the supervision of an authorized person, and encrypted while in transit over a non-secure network. Some examples are: trade secrets, proprietary information, financial information, personnel and medical records, procurement-sensitive information, IT system security plans, contingency plans, audit logs (recordings of exceptions and other security-related events), vulnerability reports, incident reports and Personally Identifiable Information (PII).";
+                                  a voagm:ConfidentialityLevel;
+                                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                                  rdfs:label "Sensitive but Unclassified".
+voagm:CL_TopSecret <http://www.linkedmodel.org/schema/dtype#code> 6 ;
+                   <http://www.linkedmodel.org/schema/dtype#order> "7"^^xsd:int;
+                   <http://www.linkedmodel.org/schema/dtype#value> "topsecret";
+                   <http://www.linkedmodel.org/schema/vaem#description> """\"Top Secret\" shall be applied to information, the unauthorized disclosure of which reasonably could be expected to cause exceptionally grave damage to the national security that the original classification authority is able to identify or describe [US Executive Order 12958].""";
+                   a voagm:ConfidentialityLevel;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "Top secret".
+voagm:CL_Unclassified <http://www.linkedmodel.org/schema/dtype#code> 2 ;
+                      <http://www.linkedmodel.org/schema/dtype#order> "3"^^xsd:int;
+                      <http://www.linkedmodel.org/schema/dtype#value> "unclassified";
+                      <http://www.linkedmodel.org/schema/vaem#description> """Unclassified is not technically a \"classification\"; this is the default, and refers to information that can be released to individuals without a clearance (Level 0). Information that is unclassified is sometimes restricted in its dissemination as SBU or FOUO. For example, the \"law enforcement bulletins\" often reported by the U.S. media when United States Department of Homeland Security raises the U.S. terror threat level are usually classified as \"U//LES\" or \"Unclassified - Law Enforcement Sensitive.\" This information is only supposed to be released to Law Enforcement groups (Sheriff, Police, etc.) Because the information is unclassified, however, it is sometimes released to the public as well. Information which is unclassified, but which the government does not believe should be subject to Freedom of Information Act requests is often classified as U//FOUO - \"Unclassified - For Official Use Only\". In addition to FOUO information, information can be categorized according to its availability to be distributed (Distribution D may only be released to approved Department of Defense and Government Contractor personnel). Also, the statement of NOFORN (meaning No Foreign Nationals) is applied to any information which may not be released to any non-US Citizen. NOFORN and Distribution statements are often used in conjunction with classified information or alone on SBU information. Documents subject to export controls have a specific warning to that effect.""";
+                      a voagm:ConfidentialityLevel;
+                      rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                      rdfs:label "Unclassified".
+voagm:Catalog <http://www.linkedmodel.org/schema/vaem#description> "An index to a set of resources";
+              a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+              rdfs:label "Catalog";
+              rdfs:subClassOf voagm:GovernedObject,
+                              [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> voagm:hasLogo ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:ChangeFrequency a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                      rdfs:label "Change frequency";
+                      rdfs:subClassOf voagm:EnumeratedValue;
+                      <http://www.w3.org/2002/07/owl#oneOf> (voagm:Never
+                                                             voagm:Daily
+                                                             voagm:Weekly
+                                                             voagm:BiWeekly
+                                                             voagm:Monthly
+                                                             voagm:BiMonthly
+                                                             voagm:Quarterly
+                                                             voagm:BiQuarterly
+                                                             voagm:Annually
+                                                             voagm:UncertainFrequency).
+voagm:ChangeManagementProcess <http://purl.org/dc/elements/1.1/description> """A \"Governance Process\".""";
+                              a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                              rdfs:label "Change Management Process";
+                              rdfs:subClassOf voagm:GovernanceProcess.
+voagm:ChangeType <http://www.linkedmodel.org/schema/vaem#description> "Change Type provides an indicator for how an artifact has or will change in the future. This indicator is important to understanding the stability of an ontology.";
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                 rdfs:label "Change type";
+                 rdfs:subClassOf voagm:EnumeratedValue.
+voagm:ClosedIssue <http://www.linkedmodel.org/schema/dtype#value> "closed";
+                  a voagm:IssueStatus;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "Closed".
+voagm:ConcurrenceEvent <http://purl.org/dc/elements/1.1/description> "A Governance Event.";
+                       a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                       rdfs:label "Concurrence event";
+                       rdfs:subClassOf voagm:Event;
+                       <http://www.w3.org/2002/07/owl#disjointWith> voagm:NonConcurrenceEvent.
+voagm:ConfidentialityLevel <http://www.linkedmodel.org/schema/vaem#description> "An enumerated codelist for values thath pertain to the security of a set of resources, or a resource. In 'lmc' an ontology can carry a property to denote its confidentiality.";
+                           a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                           rdfs:label "Confidentiality level";
+                           rdfs:subClassOf voagm:EnumeratedValue.
+voagm:CreativeCommonsJurisdiction <http://purl.org/dc/elements/1.1/description> "the legal jurisdiction of a license"@en-us;
+                                  a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                                  rdfs:label "Creative Commons Jurisdiction"@en-us,
+                                             "Creative commons jurisdiction";
+                                  rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+voagm:CreativeCommonsPermission <http://purl.org/dc/elements/1.1/description> "An action that may or may not be allowed or desired"@en-us;
+                                a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                                rdfs:label "Creative Commons Permission"@en-us;
+                                rdfs:subClassOf voagm:EnumeratedValue.
+voagm:CreativeCommonsProhibition <http://purl.org/dc/elements/1.1/description> "something you may be asked not to do"@en-us;
+                                 a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                                 rdfs:label "Creative Commons Prohibition"@en-us;
+                                 rdfs:subClassOf voagm:EnumeratedValue.
+voagm:CreativeCommonsRequirement <http://purl.org/dc/elements/1.1/description> "an action that may or may not be requested of you"@en-us;
+                                 <http://www.linkedmodel.org/schema/vaem#description> "An action that may or may not be requested of you"@en-us;
+                                 a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                                 rdfs:label "Requirement"@en-us;
+                                 rdfs:subClassOf voagm:EnumeratedValue.
+voagm:CreativeCommonsWork <http://purl.org/dc/elements/1.1/description> "A potentially copyrightable work"@en-us;
+                          a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                          rdfs:label "Creative Commons Work"@en-us,
+                                     "Creative commons work";
+                          rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>,
+                                          [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> voagm:url ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:DTYPE-CatalogEntry a voagm:SchemaGraph;
+                         rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>.
+voagm:Daily a voagm:ChangeFrequency;
+            rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+            rdfs:label "Daily".
+voagm:DeferredIssue <http://www.linkedmodel.org/schema/dtype#value> "deferred";
+                    a voagm:IssueStatus;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "Deferred".
+voagm:DeletionEvent <http://purl.org/dc/elements/1.1/description> """A \"Archival Event\".""";
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "Deletion Event";
+                    rdfs:subClassOf voagm:Event.
+voagm:DesignatedGovernanceRole <http://purl.org/dc/elements/1.1/description> """A \"Assigned Role\" with the following instance(s): \"Assurer\", \"Project Management\", \"Resource & Process Policy\", \"Technical Definitions\", \"User\", \"Verifier\".""";
+                               a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                               rdfs:label "Designated Governance Role";
+                               rdfs:subClassOf voagm:Event,
+                                               [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:GovernanceRole ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#hasGraphRole> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> voagm:performedBy ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:DisapprovedIssue a voagm:IssueStatus;
+                       rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                       rdfs:label "Disapproved Issue".
+voagm:Document a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+               rdfs:label "Document";
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#dateCreated> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#name> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               <http://www.w3.org/2002/07/owl#Thing>,
+                               [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#lastUpdated> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> voagm:title ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> voagm:url ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#description> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:DocumentationChange a voagm:ChangeType;
+                          rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                          rdfs:label "Documentation change".
+voagm:EarlyAdoption a voagm:Maturity;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "Early adoption".
+voagm:EnumeratedValue <http://purl.org/dc/elements/1.1/description> "The base class in LMC for enumerated values";
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                      rdfs:label "Metadata Enumerated value";
+                      rdfs:subClassOf <http://www.linkedmodel.org/schema/dtype#EnumeratedValue>.
+voagm:Event a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+            rdfs:label "Event";
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:int ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:endDate ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:int ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:startDate ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#name> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:id ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            <http://www.w3.org/2002/07/owl#Thing>,
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#description> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Party ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:instigatedBy ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:int ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:eventDate ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:int ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:instigatedBy ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:Experimental a voagm:Maturity;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "Experimental".
+voagm:Figure <http://www.linkedmodel.org/schema/vaem#description> "An illustration of some kind.";
+             a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+             rdfs:label "Figure";
+             rdfs:subClassOf voagm:Image,
+                             [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> voagm:imageMap ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:GR_Authorizer <http://www.linkedmodel.org/schema/dtype#value> "authorizer";
+                    a voagm:GovernanceRole;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "Authorizer".
+voagm:GR_Steward <http://www.linkedmodel.org/schema/dtype#value> "steward";
+                 a voagm:GovernanceRole;
+                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                 rdfs:label "Steward".
+voagm:GR_Submitter <http://www.linkedmodel.org/schema/dtype#value> "submitter";
+                   a voagm:GovernanceRole;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "Submitter".
+voagm:Governance <http://purl.org/dc/elements/1.1/description> "Governance is mainly concerned with how an artifact is provisioned and managed over its lifecycle. Governance also concerns the status tracking and processes that need to exist on information objects and services for a successful initiaitve, mission, program, or project. Such governance needs to outline the relationships between all internal and external groups involved, describe the proper flow of information regarding to all stakeholders, ensure the appropriate review of issues encountered and ensure that required approvals and direction are obtained at each appropriate stage.";
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                 rdfs:label "Governance";
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Governance ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:supercedes ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:hasProtocol ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Document ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:hasNormativeDocument ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:hasOwner ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:hasApprovalStatus ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:hasConfidentiality ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:GovernanceEvent ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:hasGovernanceEvent ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:GovernanceProtocol ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:hasProtocol ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:isITAR ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:ChangeType ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:hasAnticipatedChangeType ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 voagm:Qualifier,
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Party ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:hasOwner ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Document ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:hasReferenceDocument ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Document ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:hasApplicableDocument ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:ConfidentialityLevel ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:hasConfidentiality ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:ChangeFrequency ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:frequencyOfChange ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Issue ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:hasIssue ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:isFOSS ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:GovernanceEvent <http://purl.org/dc/elements/1.1/description> """A \"Governance Event\".""";
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                      rdfs:label "Governance Event";
+                      rdfs:subClassOf voagm:Event.
+voagm:GovernanceProcess <http://purl.org/dc/elements/1.1/description> """A \"Process\".""";
+                        a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                        rdfs:label "Governance Process";
+                        rdfs:subClassOf voagm:Process.
+voagm:GovernanceProtocol <http://purl.org/dc/elements/1.1/description> "Governance is used  to mean the processes that need to exist for a successful initiaitve, mission, program, or project. Such governance needs to outline the relationships between all internal and external groups involved, describe the proper flow of information regarding to all stakeholders, ensure the appropriate review of issues encountered and ensure that required approvals and direction for a 'GovernedEntity' is obtained at each appropriate stage.";
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                         rdfs:label "Governance Protocol";
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:IssueResolutionProcess ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> voagm:hasIssueResolutionProcess ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:StakeholderGroup ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> voagm:isInterestOf ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Organization ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> voagm:isGovernedBy ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:ChangeManagementProcess ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> voagm:hasChangeManagementProcess ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:StakeholderGroup ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> voagm:reviewedBy ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> voagm:hasNormativeDocument ; 
+                                          <http://www.w3.org/2002/07/owl#someValuesFrom> voagm:Document ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> voagm:hasIssueResolutionProcess ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:ApprovalProcess ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> voagm:hasApprovalProcess ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> voagm:hasChangeManagementProcess ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> voagm:isGovernedBy ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         voagm:Qualifier,
+                                         [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> voagm:hasApprovalProcess ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:StakeholderGroup ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> voagm:isApprovedBy ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:StakeholderGroup ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> voagm:mayNeedConcurrenceFrom ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#cardinality> "3"^^xsd:int ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> voagm:hasProcess ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> voagm:id ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> voagm:isGovernedBy ; 
+                                          <http://www.w3.org/2002/07/owl#someValuesFrom> voagm:StakeholderGroup ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>];
+                         <http://www.w3.org/2002/07/owl#equivalentClass> [rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ; 
+                                                                          <http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onProperty> voagm:isGovernedBy ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#someValuesFrom> voagm:StakeholderGroup ; 
+                                                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                          [<http://www.w3.org/2002/07/owl#onProperty> voagm:hasProcess ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#someValuesFrom> voagm:GovernanceProcess ; 
+                                                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                          [<http://www.w3.org/2002/07/owl#onProperty> voagm:hasNormativeDocument ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#someValuesFrom> voagm:Document ; 
+                                                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                          a <http://www.w3.org/2002/07/owl#Class>].
+voagm:GovernanceRole <http://purl.org/dc/elements/1.1/description> """A \"Role\" with the following instance(s): \"authorizer\", \"steward\", \"submitter\".""";
+                     a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                     rdfs:label "Governance Role";
+                     rdfs:subClassOf voagm:EnumeratedValue.
+voagm:GovernedObject <http://www.linkedmodel.org/schema/vaem#description> "An abstract class for all governed entities";
+                     a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                     rdfs:label "Governed Object";
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> voagm:hasProvenance ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Governance ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> voagm:hasGovernance ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#dateCreated> ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> voagm:title ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> voagm:url ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#description> ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#lastUpdated> ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Provenance ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> voagm:hasProvenance ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#name> ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> voagm:normativeURL ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> voagm:id ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> voagm:hasGovernance ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     <http://www.w3.org/ns/prov#Entity>,
+                                     [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> voagm:documentedAt ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#revision> ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:GovernedService a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                      rdfs:label "Governed service";
+                      rdfs:subClassOf voagm:Service.
+voagm:Graph <http://www.linkedmodel.org/schema/vaem#description> "A set of RDF triples in an ontology graph specified according to VOAG.";
+            a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+            rdfs:label "Graph";
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> <http://www.linkedmodel.org/schema/vaem#Domain> ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#domainScope> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:hasLogo ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:ProductLogo ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:hasLogo ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:urlOfRDFfile ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#namespacePrefix> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#hasGraphRole> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:curatedGraphURI ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#allValuesFrom> <http://www.linkedmodel.org/schema/vaem#Aspect> ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#aspectScope> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#allValuesFrom> <http://www.linkedmodel.org/schema/vaem#Viewpoint> ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#viewpointScope> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#allValuesFrom> <http://www.linkedmodel.org/schema/vaem#Discipline> ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#disciplineScope> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            <http://rdfs.org/ns/void#Dataset>,
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:urlOfTurtleFile ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#hasLicenseType> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Attribution ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#withAttributionTo> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:downloads ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#namespace> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:LicenseModel ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#hasLicenseType> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:attributionText ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#allValuesFrom> <http://www.linkedmodel.org/schema/vaem#GraphRole> ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#hasGraphRole> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:Icon <http://www.linkedmodel.org/schema/vaem#description> "A logo of some kind";
+           a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+           rdfs:label "Icon";
+           rdfs:subClassOf voagm:Image.
+voagm:Image <http://www.linkedmodel.org/schema/vaem#description> "Image is a class for figures, pictures, logos, and icons  of various kinds";
+            a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+            rdfs:label "Image";
+            rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>,
+                            [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:image ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:caption ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:height ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:width ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:InDevelopment a voagm:Maturity;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "In development".
+voagm:Issue <http://purl.org/dc/elements/1.1/description> "captures issues such as raising of an issue related to a particular entity in a registry";
+            a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+            rdfs:label "Issue";
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:int ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:priority ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:PriorityValue ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:priority ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:title ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:disposition ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#description> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:userID ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:IssueStatus ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:hasStatus ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:BoardDispositionStatus ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:dispositionStatus ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:hasStatus ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            <http://www.w3.org/2002/07/owl#Thing>,
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:id ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:IssueResolutionProcess <http://purl.org/dc/elements/1.1/description> """A \"Governance Process\".""";
+                             a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                             rdfs:label "Issue Resolution Process";
+                             rdfs:subClassOf voagm:GovernanceProcess.
+voagm:IssueStatus <http://purl.org/dc/elements/1.1/description> """The status of an issue: \"Closed\", \"Deferred\", \"Non issue\", \"Open\", \"Resolved\".""";
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "Issue Status";
+                  rdfs:subClassOf voagm:EnumeratedValue.
+voagm:LicenseModel <http://www.linkedmodel.org/schema/vaem#description> "A License Model describes the licensing conditions associated with a software artifact.";
+                   a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "License Model";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> voagm:url ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   voagm:GovernedObject,
+                                   [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#acronym> ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:LicenseModel ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> voagm:compatibleWith ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:int ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> voagm:image ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:LicenseModel ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> voagm:incompatibleWith ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:LicenseModel ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> voagm:derivedFrom ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:LinkedModelLogo-200x80 voagm:caption "LinkedModel Standard ICON";
+                             voagm:height "80";
+                             voagm:image "http://www.linkedmodel.org/lib/lm/images/logos/linkedmodels-logo.gif"^^xsd:anyURI;
+                             voagm:width "200";
+                             <http://www.linkedmodel.org/schema/vaem#description> "LinkedModel Logo";
+                             a voagm:Logo;
+                             rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                             rdfs:label "LinkedModel ICON 200 x 80".
+voagm:Logo <http://www.linkedmodel.org/schema/vaem#description> "Logo is ...";
+           a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+           rdfs:label "Logo";
+           rdfs:subClassOf voagm:Image.
+voagm:Maturity a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+               rdfs:label "Maturity";
+               rdfs:subClassOf voagm:EnumeratedValue;
+               <http://www.w3.org/2002/07/owl#unionOf> (voagm:WidelyAdopted
+                                                        voagm:SomeAdoption
+                                                        voagm:EarlyAdoption
+                                                        voagm:Proposed
+                                                        voagm:UnknownMaturity
+                                                        voagm:Experimental
+                                                        voagm:InDevelopment).
+voagm:ModificationChange a voagm:ChangeType;
+                         rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                         rdfs:label "Modification change".
+voagm:Monthly a voagm:ChangeFrequency;
+              rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+              rdfs:label "Monthly".
+voagm:Never a voagm:ChangeFrequency;
+            rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+            rdfs:label "Never".
+voagm:NoAttributionSpecified a voagm:Attribution;
+                             rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                             rdfs:label "No attribution specified".
+voagm:NoGovernanceSpecified a voagm:Governance;
+                            rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                            rdfs:label "No governance specified".
+voagm:NoPedigreeSpecified a voagm:Pedigree;
+                          rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                          rdfs:label "No pedigree specified".
+voagm:NoProvenanceSpecified a voagm:Provenance;
+                            rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                            rdfs:label "No provenance specified".
+voagm:NonConcurrenceEvent <http://purl.org/dc/elements/1.1/description> """A \"Governance Event\".""";
+                          a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                          rdfs:label "Non-Concurrence Event";
+                          rdfs:subClassOf voagm:GovernanceEvent.
+voagm:NonIssue <http://www.linkedmodel.org/schema/dtype#value> "non-issue";
+               a voagm:IssueStatus;
+               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+               rdfs:label "Non-issue".
+voagm:OpenIssue <http://www.linkedmodel.org/schema/dtype#value> "open";
+                <http://www.linkedmodel.org/schema/vaem#description> "An issue with undetermined disposition,";
+                a voagm:IssueStatus;
+                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                rdfs:label "Open".
+voagm:Organization a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "Organization";
+                   rdfs:subClassOf voagm:Party,
+                                   <http://www.w3.org/ns/prov#Organization>,
+                                   [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:OrganizationLogo ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> voagm:hasLogo ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> voagm:hasLogo ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> voagm:url ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:OrganizationLogo <http://www.linkedmodel.org/schema/vaem#description> "A logo for an organization";
+                       a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                       rdfs:label "Organization logo";
+                       rdfs:subClassOf voagm:Logo.
+voagm:PS_Draft <http://www.linkedmodel.org/schema/dtype#value> "draft";
+               a voagm:PublicationStatus;
+               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+               rdfs:label "Draft Status".
+voagm:PS_Final a voagm:PublicationStatus;
+               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+               rdfs:label "Final Status".
+voagm:PS_Interim <http://www.linkedmodel.org/schema/dtype#value> "interim";
+                 a voagm:PublicationStatus;
+                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                 rdfs:label "Interim Status".
+voagm:PS_Obsolete <http://www.linkedmodel.org/schema/dtype#value> "obsolete";
+                  a voagm:PublicationStatus;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "Obsolete".
+voagm:PS_Review <http://www.linkedmodel.org/schema/dtype#value> "review";
+                a voagm:PublicationStatus;
+                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                rdfs:label "Review".
+voagm:PS_Unknown <http://www.linkedmodel.org/schema/dtype#value> "unknown";
+                 a voagm:PublicationStatus;
+                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                 rdfs:label "Unknown Status".
+voagm:PV_HighPriority <http://www.linkedmodel.org/schema/dtype#value> "high";
+                      a voagm:PriorityValue;
+                      rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                      rdfs:label "High priority".
+voagm:PV_LowPriority <http://www.linkedmodel.org/schema/dtype#value> "low";
+                     a voagm:PriorityValue;
+                     rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                     rdfs:label "Low priority".
+voagm:PV_MediumPriority <http://www.linkedmodel.org/schema/dtype#value> "medium";
+                        a voagm:PriorityValue;
+                        rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                        rdfs:label "Medium priority".
+voagm:PV_NotApplicable <http://www.linkedmodel.org/schema/dtype#value> "na";
+                       a voagm:PriorityValue;
+                       rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                       rdfs:label "Not Applicable".
+voagm:PV_ToBeDetermined <http://www.linkedmodel.org/schema/dtype#value> "tbd";
+                        a voagm:PriorityValue;
+                        rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                        rdfs:label "TBD".
+voagm:Party a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+            rdfs:label "Party";
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> voagm:id ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#name> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:Pedigree <http://purl.org/dc/elements/1.1/description> "The origin or source of something. The primary purpose of provenance is to capture the time, place, and if appropriate the person responsible, for the creation, production or provisioning of some information object.";
+               <http://www.linkedmodel.org/schema/vaem#description> "Pedigree captures aspects of an artifact that have to do with maturity, quality, salience, and accredidation.";
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+               rdfs:label "Pedigree";
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Party ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> voagm:usedBy ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> voagm:usage ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> voagm:hasAccredidation ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               voagm:Qualifier,
+                               [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Accredidation ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> voagm:hasAccredidation ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> voagm:hasMaturity ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Maturity ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> voagm:hasMaturity ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:Person a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+             rdfs:label "Person";
+             rdfs:subClassOf voagm:Party,
+                             <http://www.w3.org/ns/prov#Person>.
+voagm:PriorityValue a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "Priority value";
+                    rdfs:subClassOf voagm:EnumeratedValue.
+voagm:Process a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+              rdfs:label "Process";
+              rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>,
+                              [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> voagm:id ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#name> ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:ProductLogo <http://www.linkedmodel.org/schema/vaem#description> "Product logo is used for products, solutions, etc.";
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "Product logo";
+                  rdfs:subClassOf voagm:Logo.
+voagm:Proposed a voagm:Maturity;
+               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+               rdfs:label "Proposed".
+voagm:Provenance <http://purl.org/dc/elements/1.1/description> "The origin or source of something. The primary purpose of provenance is to capture the time, place, and if appropriate the person responsible, for the creation, production or provisioning of some information object.";
+                 <http://www.linkedmodel.org/schema/vaem#description> "Provenance specifies the origin or source of some artifact. The primary purpose of provenance is to capture the time, place, and if appropriate the person responsible, for the creation, production or provisioning of The artifact. Provenance also captures a record of how a version may have been superceded by another version of the artifact.";
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                 rdfs:label "Provenance";
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:GovernedObject ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:supercededBy ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> [rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ; 
+                                                                                 <http://www.w3.org/2002/07/owl#unionOf> (voagm:Party
+                                                                                                                          voagm:Document) ; 
+                                                                                 a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:source ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:ChangeType ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:hasChangeType ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:source ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:hasPedigree ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#timestamp> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:derivedFrom ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#lastUpdated> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Pedigree ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:hasPedigree ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:GovernedObject ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> voagm:supercedes ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 voagm:Qualifier,
+                                 [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#revision> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:PublicationStatus a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                        rdfs:label "Publication Status";
+                        rdfs:subClassOf voagm:EnumeratedValue.
+voagm:Qualifier a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                rdfs:label "Qualifier";
+                rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>,
+                                [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> voagm:id ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#name> ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:Quarterly a voagm:ChangeFrequency;
+                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                rdfs:label "Quarterly".
+voagm:RDFIcon-32X35 voagm:caption "RDF Standard ICON";
+                    voagm:height "35";
+                    voagm:image "http://www.linkedmodel.org/lib/lm/images/icons/rdf_w3c_icon.48.gif"^^xsd:anyURI;
+                    voagm:width "32";
+                    <http://www.linkedmodel.org/schema/vaem#description> "RDF Standard";
+                    a voagm:Icon;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "RDF Icon 32 X 35".
+voagm:RefactoringChange a voagm:ChangeType;
+                        rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                        rdfs:label "Refactoring change".
+voagm:RejectionEvent <http://purl.org/dc/elements/1.1/description> """A \"Governance Event\".""";
+                     a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                     rdfs:label "Rejection Event";
+                     rdfs:subClassOf voagm:Event.
+voagm:ResolvedIssue <http://www.linkedmodel.org/schema/dtype#value> "resolved";
+                    a voagm:IssueStatus;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "Resolved".
+voagm:RetreivalEvent <http://purl.org/dc/elements/1.1/description> """A \"Archival Event\".""";
+                     a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                     rdfs:label "Retreival Event";
+                     rdfs:subClassOf voagm:Event.
+voagm:ReviewEvent <http://purl.org/dc/elements/1.1/description> """A \"Governance Event\".""";
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "Review";
+                  rdfs:subClassOf voagm:GovernanceEvent,
+                                  [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Organization ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> voagm:performedBy ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:SPARQLIcon-80X15 voagm:caption "SPARQL Standard ICON";
+                       voagm:height "15";
+                       voagm:image "http://www.linkedmodel.org/lib/lm/images/icons/sw-sparql-blue.png"^^xsd:anyURI;
+                       voagm:width "80";
+                       <http://www.linkedmodel.org/schema/vaem#description> "SPARQL Standard";
+                       a voagm:Icon;
+                       rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                       rdfs:label "SPARQL ICON 80 X 15".
+voagm:SchemaGraph a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "Schema graph";
+                  rdfs:subClassOf voagm:Graph,
+                                  [<http://www.w3.org/2002/07/owl#hasValue> <http://www.linkedmodel.org/schema/vaem#SchemaGraph> ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#hasGraphRole> ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>];
+                  <http://www.w3.org/2002/07/owl#equivalentClass> [rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ; 
+                                                                   <http://www.w3.org/2002/07/owl#intersectionOf> (voagm:Graph
+                                                                                                                   [<http://www.w3.org/2002/07/owl#hasValue> <http://www.linkedmodel.org/schema/vaem#SchemaGraph> ; 
+                                                                                                                   <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#hasGraphRole> ; 
+                                                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                   a <http://www.w3.org/2002/07/owl#Class>].
+voagm:Service a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+              rdfs:label "Service";
+              rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>,
+                              [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> voagm:id ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#name> ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:SomeAdoption a voagm:Maturity;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "Some adoption".
+voagm:StakeholderGroup <http://purl.org/dc/elements/1.1/description> "A Stakeholder Group is a party of people who have common interests and concerns.";
+                       a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                       rdfs:label "Stakeholder Group";
+                       rdfs:subClassOf voagm:Party,
+                                       <http://www.w3.org/ns/prov#Organization>,
+                                       [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Person ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> voagm:hasStakeholder ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:int ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> voagm:hasStakeholder ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>];
+                       <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#onProperty> voagm:hasStakeholder ; 
+                                                                        <http://www.w3.org/2002/07/owl#someValuesFrom> voagm:Person ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:Standard <http://www.linkedmodel.org/schema/vaem#description> "An industry, de facto or de jure standard";
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+               rdfs:label "Standard";
+               rdfs:subClassOf voagm:GovernedObject,
+                               [<http://www.w3.org/2002/07/owl#allValuesFrom> voagm:Icon ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> voagm:hasLogo ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> voagm:hasLogo ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>].
+voagm:TopQuadrantAttribution voagm:hasLogo voagm:TopQuadrantLogo-613x150;
+                             voagm:pointOfContact "Ralph Hodgson, TopQuadrant, Inc.";
+                             voagm:url "http://www.topquadrant.com"^^xsd:anyURI;
+                             <http://www.linkedmodel.org/schema/vaem#name> "TopQuadrant, Inc.";
+                             a voagm:Attribution;
+                             rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                             rdfs:label "TopQuadrant attribution".
+voagm:TopQuadrantLogo-613x150 voagm:height "150";
+                              voagm:image "http://www.linkedmodel.org/lib/lm/images/logos/TQ_logo_C_2009_SM_print.jpg"^^xsd:anyURI;
+                              voagm:width "613";
+                              <http://www.linkedmodel.org/schema/vaem#description> "TopQuadrant's logo - diamond with company name to the right";
+                              a voagm:AttributionLogo,
+                                voagm:OrganizationLogo;
+                              rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                              rdfs:label "TopQuadrant Logo 613 x 150".
+voagm:TurtleIcon-32bX35 voagm:caption "Turtle ICON";
+                        voagm:height "35";
+                        voagm:image "http://www.linkedmodel.org/lib/lm/images/icons/turtle_icon_32x35.jpg"^^xsd:anyURI;
+                        voagm:width "32";
+                        <http://www.linkedmodel.org/schema/vaem#description> "Turtle is a representation format for RDF/OWL.";
+                        a voagm:Icon;
+                        rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                        rdfs:label "Turtle Icon 32 X 35".
+voagm:UncertainFrequency a voagm:ChangeFrequency;
+                         rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                         rdfs:label "Uncertain frequency".
+voagm:UnknownMaturity a voagm:Maturity;
+                      rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                      rdfs:label "Unknown maturity".
+voagm:VAEM-CatalogEntry a voagm:SchemaGraph;
+                        rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>.
+voagm:VAEM-XINA-CatalogEntry a voagm:SchemaGraph;
+                             rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>.
+voagm:VOAG-CatalogEntry a voagm:SchemaGraph,
+                          <http://www.linkedmodel.org/schema/vaem#CatalogEntry>;
+                        rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                        rdfs:label "VOAG Catalog Entry".
+voagm:VOAG-OntologyLogo_360x110 voagm:caption "VOAG Logo";
+                                voagm:height "55";
+                                voagm:image "http://www.linkedmodel.org/lib/lm/images/logos/voag_logo_360x110.png"^^xsd:anyURI;
+                                voagm:width "180";
+                                a voagm:ProductLogo;
+                                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                                rdfs:label "VOAG Logo".
+voagm:VocabGraph a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                 rdfs:label "Vocab graph";
+                 rdfs:subClassOf voagm:Graph,
+                                 [<http://www.w3.org/2002/07/owl#hasValue> <http://www.linkedmodel.org/schema/vaem#VocabularyGraph> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#hasGraphRole> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>];
+                 <http://www.w3.org/2002/07/owl#equivalentClass> [rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ; 
+                                                                  <http://www.w3.org/2002/07/owl#intersectionOf> (voagm:Graph
+                                                                                                                  [<http://www.w3.org/2002/07/owl#hasValue> <http://www.linkedmodel.org/schema/vaem#VocabularyGraph> ; 
+                                                                                                                  <http://www.w3.org/2002/07/owl#onProperty> <http://www.linkedmodel.org/schema/vaem#hasGraphRole> ; 
+                                                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                  a <http://www.w3.org/2002/07/owl#Class>].
+voagm:Weekly a voagm:ChangeFrequency;
+             rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+             rdfs:label "Weekly".
+voagm:WidelyAdopted a voagm:Maturity;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "Widely adopted".
+voagm:accountableFor <http://purl.org/dc/elements/1.1/description> "An object property used in governance that refers a resource to the party that is accountable for it.";
+                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                     rdfs:label "accountable for".
+voagm:approves <http://purl.org/dc/elements/1.1/description> "An object property that specifies that a party governs the approval of a resource.";
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+               rdfs:label "approves";
+               rdfs:subPropertyOf voagm:governs;
+               <http://www.w3.org/2002/07/owl#inverseOf> voagm:isApprovedBy.
+voagm:attributionText a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                      rdfs:label "attribution text";
+                      rdfs:range xsd:string.
+voagm:caption <http://purl.org/dc/elements/1.1/description> "A short description, typically used on a table or a figure.";
+              a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+              rdfs:label "caption";
+              rdfs:range xsd:string.
+voagm:compatibleWith a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                       <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                     rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                     rdfs:label "compatible with".
+voagm:curatedGraphURI <http://purl.org/dc/elements/1.1/description> "The property 'voag:curatedGraphURI' provides a means to specify the base URI of the specific version of the onotlogy that is being documented.  In each versioned graph the 'vaem:namespace' carries a URI without a version number.";
+                      a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                      rdfs:label "curated graph URI";
+                      rdfs:range xsd:anyURI.
+voagm:deprecated a rdf:Property,
+                   <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                 rdfs:domain voagm:LicenseModel;
+                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                 rdfs:label "deprecated on";
+                 rdfs:range <http://www.linkedmodel.org/schema/vaem#dateUnion>.
+voagm:derivedFrom a rdf:Property;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "derived from".
+voagm:disposition a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "used to connect to the text describing disposition of something, for example, a disposition of an issue";
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "disposition";
+                  rdfs:range xsd:string.
+voagm:dispositionStatus <http://purl.org/dc/elements/1.1/description> "An object propoert that denotes the state of a governance issue.";
+                        a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                        rdfs:label "disposition status";
+                        rdfs:subPropertyOf voagm:hasApprovalStatus.
+voagm:documentedAt <http://purl.org/dc/elements/1.1/description> "The property 'vaem:documentedAt' is intended for general use as the name implies.  In some cases the property could have scalar values and in other cases may need to refer to a first class concept that holds more information about a documentation resource.  For this reason, the  type of this property is set as 'rdf:Property' and the property is rangeless.";
+                   a rdf:Property;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "documented at".
+voagm:downloads a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                rdfs:label "downloads";
+                rdfs:range xsd:integer.
+voagm:endDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+              rdfs:label "end date";
+              rdfs:range <http://www.linkedmodel.org/schema/vaem#dateUnion>.
+voagm:eventDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                rdfs:label "event date";
+                rdfs:range <http://www.linkedmodel.org/schema/vaem#dateUnion>.
+voagm:exclude a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+              rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+              rdfs:label "exclude";
+              rdfs:range xsd:boolean.
+voagm:frequencyOfChange a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                        rdfs:label "frequency of change".
+voagm:givesConcurrenceFor <http://purl.org/dc/elements/1.1/description> "An object property that specifies what a party may need to give consent, in the form of agreement, either written or verbally for in the approval of some govenance concern. This is the inverse property of 'mayNeedConcurrenceFrom' and, as such, may be deprecated in the future.";
+                          a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                          rdfs:label "gives concurrence for";
+                          rdfs:subPropertyOf voagm:governs;
+                          <http://www.w3.org/2002/07/owl#inverseOf> voagm:mayNeedConcurrenceFrom.
+voagm:governs <http://purl.org/dc/elements/1.1/description> "A super-property of governance properties: 'approves', 'gives concurrence for', 'reviews' and 'witness to'.";
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+              rdfs:label "governs";
+              <http://www.w3.org/2002/07/owl#inverseOf> voagm:isGovernedBy.
+voagm:hasAccredidation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                       rdfs:label "has accredidation".
+voagm:hasAnticipatedChangeType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                               rdfs:label "has anticipated change type".
+voagm:hasApplicableDocument <http://purl.org/dc/elements/1.1/description> "A document that is of help to application of the subject matter. Documents include specifications, models, standards, guidelines, handbooks and other special publications.";
+                            a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                            rdfs:label "has applicable document".
+voagm:hasApprovalProcess <http://purl.org/dc/elements/1.1/description> "An object property that specifies a process that is used for approval in a 'Governance Protocol'.";
+                         a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                         rdfs:label "has approval process".
+voagm:hasApprovalStatus <http://purl.org/dc/elements/1.1/description> "An object property that referes to an enumerated value that denotes the state of an approval.";
+                        a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                        rdfs:label "has approval status".
+voagm:hasCategory a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "has category".
+voagm:hasChangeManagementProcess <http://purl.org/dc/elements/1.1/description> "An object property that specifies a process that is used for managing change in a 'Governance Protocol'.";
+                                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                                 rdfs:label "has change management process";
+                                 rdfs:subPropertyOf voagm:hasProcess.
+voagm:hasChangeType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "has change type".
+voagm:hasConfidentiality <http://purl.org/dc/elements/1.1/description> "An object property that specifies a level of confidentiality. Typicall the range of this property will be 'voag:Confidentiality'.";
+                         a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                         rdfs:label "has confidentiality".
+voagm:hasGovernance a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "has governance".
+voagm:hasGovernanceEvent <http://purl.org/dc/elements/1.1/description> "An event associated with governance processes.";
+                         a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                         rdfs:label "has governance event".
+voagm:hasIdentifier a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "has identifier".
+voagm:hasIssue <http://purl.org/dc/elements/1.1/description> "A pointer to an issue that exists on a subject of interest.";
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+               rdfs:label "has issue";
+               rdfs:range voagm:Issue.
+voagm:hasIssueResolutionProcess a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                                rdfs:label "has issue resolution process";
+                                rdfs:subPropertyOf voagm:hasProcess.
+voagm:hasLogo <http://purl.org/dc/elements/1.1/description> "A property to reference an image that is used as a logo.";
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+              rdfs:label "has logo";
+              rdfs:range voagm:Logo.
+voagm:hasMaturity a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "has maturity".
+voagm:hasNormativeDocument a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                           rdfs:label "has normative document".
+voagm:hasOntologyArchitectureDiagram a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                     rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                                     rdfs:label "has ontology architecture diagram".
+voagm:hasOwner a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+               rdfs:label "has owner".
+voagm:hasPedigree <http://purl.org/dc/elements/1.1/description> "A reference to a description about the pedigree of something.";
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "has pedigree".
+voagm:hasProcess <http://purl.org/dc/elements/1.1/description> "A reference to a process description.";
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                 rdfs:label "has process".
+voagm:hasProtocol <http://purl.org/dc/elements/1.1/description> "A pointer to a record that holds governance information for one or more governed entities. Often governance can be shared across entities.";
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "has protocol".
+voagm:hasProvenance <http://purl.org/dc/elements/1.1/description> "A pointer to a provenance record that details the source, version and time of some subject of interest.";
+                    a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "has provenance".
+voagm:hasReferenceDocument a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                           rdfs:label "has reference document".
+voagm:hasStakeholder a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                     rdfs:label "has stakeholder".
+voagm:hasStatus a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                rdfs:label "has status".
+voagm:hasSteward <http://purl.org/dc/elements/1.1/description> "A pointer to the person that is a curator.";
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                 rdfs:label "has steward".
+voagm:hasValue a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+               rdfs:label "has value";
+               rdfs:range rdfs:Resource.
+voagm:height <http://purl.org/dc/elements/1.1/description> "Height is typically used to specify an image's height attribute.";
+             a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+             rdfs:label "height";
+             rdfs:range xsd:string.
+voagm:id a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+         rdfs:label "id";
+         rdfs:range xsd:anySimpleType.
+voagm:image <http://purl.org/dc/elements/1.1/description> "The property 'vaem:image' points  to an image using a URL.";
+            a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+            rdfs:label "image";
+            rdfs:range xsd:anyURI.
+voagm:imageMap a rdf:Property;
+               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+               rdfs:label "image map".
+voagm:incompatibleWith a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                         <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                       rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                       rdfs:label "incompatible with".
+voagm:instigatedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "instigated by".
+voagm:instigatingEvent a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                       rdfs:label "instigating event".
+voagm:intent a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+             rdfs:label "intent";
+             rdfs:range xsd:string.
+voagm:interestIn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                 rdfs:label "interest in";
+                 <http://www.w3.org/2002/07/owl#inverseOf> voagm:isInterestOf.
+voagm:isApprovedBy <http://purl.org/dc/elements/1.1/description> "References to which parties approve an entity.";
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "is approved by";
+                   rdfs:subPropertyOf voagm:isGovernedBy.
+voagm:isFOSS <http://purl.org/dc/elements/1.1/description> "A boolean property to specify whether or not software is free or open source. Free and open-source software (F/OSS, FOSS) or free/libre/open-source software (FLOSS) is software that is liberally licensed to grant the right of users to use, study, change, and improve its design through the availability of its source code.";
+             a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+             rdfs:label "is FOSS";
+             rdfs:range xsd:boolean.
+voagm:isGovernedBy <http://purl.org/dc/elements/1.1/description> "A pointer to who is responsible for the governance of some entity of interest. This is a two-way reference with the inverse property 'governs'.";
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "is governed by".
+voagm:isITAR <http://purl.org/dc/elements/1.1/description> "International Traffic in Arms Regulations (ITAR) is a set of United States government regulations that control the export and import of defense-related articles and services on the United States Munitions List. These regulations implement the provisions of the Arms Export Control Act, and are described in Title 22 (Foreign Relations), Chapter I (Department of State), Subchapter M of the Code of Federal Regulations. The Department of State interprets and enforces ITAR. Its goal is to advance national strategic objectives and U.S. foreign policy via the trade controls. For practical purposes, ITAR regulations dictate that information and material pertaining to defense and military related technologies may only be shared with US Persons unless approval from the Department of State is received or a special exemption is used.";
+             a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+               <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+             rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+             rdfs:label "is ITAR";
+             rdfs:range xsd:boolean.
+voagm:isInterestOf <http://purl.org/dc/elements/1.1/description> "A pointer to parties who have an interest in an entity. This is a two-way reference with the inverse property 'interestIn'.";
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "interest of".
+voagm:jurisdiction a rdf:Property,
+                     <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain voagm:LicenseModel;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "jurisdiction"@en-us,
+                              "jurisdiction";
+                   rdfs:range voagm:CreativeCommonsJurisdiction.
+voagm:legalcode a rdf:Property,
+                  <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain voagm:LicenseModel;
+                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                rdfs:label "legalcode";
+                rdfs:range rdfs:Resource.
+voagm:licence a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+              rdfs:label "licence";
+              rdfs:range xsd:string.
+voagm:mayNeedConcurrenceFrom <http://purl.org/dc/elements/1.1/description> "An object property that specifies that a party may need to give consent, in the form of agreement, either written or verbally to the approval of some govenance concern.";
+                             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                             rdfs:label "may need concurrence from";
+                             rdfs:subPropertyOf voagm:isGovernedBy;
+                             <http://www.w3.org/2002/07/owl#inverseOf> voagm:givesConcurrenceFor.
+voagm:morePermissions a rdf:Property,
+                        <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain voagm:CreativeCommonsWork;
+                      rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                      rdfs:label "more permissions";
+                      rdfs:range rdfs:Resource.
+voagm:normativeReference a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                         rdfs:label "normative reference".
+voagm:normativeURL a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "normative URL";
+                   rdfs:range xsd:anyURI.
+voagm:obsoletedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "obsoleted by".
+voagm:ownedBy a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+              rdfs:label "owned by";
+              rdfs:range xsd:string.
+voagm:owner a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+            rdfs:label "owner".
+voagm:owns a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+           rdfs:label "owns".
+voagm:participant a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "participant".
+voagm:performedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "performed by".
+voagm:permits a rdf:Property,
+                <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain voagm:LicenseModel;
+              rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+              rdfs:label "permits"@en-us,
+                         "permits";
+              rdfs:range voagm:CreativeCommonsPermission.
+voagm:pointOfContact a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                     rdfs:label "point of contact";
+                     rdfs:range xsd:string.
+voagm:preparedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                 rdfs:label "prepared by";
+                 rdfs:subPropertyOf voagm:isGovernedBy.
+voagm:priority a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+               rdfs:label "priority".
+voagm:prohibits a rdf:Property,
+                  <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain voagm:LicenseModel;
+                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                rdfs:label "prohibits"@en-us,
+                           "prohibits";
+                rdfs:range voagm:CreativeCommonsProhibition.
+voagm:proprietary <http://purl.org/dc/elements/1.1/description> "A boolean flag to indicate if an information asset is propretary.";
+                  a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "proprietary";
+                  rdfs:range xsd:boolean.
+voagm:relatedIssue a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "This property connects two issue events. Issues connected by this property must be about the same subject";
+                   rdfs:domain voagm:Issue;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "related issue";
+                   rdfs:range voagm:Issue.
+voagm:relatedTo a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                rdfs:label "related to".
+voagm:releaseDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "release date";
+                  rdfs:range <http://www.linkedmodel.org/schema/vaem#dateUnion>.
+voagm:requires a rdf:Property,
+                 <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain voagm:LicenseModel;
+               rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+               rdfs:label "requires"@en-us,
+                          "requires";
+               rdfs:range voagm:CreativeCommonsRequirement.
+voagm:reviewedBy <http://purl.org/dc/elements/1.1/description> "References to which parties review a data or information asset.";
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                 rdfs:label "reviewed by";
+                 rdfs:subPropertyOf voagm:isGovernedBy;
+                 <http://www.w3.org/2002/07/owl#inverseOf> voagm:reviews.
+voagm:reviews a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+              rdfs:label "reviews";
+              rdfs:subPropertyOf voagm:governs;
+              <http://www.w3.org/2002/07/owl#inverseOf> voagm:reviewedBy.
+voagm:rights a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+             rdfs:label "subject";
+             rdfs:range xsd:string.
+voagm:source a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+             rdfs:label "source".
+voagm:startDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                rdfs:label "start date";
+                rdfs:range <http://www.linkedmodel.org/schema/vaem#dateUnion>.
+voagm:subject a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+              rdfs:label "subject";
+              rdfs:range xsd:string.
+voagm:submittedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "submitted by";
+                  rdfs:subPropertyOf voagm:isGovernedBy.
+voagm:supercededBy <http://purl.org/dc/elements/1.1/description> "A pointer to one or more 'GovernedEntities' that replace this entity.";
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "superceded by";
+                   <http://www.w3.org/2002/07/owl#inverseOf> voagm:supercedes.
+voagm:supercedes <http://purl.org/dc/elements/1.1/description> "A pointer to one or more 'GovernedEntities' that are replaced by this entity.";
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                   <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                 rdfs:label "supercedes";
+                 <http://www.w3.org/2002/07/owl#inverseOf> voagm:supercededBy.
+voagm:supervisedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "supervised by";
+                   rdfs:subPropertyOf voagm:isGovernedBy.
+voagm:timestamp a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                rdfs:label "timestamp";
+                rdfs:range xsd:dateTime.
+voagm:title a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+            rdfs:label "title";
+            rdfs:range xsd:string.
+voagm:url a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+          rdfs:label "url";
+          rdfs:range xsd:anyURI.
+voagm:urlForHTML a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                 rdfs:label "url for HTML";
+                 rdfs:range xsd:anyURI.
+voagm:urlOfRDFfile <http://purl.org/dc/elements/1.1/description> "Used to refer to a an RDF XML representation of an ontology";
+                   a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                   rdfs:label "url address of RDF file";
+                   rdfs:range xsd:anyURI.
+voagm:urlOfTurtleFile <http://purl.org/dc/elements/1.1/description> "Used to refer to a Turtle (N3) representation of an ontology";
+                      a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                      rdfs:label "url of turtle file";
+                      rdfs:range xsd:anyURI.
+voagm:usage a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+            rdfs:label "usage";
+            rdfs:range xsd:string.
+voagm:useGuidelines a rdf:Property;
+                    rdfs:domain voagm:CreativeCommonsWork;
+                    rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                    rdfs:label "use guidelines";
+                    rdfs:range rdfs:Resource.
+voagm:usedBy <http://purl.org/dc/elements/1.1/description> "The property 'usedBy' is a general property to record a dependency. One use is in stating how a schema or a vocabulary is used by another ontology graph.";
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+             rdfs:label "used by".
+voagm:userID a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+             rdfs:label "user ID";
+             rdfs:range xsd:anySimpleType.
+voagm:width <http://purl.org/dc/elements/1.1/description> "Width is typically used to specify an image's width attribute.";
+            a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+            rdfs:label "width".
+voagm:witnessTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                rdfs:label "witness to";
+                rdfs:subPropertyOf voagm:governs;
+                <http://www.w3.org/2002/07/owl#inverseOf> voagm:witnessedBy.
+voagm:witnessedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag>;
+                  rdfs:label "wintnessed by";
+                  rdfs:subPropertyOf voagm:isGovernedBy.
+<http://www.linkedmodel.org/schema/vaem#Attribution> rdfs:subClassOf voagm:Attribution.
+<http://www.linkedmodel.org/schema/vaem#CatalogEntry> rdfs:subClassOf voagm:GovernedObject.
+<http://www.linkedmodel.org/schema/vaem#LicenseModel> rdfs:subClassOf voagm:LicenseModel.
+<http://www.linkedmodel.org/schema/vaem#description> rdfs:label "description";
+                                                     rdfs:range xsd:string.

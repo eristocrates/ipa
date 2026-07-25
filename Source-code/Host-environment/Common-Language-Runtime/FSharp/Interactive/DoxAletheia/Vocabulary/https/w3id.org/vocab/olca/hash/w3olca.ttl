@@ -1,0 +1,76 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix w3olca: <https://w3id.org/vocab/olca#>.
+
+<http://purl.org/dc/terms/subject> a rdf:Property;
+                                   w3olca:domainIncludes <http://xmlns.com/foaf/0.1/Document>;
+                                   w3olca:rangeIncludes <http://www.w3.org/2004/02/skos/core#Concept>.
+<https://w3id.org/vocab/lingvoj#officialLanguage> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                  rdfs:comment "An official language of a country, project, organization or event."@en;
+                                                  rdfs:label "official language"@en;
+                                                  rdfs:range <https://w3id.org/vocab/lingvoj#Lingvo>;
+                                                  w3olca:domainIncludes <http://schema.org/Country>,
+                                                                        <http://linkedevents.org/ontology/Event>,
+                                                                        <http://xmlns.com/foaf/0.1/Project>,
+                                                                        <http://xmlns.com/foaf/0.1/Organization>.
+<https://w3id.org/vocab/olca> <http://purl.org/dc/terms/contributor> <http://data.semanticweb.org/person/carlos-tejo-alonso>,
+                                                                     <https://w3id.org/people/gatemezing>;
+                              <http://purl.org/dc/terms/creator> <http://data.semanticweb.org/person/bernard-vatant>;
+                              <http://purl.org/dc/terms/issued> "2013-02-07";
+                              <http://purl.org/dc/terms/modified> "2020-02-31";
+                              <http://purl.org/dc/terms/title> "Ontology Loose Coupling Annotation"@en;
+                              <http://purl.org/vocab/vann/preferredNamespacePrefix> "olca";
+                              <http://purl.org/vocab/vann/preferredNamespaceUri> w3olca:;
+                              a <http://www.w3.org/2002/07/owl#Ontology>,
+                                <http://purl.org/vocommons/voaf#Vocabulary>;
+                              rdfs:comment "A vocabulary defining annotations enabling loose coupling between classes and properties in ontologies. Those annotations define with some accuracy the expected use of properties, in particular across vocabularies, without the formal constraints entailed by the use of OWL or RDFS constructions"@en;
+                              rdfs:label "Ontology Loose Coupling Annotation"@en;
+                              rdfs:seeAlso <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgMetaSchema>;
+                              <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/vocab/olca_v2.0.ttl>;
+                              <http://www.w3.org/2002/07/owl#versionInfo> "v2.0".
+w3olca:domainIncludes a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                      rdfs:comment "A loose coupling of a property to possible or expected class it can describe. This annotation is to be used when one does not want to enforce formally the coupling by rdfs:domain or some owl:Restriction constraint. "@en;
+                      rdfs:label "domain includes"@en;
+                      w3olca:domainIncludes <http://www.w3.org/2002/07/owl#AnnotationProperty>,
+                                            <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                            <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                            rdf:Property;
+                      w3olca:rangeIncludes <http://www.w3.org/2002/07/owl#Class>,
+                                           rdfs:Class.
+w3olca:expectedProperty a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                        rdfs:comment "A loose coupling of a class to possible or expected properties. This annotation is to be used when one does not want to enforce formally the coupling using rdfs:range or some owl:Restriction."@en;
+                        rdfs:label "expected property"@en;
+                        w3olca:domainIncludes <http://www.w3.org/2002/07/owl#Class>,
+                                              rdfs:Class;
+                        w3olca:rangeIncludes <http://www.w3.org/2002/07/owl#AnnotationProperty>,
+                                             <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                             <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                             rdf:Property.
+w3olca:rangeIncludes a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                     rdfs:comment "A loose coupling of a property to possible or expected values. This annotation is to be used when one does not want to enforce formally the coupling by rdfs:range or some owl:Restriction constraint."@en;
+                     rdfs:label "range includes"@en;
+                     w3olca:domainIncludes <http://www.w3.org/2002/07/owl#AnnotationProperty>,
+                                           <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                           <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                           rdf:Property;
+                     w3olca:rangeIncludes <http://www.w3.org/2002/07/owl#Class>,
+                                          rdfs:Class.
+w3olca:similarClass a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                    rdfs:comment "A loose similarity of classes, typically across ontologies . This annotation is to be used when one does not want to enforce formally the coupling by owl:equivalentClass. "@en;
+                    rdfs:label "similar class"@en;
+                    w3olca:domainIncludes <http://www.w3.org/2002/07/owl#Class>,
+                                          rdfs:Class;
+                    w3olca:rangeIncludes <http://www.w3.org/2002/07/owl#Class>,
+                                         rdfs:Class.
+w3olca:similarProperty a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                       rdfs:comment "A loose similary of properties, typically across ontologies . This annotation is to be used when one does not want to enforce formally the coupling by owl:equivalentProperty. "@en;
+                       rdfs:label "similar property"@en;
+                       w3olca:domainIncludes rdf:Property,
+                                             <http://www.w3.org/2002/07/owl#AnnotationProperty>,
+                                             <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                             <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       w3olca:rangeIncludes <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                            rdf:Property,
+                                            <http://www.w3.org/2002/07/owl#AnnotationProperty>,
+                                            <http://www.w3.org/2002/07/owl#ObjectProperty>.

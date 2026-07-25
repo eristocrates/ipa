@@ -16,23 +16,23 @@ module swapweekScheme =
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/weekScheme#Day">http://eulersharp.sourceforge.net/2003/03swap/weekScheme#Day</seealso>
     let Day = Prefixed_Name(swapweekScheme, "Day") |> PrefixedName
     /// <summary>
-    ///   <para>swapweekScheme:hasDayEnd</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:FunctionalProperty</para>
-    ///   <para>owl:DatatypeProperty</para>
-    /// </remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/weekScheme#hasDayEnd">http://eulersharp.sourceforge.net/2003/03swap/weekScheme#hasDayEnd</seealso>
-    let hasDayEnd = Prefixed_Name(swapweekScheme, "hasDayEnd") |> PrefixedName
-    /// <summary>
     ///   <para>swapweekScheme:hasDayStart</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
     ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
     /// </remarks>
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/weekScheme#hasDayStart">http://eulersharp.sourceforge.net/2003/03swap/weekScheme#hasDayStart</seealso>
     let hasDayStart = Prefixed_Name(swapweekScheme, "hasDayStart") |> PrefixedName
+    /// <summary>
+    ///   <para>swapweekScheme:hasDayEnd</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    /// </remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/weekScheme#hasDayEnd">http://eulersharp.sourceforge.net/2003/03swap/weekScheme#hasDayEnd</seealso>
+    let hasDayEnd = Prefixed_Name(swapweekScheme, "hasDayEnd") |> PrefixedName
     /// <summary>
     ///   <para>swapweekScheme:hasDutyEnd</para>
     /// </summary>
@@ -46,8 +46,8 @@ module swapweekScheme =
     ///   <para>swapweekScheme:hasDutyStart</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:FunctionalProperty</para>
     ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
     /// </remarks>
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/weekScheme#hasDutyStart">http://eulersharp.sourceforge.net/2003/03swap/weekScheme#hasDutyStart</seealso>
     let hasDutyStart = Prefixed_Name(swapweekScheme, "hasDutyStart") |> PrefixedName

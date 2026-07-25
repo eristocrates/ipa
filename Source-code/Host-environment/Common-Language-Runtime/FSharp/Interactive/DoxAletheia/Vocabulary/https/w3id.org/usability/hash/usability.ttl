@@ -1,0 +1,609 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix usability: <https://w3id.org/usability#>.
+
+<https://w3id.org/usability> <http://purl.org/dc/elements/1.1/creator> "Danilov Nikita";
+                             <http://purl.org/dc/elements/1.1/description> """Онтология \"Удобство испльзования\" предназначена для фиксации данных о взаимодействии пользователя с программной системой посредством графического пользовательского интерфейса"""@ru,
+                                                                           "Ontology 'Usability' created to describe and store information about interactions of user with a software user interface"@en;
+                             <http://purl.org/dc/elements/1.1/publisher> "Denis Palashevskiy";
+                             <http://purl.org/dc/elements/1.1/title> "Удобство использования"@ru,
+                                                                     "Usability"@en;
+                             a <http://www.w3.org/2002/07/owl#Ontology>.
+usability:ActionEvent a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Базовый класс, предназначенный для событий, которые представляют собой действия пользователя, относящиеся к взаимодействию пользователя с интерфейсом (клики, перемещения мыши и др.)"@ru,
+                                   "The base class for events which are user actions related to user interation with the interface (clicks, mouse movements, etc.)"@en;
+                      rdfs:label "ДействиеСобытие"@ru,
+                                 "ActionEvent"@en;
+                      rdfs:subClassOf usability:Event.
+usability:ClickMouseActionEvent a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Клик (click) — щелчок по кнопке мыши."@ru,
+                                             "The class that represents any mouse click"@en;
+                                rdfs:label "КликМышьДействиеСобытие"@ru,
+                                           "ClickMouseActionEvent"@en;
+                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                                              <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                                              a rdfs:Datatype] ; 
+                                                 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> usability:hasInRegionY ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                                              <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                                              a rdfs:Datatype] ; 
+                                                 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> usability:hasInRegionX ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                usability:MouseActionEvent.
+usability:Command a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Базовый класс команды, вызываемой пользователем."@ru;
+                  rdfs:label "Команда"@ru,
+                             "The base class for the command called by user"@en,
+                             "Command"@en;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minLength "1"^^xsd:int]) ; 
+                                                                                <http://www.w3.org/2002/07/owl#onDatatype> xsd:string ; 
+                                                                                a rdfs:Datatype] ; 
+                                   <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> usability:hasName ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> usability:CommandEvent ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> usability:wasInvokedIn ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> usability:CommandEvent ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> usability:isContainedIn ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>].
+usability:CommandA a usability:Command,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                   usability:hasName "CommandA".
+usability:CommandB a usability:Command,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                   usability:hasName "CommandB";
+                   usability:isContainedIn usability:RegionVariation211;
+                   usability:wasInvokedIn usability:RegionVariation211.
+usability:CommandEvent a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Класс, который описывает события команд. Они служат для фиксации факта вызова определенной команды (функции) пользователем."@ru,
+                                    "The class that represents events, related with the fact of calling a certain command (function) by the user"@en;
+                       rdfs:label "КомандаСобытие"@ru,
+                                  "CommandEvent"@en;
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> usability:Command ; 
+                                        <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> usability:wasAssociatedWith ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> usability:Command ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> usability:contains ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       usability:Event.
+usability:CommandEvent1113 a usability:CommandEvent,
+                             <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                           usability:contains usability:CommandA;
+                           usability:isContainedIn usability:RegionVariation111;
+                           usability:wasAssociatedWith usability:CommandA.
+usability:CommandEvent1114 a usability:CommandEvent,
+                             <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                           usability:contains usability:CommandA;
+                           usability:isContainedIn usability:RegionVariation111;
+                           usability:wasAssociatedWith usability:CommandA.
+usability:CommandEvent2112 a usability:CommandEvent,
+                             <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                           usability:contains usability:CommandB;
+                           usability:wasAssociatedWith usability:CommandB.
+usability:Device a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Устройство, на котором выполнялись(ются) сессии."@ru;
+                 rdfs:label "Устройство"@ru,
+                            "The device on which the sessions were performed."@en,
+                            "Device"@en;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minLength "1"^^xsd:int]) ; 
+                                                                               <http://www.w3.org/2002/07/owl#onDatatype> xsd:string ; 
+                                                                               a rdfs:Datatype] ; 
+                                  <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> usability:hasUid ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minLength "1"^^xsd:int]) ; 
+                                                                               <http://www.w3.org/2002/07/owl#onDatatype> xsd:string ; 
+                                                                               a rdfs:Datatype] ; 
+                                  <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> usability:hasName ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> usability:Session ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> usability:wasUsedIn ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>].
+usability:Device1 a usability:Device,
+                    <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                  usability:wasUsedIn usability:Session2,
+                                      usability:Session1.
+usability:DoubleClickMouseEvent a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Дабл-клик, двойной клик (double click) — два быстрых щелчка по кнопке мыши."@ru,
+                                             "The class that represents a double mouse click"@en;
+                                rdfs:label "ДвойнойКликМышьДействиеСобытие"@ru,
+                                           "DoubleClickMouseEvent"@en;
+                                rdfs:subClassOf usability:ClickMouseActionEvent.
+usability:DoubleTapTouchActionEvent a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "Дабл-тап, дабл-тэп (double tap) — два коротких нажатия пальцем, сродни дабл-клику."@ru,
+                                                 "The class that represents double tap - two short taps on the screen"@en;
+                                    rdfs:label "DoubleTapTouchActionEvent"@en;
+                                    rdfs:subClassOf usability:TapTouchActionEvent.
+usability:Event a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Базовый класс для событий, которые могут происходить при взаимодействии пользователя с программной системой"@ru,
+                             "The base class for all different kinds of event that may be occured while the user is interacting with the software"@en;
+                rdfs:label "Событие"@ru,
+                           "Event"@en;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> xsd:dateTimeStamp ; 
+                                 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> usability:hasDateTime ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> usability:Variation ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> usability:isContainedIn ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>].
+usability:Event1111 a usability:Event,
+                      <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                    usability:hasInRegionX 2.700000e+1;
+                    usability:hasInRegionY 6.250000e+2.
+usability:Event1112 a usability:Event,
+                      <http://www.w3.org/2002/07/owl#NamedIndividual>.
+usability:Event1121 a usability:Event,
+                      <http://www.w3.org/2002/07/owl#NamedIndividual>.
+usability:Event1122 a usability:Event,
+                      <http://www.w3.org/2002/07/owl#NamedIndividual>.
+usability:Event2111 a usability:Event,
+                      <http://www.w3.org/2002/07/owl#NamedIndividual>.
+usability:HoldTapTouchActionEvent a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "Тач-энд-холд (touch and hold) — нажать и держать."@ru,
+                                               "The class that represents touch-and-hold action - continuous touch with a single finger"@en;
+                                  rdfs:label "HoldTapTouchActionEvent"@en;
+                                  rdfs:subClassOf usability:TapTouchActionEvent.
+usability:Image a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Class that describes an image of the region variation"@ru,
+                             "Класс, описывающий изображение, хранящее внешний вид вариации региона"@ru;
+                rdfs:label "Image"@en,
+                           "Изображение"@ru;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minExclusive "0"^^xsd:int]) ; 
+                                                                              <http://www.w3.org/2002/07/owl#onDatatype> xsd:int ; 
+                                                                              a rdfs:Datatype] ; 
+                                 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> usability:hasDpiX ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                              <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                              a rdfs:Datatype] ; 
+                                 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> usability:hasHeight ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:base64Binary ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> usability:hasBinaryData ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                              <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                              a rdfs:Datatype] ; 
+                                 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> usability:hasWidth ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minExclusive "0"^^xsd:int]) ; 
+                                                                              <http://www.w3.org/2002/07/owl#onDatatype> xsd:int ; 
+                                                                              a rdfs:Datatype] ; 
+                                 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> usability:hasDpiY ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>].
+usability:Image111 a usability:Image,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>.
+usability:Image112 a usability:Image,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>.
+usability:Image211 a usability:Image,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>.
+usability:KeyboardActionEvent a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Класс, который описывает событий действий, связанных с манипуляцией пользователя с клавиатурой"@ru,
+                                           "The class that represents actions related to user's manipulations with a keyboard"@en;
+                              rdfs:label "КлавиатураДействиеСобытие"@ru,
+                                         "KeyboardActionEvent"@en;
+                              rdfs:subClassOf usability:ActionEvent.
+usability:LongTapTouchActionEvent a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "Тач (touch) — нажатие длиннее, чем Тап."@ru,
+                                               "The class that represents touch - a touch that is slightly longer then tap"@en;
+                                  rdfs:label "LongTapTouchActionEvent"@en;
+                                  rdfs:subClassOf usability:TapTouchActionEvent.
+usability:MouseActionEvent a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Класс, который описывает события действий, связанных с манипуляцией пользователя с мышью"@ru,
+                                        "The class that represents actions related to user's manipulations with a mouse"@en;
+                           rdfs:label "МышьДействиеСобытие"@ru,
+                                      "MouseActionEvent"@en;
+                           rdfs:subClassOf usability:ActionEvent.
+usability:MoveMouseActionEvent a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Класс, который соответствует событию движения курсора мыши. Свойства hasInRegionX и hasInRegionY позволяют указать новые координаты курсора мыши после перемещения"@ru,
+                                            "The class that represents movements of cursor. hasInRegionX and hasInRegionY properties store information about the new cursor coordinates after the movement"@en;
+                               rdfs:label "ДвижениеМышьДействиеСобытие"@ru,
+                                          "MoveMouseAcitonEvent"@en;
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                                             <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                                             a rdfs:Datatype] ; 
+                                                <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> usability:hasInRegionY ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                                             <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                                             a rdfs:Datatype] ; 
+                                                <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> usability:hasInRegionX ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               usability:MouseActionEvent.
+usability:PinchTouchActionEvent a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Пинч (pinch) — сжимающее движение одновременно двумя пальцами по экрану для уменьшения изображения."@ru,
+                                             "The class that represents pinch - a contractive movement with two fingers on the screen to scale down the image."@en;
+                                rdfs:label "PinchTouchActionEvent"@en;
+                                rdfs:subClassOf usability:TouchActionEvent.
+usability:Region a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Область пользовательского интерфейса, например, окно целиком, либо его отдельная часть"@ru,
+                              "A fragment of GUI, for example, the whole window, or a part of it"@en;
+                 rdfs:label "Регион"@ru,
+                            "Region"@en;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                                  a rdfs:Datatype] ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> usability:hasMinHeight ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                                  a rdfs:Datatype] ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> usability:hasMaxWidth ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> usability:Session ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> usability:isContainedIn ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                                  a rdfs:Datatype] ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> usability:hasMaxHeight ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minLength "1"^^xsd:int]) ; 
+                                                                               <http://www.w3.org/2002/07/owl#onDatatype> xsd:string ; 
+                                                                               a rdfs:Datatype] ; 
+                                  <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> usability:hasName ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> usability:Variation ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> usability:contains ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                                  a rdfs:Datatype] ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> usability:hasMinWidth ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>].
+usability:Region11 a usability:Region,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                   usability:contains usability:RegionVariation112,
+                                      usability:RegionVariation111;
+                   usability:hasName "Region11".
+usability:Region21 a usability:Region,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                   usability:contains usability:RegionVariation211;
+                   usability:hasName "Region21".
+usability:RegionVariation111 a usability:Variation,
+                               <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                             usability:contains usability:Event1112,
+                                                usability:Event1111,
+                                                usability:CommandEvent1114,
+                                                usability:CommandEvent1113;
+                             usability:hasImage usability:Image111;
+                             usability:hasName "RegionVariation111".
+usability:RegionVariation112 a usability:Variation,
+                               <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                             usability:hasImage usability:Image112.
+usability:RegionVariation211 a usability:Variation,
+                               <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                             usability:contains usability:CommandEvent2112;
+                             usability:hasImage usability:Image211.
+usability:ScrollMouseActionEvent a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Класс, который соответствует событию прокрутки колесика мыши"@ru,
+                                              "The class that represents a mouse wheel scroll"@en;
+                                 rdfs:label "ПрокруткаМышьДействиеСобытие"@ru,
+                                            "ScrollMouseActionEvent"@en;
+                                 rdfs:subClassOf usability:MouseActionEvent.
+usability:Session a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Временной промежуток, в течение которого пользователь взаимодействует с программной системой"@ru,
+                               "A period of time when a user interacts with the software"@en;
+                  rdfs:label "Сессия"@ru,
+                             "Session"@en;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> xsd:dateTimeStamp ; 
+                                   <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> usability:hasEndDateTime ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minLength "1"^^xsd:int]) ; 
+                                                                                <http://www.w3.org/2002/07/owl#onDatatype> xsd:string ; 
+                                                                                a rdfs:Datatype] ; 
+                                   <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> usability:hasUid ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onClass> usability:Device ; 
+                                   <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> usability:wasPerformedOn ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onDataRange> xsd:dateTimeStamp ; 
+                                   <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> usability:hasStartDateTime ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> usability:Region ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> usability:contains ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onClass> usability:User ; 
+                                   <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> usability:wasPerformedBy ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>].
+usability:Session1 a usability:Session,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                   usability:contains usability:Region11.
+usability:Session2 a usability:Session,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                   usability:contains usability:Region21.
+usability:SingleClickMouseEvent a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Клик (click) — одинарный щелчок по кнопке мыши, короткое нажатие."@ru,
+                                             "The class that represents a single mouse click"@en;
+                                rdfs:label "ОдинарныйКликМышьДействиеСобытие"@ru,
+                                           "SingleClickMouseEvent"@en;
+                                rdfs:subClassOf usability:ClickMouseActionEvent.
+usability:SingleTapTouchActionEvent a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "Тап, тэп (tap) — короткое нажатие пальцем, сродни клику."@ru,
+                                                 "The class that represents tap action - single short touch with one finger"@en;
+                                    rdfs:label "SingleTapTouchActionEvent"@en;
+                                    rdfs:subClassOf usability:TapTouchActionEvent.
+usability:StretchTouchActionEvent a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "Стретч (stretch: для Microsoft), Пинч-ит-опен (pinch it open: для Apple) — растягивающее движение одновременно двумя пальцами по экрану для увеличения изображения."@ru,
+                                               "The class that represents stretch (pinch it open) - tensile movement with two fingers on the screen to enlarge the image."@en;
+                                  rdfs:label "StretchTouchActionEvent"@en;
+                                  rdfs:subClassOf usability:TouchActionEvent.
+usability:SwipeTouchActionEvent a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Свайп (swipe), Слайд (slide) — продолжительное скольжение пальцем по экрану."@ru,
+                                             "The class the represents swipe (slide) - a continuous movement of the finger across the screen"@en;
+                                rdfs:label "SwipeTouchActionEvent"@en;
+                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                                              <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                                              a rdfs:Datatype] ; 
+                                                 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> usability:hasInRegionY ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                                              <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                                              a rdfs:Datatype] ; 
+                                                 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> usability:hasInRegionX ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                usability:TouchActionEvent.
+usability:TapTouchActionEvent a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Класс, предназначенный для описания различных видов тапов - прикосновений пользователя к экрану одним пальцем без движения"@ru,
+                                           "The class that represents differend kinds events related to user's tap on the touch screen"@en;
+                              rdfs:label "TapTouchActionEvent"@en;
+                              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                                            <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                                            a rdfs:Datatype] ; 
+                                               <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> usability:hasInRegionY ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                                            <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                                            a rdfs:Datatype] ; 
+                                               <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> usability:hasInRegionX ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              usability:TouchActionEvent.
+usability:TouchActionEvent a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Класс, который описывает события действий, связанных с взаимодействием пользователя с сенсорным экраном (тачскрин, англ. touchscreen), например, дисплеем телефона или планшетного компьютера"@ru,
+                                        "The class that represents events related to user interations with touchscreen, like smartphone or tablet PC"@en;
+                           rdfs:label "КасаниеДействиеСобытие"@ru,
+                                      "TouchActionEvent"@en;
+                           rdfs:subClassOf usability:ActionEvent.
+usability:TypeKeyboardActionEvent a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "Класс, который описывает события нажатия клавиш клавиатуры"@ru,
+                                               "The class that represents clicks on a keyboard"@en;
+                                  rdfs:label "ВводКлавиатураДействиеСобытие"@ru,
+                                             "TypeKeyboardActionEvent"@en;
+                                  rdfs:subClassOf usability:KeyboardActionEvent.
+usability:User a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Пользователь, который выполнял(ет) сессии."@ru,
+                            "The user who runs sessions"@en;
+               rdfs:label "Пользователь"@ru,
+                          "User"@en;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minLength "1"^^xsd:int]) ; 
+                                                                             <http://www.w3.org/2002/07/owl#onDatatype> xsd:string ; 
+                                                                             a rdfs:Datatype] ; 
+                                <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> usability:hasUid ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minLength "1"^^xsd:int]) ; 
+                                                                             <http://www.w3.org/2002/07/owl#onDatatype> xsd:string ; 
+                                                                             a rdfs:Datatype] ; 
+                                <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> usability:hasName ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> usability:Session ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> usability:performed ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>].
+usability:User1 a usability:User,
+                  <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                usability:hasName "Ivan Ivanov";
+                usability:performed usability:Session1.
+usability:User2 a usability:User,
+                  <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                usability:hasName "Petr Petrov";
+                usability:performed usability:Session2.
+usability:Variation a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Class that describes a region variation, since a region may have one or more variations. Variation is a unique combination of region image's height and width, or their range"@en,
+                                 "Класс предназначен для описания вариации региона, так как каждый регион, в свою очередь, может иметь одну или более вариаций. Под вариацией региона в общем случае может пониматься уникальное сочетание параметров высоты и ширины изображения региона, либо их диапазон"@ru;
+                    rdfs:label "ВариацияРегиона"@ru,
+                               "Variation"@en;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                                  a rdfs:Datatype] ; 
+                                     <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> usability:hasMaxWidth ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> usability:Region ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> usability:isContainedIn ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onClass> usability:Image ; 
+                                     <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> usability:hasImage ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                                  a rdfs:Datatype] ; 
+                                     <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> usability:hasMinWidth ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                                  a rdfs:Datatype] ; 
+                                     <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> usability:hasMaxHeight ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                                                                  a rdfs:Datatype] ; 
+                                     <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> usability:hasMinHeight ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minLength "1"^^xsd:int]) ; 
+                                                                                  <http://www.w3.org/2002/07/owl#onDatatype> xsd:string ; 
+                                                                                  a rdfs:Datatype] ; 
+                                     <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> usability:hasName ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> usability:Event ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> usability:contains ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+usability:contains a <http://www.w3.org/2002/07/owl#TransitiveProperty>,
+                     <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Транзитивное свойство, которое определят, что некий объект содержит/хранит внутря себя какой-либо другой объект"@ru,
+                                "A transitive property which determines that some subject contains/stores some object inside of it. Inverse of isContainedIn"@en;
+                   rdfs:label "cодержит"@ru,
+                              "contains"@en;
+                   <http://www.w3.org/2002/07/owl#inverseOf> usability:isContainedIn.
+usability:hasBinaryData a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:range xsd:base64Binary.
+usability:hasCommandName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:domain usability:CommandEvent;
+                         rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minLength "1"^^xsd:int]) ; 
+                                     <http://www.w3.org/2002/07/owl#onDatatype> xsd:string ; 
+                                     a rdfs:Datatype].
+usability:hasDateTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:domain usability:Event;
+                      rdfs:range xsd:dateTimeStamp.
+usability:hasDpiX a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain usability:Image;
+                  rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minExclusive "0"^^xsd:int]) ; 
+                              <http://www.w3.org/2002/07/owl#onDatatype> xsd:int ; 
+                              a rdfs:Datatype].
+usability:hasDpiY a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain usability:Image;
+                  rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minExclusive "0"^^xsd:int]) ; 
+                              <http://www.w3.org/2002/07/owl#onDatatype> xsd:int ; 
+                              a rdfs:Datatype].
+usability:hasEndDateTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:domain usability:Session;
+                         rdfs:range xsd:dateTimeStamp.
+usability:hasHeight a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:domain usability:Image;
+                    rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                a rdfs:Datatype].
+usability:hasImage a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Свойство которое связывает вариацию региона с его изображением"@ru,
+                                "The property which associate some region variation with its image"@en;
+                   rdfs:domain usability:Variation;
+                   rdfs:label "имеетИзображение"@ru,
+                              "hasImage"@en;
+                   rdfs:range usability:Image;
+                   <http://www.w3.org/2002/07/owl#inverseOf> usability:wasImaged.
+usability:hasInRegionX a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                   <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                   a rdfs:Datatype].
+usability:hasInRegionY a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                   <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                   a rdfs:Datatype].
+usability:hasMaxHeight a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:domain usability:Variation;
+                       rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                   <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                   a rdfs:Datatype].
+usability:hasMaxWidth a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:domain usability:Variation;
+                      rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                  <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                  a rdfs:Datatype].
+usability:hasMinHeight a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:domain usability:Variation;
+                       rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                   <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                   a rdfs:Datatype].
+usability:hasMinWidth a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:domain usability:Variation;
+                      rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                                  <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                                  a rdfs:Datatype].
+usability:hasName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minLength "1"^^xsd:int]) ; 
+                              <http://www.w3.org/2002/07/owl#onDatatype> xsd:string ; 
+                              a rdfs:Datatype].
+usability:hasStartDateTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:domain usability:Session;
+                           rdfs:range xsd:dateTimeStamp.
+usability:hasUid a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minLength "1"^^xsd:int]) ; 
+                             <http://www.w3.org/2002/07/owl#onDatatype> xsd:string ; 
+                             a rdfs:Datatype].
+usability:hasWidth a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:domain usability:Image;
+                   rdfs:range [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:minInclusive 0.000000e+0]) ; 
+                               <http://www.w3.org/2002/07/owl#onDatatype> xsd:double ; 
+                               a rdfs:Datatype].
+usability:isContainedIn a <http://www.w3.org/2002/07/owl#TransitiveProperty>,
+                          <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "Транзитивное свойство, которое определяет, что некоторый объект содержится/хранится/находится внутри какого-либо другого объекта"@ru,
+                                     "A transitive property which determines that some object is contained/stored/located inside of some subject. Inverse of contains"@en;
+                        rdfs:label "содержитсяВ"@ru,
+                                   "isContainedIn"@en.
+usability:performed a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Связывает пользователя с сессией, которую он выполнил"@ru,
+                                 "The property that associates a user with a session that he performed"@ru;
+                    rdfs:domain usability:User;
+                    rdfs:label "выполнил"@ru,
+                               "performed"@en;
+                    rdfs:range usability:Session;
+                    <http://www.w3.org/2002/07/owl#inverseOf> usability:wasPerformedBy.
+usability:wasAssociatedWith a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "Связывает командное событие с экземпляром команды"@ru,
+                                         "The property that associates command event with the specific command instance"@en;
+                            rdfs:label "связанаС"@ru,
+                                       "wasAssociatedWith"@en;
+                            <http://www.w3.org/2002/07/owl#inverseOf> usability:wasInvokedIn.
+usability:wasImaged a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Связывает изображение с соответствующей вариацией региона"@ru,
+                                 "The property that associates an image with the corresponding region variation"@en;
+                    rdfs:domain usability:Image;
+                    rdfs:label "изображает"@ru,
+                               "wasImaged"@en;
+                    rdfs:range usability:Variation.
+usability:wasInvokedIn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Связывает команду с командным событием, в котором команда была вызвана"@ru,
+                                    "The property that associates specific command with the event in which the command was called"@en;
+                       rdfs:label "былоВызваноВ"@en,
+                                  "wasInvokedIn"@en.
+usability:wasPerformedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "Связывает сессию с пользователем, который ее выполнял"@ru,
+                                      "The property that associates a session with the user who performed it"@en;
+                         rdfs:domain usability:Session;
+                         rdfs:label "былаВыполненаПользователем"@ru,
+                                    "wasPerformedBy"@en;
+                         rdfs:range usability:User.
+usability:wasPerformedOn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "Связывает сессию с устройством, на котором она выполнялась"@ru,
+                                      "The property that associates a session with the device on which the session was run"@en;
+                         rdfs:domain usability:Session;
+                         rdfs:label "былаВыполненаНа"@ru,
+                                    "wasPerformedOn"@en;
+                         rdfs:range usability:Device;
+                         <http://www.w3.org/2002/07/owl#inverseOf> usability:wasUsedIn.
+usability:wasUsedIn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Связывает устройство с сессиями, которые были на нем запущены"@ru,
+                                 "The property that associates a device with the sessions which were run on that device"@en;
+                    rdfs:domain usability:Device;
+                    rdfs:label "былоИспользованоВ"@ru,
+                               "wasUsedIn"@en;
+                    rdfs:range usability:Session.

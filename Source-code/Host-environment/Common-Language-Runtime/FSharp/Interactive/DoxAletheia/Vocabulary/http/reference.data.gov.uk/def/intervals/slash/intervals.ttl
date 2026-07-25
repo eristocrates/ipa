@@ -1,0 +1,854 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix intervals: <http://reference.data.gov.uk/def/intervals/>.
+
+intervals: a <http://www.w3.org/2002/07/owl#Ontology>;
+           <http://www.w3.org/2002/07/owl#imports> <http://purl.org/NET/c4dm/event.owl>,
+                                                   <http://www.w3.org/2008/05/skos-xl>,
+                                                   <http://www.w3.org/2006/time>,
+                                                   <http://www.w3.org/2004/02/skos/core>,
+                                                   <http://purl.org/dc/terms/>,
+                                                   <http://purl.org/dc/elements/1.1/>,
+                                                   <http://purl.org/NET/scovo>,
+                                                   <http://purl.org/dc/dcam/>;
+           <http://www.w3.org/2002/07/owl#versionInfo> "Created with TopBraid Composer".
+intervals:April a intervals:MonthOfYear;
+                rdfs:comment "The month of April";
+                rdfs:label "April"@en;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "April"@en.
+intervals:August a intervals:MonthOfYear;
+                 rdfs:comment "The month of August";
+                 rdfs:label "August"@en;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "August"@en.
+intervals:BusinessHalf a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "A class for business half year intervals. These intervals are not necessarily calendar aligned with month boundaries."@en;
+                       rdfs:label "Half Year Interval"@en;
+                       rdfs:subClassOf intervals:Half,
+                                       intervals:BusinessInterval;
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Half Year Interval"@en.
+intervals:BusinessInterval a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "A top-level class for business intervals"@en;
+                           rdfs:label "Business Intervals"@en;
+                           rdfs:subClassOf <http://www.w3.org/2006/time#DateTimeInterval>,
+                                           <http://purl.org/NET/scovo#Dimension>;
+                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Business Intervals"@en.
+intervals:BusinessQuarter a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:subClassOf intervals:BusinessInterval,
+                                          intervals:Quarter.
+intervals:BusinessYear a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "A class for regular annual business reporting and planning intervals, not necessarily calendar aligned."@en;
+                       rdfs:label "Business Year"@en;
+                       rdfs:subClassOf intervals:Year,
+                                       intervals:BusinessInterval;
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Business Year"@en.
+intervals:CalendarDay a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "A class for calendar aligned one day intervals, starting at 00:00 (midnight) on the relevant day. ISO 8601(E):2004 Section 2.2.6"@en;
+                      rdfs:label "Calendar Day"@en;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarDay ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarDay ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      intervals:CalendarInterval,
+                                      intervals:Day;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "Calendar Day"@en.
+intervals:CalendarHalf a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "A class for calendar aligned intervals that represent a calendar half year, a year being split into two half year periods of 6 months each."@en;
+                       rdfs:label "CalendarHalf (class)"@en;
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsMonth ; 
+                                        <http://www.w3.org/2002/07/owl#cardinality> 6  ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarHalf ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarHalf ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       intervals:CalendarInterval,
+                                       intervals:Half;
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "CalendarHalf (class)"@en.
+intervals:CalendarHour a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "A class for calendar aligned hour-long intervals. ISO 8601(E):2004 Section 2.2.4"@en;
+                       rdfs:label "Calendar Hour (Class)"@en;
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarHour ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarHour ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       intervals:CalendarInterval,
+                                       intervals:Hour;
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Calendar Hour (Class)"@en.
+intervals:CalendarInstant a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:subClassOf <http://www.w3.org/2006/time#Instant>.
+intervals:CalendarInterval a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "A class for all calendar aligned intervals.  The start of a given interval is aligned with the start of each of its first (temporally) subordinate CalendarInterval. Halfs are align the start of the first and seventh month of a year; quarters with the first, forth, seventh and tenth months; months with calendar months sof forth for calendar days, hours,minutes and seconds align "@en;
+                           rdfs:label "CalendarInterval (class)"@en;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsHalf ; 
+                                            <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarHalf ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           <http://www.w3.org/2006/time#DateTimeInterval>,
+                                           [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsDay ; 
+                                            <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarDay ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsWeek ; 
+                                            <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Iso8601Week ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsSecond ; 
+                                            <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarSecond ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsHour ; 
+                                            <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarHour ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsMonth ; 
+                                            <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarMonth ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsQuarter ; 
+                                            <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarQuarter ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           <http://purl.org/NET/scovo#Dimension>,
+                                           [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#hasBeginning> ; 
+                                            <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarInstant ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsMinute ; 
+                                            <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarMinute ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>];
+                           <http://www.w3.org/2004/02/skos/core#prefLabel> "CalendarInterval (class)"@en.
+intervals:CalendarMinute a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "A class for calendar align one minute intervals. ISO 8601(E):2004 Section 2.2.3 (for units - 1 minute interval are not defined)."@en;
+                         rdfs:label "Calendar Minute"@en;
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarMinute ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarMinute ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         intervals:CalendarInterval,
+                                         intervals:Minute;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Calendar Minute"@en.
+intervals:CalendarMonth a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "A class for calendar aligned intervals of one calendar month.  ISO 8601(E):2004 Section 2.2.11"@en;
+                        rdfs:label "Calendar Month"@en;
+                        rdfs:subClassOf intervals:CalendarInterval,
+                                        [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarMonth ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarMonth ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsDay ; 
+                                         <http://www.w3.org/2002/07/owl#maxCardinality> 31  ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        intervals:Month,
+                                        [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsDay ; 
+                                         <http://www.w3.org/2002/07/owl#minCardinality> 28  ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>];
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Calendar Month"@en.
+intervals:CalendarQuarter a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "A class for calendar aligned one-quarter year (3 month) intervals"@en;
+                          rdfs:label "Calendar Quarter"@en;
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsMonth ; 
+                                           <http://www.w3.org/2002/07/owl#cardinality> 3  ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                                           <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarQuarter ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          intervals:CalendarInterval,
+                                          intervals:Quarter;
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Calendar Quarter"@en.
+intervals:CalendarSecond a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "A class for calendar aligned one-second intervals. ISO 8601(E):2004 Section 2.2.1 (and 2.2.2 for leap seconds)(for units - 1 second interval are not defined)."@en;
+                         rdfs:label "Calendar Second"@en;
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Second ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Second ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         intervals:CalendarInterval,
+                                         intervals:Second;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Calendar Second"@en.
+intervals:CalendarYear a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "A class for calendar aligned intervals of one whole year, ie. year long intervals that are aligned with a Calendar."@en;
+                       rdfs:label "Calendar Year"@en;
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsDay ; 
+                                        <http://www.w3.org/2002/07/owl#maxCardinality> 366  ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarYear ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsMonth ; 
+                                        <http://www.w3.org/2002/07/owl#cardinality> 12  ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       intervals:Year,
+                                       intervals:CalendarInterval,
+                                       [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsDay ; 
+                                        <http://www.w3.org/2002/07/owl#minCardinality> 365  ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarYear ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>];
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Calendar Year"@en.
+intervals:Day a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A generic superclass for all day like entities."@en;
+              rdfs:label "Generic Day (Class)"@en;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Day ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Day ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#hasDurationDescription> ; 
+                               <http://www.w3.org/2002/07/owl#hasValue> intervals:one-day ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> intervals:hasXsdDurationDescription ; 
+                               <http://www.w3.org/2002/07/owl#hasValue> "P1D"^^xsd:duration ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              intervals:Interval;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "Generic Day (Class)"@en.
+intervals:December a intervals:MonthOfYear;
+                   rdfs:comment "The month of December";
+                   rdfs:label "December"@en;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "December"@en.
+intervals:DurationDescriptions a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:subClassOf <http://www.w3.org/2006/time#DurationDescription>.
+intervals:February a intervals:MonthOfYear;
+                   rdfs:comment "The month of February"@en;
+                   rdfs:label "February"@en;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "February"@en.
+intervals:H1 a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A class for intervals that the first half of a (nominally) annual cycle."@en;
+             rdfs:label "H1 Interval"@en;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (intervals:H1
+                                                                                                                      intervals:H2) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>] ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             intervals:Half;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "H1 Interval"@en.
+intervals:H2 a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A class for intervals that the second half of a (nominally) annual cycle."@en;
+             rdfs:label "H2 Interval"@en;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (intervals:H1
+                                                                                                                      intervals:H3) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>] ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             intervals:Half;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "H2 Interval"@en.
+intervals:H3 a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A class for 3rd half year intervals in an abnormally long annual interval - in the UK a buisness interval may exceptionally extent to 6 quarters."@en;
+             rdfs:label "H3 Interval"@en;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:H1 ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             intervals:Half;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "H3 Interval"@en.
+intervals:Half a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A generic superclass for all half-year (6 month) like intervals"@en;
+               rdfs:label "Generic Half (Class)"@en;
+               rdfs:subClassOf intervals:Interval,
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:hasXsdDurationDescription ; 
+                                <http://www.w3.org/2002/07/owl#hasValue> "P6M"^^xsd:duration ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Half ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Half ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsQuarter ; 
+                                <http://www.w3.org/2002/07/owl#cardinality> 2  ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#hasDurationDescription> ; 
+                                <http://www.w3.org/2002/07/owl#hasValue> intervals:one-half ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>];
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Generic Half (Class)"@en.
+intervals:Hour a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A generic superclass for hour-long intervals. An hour may contain a positive or negative leap second (see http://en.wikipedia.org/wiki/Hour)."@en;
+               rdfs:label "Generic Hour (class)"@en;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsSecond ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> 3601  ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               intervals:Interval,
+                               [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#hasDurationDescription> ; 
+                                <http://www.w3.org/2002/07/owl#hasValue> intervals:one-hour ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Hour ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsMinute ; 
+                                <http://www.w3.org/2002/07/owl#cardinality> 60  ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Hour ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsSecond ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> 3599  ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:hasXsdDurationDescription ; 
+                                <http://www.w3.org/2002/07/owl#hasValue> "PT1H"^^xsd:duration ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>];
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Generic Hour (class)"@en.
+intervals:Interval a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf <http://www.w3.org/2006/time#DateTimeInterval>,
+                                   <http://purl.org/NET/scovo#Dimension>.
+intervals:IntervalList a rdfs:Class;
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> rdf:rest ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Interval
+                                                                                                                                rdf:nil) ; 
+                                                                                       a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> rdf:first ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Interval ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       rdf:List,
+                                       rdfs:Resource.
+intervals:IrregularInterval a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "A business interval outside of the normal pattern of business intervals. In the UK companies house allow an annual reporting interval to be extended by upto 6 months once in 5 years (and at other exceptional times)"@en;
+                            rdfs:label "Irregular Business interval"@en;
+                            rdfs:subClassOf intervals:BusinessInterval;
+                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Irregular Business interval"@en.
+intervals:Iso8601Week a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "A class for calendar weeks. Strictly not all calendar week intervals are contained within the year to which they may be attributed. The first or last week of a given calendar year may inculde days from the preceding or following calendar year respectively. An ISO 8601 week starts at 00:00:00 in a Monday and ends at the last moment of 23:59:59 on the following Sunday.  ISO 8601(E):2004 Section 2.2.8"@en;
+                      rdfs:label "Calendar Week"@en;
+                      rdfs:subClassOf intervals:CalendarInterval,
+                                      [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Iso8601Week ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsDay ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:CalendarDay ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsDay ; 
+                                       <http://www.w3.org/2002/07/owl#cardinality> 7  ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Iso8601Week ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      intervals:Week;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "ISO 8601 Week"@en.
+intervals:January a intervals:MonthOfYear;
+                  rdfs:comment "The month of January";
+                  rdfs:label "January"@en;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "January"@en.
+intervals:July a intervals:MonthOfYear;
+               rdfs:comment "The month of July";
+               rdfs:label "July"@en;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "July"@en.
+intervals:June a intervals:MonthOfYear;
+               rdfs:comment "The month of June";
+               rdfs:label "January"@en;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "June"@en.
+intervals:March a intervals:MonthOfYear;
+                rdfs:comment "The month of March";
+                rdfs:label "March"@en;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "March"@en.
+intervals:May a intervals:MonthOfYear;
+              rdfs:comment "The month of May";
+              rdfs:label "May"@en;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "May"@en.
+intervals:Minute a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A generic superclass for all minute-long intervals. A minute may contain a positive or negative leap second."@en;
+                 rdfs:label "Generic Minute (Class)"@en;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                                  <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Minute ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#hasDurationDescription> ; 
+                                  <http://www.w3.org/2002/07/owl#hasValue> intervals:one-minute ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                                  <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Minute ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsSecond ; 
+                                  <http://www.w3.org/2002/07/owl#minCardinality> 59  ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 intervals:Interval,
+                                 [<http://www.w3.org/2002/07/owl#onProperty> intervals:hasXsdDurationDescription ; 
+                                  <http://www.w3.org/2002/07/owl#hasValue> "PT1M"^^xsd:duration ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsSecond ; 
+                                  <http://www.w3.org/2002/07/owl#maxCardinality> 61  ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>];
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Generic Minute (Class)"@en.
+intervals:Month a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A generic superclass class for all month-long like intervals."@en;
+                rdfs:label "Generic Month (Class)"@en;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#hasDurationDescription> ; 
+                                 <http://www.w3.org/2002/07/owl#hasValue> intervals:one-month ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Month ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> intervals:hasXsdDurationDescription ; 
+                                 <http://www.w3.org/2002/07/owl#hasValue> "P1M"^^xsd:duration ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Month ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                intervals:Interval;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "Generic Month (Class)"@en.
+intervals:MonthOfYear a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "A class for the months of a calendar year. A month of year is a recurring interval of about 12th of a year that re-occurs annually.";
+                      rdfs:label "month of year"@en;
+                      rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+                      <http://www.w3.org/2002/07/owl#oneOf> (intervals:January
+                                                             intervals:February
+                                                             intervals:March
+                                                             intervals:April
+                                                             intervals:May
+                                                             intervals:June
+                                                             intervals:July
+                                                             intervals:August
+                                                             intervals:September
+                                                             intervals:October
+                                                             intervals:November
+                                                             intervals:December);
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "month of year"@en.
+intervals:November a intervals:MonthOfYear;
+                   rdfs:comment "The month of Novermber";
+                   rdfs:label "November"@en;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "November"@en.
+intervals:October a intervals:MonthOfYear;
+                  rdfs:comment "The month of October";
+                  rdfs:label "October"@en;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "October"@en.
+intervals:Q1 a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A class for intervals that are the first quarter of a (nominally) annual cycle."@en;
+             rdfs:label "Q1 Interval"@en;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Q1
+                                                                                                                      intervals:Q2) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>] ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             intervals:Quarter;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Q1 Interval"@en.
+intervals:Q2 a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A class for intervals that are 2nd quarters of a (nominally) annual cycle"@en;
+             rdfs:label "Q2 Interval"@en;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Q1
+                                                                                                                      intervals:Q3) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>] ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Q1 ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             intervals:Quarter;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Q2 Interval"@en.
+intervals:Q3 a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A class for intervals that are 3rd quarters of a (nominally) annual cycle"@en;
+             rdfs:label "Q3 Interval"@en;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Q2 ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Q1
+                                                                                                                      intervals:Q4) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>] ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             intervals:Quarter;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Q3 Interval"@en.
+intervals:Q4 a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A class for intervals that are 4th quarters of a (nominally) annual cycle."@en;
+             rdfs:label "Q4 Interval"@en;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Q3 ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Q1
+                                                                                                                      intervals:Q5) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>] ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             intervals:Quarter;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Q4 Interval"@en.
+intervals:Q5 a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A class for 5th quarters of an abnormally long annual interval - in the UK a buisness interval may exceptionally extent to 6 quarters."@en;
+             rdfs:label "Q5 Interval"@en;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Q1
+                                                                                                                      intervals:Q6) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>] ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Q4 ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             intervals:Quarter;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Q5 Interval"@en.
+intervals:Q6 a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A class for 6th quarters of an abnormally long annual interval - in the UK a buisness interval may exceptionally extent to 6 quarters."@en;
+             rdfs:label "Q6 Interval"@en;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Q5 ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Q1 ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             intervals:Quarter;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Q6 Interval"@en.
+intervals:Quarter a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "A generic superclass for all Quarter (3-month) long intervals"@en;
+                  rdfs:label "Generic Quarter (Class)"@en;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#hasDurationDescription> ; 
+                                   <http://www.w3.org/2002/07/owl#hasValue> intervals:one-quarter ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> intervals:hasXsdDurationDescription ; 
+                                   <http://www.w3.org/2002/07/owl#hasValue> "P3M"^^xsd:duration ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Quarter ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Quarter ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  intervals:Interval;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Generic Quarter (Class)"@en.
+intervals:Second a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A generic superclass for all one-second long like intervals"@en;
+                 rdfs:label "Generic Second (Class)"@en;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#hasDurationDescription> ; 
+                                  <http://www.w3.org/2002/07/owl#hasValue> intervals:one-second ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                                  <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Second ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                                  <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Second ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#onProperty> intervals:hasXsdDurationDescription ; 
+                                  <http://www.w3.org/2002/07/owl#hasValue> "PT1S"^^xsd:duration ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 intervals:Interval;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Generic Second (Class)"@en.
+intervals:September a intervals:MonthOfYear;
+                    rdfs:comment "The month of September";
+                    rdfs:label "September"@en;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "September"@en.
+intervals:Week a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A generic superclass for all one-week long (7 day) intervals."@en;
+               rdfs:label "Generic Week (Class)"@en;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsDay ; 
+                                <http://www.w3.org/2002/07/owl#cardinality> 7  ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               intervals:Interval,
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Week ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:hasXsdDurationDescription ; 
+                                <http://www.w3.org/2002/07/owl#hasValue> "P7D"^^xsd:duration ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#hasDurationDescription> ; 
+                                <http://www.w3.org/2002/07/owl#hasValue> intervals:one-week ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Week ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>];
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Generice Week (Class)"@en.
+intervals:Year a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A generic superclass for all manner of Year like intervals. The the cardinality of days in a year is set to between 351 and 380 because in the UK the end of a business reporting year must be within 7 days of an annual reference date. In the worst cases this allows a reporting interval to be shortened or extended by up to two weeks."@en;
+               rdfs:label "Generic Year (Class)"@en;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> intervals:hasXsdDurationDescription ; 
+                                <http://www.w3.org/2002/07/owl#hasValue> "P1Y"^^xsd:duration ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsHalf ; 
+                                <http://www.w3.org/2002/07/owl#cardinality> 2  ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:nextInterval ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Year ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               intervals:Interval,
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsDay ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> 380  ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:previousInterval ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> intervals:Year ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsQuarter ; 
+                                <http://www.w3.org/2002/07/owl#cardinality> 4  ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#hasDurationDescription> ; 
+                                <http://www.w3.org/2002/07/owl#hasValue> intervals:one-year ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> intervals:intervalContainsDay ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> 351  ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>].
+intervals:dayOfWeek a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "The day of the week in which an instant or interval (of duration one day or less) occurs."@en;
+                    rdfs:label "day of week"@en;
+                    rdfs:range <http://www.w3.org/2006/time#DayOfWeek>;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "day of week"@en.
+intervals:hasXsdDurationDescription a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                    rdfs:comment """hasXsdDurationDescription: a data type property for associating an xsd:duration with an Interval. Inspired by \"durationDescriptionDataType\" mentioned in \"http://www.w3.org/TR/owl-time\" but which seems to have failed to make it into the formal ontology."""@en;
+                                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://www.w3.org/2006/time#DurationDescription>
+                                                                                          <http://www.w3.org/2006/time#Interval>) ; 
+                                                 a <http://www.w3.org/2002/07/owl#Class>];
+                                    rdfs:label "hasXsdDurationDescription (DataTypeProperty)"@en;
+                                    rdfs:range xsd:duration.
+intervals:intervalContainsDay a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:domain intervals:Interval;
+                              rdfs:range intervals:Day;
+                              rdfs:subPropertyOf <http://www.w3.org/2006/time#intervalContains>.
+intervals:intervalContainsDays a rdf:Property;
+                               rdfs:range rdf:List.
+intervals:intervalContainsHalf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:domain intervals:Interval;
+                               rdfs:range intervals:Half;
+                               rdfs:subPropertyOf <http://www.w3.org/2006/time#intervalContains>.
+intervals:intervalContainsHalves a rdf:Property;
+                                 rdfs:range rdf:List.
+intervals:intervalContainsHour a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:domain intervals:Interval;
+                               rdfs:range intervals:Hour;
+                               rdfs:subPropertyOf <http://www.w3.org/2006/time#intervalContains>.
+intervals:intervalContainsHours a rdf:Property;
+                                rdfs:range rdf:List.
+intervals:intervalContainsIso8601Week a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:domain intervals:Interval;
+                                      rdfs:subPropertyOf intervals:intervalContainsWeek.
+intervals:intervalContainsMinute a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:domain intervals:Interval;
+                                 rdfs:range intervals:Minute;
+                                 rdfs:subPropertyOf <http://www.w3.org/2006/time#intervalContains>.
+intervals:intervalContainsMinutes a rdf:Property;
+                                  rdfs:range rdf:List.
+intervals:intervalContainsMonth a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain intervals:Interval;
+                                rdfs:range intervals:Month;
+                                rdfs:subPropertyOf <http://www.w3.org/2006/time#intervalContains>.
+intervals:intervalContainsMonths a rdf:Property;
+                                 rdfs:range rdf:List.
+intervals:intervalContainsQuarter a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain intervals:Interval;
+                                  rdfs:range intervals:Quarter;
+                                  rdfs:subPropertyOf <http://www.w3.org/2006/time#intervalContains>.
+intervals:intervalContainsQuarters a rdf:Property;
+                                   rdfs:range rdf:List.
+intervals:intervalContainsSecond a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:domain intervals:Interval;
+                                 rdfs:range intervals:Second;
+                                 rdfs:subPropertyOf <http://www.w3.org/2006/time#intervalContains>.
+intervals:intervalContainsSeconds a rdf:Property;
+                                  rdfs:range rdf:List.
+intervals:intervalContainsWeek a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:domain intervals:Interval;
+                               rdfs:range intervals:Week;
+                               rdfs:subPropertyOf <http://www.w3.org/2006/time#intervalContains>.
+intervals:monthOfYear a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "The month of the year in which a contained instant or interval (of duration one month or less) occurs."@en;
+                      rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Day
+                                                                            intervals:Hour
+                                                                            intervals:Minute
+                                                                            intervals:Month
+                                                                            intervals:Second
+                                                                            <http://www.w3.org/2006/time#Instant>) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>];
+                      rdfs:label "month of year"@en;
+                      rdfs:range intervals:MonthOfYear;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "month of year"@en.
+intervals:nextAnnualReferenceDate a <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                  rdfs:comment "A reference to the companies house annual reference date at the end of the previous reporting year. Annual reporting periods are required to end with 7 days of this date. Success annual reference dates normally advance by 1 whole year each year. However, companies can always apply for an earlier reference date and under restricted circumstance request a later reference date (upto 6 months later) see http://www.companieshouse.gov.uk/about/gbhtml/gp2.shtml#ch2"@en;
+                                  rdfs:domain intervals:BusinessInterval;
+                                  rdfs:label "Next Annual Reference Date."@en;
+                                  rdfs:range intervals:CalendarDay;
+                                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Next Annual Reference Date."@en.
+intervals:nextInterval a <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                       rdfs:domain intervals:Interval;
+                       rdfs:range intervals:Interval.
+intervals:one-day intervals:hasXsdDurationDescription "P1D"^^xsd:duration;
+                  a intervals:DurationDescriptions;
+                  rdfs:comment "A duration of one day, typically 24 hours)";
+                  rdfs:label "1 day"@en;
+                  <http://www.w3.org/2006/time#days> 1 .
+intervals:one-half intervals:hasXsdDurationDescription "P6M"^^xsd:duration;
+                   a intervals:DurationDescriptions;
+                   rdfs:comment "A duration of one half year, typically 6 months";
+                   rdfs:label "1 half of a year";
+                   <http://www.w3.org/2006/time#months> 6 .
+intervals:one-hour intervals:hasXsdDurationDescription "PT1H"^^xsd:duration;
+                   a intervals:DurationDescriptions;
+                   rdfs:comment "A duration of one hour";
+                   rdfs:label "1 hour";
+                   <http://www.w3.org/2006/time#hours> 1 .
+intervals:one-minute intervals:hasXsdDurationDescription "PT1M"^^xsd:duration;
+                     a intervals:DurationDescriptions;
+                     rdfs:comment "A duration of 1 minute";
+                     rdfs:label "1 minute";
+                     <http://www.w3.org/2006/time#minutes> 1 .
+intervals:one-month intervals:hasXsdDurationDescription "P1M"^^xsd:duration;
+                    a intervals:DurationDescriptions;
+                    rdfs:comment "A duration of one month";
+                    rdfs:label "1 month";
+                    <http://www.w3.org/2006/time#months> 1 .
+intervals:one-quarter intervals:hasXsdDurationDescription "P3M"^^xsd:duration;
+                      a intervals:DurationDescriptions;
+                      rdfs:comment "A duration of one quarter, typically 3 months."@en;
+                      rdfs:label "1 quarter of a year";
+                      <http://www.w3.org/2006/time#months> 3 .
+intervals:one-second intervals:hasXsdDurationDescription "PT1S"^^xsd:duration;
+                     a intervals:DurationDescriptions;
+                     rdfs:comment "A duration of one second";
+                     rdfs:label "1 second";
+                     <http://www.w3.org/2006/time#seconds> 1 .
+intervals:one-week intervals:hasXsdDurationDescription "P7D"^^xsd:duration;
+                   a intervals:DurationDescriptions;
+                   rdfs:comment "A duration of one week";
+                   rdfs:label "1 week".
+intervals:one-year intervals:hasXsdDurationDescription "P1Y"^^xsd:duration;
+                   a intervals:DurationDescriptions;
+                   rdfs:comment "A duration of one year";
+                   rdfs:label "1 year";
+                   <http://www.w3.org/2006/time#years> 1 .
+intervals:ordinalDayOfMonth a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:comment "The ordinal number of the day of the month in in which an instant or interval (of duration less than one day) occurs. The first day of a month has the ordinal number 1."@en;
+                            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Day
+                                                                                  intervals:Hour
+                                                                                  intervals:Minute
+                                                                                  intervals:Second
+                                                                                  <http://www.w3.org/2006/time#Instant>) ; 
+                                         a <http://www.w3.org/2002/07/owl#Class>];
+                            rdfs:label "ordinal day of month"@en;
+                            rdfs:range xsd:integer;
+                            <http://www.w3.org/2004/02/skos/core#prefLabel> "ordinal day of month"@en.
+intervals:ordinalDayOfWeek a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:comment "The ordinal number of the day of the week in which a (contained) instant or interval (of one day or less in duration) occurs. The Monday has an ordinal number of 1."@en;
+                           rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Day
+                                                                                 intervals:Hour
+                                                                                 intervals:Minute
+                                                                                 intervals:Second
+                                                                                 <http://www.w3.org/2006/time#DayOfWeek>
+                                                                                 <http://www.w3.org/2006/time#Instant>) ; 
+                                        a <http://www.w3.org/2002/07/owl#Class>];
+                           rdfs:label "ordinal day of week {en}";
+                           rdfs:range xsd:integer;
+                           <http://www.w3.org/2004/02/skos/core#prefLabel> "ordinal day of week {en}".
+intervals:ordinalDayOfYear a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:comment "The ordinal number of the day of the year in in which an instant or interval (of duration one day or less) occurs. The first day of a year has the ordinal number 1."@en;
+                           rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Day
+                                                                                 intervals:Hour
+                                                                                 intervals:Minute
+                                                                                 intervals:Second
+                                                                                 <http://www.w3.org/2006/time#Instant>) ; 
+                                        a <http://www.w3.org/2002/07/owl#Class>];
+                           rdfs:label "ordinal day of month"@en;
+                           rdfs:range xsd:integer;
+                           <http://www.w3.org/2004/02/skos/core#prefLabel> "ordinal day of month"@en.
+intervals:ordinalHalfOfYear a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:comment "The ordinal number of the half of a year in which a contained instant or interval (of duration one half year or less) occurs. The first half of a year has the ordinal number 1."@en;
+                            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Day
+                                                                                  intervals:Half
+                                                                                  intervals:Hour
+                                                                                  intervals:Minute
+                                                                                  intervals:Month
+                                                                                  intervals:Quarter
+                                                                                  intervals:Second
+                                                                                  <http://www.w3.org/2006/time#Instant>) ; 
+                                         a <http://www.w3.org/2002/07/owl#Class>];
+                            rdfs:label "has half of year"@en;
+                            rdfs:range xsd:integer;
+                            <http://www.w3.org/2004/02/skos/core#prefLabel> "has half of year"@en.
+intervals:ordinalHourOfDay a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:comment "The ordinal number of the hour of day in which a (contained) instant or interval (of less than one hour duration) occurs. The first hour of a day has ordinal number 0."@en;
+                           rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Hour
+                                                                                 intervals:Minute
+                                                                                 intervals:Second
+                                                                                 <http://www.w3.org/2006/time#Instant>) ; 
+                                        a <http://www.w3.org/2002/07/owl#Class>];
+                           rdfs:label "ordinal hour of day";
+                           rdfs:range xsd:integer;
+                           <http://www.w3.org/2004/02/skos/core#prefLabel> "ordinal hour of day"@en.
+intervals:ordinalMinuteOfHour a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                              rdfs:comment "The ordinal number of the minute of the hour in which a contained instant or interval (of duration one hour or less) occurs. The first minute of an hour has ordinal number 0.";
+                              rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Minute
+                                                                                    intervals:Second
+                                                                                    <http://www.w3.org/2006/time#Instant>) ; 
+                                           a <http://www.w3.org/2002/07/owl#Class>];
+                              rdfs:label "ordinal minute of hour"@en;
+                              rdfs:range xsd:integer;
+                              <http://www.w3.org/2004/02/skos/core#prefLabel> "ordinal minute of hour"@en.
+intervals:ordinalMonthOfYear a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                             rdfs:comment "The ordinal number of the month of the year in in which an instant or interval (of duration one day or less) occurs. The January has the ordinal number 1."@en;
+                             rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Day
+                                                                                   intervals:Hour
+                                                                                   intervals:Minute
+                                                                                   intervals:Month
+                                                                                   intervals:MonthOfYear
+                                                                                   intervals:Second
+                                                                                   <http://www.w3.org/2006/time#Instant>) ; 
+                                          a <http://www.w3.org/2002/07/owl#Class>];
+                             rdfs:label "ordinal month of year"@en;
+                             rdfs:range xsd:integer;
+                             <http://www.w3.org/2004/02/skos/core#prefLabel> "ordinal month of year"@en.
+intervals:ordinalQuarterOfYear a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                               rdfs:comment "The ordinal number of the quarter of the year in which a contained instant or interval (of duration one quarter year or less) occurs. The ordinal number of the first quarter of a year is 1."@en;
+                               rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Day
+                                                                                     intervals:Hour
+                                                                                     intervals:Minute
+                                                                                     intervals:Month
+                                                                                     intervals:Quarter
+                                                                                     intervals:Second
+                                                                                     <http://www.w3.org/2006/time#Instant>) ; 
+                                            a <http://www.w3.org/2002/07/owl#Class>];
+                               rdfs:label "ordinal quarter of year"@en;
+                               rdfs:range xsd:integer;
+                               <http://www.w3.org/2004/02/skos/core#prefLabel> "ordinal quarter of year"@en.
+intervals:ordinalSecondOfMinute a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                rdfs:comment "The ordinal number of the second of the minute in which a contained instant or interval (of one second duration or less) occurs. The ordinal number of the first second of a minute is 0."@en;
+                                rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Second
+                                                                                      <http://www.w3.org/2006/time#Instant>) ; 
+                                             a <http://www.w3.org/2002/07/owl#Class>];
+                                rdfs:label "ordinal second of minute"@en;
+                                rdfs:range xsd:integer;
+                                <http://www.w3.org/2004/02/skos/core#prefLabel> "ordinal second of minute"@en.
+intervals:ordinalWeekOfYear a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:comment "The ordinal number of the week of the year in which a contained instant or interval of one week duration or less occurs. The ordinal number of the first week of a year is 1. The first week of a year is the week that contains the first Thursday of the year.";
+                            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Day
+                                                                                  intervals:Hour
+                                                                                  intervals:Minute
+                                                                                  intervals:Second
+                                                                                  intervals:Week
+                                                                                  <http://www.w3.org/2006/time#Instant>) ; 
+                                         a <http://www.w3.org/2002/07/owl#Class>];
+                            rdfs:label "ordinal week of year"@en;
+                            rdfs:range xsd:integer;
+                            <http://www.w3.org/2004/02/skos/core#prefLabel> "ordinal week of year"@en.
+intervals:ordinalWeekOfYearYear a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                rdfs:comment "The ordinal number of the week of year year in which an instant or interval (of duration one week or less) occurs. The first year of the AD era has ordinal number 1.  The Week Of Year is the year to which a week of year pertains, which is usually the same as the calendar year except aorund the end of year where some days of the week may be deemed to be in the yearr following or the year previous depending on the alignment of the year boundary with the weekly cycle."@en;
+                                rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Day
+                                                                                      intervals:Hour
+                                                                                      intervals:Minute
+                                                                                      intervals:Second
+                                                                                      intervals:Week
+                                                                                      <http://www.w3.org/2006/time#Instant>) ; 
+                                             a <http://www.w3.org/2002/07/owl#Class>];
+                                rdfs:label "ordinal week of year year"@en;
+                                rdfs:range xsd:integer;
+                                <http://www.w3.org/2004/02/skos/core#prefLabel> "ordinal week of year year"@en.
+intervals:ordinalYear a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "The ordinal year of the year in which an instant or interval (of duration one year or less) occurs. The first year of the AD era has ordinal number 1."@en;
+                      rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (intervals:Day
+                                                                            intervals:Hour
+                                                                            intervals:Minute
+                                                                            intervals:Second
+                                                                            <http://www.w3.org/2006/time#Instant>) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>];
+                      rdfs:label "ordinal year"@en;
+                      rdfs:range xsd:integer;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "ordinal year"@en.
+intervals:previousAnnualReferenceDate a <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                      rdfs:comment "A reference to the companies house annual reference date at the end of the previous reporting year. Annual reporting periods are required to end with 7 days of this date. Success annual reference dates normally advance by 1 whole year each year. However, companies can always apply for an earlier reference date and under restricted circumstance request a later reference date (upto 6 months later) see http://www.companieshouse.gov.uk/about/gbhtml/gp2.shtml#ch2."@en;
+                                      rdfs:domain intervals:BusinessInterval;
+                                      rdfs:label "Previous Annual Reference Date."@en;
+                                      rdfs:range intervals:CalendarDay;
+                                      <http://www.w3.org/2004/02/skos/core#prefLabel> "Previous Annual Reference Date."@en.
+intervals:previousInterval a <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                           rdfs:domain intervals:Interval;
+                           rdfs:range intervals:Interval.
+<http://www.w3.org/2006/time#Friday> intervals:ordinalDayOfWeek 5 .
+<http://www.w3.org/2006/time#Monday> intervals:ordinalDayOfWeek 1 .
+<http://www.w3.org/2006/time#Saturday> intervals:ordinalDayOfWeek 6 .
+<http://www.w3.org/2006/time#Sunday> intervals:ordinalDayOfWeek 7 .
+<http://www.w3.org/2006/time#Thursday> intervals:ordinalDayOfWeek 4 .
+<http://www.w3.org/2006/time#Tuesday> intervals:ordinalDayOfWeek 2 .
+<http://www.w3.org/2006/time#Wednesday> intervals:ordinalDayOfWeek 3 .
+<http://www.w3.org/2006/time#intervalContains> a <http://www.w3.org/2002/07/owl#TransitiveProperty>.

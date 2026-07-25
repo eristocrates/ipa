@@ -1,0 +1,1393 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix stac: <http://securitytoolbox.appspot.com/stac#>.
+
+stac: <http://purl.org/dc/elements/1.1/creator> "Amelie Gyrard. Eurecom";
+      <http://purl.org/dc/elements/1.1/description> "A vocabulary to describe main security and cryptographic concepts: attacks, security mechanisms, OSI model, security protocols, security tools in numerous technologies: Web applications, network management, Sensor networks, Cellular (2G, 3G, 4G) and Wireless (Wifi), etc. "@en;
+      <http://purl.org/dc/elements/1.1/title> "The STAC Ontology (Security Toolbox : Attacks and Countermeasures)"@en;
+      <http://purl.org/dc/terms/issued> "2013-04-30"^^xsd:date;
+      <http://purl.org/dc/terms/modified> "2013-06-02"^^xsd:date;
+      <http://purl.org/vocab/vann/preferredNamespacePrefix> "stac";
+      <http://purl.org/vocab/vann/preferredNamespaceUri> "http://securitytoolbox.appspot.com/stac#";
+      a <http://www.w3.org/2002/07/owl#Ontology>,
+        <http://purl.org/vocommons/voaf#Vocabulary>;
+      rdfs:comment ""@en;
+      rdfs:seeAlso """This work has been inspired for the cryptographic concepts and security properties by \"Security in the Semantic Web using OWL\" [Denker et al. 2005]""",
+                   """This work has been inspired for the cryptographic concepts and security properties by \"Construction d'une ontologie pour le domaine de la securite\" [Lekhchine et al. 2009]""",
+                   """This work has been inspired for the cryptographic concepts and security properties by \"An ontology of Information Security\" [Herzog et al. 2007]""",
+                   """This work has been inspired for the cryptographic concepts and security properties by \"Security Ontology for Annotating resources\" [Kim et al. 2005]""";
+      <http://www.w3.org/2002/07/owl#versionInfo> 0.2;
+      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Work in progress".
+stac:ABAC a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "Permissions are associated with a set of rules expressed on measurable parameters and are granted to users who can prove compliance with these rules."@en;
+          rdfs:label "Attribute Based Access control (ABAC)"@en;
+          rdfs:subClassOf stac:AccessControlMethod.
+stac:AccessControlMethod a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Access Control is the mechanism that allows owners of resources to define, manage and enforce access conditions applicable to each resource."@en;
+                         rdfs:label "Access Control Method"@en;
+                         rdfs:subClassOf stac:SecurityPropertyMethod.
+stac:ActiveAttack <http://purl.org/dc/elements/1.1/description> "See Paper: Malicious actions against the GPRS technology [Xenakis 2006]"@en;
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Active attacks involve actions performed by adversaries to gain the control of the network."@en;
+                  rdfs:label "Active Attack"@en;
+                  rdfs:subClassOf stac:Attack.
+stac:AnonymityMethod a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Anonymity protects user identity, making it hard to track the whereabouts of a certain user."@en;
+                     rdfs:label "Anonymity Method"@en;
+                     rdfs:subClassOf stac:SecurityPropertyMethod.
+stac:AntiSpam a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment ""@en;
+              rdfs:label "Anti Spam"@en;
+              rdfs:subClassOf stac:WebSecurityMechanism.
+stac:AntiSpyware a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment ""@en;
+                 rdfs:label "Anti Spyware"@en;
+                 rdfs:subClassOf stac:WebSecurityMechanism.
+stac:Antivirus <http://purl.org/dc/elements/1.1/description> "See Paper: A study of information security for M2M and IoT [Jiang et al. 2010]"@en;
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Anti-viruses softwares applications will reduce viruses and malware on M2M equipment."@en;
+               rdfs:label "Antivirus"@en;
+               rdfs:subClassOf stac:IntegrityMethod,
+                               stac:NetworkManagementSecurityMechanism,
+                               stac:M2MSecurityMechanism,
+                               stac:WebSecurityMechanism.
+stac:Architecture a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment ""@en;
+                  rdfs:label "Architecture"@en.
+stac:ArchitectureComponent a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment ""@en;
+                           rdfs:label "Architecture component"@en.
+stac:AsymmetricAlgorithm <http://purl.org/dc/terms/hasPart> stac:PublicKey,
+                                                            <http://securitytoolbox.appspot.com/IndividualKey>,
+                                                            stac:PrivateKey;
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "The keys used for encryption and decryption are different, allowing for easier key distribution."@en;
+                         rdfs:label "Asymmetric algorithm"@en;
+                         rdfs:seeAlso <http://semanticweb.org/images/5/53/OntologySecurity.owlAsymmetricAlgorithm>,
+                                      <http://securitytoolbox.appspot.com/securityAlgorithms#AsymmetricAlgorithm>,
+                                      <http://www.ida.liu.se/~iislab/projects/secont/Security.owlPublic-KeyEncryption>,
+                                      <http://preciosa.informatik.hu-berlin.de/ontology/security.owlAsymmetric_cryptographic_algorithm>,
+                                      <http://securitytoolbox.appspot.com/MASO#Cryptage-asymetrique>;
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ExchangeKeyEasy ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> stac:hasFeature ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         stac:EncryptionAlgorithm,
+                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:HighEnergyConsuming ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> stac:hasFeature ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         stac:AuthenticationMethod.
+stac:AsymmetricKey a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment ""@en;
+                   rdfs:label "Asymmetric Key"@en.
+stac:Attack a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment ""@en;
+            rdfs:label "Attack"@en.
+stac:AuthenticationMethod a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Authentication prevents unauthorized access to the network."@en;
+                          rdfs:label "Authentication Method"@en;
+                          rdfs:subClassOf stac:SecurityPropertyMethod.
+stac:AuthenticationServer a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "It identifies the supplicant, checks its credentials, and define privileges and restrictions, and allows or denies it access to the network and services."@en;
+                          rdfs:label "Authentication Server (AS)"@en;
+                          rdfs:subClassOf stac:AuthenticationMethod.
+stac:AvailabilityMethod a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Data availability ensures that the network is alive and that data are accessible."@en;
+                        rdfs:label "Availability Method"@en;
+                        rdfs:subClassOf stac:SecurityPropertyMethod.
+stac:Badge a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment ""@en;
+           rdfs:label "Badge"@en;
+           rdfs:subClassOf stac:PhysicalAuthentication.
+stac:Bank a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment ""@en;
+          rdfs:label "Bank"@en;
+          rdfs:subClassOf stac:DataProvenanceType.
+stac:BlockCipher a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment ""@en;
+                 rdfs:label "BlockCipher"@en;
+                 rdfs:seeAlso <http://semanticweb.org/images/5/53/OntologySecurity.owlBlockCipherAlgorithm>,
+                              <http://www.ida.liu.se/~iislab/projects/secont/Security.owlBlockCipher>;
+                 rdfs:subClassOf stac:SymmetricAlgorithm.
+stac:BluetoothAttack a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment ""@en;
+                     rdfs:label "Bluetooth Attack"@en;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:BluetoothSecurityMechanism ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     stac:Attack.
+stac:BluetoothSecurityAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment ""@en;
+                                rdfs:label "Bluetooth Security Algorithm"@en;
+                                rdfs:subClassOf stac:BluetoothSecurityMechanism,
+                                                stac:SecurityAlgorithm.
+stac:BluetoothSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment ""@en;
+                                rdfs:label "Bluetooth SecurityMechanism"@en;
+                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:BluetoothTechnology ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                stac:SecurityMechanism.
+stac:BluetoothTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "A protocol for short-range (up to 100 meters) wireless networks."@en;
+                         rdfs:label "Bluetooth Technology"@en;
+                         rdfs:seeAlso <http://www.tele.pw.edu.pl/~sims-onto/ConnectivityType.owl#BluetoothConnectivity>,
+                                      <http://ontology.ist-spice.org/mobile-ontology/1/0/service_context/0/service_context.owl#Bluetooth>;
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:BluetoothAttack ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         stac:Technology.
+stac:CA-RBAC a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "E.g. herat attack is a critical event. Criticaly is a context aware permission."@en;
+             rdfs:label "Context Aware Role Based Access Control (CA-RBAC)"@en;
+             rdfs:subClassOf stac:AccessControlMethod.
+stac:Captcha a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment ""@en;
+             rdfs:label "Captcha"@en;
+             rdfs:subClassOf stac:WebSecurityMechanism.
+stac:ChallengeResponse a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Challenge/Response is a mechanism where on entity in the network proves to another entity that it knows the password without revealing it."@en;
+                       rdfs:label "Challenge Response"@en;
+                       rdfs:subClassOf stac:AuthenticationMethod.
+stac:ChecksumAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment ""@en;
+                       rdfs:label "Checksum Algorithm"@en;
+                       rdfs:subClassOf stac:IntegrityMethod.
+stac:CloudAttack a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment ""@en;
+                 rdfs:label "Cloud Attack"@en;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:CloudSecurityMechanism ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 stac:WebAttack.
+stac:CloudSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment ""@en;
+                            rdfs:label "Cloud Security Mechanism"@en;
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:CloudTechnology ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            stac:WebSecurityMechanism.
+stac:CloudTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment ""@en;
+                     rdfs:label "Cloud Technology"@en;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:CloudAttack ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     stac:WebTechnology.
+stac:ConfidentialityMethod a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Confidentiality means that only destined user must be able to read data."@en;
+                           rdfs:label "Confidentiality Method"@en;
+                           rdfs:subClassOf stac:SecurityPropertyMethod.
+stac:CounterValue a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Since the counter value is incremented after each message, the same message is encrypted differently each time."@en;
+                  rdfs:label "Counter Value"@en;
+                  rdfs:subClassOf stac:DataFreshnessMethod.
+stac:CryptographicConcept a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment ""@en;
+                          rdfs:label "CryptographicConcept"@en;
+                          rdfs:subClassOf stac:SecurityMechanism.
+stac:DAC a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "Object owners can add access rights."@en;
+         rdfs:label "Discretionary Access Control (DAC)"@en;
+         rdfs:subClassOf stac:AccessControlMethod.
+stac:DataFreshnessMethod a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Data freshness suggests that the data is recent, and it ensures that no old messages have been replayed."@en;
+                         rdfs:label "Data Freshness Method"@en;
+                         rdfs:subClassOf stac:SecurityPropertyMethod.
+stac:DataProvenanceType a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment ""@en;
+                        rdfs:label "DataProvenanceType"@en.
+stac:DataTypeSensitive a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "DataTypeSensitive (low, medium or high sensitive). The data to secure."@en;
+                       rdfs:label "DataTypeSensitive"@en.
+stac:DatabaseAttack a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment ""@en;
+                    rdfs:label "Database Attack"@en;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:DatabaseSecurityMechanism ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    stac:WebAttack.
+stac:DatabaseSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment ""@en;
+                               rdfs:label "Database Security Mechanism"@en;
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:DatabaseTechnology ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               stac:WebSecurityMechanism.
+stac:DatabaseTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment ""@en;
+                        rdfs:label "Database Technology"@en;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:DatabaseAttack ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        stac:WebTechnology.
+stac:DigitalCertificate a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment ""@en;
+                        rdfs:label "Digital Certificate"@en;
+                        rdfs:subClassOf stac:AuthenticationMethod.
+stac:DigitalSignature <http://purl.org/dc/terms/hasPart> stac:AsymmetricAlgorithm;
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "The digital signature verifies that the contents of the electronic message have not been altered."@en;
+                      rdfs:label "Digital Signature"@en;
+                      rdfs:subClassOf stac:NonRepudiationMethod,
+                                      stac:AuthenticationMethod,
+                                      stac:IntegrityMethod,
+                                      stac:CryptographicConcept.
+stac:ECommerceAttack a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment ""@en;
+                     rdfs:label "ECommerce Attack"@en;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ECommerceSecurityMechanism ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     stac:WebAttack.
+stac:ECommerceMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment ""@en;
+                        rdfs:label "ECommerce Mechanism"@en;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ECommerceTechnology ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        stac:WebSecurityMechanism.
+stac:ECommerceTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment ""@en;
+                         rdfs:label "ECommerce Technology"@en;
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ECommerceAttack ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         stac:WebTechnology.
+stac:EDGEAttack a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment ""@en;
+                rdfs:label "EDGE Attack"@en;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:EDGESecurityMechanism ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                stac:Attack.
+stac:EDGESecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment ""@en;
+                           rdfs:label "EDGE SecurityMechanism"@en;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:EDGETechnology ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           stac:SecurityMechanism.
+stac:EDGETechnology a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Enhanced Data Rates for GSM Evolution (EDGE) or 2.75G"@en;
+                    rdfs:label "Enhanced Data Rates for GSM Evolution (EDGE) or 2.75G"@en;
+                    rdfs:seeAlso <http://www.tele.pw.edu.pl/~sims-onto/ConnectivityType.owl#EDGE>;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:EDGEAttack ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:UMTSTechnology ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> stac:isReplacedBy ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    stac:Technology.
+stac:EncryptionAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Encryption algorithm ensures the confidentiality property."@en;
+                         rdfs:label "Encryption Algorithm"@en;
+                         rdfs:seeAlso <http://securitytoolbox.appspot.com/securityAlgorithms#EncryptionAlgorithm>;
+                         rdfs:subClassOf stac:ConfidentialityMethod,
+                                         stac:CryptographicConcept,
+                                         stac:SecurityAlgorithm.
+stac:EthernetAttack a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment ""@en;
+                    rdfs:label "Ethernet Attack"@en;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:EthernetSecurityMechanism ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    stac:Attack.
+stac:EthernetSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment ""@en;
+                               rdfs:label "Ethernet SecurityMechanism"@en;
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:EthernetTechnology ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               stac:SecurityMechanism.
+stac:EthernetTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment ""@en;
+                        rdfs:label "Ethernet"@en;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:EthernetAttack ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:HighCostDeployment ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> stac:hasFeature ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        stac:Technology.
+stac:ExternalAttack <http://purl.org/dc/elements/1.1/description> "See Paper: Malicious actions against the GPRS technology [Xenakis 2006]"@en;
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment ""@en;
+                    rdfs:label "External Attack"@en;
+                    rdfs:subClassOf stac:ActiveAttack.
+stac:Feature a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Features of security mechanisms. For example a sensor technology is low energy consuming, and the symmetric algorithm (a SecurityMechanism) is low energy consumming."@en;
+             rdfs:label "Feature"@en.
+stac:Firewall <http://purl.org/dc/elements/1.1/description> "See Paper: Malicious actions against the GPRS technology [Xenakis 2006]"@en;
+              a stac:UMTSSecurityMechanism,
+                stac:NetworkManagementSecurityMechanism,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment ""@en;
+              rdfs:label "Firewall"@en;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:WebTechnology ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ApplicationLayer ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> stac:protectsInLayer ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              stac:AccessControlMethod.
+stac:Flooding <http://purl.org/dc/elements/1.1/description> "See Paper: Survey of Security and Privacy Issues of Internet of Things [Borgohain et al. 2015]"@en;
+              a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Floodings attacks generally are used to drain the memry resources by sensing the control signals."@en;
+              rdfs:label "Flooding"@en;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:TransportLayer ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> stac:occursInLayer ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ClientPuzzle ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              stac:SensorAttack.
+stac:FrameworkAttack a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment ""@en;
+                     rdfs:label "Framework Attack"@en;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:FrameworkSecurityMechanism ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     stac:WebAttack.
+stac:FrameworkSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment ""@en;
+                                rdfs:label "Framework Security Mechanism"@en;
+                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:FrameworkTechnology ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                stac:WebSecurityMechanism.
+stac:FrameworkTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment ""@en;
+                         rdfs:label "Framework Technology"@en;
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:FrameworkAttack ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         stac:WebTechnology.
+stac:GPRSArchitecture a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "The GPRS system are a much more expesed to intruders, because of its IP based backbone."@en;
+                      rdfs:label "GPRS Architecture"@en;
+                      rdfs:subClassOf stac:Architecture.
+stac:GPRSArchitectureComponent a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment ""@en;
+                               rdfs:label "GPRS Architecture component"@en;
+                               rdfs:subClassOf stac:ArchitectureComponent.
+stac:GPRSAttack a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment ""@en;
+                rdfs:label "GPRS Attack"@en;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:GPRSSecurityMechanism ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                stac:Attack.
+stac:GPRSSecurityAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment ""@en;
+                           rdfs:label "GPRS Security Algorithm"@en;
+                           rdfs:subClassOf stac:GPRSSecurityMechanism,
+                                           stac:SecurityAlgorithm.
+stac:GPRSSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment ""@en;
+                           rdfs:label "GPRS SecurityMechanism"@en;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:GPRSTechnology ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           stac:SecurityMechanism.
+stac:GPRSTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "General Packet Radio Service (GPRS) or 2.5G"@en;
+                    rdfs:label "General Packet Radio Service (GPRS) or 2.5G"@en;
+                    rdfs:seeAlso <http://www.tele.pw.edu.pl/~sims-onto/ConnectivityType.owl#GPRS>;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:GPRSAttack ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:GPRSArchitecture ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> stac:hasArchitecture ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:EDGETechnology ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> stac:isReplacedBy ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    stac:Technology.
+stac:GSMArchitecture a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment ""@en;
+                     rdfs:label "GSM Architecture"@en;
+                     rdfs:subClassOf stac:Architecture.
+stac:GSMArchitectureComponent a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment ""@en;
+                              rdfs:label "GSM Architecture component"@en;
+                              rdfs:subClassOf stac:ArchitectureComponent.
+stac:GSMAttack a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment ""@en;
+               rdfs:label "GSM Attack"@en;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:GSMSecurityMechanism ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               stac:Attack.
+stac:GSMKeyManagement a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment ""@en;
+                      rdfs:label "GSM Key Management"@en;
+                      rdfs:subClassOf stac:GSMSecurityMechanism,
+                                      stac:KeyManagement.
+stac:GSMSecurityAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment ""@en;
+                          rdfs:label "GSM Security Algorithm"@en;
+                          rdfs:subClassOf stac:GSMSecurityMechanism,
+                                          stac:SecurityAlgorithm.
+stac:GSMSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment ""@en;
+                          rdfs:label "GSM SecurityMechanism"@en;
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:GSMTechnology ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          stac:SecurityMechanism.
+stac:GSMSecurityProtocol a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment ""@en;
+                         rdfs:label "GSM Security Protocol"@en;
+                         rdfs:subClassOf stac:GSMSecurityMechanism,
+                                         stac:Protocol.
+stac:GSMTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Global System for Mobile Communication (GSM) or 2G"@en;
+                   rdfs:label "Global System for Mobile Communication (GSM) or 2G"@en;
+                   rdfs:seeAlso <http://ontology.ist-spice.org/mobile-ontology/1/0/service_context/0/service_context.owl#GSM>;
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:GSMAttack ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:GSMArchitecture ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> stac:hasArchitecture ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:GPRSTechnology ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> stac:isReplacedBy ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   stac:Technology.
+stac:HSPDAAttack a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment ""@en;
+                 rdfs:label "HSPDA Attack"@en;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:HSPDASecurityMechanism ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 stac:Attack.
+stac:HSPDASecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment ""@en;
+                            rdfs:label "HSPDA SecurityMechanism"@en;
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:HSPDATechnology ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            stac:SecurityMechanism.
+stac:HSPDATechnology a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "High-Speed Download Packet Access (HSPDA) or 3.5G"@en;
+                     rdfs:label "High-Speed Download Packet Access (HSPDA) or 3.5G"@en;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:HSPDAAttack ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:LTETechnology ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> stac:isReplacedBy ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     stac:Technology.
+stac:HashFunction <http://purl.org/dc/terms/hasPart> stac:SymmetricAlgorithm;
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment ""@en;
+                  rdfs:label "Hash Function"@en;
+                  rdfs:subClassOf stac:AuthenticationMethod,
+                                  stac:IntegrityMethod,
+                                  stac:CryptographicConcept.
+stac:HighSensitive a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment ""@en;
+                   rdfs:label "HighSensitive"@en;
+                   rdfs:subClassOf stac:DataTypeSensitive.
+stac:Honeypot a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Honeypots are hosts meant to be attacked either to distract the attackers or to research their techniques."@en;
+              rdfs:label "Honeypot"@en;
+              rdfs:subClassOf stac:NetworkManagementSecurityMechanism,
+                              stac:WebSecurityMechanism.
+stac:ICV a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "The purpose of this value is to enable the receiver to detect any malicious modifications of the message by an attacker."@en;
+         rdfs:label "Integrity Check Value (ICV)"@en;
+         rdfs:subClassOf stac:IntegrityMethod.
+stac:IDS a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment ""@en;
+         rdfs:label "Intrusion Detection System (IDS)"@en;
+         rdfs:subClassOf stac:AvailabilityMethod,
+                         stac:NetworkManagementSecurityMechanism.
+stac:IPS a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment ""@en;
+         rdfs:label "Intrusion Prevention System (IPS)"@en;
+         rdfs:subClassOf stac:AvailabilityMethod,
+                         stac:NetworkManagementSecurityMechanism.
+stac:InitialVector a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment ""@en;
+                   rdfs:label "Initial Vector"@en;
+                   rdfs:subClassOf stac:SemanticSecurityMethod.
+stac:IntegrityMethod a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Data integrity guarantees that the transmitted messages are not modified by attackers, either due to malicious intent or by accident."@en;
+                     rdfs:label "Integrity Method"@en;
+                     rdfs:subClassOf stac:SecurityPropertyMethod.
+stac:InternalAttack <http://purl.org/dc/elements/1.1/description> "See Paper: Malicious actions against the GPRS technology [Xenakis 2006]"@en;
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Internal attacks are launched from compromised nodes, are much more sophisticated than external attacks."@en;
+                    rdfs:label "Internal Attack"@en;
+                    rdfs:subClassOf stac:ActiveAttack.
+stac:JavaSecurityApi a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment ""@en;
+                     rdfs:label "Java Api"@en;
+                     rdfs:subClassOf stac:WebSecurityMechanism.
+stac:KeyManagement <http://purl.org/dc/elements/1.1/description> "Key management protocols are fundamental requirements to develop a secure application. These protocols are used to set up and distribute various kinds of cryptographic keys to nodes in the network."@en;
+                   a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Key management protocols are fundamental requirements to develop a secure application. These protocols are used to set up and distribute various kinds of cryptographic keys to nodes in the network."@en;
+                   rdfs:label "Key Management"@en;
+                   rdfs:subClassOf stac:AuthenticationMethod,
+                                   stac:CryptographicConcept.
+stac:LTEArchitecture a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment ""@en;
+                     rdfs:label "LTE Architecture"@en;
+                     rdfs:subClassOf stac:Architecture.
+stac:LTEArchitectureComponent a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment ""@en;
+                              rdfs:label "LTE Architecture component"@en;
+                              rdfs:subClassOf stac:ArchitectureComponent.
+stac:LTEAttack a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment ""@en;
+               rdfs:label "LTE Attack"@en;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:LTESecurityMechanism ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               stac:Attack.
+stac:LTESecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment ""@en;
+                          rdfs:label "LTE Security Mechanism"@en;
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:LTETechnology ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          stac:SecurityMechanism.
+stac:LTETechnology a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Long Term Evolution (LTE) Technology or 4G"@en;
+                   rdfs:label "Long Term Evolution (LTE) Technology or 4G"@en;
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:LTEAttack ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:LTEArchitecture ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> stac:hasArchitecture ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   stac:Technology.
+stac:LoginPassword a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "The simple form of authentication is providing a user name and password which is mainly the case in internet based authentication (e.g. email, online shopping, etc)"@en;
+                   rdfs:label "Login/Password"@en;
+                   rdfs:subClassOf stac:AuthenticationMethod,
+                                   stac:AccessControlMethod.
+stac:LowSensitive a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment ""@en;
+                  rdfs:label "LowSensitive"@en;
+                  rdfs:subClassOf stac:DataTypeSensitive.
+stac:M2MAttack a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment ""@en;
+               rdfs:label "M2M Attack"@en;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:M2MSecurityMechanism ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               stac:Attack.
+stac:M2MSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment ""@en;
+                          rdfs:label "M2M SecurityMechanism"@en;
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:M2MTechnology ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          stac:SecurityMechanism.
+stac:M2MTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment ""@en;
+                   rdfs:label "Machine-to-Machine(M2M)"@en;
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:M2MAttack ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   stac:Technology.
+stac:MAC a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "MAC is a short piece of information used to authenticate a message and check the integrity."@en;
+         rdfs:label "Message Authentication Code (MAC)"@en;
+         rdfs:subClassOf stac:AuthenticationMethod,
+                         stac:IntegrityMethod.
+stac:MandatoryAccessControl a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Only an administrator is authorized to add a new access right to the system."@en;
+                            rdfs:label "Mandatory Access Control (MAC)"@en;
+                            rdfs:subClassOf stac:AccessControlMethod.
+stac:ManetAttack a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Manet (Mobile ad hoc network) is a self-configuring network of mobile devices connected."@en;
+                 rdfs:label "Manet Attack"@en;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ManetSecurityMechanism ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 stac:Attack.
+stac:ManetSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment ""@en;
+                            rdfs:label "Manet SecurityMechanism"@en;
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ManetTechnology ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            stac:SecurityMechanism.
+stac:ManetTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment ""@en;
+                     rdfs:label "Manet Technology"@en;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ManetAttack ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     stac:Technology.
+stac:MediumSensitive a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment ""@en;
+                     rdfs:label "MediumSensitive"@en;
+                     rdfs:subClassOf stac:DataTypeSensitive.
+stac:MeshArchitecture a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment ""@en;
+                      rdfs:label "Mesh Architecture"@en;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:Flexible ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> stac:hasFeature ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:Scalable ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> stac:hasFeature ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:LowCostDeployment ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> stac:hasFeature ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      stac:Architecture.
+stac:MeshArchitectureComponent a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment ""@en;
+                               rdfs:label "Mesh Architecture component"@en;
+                               rdfs:subClassOf stac:ArchitectureComponent.
+stac:MeshAttack a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment ""@en;
+                rdfs:label "Mesh Attack"@en;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:MeshSecurityMechanism ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                stac:Attack.
+stac:MeshKeyManagement a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment ""@en;
+                       rdfs:label "Mesh Key Management"@en;
+                       rdfs:subClassOf stac:MeshSecurityMechanism,
+                                       stac:KeyManagement.
+stac:MeshSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment ""@en;
+                           rdfs:label "Mesh Security Mechanism"@en;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:MeshTechnology ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           stac:SecurityMechanism.
+stac:MeshSecurityProtocol a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment ""@en;
+                          rdfs:label "Mesh Security Protocol"@en;
+                          rdfs:subClassOf stac:MeshSecurityMechanism,
+                                          stac:Protocol.
+stac:MeshTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment ""@en;
+                    rdfs:label "Mesh Technology"@en;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:MeshAttack ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:MeshArchitecture ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> stac:hasArchitecture ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    stac:Technology.
+stac:MessageEncryptionTool a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment ""@en;
+                           rdfs:label "Message Encryption Tool"@en;
+                           rdfs:subClassOf stac:SecurityTool.
+stac:ModeOperation a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "A mode of operation describes the process of encrypting each of block cipher."@en;
+                   rdfs:label "Mode of operation"@en;
+                   rdfs:subClassOf stac:BlockCipher.
+stac:MutualAuthentication a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment ""@en;
+                          rdfs:label "Mutual Authentication ot two-way authentication"@en;
+                          rdfs:subClassOf stac:AuthenticationMethod.
+stac:NegativeFeature a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Negative Feature of security mechanisms"@en;
+                     rdfs:label "Negative Feature"@en;
+                     rdfs:subClassOf stac:Feature.
+stac:NetworkManagementAttack a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment ""@en;
+                             rdfs:label "Network Management Attack"@en;
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:NetworkManagementSecurityMechanism ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             stac:Attack.
+stac:NetworkManagementSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:comment ""@en;
+                                        rdfs:label "Network Management Security Mechanism"@en;
+                                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:NetworkManagementTechnology ; 
+                                                         <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                        stac:SecurityMechanism.
+stac:NetworkManagementSecurityTool a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment ""@en;
+                                   rdfs:label "Network Management Security Tool"@en;
+                                   rdfs:subClassOf stac:NetworkManagementSecurityMechanism,
+                                                   stac:SecurityTool.
+stac:NetworkManagementTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment ""@en;
+                                 rdfs:label "Network Management Technology"@en;
+                                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:NetworkManagementAttack ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 stac:Technology.
+stac:NonRepudiationMethod a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Non repudiation means that a sender is unable to deny having sent a message or infoomation."@en;
+                          rdfs:label "Non Repudiation Method"@en;
+                          rdfs:subClassOf stac:SecurityPropertyMethod.
+stac:OSIModel a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment ""@en;
+              rdfs:label ""@en;
+              <http://www.w3.org/2002/07/owl#oneOf> (stac:PhysicalLayer
+                                                     stac:LinkLayer
+                                                     stac:NetworkLayer
+                                                     stac:TransportLayer
+                                                     stac:SessionLayer
+                                                     stac:PresentationLayer
+                                                     stac:ApplicationLayer).
+stac:OSIModelLayer a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment ""@en;
+                   rdfs:label "OSI Model Layer"@en.
+stac:Obfuscation a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment ""@en;
+                 rdfs:label "Obfuscation"@en;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ApplicationLayer ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> stac:occursInLayer ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 stac:SecurityTool.
+stac:OneWayAuthentication a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment ""@en;
+                          rdfs:label "One Way Authentication"@en;
+                          rdfs:subClassOf stac:AuthenticationMethod.
+stac:OperatingSystemAttack a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment ""@en;
+                           rdfs:label "Operating System Attack"@en;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:OperatingSystemSecurityMechanism ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           stac:NetworkManagementAttack.
+stac:OperatingSystemSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment ""@en;
+                                      rdfs:label "Operating System Security Mechanism"@en;
+                                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:OperatingSystemTechnology ; 
+                                                       <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                      stac:NetworkManagementSecurityMechanism.
+stac:OperatingSystemTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment ""@en;
+                               rdfs:label "Operating system Technology"@en;
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:OperatingSystemAttack ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               stac:NetworkManagementTechnology.
+stac:PassiveAttack <http://purl.org/dc/elements/1.1/description> "See Paper: Malicious actions against the GPRS technology [Xenakis 2006]"@en;
+                   a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Malicious users violate the confidentiality  of the information exchanged over the network."@en;
+                   rdfs:label "Passive Attack"@en;
+                   rdfs:subClassOf stac:Attack.
+stac:Personal a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment ""@en;
+              rdfs:label "Personal"@en;
+              rdfs:subClassOf stac:DataProvenanceType.
+stac:PhysicalAuthentication a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment ""@en;
+                            rdfs:label "Physical Authentication"@en;
+                            rdfs:subClassOf stac:AuthenticationMethod.
+stac:PhysicalKey a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment ""@en;
+                 rdfs:label "Physical Key"@en;
+                 rdfs:subClassOf stac:PhysicalAuthentication.
+stac:PolymorphicVirus a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment ""@en;
+                      rdfs:label "Polymorphic Virus"@en;
+                      rdfs:subClassOf stac:Virus.
+stac:PositiveFeature a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Positive Feature of security mechanisms"@en;
+                     rdfs:label "Positive Feature"@en;
+                     rdfs:subClassOf stac:Feature.
+stac:PreSharedKey a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment ""@en;
+                  rdfs:label "Pre Shared Key"@en;
+                  rdfs:subClassOf stac:AuthenticationMethod.
+stac:PrivateKey a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "The private key is used for computing signatures and decryption."@en;
+                rdfs:label "Private Key "@en;
+                rdfs:subClassOf stac:AsymmetricKey.
+stac:ProgrammingLanguageAttack a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment ""@en;
+                               rdfs:label "Programming Language Attack"@en;
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ProgrammingLanguageSecurityMechanism ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               stac:WebAttack.
+stac:ProgrammingLanguageSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment ""@en;
+                                          rdfs:label "Programming Language Security Mechanism"@en;
+                                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ProgrammingLanguageTechnology ; 
+                                                           <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                          stac:WebSecurityMechanism.
+stac:ProgrammingLanguageTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment ""@en;
+                                   rdfs:label "Programming Language"@en;
+                                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ProgrammingLanguageAttack ; 
+                                                    <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                   stac:WebTechnology.
+stac:Protocol a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment ""@en;
+              rdfs:label "Protocol"@en;
+              rdfs:subClassOf stac:SecurityMechanism.
+stac:Proxy a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "A proxy analyzes application commands, performs authentication and keeps logs."@en;
+           rdfs:label "Proxy"@en;
+           rdfs:subClassOf stac:AccessControlMethod,
+                           stac:NetworkManagementSecurityMechanism.
+stac:PublicKey a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "The public key is used for verifying a digital signature and is used for encryption."@en;
+               rdfs:label "Public Key "@en;
+               rdfs:subClassOf stac:AsymmetricKey.
+stac:RBAC a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "Mechanism for access control that organizes users (in the system) into specific groups called Roles. E.g., Doctor and nurses are different roles in a hospital."@en;
+          rdfs:label "Role Based Access Control (RBAC)"@en;
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:NotFlexible ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> stac:hasFeature ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          stac:AccessControlMethod.
+stac:RelBAC a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Permissions are modeled as relations between users (subjects) and data (objects)."@en;
+            rdfs:label "Relation Based Access Control (RelBAC)"@en;
+            rdfs:subClassOf stac:AccessControlMethod.
+stac:Requirement a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "The application to secure has requirements (e.g., high sensitive data or specific technologies)."@en;
+                 rdfs:label "Requirement"@en.
+stac:ReverseProxy a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment ""@en;
+                  rdfs:label "Reverse Proxy"@en;
+                  rdfs:subClassOf stac:AccessControlMethod,
+                                  stac:NetworkManagementSecurityMechanism.
+stac:RfidAttack a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment ""@en;
+                rdfs:label "RFID Attack"@en;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:RfidSecurityMechanism ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                stac:Attack.
+stac:RfidSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment ""@en;
+                           rdfs:label "Rfid SecurityMechanism"@en;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:RfidTechnology ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           stac:SecurityMechanism.
+stac:RfidTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment ""@en;
+                    rdfs:label "Rfid Technology"@en;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:RfidAttack ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    stac:Technology.
+stac:SecurityAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment ""@en;
+                       rdfs:label "Security Algorithm"@en;
+                       rdfs:subClassOf stac:SecurityMechanism.
+stac:SecurityMagazine a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment ""@en;
+                      rdfs:label "Security Magazine"@en;
+                      rdfs:subClassOf stac:SecurityMechanism.
+stac:SecurityMechanism <http://purl.org/dc/elements/1.1/description> "Security Mechanisms are processes that are used to detect, prevent and recover from security attacks."@en;
+                       a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Security Mechanisms are processes that are used to detect, prevent and recover from security attacks."@en;
+                       rdfs:label "SecurityMechanism"@en.
+stac:SecurityProperty a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment ""@en;
+                      rdfs:label "SecurityProperty"@en;
+                      rdfs:seeAlso <http://preciosa.informatik.hu-berlin.de/ontology/security.owlSecurityProtectionMechanism>,
+                                   <http://securitytoolbox.appspot.com/MASO#Objectif>,
+                                   <http://www.daml.org/services/owl-s/security/security.owl#SecurityNotation>,
+                                   <http://semanticweb.org/images/5/53/OntologySecurity.owlServices>,
+                                   <http://www.ida.liu.se/~iislab/projects/secont/Security.owlGoal>,
+                                   <http://securitytoolbox.appspot.com/securityMain#SecurityObjective>;
+                      rdfs:subClassOf stac:Requirement.
+stac:SecurityPropertyMethod a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment ""@en;
+                            rdfs:label "Security Property Method"@en;
+                            rdfs:subClassOf stac:SecurityMechanism.
+stac:SecurityTool a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment ""@en;
+                  rdfs:label "Security Tool"@en;
+                  rdfs:subClassOf stac:SecurityMechanism.
+stac:SemanticSecurityMethod a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Semantic security ensures that an eavesdropper has no information about the message, even if it sees multiple encryptions of the same messages."@en;
+                            rdfs:label "Semantic Security Method"@en;
+                            rdfs:subClassOf stac:SecurityPropertyMethod.
+stac:SensorAttack a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment ""@en;
+                  rdfs:label "Sensor Attack"@en;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:SensorSecurityMechanism ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  stac:Attack.
+stac:SensorKeyManagement a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment ""@en;
+                         rdfs:label "Sensor Key Management"@en;
+                         rdfs:subClassOf stac:SensorSecurityMechanism,
+                                         stac:KeyManagement.
+stac:SensorSecurityMechanism <http://purl.org/dc/elements/1.1/description> "Sensor nodes have very limited computationnal power, and traditional security and encryption techniques are not-well suitd to this domain."@en;
+                             a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Sensor nodes have very limited computationnal power, and traditional security and encryption techniques are not-well suitd to this domain."@en;
+                             rdfs:label "Sensor Security Mechanism"@en;
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:SensorTechnology ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             stac:SecurityMechanism.
+stac:SensorSecurityProtocol a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment ""@en;
+                            rdfs:label "Sensor Security Protocol"@en;
+                            rdfs:subClassOf stac:SensorSecurityMechanism,
+                                            stac:Protocol.
+stac:SensorTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment ""@en;
+                      rdfs:label "Sensor Technology"@en;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:SensorAttack ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      stac:Technology.
+stac:ServerAttack a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment ""@en;
+                  rdfs:label "Server Attack"@en;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ServerSecurityMechanism ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  stac:NetworkManagementAttack.
+stac:ServerSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment ""@en;
+                             rdfs:label "Server Security Mechanism"@en;
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ServerTechnology ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             stac:NetworkManagementSecurityMechanism.
+stac:ServerTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment ""@en;
+                      rdfs:label "Server Technology"@en;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ServerAttack ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      stac:NetworkManagementTechnology.
+stac:Sniffer a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A Sniffer tries to spy passwords for instance."@en;
+             rdfs:label "Sniffer"@en;
+             rdfs:subClassOf stac:SecurityTool.
+stac:Spam a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment ""@en;
+          rdfs:label "Spam"@en;
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ApplicationLayer ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> stac:occursInLayer ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:AntiSpam ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          stac:WebAttack.
+stac:Spyware a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment ""@en;
+             rdfs:label "Spyware"@en;
+             rdfs:subClassOf stac:WebAttack.
+stac:StreamCipher a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment ""@en;
+                  rdfs:label "StreamCipher"@en;
+                  rdfs:seeAlso <http://semanticweb.org/images/5/53/OntologySecurity.owlStreamCipherAlgorithm>,
+                               <http://preciosa.informatik.hu-berlin.de/ontology/security.owlStreamCipherAlgorithm>,
+                               <http://www.ida.liu.se/~iislab/projects/secont/Security.owlStreamCipher>;
+                  rdfs:subClassOf stac:SymmetricAlgorithm.
+stac:SymmetricAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "The same secret key is used for encryption and decryption."@en;
+                        rdfs:label "Symmetric algorithm"@en;
+                        rdfs:seeAlso <http://securitytoolbox.appspot.com/securityAlgorithms#SymmetricAlgorithm>,
+                                     <http://preciosa.informatik.hu-berlin.de/ontology/security.owlSymmetricAlgorithm>,
+                                     <http://semanticweb.org/images/5/53/OntologySecurity.owlSymmetricAlgorithm>,
+                                     <http://securitytoolbox.appspot.com/MASO#Cryptage-symetrique>,
+                                     <http://www.ida.liu.se/~iislab/projects/secont/Security.owlSymmetricAlgorithm>;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:LowEnergyConsuming ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> stac:hasFeature ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ExchangeKeyNotEasy ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> stac:hasFeature ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        stac:EncryptionAlgorithm.
+stac:SymmetricKey a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Symmetric key: the same key is used for encryption and decryption."@en;
+                  rdfs:label "Symmetric Key"@en.
+stac:SymmetricSensorKey a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment ""@en;
+                        rdfs:label "SymmetricSensorKey"@en;
+                        rdfs:subClassOf stac:SymmetricKey.
+stac:SystemLogs a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment ""@en;
+                rdfs:label "System Logs"@en;
+                rdfs:subClassOf stac:NonRepudiationMethod.
+stac:Technology a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Technologies can be wireless (Wi-Fi, Wimax), cellular (2G, 3G, 4G), sensor  networks, web application, etc."@en;
+                rdfs:label "Technology"@en;
+                rdfs:subClassOf stac:Requirement.
+stac:TemporaryIdentity a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment ""@en;
+                       rdfs:label "Temporary Identity"@en;
+                       rdfs:subClassOf stac:AnonymityMethod.
+stac:Timestamp a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "In order to ensure the freshness of packet, a timestamp can be attached to the packet. A receiving node can compare the timestamp in the packet with its own time clock and determine whether the packet is valid or not."@en;
+               rdfs:label "Timestamp"@en;
+               rdfs:subClassOf stac:DataFreshnessMethod.
+stac:Troyan <http://purl.org/dc/elements/1.1/description> "See Paper: Malicious actions against the GPRS technology [Xenakis 2006]"@en;
+            a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A Trojan horse is a malicious piece of software hidden in a program that performs normal tasks. Program that does something malicious (such as capturing passwords) when run by an unsuspecting user."@en;
+            rdfs:label "Troyan"@en;
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:WebAttack ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> stac:isVulnerabilityOf ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            stac:Virus.
+stac:UMTSArchitecture a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment ""@en;
+                      rdfs:label "UMTS Architecture"@en;
+                      rdfs:subClassOf stac:Architecture.
+stac:UMTSArchitectureComponent a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment ""@en;
+                               rdfs:label "UMTS Architecture component"@en;
+                               rdfs:subClassOf stac:ArchitectureComponent.
+stac:UMTSAttack a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment ""@en;
+                rdfs:label "UMTS Attack"@en;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:UMTSSecurityMechanism ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                stac:Attack.
+stac:UMTSKeyManagement a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment ""@en;
+                       rdfs:label "UMTS Key Management"@en;
+                       rdfs:subClassOf stac:UMTSSecurityMechanism,
+                                       stac:KeyManagement.
+stac:UMTSSecurityAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment ""@en;
+                           rdfs:label "UMTS Security Algorithm"@en;
+                           rdfs:subClassOf stac:UMTSSecurityMechanism,
+                                           stac:SecurityAlgorithm.
+stac:UMTSSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment ""@en;
+                           rdfs:label "UMTS SecurityMechanism"@en;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:UMTSTechnology ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           stac:SecurityMechanism.
+stac:UMTSSecurityProtocol a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment ""@en;
+                          rdfs:label "UMTS Security Protocol"@en;
+                          rdfs:subClassOf stac:UMTSSecurityMechanism,
+                                          stac:Protocol.
+stac:UMTSTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Universal Mobile Telecommunications System (UMTS). Third Generation (3G)"@en;
+                    rdfs:label "3G technology (UMTS:Universal Mobile Telecommunications System)"@en;
+                    rdfs:seeAlso <http://www.tele.pw.edu.pl/~sims-onto/ConnectivityType.owl#UMTS>,
+                                 <http://ontology.ist-spice.org/mobile-ontology/1/0/service_context/0/service_context.owl#UMTS>;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:UMTSAttack ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:UMTSArchitecture ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> stac:hasArchitecture ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:HSPDATechnology ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> stac:isReplacedBy ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    stac:Technology.
+stac:UwbAttack a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment ""@en;
+               rdfs:label "Uwb Attack"@en;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:UwbSecurityMechanism ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               stac:Attack.
+stac:UwbSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment ""@en;
+                          rdfs:label "Uwb SecurityMechanism"@en;
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:UwbTechnology ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          stac:SecurityMechanism.
+stac:UwbTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment ""@en;
+                   rdfs:label "Ultra Wideband (UWB) Technology"@en;
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:UwbAttack ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   stac:Technology.
+stac:Virus <http://purl.org/dc/elements/1.1/description> "See Paper: Malicious actions against the GPRS technology [Xenakis 2006], Paper: Survey of Security and Privacy Issues of Internet of Things [Borgohain et al. 2015]"@en;
+           a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment ""@en;
+           rdfs:label "Virus"@en;
+           rdfs:subClassOf stac:GPRSAttack,
+                           stac:RfidAttack,
+                           [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ApplicationLayer ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> stac:occursInLayer ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           stac:WebAttack,
+                           stac:NetworkManagementAttack,
+                           [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:Antivirus ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>].
+stac:WebAttack a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment ""@en;
+               rdfs:label "Web Attack"@en;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ApplicationLayer ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> stac:occursInLayer ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:WebSecurityMechanism ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               stac:Attack.
+stac:WebSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment ""@en;
+                          rdfs:label "Web Security Mechanism"@en;
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ApplicationLayer ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> stac:protectsInLayer ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:WebTechnology ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          stac:SecurityMechanism.
+stac:WebSecurityProtocol a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment ""@en;
+                         rdfs:label "Web Security Protocol"@en;
+                         rdfs:subClassOf stac:WebSecurityMechanism,
+                                         stac:Protocol.
+stac:WebService a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment ""@en;
+                rdfs:label "Web Service"@en;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:WebServiceAttack ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                stac:WebTechnology.
+stac:WebServiceAttack a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment ""@en;
+                      rdfs:label "Web Service Attack"@en;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:WebServiceSecurityMechanism ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      stac:WebAttack.
+stac:WebServiceMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment ""@en;
+                         rdfs:label "Web Service Mechanism"@en;
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:WebServiceTechnology ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         stac:WebSecurityMechanism.
+stac:WebTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment ""@en;
+                   rdfs:label "Web Technology"@en;
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:WebAttack ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   stac:Technology.
+stac:WifiArchitecture a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment ""@en;
+                      rdfs:label "Wifi Architecture"@en;
+                      rdfs:subClassOf stac:Architecture.
+stac:WifiArchitectureComponent a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment ""@en;
+                               rdfs:label "Wifi Architecture component"@en;
+                               rdfs:subClassOf stac:ArchitectureComponent.
+stac:WifiAttack a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment ""@en;
+                rdfs:label "Wifi Attack"@en;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:WifiSecurityMechanism ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                stac:Attack.
+stac:WifiAttackTool a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment ""@en;
+                    rdfs:label "Wifi Attack Tool"@en;
+                    rdfs:subClassOf stac:SecurityTool.
+stac:WifiKeyManagement a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment ""@en;
+                       rdfs:label "Wifi Key Management"@en;
+                       rdfs:subClassOf stac:WifiSecurityMechanism,
+                                       stac:KeyManagement.
+stac:WifiSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment ""@en;
+                           rdfs:label "Wifi SecurityMechanism"@en;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:WifiTechnology ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           stac:SecurityMechanism.
+stac:WifiSecurityProtocol a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment ""@en;
+                          rdfs:label "Wifi Security Protocol"@en;
+                          rdfs:subClassOf stac:WifiSecurityMechanism,
+                                          stac:Protocol.
+stac:WifiTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment ""@en;
+                    rdfs:label " Wi-Fi technology (Wireless-Fidelity)"@en;
+                    rdfs:seeAlso <http://www.tele.pw.edu.pl/~sims-onto/ConnectivityType.owl#WiFiConnectivity>;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:WifiAttack ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:WifiArchitecture ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> stac:hasArchitecture ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:LowCostDeployment ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> stac:hasFeature ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    stac:Technology.
+stac:WimaxArchitecture a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment ""@en;
+                       rdfs:label "WiMAX Architecture"@en;
+                       rdfs:subClassOf stac:Architecture.
+stac:WimaxArchitectureComponent a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment ""@en;
+                                rdfs:label "Wimax Architecture component"@en;
+                                rdfs:subClassOf stac:ArchitectureComponent.
+stac:WimaxAttack a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment ""@en;
+                 rdfs:label "Wimax Attack"@en;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:WimaxSecurityMechanism ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 stac:Attack.
+stac:WimaxKeyManagement a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment ""@en;
+                        rdfs:label "Wimax Key Management"@en;
+                        rdfs:subClassOf stac:WimaxSecurityMechanism,
+                                        stac:KeyManagement.
+stac:WimaxSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment ""@en;
+                            rdfs:label "Wimax SecurityMechanism"@en;
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:WimaxTechnology ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            stac:SecurityMechanism.
+stac:WimaxSecurityProtocol a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment ""@en;
+                           rdfs:label "Wimax Security Protocol"@en;
+                           rdfs:subClassOf stac:WimaxSecurityMechanism,
+                                           stac:Protocol.
+stac:WimaxTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment ""@en;
+                     rdfs:label "Wimax Technology"@en;
+                     rdfs:seeAlso <http://www.tele.pw.edu.pl/~sims-onto/ConnectivityType.owl#WiMAXConnectivity>;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:WimaxAttack ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:WimaxArchitecture ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> stac:hasArchitecture ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     stac:Technology.
+stac:Worm <http://purl.org/dc/elements/1.1/description> "See Paper: Malicious actions against the GPRS technology [Xenakis 2006]"@en;
+          a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "Worms are self-propagating pieces of malicious software. They propagate from one computer/device to another via a network link."@en;
+          rdfs:label "Worm"@en;
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ApplicationLayer ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> stac:occursInLayer ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          stac:GPRSAttack,
+                          stac:WebAttack.
+stac:ZigbeeAttack a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment ""@en;
+                  rdfs:label "Zigbee Attack"@en;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ZigbeeSecurityMechanism ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> stac:hasSecurityMechanism ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  stac:Attack.
+stac:ZigbeeSecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment ""@en;
+                             rdfs:label "Zigbee SecurityMechanism"@en;
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ZigbeeTechnology ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> stac:protects ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             stac:SecurityMechanism.
+stac:ZigbeeTechnology a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment ""@en;
+                      rdfs:label "Zigbee Technology"@en;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:ZigbeeAttack ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> stac:hasVulnerability ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:Scalable ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> stac:hasFeature ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:LowEnergyConsuming ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> stac:hasFeature ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> stac:LowCost ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> stac:hasFeature ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      stac:Technology.
+stac:hasArchitecture a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "A technology has a specific architecture."@en;
+                     rdfs:domain stac:Technology;
+                     rdfs:label "hasArchitecture"@en;
+                     rdfs:range stac:Architecture.
+stac:hasFeature a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "A SecurityMechanism has specific features (secured, depreceted, low energy consuming). For example, an asymmetric algorithm is high energy consuming."@en;
+                rdfs:domain stac:SecurityMechanism;
+                rdfs:label "hasFeature"@en;
+                rdfs:range stac:Feature;
+                <http://www.w3.org/2002/07/owl#inverseOf> stac:isFeatureOf.
+stac:hasModeOperation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment ""@en;
+                      rdfs:domain stac:SymmetricAlgorithm;
+                      rdfs:label "hasModeOperation"@en;
+                      rdfs:range stac:ModeOperation.
+stac:hasSecurityMechanism a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment ""@en;
+                          rdfs:domain stac:Attack;
+                          rdfs:label "hasSecurityMechanism"@en;
+                          rdfs:range stac:SecurityMechanism;
+                          <http://www.w3.org/2002/07/owl#inverseOf> stac:isSecurityMechanismOf.
+stac:hasVulnerability a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "A technology can be vulnerable to some attacks."@en;
+                      rdfs:domain stac:Technology;
+                      rdfs:label "has vulnerability"@en;
+                      rdfs:range stac:Attack;
+                      <http://www.w3.org/2002/07/owl#inverseOf> stac:isVulnerabilityOf.
+stac:isFeatureOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Features are related to security mechanisms. For example, an asymmetric algorithm is high energy consuming."@en;
+                 rdfs:domain stac:Feature;
+                 rdfs:label "isFeatureOf"@en;
+                 rdfs:range stac:SecurityMechanism;
+                 <http://www.w3.org/2002/07/owl#inverseOf> stac:hasFeature.
+stac:isProtectedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment ""@en;
+                   rdfs:domain stac:Technology;
+                   rdfs:label "isProtectedBy"@en;
+                   rdfs:range stac:SecurityMechanism;
+                   <http://www.w3.org/2002/07/owl#inverseOf> stac:protects.
+stac:isReplacedBy a <http://www.w3.org/2002/07/owl#ReflexiveProperty>,
+                    <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "When a SecurityMechanism is not secured anymore, it is replaced by a more secure SecurityMechanism. This is also the case for technologies: a technology can be replaced by another one more recent. (E.G., 2G has been replaced by 3G)"@en;
+                  rdfs:domain stac:SecurityMechanism;
+                  rdfs:label "isReplacedBy"@en;
+                  rdfs:range stac:SecurityMechanism.
+stac:isSecurityMechanismOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment ""@en;
+                           rdfs:domain stac:SecurityMechanism;
+                           rdfs:label "isSecurityMechanismOf"@en;
+                           rdfs:range stac:Attack;
+                           <http://www.w3.org/2002/07/owl#inverseOf> stac:hasSecurityMechanism.
+stac:isVulnerabilityOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Some attacks cannot be thwart in technologies. For example, the Denial of Service is difficult to thwart in different technologies."@en;
+                       rdfs:domain stac:Attack;
+                       rdfs:label "is Vulnerability Of"@en;
+                       rdfs:range stac:Technology;
+                       <http://www.w3.org/2002/07/owl#inverseOf> stac:hasVulnerability.
+stac:occursInLayer a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment ""@en;
+                   rdfs:domain stac:Attack;
+                   rdfs:label "occursInLayer"@en;
+                   rdfs:range stac:OSIModelLayer.
+stac:protects a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment ""@en;
+              rdfs:domain stac:SecurityMechanism;
+              rdfs:label "protects"@en;
+              rdfs:range stac:Technology;
+              <http://www.w3.org/2002/07/owl#inverseOf> stac:isProtectedBy.
+stac:protectsInLayer a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment ""@en;
+                     rdfs:domain stac:SecurityMechanism;
+                     rdfs:label "protectsInLayer"@en;
+                     rdfs:range stac:OSIModelLayer.
+stac:satisfies a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "A security mechanism (e.g., VPN) satisfies some security properties (e.g., authentication)"@en;
+               rdfs:domain stac:SecurityMechanism;
+               rdfs:label "satisfies"@en;
+               rdfs:range stac:SecurityProperty.
+stac:threatens a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "An attack (e.g., eavesdropping) threatens some security properties (e.g., confidentiality)"@en;
+               rdfs:domain stac:Attack;
+               rdfs:label "threatens"@en;
+               rdfs:range stac:SecurityProperty.

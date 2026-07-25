@@ -7,11 +7,36 @@ open type Prefix_ID
 module swapdecisionSupport =
     let _namespace_iri = Namespace_Iri swapdecisionSupport |> NamespaceIRI
     /// <summary>
-    ///   <para>swapdecisionSupport:</para>
+    ///   <para>swapdecisionSupport:Belief</para>
     /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#">http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#</seealso>
-    let _prefix_iri = Prefixed_Name(swapdecisionSupport, "") |> PrefixedName
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>belief probability</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#Belief">http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#Belief</seealso>
+    let Belief = Prefixed_Name(swapdecisionSupport, "Belief") |> PrefixedName
+
+    /// <summary>
+    ///   <para>swapdecisionSupport:StateResultFormula</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>decision support state result formula</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#StateResultFormula">http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#StateResultFormula</seealso>
+    let StateResultFormula =
+        Prefixed_Name(swapdecisionSupport, "StateResultFormula") |> PrefixedName
+
+    /// <summary>
+    ///   <para>swapdecisionSupport:ObservablesResultFormula</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>decision support observables result formula</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#ObservablesResultFormula">http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#ObservablesResultFormula</seealso>
+    let ObservablesResultFormula =
+        Prefixed_Name(swapdecisionSupport, "ObservablesResultFormula") |> PrefixedName
 
     /// <summary>
     ///   <para>swapdecisionSupport:ClinicalObservablesResultFormula</para>
@@ -76,27 +101,6 @@ module swapdecisionSupport =
         Prefixed_Name(swapdecisionSupport, "hasResultFormula") |> PrefixedName
 
     /// <summary>
-    ///   <para>swapdecisionSupport:Belief</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>belief probability</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#Belief">http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#Belief</seealso>
-    let Belief = Prefixed_Name(swapdecisionSupport, "Belief") |> PrefixedName
-
-    /// <summary>
-    ///   <para>swapdecisionSupport:ObservablesResultFormula</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>decision support observables result formula</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#ObservablesResultFormula">http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#ObservablesResultFormula</seealso>
-    let ObservablesResultFormula =
-        Prefixed_Name(swapdecisionSupport, "ObservablesResultFormula") |> PrefixedName
-
-    /// <summary>
     ///   <para>swapdecisionSupport:hasObservablesResultFormula</para>
     /// </summary>
     /// <remarks>
@@ -118,17 +122,6 @@ module swapdecisionSupport =
         Prefixed_Name(swapdecisionSupport, "PatientStateResultFormula") |> PrefixedName
 
     /// <summary>
-    ///   <para>swapdecisionSupport:StateResultFormula</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>decision support state result formula</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#StateResultFormula">http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#StateResultFormula</seealso>
-    let StateResultFormula =
-        Prefixed_Name(swapdecisionSupport, "StateResultFormula") |> PrefixedName
-
-    /// <summary>
     ///   <para>swapdecisionSupport:ResultFormula</para>
     /// </summary>
     /// <remarks>
@@ -147,3 +140,9 @@ module swapdecisionSupport =
     /// </remarks>
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#hasBelief">http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#hasBelief</seealso>
     let hasBelief = Prefixed_Name(swapdecisionSupport, "hasBelief") |> PrefixedName
+    /// <summary>
+    ///   <para>swapdecisionSupport:</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#">http://eulersharp.sourceforge.net/2003/03swap/decisionSupport#</seealso>
+    let _prefix_iri = Prefixed_Name(swapdecisionSupport, "") |> PrefixedName

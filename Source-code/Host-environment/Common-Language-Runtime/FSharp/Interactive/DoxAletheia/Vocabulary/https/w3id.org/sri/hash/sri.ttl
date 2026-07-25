@@ -1,0 +1,305 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sri: <https://w3id.org/sri#>.
+
+<http://purl.org/dc/terms/bibliographicCitation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/source> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/linked-data/cube#> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/linked-data/sdmx/2009/measure#obsValue> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/ontology/bibo/doi> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/ontology/bibo/status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#broader> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://orcid.org/0000-0001-9521-8907> rdfs:label "Stefan Bischof";
+                                        <https://schema.org/affiliation> <https://www.siemens.at/>.
+<https://orcid.org/0000-0002-3050-159X> rdfs:label "Josiane Xavier Parreira";
+                                        <https://schema.org/affiliation> <https://www.siemens.at/>.
+<https://orcid.org/0000-0003-3445-0504> rdfs:label "Erwin Filtz";
+                                        <https://schema.org/affiliation> <https://www.siemens.at/>.
+<https://schema.org/affiliation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://schema.org/funding> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://schema.org/image> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://schema.org/logo> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://w3id.org/sri> <http://purl.org/dc/terms/bibliographicCitation> "Stefan Bischof, Erwin Filtz, Josiane Xavier Parreira. Smart Readiness Indicator Vocabulary. Revision: 1.0.0. Retrieved from: https://w3id.org/sri/1.0"@en;
+                       <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0003-3445-0504>,
+                                                              <https://orcid.org/0000-0002-3050-159X>;
+                       <http://purl.org/dc/terms/created> "2022-02-02"^^xsd:date;
+                       <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0001-9521-8907>;
+                       <http://purl.org/dc/terms/description> "A vocabulary specifying concepts and structures needed to represent different data cubes needed for the Smart Readiness Indicator.";
+                       <http://purl.org/dc/terms/issued> "2023-11-30"^^xsd:date;
+                       <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/>;
+                       <http://purl.org/dc/terms/modified> "2023-11-30"^^xsd:date;
+                       <http://purl.org/dc/terms/publisher> <https://www.siemens.at/>;
+                       <http://purl.org/dc/terms/source> <https://data.europa.eu/doi/10.2833/41100>;
+                       <http://purl.org/dc/terms/title> "Smart Readiness Indicator Vocabulary"@en;
+                       <http://purl.org/ontology/bibo/doi> "10.5281/zenodo.10047286";
+                       <http://purl.org/ontology/bibo/status> <http://purl.org/ontology/bibo/status/published>;
+                       <http://purl.org/vocab/vann/preferredNamespacePrefix> "sri";
+                       <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/sri#";
+                       a <http://www.w3.org/2002/07/owl#Ontology>;
+                       rdfs:label "Smart Readiness Indicator Vocabulary"@en;
+                       rdfs:seeAlso <https://energy.ec.europa.eu/topics/energy-efficiency/energy-efficient-buildings/smart-readiness-indicator_en>;
+                       <http://www.w3.org/2002/07/owl#imports> <http://purl.org/linked-data/cube>;
+                       <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/sri/1.0>;
+                       <http://www.w3.org/2002/07/owl#versionInfo> "1.0.0";
+                       <https://schema.org/funding> <https://cordis.europa.eu/project/id/893079>;
+                       <https://schema.org/image> <https://raw.githubusercontent.com/stefanbischof/sri/main/sridiagram.svg>;
+                       <https://schema.org/logo> <https://raw.githubusercontent.com/stefanbischof/sri/main/srilogo.svg>.
+sri:Building a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "This represents a building which is assessed."@en;
+             rdfs:label "Building"@en.
+sri:Domain a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "Class of technical domains."@en;
+           rdfs:label "Domain"@en;
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#narrower> ; 
+                            <http://www.w3.org/2002/07/owl#allValuesFrom> sri:Service ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           sri:FunctionalThing;
+           <http://www.w3.org/2002/07/owl#disjointWith> sri:Service.
+sri:FunctionalThing a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Class of instances in the functional hierarchy, this includes Domains and Services."@en;
+                    rdfs:label "FunctionalThing"@en.
+sri:Impact a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "Class of Impacts."@en;
+           rdfs:label "Impact"@en;
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#broader> ; 
+                            <http://www.w3.org/2002/07/owl#allValuesFrom> sri:KeyCapability ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           sri:ImpactThing;
+           <http://www.w3.org/2002/07/owl#disjointWith> sri:KeyCapability.
+sri:ImpactThing a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Class of all instances in the impact hierarchy, this includes Impacts and Key Capabilities."@en;
+                rdfs:label "ImpactThing"@en.
+sri:KeyCapability a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Class of all Key Capabilities, aggregation of Impacts."@en;
+                  rdfs:label "KeyCapability"@en;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#narrower> ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> sri:Impact ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  sri:ImpactThing.
+sri:Level a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "Class of service levels."@en;
+          rdfs:label "Level"@en.
+sri:Service a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Class for Services."@en;
+            rdfs:label "Service"@en;
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#broader> ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> sri:Domain ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            sri:FunctionalThing.
+sri:ServiceCatalogue a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "A Service Catalogue is a collection of services used in an assessment."@en;
+                     rdfs:label "Service catalogue"@en.
+sri:ServiceLevel a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Class for all ServiceLevel instances, which are all allowed/defined combinations of Services and Levels."@en;
+                 rdfs:label "Service level"@en;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> sri:Service ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> sri:function ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> sri:Level ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> sri:level ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>].
+sri:adaptTheirOperationToTheNeedsOfTheOccupant a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                 sri:KeyCapability;
+                                               rdfs:label "Adapt their operation to the needs of the occupant"@en;
+                                               <http://www.w3.org/2004/02/skos/core#narrower> sri:comfort,
+                                                                                              sri:convenience,
+                                                                                              sri:health_well_being_and_accessibility,
+                                                                                              sri:information_to_occupants.
+sri:adaptToSignalsFromTheGrid a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                sri:KeyCapability;
+                              rdfs:label "Adapt to signals from the grid"@en;
+                              <http://www.w3.org/2004/02/skos/core#narrower> sri:energy_flexibility_and_storage.
+sri:additionalLevel a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Additional Level if share is < 100%."@en;
+                    rdfs:label "additional level"@en;
+                    rdfs:range sri:Level.
+sri:assessment a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "Relates something to an assessment dataset."@en;
+               rdfs:label "assessment"@en;
+               rdfs:range [<http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/linked-data/cube#structure> ; 
+                           <http://www.w3.org/2002/07/owl#hasValue> sri:dsd-assessment ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          <http://purl.org/linked-data/cube#DataSet>.
+sri:building a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "Relates something to a Building."@en;
+             rdfs:label "building"@en;
+             rdfs:range sri:Building.
+sri:comfort a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              sri:Impact;
+            rdfs:label "Comfort"@en.
+sri:convenience a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  sri:Impact;
+                rdfs:label "Convenience"@en.
+sri:cooling a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              sri:Domain;
+            rdfs:label "Cooling"@en.
+sri:dE a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+         sri:Domain;
+       rdfs:label "Dynamic building envelope"@en.
+sri:dHW a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+          sri:Domain;
+        rdfs:label "Domestic hot water"@en.
+sri:dsd-assessment <http://purl.org/linked-data/cube#component> [<http://purl.org/linked-data/cube#dimension> sri:function],
+                                                                [<http://purl.org/linked-data/cube#measure> sri:level];
+                   a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     <http://purl.org/linked-data/cube#DataStructureDefinition>.
+sri:dsd-scores <http://purl.org/linked-data/cube#component> [<http://purl.org/linked-data/cube#dimension> sri:impact],
+                                                            [<http://purl.org/linked-data/cube#dimension> sri:function],
+                                                            [<http://purl.org/linked-data/cube#measure> sri:score];
+               a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 <http://purl.org/linked-data/cube#DataStructureDefinition>.
+sri:dsd-sriscores <http://purl.org/linked-data/cube#component> [<http://purl.org/linked-data/cube#dimension> sri:function],
+                                                               [<http://purl.org/linked-data/cube#dimension> sri:level],
+                                                               [<http://purl.org/linked-data/cube#measure> sri:icscore];
+                  a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    <http://purl.org/linked-data/cube#DataStructureDefinition>;
+                  rdfs:label "SRI scores DSD"@en.
+sri:dsd-weights <http://purl.org/linked-data/cube#component> [<http://purl.org/linked-data/cube#measure> sri:weight],
+                                                             [<http://purl.org/linked-data/cube#dimension> sri:impact],
+                                                             [<http://purl.org/linked-data/cube#dimension> sri:function];
+                a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  <http://purl.org/linked-data/cube#DataStructureDefinition>.
+sri:eV a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+         sri:Domain;
+       rdfs:label "Electric vehicle charging"@en.
+sri:electricity a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  sri:Domain;
+                rdfs:label "Electricity"@en.
+sri:energy_efficiency a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        sri:Impact;
+                      rdfs:label "Energy efficiency"@en.
+sri:energy_flexibility_and_storage a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                     sri:Impact;
+                                   rdfs:label "Energy flexibility and storage"@en.
+sri:function a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+               <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+               <http://www.w3.org/2002/07/owl#NamedIndividual>;
+             rdfs:comment "Relates something to a FunctionalThing."@en;
+             rdfs:label "function"@en;
+             rdfs:range sri:FunctionalThing.
+sri:health_well_being_and_accessibility a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                          sri:Impact;
+                                        rdfs:label "Health well being and accessibility"@en.
+sri:heating a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              sri:Domain;
+            rdfs:label "Heating"@en.
+sri:icscore a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+              <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              <http://purl.org/linked-data/cube#MeasureProperty>;
+            rdfs:comment "The impact criterion score is defined for Services and calculated for Domains in Step 3."@en;
+            rdfs:label "impact criterion score"@en;
+            rdfs:range xsd:integer;
+            rdfs:subPropertyOf <http://purl.org/linked-data/sdmx/2009/measure#obsValue>.
+sri:impact a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+             <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+             <http://www.w3.org/2002/07/owl#NamedIndividual>;
+           rdfs:comment "Relates something to an ImpactThing."@en;
+           rdfs:label "impact"@en;
+           rdfs:range sri:ImpactThing.
+sri:information_to_occupants a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                               sri:Impact;
+                             rdfs:label "Information to occupants"@en.
+sri:level a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+            <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+            <http://www.w3.org/2002/07/owl#NamedIndividual>;
+          rdfs:comment "Relates something to a Level."@en;
+          rdfs:label "level"@en;
+          rdfs:range sri:Level.
+sri:level0 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             sri:Level;
+           rdfs:label "Level 0"@en.
+sri:level1 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             sri:Level;
+           rdfs:label "Level 1"@en.
+sri:level2 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             sri:Level;
+           rdfs:label "Level 2"@en.
+sri:level3 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             sri:Level;
+           rdfs:label "Level 3"@en.
+sri:level4 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             sri:Level;
+           rdfs:label "Level 4"@en.
+sri:lighting a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               sri:Domain;
+             rdfs:label "Lighting"@en.
+sri:mC a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+         sri:Domain;
+       rdfs:label "Monitoring and control"@en.
+sri:maintenance_and_fault_prediction a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                       sri:Impact;
+                                     rdfs:label "Maintenance and fault prediction"@en.
+sri:max a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+          <http://www.w3.org/2002/07/owl#NamedIndividual>,
+          <http://purl.org/linked-data/cube#>;
+        rdfs:comment "Maximum impact criterion score. This is defined for Domains and calculated in Step 4."@en;
+        rdfs:label "maximum impact criterion score"@en;
+        rdfs:range xsd:integer.
+sri:optimiseEnergyEfficiencyAndOverallIn-UsePerformance a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                          sri:KeyCapability;
+                                                        rdfs:label "Optimise energy efficiency and overall in-use performance"@en;
+                                                        <http://www.w3.org/2004/02/skos/core#narrower> sri:energy_efficiency,
+                                                                                                       sri:maintenance_and_fault_prediction.
+sri:score a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+            <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+            <http://www.w3.org/2002/07/owl#NamedIndividual>,
+            <http://purl.org/linked-data/cube#MeasureProperty>;
+          rdfs:comment "The smart-readiness score is defined for ImpactThings on all levels from Impacts to the complete Building (Steps 5, 6, and 7) and optionally for Domains (Step 8)"@en;
+          rdfs:label "smart-readiness score"@en;
+          rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (xsd:decimal
+                                                               xsd:double
+                                                               xsd:float) ; 
+                      a rdfs:Datatype];
+          rdfs:subPropertyOf <http://purl.org/linked-data/sdmx/2009/measure#obsValue>.
+sri:serviceCatalogue a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Relates something to a ServiceCatalogue."@en;
+                     rdfs:label "service catalogue"@en;
+                     rdfs:range sri:ServiceCatalogue.
+sri:share a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+            <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+          rdfs:comment "A percentage (value between 0.0 and 1.0) which expresses that parts of a building are assessed with different levels wrt. a Service. If share is < 100% then additionalLevel has to be defined."@en;
+          rdfs:label "share"@en;
+          rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (xsd:decimal
+                                                               xsd:double
+                                                               xsd:float) ; 
+                      a rdfs:Datatype].
+sri:topDomain a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                sri:FunctionalThing;
+              rdfs:label "All domains"@en;
+              <http://www.w3.org/2004/02/skos/core#narrower> sri:lighting,
+                                                             sri:cooling,
+                                                             sri:dE,
+                                                             sri:mC,
+                                                             sri:heating,
+                                                             sri:electricity,
+                                                             sri:ventilation,
+                                                             sri:eV,
+                                                             sri:dHW.
+sri:topImpact a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                sri:ImpactThing;
+              rdfs:label "All impacts"@en;
+              <http://www.w3.org/2004/02/skos/core#narrower> sri:adaptTheirOperationToTheNeedsOfTheOccupant,
+                                                             sri:adaptToSignalsFromTheGrid,
+                                                             sri:optimiseEnergyEfficiencyAndOverallIn-UsePerformance.
+sri:ventilation a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  sri:Domain;
+                rdfs:label "Ventilation"@en.
+sri:weight a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+             <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+             <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             <http://purl.org/linked-data/cube#MeasureProperty>;
+           rdfs:comment "A weight of the weight matrix used for weighing the smart-readiness scores before aggregation."@en;
+           rdfs:label "weight"@en;
+           rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (xsd:decimal
+                                                                xsd:double
+                                                                xsd:float) ; 
+                       a rdfs:Datatype];
+           rdfs:subPropertyOf <http://purl.org/linked-data/sdmx/2009/measure#obsValue>.
+<https://www.siemens.at/> rdfs:label "Siemens AG Österreich".

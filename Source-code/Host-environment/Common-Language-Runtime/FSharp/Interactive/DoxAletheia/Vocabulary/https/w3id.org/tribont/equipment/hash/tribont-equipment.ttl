@@ -1,0 +1,485 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix tribont-equipment: <https://w3id.org/tribont/equipment#>.
+
+([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#d> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eq> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://w3id.org/tribont/core#hasDocument> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+[] <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger.
+([<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eqc> ; 
+ <http://www.w3.org/2003/11/swrl#classPredicate> tribont-equipment:EquipmentClass ; 
+ a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eq> ; 
+ <http://www.w3.org/2003/11/swrl#classPredicate> tribont-equipment:Equipment ; 
+ a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#eqc> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eq> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://w3id.org/isCharacterisedBy#belongsTo> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#m> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eqc> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://w3id.org/tribont/core#hasManufacturer> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#mp> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eq> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> tribont-equipment:measuringPrinciple ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B2ddeabe49455ee068f682e628b3c69b1 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B2f4cfaeead39cf56f7af60874a32ff23 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<https://w3id.org/isCharacterisedBy#Property>
+                                                                             <https://w3id.org/isCharacterisedBy#SubjectOfInterest>
+                                                                             <https://w3id.org/isCharacterisedBy#Unit>
+                                                                             <https://w3id.org/tribont/core#Company>
+                                                                             <https://w3id.org/tribont/core#Document>
+                                                                             <https://w3id.org/tribont/core#Role>
+                                                                             <https://w3id.org/tribont/core#Standard>
+                                                                             tribont-equipment:Calibration).
+([<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eq> ; 
+ <http://www.w3.org/2003/11/swrl#classPredicate> tribont-equipment:Equipment ; 
+ a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#c> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eq> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> tribont-equipment:hasCalibration ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#d> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#c> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://w3id.org/tribont/core#hasDocument> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B39ed547e9dd24f55928c19c75906343d a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#d> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eqc> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://w3id.org/tribont/core#hasDocument> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eq> ; 
+ <http://www.w3.org/2003/11/swrl#classPredicate> tribont-equipment:Equipment ; 
+ a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#eqc> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eq> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://w3id.org/isCharacterisedBy#belongsTo> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B43a469bf2c1511844e151d52df2a3f0b a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ();
+                                    <http://www.w3.org/2003/11/swrl#head> ([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#d> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eq> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://w3id.org/tribont/core#hasDocument> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]).
+([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#p> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eq> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> tribont-equipment:purpose ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+[] <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B54361d3575ae7778fbbaa085ea586c37 a <http://www.w3.org/2003/11/swrl#AtomList>.
+[] <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger.
+_:B6649a5dd38956a8859dd95ae2f8bde3e a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B8516da4fde73c70672b2c66e38945814 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<https://w3id.org/tribont/core#Body>
+                                                                             tribont-equipment:Equipment
+                                                                             tribont-equipment:EquipmentClass).
+_:B85e00c50e304748388cdbb968cb81911 a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ();
+                                    <http://www.w3.org/2003/11/swrl#head> ().
+[] <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger.
+[] <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger.
+([<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eq> ; 
+ <http://www.w3.org/2003/11/swrl#classPredicate> tribont-equipment:Equipment ; 
+ a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#eqc> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eq> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://w3id.org/isCharacterisedBy#belongsTo> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#mp> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eqc> ; 
+ <http://www.w3.org/2003/11/swrl#propertyPredicate> tribont-equipment:measuringPrinciple ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+[] <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger.
+_:Ba9a090b6589752274031fb9b438627f1 a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ([<http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eq> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#classPredicate> tribont-equipment:Equipment ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#eqc> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eq> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://w3id.org/isCharacterisedBy#belongsTo> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#p> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eqc> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> tribont-equipment:purpose ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]);
+                                    <http://www.w3.org/2003/11/swrl#head> ().
+_:Bb3b4b08d0130787aa513e47ef44907f6 a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ();
+                                    <http://www.w3.org/2003/11/swrl#head> ().
+_:Bb64367643829dde01a9faceab0fe478c a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ();
+                                    <http://www.w3.org/2003/11/swrl#head> ([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl:var#m> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl:var#eq> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#propertyPredicate> <https://w3id.org/tribont/core#hasManufacturer> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]).
+_:Bb9ae8951ba72048a83ad1f23c6be2a5f a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bbe49bf14771963890dc3eaacebb09b93 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bc3ed34bddb2bc12e45e2149ac7ff20b9 a <http://www.w3.org/2003/11/swrl#AtomList>.
+[] <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger.
+[] <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger.
+[] <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger.
+[] <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Be3a74fe86873793d7fcb544616bf2c58 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Beabb20185ca4a9e457c4a5697ff51247 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bf4dad9ee6cd1fc31b9de23ef470f7b7c a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bffce273a5799f20f62e8ac602b985f51 a <http://www.w3.org/2003/11/swrl#AtomList>.
+<http://creativecommons.org/ns#license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#cardinality> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#maxCardinality> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#qualifiedCardinality> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://w3id.org/isCharacterisedBy#Property> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/isCharacterisedBy#SubjectOfInterest> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/isCharacterisedBy#Unit> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/isCharacterisedBy#belongsTo> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://w3id.org/tribont/core#Body> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/core#Company> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/core#Document> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/core#HardnessProperty> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/core#OperationProperty> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/core#Role> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/core#Standard> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/core#TechnicalProperty> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/core#TribologicalProperty> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/core#Weight> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/tribont/core#hasDocument> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://w3id.org/tribont/core#hasLocation> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://w3id.org/tribont/core#hasManufacturer> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://w3id.org/tribont/core#isCharacterisedByOperationCondition> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://w3id.org/tribont/core#isCharacterisedByOutputMeasure> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://w3id.org/tribont/core#longName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<https://w3id.org/tribont/core#shortNam> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<https://w3id.org/tribont/equipment> <http://creativecommons.org/ns#license> <https://creativecommons.org/licenses/by-nc/4.0/>;
+                                     <http://gbol.life/ontology/bibo#status> "published";
+                                     <http://purl.org/dc/terms/bibliographicCitation> "Work in progress";
+                                     <http://purl.org/dc/terms/contributor> """Izaskun Fernandez (Tekniker) 
+Domain expert:Iban Quintana (Tekniker) 
+Domain expert:Xana Fernandez (Tekniker)"""@en;
+                                     <http://purl.org/dc/terms/created> "2023-06-02";
+                                     <http://purl.org/dc/terms/creator> "Patricia Casla (Tekniker)"@en;
+                                     <http://purl.org/dc/terms/description> "The goal of this module is to represent the equipment hierarchy model involved in the tribological experiments."@en;
+                                     <http://purl.org/dc/terms/issued> "2023-06-02";
+                                     <http://purl.org/dc/terms/publisher> "Tekniker";
+                                     <http://purl.org/dc/terms/title> "Equipment module";
+                                     <http://purl.org/vocab/vann/preferredNamespacePrefix> "equipment";
+                                     <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/tribont/equipment";
+                                     a <http://www.w3.org/2002/07/owl#Ontology>;
+                                     <http://www.w3.org/2002/07/owl#imports> <https://w3id.org/tribont/core>;
+                                     <http://www.w3.org/2002/07/owl#versionInfo> 1.0.
+tribont-equipment:AbrasionTester a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment " An equipment that measures the abrasion resistance of something.";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                 rdfs:label "AbrasionTester";
+                                 rdfs:subClassOf tribont-equipment:MeasuringEquipment;
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:Calibration a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "The action or process of calibrating something to maintain accuracy, and repeatability in measurements, assuring reliable results.";
+                              rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                              rdfs:label "Calibration";
+                              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onDataRange> xsd:dateTime ; 
+                                               <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> tribont-equipment:validityDate ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#onDataRange> xsd:dateTime ; 
+                                               <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> tribont-equipment:executionDate ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#allValuesFrom> tribont-equipment:CalibrationDocument ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#hasDocument> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>];
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:CalibrationDocument a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "A document that contains all the relevant information related to a specific calibration.";
+                                      rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                      rdfs:label "CalibrationDocument";
+                                      rdfs:subClassOf <https://w3id.org/tribont/core#Document>;
+                                      <http://www.w3.org/2002/07/owl#disjointWith> tribont-equipment:TechnicalDocument;
+                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:Equipment a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "An object which is instrumental for reaching a particular purpose through its characteristic functioning process.";
+                            rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                            rdfs:label "Equipment";
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/tribont/core#Company> ; 
+                                             <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#hasLocation> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#OperationProperty> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#isCharacterisedByOperationCondition> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> tribont-equipment:TechnicalDocument ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#hasDocument> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:string ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> tribont-equipment:purpose ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:string ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#shortNam> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#onClass> tribont-equipment:Calibration ; 
+                                             <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> tribont-equipment:hasCalibration ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#longName> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:string ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> tribont-equipment:measuringPrinciple ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            <https://w3id.org/isCharacterisedBy#SubjectOfInterest>,
+                                            [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#Company> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#hasLocation> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#allValuesFrom> tribont-equipment:Calibration ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> tribont-equipment:hasCalibration ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#Body> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> tribont-equipment:holdsSampleBody ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#TechnicalProperty> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#isCharacterisedByOutputMeasure> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (tribont-equipment:CalibrationDocument
+                                                                                                                                     tribont-equipment:TechnicalDocument) ; 
+                                                                                            a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#hasDocument> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>];
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:EquipmentClass a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "An aggrupation of equipments with a set of common atributes of characteristics.";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                 rdfs:label "EquipmentClass";
+                                 rdfs:subClassOf <https://w3id.org/isCharacterisedBy#SubjectOfInterest>,
+                                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#Body> ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> tribont-equipment:holdsSampleBody ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> tribont-equipment:TechnicalDocument ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#hasDocument> ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:string ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> tribont-equipment:measuringPrinciple ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> tribont-equipment:TechnicalDocument ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#hasDocument> ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:string ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> tribont-equipment:purpose ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>];
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:EquipmentStandard a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "A document approved by a recognized body that provides common to by fullfiled by an equipment.";
+                                    rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                    rdfs:label "EquipmentStandard";
+                                    rdfs:subClassOf <https://w3id.org/tribont/core#Standard>;
+                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:ExperimentalEquipment a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:comment "An equipment that reproduces certain operation conditions for experimentation purposes.";
+                                        rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                        rdfs:label "ExperimentalEquipment";
+                                        rdfs:subClassOf tribont-equipment:Equipment;
+                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:ExperimentalEquipmentClass a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "An aggrupation of experimental equipments with a set of common atributes of characteristics.";
+                                             rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                             rdfs:label "ExperimentalEquipmentClass";
+                                             rdfs:subClassOf tribont-equipment:EquipmentClass;
+                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:HardnessTester a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "An equipment that measures the hardness of a material, ";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                 rdfs:label "HardnessTester";
+                                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#HardnessProperty> ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#isCharacterisedByOutputMeasure> ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 tribont-equipment:MeasuringEquipment;
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:HardnessTesterClass a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "An aggrupation of hardness testers with a set of common atributes of characteristics.";
+                                      rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                      rdfs:label "HardnessTesterClass";
+                                      rdfs:subClassOf tribont-equipment:MeasuringEquipmentClass;
+                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:MachineryBook a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "A document providing all the relevant information of the technical characteristics of an equipment, and describes how and when to use and mantain it. ";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                rdfs:label "MachineryBook";
+                                rdfs:subClassOf tribont-equipment:TechnicalDocument;
+                                <http://www.w3.org/2002/07/owl#disjointWith> tribont-equipment:ManufacturerDataSheet;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:ManufacturerDataSheet a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:comment "A document provided by the manufacturer that includes a summary of technical characteristics, and describes how and when to use something.";
+                                        rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                        rdfs:label "ManufacturerDataSheet";
+                                        rdfs:subClassOf tribont-equipment:TechnicalDocument;
+                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:MeasuringEquipment a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "An equipment used to measure technical attributes or characteristics of something.";
+                                     rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                     rdfs:label "MeasuringEquipment";
+                                     rdfs:subClassOf tribont-equipment:Equipment;
+                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:MeasuringEquipmentClass a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment "An aggrupation of measuring equipment with a set of common atributes of characteristics.";
+                                          rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                          rdfs:label "MeasuringEquipmentClass";
+                                          rdfs:subClassOf tribont-equipment:EquipmentClass;
+                                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:OpticalMicroscope a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "An equipment used to assess surfaces by magnifying images with visible light.";
+                                    rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                    rdfs:label "OpticalMicroscope";
+                                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> tribont-equipment:OpticalMicroscope ; 
+                                                     <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#isCharacterisedByOperationCondition> ; 
+                                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                    tribont-equipment:MeasuringEquipment;
+                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:OpticalProfilometer a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "An equipment used to measure precisely surface profiles.";
+                                      rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                      rdfs:label "OpticalProfilometer";
+                                      rdfs:subClassOf tribont-equipment:MeasuringEquipment;
+                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:Scale a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "An equipment used to measure the weigth of somebody or something.";
+                        rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                        rdfs:label "Scale";
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#Weight> ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#isCharacterisedByOutputMeasure> ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        tribont-equipment:MeasuringEquipment;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:ScanningElectronMicroscope a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "An equipment used to assess the materials surfaces by producing images of a sample.";
+                                             rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                             rdfs:label "ScanningElectronMicroscope";
+                                             rdfs:subClassOf tribont-equipment:MeasuringEquipment;
+                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:ScratchTester a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "An equipment used to assess the coating adhesion.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                rdfs:label "ScratchTester";
+                                rdfs:subClassOf tribont-equipment:MeasuringEquipment;
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:TechnicalDocument a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "Information on how to to use and maintain something as for e.g. drawings, manuals, technical reports, etc.";
+                                    rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                    rdfs:label "TechnicalDocument";
+                                    rdfs:subClassOf <https://w3id.org/tribont/core#Document>;
+                                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:Tribometer a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "An equipment used to measure tribological properties (e.g. friction coefficients, wear, etc.) by simulating the interaction of between two surfaces in contact under specific operation conditions.";
+                             rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                             rdfs:label "Tribometer";
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#Body> ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> tribont-equipment:holdsMovingSampleBody ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/tribont/core#Body> ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> tribont-equipment:holdsMovingSampleBody ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             tribont-equipment:ExperimentalEquipment,
+                                             [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#Body> ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> tribont-equipment:holdsStaticSampleBody ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#TribologicalProperty> ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/tribont/core#isCharacterisedByOutputMeasure> ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/tribont/core#Body> ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> tribont-equipment:holdsStaticSampleBody ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>];
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:TribometerClass a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "An aggrupation of tribometers with a set of common atributes of characteristics.";
+                                  rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                  rdfs:label "TribometerClass";
+                                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#Body> ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> tribont-equipment:holdsStaticSampleBody ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  [<http://www.w3.org/2002/07/owl#allValuesFrom> <https://w3id.org/tribont/core#Body> ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> tribont-equipment:holdsMovingSampleBody ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  tribont-equipment:ExperimentalEquipmentClass;
+                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:executionDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                rdfs:comment "The date when a specific action has been performed.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                rdfs:label "executionDate";
+                                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:hasCalibration a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:comment "The relation between a specific equipment and the calibrations performed on it.";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                 rdfs:label "hasCalibration";
+                                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:holdsMovingSampleBody a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:comment "Relationship between an equipment and the moving sample  body it can hold";
+                                        rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                        rdfs:label "holdsMovingSampleBody";
+                                        rdfs:subPropertyOf tribont-equipment:holdsSampleBody;
+                                        <http://www.w3.org/2002/07/owl#inverseOf> tribont-equipment:isHeldMovingSampleBodyBy;
+                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:holdsSampleBody a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:comment "Relationship between an equipment and the sample body it can hold";
+                                  rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                  rdfs:label "holdsSampleBody";
+                                  <http://www.w3.org/2002/07/owl#inverseOf> tribont-equipment:isHeldSampleBodyBy;
+                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:holdsStaticSampleBody a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:comment "Relationship between an equipment and the static sample  body it can hold";
+                                        rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                        rdfs:label "holdsStaticSampleBody";
+                                        rdfs:subPropertyOf tribont-equipment:holdsSampleBody;
+                                        <http://www.w3.org/2002/07/owl#inverseOf> tribont-equipment:isHeldStaticSampleBodyBy;
+                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:isHeldMovingSampleBodyBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:comment "Relationship between a movig sample body and the equipment that hold it.";
+                                           rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                           rdfs:label "isHeldMovingSampleBodyBy";
+                                           rdfs:subPropertyOf tribont-equipment:isHeldSampleBodyBy;
+                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:isHeldSampleBodyBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                     rdfs:comment "Relationship between a sample body and the equipment that hold it.";
+                                     rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                     rdfs:label "isHeldSampleBodyBy";
+                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:isHeldStaticSampleBodyBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:comment "Relationship between astatic  sample body and the equipment that hold it.";
+                                           rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                           rdfs:label "isHeldStaticSampleBodyBy";
+                                           rdfs:subPropertyOf tribont-equipment:isHeldSampleBodyBy;
+                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:measuringPrinciple a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                     rdfs:comment "The measuring principle followed by an equipment.";
+                                     rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                                     rdfs:label "measuringPrinciple";
+                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:purpose a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:comment "The puspose of an equipment.";
+                          rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                          rdfs:label "purpose";
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+tribont-equipment:validityDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                               rdfs:comment "The date until which a given action is valid and after which it is necessary to repeat it.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/equipment";
+                               rdfs:label "validityDate";
+                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Testing".
+<urn:swrl:var#c> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl:var#d> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl:var#eq> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl:var#eqc> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl:var#m> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl:var#mp> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl:var#p> a <http://www.w3.org/2003/11/swrl#Variable>.

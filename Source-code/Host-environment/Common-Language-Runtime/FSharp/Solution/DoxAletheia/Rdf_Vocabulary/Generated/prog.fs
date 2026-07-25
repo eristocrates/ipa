@@ -28,6 +28,49 @@ module prog =
     /// <seealso href="http://purl.org/prog/Programme">http://purl.org/prog/Programme</seealso>
     let Programme = Prefixed_Name(prog, "Programme") |> PrefixedName
     /// <summary>
+    ///   <para>prog:has_programme</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Connects an ev:Event with a prog:Programme which describes it.</para>
+    /// labels<para>event is described by programme</para></remarks>
+    /// <seealso href="http://purl.org/prog/has_programme">http://purl.org/prog/has_programme</seealso>
+    let has_programme = Prefixed_Name(prog, "has_programme") |> PrefixedName
+    /// <summary>
+    ///   <para>prog:has_streamed_event</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Indicates that an Event is part of the specified programme, and should appear in any relevant 'streams' based on its subject or location. If it matches no things for which the programme is prog:streamed_by_location, prog:streamed_by_parent_event or prog:streamed_by_subject then a tool may choose to report this as broken data.</para>
+    /// labels<para>programme includes streamed event</para></remarks>
+    /// <seealso href="http://purl.org/prog/has_streamed_event">http://purl.org/prog/has_streamed_event</seealso>
+    let has_streamed_event = Prefixed_Name(prog, "has_streamed_event") |> PrefixedName
+
+    /// <summary>
+    ///   <para>prog:streamed_by_location</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Indicates that one of the streams in this visualisation is events with a event:place relating them to the geo:SpatialThing indicated. This is the most common way an programme is designed.</para>
+    /// labels<para>programme has a stream for location</para></remarks>
+    /// <seealso href="http://purl.org/prog/streamed_by_location">http://purl.org/prog/streamed_by_location</seealso>
+    let streamed_by_location =
+        Prefixed_Name(prog, "streamed_by_location") |> PrefixedName
+
+    /// <summary>
+    ///   <para>prog:Activity</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>This class represents the abstract content of an event, which may be repeated many times, once or never. For example a training course, or a play. The primary purpose is to indicate that several events will have very similar content, to aid planning what to attend. It does not indicate that there is any reason people could not attend more than one realisation. It should not be used to abstract a repeating event, such as morning coffee or a monthly meeting.
+    ///
+    ///
+    /// Multiple Events may reference that they are realises of the same Activity.
+    /// Activities are not Events and may not have a time or place.</para>
+    /// labels<para>Activity</para></remarks>
+    /// <seealso href="http://purl.org/prog/Activity">http://purl.org/prog/Activity</seealso>
+    let Activity = Prefixed_Name(prog, "Activity") |> PrefixedName
+    /// <summary>
     ///   <para>prog:has_event</para>
     /// </summary>
     /// <remarks>
@@ -46,23 +89,14 @@ module prog =
     /// <seealso href="http://purl.org/prog/has_sidebar_event">http://purl.org/prog/has_sidebar_event</seealso>
     let has_sidebar_event = Prefixed_Name(prog, "has_sidebar_event") |> PrefixedName
     /// <summary>
-    ///   <para>prog:has_timeslot</para>
+    ///   <para>prog:realises</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>Indicates that a TimeSlot is part of the specified programme.</para>
-    /// labels<para>programme has timeslot</para></remarks>
-    /// <seealso href="http://purl.org/prog/has_timeslot">http://purl.org/prog/has_timeslot</seealso>
-    let has_timeslot = Prefixed_Name(prog, "has_timeslot") |> PrefixedName
-    /// <summary>
-    ///   <para>prog:streamed_by_subject</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Indicates that one of the streams in this visualisation is events with a dcterms:subject relating them to the skos:Concept indicated.</para>
-    /// labels<para>programme has a stream for subject</para></remarks>
-    /// <seealso href="http://purl.org/prog/streamed_by_subject">http://purl.org/prog/streamed_by_subject</seealso>
-    let streamed_by_subject = Prefixed_Name(prog, "streamed_by_subject") |> PrefixedName
+    ///   <para>Relates a concrete event:Event to the prog:Activity that it is a realisation of. For example this would relate the training course on Thursday to the prog:Activity of the laser safety lecure. All realisations of the laser safety lecture have generally the same content, although details may vary. It is not expected that a normal attendee will attend more than one realisation of an Activity, although certainly not precluded at the level of detail we're working with here.</para>
+    /// labels<para>event realises activity</para></remarks>
+    /// <seealso href="http://purl.org/prog/realises">http://purl.org/prog/realises</seealso>
+    let realises = Prefixed_Name(prog, "realises") |> PrefixedName
 
     /// <summary>
     ///   <para>prog:streamed_by_parent_event</para>
@@ -75,19 +109,6 @@ module prog =
     let streamed_by_parent_event =
         Prefixed_Name(prog, "streamed_by_parent_event") |> PrefixedName
 
-    /// <summary>
-    ///   <para>prog:Activity</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>This class represents the abstract content of an event, which may be repeated many times, once or never. For example a training course, or a play. The primary purpose is to indicate that several events will have very similar content, to aid planning what to attend. It does not indicate that there is any reason people could not attend more than one realisation. It should not be used to abstract a repeating event, such as morning coffee or a monthly meeting.
-    ///
-    ///
-    /// Multiple Events may reference that they are realises of the same Activity.
-    /// Activities are not Events and may not have a time or place.</para>
-    /// labels<para>Activity</para></remarks>
-    /// <seealso href="http://purl.org/prog/Activity">http://purl.org/prog/Activity</seealso>
-    let Activity = Prefixed_Name(prog, "Activity") |> PrefixedName
     /// <summary>
     ///   <para>prog:TimeSlot</para>
     /// </summary>
@@ -102,40 +123,20 @@ module prog =
     /// <seealso href="http://purl.org/prog/TimeSlot">http://purl.org/prog/TimeSlot</seealso>
     let TimeSlot = Prefixed_Name(prog, "TimeSlot") |> PrefixedName
     /// <summary>
-    ///   <para>prog:has_programme</para>
+    ///   <para>prog:streamed_by_subject</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>Connects an ev:Event with a prog:Programme which describes it.</para>
-    /// labels<para>event is described by programme</para></remarks>
-    /// <seealso href="http://purl.org/prog/has_programme">http://purl.org/prog/has_programme</seealso>
-    let has_programme = Prefixed_Name(prog, "has_programme") |> PrefixedName
+    ///   <para>Indicates that one of the streams in this visualisation is events with a dcterms:subject relating them to the skos:Concept indicated.</para>
+    /// labels<para>programme has a stream for subject</para></remarks>
+    /// <seealso href="http://purl.org/prog/streamed_by_subject">http://purl.org/prog/streamed_by_subject</seealso>
+    let streamed_by_subject = Prefixed_Name(prog, "streamed_by_subject") |> PrefixedName
     /// <summary>
-    ///   <para>prog:has_streamed_event</para>
+    ///   <para>prog:has_timeslot</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>Indicates that an Event is part of the specified programme, and should appear in any relevant 'streams' based on its subject or location. If it matches no things for which the programme is prog:streamed_by_location, prog:streamed_by_parent_event or prog:streamed_by_subject then a tool may choose to report this as broken data.</para>
-    /// labels<para>programme includes streamed event</para></remarks>
-    /// <seealso href="http://purl.org/prog/has_streamed_event">http://purl.org/prog/has_streamed_event</seealso>
-    let has_streamed_event = Prefixed_Name(prog, "has_streamed_event") |> PrefixedName
-    /// <summary>
-    ///   <para>prog:realises</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Relates a concrete event:Event to the prog:Activity that it is a realisation of. For example this would relate the training course on Thursday to the prog:Activity of the laser safety lecure. All realisations of the laser safety lecture have generally the same content, although details may vary. It is not expected that a normal attendee will attend more than one realisation of an Activity, although certainly not precluded at the level of detail we're working with here.</para>
-    /// labels<para>event realises activity</para></remarks>
-    /// <seealso href="http://purl.org/prog/realises">http://purl.org/prog/realises</seealso>
-    let realises = Prefixed_Name(prog, "realises") |> PrefixedName
-
-    /// <summary>
-    ///   <para>prog:streamed_by_location</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Indicates that one of the streams in this visualisation is events with a event:place relating them to the geo:SpatialThing indicated. This is the most common way an programme is designed.</para>
-    /// labels<para>programme has a stream for location</para></remarks>
-    /// <seealso href="http://purl.org/prog/streamed_by_location">http://purl.org/prog/streamed_by_location</seealso>
-    let streamed_by_location =
-        Prefixed_Name(prog, "streamed_by_location") |> PrefixedName
+    ///   <para>Indicates that a TimeSlot is part of the specified programme.</para>
+    /// labels<para>programme has timeslot</para></remarks>
+    /// <seealso href="http://purl.org/prog/has_timeslot">http://purl.org/prog/has_timeslot</seealso>
+    let has_timeslot = Prefixed_Name(prog, "has_timeslot") |> PrefixedName

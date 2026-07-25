@@ -17,15 +17,6 @@ module media =
     /// <seealso href="http://purl.org/media#Collection">http://purl.org/media#Collection</seealso>
     let Collection = Prefixed_Name(media, "Collection") |> PrefixedName
     /// <summary>
-    ///   <para>media:Recording</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A recording of an item of interest in any form.</para>
-    /// labels<para>&lt;a xmlns="http://www.w3.org/1999/xhtml" href="http://purl.org/media#Recording" xml:lang="en"&gt;media:Recording&lt;/a&gt;</para></remarks>
-    /// <seealso href="http://purl.org/media#Recording">http://purl.org/media#Recording</seealso>
-    let Recording = Prefixed_Name(media, "Recording") |> PrefixedName
-    /// <summary>
     ///   <para>media:contains</para>
     /// </summary>
     /// <remarks>
@@ -36,15 +27,25 @@ module media =
     /// <seealso href="http://purl.org/media#contains">http://purl.org/media#contains</seealso>
     let contains = Prefixed_Name(media, "contains") |> PrefixedName
     /// <summary>
-    ///   <para>media:depiction</para>
+    ///   <para>media:duration</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:DatatypeProperty</para>
-    ///   <para>An image summary
-    ///             of the media recording.</para>
+    ///   <para>The length of the
+    ///             media recording encoded in ISO-8601 time duration format.</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/media#depiction">http://purl.org/media#depiction</seealso>
-    let depiction = Prefixed_Name(media, "depiction") |> PrefixedName
+    /// <seealso href="http://purl.org/media#duration">http://purl.org/media#duration</seealso>
+    let duration = Prefixed_Name(media, "duration") |> PrefixedName
+    /// <summary>
+    ///   <para>media:sample</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>A link to a
+    ///             sample file or stream of the media recording.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/media#sample">http://purl.org/media#sample</seealso>
+    let sample = Prefixed_Name(media, "sample") |> PrefixedName
     /// <summary>
     ///   <para>media:download</para>
     /// </summary>
@@ -56,15 +57,24 @@ module media =
     /// <seealso href="http://purl.org/media#download">http://purl.org/media#download</seealso>
     let download = Prefixed_Name(media, "download") |> PrefixedName
     /// <summary>
-    ///   <para>media:duration</para>
+    ///   <para>media:depiction</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The length of the
-    ///             media recording encoded in ISO-8601 time duration format.</para>
+    ///   <para>An image summary
+    ///             of the media recording.</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/media#duration">http://purl.org/media#duration</seealso>
-    let duration = Prefixed_Name(media, "duration") |> PrefixedName
+    /// <seealso href="http://purl.org/media#depiction">http://purl.org/media#depiction</seealso>
+    let depiction = Prefixed_Name(media, "depiction") |> PrefixedName
+    /// <summary>
+    ///   <para>media:Recording</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A recording of an item of interest in any form.</para>
+    /// labels<para>&lt;a xmlns="http://www.w3.org/1999/xhtml" href="http://purl.org/media#Recording" xml:lang="en"&gt;media:Recording&lt;/a&gt;</para></remarks>
+    /// <seealso href="http://purl.org/media#Recording">http://purl.org/media#Recording</seealso>
+    let Recording = Prefixed_Name(media, "Recording") |> PrefixedName
     /// <summary>
     ///   <para>media:position</para>
     /// </summary>
@@ -87,13 +97,3 @@ module media =
     /// </remarks>
     /// <seealso href="http://purl.org/media#rating">http://purl.org/media#rating</seealso>
     let rating = Prefixed_Name(media, "rating") |> PrefixedName
-    /// <summary>
-    ///   <para>media:sample</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>A link to a
-    ///             sample file or stream of the media recording.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/media#sample">http://purl.org/media#sample</seealso>
-    let sample = Prefixed_Name(media, "sample") |> PrefixedName

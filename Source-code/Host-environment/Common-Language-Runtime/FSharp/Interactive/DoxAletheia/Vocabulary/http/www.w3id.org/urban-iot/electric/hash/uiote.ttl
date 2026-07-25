@@ -1,0 +1,505 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix uiote: <http://www.w3id.org/urban-iot/electric#>.
+
+_:B2c43c848dac0d42a2d4f8e7246af218b a rdf:List.
+_:B595684b80c72ea717a9d550bd3df10d8 a rdf:List.
+(<http://www.w3.org/2004/02/skos/core#Concept>
+ [<http://www.w3.org/2002/07/owl#hasValue> <http://w3id.org/urban-iot/kos/electric/charge-access-method> ; 
+ <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#inScheme> ; 
+ a <http://www.w3.org/2002/07/owl#Restriction>]) a rdf:List.
+(<http://www.w3.org/2004/02/skos/core#Concept>
+ [<http://www.w3.org/2002/07/owl#hasValue> <http://w3id.org/urban-iot/kos/electric/parking-restriction> ; 
+ <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#inScheme> ; 
+ a <http://www.w3.org/2002/07/owl#Restriction>]) a rdf:List.
+_:Bcdedf718376f6f4057b2b4c040bf086c a rdf:List.
+(<http://www.w3.org/2004/02/skos/core#Concept>
+ [<http://www.w3.org/2002/07/owl#hasValue> <http://w3id.org/urban-iot/kos/electric/EVSE-charge-category> ; 
+ <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#inScheme> ; 
+ a <http://www.w3.org/2002/07/owl#Restriction>]) a rdf:List.
+(<http://www.w3.org/2004/02/skos/core#Concept>
+ [<http://www.w3.org/2002/07/owl#hasValue> <http://w3id.org/urban-iot/kos/electric/power-supply> ; 
+ <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#inScheme> ; 
+ a <http://www.w3.org/2002/07/owl#Restriction>]) a rdf:List.
+_:Bda7290263f342bf7ae9c3a05aa99522f a rdf:List.
+_:Be0d85e88d2c615875ad2374cbcfebb29 a rdf:List.
+(<http://www.w3.org/2004/02/skos/core#Concept>
+ [<http://www.w3.org/2002/07/owl#hasValue> uiote:EVSE-state ; 
+ <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#inScheme> ; 
+ a <http://www.w3.org/2002/07/owl#Restriction>]) a rdf:List.
+<http://schema.mobivoc.org/#PlugType> <http://purl.org/vocab/vann/usageNote> "Tipi di prese standard che può avere un connettore."@it;
+                                      a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:label "Tipo di Presa"@it,
+                                                 "Plug Type"@en.
+<http://schema.org/Organization> a <http://www.w3.org/2002/07/owl#Class>.
+<http://schema.org/image> <http://purl.org/vocab/vann/usageNote> "Literal datatype xsd:anyURI."@en;
+                          a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:label "immagine"@it,
+                                     "image"@en.
+<http://w3id.org/urban-iot/kos/electric/EVSE-charge-category> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                              rdfs:comment "Electric Mobility EVSE Charge Category."@en,
+                                                                           "Categoria di ricarica per colonnine di ricarica."@it;
+                                                              rdfs:label "EVSE Charge Category"@en,
+                                                                         "Categoria di ricarica EVSE"@it.
+<http://w3id.org/urban-iot/kos/electric/charge-access-method> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                              rdfs:comment "Metodo di accesso per ricarica di veicoli nella mobilità elettrica."@it,
+                                                                           "Electric Mobility Charge Vehicles Access Method."@en;
+                                                              rdfs:label "Metodo di Accesso alla Ricarica"@it,
+                                                                         "Charge Vehicles Access Method"@en.
+<http://w3id.org/urban-iot/kos/electric/parking-restriction> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                             rdfs:comment "Restrizione per le aree di parcheggio nella mobilità elettrica."@it,
+                                                                          "Electric Mobility Parking Restriction."@en;
+                                                             rdfs:label "Restrizione Parcheggio"@it,
+                                                                        "Parking Restriction"@en.
+<http://w3id.org/urban-iot/kos/electric/power-supply> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                                                      rdfs:comment "Tipo di alimentazione per la mobilità elettrica."@it,
+                                                                   "Electric Mobility Power Supply."@en;
+                                                      rdfs:label "Tipo di Alimentazione"@it,
+                                                                 "Power Supply"@en.
+<http://www.w3.org/2004/02/skos/core#Concept> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2004/02/skos/core#ConceptScheme> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2004/02/skos/core#inScheme> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.w3id.org/urban-iot/electric> <http://purl.org/dc/elements/1.1/contributor> "Area Pianificazione e Monitoraggio (AMAT Milano)",
+                                                                                       "Direzione Sistemi Informativi ed Agenda Digitale - Area Gestione ed Integrazione Dati (Comune di Milano)",
+                                                                                       "Direzione Mobilità e Trasporti - Area Pianificazione e Programmazione Mobilità (Comune di Milano)";
+                                         <http://purl.org/dc/elements/1.1/creator> "Irene Celino (Cefriel)",
+                                                                                   "Ilaria Baroni (Cefriel)",
+                                                                                   "Mario Scrocca (Cefriel)";
+                                         <http://purl.org/dc/elements/1.1/publisher> "Comune di Milano";
+                                         <http://purl.org/dc/elements/1.1/rights> "Copyright Comune di Milano, 2020";
+                                         <http://purl.org/dc/elements/1.1/title> "Ontologie per gli Apparati IoT Urbani - Modulo Electric Mobility"@it,
+                                                                                 "Urban IoT Ontologies - Electric Mobility Module"@en;
+                                         <http://purl.org/dc/terms/bibliographicCitation> "Comune di Milano. Urban IoT Ontologies - Electric Mobility Module (v1.0.0). http://www.w3id.org/urban-iot/electric";
+                                         <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/>;
+                                         <http://purl.org/vocab/vann/preferredNamespacePrefix> "uiote";
+                                         <http://purl.org/vocab/vann/preferredNamespaceUri> "http://www.w3id.org/urban-iot/electric#";
+                                         a <http://www.w3.org/2002/07/owl#Ontology>;
+                                         rdfs:comment "Modulo Electric Mobility delle ontologie per gli apparati IoT urbani."@it,
+                                                      "Electric Mobility module of the suite of ontologies for urban IoT devices."@en;
+                                         rdfs:label "Urban IoT Ontologies - Electric Mobility Module"@en,
+                                                    "Ontologie per gli Apparati IoT Urbani - Modulo Electric Mobility"@it;
+                                         <http://www.w3.org/2002/07/owl#imports> <http://www.w3id.org/urban-iot/core/1.0.0>;
+                                         <http://www.w3.org/2002/07/owl#versionIRI> <http://www.w3id.org/urban-iot/electric/1.0.0>;
+                                         <http://www.w3.org/2002/07/owl#versionInfo> "v1.0.0".
+uiote:ChargePointOperator a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Organizzazione che gestisce l'erogazione di corrente presso le Stazioni di Ricarica."@it,
+                                       "Organization that manages the supply of electricity in the Charging Stations."@en;
+                          rdfs:label "Operatore del Punto di Ricarica"@it,
+                                     "Charge Point Operator"@en;
+                          rdfs:subClassOf <http://schema.org/Organization>.
+uiote:ChargingService a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Servizio operato da un Gestore di Servizi per la ricarica elettrica, con il fine di gestire l'utilizzo di Colonnine di Ricarica (EVSE)."@it,
+                                   "Service operated by an eMobility Service Provider, with the purpose to manage the use of Electric Vehicle Supply Equipments (EVSE)."@en;
+                      rdfs:label "Servizio di Ricarica"@it,
+                                 "Charging Service"@en;
+                      rdfs:subClassOf <http://schema.org/Service>.
+uiote:ChargingServiceOffer a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Tariffa offerta agli Utenti dei Servizi di Ricarica."@it,
+                                        "Tariff offered to charge services Users."@en;
+                           rdfs:label "Tariffa per Servizi di Ricarica"@it,
+                                      "Charging Service Offer"@en;
+                           rdfs:subClassOf <http://schema.org/Offer>.
+uiote:ChargingSession a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Sessione dove un utente richiede la carica del proprio veicolo, con tutte le informazioni collegate a questa attività."@it,
+                                   "Session where a\\n user asks to a charge for his vehicle, with all the information related to this activity."@en;
+                      rdfs:label "Sessione di Ricarica"@it,
+                                 "Charging Session"@en;
+                      rdfs:subClassOf <http://www.w3id.org/urban-iot/core#UsageSession>.
+uiote:ChargingStation a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Place where it is possible to recharge vehicles, that includes both Electric Vehicle Supply Equipments (EVSE) and the parking areas to allow the vehicle stop during the charging activity."@en,
+                                   "Luogo dove si possono ricaricare veicoli elettrici, comprensivo sia di Colonnine di Ricarica per Veicoli Elettrici (EVSE) che delle aree di sosta per lasciare il veicolo durante la ricarica."@it;
+                      rdfs:label "Stazione di Ricarica"@it,
+                                 "Charging Station"@en;
+                      rdfs:subClassOf <http://www.w3id.org/urban-iot/core#ServiceResource>,
+                                      <http://www.w3id.org/urban-iot/core#MobilityStation>.
+uiote:Connector a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Connettore collegato a una Colonnina di Ricarica per Veicoli Elettrici (EVSE)."@it,
+                             "Connector related to an Electric Vehicle Supply Equipment (EVSE)."@en;
+                rdfs:label "Connettore"@it,
+                           "Connector"@en.
+uiote:EVSE a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "Electric Vehicle Supply Equipment (EVSE) available for charging vehicles."@en,
+                        "Colonnina di Ricarica (EVSE) messa a disposizione per la ricarica di veicoli elettrici."@it;
+           rdfs:label "Electric Vehicle Supply Equipment (EVSE)"@en,
+                      "Colonnina di Ricarica per Veicoli Elettrici (EVSE)"@it;
+           rdfs:subClassOf <http://www.w3.org/ns/sosa/Sensor>.
+uiote:EVSE-state a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                 rdfs:comment "Stato della Colonnina di Ricarica per Veicoli Elettrici."@it,
+                              "State for Electric Vehicle Supply Equipment."@en;
+                 rdfs:label "Stato Colonnina di Ricarica"@it,
+                            "EVSE state"@en.
+uiote:EVSERecord a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Registrazione dello stato in cui si trova nei vari momenti la Colonnina di Ricarica (EVSE): in carica, disponibile, inattiva, etc."@it,
+                              "Registration status for the Electric Vehicle Supply Equipment (EVSE): in charge, available, inoperative, ecc."@en;
+                 rdfs:label "Stato della Colonnina di Ricarica"@it,
+                            "Electric Vehicle Supply Equipment Record"@en;
+                 rdfs:subClassOf <http://www.w3id.org/urban-iot/core#SensorRecord>.
+uiote:EVSEState a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Connection to possible states for an EVSE (Electric Vehicle Supply Equipment)."@en,
+                             "Associazioni a possibili stati  in cui una Colonnina per la Ricarica Veicoli Elettrici (EVSE) può trovarsi."@it;
+                rdfs:domain uiote:EVSERecord;
+                rdfs:label "stato dell'EVSE"@it,
+                           "EVSE state"@en;
+                rdfs:range [a <http://www.w3.org/2002/07/owl#Class> ; 
+                            <http://www.w3.org/2002/07/owl#intersectionOf> ()].
+uiote:chargingDuringClosure a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:comment "Tempo di ricarica trascorso durante la chiusura del servizio."@it,
+                                         "Charging time during the closure of the service."@en;
+                            rdfs:domain uiote:ChargingStation;
+                            rdfs:label "ricarica durante la chiusura"@it,
+                                       "charging during closure"@en;
+                            rdfs:range xsd:boolean.
+uiote:chargingEnabledBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "Associates a Charging Station to a Charging Service which enabled it."@en,
+                                     "Associa una Stazione di Ricarica ad un Servizio di Ricarica che l'abilita."@it;
+                        rdfs:domain uiote:ChargingSession;
+                        rdfs:label "ricarica abilitata da"@it,
+                                   "charging enabled by"@en;
+                        rdfs:range uiote:ChargingService;
+                        rdfs:subPropertyOf <http://www.w3id.org/urban-iot/core#sessionEnabledBy>;
+                        <http://www.w3.org/2002/07/owl#inverseOf> uiote:enablesCharging.
+uiote:chargingPerformedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "Associates a Charging Session with a Service Private User who performs the Session."@en,
+                                       "Associa una Sessione di Ricarica all'Utente Privato del Servizio che la esegue."@it;
+                          rdfs:domain uiote:ChargingSession;
+                          rdfs:label "ricarica effettuata da"@it,
+                                     "charging performed by"@en;
+                          rdfs:range <http://www.w3id.org/urban-iot/core#ServicePrivateUser>;
+                          rdfs:subPropertyOf <http://www.w3id.org/urban-iot/core#sessionPerformedBy>;
+                          <http://www.w3.org/2002/07/owl#inverseOf> uiote:performsCharging.
+uiote:chargingSessionDuration a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                              rdfs:comment "Indicates the duration of a Charging Session."@en,
+                                           "Indica la durata di una determinata Sessione di Ricarica."@it;
+                              rdfs:domain uiote:ChargingSession;
+                              rdfs:label "durata sessione di ricarica"@it,
+                                         "charging session duration"@en;
+                              rdfs:range xsd:int;
+                              rdfs:subPropertyOf <http://schema.org/duration>.
+uiote:chargingStationUsedIn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "Associates a Charging Station to a Charging Session where the Station is used."@en,
+                                         "Associa una Stazione di Ricarica ad una Sessione di Ricarica che la utilizza."@it;
+                            rdfs:domain uiote:ChargingStation;
+                            rdfs:label "stazione di ricarica usata in"@it,
+                                       "charging station used in"@en;
+                            rdfs:range uiote:ChargingSession;
+                            rdfs:subPropertyOf <http://www.w3id.org/urban-iot/core#resourceUsedIn>;
+                            <http://www.w3.org/2002/07/owl#inverseOf> uiote:usesChargingStation.
+uiote:eMobilityServiceProvider a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Organizzazione che fornisce il Servizio di Ricarica."@it,
+                                            "Organization which offers the Charging Service"@en;
+                               rdfs:label "eMobility Service Provider"@en,
+                                          "Gestore di Servizi per la Ricarica Elettica"@it;
+                               rdfs:subClassOf <http://schema.org/Organization>.
+uiote:enablesCharging a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "Un Servizio di Ricarica abilita Sessioni di Ricarica."@it,
+                                   "A Charging Service can enable Charging Sessions"@en;
+                      rdfs:domain uiote:ChargingService;
+                      rdfs:label "enables charging"@en,
+                                 "abilita la ricarica"@it;
+                      rdfs:range uiote:ChargingSession;
+                      rdfs:subPropertyOf <http://www.w3id.org/urban-iot/core#enablesSession>.
+uiote:floorLevel a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:comment "Piano al quale è installata la colonnina di ricarica per veicoli elettrici (EVSE)."@it,
+                              "Floore level where the Electric Vehicle Supply Equimpment (EVSE) is installed."@en;
+                 rdfs:domain uiote:EVSE;
+                 rdfs:label "numero di piano"@it,
+                            "floor level"@en;
+                 rdfs:range xsd:int.
+uiote:hasChargeAccessMethod a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "Associazione di una Colonnina di Ricarica per Veicoli Elettrici (EVSE) a possibili metodi per attivare la ricarica."@it,
+                                         "Association for an Electric Vehicle Supply Equipment (EVSE) to possible methods to activate the charge."@en;
+                            rdfs:domain uiote:EVSE;
+                            rdfs:label "has charge access method"@en,
+                                       "ha un metodo di accesso alla ricarica"@it;
+                            rdfs:range [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                        <http://www.w3.org/2002/07/owl#intersectionOf> ()].
+uiote:hasChargingServiceOffer a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:comment "Associazine tra una Stazione di Ricarica e un'Offerta di Ricarica."@it,
+                                           "Associates a Charging Station to a Charging Offer."@en;
+                              rdfs:domain uiote:ChargingStation;
+                              rdfs:label "has charging service offer"@en,
+                                         "ha un'offerta di ricarica"@it;
+                              rdfs:range uiote:ChargingServiceOffer.
+uiote:hasChargingStationOwner a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:comment "Associates an Organization with a Charging Station, where the Organization owns the Station."@en,
+                                           "Associa una Organizzazione a una Stazione di Ricarica, dove l'Organizzazione possiede la Stazione."@it;
+                              rdfs:domain uiote:ChargingStation;
+                              rdfs:label "possiede una stazione di ricarica"@it,
+                                         "has charging station owner"@en;
+                              rdfs:range <http://schema.org/Organization>.
+uiote:hasConnector a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Associates a Connector to an Electric Vehicle Supply Equipment (EVSE)."@en,
+                                "Associa un Connettore ad una Colonnina di Ricarica per Veicoli Elettrici (EVSE)."@it;
+                   rdfs:domain uiote:EVSE;
+                   rdfs:label "has connector"@en,
+                              "ha un connettore"@it;
+                   rdfs:range uiote:Connector;
+                   <http://www.w3.org/2002/07/owl#inverseOf> uiote:isConnectorOf.
+uiote:hasEVSE a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Associates a Charging Station to an Electric Vehicle Supply Equipment (EVSE)."@en,
+                           "Associa una Stazione di Ricarica a una Colonnina per la Ricarica di Veicoli Elettrici (EVSE)."@it;
+              rdfs:domain uiote:ChargingStation;
+              rdfs:label "has EVSE"@en,
+                         "ha un EVSE"@it;
+              rdfs:range uiote:EVSE;
+              <http://www.w3.org/2002/07/owl#inverseOf> uiote:isEVSEOf.
+uiote:hasEVSEChargeCategory a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "Associates a Electric Vehicle Supply Equipment (EVSE) to the possible charge categories."@en,
+                                         "Associa una Colonnina di Ricarica per Veicoli Elettirci (EVSE) alle possibili categorie di ricarica."@it;
+                            rdfs:domain uiote:EVSE;
+                            rdfs:label "has EVSE Charge Category"@en,
+                                       "ha una categoria di ricarica per EVSE"@it;
+                            rdfs:range [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                        <http://www.w3.org/2002/07/owl#intersectionOf> ()].
+uiote:hasFacilityNearBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "Associates a Charging station with the possible point of interest near by, represented as Place."@en,
+                                     "Associa una Stazione di Ricarica ai possibili punti di interesse in zona, rappresentati come Luogo."@it;
+                        rdfs:domain uiote:ChargingStation;
+                        rdfs:label "has facility near by"@en,
+                                   "ha punti di interesse vicini"@it;
+                        rdfs:range <http://schema.org/Place>.
+uiote:hasParkingRestriction a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "Associates an Electric Vehicle Supply Equipment (EVSE) to possible parking restrictions to use the charging service."@en,
+                                         "Associa una Colonnina di Ricarica per Veicoli Elettrici (EVSE) a possibili restrizioni di sosta per poter sfruttare il servizio."@it;
+                            rdfs:domain uiote:EVSE;
+                            rdfs:label "has parking restriction"@en,
+                                       "ha restrizioni di parcheggio"@it;
+                            rdfs:range [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                        <http://www.w3.org/2002/07/owl#intersectionOf> ()].
+uiote:hasPowerSupply a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Associates a Connector to possible power supplies."@en,
+                                  "Associa un Connettore ai possibili tipi di alimentazione."@it;
+                     rdfs:domain uiote:Connector;
+                     rdfs:label "has power supply"@en,
+                                "ha tipi di alimentazione"@it;
+                     rdfs:range [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                 <http://www.w3.org/2002/07/owl#intersectionOf> ()].
+uiote:hasStandard a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "Associates a Connector to possible standard."@en,
+                               "Associa un Connettore ai possibili standard di prese."@it;
+                  rdfs:domain uiote:Connector;
+                  rdfs:label "has standard"@en,
+                             "ha standard"@it;
+                  rdfs:range <http://schema.mobivoc.org/#PlugType>.
+uiote:hasSubChargePointOperator a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:comment "Associates a Charging Station to a possible sub operator, identified as an Organization."@en,
+                                             "Associa una Stazione di Ricarica a un possibile sub operatore, identificato come Organizzazione."@it;
+                                rdfs:domain uiote:ChargingStation;
+                                rdfs:label "has sub charge point operator"@en,
+                                           "ha un sub operatore di ricarica"@it;
+                                rdfs:range <http://schema.org/Organization>.
+uiote:isConnectorOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Associates a Connector to an Electric Vehicle Supply Equipment (EVSE)."@en,
+                                 "Associa un Connettore ad una Colonnina di Ricarica per Veicoli Elettrici (EVSE)."@it;
+                    rdfs:domain uiote:Connector;
+                    rdfs:label "è connettore di"@it,
+                               "is connector of"@en;
+                    rdfs:range uiote:EVSE.
+uiote:isEVSEOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "Associates an Electric Vehicle Supply Equipment (EVSE) to a Charging Station."@en,
+                            "Associa una Colonnina di Ricarica per Veicoli Elettrici (EVSE) ad una Stazione di Ricarica."@it;
+               rdfs:domain uiote:EVSE;
+               rdfs:label "è EVSE di"@it,
+                          "is EVSE of"@en;
+               rdfs:range uiote:ChargingStation.
+uiote:isPrivate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "Indicates if a Charging Station is private or public."@en,
+                             "Indica se una Stazione di Ricarica sia privata o pubblica."@it;
+                rdfs:domain uiote:ChargingStation;
+                rdfs:label "è privata"@it,
+                           "is private"@en;
+                rdfs:range xsd:boolean.
+uiote:makesStationAvailable a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "Associates a Charging Service to a Charging Station, made available by the Service."@en,
+                                         "Associa un Servizio di Ricarica ad una Stazione di Ricarica, resa disponibile dal servizio."@it;
+                            rdfs:domain uiote:ChargingService;
+                            rdfs:label "rende la stazione disponibile"@it,
+                                       "makes station available"@en;
+                            rdfs:range uiote:ChargingStation;
+                            rdfs:subPropertyOf <http://www.w3id.org/urban-iot/core#makesAvailable>;
+                            <http://www.w3.org/2002/07/owl#inverseOf> uiote:stationMadeAvailableBy.
+uiote:maxAmperageInA a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "It is the maximum amperage expressed in Ampere for a Connector."@en,
+                                  "Indica il massimo amperaggio in Ampere per un Connettore."@it;
+                     rdfs:domain uiote:Connector;
+                     rdfs:label "max amperage in A"@en,
+                                "massimo amperaggio in A"@it;
+                     rdfs:range xsd:double.
+uiote:maxPowerInKW a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "It is the maximum power expressed in kWatt for a Connector."@en,
+                                "Indica la massima potenza in kWatt per un Connettore."@it;
+                   rdfs:domain uiote:Connector;
+                   rdfs:label "max power in kW"@en,
+                              "massima potenza in kW"@it;
+                   rdfs:range xsd:double.
+uiote:maxVoltageInV a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "It is the maximum voltage expressed in Volt for a Connector."@en,
+                                 "Indica il massimo voltaggio in Volt per un Connettore."@it;
+                    rdfs:domain uiote:Connector;
+                    rdfs:label "max voltage in V"@en,
+                               "massimo voltaggio in V"@it;
+                    rdfs:range xsd:double.
+uiote:minAmperageInA a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "It is the minimum amperage expressed in Ampere for a Connector."@en,
+                                  "Indica il minimo amperaggio in Ampere per un Connettore."@it;
+                     rdfs:domain uiote:Connector;
+                     rdfs:label "minimo amperaggio in A"@it,
+                                "min amperage in A"@en;
+                     rdfs:range xsd:double.
+uiote:minPowerInKW a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "It is the minimum power expressed in kWatt for a Connector."@en,
+                                "Indica la minima potenza in kWatt per un Connettore."@it;
+                   rdfs:domain uiote:Connector;
+                   rdfs:label "minima potenza in kW"@it,
+                              "min power in kW"@en;
+                   rdfs:range xsd:double.
+uiote:minVoltageInV a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "It is the minimum voltage expressed in Volt for a Connector."@en,
+                                 "Indica il minimo voltaggio in Volt per un Connettore."@it;
+                    rdfs:domain uiote:Connector;
+                    rdfs:label "minimo voltaggio in V"@it,
+                               "min voltage in V"@en;
+                    rdfs:range xsd:double.
+uiote:operatedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Associates a Charging Station to a Charge Point Operator who operates it allowing the electricity supply."@en,
+                              "Associa una Stazione di Ricarica all'Operatore del Punto di Ricarica che l'aziona dal punto di vista dell'erogazione di elettricità."@it;
+                 rdfs:domain uiote:ChargingStation;
+                 rdfs:label "operato da"@it,
+                            "operated by"@en;
+                 rdfs:range uiote:ChargePointOperator;
+                 <http://www.w3.org/2002/07/owl#inverseOf> uiote:operates.
+uiote:operates a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "Associates a Chage Point Operator to a Charging Station, which is operated by the Operator."@en,
+                            "Associa un Operatore del Punto di Ricarica ad una Stazione di Ricarica, che viene azionata dall'Operatore."@it;
+               rdfs:domain uiote:ChargePointOperator;
+               rdfs:label "operates"@en,
+                          "opera"@it;
+               rdfs:range uiote:ChargingStation.
+uiote:operatesSession a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "Associates a Charge Point Operator to a Charging Session which involves him."@en,
+                                   "Associa un Operatore Punto del Ricarica ad una Sessione di Ricarica che lo coinvolge."@it;
+                      rdfs:domain uiote:ChargePointOperator;
+                      rdfs:label "operates session"@en,
+                                 "opera sessione"@it;
+                      rdfs:range uiote:ChargingSession;
+                      <http://www.w3.org/2002/07/owl#inverseOf> uiote:sessionOperatedBy.
+uiote:performsCharging a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Associates a Service Private User to a Charging Session, perfrmed by the User."@en,
+                                    "Associa un Utente Privato del Servizio ad una Sessione di Ricarica, eseguita dall'Utente stesso."@it;
+                       rdfs:domain <http://www.w3id.org/urban-iot/core#ServicePrivateUser>;
+                       rdfs:label "performs charging"@en,
+                                  "opera ricarica"@it;
+                       rdfs:range uiote:ChargingSession;
+                       rdfs:subPropertyOf <http://www.w3id.org/urban-iot/core#performsSession>.
+uiote:pricePerKWhCharge a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "Price expressed per kWh of charge."@en,
+                                     "Prezzo espresso in base ai kWh di ricarica."@it;
+                        rdfs:domain uiote:ChargingServiceOffer;
+                        rdfs:label "price per kWh charge"@en,
+                                   "prezzo al kWh di ricarica"@it;
+                        rdfs:range xsd:double;
+                        rdfs:subPropertyOf <http://schema.org/price>.
+uiote:pricePerMinuteCharge a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:comment "Price expressed per minutes of charge."@en,
+                                        "Prezzo espresso in base ai minuti di ricarica."@it;
+                           rdfs:domain uiote:ChargingServiceOffer;
+                           rdfs:label "price per minute charge"@en,
+                                      "prezzo al minuto di ricarica"@it;
+                           rdfs:range xsd:double;
+                           rdfs:subPropertyOf <http://schema.org/price>.
+uiote:pricePerMinuteParking a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:comment "Price expressed per minute of parking."@en,
+                                         "Prezzo espresso in base ai minuti di parcheggio."@it;
+                            rdfs:domain uiote:ChargingServiceOffer;
+                            rdfs:label "price per minute parking"@en,
+                                       "prezzo al minuto di parcheggio"@it;
+                            rdfs:range xsd:double;
+                            rdfs:subPropertyOf <http://schema.org/price>.
+uiote:pricePerMonthCharge a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:comment "Price expressed per month of charge."@en,
+                                       "Prezzo espresso in base al mese per ricarica."@it;
+                          rdfs:domain uiote:ChargingServiceOffer;
+                          rdfs:label "price per month charge"@en,
+                                     "prezzo per mese di ricarica"@it;
+                          rdfs:range xsd:double;
+                          rdfs:subPropertyOf <http://schema.org/price>.
+uiote:providesCable a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "Indicates the presence of a cable for the Connector."@en,
+                                 "Indica la presenza di cavo o meno, per un Connettore."@it;
+                    rdfs:domain uiote:Connector;
+                    rdfs:label "provides cable"@en,
+                               "fornisce cavo"@it;
+                    rdfs:range xsd:boolean.
+uiote:providesChargingService a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:comment "Associates an eMobility Service Provider to a Charging Service provided by him."@en,
+                                           "Associa un Gestore di Servizi per la Mobilità Elettrica ad un Servizio di Ricarica che fornisce."@it;
+                              rdfs:domain uiote:eMobilityServiceProvider;
+                              rdfs:label "provides charging service"@en,
+                                         "offre servizio di ricarica"@it;
+                              rdfs:range uiote:ChargingService.
+uiote:rechargeTimeInMin a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "Indicates the charging time expressed in minutes for a Charging Session."@en,
+                                     "Indica il tempo di ricarica in minuti per una Sessione di Ricarica."@it;
+                        rdfs:domain uiote:ChargingSession;
+                        rdfs:label "tempo di ricarica in minuti"@it,
+                                   "recharge time in min"@en;
+                        rdfs:range xsd:int.
+uiote:registeredUser a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "Indicates if a Charging Session is performed by a registered user or not."@en,
+                                  "Indica se la Sessione di Ricarica è stata eseguita da un utente registrato o meno."@it;
+                     rdfs:domain uiote:ChargingSession;
+                     rdfs:label "utente registrato"@it,
+                                "registered user"@en;
+                     rdfs:range xsd:boolean.
+uiote:renewableSources a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:comment "Provides information on the usage of renewable sources for a Charging Session."@en,
+                                    "Informa rispetto all'uitilizzo di sorgenti di elettricità rinnovabili per una data Sessione di Ricarica."@it;
+                       rdfs:domain uiote:ChargingStation;
+                       rdfs:label "sorgenti rinnovabili"@it,
+                                  "renewable sources"@en;
+                       rdfs:range xsd:boolean.
+uiote:sessionOperatedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "Associates a Charging Session to the Charge Point Operator who operates the electricity supply."@en,
+                                     "Associa una Sessione di Ricarica all'Operatore del Punto di Ricarica che aziona l'erogazione di corrente."@it;
+                        rdfs:domain uiote:ChargingSession;
+                        rdfs:label "sessione operata da"@it,
+                                   "session operated by"@en;
+                        rdfs:range uiote:ChargePointOperator.
+uiote:stationMadeAvailableBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:comment "Connect a specific Charging Station which is made available by a charging service."@en,
+                                          "Associa una determinata Stazione di Ricarica che è stata resa disponibile da un determinato Servizio di Ricarica."@it;
+                             rdfs:domain uiote:ChargingStation;
+                             rdfs:label "stazione resa disponibile da"@it,
+                                        "station made available by"@en;
+                             rdfs:range uiote:ChargingService;
+                             rdfs:subPropertyOf <http://www.w3id.org/urban-iot/core#madeAvailableBy>.
+uiote:totalEnergy a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "Total energy supplied during a Charging Session."@en,
+                               "Energia totale erogata durante una Sessione di Ricarica."@it;
+                  rdfs:domain uiote:ChargingSession;
+                  rdfs:label "total energy"@en,
+                             "energia totale"@it;
+                  rdfs:range xsd:double.
+uiote:usedConnector a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Associates a Charging Session to a Connector which is used during the Session."@en,
+                                 "Associa una Sessione di Ricarica ad un Connettore che viene utilizzato durante la Sessione."@it;
+                    rdfs:domain uiote:ChargingSession;
+                    rdfs:label "used connector"@en,
+                               "connettore utilizzato"@it;
+                    rdfs:range uiote:Connector.
+uiote:usedEVSE a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "Associates a Charging Session to an Electric Vehicle Supply Equipment (EVSE) which is used during the Session."@en,
+                            "Associa una Sessione di Ricarica ad una Colonnina di Ricarica per Veicoli Elettrici (EVSE), che viene utilizzata durante la Sessione."@it;
+               rdfs:domain uiote:ChargingSession;
+               rdfs:label "used EVSE"@en,
+                          "EVSE utilizzato"@it;
+               rdfs:range uiote:EVSE.
+uiote:usesChargingStation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "Associates a Charging Session to a Charging Station, which is used during the Session."@en,
+                                       "Associa una Sessione di Ricarica ad una Stazione di Ricarica, utilizzata durante la Sessione."@it;
+                          rdfs:domain uiote:ChargingSession;
+                          rdfs:label "uses charging station"@en,
+                                     "stazione di ricarica utilizzata"@it;
+                          rdfs:range uiote:ChargingStation;
+                          rdfs:subPropertyOf <http://www.w3id.org/urban-iot/core#usesResource>.

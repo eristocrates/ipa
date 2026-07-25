@@ -1,0 +1,321 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix edac: <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#>.
+
+<http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#Band> a <http://www.w3.org/2002/07/owl#Class>.
+<http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#BandIdentification> a <http://www.w3.org/2002/07/owl#Class>.
+<http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#Characteristic> a <http://www.w3.org/2002/07/owl#Class>.
+<http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#DataBand> a <http://www.w3.org/2002/07/owl#Class>.
+<http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#Entity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#RasterDataset> a <http://www.w3.org/2002/07/owl#Class>.
+<http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#WCSDataset> a <http://www.w3.org/2002/07/owl#Class>.
+<http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#WCSManifestation> a <http://www.w3.org/2002/07/owl#Class>.
+<http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#hasDataBand> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                           rdfs:label "has data band".
+<http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#hasManifestation> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                                rdfs:label "has manifestation".
+<http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl> <http://creativecommons.org/ns#license> "http://creativecommons.org/licenses/by/3.0/"^^xsd:anyURI;
+                                                               <http://protege.stanford.edu/plugins/owl/protege#defaultLanguage> "en";
+                                                               <http://purl.org/dc/elements/1.1/contributor> """Contributors are those that engage in discussions during the development of this ontology (in alphabetical order):
+karl benedict
+luis garnica
+cj grady
+bill hudspeth
+deana pennington
+soren scott
+aimee stewart""";
+                                                               <http://purl.org/dc/elements/1.1/creator> "Natalia Villanueva-Rosales"@en,
+                                                                                                         "ELSEWeb team"@en,
+                                                                                                         "http://cybershare.utep.edu"^^xsd:anyURI,
+                                                                                                         "Nicholas del Rio"@en;
+                                                               <http://purl.org/dc/elements/1.1/description> """The ELSEWeb EDAC ontology describes datasets publised by EDAC. This project provides foundational support for the ELSEWeb project(http://elseweb.cybershare.utep.edu/).
+website: http://elseweb.cybershare.utep.edu/ontologies
+email: nvillanuevarosales@utep.edu
+"""@en;
+                                                               <http://purl.org/dc/elements/1.1/issued> "2014-05-01"^^xsd:date;
+                                                               <http://purl.org/dc/elements/1.1/rights> "free to use,share,modify. modify with attribution [http://creativecommons.org/licenses/by/3.0/].";
+                                                               <http://purl.org/dc/elements/1.1/title> "ELSEWeb EDAC Ontology"@en;
+                                                               <http://purl.org/dc/terms/identifier> "elseweb-edac.owl";
+                                                               <http://purl.org/dc/terms/modified> "2015-09-24"^^xsd:date;
+                                                               <http://purl.org/vocab/vann/preferredNamespacePrefix> "elseweb-edac"@en;
+                                                               <http://purl.org/vocab/vann/preferredNamespaceUri> "http://ontology.cybershare.utep.edu/ELSEWeb/";
+                                                               a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                               rdfs:isDefinedBy <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl>;
+                                                               <http://www.w3.org/2002/07/owl#imports> <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl>;
+                                                               <http://www.w3.org/2002/07/owl#versionIRI> <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl>;
+                                                               <http://www.w3.org/2002/07/owl#versionInfo> "1.2".
+edac:AggregateMonthly <http://semanticscience.org/resource/comment> "The process of aggregate values in a PRISM dataset over a month.";
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:label "aggregate monthly";
+                      rdfs:subClassOf edac:PRISMDatasetProcessing.
+edac:AggregateOverThirtyYears <http://semanticscience.org/resource/comment> "The process of aggregate values in a PRISM dataset over a thirty years.";
+                              a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:label "aggregate over thirty years";
+                              rdfs:subClassOf edac:PRISMDatasetProcessing.
+edac:AggregateYearly <http://semanticscience.org/resource/comment> "The process of aggregate values in a PRISM dataset over a year.";
+                     a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "aggregate yearly";
+                     rdfs:subClassOf edac:PRISMDatasetProcessing.
+edac:Air <http://semanticscience.org/resource/comment> "Invisible gaseous substance surrounding the earth.";
+         a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:label "air";
+         rdfs:subClassOf edac:AtmosphericFeature.
+edac:Amount a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A characteristic that can be measured as a quantity.";
+            rdfs:label "amount";
+            rdfs:subClassOf <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#Characteristic>.
+edac:AtmosphericFeature <http://semanticscience.org/resource/comment> "An entity in the atmosphere that can be observed.";
+                        a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:label "atmospheric feature";
+                        rdfs:subClassOf <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#Entity>.
+edac:ConvertASCIIToTIFF <http://semanticscience.org/resource/comment> "A process that involves converting an ASCII file to a TIFF file.";
+                        a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:label "convert ASCII to TIFF";
+                        rdfs:subClassOf edac:DatasetProcessing.
+edac:ConvertedDataset <http://semanticscience.org/resource/comment> "A raster dataset that was output by a conversion processing.";
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:label "converted dataset";
+                      rdfs:subClassOf edac:RGISPrepublishedRasterDataset.
+edac:DataBandProcessing a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:label "databand processing";
+                        rdfs:subClassOf edac:Processing.
+edac:DatasetManipulationSoftware <http://semanticscience.org/resource/comment> " A piece of code used to manipulate a dataset.";
+                                 a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:label "dataset manipulation software";
+                                 rdfs:subClassOf edac:Processor.
+edac:DatasetProcessing <http://semanticscience.org/resource/comment> "A process that involves the manipulation of a dataset.";
+                       a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "dataset processing";
+                       rdfs:subClassOf edac:Processing;
+                       <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> edac:RGISPrepublishedRasterDataset ; 
+                                                                                                                        <http://www.w3.org/2002/07/owl#onProperty> edac:hadInput ; 
+                                                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> edac:DatasetManipulationSoftware ; 
+                                                                                                                        <http://www.w3.org/2002/07/owl#onProperty> edac:wasAssociatedWith ; 
+                                                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Class>].
+edac:DewPointTemperature <http://semanticscience.org/resource/comment> "Temperature at which the water vapor in the air becomes saturated and water droplets begin to form as defined in the Collings English Dictionary.";
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:label "dew point temperature";
+                         rdfs:subClassOf edac:Temperature.
+edac:Download <http://semanticscience.org/resource/comment> "Retrieving a dataset from a specific location in the web.";
+              a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:label "download";
+              rdfs:subClassOf edac:DatasetProcessing.
+edac:DownloadedMODISDataset a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "A MODIS dataset that has been obtained from a URL.";
+                            rdfs:label "downloaded modis dataset";
+                            rdfs:subClassOf edac:MODISDataset.
+edac:DownloadedPRISMDataset <http://semanticscience.org/resource/comment> "A PRISM dataset that has been downloaded from a specific URL.";
+                            a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:label "downloaded prism dataset";
+                            rdfs:subClassOf edac:PRISMDataset.
+edac:EcologicalCommunity <http://semanticscience.org/resource/comment> "A set of individual entities that can be observed as one entity.";
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:label "ecological community";
+                         rdfs:subClassOf <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#Entity>.
+edac:ExtractAndReproject <http://semanticscience.org/resource/comment> "A dataset process involving extracting a data band and reprojecting a dataset.";
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:label "extract and reproject";
+                         rdfs:subClassOf edac:DatasetProcessing;
+                         <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#Band> ; 
+                                                                          <http://www.w3.org/2002/07/owl#onProperty> edac:hadInputBandID ; 
+                                                                          a <http://www.w3.org/2002/07/owl#Restriction>].
+edac:ExtractedDataset a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "A raster dataset that was output by an extraction processing, such as a payload extraction.";
+                      rdfs:label "extracted dataset";
+                      rdfs:subClassOf edac:RGISPrepublishedRasterDataset.
+edac:Index <http://semanticscience.org/resource/comment> "A measurement of a specific characteristic that is commonly used as an indicator.";
+           <http://semanticscience.org/resource/example> "UV index";
+           a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:label "index";
+           rdfs:subClassOf edac:Amount.
+edac:MODIS a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             edac:Sensor.
+edac:MODISDataset <http://semanticscience.org/resource/comment> "A dataset that contains measurements of a MODIS instrument.";
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "modis dataset";
+                  rdfs:subClassOf edac:RGISPrepublishedRasterDataset.
+edac:MODISMeasurement <http://semanticscience.org/resource/comment> "A measurement associated with a MODIS sensor.";
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:label "modis measurement";
+                      rdfs:subClassOf edac:Measurement;
+                      <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#onProperty> edac:wasAssociatedWith ; 
+                                                                       <http://www.w3.org/2002/07/owl#hasValue> edac:MODIS ; 
+                                                                       a <http://www.w3.org/2002/07/owl#Restriction>].
+edac:Measurement <http://semanticscience.org/resource/comment> "A characteristic measurement associated with a sensor.";
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "measurement";
+                 rdfs:subClassOf edac:DataBandProcessing;
+                 <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#someValuesFrom> edac:Sensor ; 
+                                                                  <http://www.w3.org/2002/07/owl#onProperty> edac:wasAssociatedWith ; 
+                                                                  a <http://www.w3.org/2002/07/owl#Restriction>].
+edac:Modelling <http://semanticscience.org/resource/comment> "Creation of a model using measurements of characteristics.";
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "modelling";
+               rdfs:subClassOf edac:DataBandProcessing;
+               <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#someValuesFrom> edac:ModellingAgent ; 
+                                                                <http://www.w3.org/2002/07/owl#onProperty> edac:wasAssociatedWith ; 
+                                                                a <http://www.w3.org/2002/07/owl#Restriction>].
+edac:ModellingAgent <http://semanticscience.org/resource/comment> "An agent that can generate a model.";
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:label "modelling agent";
+                    rdfs:subClassOf edac:Processor.
+edac:Mosaic <http://semanticscience.org/resource/comment> "A dataset processing involving the creation of a mosaic of raster datasets.";
+            a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:label "mosaic";
+            rdfs:subClassOf edac:DatasetProcessing.
+edac:MosaicDataset <http://semanticscience.org/resource/comment> "A raster dataset that is part of a mosaic dataset.";
+                   a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "mosaic dataset";
+                   rdfs:subClassOf edac:RGISPrepublishedRasterDataset.
+edac:PRISM a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+edac:PRISMDataset <http://semanticscience.org/resource/comment> "A dataset that provides estimates of three basic climate elements: precipitation, temperature (min and max) and dew point.";
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "prism dataset";
+                  rdfs:subClassOf edac:RGISPrepublishedRasterDataset.
+edac:PRISMDatasetProcessing <http://semanticscience.org/resource/comment> "The process of manipulating a PRISM dataset.";
+                            a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:label "prism dataset processing";
+                            rdfs:subClassOf edac:DatasetProcessing.
+edac:PRISMModelling <http://semanticscience.org/resource/comment> "The process of creating a PRISM model.";
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:label "prism modelling";
+                    rdfs:subClassOf edac:Modelling;
+                    <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#onProperty> edac:wasAssociatedWith ; 
+                                                                     <http://www.w3.org/2002/07/owl#hasValue> edac:PRISM ; 
+                                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+edac:Precipitation <http://semanticscience.org/resource/comment> "rain, snow or hail that falls to the ground.";
+                   a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "precipitation";
+                   rdfs:subClassOf edac:TerrestrialFeature.
+edac:Processing <http://semanticscience.org/resource/comment> "A set of steps to process a dataset.";
+                a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:label "processing".
+edac:Processor <http://semanticscience.org/resource/comment> "An agent that will execute some process over a dataset.";
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "processor";
+               <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                                                <http://www.w3.org/2002/07/owl#onProperty> edac:hasProcessorName ; 
+                                                                a <http://www.w3.org/2002/07/owl#Restriction>].
+edac:Publish <http://semanticscience.org/resource/comment> "The process of publishing a dataset over a Web service.";
+             a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:label "publish";
+             rdfs:subClassOf edac:DatasetProcessing.
+edac:PublishedMODISDataset <http://semanticscience.org/resource/comment> "A MODIS dataset that is available for retrieval through a RGIS WCS service.";
+                           a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:label "published modis dataset";
+                           rdfs:subClassOf edac:RGISWCSDataset.
+edac:PublishedPRISMDataset <http://semanticscience.org/resource/comment> "A PRISM dataset that is available for retrieval through a RGIS WCS service.";
+                           a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:label "published prism dataset";
+                           rdfs:subClassOf edac:RGISWCSDataset.
+edac:RGISDataBand <http://semanticscience.org/resource/comment> "A databand that is contained in an RGIS dataset.";
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "rgis data band";
+                  rdfs:subClassOf <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#DataBand>;
+                  <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                            <http://www.w3.org/2002/07/owl#onProperty> edac:wasMeasuredBy ; 
+                                                                                                            <http://www.w3.org/2002/07/owl#onClass> edac:Measurement ; 
+                                                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                            [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                            <http://www.w3.org/2002/07/owl#onProperty> edac:wasModelledBy ; 
+                                                                                                            <http://www.w3.org/2002/07/owl#onClass> edac:Modelling ; 
+                                                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                   a <http://www.w3.org/2002/07/owl#Class>].
+edac:RGISPrepublishedRasterDataset <http://semanticscience.org/resource/comment> "A raster dataset that cotians an RGIS databand obtained by some dataset processing.";
+                                   a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:label "rgis prepublished raster dataset";
+                                   rdfs:subClassOf <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#RasterDataset>;
+                                   <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> edac:RGISDataBand ; 
+                                                                                                                                    <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#hasDataBand> ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> edac:DatasetProcessing ; 
+                                                                                                                                    <http://www.w3.org/2002/07/owl#onProperty> edac:wasOutputBy ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Class>].
+edac:RGISWCSDataset <http://semanticscience.org/resource/comment> "A dataset that has been output from a RGIS WCS service manifestation.";
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:label "rgis wcs dataset";
+                    rdfs:subClassOf <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#WCSDataset>;
+                    <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> edac:RGISWCSManifestation ; 
+                                                                                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#hasManifestation> ; 
+                                                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                     [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                     <http://www.w3.org/2002/07/owl#onProperty> edac:wasPublishedBy ; 
+                                                                                                                     <http://www.w3.org/2002/07/owl#onClass> edac:Publish ; 
+                                                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                     a <http://www.w3.org/2002/07/owl#Class>].
+edac:RGISWCSManifestation a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:label "rgis wcs manifestation";
+                          rdfs:subClassOf <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#WCSManifestation>;
+                          <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#someValuesFrom> rdfs:Literal ; 
+                                                                           <http://www.w3.org/2002/07/owl#onProperty> edac:hasJSONCapabilitiesDigestURL ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Restriction>].
+edac:Reproject <http://semanticscience.org/resource/comment> "The process of reprojecting over a dataset.";
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "reproject";
+               rdfs:subClassOf edac:DatasetProcessing.
+edac:ReprojectedDataset <http://semanticscience.org/resource/comment> "A dataset that has been obtained from a reprojection processing.";
+                        a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:label "reprojected dataset";
+                        rdfs:subClassOf edac:RGISPrepublishedRasterDataset.
+edac:Sensor <http://semanticscience.org/resource/comment> "An agent that can capture a measurement of a characteristic of an entity.";
+            <http://semanticscience.org/resource/example> "MODIS";
+            a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:label "sensor";
+            rdfs:subClassOf edac:Processor.
+edac:SurfaceLayer a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "surface layer";
+                  rdfs:subClassOf edac:TerrestrialFeature.
+edac:Temperature <http://semanticscience.org/resource/comment> "A measurement of hot or cold.";
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "temperature";
+                 rdfs:subClassOf <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#Characteristic>.
+edac:TerrestrialFeature <http://semanticscience.org/resource/comment> "An entity that is situated the earth.";
+                        a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:label "terrestrial feature";
+                        rdfs:subClassOf <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#Entity>.
+edac:Vegetation <http://semanticscience.org/resource/comment> "Group of plants observed collectively in a particulare area or habitat.";
+                a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:label "vegetation";
+                rdfs:subClassOf edac:EcologicalCommunity.
+edac:hadInput a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain edac:DatasetProcessing;
+              rdfs:label "had input";
+              rdfs:range edac:RGISPrepublishedRasterDataset.
+edac:hadInputBandID a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain edac:ExtractAndReproject;
+                    rdfs:label "had input band id";
+                    rdfs:range <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#BandIdentification>.
+edac:hasJSONCapabilitiesDigestURL a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                  rdfs:domain edac:RGISWCSManifestation;
+                                  rdfs:label "has json capabilities digest url";
+                                  rdfs:range rdfs:Literal.
+edac:hasProcessorName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:domain edac:Processor;
+                      rdfs:label "has processor name";
+                      rdfs:range rdfs:Literal.
+edac:wasAssociatedWith a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain edac:Processing;
+                       rdfs:label "was associated with";
+                       rdfs:range edac:Processor.
+edac:wasMeasuredBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain edac:RGISDataBand;
+                   rdfs:label "was measured by";
+                   rdfs:range edac:MODISMeasurement.
+edac:wasModelledBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain edac:RGISDataBand;
+                   rdfs:label "was modelled by";
+                   rdfs:range edac:PRISMModelling.
+edac:wasOutputBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain edac:RGISPrepublishedRasterDataset;
+                 rdfs:label "was output by";
+                 rdfs:range edac:DatasetProcessing.
+edac:wasPublishedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain edac:RGISWCSDataset;
+                    rdfs:label "was published by";
+                    rdfs:range edac:Publish.
+<http://semanticscience.org/resource/comment> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://semanticscience.org/resource/example> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.

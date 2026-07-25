@@ -1,0 +1,168 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix connectype: <http://www.tele.pw.edu.pl/~sims-onto/ConnectivityType.owl#>.
+
+<http://www.tele.pw.edu.pl/~sims-onto/ConnectivityType.owl> a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                            rdfs:comment "Defines types of connectivity used in communication and bearer services accessible in certain connectivity.";
+                                                            rdfs:label "Connectivity types";
+                                                            <http://www.w3.org/2002/07/owl#imports> <http://www.tele.pw.edu.pl/~sims-onto/ParticipantCharacteristic.owl>;
+                                                            <http://www.w3.org/2002/07/owl#priorVersion> "Version 1.0 (2006-10-24), first phase";
+                                                            <http://www.w3.org/2002/07/owl#versionInfo> "1.4".
+connectype:BearerAddressType a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Defines type of address supported in network and associated with bearer. Specific addresses are modelled as instances e.g. GSM_MSISDN describe type of address used in GSM network.";
+                             rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+connectype:BearerType a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Defines transmission technology used to transfer voice or data in network.";
+                      rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+connectype:BluetoothConnectivity a connectype:ShortRangeConnectivityType;
+                                 rdfs:comment "Defines Bluetooth connectivity.".
+connectype:CSD a connectype:BearerType;
+               rdfs:comment "Circuit Switched Data (CSD) is the original form of data transmission developed for the time division multiple access (TDMA)-based mobile phone systems like Global System for Mobile Communications (GSM).".
+connectype:CellularConnectivityType a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "Cellular connectivity, e.g., GSM";
+                                    rdfs:subClassOf connectype:LongRangeConnectivityType.
+connectype:DataBearerService a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Defines bearer capable to transmit data.";
+                             rdfs:subClassOf connectype:NetworkBearerService.
+connectype:EDGE a connectype:BearerType;
+                rdfs:comment "Defnes Enhanced Data rates for GSM Evolution technology which allows to increase data transmission rate.".
+connectype:GPRS a connectype:BearerType;
+                rdfs:comment "General Packet Radio Service (GPRS) is a Mobile Data Service available to users of Global System for Mobile Communications (GSM) and IS-136 mobile phones.".
+connectype:GSM a connectype:Network;
+               rdfs:comment "The Global System for Mobile communications is the most popular standard for mobile phones in the world. GSM is a cellular network, which means that mobile phones connect to it by searching for cells in the immediate vicinity.".
+connectype:GSMConnectivity connectype:hasNetworkBearerService connectype:GSM_CSD_MSISDN,
+                                                              connectype:GSM_SMS_MSISDN,
+                                                              connectype:GSM_CSD_IPv4,
+                                                              connectype:GSM_GPRS_IPV4;
+                           a connectype:CellularConnectivityType;
+                           rdfs:comment "Defines GSM connectivity.".
+connectype:GSM_CSD_IPv4 connectype:hasBearerType connectype:CSD;
+                        connectype:referesToAddress connectype:IPv4;
+                        connectype:referesToNetwork connectype:GSM;
+                        a connectype:DataBearerService;
+                        rdfs:comment "Defines bearer service in GSM network which use IPv4 address type and CSD bearer. Type of data transfer bearer in GSM network.".
+connectype:GSM_CSD_MSISDN connectype:hasBearerType connectype:CSD;
+                          connectype:referesToAddress connectype:GSM_MSISDN;
+                          connectype:referesToNetwork connectype:GSM;
+                          a connectype:VoiceBearerService;
+                          rdfs:comment "Defines bearer service in GSM network which use MSISDN address type and CSD bearer. Type of voice transfer bearer in GSM network.".
+connectype:GSM_EDGE_IPv4 connectype:hasBearerType connectype:EDGE;
+                         connectype:referesToAddress connectype:IPv4;
+                         connectype:referesToNetwork connectype:GSM;
+                         a connectype:DataBearerService;
+                         rdfs:comment "Defines EDGE bearer service in GSM network with IPv4 address protocol.".
+connectype:GSM_GPRS_IPV4 connectype:hasBearerType connectype:GPRS;
+                         connectype:referesToAddress connectype:IPv4;
+                         connectype:referesToNetwork connectype:GSM;
+                         a connectype:DataBearerService;
+                         rdfs:comment "Defines GPRS bearer service in GSM network using IPv4 address type. Type of data transfer bearer in GSM network.".
+connectype:GSM_HSCSD_IPv4 connectype:hasBearerType connectype:HSCSD;
+                          connectype:referesToAddress connectype:IPv4;
+                          connectype:referesToNetwork connectype:GSM;
+                          a connectype:DataBearerService;
+                          rdfs:comment "Defines HSCSD bearer service in GSM network with IP v4 address protocol.".
+connectype:GSM_MSISDN a connectype:BearerAddressType;
+                      rdfs:comment """MSISDN (Mobile Subscriber ISDN Number) refers to the telephone number of a mobile subscriber. MSISDN by ITU-T is at most 15 digits long and consists of: * CC - Country Code ( 1-3 digits e.g.\"48\" for Poland), * NDC - National Destination Code (e.g. 3 digits in Poland), * SN - Subscriber Number (e.g. 6 remaining digits (123456)).""".
+connectype:GSM_SMS_MSISDN connectype:hasBearerType connectype:SMS_BearerType;
+                          connectype:referesToAddress connectype:GSM_MSISDN;
+                          connectype:referesToNetwork connectype:GSM;
+                          a connectype:TextBearerService;
+                          rdfs:comment "Defines SMS bearer service in GSM network using GSM_MSISDN address type.".
+connectype:GSM_USSD connectype:hasBearerType connectype:USSD;
+                    connectype:referesToNetwork connectype:GSM;
+                    a connectype:DataBearerService;
+                    rdfs:comment "USSD is a technology built into the GSM standard for support of transmitting information over the signaling channels of the GSM network. USSD provides session-based communication. Defined within the GSM standard in the documents GSM 02.90 (USSD Stage 1) and GSM 03.90 (USSD Stage 2).".
+connectype:HSCSD a connectype:BearerType;
+                 rdfs:comment "Defines High-Speed Circuit-Switched Data, data transmission mechanism in GSM Network, enhancement of CSD.".
+connectype:IPv4 a connectype:BearerAddressType;
+                rdfs:comment "IP address (Internet Protocol address) is a unique address that certain electronic devices use in order to identify and communicate with each other on a computer network utilizing the Internet Protocol standard (IP). IPv4 uses 32-bit (4 byte) addresses.".
+connectype:IPv6 a connectype:BearerAddressType;
+                rdfs:comment "IP address (Internet Protocol address) is a unique address that certain electronic devices use in order to identify and communicate with each other on a computer network utilizing the Internet Protocol standard (IP). IPv6 uses 128-bit addresses.".
+connectype:IS-95 a connectype:Network;
+                 rdfs:comment """Interim Standard 95 (IS-95), is the first CDMA-based digital cellular standard pioneered by Qualcomm. CDMA or \"code division multiple access\" is a digital radio system that transmits streams of bits (PN Sequences).""".
+connectype:IrDAConnectivity a connectype:ShortRangeConnectivityType;
+                            rdfs:comment "Defines IrDA connectivity.".
+connectype:LongRangeConnectivityType a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "Long range wireless connectivity, such as WiMAX or GSM";
+                                     rdfs:subClassOf connectype:WirelessConnectivityType.
+connectype:Network a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Defines general term for telecommunication network.";
+                   rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+connectype:NetworkBearerService a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Defines network bearer service that allows transmission of information signals between network interfaces. E.g. transmission of MMS in GSM network is modelled as instance 'GSM_GPRS_IPV4'. Bearer capabilities are modeled as sublasses.";
+                                rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+connectype:SMS_BearerType a connectype:BearerType;
+                          rdfs:comment "Defines transmission technology used in GSM network to transmit SMS messages.".
+connectype:ShortRangeConnectivityType a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "Short range wireless connectivity type (WiFi, Bluetooth)";
+                                      rdfs:subClassOf connectype:WirelessConnectivityType.
+connectype:TextBearerService a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Defines bearer capable to transmit text. E.g. bearer responsible for SMS transfer.";
+                             rdfs:subClassOf connectype:NetworkBearerService.
+connectype:UMTS a connectype:Network;
+                rdfs:comment "Universal Mobile Telecommunications System (UMTS) is one of the third-generation (3G) cell phone technologies.".
+connectype:UMTSConnectivity connectype:hasNetworkBearerService connectype:UMTS_Video_IPv6;
+                            a connectype:CellularConnectivityType;
+                            rdfs:comment "Defines UMTS connectivity".
+connectype:UMTS_VideoBearer a connectype:BearerType;
+                            rdfs:comment "Defines bearer capable to tansfer video data in UMTS networks.".
+connectype:UMTS_Video_IPv6 a connectype:VideoBearerService;
+                           rdfs:comment "Defines video bearer in UMTS network which use IPv6 address type. It is bearer capable to transfer video.".
+connectype:USSD a connectype:BearerType;
+                rdfs:comment "Defines bearer capable to transmit information over the signaling channels of the GSM network.".
+connectype:VideoBearerService a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Defines bearer capable to transmit video.";
+                              rdfs:subClassOf connectype:VoiceBearerService.
+connectype:VoiceBearerService a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Defines bearer capable to transmit voice.";
+                              rdfs:subClassOf connectype:NetworkBearerService.
+connectype:WLAN a connectype:Network;
+                rdfs:comment "Defines wireless LAN network type.".
+connectype:WLANBearer a connectype:BearerType;
+                      rdfs:comment "Defines bearer accessible in wireless LAN networks specified in 802.11 IEEE standars.".
+connectype:WLAN_IPv4 connectype:hasBearerType connectype:WLANBearer;
+                     connectype:referesToAddress connectype:IPv4;
+                     connectype:referesToNetwork connectype:WLAN;
+                     a connectype:DataBearerService;
+                     rdfs:comment "Defines bearer service in WLAN networks with IPv4 address protocol.".
+connectype:WiFiConnectivity a connectype:ShortRangeConnectivityType;
+                            rdfs:comment "Defines wi-fi connectivity.".
+connectype:WiMAXConnectivity a connectype:LongRangeConnectivityType;
+                             rdfs:comment "Defines WiMax connectivity.".
+connectype:WirelessConnectivityType a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "Wireless connectivity type (e.g., GSM connectivity)";
+                                    rdfs:subClassOf <http://www.tele.pw.edu.pl/~sims-onto/TelecomEntity.owl#ConnectivityType>.
+connectype:WirelineConnectivityType a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "Fixed, wireline connectivity type (e.g., PSTN)";
+                                    rdfs:subClassOf <http://www.tele.pw.edu.pl/~sims-onto/TelecomEntity.owl#ConnectivityType>.
+connectype:hasBearerType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "Defines transmission technology.";
+                         rdfs:domain connectype:NetworkBearerService;
+                         rdfs:range connectype:BearerType.
+connectype:hasNetworkBearerService a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:comment "Defines network bearers supported by connectivity type.";
+                                   rdfs:domain <http://www.tele.pw.edu.pl/~sims-onto/TelecomEntity.owl#ConnectivityType>;
+                                   rdfs:range connectype:NetworkBearerService.
+connectype:referesToAddress a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "Defines network address type used by network bearer type.";
+                            rdfs:domain connectype:NetworkBearerService;
+                            rdfs:range connectype:BearerAddressType.
+connectype:referesToNetwork a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "Defines network which supports bearer.";
+                            rdfs:domain connectype:NetworkBearerService;
+                            rdfs:range connectype:Network.
+<http://www.tele.pw.edu.pl/~sims-onto/TelecomEntity.owl#ConnectivityType> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> connectype:NetworkBearerService ; 
+                                                                                           <http://www.w3.org/2002/07/owl#onProperty> connectype:hasNetworkBearerService ; 
+                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                          [<http://www.w3.org/2002/07/owl#allValuesFrom> connectype:NetworkBearerService ; 
+                                                                                           <http://www.w3.org/2002/07/owl#onProperty> connectype:hasNetworkBearerService ; 
+                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> connectype:NetworkBearerService ; 
+                                                                                           <http://www.w3.org/2002/07/owl#onProperty> connectype:hasNetworkBearerService ; 
+                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                          [<http://www.w3.org/2002/07/owl#allValuesFrom> connectype:NetworkBearerService ; 
+                                                                                           <http://www.w3.org/2002/07/owl#onProperty> connectype:hasNetworkBearerService ; 
+                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>].
+<http://www.w3.org/2002/07/owl#Thing> a <http://www.w3.org/2002/07/owl#Class>.

@@ -1,0 +1,2212 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix md: <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#>.
+
+<http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata> <http://purl.org/dc/elements/1.1/creator> """Simon Jonathan David COX
+CSIRO"""^^rdf:PlainLiteral;
+                                                              <http://purl.org/dc/elements/1.1/description> "An OWL representation of parts of the Geographic Metadata model described in ISO 19115:2003 with Corrigendum 2006 - MD Package";
+                                                              <http://purl.org/dc/elements/1.1/source> """ISO 19115:2003
+ISO 19115:2006 Corrigendum"""^^rdf:PlainLiteral;
+                                                              <http://purl.org/dc/elements/1.1/title> "OWL representation of ISO 19115 (Geographic Information - Metadata)";
+                                                              <http://purl.org/dc/elements/1.1/type> "http://www.w3.org/2002/07/owl"^^rdf:PlainLiteral;
+                                                              <http://purl.org/dc/terms/created> "2010-10-27T00:00:00"^^xsd:dateTime;
+                                                              <http://purl.org/dc/terms/hasPart> md:graphicOverview,
+                                                                                                 md:CharacterSetCode,
+                                                                                                 md:language,
+                                                                                                 md:KeywordTypeCode,
+                                                                                                 md:abstract,
+                                                                                                 md:FeatureCatalogueDescription,
+                                                                                                 md:orderingInstructions,
+                                                                                                 md:cameraCalibrationInformationAvailability,
+                                                                                                 md:plannedAvailableDateTime,
+                                                                                                 md:topicCategory,
+                                                                                                 md:obligation,
+                                                                                                 md:Metadata,
+                                                                                                 md:geometricObjects,
+                                                                                                 md:propertyType,
+                                                                                                 md:formatDistributor,
+                                                                                                 md:processingLevelCode,
+                                                                                                 md:volumes,
+                                                                                                 md:distributorFormat,
+                                                                                                 md:schemaLanguage,
+                                                                                                 md:citation,
+                                                                                                 md:mediumNote,
+                                                                                                 md:resourceSpecificUsage,
+                                                                                                 md:online,
+                                                                                                 md:cellGeometry,
+                                                                                                 md:describes,
+                                                                                                 md:status,
+                                                                                                 md:dimensionName,
+                                                                                                 md:spatialResolution,
+                                                                                                 md:maintenanceAndUpdateFrequency,
+                                                                                                 md:Georectified,
+                                                                                                 md:aggregateDataSetIdentifier,
+                                                                                                 md:MaintenanceInformation,
+                                                                                                 md:shortName,
+                                                                                                 md:DataIdentification,
+                                                                                                 md:geometricObjectType,
+                                                                                                 md:Distributor,
+                                                                                                 md:source,
+                                                                                                 md:useLimitation,
+                                                                                                 md:scaleFactor,
+                                                                                                 md:supplementalInformation,
+                                                                                                 md:rationale,
+                                                                                                 md:attributeDescription,
+                                                                                                 md:resolution,
+                                                                                                 md:userNote,
+                                                                                                 md:Format,
+                                                                                                 md:referenceSystemIdentifier,
+                                                                                                 md:resourceFormat,
+                                                                                                 md:thesaurusName,
+                                                                                                 md:complianceCode,
+                                                                                                 md:georeferencedParameters,
+                                                                                                 md:density,
+                                                                                                 md:compressionGenerationQuantity,
+                                                                                                 md:ExtendedElementInformation,
+                                                                                                 md:SecurityConstraints,
+                                                                                                 md:AggregateInformation,
+                                                                                                 md:authority,
+                                                                                                 md:SpatialRepresentationTypeCode,
+                                                                                                 md:accessConstraints,
+                                                                                                 md:metadataExtensionInfo,
+                                                                                                 md:purpose,
+                                                                                                 md:portrayalCatalogueInfo,
+                                                                                                 md:offLine,
+                                                                                                 md:minValue,
+                                                                                                 md:dataQualityInfo,
+                                                                                                 md:dateStamp,
+                                                                                                 md:illuminationAzimuthAngle,
+                                                                                                 md:ImagingConditionCode,
+                                                                                                 md:assocationType,
+                                                                                                 md:credit,
+                                                                                                 md:Keywords,
+                                                                                                 md:PortrayalCatalogueReference,
+                                                                                                 md:DigitalTransferOptions,
+                                                                                                 md:softwareDevelopmentFileFormat,
+                                                                                                 md:checkPointDescription,
+                                                                                                 md:fileType,
+                                                                                                 md:fileDecompressionTechnique,
+                                                                                                 md:SpatialRepresentation,
+                                                                                                 md:equivalentScale,
+                                                                                                 md:distributor,
+                                                                                                 md:toneGradation,
+                                                                                                 md:descriptor,
+                                                                                                 md:domainValue,
+                                                                                                 md:fileDescription,
+                                                                                                 md:resourceMaintenance,
+                                                                                                 md:spatialRepresentationInfo,
+                                                                                                 md:parentIdentifier,
+                                                                                                 md:peakResponse,
+                                                                                                 md:featureAttribute,
+                                                                                                 md:descriptiveKeywords,
+                                                                                                 md:triangulationIndicator,
+                                                                                                 md:contentType,
+                                                                                                 md:Distribution,
+                                                                                                 md:resourceConstraints,
+                                                                                                 md:pointInPixel,
+                                                                                                 md:graphicsFile,
+                                                                                                 md:CellGeometryCode,
+                                                                                                 md:dimensionSize,
+                                                                                                 md:GridSpatialRepresentation,
+                                                                                                 md:specificUsage,
+                                                                                                 md:type,
+                                                                                                 md:environmentDescription,
+                                                                                                 md:CoverageDescription,
+                                                                                                 md:fees,
+                                                                                                 md:useConstraints,
+                                                                                                 md:checkPointAvailability,
+                                                                                                 md:contentInfo,
+                                                                                                 md:MaintenanceFrequencyCode,
+                                                                                                 md:contact,
+                                                                                                 md:Constraints,
+                                                                                                 md:dataSet,
+                                                                                                 md:ImageDescription,
+                                                                                                 md:PixelOrientationCode,
+                                                                                                 md:metadataStandardVersion,
+                                                                                                 md:DistributionUnits,
+                                                                                                 md:userDefinedMaintenanceFrequency,
+                                                                                                 md:MediumFormatCode,
+                                                                                                 md:turnaround,
+                                                                                                 md:userContactInfo,
+                                                                                                 md:GeometricObjectTypeCode,
+                                                                                                 md:featureType,
+                                                                                                 md:pointOfContact,
+                                                                                                 md:portrayalCatalogueCitation,
+                                                                                                 md:handlingDescription,
+                                                                                                 md:extensionOnLineResource,
+                                                                                                 md:version,
+                                                                                                 md:maintenanceNote,
+                                                                                                 md:aggregateDataSetName,
+                                                                                                 md:distributionInfo,
+                                                                                                 md:ApplicationSchema.name,
+                                                                                                 md:LegalConstraints,
+                                                                                                 md:domainCode,
+                                                                                                 md:referenceSystemInfo,
+                                                                                                 md:parameterCitation,
+                                                                                                 md:Usage,
+                                                                                                 md:hierarchyLevelName,
+                                                                                                 md:ApplicationSchemaInformation,
+                                                                                                 md:aggregationInfo,
+                                                                                                 md:series,
+                                                                                                 md:ContentInformation,
+                                                                                                 md:radiometricCalibrationInformationAvailability,
+                                                                                                 md:offset,
+                                                                                                 md:dateOfNextUpdate,
+                                                                                                 md:dataType,
+                                                                                                 md:featureCatalogueCitation,
+                                                                                                 md:distributionOrderProcess,
+                                                                                                 md:TopologyLevelCode,
+                                                                                                 md:mediumFormat,
+                                                                                                 md:Dimension,
+                                                                                                 md:fileIdentifier,
+                                                                                                 md:TopicCategoryCode,
+                                                                                                 md:extendedElementInformation,
+                                                                                                 md:cloudCoverPercentage,
+                                                                                                 md:ReferenceSystem,
+                                                                                                 md:distributorTransferOptions,
+                                                                                                 md:centerPoint,
+                                                                                                 md:Identification,
+                                                                                                 md:StandardOrderProcess,
+                                                                                                 md:distributionFormat,
+                                                                                                 md:controlPointAvailability,
+                                                                                                 md:RangeDimension,
+                                                                                                 md:GeometricObjects,
+                                                                                                 md:rule,
+                                                                                                 md:denominator,
+                                                                                                 md:identificationInfo,
+                                                                                                 md:updateScope,
+                                                                                                 md:Georeferenceable,
+                                                                                                 md:Medium,
+                                                                                                 md:hierarchyLevel,
+                                                                                                 md:constraintLanguage,
+                                                                                                 md:transferSize,
+                                                                                                 md:imageQualityCode,
+                                                                                                 md:applicationSchemaInfo,
+                                                                                                 md:specification,
+                                                                                                 md:topologyLevel,
+                                                                                                 md:distributorContact,
+                                                                                                 md:ClassificationCode,
+                                                                                                 md:orientationParameterDescription,
+                                                                                                 md:filmDistortionInformationAvailability,
+                                                                                                 md:ObligationCode,
+                                                                                                 md:softwareDevelopmentFile,
+                                                                                                 md:RestrictionCode,
+                                                                                                 md:VectorSpatialRepresentation,
+                                                                                                 md:lensDistortionInformationAvailability,
+                                                                                                 md:RepresentativeFraction,
+                                                                                                 md:schemaAscii,
+                                                                                                 md:fileName,
+                                                                                                 md:ScopeDescription,
+                                                                                                 md:DatatypeCode,
+                                                                                                 md:axisDimensionProperties,
+                                                                                                 md:units,
+                                                                                                 md:spatialRepresentationType,
+                                                                                                 md:locale,
+                                                                                                 md:maximumOccurrence,
+                                                                                                 md:cornerPoints,
+                                                                                                 md:Resolution,
+                                                                                                 md:Band,
+                                                                                                 md:orientationParameterAvailability,
+                                                                                                 md:Medium.name,
+                                                                                                 md:imagingCondition,
+                                                                                                 md:ProgressCode,
+                                                                                                 md:metadataStandardName,
+                                                                                                 md:definition,
+                                                                                                 md:dimension,
+                                                                                                 md:transformationParameterAvailability,
+                                                                                                 md:updateScopeDescription,
+                                                                                                 md:keyword,
+                                                                                                 md:amendmentNumber,
+                                                                                                 md:sequenceIdentifier,
+                                                                                                 md:numberOfDimensions,
+                                                                                                 md:userDeterminedLimitations,
+                                                                                                 md:maxValue,
+                                                                                                 md:characterSet,
+                                                                                                 md:metadataConstraints,
+                                                                                                 md:densityUnits,
+                                                                                                 md:initiativeType,
+                                                                                                 md:ScopeCode,
+                                                                                                 md:transformationDimensionDescription,
+                                                                                                 md:bitsPerValue,
+                                                                                                 md:classification,
+                                                                                                 md:condition,
+                                                                                                 md:extent,
+                                                                                                 md:usageDateTime,
+                                                                                                 md:featureTypes,
+                                                                                                 md:geometricObjectCount,
+                                                                                                 md:classificationSystem,
+                                                                                                 md:metadataMaintenance,
+                                                                                                 md:transferOptions,
+                                                                                                 md:includedWithDataset,
+                                                                                                 md:transformationDimensionMapping,
+                                                                                                 md:parentEntity,
+                                                                                                 md:DimensionNameTypeCode,
+                                                                                                 md:illuminationElevationAngle,
+                                                                                                 md:unitsOfDistribution,
+                                                                                                 md:CoverageContentTypeCode,
+                                                                                                 md:MediumNameCode,
+                                                                                                 md:otherConstraints,
+                                                                                                 md:name,
+                                                                                                 md:BrowseGraphic,
+                                                                                                 md:MetadataExtensionInformation;
+                                                              <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/3.0/>;
+                                                              <http://purl.org/dc/terms/modified> "2013-11-14T00:00:00"^^xsd:dateTime;
+                                                              <http://purl.org/vocab/vann/preferredNamespacePrefix> "md";
+                                                              <http://purl.org/vocab/vann/preferredNamespaceUri> md:;
+                                                              a <http://purl.org/vocommons/voaf#Vocabulary>,
+                                                                <http://www.w3.org/2002/07/owl#Ontology>;
+                                                              rdfs:comment """An OWL representation of parts of the Geographic Metadata model described in ISO 19115:2003 with Corrigendum 2006 - MD Package.
+
+This vocabulary is provisional, pending finalization of ISO 19150-2.
+
+NOTE: The URI stem http://def.seegrid.csiro.au/isotc211/ is temporary. The vocabulary is expected to be ultimately published in the domain http://def.isotc211.org/""";
+                                                              <http://www.w3.org/2002/07/owl#imports> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/Scope>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/MediumFormat>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/MaintenanceFrequency>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/ImagingCondition>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/AssociationType>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/Classification>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/Datatype>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/CellGeometry>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/KeywordType>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/MediumName>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/CoverageContentType>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/lineage>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/Progress>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/Restriction>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/SpatialRepresentationType>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/CharacterSet>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/GeometricObjectType>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/TopologyLevel>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/TopicCategory>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataset>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19115/2003/code/DimensionNameType>;
+                                                              <http://www.w3.org/2002/07/owl#priorVersion> <https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201305/ISOTC211/HM/metadata.rdf>;
+                                                              <http://www.w3.org/2002/07/owl#versionIRI> <https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201311/ISOTC211/HM/iso19115/2003/metadata.rdf>.
+md:AggregateInformation a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                        rdfs:label "Aggregate information";
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:assocationType ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataset#AssociationTypeCode> ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> md:aggregateDataSetIdentifier ; 
+                                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> md:initiativeType ; 
+                                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> md:assocationType ; 
+                                         <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> md:aggregateDataSetName ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation> ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> md:initiativeType ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataset#InitiativeTypeCode> ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>];
+                        <http://www.w3.org/2004/02/skos/core#notation> "MD_AggregateInformation"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:ApplicationSchema.name a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain md:ApplicationSchemaInformation;
+                          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                          rdfs:label "Application schema.name";
+                          rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation>.
+md:ApplicationSchemaInformation a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                                rdfs:label "Application schema information";
+                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:ApplicationSchema.name ; 
+                                                 <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#onProperty> md:schemaLanguage ; 
+                                                 <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#onProperty> md:softwareDevelopmentFileFormat ; 
+                                                 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#onProperty> md:constraintLanguage ; 
+                                                 <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#onProperty> md:softwareDevelopmentFile ; 
+                                                 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#onProperty> md:schemaAscii ; 
+                                                 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#onProperty> md:graphicsFile ; 
+                                                 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#onProperty> md:ApplicationSchema.name ; 
+                                                 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation> ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>];
+                                <http://www.w3.org/2004/02/skos/core#notation> "MD_ApplicationSchemaInformation"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:Band a <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+        rdfs:label "Band";
+        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:scaleFactor ; 
+                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        [<http://www.w3.org/2002/07/owl#onProperty> md:peakResponse ; 
+                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        [<http://www.w3.org/2002/07/owl#onProperty> md:offset ; 
+                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        [<http://www.w3.org/2002/07/owl#onProperty> md:maxValue ; 
+                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        [<http://www.w3.org/2002/07/owl#onProperty> md:units ; 
+                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        md:RangeDimension,
+                        [<http://www.w3.org/2002/07/owl#onProperty> md:bitsPerValue ; 
+                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        [<http://www.w3.org/2002/07/owl#onProperty> md:minValue ; 
+                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        [<http://www.w3.org/2002/07/owl#onProperty> md:toneGradation ; 
+                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>];
+        <http://www.w3.org/2004/02/skos/core#notation> "MD_Band"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:BrowseGraphic a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                 rdfs:label "Browse graphic";
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:fileType ; 
+                                  <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#onProperty> md:fileDescription ; 
+                                  <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#onProperty> md:fileName ; 
+                                  <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>];
+                 <http://www.w3.org/2004/02/skos/core#notation> "MD_BrowseGraphic"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:CellGeometryCode a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                    rdfs:label "Cell geometry code";
+                    rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                    <http://www.w3.org/2004/02/skos/core#notation> "MD_CellGeometryCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:CharacterSetCode a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                    rdfs:label "Character set code";
+                    rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                    <http://www.w3.org/2004/02/skos/core#notation> "MD_CharacterSetCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:ClassificationCode a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                      rdfs:label "Classification code";
+                      rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                      <http://www.w3.org/2004/02/skos/core#notation> "MD_ClassificationCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:Constraints a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+               rdfs:label "Constraints";
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:useLimitation ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>];
+               <http://www.w3.org/2004/02/skos/core#notation> "MD_Constraints"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:ContentInformation a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                      rdfs:label "Content information";
+                      <http://www.w3.org/2004/02/skos/core#notation> "MD_ContentInformation"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:CoverageContentTypeCode a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                           rdfs:label "Coverage content type code";
+                           rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                           <http://www.w3.org/2004/02/skos/core#notation> "MD_CoverageContentTypeCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:CoverageDescription a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                       rdfs:label "Coverage description";
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:contentType ; 
+                                        <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> md:attributeDescription ; 
+                                        <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> md:contentType ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> md:CoverageContentTypeCode ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       md:ContentInformation;
+                       <http://www.w3.org/2004/02/skos/core#notation> "MD_CoverageDescription"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:DataIdentification a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                      rdfs:label "Data identification";
+                      rdfs:subClassOf md:Identification,
+                                      [<http://www.w3.org/2002/07/owl#onProperty> md:spatialResolution ; 
+                                       <http://www.w3.org/2002/07/owl#onClass> md:Resolution ; 
+                                       <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> md:language ; 
+                                       <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> md:spatialRepresentationType ; 
+                                       <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> md:characterSet ; 
+                                       <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> md:supplementalInformation ; 
+                                       <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> md:environmentDescription ; 
+                                       <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> md:characterSet ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> md:CharacterSetCode ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> md:spatialRepresentationType ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> md:SpatialRepresentationTypeCode ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> md:extent ; 
+                                       <http://www.w3.org/2002/07/owl#onClass> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#Extent> ; 
+                                       <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> md:topicCategory ; 
+                                       <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> md:topicCategory ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> md:TopicCategoryCode ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>];
+                      <http://www.w3.org/2004/02/skos/core#notation> "MD_DataIdentification"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:DatatypeCode a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                rdfs:label "Datatype code";
+                rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                <http://www.w3.org/2004/02/skos/core#notation> "MD_DatatypeCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:DigitalTransferOptions a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                          rdfs:label "Digital transfer options";
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:offLine ; 
+                                           <http://www.w3.org/2002/07/owl#allValuesFrom> md:Medium ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> md:online ; 
+                                           <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#OnlineResource> ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> md:offLine ; 
+                                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> md:unitsOfDistribution ; 
+                                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> md:transferSize ; 
+                                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> md:online ; 
+                                           <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>];
+                          <http://www.w3.org/2004/02/skos/core#notation> "MD_DigitalTransferOptions"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:Dimension a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+             rdfs:label "Dimension";
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:resolution ; 
+                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> md:dimensionSize ; 
+                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> md:dimensionName ; 
+                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> md:dimensionName ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> md:DimensionNameTypeCode ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>];
+             <http://www.w3.org/2004/02/skos/core#notation> "MD_Dimension"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:DimensionNameTypeCode a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                         rdfs:label "Dimension name type code";
+                         rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                         <http://www.w3.org/2004/02/skos/core#notation> "MD_DimensionNameTypeCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:Distribution a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                rdfs:label "Distribution";
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:distributionFormat ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> md:Format ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> md:distributionFormat ; 
+                                 <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> md:distributor ; 
+                                 <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> md:distributor ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> md:Distributor ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> md:transferOptions ; 
+                                 <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> md:transferOptions ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> md:DigitalTransferOptions ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>];
+                <http://www.w3.org/2004/02/skos/core#notation> "MD_Distribution"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:DistributionUnits a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                     rdfs:label "Distribution units";
+                     rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                     <http://www.w3.org/2004/02/skos/core#notation> "MD_DistributionUnits"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:Distributor a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+               rdfs:label "Distributor";
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:distributionOrderProcess ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> md:distributorTransferOptions ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> md:distributorFormat ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> md:Format ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> md:distributorContact ; 
+                                <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> md:distributorContact ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#ResponsibleParty> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> md:distributorTransferOptions ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> md:DigitalTransferOptions ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> md:distributorFormat ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> md:distributionOrderProcess ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> md:StandardOrderProcess ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>];
+               <http://www.w3.org/2004/02/skos/core#notation> "MD_Distributor"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:ExtendedElementInformation a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                              rdfs:label "Extended element information";
+                              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:domainValue ; 
+                                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#onProperty> md:domainCode ; 
+                                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#onProperty> md:obligation ; 
+                                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#onProperty> md:dataType ; 
+                                               <http://www.w3.org/2002/07/owl#allValuesFrom> md:DatatypeCode ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#onProperty> md:name ; 
+                                               <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#onProperty> md:obligation ; 
+                                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#onProperty> md:rule ; 
+                                               <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#onProperty> md:maximumOccurrence ; 
+                                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#onProperty> md:definition ; 
+                                               <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#onProperty> md:shortName ; 
+                                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#onProperty> md:condition ; 
+                                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#onProperty> md:parentEntity ; 
+                                               <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#onProperty> md:dataType ; 
+                                               <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#onProperty> md:source ; 
+                                               <http://www.w3.org/2002/07/owl#onClass> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#ResponsibleParty> ; 
+                                               <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>];
+                              <http://www.w3.org/2004/02/skos/core#notation> "MD_ExtendedElementInformation"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:FeatureCatalogueDescription a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                               rdfs:label "Feature catalogue description";
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:includedWithDataset ; 
+                                                <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onProperty> md:featureTypes ; 
+                                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onProperty> md:featureCatalogueCitation ; 
+                                                <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               md:ContentInformation,
+                                               [<http://www.w3.org/2002/07/owl#onProperty> md:featureCatalogueCitation ; 
+                                                <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onProperty> md:complianceCode ; 
+                                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onProperty> md:language ; 
+                                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>];
+                               <http://www.w3.org/2004/02/skos/core#notation> "MD_FeatureCatalogueDescription"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:Format a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+          rdfs:label "Format";
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:version ; 
+                           <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> md:formatDistributor ; 
+                           <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> md:fileDecompressionTechnique ; 
+                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> md:amendmentNumber ; 
+                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> md:specification ; 
+                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> md:name ; 
+                           <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> md:formatDistributor ; 
+                           <http://www.w3.org/2002/07/owl#allValuesFrom> md:Distributor ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>];
+          <http://www.w3.org/2004/02/skos/core#notation> "MD_Format"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:GeometricObjectTypeCode a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                           rdfs:label "Geometric object type code";
+                           rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                           <http://www.w3.org/2004/02/skos/core#notation> "MD_GeometricObjectTypeCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:GeometricObjects a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                    rdfs:label "Geometric objects";
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:geometricObjectCount ; 
+                                     <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:geometricObjectType ; 
+                                     <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:geometricObjectType ; 
+                                     <http://www.w3.org/2002/07/owl#allValuesFrom> md:GeometricObjectTypeCode ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>];
+                    <http://www.w3.org/2004/02/skos/core#notation> "MD_GeometricObjects"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:Georectified a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                rdfs:label "Georectified";
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:pointInPixel ; 
+                                 <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> md:transformationDimensionDescription ; 
+                                 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> md:centerPoint ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#Point> ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> md:cornerPoints ; 
+                                 <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> md:centerPoint ; 
+                                 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                md:GridSpatialRepresentation,
+                                [<http://www.w3.org/2002/07/owl#onProperty> md:checkPointAvailability ; 
+                                 <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> md:transformationDimensionMapping ; 
+                                 <http://www.w3.org/2002/07/owl#maxCardinality> "2"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> md:checkPointDescription ; 
+                                 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>];
+                <http://www.w3.org/2004/02/skos/core#notation> "MD_Georectified"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:Georeferenceable a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                    rdfs:label "Georeferenceable";
+                    rdfs:subClassOf md:GridSpatialRepresentation,
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:georeferencedParameters ; 
+                                     <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:orientationParameterAvailability ; 
+                                     <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:controlPointAvailability ; 
+                                     <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:parameterCitation ; 
+                                     <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:parameterCitation ; 
+                                     <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation> ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:orientationParameterDescription ; 
+                                     <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>];
+                    <http://www.w3.org/2004/02/skos/core#notation> "MD_Georeferenceable"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:GridSpatialRepresentation a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                             rdfs:label "Grid spatial representation";
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:axisDimensionProperties ; 
+                                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             md:SpatialRepresentation,
+                                             [<http://www.w3.org/2002/07/owl#onProperty> md:numberOfDimensions ; 
+                                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#onProperty> md:cellGeometry ; 
+                                              <http://www.w3.org/2002/07/owl#allValuesFrom> md:CellGeometryCode ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#onProperty> md:cellGeometry ; 
+                                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#onProperty> md:transformationParameterAvailability ; 
+                                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>];
+                             <http://www.w3.org/2004/02/skos/core#notation> "MD_GridSpatialRepresentation"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:Identification a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                  rdfs:label "Identification";
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:descriptiveKeywords ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> md:Keywords ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:descriptiveKeywords ; 
+                                   <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:resourceMaintenance ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> md:MaintenanceInformation ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:resourceFormat ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> md:Format ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:citation ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation> ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:status ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> md:ProgressCode ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:resourceMaintenance ; 
+                                   <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:purpose ; 
+                                   <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:status ; 
+                                   <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:abstract ; 
+                                   <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:resourceSpecificUsage ; 
+                                   <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:citation ; 
+                                   <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:pointOfContact ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#ResponsibleParty> ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:pointOfContact ; 
+                                   <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:graphicOverview ; 
+                                   <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:graphicOverview ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> md:BrowseGraphic ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:credit ; 
+                                   <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:aggregationInfo ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> md:AggregateInformation ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:aggregationInfo ; 
+                                   <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:resourceFormat ; 
+                                   <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:resourceSpecificUsage ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> md:Usage ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:resourceConstraints ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> md:Constraints ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:resourceConstraints ; 
+                                   <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>];
+                  <http://www.w3.org/2004/02/skos/core#notation> "MD_Identification"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:ImageDescription a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                    rdfs:label "Image description";
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:imagingCondition ; 
+                                     <http://www.w3.org/2002/07/owl#allValuesFrom> md:ImagingConditionCode ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:radiometricCalibrationInformationAvailability ; 
+                                     <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:processingLevelCode ; 
+                                     <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:imagingCondition ; 
+                                     <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:cloudCoverPercentage ; 
+                                     <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:imageQualityCode ; 
+                                     <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:cameraCalibrationInformationAvailability ; 
+                                     <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:compressionGenerationQuantity ; 
+                                     <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:triangulationIndicator ; 
+                                     <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:illuminationAzimuthAngle ; 
+                                     <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:filmDistortionInformationAvailability ; 
+                                     <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:illuminationElevationAngle ; 
+                                     <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:lensDistortionInformationAvailability ; 
+                                     <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    md:CoverageDescription;
+                    <http://www.w3.org/2004/02/skos/core#notation> "MD_ImageDescription"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:ImagingConditionCode a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                        rdfs:label "Imaging condition code";
+                        rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                        <http://www.w3.org/2004/02/skos/core#notation> "MD_ImagingConditionCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:KeywordTypeCode a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                   rdfs:label "Keyword type code";
+                   rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                   <http://www.w3.org/2004/02/skos/core#notation> "MD_KeywordTypeCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:Keywords a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+            rdfs:label "Keywords";
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:keyword ; 
+                             <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:type ; 
+                             <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:thesaurusName ; 
+                             <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:type ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> md:KeywordTypeCode ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:thesaurusName ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>];
+            <http://www.w3.org/2004/02/skos/core#notation> "MD_Keywords"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:LegalConstraints a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                    rdfs:label "Legal constraints";
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:accessConstraints ; 
+                                     <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:useConstraints ; 
+                                     <http://www.w3.org/2002/07/owl#allValuesFrom> md:RestrictionCode ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:otherConstraints ; 
+                                     <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:accessConstraints ; 
+                                     <http://www.w3.org/2002/07/owl#allValuesFrom> md:RestrictionCode ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> md:useConstraints ; 
+                                     <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    md:Constraints;
+                    <http://www.w3.org/2004/02/skos/core#notation> "MD_LegalConstraints"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:MaintenanceFrequencyCode a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                            rdfs:label "Maintenance frequency code";
+                            rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                            <http://www.w3.org/2004/02/skos/core#notation> "MD_MaintenanceFrequencyCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:MaintenanceInformation a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                          rdfs:label "Maintenance";
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:contact ; 
+                                           <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#ResponsibleParty> ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> md:contact ; 
+                                           <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> md:maintenanceAndUpdateFrequency ; 
+                                           <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> md:maintenanceAndUpdateFrequency ; 
+                                           <http://www.w3.org/2002/07/owl#allValuesFrom> md:MaintenanceFrequencyCode ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> md:dateOfNextUpdate ; 
+                                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> md:maintenanceNote ; 
+                                           <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> md:userDefinedMaintenanceFrequency ; 
+                                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> md:updateScope ; 
+                                           <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> md:updateScope ; 
+                                           <http://www.w3.org/2002/07/owl#allValuesFrom> md:ScopeCode ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> md:updateScopeDescription ; 
+                                           <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> md:updateScopeDescription ; 
+                                           <http://www.w3.org/2002/07/owl#allValuesFrom> md:ScopeDescription ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>];
+                          <http://www.w3.org/2004/02/skos/core#notation> "MD_MaintenanceInformation"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:Medium a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+          rdfs:label "Medium";
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:mediumFormat ; 
+                           <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> md:density ; 
+                           <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> md:mediumFormat ; 
+                           <http://www.w3.org/2002/07/owl#allValuesFrom> md:MediumFormatCode ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> md:densityUnits ; 
+                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> md:Medium.name ; 
+                           <http://www.w3.org/2002/07/owl#allValuesFrom> md:MediumNameCode ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> md:volumes ; 
+                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> md:Medium.name ; 
+                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> md:mediumNote ; 
+                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>];
+          <http://www.w3.org/2004/02/skos/core#notation> "MD_Medium"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:Medium.name a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain md:Medium;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+               rdfs:range md:MediumNameCode.
+md:MediumFormatCode a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                    rdfs:label "Medium format code";
+                    rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                    <http://www.w3.org/2004/02/skos/core#notation> "MD_MediumFormatCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:MediumNameCode a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                  rdfs:label "Medium name code";
+                  rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                  <http://www.w3.org/2004/02/skos/core#notation> "MD_MediumNameCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:Metadata a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+            rdfs:label "Metadata record"@en;
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:hierarchyLevelName ; 
+                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:parentIdentifier ; 
+                             <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:metadataMaintenance ; 
+                             <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:describes ; 
+                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:spatialRepresentationInfo ; 
+                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:characterSet ; 
+                             <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:applicationSchemaInfo ; 
+                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:portrayalCatalogueInfo ; 
+                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:portrayalCatalogueInfo ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> md:PortrayalCatalogueReference ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:contentInfo ; 
+                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:metadataStandardName ; 
+                             <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:identificationInfo ; 
+                             <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:applicationSchemaInfo ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> md:ApplicationSchemaInformation ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:referenceSystemInfo ; 
+                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:metadataExtensionInfo ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> md:MetadataExtensionInformation ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:dataQualityInfo ; 
+                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:metadataExtensionInfo ; 
+                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:dateStamp ; 
+                             <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:distributionInfo ; 
+                             <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:contentInfo ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> md:ContentInformation ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:locale ; 
+                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:contact ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#ResponsibleParty> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:metadataStandardVersion ; 
+                             <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:hierarchyLevel ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> md:ScopeCode ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:dataQualityInfo ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#DataQuality> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:metadataConstraints ; 
+                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:featureType ; 
+                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:distributionInfo ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> md:Distribution ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:fileIdentifier ; 
+                             <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:metadataConstraints ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> md:Constraints ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:language ; 
+                             <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:hierarchyLevel ; 
+                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:dataSet ; 
+                             <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:contact ; 
+                             <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:featureAttribute ; 
+                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:identificationInfo ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> md:Identification ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:metadataMaintenance ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> md:MaintenanceInformation ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:describes ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataset#DataSet> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:referenceSystemInfo ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> md:ReferenceSystem ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> md:spatialRepresentationInfo ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> md:SpatialRepresentation ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>];
+            <http://www.w3.org/2004/02/skos/core#notation> "MD_Metadata"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:MetadataExtensionInformation a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                                rdfs:label "Metadata extension information";
+                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:extendedElementInformation ; 
+                                                 <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#onProperty> md:extensionOnLineResource ; 
+                                                 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#onProperty> md:extendedElementInformation ; 
+                                                 <http://www.w3.org/2002/07/owl#allValuesFrom> md:ExtendedElementInformation ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#onProperty> md:extensionOnLineResource ; 
+                                                 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#OnlineResource> ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>];
+                                <http://www.w3.org/2004/02/skos/core#notation> "MD_MetadataExtensionInformation"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:ObligationCode a rdfs:Datatype;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                  rdfs:label "Obligation code";
+                  <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#oneOf> ("mandatory"
+                                                                                                          "optional"
+                                                                                                          "conditional") ; 
+                                                                   a rdfs:Datatype];
+                  <http://www.w3.org/2004/02/skos/core#notation> "MD_ObligationCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:PixelOrientationCode a rdfs:Datatype;
+                        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                        rdfs:label "Pixel orientation code";
+                        <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#oneOf> ("center"
+                                                                                                                "lowerLeft"
+                                                                                                                "lowerRight"
+                                                                                                                "upperRight"
+                                                                                                                "upperLeft") ; 
+                                                                         a rdfs:Datatype].
+md:PortrayalCatalogueReference a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                               rdfs:label "Portrayal catalogue reference";
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:portrayalCatalogueCitation ; 
+                                                <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onProperty> md:portrayalCatalogueCitation ; 
+                                                <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>];
+                               <http://www.w3.org/2004/02/skos/core#notation> "MD_PortrayalCatalogueReference"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:ProgressCode a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                rdfs:label "Progress code";
+                rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                <http://www.w3.org/2004/02/skos/core#notation> "MD_ProgressCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:RangeDimension a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                  rdfs:label "Range dimension";
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:sequenceIdentifier ; 
+                                   <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> md:descriptor ; 
+                                   <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>];
+                  <http://www.w3.org/2004/02/skos/core#notation> "MD_RangeDimension"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:ReferenceSystem a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                   rdfs:label "Reference system";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:referenceSystemIdentifier ; 
+                                    <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>];
+                   <http://www.w3.org/2004/02/skos/core#notation> "MD_ReferenceSystem"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:RepresentativeFraction a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                          rdfs:label "Representative fraction";
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:equivalentScale ; 
+                                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> md:denominator ; 
+                                           <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> md:equivalentScale ; 
+                                           <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#Scale> ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>];
+                          <http://www.w3.org/2004/02/skos/core#notation> "MD_RepresentativeFraction"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:Resolution a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+              rdfs:label "Resolution";
+              <http://www.w3.org/2002/07/owl#unionOf> (<http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#Distance>
+                                                       md:RepresentativeFraction);
+              <http://www.w3.org/2004/02/skos/core#notation> "MD_Resolution"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:RestrictionCode a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                   rdfs:label "Restriction code";
+                   rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                   <http://www.w3.org/2004/02/skos/core#notation> "MD_RestrictionCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:ScopeCode a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+             rdfs:label "Scope code";
+             rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+             <http://www.w3.org/2004/02/skos/core#notation> "MD_ScopeCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:ScopeDescription a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                    rdfs:label "Scope description";
+                    <http://www.w3.org/2004/02/skos/core#notation> "MD_ScopeDescription"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:SecurityConstraints a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                       rdfs:label "Security constraints";
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:userNote ; 
+                                        <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> md:classificationSystem ; 
+                                        <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> md:handlingDescription ; 
+                                        <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> md:classification ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> md:ClassificationCode ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> md:classification ; 
+                                        <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       md:Constraints;
+                       <http://www.w3.org/2004/02/skos/core#notation> "MD_SecurityConstraints"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:SpatialRepresentation a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                         rdfs:label "Spatial representation";
+                         <http://www.w3.org/2004/02/skos/core#notation> "MD_SpatialRepresentation"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:SpatialRepresentationTypeCode a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                                 rdfs:label "Spatial representation type code";
+                                 rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                                 <http://www.w3.org/2004/02/skos/core#notation> "MD_SpatialRepresentationTypeCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:StandardOrderProcess a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                        rdfs:label "Standard order process";
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:turnaround ; 
+                                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> md:plannedAvailableDateTime ; 
+                                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> md:orderingInstructions ; 
+                                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> md:fees ; 
+                                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>];
+                        <http://www.w3.org/2004/02/skos/core#notation> "MD_StandardOrderProcess"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:TopicCategoryCode a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                     rdfs:label "Topic category code";
+                     rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                     <http://www.w3.org/2004/02/skos/core#notation> "MD_TopicCategoryCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:TopologyLevelCode a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                     rdfs:label "Topology level code";
+                     rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                     <http://www.w3.org/2004/02/skos/core#notation> "MD_TopologyLevelCode"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:Usage a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+         rdfs:label "Usage";
+         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:userContactInfo ; 
+                          <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#onProperty> md:userDeterminedLimitations ; 
+                          <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#onProperty> md:usageDateTime ; 
+                          <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#onProperty> md:specificUsage ; 
+                          <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         [<http://www.w3.org/2002/07/owl#onProperty> md:userContactInfo ; 
+                          <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#ResponsibleParty> ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>];
+         <http://www.w3.org/2004/02/skos/core#notation> "MD_Usage"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:VectorSpatialRepresentation a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                               rdfs:label "Vector spatial representation";
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> md:geometricObjects ; 
+                                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onProperty> md:topologyLevel ; 
+                                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onProperty> md:topologyLevel ; 
+                                                <http://www.w3.org/2002/07/owl#allValuesFrom> md:TopologyLevelCode ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onProperty> md:geometricObjects ; 
+                                                <http://www.w3.org/2002/07/owl#allValuesFrom> md:GeometricObjects ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               md:SpatialRepresentation;
+                               <http://www.w3.org/2004/02/skos/core#notation> "MD_VectorSpatialRepresentation"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+md:abstract a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain md:Identification;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+            rdfs:label "abstract";
+            rdfs:range xsd:string.
+md:accessConstraints a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Value should be chosen from <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata/RestrictionCode>";
+                     rdfs:domain md:LegalConstraints;
+                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                     rdfs:label "access constraints";
+                     rdfs:range md:RestrictionCode.
+md:aggregateDataSetIdentifier a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:domain md:AggregateInformation;
+                              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                              rdfs:label "aggregate data set identifier".
+md:aggregateDataSetName a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain md:AggregateInformation;
+                        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                        rdfs:label "aggregate data set name".
+md:aggregationInfo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain md:Identification;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                   rdfs:label "aggregation info";
+                   rdfs:range md:AggregateInformation.
+md:amendmentNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:domain md:Format;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                   rdfs:label "amendment number";
+                   rdfs:range xsd:string.
+md:applicationSchemaInfo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain md:Metadata;
+                         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                         rdfs:label "application schema info";
+                         rdfs:range md:ApplicationSchemaInformation.
+md:assocationType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain md:AggregateInformation;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                  rdfs:label "assocation type";
+                  rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataset#AssociationTypeCode>.
+md:attributeDescription a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain md:CoverageDescription;
+                        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                        rdfs:label "attribute description".
+md:authority a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+             rdfs:label "authority";
+             rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation>.
+md:axisDimensionProperties a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment "Sequence members are md:Dimension";
+                           rdfs:domain md:GridSpatialRepresentation;
+                           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                           rdfs:label "axis dimension properties";
+                           rdfs:range rdf:Seq.
+md:bitsPerValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain md:Band;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                rdfs:label "bits per value";
+                rdfs:range xsd:integer.
+md:cameraCalibrationInformationAvailability a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                            rdfs:domain md:ImageDescription;
+                                            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                                            rdfs:label "camera calibration information availability";
+                                            rdfs:range xsd:boolean.
+md:cellGeometry a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain md:GridSpatialRepresentation;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                rdfs:label "cell geometry";
+                rdfs:range md:CellGeometryCode.
+md:centerPoint a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "Sequence members are gm:Point";
+               rdfs:domain md:Georectified;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+               rdfs:label "center point";
+               rdfs:range rdf:Seq.
+md:characterSet a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (md:Metadata
+                                                                      md:DataIdentification) ; 
+                             a <http://www.w3.org/2002/07/owl#Class>];
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                rdfs:label "character set";
+                rdfs:range md:CharacterSetCode.
+md:checkPointAvailability a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:domain md:Georectified;
+                          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                          rdfs:label "check point availability";
+                          rdfs:range xsd:boolean.
+md:checkPointDescription a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:domain md:Georectified;
+                         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                         rdfs:label "check point description";
+                         rdfs:range xsd:string.
+md:citation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain md:Identification;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+            rdfs:label "citation";
+            rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation>.
+md:classification a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain md:SecurityConstraints;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                  rdfs:label "classification";
+                  rdfs:range md:ClassificationCode.
+md:classificationSystem a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:domain md:SecurityConstraints;
+                        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                        rdfs:label "classification system";
+                        rdfs:range xsd:string.
+md:cloudCoverPercentage a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:domain md:ImageDescription;
+                        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                        rdfs:label "cloud cover percentage";
+                        rdfs:range xsd:float.
+md:complianceCode a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain md:FeatureCatalogueDescription;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                  rdfs:label "compliance code";
+                  rdfs:range xsd:boolean.
+md:compressionGenerationQuantity a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                 rdfs:domain md:ImageDescription;
+                                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                                 rdfs:label "compression generation quantity";
+                                 rdfs:range xsd:integer.
+md:condition a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:domain md:ExtendedElementInformation;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+             rdfs:label "condition";
+             rdfs:range xsd:string.
+md:constraintLanguage a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:domain md:ApplicationSchemaInformation;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                      rdfs:label "constraint language".
+md:contact a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (md:Metadata
+                                                                 md:MaintenanceInformation) ; 
+                        a <http://www.w3.org/2002/07/owl#Class>];
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+           rdfs:label "contact";
+           rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#ResponsibleParty>.
+md:contentInfo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain md:Metadata;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+               rdfs:label "content info";
+               rdfs:range md:ContentInformation.
+md:contentType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain md:CoverageDescription;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+               rdfs:label "content type";
+               rdfs:range md:CoverageContentTypeCode.
+md:controlPointAvailability a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:domain md:Georeferenceable;
+                            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                            rdfs:label "control point availability";
+                            rdfs:range xsd:boolean.
+md:cornerPoints a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Sequence members are GM_Point";
+                rdfs:domain md:Georectified;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                rdfs:label "corner point";
+                rdfs:range rdf:Seq.
+md:credit a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:domain md:Identification;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+          rdfs:label "credit";
+          rdfs:range xsd:string.
+md:dataQualityInfo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain md:Metadata;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                   rdfs:label "data quality info";
+                   rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality#DataQuality>.
+md:dataSet a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain md:Metadata;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+           rdfs:label "data set";
+           rdfs:range xsd:string.
+md:dataType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain md:ExtendedElementInformation;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+            rdfs:label "data type";
+            rdfs:range md:DatatypeCode.
+md:dateOfNextUpdate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:domain md:MaintenanceInformation;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                    rdfs:label "date of next update";
+                    rdfs:range xsd:date.
+md:dateStamp a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:domain md:Metadata;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+             rdfs:label "date stamp";
+             rdfs:range xsd:dateTime.
+md:definition a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain md:ExtendedElementInformation;
+              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+              rdfs:label "definition";
+              rdfs:range xsd:string.
+md:denominator a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+               rdfs:label "denominator";
+               rdfs:range xsd:integer.
+md:density a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain md:Medium;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+           rdfs:label "density";
+           rdfs:range xsd:double.
+md:densityUnits a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain md:Medium;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                rdfs:label "density units";
+                rdfs:range xsd:string.
+md:describes a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain md:Metadata;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+             rdfs:label "describes";
+             rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataset#DataSet>;
+             <http://www.w3.org/2002/07/owl#inverseOf> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataset#has>.
+md:descriptiveKeywords a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain md:Identification;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                       rdfs:label "descriptive keywords";
+                       rdfs:range md:Keywords.
+md:descriptor a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain md:RangeDimension;
+              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+              rdfs:label "descriptor";
+              rdfs:range xsd:string.
+md:dimension a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain md:CoverageDescription;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+             rdfs:label "dimension";
+             rdfs:range md:RangeDimension.
+md:dimensionName a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain md:Dimension;
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                 rdfs:label "dimension name";
+                 rdfs:range md:DimensionNameTypeCode.
+md:dimensionSize a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain md:Dimension;
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                 rdfs:label "dimension size";
+                 rdfs:range xsd:integer.
+md:distributionFormat a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain md:Distribution;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                      rdfs:label "distribution format";
+                      rdfs:range md:Format.
+md:distributionInfo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain md:Metadata;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                    rdfs:label "distribution info";
+                    rdfs:range md:Distribution.
+md:distributionOrderProcess a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:domain md:Distributor;
+                            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                            rdfs:label "distribution order process";
+                            rdfs:range md:StandardOrderProcess.
+md:distributor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain md:Distribution;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+               rdfs:label "distributor";
+               rdfs:range md:Distributor.
+md:distributorContact a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain md:Distributor;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                      rdfs:label "distributor contact";
+                      rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#ResponsibleParty>.
+md:distributorFormat a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain md:Distributor;
+                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                     rdfs:label "distributor format";
+                     rdfs:range md:Format;
+                     <http://www.w3.org/2002/07/owl#inverseOf> md:formatDistributor.
+md:distributorTransferOptions a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:domain md:Distributor;
+                              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                              rdfs:label "distributor transfer options";
+                              rdfs:range md:DigitalTransferOptions.
+md:domainCode a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain md:ExtendedElementInformation;
+              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+              rdfs:label "domain code";
+              rdfs:range xsd:integer.
+md:domainValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain md:ExtendedElementInformation;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+               rdfs:label "domain value";
+               rdfs:range xsd:string.
+md:environmentDescription a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:domain md:DataIdentification;
+                          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                          rdfs:label "environment description";
+                          rdfs:range xsd:string.
+md:equivalentScale a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                   rdfs:label "equivalent scale";
+                   rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#Scale>.
+md:extendedElementInformation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:domain md:MetadataExtensionInformation;
+                              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                              rdfs:label "extended element information";
+                              rdfs:range md:ExtendedElementInformation.
+md:extensionOnLineResource a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain md:MetadataExtensionInformation;
+                           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                           rdfs:label "extension on line resource";
+                           rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#OnlineResource>.
+md:extent a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain md:DataIdentification;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+          rdfs:label "extent";
+          rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#Extent>.
+md:featureAttribute a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain md:Metadata;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                    rdfs:label "feature attribute".
+md:featureCatalogueCitation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:domain md:FeatureCatalogueDescription;
+                            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                            rdfs:label "feature catalogue citation";
+                            rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation>.
+md:featureType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain md:Metadata;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+               rdfs:label "feature type".
+md:featureTypes a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain md:FeatureCatalogueDescription;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                rdfs:label "feature types".
+md:fees a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+        rdfs:domain md:StandardOrderProcess;
+        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+        rdfs:label "fees";
+        rdfs:range xsd:string.
+md:fileDecompressionTechnique a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                              rdfs:domain md:Format;
+                              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                              rdfs:label "file decompression technique";
+                              rdfs:range xsd:string.
+md:fileDescription a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:domain md:BrowseGraphic;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                   rdfs:label "file description";
+                   rdfs:range xsd:string.
+md:fileIdentifier a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain md:Metadata;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                  rdfs:label "file identifier";
+                  rdfs:range xsd:string.
+md:fileName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain md:BrowseGraphic;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+            rdfs:label "file name";
+            rdfs:range xsd:string.
+md:fileType a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain md:BrowseGraphic;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+            rdfs:label "file type";
+            rdfs:range xsd:string.
+md:filmDistortionInformationAvailability a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                         rdfs:domain md:ImageDescription;
+                                         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                                         rdfs:label "film distortion information availability";
+                                         rdfs:range xsd:boolean.
+md:formatDistributor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain md:Format;
+                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                     rdfs:label "format distributor";
+                     rdfs:range md:Distributor;
+                     <http://www.w3.org/2002/07/owl#inverseOf> md:distributorFormat.
+md:geometricObjectCount a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:domain md:GeometricObjects;
+                        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                        rdfs:label "geometric object count";
+                        rdfs:range xsd:integer.
+md:geometricObjectType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain md:GeometricObjects;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                       rdfs:label "geometric object type";
+                       rdfs:range md:GeometricObjectTypeCode.
+md:geometricObjects a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain md:VectorSpatialRepresentation;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                    rdfs:label "geometric objects";
+                    rdfs:range md:GeometricObjects.
+md:georeferencedParameters a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain md:Georeferenceable;
+                           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                           rdfs:label "georeferenced parameters".
+md:graphicOverview a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain md:Identification;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                   rdfs:label "graphic overview";
+                   rdfs:range md:BrowseGraphic.
+md:graphicsFile a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain md:ApplicationSchemaInformation;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                rdfs:label "graphics file".
+md:handlingDescription a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:domain md:SecurityConstraints;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                       rdfs:label "handling description";
+                       rdfs:range xsd:string.
+md:hierarchyLevel a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain md:Metadata;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                  rdfs:label "hierarchy level";
+                  rdfs:range md:ScopeCode.
+md:hierarchyLevelName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:domain md:Metadata;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                      rdfs:label "hierarchy level name";
+                      rdfs:range xsd:string.
+md:identificationInfo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain md:Metadata;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                      rdfs:label "identification info";
+                      rdfs:range md:Identification.
+md:illuminationAzimuthAngle a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:domain md:ImageDescription;
+                            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                            rdfs:label "illumination Azimuth Angle";
+                            rdfs:range xsd:float.
+md:illuminationElevationAngle a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                              rdfs:domain md:ImageDescription;
+                              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                              rdfs:label "illumination elevation Angle";
+                              rdfs:range xsd:float.
+md:imageQualityCode a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain md:ImageDescription;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                    rdfs:label "image quality code".
+md:imagingCondition a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain md:ImageDescription;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                    rdfs:label "imaging condition";
+                    rdfs:range md:ImagingConditionCode.
+md:includedWithDataset a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:domain md:FeatureCatalogueDescription;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                       rdfs:label "included with dataset";
+                       rdfs:range xsd:boolean.
+md:initiativeType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "Value should be chosen from <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataset/InitiativeTypeCode>";
+                  rdfs:domain md:AggregateInformation;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                  rdfs:label "initiative type";
+                  rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataset#InitiativeTypeCode>.
+md:keyword a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain md:Keywords;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+           rdfs:label "keyword";
+           rdfs:range xsd:string.
+md:language a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (md:Metadata
+                                                                  md:DataIdentification
+                                                                  md:FeatureCatalogueDescription) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>];
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+            rdfs:label "language";
+            rdfs:range xsd:string.
+md:lensDistortionInformationAvailability a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                         rdfs:domain md:ImageDescription;
+                                         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                                         rdfs:label "lens distortion information availability";
+                                         rdfs:range xsd:boolean.
+md:locale a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain md:Metadata;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+          rdfs:label "locale".
+md:maintenanceAndUpdateFrequency a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:comment "Value should be chosen from <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata/MaintenanceFrequenceCode>";
+                                 rdfs:domain md:MaintenanceInformation;
+                                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                                 rdfs:label "maintenance and update frequency";
+                                 rdfs:range md:MaintenanceFrequencyCode.
+md:maintenanceNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:domain md:MaintenanceInformation;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                   rdfs:label "maintenance note";
+                   rdfs:range xsd:string.
+md:maxValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain md:Band;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+            rdfs:label "max value";
+            rdfs:range xsd:double.
+md:maximumOccurrence a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:domain md:ExtendedElementInformation;
+                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                     rdfs:label "maximum occurrence";
+                     rdfs:range xsd:string.
+md:mediumFormat a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain md:Medium;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                rdfs:label "medium format";
+                rdfs:range md:MediumFormatCode.
+md:mediumNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain md:Medium;
+              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+              rdfs:label "medium note";
+              rdfs:range xsd:string.
+md:metadataConstraints a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain md:Metadata;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                       rdfs:label "metadata constraints";
+                       rdfs:range md:Constraints.
+md:metadataExtensionInfo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain md:Metadata;
+                         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                         rdfs:label "metadata extension info";
+                         rdfs:range md:MetadataExtensionInformation.
+md:metadataMaintenance a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain md:Metadata;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                       rdfs:label "metadata maintenance";
+                       rdfs:range md:MaintenanceInformation.
+md:metadataStandardName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:domain md:Metadata;
+                        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                        rdfs:label "metadata standard name";
+                        rdfs:range xsd:string.
+md:metadataStandardVersion a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:domain md:Metadata;
+                           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                           rdfs:label "metadata standard version";
+                           rdfs:range xsd:string.
+md:minValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain md:Band;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+            rdfs:label "min value";
+            rdfs:range xsd:double.
+md:name a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+        rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+        rdfs:label "name";
+        rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#CharacterString>.
+md:numberOfDimensions a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:domain md:GridSpatialRepresentation;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                      rdfs:label "number of dimensions";
+                      rdfs:range xsd:integer.
+md:obligation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain md:ExtendedElementInformation;
+              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+              rdfs:label "obligation";
+              rdfs:range md:ObligationCode.
+md:offLine a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain md:DigitalTransferOptions;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+           rdfs:label "off line";
+           rdfs:range md:Medium.
+md:offset a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:domain md:Band;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+          rdfs:label "offset";
+          rdfs:range xsd:double.
+md:online a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain md:DigitalTransferOptions;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+          rdfs:label "online";
+          rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#OnlineResource>.
+md:orderingInstructions a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:domain md:StandardOrderProcess;
+                        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                        rdfs:label "ordering instructions";
+                        rdfs:range xsd:string.
+md:orientationParameterAvailability a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                    rdfs:domain md:Georeferenceable;
+                                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                                    rdfs:label "orientation parameter availability";
+                                    rdfs:range xsd:boolean.
+md:orientationParameterDescription a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                   rdfs:domain md:Georeferenceable;
+                                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                                   rdfs:label "orientation parameter description";
+                                   rdfs:range xsd:string.
+md:otherConstraints a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:domain md:LegalConstraints;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                    rdfs:label "other constraints";
+                    rdfs:range xsd:string.
+md:parameterCitation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain md:Georeferenceable;
+                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                     rdfs:label "parameter citation";
+                     rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation>.
+md:parentEntity a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain md:ExtendedElementInformation;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                rdfs:label "parent entity";
+                rdfs:range xsd:string.
+md:parentIdentifier a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:domain md:Metadata;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                    rdfs:label "parent identifier";
+                    rdfs:range xsd:string.
+md:peakResponse a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain md:Band;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                rdfs:label "peak response";
+                rdfs:range xsd:double.
+md:plannedAvailableDateTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:domain md:StandardOrderProcess;
+                            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                            rdfs:label "planned available date time";
+                            rdfs:range xsd:dateTime.
+md:pointInPixel a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain md:Georectified;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                rdfs:label "point in pixel";
+                rdfs:range md:PixelOrientationCode.
+md:pointOfContact a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain md:Identification;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                  rdfs:label "point of contact";
+                  rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#ResponsibleParty>.
+md:portrayalCatalogueCitation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:domain md:PortrayalCatalogueReference;
+                              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                              rdfs:label "portrayal catalogue citation";
+                              rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation>.
+md:portrayalCatalogueInfo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain md:Metadata;
+                          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                          rdfs:label "portrayal catalogue info";
+                          rdfs:range md:PortrayalCatalogueReference.
+md:processingLevelCode a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain md:ImageDescription;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                       rdfs:label "processing level code".
+md:propertyType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain md:Metadata;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                rdfs:label "property type";
+                rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#PropertyType>.
+md:purpose a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain md:Identification;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+           rdfs:label "purpose";
+           rdfs:range xsd:string.
+md:radiometricCalibrationInformationAvailability a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                 rdfs:domain md:ImageDescription;
+                                                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                                                 rdfs:label "radiometric calibration information availability";
+                                                 rdfs:range xsd:boolean.
+md:rationale a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:domain md:ExtendedElementInformation;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+             rdfs:label "rationale";
+             rdfs:range xsd:string.
+md:referenceSystemIdentifier a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain md:ReferenceSystem;
+                             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                             rdfs:label "reference system identifier".
+md:referenceSystemInfo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain md:Metadata;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                       rdfs:label "reference system info";
+                       rdfs:range md:ReferenceSystem.
+md:resolution a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain md:Dimension;
+              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+              rdfs:label "resolution";
+              rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#Measure>.
+md:resourceConstraints a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain md:Identification;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                       rdfs:label "resource constraints";
+                       rdfs:range md:Constraints.
+md:resourceFormat a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain md:Identification;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                  rdfs:label "resource format";
+                  rdfs:range md:Format.
+md:resourceMaintenance a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain md:Identification;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                       rdfs:label "resource maintenance";
+                       rdfs:range md:MaintenanceInformation.
+md:resourceSpecificUsage a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain md:Identification;
+                         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                         rdfs:label "resource specific usage";
+                         rdfs:range md:Usage.
+md:rule a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+        rdfs:domain md:ExtendedElementInformation;
+        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+        rdfs:label "rule";
+        rdfs:range xsd:string.
+md:scaleFactor a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain md:Band;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+               rdfs:label "scale factor";
+               rdfs:range xsd:double.
+md:schemaAscii a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain md:ApplicationSchemaInformation;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+               rdfs:label "schema ascii".
+md:schemaLanguage a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain md:ApplicationSchemaInformation;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                  rdfs:label "schema language".
+md:sequenceIdentifier a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain md:RangeDimension;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                      rdfs:label "sequence identifier".
+md:series a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain md:Metadata;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+          rdfs:label "series";
+          rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataset#Aggregate>;
+          <http://www.w3.org/2002/07/owl#inverseOf> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataset#seriesMetadata>.
+md:shortName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:domain md:ExtendedElementInformation;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+             rdfs:label "short name";
+             rdfs:range xsd:string.
+md:softwareDevelopmentFile a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain md:ApplicationSchemaInformation;
+                           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                           rdfs:label "software development file".
+md:softwareDevelopmentFileFormat a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                 rdfs:domain md:ApplicationSchemaInformation;
+                                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                                 rdfs:label "software development file format".
+md:source a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain md:ExtendedElementInformation;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+          rdfs:label "source";
+          rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#ResponsibleParty>.
+md:spatialRepresentationInfo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain md:Metadata;
+                             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                             rdfs:label "spatial representation info";
+                             rdfs:range md:SpatialRepresentation.
+md:spatialRepresentationType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain md:DataIdentification;
+                             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                             rdfs:label "spatial representation type";
+                             rdfs:range md:SpatialRepresentationTypeCode.
+md:spatialResolution a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain md:DataIdentification;
+                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                     rdfs:label "spatial resolution";
+                     rdfs:range md:Resolution.
+md:specificUsage a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain md:Usage;
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                 rdfs:label "specific usage";
+                 rdfs:range xsd:string.
+md:specification a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain md:Format;
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                 rdfs:label "specification";
+                 rdfs:range xsd:string.
+md:status a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain md:Identification;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+          rdfs:label "status";
+          rdfs:range md:ProgressCode.
+md:supplementalInformation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:domain md:DataIdentification;
+                           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                           rdfs:label "supplemental information";
+                           rdfs:range xsd:string.
+md:thesaurusName a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain md:Keywords;
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                 rdfs:label "thesaurus name";
+                 rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#Citation>.
+md:toneGradation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain md:Band;
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                 rdfs:label "tone gradation";
+                 rdfs:range xsd:integer.
+md:topicCategory a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain md:DataIdentification;
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                 rdfs:label "topic category";
+                 rdfs:range md:TopicCategoryCode.
+md:topologyLevel a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain md:VectorSpatialRepresentation;
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                 rdfs:label "topology level";
+                 rdfs:range md:TopologyLevelCode.
+md:transferOptions a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain md:Distribution;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                   rdfs:label "transfer options";
+                   rdfs:range md:DigitalTransferOptions.
+md:transferSize a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain md:DigitalTransferOptions;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                rdfs:label "transfer size";
+                rdfs:range xsd:double.
+md:transformationDimensionDescription a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                      rdfs:domain md:Georectified;
+                                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                                      rdfs:label "transformation dimension description";
+                                      rdfs:range xsd:string.
+md:transformationDimensionMapping a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                  rdfs:domain md:Georectified;
+                                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                                  rdfs:label "transformation dimension mapping";
+                                  rdfs:range xsd:string.
+md:transformationParameterAvailability a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                       rdfs:domain md:GridSpatialRepresentation;
+                                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                                       rdfs:label "transformation parameter availability";
+                                       rdfs:range xsd:boolean.
+md:triangulationIndicator a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:domain md:ImageDescription;
+                          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                          rdfs:label "triangulation indicator";
+                          rdfs:range xsd:boolean.
+md:turnaround a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain md:StandardOrderProcess;
+              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+              rdfs:label "turnaround";
+              rdfs:range xsd:string.
+md:type a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+        rdfs:domain md:Keywords;
+        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+        rdfs:label "type";
+        rdfs:range md:KeywordTypeCode.
+md:units a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+         rdfs:domain md:Band;
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+         rdfs:label "units";
+         rdfs:subPropertyOf <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#uom>.
+md:unitsOfDistribution a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:domain md:DigitalTransferOptions;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                       rdfs:label "units of distribution";
+                       rdfs:range xsd:string.
+md:updateScope a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "Value should be chosen from <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata/ScopeCode>";
+               rdfs:domain md:MaintenanceInformation;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+               rdfs:label "update scope";
+               rdfs:range md:ScopeCode.
+md:updateScopeDescription a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain md:MaintenanceInformation;
+                          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                          rdfs:label "update scope description";
+                          rdfs:range md:ScopeDescription.
+md:usageDateTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain md:Usage;
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                 rdfs:label "usage date time";
+                 rdfs:range xsd:dateTime.
+md:useConstraints a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain md:LegalConstraints;
+                  rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                  rdfs:label "use constraints";
+                  rdfs:range md:RestrictionCode.
+md:useLimitation a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain md:Constraints;
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                 rdfs:label "use limitation";
+                 rdfs:range xsd:string.
+md:userContactInfo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain md:Usage;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                   rdfs:label "user contact info";
+                   rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#ResponsibleParty>.
+md:userDefinedMaintenanceFrequency a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                   rdfs:domain md:MaintenanceInformation;
+                                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                                   rdfs:label "user defined maintenance frequency";
+                                   rdfs:range xsd:duration.
+md:userDeterminedLimitations a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                             rdfs:domain md:Usage;
+                             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+                             rdfs:label "user determined limitations";
+                             rdfs:range xsd:string.
+md:userNote a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain md:SecurityConstraints;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+            rdfs:label "user note";
+            rdfs:range xsd:string.
+md:version a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain md:Format;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+           rdfs:label "version";
+           rdfs:range xsd:string.
+md:volumes a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain md:Medium;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata>;
+           rdfs:label "volumes";
+           rdfs:range xsd:integer.

@@ -1,0 +1,83 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix oecc: <http://www.oegov.org/core/owl/cc#>.
+
+<http://creativecommons.org/ns#License> a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:int ; 
+                                                         <http://www.w3.org/2002/07/owl#onProperty> <http://creativecommons.org/ns#image> ; 
+                                                         a <http://www.w3.org/2002/07/owl#Restriction>].
+<http://creativecommons.org/ns#attributionName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://creativecommons.org/ns#deprecatedOn> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://creativecommons.org/ns#image> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                      rdfs:range xsd:anyURI.
+<http://creativecommons.org/ns#jurisdiction> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://creativecommons.org/ns#legalcode> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://creativecommons.org/ns#license> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://creativecommons.org/ns#morePermissions> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://creativecommons.org/ns#permits> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://creativecommons.org/ns#prohibits> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://creativecommons.org/ns#requires> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.oegov.org/core/owl/cc> <http://creativecommons.org/ns#attributionURL> "http://www.topquadrant.com"^^xsd:anyURI;
+                                   <http://creativecommons.org/ns#license> oecc:CreativeCommonsAttributionShareAlike3.0_UnitedStatesLicense;
+                                   <http://purl.org/dc/elements/1.1/creator> "Ralph Hodgson";
+                                   <http://purl.org/dc/elements/1.1/date> "$Date: 2009-08-20 02:39:32 +0200 (Thu, 20 Aug 2009) $";
+                                   <http://purl.org/dc/elements/1.1/description> "Creative Commons Ontology, extending RDF file at http://creativecommons.org/schema.rdf";
+                                   <http://purl.org/dc/elements/1.1/rights> "Creative Commons Attribution-Share Alike 3.0 United States License";
+                                   <http://purl.org/dc/elements/1.1/source> "www.oegov.org";
+                                   <http://purl.org/dc/elements/1.1/title> "Creative Commons Ontology";
+                                   oecc:attributedSource oecc:TopQuadrantAttribution;
+                                   oecc:revision "$Revision: 1348 $";
+                                   a <http://www.w3.org/2002/07/owl#Ontology>;
+                                   <http://www.w3.org/2002/07/owl#imports> <http://creativecommons.org/schema.rdf>,
+                                                                           <http://purl.org/dc/elements/1.1/>;
+                                   <http://www.w3.org/2002/07/owl#versionInfo> "$Id: cc.n3 1348 2009-08-20 00:39:32Z RalphHodgson $".
+oecc:AttributedSource a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "The name, url and other details of an attribution.";
+                      rdfs:label "Attributed Source";
+                      rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>,
+                                      [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://creativecommons.org/ns#attributionName> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:int ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://creativecommons.org/ns#attributionURL> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> oecc:pointOfContact ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>].
+oecc:CreativeCommonsAttributionShareAlike3.0_UnitedStatesLicense <http://creativecommons.org/ns#image> "http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png"^^xsd:anyURI;
+                                                                 <http://creativecommons.org/ns#permits> <http://creativecommons.org/ns#Distribution>,
+                                                                                                         <http://creativecommons.org/ns#DerivativeWorks>;
+                                                                 <http://creativecommons.org/ns#requires> <http://creativecommons.org/ns#Attribution>,
+                                                                                                          <http://creativecommons.org/ns#ShareAlike>;
+                                                                 a <http://creativecommons.org/ns#License>;
+                                                                 rdfs:label "Creative Commons Attribution-Share Alike 3.0 United States License".
+oecc:TopQuadrantAttribution <http://creativecommons.org/ns#attributionName> "TopQuadrant, Inc.";
+                            <http://creativecommons.org/ns#attributionURL> "http://www.topquadrant.com"^^xsd:anyURI;
+                            oecc:pointOfContact "Ralph Hodgson";
+                            a oecc:AttributedSource;
+                            rdfs:label "TopQuadrant attribution".
+oecc:attributedSource a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:label "attributed source".
+oecc:image a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+           rdfs:range xsd:anyURI.
+oecc:licence a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:label "licence";
+             rdfs:range xsd:string.
+oecc:pointOfContact a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:label "point of contact";
+                    rdfs:range xsd:string.
+oecc:revision a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+              rdfs:range xsd:string.
+oecc:url a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:label "url";
+         rdfs:range xsd:anyURI.
+<http://www.w3.org/2002/07/owl#Ontology> rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> <http://creativecommons.org/ns#License> ; 
+                                                          <http://www.w3.org/2002/07/owl#onProperty> <http://creativecommons.org/ns#license> ; 
+                                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                         [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:int ; 
+                                                          <http://www.w3.org/2002/07/owl#onProperty> <http://creativecommons.org/ns#license> ; 
+                                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                         [<http://www.w3.org/2002/07/owl#allValuesFrom> oecc:AttributedSource ; 
+                                                          <http://www.w3.org/2002/07/owl#onProperty> oecc:attributedSource ; 
+                                                          a <http://www.w3.org/2002/07/owl#Restriction>].

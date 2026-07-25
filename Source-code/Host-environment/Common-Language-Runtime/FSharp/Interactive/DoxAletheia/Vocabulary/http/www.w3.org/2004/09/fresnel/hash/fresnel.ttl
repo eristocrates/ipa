@@ -1,0 +1,572 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix fresnel: <http://www.w3.org/2004/09/fresnel#>.
+
+<http://www.w3.org/2004/09/fresnel> <http://purl.org/dc/elements/1.1/creator> "Stefano Mazzocchi <stefanom@mit.edu>",
+                                                                              "Ryan Lee <ryanlee@w3.org>",
+                                                                              "Emmanuel Pietriga <emmanuel.pietriga@inria.fr>",
+                                                                              "Chris Bizer <chris@bizer.de>";
+                                    <http://purl.org/dc/elements/1.1/date> "2005-03-11"^^xsd:date;
+                                    <http://purl.org/dc/elements/1.1/description> "OWL Full vocabulary for defining lenses and formats on RDF models.";
+                                    <http://purl.org/dc/elements/1.1/format> "RDF";
+                                    <http://purl.org/dc/elements/1.1/identifier> fresnel:;
+                                    <http://purl.org/dc/elements/1.1/title> "Fresnel Lens and Format Core Vocabulary";
+                                    a <http://www.w3.org/2002/07/owl#Ontology>;
+                                    <http://www.w3.org/2002/07/owl#versionInfo> "$Id: fresnel.rdf,v 1.2 2005/07/25 22:56:00 ryanlee Exp $".
+fresnel:ClassList a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "This is a convenience class for the OWL specification of Fresnel (an rdf:List of resource selectors only).";
+                  rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> rdf:first ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> rdfs:Class ; 
+                                   a <http://www.w3.org/2002/07/owl#Class> ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#onProperty> rdf:rest ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:ClassList
+                                                                                                                           rdf:nil)] ; 
+                                   a <http://www.w3.org/2002/07/owl#Class> ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  rdf:List.
+fresnel:ConvenienceToken a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Abstract class for expressing shorthands a browser must understand how to expand.";
+                         rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                         rdfs:label "Convenience Token";
+                         rdfs:subClassOf rdfs:Resource.
+fresnel:ConvienceProperty a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Abstract class of pseudo properties.";
+                          rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                          rdfs:label "Convenience Property";
+                          rdfs:subClassOf fresnel:ConvenienceToken.
+fresnel:Format a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A Fresnel format class for displaying RDF data; the domain property can be only one of :formatDomain, :classFormatDomain, :instanceFormatDomain.";
+               rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+               rdfs:label "Format Class";
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fresnel:valueFormat ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> fresnel:FormatDescriptionNoSubstitution ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               rdfs:Resource,
+                               [<http://www.w3.org/2002/07/owl#onProperty> fresnel:resourceFormat ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> fresnel:FormatDescriptionNoSubstitution ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> fresnel:instanceFormatDomain ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> rdfs:Resource ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> fresnel:propertyFormat ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> fresnel:FormatDescriptionSubstitution ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> fresnel:value ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> fresnel:PropertyValueStyle ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> fresnel:labelStyle ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> fresnel:group ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> fresnel:Group ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> fresnel:propertyFormatDomain ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (rdf:Property
+                                                                                                                        fresnel:PropertySet) ; 
+                                                                               a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> fresnel:label ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> fresnel:valueStyle ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> fresnel:purpose ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> fresnel:Purpose ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> fresnel:classFormatDomain ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> rdfs:Class ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> fresnel:propertyStyle ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> fresnel:labelFormat ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> fresnel:FormatDescriptionSubstitution ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>];
+               <http://www.w3.org/2002/07/owl#disjointWith> fresnel:Lens.
+fresnel:FormatDescription a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Description of fresnel:Format content separators; super class, not to be used directly.";
+                          rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                          rdfs:label "Format Description";
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fresnel:contentBefore ; 
+                                           <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> fresnel:contentAfter ; 
+                                           <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> fresnel:contentFirst ; 
+                                           <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#onProperty> fresnel:contentLast ; 
+                                           <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          rdfs:Resource.
+fresnel:FormatDescriptionNoSubstitution a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:comment "Description of fresnel:Format content separators only; contentNoValue will not be recognized in conjunction with this class.";
+                                        rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                                        rdfs:label "Format Description No Substitution";
+                                        rdfs:subClassOf fresnel:FormatDescription.
+fresnel:FormatDescriptionSubstitution a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "Description of fresnel:Format content separators and content replacement if values are missing.";
+                                      rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                                      rdfs:label "Format Description Substitution";
+                                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fresnel:contentNoValue ; 
+                                                       <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                                       <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                       <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                      fresnel:FormatDescription.
+fresnel:Group a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A Fresnel Group is used for grouping formats and lenses together.";
+              rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+              rdfs:label "Group";
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fresnel:labelStyle ; 
+                               <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> fresnel:primaryClasses ; 
+                               <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> fresnel:ClassList ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> fresnel:valueStyle ; 
+                               <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> fresnel:propertyStyle ; 
+                               <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> fresnel:resourceStyle ; 
+                               <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              rdfs:Resource,
+                              [<http://www.w3.org/2002/07/owl#onProperty> fresnel:valueFormat ; 
+                               <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> fresnel:FormatDescriptionNoSubstitution ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> fresnel:propertyFormat ; 
+                               <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> fresnel:FormatDescriptionSubstitution ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> fresnel:resourceFormat ; 
+                               <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> fresnel:FormatDescriptionNoSubstitution ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> fresnel:labelFormat ; 
+                               <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> fresnel:FormatDescriptionSubstitution ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>];
+              <http://www.w3.org/2002/07/owl#disjointWith> fresnel:Format,
+                                                           fresnel:Lens.
+fresnel:HidePropertyList a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "This is a convenience class for the OWL specification of Fresnel.";
+                         rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                         rdfs:label "Hide Property List";
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> rdf:first ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> rdf:Property ; 
+                                          a <http://www.w3.org/2002/07/owl#Class> ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> rdf:rest ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:HidePropertyList
+                                                                                                                                  rdf:nil)] ; 
+                                          a <http://www.w3.org/2002/07/owl#Class> ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         rdf:List;
+                         <http://www.w3.org/2002/07/owl#disjointWith> fresnel:ShowPropertyList.
+fresnel:LabellingFormat a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Abstract superclass of all labelling formats.";
+                        rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                        rdfs:label "Labelling Format";
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#oneOf> (fresnel:show
+                                                                                fresnel:none) ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        rdfs:Resource.
+fresnel:Lens a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Lens for viewing RDF data.";
+             rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+             rdfs:label "Lens";
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fresnel:instanceLensDomain ; 
+                              <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> fresnel:showProperties ; 
+                              <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:ShowPropertyList
+                                                                                                                      rdf:Property
+                                                                                                                      fresnel:PropertySet) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>] ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> fresnel:classLensDomain ; 
+                              <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             rdfs:Resource,
+                             [<http://www.w3.org/2002/07/owl#onProperty> fresnel:group ; 
+                              <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> fresnel:Group ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> fresnel:purpose ; 
+                              <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> fresnel:Purpose ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> fresnel:use ; 
+                              <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:Group
+                                                                                                                      fresnel:Format) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>] ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> fresnel:hideProperties ; 
+                              <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:HidePropertyList
+                                                                                                                      rdf:Property) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>] ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> fresnel:resourceStyle ; 
+                              <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>].
+fresnel:PropertyDescription a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "More detailed description of the property, e.g. for specifing sublenses or merging properties.";
+                            rdfs:label "Property Description";
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> fresnel:property ; 
+                                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                             <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                             <http://www.w3.org/2002/07/owl#allValuesFrom> rdf:Property ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#onProperty> fresnel:sublens ; 
+                                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#onProperty> fresnel:depth ; 
+                                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                             <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                             <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:nonNegativeInteger ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#onProperty> fresnel:use ; 
+                                             <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                             <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                             <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:Group
+                                                                                                                                     fresnel:Format) ; 
+                                                                                            a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            rdfs:Resource.
+fresnel:PropertySet a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Abstract class of property sets.";
+                    rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                    rdfs:label "Property Set";
+                    rdfs:subClassOf fresnel:ConvenienceToken.
+fresnel:PropertyValueStyle a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Abstract superclass of all property value display styles.";
+                           rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                           rdfs:label "Property value display style";
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#oneOf> (fresnel:uri
+                                                                                   fresnel:replacedResource
+                                                                                   fresnel:image) ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           rdfs:Resource.
+fresnel:Purpose a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Propose in which a specific lens might be appropriate.";
+                rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                rdfs:label "Purpose";
+                rdfs:subClassOf rdfs:Resource.
+fresnel:ShowPropertyList a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "This is a convenience class for the OWL specification of Fresnel.";
+                         rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                         rdfs:label "Show Property List";
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> rdf:first ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (rdf:Property
+                                                                                                                                  fresnel:PropertyDescription
+                                                                                                                                  fresnel:ConvenienceToken)] ; 
+                                          a <http://www.w3.org/2002/07/owl#Class> ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> rdf:rest ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:ShowPropertyList
+                                                                                                                                  rdf:nil)] ; 
+                                          a <http://www.w3.org/2002/07/owl#Class> ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         rdf:List;
+                         <http://www.w3.org/2002/07/owl#disjointWith> fresnel:HidePropertyList.
+fresnel:allProperties a fresnel:PropertySet;
+                      rdfs:comment "Set of all properties of the current instance, which have not be explicitly named before.";
+                      rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                      rdfs:label "All Properties".
+fresnel:classFormatDomain a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "The Format should be applied to instances of this class.";
+                          rdfs:domain fresnel:Format;
+                          rdfs:label "class format domain";
+                          rdfs:range rdfs:Class.
+fresnel:classLensDomain a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "Specifies that the lens is usable for the specified class and its subclasses.";
+                        rdfs:domain fresnel:Lens;
+                        rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                        rdfs:label "class lens domain";
+                        rdfs:range rdfs:Class.
+fresnel:contentAfter a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "Content that should be displayed before the content of the current box.";
+                     rdfs:domain fresnel:FormatDescription;
+                     rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                     rdfs:label "content after";
+                     rdfs:range xsd:string.
+fresnel:contentBefore a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "Content that should be displayed before the content of the current box.";
+                      rdfs:domain fresnel:FormatDescription;
+                      rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                      rdfs:label "content before";
+                      rdfs:range xsd:string.
+fresnel:contentFirst a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "Content that should be displayed before the content of the first element in a list of boxes; takes over the first :contentBefore element in case of a conflict.";
+                     rdfs:domain fresnel:FormatDescription;
+                     rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                     rdfs:label "content first";
+                     rdfs:range xsd:string.
+fresnel:contentLast a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "Content that should be displayed after the content of the last element in a list of boxes; takes over the last :contentAfter element in case of a conflict.";
+                    rdfs:domain fresnel:FormatDescription;
+                    rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                    rdfs:label "content last";
+                    rdfs:range xsd:string.
+fresnel:contentNoValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:comment "Content that should be displayed if the current property is missing.";
+                       rdfs:domain fresnel:FormatDescriptionSubstitution;
+                       rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                       rdfs:label "content no value";
+                       rdfs:range xsd:string.
+fresnel:defaultLens a fresnel:Purpose;
+                    rdfs:comment "Provides the browser with a starting point which lens to show.";
+                    rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                    rdfs:label "Default Lens".
+fresnel:depth a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:comment "Closure mechanism, if lenses are recursively used; the recursive depth limit.";
+              rdfs:domain fresnel:PropertyDescription;
+              rdfs:label "depth";
+              rdfs:range xsd:nonNegativeInteger.
+fresnel:externalLink a fresnel:PropertyValueStyle;
+                     rdfs:comment "Show the property value as a dereferenceable URL.";
+                     rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                     rdfs:label "External Link".
+fresnel:group a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Specifies the format group to which a format or a lens belongs.";
+              rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:Format
+                                                                    fresnel:Lens) ; 
+                           a <http://www.w3.org/2002/07/owl#Class>];
+              rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+              rdfs:label "group";
+              rdfs:range fresnel:Group.
+fresnel:hideProperties a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "List of all properties which should be hidden.  Must be used together with 'fresnel:showProperties fresnel:allProperties.'";
+                       rdfs:domain fresnel:Lens;
+                       rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                       rdfs:label "hide properties";
+                       rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:ConvenienceToken
+                                                                            rdf:Property
+                                                                            fresnel:HidePropertyList) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>].
+fresnel:image a fresnel:PropertyValueStyle;
+              rdfs:comment "Show the property value as an image, such as PNG or JPEG .";
+              rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+              rdfs:label "Image".
+fresnel:instanceFormatDomain a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:comment "The Format should be applied to this set of instances.";
+                             rdfs:domain fresnel:Format;
+                             rdfs:label "instance format domain";
+                             rdfs:range rdfs:Resource.
+fresnel:instanceLensDomain a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment "The lens is usable for the specified set of instances.";
+                           rdfs:domain fresnel:Lens;
+                           rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                           rdfs:label "instance lens domain";
+                           rdfs:range rdfs:Resource.
+fresnel:label a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Specifies how a property is labelled (only works in conjunction with propertyFormatDomain).";
+              rdfs:domain fresnel:Format;
+              rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+              rdfs:label "label".
+fresnel:labelFormat a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Assign content formatting to a set of labels (theoretically, this does not make much sense, but it does round out the set of formatting properties; only works in conjunction with propertyFormatDomain).";
+                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:Group
+                                                                          fresnel:Format) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>];
+                    rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                    rdfs:label "label format";
+                    rdfs:range fresnel:FormatDescriptionSubstitution.
+fresnel:labelLens a fresnel:Purpose;
+                  rdfs:comment "Lens for providing a label for a resource.";
+                  rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                  rdfs:label "Label Lens".
+fresnel:labelStyle a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "Attaching a symbol appropriate for styling labels (only works in conjunction with propertyFormatDomain).";
+                   rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:Format
+                                                                         fresnel:Group) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>];
+                   rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                   rdfs:label "label style";
+                   rdfs:range xsd:string.
+fresnel:member a fresnel:ConvienceProperty;
+               rdfs:comment "A special token to indicate the relationship between any RDF container or collection (rdf:List) and its member items.  Do not use as anything other than an individual.";
+               rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+               rdfs:label "member".
+fresnel:none a fresnel:LabellingFormat;
+             rdfs:comment "Do not show any label for the property.";
+             rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+             rdfs:label "none".
+fresnel:primaryClasses a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Specifies the classes that should be considered primaries, or first class results; secondary resources not matching the primaries will only be shown as sublenses.  The range is a list of resource selectors.";
+                       rdfs:domain fresnel:Group;
+                       rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                       rdfs:label "primaryClasses";
+                       rdfs:range fresnel:ClassList.
+fresnel:property a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "The RDF property, which is described.";
+                 rdfs:domain fresnel:PropertyDescription;
+                 rdfs:label "property";
+                 rdfs:range rdf:Property.
+fresnel:propertyFormat a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Assign content formatting to a set of properties (only works in conjunction with propertyFormatDomain).";
+                       rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:Group
+                                                                             fresnel:Format) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>];
+                       rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                       rdfs:label "property format";
+                       rdfs:range fresnel:FormatDescriptionSubstitution.
+fresnel:propertyFormatDomain a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:comment "The Format should be used for the specified properties.";
+                             rdfs:domain fresnel:Format;
+                             rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                             rdfs:label "property format domain";
+                             rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (rdf:Property
+                                                                                  fresnel:PropertySet) ; 
+                                         a <http://www.w3.org/2002/07/owl#Class>].
+fresnel:propertyStyle a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "Attaching a symbol appropriate for styling properties (only works in conjunction with propertyFormatDomain).";
+                      rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:Format
+                                                                            fresnel:Group) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>];
+                      rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                      rdfs:label "property style";
+                      rdfs:range xsd:string.
+fresnel:purpose a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Specifies a purpose for which a lens or format might be appropriate.";
+                rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:Lens
+                                                                      fresnel:Format
+                                                                      fresnel:Group) ; 
+                             a <http://www.w3.org/2002/07/owl#Class>];
+                rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                rdfs:label "purpose";
+                rdfs:range fresnel:Purpose.
+fresnel:replacedResource a fresnel:PropertyValueStyle;
+                         rdfs:comment "Any kind of retrievable resource like an image, audio or video that should be displayed as property value.  The browser should try retrieve the resource and show it instead of the property value URI.  The browser has to negotiate an appropriate media type with the server using HTTP content negotiation.";
+                         rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                         rdfs:label "Replaced Resource".
+fresnel:resourceFormat a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Assign content formatting to a set of resources (only works in conjunction with classFormatDomain and instanceFormatDomain).";
+                       rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:Group
+                                                                             fresnel:Format) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>];
+                       rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                       rdfs:label "resource format";
+                       rdfs:range fresnel:FormatDescriptionNoSubstitution.
+fresnel:resourceStyle a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "Attaching a symbol appropriate for styling a resource.  resourceStyle is ignored if not used with :classFormatDomain or :instanceFormatDomain.";
+                      rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:Lens
+                                                                            fresnel:Group) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>];
+                      rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                      rdfs:label "resource style";
+                      rdfs:range xsd:string.
+fresnel:show a fresnel:LabellingFormat;
+             rdfs:comment "Show the RDFS Label of the property. This is the default and doesn't have to be declared.";
+             rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+             rdfs:label "Show Label".
+fresnel:showProperties a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "List of all properties which should be shown.";
+                       rdfs:domain fresnel:Lens;
+                       rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                       rdfs:label "show properties";
+                       rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (rdf:Property
+                                                                            fresnel:PropertyDescription
+                                                                            fresnel:ConvenienceToken
+                                                                            fresnel:ShowPropertyList) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>].
+fresnel:sublens a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Sublens which should be used for displaying property values.";
+                rdfs:domain fresnel:PropertyDescription;
+                rdfs:label "sublens";
+                rdfs:range fresnel:Lens.
+fresnel:uri a fresnel:PropertyValueStyle;
+            rdfs:comment "Show the property value as an URI.";
+            rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+            rdfs:label "URI".
+fresnel:use a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment "Explicit definition of fresnel:Group containing formats that should be used to render the lens or sublens.";
+            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:PropertyDescription
+                                                                  fresnel:Lens) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>];
+            rdfs:label "use";
+            rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:Group
+                                                                 fresnel:Format) ; 
+                        a <http://www.w3.org/2002/07/owl#Class>].
+fresnel:value a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Specifies how a property value is displayed (only works in conjunction with propertyFormatDomain).";
+              rdfs:domain fresnel:Format;
+              rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+              rdfs:label "property value";
+              rdfs:range fresnel:PropertyValueStyle.
+fresnel:valueFormat a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Assign content formatting to a set of values (only works in conjunction with propertyFormatDomain).";
+                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:Group
+                                                                          fresnel:Format) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>];
+                    rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                    rdfs:label "value format";
+                    rdfs:range fresnel:FormatDescriptionNoSubstitution.
+fresnel:valueStyle a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "Attaching a symbol appropriate for styling the values of a property (only works in conjunction with propertyFormatDomain).";
+                   rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (fresnel:Format
+                                                                         fresnel:Group) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>];
+                   rdfs:isDefinedBy <http://www.w3.org/2004/09/fresnel>;
+                   rdfs:label "value style";
+                   rdfs:range xsd:string.

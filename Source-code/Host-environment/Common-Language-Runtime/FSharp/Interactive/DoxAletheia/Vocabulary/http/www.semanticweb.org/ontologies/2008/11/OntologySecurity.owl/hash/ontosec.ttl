@@ -1,0 +1,1942 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ontosec: <http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#>.
+
+_:B03459632c280f4ce39316e517929eb8d rdf:object ontosec:FunctionGroups;
+                                    rdf:predicate rdf:type;
+                                    rdf:subject ontosec:NetAccessFunctionGroup;
+                                    a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "".
+_:B1e64e9955c245ef39b7d6caa9a3c34eb a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (ontosec:Offline
+                                                                                     ontosec:Parallel).
+_:B224ab0790fc819730bafe531a560881b rdf:object ontosec:CertificateInstallation;
+                                    rdf:predicate rdf:type;
+                                    rdf:subject ontosec:CertificateInstallationApplication;
+                                    a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "A Symbian and Nokia application that provides capabilities to install symbian certificates on some Nokia devices".
+_:B25030d42c4c5d75212e76da5cd6f94bd rdf:object ontosec:CardMemory;
+                                    rdf:predicate rdf:type;
+                                    rdf:subject ontosec:SD;
+                                    a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "Secure Digital Memory Card".
+_:B44a5a71f73a0975a629cae1bd7fc33fa a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (ontosec:Platform).
+_:B524e614e4f22dfa3577b1dde09406936 rdf:object ontosec:CertificateInstallation;
+                                    rdf:predicate rdf:type;
+                                    rdf:subject ontosec:CertificateInstallationApplication;
+                                    a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "A Symbian and Nokia application that provides capabilities to install symbian certificates on some Nokia devices".
+_:B66121b1b19072469d63c68261117c565 a <http://www.w3.org/2002/07/owl#AllDifferent>;
+                                    <http://www.w3.org/2002/07/owl#distinctMembers> (ontosec:Offline
+                                                                                     ontosec:Parallel).
+_:B8ca5e10ff4c07b0dc5fe652c90cb6c6e rdf:object ontosec:FunctionGroups;
+                                    rdf:predicate rdf:type;
+                                    rdf:subject ontosec:NetAccessFunctionGroup;
+                                    a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "".
+_:B902d8fead0a2de24ed07f1c448434945 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (ontosec:Platform).
+_:Bd5b01073810d7b90798e146fa17b7227 rdf:object ontosec:CardMemory;
+                                    rdf:predicate rdf:type;
+                                    rdf:subject ontosec:SD;
+                                    a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "Secure Digital Memory Card".
+<http://purl.org/dc/elements/1.1/format> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/relation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl> <http://purl.org/dc/elements/1.1/relation> "This ontology covers the domain of security in the field of mobile applications.";
+                                                                     a <http://www.w3.org/2002/07/owl#Ontology>.
+ontosec:2.5G a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf ontosec:WANetwork.
+ontosec:2G a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:subClassOf ontosec:WANetwork.
+ontosec:3DES a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf ontosec:BlockCipherAlgorithm.
+ontosec:3G a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:subClassOf ontosec:WANetwork.
+ontosec:3GPP a ontosec:OrganizationsAndStandards.
+ontosec:AES a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf ontosec:BlockCipherAlgorithm.
+ontosec:AES_FIPS197 a ontosec:AES.
+ontosec:AccessControl a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf <http://www.semanticweb.org/ontologies/2008/11/OntologyServices.owl#Services>.
+ontosec:AccessControlList a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "List of permissions attached to an object.";
+                          rdfs:subClassOf ontosec:AccessControlMethods.
+ontosec:AccessControlMethods a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AccessControl ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Integrity ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Confidentiality ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AccessControl ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Integrity ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Confidentiality ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             ontosec:CoreCounterMeasure.
+ontosec:ActiveThreat a ontosec:ThreatType.
+ontosec:Actor a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Actors participating in the realisation and implementation of security services";
+              rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+ontosec:Add-OnMemory a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf ontosec:Memory.
+ontosec:AdditionalTools a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "New tools that should be used for the projection or the application.";
+                        rdfs:subClassOf ontosec:Cost.
+ontosec:AdministrativeProcedure a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Tasks to be performed and which are out of the scope of the technical field.";
+                                rdfs:subClassOf ontosec:Cost.
+ontosec:Algorithm a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf ontosec:Mechanism.
+ontosec:AnalysisPhase a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf ontosec:ApplicationLifeCyclePhase.
+ontosec:Android a ontosec:Platform.
+ontosec:Application a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf ontosec:Software.
+ontosec:ApplicationData a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf ontosec:Data.
+ontosec:ApplicationLifeCyclePhase a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:subClassOf ontosec:ValueTypes.
+ontosec:ApplicationServerSide a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "The application server side may be a web server or a data base back end that the device connects to.";
+                              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Backup ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Journaling ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Backup ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Journaling ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              ontosec:Actor.
+ontosec:AppliedTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:subPropertyOf ontosec:Relationship.
+ontosec:Asset a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "The set of assets that should be protected";
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat> ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#victimOf> ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat> ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#victimOf> ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              <http://www.w3.org/2002/07/owl#Thing>.
+ontosec:AssociatedOriented a ontosec:NonRepudiationType.
+ontosec:AsymmetricAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#intersectionOf> (ontosec:PrivateKey
+                                                                                                                                            ontosec:PublicKey) ; 
+                                                                                            a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Efficiency ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Hurt ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#intersectionOf> (ontosec:PrivateKey
+                                                                                                                                            ontosec:PublicKey) ; 
+                                                                                            a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Efficiency ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Hurt ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            ontosec:Algorithm.
+ontosec:AsymmetricEncryption a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Type of encryption in which an encryption key (the public key) is used to encrypt a message, and another encryption key (the private key) is used to decrypt the message.";
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:KeyExchangeProtocol ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AsymmetricAlgorithm ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:KeyExchangeProtocol ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AsymmetricAlgorithm ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             ontosec:Encryption.
+ontosec:Authentication a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:DomainEntities ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> ontosec:AppliedTo ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        <http://www.w3.org/2002/07/owl#onClass> ontosec:AuthenticationLevel ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasLevel ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:DomainEntities ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> ontosec:AppliedTo ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        <http://www.w3.org/2002/07/owl#onClass> ontosec:AuthenticationLevel ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasLevel ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       <http://www.semanticweb.org/ontologies/2008/11/OntologyServices.owl#Services>.
+ontosec:AuthenticationLevel a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf ontosec:ValueTypes.
+ontosec:AuthenticationProtocol a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Authentication ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AuthenticationProtocolType ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasAuthenticationProtocolType ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Authentication ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AuthenticationProtocolType ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasAuthenticationProtocolType ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               ontosec:IndustrialProtocol.
+ontosec:AuthenticationProtocolType a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:subClassOf ontosec:ValueTypes.
+ontosec:AuthenticationToken a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Authentication ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Authentication ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            ontosec:CoreCounterMeasure.
+ontosec:AuthenticationWay a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:subClassOf ontosec:ValueTypes.
+ontosec:AutoInvocationFunctionGroup a ontosec:FunctionGroups;
+                                    rdfs:comment "Permissions related to automatically starting a MIDlet, for example by Push Registration.".
+ontosec:Availability a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onClass> ontosec:Duration ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasDuration ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onClass> ontosec:Duration ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasDuration ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     <http://www.semanticweb.org/ontologies/2008/11/OntologyServices.owl#Services>.
+ontosec:Backup a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Journaling ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Availability ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Journaling ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Availability ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               ontosec:Techniques.
+ontosec:BatteryMonitor a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Integrity ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Integrity ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       ontosec:ResourceMonitoring.
+ontosec:BestPractises a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf ontosec:Standards.
+ontosec:BiometricIdentifier a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Biometric identifier is one of the most secure and more reliable ways to authenticate a person’s identity is to verify that person’s innate biological characteristics, which are referred to as biometrics. Each person’s fingerprints, DNA, iris and retinal cell patterns, facial geometry, and heat signature are near unique to that person. These biometric measures, if properly recorded, validated, and embedded in identity credentials that are logically bound to a single person’s identity, can provide the highest degree of identity authentication (From NIST information security Report)";
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Portability ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Hurt ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Resource ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Portability ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Hurt ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Resource ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            ontosec:AuthenticationToken.
+ontosec:BlockCipherAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:hexBinary ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasPadding ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                              <http://www.w3.org/2002/07/owl#onClass> ontosec:ChainingMode ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasChainingMode ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:hexBinary ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasInitialisationVector ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:hexBinary ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasPadding ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:HasBlockSize ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:HasBlockSize ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             ontosec:SymmetricAlgorithm,
+                                             [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                              <http://www.w3.org/2002/07/owl#onClass> ontosec:ChainingMode ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasChainingMode ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:hexBinary ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasInitialisationVector ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>].
+ontosec:Blowfish a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf ontosec:BlockCipherAlgorithm.
+ontosec:Bluetooth a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Bluetooth is a Personal Area Network (PAN) standard that enables wireless connections between electronic devices in the 2.4 GHz range over short distances, as an alternative to cables. Designed to be power efficient, Bluetooth has become a common feature in cell phones. Since wireless communications are inherently insecure, a number of basic security provisions have been defined for this standard to mitigate the risks involved. NIST";
+                  rdfs:subClassOf ontosec:PANetwork.
+ontosec:Break a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:subPropertyOf ontosec:QualitySatisfaction.
+ontosec:ByPassingTrialCounter a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ByPassingAuthentication>.
+ontosec:CBC a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf ontosec:ChainingMode.
+ontosec:CBC-MAC a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "The simplest way to make a key-dependent one-way hash function is to encrypt a message with a block algorithm in CBC or CFB modes . The hash is the last encrypted block, encrypted once more in CBC or CFB modes.";
+                rdfs:subClassOf ontosec:MACAlgorithm.
+ontosec:CFB a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf ontosec:ChainingMode.
+ontosec:COMSET a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf ontosec:KeyExchangeProtocol.
+ontosec:CardMemory a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf ontosec:Add-OnMemory.
+ontosec:CardType a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf ontosec:ValueTypes.
+ontosec:Certificate <http://purl.org/dc/elements/1.1/format> """A digital certificate is a text document that contains general information about its holder with the associated public key and general informations about the validity of the certificate. The digital certificate is signed by the certification authority that has issued it and can be verified a digital signature.
+The digital certificates, together with the identity data and public key, are stored on a USB-compatible token or a conventional smart card for use as part of strong authentication. When users try to log on to the corporate network, they connect their token with the USB slot or their smart card with the card reader.The digital certificate and public key are sent to the authentication authority via internet. To ensure that the public key sent actually belongs to the person attempting to log on to the corporate networks, the independent certification authority confirms that the public key matches the secret key it has stored""";
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasValidity ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasValidity ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:DigitalSignatureAlgorithm ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasSignatureAlgorithm ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasSubjectName ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasDigitalSignatureData ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:CertificateFormat ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasFormat ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:CertificationAuthority ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasIssuer ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:CertificateFormat ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasFormat ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasSubjectName ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasDigitalSignatureData ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    ontosec:AuthenticationToken,
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:CertificationAuthority ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasIssuer ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:DigitalSignatureAlgorithm ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasSignatureAlgorithm ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+ontosec:CertificateFormat a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:subClassOf ontosec:ValueTypes.
+ontosec:CertificateInstallation a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:subClassOf ontosec:DeviceCapabilities.
+ontosec:CertificationAuthority a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "The certification authority provides certificates to bind a set of informations (name, serial number, ...) to a public key.";
+                               rdfs:subClassOf ontosec:TrustedThirdParty.
+ontosec:ChainingMode a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf ontosec:ValueTypes.
+ontosec:ChallengeReplyPassword a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:subClassOf ontosec:AuthenticationProtocolType.
+ontosec:Checksum a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf ontosec:Algorithm.
+ontosec:CodeSeparation a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Locate and isolate critical code from from general code.";
+                       rdfs:subClassOf ontosec:BestPractises.
+ontosec:CodingStandards a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Deploy development regimes such as coding standards and documentation methodologies to lead to best practises";
+                        rdfs:subClassOf ontosec:BestPractises.
+ontosec:CombinedDelivery-DRM a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:subClassOf ontosec:DigitalRightsManagement.
+ontosec:CommChannel a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf ontosec:ValueTypes.
+ontosec:CompactFlash a ontosec:CardMemory.
+ontosec:Confidentiality a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "The confidentiality service"@en;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:ConfidentialityLevel ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasLevel ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:DomainEntities ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> ontosec:AppliedTo ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:ConfidentialityLevel ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasLevel ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:DomainEntities ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> ontosec:AppliedTo ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        <http://www.semanticweb.org/ontologies/2008/11/OntologyServices.owl#Services>.
+ontosec:ConfidentialityLevel a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:subClassOf ontosec:ValueTypes.
+ontosec:ConfigurationData a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Several configuration data are stored in the device or sent by the mobile operator.";
+                          rdfs:subClassOf ontosec:Data.
+ontosec:Constraints a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Technical, quality constraints and others";
+                    rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+ontosec:ContentProvider a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "The entity who is responsable of providing content like ringing tones or multimedia files or any other software.";
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Software ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:DigitalRightsManagement ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Software ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:DigitalRightsManagement ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        ontosec:Actor.
+ontosec:CoreCounterMeasure a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure>.
+ontosec:Correction a ontosec:MechanismType.
+ontosec:Cost a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Time, skills, additional equipments are considered as cost constraints";
+             rdfs:subClassOf ontosec:Constraints.
+ontosec:Critical a ontosec:ConfidentialityLevel.
+ontosec:CryptographicHashFunction a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:positiveInteger ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:HasOutputLength ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:positiveInteger ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:HasOutputLength ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  ontosec:Checksum;
+                                  <http://www.w3.org/2002/07/owl#equivalentClass> ontosec:MessageDigest.
+ontosec:DDos a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Distributed denial of service.";
+             rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>.
+ontosec:DES a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf ontosec:BlockCipherAlgorithm.
+ontosec:DES_FIPS46-1-2 a ontosec:DES.
+ontosec:DIFFIE-HELLMAN a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf ontosec:KeyExchangeProtocol.
+ontosec:DSA a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Digital Signature Algorithm specified by FIPS 186-2";
+            rdfs:subClassOf ontosec:DigitalSignatureAlgorithm.
+ontosec:Data a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf ontosec:Software.
+ontosec:DataRecords a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Some applications use records files to store data.";
+                    rdfs:subClassOf ontosec:LocalFiles.
+ontosec:DeploymentPhase a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf ontosec:ApplicationLifeCyclePhase.
+ontosec:DesignPhase a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf ontosec:ApplicationLifeCyclePhase.
+ontosec:Detection a ontosec:MechanismType.
+ontosec:DevelopmentTime a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Addiotional development time required for the application or the project.";
+                        rdfs:subClassOf ontosec:Cost.
+ontosec:Device a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Mobile terminal equiped with processing capabilities offering  connection to wireless networks.";
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Memory ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasMemory ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Network ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasNetwork ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Input ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasInput ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:DeviceLock ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:LogInSystem ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasIMEI ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               ontosec:Actor,
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Processing ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasProcessing ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Output ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasOutput ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Memory ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasMemory ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Network ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasNetwork ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Input ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasInput ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasIMEI ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Output ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasOutput ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:DigitalRightsManagement ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:DeviceLock ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Processing ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasProcessing ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:DigitalRightsManagement ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:LogInSystem ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>].
+ontosec:DeviceCapabilities a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf ontosec:ValueTypes.
+ontosec:DeviceCloning a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#HardwareCloning>.
+ontosec:DeviceDriverUpgrade a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "One problem in this area is that drivers are typically written by third parties and drivers are upgraded at different times to the main OS. This causes problems when implementing any validation scheme, or even isolated checking of specific software updates";
+                            rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInUse>.
+ontosec:DeviceLock a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf ontosec:LockingMechanism.
+ontosec:DigitalRightsManagement a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "A general framework for downloading Rights to Devices and sharing Rights in a domain. DRM is invented by the Open Mobile Alliance whose members are mobile phone manufacturers, mobile system manufacturers, operators , and sofware editors.";
+                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AccessControl ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AccessControl ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                ontosec:Techniques.
+ontosec:DigitalSignature a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment """A digital signature is represented in a computer as a string of binary
+digits. A digital signature is computed using a set of rules and a set of parameters such that the identity of the signatory and integrity of the data can be verified. An algorithm provides the capability to generate and verify signatures. Signature generation makes use of a private key to generate a digital signature. Signature verification makes use of a public key which corresponds to, but is not the same as, the private key. (http://csrc.nist.gov/publications/fips/fips186-2/fips186-2-change1.pdf)""";
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:NonRepudiation ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Authentication ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:MACAlgorithm ; 
+                                                                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> [<http://www.w3.org/2002/07/owl#intersectionOf> (ontosec:CryptographicHashFunction
+                                                                                                                                                                                   ontosec:DigitalSignatureAlgorithm) ; 
+                                                                                                                                   a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                                                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                          a <http://www.w3.org/2002/07/owl#Class>],
+                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:NonRepudiation ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Authentication ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:MACAlgorithm ; 
+                                                                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> [<http://www.w3.org/2002/07/owl#intersectionOf> (ontosec:CryptographicHashFunction
+                                                                                                                                                                                   ontosec:DigitalSignatureAlgorithm) ; 
+                                                                                                                                   a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                                                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                          a <http://www.w3.org/2002/07/owl#Class>],
+                                         ontosec:CoreCounterMeasure.
+ontosec:DigitalSignatureAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                   <http://www.w3.org/2002/07/owl#onClass> ontosec:PrivateKey ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                   <http://www.w3.org/2002/07/owl#onClass> ontosec:PrivateKey ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  ontosec:Algorithm.
+ontosec:DisplayScreen a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasScreenSize ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasScreenSize ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      ontosec:Output.
+ontosec:DomainEntities a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf ontosec:ValueTypes.
+ontosec:DotNet a ontosec:Platform.
+ontosec:Duration a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf ontosec:ValueTypes.
+ontosec:ECB a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Electronic code book";
+            rdfs:subClassOf ontosec:ChainingMode.
+ontosec:ECDSA a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Elliptic Curve Digital Signature Algorithm (ECDSA) (ANSI X9-62)";
+              rdfs:subClassOf ontosec:DigitalSignatureAlgorithm.
+ontosec:EDGE a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Enhanced Data rates for GSM Evolution";
+             rdfs:subClassOf ontosec:2.5G.
+ontosec:EMS a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Enhanced Messaging Service - An improved message system for GSM mobile phones allowing picture, sound, animation and text elements to be conveyed through one or more concatenated SMS messages. NIST";
+            rdfs:subClassOf ontosec:Messaging.
+ontosec:Efficiency a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Best use of the available resources.";
+                   rdfs:subClassOf ontosec:Usability.
+ontosec:ElGammelAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:subClassOf ontosec:AsymmetricAlgorithm.
+ontosec:Email a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf ontosec:Internet.
+ontosec:Encryption a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Discipline which embodies principles, means, and methods for the transformation of data in order to hide its information content, prevent its undetected modification and/or prevent its unauthorised use. (CCITT)";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Authentication ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:PRNGAlgorithm ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Authentication ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   ontosec:CoreCounterMeasure,
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Integrity ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Confidentiality ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Confidentiality ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:PRNGAlgorithm ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Integrity ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>].
+ontosec:EncryptionKeys a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "The encryption keys are digital bitstrings that are stored in non-volatile memory, and verification of the identity proceeds by a challenge-response protocol.";
+                       rdfs:subClassOf ontosec:AuthenticationToken;
+                       <http://www.w3.org/2002/07/owl#equivalentClass> ontosec:Keys.
+ontosec:EndToEnd a ontosec:NonRepudiationType.
+ontosec:Excellent a ontosec:RNGEfficiency.
+ontosec:FTP a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf ontosec:Internet.
+ontosec:FixedMemory a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf ontosec:Memory.
+ontosec:ForwardLock-DRM a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf ontosec:DigitalRightsManagement.
+ontosec:FullIntegrity a ontosec:IntegrityType.
+ontosec:FunctionGroups a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "A set of sensitive functions under a named group that can get authorization.";
+                       rdfs:subClassOf ontosec:AccessControlMethods.
+ontosec:GPRS a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "General Packet Radio Service";
+             rdfs:subClassOf ontosec:2G.
+ontosec:GPSNetwork a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "A system for determining position by comparing radio signals from several satellites. NIST";
+                   rdfs:subClassOf ontosec:Network.
+ontosec:GPSvalues a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Global positioning system coordinates used by some applications.";
+                  rdfs:subClassOf ontosec:LocalisationData.
+ontosec:GSM a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Global System for Mobile communications";
+            rdfs:subClassOf ontosec:2G.
+ontosec:GSMA a ontosec:OrganizationsAndStandards.
+ontosec:GSMWorld a ontosec:OrganizationsAndStandards.
+ontosec:GuessingAttack a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ByPassingAuthentication>.
+ontosec:HMAC a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf ontosec:MACAlgorithm.
+ontosec:HTTP a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf ontosec:Internet.
+ontosec:HTTPS a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf ontosec:SecureNetworkCommunication.
+ontosec:Hardware a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Mainly the physical device with the embedded memory and processing units.";
+                 rdfs:subClassOf ontosec:Asset;
+                 <http://www.w3.org/2002/07/owl#equivalentClass> ontosec:Resource.
+ontosec:HardwareLocking a ontosec:AccessControlMethods.
+ontosec:HasBandwidth a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:domain ontosec:Network;
+                     rdfs:range xsd:positiveInteger.
+ontosec:HasBlockSize a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+ontosec:HasIterationNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+ontosec:HasKeySize a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:domain ontosec:Keys;
+                   rdfs:range xsd:positiveInteger.
+ontosec:HasOutputLength a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:range xsd:positiveInteger.
+ontosec:HashBasedOTP a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "A server side list of hashed tokens is stored and each consumed token is removed from the list.";
+                     rdfs:subClassOf ontosec:O.T.P.
+ontosec:Help a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:subPropertyOf ontosec:QualitySatisfaction.
+ontosec:Hurt a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:subPropertyOf ontosec:QualitySatisfaction.
+ontosec:IEEE a ontosec:OrganizationsAndStandards.
+ontosec:IETF a ontosec:OrganizationsAndStandards.
+ontosec:IM a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:subClassOf ontosec:Messaging.
+ontosec:IPSec a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf ontosec:SecureNetworkCommunication.
+ontosec:ITU a ontosec:OrganizationsAndStandards.
+ontosec:Images a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "All supported image files for mobile devices.";
+               rdfs:subClassOf ontosec:LocalFiles.
+ontosec:ImplementAPI a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:subPropertyOf ontosec:Relationship.
+ontosec:ImplementMechanism a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+ontosec:ImplementationPhase a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf ontosec:ApplicationLifeCyclePhase.
+ontosec:IndustrialProtocol a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf ontosec:Standards.
+ontosec:Input a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Keypad or any input tool";
+              rdfs:subClassOf ontosec:Resource.
+ontosec:Integrity a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf <http://www.semanticweb.org/ontologies/2008/11/OntologyServices.owl#Services>.
+ontosec:IntegrityType a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf ontosec:ValueTypes.
+ontosec:IntensifyCriticalCodeReview a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:subClassOf ontosec:BestPractises.
+ontosec:InteractionModes a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "User interaction to confirm the execution of some senstive actions like sending a sms or opening a network connection/";
+                         rdfs:subClassOf ontosec:AccessControlMethods.
+ontosec:Internet a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf ontosec:CommChannel.
+ontosec:IrDA a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A standard for line-of-sight infrared communication between devices over short distances. NIST";
+             rdfs:subClassOf ontosec:PANetwork.
+ontosec:Issue a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:subPropertyOf ontosec:Relationship.
+ontosec:J2ME <http://www.w3.org/2002/07/owl#sameAs> ontosec:JME.
+ontosec:JME a ontosec:Platform.
+ontosec:JMEPermissionDomains a ontosec:AccessControlList.
+ontosec:JavaCard ontosec:ImplementAPI ontosec:DES_FIPS46-1-2,
+                                      ontosec:AES_FIPS197;
+                 a ontosec:SIM,
+                   ontosec:CardType.
+ontosec:JavaVerifiedSigningProcess a ontosec:SourceCodeVerification.
+ontosec:Journaling a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf ontosec:Techniques.
+ontosec:Kerberos a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment """Kerberos is an authentication process that proceeds as follows: A client sends a request to the authentication server (AS) requesting \"credentials\" for a given server.  The AS responds with these credentials,  encrypted in the client's key.  The credentials consist of 1) a \"ticket\" for the server and 2) a temporary encryption key ( a \"session key\").  The client transmits the ticket (which contains the client's identity and a copy of the session key, all encrypted in the server's key) to the server.  The session key (now shared by the client and server) is used to authenticate the client, and may optionally be used to authenticate the server.  It may also be used to encrypt further communication between the two parties or to exchange a separate sub-session key to be used to encrypt further communication. RFC 1510""";
+                 rdfs:subClassOf ontosec:AuthenticationProtocol.
+ontosec:KeyExchange a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:CommChannel ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:KeyExchangeProtocol ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:CommChannel ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:KeyExchangeProtocol ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    ontosec:KeyManagement.
+ontosec:KeyExchangeProtocol a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf ontosec:IndustrialProtocol.
+ontosec:KeyGeneration a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:RNGEfficiency ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasRNGEfficiency ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:boolean ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasRNGDeterminism ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:RNGEfficiency ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasRNGEfficiency ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:boolean ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasRNGDeterminism ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      ontosec:KeyManagement.
+ontosec:KeyManagement a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "The process and procedure for safely storing and distributing accurate cryptographic keys; the overall process of generating and distributing cryptographic key to authorized recipients in a secure manner.";
+                      rdfs:subClassOf ontosec:Mechanism.
+ontosec:KeyPad a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf ontosec:Input.
+ontosec:KeyStore a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Integrity ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Keys ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:Store ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Confidentiality ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Integrity ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Keys ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:Store ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Confidentiality ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 ontosec:KeyManagement.
+ontosec:Keys a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Duration ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasKeyLifeTime ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:HasKeySize ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Duration ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasKeyLifeTime ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:HasKeySize ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             ontosec:Mechanism.
+ontosec:LANetwork a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf ontosec:Network.
+ontosec:Learnability a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Easy to learn how to use the application.";
+                     rdfs:subClassOf ontosec:Usability.
+ontosec:LocalDataBase a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Special database management systems for embedded applications.";
+                      rdfs:subClassOf ontosec:ApplicationData.
+ontosec:LocalDeviceLock a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf ontosec:DeviceLock.
+ontosec:LocalFiles a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf ontosec:ApplicationData.
+ontosec:LocalisationData a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf ontosec:ApplicationData.
+ontosec:LockingMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Integrity ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Integrity ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         ontosec:Techniques.
+ontosec:LockingScreen a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "In some situations it is useful to lock the screen display until a task is terminated. This is technique is used to avoid the screen modification until a answer is received.";
+                      rdfs:subClassOf ontosec:LockingMechanism.
+ontosec:LogInSystem a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Authentication ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AuthenticationToken ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Authentication ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AuthenticationToken ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    ontosec:Techniques.
+ontosec:MACAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Message authentication code that include a key for authentication";
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:CryptographicHashFunction ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onClass> ontosec:SecretKey ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:CryptographicHashFunction ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onClass> ontosec:SecretKey ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     ontosec:Algorithm.
+ontosec:MD2 a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf ontosec:CryptographicHashFunction.
+ontosec:MD4 a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf ontosec:CryptographicHashFunction.
+ontosec:MD5 a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf ontosec:CryptographicHashFunction.
+ontosec:MMC a ontosec:CardMemory.
+ontosec:MMS a ontosec:CommChannel,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf ontosec:Messaging.
+ontosec:MULTOS a ontosec:CardType.
+ontosec:Mail a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf ontosec:Manual.
+ontosec:MaintenancePhase a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf ontosec:ApplicationLifeCyclePhase.
+ontosec:Make a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:subPropertyOf ontosec:QualitySatisfaction.
+ontosec:Manual a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf ontosec:CommChannel.
+ontosec:Manufacturer a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Mobile device manufacturer which may implement some security features in the device";
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:TrustedThirdParty ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasTrustIn ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#allValuesFrom> ontosec:ManufacturerCertificate ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:Issue ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Device ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Device ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:TrustedThirdParty ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasTrustIn ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:ManufacturerCertificate ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:Issue ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:SourceCodeVerification ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     ontosec:Actor,
+                                     [<http://www.w3.org/2002/07/owl#allValuesFrom> ontosec:ManufacturerCertificate ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:Issue ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:ManufacturerCertificate ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:Issue ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:SourceCodeVerification ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>].
+ontosec:ManufacturerCertificate <http://purl.org/dc/elements/1.1/format> "A certificate which is issued by the device manufacturer like Nokia or Samsung for example.";
+                                a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:subClassOf ontosec:Certificate.
+ontosec:Mechanism a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Security mechanisms used for security services";
+                  rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+ontosec:MechanismType a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf ontosec:ValueTypes.
+ontosec:Memorability a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "A limited period of time during which the use of the application will be memorised.";
+                     rdfs:subClassOf ontosec:Usability.
+ontosec:Memory a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf ontosec:Resource.
+ontosec:MemoryCardLock a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Memory card can be protected with a password each time someone tries to access the card"@en;
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AccessControl ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AccessControl ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       ontosec:LockingMechanism.
+ontosec:MessageDigest a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "A function that takes a string (or message) of any length as input and produces a fixed-length string as output,it is used for authentication and message integrity.";
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:positiveInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> ontosec:HasOutputLength ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:positiveInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> ontosec:HasOutputLength ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      ontosec:CoreCounterMeasure.
+ontosec:Messaging a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf ontosec:CommChannel.
+ontosec:MessagingFunctionsGroup a ontosec:FunctionGroups;
+                                rdfs:comment "Set of permissions related to sending or receiving messages like SMS".
+ontosec:MisUseAttack a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf ontosec:UnTrustedAPIAttack.
+ontosec:MobeyForum a ontosec:OrganizationsAndStandards.
+ontosec:Mobile2Market a ontosec:CertificationAuthority.
+ontosec:MobileNetworkProvidervalues a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "Mobile network Cell ID to which the device is attached.";
+                                    rdfs:subClassOf ontosec:LocalisationData.
+ontosec:MobileVPN a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf ontosec:VPN.
+ontosec:MotorollaMobileVPN a ontosec:MobileVPN.
+ontosec:Mutual a ontosec:AuthenticationWay.
+ontosec:MutualReliableChannel a ontosec:AuthenticationLevel.
+ontosec:NFC a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A short-range point-to-point wireless communication technology. The technology is a simple extension of the ISO/IEC 14443 proximity-card standard (contactless card, RFID) that combines the interface of a smartcard and a reader into a single device. An NFC device can communicate with both existing ISO/IEC 14443 smartcards and readers, as well as with other NFC devices, and is thereby compatible with existing contactless infrastructure already in use for public transportation and payment.";
+            rdfs:subClassOf ontosec:PANetwork.
+ontosec:NFCEnabled a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "The device may be or not equiped with Near Field Communication Ship (NFC).";
+                   rdfs:subClassOf ontosec:DeviceCapabilities.
+ontosec:NIST a ontosec:OrganizationsAndStandards.
+ontosec:NeedhamShroeder a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf ontosec:AuthenticationProtocol.
+ontosec:NetAccessFunctionGroup rdfs:comment "Contains permissions related to network data connections.".
+ontosec:Network a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> ontosec:HasBandwidth ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasNetworkLatency ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> ontosec:HasBandwidth ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasNetworkLatency ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                ontosec:Resource.
+ontosec:NetworkLayer a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf ontosec:SecurityLayer.
+ontosec:NoAuthentication a ontosec:AuthenticationLevel.
+ontosec:NoSensitiveInfoOnExternalMemory a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:subClassOf ontosec:BestPractises.
+ontosec:Nokia_Mobile_VPN a ontosec:VPN.
+ontosec:NonRepudiation a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        <http://www.w3.org/2002/07/owl#onClass> ontosec:NonRepudiationType ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasType ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        <http://www.w3.org/2002/07/owl#onClass> ontosec:NonRepudiationType ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasType ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       <http://www.semanticweb.org/ontologies/2008/11/OntologyServices.owl#Services>.
+ontosec:NonRepudiationType a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf ontosec:ValueTypes.
+ontosec:NonVolatile a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf ontosec:FixedMemory.
+ontosec:O.T.P a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Password used for once and generated from time, counter and/or key. May be a displayed from a hardware device.";
+              rdfs:subClassOf ontosec:Password.
+ontosec:Offline a ontosec:OperationMode.
+ontosec:OneSideVerification a ontosec:AuthenticationWay,
+                              ontosec:AuthenticationLevel.
+ontosec:OperationMode a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf ontosec:ValueTypes.
+ontosec:Operator a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Telecom Network Operator knowing as MNO";
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:TrustedThirdParty ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasTrustIn ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:BestPractises ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> ontosec:OperatorCertificate ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:Issue ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:OperatorCertificate ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:Issue ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 ontosec:Actor,
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:SourceCodeVerification ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:TrustedThirdParty ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasTrustIn ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:SourceCodeVerification ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:OperatorCertificate ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:Issue ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:BestPractises ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> ontosec:OperatorCertificate ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:Issue ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>].
+ontosec:OperatorCertificate <http://purl.org/dc/elements/1.1/format> "A certificate which is issued by the mobile network operator.";
+                            a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#unionOf> (ontosec:SmartCard
+                                                                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Device ; 
+                                                                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:storedOn ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                             a <http://www.w3.org/2002/07/owl#Class>],
+                                            [<http://www.w3.org/2002/07/owl#unionOf> (ontosec:SmartCard
+                                                                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Device ; 
+                                                                                      <http://www.w3.org/2002/07/owl#onProperty> ontosec:storedOn ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                             a <http://www.w3.org/2002/07/owl#Class>],
+                                            ontosec:Certificate.
+ontosec:OrganizationsAndStandards a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "Organizations and associations providing standards in the mobile field arena.";
+                                  rdfs:subClassOf ontosec:ValueTypes.
+ontosec:Output a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf ontosec:Resource.
+ontosec:PANetwork a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf ontosec:Network.
+ontosec:PGPCertificate a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf ontosec:CertificateFormat.
+ontosec:PIN a ontosec:SmartCardLock;
+            rdfs:comment "Personal Identification Number".
+ontosec:PKI a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Public-key infrastructure (PKI) consists of protocols, services, and standards supporting applications of public-key cryptography. PKI sometimes refers simply to a trust hierarchy based on public-key certificates, and in other contexts embraces encryption and digital signature services provided to end-user applications as well. RSA (http://www.rsa.com/rsalabs/node.asp?id=2268)";
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:CertificationAuthority ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Integrity ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Confidentiality ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:NonRepudiation ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:CertificationAuthority ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            ontosec:SecurityInfrastructure,
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Authentication ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AsymmetricEncryption ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Integrity ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Confidentiality ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Certificate ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Authentication ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Certificate ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:NonRepudiation ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AsymmetricEncryption ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>].
+ontosec:PRNG a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Pseudo Random Number Generation";
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:PRNGAlgorithm ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:PRNGAlgorithm ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             ontosec:KeyGeneration.
+ontosec:PRNGAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Pseudo Random Number Generation algorithm";
+                      rdfs:subClassOf ontosec:Algorithm.
+ontosec:PUK a ontosec:SmartCardLock;
+            rdfs:comment "Personal Unblocking Keys".
+ontosec:Parallel a ontosec:OperationMode.
+ontosec:PassiveThreat a ontosec:ThreatType.
+ontosec:Password a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf ontosec:AuthenticationToken.
+ontosec:Performance a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf ontosec:Availability.
+ontosec:Phishing a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ByPassingAuthentication>.
+ontosec:PhysicalLayer a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf ontosec:SecurityLayer.
+ontosec:Platform a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "The software device platform layer";
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:KeyManagement ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:MessageDigest ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AccessControlMethods ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Algorithm ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:ResourceMonitoring ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:LogInSystem ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:KeyManagement ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 ontosec:Actor,
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:LogInSystem ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AccessControlMethods ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:MessageDigest ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Algorithm ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:ResourceMonitoring ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>].
+ontosec:Poor a ontosec:RNGEfficiency.
+ontosec:Portability a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "ability of Application running on several devices or/and platforms.";
+                    rdfs:subClassOf ontosec:Quality.
+ontosec:PreemptDisplay a ontosec:LockingScreen.
+ontosec:Prevention a ontosec:MechanismType.
+ontosec:PrivateKey a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf ontosec:Keys.
+ontosec:PrivateKeyPoP a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf ontosec:AuthenticationProtocolType.
+ontosec:Processing a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf ontosec:Resource.
+ontosec:Provide a <http://www.w3.org/2002/07/owl#TransitiveProperty>,
+                  <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:subPropertyOf ontosec:Relationship.
+ontosec:Public a ontosec:ConfidentialityLevel.
+ontosec:PublicKey a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf ontosec:Keys.
+ontosec:Quality a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf ontosec:Constraints.
+ontosec:QualitySatisfaction a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+ontosec:RAM a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf ontosec:FixedMemory.
+ontosec:RC4 a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A free algorithm provided by  RSA security, implemented since 1970.";
+            rdfs:subClassOf ontosec:StreamCipherAlgorithm.
+ontosec:RF a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:subClassOf ontosec:PANetwork.
+ontosec:RIPE-MAC a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf ontosec:MACAlgorithm.
+ontosec:RIPE-MD a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf ontosec:CryptographicHashFunction.
+ontosec:RMS a ontosec:DataRecords;
+            rdfs:comment "Record Management Store are data structure used to store JME data".
+ontosec:RNGEfficiency a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf ontosec:ValueTypes.
+ontosec:ROM a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf ontosec:FixedMemory.
+ontosec:RSA a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "RSA signature algorithm (American National Standard ANSI X9-31)";
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:RSAAlgorithm ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:RSAAlgorithm ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            ontosec:DigitalSignatureAlgorithm.
+ontosec:RSAAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf ontosec:AsymmetricAlgorithm.
+ontosec:ReadUserDataFunctionGroup a ontosec:FunctionGroups;
+                                  rdfs:comment "Read User Data: Set of permissions to read user’s data like phone book or calendar entries".
+ontosec:Recovery a ontosec:MechanismType.
+ontosec:ReduceCodeSize a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf ontosec:BestPractises.
+ontosec:RegistrationAuthority a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Registration authority is an administrative entity which is responsable of verifying the identity of the claimer of a certificate";
+                              rdfs:subClassOf ontosec:TrustedThirdParty.
+ontosec:Relationship a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+ontosec:Reliability a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf ontosec:Availability.
+ontosec:RemoteDeviceLock a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Sending a Short message to lock the device"@en;
+                         rdfs:subClassOf ontosec:DeviceLock.
+ontosec:Resource a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+ontosec:ResourceMonitoring a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AccessControl ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Availability ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AccessControl ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Availability ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           ontosec:Techniques.
+ontosec:RingTones a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Audio files used as rings in mobile devices.";
+                  rdfs:subClassOf ontosec:StandardFiles.
+ontosec:SANS_Institute a ontosec:OrganizationsAndStandards.
+ontosec:SD rdfs:comment "Multi Media Card".
+ontosec:SET a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Secure Electronic Transaction";
+            rdfs:subClassOf ontosec:BestPractises.
+ontosec:SHA1 a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf ontosec:CryptographicHashFunction.
+ontosec:SHAMIR3Pass a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf ontosec:KeyExchangeProtocol.
+ontosec:SIM a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Subscriber Identity Module; A smart card for GSM networks access.";
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:DigitalSignatureAlgorithm ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            ontosec:SmartCard,
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AsymmetricAlgorithm ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#allValuesFrom> ontosec:BlockCipherAlgorithm ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:CryptographicHashFunction ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#allValuesFrom> ontosec:BlockCipherAlgorithm ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AsymmetricAlgorithm ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:DigitalSignatureAlgorithm ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:CryptographicHashFunction ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>].
+ontosec:SKID a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf ontosec:AuthenticationProtocol.
+ontosec:SMS a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf ontosec:Messaging.
+ontosec:SNOW a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf ontosec:RC4.
+ontosec:SSL a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf ontosec:SecureNetworkCommunication.
+ontosec:STRANDOM a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf ontosec:PRNGAlgorithm.
+ontosec:Satisfice a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain ontosec:Mechanism;
+                  rdfs:range <http://www.semanticweb.org/ontologies/2008/11/OntologyServices.owl#Services>;
+                  rdfs:subPropertyOf ontosec:Relationship.
+ontosec:Secret a ontosec:ConfidentialityLevel.
+ontosec:SecretKey a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf ontosec:Keys.
+ontosec:SecureNetworkCommunication a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Confidentiality ; 
+                                                    <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Confidentiality ; 
+                                                    <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                   ontosec:SecurityTools.
+ontosec:SecurityInfrastructure a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure>.
+ontosec:SecurityLayer a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf ontosec:ValueTypes.
+ontosec:SecurityTools a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure>.
+ontosec:SemanticIntegrity a ontosec:IntegrityType.
+ontosec:SeparateDelivery-DRM a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:subClassOf ontosec:DigitalRightsManagement.
+ontosec:Session a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf ontosec:Duration.
+ontosec:Skills a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Additional skills that should be acquired to achieve some tasks or goals.";
+               rdfs:subClassOf ontosec:Cost.
+ontosec:SmartCard a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "A smart card is any limited-sized card with embedded integrated circuits. The smart card may integrate or not processing capabilities.";
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:SymmetricEncryption ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:MessageDigest ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:DigitalSignature ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:MessageDigest ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:KeyStore ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:SmartCardLock ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AsymmetricEncryption ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#allValuesFrom> ontosec:SmartCardMemory ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasMemory ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  ontosec:Actor,
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:KeyStore ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:SmartCardLock ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#allValuesFrom> ontosec:SmartCardMemory ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasMemory ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:SymmetricEncryption ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasIMSI ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasIMSI ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AsymmetricEncryption ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:DigitalSignature ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> ontosec:ImplementMechanism ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>].
+ontosec:SmartCardCloning a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#HardwareCloning>.
+ontosec:SmartCardLock a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AccessControl ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:AccessControl ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> ontosec:Satisfice ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      ontosec:LockingMechanism.
+ontosec:SmartCardMemory a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Memory available on smart card like SIM, USIM or others;";
+                        rdfs:subClassOf ontosec:Add-OnMemory.
+ontosec:Socket a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf ontosec:Internet.
+ontosec:Software a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "All the applications and data provided with or installed on the device.";
+                 rdfs:subClassOf ontosec:Asset.
+ontosec:SoftwareLayer a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf ontosec:SecurityLayer.
+ontosec:SourceCodeVerification a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:subClassOf ontosec:SecurityTools.
+ontosec:Speaker a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf ontosec:Output.
+ontosec:StandardFiles a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf ontosec:LocalFiles.
+ontosec:Standards a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure>.
+ontosec:Static_password a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "The standard couple of login and password authentication";
+                        rdfs:subClassOf ontosec:Password.
+ontosec:Steganography a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Steganography is the art and science of writing hidden messages in such a way that no-one, apart from the sender and intended recipient, suspects the existence of the message, a form of security through obscurity. Wikipedia";
+                      rdfs:subClassOf ontosec:Encryption.
+ontosec:SteganographyAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:subClassOf ontosec:Algorithm.
+ontosec:Store a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:subPropertyOf ontosec:Relationship.
+ontosec:StoredData a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Data stored either in the device or on the memory card.";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#unionOf> (ontosec:ApplicationData
+                                                                                                                             ontosec:ConfigurationData) ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Class>]
+                                                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (ontosec:LocalDataBase
+                                                                                                                                                                             ontosec:LocalFiles) ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                                                                    <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasDataStructure ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>],
+                                   [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#unionOf> (ontosec:ApplicationData
+                                                                                                                             ontosec:ConfigurationData) ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Class>]
+                                                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (ontosec:LocalDataBase
+                                                                                                                                                                             ontosec:LocalFiles) ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                                                                    <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasDataStructure ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>],
+                                   ontosec:Data.
+ontosec:StreamCipherAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:subClassOf ontosec:SymmetricAlgorithm.
+ontosec:SymbianSigned a ontosec:CertificationAuthority.
+ontosec:SymmetricAlgorithm a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                            <http://www.w3.org/2002/07/owl#onClass> ontosec:SecretKey ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasKey ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Efficiency ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> ontosec:Help ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                            <http://www.w3.org/2002/07/owl#onClass> ontosec:SecretKey ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasKey ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Efficiency ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> ontosec:Help ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           ontosec:Algorithm.
+ontosec:SymmetricEncryption a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Also known as conventional, secret-key, and single-key algorithms; the encryption and decryption key are either the same or can be calculated from one another. Block ciphers and stream ciphers are both used for symmetric encryption.";
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:SymmetricAlgorithm ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:SymmetricAlgorithm ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            ontosec:Encryption.
+ontosec:SymmetricKeyPoP a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf ontosec:AuthenticationProtocolType.
+ontosec:TLS a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Transport Layer Security is an IETF standard that is intended to replace the SSL protocol. (IETF Working Group)";
+            rdfs:subClassOf ontosec:SecureNetworkCommunication.
+ontosec:TRNG a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "True Random Number Generation : extract randomness from physical phenomena and introduce it into computing device.";
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Input ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Input ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             ontosec:KeyGeneration.
+ontosec:Technical a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "All limitations related to technologies like the network bandwidth or processor capabilities.";
+                  rdfs:subClassOf ontosec:Constraints.
+ontosec:Techniques a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure>.
+ontosec:TestOnRealDevices a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:subClassOf ontosec:BestPractises.
+ontosec:TestPhase a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf ontosec:ApplicationLifeCyclePhase.
+ontosec:ThreatType a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf ontosec:ValueTypes.
+ontosec:Time a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf ontosec:Duration.
+ontosec:TimeAnalysis a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SideChannelAttack>.
+ontosec:TimeBasedOTP a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "A client and server time synchronization is required for the authentication token verification.";
+                     rdfs:subClassOf ontosec:O.T.P.
+ontosec:TimeStampToken a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "A digital signature that makes possible the verification of the sending time of a message.";
+                       rdfs:subClassOf ontosec:AuthenticationToken.
+ontosec:Timeliness a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf ontosec:Usability.
+ontosec:TopSecret a ontosec:ConfidentialityLevel.
+ontosec:TouchScreen a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf ontosec:Input;
+                    <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (ontosec:DisplayScreen
+                                                                                                                     ontosec:KeyPad) ; 
+                                                                     a <http://www.w3.org/2002/07/owl#Class>],
+                                                                    [<http://www.w3.org/2002/07/owl#intersectionOf> (ontosec:DisplayScreen
+                                                                                                                     ontosec:KeyPad) ; 
+                                                                     a <http://www.w3.org/2002/07/owl#Class>].
+ontosec:Training a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Requirement for additional training to use some tools or to do some technalical or management tasks.";
+                 rdfs:subClassOf ontosec:Cost.
+ontosec:Transaction a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf ontosec:Duration.
+ontosec:TransmittedData a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Messaging data or data transferred through Internet connection";
+                        rdfs:subClassOf ontosec:Data.
+ontosec:TrustedAPIAttack a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ApplicationAPIAttack>.
+ontosec:TrustedThirdParty a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "security authority or its agent, trusted by other entities with respect to security-related activities. In the context of ISO/IEC 9798, a trusted third party is trusted by a claimant and/or a verifier for the purposes of authentication.  ISO/IEC 9798";
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:TrustedThirdParty ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasTrustIn ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Certificate ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> ontosec:Issue ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:SourceCodeVerification ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:TrustedThirdParty ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasTrustIn ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Certificate ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> ontosec:Issue ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:SourceCodeVerification ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> ontosec:Provide ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          ontosec:Actor.
+ontosec:TrustedThirdPartyCertificate <http://purl.org/dc/elements/1.1/format> "A certificate which is issued by a trusted third party.";
+                                     a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:subClassOf ontosec:Certificate.
+ontosec:TunneledPassword a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf ontosec:AuthenticationProtocolType.
+ontosec:TypeSafe-Unsafe a ontosec:CodingStandards;
+                        rdfs:comment "Don't mix type safe and type-unsafe API".
+ontosec:TypeSafeAPIUse a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf ontosec:BestPractises.
+ontosec:UICC a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "The UICC is a generic platform for smart card applications. It has been standardised by ETSI EP SCP (ETSI Project Smart Card Platform) with the aim of defining a physical and logical platform for all smart card applications and to develop advanced security methods for financial transactions, to take an example. Mobey forum";
+             rdfs:subClassOf ontosec:SmartCard.
+ontosec:UMTS a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf ontosec:3G.
+ontosec:USIM a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A (U)SIM is a special type of smart card that typically contains a processor and between 16 to 128 KB of persistent Electronically Erasable, Programmable ROM (EEPROM). It also includes RAM for program execution and ROM for the operating system, user authentication and data encryption algorithms, and other applications.";
+             rdfs:subClassOf ontosec:SmartCard.
+ontosec:UnTrustedAPIAttack a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ApplicationAPIAttack>.
+ontosec:UnifiedTestingInitiativeRootCertificate a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:subClassOf ontosec:DeviceCapabilities.
+ontosec:UnsafeDataTypeAttack a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:subClassOf ontosec:TrustedAPIAttack.
+ontosec:Usability a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "A good response time of the application.";
+                  rdfs:subClassOf ontosec:Quality.
+ontosec:Use a <http://www.w3.org/2002/07/owl#TransitiveProperty>,
+              <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:subPropertyOf ontosec:Relationship.
+ontosec:UsePhase a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf ontosec:ApplicationLifeCyclePhase.
+ontosec:VPN a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Virtula private network. FIPS 140-2";
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (ontosec:IPSec
+                                                                                                                      ontosec:SSL
+                                                                                                                      ontosec:TLS) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>] ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (ontosec:IPSec
+                                                                                                                      ontosec:SSL
+                                                                                                                      ontosec:TLS) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>] ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            ontosec:SecurityInfrastructure.
+ontosec:ValueTypes a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Additional and required types for the ontology";
+                   rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+ontosec:VeriSignTesting-BasedACSRootSymbian a ontosec:X509Certificate.
+ontosec:Verisign a ontosec:CertificationAuthority.
+ontosec:VibrationKit a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf ontosec:Output.
+ontosec:VideoInput a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf ontosec:Input.
+ontosec:Videos a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf ontosec:StandardFiles.
+ontosec:Voice a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf ontosec:Manual.
+ontosec:WANetwork a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf ontosec:Network.
+ontosec:WPKI a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Wireless Public Key Infrastructure.";
+             rdfs:subClassOf ontosec:PKI;
+             <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (ontosec:PKI
+                                                                                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:CommChannel ; 
+                                                                                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                              a <http://www.w3.org/2002/07/owl#Class>],
+                                                             [<http://www.w3.org/2002/07/owl#intersectionOf> (ontosec:PKI
+                                                                                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:CommChannel ; 
+                                                                                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:Use ; 
+                                                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                              a <http://www.w3.org/2002/07/owl#Class>].
+ontosec:WiFi a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf ontosec:LANetwork.
+ontosec:WithoutVerification a ontosec:AuthenticationLevel.
+ontosec:X509Certificate a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf ontosec:CertificateFormat.
+ontosec:Yahalom a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf ontosec:AuthenticationProtocol.
+ontosec:Yarrow a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf ontosec:PRNGAlgorithm.
+ontosec:ZeroKnowledgePassword a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:subClassOf ontosec:AuthenticationProtocolType.
+ontosec:hasAuthenticationProtocolType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasCardType a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+ontosec:hasChainingMode a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain ontosec:BlockCipherAlgorithm;
+                        rdfs:range ontosec:ChainingMode;
+                        rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasDataStructure a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasDigitalSignatureData a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                rdfs:domain ontosec:Certificate;
+                                rdfs:range xsd:hexBinary.
+ontosec:hasDuration a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasFormat a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+ontosec:hasIMEI a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                  <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain ontosec:Device;
+                rdfs:range xsd:positiveInteger.
+ontosec:hasIMSI a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain ontosec:SmartCard;
+                rdfs:range xsd:positiveInteger.
+ontosec:hasInitialisationVector a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                rdfs:domain ontosec:BlockCipherAlgorithm;
+                                rdfs:range xsd:hexBinary.
+ontosec:hasInput a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasIssuer a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasKey a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasKeyLifeTime a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasLevel a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasMemory a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasNetwork a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasNetworkBandwidth a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:domain ontosec:Network;
+                            rdfs:range xsd:positiveInteger.
+ontosec:hasNetworkLatency a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:domain ontosec:Network;
+                          rdfs:range xsd:positiveInteger.
+ontosec:hasOutput a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasPadding a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:domain ontosec:BlockCipherAlgorithm;
+                   rdfs:range xsd:hexBinary.
+ontosec:hasProcessing a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasRNGDeterminism a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:domain ontosec:KeyGeneration;
+                          rdfs:range xsd:boolean.
+ontosec:hasRNGEfficiency a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasScreenSize a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:domain ontosec:DisplayScreen;
+                      rdfs:range xsd:float.
+ontosec:hasSignatureAlgorithm a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:domain ontosec:Certificate;
+                              rdfs:range ontosec:DigitalSignatureAlgorithm;
+                              rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasSubjectName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:domain ontosec:Certificate;
+                       rdfs:range xsd:string.
+ontosec:hasThreatType a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "A Threat type may be a passive or an active threat.";
+                      rdfs:domain <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>;
+                      rdfs:range xsd:string.
+ontosec:hasTrustIn a <http://www.w3.org/2002/07/owl#ReflexiveProperty>,
+                     <http://www.w3.org/2002/07/owl#ObjectProperty>.
+ontosec:hasType a <http://www.w3.org/2002/07/owl#ReflexiveProperty>,
+                  <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasValidity a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:domain ontosec:Certificate;
+                    rdfs:range xsd:duration.
+ontosec:isUsedAt a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+ontosec:storedOn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:subPropertyOf ontosec:Relationship.
+ontosec:vCard a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "vCard is a virtual electronic business card format.";
+              rdfs:subClassOf ontosec:StandardFiles.
+<http://www.semanticweb.org/ontologies/2008/11/OntologyServices.owl#Services> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                              rdfs:comment "Security services ontology"@en;
+                                                                              rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#AccessControl> a <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#AccessToUntrustedWebSite> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                               rdfs:comment "Several attacks may be achieved after access to hacked web sites like cross site scripting (XSS) for example.";
+                                                                                               rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInUse>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ApplicationAPIAttack> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                           rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#BatteryLimitation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                        rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#PhysicalVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Bluetooth> a <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerableServiceAutoStart>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#BruteForce> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                 rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ByPassingAuthentication>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#BufferOverFlow> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                     rdfs:comment "By passing data through an API where it is known that the API is designed to receive X bytes and we are passing X+N bytes, it can be arranged that the N bytes overflow into an area that was used by other storage (if it is a heap overflow) or will cause the return address to be corrupted (if it is a stack overflow). OMTP";
+                                                                                     rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#MalformedInput>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ByPassingAuthentication> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                              rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CodeInjection> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                    rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#MalformedInput>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CommunicationVulnerability> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                                 rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                     rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CryptographicAttack> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                          rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#DefaultPIN> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                 rdfs:comment "Always set to manufacturer default values";
+                                                                                 rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#InsecureDefaultSettings>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#DefaultPassword> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                      rdfs:comment "Always set to manufacturer default values";
+                                                                                      rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#InsecureDefaultSettings>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#DevicePortability> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                        rdfs:comment "The easy portability of the device make it vulnerable to rabbers and theft.";
+                                                                                        rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#PhysicalVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#DoS> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                          rdfs:comment "Most common type involves flooding a host until it cannot respond to legitimate traffic.";
+                                                                          rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Eavesdropping> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                    rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NetworkInfrastructureAttack>;
+                                                                                    <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Interception>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Emanation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                rdfs:comment """The fact of making internal data available to third parties by radio.. In that case,the issuer is the passive victim of the attack.
+Almost all electrical devices emit radiation to the exterior that can be intercepted by other equipment (radio receivers) causing a leak of information. This threat is frequently but inaccurately called, a TEMPEST attack (“Transient Electromagnetic Pulse Standard”).""";
+                                                                                rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#PhysicalVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#EquipmentDos> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                   rdfs:comment "The attacker causes an overload or a disruption in the system such that network functions  in an abnormal manner. The abnormal behavior could be legitimate subscribers not receiving service, illegitimate subscribers receiving service or the entire network may disabled as a result of the attack.";
+                                                                                   rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NetworkInfrastructureAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ExternalBatteryRemovel> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                             rdfs:comment "Bypassing security barries may be performed through a battery removal. For example in a DRM situation, a song may have been played, but if the rights count is not decremented until the end of the song, then removing the power source could result in the user playing the song indefinitely(OMPT).";
+                                                                                             rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#HardwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ExternalMemoryCardRemoval> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                                rdfs:comment "Bypassing security barries may be performed through a battery removal. For example in a DRM situation, a song may have been played, but if the rights count is not decremented until the end of the song, then removing the memory card could result in the user playing the song indefinitely(OMPT).";
+                                                                                                rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#HardwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#FOTAUnAuthorizedReFlash> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                              rdfs:comment "UnAuthorized reflash via Firmware Over The Air. FOTA consists in replacing one version of the general OS(s) with another over the Air.";
+                                                                                              rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Fabrication> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                  rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NetworkInfrastructureAttack>;
+                                                                                  <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Replay>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#FormatStringAttack> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                         rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#MalformedInput>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#HardwareAttack> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                     rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#HardwareCloning> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                      rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#HardwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#InputOutputLimitation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                            rdfs:comment "Limited screen display and small keypad ad some aggravation to attacks like phishing for example.";
+                                                                                            rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#PhysicalVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#InsecureDefaultSettings> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                              rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInConfig>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Interception> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                   rdfs:comment "The attacker intercepts information without modifing or deleting them. This is a passive attack. This affects the privacy of the subscriber and the network operator.";
+                                                                                   rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NetworkInfrastructureAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Interruption> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                   rdfs:comment "The attacker caused an Interruption by destroying resources. The attacker may delete a subscriber data in the entity such as an HLR.";
+                                                                                   rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NetworkInfrastructureAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#MalformedInput> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                     rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#MissingErrorHandling> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                           rdfs:comment "Missing error handling may reveal hidden coding details.";
+                                                                                           rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInDevelopment>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#MissingInputValidation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                             rdfs:comment "Leaving inputs to a lightweight validation i's one of the most relevant applicationn vulnerability.";
+                                                                                             rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInDevelopment>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#MultipleServicesIntegration> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                                  rdfs:comment "The integration of several networkign services like access to PAN, LAN and WAN in the same divice makes hard the set up of access control policies. This integration  agravates also the multi-session attacks.";
+                                                                                                  rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CommunicationVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NAKAttack> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                rdfs:comment "Concurrent processes may cause logical breaks. These breaks could be exploited by malicious code to get access to protected resources.";
+                                                                                rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NetworkInfrastructureAttack> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                                  rdfs:comment "These attacks belong to the mobile network operator. Most of them require physical air interface equipments like fake base station or modified antenna.";
+                                                                                                  rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NotAuthenticatedSoftInstallation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                                       rdfs:comment "Several untrusted softwares are available for free download or through the trasnfer from an other device. These softwares may be infected with viruses or have trojans. They may also come up with bad code that leads to denial of service.";
+                                                                                                       rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInUse>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#OTASoftwareUpdate> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                        rdfs:comment "Software Update can be performed Over The Air without user konwledge or confirmation. These softwares may be infected or trojanized.";
+                                                                                        rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInUse>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#PhysicalVulnerability> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                            rdfs:comment "Features related to the physical aspect of the device and its properties.";
+                                                                                            rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#PowerAnalysis> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                    rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SideChannelAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ProcessingPowerLimitation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                                rdfs:comment "Limited Processing power is boundary for cryptographic enhanced tasks.";
+                                                                                                rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#PhysicalVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Replay> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                             rdfs:comment "In this case the attacker may insert spurious objects into the system. The attacker may insert fake signaling messages, the effects could result in the attacker masquerading as an authority.";
+                                                                             rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NetworkInfrastructureAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#RoamingConfigChallenges> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                              rdfs:comment "Switching from one network to an other should respect security policies.";
+                                                                                              rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CommunicationVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SideChannelAttack> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                        rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#HardwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SmartCardUpdate> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                      rdfs:comment "The procedure of updating the SIM card is a heavy task for the operator.";
+                                                                                      rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CommunicationVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareAttack> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                     rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareVulnerability> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                            rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#StatisticalAttack> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                        rdfs:comment "A cryptanalysis that exploits the predictibility of a particular data segment or a prdicatable relationships among different data segments in a cipher codestream to deduce the plaintext without the knowledge of the decryption key or to substantially reduce the search space such that a brute force attack is feasable.";
+                                                                                        rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CryptographicAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#TestWithEmulatorOnly> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                           rdfs:comment "After developement, applications should be tested with real and different devices and not only with emulators.";
+                                                                                           rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInDevelopment>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:string ; 
+                                                                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasThreatType ; 
+                                                                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability> ; 
+                                                                                              <http://www.w3.org/2002/07/owl#onProperty> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#enabledBy> ; 
+                                                                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Asset ; 
+                                                                                              <http://www.w3.org/2002/07/owl#onProperty> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threatens> ; 
+                                                                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:string ; 
+                                                                                              <http://www.w3.org/2002/07/owl#onProperty> ontosec:hasThreatType ; 
+                                                                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability> ; 
+                                                                                              <http://www.w3.org/2002/07/owl#onProperty> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#enabledBy> ; 
+                                                                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Asset ; 
+                                                                                              <http://www.w3.org/2002/07/owl#onProperty> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threatens> ; 
+                                                                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                             <http://www.w3.org/2002/07/owl#Thing>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threatens> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                                rdfs:domain <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>;
+                                                                                <http://www.w3.org/2002/07/owl#inverseOf> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#victimOf>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#UnsafeMessageAcceptance> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                              rdfs:comment "Non authenticated SMS or MMS may deal to denial fo service or virus infection.";
+                                                                                              rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInUse>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#UnsafeStorageDevicePlugging> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                                  rdfs:comment "Exchanging Memory card may lead to virus infection.";
+                                                                                                  rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInUse>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#UseofUntrustedAPI> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                        rdfs:comment "Some API, components may be downloaded and used by developers without any security garantee.";
+                                                                                        rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInDevelopment>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#UseofVulnerableProgLanguage> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                                  rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInDevelopment>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat> ; 
+                                                                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#isExploitedBy> ; 
+                                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure> ; 
+                                                                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#isCorrectedBy> ; 
+                                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Asset ; 
+                                                                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#existsOn> ; 
+                                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat> ; 
+                                                                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#isExploitedBy> ; 
+                                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure> ; 
+                                                                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#isCorrectedBy> ; 
+                                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> ontosec:Asset ; 
+                                                                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#existsOn> ; 
+                                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                                    <http://www.w3.org/2002/07/owl#Thing>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInConfig> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                            rdfs:comment "Some default configurations of services may be exploited by hackers.";
+                                                                                            rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInDevelopment> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                                 rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInUse> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                         rdfs:comment "Vulnerabilities during the use of the application or service.";
+                                                                                         rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerableServiceAutoStart> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                                 rdfs:comment "Some services like Bluetooth for example starts automatically which may lead to intrusion and access controls attacks.";
+                                                                                                 rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#InsecureDefaultSettings>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#WirelessTransmission> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                           rdfs:comment "Wireless transmission could be exploited by hacker to eavesdrop traffic, analyse authentication tokens and sensitive information in general.";
+                                                                                           rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CommunicationVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#enabledBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                                rdfs:domain <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>;
+                                                                                rdfs:range <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#existsOn> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                               rdfs:domain <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#hasVulnerability> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                                       rdfs:range <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#isCorrectedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                                    rdfs:domain <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability>;
+                                                                                    rdfs:range <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#isExploitedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                                    rdfs:domain <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability>;
+                                                                                    rdfs:range <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>;
+                                                                                    <http://www.w3.org/2002/07/owl#inverseOf> <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#enabledBy>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#victimOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                               rdfs:range <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>.
+<http://www.w3.org/2002/07/owl#Thing> a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "".

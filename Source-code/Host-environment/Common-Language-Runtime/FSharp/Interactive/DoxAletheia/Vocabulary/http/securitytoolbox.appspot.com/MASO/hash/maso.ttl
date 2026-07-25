@@ -1,0 +1,474 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix maso: <http://securitytoolbox.appspot.com/MASO#>.
+
+_:B119cce2414fdd498581a50c019cb9f27 a <http://www.w3.org/2002/07/owl#Ontology>;
+                                    rdfs:comment "Ontologie pour le domaine de la securite: application aux agents mobiles".
+_:Baa8f227e40ca91e715bdac9ba0bdd3cb a <http://www.w3.org/2002/07/owl#Ontology>;
+                                    rdfs:comment "Ontologie pour le domaine de la securite: application aux agents mobiles".
+maso:AES a maso:Cryptage-symetrique.
+maso:AVG a maso:Antivirus.
+maso:Adresse a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf maso:Token-electronique.
+maso:Adresse-iP a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf maso:Adresse.
+maso:Agent a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#complementOf> maso:Hote ; 
+                            a <http://www.w3.org/2002/07/owl#Class>],
+                           [<http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:int ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> maso:estPropriete ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:int ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> maso:s_execute ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           maso:Entite,
+                           [<http://www.w3.org/2002/07/owl#complementOf> maso:Hote ; 
+                            a <http://www.w3.org/2002/07/owl#Class>],
+                           [<http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:int ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> maso:estPropriete ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:int ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> maso:s_execute ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>];
+           <http://www.w3.org/2002/07/owl#disjointWith> maso:H%C3%B4te.
+maso:Algorithme a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:label "".
+maso:Algorithme-checksum a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf maso:Algorithme.
+maso:Algorithme-cryptage a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf maso:Algorithme.
+maso:Algorithme-gestion-cles a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:subClassOf maso:Algorithme.
+maso:Algorithme-signature a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:subClassOf maso:Algorithme.
+maso:Antivirus a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf maso:Contremesure.
+maso:Asset a <http://www.w3.org/2002/07/owl#Class>.
+maso:Attaque a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf maso:Menace.
+maso:Authentification maso:Objectif maso:Confidentialite;
+                      a maso:Mecanisme.
+maso:Autorisation a maso:Mecanisme.
+maso:BlowFish a maso:Cryptage-symetrique.
+maso:CAST a maso:Cryptage-symetrique.
+maso:Carte-credit a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf maso:Token-physique.
+maso:Certificat a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf maso:Token-electronique.
+maso:Cle-de-Cryptage a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf maso:Token-electronique.
+maso:Cle-privee a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf maso:Cle-de-cryptage.
+maso:Cle-publique a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf maso:Cle-de-cryptage.
+maso:Cle-secrete a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf maso:Cle-de-cryptage.
+maso:Composant a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf maso:Software.
+maso:Confiance maso:estMecanisme maso:Identification;
+               a maso:Objectif.
+maso:Confidentialite a maso:Objectif.
+maso:Contremesure a <http://www.w3.org/2002/07/owl#Class>.
+maso:Contremesure-reseau a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf maso:Contremesure.
+maso:Controle-dacces maso:Objectif maso:Disponibilite;
+                     a maso:Mecanisme.
+maso:Cookie a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf maso:Token-electronique.
+maso:Cryptage-asymetrique a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:subClassOf maso:Algorithme-Cryptage.
+maso:Cryptage-symetrique a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf maso:Algorithme-Cryptage.
+maso:DES a maso:Cryptage-symetrique.
+maso:Data a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:subClassOf maso:Asset.
+maso:Defaut a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf maso:Menace.
+maso:Defaut-interaction a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf maso:Defaut.
+maso:Defaut-physique a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf maso:Defaut.
+maso:Deni_de_service a maso:Attaque.
+maso:Description-logiciel a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:domain maso:Software;
+                          rdfs:range xsd:string.
+maso:Disponibilite a maso:Objectif.
+maso:Domaine a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf maso:Adresse.
+maso:Echec-technique a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf maso:Menace.
+maso:ElGamal a maso:Cryptage-asymetrique.
+maso:Elliptic_curve a maso:Cryptage-asymetrique.
+maso:Entite a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#unionOf> (maso:Agent
+                                                                      maso:H%C3%B4te) ; 
+                             a <http://www.w3.org/2002/07/owl#Class>],
+                            <http://www.w3.org/2002/07/owl#Thing>,
+                            [<http://www.w3.org/2002/07/owl#unionOf> (maso:Agent
+                                                                      maso:H%C3%B4te) ; 
+                             a <http://www.w3.org/2002/07/owl#Class>].
+maso:Erreur a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf maso:Menace.
+maso:Firewall a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf maso:Contremesure.
+maso:Gestion-cles a maso:Mecanisme.
+maso:H%C3%B4te a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#complementOf> maso:Agent ; 
+                                a <http://www.w3.org/2002/07/owl#Class>],
+                               maso:Entite,
+                               [<http://www.w3.org/2002/07/owl#complementOf> maso:Agent ; 
+                                a <http://www.w3.org/2002/07/owl#Class>];
+               <http://www.w3.org/2002/07/owl#disjointWith> maso:Agent.
+maso:HMAC a maso:MAC.
+maso:Hardware a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf maso:Asset.
+maso:Hash a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:subClassOf maso:Algorithme-signature.
+maso:IDEA a maso:Cryptage-symetrique.
+maso:Imputabilite a maso:Objectif.
+maso:Integrite a maso:Objectif.
+maso:KEA a maso:Algorithme-gestion-cles.
+maso:MAC a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:subClassOf maso:Algorithme-signature.
+maso:MD4 a maso:Hash.
+maso:MD5 a maso:Hash.
+maso:Mecanisme a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#oneOf> (maso:Authentification) ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Class>]
+                                                                         [<http://www.w3.org/2002/07/owl#oneOf> (maso:Autorisation) ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Class>]
+                                                                         [<http://www.w3.org/2002/07/owl#oneOf> (maso:Controle-dacces) ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Class>]
+                                                                         [<http://www.w3.org/2002/07/owl#oneOf> (maso:Gestion-cle) ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Class>]
+                                                                         [<http://www.w3.org/2002/07/owl#oneOf> (maso:Identification) ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Class>]) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>],
+                               <http://www.w3.org/2002/07/owl#Thing>,
+                               [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#oneOf> (maso:Authentification) ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Class>]
+                                                                         [<http://www.w3.org/2002/07/owl#oneOf> (maso:Autorisation) ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Class>]
+                                                                         [<http://www.w3.org/2002/07/owl#oneOf> (maso:Controle-dacces) ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Class>]
+                                                                         [<http://www.w3.org/2002/07/owl#oneOf> (maso:Gestion-cle) ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Class>]
+                                                                         [<http://www.w3.org/2002/07/owl#oneOf> (maso:Identification) ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Class>]) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>].
+maso:Memoire a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf maso:Hardware.
+maso:Menace a <http://www.w3.org/2002/07/owl#Class>.
+maso:Microprocesseur a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf maso:Hardware.
+maso:Mot-de-passe a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf maso:Token-electronique.
+maso:Non-repudiation a maso:Objectif.
+maso:Norton a maso:Antivirus.
+maso:Objectif a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#oneOf> (maso:Confiance) ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Class>]
+                                                                        [<http://www.w3.org/2002/07/owl#oneOf> (maso:Confidentialite) ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Class>]
+                                                                        [<http://www.w3.org/2002/07/owl#oneOf> (maso:Disponibilite) ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Class>]
+                                                                        [<http://www.w3.org/2002/07/owl#oneOf> (maso:Imputabilite) ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Class>]
+                                                                        [<http://www.w3.org/2002/07/owl#oneOf> (maso:Integrite) ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Class>]
+                                                                        [<http://www.w3.org/2002/07/owl#oneOf> (maso:Non-repudiation) ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Class>]) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>],
+                              <http://www.w3.org/2002/07/owl#Thing>,
+                              [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#oneOf> (maso:Confiance) ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Class>]
+                                                                        [<http://www.w3.org/2002/07/owl#oneOf> (maso:Confidentialite) ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Class>]
+                                                                        [<http://www.w3.org/2002/07/owl#oneOf> (maso:Disponibilite) ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Class>]
+                                                                        [<http://www.w3.org/2002/07/owl#oneOf> (maso:Imputabilite) ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Class>]
+                                                                        [<http://www.w3.org/2002/07/owl#oneOf> (maso:Integrite) ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Class>]
+                                                                        [<http://www.w3.org/2002/07/owl#oneOf> (maso:Non-repudiation) ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Class>]) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>].
+maso:Passeport a <http://www.w3.org/2002/07/owl#Class>.
+maso:Personne a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf maso:Proprietaire;
+              <http://www.w3.org/2002/07/owl#disjointWith> maso:Societe.
+maso:Proprietaire a <http://www.w3.org/2002/07/owl#Class>.
+maso:Protection-physique a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf maso:Contremesure.
+maso:Protocole a <http://www.w3.org/2002/07/owl#Class>.
+maso:Protocole-authentification a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:subClassOf maso:Protocole.
+maso:Protocole-cryptage a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf maso:Protocole.
+maso:Protocole-gestion-cles a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf maso:Protocole.
+maso:Protocole-gestion-reseau a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:subClassOf maso:Protocole.
+maso:Protocole-signature a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf maso:Protocole.
+maso:RBAC a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:subClassOf maso:Certificat.
+maso:RC2 a maso:Rivest.
+maso:RC4 a maso:Rivest.
+maso:RC5 a maso:Rivest.
+maso:RC6 a maso:Rivest.
+maso:RSA a maso:Cryptage-asymetrique.
+maso:Rivest a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf maso:Cryptage-asymetrique.
+maso:SSH a maso:Protocole-gestion-cles.
+maso:SSL maso:Objectif maso:Confidentialite;
+         a maso:Protocole-gestion-cles.
+maso:Service a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf maso:Software.
+maso:Signature-numerique a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf maso:.
+maso:Societe a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf maso:Proprietaire;
+             <http://www.w3.org/2002/07/owl#disjointWith> maso:Personne.
+maso:Software a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf maso:Asset.
+maso:Storage a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf maso:Hardware.
+maso:TPE a maso:Protection-physique.
+maso:Token-electronique a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf maso:Passeport.
+maso:Token-physique a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf maso:Passeport.
+maso:Trojan-horse a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf maso:Menace.
+maso:TwoFish a maso:Cryptage-symetrique.
+maso:Virus a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:subClassOf maso:Menace.
+maso:Vulnerabilite a <http://www.w3.org/2002/07/owl#Class>.
+maso:Worm a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:subClassOf maso:Menace.
+maso:X.509 a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:subClassOf maso:Certificat.
+maso:_3DES a maso:Cryptage-symetrique.
+maso:assureAuthentification a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:domain maso:Protocole-authentification;
+                            rdfs:range maso:Objectif.
+maso:assureObjectif a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (maso:Mecanisme
+                                                                          maso:Protocole) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>],
+                                [<http://www.w3.org/2002/07/owl#unionOf> (maso:Mecanisme
+                                                                          maso:Protocole) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>];
+                    rdfs:range maso:Objectif.
+maso:capableMecanisme a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain maso:Entite;
+                      rdfs:range maso:Mecanisme.
+maso:capableObjectif a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain maso:Entite;
+                     rdfs:range maso:Objectif.
+maso:capacite a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+              rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (maso:Memoire
+                                                                    maso:Storage) ; 
+                           a <http://www.w3.org/2002/07/owl#Class>],
+                          [<http://www.w3.org/2002/07/owl#unionOf> (maso:Memoire
+                                                                    maso:Storage) ; 
+                           a <http://www.w3.org/2002/07/owl#Class>];
+              rdfs:range xsd:int.
+maso:chemin a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+            rdfs:domain maso:Cookie;
+            rdfs:range xsd:string.
+maso:cible a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain maso:Menace;
+           rdfs:range maso:Asset.
+maso:date-expiration a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                       <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:domain maso:Carte-credit;
+                     rdfs:range xsd:date.
+maso:dispose a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain maso:H%C3%B4te;
+             rdfs:range maso:Asset.
+maso:email a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain maso:Proprietaire;
+           rdfs:range xsd:string.
+maso:eninteractionAvec a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain maso:Entite;
+                       rdfs:range maso:Entite.
+maso:estAssureMecanisme a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain maso:Objectif;
+                        rdfs:range maso:Mecanisme.
+maso:estAssureProtocole a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain maso:Objectif;
+                        rdfs:range maso:Protocole.
+maso:estPropriete a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                    <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain maso:Agent;
+                  rdfs:range maso:Proprietaire;
+                  <http://www.w3.org/2002/07/owl#inverseOf> maso:proprietaireDe.
+maso:estProtegePar a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain maso:Asset;
+                   rdfs:range maso:Contremesure;
+                   <http://www.w3.org/2002/07/owl#inverseOf> maso:protege.
+maso:estUtiliseProtocole a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                           <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain maso:Algorithme;
+                         rdfs:range maso:Protocole;
+                         <http://www.w3.org/2002/07/owl#inverseOf> maso:estUtiliseProtocole.
+maso:estUtiliseProtocoleCryptage a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:domain maso:Algorithme-cryptage;
+                                 rdfs:range maso:Protocole-Cryptage;
+                                 rdfs:subPropertyOf maso:estUtiliseProtocole;
+                                 <http://www.w3.org/2002/07/owl#inverseOf> maso:utilisecryptage.
+maso:estUtiliseProtocoleSignature a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain maso:Algorithme-signature;
+                                  rdfs:range maso:Protocole-signature;
+                                  rdfs:subPropertyOf maso:estUtiliseProtocole;
+                                  <http://www.w3.org/2002/07/owl#inverseOf> maso:utiliseSignature.
+maso:estexigeProtocole a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain maso:Passeport;
+                       rdfs:range maso:Protocole;
+                       <http://www.w3.org/2002/07/owl#inverseOf> maso:exigePasseport.
+maso:estexploitePar a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain maso:Vulnerabilite;
+                    rdfs:range maso:Menace;
+                    <http://www.w3.org/2002/07/owl#inverseOf> maso:exploite.
+maso:execute a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain maso:H%C3%B4te;
+             rdfs:range maso:Agent;
+             <http://www.w3.org/2002/07/owl#inverseOf> maso:s_execute.
+maso:exigeMecanisme a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain maso:Entite;
+                    rdfs:range maso:Mecanisme.
+maso:exigeObjectif a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain maso:Entite;
+                   rdfs:range maso:Objectif.
+maso:exigePasseport a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain maso:Protocole;
+                    rdfs:range maso:Passeport;
+                    <http://www.w3.org/2002/07/owl#inverseOf> maso:estExigeProtocole.
+maso:exploite a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain maso:Menace;
+              rdfs:range maso:Vulnerabilite;
+              <http://www.w3.org/2002/07/owl#inverseOf> maso:estExploitePar.
+maso:fax a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:domain maso:Proprietaire;
+         rdfs:range xsd:string.
+maso:identification a maso:Mecanisme.
+maso:initialise a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain maso:Entite;
+                rdfs:range maso:Menace.
+maso:intrusion a maso:Attaque.
+maso:issuer a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+            rdfs:domain maso:X.509;
+            rdfs:range xsd:string.
+maso:longueur-cle a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                    <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                  rdfs:domain maso:Cle-de-Cryptage;
+                  rdfs:range xsd:int.
+maso:longueur-minimum a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                        <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                      rdfs:domain maso:Mot-de-passe;
+                      rdfs:range xsd:int.
+maso:marque a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+            rdfs:domain maso:Microprocesseur;
+            rdfs:range xsd:string.
+maso:modele a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+            rdfs:domain maso:Microprocesseur;
+            rdfs:range xsd:string.
+maso:nom a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+           <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+         rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (maso:Antivirus
+                                                               maso:Cookie
+                                                               maso:Proprietaire
+                                                               maso:Software
+                                                               maso:Virus) ; 
+                      a <http://www.w3.org/2002/07/owl#Class>],
+                     [<http://www.w3.org/2002/07/owl#unionOf> (maso:Antivirus
+                                                               maso:Cookie
+                                                               maso:Proprietaire
+                                                               maso:Software
+                                                               maso:Virus) ; 
+                      a <http://www.w3.org/2002/07/owl#Class>];
+         rdfs:range xsd:string.
+maso:notAfter a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+              rdfs:domain maso:X.509;
+              rdfs:range xsd:date.
+maso:notBefore a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                 <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain maso:X.509;
+               rdfs:range xsd:date.
+maso:numero-de-serie a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                       <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:domain maso:X.509;
+                     rdfs:range xsd:string.
+maso:prenom a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:domain maso:Personne;
+            rdfs:range xsd:string.
+maso:proprietaireDe a <http://www.w3.org/2002/07/owl#inverseFunctionalProperty>,
+                      <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain maso:Proprietaire;
+                    rdfs:range maso:Agent;
+                    <http://www.w3.org/2002/07/owl#inverseOf> maso:estPropriete.
+maso:protege a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain maso:Contremesure;
+             rdfs:range maso:Asset;
+             <http://www.w3.org/2002/07/owl#inverseOf> maso:estProtegePar.
+maso:reduit a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain maso:Contremesure;
+            rdfs:range maso:Vulnerabilite.
+maso:s_execute a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain maso:Agent;
+               rdfs:range maso:H%C3%B4te;
+               <http://www.w3.org/2002/07/owl#inverseOf> maso:execute.
+maso:telephone a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain maso:Proprietaire;
+               rdfs:range xsd:string.
+maso:utiliseAlgorithme a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain maso:Protocole;
+                       rdfs:range maso:Algorithme.
+maso:utiliseMecanisme a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain maso:Protocole;
+                      rdfs:range maso:Mecanisme;
+                      <http://www.w3.org/2002/07/owl#inverseOf> maso:utiliseProtocole.
+maso:utilisePasseport a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain maso:Algorithme;
+                      rdfs:range maso:Passeport.
+maso:utiliseProtocole a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain maso:Mecanisme;
+                      rdfs:range maso:Protocole;
+                      <http://www.w3.org/2002/07/owl#inverseOf> maso:utiliseMecanisme.
+maso:utiliseSignature a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain maso:Protocole-signature;
+                      rdfs:range maso:Algorithme-signature;
+                      rdfs:subPropertyOf maso:utiliseAlgorithme;
+                      <http://www.w3.org/2002/07/owl#inverseOf> maso:estUtiliseProtocoleSignature.
+maso:utilisecryptage a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain maso:Protocole-Cryptage;
+                     rdfs:range maso:Algorithme-Cryptage;
+                     rdfs:subPropertyOf maso:utiliseAlgorithme;
+                     <http://www.w3.org/2002/07/owl#inverseOf> maso:estUtiliseProtocoleCryptage.
+maso:valeur-cookie a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:domain maso:Cookie;
+                   rdfs:range xsd:int.
+maso:version a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+               <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+             rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (maso:Antivirus
+                                                                   maso:X.509) ; 
+                          a <http://www.w3.org/2002/07/owl#Class>],
+                         [<http://www.w3.org/2002/07/owl#unionOf> (maso:Antivirus
+                                                                   maso:X.509) ; 
+                          a <http://www.w3.org/2002/07/owl#Class>];
+             rdfs:range xsd:string.
+maso:vitesse a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+               <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+             rdfs:domain maso:Microprocesseur;
+             rdfs:range xsd:int.

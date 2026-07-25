@@ -1,0 +1,171 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix parl: <http://reference.data.gov.uk/def/parliament/>.
+
+<http://reference.data.gov.uk/def/parliament> <http://purl.org/dc/terms/created> "2010-06-17"^^xsd:date;
+                                              <http://purl.org/dc/terms/title> "Parliament Ontology"@en;
+                                              <http://rdfs.org/ns/void#exampleResource> parl:Leader,
+                                                                                        parl:Parliament,
+                                                                                        parl:Seat,
+                                                                                        parl:Chamber,
+                                                                                        parl:DevolvedParliament;
+                                              <http://rdfs.org/ns/void#vocabulary> <http://www.w3.org/2004/02/skos/core#>,
+                                                                                   <http://xmlns.com/foaf/0.1/>,
+                                                                                   parl:,
+                                                                                   rdfs:,
+                                                                                   <http://www.w3.org/ns/org#>,
+                                                                                   <http://www.w3.org/2002/07/owl#>;
+                                              a <http://www.w3.org/2002/07/owl#Ontology>,
+                                                <http://rdfs.org/ns/void#Dataset>;
+                                              rdfs:label "Parliament Ontology"@en;
+                                              rdfs:seeAlso <http://www.direct.gov.uk/en/Governmentcitizensandrights/UKgovernment/Parliament/DG_073604>,
+                                                           <http://www.direct.gov.uk/en/Governmentcitizensandrights/UKgovernment/Parliament/DG_073479>.
+parl:Chamber a rdfs:Class;
+             rdfs:comment "Defines the chambers with instances like The House of Commons and The House of Lords.";
+             rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+             rdfs:label "Chamber"@en;
+             rdfs:subClassOf <http://www.w3.org/ns/org#FormalOrganization>.
+parl:DevolvedParliament a rdfs:Class;
+                        rdfs:comment "Defines an administration to which independent law-making powers have been delegated.  Example instances are The Scottish Parliament and The Welsh Assembly"@en;
+                        rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+                        rdfs:label "Devolved administration"@en;
+                        rdfs:subClassOf parl:Parliament.
+parl:Leader a rdfs:Class;
+            rdfs:comment "Represents the leader of the political party"@en;
+            rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+            rdfs:label "Party Leader"@en;
+            rdfs:subClassOf parl:Post;
+            <http://www.w3.org/2004/02/skos/core#note> <http://en.wikipedia.org/wiki/Party_leader>.
+parl:Parliament a rdfs:Class;
+                rdfs:comment "Defines a parliament, the law-making assembly of a nation.  Examples are Westminster, The Welsh Assembly, The Scottish Parliament and Northern Ireland Assembly."@en;
+                rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+                rdfs:label "Parliament"@en;
+                rdfs:subClassOf <http://www.w3.org/ns/org#FormalOrganization>;
+                <http://www.w3.org/2004/02/skos/core#note> <http://en.wikipedia.org/wiki/Parliament_of_the_United_Kingdom>.
+parl:PoliticalParty a rdfs:Class;
+                    rdfs:comment "A Political party such as The Conservative Party or The Labour Party.";
+                    rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+                    rdfs:label "Political party";
+                    rdfs:seeAlso <http://www.direct.gov.uk/en/Governmentcitizensandrights/UKgovernment/Politicalpartiesandelections/DG_073226>;
+                    rdfs:subClassOf <http://www.w3.org/ns/org#FormalOrganization>.
+parl:Post a rdfs:Class;
+          rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+          rdfs:label "Post"@en;
+          rdfs:subClassOf <http://www.w3.org/ns/org#Organization>.
+parl:Seat a rdfs:Class;
+          rdfs:comment "A seat in a Parliament";
+          rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+          rdfs:label "Seat"@en;
+          rdfs:subClassOf parl:Post;
+          <http://www.w3.org/2004/02/skos/core#note> <http://en.wikipedia.org/wiki/List_of_United_Kingdom_Parliament_constituencies>.
+parl:devolvedFrom a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                    rdf:Property;
+                  rdfs:comment "A property linking a Devolved Assembly to the Parliament from which it was devolved."@en;
+                  rdfs:domain parl:DevolvedParliament;
+                  rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+                  rdfs:label "devolved from"@en;
+                  rdfs:range parl:Parliament;
+                  <http://www.w3.org/2002/07/owl#inverseOf> parl:devolvesTo.
+parl:devolvesTo a rdf:Property,
+                  <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Links a Parliament to a Devolved Assembly to which has devolved powers."@en;
+                rdfs:domain parl:Parliament;
+                rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+                rdfs:label "devolves to"@en;
+                rdfs:range parl:DevolvedParliament;
+                rdfs:seeAlso <http://www.direct.gov.uk/en/Governmentcitizensandrights/UKgovernment/Devolvedgovernment/DG_073306>;
+                <http://www.w3.org/2002/07/owl#inverseOf> parl:devolvedFrom;
+                <http://www.w3.org/2004/02/skos/core#note> <http://www.scottish.parliament.uk/corporate/history/aDevolvedParliament/index.htm>.
+parl:hasMember a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                 rdf:Property;
+               rdfs:comment "A member of this parliament."@en;
+               rdfs:domain parl:Parliament;
+               rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+               rdfs:label "Member"@en;
+               rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+               rdfs:subPropertyOf <http://www.w3.org/ns/org#hasMember>;
+               <http://www.w3.org/2002/07/owl#inverseOf> parl:memberOf.
+parl:hasPartyLeader a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                      rdf:Property;
+                    rdfs:comment "Indicates the Leader of this political party."@en;
+                    rdfs:domain parl:PoliticalParty;
+                    rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+                    rdfs:label "Leader"@en;
+                    rdfs:range parl:Leader;
+                    rdfs:subPropertyOf <http://www.w3.org/ns/org#hasMember>;
+                    <http://www.w3.org/2002/07/owl#inverseOf> parl:partyLeaderOf.
+parl:hasPartyMember a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                      rdf:Property;
+                    rdfs:comment "Indicates that a political party has a person as member."@en;
+                    rdfs:domain parl:PoliticalParty;
+                    rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+                    rdfs:label "Member"@en;
+                    rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                    rdfs:subPropertyOf <http://www.w3.org/ns/org#hasMember>;
+                    <http://www.w3.org/2002/07/owl#inverseOf> parl:partyMemberOf.
+parl:holdsLeadership a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                       rdf:Property;
+                     rdfs:comment "This property indicates that a person holds the leadership of a political party."@en;
+                     rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                     rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+                     rdfs:label "Holds Leadership"@en;
+                     rdfs:range parl:Leader;
+                     rdfs:subPropertyOf <http://www.w3.org/ns/org#memberOf>;
+                     <http://www.w3.org/2002/07/owl#inverseOf> parl:leadershipHeldBy.
+parl:holdsSeat a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                 rdf:Property;
+               rdfs:comment "Indicates the seat in parliament that this person holds."@en;
+               rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+               rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+               rdfs:label "Seat"@en;
+               rdfs:range parl:Seat.
+parl:leadershipHeldBy a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                        rdf:Property;
+                      rdfs:comment "This property indicates that a person holds the leadership of a political party."@en;
+                      rdfs:domain parl:Leader;
+                      rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+                      rdfs:label "Holds Leadership"@en;
+                      rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                      rdfs:subPropertyOf <http://www.w3.org/ns/org#memberOf>;
+                      <http://www.w3.org/2002/07/owl#inverseOf> parl:holdsLeadership.
+parl:memberOf a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                rdf:Property;
+              rdfs:comment "The parliament this person or post is a member of."@en;
+              rdfs:domain <http://xmlns.com/foaf/0.1/Agent>;
+              rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+              rdfs:label "Member of"@en;
+              rdfs:range <http://www.w3.org/ns/org#Parliament>;
+              rdfs:subPropertyOf <http://www.w3.org/ns/org#memberOf>;
+              <http://www.w3.org/2002/07/owl#inverseOf> parl:hasMember.
+parl:partyLeaderOf a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     rdf:Property;
+                   rdfs:comment "Indicates that a Leader is the leader of a political party."@en;
+                   rdfs:domain parl:Leader;
+                   rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+                   rdfs:label "Leader of"@en;
+                   rdfs:range parl:PoliticalParty;
+                   rdfs:subPropertyOf <http://www.w3.org/ns/org#headOf>;
+                   <http://www.w3.org/2002/07/owl#inverseOf> parl:hasPartyLeader.
+parl:partyMemberOf a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     rdf:Property;
+                   rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                   rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+                   rdfs:label "Member of"@en;
+                   rdfs:range parl:PoliticalParty;
+                   rdfs:subPropertyOf <http://www.w3.org/ns/org#memberOf>;
+                   <http://www.w3.org/2002/07/owl#inverseOf> parl:hasPartyMember.
+parl:represents a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  rdf:Property;
+                rdfs:comment "The constituency that the MP holding this seat in parliament represents."@en;
+                rdfs:domain parl:Seat;
+                rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+                rdfs:label "Represents"@en;
+                <http://www.w3.org/2004/02/skos/core#editorialNote> "No range set on this though for the House of Commons it will be a <http://data.ordnancesurvey.co.uk/ontology/admingeo/WestminsterConstituency>."@en.
+parl:seatHeldBy a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  rdf:Property;
+                rdfs:comment "Indicates the person holding this seat in parliament."@en;
+                rdfs:domain parl:Seat;
+                rdfs:isDefinedBy <http://reference.data.gov.uk/def/parliament>;
+                rdfs:label "Held By"@en;
+                rdfs:range <http://xmlns.com/foaf/0.1/Person>.

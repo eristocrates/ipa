@@ -16,15 +16,6 @@ module pne =
     /// <seealso href="http://data.press.net/ontology/event/Event">http://data.press.net/ontology/event/Event</seealso>
     let Event = Prefixed_Name(pne, "Event") |> PrefixedName
     /// <summary>
-    ///   <para>pne:subEventOf</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:TransitiveProperty</para>
-    ///   <para>Transitive Property defining a parent-child relationship between events. Event Y is a sub event of Event X</para>
-    /// labels<para>Transitive Property defining a parent-child relationship between events</para></remarks>
-    /// <seealso href="http://data.press.net/ontology/event/subEventOf">http://data.press.net/ontology/event/subEventOf</seealso>
-    let subEventOf = Prefixed_Name(pne, "subEventOf") |> PrefixedName
-    /// <summary>
     ///   <para>pne:summary</para>
     /// </summary>
     /// <remarks>
@@ -33,6 +24,15 @@ module pne =
     /// labels<para>An Event summary</para></remarks>
     /// <seealso href="http://data.press.net/ontology/event/summary">http://data.press.net/ontology/event/summary</seealso>
     let summary = Prefixed_Name(pne, "summary") |> PrefixedName
+    /// <summary>
+    ///   <para>pne:subEventOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>Transitive Property defining a parent-child relationship between events. Event Y is a sub event of Event X</para>
+    /// labels<para>Transitive Property defining a parent-child relationship between events</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/event/subEventOf">http://data.press.net/ontology/event/subEventOf</seealso>
+    let subEventOf = Prefixed_Name(pne, "subEventOf") |> PrefixedName
     /// <summary>
     ///   <para>pne:theme</para>
     /// </summary>

@@ -1,0 +1,84 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix h2o: <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#>.
+
+<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic> <http://purl.org/dc/elements/1.1/contributor> "ISO/TC 211 Project Team 19150-2";
+                                                              <http://purl.org/dc/elements/1.1/creator> """Simon J D COX
+CSIRO Australia""";
+                                                              <http://purl.org/dc/elements/1.1/description> "This ontology establishes classes corresponding to stereotypes used in ISO-conformant models, as used in the rules for conversion of the ISO TC 211 Harmonized Model from the UML to OWL representations";
+                                                              <http://purl.org/dc/elements/1.1/rights> "Copyright © 2012-2013 CSIRO";
+                                                              <http://purl.org/dc/elements/1.1/title> "Ontology elements required for conversion of ISO/TC 211 Harmonized Model to OWL";
+                                                              <http://purl.org/dc/terms/created> "2012-06-04T00:00:00"^^xsd:dateTime;
+                                                              <http://purl.org/dc/terms/hasPart> h2o:tvalue,
+                                                                                                 h2o:TaggedValue,
+                                                                                                 h2o:isAbstract,
+                                                                                                 h2o:ISOClassName,
+                                                                                                 h2o:constraint,
+                                                                                                 h2o:tag,
+                                                                                                 h2o:ttag,
+                                                                                                 h2o:isStereotype;
+                                                              <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/3.0/>;
+                                                              <http://purl.org/dc/terms/modified> "2014-01-07T00:00:00"^^xsd:dateTime;
+                                                              <http://purl.org/vocab/vann/preferredNamespacePrefix> "h2o";
+                                                              <http://purl.org/vocab/vann/preferredNamespaceUri> h2o:;
+                                                              a <http://purl.org/vocommons/voaf#Vocabulary>,
+                                                                <http://www.w3.org/2002/07/owl#Ontology>;
+                                                              rdfs:comment """This ontology establishes classes corresponding to stereotypes used in ISO-conformant models, as used in the rules for conversion of the ISO TC 211 Harmonized Model from the UML to OWL representations. 
+
+This vocabulary is provisional, pending finalization of ISO 19150-2.
+
+The URI stem http://def.seegrid.csiro.au/isotc211/ is temporary. The vocabulary is expected to be ultimately published in the domain http://def.isotc211.org/ .""";
+                                                              <http://www.w3.org/2002/07/owl#imports> <http://purl.org/dc/elements/1.1/>;
+                                                              <http://www.w3.org/2002/07/owl#priorVersion> <https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201305/ISOTC211/HM/hm2owl.rdf>;
+                                                              <http://www.w3.org/2002/07/owl#versionIRI> <https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201311/ISOTC211/HM/iso19150/-2/2012/basic.rdf>.
+h2o:ISOClassName a rdfs:Datatype;
+                 rdfs:comment "A datatype for skos:notation annotations, used to indicate the original UML class name";
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic>;
+                 rdfs:label "ISO Class name";
+                 <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:pattern "^[A-Z]\\w*"]) ; 
+                                                                  <http://www.w3.org/2002/07/owl#onDataType> xsd:string ; 
+                                                                  a rdfs:Datatype].
+h2o:TaggedValue a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Class for UML tagged values";
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic>;
+                rdfs:label "UML tagged value structure";
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> h2o:tvalue ; 
+                                 <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> h2o:ttag ; 
+                                 <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>].
+h2o:constraint a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic>;
+               rdfs:label "UML constraint";
+               rdfs:range xsd:string.
+h2o:isAbstract a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+               rdfs:comment "This property indicates whether the class was flagged 'abstract' in the UML model. Abstract classes cannot be instantiated directly. Concrete subclasses may be instantiated.";
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic>;
+               rdfs:label "UML abstract class";
+               rdfs:range xsd:boolean.
+h2o:isStereotype a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                 rdfs:comment "This property indicates if the class corresponds to a UML stereotype ";
+                 rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic>;
+                 rdfs:label "ISO stereotype flag";
+                 rdfs:range xsd:boolean.
+h2o:tag a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+        rdfs:comment "OWL property that links to a tagged value";
+        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic>;
+        rdfs:label "UML tagged value";
+        rdfs:range h2o:TaggedValue.
+h2o:ttag a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:domain h2o:TaggedValue;
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic>;
+         rdfs:label "UML tagged value tag";
+         rdfs:range xsd:string.
+h2o:tvalue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:domain h2o:TaggedValue;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic>;
+           rdfs:label "UML tagged value value";
+           rdfs:range xsd:string.
+h2o:valueAssignment a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "property that can be attached to any statement to support a link to the evidence for the value";
+                    rdfs:domain rdf:Statement;
+                    rdfs:label "value assignment method".

@@ -1,0 +1,801 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix nen3610: <http://modellen.geostandaarden.nl/def/nen3610#>.
+
+<http://modellen.geostandaarden.nl/def/nen3610> a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                <http://www.w3.org/2002/07/owl#imports> <http://modellen.geostandaarden.nl/def/nen3610/Waardelijsten>,
+                                                                                        <http://modellen.geostandaarden.nl/def/nen3610/Basisinformatie-elementen>,
+                                                                                        <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                                                <http://www.w3.org/ns/shacl#declare> [<http://www.w3.org/ns/shacl#prefix> "nen3610" ; 
+                                                                                      <http://www.w3.org/ns/shacl#namespace> "http://modellen.geostandaarden.nl/def/nen3610#"].
+nen3610:Begroeiing <http://bp4mc2.org/def/mim#alias> "Begroeiing";
+                   <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                   <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                   <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                   <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                   <http://bp4mc2.org/def/mim#toelichting> "Begroeiing kan dus spontaan of natuurlijk zijn (vegetatie), maar ook door menselijk toedoen tot stand zijn gekomen (aanplant of beplanting) of combinaties daarvan.";
+                   <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/begroeiing>;
+                   a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Planten die op natuurlijke wijze zijn ontstaan of door mensen zijn aangeplant.";
+                   rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                   rdfs:label "Begroeiing";
+                   rdfs:subClassOf nen3610:ReeelObject;
+                   <http://www.w3.org/2004/02/skos/core#notation> "Begroeiing".
+nen3610:Bodem <http://bp4mc2.org/def/mim#alias> "Bodem";
+              <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+              <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+              <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+              <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+              <http://bp4mc2.org/def/mim#toelichting> "Bodem verwijst naar een typering en/of benoeming van het aardoppervlak, waarbij de bodem doorloopt onder het oppervlaktewater.  Bodem omvat ook de daaronder liggende bodemmaterialen met indelingen die kunnen verschillen per vakgebied zoals bijvoorbeeld bodemkunde, geologie, geohydrologie en geomorfologie.";
+              <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/bodem>;
+              a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Bovenste deel van de aarde, exclusief oppervlaktewater.";
+              rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+              rdfs:label "Bodem";
+              rdfs:subClassOf nen3610:ReeelObject;
+              <http://www.w3.org/2004/02/skos/core#notation> "Bodem".
+nen3610:Constructie <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                    <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                    <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                    <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                    <http://bp4mc2.org/def/mim#toelichting> "Constructie kan boven- en ondergrondse objecten betreffen. Voorbeelden zijn: huis, brug, asfalt, waterleiding, fabriek, mijnstelsel.";
+                    <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/constructie>;
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Gebouwd object dat direct of indirect met de bodem is verbonden en bedoeld is om ter plaatse te functioneren.";
+                    rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                    rdfs:label "Constructie";
+                    rdfs:subClassOf nen3610:ReeelObject;
+                    <http://www.w3.org/2004/02/skos/core#notation> "Constructie".
+nen3610:FunctioneleRuimte <http://bp4mc2.org/def/mim#alias> "Functionele ruimte";
+                          <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                          <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                          <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                          <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                          <http://bp4mc2.org/def/mim#toelichting> "Een functionele ruimte wordt gebruikt om een (gebruiks)functie aan een ruimte toe te kennen. Het functionele gebruik van de ruimte volgt niet altijd de fysieke begrenzing van re�le objecten.";
+                          <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/functionele_ruimte>;
+                          a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Ruimte met een specifieke functie.";
+                          rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                          rdfs:label "FunctioneleRuimte";
+                          rdfs:subClassOf nen3610:VirtueleRuimte;
+                          <http://www.w3.org/2004/02/skos/core#notation> "FunctioneleRuimte".
+nen3610:Gebouw <http://bp4mc2.org/def/mim#alias> "Gebouw";
+               <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+               <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+               <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+               <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+               <http://bp4mc2.org/def/mim#toelichting> "Voorbeelden zijn: huis, schuur, flatgebouw, huizenblok, fabriek.";
+               <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/gebouw>;
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Overdekte en geheel of gedeeltelijk met wanden omsloten constructie bedoeld voor het in een afgeschermde omgeving onderbrengen van mensen, dieren of voorwerpen of voor de productie van goederen.";
+               rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+               rdfs:label "Gebouw";
+               rdfs:subClassOf nen3610:Constructie;
+               <http://www.w3.org/2004/02/skos/core#notation> "Gebouw".
+nen3610:GeoObject <http://bp4mc2.org/def/mim#alias> "Geo-object";
+                  <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                  <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                  <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                  <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                  <http://bp4mc2.org/def/mim#toelichting> "Van dit objecttype worden geen directe instanties gemaakt. Indien een object een geo-object is, is het altijd een instantie van een subklasse van GeoObject. Alle subklassen van GeoObject hebben conform MIM het stereotype �Objecttype�. Voor publicatie conform NEN-EN-ISO 19109:2015 is het stereotype �FeatureType� verplicht. Binnen de context van NEN 3610 is �Objecttype� het equivalent van �FeatureType�.";
+                  <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/geo-object>;
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Een fenomeen in de werkelijkheid dat direct of indirect is geassocieerd met een locatie relatief ten opzichte van de aarde.";
+                  rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                  rdfs:label "GeoObject";
+                  <http://www.w3.org/2004/02/skos/core#notation> "GeoObject".
+nen3610:GeografischeRuimte <http://bp4mc2.org/def/mim#alias> "Geografische ruimte";
+                           <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                           <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                           <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                           <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                           <http://bp4mc2.org/def/mim#toelichting> "De grenzen zijn niet altijd exact vastgesteld. Voorbeelden zijn: Noordoostpolder, Midden-Nederland, rivierengebied, Veluwe, Zuid-Limburg, kustgebied. ";
+                           <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/geografische_ruimte>;
+                           a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Ruimte die bekendstaat onder een vanuit de historie of het gebruik bekende benaming of een fysisch-geografische samenhang, al dan niet met zijn omgeving, kent.";
+                           rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                           rdfs:label "GeografischeRuimte";
+                           rdfs:subClassOf nen3610:VirtueleRuimte;
+                           <http://www.w3.org/2004/02/skos/core#notation> "GeografischeRuimte".
+nen3610:IdentificeerbaarObject <http://bp4mc2.org/def/mim#datumOpname> "20221216";
+                               <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                               <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                               <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                               <http://bp4mc2.org/def/mim#toelichting> "De klasse wordt als superklasse gebruikt voor alle objecttypen waarvan de instanties identificeerbaar moeten zijn.";
+                               a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Klasse opgenomen om identificatie-attributen in te defini�ren.";
+                               rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/Basisinformatie-elementen>;
+                               rdfs:label "IdentificeerbaarObject";
+                               <http://www.w3.org/2004/02/skos/core#notation> "IdentificeerbaarObject".
+nen3610:JuridischeRuimte <http://bp4mc2.org/def/mim#alias> "Juridische ruimte";
+                         <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                         <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                         <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                         <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                         <http://bp4mc2.org/def/mim#toelichting> "Juridische ruimte omvat objecten die zijn gekoppeld aan wet- en beleidsinformatie die aangeeft wat waar krachtens wetgeving of wettelijk beleid is geformuleerd. Voorbeelden zijn: benoeming van ruimten en gebieden in bijvoorbeeld omgevingsvisie, omgevingsverordening, waterschapsverordening, projectbesluit.";
+                         <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/juridische_ruimte>;
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Ruimte waar een juridisch instrument beleid of regelgeving toepast.";
+                         rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                         rdfs:label "JuridischeRuimte";
+                         rdfs:subClassOf nen3610:VirtueleRuimte;
+                         <http://www.w3.org/2004/02/skos/core#notation> "JuridischeRuimte".
+nen3610:Kunstwerk <http://bp4mc2.org/def/mim#alias> "Kunstwerk";
+                  <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                  <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                  <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                  <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                  <http://bp4mc2.org/def/mim#toelichting> "Hieronder vallen overbruggingen, waterstaatkundige werken en waterkerende constructies. Overbruggingen kunnen zijn: brug, viaduct, aquaduct enz. Een voorbeeld van een waterstaatkundig werk is een sluis. Voorbeelden van waterkerende constructies zijn stuw en vaste dam.";
+                  <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/kunstwerk>;
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Civiel-technische constructie voor de infrastructuur van wegen, water, spoorbanen, waterkeringen en/of leidingen.";
+                  rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                  rdfs:label "Kunstwerk";
+                  rdfs:subClassOf nen3610:Constructie;
+                  <http://www.w3.org/2004/02/skos/core#notation> "Kunstwerk".
+nen3610:Leiding <http://bp4mc2.org/def/mim#alias> "Leiding";
+                <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                <http://bp4mc2.org/def/mim#toelichting> "Voorbeelden zijn: hoogspanningsleiding, riool, waterleiding, glasvezelkabel, gasleiding.";
+                <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/leiding>;
+                a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Een geheel van geleiders of een ruimte die voorzien is van ��n ommanteling en bestemd is voor transport van materie, data en/of energie.";
+                rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                rdfs:label "Leiding";
+                rdfs:subClassOf nen3610:Constructie;
+                <http://www.w3.org/2004/02/skos/core#notation> "Leiding".
+nen3610:Luchtvaartruimte <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                         <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                         <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                         <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                         <http://bp4mc2.org/def/mim#toelichting> "Luchtvaartruimte wordt bijvoorbeeld gebruikt door allerlei soorten vliegtuigen en helikopters.";
+                         <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/luchtvaartruimte>;
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Verkeerruimte voor voertuigen die zich door de lucht verplaatsen.";
+                         rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                         rdfs:label "Luchtvaartruimte";
+                         rdfs:subClassOf nen3610:Verkeerruimte;
+                         <http://www.w3.org/2004/02/skos/core#notation> "Luchtvaartruimte".
+nen3610:Oppervlaktewater <http://bp4mc2.org/def/mim#alias> "Oppervlaktewater";
+                         <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                         <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                         <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                         <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                         <http://bp4mc2.org/def/mim#toelichting> "Grondwater maakt geen deel uit van de superklasse.";
+                         <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/oppervlaktewater>;
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Massa van water dat de bodem bedekt of in normale omstandigheden kan bedekken.";
+                         rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                         rdfs:label "Oppervlaktewater";
+                         rdfs:subClassOf nen3610:ReeelObject;
+                         <http://www.w3.org/2004/02/skos/core#notation> "Oppervlaktewater".
+nen3610:ReeelObject <http://bp4mc2.org/def/mim#alias> "Re�el object";
+                    <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                    <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                    <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                    <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                    <http://bp4mc2.org/def/mim#toelichting> "Een re�el of fysiek object is een tastbaar begrensd object dat gekenmerkt wordt door zijn materiele samenstelling en structuur.";
+                    <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/reeel_object>;
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Geo-object dat zich geheel materieel manifesteert.";
+                    rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                    rdfs:label "ReeelObject";
+                    rdfs:subClassOf nen3610:GeoObject;
+                    <http://www.w3.org/2004/02/skos/core#notation> "ReeelObject".
+nen3610:Registratie <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                    <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                    <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                    <http://bp4mc2.org/def/mim#indicatieAbstractObject> false;
+                    <http://bp4mc2.org/def/mim#toelichting> "Bij het registreren van een object als informatieobject horen een aantal metadata die hier betrekking op hebben, zoals versie en registratie van tijdlijngegevens.";
+                    <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/objectregistratie>;
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Vastlegging van een versie van een set gegevens.";
+                    rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/Basisinformatie-elementen>;
+                    rdfs:label "Registratie";
+                    <http://www.w3.org/2004/02/skos/core#notation> "Registratie".
+nen3610:RegistratieveRuimte <http://bp4mc2.org/def/mim#alias> "Registratieve ruimte";
+                            <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                            <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                            <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                            <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                            <http://bp4mc2.org/def/mim#toelichting> "Registratieve ruimte omvat objecten die onder de wet- of regelgeving vallen of die voor bedrijfsvoering administratief van belang zijn. In veel gevallen zal een dergelijk gebied ook een registratieve aanduiding of registratief nummer hebben. Voorbeelden zijn: gemeente Delft, postcodegebied 2345, politieregio Haaglanden, veiligheidsregio Gelderland-Midden, Nationaal Park De Hoge Veluwe, kadastraal perceel.";
+                            <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/registratieve_ruimte>;
+                            a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Op basis van wet- of regelgeving afgebakende ruimte die als eenheid geldt van politiek-bestuurlijke verantwoordelijkheid of voor bedrijfsvoering.";
+                            rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                            rdfs:label "RegistratieveRuimte";
+                            rdfs:subClassOf nen3610:VirtueleRuimte;
+                            <http://www.w3.org/2004/02/skos/core#notation> "RegistratieveRuimte".
+nen3610:Scheepvaartruimte <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                          <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                          <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                          <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                          <http://bp4mc2.org/def/mim#toelichting> "Scheepvaartruimte wordt gebruikt door allerlei soorten schepen.";
+                          <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/scheepvaartruimte>;
+                          a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Verkeerruimte voor voertuigen die zich over water verplaatsen.";
+                          rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                          rdfs:label "Scheepvaartruimte";
+                          rdfs:subClassOf nen3610:Verkeerruimte;
+                          <http://www.w3.org/2004/02/skos/core#notation> "Scheepvaartruimte".
+nen3610:Spoorverkeerruimte <http://bp4mc2.org/def/mim#alias> "Spoorverkeerruimte";
+                           <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                           <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                           <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                           <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                           <http://bp4mc2.org/def/mim#toelichting> "Spoorverkeerruimte wordt gebruikt door bijvoorbeeld treinen, trams en metro's.";
+                           <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/spoorverkeerruimte>;
+                           a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Verkeerruimte voor voertuigen die zich over rails verplaatsen.";
+                           rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                           rdfs:label "Spoorverkeerruimte";
+                           rdfs:subClassOf nen3610:Verkeerruimte;
+                           <http://www.w3.org/2004/02/skos/core#notation> "Spoorverkeerruimte".
+nen3610:Transportruimte <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                        <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                        <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                        <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                        <http://bp4mc2.org/def/mim#toelichting> "Transportlijnen worden onder andere gerealiseerd door wegen, spoorwegen, waterwegen, luchtverbindingen.";
+                        <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/transportruimte>;
+                        a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Natuurlijke of aangelegde transportlijnen of verbindingen met knooppunten waarlangs stromen zich kunnen verplaatsen.";
+                        rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                        rdfs:label "Transportruimte";
+                        rdfs:subClassOf nen3610:FunctioneleRuimte;
+                        <http://www.w3.org/2004/02/skos/core#notation> "Transportruimte".
+nen3610:Verharding <http://bp4mc2.org/def/mim#alias> "Verharding";
+                   <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                   <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                   <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                   <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                   <http://bp4mc2.org/def/mim#toelichting> "Een verharding is fysiek begrensd aanwezig. Het type gebruik van de verharding kan meervoudig zijn en hoeft niet de fysieke begrenzing te volgen.";
+                   <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/verharding>;
+                   a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Een door egaliseren, verstevigen en/of verruwen voor het beoogde gebruik geschikt gemaakt oppervlak, bestaande uit in een of meer lagen over een bodem of onderliggende constructie aangelegd materiaal.";
+                   rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                   rdfs:label "Verharding";
+                   rdfs:subClassOf nen3610:Constructie;
+                   <http://www.w3.org/2004/02/skos/core#notation> "Verharding".
+nen3610:Verkeerruimte <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                      <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                      <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                      <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                      <http://bp4mc2.org/def/mim#toelichting> "Verkeerruimten zijn transportruimten die specifiek bedoeld zijn voor het verplaatsen van mensen of goederen al dan niet met vervoersmiddelen, zoals bijvoorbeeld treinen, schepen en vliegtuigen.";
+                      <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/verkeerruimte>;
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Transportruimte voor verkeer via land, water of lucht.";
+                      rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                      rdfs:label "Verkeerruimte";
+                      rdfs:subClassOf nen3610:Transportruimte;
+                      <http://www.w3.org/2004/02/skos/core#notation> "Verkeerruimte".
+nen3610:VirtueleRuimte <http://bp4mc2.org/def/mim#alias> "Virtuele ruimte";
+                       <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                       <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                       <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                       <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                       <http://bp4mc2.org/def/mim#toelichting> "Virtuele ruimten bevatten geo-objecten waarvan de begrenzing of een gedeelte van de begrenzing niet tastbaar en dus ook niet zichtbaar aanwezig is. Het betreft veelal het administratief of wettelijk benoemen en vastleggen van ruimten. Voorbeelden zijn objecten voor bestuurlijke grenzen, eigendomsbegrenzing, beheerbegrenzingen, ruimtelijk beleid.";
+                       <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/virtuele_ruimte>;
+                       a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Geo-object dat zich geheel of gedeeltelijk niet-materieel manifesteert en dus slechts in abstracte en/of geregistreerde vorm bestaat.";
+                       rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                       rdfs:label "VirtueleRuimte";
+                       rdfs:subClassOf nen3610:GeoObject;
+                       <http://www.w3.org/2004/02/skos/core#notation> "VirtueleRuimte".
+nen3610:VoidReasonValue <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                        <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                        <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                        <http://bp4mc2.org/def/mim#indicatieAbstractObject> false;
+                        <http://bp4mc2.org/def/mim#toelichting> "Deze codelijst moet extern worden gepubliceerd.";
+                        <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/mogelijk_geen_waarde>;
+                        a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Reden waarom een 'nil'-waarde is ingevuld.";
+                        rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/Waardelijsten>;
+                        rdfs:label "VoidReasonValue";
+                        rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+                        <http://www.w3.org/2004/02/skos/core#notation> "VoidReasonValue".
+nen3610:Waterverplaatsingsruimte <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                 <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                 <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                 <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                 <http://bp4mc2.org/def/mim#toelichting> "Een waterverplaatsingsruimte realiseert het hydrologisch aspect van water en met name de oppervlaktewaterhydrologie. Het benoemt de ruimte die wordt gebruikt voor o.a. afwatering, watertoevoer en drainage.";
+                                 <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/waterverplaatsingsruimte>;
+                                 a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Transportruimte waardoor water zich verplaatst.";
+                                 rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                                 rdfs:label "Waterverplaatsingsruimte";
+                                 rdfs:subClassOf nen3610:Transportruimte;
+                                 <http://www.w3.org/2004/02/skos/core#notation> "Waterverplaatsingsruimte".
+nen3610:Wegverkeerruimte <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                         <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                         <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                         <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                         <http://bp4mc2.org/def/mim#toelichting> "Wegverkeerruimten worden gebruikt door bijvoorbeeld voetgangers, fietsers en autoverkeer.";
+                         <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/wegverkeerruimte>;
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Verkeerruimte voor weggebruikers die zich over wegen verplaatsen.";
+                         rdfs:isDefinedBy <http://modellen.geostandaarden.nl/def/nen3610/SemantischModel>;
+                         rdfs:label "Wegverkeerruimte";
+                         rdfs:subClassOf nen3610:Verkeerruimte;
+                         <http://www.w3.org/2004/02/skos/core#notation> "Wegverkeerruimte".
+nen3610:beginGeldigheid <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/begin_geldigheid>;
+                        a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:label "beginGeldigheid".
+nen3610:domein <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/domein>;
+               a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:label "domein".
+nen3610:eindGeldigheid <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/eind_geldigheid>;
+                       a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:label "eindGeldigheid".
+nen3610:eindRegistratie <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/eind_registratie>;
+                        a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:label "eindRegistratie".
+nen3610:identificatie <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/identificatie>;
+                      a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:label "identificatie".
+nen3610:objectBeginTijd <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/object_begintijd>;
+                        a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:label "objectBeginTijd".
+nen3610:objectEindTijd <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/object_eindtijd>;
+                       a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:label "objectEindTijd".
+nen3610:registratiegegevens a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:label "registratiegegevens".
+nen3610:tijdstipRegistratie <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/tijdstip_registratie>;
+                            a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:label "tijdstipRegistratie".
+nen3610:versie <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/versie>;
+               a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:label "versie".
+<http://modellen.geostandaarden.nl/def/nen3610/Basisinformatie-elementen> a <http://www.w3.org/2002/07/owl#Ontology>.
+<http://modellen.geostandaarden.nl/def/nen3610/SemantischModel> a <http://www.w3.org/2002/07/owl#Ontology>.
+<http://modellen.geostandaarden.nl/def/nen3610/Waardelijsten> a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                              <http://www.w3.org/2002/07/owl#imports> <https://definities.geostandaarden.nl/rest/v1/nen3610/data?uri=http%3A%2F%2Fdefinities.geostandaarden.nl%2Fnen3610%2Fid%2Fcollectie%2Fmogelijk_geen_waarde&format=text/turtle>.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/Begroeiing> <http://bp4mc2.org/def/mim#alias> "Begroeiing";
+                                                                <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                <http://bp4mc2.org/def/mim#toelichting> "Begroeiing kan dus spontaan of natuurlijk zijn (vegetatie), maar ook door menselijk toedoen tot stand zijn gekomen (aanplant of beplanting) of combinaties daarvan.";
+                                                                <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/begroeiing>;
+                                                                a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                rdfs:comment "Planten die op natuurlijke wijze zijn ontstaan of door mensen zijn aangeplant.";
+                                                                rdfs:label "Begroeiing";
+                                                                <http://www.w3.org/2004/02/skos/core#notation> "Begroeiing";
+                                                                <http://www.w3.org/ns/shacl#targetClass> nen3610:Begroeiing.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/Bodem> <http://bp4mc2.org/def/mim#alias> "Bodem";
+                                                           <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                           <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                           <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                           <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                           <http://bp4mc2.org/def/mim#toelichting> "Bodem verwijst naar een typering en/of benoeming van het aardoppervlak, waarbij de bodem doorloopt onder het oppervlaktewater.  Bodem omvat ook de daaronder liggende bodemmaterialen met indelingen die kunnen verschillen per vakgebied zoals bijvoorbeeld bodemkunde, geologie, geohydrologie en geomorfologie.";
+                                                           <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/bodem>;
+                                                           a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                           rdfs:comment "Bovenste deel van de aarde, exclusief oppervlaktewater.";
+                                                           rdfs:label "Bodem";
+                                                           <http://www.w3.org/2004/02/skos/core#notation> "Bodem";
+                                                           <http://www.w3.org/ns/shacl#targetClass> nen3610:Bodem.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/Constructie> <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                 <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                 <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                 <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                 <http://bp4mc2.org/def/mim#toelichting> "Constructie kan boven- en ondergrondse objecten betreffen. Voorbeelden zijn: huis, brug, asfalt, waterleiding, fabriek, mijnstelsel.";
+                                                                 <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/constructie>;
+                                                                 a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                 rdfs:comment "Gebouwd object dat direct of indirect met de bodem is verbonden en bedoeld is om ter plaatse te functioneren.";
+                                                                 rdfs:label "Constructie";
+                                                                 <http://www.w3.org/2004/02/skos/core#notation> "Constructie";
+                                                                 <http://www.w3.org/ns/shacl#targetClass> nen3610:Constructie.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/FunctioneleRuimte> <http://bp4mc2.org/def/mim#alias> "Functionele ruimte";
+                                                                       <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                       <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                       <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                       <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                       <http://bp4mc2.org/def/mim#toelichting> "Een functionele ruimte wordt gebruikt om een (gebruiks)functie aan een ruimte toe te kennen. Het functionele gebruik van de ruimte volgt niet altijd de fysieke begrenzing van re�le objecten.";
+                                                                       <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/functionele_ruimte>;
+                                                                       a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                       rdfs:comment "Ruimte met een specifieke functie.";
+                                                                       rdfs:label "FunctioneleRuimte";
+                                                                       <http://www.w3.org/2004/02/skos/core#notation> "FunctioneleRuimte";
+                                                                       <http://www.w3.org/ns/shacl#targetClass> nen3610:FunctioneleRuimte.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/Gebouw> <http://bp4mc2.org/def/mim#alias> "Gebouw";
+                                                            <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                            <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                            <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                            <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                            <http://bp4mc2.org/def/mim#toelichting> "Voorbeelden zijn: huis, schuur, flatgebouw, huizenblok, fabriek.";
+                                                            <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/gebouw>;
+                                                            a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                            rdfs:comment "Overdekte en geheel of gedeeltelijk met wanden omsloten constructie bedoeld voor het in een afgeschermde omgeving onderbrengen van mensen, dieren of voorwerpen of voor de productie van goederen.";
+                                                            rdfs:label "Gebouw";
+                                                            <http://www.w3.org/2004/02/skos/core#notation> "Gebouw";
+                                                            <http://www.w3.org/ns/shacl#targetClass> nen3610:Gebouw.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/GeoObject> <http://bp4mc2.org/def/mim#alias> "Geo-object";
+                                                               <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                               <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                               <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                               <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                               <http://bp4mc2.org/def/mim#toelichting> "Van dit objecttype worden geen directe instanties gemaakt. Indien een object een geo-object is, is het altijd een instantie van een subklasse van GeoObject. Alle subklassen van GeoObject hebben conform MIM het stereotype �Objecttype�. Voor publicatie conform NEN-EN-ISO 19109:2015 is het stereotype �FeatureType� verplicht. Binnen de context van NEN 3610 is �Objecttype� het equivalent van �FeatureType�.";
+                                                               <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/geo-object>;
+                                                               a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                               rdfs:comment "Een fenomeen in de werkelijkheid dat direct of indirect is geassocieerd met een locatie relatief ten opzichte van de aarde.";
+                                                               rdfs:label "GeoObject";
+                                                               <http://www.w3.org/2004/02/skos/core#notation> "GeoObject";
+                                                               <http://www.w3.org/ns/shacl#targetClass> nen3610:GeoObject.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/GeografischeRuimte> <http://bp4mc2.org/def/mim#alias> "Geografische ruimte";
+                                                                        <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                        <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                        <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                        <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                        <http://bp4mc2.org/def/mim#toelichting> "De grenzen zijn niet altijd exact vastgesteld. Voorbeelden zijn: Noordoostpolder, Midden-Nederland, rivierengebied, Veluwe, Zuid-Limburg, kustgebied. ";
+                                                                        <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/geografische_ruimte>;
+                                                                        a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                        rdfs:comment "Ruimte die bekendstaat onder een vanuit de historie of het gebruik bekende benaming of een fysisch-geografische samenhang, al dan niet met zijn omgeving, kent.";
+                                                                        rdfs:label "GeografischeRuimte";
+                                                                        <http://www.w3.org/2004/02/skos/core#notation> "GeografischeRuimte";
+                                                                        <http://www.w3.org/ns/shacl#targetClass> nen3610:GeografischeRuimte.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/IdentificeerbaarObject> <http://bp4mc2.org/def/mim#datumOpname> "20221216";
+                                                                            <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                            <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                            <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                            <http://bp4mc2.org/def/mim#toelichting> "De klasse wordt als superklasse gebruikt voor alle objecttypen waarvan de instanties identificeerbaar moeten zijn.";
+                                                                            a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                            rdfs:comment "Klasse opgenomen om identificatie-attributen in te defini�ren.";
+                                                                            rdfs:label "IdentificeerbaarObject";
+                                                                            <http://www.w3.org/2004/02/skos/core#notation> "IdentificeerbaarObject";
+                                                                            <http://www.w3.org/ns/shacl#property> [rdfs:comment """Unieke identificatiecode van een informatieobject binnen de context van een registratie.
+Toelichting:  ?identificatie' is de identificatiecode die een object heeft binnen een registratie of binnen een ketenproces voor data-uitwisseling. Binnen de registratie of de data-uitwisseling is het object uniek identificeerbaar. In combinatie met het attribuut domein wordt een object hiermee uniek identificeerbaar op het niveau van verschillende registraties, uitwisselprocessen en ook wereldwijd uniek.
+De reguliere expressie voor de toegestane tekens is: ([a-z]|[A-Z]|[0-9]|\\\\_|\\\\-|\\\\,|\\\\.|\\\\:|\\\\/)+""" ; 
+                                                                                                                   <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/identificatie> ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#herkomst> "nen 3610" ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#authentiek> <http://bp4mc2.org/def/mim#OverigeAuthenticiteit> ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#path> nen3610:identificatie ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#indicatieFormeleHistorie> false ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#toelichting> """?identificatie' is de identificatiecode die een object heeft binnen een registratie of binnen een ketenproces voor data-uitwisseling. Binnen de registratie of de data-uitwisseling is het object uniek identificeerbaar. In combinatie met het attribuut domein wordt een object hiermee uniek identificeerbaar op het niveau van verschillende registraties, uitwisselprocessen en ook wereldwijd uniek.
+De reguliere expressie voor de toegestane tekens is: ([a-z]|[A-Z]|[0-9]|\\\\_|\\\\-|\\\\,|\\\\.|\\\\:|\\\\/)+""" ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610" ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#pattern> "([a-z]|[A-Z]|[0-9]|\\\\_|\\\\-|\\\\,|\\\\.|\\\\:|\\\\/)+" ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#datumOpname> "20220601" ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#datatype> xsd:string ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#patroon> "Alleen de volgende karakters mogen in een waarde van het attribuut identificatie voorkomen: {'A' ... 'Z', 'a' ... 'z', '0' ... '9', '_', '-', ',', '.', '/', ':'}" ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#name> "identificatie" ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#minCount> 1  ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#identificerend> true ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#Literal>],
+                                                                                                                  [<http://bp4mc2.org/def/mim#toelichting> "De registratiegegevens zijn de versie en tijdlijngegevens die horen bij het registreren van ��n versie van het informatieobject. Ze horen als metadata bij de gegevensset van het informatieobject." ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610" ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#indicatieFormeleHistorie> false ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#herkomst> "nen 3610" ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#path> nen3610:registratiegegevens ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#name> "registratiegegevens" ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#datumOpname> "20220601" ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI> ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#authentiek> <http://bp4mc2.org/def/mim#OverigeAuthenticiteit> ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#class> nen3610:Registratie ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#maxCount> 1 ],
+                                                                                                                  [<http://bp4mc2.org/def/mim#indicatieFormeleHistorie> false ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#datatype> xsd:string ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#pattern> "([a-z]|[A-Z]|[0-9]|\\\\_|\\\\-|\\\\,|\\\\.|\\\\:|\\\\/)+" ; 
+                                                                                                                   <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/domein> ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#authentiek> <http://bp4mc2.org/def/mim#OverigeAuthenticiteit> ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#herkomst> "nen 3610" ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#name> "domein" ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610" ; 
+                                                                                                                   rdfs:comment "Aanduiding van het domein waarbinnen de identificatie uniek is." ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#identificerend> true ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#toelichting> "Het attribuut domein is een unieke verwijzing naar de registratie- of ketenprocesverantwoordelijke entiteit die de identificatie uitdeelt of regels daartoe heeft opgesteld. In combinatie met het attribuut identificatie wordt een object hiermee uniek identificeerbaar op het niveau van verschillende registraties en ook mondiaal uniek." ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#path> nen3610:domein ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#minCount> 1  ; 
+                                                                                                                   <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#Literal> ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#patroon> "Alleen de volgende karakters mogen in een waarde van het attribuut domein voorkomen: {'A' ... 'Z', 'a' ... 'z', '0' ... '9', '_', '-', ',', '.', '/', ':'}" ; 
+                                                                                                                   <http://bp4mc2.org/def/mim#datumOpname> "20220601"];
+                                                                            <http://www.w3.org/ns/shacl#targetClass> nen3610:IdentificeerbaarObject.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/JuridischeRuimte> <http://bp4mc2.org/def/mim#alias> "Juridische ruimte";
+                                                                      <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                      <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                      <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                      <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                      <http://bp4mc2.org/def/mim#toelichting> "Juridische ruimte omvat objecten die zijn gekoppeld aan wet- en beleidsinformatie die aangeeft wat waar krachtens wetgeving of wettelijk beleid is geformuleerd. Voorbeelden zijn: benoeming van ruimten en gebieden in bijvoorbeeld omgevingsvisie, omgevingsverordening, waterschapsverordening, projectbesluit.";
+                                                                      <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/juridische_ruimte>;
+                                                                      a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                      rdfs:comment "Ruimte waar een juridisch instrument beleid of regelgeving toepast.";
+                                                                      rdfs:label "JuridischeRuimte";
+                                                                      <http://www.w3.org/2004/02/skos/core#notation> "JuridischeRuimte";
+                                                                      <http://www.w3.org/ns/shacl#targetClass> nen3610:JuridischeRuimte.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/Kunstwerk> <http://bp4mc2.org/def/mim#alias> "Kunstwerk";
+                                                               <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                               <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                               <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                               <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                               <http://bp4mc2.org/def/mim#toelichting> "Hieronder vallen overbruggingen, waterstaatkundige werken en waterkerende constructies. Overbruggingen kunnen zijn: brug, viaduct, aquaduct enz. Een voorbeeld van een waterstaatkundig werk is een sluis. Voorbeelden van waterkerende constructies zijn stuw en vaste dam.";
+                                                               <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/kunstwerk>;
+                                                               a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                               rdfs:comment "Civiel-technische constructie voor de infrastructuur van wegen, water, spoorbanen, waterkeringen en/of leidingen.";
+                                                               rdfs:label "Kunstwerk";
+                                                               <http://www.w3.org/2004/02/skos/core#notation> "Kunstwerk";
+                                                               <http://www.w3.org/ns/shacl#targetClass> nen3610:Kunstwerk.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/Leiding> <http://bp4mc2.org/def/mim#alias> "Leiding";
+                                                             <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                             <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                             <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                             <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                             <http://bp4mc2.org/def/mim#toelichting> "Voorbeelden zijn: hoogspanningsleiding, riool, waterleiding, glasvezelkabel, gasleiding.";
+                                                             <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/leiding>;
+                                                             a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                             rdfs:comment "Een geheel van geleiders of een ruimte die voorzien is van ��n ommanteling en bestemd is voor transport van materie, data en/of energie.";
+                                                             rdfs:label "Leiding";
+                                                             <http://www.w3.org/2004/02/skos/core#notation> "Leiding";
+                                                             <http://www.w3.org/ns/shacl#targetClass> nen3610:Leiding.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/Levensduur> a <http://www.w3.org/ns/shacl#PropertyGroup>;
+                                                                rdfs:label "Levensduur".
+<http://modellen.geostandaarden.nl/nen3610/id/shape/Luchtvaartruimte> <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                      <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                      <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                      <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                      <http://bp4mc2.org/def/mim#toelichting> "Luchtvaartruimte wordt bijvoorbeeld gebruikt door allerlei soorten vliegtuigen en helikopters.";
+                                                                      <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/luchtvaartruimte>;
+                                                                      a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                      rdfs:comment "Verkeerruimte voor voertuigen die zich door de lucht verplaatsen.";
+                                                                      rdfs:label "Luchtvaartruimte";
+                                                                      <http://www.w3.org/2004/02/skos/core#notation> "Luchtvaartruimte";
+                                                                      <http://www.w3.org/ns/shacl#targetClass> nen3610:Luchtvaartruimte.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/Oppervlaktewater> <http://bp4mc2.org/def/mim#alias> "Oppervlaktewater";
+                                                                      <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                      <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                      <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                      <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                      <http://bp4mc2.org/def/mim#toelichting> "Grondwater maakt geen deel uit van de superklasse.";
+                                                                      <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/oppervlaktewater>;
+                                                                      a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                      rdfs:comment "Massa van water dat de bodem bedekt of in normale omstandigheden kan bedekken.";
+                                                                      rdfs:label "Oppervlaktewater";
+                                                                      <http://www.w3.org/2004/02/skos/core#notation> "Oppervlaktewater";
+                                                                      <http://www.w3.org/ns/shacl#targetClass> nen3610:Oppervlaktewater.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/ReeelObject> <http://bp4mc2.org/def/mim#alias> "Re�el object";
+                                                                 <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                 <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                 <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                 <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                 <http://bp4mc2.org/def/mim#toelichting> "Een re�el of fysiek object is een tastbaar begrensd object dat gekenmerkt wordt door zijn materiele samenstelling en structuur.";
+                                                                 <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/reeel_object>;
+                                                                 a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                 rdfs:comment "Geo-object dat zich geheel materieel manifesteert.";
+                                                                 rdfs:label "ReeelObject";
+                                                                 <http://www.w3.org/2004/02/skos/core#notation> "ReeelObject";
+                                                                 <http://www.w3.org/ns/shacl#targetClass> nen3610:ReeelObject.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/Registratie> <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                 <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                 <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                 <http://bp4mc2.org/def/mim#indicatieAbstractObject> false;
+                                                                 <http://bp4mc2.org/def/mim#toelichting> "Bij het registreren van een object als informatieobject horen een aantal metadata die hier betrekking op hebben, zoals versie en registratie van tijdlijngegevens.";
+                                                                 <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/objectregistratie>;
+                                                                 a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                 rdfs:comment "Vastlegging van een versie van een set gegevens.";
+                                                                 rdfs:label "Registratie";
+                                                                 <http://www.w3.org/2004/02/skos/core#notation> "Registratie";
+                                                                 <http://www.w3.org/ns/shacl#property> [<http://bp4mc2.org/def/mim#datumOpname> "20220601" ; 
+                                                                                                        <http://bp4mc2.org/def/mim#indicatieFormeleHistorie> false ; 
+                                                                                                        rdfs:comment "Eind van de periode waarop deze versie van het informatieobject geldig is. De periode is tot aan deze tijdsaanduiding. Wanneer deze waarde niet is ingevuld, is de versie nog geldig." ; 
+                                                                                                        <http://bp4mc2.org/def/mim#herkomst> "nen 3610" ; 
+                                                                                                        <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                                                                        <http://bp4mc2.org/def/mim#authentiek> <http://bp4mc2.org/def/mim#OverigeAuthenticiteit> ; 
+                                                                                                        <http://www.w3.org/ns/shacl#name> "eindGeldigheid" ; 
+                                                                                                        <http://www.w3.org/ns/shacl#group> <http://modellen.geostandaarden.nl/nen3610/id/shape/TijdlijnGeldigheid> ; 
+                                                                                                        <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/eind_geldigheid> ; 
+                                                                                                        <http://www.w3.org/ns/shacl#datatype> xsd:date ; 
+                                                                                                        <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610" ; 
+                                                                                                        <http://www.w3.org/ns/shacl#path> nen3610:eindGeldigheid ; 
+                                                                                                        <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#Literal> ; 
+                                                                                                        <http://bp4mc2.org/def/mim#toelichting> "Vanaf het begin van deze tijdsaanduiding is de instantie niet meer geldig. Er zijn verschillende datatypen voor de representatie van een tijdsaanduiding: afhankelijk van de gebruikerswensen m.b.t. granulariteit kan o.a. worden gekozen uit typen TM_Instant, Date of DateTime. Het eind van de periode is tot het begin van de tijdsaanduiding; het ?tot-moment'."],
+                                                                                                       [<http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#Literal> ; 
+                                                                                                        <http://bp4mc2.org/def/mim#herkomst> "nen 3610" ; 
+                                                                                                        <http://www.w3.org/ns/shacl#name> "versie" ; 
+                                                                                                        <http://bp4mc2.org/def/mim#toelichting> "Een versie van een informatieobject is een toestand van een informatieobject met zijn gegevens op een bepaald moment in de tijd. Het attribuut versie maakt geen deel uit van de identificatie van het object, maar kan worden gebruikt om verschillende instanties van hetzelfde informatieobject te identificeren." ; 
+                                                                                                        <http://bp4mc2.org/def/mim#authentiek> <http://bp4mc2.org/def/mim#OverigeAuthenticiteit> ; 
+                                                                                                        <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610" ; 
+                                                                                                        <http://www.w3.org/ns/shacl#datatype> xsd:string ; 
+                                                                                                        <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/versie> ; 
+                                                                                                        rdfs:comment "Versieaanduiding van een informatieobject." ; 
+                                                                                                        <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                                                                        <http://www.w3.org/ns/shacl#minLength> 1  ; 
+                                                                                                        <http://bp4mc2.org/def/mim#patroon> "Waarde van attribuut versie mag maximaal 50 karakters bevatten." ; 
+                                                                                                        <http://www.w3.org/ns/shacl#maxLength> 50  ; 
+                                                                                                        <http://bp4mc2.org/def/mim#datumOpname> "20220601" ; 
+                                                                                                        <http://bp4mc2.org/def/mim#indicatieFormeleHistorie> false ; 
+                                                                                                        <http://www.w3.org/ns/shacl#path> nen3610:versie],
+                                                                                                       [<http://www.w3.org/ns/shacl#group> <http://modellen.geostandaarden.nl/nen3610/id/shape/TijdlijnRegistratie> ; 
+                                                                                                        <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#Literal> ; 
+                                                                                                        <http://bp4mc2.org/def/mim#indicatieFormeleHistorie> false ; 
+                                                                                                        <http://bp4mc2.org/def/mim#herkomst> "nen 3610" ; 
+                                                                                                        <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/tijdstip_registratie> ; 
+                                                                                                        <http://www.w3.org/ns/shacl#path> nen3610:tijdstipRegistratie ; 
+                                                                                                        <http://www.w3.org/ns/shacl#name> "tijdstipRegistratie" ; 
+                                                                                                        rdfs:comment "Tijdsaanduiding van het moment waarop deze versie van het informatieobject is opgenomen in de registratie." ; 
+                                                                                                        <http://bp4mc2.org/def/mim#toelichting> "Er zijn verschillende datatypen voor de representatie van een tijdsaanduiding: afhankelijk van de gebruikerswensen m.b.t. granulariteit kan o.a. worden gekozen uit typen TM_Instant, Date of DateTime. Voor tijdstip registratie zal DateTime in vrijwel alle gevallen de beste keuze zijn." ; 
+                                                                                                        <http://bp4mc2.org/def/mim#authentiek> <http://bp4mc2.org/def/mim#OverigeAuthenticiteit> ; 
+                                                                                                        <http://www.w3.org/ns/shacl#datatype> xsd:dateTime ; 
+                                                                                                        <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                                                                        <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610" ; 
+                                                                                                        <http://bp4mc2.org/def/mim#datumOpname> "20220601"],
+                                                                                                       [rdfs:comment "Tijdsaanduiding waarop het object in de werkelijkheid is ontstaan." ; 
+                                                                                                        <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610" ; 
+                                                                                                        <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                                                                        <http://www.w3.org/ns/shacl#group> <http://modellen.geostandaarden.nl/nen3610/id/shape/Levensduur> ; 
+                                                                                                        <http://bp4mc2.org/def/mim#datumOpname> "20220601" ; 
+                                                                                                        <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#Literal> ; 
+                                                                                                        <http://bp4mc2.org/def/mim#herkomst> "nen 3610" ; 
+                                                                                                        <http://bp4mc2.org/def/mim#toelichting> "Er zijn verschillende datatypen voor de representatie van een tijdsaanduiding: afhankelijk van de gebruikerswensen m.b.t. granulariteit kan o.a. worden gekozen uit typen TM_Instant, Date of DateTime." ; 
+                                                                                                        <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/object_begintijd> ; 
+                                                                                                        <http://bp4mc2.org/def/mim#authentiek> <http://bp4mc2.org/def/mim#OverigeAuthenticiteit> ; 
+                                                                                                        <http://www.w3.org/ns/shacl#name> "objectBeginTijd" ; 
+                                                                                                        <http://www.w3.org/ns/shacl#path> nen3610:objectBeginTijd ; 
+                                                                                                        <http://bp4mc2.org/def/mim#indicatieFormeleHistorie> false ; 
+                                                                                                        <http://www.w3.org/ns/shacl#datatype> xsd:dateTime],
+                                                                                                       [rdfs:comment "Eind van de periode dat deze versie van het informatieobject actueel is in de registratie. De periode is tot aan deze tijdsaanduiding. Wanneer deze waarde niet is ingevuld, is de versie nog actueel." ; 
+                                                                                                        <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/eind_registratie> ; 
+                                                                                                        <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                                                                        <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#Literal> ; 
+                                                                                                        <http://bp4mc2.org/def/mim#toelichting> """Vanaf deze tijdsaanduiding is deze versie van het informatieobject niet meer  actueel in de registratie. Met actueel wordt bedoeld dat er geen nieuwere versie 4 in de registratie is voor dit informatieobject. Aan een lege eindregistratie is ook te zien dat het de actuele versie betreft. Er zijn verschillende datatypen voor de representatie van een tijdsaanduiding: afhankelijk van de gebruikerswensen m.b.t. granulariteit kan o.a. worden gekozen uit typen TM_Instant, Date of DateTime. Voor tijdstipRegistratie zal DateTime in vrijwel alle gevallen de beste keuze zijn. 
+
+Wanneer bepaalde gegevens op de tijdlijn geldigheid niet meer geldig zijn, te herkennen aan de eindGeldigheid van een versie, wordt bij het vullen van de eindGeldigheid tegelijkertijd ook altijd de eindRegistratie gevuld zodat het duidelijk is vanaf welk moment op de tijdlijn registratie deze gegevens niet meer actueel zijn. De eindRegistratie geeft dus aan wanneer er geregistreerd is dat deze gegevens niet meer actueel zijn.""" ; 
+                                                                                                        <http://bp4mc2.org/def/mim#datumOpname> "20220601" ; 
+                                                                                                        <http://www.w3.org/ns/shacl#datatype> xsd:dateTime ; 
+                                                                                                        <http://bp4mc2.org/def/mim#authentiek> <http://bp4mc2.org/def/mim#OverigeAuthenticiteit> ; 
+                                                                                                        <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610" ; 
+                                                                                                        <http://www.w3.org/ns/shacl#path> nen3610:eindRegistratie ; 
+                                                                                                        <http://bp4mc2.org/def/mim#herkomst> "nen 3610" ; 
+                                                                                                        <http://www.w3.org/ns/shacl#name> "eindRegistratie" ; 
+                                                                                                        <http://bp4mc2.org/def/mim#indicatieFormeleHistorie> false ; 
+                                                                                                        <http://www.w3.org/ns/shacl#group> <http://modellen.geostandaarden.nl/nen3610/id/shape/TijdlijnRegistratie>],
+                                                                                                       [<http://bp4mc2.org/def/mim#herkomst> "nen 3610" ; 
+                                                                                                        <http://bp4mc2.org/def/mim#indicatieFormeleHistorie> false ; 
+                                                                                                        <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/begin_geldigheid> ; 
+                                                                                                        <http://bp4mc2.org/def/mim#authentiek> <http://bp4mc2.org/def/mim#OverigeAuthenticiteit> ; 
+                                                                                                        <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610" ; 
+                                                                                                        <http://www.w3.org/ns/shacl#path> nen3610:beginGeldigheid ; 
+                                                                                                        <http://bp4mc2.org/def/mim#datumOpname> "20220601" ; 
+                                                                                                        <http://www.w3.org/ns/shacl#group> <http://modellen.geostandaarden.nl/nen3610/id/shape/TijdlijnGeldigheid> ; 
+                                                                                                        <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                                                                        <http://bp4mc2.org/def/mim#toelichting> "Er zijn verschillende datatypen voor de representatie van een tijdsaanduiding: afhankelijk van de gebruikerswensen m.b.t. granulariteit kan o.a. worden gekozen uit typen TM_Instant, Date of DateTime. De start van een periode is het begin van de tijdsaanduiding; het ?vanaf-moment'. Bij een datum (date) is dat het begin van die dag." ; 
+                                                                                                        rdfs:comment "Start van de periode waarop deze versie van het informatieobject geldig is." ; 
+                                                                                                        <http://www.w3.org/ns/shacl#datatype> xsd:date ; 
+                                                                                                        <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#Literal> ; 
+                                                                                                        <http://www.w3.org/ns/shacl#name> "beginGeldigheid"],
+                                                                                                       [<http://www.w3.org/ns/shacl#name> "objectEindTijd" ; 
+                                                                                                        <http://bp4mc2.org/def/mim#indicatieFormeleHistorie> false ; 
+                                                                                                        <http://www.w3.org/ns/shacl#datatype> xsd:dateTime ; 
+                                                                                                        <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#Literal> ; 
+                                                                                                        <http://www.w3.org/ns/shacl#group> <http://modellen.geostandaarden.nl/nen3610/id/shape/Levensduur> ; 
+                                                                                                        <http://bp4mc2.org/def/mim#datumOpname> "20220601" ; 
+                                                                                                        rdfs:comment "Tijdsaanduiding waarop het object in de werkelijkheid niet meer geldig is." ; 
+                                                                                                        <http://bp4mc2.org/def/mim#toelichting> "Er zijn verschillende datatypen voor de representatie van een tijdsaanduiding: afhankelijk van de gebruikerswensen m.b.t. granulariteit kan o.a. worden gekozen uit typen TM_Instant, Date of DateTime." ; 
+                                                                                                        <http://bp4mc2.org/def/mim#herkomst> "nen 3610" ; 
+                                                                                                        <http://bp4mc2.org/def/mim#authentiek> <http://bp4mc2.org/def/mim#OverigeAuthenticiteit> ; 
+                                                                                                        <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610" ; 
+                                                                                                        <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/object_eindtijd> ; 
+                                                                                                        <http://www.w3.org/ns/shacl#path> nen3610:objectEindTijd];
+                                                                 <http://www.w3.org/ns/shacl#targetClass> nen3610:Registratie.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/RegistratieveRuimte> <http://bp4mc2.org/def/mim#alias> "Registratieve ruimte";
+                                                                         <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                         <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                         <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                         <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                         <http://bp4mc2.org/def/mim#toelichting> "Registratieve ruimte omvat objecten die onder de wet- of regelgeving vallen of die voor bedrijfsvoering administratief van belang zijn. In veel gevallen zal een dergelijk gebied ook een registratieve aanduiding of registratief nummer hebben. Voorbeelden zijn: gemeente Delft, postcodegebied 2345, politieregio Haaglanden, veiligheidsregio Gelderland-Midden, Nationaal Park De Hoge Veluwe, kadastraal perceel.";
+                                                                         <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/registratieve_ruimte>;
+                                                                         a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                         rdfs:comment "Op basis van wet- of regelgeving afgebakende ruimte die als eenheid geldt van politiek-bestuurlijke verantwoordelijkheid of voor bedrijfsvoering.";
+                                                                         rdfs:label "RegistratieveRuimte";
+                                                                         <http://www.w3.org/2004/02/skos/core#notation> "RegistratieveRuimte";
+                                                                         <http://www.w3.org/ns/shacl#targetClass> nen3610:RegistratieveRuimte.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/Scheepvaartruimte> <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                       <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                       <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                       <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                       <http://bp4mc2.org/def/mim#toelichting> "Scheepvaartruimte wordt gebruikt door allerlei soorten schepen.";
+                                                                       <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/scheepvaartruimte>;
+                                                                       a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                       rdfs:comment "Verkeerruimte voor voertuigen die zich over water verplaatsen.";
+                                                                       rdfs:label "Scheepvaartruimte";
+                                                                       <http://www.w3.org/2004/02/skos/core#notation> "Scheepvaartruimte";
+                                                                       <http://www.w3.org/ns/shacl#targetClass> nen3610:Scheepvaartruimte.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/Spoorverkeerruimte> <http://bp4mc2.org/def/mim#alias> "Spoorverkeerruimte";
+                                                                        <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                        <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                        <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                        <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                        <http://bp4mc2.org/def/mim#toelichting> "Spoorverkeerruimte wordt gebruikt door bijvoorbeeld treinen, trams en metro's.";
+                                                                        <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/spoorverkeerruimte>;
+                                                                        a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                        rdfs:comment "Verkeerruimte voor voertuigen die zich over rails verplaatsen.";
+                                                                        rdfs:label "Spoorverkeerruimte";
+                                                                        <http://www.w3.org/2004/02/skos/core#notation> "Spoorverkeerruimte";
+                                                                        <http://www.w3.org/ns/shacl#targetClass> nen3610:Spoorverkeerruimte.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/TijdlijnGeldigheid> a <http://www.w3.org/ns/shacl#PropertyGroup>;
+                                                                        rdfs:label "TijdlijnGeldigheid".
+<http://modellen.geostandaarden.nl/nen3610/id/shape/TijdlijnRegistratie> a <http://www.w3.org/ns/shacl#PropertyGroup>;
+                                                                         rdfs:label "TijdlijnRegistratie".
+<http://modellen.geostandaarden.nl/nen3610/id/shape/Transportruimte> <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                     <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                     <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                     <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                     <http://bp4mc2.org/def/mim#toelichting> "Transportlijnen worden onder andere gerealiseerd door wegen, spoorwegen, waterwegen, luchtverbindingen.";
+                                                                     <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/transportruimte>;
+                                                                     a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                     rdfs:comment "Natuurlijke of aangelegde transportlijnen of verbindingen met knooppunten waarlangs stromen zich kunnen verplaatsen.";
+                                                                     rdfs:label "Transportruimte";
+                                                                     <http://www.w3.org/2004/02/skos/core#notation> "Transportruimte";
+                                                                     <http://www.w3.org/ns/shacl#targetClass> nen3610:Transportruimte.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/Verharding> <http://bp4mc2.org/def/mim#alias> "Verharding";
+                                                                <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                <http://bp4mc2.org/def/mim#toelichting> "Een verharding is fysiek begrensd aanwezig. Het type gebruik van de verharding kan meervoudig zijn en hoeft niet de fysieke begrenzing te volgen.";
+                                                                <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/verharding>;
+                                                                a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                rdfs:comment "Een door egaliseren, verstevigen en/of verruwen voor het beoogde gebruik geschikt gemaakt oppervlak, bestaande uit in een of meer lagen over een bodem of onderliggende constructie aangelegd materiaal.";
+                                                                rdfs:label "Verharding";
+                                                                <http://www.w3.org/2004/02/skos/core#notation> "Verharding";
+                                                                <http://www.w3.org/ns/shacl#targetClass> nen3610:Verharding.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/Verkeerruimte> <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                   <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                   <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                   <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                   <http://bp4mc2.org/def/mim#toelichting> "Verkeerruimten zijn transportruimten die specifiek bedoeld zijn voor het verplaatsen van mensen of goederen al dan niet met vervoersmiddelen, zoals bijvoorbeeld treinen, schepen en vliegtuigen.";
+                                                                   <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/verkeerruimte>;
+                                                                   a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                   rdfs:comment "Transportruimte voor verkeer via land, water of lucht.";
+                                                                   rdfs:label "Verkeerruimte";
+                                                                   <http://www.w3.org/2004/02/skos/core#notation> "Verkeerruimte";
+                                                                   <http://www.w3.org/ns/shacl#targetClass> nen3610:Verkeerruimte.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/VirtueleRuimte> <http://bp4mc2.org/def/mim#alias> "Virtuele ruimte";
+                                                                    <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                    <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                    <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                    <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                    <http://bp4mc2.org/def/mim#toelichting> "Virtuele ruimten bevatten geo-objecten waarvan de begrenzing of een gedeelte van de begrenzing niet tastbaar en dus ook niet zichtbaar aanwezig is. Het betreft veelal het administratief of wettelijk benoemen en vastleggen van ruimten. Voorbeelden zijn objecten voor bestuurlijke grenzen, eigendomsbegrenzing, beheerbegrenzingen, ruimtelijk beleid.";
+                                                                    <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/virtuele_ruimte>;
+                                                                    a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                    rdfs:comment "Geo-object dat zich geheel of gedeeltelijk niet-materieel manifesteert en dus slechts in abstracte en/of geregistreerde vorm bestaat.";
+                                                                    rdfs:label "VirtueleRuimte";
+                                                                    <http://www.w3.org/2004/02/skos/core#notation> "VirtueleRuimte";
+                                                                    <http://www.w3.org/ns/shacl#targetClass> nen3610:VirtueleRuimte.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/VoidReasonValue> <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                     <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                     <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                     <http://bp4mc2.org/def/mim#indicatieAbstractObject> false;
+                                                                     <http://bp4mc2.org/def/mim#toelichting> "Deze codelijst moet extern worden gepubliceerd.";
+                                                                     <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/mogelijk_geen_waarde>;
+                                                                     a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                     rdfs:comment "Reden waarom een 'nil'-waarde is ingevuld.";
+                                                                     rdfs:label "VoidReasonValue";
+                                                                     <http://www.w3.org/2004/02/skos/core#notation> "VoidReasonValue";
+                                                                     <http://www.w3.org/ns/shacl#Property> [<http://www.w3.org/ns/shacl#path> [<http://www.w3.org/ns/shacl#inversePath> <http://www.w3.org/2004/02/skos/core#member>] ; 
+                                                                                                            <http://www.w3.org/ns/shacl#hasValue> <http://definities.geostandaarden.nl/nen3610-2022/id/collectie/mogelijk_geen_waarde>];
+                                                                     <http://www.w3.org/ns/shacl#targetClass> nen3610:VoidReasonValue.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/Waterverplaatsingsruimte> <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                              <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                              <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                              <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                              <http://bp4mc2.org/def/mim#toelichting> "Een waterverplaatsingsruimte realiseert het hydrologisch aspect van water en met name de oppervlaktewaterhydrologie. Het benoemt de ruimte die wordt gebruikt voor o.a. afwatering, watertoevoer en drainage.";
+                                                                              <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/waterverplaatsingsruimte>;
+                                                                              a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                              rdfs:comment "Transportruimte waardoor water zich verplaatst.";
+                                                                              rdfs:label "Waterverplaatsingsruimte";
+                                                                              <http://www.w3.org/2004/02/skos/core#notation> "Waterverplaatsingsruimte";
+                                                                              <http://www.w3.org/ns/shacl#targetClass> nen3610:Waterverplaatsingsruimte.
+<http://modellen.geostandaarden.nl/nen3610/id/shape/Wegverkeerruimte> <http://bp4mc2.org/def/mim#datumOpname> "20220601";
+                                                                      <http://bp4mc2.org/def/mim#herkomst> "nen 3610";
+                                                                      <http://bp4mc2.org/def/mim#herkomstDefinitie> "nen 3610";
+                                                                      <http://bp4mc2.org/def/mim#indicatieAbstractObject> true;
+                                                                      <http://bp4mc2.org/def/mim#toelichting> "Wegverkeerruimten worden gebruikt door bijvoorbeeld voetgangers, fietsers en autoverkeer.";
+                                                                      <http://purl.org/dc/terms/subject> <http://definities.geostandaarden.nl/nen3610-2022/id/begrip/wegverkeerruimte>;
+                                                                      a <http://www.w3.org/ns/shacl#NodeShape>;
+                                                                      rdfs:comment "Verkeerruimte voor weggebruikers die zich over wegen verplaatsen.";
+                                                                      rdfs:label "Wegverkeerruimte";
+                                                                      <http://www.w3.org/2004/02/skos/core#notation> "Wegverkeerruimte";
+                                                                      <http://www.w3.org/ns/shacl#targetClass> nen3610:Wegverkeerruimte.

@@ -1,0 +1,197 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix deo: <http://purl.org/spar/deo/>.
+
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/date> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/rights> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/hasPart> a <http://www.w3.org/2002/07/owl#TransitiveProperty>,
+                                     <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:comment "A related resource that is included either physically or logically in the described resource."@en;
+                                   rdfs:label "has part"@en;
+                                   rdfs:subPropertyOf <http://purl.org/dc/terms/relation>;
+                                   <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/dc/terms/isPartOf>.
+<http://purl.org/dc/terms/isPartOf> a <http://www.w3.org/2002/07/owl#TransitiveProperty>,
+                                      <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                    rdfs:comment "A related resource in which the described resource is physically or logically included."@en;
+                                    rdfs:label "is part of"@en;
+                                    rdfs:subPropertyOf <http://purl.org/dc/terms/relation>.
+<http://purl.org/dc/terms/relation> a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                                      <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                    rdfs:comment "A related resource."@en;
+                                    rdfs:label "has relation"@en;
+                                    rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+<http://purl.org/orb/1.0/Acknowledgments> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/orb/1.0/Conclusion> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/orb/1.0/Discussion> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/orb/1.0/Introduction> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/orb/1.0/Methods> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/orb/1.0/References> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/orb/1.0/Results> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/spar/deo> <http://purl.org/dc/elements/1.1/creator> "Silvio Peroni",
+                                                                     "David Shotton";
+                           <http://purl.org/dc/elements/1.1/date> "2015-07-03";
+                           <http://purl.org/dc/elements/1.1/description> "DEO, The Discourse Elements Ontology, is an ontology written in OWL 2 DL that provides a structured vocabulary for rhetorical elements within documents (e.g. Introduction, Discussion, Acknowledgements, Reference List, Figures, Appendix), enabling these to be described in RDF.  It uses some of the rhetorical block elements from the SALT Rhetorical Ontology  and the Ontology of Rhetorical Blocks."@en;
+                           <http://purl.org/dc/elements/1.1/rights> "This work is distributed under a Creative Commons Attribution License (http://creativecommons.org/licenses/by/3.0/)."@en;
+                           <http://purl.org/dc/elements/1.1/title> """The Discourse Elements Ontology
+     (DEO)"""@en;
+                           a <http://www.w3.org/2002/07/owl#Ontology>;
+                           rdfs:comment """The Discourse Elements Ontology is an ontology for describing the major rhetorical elements of a document such as a journal article.  It is a subsidiary ontology that is imported into the Document Components Ontology, itself part of SPAR, the Semantic Publishing and Referencing Ontologies.  Other SPAR ontologies are described at http://purl.org/spar/.
+"""@en;
+                           <http://www.w3.org/2002/07/owl#versionInfo> 1.1.
+deo:Acknowledgements a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Usually part of the preface, or a separate section in its own right, often as part of the back matter, it acknowledges those, including funding agencies, who contributed to the undertaking of a research project described in a publication, or to the creation of the work in some way. In scientific articles, the acknowledgements are usually placed as a separated section immediately following the Discussion or Conclusions."@en;
+                     rdfs:label "acknowledgements"@en;
+                     rdfs:subClassOf deo:DiscourseElement;
+                     <http://www.w3.org/2002/07/owl#equivalentClass> <http://purl.org/orb/1.0/Acknowledgements>.
+deo:AuthorContribution a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "A description of the roles played by an author in the publication."@en;
+                       rdfs:label "author contribution"@en;
+                       rdfs:subClassOf deo:DiscourseElement.
+deo:Background a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Presentation of information that is essential for understanding the situation or problem that is the subject of the publication. In a journal article, the background is usually part of the Introduction, but may be present as separated section.";
+               rdfs:label "background";
+               rdfs:subClassOf deo:DiscourseElement;
+               <http://www.w3.org/2002/07/owl#equivalentClass> <http://salt.semanticauthoring.org/ontologies/sro#Background>.
+deo:BibliographicReference a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "A reference, usually contained in a footnote or a bibliographic reference list, that refer to another publication, such as a journal article, a book, a book chapter or a Web site. The inclusion of the bibliographic reference in a publication constitutes the performative act of bibliographic citation."@en;
+                           rdfs:label "bibliographic reference"@en;
+                           rdfs:subClassOf deo:Reference,
+                                           <http://purl.org/orb/1.0/References>.
+deo:Biography a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Information describing a person and his or her life history and contributions."@en;
+              rdfs:label "biography"@en;
+              rdfs:subClassOf deo:DiscourseElement.
+deo:Caption a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Text accompanying another item, such as a picture."@en;
+            rdfs:label "caption"@en;
+            rdfs:subClassOf deo:DiscourseElement.
+deo:Conclusion a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A reflection on the preceding text, summarizing the evidence, arguments or premises presented in the document and their logical outcomes. Conclusions are a fundamental feature in academic research publications, and may be included in the Discussion section.";
+               rdfs:label "conclusion";
+               rdfs:subClassOf deo:DiscourseElement;
+               <http://www.w3.org/2002/07/owl#equivalentClass> <http://salt.semanticauthoring.org/ontologies/sro#Conclusion>,
+                                                               <http://purl.org/orb/1.0/Conclusion>.
+deo:Contribution a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A description of the part that this publication plays in the overall field.";
+                 rdfs:label "contribution";
+                 rdfs:subClassOf deo:DiscourseElement;
+                 <http://www.w3.org/2002/07/owl#equivalentClass> <http://salt.semanticauthoring.org/ontologies/sro#Contribution>.
+deo:Data a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "A textual description of data used or produced in the work which the document describes, or the data themselves."@en;
+         rdfs:label "data"@en;
+         rdfs:subClassOf deo:DiscourseElement.
+deo:DatasetDescription a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Information describing a dataset held in an external database or repository and including a reference to it, such as a database ID or an accession number."@en;
+                       rdfs:label "dataset description"@en;
+                       rdfs:subClassOf deo:ExternalResourceDescription.
+deo:Dedication a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Text in which the author names the person or people for whom he/she has written the document, or to whose memory it is dedicated."@en;
+               rdfs:label "dedication"@en;
+               rdfs:subClassOf deo:DiscourseElement.
+deo:DiscourseElement a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "An element of a document that carries out a rhetorical function."@en;
+                     rdfs:label "discourse element"@en;
+                     rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+deo:Discussion a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "An interpretation and discussion of the results obtained and an analysis of their significance, in support of conclusions. These conclusions may be part of this discussion or may be included in a separate section of the document.";
+               rdfs:label "discussion";
+               rdfs:subClassOf deo:DiscourseElement;
+               <http://www.w3.org/2002/07/owl#equivalentClass> <http://salt.semanticauthoring.org/ontologies/sro#Discussion>,
+                                                               <http://purl.org/orb/1.0/Discussion>.
+deo:Epilogue a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A piece of writing at the end of a work of literature or drama, usually used to bring closure to the work."@en;
+             rdfs:label "epilogue"@en;
+             rdfs:subClassOf deo:DiscourseElement.
+deo:Evaluation a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A consideration of the value, meaning and significance of the results obtained.";
+               rdfs:label "evaluation";
+               rdfs:subClassOf deo:DiscourseElement;
+               <http://www.w3.org/2002/07/owl#equivalentClass> <http://salt.semanticauthoring.org/ontologies/sro#Evaluation>.
+deo:ExternalResourceDescription a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Information describing an external resource and including a reference to that resource."@en;
+                                rdfs:label "external resource description"@en;
+                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> (deo:DiscourseElement
+                                                                                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> deo:Reference ; 
+                                                                                                 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/dc/terms/hasPart> ; 
+                                                                                                 a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                 a <http://www.w3.org/2002/07/owl#Class>].
+deo:FutureWork a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A proposal for new investigation to be undertaken in order to continue and advance the work described in the publication."@en;
+               rdfs:label "future work"@en;
+               rdfs:subClassOf deo:DiscourseElement.
+deo:Introduction a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "An initial description which states the purpose and goals of the following writing, and, in the case of journal articles, typically includes background information on the research topic and a review of related work in the area."@en;
+                 rdfs:label "introduction"@en;
+                 rdfs:subClassOf deo:DiscourseElement;
+                 <http://www.w3.org/2002/07/owl#equivalentClass> <http://purl.org/orb/1.0/Introduction>.
+deo:Legend a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "Informative text that explicitly explains another item, such as a figure or a table."@en;
+           rdfs:label "legend"@en;
+           rdfs:subClassOf deo:Caption.
+deo:Materials a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A description in a research paper documenting the specialized materials used in the work described. This description is often combined with a description of the methods used, in a section entitled 'Methods and Materials', 'Experimental' or a related term."@en;
+              rdfs:label "materials"@en;
+              rdfs:subClassOf deo:DiscourseElement.
+deo:Methods a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A description in a research paper documenting the specialized methods used in the work described. This description is often combined with a description of the materials used, in a section entitled 'Methods and Materials', 'Experimental' or a related term."@en;
+            rdfs:label "methods"@en;
+            rdfs:subClassOf deo:DiscourseElement;
+            <http://www.w3.org/2002/07/owl#equivalentClass> <http://purl.org/orb/1.0/Methods>.
+deo:Model a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "A description of a model used or produced by the work described in the publication."@en;
+          rdfs:label "model"@en;
+          rdfs:subClassOf deo:DiscourseElement.
+deo:Motivation a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A description of the justification for undertaking the work described in the publication.";
+               rdfs:label "motivation";
+               rdfs:subClassOf deo:DiscourseElement;
+               <http://www.w3.org/2002/07/owl#equivalentClass> <http://salt.semanticauthoring.org/ontologies/sro#Motivation>.
+deo:Postscript a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Text added after the signature of a letter, or sometimes after the main body of an essay or book."@en;
+               rdfs:label "postscript"@en;
+               rdfs:subClassOf deo:DiscourseElement.
+deo:ProblemStatement <http://purl.org/dc/elements/1.1/description> "A concise description of the issues that needed to be addressed by a work described in the document."@en;
+                     a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "problem statement"@en;
+                     rdfs:subClassOf deo:DiscourseElement.
+deo:Prologue a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A piece of writing at the beginning of a work of literature or drama, usually used to set the scene or to introduce the work."@en;
+             rdfs:label "prologue"@en;
+             rdfs:subClassOf deo:DiscourseElement.
+deo:Reference a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A reference to a specific part of the document, or to another publication."@en;
+              rdfs:label "reference"@en;
+              rdfs:subClassOf deo:DiscourseElement.
+deo:RelatedWork a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "The authors' critical review of current knowledge by specific reference to others' work, both in terms of substantive findings and theoretical and methodological contributions to a particular topic. This description is often included within the introduction section."@en;
+                rdfs:label "related work"@en;
+                rdfs:subClassOf deo:DiscourseElement.
+deo:Results a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "The report of the specific findings of an investigation, given without discussion or conclusion being drawn."@en;
+            rdfs:label "results"@en;
+            rdfs:subClassOf deo:DiscourseElement;
+            <http://www.w3.org/2002/07/owl#equivalentClass> <http://purl.org/orb/1.0/Results>.
+deo:Scenario a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A presentation of a use case or test, based on a real or hypothetical situation, used to help someone think through a complex problem or system.";
+             rdfs:label "scenario";
+             rdfs:subClassOf deo:DiscourseElement;
+             <http://www.w3.org/2002/07/owl#equivalentClass> <http://salt.semanticauthoring.org/ontologies/sro#Scenario>.
+deo:SupplementaryInformationDescription a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:comment "Information describing supplementary information relating to the document, including references or links to the relevant supplementary information."@en;
+                                        rdfs:label "supplementary information description"@en;
+                                        rdfs:subClassOf deo:ExternalResourceDescription.
+<http://salt.semanticauthoring.org/ontologies/sro#Background> a <http://www.w3.org/2002/07/owl#Class>.
+<http://salt.semanticauthoring.org/ontologies/sro#Conclusion> a <http://www.w3.org/2002/07/owl#Class>.
+<http://salt.semanticauthoring.org/ontologies/sro#Contribution> a <http://www.w3.org/2002/07/owl#Class>.
+<http://salt.semanticauthoring.org/ontologies/sro#Discussion> a <http://www.w3.org/2002/07/owl#Class>.
+<http://salt.semanticauthoring.org/ontologies/sro#Evaluation> a <http://www.w3.org/2002/07/owl#Class>.
+<http://salt.semanticauthoring.org/ontologies/sro#Motivation> a <http://www.w3.org/2002/07/owl#Class>.
+<http://salt.semanticauthoring.org/ontologies/sro#Scenario> a <http://www.w3.org/2002/07/owl#Class>.
+rdfs:comment a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:label a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#Thing> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2002/07/owl#topObjectProperty> a <http://www.w3.org/2002/07/owl#ObjectProperty>.

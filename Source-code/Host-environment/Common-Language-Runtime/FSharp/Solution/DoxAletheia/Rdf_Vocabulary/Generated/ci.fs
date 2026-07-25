@@ -7,51 +7,15 @@ open type Prefix_ID
 module ci =
     let _namespace_iri = Namespace_Iri ci |> NamespaceIRI
     /// <summary>
-    ///   <para>ci:Merge</para>
+    ///   <para>ci:</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>In order to merge a document, we must define the target to which it ought to be merged. This class is identical to an Action, save for such a property.</para>
-    /// labels<para>Merge</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#Merge">https://privatealpha.com/ontology/content-inventory/1#Merge</seealso>
-    let Merge = Prefixed_Name(ci, "Merge") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:block</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>qb:MeasureProperty</para>
-    ///   <para>A block count is conceptually similar to a word or section count, though it counts the total of elements in the document considered to be text blocks, such as paragraphs, tables, lists and figures. It is suited for document types that have no concept of (semantic) sections, such as HTML. The purpose of this measurement is to provide a sort of ratio to the word count, to glean how well-proportioned the document is.</para>
-    /// labels<para>blocks</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#block">https://privatealpha.com/ontology/content-inventory/1#block</seealso>
-    let block = Prefixed_Name(ci, "block") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:canonical-slug</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:FunctionalProperty</para>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>This is the canonical slug associated with the resource, and should be populated with the slug which is actually in use.</para>
-    /// labels<para>canonical-slug</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#canonical-slug">https://privatealpha.com/ontology/content-inventory/1#canonical-slug</seealso>
-    let canonical_slug = Prefixed_Name(ci, "canonical-slug") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:document</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>qb:DimensionProperty</para>
-    ///   <para>Document Reference</para>
-    /// labels<para>document</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#document">https://privatealpha.com/ontology/content-inventory/1#document</seealso>
-    let document = Prefixed_Name(ci, "document") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:high-quartile</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>qb:MeasureProperty</para>
-    ///   <para>Third Quartile</para>
-    /// labels<para>high-quartile</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#high-quartile">https://privatealpha.com/ontology/content-inventory/1#high-quartile</seealso>
-    let high_quartile = Prefixed_Name(ci, "high-quartile") |> PrefixedName
+    ///   <para>owl:Ontology</para>
+    ///   <para>bibo:Webpage</para>
+    ///   <para>This vocabulary defines a number of concepts peculiar to content strategy which are not accounted for by other vocabularies.</para>
+    /// </remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#">https://privatealpha.com/ontology/content-inventory/1#</seealso>
+    let _prefix_iri = Prefixed_Name(ci, "") |> PrefixedName
     /// <summary>
     ///   <para>ci:unavailable</para>
     /// </summary>
@@ -62,14 +26,23 @@ module ci =
     /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#unavailable">https://privatealpha.com/ontology/content-inventory/1#unavailable</seealso>
     let unavailable = Prefixed_Name(ci, "unavailable") |> PrefixedName
     /// <summary>
-    ///   <para>ci:assumes</para>
+    ///   <para>ci:Action</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>The document assumes the audience is familiar with this concept, and may not mention it explicitly.</para>
-    /// labels<para>assumes</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#assumes">https://privatealpha.com/ontology/content-inventory/1#assumes</seealso>
-    let assumes = Prefixed_Name(ci, "assumes") |> PrefixedName
+    ///   <para>owl:Class</para>
+    ///   <para>An action, as its name implies, is meant to represent something a person or other agent ought to do to a document.</para>
+    /// labels<para>Action</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#Action">https://privatealpha.com/ontology/content-inventory/1#Action</seealso>
+    let Action = Prefixed_Name(ci, "Action") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:block</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>qb:MeasureProperty</para>
+    ///   <para>A block count is conceptually similar to a word or section count, though it counts the total of elements in the document considered to be text blocks, such as paragraphs, tables, lists and figures. It is suited for document types that have no concept of (semantic) sections, such as HTML. The purpose of this measurement is to provide a sort of ratio to the word count, to glean how well-proportioned the document is.</para>
+    /// labels<para>blocks</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#block">https://privatealpha.com/ontology/content-inventory/1#block</seealso>
+    let block = Prefixed_Name(ci, "block") |> PrefixedName
     /// <summary>
     ///   <para>ci:canonical</para>
     /// </summary>
@@ -80,6 +53,16 @@ module ci =
     /// labels<para>canonical</para></remarks>
     /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#canonical">https://privatealpha.com/ontology/content-inventory/1#canonical</seealso>
     let canonical = Prefixed_Name(ci, "canonical") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:canonical-slug</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>This is the canonical slug associated with the resource, and should be populated with the slug which is actually in use.</para>
+    /// labels<para>canonical-slug</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#canonical-slug">https://privatealpha.com/ontology/content-inventory/1#canonical-slug</seealso>
+    let canonical_slug = Prefixed_Name(ci, "canonical-slug") |> PrefixedName
     /// <summary>
     ///   <para>ci:slug</para>
     /// </summary>
@@ -99,164 +82,23 @@ module ci =
     /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#characters">https://privatealpha.com/ontology/content-inventory/1#characters</seealso>
     let characters = Prefixed_Name(ci, "characters") |> PrefixedName
     /// <summary>
-    ///   <para>ci:embed</para>
+    ///   <para>ci:document</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>This property specifies an embedded resource which is visible in the subject's user interface.</para>
-    /// labels<para>embed</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#embed">https://privatealpha.com/ontology/content-inventory/1#embed</seealso>
-    let embed = Prefixed_Name(ci, "embed") |> PrefixedName
+    ///   <para>qb:DimensionProperty</para>
+    ///   <para>Document Reference</para>
+    /// labels<para>document</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#document">https://privatealpha.com/ontology/content-inventory/1#document</seealso>
+    let document = Prefixed_Name(ci, "document") |> PrefixedName
     /// <summary>
-    ///   <para>ci:incomplete</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>bibo:DocumentStatus</para>
-    ///   <para>The document has been started, but is clearly not finished.</para>
-    /// labels<para>incomplete</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#incomplete">https://privatealpha.com/ontology/content-inventory/1#incomplete</seealso>
-    let incomplete = Prefixed_Name(ci, "incomplete") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:indegree</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>qb:MeasureProperty</para>
-    ///   <para>The number of links pointing at the specified resource.</para>
-    /// labels<para>indegree</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#indegree">https://privatealpha.com/ontology/content-inventory/1#indegree</seealso>
-    let indegree = Prefixed_Name(ci, "indegree") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:keep</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>ci:Action</para>
-    ///   <para>Keep this document to which this is associated; make no changes to it at this time.</para>
-    /// labels<para>keep</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#keep">https://privatealpha.com/ontology/content-inventory/1#keep</seealso>
-    let keep = Prefixed_Name(ci, "keep") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:landing</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>bibo:DocumentStatus</para>
-    ///   <para>The resource is a landing page from some other medium (e.g. e-mail, television, billboard). This status is a hint to automated systems which would otherwise orphan or retire a landing page with no inbound links.</para>
-    /// labels<para>landing</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#landing">https://privatealpha.com/ontology/content-inventory/1#landing</seealso>
-    let landing = Prefixed_Name(ci, "landing") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:mean</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>qb:MeasureProperty</para>
-    ///   <para>Mean</para>
-    /// labels<para>mean</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#mean">https://privatealpha.com/ontology/content-inventory/1#mean</seealso>
-    let mean = Prefixed_Name(ci, "mean") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:min</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>qb:MeasureProperty</para>
-    ///   <para>The smallest observation in the sample.</para>
-    /// labels<para>min</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#min">https://privatealpha.com/ontology/content-inventory/1#min</seealso>
-    let min = Prefixed_Name(ci, "min") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:obsolete</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>bibo:DocumentStatus</para>
-    ///   <para>The content of this document was correct and relevant at one point, but external circumstances have caused it to lapse in relevance or factual accuracy.</para>
-    /// labels<para>obsolete</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#obsolete">https://privatealpha.com/ontology/content-inventory/1#obsolete</seealso>
-    let obsolete = Prefixed_Name(ci, "obsolete") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:orphan</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>bibo:DocumentStatus</para>
-    ///   <para>The resource is not explicitly pending or removed from publication, however it has managed to be disconnected from the rest of the site: There is no path to it from a landing page, and it is not a landing page on its own. That is to say that the resource either has no inbound links, or if it does, those links are from other resources that are in the same situation. Documents which are only linked from retired documents are also considered orphans.</para>
-    /// labels<para>orphan</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#orphan">https://privatealpha.com/ontology/content-inventory/1#orphan</seealso>
-    let orphan = Prefixed_Name(ci, "orphan") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:retire</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>ci:Action</para>
-    ///   <para>Remove all references to this document and consign it to the archive.</para>
-    /// labels<para>retire</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#retire">https://privatealpha.com/ontology/content-inventory/1#retire</seealso>
-    let retire = Prefixed_Name(ci, "retire") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:retired</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>bibo:DocumentStatus</para>
-    ///   <para>The document has been explicitly retired by an editor or curator, but still exists in the archive.</para>
-    /// labels<para>retired</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#retired">https://privatealpha.com/ontology/content-inventory/1#retired</seealso>
-    let retired = Prefixed_Name(ci, "retired") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:revise</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>ci:Action</para>
-    ///   <para>Revise or restructure this document.</para>
-    /// labels<para>revise</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#revise">https://privatealpha.com/ontology/content-inventory/1#revise</seealso>
-    let revise = Prefixed_Name(ci, "revise") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:split</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>ci:Action</para>
-    ///   <para>Split this document into multiple pieces.</para>
-    /// labels<para>split</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#split">https://privatealpha.com/ontology/content-inventory/1#split</seealso>
-    let split = Prefixed_Name(ci, "split") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:target</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Specify the URI of the target resource into which this document should be merged.</para>
-    /// labels<para>target</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#target">https://privatealpha.com/ontology/content-inventory/1#target</seealso>
-    let target = Prefixed_Name(ci, "target") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:words</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>qb:MeasureProperty</para>
-    ///   <para>This indicates the number of words in a document, similar to the familiar function in a word processor. The exact method of counting words may vary by document type, language etc., and is thus out of scope from this document.</para>
-    /// labels<para>words</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#words">https://privatealpha.com/ontology/content-inventory/1#words</seealso>
-    let words = Prefixed_Name(ci, "words") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:blocks</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#blocks">https://privatealpha.com/ontology/content-inventory/1#blocks</seealso>
-    let blocks = Prefixed_Name(ci, "blocks") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:Action</para>
+    ///   <para>ci:Merge</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>An action, as its name implies, is meant to represent something a person or other agent ought to do to a document.</para>
-    /// labels<para>Action</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#Action">https://privatealpha.com/ontology/content-inventory/1#Action</seealso>
-    let Action = Prefixed_Name(ci, "Action") |> PrefixedName
-    /// <summary>
-    ///   <para>ci:action</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>use this to signal an action to take with the document in question.</para>
-    /// labels<para>action</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#action">https://privatealpha.com/ontology/content-inventory/1#action</seealso>
-    let action = Prefixed_Name(ci, "action") |> PrefixedName
+    ///   <para>In order to merge a document, we must define the target to which it ought to be merged. This class is identical to an Action, save for such a property.</para>
+    /// labels<para>Merge</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#Merge">https://privatealpha.com/ontology/content-inventory/1#Merge</seealso>
+    let Merge = Prefixed_Name(ci, "Merge") |> PrefixedName
     /// <summary>
     ///   <para>ci:alias</para>
     /// </summary>
@@ -267,6 +109,24 @@ module ci =
     /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#alias">https://privatealpha.com/ontology/content-inventory/1#alias</seealso>
     let alias = Prefixed_Name(ci, "alias") |> PrefixedName
     /// <summary>
+    ///   <para>ci:action</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>use this to signal an action to take with the document in question.</para>
+    /// labels<para>action</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#action">https://privatealpha.com/ontology/content-inventory/1#action</seealso>
+    let action = Prefixed_Name(ci, "action") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:assumes</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>The document assumes the audience is familiar with this concept, and may not mention it explicitly.</para>
+    /// labels<para>assumes</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#assumes">https://privatealpha.com/ontology/content-inventory/1#assumes</seealso>
+    let assumes = Prefixed_Name(ci, "assumes") |> PrefixedName
+    /// <summary>
     ///   <para>ci:desired-outcome</para>
     /// </summary>
     /// <remarks>
@@ -276,14 +136,23 @@ module ci =
     /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#desired-outcome">https://privatealpha.com/ontology/content-inventory/1#desired-outcome</seealso>
     let desired_outcome = Prefixed_Name(ci, "desired-outcome") |> PrefixedName
     /// <summary>
-    ///   <para>ci:empty</para>
+    ///   <para>ci:embed</para>
     /// </summary>
     /// <remarks>
-    ///   <para>bibo:DocumentStatus</para>
-    ///   <para>The document contains no content.</para>
-    /// labels<para>empty</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#empty">https://privatealpha.com/ontology/content-inventory/1#empty</seealso>
-    let empty = Prefixed_Name(ci, "empty") |> PrefixedName
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This property specifies an embedded resource which is visible in the subject's user interface.</para>
+    /// labels<para>embed</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#embed">https://privatealpha.com/ontology/content-inventory/1#embed</seealso>
+    let embed = Prefixed_Name(ci, "embed") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:high-quartile</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>qb:MeasureProperty</para>
+    ///   <para>Third Quartile</para>
+    /// labels<para>high-quartile</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#high-quartile">https://privatealpha.com/ontology/content-inventory/1#high-quartile</seealso>
+    let high_quartile = Prefixed_Name(ci, "high-quartile") |> PrefixedName
     /// <summary>
     ///   <para>ci:incorrect</para>
     /// </summary>
@@ -311,6 +180,69 @@ module ci =
     /// labels<para>mentions</para></remarks>
     /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#mentions">https://privatealpha.com/ontology/content-inventory/1#mentions</seealso>
     let mentions = Prefixed_Name(ci, "mentions") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:landing</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>bibo:DocumentStatus</para>
+    ///   <para>The resource is a landing page from some other medium (e.g. e-mail, television, billboard). This status is a hint to automated systems which would otherwise orphan or retire a landing page with no inbound links.</para>
+    /// labels<para>landing</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#landing">https://privatealpha.com/ontology/content-inventory/1#landing</seealso>
+    let landing = Prefixed_Name(ci, "landing") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:low-quartile</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>qb:MeasureProperty</para>
+    ///   <para>Equivalent to the bottom quarter, or 25th percentile, of the observed data.</para>
+    /// labels<para>low-quartile</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#low-quartile">https://privatealpha.com/ontology/content-inventory/1#low-quartile</seealso>
+    let low_quartile = Prefixed_Name(ci, "low-quartile") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:mean</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>qb:MeasureProperty</para>
+    ///   <para>Mean</para>
+    /// labels<para>mean</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#mean">https://privatealpha.com/ontology/content-inventory/1#mean</seealso>
+    let mean = Prefixed_Name(ci, "mean") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:empty</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>bibo:DocumentStatus</para>
+    ///   <para>The document contains no content.</para>
+    /// labels<para>empty</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#empty">https://privatealpha.com/ontology/content-inventory/1#empty</seealso>
+    let empty = Prefixed_Name(ci, "empty") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:incomplete</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>bibo:DocumentStatus</para>
+    ///   <para>The document has been started, but is clearly not finished.</para>
+    /// labels<para>incomplete</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#incomplete">https://privatealpha.com/ontology/content-inventory/1#incomplete</seealso>
+    let incomplete = Prefixed_Name(ci, "incomplete") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:indegree</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>qb:MeasureProperty</para>
+    ///   <para>The number of links pointing at the specified resource.</para>
+    /// labels<para>indegree</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#indegree">https://privatealpha.com/ontology/content-inventory/1#indegree</seealso>
+    let indegree = Prefixed_Name(ci, "indegree") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:keep</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>ci:Action</para>
+    ///   <para>Keep this document to which this is associated; make no changes to it at this time.</para>
+    /// labels<para>keep</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#keep">https://privatealpha.com/ontology/content-inventory/1#keep</seealso>
+    let keep = Prefixed_Name(ci, "keep") |> PrefixedName
     /// <summary>
     ///   <para>ci:link</para>
     /// </summary>
@@ -348,23 +280,23 @@ module ci =
     /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#non-audience">https://privatealpha.com/ontology/content-inventory/1#non-audience</seealso>
     let non_audience = Prefixed_Name(ci, "non-audience") |> PrefixedName
     /// <summary>
-    ///   <para>ci:proofread</para>
+    ///   <para>ci:outdegree</para>
     /// </summary>
     /// <remarks>
-    ///   <para>ci:Action</para>
-    ///   <para>Proofread this document.</para>
-    /// labels<para>proofread</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#proofread">https://privatealpha.com/ontology/content-inventory/1#proofread</seealso>
-    let proofread = Prefixed_Name(ci, "proofread") |> PrefixedName
+    ///   <para>qb:MeasureProperty</para>
+    ///   <para>The number of links emanating from the specified resource.</para>
+    /// labels<para>outdegree</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#outdegree">https://privatealpha.com/ontology/content-inventory/1#outdegree</seealso>
+    let outdegree = Prefixed_Name(ci, "outdegree") |> PrefixedName
     /// <summary>
-    ///   <para>ci:rewrite</para>
+    ///   <para>ci:revise</para>
     /// </summary>
     /// <remarks>
     ///   <para>ci:Action</para>
-    ///   <para>Rewrite this document from scratch.</para>
-    /// labels<para>rewrite</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#rewrite">https://privatealpha.com/ontology/content-inventory/1#rewrite</seealso>
-    let rewrite = Prefixed_Name(ci, "rewrite") |> PrefixedName
+    ///   <para>Revise or restructure this document.</para>
+    /// labels<para>revise</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#revise">https://privatealpha.com/ontology/content-inventory/1#revise</seealso>
+    let revise = Prefixed_Name(ci, "revise") |> PrefixedName
     /// <summary>
     ///   <para>ci:sd</para>
     /// </summary>
@@ -375,23 +307,77 @@ module ci =
     /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#sd">https://privatealpha.com/ontology/content-inventory/1#sd</seealso>
     let sd = Prefixed_Name(ci, "sd") |> PrefixedName
     /// <summary>
-    ///   <para>ci:low-quartile</para>
+    ///   <para>ci:split</para>
     /// </summary>
     /// <remarks>
-    ///   <para>qb:MeasureProperty</para>
-    ///   <para>Equivalent to the bottom quarter, or 25th percentile, of the observed data.</para>
-    /// labels<para>low-quartile</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#low-quartile">https://privatealpha.com/ontology/content-inventory/1#low-quartile</seealso>
-    let low_quartile = Prefixed_Name(ci, "low-quartile") |> PrefixedName
+    ///   <para>ci:Action</para>
+    ///   <para>Split this document into multiple pieces.</para>
+    /// labels<para>split</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#split">https://privatealpha.com/ontology/content-inventory/1#split</seealso>
+    let split = Prefixed_Name(ci, "split") |> PrefixedName
     /// <summary>
-    ///   <para>ci:outdegree</para>
+    ///   <para>ci:target</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Specify the URI of the target resource into which this document should be merged.</para>
+    /// labels<para>target</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#target">https://privatealpha.com/ontology/content-inventory/1#target</seealso>
+    let target = Prefixed_Name(ci, "target") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:update-metadata</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>ci:Action</para>
+    ///   <para>Update the metadata of this document, such as keywords, audience, etc.</para>
+    /// labels<para>update-metadata</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#update-metadata">https://privatealpha.com/ontology/content-inventory/1#update-metadata</seealso>
+    let update_metadata = Prefixed_Name(ci, "update-metadata") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:min</para>
     /// </summary>
     /// <remarks>
     ///   <para>qb:MeasureProperty</para>
-    ///   <para>The number of links emanating from the specified resource.</para>
-    /// labels<para>outdegree</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#outdegree">https://privatealpha.com/ontology/content-inventory/1#outdegree</seealso>
-    let outdegree = Prefixed_Name(ci, "outdegree") |> PrefixedName
+    ///   <para>The smallest observation in the sample.</para>
+    /// labels<para>min</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#min">https://privatealpha.com/ontology/content-inventory/1#min</seealso>
+    let min = Prefixed_Name(ci, "min") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:orphan</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>bibo:DocumentStatus</para>
+    ///   <para>The resource is not explicitly pending or removed from publication, however it has managed to be disconnected from the rest of the site: There is no path to it from a landing page, and it is not a landing page on its own. That is to say that the resource either has no inbound links, or if it does, those links are from other resources that are in the same situation. Documents which are only linked from retired documents are also considered orphans.</para>
+    /// labels<para>orphan</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#orphan">https://privatealpha.com/ontology/content-inventory/1#orphan</seealso>
+    let orphan = Prefixed_Name(ci, "orphan") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:proofread</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>ci:Action</para>
+    ///   <para>Proofread this document.</para>
+    /// labels<para>proofread</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#proofread">https://privatealpha.com/ontology/content-inventory/1#proofread</seealso>
+    let proofread = Prefixed_Name(ci, "proofread") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:retired</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>bibo:DocumentStatus</para>
+    ///   <para>The document has been explicitly retired by an editor or curator, but still exists in the archive.</para>
+    /// labels<para>retired</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#retired">https://privatealpha.com/ontology/content-inventory/1#retired</seealso>
+    let retired = Prefixed_Name(ci, "retired") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:rewrite</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>ci:Action</para>
+    ///   <para>Rewrite this document from scratch.</para>
+    /// labels<para>rewrite</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#rewrite">https://privatealpha.com/ontology/content-inventory/1#rewrite</seealso>
+    let rewrite = Prefixed_Name(ci, "rewrite") |> PrefixedName
     /// <summary>
     ///   <para>ci:sections</para>
     /// </summary>
@@ -411,14 +397,14 @@ module ci =
     /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#tentative-merge">https://privatealpha.com/ontology/content-inventory/1#tentative-merge</seealso>
     let tentative_merge = Prefixed_Name(ci, "tentative-merge") |> PrefixedName
     /// <summary>
-    ///   <para>ci:update-metadata</para>
+    ///   <para>ci:words</para>
     /// </summary>
     /// <remarks>
-    ///   <para>ci:Action</para>
-    ///   <para>Update the metadata of this document, such as keywords, audience, etc.</para>
-    /// labels<para>update-metadata</para></remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#update-metadata">https://privatealpha.com/ontology/content-inventory/1#update-metadata</seealso>
-    let update_metadata = Prefixed_Name(ci, "update-metadata") |> PrefixedName
+    ///   <para>qb:MeasureProperty</para>
+    ///   <para>This indicates the number of words in a document, similar to the familiar function in a word processor. The exact method of counting words may vary by document type, language etc., and is thus out of scope from this document.</para>
+    /// labels<para>words</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#words">https://privatealpha.com/ontology/content-inventory/1#words</seealso>
+    let words = Prefixed_Name(ci, "words") |> PrefixedName
     /// <summary>
     ///   <para>ci:words-and-blocks</para>
     /// </summary>
@@ -429,12 +415,26 @@ module ci =
     /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#words-and-blocks">https://privatealpha.com/ontology/content-inventory/1#words-and-blocks</seealso>
     let words_and_blocks = Prefixed_Name(ci, "words-and-blocks") |> PrefixedName
     /// <summary>
-    ///   <para>ci:</para>
+    ///   <para>ci:blocks</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#blocks">https://privatealpha.com/ontology/content-inventory/1#blocks</seealso>
+    let blocks = Prefixed_Name(ci, "blocks") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:obsolete</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:Ontology</para>
-    ///   <para>bibo:Webpage</para>
-    ///   <para>This vocabulary defines a number of concepts peculiar to content strategy which are not accounted for by other vocabularies.</para>
-    /// </remarks>
-    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#">https://privatealpha.com/ontology/content-inventory/1#</seealso>
-    let _prefix_iri = Prefixed_Name(ci, "") |> PrefixedName
+    ///   <para>bibo:DocumentStatus</para>
+    ///   <para>The content of this document was correct and relevant at one point, but external circumstances have caused it to lapse in relevance or factual accuracy.</para>
+    /// labels<para>obsolete</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#obsolete">https://privatealpha.com/ontology/content-inventory/1#obsolete</seealso>
+    let obsolete = Prefixed_Name(ci, "obsolete") |> PrefixedName
+    /// <summary>
+    ///   <para>ci:retire</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>ci:Action</para>
+    ///   <para>Remove all references to this document and consign it to the archive.</para>
+    /// labels<para>retire</para></remarks>
+    /// <seealso href="https://privatealpha.com/ontology/content-inventory/1#retire">https://privatealpha.com/ontology/content-inventory/1#retire</seealso>
+    let retire = Prefixed_Name(ci, "retire") |> PrefixedName

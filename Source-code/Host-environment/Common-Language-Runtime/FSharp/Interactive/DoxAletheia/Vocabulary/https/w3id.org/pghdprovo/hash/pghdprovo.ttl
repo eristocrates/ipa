@@ -1,0 +1,827 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix pghdprovo: <https://w3id.org/pghdprovo#>.
+
+_:B6c49835e7c2a36ad3a0c946e637d5d46 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<https://saref.etsi.org/core/Device>
+                                                                             pghdprovo:Application
+                                                                             pghdprovo:ContextualInfo
+                                                                             pghdprovo:PGHD).
+_:B962990c636149aae48d3124b0e745c4a a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (pghdprovo:Patient
+                                                                             pghdprovo:PatientRelative
+                                                                             pghdprovo:Practitioner).
+_:Bb41bc280bae10bcc62363eeeede8e07c a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "Derivation is a particular case of trace (see http://www.w3.org/TR/prov-dm/#term-trace), since it links an entity to another entity that contributed to its existence.";
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subPropertyOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> <http://www.w3.org/ns/prov#wasDerivedFrom>;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> <http://www.w3.org/ns/prov#wasInfluencedBy>.
+_:Bbf0b686d84a799f887eb51de8966c54f a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<http://www.w3.org/ns/prov#Organization>
+                                                                             <http://www.w3.org/ns/prov#Person>
+                                                                             <http://www.w3.org/ns/prov#SoftwareAgent>).
+_:Bc0faba6edf785bf16273da1ee8085783 a <http://www.w3.org/2002/07/owl#Axiom>;
+                                    rdfs:comment "Attribution is a particular case of trace (see http://www.w3.org/TR/prov-dm/#concept-trace), in the sense that it links an entity to the agent that ascribed it.";
+                                    <http://www.w3.org/2002/07/owl#annotatedProperty> rdfs:subPropertyOf;
+                                    <http://www.w3.org/2002/07/owl#annotatedSource> <http://www.w3.org/ns/prov#wasAttributedTo>;
+                                    <http://www.w3.org/2002/07/owl#annotatedTarget> <http://www.w3.org/ns/prov#wasInfluencedBy>;
+                                    <http://www.w3.org/ns/prov#definition> "IF wasAttributedTo(e2,ag1,aAttr) holds, THEN wasInfluencedBy(e2,ag1) also holds. ".
+_:Bc9a0d58f6c4f53a7558d9d3c20e0f56f a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (pghdprovo:Programme
+                                                                             pghdprovo:Protocol
+                                                                             pghdprovo:Rating
+                                                                             pghdprovo:State).
+<http://purl.org/dc/elements/1.1/identifier> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                             rdfs:comment "Recommended practice is to identify the resource by means of a string conforming to an identification system.";
+                                             rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+                                             rdfs:label "Identifier";
+                                             rdfs:range rdfs:Literal;
+                                             <http://www.w3.org/ns/prov#definition> "An unambiguous reference to the resource within a given context.".
+<http://purl.org/dc/terms/bibliographicCitation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/ontology/bibo/status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+xsd:date a rdfs:Datatype.
+<http://www.w3.org/2002/07/owl#versionInfo> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2006/vcard/ns#hasAddress> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                             rdfs:comment "To specify the components of the delivery address for the vCard object."@en;
+                                             rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+                                             rdfs:label "has address"@en;
+                                             rdfs:range rdfs:Literal;
+                                             rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://www.w3.org/2006/vcard/ns#hasEmail> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                           rdfs:comment "To specify the electronic mail address for communication with the object";
+                                           rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+                                           rdfs:label "has email";
+                                           rdfs:range rdfs:Literal.
+<http://www.w3.org/2006/vcard/ns#hasRole> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                          rdfs:comment "To specify the function or part played in a particular situation by an individual."@en;
+                                          rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+                                          rdfs:label "has role"@en;
+                                          rdfs:range rdfs:Literal.
+<http://www.w3.org/2006/vcard/ns#hasTelephone> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                               rdfs:comment "To specify the telephone number for telephony communication with the object."@en;
+                                               rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+                                               rdfs:label "has telephone"@en;
+                                               rdfs:range rdfs:Literal;
+                                               rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://www.w3.org/ns/prov#Activity> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "An action or process that occurs over a period of time and acts upon entities."@en;
+                                     rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                     rdfs:label "Activity";
+                                     <http://www.w3.org/2002/07/owl#disjointWith> <http://www.w3.org/ns/prov#Entity>;
+                                     <http://www.w3.org/ns/prov#category> "starting-point";
+                                     <http://www.w3.org/ns/prov#component> "entities-activities";
+                                     <http://www.w3.org/ns/prov#constraints> "http://www.w3.org/TR/2013/REC-prov-constraints-20130430/#prov-dm-constraints-fig"^^xsd:anyURI;
+                                     <http://www.w3.org/ns/prov#definition> "An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.";
+                                     <http://www.w3.org/ns/prov#dm> "http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-Activity"^^xsd:anyURI;
+                                     <http://www.w3.org/ns/prov#n> "http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-Activity"^^xsd:anyURI.
+<http://www.w3.org/ns/prov#Agent> a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "Something that bears responsibility for an activity taking place, for the existence of an entity, or for another agent's activity."@en;
+                                  rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                  rdfs:label "Agent";
+                                  <http://www.w3.org/ns/prov#category> "starting-point";
+                                  <http://www.w3.org/ns/prov#component> "agents-responsibility";
+                                  <http://www.w3.org/ns/prov#definition> "An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity. "@en;
+                                  <http://www.w3.org/ns/prov#dm> "http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-agent"^^xsd:anyURI;
+                                  <http://www.w3.org/ns/prov#n> "http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-Agent"^^xsd:anyURI.
+<http://www.w3.org/ns/prov#Entity> a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "A physical, digital, conceptual, or other kind of thing with some fixed aspects."@en;
+                                   rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                   rdfs:label "Entity";
+                                   <http://www.w3.org/ns/prov#category> "starting-point";
+                                   <http://www.w3.org/ns/prov#component> "entities-activities";
+                                   <http://www.w3.org/ns/prov#constraints> "http://www.w3.org/TR/2013/REC-prov-constraints-20130430/#prov-dm-constraints-fig"^^xsd:anyURI;
+                                   <http://www.w3.org/ns/prov#definition> "An entity is a physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary. "@en;
+                                   <http://www.w3.org/ns/prov#dm> "http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-entity"^^xsd:anyURI;
+                                   <http://www.w3.org/ns/prov#n> "http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-Entity"^^xsd:anyURI.
+<http://www.w3.org/ns/prov#Organization> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:comment "A social or legal entity such as a company, institution, or association."@en;
+                                         rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                         rdfs:label "Organization";
+                                         rdfs:subClassOf <http://www.w3.org/ns/prov#Agent>;
+                                         <http://www.w3.org/ns/prov#category> "expanded";
+                                         <http://www.w3.org/ns/prov#component> "agents-responsibility";
+                                         <http://www.w3.org/ns/prov#definition> "An organization is a social or legal institution such as a company, society, etc.";
+                                         <http://www.w3.org/ns/prov#dm> "http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-agent"^^xsd:anyURI;
+                                         <http://www.w3.org/ns/prov#n> "http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-types"^^xsd:anyURI.
+<http://www.w3.org/ns/prov#Person> a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Person agents are people."@en;
+                                   rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                   rdfs:label "Person";
+                                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://xmlns.com/foaf/0.1/givenName> ; 
+                                                    <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                   [<http://www.w3.org/2002/07/owl#onProperty> <http://xmlns.com/foaf/0.1/gender> ; 
+                                                    <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                   <http://www.w3.org/ns/prov#Agent>,
+                                                   [<http://www.w3.org/2002/07/owl#onProperty> <http://xmlns.com/foaf/0.1/birthday> ; 
+                                                    <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>];
+                                   <http://www.w3.org/ns/prov#category> "expanded";
+                                   <http://www.w3.org/ns/prov#component> "agents-responsibility";
+                                   <http://www.w3.org/ns/prov#definition> "Person agents are people."@en;
+                                   <http://www.w3.org/ns/prov#dm> "http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-agent"^^xsd:anyURI;
+                                   <http://www.w3.org/ns/prov#n> "http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-types"^^xsd:anyURI.
+<http://www.w3.org/ns/prov#SoftwareAgent> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment "A running software system acting as an agent in provenance descriptions."@en;
+                                          rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                          rdfs:label "SoftwareAgent";
+                                          rdfs:subClassOf <http://www.w3.org/ns/prov#Agent>;
+                                          <http://www.w3.org/ns/prov#category> "expanded";
+                                          <http://www.w3.org/ns/prov#component> "agents-responsibility";
+                                          <http://www.w3.org/ns/prov#definition> "A software agent is running software."@en;
+                                          <http://www.w3.org/ns/prov#dm> "http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-agent"^^xsd:anyURI;
+                                          <http://www.w3.org/ns/prov#n> "http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-types"^^xsd:anyURI.
+<http://www.w3.org/ns/prov#actedOnBehalfOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:comment "An object property to express the accountability of an agent towards another agent. The subordinate agent acted on behalf of the responsible agent in an actual activity. "@en;
+                                            rdfs:domain <http://www.w3.org/ns/prov#Agent>;
+                                            rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                            rdfs:label "actedOnBehalfOf";
+                                            rdfs:range <http://www.w3.org/ns/prov#Agent>;
+                                            rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy>;
+                                            <http://www.w3.org/2002/07/owl#inverseOf> pghdprovo:hadDelegate;
+                                            <http://www.w3.org/ns/prov#category> "starting-point";
+                                            <http://www.w3.org/ns/prov#component> "agents-responsibility";
+                                            <http://www.w3.org/ns/prov#inverse> "hadDelegate";
+                                            <http://www.w3.org/ns/prov#qualifiedForm> <http://www.w3.org/ns/prov#qualifiedDelegation>,
+                                                                                      <http://www.w3.org/ns/prov#Delegation>.
+<http://www.w3.org/ns/prov#category> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/prov#component> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/prov#constraints> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/prov#definition> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/prov#dm> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/prov#editorialNote> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/prov#endedAtTime> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                        rdfs:comment """The number of calories burned associated with the
+activity.""",
+                                                     "The time at which an activity ended. See also prov:startedAtTime."@en;
+                                        rdfs:domain <http://www.w3.org/ns/prov#Activity>;
+                                        rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                        rdfs:label "endedAtTime";
+                                        rdfs:range xsd:dateTime;
+                                        <http://www.w3.org/ns/prov#category> "starting-point";
+                                        <http://www.w3.org/ns/prov#component> "entities-activities";
+                                        <http://www.w3.org/ns/prov#editorialNote> "It is the intent that the property chain holds: (prov:qualifiedEnd o prov:atTime) rdfs:subPropertyOf prov:endedAtTime."@en;
+                                        <http://www.w3.org/ns/prov#qualifiedForm> <http://www.w3.org/ns/prov#End>,
+                                                                                  <http://www.w3.org/ns/prov#atTime>.
+<http://www.w3.org/ns/prov#generated> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:comment "Relates an activity to an entity that it generated."@en;
+                                      rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+                                      rdfs:label "generated";
+                                      rdfs:range <http://www.w3.org/2002/07/owl#Thing>.
+<http://www.w3.org/ns/prov#generatedAtTime> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                            rdfs:comment "The time at which an entity was completely created and is available for use."@en;
+                                            rdfs:domain <http://www.w3.org/ns/prov#Entity>;
+                                            rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                            rdfs:label "generatedAtTime";
+                                            rdfs:range xsd:dateTime;
+                                            <http://www.w3.org/ns/prov#category> "expanded";
+                                            <http://www.w3.org/ns/prov#component> "entities-activities";
+                                            <http://www.w3.org/ns/prov#editorialNote> "It is the intent that the property chain holds: (prov:qualifiedGeneration o prov:atTime) rdfs:subPropertyOf prov:generatedAtTime."@en;
+                                            <http://www.w3.org/ns/prov#qualifiedForm> <http://www.w3.org/ns/prov#atTime>,
+                                                                                      <http://www.w3.org/ns/prov#Generation>.
+<http://www.w3.org/ns/prov#inverse> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/prov#n> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/prov#qualifiedForm> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/prov#startedAtTime> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                          rdfs:comment "The time at which an activity started. See also prov:endedAtTime."@en;
+                                          rdfs:domain <http://www.w3.org/ns/prov#Activity>;
+                                          rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                          rdfs:label "startedAtTime";
+                                          rdfs:range xsd:dateTime;
+                                          <http://www.w3.org/ns/prov#category> "starting-point";
+                                          <http://www.w3.org/ns/prov#component> "entities-activities";
+                                          <http://www.w3.org/ns/prov#editorialNote> "It is the intent that the property chain holds: (prov:qualifiedStart o prov:atTime) rdfs:subPropertyOf prov:startedAtTime."@en;
+                                          <http://www.w3.org/ns/prov#qualifiedForm> <http://www.w3.org/ns/prov#Start>,
+                                                                                    <http://www.w3.org/ns/prov#atTime>.
+<http://www.w3.org/ns/prov#used> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:comment "A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven ."@en;
+                                 rdfs:domain <http://www.w3.org/ns/prov#Activity>;
+                                 rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                 rdfs:label "used";
+                                 rdfs:range <http://www.w3.org/ns/prov#Entity>;
+                                 rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy>;
+                                 <http://www.w3.org/ns/prov#category> "starting-point";
+                                 <http://www.w3.org/ns/prov#component> "entities-activities";
+                                 <http://www.w3.org/ns/prov#inverse> "wasUsedBy";
+                                 <http://www.w3.org/ns/prov#qualifiedForm> <http://www.w3.org/ns/prov#Usage>,
+                                                                           <http://www.w3.org/ns/prov#qualifiedUsage>.
+<http://www.w3.org/ns/prov#wasAssociatedWith> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                              rdfs:comment "An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity."@en;
+                                              rdfs:domain <http://www.w3.org/ns/prov#Activity>;
+                                              rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                              rdfs:label "wasAssociatedWith";
+                                              rdfs:range <http://www.w3.org/ns/prov#Agent>;
+                                              rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy>;
+                                              <http://www.w3.org/2002/07/owl#inverseOf> pghdprovo:associatedWith;
+                                              <http://www.w3.org/ns/prov#category> "starting-point";
+                                              <http://www.w3.org/ns/prov#component> "agents-responsibility";
+                                              <http://www.w3.org/ns/prov#inverse> "wasAssociateFor";
+                                              <http://www.w3.org/ns/prov#qualifiedForm> <http://www.w3.org/ns/prov#Association>,
+                                                                                        <http://www.w3.org/ns/prov#qualifiedAssociation>.
+<http://www.w3.org/ns/prov#wasAttributedTo> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:comment "Attribution is the ascribing of an entity to an agent."@en;
+                                            rdfs:domain <http://www.w3.org/ns/prov#Entity>;
+                                            rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                            rdfs:label "wasAttributedTo";
+                                            rdfs:range <http://www.w3.org/ns/prov#Agent>;
+                                            rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy>;
+                                            <http://www.w3.org/2002/07/owl#inverseOf> pghdprovo:contributed;
+                                            <http://www.w3.org/ns/prov#category> "starting-point";
+                                            <http://www.w3.org/ns/prov#component> "agents-responsibility";
+                                            <http://www.w3.org/ns/prov#definition> "Attribution is the ascribing of an entity to an agent."@en;
+                                            <http://www.w3.org/ns/prov#inverse> "contributed";
+                                            <http://www.w3.org/ns/prov#qualifiedForm> <http://www.w3.org/ns/prov#Attribution>,
+                                                                                      <http://www.w3.org/ns/prov#qualifiedAttribution>.
+<http://www.w3.org/ns/prov#wasDerivedFrom> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:comment "The more specific subproperties of prov:wasDerivedFrom (i.e., prov:wasQuotedFrom, prov:wasRevisionOf, prov:hadPrimarySource) should be used when applicable."@en;
+                                           rdfs:domain <http://www.w3.org/ns/prov#Entity>;
+                                           rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                           rdfs:label "wasDerivedFrom";
+                                           rdfs:range <http://www.w3.org/ns/prov#Entity>;
+                                           rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy>;
+                                           <http://www.w3.org/2002/07/owl#inverseOf> pghdprovo:isSourceOf;
+                                           <http://www.w3.org/ns/prov#category> "starting-point";
+                                           <http://www.w3.org/ns/prov#component> "derivations";
+                                           <http://www.w3.org/ns/prov#definition> "A derivation is a transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a pre-existing entity."@en;
+                                           <http://www.w3.org/ns/prov#inverse> "hadDerivation";
+                                           <http://www.w3.org/ns/prov#qualifiedForm> <http://www.w3.org/ns/prov#Derivation>,
+                                                                                     <http://www.w3.org/ns/prov#qualifiedDerivation>.
+<http://www.w3.org/ns/prov#wasGeneratedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:comment "Indicates that an entity was generated by an activity."@en;
+                                           rdfs:domain <http://www.w3.org/ns/prov#Entity>;
+                                           rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#>;
+                                           rdfs:label "wasGeneratedBy";
+                                           rdfs:range <http://www.w3.org/ns/prov#Activity>;
+                                           rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasInfluencedBy>;
+                                           <http://www.w3.org/ns/prov#category> "starting-point";
+                                           <http://www.w3.org/ns/prov#component> "entities-activities";
+                                           <http://www.w3.org/ns/prov#inverse> "generated";
+                                           <http://www.w3.org/ns/prov#qualifiedForm> <http://www.w3.org/ns/prov#Generation>,
+                                                                                     <http://www.w3.org/ns/prov#qualifiedGeneration>.
+<http://www.w3.org/ns/prov#wasInfluencedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:comment "Indicates that one entity, activity, or agent was influenced by another."@en;
+                                            rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+                                            rdfs:label "was influenced by";
+                                            rdfs:range <http://www.w3.org/2002/07/owl#Thing>.
+<http://xmlns.com/foaf/0.1/age> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                rdfs:comment "A person's age, usually expressed in years, represented as an integer."@en;
+                                rdfs:domain <http://www.w3.org/ns/prov#Person>;
+                                rdfs:label "age";
+                                rdfs:range rdfs:Literal.
+<http://xmlns.com/foaf/0.1/birthday> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                       <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                     rdfs:comment "The birthday of this Agent, represented in mm-dd string form, eg. '12-31'.";
+                                     rdfs:domain <http://www.w3.org/ns/prov#Person>;
+                                     rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>;
+                                     rdfs:label "birthday";
+                                     rdfs:range rdfs:Literal;
+                                     rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/age>;
+                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable".
+<http://xmlns.com/foaf/0.1/gender> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                   rdfs:comment "The gender of this Agent (typically but not necessarily 'male' or 'female').";
+                                   rdfs:domain <http://www.w3.org/ns/prov#Person>;
+                                   rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>;
+                                   rdfs:label "gender";
+                                   rdfs:range rdfs:Literal;
+                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+<http://xmlns.com/foaf/0.1/givenName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                      rdfs:comment "The given name of some person.";
+                                      rdfs:domain <http://www.w3.org/ns/prov#Person>;
+                                      rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>;
+                                      rdfs:label "Given name";
+                                      rdfs:range rdfs:Literal;
+                                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+<http://xmlns.com/foaf/0.1/name> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                 rdfs:comment "A name for some thing.";
+                                 rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+                                 rdfs:label "name";
+                                 rdfs:range rdfs:Literal.
+<https://saref.etsi.org/core/Device> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "A tangible object designed to accomplish a particular task. In order to accomplish this task, the device performs one or more functions. For example, a washing machine is designed to wash (task) and to accomplish this task it performs a start and stop function."@en;
+                                     rdfs:isDefinedBy <https://saref.etsi.org/core/>;
+                                     rdfs:label "Device"@en;
+                                     rdfs:subClassOf <http://www.w3.org/ns/prov#Entity>.
+<https://saref.etsi.org/saref4wear/User> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:comment "A user is an entity using a wearable."@en;
+                                         rdfs:label "User"@en;
+                                         rdfs:subClassOf <http://www.w3.org/ns/prov#Person>;
+                                         <http://www.w3.org/2002/07/owl#equivalentClass> pghdprovo:Patient.
+<https://saref.etsi.org/saref4wear/Wearable> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "A wearable device is a device that is intended to be located near, on or in an organism."@en;
+                                             rdfs:label "Wearable device"@en;
+                                             rdfs:subClassOf <https://saref.etsi.org/core/Device>.
+<https://w3id.org/mod#createdWith> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://w3id.org/pghdprovo> <http://purl.org/dc/terms/bibliographicCitation> "Kawu, A.A., O’Sullivan, D. and Hederman, L., 2025, June. PGHDProvO: Provenance Based Ontology for Sharing Patient Generated Health Data (PGHD) with an Electronic Health Record (EHR). In International Conference on Artificial Intelligence in Medicine (pp. 197-201). Cham: Springer Nature Switzerland.";
+                             <http://purl.org/dc/terms/contributor> "Lucy Hederman, Trinity College Dublin",
+                                                                    "Dympna OSullivan, Technological University Dublin";
+                             <http://purl.org/dc/terms/created> "2021-05-24"^^xsd:date;
+                             <http://purl.org/dc/terms/creator> "Abdullahi Abubakar Kawu";
+                             <http://purl.org/dc/terms/description> "Patient Generated Health Data (PGHD) refer to health data collected by patient or their relatives. This ontology seeks to capture information about the data, the provenance and data quality associated with PGHD shared with an EHR."@en;
+                             <http://purl.org/dc/terms/issued> "2024-05-24"^^xsd:date;
+                             <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/>;
+                             <http://purl.org/dc/terms/modified> "2025-11-24"^^xsd:date;
+                             <http://purl.org/dc/terms/publisher> "Technological University Dublin";
+                             <http://purl.org/dc/terms/title> "PGHDPROVO";
+                             <http://purl.org/ontology/bibo/status> "http://purl.org/ontology/bibo/status/published";
+                             <http://purl.org/vocab/vann/preferredNamespacePrefix> "pghdprovo";
+                             <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/pghdprovo#";
+                             a <http://www.w3.org/2002/07/owl#Ontology>;
+                             rdfs:label "Patient Generated Health Data Provenance Ontology"@en;
+                             <http://www.w3.org/2002/07/owl#priorVersion> <https://w3id.org/pghdprovo/1.0>;
+                             <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/pghdprovo/1.0>;
+                             <http://www.w3.org/2002/07/owl#versionInfo> "1.0";
+                             <https://w3id.org/mod#createdWith> <https://chowlk.linkeddata.es/>.
+pghdprovo:Application a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "A software application is a software that can be directly executed by some processing unit.";
+                      rdfs:label "Application";
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/ns/prov#Person> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#wasAttributedTo> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:string ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> pghdprovo:appName ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      <http://www.w3.org/ns/prov#Entity>.
+pghdprovo:BPMonitor a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      <https://saref.etsi.org/core/Device>;
+                    pghdprovo:deviceModel "";
+                    pghdprovo:deviceName "".
+pghdprovo:BloodPressure1 <http://purl.org/dc/elements/1.1/identifier> "";
+                         a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                           pghdprovo:PGHD;
+                         <http://www.w3.org/ns/prov#wasAttributedTo> pghdprovo:Patient1;
+                         <http://www.w3.org/ns/prov#wasDerivedFrom> pghdprovo:BPMonitor;
+                         <http://xmlns.com/foaf/0.1/name> ""^^rdfs:Literal;
+                         pghdprovo:dataSource ""^^rdfs:Literal;
+                         pghdprovo:hasContextualInfo pghdprovo:Programme1,
+                                                     pghdprovo:Rating1,
+                                                     pghdprovo:State1,
+                                                     pghdprovo:Protocol1;
+                         pghdprovo:unit ""^^rdfs:Literal;
+                         pghdprovo:value ""^^rdfs:Literal;
+                         pghdprovo:wasCollectedBy pghdprovo:Patient1.
+pghdprovo:Carer a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A Person who helps a patient to collect or transmit data.";
+                rdfs:label "Carer";
+                rdfs:subClassOf <http://www.w3.org/ns/prov#Person>.
+pghdprovo:Consent a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "A record of consent for Patient Generated Health Data.";
+                  rdfs:label "Consent";
+                  rdfs:subClassOf <http://www.w3.org/ns/prov#Entity>.
+pghdprovo:ContextualDataInfo1 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                pghdprovo:ContextualInfo;
+                              pghdprovo:locationOfPatient "".
+pghdprovo:ContextualInfo a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Contextual Information provides to extra details that help explain the measurement, like the environment, device settings, or the activity the person was doing when the data was taken.";
+                         rdfs:label "contextual information";
+                         rdfs:subClassOf <http://www.w3.org/ns/prov#Entity>.
+pghdprovo:Organisation1 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          <http://www.w3.org/ns/prov#Organization>;
+                        pghdprovo:orgAddress "";
+                        pghdprovo:orgEmail "";
+                        pghdprovo:orgId "";
+                        pghdprovo:orgName "".
+pghdprovo:PGHD a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Patient Generated Health Data (PGHD) a term referring to data that patients (or their caregivers) collect from home or any location outside the clinical environment.";
+               rdfs:label "PGHD";
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> pghdprovo:ContextualInfo ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> pghdprovo:hasContextualInfo ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> pghdprovo:dataSource ; 
+                                <http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#wasAttributedTo> ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> pghdprovo:Patient ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> <https://saref.etsi.org/saref4wear/Wearable> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#wasDerivedFrom> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               <http://www.w3.org/ns/prov#Entity>,
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/ns/prov#Person> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> pghdprovo:wasCollectedBy ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#wasGeneratedBy> ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> pghdprovo:PGHDRequest ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>].
+pghdprovo:PGHDRequest a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "A request made by a practitioner to obtain patient health data generated by wearable device or software application.";
+                      rdfs:label "PGHD Request";
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> pghdprovo:Application ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#used> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> pghdprovo:Practitioner ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> pghdprovo:PGHDRequestedBy ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#wasAssociatedWith> ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> pghdprovo:Patient ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> pghdprovo:wasAuthorizedBy ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> pghdprovo:Patient ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> pghdprovo:requestId ; 
+                                       <http://www.w3.org/2002/07/owl#onDataRange> xsd:integer ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      <http://www.w3.org/ns/prov#Activity>.
+pghdprovo:PGHDRequest1 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                         pghdprovo:PGHDRequest;
+                       <http://www.w3.org/ns/prov#endedAtTime> "1000-10-10T00:00:00"^^xsd:dateTime;
+                       <http://www.w3.org/ns/prov#startedAtTime> "1000-10-10T00:00:00"^^xsd:dateTime;
+                       <http://www.w3.org/ns/prov#used> pghdprovo:application1;
+                       pghdprovo:PGHDRequestedBy pghdprovo:Practitioner1;
+                       pghdprovo:description "";
+                       pghdprovo:requestId "";
+                       pghdprovo:wasAuthorizedBy pghdprovo:Patient1.
+pghdprovo:PGHDRequestedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "A object property that declares the prov:agent responsible for the initializing a request for acquiring of patient Health data.";
+                          rdfs:domain pghdprovo:PGHDRequest;
+                          rdfs:label "PGHD requested by";
+                          rdfs:range pghdprovo:Practitioner;
+                          <http://www.w3.org/2002/07/owl#inverseOf> pghdprovo:requested.
+pghdprovo:Patient a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "A person who receives medical attention, care, or treatment, or who is registered with medical professional or institution with the purpose to receive medical care when necessary.";
+                  rdfs:isDefinedBy "http://purl.obolibrary.org/obo/NCIT_C16960";
+                  rdfs:label "Patient";
+                  rdfs:subClassOf <http://www.w3.org/ns/prov#Person>.
+pghdprovo:Patient1 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     pghdprovo:Patient;
+                   <http://xmlns.com/foaf/0.1/name> "";
+                   pghdprovo:address "";
+                   pghdprovo:id "";
+                   pghdprovo:phoneNumber "".
+pghdprovo:PatientRelative a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "A Patient relative or friend who helps to collect or transmit data.";
+                          rdfs:label "Patient Relative";
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> pghdprovo:Patient ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#actedOnBehalfOf> ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> pghdprovo:relationship ; 
+                                           <http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          pghdprovo:Carer.
+pghdprovo:PatientRelative1 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                             pghdprovo:PatientRelative;
+                           <http://www.w3.org/ns/prov#actedOnBehalfOf> pghdprovo:Patient1;
+                           <http://xmlns.com/foaf/0.1/name> "";
+                           pghdprovo:address "";
+                           pghdprovo:id "";
+                           pghdprovo:phoneNumber "";
+                           pghdprovo:relationship "".
+pghdprovo:Practitioner a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment """A person professionally engaged medical practice who is appointed to a post or duties.
+[Definition Source: NCI]""";
+                       rdfs:isDefinedBy "http://purl.obolibrary.org/obo/NCIT_C51846";
+                       rdfs:label "Practitioner";
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> pghdprovo:role ; 
+                                        <http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       <http://www.w3.org/ns/prov#Person>.
+pghdprovo:Practitioner1 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          pghdprovo:Practitioner;
+                        <http://xmlns.com/foaf/0.1/name> "";
+                        pghdprovo:address "";
+                        pghdprovo:id "";
+                        pghdprovo:isAStaffOf pghdprovo:Organisation1;
+                        pghdprovo:phoneNumber "";
+                        pghdprovo:role "".
+pghdprovo:Programme a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Refers to a health plan or program the person is following, helping to understand the data in relation to their health goals.";
+                    rdfs:label "programme";
+                    rdfs:subClassOf pghdprovo:ContextualInfo.
+pghdprovo:Programme1 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                       pghdprovo:Programme;
+                     pghdprovo:programmeName "".
+pghdprovo:Protocol a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Describes the steps or rules followed when collecting the data, such as instructions for using a device or following a specific health procedure.";
+                   rdfs:label "protocol";
+                   rdfs:subClassOf pghdprovo:ContextualInfo.
+pghdprovo:Protocol1 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      pghdprovo:Protocol;
+                    pghdprovo:bodySite "".
+pghdprovo:Rating a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Includes scores or opinions about the measurement, like how good the data is or a personal rating of a health condition.";
+                 rdfs:label "rating";
+                 rdfs:subClassOf pghdprovo:ContextualInfo.
+pghdprovo:Rating1 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    pghdprovo:Rating;
+                  pghdprovo:ratingOrgName "";
+                  pghdprovo:ratingScore "".
+pghdprovo:State a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Informaion about the person's condition when the data was recorded, such as whether they were resting, active, sleeping, or exercising.";
+                rdfs:label "state";
+                rdfs:subClassOf pghdprovo:ContextualInfo.
+pghdprovo:State1 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   pghdprovo:State;
+                 pghdprovo:exerciseState "";
+                 pghdprovo:posture "".
+pghdprovo:State2 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   pghdprovo:State;
+                 pghdprovo:posture "".
+pghdprovo:address a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "A standardized representation of the location of a person, business, building, or organization.";
+                  rdfs:domain <http://www.w3.org/ns/prov#Person>;
+                  rdfs:isDefinedBy "http://purl.obolibrary.org/obo/NCIT_C25407";
+                  rdfs:label "address";
+                  rdfs:range rdfs:Literal;
+                  rdfs:subPropertyOf <http://www.w3.org/2006/vcard/ns#hasAddress>.
+pghdprovo:appName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "The name of the software application utilised by a patient and practitioner.";
+                  rdfs:domain pghdprovo:Application;
+                  rdfs:label "app name";
+                  rdfs:range rdfs:Literal;
+                  rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/name>.
+pghdprovo:application1 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                         pghdprovo:Application;
+                       <http://www.w3.org/ns/prov#wasAttributedTo> pghdprovo:Practitioner1;
+                       pghdprovo:appName "".
+pghdprovo:associatedWith a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "Defines association between an agent and an activity. Inverse of prov:wasAssociatedWith."@en;
+                         rdfs:domain <http://www.w3.org/ns/prov#Agent>;
+                         rdfs:label "associated with"@en;
+                         rdfs:range <http://www.w3.org/ns/prov#Activity>.
+pghdprovo:authorized a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Indicates that an agent authorized an activity. Inverse of pghdprovo:wasAuthorizedBy."@en;
+                     rdfs:domain pghdprovo:Patient;
+                     rdfs:label "authorized"@en;
+                     rdfs:range pghdprovo:PGHDRequest;
+                     <http://www.w3.org/2002/07/owl#inverseOf> pghdprovo:wasAuthorizedBy.
+pghdprovo:bodySite a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "The part of the body where data is collected or which a device was placed to collect health data.";
+                   rdfs:domain pghdprovo:Protocol;
+                   rdfs:label "Body Site";
+                   rdfs:range rdfs:Literal.
+pghdprovo:calibrationStatus a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:comment "Specifies the calibration state of the device that produced the patient-generated health data. Preferred value includes calibrated, not-calibrated, calibration-due, unknown, and self-check-performed.";
+                            rdfs:domain pghdprovo:Protocol;
+                            rdfs:label "calibration status";
+                            rdfs:range rdfs:Literal.
+pghdprovo:code a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment "A code associated with the resource.";
+               rdfs:domain pghdprovo:PGHD;
+               rdfs:label "code";
+               rdfs:range rdfs:Literal.
+pghdprovo:collected a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Indicates that an agent collected data from an entity. Inverse of pghdprovo:wasCollectedBy."@en;
+                    rdfs:domain <http://www.w3.org/ns/prov#Person>;
+                    rdfs:label "collected"@en;
+                    rdfs:range pghdprovo:PGHD;
+                    <http://www.w3.org/2002/07/owl#inverseOf> pghdprovo:wasCollectedBy.
+pghdprovo:consentDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "The date and time the consent was issued.";
+                      rdfs:domain pghdprovo:Consent;
+                      rdfs:label "Consent Date";
+                      rdfs:range xsd:dateTime.
+pghdprovo:consentOrganisation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:comment "The organization managing or enforcing this consent.";
+                              rdfs:domain pghdprovo:Consent;
+                              rdfs:label "Consent Organization";
+                              rdfs:range <http://www.w3.org/ns/prov#Organization>.
+pghdprovo:consentPatient a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "The patient to whom this consent applies.";
+                         rdfs:domain pghdprovo:Consent;
+                         rdfs:label "Consent Patient";
+                         rdfs:range pghdprovo:Patient.
+pghdprovo:consentPolicy a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "The URI for the specific organizational or jurisdictional policy referenced.";
+                        rdfs:domain pghdprovo:Consent;
+                        rdfs:label "Consent Policy URI";
+                        rdfs:range rdfs:Literal.
+pghdprovo:consentProvisionData a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:comment "The specific observations (data) covered by this consent rule.";
+                               rdfs:domain pghdprovo:Consent;
+                               rdfs:label "Consent Provision Data";
+                               rdfs:range pghdprovo:PGHD.
+pghdprovo:consentRegulatory a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:comment "The URI for the computable regulation or policy rule.";
+                            rdfs:domain pghdprovo:Consent;
+                            rdfs:label "Consent Regulatory Rule URI";
+                            rdfs:range rdfs:Literal.
+pghdprovo:consentServiceProvider a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:comment "The practitioner or provider associated with the consent agreement.";
+                                 rdfs:domain pghdprovo:Consent;
+                                 rdfs:label "Consent Service Provider";
+                                 rdfs:range pghdprovo:Practitioner.
+pghdprovo:consentSourceReference a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                 rdfs:comment "A string reference (URL, ID, or description) pointing to the original source of the consent.";
+                                 rdfs:domain pghdprovo:Consent;
+                                 rdfs:label "Consent Source Reference";
+                                 rdfs:range rdfs:Literal.
+pghdprovo:contributed a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "Indicates that an agent contributed to an entity. Inverse of prov:wasAttributedTo."@en;
+                      rdfs:domain <http://www.w3.org/ns/prov#Agent>;
+                      rdfs:label "contributed"@en;
+                      rdfs:range <http://www.w3.org/ns/prov#Entity>.
+pghdprovo:dataCoveredByConsent a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:comment "Indicates consents that cover this specific PGHD data.";
+                               rdfs:domain pghdprovo:PGHD;
+                               rdfs:label "Data Covered By Consent";
+                               rdfs:range pghdprovo:Consent;
+                               <http://www.w3.org/2002/07/owl#inverseOf> pghdprovo:consentProvisionData.
+pghdprovo:dataName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "The 'dataName' property indicates the type of measurement or observation being recorded, such as heart rate, blood pressure, step count, or sleep duration.";
+                   rdfs:domain pghdprovo:PGHD;
+                   rdfs:label "data name";
+                   rdfs:range rdfs:Literal;
+                   rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/name>.
+pghdprovo:dataSource a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "An entity that produce a digital data.";
+                     rdfs:domain pghdprovo:PGHD;
+                     rdfs:label "data source";
+                     rdfs:range rdfs:Literal.
+pghdprovo:dateCollected a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "The 'dateCollected' property records the date and time when the measurement or observation was taken.";
+                        rdfs:domain pghdprovo:PGHD;
+                        rdfs:label "date collected";
+                        rdfs:range rdfs:Literal.
+pghdprovo:description a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "Provide more information about an activity.";
+                      rdfs:domain pghdprovo:PGHDRequest;
+                      rdfs:label "description";
+                      rdfs:range rdfs:Literal.
+pghdprovo:deviceModel a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "A unique number or name given by a device manufacturer to devices that corresponds to a certain characteristics.";
+                      rdfs:domain <https://saref.etsi.org/core/Device>;
+                      rdfs:label "device model";
+                      rdfs:range rdfs:Literal.
+pghdprovo:deviceName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "A name for a device.";
+                     rdfs:domain <https://saref.etsi.org/core/Device>;
+                     rdfs:label "device name";
+                     rdfs:range rdfs:Literal;
+                     rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/name>.
+pghdprovo:exerciseState a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "exercise state.";
+                        rdfs:domain pghdprovo:State;
+                        rdfs:label "exercise state";
+                        rdfs:range rdfs:Literal.
+pghdprovo:hadDelegate a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "Indicates that an agent had another agent act on their behalf. Inverse of prov:actedOnBehalfOf."@en;
+                      rdfs:domain <http://www.w3.org/ns/prov#Agent>;
+                      rdfs:label "had delegate"@en;
+                      rdfs:range <http://www.w3.org/ns/prov#Agent>.
+pghdprovo:hasContextualInfo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "Has some contextual information associated to the PGHD";
+                            rdfs:domain pghdprovo:PGHD;
+                            rdfs:label "Contain Contextual Info";
+                            rdfs:range pghdprovo:ContextualInfo;
+                            <http://www.w3.org/2002/07/owl#inverseOf> pghdprovo:isContextualInfoOf.
+pghdprovo:hasStaff a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Indicates that an organization has a staff member. Inverse of pghdprovo:isAStaffOf."@en;
+                   rdfs:domain <http://www.w3.org/ns/prov#Organization>;
+                   rdfs:label "has staff"@en;
+                   rdfs:range pghdprovo:Practitioner;
+                   <http://www.w3.org/2002/07/owl#inverseOf> pghdprovo:isAStaffOf.
+pghdprovo:id a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:comment "Identifier";
+             rdfs:domain <http://www.w3.org/ns/prov#Person>;
+             rdfs:label "id";
+             rdfs:range rdfs:Literal;
+             rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/identifier>.
+pghdprovo:isAStaffOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Shows the institution a person works.";
+                     rdfs:domain pghdprovo:Practitioner;
+                     rdfs:label "is a staff of";
+                     rdfs:range <http://www.w3.org/ns/prov#Organization>.
+pghdprovo:isContextualInfoOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:comment "Relates contextual information back to the entity it describes. Inverse of pghdprovo:hasContextualInfo."@en;
+                             rdfs:domain pghdprovo:ContextualInfo;
+                             rdfs:label "is contextual info of"@en;
+                             rdfs:range pghdprovo:PGHD.
+pghdprovo:isSourceOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Indicates that an entity served as the source for a derived entity. Inverse of prov:wasDerivedFrom."@en;
+                     rdfs:domain <http://www.w3.org/ns/prov#Entity>;
+                     rdfs:label "is source of"@en;
+                     rdfs:range <http://www.w3.org/ns/prov#Entity>.
+pghdprovo:locationOfPatient a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:comment "Location of a patient during data collection.";
+                            rdfs:domain pghdprovo:ContextualInfo;
+                            rdfs:label "location of patient";
+                            rdfs:range rdfs:Literal.
+pghdprovo:orgAddress a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "Location of organisation.";
+                     rdfs:domain <http://www.w3.org/ns/prov#Organization>;
+                     rdfs:label "organization address";
+                     rdfs:range rdfs:Literal;
+                     rdfs:subPropertyOf <http://www.w3.org/2006/vcard/ns#hasAddress>.
+pghdprovo:orgEmail a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "Organization email address.";
+                   rdfs:domain <http://www.w3.org/ns/prov#Organization>;
+                   rdfs:label "organization email";
+                   rdfs:range rdfs:Literal;
+                   rdfs:subPropertyOf <http://www.w3.org/2006/vcard/ns#hasEmail>.
+pghdprovo:orgId a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "An identifier for an organization.";
+                rdfs:domain <http://www.w3.org/ns/prov#Organization>;
+                rdfs:label "organization id";
+                rdfs:range rdfs:Literal;
+                rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/identifier>.
+pghdprovo:orgName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "The name of the organization where a practitioner belongs.";
+                  rdfs:domain <http://www.w3.org/ns/prov#Organization>;
+                  rdfs:label "organization name";
+                  rdfs:range rdfs:Literal;
+                  rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/name>.
+pghdprovo:organisationConsented a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:comment "Indicates consents managed or enforced by the organization.";
+                                rdfs:domain <http://www.w3.org/ns/prov#Organization>;
+                                rdfs:label "Organisation Consented";
+                                rdfs:range pghdprovo:Consent;
+                                <http://www.w3.org/2002/07/owl#inverseOf> pghdprovo:consentOrganisation.
+pghdprovo:patientConsented a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment "Indicates consents associated with this patient.";
+                           rdfs:domain pghdprovo:Patient;
+                           rdfs:label "Patient Consented";
+                           rdfs:range pghdprovo:Consent;
+                           <http://www.w3.org/2002/07/owl#inverseOf> pghdprovo:consentPatient.
+pghdprovo:phoneNumber a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "Phone contact number.";
+                      rdfs:domain <http://www.w3.org/ns/prov#Person>;
+                      rdfs:label "phone number";
+                      rdfs:range rdfs:Literal;
+                      rdfs:subPropertyOf <http://www.w3.org/2006/vcard/ns#hasTelephone>.
+pghdprovo:posture a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "The body position of the patient during data collection.";
+                  rdfs:domain pghdprovo:State;
+                  rdfs:label "posture";
+                  rdfs:range rdfs:Literal.
+pghdprovo:programmeName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "The treatment programme associated with the PGHD request.";
+                        rdfs:domain pghdprovo:Programme;
+                        rdfs:label "programme name";
+                        rdfs:range rdfs:Literal.
+pghdprovo:ratingOrgName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "Denotes the name of the organization that conducted the rating.";
+                        rdfs:domain pghdprovo:Rating;
+                        rdfs:label "rating organization name";
+                        rdfs:range rdfs:Literal;
+                        rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+pghdprovo:ratingScore a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "The efficiency rating of an equipement or device by recognized body.";
+                      rdfs:domain pghdprovo:Rating;
+                      rdfs:label "rating score";
+                      rdfs:range rdfs:Literal.
+pghdprovo:relationship a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:comment "shows the relationship of a caregiver, friend, or relative to a patient.";
+                       rdfs:domain pghdprovo:PatientRelative;
+                       rdfs:label "relationship";
+                       rdfs:range rdfs:Literal.
+pghdprovo:requestId a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "Log id for an activity.";
+                    rdfs:domain pghdprovo:PGHDRequest;
+                    rdfs:label "activity id";
+                    rdfs:range rdfs:Literal;
+                    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/identifier>.
+pghdprovo:requested a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Indicates that an agent made a request for PGHD. Inverse of pghdprovo:PGHDRequestedBy."@en;
+                    rdfs:domain pghdprovo:Practitioner;
+                    rdfs:label "requested"@en;
+                    rdfs:range pghdprovo:PGHDRequest.
+pghdprovo:role a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment "position or function within an organization";
+               rdfs:domain pghdprovo:Practitioner;
+               rdfs:label "role";
+               rdfs:range rdfs:Literal;
+               rdfs:subPropertyOf <http://www.w3.org/2006/vcard/ns#hasRole>.
+pghdprovo:serviceProviderConsented a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:comment "Indicates consents associated with this practitioner or provider.";
+                                   rdfs:domain pghdprovo:Practitioner;
+                                   rdfs:label "Service Provider Consented";
+                                   rdfs:range pghdprovo:Consent;
+                                   <http://www.w3.org/2002/07/owl#inverseOf> pghdprovo:consentServiceProvider.
+pghdprovo:unit a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment "The 'unit' property specifies the metric or unit of measurement associated with the observed value.";
+               rdfs:domain pghdprovo:PGHD;
+               rdfs:label "unit";
+               rdfs:range rdfs:Literal.
+pghdprovo:value a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "The 'value' property represents the quantity measured or observed, typically recorded by a health or activity monitoring device.";
+                rdfs:domain pghdprovo:PGHD;
+                rdfs:label "value";
+                rdfs:range rdfs:Literal.
+pghdprovo:wasAuthorizedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "A person who grant access to data requested.";
+                          rdfs:domain pghdprovo:PGHDRequest;
+                          rdfs:label "was authorized by";
+                          rdfs:range pghdprovo:Patient.
+pghdprovo:wasCollectedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "Ascribing a person engaged in the retrieval of health data. This could be the patient themself, a caregiver, a relative, or a friend.";
+                         rdfs:domain pghdprovo:PGHD;
+                         rdfs:label "was collected by";
+                         rdfs:range <http://www.w3.org/ns/prov#Person>.

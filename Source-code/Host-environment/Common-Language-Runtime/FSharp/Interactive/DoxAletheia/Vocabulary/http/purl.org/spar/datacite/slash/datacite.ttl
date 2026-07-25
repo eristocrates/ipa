@@ -1,0 +1,583 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix datacite: <http://purl.org/spar/datacite/>.
+
+_:Be8ac2702ac53c422e175aa299be47633 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (datacite:FunderIdentifier
+                                                                             datacite:PersonalIdentifier
+                                                                             datacite:ResourceIdentifier).
+<http://purl.org/co/List> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/dc/elements/1.1/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/date> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/rights> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/type> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://purl.org/spar/datacite> <http://purl.org/dc/elements/1.1/contributor> "Jan Ashton",
+                                                                              "Egbert Gramsbergen",
+                                                                              "Marie-Christine Jacquemot",
+                                                                              "Amy J. Barton";
+                                <http://purl.org/dc/elements/1.1/creator> "Silvio Peroni",
+                                                                          "David Shotton";
+                                <http://purl.org/dc/elements/1.1/date> "2022-09-15";
+                                <http://purl.org/dc/elements/1.1/description> datacite:datacite.png,
+                                                                              """The DataCite Ontology is an ontology written in OWL 2 DL to enable the metadata properties of the [DataCite Metadata Kernel Specification version 3.1](https://www.datacite.org/sites/default/files/document/DataCite-MetadataSchema_V31_Final_8-24-2015_0.pdf) to be described in RDF.  
+
+This version of the DataCite Ontology has been completely revised and significantly expanded to permit accurate mapping of this new version of the DataCite Metadata Kernel Specification to RDF."""@en;
+                                <http://purl.org/dc/elements/1.1/rights> "This work is distributed under a Creative Commons Attribution License (http://creativecommons.org/licenses/by/4.0/)."@en;
+                                <http://purl.org/dc/elements/1.1/title> "The DataCite Ontology"@en;
+                                a <http://www.w3.org/2002/07/owl#Ontology>;
+                                rdfs:comment """The DataCite Ontology (DataCite) is an ontology that enables the metadata properties of the DataCite Metadata Schema Specification (i.e., a list of metadata properties for the accurate and consistent identification of a resource for citation and retrieval purposes) to be described in RDF.
+
+**URL:** http://purl.org/spar/datacite
+
+**Creators**: [David Shotton](http://orcid.org/0000-0001-5506-523X), [Silvio Peroni](http://orcid.org/0000-0003-0530-4305)
+
+**Contributors:** [Amy J. Barton](https://orcid.org/0000-0002-2184-3723), [Egbert Gramsbergen](https://www.linkedin.com/in/egbertgramsbergen/), [Jan Ashton](https://www.bl.uk/people/experts/janet-ashton), [Marie-Christine Jacquemot](https://orcid.org/0000-0002-6316-1472)
+
+**License:** [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/legalcode)
+
+**Website:** http://www.sparontologies.net/ontologies/datacite"""@en;
+                                <http://www.w3.org/2002/07/owl#imports> <http://purl.org/spar/literal>;
+                                <http://www.w3.org/2002/07/owl#priorVersion> datacite:2021-09-24;
+                                <http://www.w3.org/2002/07/owl#versionIRI> datacite:2022-09-15;
+                                <http://www.w3.org/2002/07/owl#versionInfo> "1.2".
+datacite:AgentIdentifier a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "An identifier that uniquely identities an individual agent, belonging to a particular identifier scheme specified by an individual within the class datacite:AgentIdentifierScheme (or any of its subclasses)."@en;
+                         rdfs:label "agent identifier"@en;
+                         rdfs:subClassOf datacite:Identifier,
+                                         [<http://www.w3.org/2002/07/owl#onProperty> datacite:usesIdentifierScheme ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> datacite:AgentIdentifier ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>];
+                         <http://www.w3.org/2002/07/owl#disjointWith> datacite:ResourceIdentifier.
+datacite:AgentIdentifierScheme a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "The identifier scheme used to identify an agent. Individual schemes are defines as members of its sub-classes."@en;
+                               rdfs:label "agent identifier scheme"@en;
+                               rdfs:subClassOf datacite:IdentifierScheme,
+                                               [<http://www.w3.org/2002/07/owl#someValuesFrom> datacite:AgentIdentifier ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> [<http://www.w3.org/2002/07/owl#inverseOf> datacite:usesIdentifierScheme] ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>].
+datacite:AlternateResourceIdentifier a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "An identifier other than a DOI that is used as an alternative identifier to uniquely identifies the primary resource that is the subject of the DataCite metadata record, belonging to a particular scheme such as ISBN specified by an individual that is a member of the class datacite:ResourceIdentifierScheme. "@en;
+                                     rdfs:label "alternate resource identifier"@en;
+                                     rdfs:subClassOf datacite:ResourceIdentifier;
+                                     <http://www.w3.org/2002/07/owl#disjointWith> datacite:PrimaryResourceIdentifier.
+datacite:DescriptionType a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment """This class permits classification of the type of description given to a resource described by the DataCite Metadata schema.  Individual members of the class conform to the five values allowed in the DataCite controlled list, namely: 
+
+* abstract;
+* methods;
+* series-information;
+* table-of-content;
+* other."""@en;
+                         rdfs:label "description type"@en;
+                         rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+datacite:FunderIdentifier a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "An identifier that uniquely identities a funding agency, belonging to a particular scheme such as FundRef specified by an individual within the class datacite:FunderIdentifierScheme."@en;
+                          rdfs:label "funder identifier"@en;
+                          rdfs:subClassOf datacite:AgentIdentifier,
+                                          [<http://www.w3.org/2002/07/owl#onProperty> datacite:usesIdentifierScheme ; 
+                                           <http://www.w3.org/2002/07/owl#allValuesFrom> datacite:FunderIdentifierScheme ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>].
+datacite:FunderIdentifierScheme a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "The identifier scheme used to identify a funding agency. Individual schemes are defines as members of this class. At present, the only individual of this class is datacite:fundref."@en;
+                                rdfs:label "funder identifier scheme"@en;
+                                rdfs:subClassOf datacite:AgentIdentifierScheme,
+                                                [<http://www.w3.org/2002/07/owl#someValuesFrom> datacite:FunderIdentifier ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> [<http://www.w3.org/2002/07/owl#inverseOf> datacite:usesIdentifierScheme] ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>].
+datacite:Identifier a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "An identifier that uniquely identities an entity – such as a funding agency, a person and a resource – belonging to a particular scheme such as those specified by individuals of the class datacite:IdentifierScheme."@en;
+                    rdfs:label "identifier"@en;
+                    rdfs:subClassOf <http://www.essepuntato.it/2010/06/literalreification/Literal>,
+                                    [<http://www.w3.org/2002/07/owl#onProperty> [<http://www.w3.org/2002/07/owl#inverseOf> datacite:hasIdentifier] ; 
+                                     <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> datacite:usesIdentifierScheme ; 
+                                     <http://www.w3.org/2002/07/owl#onClass> datacite:IdentifierScheme ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+datacite:IdentifierScheme a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "The identifier scheme used to identify an entity such as a funding agency, a person or a resource. Individual schemes are defines as members of this class."@en;
+                          rdfs:label "identifier scheme"@en.
+datacite:MetadataScheme a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment """The class that describe metadata schemes used for creating a metadata document referring to a certain resource. 
+
+Neither a class for metadata documents nor a property linking a resource to its metadata document are not explicitly defined in this ontology. However, we recommend to use the class fabio:MetadataDocument (from http://purl.org/spar/fabio) and cito:citesAsMetadataDocument (from http://purl.org/spar/cito) for providing such descriptions. An example of use of such entities is shown as follows:
+
+    :my-resource
+        cito:citesAsMetadataDocument :my-resource-metadata .
+    :my-resource-metadata a fabio:MetadataDocument ;
+        datacite:usesMetadataScheme datacite:spar .
+
+In addition, if needed, it is possible to use the dataproperty fabio:hasURL (not included in this ontology as well) for defining the actual URL of a certain metadata scheme."""@en;
+                        rdfs:label "metadata scheme"@en;
+                        rdfs:seeAlso <http://purl.org/spar/fabio/MetadataDocument>,
+                                     <http://purl.org/spar/cito/citesAsMetadataDocument>.
+datacite:OrganizationIdentifier a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "An identifier that uniquely identities an individual organization, belonging to a particular identifier scheme such as ISNI specified by an individual within the class datacite:OrganizationIdentifierScheme."@en;
+                                rdfs:label "organization identifier"@en;
+                                rdfs:subClassOf datacite:AgentIdentifier,
+                                                [<http://www.w3.org/2002/07/owl#onProperty> datacite:usesIdentifierScheme ; 
+                                                 <http://www.w3.org/2002/07/owl#allValuesFrom> datacite:OrganizationIdentifier ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>].
+datacite:OrganizationIdentifierScheme a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "The identifier scheme used to identify an organization. Individual schemes are defines as members of this class."@en;
+                                      rdfs:label "organization identifier scheme"@en;
+                                      rdfs:subClassOf datacite:AgentIdentifierScheme,
+                                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> datacite:OrganizationIdentifier ; 
+                                                       <http://www.w3.org/2002/07/owl#onProperty> [<http://www.w3.org/2002/07/owl#inverseOf> datacite:usesIdentifierScheme] ; 
+                                                       a <http://www.w3.org/2002/07/owl#Restriction>].
+datacite:PersonalIdentifier a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "An identifier that uniquely identities an individual person, belonging to a particular identifier scheme such as ORCID specified by an individual within the class datacite:PersonalIdentifierScheme."@en;
+                            rdfs:label "personal identifier"@en;
+                            rdfs:subClassOf datacite:AgentIdentifier,
+                                            [<http://www.w3.org/2002/07/owl#onProperty> datacite:usesIdentifierScheme ; 
+                                             <http://www.w3.org/2002/07/owl#allValuesFrom> datacite:PersonalIdentifierScheme ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>].
+datacite:PersonalIdentifierScheme a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "The identifier scheme used to identify a person.  Individual schemes are defines as members of this class."@en;
+                                  rdfs:label "personal identifier scheme"@en;
+                                  rdfs:subClassOf datacite:AgentIdentifierScheme,
+                                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> datacite:PersonalIdentifier ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> [<http://www.w3.org/2002/07/owl#inverseOf> datacite:usesIdentifierScheme] ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>].
+datacite:PrimaryResourceIdentifier a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "An identifier that is used as the primary identifier to uniquely identifies the primary resource that is the subject of the DataCite metadata record.  Within the DataCite metadata record, a Digital Object Identifier is the only permitted primary resource identifier scheme, specified by the individual datacite:doi, that is a member of the class datacite:ResourceIdentifierScheme."@en;
+                                   rdfs:label "primary resource identifier"@en;
+                                   rdfs:subClassOf datacite:ResourceIdentifier,
+                                                   [<http://www.w3.org/2002/07/owl#onProperty> datacite:usesIdentifierScheme ; 
+                                                    <http://www.w3.org/2002/07/owl#hasValue> datacite:doi ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>].
+datacite:ResourceIdentifier a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "An identifier that is used to uniquely identifies a resource."@en;
+                            rdfs:label "resource identifier"@en;
+                            rdfs:subClassOf datacite:Identifier,
+                                            [<http://www.w3.org/2002/07/owl#onProperty> datacite:usesIdentifierScheme ; 
+                                             <http://www.w3.org/2002/07/owl#allValuesFrom> datacite:ResourceIdentifierScheme ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>].
+datacite:ResourceIdentifierScheme a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "The identifier scheme used to identify a resource.  Individual schemes are defines as members of this class.  For DataCite, the only permitted identifier scheme for the primary resource identifier is the Digital Object Identifier."@en;
+                                  rdfs:label "resource identifier scheme"@en;
+                                  rdfs:subClassOf datacite:IdentifierScheme,
+                                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> datacite:ResourceIdentifier ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> [<http://www.w3.org/2002/07/owl#inverseOf> datacite:usesIdentifierScheme] ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>].
+datacite:abstract a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    datacite:DescriptionType;
+                  rdfs:comment "A brief summary of a textual work, appearing at the beginning of the work and designed to act as the point-of-entry that will help the reader quickly to obtain an overview of the work's contents."@en;
+                  rdfs:label "abstract"@en;
+                  rdfs:seeAlso <http://purl.org/spar/fabio/Abstract>.
+datacite:acm <http://purl.org/spar/fabio/hasURL> "https://dl.acm.org/"^^xsd:anyURI;
+             a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               datacite:PersonalIdentifierScheme;
+             rdfs:comment "ACM Digital Library author ID, which is resolvable using the following URL: https://dl.acm.org/profile/<identifier>."@en;
+             rdfs:label "acm"@en.
+datacite:ark <http://purl.org/spar/fabio/hasURL> "https://confluence.ucop.edu/display/Curation/ARK"^^xsd:anyURI;
+             a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               datacite:ResourceIdentifierScheme;
+             rdfs:comment "Archival Resource Key."@en;
+             rdfs:label "ark"@en.
+datacite:arxiv <http://purl.org/spar/fabio/hasURL> "http://arxiv.org/"^^xsd:anyURI;
+               a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 datacite:ResourceIdentifierScheme;
+               rdfs:comment "Identifier for ArXiv (http://arxiv.org/), a open access repository of preprints, having the format arXiv:1207.2147."@en;
+               rdfs:label "arxiv"@en.
+datacite:bibcode a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   datacite:ResourceIdentifierScheme;
+                 rdfs:comment """It is the Astrophysics Data System bibliographic codes, a standardized 19 character identifier according to the syntax \"yyyyjjjjjvvvvmppppa\"."""@en;
+                 rdfs:label "bibcode"@en.
+datacite:crossref <http://purl.org/spar/fabio/hasURL> "https://crossref.org/"^^xsd:anyURI;
+                  a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    datacite:OrganizationIdentifierScheme;
+                  rdfs:comment "Crossref member identifier, which is resolvable from the following URL: https://api.crossref.org/members/<identifier>."@en;
+                  rdfs:label "crossref"@en.
+datacite:dblp <http://purl.org/spar/fabio/hasURL> "https://dblp.org"^^xsd:anyURI;
+              a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                datacite:PersonalIdentifierScheme;
+              rdfs:comment "DBLP author identifier, which is resolvable from the following URL: https://dblp.org/pid/<identifier>."@en;
+              rdfs:label "dblp"@en.
+datacite:dblp-record <http://purl.org/spar/fabio/hasURL> "https://dblp.org/"^^xsd:anyURI;
+                     a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                       datacite:ResourceIdentifierScheme;
+                     rdfs:comment "DBLP publication identifier, which is resolvable from the following URL: https://dblp.org/rec/<identifier>."@en;
+                     rdfs:label "dblp record"@en.
+datacite:dia <http://purl.org/spar/fabio/hasURL> "http://www.surf.nl/en/themas/openonderzoek/infrastructuur/Pages/digitalauthoridentifierdai.aspx"^^xsd:anyURI;
+             a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               datacite:PersonalIdentifierScheme;
+             rdfs:comment "The Digital Author Identification system assigns a unique number to all authors in the Netherlands research system."@en;
+             rdfs:label "dia"@en.
+datacite:dnb <http://purl.org/spar/fabio/hasURL> "https://d-nb.info/"^^xsd:anyURI;
+             a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               datacite:ResourceIdentifierScheme;
+             rdfs:comment "DNB catalogue number, which is resolvable from the following URL: https://d-nb.info/<identifier>."@en;
+             rdfs:label "dnb"@en.
+datacite:doi <http://purl.org/spar/fabio/hasURL> "http://www.doi.org/"^^xsd:anyURI;
+             a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               datacite:ResourceIdentifierScheme;
+             rdfs:comment "Digital Object Identier"@en;
+             rdfs:label "doi"@en.
+datacite:ean13 <http://purl.org/spar/fabio/hasURL> "http://www.gs1.org/"^^xsd:anyURI;
+               a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 datacite:ResourceIdentifierScheme;
+               rdfs:comment "International Article Number"@en;
+               rdfs:label "ean13"@en;
+               rdfs:seeAlso <http://en.wikipedia.org/wiki/EAN13>.
+datacite:eissn <http://purl.org/spar/fabio/hasURL> "http://www.issn.org/"^^xsd:anyURI;
+               a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 datacite:ResourceIdentifierScheme;
+               rdfs:comment "Electronic International Standard Serial Number"@en;
+               rdfs:label "eissn"@en.
+datacite:fundref <http://purl.org/spar/fabio/hasURL> "http://www.crossref.org/fundref/index.html"^^xsd:anyURI;
+                 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   datacite:FunderIdentifierScheme;
+                 rdfs:comment "FundRef is a collaborative pilot project of scholarly publishers and funding agencies, facilitated by CrossRef, to provide a standard way of identifying and reporting funding sources for published scholarly research. "@en;
+                 rdfs:label "fundref"@en.
+datacite:gepris <http://purl.org/spar/fabio/hasURL> "http://gepris.dfg.de"^^xsd:anyURI;
+                a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  datacite:PersonalIdentifierScheme;
+                rdfs:comment "GEPRIS person identifier, which is resolvable from the following URL: http://gepris.dfg.de/gepris/person/<identifier>."@en;
+                rdfs:label "gepris"@en.
+datacite:github <http://purl.org/spar/fabio/hasURL> "https://github.com/"^^xsd:anyURI;
+                a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  datacite:AgentIdentifierScheme;
+                rdfs:comment "GitHub username, which is resolvable from the following URL: https://github.com/<identifier>."@en;
+                rdfs:label "github"@en.
+datacite:gitlab <http://purl.org/spar/fabio/hasURL> "https://docs.gitlab.com/ee/user/profile/"^^xsd:anyURI;
+                a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  datacite:PersonalIdentifierScheme;
+                rdfs:comment "The identifier for GitLab Users."@en;
+                rdfs:label "GitLab user account"@en.
+datacite:gnd <http://purl.org/spar/fabio/hasURL> "https://gnd.network/"^^xsd:anyURI;
+             a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               datacite:IdentifierScheme;
+             rdfs:comment "Gemeinsame Normdatei identifier, which is resolvable from the following URL: https://d-nb.info/gnd/<identifier>."@en;
+             rdfs:label "gnd"@en.
+datacite:google-scholar <http://purl.org/spar/fabio/hasURL> "https://scholar.google.com/"^^xsd:anyURI;
+                        a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          datacite:PersonalIdentifierScheme;
+                        rdfs:comment """Google Scholar author identifier, which resolvable from the following URL:	https://scholar.google.com/citations?user=<identifier>."""@en;
+                        rdfs:label "google scholar"@en.
+datacite:handle <http://purl.org/spar/fabio/hasURL> "http://www.handle.net/"^^xsd:anyURI;
+                a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  datacite:ResourceIdentifierScheme;
+                rdfs:comment "The Handle system"@en;
+                rdfs:label "handle"@en.
+datacite:hasCreatorList a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "This property allows one to specify the list of the creators of a certain resource."@en;
+                        rdfs:domain [<http://www.w3.org/2002/07/owl#someValuesFrom> datacite:ResourceIdentifier ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> datacite:hasIdentifier ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>];
+                        rdfs:label "has creator list"@en;
+                        rdfs:range <http://purl.org/co/List>.
+datacite:hasDescription a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "An object property permitting specification of an entity used to describe a resource."@en;
+                        rdfs:domain [<http://www.w3.org/2002/07/owl#someValuesFrom> datacite:ResourceIdentifier ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> datacite:hasIdentifier ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>];
+                        rdfs:label "has description"@en;
+                        rdfs:range [<http://www.w3.org/2002/07/owl#onProperty> datacite:hasDescriptionType ; 
+                                    <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>].
+datacite:hasDescriptionType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "An object property permitting specification of the type of description used to describe a resource, defined as an individual of the class datacite:DescriptionType from the DataCite controlled list of Abstract, SeriesInformation, TableOfContent and Other."@en;
+                            rdfs:domain [<http://www.w3.org/2002/07/owl#onProperty> [<http://www.w3.org/2002/07/owl#inverseOf> datacite:hasDescription] ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#someValuesFrom> datacite:ResourceIdentifier ; 
+                                                                                        <http://www.w3.org/2002/07/owl#onProperty> datacite:hasIdentifier ; 
+                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>];
+                            rdfs:label "has description type"@en;
+                            rdfs:range datacite:DescriptionType;
+                            rdfs:subPropertyOf <http://purl.org/dc/terms/type>.
+datacite:hasGeneralResourceType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:comment """An object property permitting specification of the general type of a resource, defined from the DataCite controlled list, namely: 
+
+* dcmitype:MovingImage;
+* dcmitype:Collection;
+* dcmitype:Dataset;
+* dcmitype:Event;
+* dcmitype:dcmitype:StillImage;
+* dcmitype:InteractiveResource;
+* fabio:Model;
+* dcmitype:PhysicalObject;
+* dcmitype:Service;
+* dcmitype:Software;
+* dcmitype:Sound;
+* dcmitype:Text;
+* fabio:Workflow;
+* frbr:Endeavour.
+
+All the prefixes used here refer to external ontologies, i.e., DC Metadata Terms (dcmitype: http://purl.org/dc/dcmitype/), FaBiO (fabio: http://purl.org/spar/fabio/), and FRBR (frbr: http://purl.org/vocab/frbr/core#)."""@en;
+                                rdfs:domain [<http://www.w3.org/2002/07/owl#someValuesFrom> datacite:ResourceIdentifier ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> datacite:hasIdentifier ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>];
+                                rdfs:label "has general resource type"@en;
+                                rdfs:range <http://www.w3.org/2004/02/skos/core#Concept>;
+                                rdfs:subPropertyOf <http://purl.org/dc/terms/type>.
+datacite:hasIdentifier a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                         <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>;
+                       rdfs:comment "An object property specifying a datacite:Identifier that provides a unique identifer for the entity (either a funder, a person or a resource)."@en;
+                       rdfs:label "has identifier"@en;
+                       rdfs:range datacite:Identifier.
+datacite:ieee <http://purl.org/spar/fabio/hasURL> "https://ieeexplore.ieee.org/"^^xsd:anyURI;
+              a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                datacite:PersonalIdentifierScheme;
+              rdfs:comment "IEEE Xplore author ID, which is resolvable from the following URL: https://ieeexplore.ieee.org/author/<identifier>."@en;
+              rdfs:label "ieee"@en.
+datacite:infouri <http://purl.org/spar/fabio/hasURL> "http://info-uri.info/registry/docs/misc/faq.html"^^xsd:anyURI;
+                 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   datacite:ResourceIdentifierScheme;
+                 rdfs:comment "Info URI scheme"@en;
+                 rdfs:label "infouri"@en.
+datacite:isbn <http://purl.org/spar/fabio/hasURL> "http://www.isbn-international.org/"^^xsd:anyURI;
+              a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                datacite:ResourceIdentifierScheme;
+              rdfs:comment "International Standard Book Number"@en;
+              rdfs:label "isbn"@en.
+datacite:isni <http://purl.org/spar/fabio/hasURL> "http://www.isni.org/"^^xsd:anyURI;
+              a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                datacite:PersonalIdentifierScheme,
+                datacite:OrganizationIdentifierScheme;
+              rdfs:comment "International Standard Name Identifier scheme."@en;
+              rdfs:label "isni"@en.
+datacite:issn <http://purl.org/spar/fabio/hasURL> "http://www.issn.org/"^^xsd:anyURI;
+              a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                datacite:ResourceIdentifierScheme;
+              rdfs:comment "International Standard Serial Number"@en;
+              rdfs:label "issn"@en.
+datacite:istc <http://purl.org/spar/fabio/hasURL> "http://www.istc-international.org/html/"^^xsd:anyURI;
+              a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                datacite:ResourceIdentifierScheme;
+              rdfs:comment "International Standard Text Code"@en;
+              rdfs:label "istc"@en.
+datacite:jst a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               datacite:PersonalIdentifierScheme;
+             rdfs:comment "Japanese Science and Technology Agency identifier scheme"@en;
+             rdfs:label "jst"@en.
+datacite:lattes <http://purl.org/spar/fabio/hasURL> "https://lattes.cnpq.br/"^^xsd:anyURI;
+                a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  datacite:AgentIdentifierScheme;
+                rdfs:comment "Lattes Platform number, which is resolvable from the following URL: http://lattes.cnpq.br/<identifier>."@en;
+                rdfs:label "lattes"@en.
+datacite:linkedin <http://purl.org/spar/fabio/hasURL> "https://www.linkedin.com/"^^xsd:anyURI;
+                  a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    datacite:AgentIdentifierScheme;
+                  rdfs:comment "LinkedIn personal profile identifier, which is resolvable from the following URL: https://www.linkedin.com/in/<identifier>."@en;
+                  rdfs:label "linkedin"@en.
+datacite:lissn <http://purl.org/spar/fabio/hasURL> "http://www.issn.org/"^^xsd:anyURI;
+               a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 datacite:ResourceIdentifierScheme;
+               rdfs:comment "Linking International Standard Serial Number"@en;
+               rdfs:label "lissn"@en.
+datacite:loc <http://purl.org/spar/fabio/hasURL> "https://id.loc.gov/"^^xsd:anyURI;
+             a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               datacite:IdentifierScheme;
+             rdfs:comment "Library of Congress authority identifier, which is resolvable from the following URL: https://id.loc.gov/authorities/<identifier>."@en;
+             rdfs:label "loc"@en.
+datacite:local-funder-identifier-scheme a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                          datacite:FunderIdentifierScheme;
+                                        rdfs:comment "A funder identifier scheme that provides local funder identifiers that are unique in their local environment and understood by the person submitting the metadata."@en;
+                                        rdfs:label "local funder identifier scheme"@en.
+datacite:local-organization-identifier-scheme a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                datacite:OrganizationIdentifierScheme;
+                                              rdfs:comment "An organization identifier scheme that provides local organization identifiers that are unique in their local environment and understood by the person submitting the metadata."@en;
+                                              rdfs:label "local organization identifier scheme"@en.
+datacite:local-personal-identifier-scheme a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                            datacite:PersonalIdentifierScheme;
+                                          rdfs:comment "A personal identifier scheme that provides local personal identifiers that are unique in their local environment and understood by the person submitting the metadata."@en;
+                                          rdfs:label "local personal identifier scheme"@en.
+datacite:local-resource-identifier-scheme a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                            datacite:ResourceIdentifierScheme;
+                                          rdfs:comment "A resource identifier scheme that provides local resource identifiers that are unique in their local environment and understood by the person submitting the metadata."@en;
+                                          rdfs:label "local resource identifier scheme"@en.
+datacite:lsid <http://purl.org/spar/fabio/hasURL> "http://www.ibm.com/developerworks/opensource/library/os-lsidbp/"^^xsd:anyURI;
+              a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                datacite:ResourceIdentifierScheme;
+              rdfs:comment "Life Science Identifier"@en;
+              rdfs:label "lsid"@en.
+datacite:math-genealogy <http://purl.org/spar/fabio/hasURL> "https://mathgenealogy.org/"^^xsd:anyURI;
+                        a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          datacite:PersonalIdentifierScheme;
+                        rdfs:comment "Mathematics Genealogy Project identifier, which is resolvable from the following URL: https://mathgenealogy.org/id.php?id=<identifier>."@en;
+                        rdfs:label "math genealogy"@en.
+datacite:methods a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   datacite:DescriptionType;
+                 rdfs:comment "A description in a research paper documenting the specialized methods used in the work described."@en;
+                 rdfs:label "methods"@en,
+                            <http://purl.org/spar/deo/Methods>.
+datacite:national-insurance-number a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                     datacite:PersonalIdentifierScheme;
+                                   rdfs:comment "United Kingdom National Insurance Number scheme."@en;
+                                   rdfs:label "national insurance number"@en.
+datacite:nihmsid <http://purl.org/spar/fabio/hasURL> "http://nexus.od.nih.gov/all/2009/09/01/nih-public-access-update-clarifying-use-of-the-nih-manuscript-submission-id-nihmsid/"^^xsd:anyURI;
+                 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   datacite:ResourceIdentifierScheme;
+                 rdfs:comment "NIH Manuscript Submission Identifier"@en;
+                 rdfs:label "nihmsid"@en.
+datacite:nii a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               datacite:PersonalIdentifierScheme;
+             rdfs:comment "National Individual Identifier scheme."@en;
+             rdfs:label "nii"@en.
+datacite:oci <http://purl.org/dc/elements/1.1/description> "The Open Citation Identifier (OCI) is a persistent identifier for bibliographic citations, created and maintained by OpenCitations (http://opencitations.net)."@en;
+             <http://purl.org/spar/fabio/hasURL> "https://w3id.org/oc/oci"^^xsd:anyURI;
+             a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               datacite:ResourceIdentifierScheme;
+             rdfs:comment "Open Citation Identifier."@en;
+             rdfs:label "oci"@en.
+datacite:oclc <http://purl.org/spar/fabio/hasURL> "https://www.worldcat.org/"^^xsd:anyURI;
+              a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                datacite:ResourceIdentifierScheme;
+              rdfs:comment "OCLC control number, which is resolvable from the following URL: https://www.worldcat.org/oclc/<identifier>."@en;
+              rdfs:label "oclc"@en.
+datacite:openalex <http://purl.org/spar/fabio/hasURL> "https://docs.openalex.org/about-the-data"^^xsd:anyURI;
+                  a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    datacite:IdentifierScheme;
+                  rdfs:comment """The primary key for all entities included in OpenAlex. 
+
+The OpenAlex ID has two parts. The first part is the base, that is always https://openalex.org/. The second part is the key, i.e. the unique primary key that identifies a given resource in our database. The key starts with a letter that tells us the kind of entity: W(ork), A(uthor), V(enue), I(nstitution), or C(oncept). In addition, the IDs are not case-sensitive, so w2741809807 is just as valid as W2741809807."""@en;
+                  rdfs:label "OpenAlex ID"@en.
+datacite:openid <http://purl.org/spar/fabio/hasURL> "http://openid.net/foundation/"^^xsd:anyURI;
+                a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  datacite:PersonalIdentifierScheme;
+                rdfs:comment "OpenID is an open standard that describes how users can be authenticated in a decentralized manner, eliminating the need for centralized registration services. "@en;
+                rdfs:label "openid"@en.
+datacite:orcid <http://purl.org/spar/fabio/hasURL> "http://orcid.org/"^^xsd:anyURI;
+               a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 datacite:AgentIdentifierScheme;
+               rdfs:comment "Open Researcher and Contributor Identifier."@en;
+               rdfs:label "orcid"@en.
+datacite:other a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 datacite:DescriptionType;
+               rdfs:comment "A catch-all description type required by the DataCite Metadata Schema to characterize description types that are not abstracts, series information or tables of content."@en;
+               rdfs:label "other"@en.
+datacite:pii a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               datacite:ResourceIdentifierScheme;
+             rdfs:comment "Pulisher Item Identifier scheme."@en;
+             rdfs:label "pii"@en;
+             rdfs:seeAlso <http://en.wikipedia.org/wiki/Publisher_Item_Identifier>.
+datacite:pmcid <http://purl.org/spar/fabio/hasURL> "http://www.ncbi.nlm.nih.gov/pmc/"^^xsd:anyURI;
+               a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 datacite:ResourceIdentifierScheme;
+               rdfs:comment "PubMed Central Identifier"@en;
+               rdfs:label "pmcid"@en.
+datacite:pmid <http://purl.org/spar/fabio/hasURL> "http://www.ncbi.nlm.nih.gov/pubmed/"^^xsd:anyURI;
+              a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                datacite:ResourceIdentifierScheme;
+              rdfs:comment "PubMed Identifier"@en;
+              rdfs:label "pmid"@en.
+datacite:purl <http://purl.org/spar/fabio/hasURL> "http://purl.org/"^^xsd:anyURI;
+              a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                datacite:ResourceIdentifierScheme;
+              rdfs:comment "Persistent Uniform Resource Locator"@en;
+              rdfs:label "purl"@en.
+datacite:repec <http://purl.org/spar/fabio/hasURL> "https://authors.repec.org/"^^xsd:anyURI;
+               a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 datacite:PersonalIdentifierScheme;
+               rdfs:comment "RePEc Short identifier, which is resolvable from the following URL: https://authors.repec.org/pro/<identifier>."@en;
+               rdfs:label "repec"@en.
+datacite:research-gate <http://purl.org/spar/fabio/hasURL> "https://www.researchgate.net"^^xsd:anyURI;
+                       a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                         datacite:PersonalIdentifierScheme;
+                       rdfs:comment "ResearchGate profile identifier, which is resolvable from the following URL: https://www.researchgate.net/profile/<identifier>."@en;
+                       rdfs:label "research gate"@en.
+datacite:researcherid <http://purl.org/spar/fabio/hasURL> "http://www.researcherid.com/"^^xsd:anyURI;
+                      a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        datacite:PersonalIdentifierScheme;
+                      rdfs:comment "ResearcherID is an identifying system for scientific authors created and owned by Thomson Reuters."@en;
+                      rdfs:label "researcherid"@en.
+datacite:ror <http://purl.org/spar/fabio/hasURL> "https://ror.org/"^^xsd:anyURI;
+             a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               datacite:OrganizationIdentifierScheme;
+             rdfs:comment "The Research Organization Registry Community identifier, which is resolvable from the following URL: https://ror.org/<identifier>."@en;
+             rdfs:label "ror"@en.
+datacite:scigraph <http://purl.org/spar/fabio/hasURL> "https://scigraph.springernature.com/explorer/datasets/data_at_a_glance/"^^xsd:anyURI;
+                  a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    datacite:IdentifierScheme;
+                  rdfs:comment "The identifier used for referring to entities in the Springer Nature SciGraph dataset."@en;
+                  rdfs:label "SciGraph ID"@en.
+datacite:series-information a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                              datacite:DescriptionType;
+                            rdfs:comment "Used to charactierize a description of a resource that is part of a series."@en;
+                            rdfs:label "series information"@en;
+                            rdfs:seeAlso <http://purl.org/spar/fabio/Periodical>,
+                                         <http://purl.org/spar/fabio/BookSeries>.
+datacite:sici <http://purl.org/spar/fabio/hasURL> "http://en.wikipedia.org/wiki/Serial_Item_and_Contribution_Identifier"^^xsd:anyURI;
+              a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                datacite:ResourceIdentifierScheme;
+              rdfs:comment "Serial Item and Contribution Identifier"@en;
+              rdfs:label "sici"@en.
+datacite:social-security-number a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                  datacite:PersonalIdentifierScheme;
+                                rdfs:comment "United States of America social security number scheme"@en;
+                                rdfs:label "social security number"@en.
+datacite:spar <http://purl.org/spar/fabio/hasURL> "http://www.sparontologies.net"^^xsd:anyURI;
+              a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                datacite:MetadataScheme;
+              rdfs:comment "The Semantic Publishing and Referencing Ontologies, a.k.a. SPAR Ontologies, form a suite of orthogonal and complementary OWL 2 DL ontology modules for the creation of comprehensive machine-readable RDF metadata for every aspect of semantic publishing and referencing: document description, bibliographic resource identifiers, types of citations and related contexts, bibliographic references, document parts and status, agents' roles and contributions, bibliometric data and workflow processes."@en;
+              rdfs:label "SPAR Ontologies"@en.
+datacite:table-of-content a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                            datacite:DescriptionType;
+                          rdfs:comment "A table of content giving information about the content of a resource, appearing before the body text.  Where the resource is a journal or magazine issue, the table of content lists the constituent items contained in that issue, typically by title, authors and first page number."@en;
+                          rdfs:label "table of content"@en;
+                          rdfs:seeAlso <http://purl.org/spar/doco/TableOfContents>.
+datacite:twitter <http://purl.org/spar/fabio/hasURL> "https://twitter.com/"^^xsd:anyURI;
+                 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   datacite:AgentIdentifierScheme;
+                 rdfs:comment "Twitter handle, which is resolvable from the following URL: https://twitter.com/<identifier>."@en.
+datacite:upc a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               datacite:ResourceIdentifierScheme;
+             rdfs:comment "Universal Product Code"@en;
+             rdfs:label "upc"@en.
+datacite:uri <http://purl.org/spar/fabio/hasURL> "http://tools.ietf.org/html/rfc3986"^^xsd:anyURI;
+             a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               datacite:ResourceIdentifierScheme;
+             rdfs:comment "Uniform Resource Identifier";
+             rdfs:label "uri"@en.
+datacite:url a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               datacite:ResourceIdentifierScheme;
+             rdfs:comment "Uniform Resource Locator."@en;
+             rdfs:label "url"@en.
+datacite:urn <http://purl.org/spar/fabio/hasURL> "http://datatracker.ietf.org/wg/urn/charter/"^^xsd:anyURI;
+             a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               datacite:ResourceIdentifierScheme;
+             rdfs:comment "Uniform Resource Name."@en;
+             rdfs:label "urn"@en.
+datacite:usesIdentifierScheme a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:comment "An object property permitting specification of the identifier scheme used to provide the identifier for an entity – either a funder, a person or a resource – defined as an individual of the class datacite:IdentifierScheme."@en;
+                              rdfs:domain datacite:Identifier;
+                              rdfs:label "uses identifier scheme"@en;
+                              rdfs:range datacite:IdentifierScheme.
+datacite:usesMetadataScheme a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "The link between a metadata document and the scheme followed for creating metadata."@en;
+                            rdfs:label "uses metadata scheme"@en;
+                            rdfs:range datacite:MetadataScheme.
+datacite:viaf <http://purl.org/spar/fabio/hasURL> "http://viaf.org/"^^xsd:anyURI;
+              a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                datacite:PersonalIdentifierScheme;
+              rdfs:comment "The Virtual International Authority File is an international authority file created by amalagamating the national authority files of several national libraries and operated by the Online Computer Library Center (OCLC).  It contains information about many topics including personal names."@en;
+              rdfs:label "viaf"@en.
+datacite:wikidata <http://purl.org/spar/fabio/hasURL> "https://www.wikidata.org/"^^xsd:anyURI;
+                  a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    datacite:IdentifierScheme;
+                  rdfs:comment "Wikidata QID, which is resolvable from the following URL: https://www.wikidata.org/wiki/<identifier>."@en;
+                  rdfs:label "wikidata".
+datacite:wikipedia <http://purl.org/spar/fabio/hasURL> "https://en.wikipedia.org/"^^xsd:anyURI;
+                   a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     datacite:ResourceIdentifierScheme;
+                   rdfs:comment "Wikipedia page name, which is resolvable from the following URL: https://en.wikipedia.org/wiki/<identifier>."@en;
+                   rdfs:label "wikipedia"@en.
+datacite:zbmath <http://purl.org/spar/fabio/hasURL> "https://zbmath.org/"^^xsd:anyURI;
+                a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  datacite:PersonalIdentifierScheme;
+                rdfs:comment "zbMATH author identifier, which is resolvable from the following URL: https://zbmath.org/authors/?q=ai:<identifier>."@en;
+                rdfs:label "zbmath"@en.
+<http://purl.org/spar/fabio/hasURL> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.essepuntato.it/2010/06/literalreification/Literal> a <http://www.w3.org/2002/07/owl#Class>.
+rdfs:comment a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:label a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#priorVersion> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#topObjectProperty> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.w3.org/2002/07/owl#versionInfo> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#Concept> a <http://www.w3.org/2002/07/owl#Class>.

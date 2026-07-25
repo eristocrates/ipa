@@ -1,0 +1,102 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix iadopt: <https://w3id.org/iadopt/ont/>.
+
+<http://omv.ontoware.org/2005/05/ontology#conformsToKnowledgeRepresentationParadigm> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://omv.ontoware.org/2005/05/ontology#designedForOntologyTask> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://omv.ontoware.org/2005/05/ontology#hasFormalityLevel> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://omv.ontoware.org/2005/05/ontology#hasOntologyLanguage> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://omv.ontoware.org/2005/05/ontology#usedOntologyEngineeringMethodology> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://omv.ontoware.org/2005/05/ontology#usedOntologyEngineeringTool> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/abstract> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/language> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/dcat#keyword> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/primaryTopic> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://w3id.org/iadopt/ont> <http://omv.ontoware.org/2005/05/ontology#conformsToKnowledgeRepresentationParadigm> <https://www.isibang.ac.in/ns/mod/index.html#DescriptionLogics>;
+                              <http://omv.ontoware.org/2005/05/ontology#designedForOntologyTask> "semantically precise description and mapping of variables";
+                              <http://omv.ontoware.org/2005/05/ontology#hasFormalityLevel> <https://www.isibang.ac.in/ns/mod/index.html#Schema>;
+                              <http://omv.ontoware.org/2005/05/ontology#hasOntologyLanguage> <https://www.isibang.ac.in/ns/mod/index.html#OWL-DL>;
+                              <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <https://www.isibang.ac.in/ns/mod/index.html#OWL/XML>;
+                              <http://omv.ontoware.org/2005/05/ontology#usedOntologyEngineeringMethodology> <https://www.isibang.ac.in/ns/mod/index.html#MethOntology>;
+                              <http://omv.ontoware.org/2005/05/ontology#usedOntologyEngineeringTool> "https://www.isibang.ac.in/ns/mod/index.html#Protege";
+                              <http://purl.org/dc/terms/abstract> "The I-ADOPT Framework ontology provides machine-readable variable descriptions in which the components are mapped to FAIR vocabulary terms.";
+                              <http://purl.org/dc/terms/contributor> "Robert Huber, University Bremen, Germany",
+                                                                     "Simon J D Cox , CSIRO Land and Water, Australia; ORCID: 0000-0002-3884-3420",
+                                                                     "John Graybeal, Stanford University, School of Medicine, USA, ORCID: 0000-0001-6875-5360";
+                              <http://purl.org/dc/terms/created> "October 15, 2021";
+                              <http://purl.org/dc/terms/creator> "Sirko Schindler, Institute of Data Science, German Aerospace Center (DLR), ORCID: 0000-0002-0964-4457",
+                                                                 "Maria Stoica, University of Colorado, Boulder , ORCID: 0000-0002-6612-3439",
+                                                                 "Anusuriya Devaraju, Terrestrial Ecosystem Research Network (TERN), University of Queensland, Australia, ORCID: 0000-0003-0870-3192",
+                                                                 "Gwenaelle Moncoiffe, National Oceanography Centre, British Oceanographic Data Centre, UK, ORCID: 0000-0001-6559-4178",
+                                                                 "Alison Pamment, National Centre for Atmospheric Science / Centre for Environmental Data Analysis, STFC Rutherford Appleton Laboratory, UK, ORCID: 0000-0001-5040-4626",
+                                                                 "Barbara Magagna, Environment Agency Austria, ORCID: 0000-0003-2195-3997";
+                              <http://purl.org/dc/terms/language> <http://lexvo.org/id/iso639-3/eng>;
+                              <http://purl.org/dc/terms/license> "CC BY 4.0";
+                              <http://purl.org/dc/terms/title> "I-ADOPT Framework ontology";
+                              a <http://www.w3.org/2002/07/owl#Ontology>;
+                              rdfs:label "I-ADOPT Framework ontology";
+                              <http://www.w3.org/2002/07/owl#versionIRI> iadopt:0.9.1;
+                              <http://www.w3.org/2002/07/owl#versionInfo> "0.9.1";
+                              <http://www.w3.org/ns/dcat#keyword> "observable property",
+                                                                  "variable";
+                              <http://xmlns.com/foaf/0.1/primaryTopic> "Variable",
+                                                                       "Entity",
+                                                                       "Property".
+iadopt:Constraint a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "A Constraint limits the scope of the observation and confines the context to a particular state. It describes properties of the involved entities that are relevant to the particular observation.";
+                  rdfs:label "Constraint".
+iadopt:Entity a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "An object or process that has a role in an observation. An Entity may play one of the following roles: ObjectOfInterest, ContextObject, Matrix. Whether the involvement of a particular entity is meaningful enough to include in the variable description depends on the specific context.";
+              rdfs:label "Entity".
+iadopt:Property a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A type of a characteristic of the ObjectOfInterest.";
+                rdfs:label "Property".
+iadopt:Variable a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A description of something observed or derived, minimally consisting of  an ObjectOfInterest and its Property.";
+                rdfs:label "Variable";
+                <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                 <http://www.w3.org/2002/07/owl#onProperty> iadopt:hasObjectOfInterest ; 
+                                                                 <http://www.w3.org/2002/07/owl#onClass> iadopt:Entity ; 
+                                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                 <http://www.w3.org/2002/07/owl#onProperty> iadopt:hasProperty ; 
+                                                                 <http://www.w3.org/2002/07/owl#onClass> iadopt:Property ; 
+                                                                 a <http://www.w3.org/2002/07/owl#Restriction>].
+iadopt:constrains a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "A Constraint constrains an Entity having a role in the Variable description.";
+                  rdfs:domain iadopt:Constraint;
+                  rdfs:label "constrains";
+                  rdfs:range iadopt:Entity.
+iadopt:hasConstraint a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "A Variable has a Constraint, that confines an Entity involved in the observation.";
+                     rdfs:domain iadopt:Variable;
+                     rdfs:label "hasConstraint";
+                     rdfs:range iadopt:Constraint.
+iadopt:hasContextObject a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "A Variable has an Entity that provides additional background information regarding the ObjectOfInterest.";
+                        rdfs:domain iadopt:Variable;
+                        rdfs:label "hasContextObject";
+                        rdfs:range iadopt:Entity.
+iadopt:hasMatrix a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "A Variable might have an Entity in which the ObjectOfInterest is contained.";
+                 rdfs:domain iadopt:Variable;
+                 rdfs:label "hasMatrix";
+                 rdfs:range iadopt:Entity;
+                 rdfs:subPropertyOf iadopt:hasContextObject.
+iadopt:hasObjectOfInterest a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment "A Variable has an Entity whose Property is observed.";
+                           rdfs:domain iadopt:Variable;
+                           rdfs:label "hasObjectOfInterest";
+                           rdfs:range iadopt:Entity.
+iadopt:hasProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "A Variable has a Property that characterizes an Entity.";
+                   rdfs:domain iadopt:Variable;
+                   rdfs:label "hasProperty";
+                   rdfs:range iadopt:Property.

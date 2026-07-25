@@ -1,0 +1,173 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ctorg: <http://purl.org/ctic/infraestructuras/organizacion#>.
+
+<http://data.fundacionctic.org/vocab/infraestructuras/organizacion_20130424.html> <http://purl.org/dc/elements/1.1/format> [rdfs:label "HTML" ; 
+                                                                                                                            rdf:value "text/html" ; 
+                                                                                                                            a <http://purl.org/dc/terms/IMT>];
+                                                                                  a <http://purl.org/dc/dcmitype/Text>.
+<http://data.fundacionctic.org/vocab/infraestructuras/organizacion_20130424.rdf> <http://purl.org/dc/elements/1.1/format> [rdfs:label "RDF" ; 
+                                                                                                                           rdf:value "application/rdf+xml" ; 
+                                                                                                                           a <http://purl.org/dc/terms/IMT>];
+                                                                                 a <http://purl.org/dc/dcmitype/Text>.
+<http://purl.org/ctic/infraestructuras/localizacion#Direccion> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/ctic/infraestructuras/organizacion> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by-nc-sa/3.0>;
+                                                     <http://purl.org/dc/elements/1.1/creator> "CTIC CT. Rubén Martín (ruben.martin[at]fundacionctic.org)",
+                                                                                               "CTIC CT. Martín Álvarez (martin.alvarez[at]fundacionctic.org)";
+                                                     <http://purl.org/dc/elements/1.1/date> "2013-04-24";
+                                                     <http://purl.org/dc/elements/1.1/identifier> "http://data.fundacionctic.org/vocab/infraestructuras/organizacion_20130424";
+                                                     <http://purl.org/dc/elements/1.1/rights> "CTIC CT - Creative Commons 3.0 (BY-NC-SA)"@en,
+                                                                                              "CTIC CT - Creative Commons 3.0 (BY-NC-SA)"@es;
+                                                     <http://purl.org/dc/elements/1.1/title> "Vocabulario de la estructura de organismos públicos"@es;
+                                                     <http://purl.org/dc/terms/hasFormat> <http://data.fundacionctic.org/vocab/infraestructuras/organizacion_20130424.rdf>,
+                                                                                          <http://data.fundacionctic.org/vocab/infraestructuras/organizacion_20130424.html>;
+                                                     <http://purl.org/dc/terms/isVersionOf> <http://purl.org/ctic/infraestructuras/organizacion>;
+                                                     <http://purl.org/dc/terms/issued> "2010-10-01";
+                                                     <http://purl.org/vocab/vann/preferredNamespacePrefix> "org";
+                                                     <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/ctic/infraestructuras/organizacion#";
+                                                     a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                     rdfs:comment """
+El objetivo de este vocabulario es la creación de un esquema que permita definir los contenidos de la información relacionada con los órganos de gobierno y los centros públicos que ofrecen servicios.
+Se identifican ciertas variables en el dominio de los centros públicos, que se modelan a través de ciertos tipos de datos y de propiedades relacionadas entre los recursos. 
+Se utiliza Ontologies for e-Government para modelar las principales características.
+		"""@es;
+                                                     <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/date> "2013-04-24" ; 
+                                                                                                        <http://purl.org/dc/elements/1.1/creator> "CTIC-CT" ; 
+                                                                                                        rdf:value "Corregidas referencias erroneas a geonames:Feature"@es].
+ctorg:CentroServicios <http://purl.org/dc/terms/issued> "2010-10-01";
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Centro que ofrece servicios públicos"@es;
+                      rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+                      rdfs:label "Centro de Servicios"@es;
+                      rdfs:subClassOf <http://www.oegov.org/core/owl/gov#Center>.
+ctorg:Edificio <http://purl.org/dc/terms/issued> "2010-10-01";
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Un edificio donde se encuentra ubicado el centro de servicios"@es;
+               rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+               rdfs:label "Edificio"@es;
+               rdfs:subClassOf <http://www.geonames.org/ontology#Feature>,
+                               <http://www.oegov.org/core/owl/gov#Facility>.
+ctorg:EdificioMunicipal <http://purl.org/dc/terms/issued> "2010-10-01";
+                        a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Edificio perteneciente al Ayuntamiento"@es;
+                        rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+                        rdfs:label "Edificio municipal"@es;
+                        rdfs:subClassOf ctorg:Edificio.
+ctorg:OrganoPublico <http://purl.org/dc/terms/issued> "2010-10-01";
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Órgano del que depende"@es;
+                    rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+                    rdfs:label "Órgano público"@es;
+                    rdfs:subClassOf <http://www.oegov.org/core/owl/gov#Body>.
+ctorg:accesibilidad <http://purl.org/dc/terms/issued> "2010-10-01";
+                    a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "Información relativa a la accesibilidad del centro. Es contenido textual"@es;
+                    rdfs:domain ctorg:CentroServicios;
+                    rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+                    rdfs:label "Información sobre accesibilidad"@es.
+ctorg:areaOrganizativa <http://purl.org/dc/terms/issued> "2010-10-01";
+                       a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Área organizativa relacionada con los órganos públicos y sus servicios"@es;
+                       rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+                       rdfs:label "Área de la organización"@es.
+ctorg:bus <http://purl.org/dc/terms/issued> "2010-10-01";
+          a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:comment "Lista de líneas de autobús con parada cercana para acceso al edificio"@es;
+          rdfs:domain ctorg:Edificio;
+          rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+          rdfs:label "Acceso mediante bus municipal"@es.
+ctorg:centroServicios <http://purl.org/dc/terms/issued> "2010-10-01";
+                      a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "Un centro (o varios) asociado a un órgano público que ofrece servicios."@es;
+                      rdfs:domain ctorg:OrganoPublico;
+                      rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+                      rdfs:label "Centro de servicios"@es;
+                      rdfs:range ctorg:CentroServicios;
+                      rdfs:subPropertyOf <http://www.oegov.org/core/owl/gov#suborganization>.
+ctorg:clasificacionServicios <http://purl.org/dc/terms/issued> "2010-10-01";
+                             a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                             rdfs:comment "Clasificación de los servicios prestados en el centro"@es;
+                             rdfs:domain ctorg:CentroServicios;
+                             rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+                             rdfs:label "Clasificación de los servicios prestados"@es.
+ctorg:depende <http://purl.org/dc/terms/issued> "2010-10-01";
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Órgano que es dependiente de éste"@es;
+              rdfs:domain ctorg:OrganoPublico;
+              rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+              rdfs:label "Órgano hijo"@es;
+              rdfs:range ctorg:OrganoPublico;
+              rdfs:subPropertyOf <http://purl.org/dc/terms/relation>.
+ctorg:dependeDe <http://purl.org/dc/terms/issued> "2010-10-01";
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Órgano del que depende"@es;
+                rdfs:domain ctorg:OrganoPublico;
+                rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+                rdfs:label "Órgano padre"@es;
+                rdfs:range ctorg:OrganoPublico;
+                rdfs:subPropertyOf <http://purl.org/dc/terms/relation>.
+ctorg:direccion <http://purl.org/dc/terms/issued> "2010-10-01";
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Dirección postal del edificio"@es;
+                rdfs:domain ctorg:Edificio;
+                rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+                rdfs:label "Dirección del edificio"@es;
+                rdfs:range <http://purl.org/ctic/infraestructuras/localizacion#Direccion>.
+ctorg:edificio <http://purl.org/dc/terms/issued> "2010-10-01";
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "Edificio donde se encuentra un centro que presta servicios"@es;
+               rdfs:domain ctorg:CentroServicios;
+               rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+               rdfs:label "Ubicación en edificio"@es;
+               rdfs:range ctorg:Edificio;
+               rdfs:subPropertyOf <http://www.oegov.org/core/owl/gov#facility>.
+ctorg:horario <http://purl.org/dc/terms/issued> "2010-10-01";
+              a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:comment "Horario de apertura del centro"@es;
+              rdfs:domain ctorg:CentroServicios;
+              rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+              rdfs:label "Horario de apertura"@es.
+ctorg:numeroPortal <http://purl.org/dc/terms/issued> "2010-10-01";
+                   a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "Número del portal en el que se encuentra el edificio"@es;
+                   rdfs:domain ctorg:Edificio;
+                   rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+                   rdfs:label "Número de portal"@es.
+ctorg:organoPublico <http://purl.org/dc/terms/issued> "2010-10-01";
+                    a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "El órgano público asociado al centro"@es;
+                    rdfs:domain ctorg:CentroServicios;
+                    rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+                    rdfs:label "Órgano del que depende"@es;
+                    rdfs:range ctorg:OrganoPublico.
+ctorg:plantaEdificio <http://purl.org/dc/terms/issued> "2010-10-01";
+                     a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "Indica la planta del edificio donde se encuentra el centro"@es;
+                     rdfs:domain ctorg:CentroServicios;
+                     rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+                     rdfs:label "Planta (piso) del edificio"@es.
+ctorg:servicios <http://purl.org/dc/terms/issued> "2010-10-01";
+                a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "Servicios prestados en el centro"@es;
+                rdfs:domain ctorg:CentroServicios;
+                rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+                rdfs:label "Servicios prestados"@es.
+ctorg:tipoCentro <http://purl.org/dc/terms/issued> "2010-10-01";
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "El tipo del centro"@es;
+                 rdfs:domain ctorg:CentroServicios;
+                 rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/organizacion>;
+                 rdfs:label "Tipo de Centro"@es;
+                 rdfs:subPropertyOf <http://purl.org/dc/terms/type>.
+<http://purl.org/dc/terms/relation> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://purl.org/dc/terms/type> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.geonames.org/ontology#Feature> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.oegov.org/core/owl/gov#Body> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.oegov.org/core/owl/gov#Center> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.oegov.org/core/owl/gov#Facility> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.oegov.org/core/owl/gov#facility> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.oegov.org/core/owl/gov#suborganization> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+rdfs:comment a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:isDefinedBy a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:label a <http://www.w3.org/2002/07/owl#AnnotationProperty>.

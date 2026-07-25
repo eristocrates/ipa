@@ -8,6 +8,7 @@ type Prefix_ID =
         namespace_name:string
     }
     static member xdt = {namespace_prefix = "xdt" ; namespace_name = "https://www.w3.org/2003/05/xpath-datatypes#"}
+    static member xml = {namespace_prefix = "xml" ; namespace_name = "http://www.w3.org/XML/1998/namespace#"}
     static member commonplace = {namespace_prefix = "commonplace" ; namespace_name =  "https://eristocrates.dev/ontology/commonplace/" }
     static member dbug = {namespace_prefix = "dbug" ; namespace_name =  "https://eristocrates.dev/ontology/dbug/" }
     static member sanctuary = {namespace_prefix = "sanctuary" ; namespace_name =  "https://eristocrates.dev/ontology/sanctuary/" }
@@ -3884,7 +3885,6 @@ type Prefix_ID =
     static member xlime = {namespace_prefix = "xlime" ; namespace_name = "http://xlime-project.org/vocab/"}
     static member xlink = {namespace_prefix = "xlink" ; namespace_name = "https://es.scribd.com/doc/79794476/05-Ejercicios-Resueltos-Caja-Negra-y-Recapitulacion/"}
     static member xlmod = {namespace_prefix = "xlmod" ; namespace_name = "http://purl.obolibrary.org/obo/XLMOD_"}
-    static member xml = {namespace_prefix = "xml" ; namespace_name = "http://www.w3.org/XML/1998/namespace"}
     static member xmlns = {namespace_prefix = "xmlns" ; namespace_name = "http://www.w3.org/2021/XMLSchema#"}
     static member xmp = {namespace_prefix = "xmp" ; namespace_name = "http://ns.adobe.com/xap/1.0/"}
     static member xpo = {namespace_prefix = "xpo" ; namespace_name = "http://purl.obolibrary.org/obo/XPO_"}

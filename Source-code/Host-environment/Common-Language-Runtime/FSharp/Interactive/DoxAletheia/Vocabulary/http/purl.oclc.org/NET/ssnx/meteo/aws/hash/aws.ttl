@@ -1,0 +1,1274 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix aws: <http://purl.oclc.org/NET/ssnx/meteo/aws#>.
+
+<http://creativecommons.org/ns#license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.oclc.org/NET/ssnx/meteo/aws> <http://purl.org/dc/elements/1.1/creator> "Laurent Lefort (CSIRO, Australia and W3C Semantic Sensor Network Incubator Group)";
+                                          <http://purl.org/dc/elements/1.1/description> "Meteorological sensor ontology (sensor types)";
+                                          <http://purl.org/dc/elements/1.1/identifier> "http://purl.oclc.org/NET/ssnx/meteo/aws";
+                                          <http://purl.org/dc/elements/1.1/rights> "Copyright 2010 - 2011 CSIRO. All rights reserved.";
+                                          <http://purl.org/dc/elements/1.1/title> "Ontology for Meteorological sensors";
+                                          <http://purl.org/dc/terms/created> "2010-09-21";
+                                          <http://purl.org/dc/terms/modified> "2011-06-20";
+                                          a <http://www.w3.org/2002/07/owl#Ontology>;
+                                          rdfs:comment """This ontology is is part of the Agriculture Meteorology example showcasing the ontology developed by the W3C Semantic Sensor Networks incubator group (SSN-XG). It is published here in order to generalize the potential usage and the alignment with other standardization efforts of the SSN ontology.
+
+For more information on the group's activities see: http://www.w3.org/2005/Incubator/ssn/ .
+
+DISCLAIMER: This ontology includes information that has been automatically generated from data sourced from third parties but has not been fully manually checked. It is provided AS-IS, for information only, with no warranties or guarantees and confers no rights.""",
+                                                       "Please report any errors to the Semantic Sensor Network Incubator Activity via the public W3C list public-xg-ssn@w3.org";
+                                          rdfs:seeAlso "http://www.w3.org/2005/Incubator/ssn/";
+                                          <http://www.w3.org/2002/07/owl#imports> <http://purl.oclc.org/NET/ssnx/qu/qu>,
+                                                                                  <http://purl.oclc.org/NET/ssnx/ssn>,
+                                                                                  <http://purl.oclc.org/NET/ssnx/cf/cf-property>,
+                                                                                  <http://purl.oclc.org/NET/ssnx/qu/qu-rec20>,
+                                                                                  <http://purl.oclc.org/NET/ssnx/cf/cf-feature>.
+aws:Albedometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch albedometer [GAMP 2.3.1.1] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "pair of upward and downward facing solarimeters";
+                rdfs:label "albedometer";
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                aws:RadiationSensor.
+aws:AneroidDisplacementTransducer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch aneroid displacement transducer [CIMO Guide 3.3.1] http://www.wmo.int/pages/prog/www/IMOP/publications/CIMO-Guide/CIMO%20Guide%207th%20Edition,%202008/Part%20I/Chapter%203.pdf";
+                                  a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "The aneroid displacement transducer contains a sensor with electrical properties (resistance or capacitance) that changes as the atmospheric pressure changes.";
+                                  rdfs:label "aneroid displacement transducer";
+                                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  aws:AtmosphericPressureSensor.
+aws:AtmometerOrSmallSurfaceEvaporimeter a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:label "Atmometer or small surface evaporimeter";
+                                        rdfs:subClassOf aws:ScreenedAndOpenPanEvaporimeter.
+aws:AtmosphericPressureSensor a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:label "Atmospheric pressure";
+                              rdfs:subClassOf <http://purl.oclc.org/NET/ssnx/ssn#SensingDevice>.
+aws:AutomaticSunshineRecorder <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Automatic sunshine recorder [GAMP 2.4.1.1] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                              a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "time during which direct radiation (on a plane perpendicular to the Sun’s beam) is larger than 120 Wm-2.";
+                              rdfs:label "Automatic sunshine recorder";
+                              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Duration> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Duration> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              aws:RadiationSensor.
+aws:BimetallicActinograph a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "total solar irradiance on a horizontal surface";
+                          rdfs:label "Bimetallic actinograph";
+                          rdfs:subClassOf aws:Pyranometer.
+aws:CampbellStokesSunshineMeter <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Campbell-Stokes sunshine meter [GAMP 2.4.1.1] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                                a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "World standard abolished in 1989";
+                                rdfs:label "Campbell-Stokes sunshine meter";
+                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Duration> ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Duration> ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                aws:RadiationSensor.
+aws:CapacitanceSensor <http://purl.org/dc/elements/1.1/source> "skos:closeMatch capacitance sensor [ET-AWS] http://www.hydrometeoindustry.org/Meetings2010/ET-AWS-6/Doc8[1]-AWS-MetadataCatalogues.pdf";
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "certain materials interact with water vapour and undergo a change in capacitance, in relation to ambient humidity.";
+                      rdfs:label "capacitance sensor";
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      aws:HumiditySensor,
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>].
+aws:CapacitiveAluminumOxide a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "certain materials interact with water vapour and undergo a change in capacitance, in relation to ambient humidity.";
+                            rdfs:label "Capacitive - aluminum oxide";
+                            rdfs:subClassOf aws:CapacitanceSensor.
+aws:CapacitiveAneroid a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "The aneroid displacement transducer contains a sensor with electrical properties (resistance or capacitance) that changes as the atmospheric pressure changes.";
+                      rdfs:label "Capacitive aneroid";
+                      rdfs:subClassOf aws:AneroidDisplacementTransducer.
+aws:CapacitiveBead <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Capacitive bead [ET-AWS] http://www.hydrometeoindustry.org/Meetings2010/ET-AWS-6/Doc8[1]-AWS-MetadataCatalogues.pdf";
+                   a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "Capacitive bead";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   aws:TemperatureSensor,
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>].
+aws:CapacitiveThinFilmPolymer a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "certain materials interact with water vapour and undergo a change in capacitance, in relation to ambient humidity.";
+                              rdfs:label "Capacitive - thin film polymer";
+                              rdfs:subClassOf aws:CapacitanceSensor.
+aws:ChilledMirrorHygrometer <http://purl.org/dc/elements/1.1/source> "chilled-mirror hygrometer [ET-AWS] http://www.hydrometeoindustry.org/Meetings2010/ET-AWS-6/Doc8[1]-AWS-MetadataCatalogues.pdf";
+                            a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "condensation is detected on the surface of a small polished metal reflecting surface (a mirror), using optical means. The temperature at which condensation is formed is the dew point.";
+                            rdfs:label "chilled-mirror hygrometer";
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            aws:HumiditySensor,
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>].
+aws:ChilledMirrorSystem <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Chilled mirror system [ET-AWS] http://www.hydrometeoindustry.org/Meetings2010/ET-AWS-6/Doc8[1]-AWS-MetadataCatalogues.pdf";
+                        a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:label "Chilled mirror system";
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        aws:TemperatureSensor.
+aws:CupAnemometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Cup anemometer [GAMP 2.4.1.5] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "the angular velocity of the cup is directly proportional to the component of the wind speed parallel to the axis of rotation.";
+                  rdfs:label "Cup anemometer";
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  aws:WindSensor.
+aws:CylindricalResonatorBarometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch cylindrical resonator barometer [CIMO Guide 3.3.1] http://www.wmo.int/pages/prog/www/IMOP/publications/CIMO-Guide/CIMO%20Guide%207th%20Edition,%202008/Part%20I/Chapter%203.pdf";
+                                  a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "A cylindrical resonator barometer (or vibrating cylinder air-pressure transducer) is designed to measure absolute air pressure using the vibrating element principle, providing a frequency output from which pressure is computed.";
+                                  rdfs:label "cylindrical resonator barometer";
+                                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  aws:AtmosphericPressureSensor.
+aws:DewCell <http://purl.org/dc/elements/1.1/source> "dew cell [ET-AWS] http://www.hydrometeoindustry.org/Meetings2010/ET-AWS-6/Doc8[1]-AWS-MetadataCatalogues.pdf";
+            a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A dew cell heats a salt solution until its equilibrium vapour pressure equals to the ambient vapour pressure, and maintains this equilibrium The temperature when this occurs is measured and it provides a measure of the ambient vapour pressure";
+            rdfs:label "dew cell";
+            rdfs:subClassOf aws:HumiditySensor,
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>].
+aws:DewcelSystem <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Dewcel system [ET-AWS] http://www.hydrometeoindustry.org/Meetings2010/ET-AWS-6/Doc8[1]-AWS-MetadataCatalogues.pdf";
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "Dewcel system";
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 aws:TemperatureSensor.
+aws:DifferentialExpansionThermometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Differential expansion thermometer [GAMP 2.4.1.2] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                                     a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:label "differential expansion thermometer";
+                                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                      <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                      <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                      <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                      <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                      <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                      <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                      <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                      <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     aws:TemperatureSensor,
+                                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                      <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                      <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>].
+aws:DigitalPiezoResistiveBarometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch digital piezo-resistive barometer [CIMO Guide 3.3.1] http://www.wmo.int/pages/prog/www/IMOP/publications/CIMO-Guide/CIMO%20Guide%207th%20Edition,%202008/Part%20I/Chapter%203.pdf";
+                                   a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:label "digital piezo-resistive barometer";
+                                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                                    <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                                    <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                   aws:AtmosphericPressureSensor.
+aws:DirmhirmSaubererPyranometer a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "total solar irradiance on a horizontal surface";
+                                rdfs:label "Dirmhirm-Sauberer pyranometer";
+                                rdfs:subClassOf aws:Pyranometer.
+aws:DropCounters <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Drop counters [ET-AWS] http://www.hydrometeoindustry.org/Meetings2010/ET-AWS-6/Doc8[1]-AWS-MetadataCatalogues.pdf";
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Counting the number of uniform droplets corresponding to a fixed volume of water";
+                 rdfs:label "Drop counters";
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 aws:PrecipitationSensor.
+aws:ElectricSensorWhichExploitsTheConductivityVariationAsAFunctionOfWetness <http://purl.org/dc/elements/1.1/source> "skos:closeMatch electric sensor, which exploits the conductivity variation as a function of wetness [GAMP 2.4.1.6.3] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                                                                            a <http://www.w3.org/2002/07/owl#Class>;
+                                                                            rdfs:label "electric sensor, which exploits the conductivity variation as a function of wetness";
+                                                                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                                                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                                                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                            aws:HumiditySensor.
+aws:ElectricalResistanceBlock <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Electrical resistance block [GAMP 2.4.1.6.2] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                              a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:label "Electrical resistance block";
+                              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              aws:HumiditySensor,
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>].
+aws:ElectricalResistanceHumiditySensor <http://purl.org/dc/elements/1.1/source> "skos:closeMatch electrical resistance humidity sensor [ET-AWS] http://www.hydrometeoindustry.org/Meetings2010/ET-AWS-6/Doc8[1]-AWS-MetadataCatalogues.pdf";
+                                       a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:comment "certain materials interact with water vapour and undergo a change in electrical resistance, in relation to ambient humidity.";
+                                       rdfs:label "electrical resistance humidity sensor";
+                                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                       aws:HumiditySensor.
+aws:ElectricalResistanceThermometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Resistance thermometer [GAMP 2.4.1.2] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                                    a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "For small temperature changes, the increase in resistance of pure metals is proportional to the change in temperature. Often made in Platinum.";
+                                    rdfs:label "Electrical resistance thermometer";
+                                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                    aws:TemperatureSensor,
+                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+aws:EppleyPyranometer a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "total solar irradiance on a horizontal surface";
+                      rdfs:label "Eppley pyranometer";
+                      rdfs:subClassOf aws:Pyranometer.
+aws:FiberGlassBlock a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:label "Fiber-glass block";
+                    rdfs:subClassOf aws:ElectricalResistanceBlock.
+aws:FrequencyDomainReflectometryCapacitance <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Frequency domain reflectometry (capacitance).................................................... [Soil Water Monitoring] http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.118.567&rep=rep1&type=pdf";
+                                            a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:label "Frequency domain reflectometry (capacitance)";
+                                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                            aws:HumiditySensor.
+aws:GammaAbsorption <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Gamma absorption [GAMP 2.4.1.6.2] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:label "Gamma absorption";
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    aws:HumiditySensor.
+aws:GypsumBlock a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:label "Gypsum block";
+                rdfs:subClassOf aws:ElectricalResistanceBlock.
+aws:HotBeadAnemometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Hot-bead anemometer [GAMP 2.4.1.5] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:label "Hot-bead anemometer";
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      aws:WindSensor.
+aws:HotWireAnemometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Hot-wire anemometer [GAMP 2.4.1.5] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:label "Hot-wire anemometer";
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      aws:WindSensor.
+aws:HumiditySensor a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "Humidity";
+                   rdfs:subClassOf <http://purl.oclc.org/NET/ssnx/ssn#SensingDevice>.
+aws:HydraulicLysimeterMoreRobustWeighingType a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "Lysimeters are used for measurement of evaporation, transpiration, evapotranspiration (ET), effective rainfall, drainage, chemical contents of drainage water, to study climatic effects of ET on the performance of crops.";
+                                             rdfs:label "hydraulic lysimeter (more robust weighing type)";
+                                             rdfs:subClassOf aws:Lysimeter.
+aws:ImpactDisdrometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Impact disdrometer [IOM-99_FI-RI 2.2.2b] http://www.wmo.int/pages/prog/www/IMOP/publications/IOM-99_FI-RI.pdf";
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Impact of precipitation particles on a plastic or metal membrane";
+                      rdfs:label "Impact disdrometer";
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      aws:PrecipitationSensor,
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>].
+aws:InfraRedGasAnalyzerHygrometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Infra-red gas analyzer hygrometer [GAMP 2.4.1.6.1] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                                  a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:label "Infra-red gas analyzer hygrometer";
+                                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  aws:HumiditySensor.
+aws:KataThermometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Kata thermometer [GAMP 2.4.1.2] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:label "Kata thermometer";
+                    rdfs:subClassOf aws:TemperatureSensor.
+aws:Laser <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Laser [ET-AWS] http://www.hydrometeoindustry.org/Meetings2010/ET-AWS-6/Doc8[1]-AWS-MetadataCatalogues.pdf";
+          a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "emits modulated visible laser light and determines the distance to an object by comparing phase information";
+          rdfs:label "Laser";
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          aws:PrecipitationSensor.
+aws:LevelMeasurementRainGauge <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Level measurement rain gauge (LRG) [IOM-99_FI-RI 2.2.1e] http://www.wmo.int/pages/prog/www/IMOP/publications/IOM-99_FI-RI.pdf";
+                              a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Measuring the water level in a tube";
+                              rdfs:label "Level measurement rain gauge";
+                              rdfs:subClassOf aws:PrecipitationSensor,
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>].
+aws:Lysimeter <http://purl.org/dc/elements/1.1/source> "skos:closeMatch lysimeter [GAMP 2.4.1.8.1] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+              a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Lysimeters are used for measurement of evaporation, transpiration, evapotranspiration (ET), effective rainfall, drainage, chemical contents of drainage water, to study climatic effects of ET on the performance of crops.";
+              rdfs:label "lysimeter";
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea> ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea> ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              aws:HumiditySensor.
+aws:MechanicalAneroidBarometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch conventional aneroid barometer [CIMO Guide 3.4] http://www.wmo.int/pages/prog/www/IMOP/publications/CIMO-Guide/CIMO%20Guide%207th%20Edition,%202008/Part%20I/Chapter%203.pdf";
+                               a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:label "Mechanical Aneroid barometer";
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               aws:AtmosphericPressureSensor.
+aws:MechanicalHygrometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch mechanical hygrometer [GAMP 2.4.1.6.1] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:label "mechanical hygrometer";
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         aws:HumiditySensor.
+aws:MechanicalSensorWithRecorder <http://purl.org/dc/elements/1.1/source> "skos:closeMatch mechanical sensor with recorder [GAMP 2.4.1.6.3] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                                 a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:label "mechanical sensor with recorder";
+                                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 aws:HumiditySensor.
+aws:MercuryBarometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Mercury barometer [CIMO Guide 3.2] http://www.wmo.int/pages/prog/www/IMOP/publications/CIMO-Guide/CIMO%20Guide%207th%20Edition,%202008/Part%20I/Chapter%203.pdf";
+                     a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "Mercury barometer";
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     aws:AtmosphericPressureSensor.
+aws:Microlysimeter a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Lysimeters are used for measurement of evaporation, transpiration, evapotranspiration (ET), effective rainfall, drainage, chemical contents of drainage water, to study climatic effects of ET on the performance of crops.";
+                   rdfs:label "Microlysimeter";
+                   rdfs:subClassOf aws:Lysimeter.
+aws:MicrowaveRadarDisdrometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Microwave radar disdrometer [IOM-99_FI-RI 2.2.2c] http://www.wmo.int/pages/prog/www/IMOP/publications/IOM-99_FI-RI.pdf";
+                              a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Backscatter (intensity of backscattered signal related to the number of particles and/or their water content)";
+                              rdfs:label "Microwave radar disdrometer";
+                              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              aws:PrecipitationSensor.
+aws:MollGorczynkiPyranometer a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "total solar irradiance on a horizontal surface";
+                             rdfs:label "Moll-Gorczynki pyranometer";
+                             rdfs:subClassOf aws:Pyranometer.
+aws:NetRadiometerOrNetPyrradiometerOrNetExchangeRadiometerOrBalancemeter <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Net radiometers or net pyrradiometers or net exchange radiometers or balancemeters [GAMP 2.4.1.1] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                                                                         a <http://www.w3.org/2002/07/owl#Class>;
+                                                                         rdfs:comment "Net all-wave radiation (net flux of downward and upward total radiation i.e. solar, terrestrial and atmospheric)";
+                                                                         rdfs:label "Net radiometer or net pyrradiometer or net exchange radiometer or balancemeter";
+                                                                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#EnergyFlux> ; 
+                                                                                          <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#EnergyFlux> ; 
+                                                                                          <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                                         aws:RadiationSensor.
+aws:NeutronProbe <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Neutron probe [GAMP 2.4.1.6.2] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "Neutron probe";
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 aws:HumiditySensor.
+aws:NylonUnits a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "Nylon units";
+               rdfs:subClassOf aws:ElectricalResistanceBlock.
+aws:OpticalCapacitiveSensor <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Optical/Capacitive sensor [IOM-99_FI-RI 2.2.2d] http://www.wmo.int/pages/prog/www/IMOP/publications/IOM-99_FI-RI.pdf";
+                            a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:label "Optical/Capacitive sensor";
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            aws:PrecipitationSensor.
+aws:OpticalDisdrometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Optical disdrometer [IOM-99_FI-RI 2.2.2a] http://www.wmo.int/pages/prog/www/IMOP/publications/IOM-99_FI-RI.pdf";
+                       a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Thin laser light sheets crossing the measuring volume: particle volume, speed (forward scatter)";
+                       rdfs:label "Optical disdrometer";
+                       rdfs:subClassOf aws:PrecipitationSensor,
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>].
+aws:PopoffLysimeterCombinedDrainageAndWeighingType a <http://www.w3.org/2002/07/owl#Class>;
+                                                   rdfs:comment "Lysimeters are used for measurement of evaporation, transpiration, evapotranspiration (ET), effective rainfall, drainage, chemical contents of drainage water, to study climatic effects of ET on the performance of crops.";
+                                                   rdfs:label "Popoff lysimeter (combined drainage and weighing type)";
+                                                   rdfs:subClassOf aws:Lysimeter.
+aws:PortableAspiratedAndShieldedPsychrometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch portable aspirated and shielded psychrometer [GAMP 2.4.1.6.1] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                                             a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "Artificially ventilated psychrometers, such as the Assmann type, the aspirated screen type, and the whirling type,";
+                                             rdfs:label "portable aspirated and shielded psychrometer";
+                                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                              <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                              <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                              <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                              <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                             aws:HumiditySensor.
+aws:PrecipitationSensor a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:label "Precipitation";
+                        rdfs:subClassOf <http://purl.oclc.org/NET/ssnx/ssn#SensingDevice>.
+aws:PressureTubeAnemometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Pressure tube anemometer [GAMP 2.4.1.5] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                           a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:label "Pressure tube anemometer";
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           aws:WindSensor.
+aws:PropellerAnemometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Propeller and vane anemometer [GAMP 2.4.1.5] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                        a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "the angular velocity of the propeller rotor is directly proportional to the component of the wind speed parallel to the axis of rotation.";
+                        rdfs:label "Propeller anemometer";
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        aws:WindSensor.
+aws:PsychrometerEquippedWithMercuryInGlassThermometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch psychrometer equipped with mercury-in-glass thermometer [GAMP 2.4.1.6.1] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                                                      a <http://www.w3.org/2002/07/owl#Class>;
+                                                      rdfs:label "psychrometer equipped with mercury-in-glass thermometer";
+                                                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                      aws:HumiditySensor.
+aws:Pyranometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch solarimeter (pyranometer) [GAMP 2.3.1.1] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "total solar irradiance on a horizontal surface";
+                rdfs:label "pyranometer";
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#EnergyFlux> ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#EnergyFlux> ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                aws:RadiationSensor.
+aws:PyranometerWithShadeRing <http://purl.org/dc/elements/1.1/source> "skos:broaderMatch solarimeter (pyranometer) [GAMP 2.3.1.1] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                             a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:label "pyranometer with shade ring";
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#EnergyFlux> ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#EnergyFlux> ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             aws:RadiationSensor.
+aws:Pyrgeometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch pyrgeometer [GAMP 2.4.1.1] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "measurement of long-wave radiation from the earth";
+                rdfs:label "Pyrgeometer";
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#EnergyFlux> ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#EnergyFlux> ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                aws:RadiationSensor.
+aws:QuantumSensor <http://purl.org/dc/elements/1.1/source> "skos:closeMatch quantum sensor [GAMP 2.4.1.1] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "measure the PAR directly in the range 0.4 to 0.7 micrometers";
+                  rdfs:label "Quantum sensor";
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#EnergyFlux> ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#EnergyFlux> ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  aws:RadiationSensor.
+aws:RadiationSensor a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:label "Radiation";
+                    rdfs:subClassOf <http://purl.oclc.org/NET/ssnx/ssn#SensingDevice>.
+aws:ResistiveAneroid a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "The aneroid displacement transducer contains a sensor with electrical properties (resistance or capacitance) that changes as the atmospheric pressure changes.";
+                     rdfs:label "Resistive aneroid";
+                     rdfs:subClassOf aws:AneroidDisplacementTransducer.
+aws:ScreenedAndOpenPanEvaporimeter <http://purl.org/dc/elements/1.1/source> "skos:closeMatch screened and open pan evaporimeter [GAMP 2.4.1.8.1] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                                   a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:label "screened and open pan evaporimeter";
+                                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea> ; 
+                                                    <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                                    <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea> ; 
+                                                    <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                                    <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                   aws:HumiditySensor.
+aws:ShadedPicheEvaporimeter a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:label "Shaded Piche evaporimeter";
+                            rdfs:subClassOf aws:ScreenedAndOpenPanEvaporimeter.
+aws:SingleOrDoubleJunctionPeltierPsychrometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Single or double-junction peltier psychrometer [GAMP 2.4.1.6.1] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                                              a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:label "Single or double-junction peltier psychrometer";
+                                              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                              aws:HumiditySensor.
+aws:SnowGauge <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Snow gauge [GAMP 2.4.1.7] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+              a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:label "Snow gauge";
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              aws:PrecipitationSensor.
+aws:SnowPillow <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Snow pillow [ET-AWS] http://www.hydrometeoindustry.org/Meetings2010/ET-AWS-6/Doc8[1]-AWS-MetadataCatalogues.pdf";
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Tensiometric sensors detect the hydrostatic pressure caused by the layer of snow on top of the pillow";
+               rdfs:label "Snow pillow";
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               aws:PrecipitationSensor.
+aws:SonicRanging <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Sonic ranging [ET-AWS] http://www.hydrometeoindustry.org/Meetings2010/ET-AWS-6/Doc8[1]-AWS-MetadataCatalogues.pdf";
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "measure the elapsed time between emission and return of an ultrasonic pulse sent vertically down to the snow covered ground surface";
+                 rdfs:label "Sonic ranging";
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 aws:PrecipitationSensor.
+aws:SurfaceTemperatureRadiometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch surface temperature radiometer [GAMP 2.4.1.1] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                                 a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "measurements of infra-red radiation emitted from near or remote surfaces";
+                                 rdfs:label "Surface temperature radiometer";
+                                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 aws:RadiationSensor.
+aws:TemperatureSensor a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:label "Temperature";
+                      rdfs:subClassOf <http://purl.oclc.org/NET/ssnx/ssn#SensingDevice>.
+aws:Tensiometer <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Tensiometer [GAMP 2.4.1.6.2] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:label "Tensiometer";
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                aws:HumiditySensor.
+aws:Thermistor <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Thermistor [GAMP 2.4.1.2] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Based on the variation of resistance of a semiconductor with a relatively large temperature coefficient of resistance, either positive (PTC) or negative (NTC) depending upon the actual material";
+               rdfs:label "Thermistor";
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               aws:TemperatureSensor,
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>].
+aws:Thermocouple <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Thermocouple [GAMP 2.4.1.2] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Based on the generation of an electromotive force at the junction between two metals in contact, which is function of the temperature of the two metals";
+                 rdfs:label "Thermocouple";
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 aws:TemperatureSensor,
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>].
+aws:ThornthwaiteLysimeterDrainageType a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "Lysimeters are used for measurement of evaporation, transpiration, evapotranspiration (ET), effective rainfall, drainage, chemical contents of drainage water, to study climatic effects of ET on the performance of crops.";
+                                      rdfs:label "Thornthwaite lysimeter (drainage type)";
+                                      rdfs:subClassOf aws:Lysimeter.
+aws:TimeDomainReflectometry <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Time Domain Reflectometry [GAMP 2.4.1.6.2] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                            a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Time domain reflectometry (TDR) and time delay transmission";
+                            rdfs:label "Time Domain Reflectometry";
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            aws:HumiditySensor.
+aws:TippingBucketRainGauge <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Tipping bucket rain gauge [IOM-99_FI-RI 2.2.1a-d] http://www.wmo.int/pages/prog/www/IMOP/publications/IOM-99_FI-RI.pdf";
+                           a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Tipping balance of two buckets";
+                           rdfs:label "Tipping bucket rain gauge";
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           aws:PrecipitationSensor,
+                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea> ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea> ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>].
+aws:TippingBucketRainGaugeTbrgWithoutCorrection a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:comment "Tipping balance of two buckets";
+                                                rdfs:label "Tipping-bucket rain gauge (TBRG) without correction";
+                                                rdfs:subClassOf aws:TippingBucketRainGauge.
+aws:TippingBucketRainGaugeWithCorrectionAlgorithmTbrgSc a <http://www.w3.org/2002/07/owl#Class>;
+                                                        rdfs:comment "Tipping balance of two buckets";
+                                                        rdfs:label "Tipping-bucket rain gauge with correction algorithm (TBRG-SC)";
+                                                        rdfs:subClassOf aws:TippingBucketRainGauge.
+aws:TippingBucketRainGaugeWithExtraPulseCorrectionTbrgPc a <http://www.w3.org/2002/07/owl#Class>;
+                                                         rdfs:comment "Tipping balance of two buckets";
+                                                         rdfs:label "Tipping-bucket rain gauge with extra pulse correction (TBRG-PC)";
+                                                         rdfs:subClassOf aws:TippingBucketRainGauge.
+aws:TippingBucketRainGaugeWithMechanicalCorrectionTbrgMc a <http://www.w3.org/2002/07/owl#Class>;
+                                                         rdfs:comment "Tipping balance of two buckets";
+                                                         rdfs:label "Tipping-bucket rain gauge with mechanical correction (TBRG-MC)";
+                                                         rdfs:subClassOf aws:TippingBucketRainGauge.
+aws:TubeSolarimeter <http://purl.org/dc/elements/1.1/source> "skos:closeMatch tube solarimeter [GAMP 2.4.1.1] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:label "Tube solarimeter";
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#EnergyFlux> ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#EnergyFlux> ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    aws:RadiationSensor.
+aws:UltrasonicSensorVirtualTemperature <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Ultrasonic Sensor (virtual temperature) [ET-AWS] http://www.hydrometeoindustry.org/Meetings2010/ET-AWS-6/Doc8[1]-AWS-MetadataCatalogues.pdf";
+                                       a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:label "Ultrasonic Sensor (virtual temperature)";
+                                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                       aws:TemperatureSensor,
+                                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                        a <http://www.w3.org/2002/07/owl#Restriction>].
+aws:UltrasonicWindSensor <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Sonic anemometer [GAMP 2.4.1.5] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "A sonic signal is emitted by sensor transducers";
+                         rdfs:label "Ultrasonic Wind sensor";
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Angle> ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Angle> ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         aws:WindSensor.
+aws:WeighingLysimeter a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Lysimeters are used for measurement of evaporation, transpiration, evapotranspiration (ET), effective rainfall, drainage, chemical contents of drainage water, to study climatic effects of ET on the performance of crops.";
+                      rdfs:label "weighing lysimeter";
+                      rdfs:subClassOf aws:Lysimeter.
+aws:WeighingRainGauge <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Weighing rain gauge (WG) [IOM-99_FI-RI 2.2.1g-h] http://www.wmo.int/pages/prog/www/IMOP/publications/IOM-99_FI-RI.pdf";
+                      a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Weighing of precipitation accumulated in a storage container";
+                      rdfs:label "Weighing rain gauge";
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      aws:PrecipitationSensor,
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>].
+aws:WeighingRainGaugeWithPressureMeasurement a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "Weighing of precipitation accumulated in a storage container";
+                                             rdfs:label "Weighing rain gauge with pressure measurement";
+                                             rdfs:subClassOf aws:WeighingRainGauge.
+aws:WetBulbTemperatureMeasurementSystem <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Wet-bulb temperature measurement system [ET-AWS] http://www.hydrometeoindustry.org/Meetings2010/ET-AWS-6/Doc8[1]-AWS-MetadataCatalogues.pdf";
+                                        a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:label "Wet-bulb temperature measurement system";
+                                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                         <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> ; 
+                                                         <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                        aws:TemperatureSensor.
+aws:WettingFrontDetection <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Wetting front detection [Soil Water Monitoring] http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.118.567&rep=rep1&type=pdf";
+                          a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:label "Wetting front detection";
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Distance> ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          aws:HumiditySensor.
+aws:WindSensor a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "Wind";
+               rdfs:subClassOf <http://purl.oclc.org/NET/ssnx/ssn#SensingDevice>.
+aws:WindVane <http://purl.org/dc/elements/1.1/source> "skos:closeMatch Wind Vane [GAMP 2.4.1.5] http://www.wmo.int/pages/prog/wcp/agm/gamp/gamp_en.html";
+             a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "The signal generator is a shaft angle transducer: potentiometers, alternating and direct current synchros, digital angle-encoder disks, direct reading dials, and rotary switches";
+             rdfs:label "Wind Vane";
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Angle> ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/qu/dim#Angle> ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#observes> ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             aws:WindSensor.
+<http://purl.oclc.org/NET/ssnx/qu/dim#Angle> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.oclc.org/NET/ssnx/qu/dim#Dimensionless> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.oclc.org/NET/ssnx/qu/dim#Distance> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.oclc.org/NET/ssnx/qu/dim#Duration> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.oclc.org/NET/ssnx/qu/dim#EnergyFlux> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.oclc.org/NET/ssnx/qu/dim#MassPerTimePerArea> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.oclc.org/NET/ssnx/qu/dim#StressOrPressure> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.oclc.org/NET/ssnx/qu/dim#SurfaceDensity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.oclc.org/NET/ssnx/qu/dim#Temperature> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.oclc.org/NET/ssnx/qu/dim#VelocityOrSpeed> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.oclc.org/NET/ssnx/ssn#SensingDevice> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.oclc.org/NET/ssnx/ssn#observes> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://purl.org/dc/elements/1.1/author> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/identifier> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/rights> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/source> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:comment a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:isDefinedBy a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:label a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:seeAlso a <http://www.w3.org/2002/07/owl#AnnotationProperty>.

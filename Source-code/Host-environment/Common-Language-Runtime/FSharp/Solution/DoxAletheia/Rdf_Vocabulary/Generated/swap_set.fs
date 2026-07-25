@@ -7,16 +7,6 @@ open type Prefix_ID
 module swap_set =
     let _namespace_iri = Namespace_Iri swap_set |> NamespaceIRI
     /// <summary>
-    ///   <para>swap_set:in</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>This set contains that as a member.
-    ///     Cwm will bind the subject to each of the members of the object.</para>
-    /// labels<para>in</para></remarks>
-    /// <seealso href="http://www.w3.org/2000/10/swap/set#in">http://www.w3.org/2000/10/swap/set#in</seealso>
-    let in_ = Prefixed_Name(swap_set, "in") |> PrefixedName
-    /// <summary>
     ///   <para>swap_set:union</para>
     /// </summary>
     /// <remarks>
@@ -36,6 +26,16 @@ module swap_set =
     /// labels<para>difference</para></remarks>
     /// <seealso href="http://www.w3.org/2000/10/swap/set#difference">http://www.w3.org/2000/10/swap/set#difference</seealso>
     let difference = Prefixed_Name(swap_set, "difference") |> PrefixedName
+    /// <summary>
+    ///   <para>swap_set:in</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>This set contains that as a member.
+    ///     Cwm will bind the subject to each of the members of the object.</para>
+    /// labels<para>in</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/set#in">http://www.w3.org/2000/10/swap/set#in</seealso>
+    let in_ = Prefixed_Name(swap_set, "in") |> PrefixedName
     /// <summary>
     ///   <para>swap_set:intersection</para>
     /// </summary>

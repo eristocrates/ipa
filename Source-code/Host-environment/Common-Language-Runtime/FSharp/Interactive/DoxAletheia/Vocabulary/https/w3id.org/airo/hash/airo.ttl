@@ -1,0 +1,1264 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/date> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/prov#Entity> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/AIRO> <http://purl.org/dc/terms/contributor> "Harshvardhan J. Pandit",
+                                                               "Dave Lewis";
+                        <http://purl.org/dc/terms/creator> "Delaram Golpayegani";
+                        <http://purl.org/dc/terms/description> "AIRO represents AI risk concepts and relations based on the AI Act draft and ISO 31000 standard series."@en;
+                        <http://purl.org/dc/terms/issued> "2021-01-20T09:00:00"^^xsd:dateTime;
+                        <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/>;
+                        <http://purl.org/dc/terms/modified> "2021-07-01T17:01:00"^^xsd:dateTime;
+                        <http://purl.org/dc/terms/publisher> "ADAPT Centre, Trinity College Dublin";
+                        <http://purl.org/dc/terms/title> "AIRO";
+                        a <http://www.w3.org/2002/07/owl#Ontology>;
+                        rdfs:label "AI Risk Ontology"@en;
+                        <http://www.w3.org/2002/07/owl#versionInfo> 0.2.
+<https://w3id.org/AIRO#AIApplication> a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "Refers to the application and usage of the AI system."@en;
+                                      rdfs:label "AI Application"@en.
+<https://w3id.org/AIRO#AIComponent> a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "A functional element that constructs an AI system. [Source: ISO 22989]"@en;
+                                    rdfs:label "AI Component"@en.
+<https://w3id.org/AIRO#AIDeveloper> a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "A natural or legal person, public authority, agency or other body that develops an AI system or that has an AI system developed with a view to placing it on the market or putting it into service under its own name or trademark, whether for payment or free of charge. [Source: AI Act]"@en;
+                                    rdfs:label "AI Developer"@en;
+                                    rdfs:subClassOf <https://w3id.org/AIRO#Stakeholder>.
+<https://w3id.org/AIRO#AIHardware> a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Hardware on which the AI system run."@en;
+                                   rdfs:label "AI Hardware"@en;
+                                   rdfs:subClassOf <https://w3id.org/AIRO#AIComponent>.
+<https://w3id.org/AIRO#AILifecyclePhase> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:comment "A Phase of AI lifecycle which indicates evolution of the system from conception through retirement."@en;
+                                         rdfs:label "AI Lifecycle Phase"@en.
+<https://w3id.org/AIRO#AISubject> a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "An AI subject is an organization or entity that is impacted by an AI system, service or product."@en;
+                                  rdfs:label "AI Subject"@en;
+                                  rdfs:subClassOf <https://w3id.org/AIRO#Stakeholder>.
+<https://w3id.org/AIRO#AISystem> a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Represents a software that is developed with one or more of the AI Approaches and can, for a given set of human-defined objectives, generate outputs such as content, predictions, recommendations, or decisions influencing the environments they interact with. [Source: AI Act, Art 3(1)]"@en;
+                                 rdfs:label "AI System"@en;
+                                 rdfs:subClassOf <https://w3id.org/AIRO#System>.
+<https://w3id.org/AIRO#AISystemAccuracy> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:comment "Indicates the degree to which a product or system provides the correct results with the needed degree of precision. [ISO 22989, 3.4.4]"@en;
+                                         rdfs:label "AI System Accuracy"@en;
+                                         rdfs:subClassOf <https://w3id.org/AIRO#Accuracy>.
+<https://w3id.org/AIRO#AISystemForm> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "refers to the forms in which AI system is placed on the market or put into service."@en;
+                                     rdfs:label "AI System Form"@en.
+<https://w3id.org/AIRO#AISystemIndicator> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment "Represents indicators for expressing properties of AI systems."@en;
+                                          rdfs:label "AI System Indicator"@en;
+                                          rdfs:subClassOf <https://w3id.org/AIRO#Indicator>.
+<https://w3id.org/AIRO#AITechnique> a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "Represents the main approaches and techniques used for development of AI systems."@en;
+                                    rdfs:label "AI Technique"@en.
+<https://w3id.org/AIRO#AIUser> a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Any natural or legal person, public authority, agency or other body using an AI system under its authority. [Source: AI Act]"@en;
+                               rdfs:label "AI User"@en;
+                               rdfs:subClassOf <https://w3id.org/AIRO#Stakeholder>.
+<https://w3id.org/AIRO#Accuracy> a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:label "Accuracy"@en;
+                                 rdfs:subClassOf <https://w3id.org/AIRO#AISystemIndicator>.
+<https://w3id.org/AIRO#AdmissionTestAssessment> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:comment "Refers to the assessment of participants in tests  required for admission to educational institutions."@en;
+                                                rdfs:label "Admission Test Assessment"@en;
+                                                rdfs:subClassOf <https://w3id.org/AIRO#AssessmentForEducation>.
+<https://w3id.org/AIRO#AdversarialAttack> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment "inputs designed to cause the model to make a mistake"@en;
+                                          rdfs:label "Adversarial Attack"@en;
+                                          rdfs:subClassOf <https://w3id.org/AIRO#Attack>.
+<https://w3id.org/AIRO#AdvertisingVacancies> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:label "Advertising Vacancies"@en;
+                                             rdfs:subClassOf <https://w3id.org/AIRO#AssessmentForRecuitment>.
+<https://w3id.org/AIRO#Alogorithm-RelatedRiskSource> a <http://www.w3.org/2002/07/owl#Class>;
+                                                     rdfs:label "Algorithm-Related Risk Source"@en;
+                                                     rdfs:subClassOf <https://w3id.org/AIRO#RiskSource>.
+<https://w3id.org/AIRO#Applicant> a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "A person who has made an application."@en;
+                                  rdfs:label "Applicant"@en;
+                                  rdfs:subClassOf <https://w3id.org/AIRO#Person>.
+<https://w3id.org/AIRO#ApplicationExamination> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:label "Application Examination"@en;
+                                               rdfs:subClassOf <https://w3id.org/AIRO#MakingDecision>.
+<https://w3id.org/AIRO#ApplicationFiltering> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "Filtering applications for recruitment or selection of natural persons."@en;
+                                             rdfs:label "Application Filtering"@en;
+                                             rdfs:subClassOf <https://w3id.org/AIRO#AssessmentForRecuitment>.
+<https://w3id.org/AIRO#ApplicationScreening> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:label "Application Screening"@en;
+                                             rdfs:subClassOf <https://w3id.org/AIRO#AssessmentForRecuitment>.
+<https://w3id.org/AIRO#ApplyingLawToFacts> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:comment "Refers to the application of the law to a concrete set of facts."@en;
+                                           rdfs:label "Applying The Law to Facts"@en;
+                                           rdfs:subClassOf <https://w3id.org/AIRO#KnowledgeReasoning>.
+<https://w3id.org/AIRO#Approval> a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Represents approval or refusual of a request, excutation of process, etc. to prevent or mitigate a risk."@en;
+                                 rdfs:label "Approval"@en;
+                                 rdfs:subClassOf <https://w3id.org/AIRO#ManualControl>.
+<https://w3id.org/AIRO#AreaOfImpact> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "Represents areas that AI might have impact on."@en;
+                                     rdfs:label "Area Of Impact"@en.
+<https://w3id.org/AIRO#AssessingHealthRisk> a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:label "Assessing Health Risk"@en;
+                                            rdfs:subClassOf <https://w3id.org/AIRO#IndividualRiskAssessment>.
+<https://w3id.org/AIRO#AssessingPastCriminalBehaviour> a <http://www.w3.org/2002/07/owl#Class>;
+                                                       rdfs:label "Assessing Past Criminal Behaviour"@en;
+                                                       rdfs:subClassOf <https://w3id.org/AIRO#Assessment>.
+<https://w3id.org/AIRO#AssessingRiskForPotentialVictimsOfCriminalOffences> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                           rdfs:label "Assessing Risk For Potential Victims Of Criminal Offences"@en;
+                                                                           rdfs:subClassOf <https://w3id.org/AIRO#IndividualRiskAssessment>.
+<https://w3id.org/AIRO#AssessingRiskOfIrregularImmigration> a <http://www.w3.org/2002/07/owl#Class>;
+                                                            rdfs:label "Assessing Risk Of Irregular Immigration"@en;
+                                                            rdfs:subClassOf <https://w3id.org/AIRO#IndividualRiskAssessment>.
+<https://w3id.org/AIRO#AssessingRiskOfOffending> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:label "Assessing Risk Of Offending"@en;
+                                                 rdfs:subClassOf <https://w3id.org/AIRO#IndividualRiskAssessment>.
+<https://w3id.org/AIRO#AssessingRiskOfReoffending> a <http://www.w3.org/2002/07/owl#Class>;
+                                                   rdfs:label "Assessing Risk Of Reoffending"@en;
+                                                   rdfs:subClassOf <https://w3id.org/AIRO#IndividualRiskAssessment>.
+<https://w3id.org/AIRO#AssessingSecurityRisk> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:label "Assessing Security Risk"@en;
+                                              rdfs:subClassOf <https://w3id.org/AIRO#IndividualRiskAssessment>.
+<https://w3id.org/AIRO#AssessingTestsRequiredForAdmission> a <http://www.w3.org/2002/07/owl#Class>;
+                                                           rdfs:label "Assessing Tests Required For Admission"@en;
+                                                           rdfs:subClassOf <https://w3id.org/AIRO#StudentAssessment>.
+<https://w3id.org/AIRO#Assessment> a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Refers to the use of AI systems for assessmen and evaluation."@en;
+                                   rdfs:label "Assessment"@en;
+                                   rdfs:subClassOf <https://w3id.org/AIRO#MakingDecision>.
+<https://w3id.org/AIRO#AssessmentForEducation> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:comment "Refers to assessment for education and vocational training purposes."@en;
+                                               rdfs:label "Assessment For Education"@en;
+                                               rdfs:subClassOf <https://w3id.org/AIRO#Assessment>.
+<https://w3id.org/AIRO#AssessmentForRecuitment> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:comment "Refers to assessment related to employment, workers management and access to self-employment."@en;
+                                                rdfs:label "Assessment For Recruitment"@en;
+                                                rdfs:subClassOf <https://w3id.org/AIRO#Assessment>.
+<https://w3id.org/AIRO#AssessmentOfEmployee> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:label "Assessment Of Employee"@en;
+                                             rdfs:subClassOf <https://w3id.org/AIRO#Assessment>.
+<https://w3id.org/AIRO#AssigningPeopleToEducationalInstitutions> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                 rdfs:label "Assigning People To Educational Institutions"@en;
+                                                                 rdfs:subClassOf <https://w3id.org/AIRO#AssessmentForEducation>.
+<https://w3id.org/AIRO#AsylumApplicationExamination> a <http://www.w3.org/2002/07/owl#Class>;
+                                                     rdfs:label "Asylum Application Examination"@en;
+                                                     rdfs:subClassOf <https://w3id.org/AIRO#ApplicationExamination>.
+<https://w3id.org/AIRO#AsylumSeeker> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "A person who has applied for asylum."@en;
+                                     rdfs:label "Asylum Seeker"@en;
+                                     rdfs:subClassOf <https://w3id.org/AIRO#Applicant>.
+<https://w3id.org/AIRO#Attack> a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:label "Attack"@en;
+                               rdfs:subClassOf <https://w3id.org/AIRO#RiskSource>.
+<https://w3id.org/AIRO#AutomatedControl> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:comment "Represents controls that do not involve human intervention."@en;
+                                         rdfs:label "Automated Control"@en;
+                                         rdfs:subClassOf <https://w3id.org/AIRO#Control>;
+                                         <http://www.w3.org/2002/07/owl#disjointWith> <https://w3id.org/AIRO#ManualControl>.
+<https://w3id.org/AIRO#BayesianEstimation> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:label "Bayesian Estimation"@en;
+                                           rdfs:subClassOf <https://w3id.org/AIRO#StatisticalApproach>.
+<https://w3id.org/AIRO#Bias> a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Systematic difference in treatment of certain objects, people, or groups in comparison to others [ISO 22989]"@en;
+                             rdfs:label "Bias"@en;
+                             rdfs:subClassOf <https://w3id.org/AIRO#BiasConsequence>.
+<https://w3id.org/AIRO#BiasConsequence> a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:comment "Represents consequences related to bias."@en;
+                                        rdfs:label "Bias Consequence"@en;
+                                        rdfs:subClassOf <https://w3id.org/AIRO#Consequence>.
+<https://w3id.org/AIRO#BiasDetection> a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "Represens controls that are applied to detect bias in datasets, models, algorithms, ect."@en;
+                                      rdfs:label "Bias Detection"@en;
+                                      rdfs:subClassOf <https://w3id.org/AIRO#DetectionControl>.
+<https://w3id.org/AIRO#BiasedTestingDataSet> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:label "Biased Testing Data Set"@en;
+                                             rdfs:subClassOf <https://w3id.org/AIRO#TestingDataRiskSource>.
+<https://w3id.org/AIRO#BiasedTrainingDataSet> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:label "Biased Training Data Set"@en;
+                                              rdfs:subClassOf <https://w3id.org/AIRO#TrainingDataRiskSource>.
+<https://w3id.org/AIRO#BiasedValidationDataSet> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:label "Biased Validation Data Set"@en;
+                                                rdfs:subClassOf <https://w3id.org/AIRO#ValidationDataRelatedSource>.
+<https://w3id.org/AIRO#BiomerticCategorisation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:label "Biometric Categorisation"@en;
+                                                rdfs:subClassOf <https://w3id.org/AIRO#MakingDecision>.
+<https://w3id.org/AIRO#BiometricIdnetification> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:comment "Identifaction of natural persons using biometric data."@en;
+                                                rdfs:label "Biometric Identification"@en;
+                                                rdfs:subClassOf <https://w3id.org/AIRO#MakingDecision>.
+<https://w3id.org/AIRO#Blueprint> a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:label "Blueprint"@en;
+                                  rdfs:subClassOf <https://w3id.org/AIRO#Document>.
+<https://w3id.org/AIRO#Child> a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "An individual human being who is below the age of 18 (according to the UN Convention on the Rights of the Child)"@en;
+                              rdfs:label "Child"@en;
+                              rdfs:subClassOf <https://w3id.org/AIRO#Person>.
+<https://w3id.org/AIRO#CompetentPublicAuthority> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:label "Competent Public Authority"@en;
+                                                 rdfs:subClassOf <https://w3id.org/AIRO#PublicAuthority>.
+<https://w3id.org/AIRO#Consequence> a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "Outcome of an event affecting objectives. [Source: ISO 31000, 3.6]"@en;
+                                    rdfs:label "Consequence"@en;
+                                    rdfs:subClassOf <https://w3id.org/AIRO#Event>.
+<https://w3id.org/AIRO#Content> a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Content generated using an AI system."@en;
+                                rdfs:label "Content"@en;
+                                rdfs:subClassOf <https://w3id.org/AIRO#Output>.
+<https://w3id.org/AIRO#Control> a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Represents the measure that maintains and/or modifies risk. [Source: ISO 31000, 3.8]"@en;
+                                rdfs:label "Control"@en.
+<https://w3id.org/AIRO#CreditworthinessAssessment> a <http://www.w3.org/2002/07/owl#Class>;
+                                                   rdfs:comment "Refers to the evaluation the creditworthiness of natural persons or establishing their credit score."@en;
+                                                   rdfs:label "Creditworthiness Assessment"@en;
+                                                   rdfs:subClassOf <https://w3id.org/AIRO#Assessment>.
+<https://w3id.org/AIRO#CrimeAnalytics> a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:comment "Refers to crime analytics regarding natural persons, allowing law enforcement authorities to search complex related and unrelated large data sets available in different data sources or in different data formats in order to identify unknown patterns or discover hidden relationships in the data."@en;
+                                       rdfs:label "Crime Analytics";
+                                       rdfs:subClassOf <https://w3id.org/AIRO#PatternRecognition>.
+<https://w3id.org/AIRO#Cyberattack> a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:label "Cyberattack"@en;
+                                    rdfs:subClassOf <https://w3id.org/AIRO#Attack>.
+<https://w3id.org/AIRO#Data> a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Reinterpretable representation of information in a formalized manner suitable for communication, interpretation, or processing [Source: ISO/IEC 2382:2015, 2121272]"@en;
+                             rdfs:label "Data"@en;
+                             rdfs:subClassOf <https://w3id.org/AIRO#AIComponent>.
+<https://w3id.org/AIRO#DataAccuracy> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "Indicates the degree to which data has attributes that correctly represent the true value of the intended attribute of a concept or event in a specific context of use. [ISO 22989, 3.4.3]"@en;
+                                     rdfs:label "Data Accuracy"@en;
+                                     rdfs:subClassOf <https://w3id.org/AIRO#Accuracy>.
+<https://w3id.org/AIRO#DataPoisoning> a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "Attack trying to manipulate the training dataset"@en;
+                                      rdfs:label "Data Poisoning"@en;
+                                      rdfs:subClassOf <https://w3id.org/AIRO#Attack>.
+<https://w3id.org/AIRO#DataSet-RelatedRiskSource> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:label "DataSet-Related Risk Source"@en;
+                                                  rdfs:subClassOf <https://w3id.org/AIRO#RiskSource>.
+<https://w3id.org/AIRO#Datasheet> a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:label "Datasheet"@en;
+                                  rdfs:subClassOf <https://w3id.org/AIRO#Document>.
+<https://w3id.org/AIRO#Death> a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Represents death of a person caused by AI."@en;
+                              rdfs:label "Death"@en;
+                              rdfs:subClassOf <https://w3id.org/AIRO#WellbeingImpact>.
+<https://w3id.org/AIRO#Decision> a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Decision generated by an AI system."@en;
+                                 rdfs:label "Decision"@en;
+                                 rdfs:subClassOf <https://w3id.org/AIRO#Output>.
+<https://w3id.org/AIRO#DecreasedRobustness> a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:comment "Indicates decreased level of system's robustness resulted from materialisation of a risk."@en;
+                                            rdfs:label "Decreased Robustness"@en;
+                                            rdfs:subClassOf <https://w3id.org/AIRO#PerformanceConsequence>.
+<https://w3id.org/AIRO#DecreasedSecurity> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment "Indicates decreased level of security of the AI system resulted from materialisation of a risk."@en;
+                                          rdfs:label "Decreased Security"@en;
+                                          rdfs:subClassOf <https://w3id.org/AIRO#PerformanceConsequence>.
+<https://w3id.org/AIRO#DeepFakeDetection> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment "Dectection of content that is generated using deep fake."@en;
+                                          rdfs:label "Deep Fake Detection"@en;
+                                          rdfs:subClassOf <https://w3id.org/AIRO#Detection>.
+<https://w3id.org/AIRO#Defendant> a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "A person who is being accused of criminal offences."@en;
+                                  rdfs:label "Defendant"@en;
+                                  rdfs:subClassOf <https://w3id.org/AIRO#Person>.
+<https://w3id.org/AIRO#DegradedAccuracy> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:comment "Indicates decreased level of system's accuracy resulted from materialisation of a risk."@en;
+                                         rdfs:label "Degraded Accuracy"@en;
+                                         rdfs:subClassOf <https://w3id.org/AIRO#PerformanceConsequence>.
+<https://w3id.org/AIRO#DesignSpecification> a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:label "Design Specification"@en;
+                                            rdfs:subClassOf <https://w3id.org/AIRO#Document>.
+<https://w3id.org/AIRO#DetectingNon-AuthenticDocuments> a <http://www.w3.org/2002/07/owl#Class>;
+                                                        rdfs:label "Detecting Non-Authentic Documents"@en;
+                                                        rdfs:subClassOf <https://w3id.org/AIRO#Detection>.
+<https://w3id.org/AIRO#Detection> a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "Refers to the use of AI systems to detect an entity, pattern, etc."@en;
+                                  rdfs:label "Detection"@en;
+                                  rdfs:subClassOf <https://w3id.org/AIRO#MakingDecision>.
+<https://w3id.org/AIRO#DetectionControl> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:comment "Represents controls that are applied to detect an event."@en;
+                                         rdfs:label "Detection Control"@en;
+                                         rdfs:subClassOf <https://w3id.org/AIRO#Control>.
+<https://w3id.org/AIRO#DetermineCreditScore> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:label "Determine Credit Score"@en;
+                                             rdfs:subClassOf <https://w3id.org/AIRO#Assessment>.
+<https://w3id.org/AIRO#DeterminingAccessToEducation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                     rdfs:comment "Refers to the purpose of determining access or assigning natural persons to educational and vocational training institutions."@en;
+                                                     rdfs:label "Determining Access To Education"@en;
+                                                     rdfs:subClassOf <https://w3id.org/AIRO#AssessmentForEducation>.
+<https://w3id.org/AIRO#DiscoveringHiddenRelationshipsRelatedToCrime> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                     rdfs:label "Discovering Hidden Relationships Related To Crime"@en;
+                                                                     rdfs:subClassOf <https://w3id.org/AIRO#CrimeAnalytics>.
+<https://w3id.org/AIRO#DispatchingEmergencyService> a <http://www.w3.org/2002/07/owl#Class>;
+                                                    rdfs:comment "Dispatching of emergency first response services, including by firefighters and medical aid."@en;
+                                                    rdfs:label "Dispacthing Emergency Service"@en;
+                                                    rdfs:subClassOf <https://w3id.org/AIRO#Planning>.
+<https://w3id.org/AIRO#DisruptionOfOperationOfCriticalInfrastructure> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                      rdfs:comment "Represents disruption of management and operation of critical infrastructure."@en;
+                                                                      rdfs:label "Disruption Of Operation Of Critical Infrastructure"@en;
+                                                                      rdfs:subClassOf <https://w3id.org/AIRO#ImpactOnFacility>.
+<https://w3id.org/AIRO#DistortionInHumanBehaviour> a <http://www.w3.org/2002/07/owl#Class>;
+                                                   rdfs:comment "Represents adverse impacts of AI on human behaviour."@en;
+                                                   rdfs:label "Distortion In Human Behaviour"@en;
+                                                   rdfs:subClassOf <https://w3id.org/AIRO#WellbeingImpact>.
+<https://w3id.org/AIRO#Document> a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:label "Document"@en;
+                                 rdfs:subClassOf <http://www.w3.org/ns/prov#Entity>.
+<https://w3id.org/AIRO#Domain> a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Represents the sector/domain the AI system is intended to be used in."@en;
+                               rdfs:label "Domain"@en.
+<https://w3id.org/AIRO#EUDeclarationOfConformity> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:label "EU Declaration Of Conformity"@en;
+                                                  rdfs:subClassOf <https://w3id.org/AIRO#Document>.
+<https://w3id.org/AIRO#EliminationControl> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:comment "Represents controls that applied to prevent an event from happening."@en;
+                                           rdfs:label "Elimination Control"@en;
+                                           rdfs:subClassOf <https://w3id.org/AIRO#Control>.
+<https://w3id.org/AIRO#EmotionRecognition> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:comment "Refers to the detection of the emotional state of a natural person."@en;
+                                           rdfs:label "Emotion Recognition"@en;
+                                           rdfs:subClassOf <https://w3id.org/AIRO#Detection>.
+<https://w3id.org/AIRO#Employee> a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Persons in work-related contractual relationships."@en;
+                                 rdfs:label "Employee"@en;
+                                 rdfs:subClassOf <https://w3id.org/AIRO#Person>.
+<https://w3id.org/AIRO#EmployeeBehaviourMonitoring> a <http://www.w3.org/2002/07/owl#Class>;
+                                                    rdfs:label "Employee Behaviour Monitoring"@en;
+                                                    rdfs:subClassOf <https://w3id.org/AIRO#EmployeeMonitoring>.
+<https://w3id.org/AIRO#EmployeeEvaluation> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:label "Employee Evaluation"@en;
+                                           rdfs:subClassOf <https://w3id.org/AIRO#AssessmentForRecuitment>.
+<https://w3id.org/AIRO#EmployeeMonitoring> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:comment "Represents purpose of monitoring and evaluating performance and behavior of employees in workplace."@en;
+                                           rdfs:label "Employee Monitoring"@en;
+                                           rdfs:subClassOf <https://w3id.org/AIRO#Monitoring>.
+<https://w3id.org/AIRO#EmployeePerformanceMonitoring> a <http://www.w3.org/2002/07/owl#Class>;
+                                                      rdfs:label "Employee Performance Monitoring"@en;
+                                                      rdfs:subClassOf <https://w3id.org/AIRO#EmployeeMonitoring>.
+<https://w3id.org/AIRO#EnvironmentOfUse> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:label "Environment Of Use"@en.
+<https://w3id.org/AIRO#EnvironmentalDamage> a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:comment "Represents the deterioration of the environment caused by AI."@en;
+                                            rdfs:label "Environmental Damage"@en;
+                                            rdfs:subClassOf <https://w3id.org/AIRO#EnvironmentalImpact>.
+<https://w3id.org/AIRO#EnvironmentalImpact> a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:comment "Represent impact on the enviroment."@en;
+                                            rdfs:label "Environmental Impact"@en;
+                                            rdfs:subClassOf <https://w3id.org/AIRO#Impact>.
+<https://w3id.org/AIRO#ErrorInDataCollection> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:label "Error In Data Collection"@en;
+                                              rdfs:subClassOf <https://w3id.org/AIRO#DataSet-RelatedRiskSource>.
+<https://w3id.org/AIRO#ErrorInDataPrepration> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:label "Error In Data Prepration"@en;
+                                              rdfs:subClassOf <https://w3id.org/AIRO#DataSet-RelatedRiskSource>.
+<https://w3id.org/AIRO#ErrorInInputData> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:label "Error In Input Data"@en;
+                                         rdfs:subClassOf <https://w3id.org/AIRO#InputDataRiskSource>.
+<https://w3id.org/AIRO#ErrorInTestingDataSet> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:label "Error In Testing Data Set"@en;
+                                              rdfs:subClassOf <https://w3id.org/AIRO#TestingDataRiskSource>.
+<https://w3id.org/AIRO#ErrorInTrainingDataSet> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:label "Error In Training Data Set"@en;
+                                               rdfs:subClassOf <https://w3id.org/AIRO#TrainingDataRiskSource>.
+<https://w3id.org/AIRO#ErrorInValidationDataSet> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:label "Error In Validation Data Set"@en;
+                                                 rdfs:subClassOf <https://w3id.org/AIRO#ValidationDataRelatedSource>.
+<https://w3id.org/AIRO#EvaluatingBehaviourOfEmployee> a <http://www.w3.org/2002/07/owl#Class>;
+                                                      rdfs:label "Evaluating Behaviour Of Employee"@en;
+                                                      rdfs:subClassOf <https://w3id.org/AIRO#AssessmentOfEmployee>.
+<https://w3id.org/AIRO#EvaluatingPerformanceOfEmployee> a <http://www.w3.org/2002/07/owl#Class>;
+                                                        rdfs:label "Evaluating Performance Of Employee"@en;
+                                                        rdfs:subClassOf <https://w3id.org/AIRO#AssessmentOfEmployee>.
+<https://w3id.org/AIRO#EvaluatingReliabilityOfEvidence> a <http://www.w3.org/2002/07/owl#Class>;
+                                                        rdfs:comment "Refers to the evaluation of the reliability of evidence in the course of investigation or prosecution of criminal offences."@en;
+                                                        rdfs:label "Evaluating Reliability Of Evidence"@en;
+                                                        rdfs:subClassOf <https://w3id.org/AIRO#Assessment>.
+<https://w3id.org/AIRO#Event> a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Represents occurrence or change of a particular set of circumstances. [Source ISO 31000, 3.5]"@en;
+                              rdfs:label "Event"@en.
+<https://w3id.org/AIRO#ExecutionEnvironment> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "Hardware on which the AI system run"@en;
+                                             rdfs:label "Execution Environment"@en.
+<https://w3id.org/AIRO#ExpectedLifetime> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:comment "Represents the expected lifetime of a system."@en;
+                                         rdfs:label "Expected Lifetime"@en;
+                                         rdfs:subClassOf <https://w3id.org/AIRO#AISystemIndicator>.
+<https://w3id.org/AIRO#ExtentOfUse> a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "Represents the extent to which an AI system has been used or is likely to be used."@en;
+                                    rdfs:label "Extent Of Use"@en;
+                                    rdfs:subClassOf <https://w3id.org/AIRO#AISystemIndicator>.
+<https://w3id.org/AIRO#FacialRecognition> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment "Automatic pattern recognition comparing stored images of human faces with the image of an actual face, indicating any matching, if it exists, and any data, if they exist, identifying the person to whom the face belongs [Source: ISO 5127:2017, 3.1.12.09]."@en;
+                                          rdfs:label "Facial Recognition"@en;
+                                          rdfs:subClassOf <https://w3id.org/AIRO#AIApplication>.
+<https://w3id.org/AIRO#Firefighter> a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "A person who works as a firefighter."@en;
+                                    rdfs:label "Firefighter"@en;
+                                    rdfs:subClassOf <https://w3id.org/AIRO#AIUser>.
+<https://w3id.org/AIRO#FundamentalRight> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:comment "Represents a right, freedom, or principle set out in the EU Charter of Fundamental Rights."@en;
+                                         rdfs:label "Fundamental Right"@en;
+                                         rdfs:subClassOf <https://w3id.org/AIRO#AreaOfImpact>.
+<https://w3id.org/AIRO#GeneratingAudioContent> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:comment "Refers to manipulating or generating audio content."@en;
+                                               rdfs:label "Generating Audio Content"@en;
+                                               rdfs:subClassOf <https://w3id.org/AIRO#GeneratingContent>.
+<https://w3id.org/AIRO#GeneratingContent> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment "Represents purpose of generating or manipulating content."@en;
+                                          rdfs:label "Generating Content"@en;
+                                          rdfs:subClassOf <https://w3id.org/AIRO#Purpose>.
+<https://w3id.org/AIRO#GeneratingImageContent> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:comment "Refers to manipulating or generating image content."@en;
+                                               rdfs:label "Generating Image Content"@en;
+                                               rdfs:subClassOf <https://w3id.org/AIRO#GeneratingContent>.
+<https://w3id.org/AIRO#GeneratingVideoContent> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:comment "Refers to manipulating or generating video content."@en;
+                                               rdfs:label "Generating Video Content"@en;
+                                               rdfs:subClassOf <https://w3id.org/AIRO#GeneratingContent>.
+<https://w3id.org/AIRO#GrantingPublicAssistanceServices> a <http://www.w3.org/2002/07/owl#Class>;
+                                                         rdfs:label "Granting Public Assistance Services"@en;
+                                                         rdfs:subClassOf <https://w3id.org/AIRO#MakingDecision>.
+<https://w3id.org/AIRO#Group> a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "A group of persons such as citizens, marginsalised groups, etc."@en;
+                              rdfs:label "Group"@en;
+                              rdfs:subClassOf <https://w3id.org/AIRO#AISubject>.
+<https://w3id.org/AIRO#HarmonisedStandard> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:comment "a European standard as defined in Article 2(1)(c) of Regulation (EU) No 1025/2012";
+                                           rdfs:label "Harmonised Standard"@en;
+                                           rdfs:subClassOf <https://w3id.org/AIRO#Standard>.
+<https://w3id.org/AIRO#Health> a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Represents health of a person."@en;
+                               rdfs:label "Health"@en;
+                               rdfs:subClassOf <https://w3id.org/AIRO#HealthAndSafety>.
+<https://w3id.org/AIRO#HealthAndSafety> a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:comment "Represents area of health and safety."@en;
+                                        rdfs:label "Health And Safety"@en;
+                                        rdfs:subClassOf <https://w3id.org/AIRO#AreaOfImpact>.
+<https://w3id.org/AIRO#HumanBehaviour> a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:comment "Represents the way a person acts."@en;
+                                       rdfs:label "Human Behaviour"@en;
+                                       rdfs:subClassOf <https://w3id.org/AIRO#HealthAndSafety>.
+<https://w3id.org/AIRO#HumanOversightMeasure> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:comment "Represents measures for overseening the system by natural persons to detect, prevent or minimise risk."@en;
+                                              rdfs:label "Human Oversight Measure"@en;
+                                              rdfs:subClassOf <https://w3id.org/AIRO#SemiAutomatedControl>.
+<https://w3id.org/AIRO#IdentifyingUnkownPatternsOfCrime> a <http://www.w3.org/2002/07/owl#Class>;
+                                                         rdfs:label "Identifying Unkown Patterns Of Crime"@en;
+                                                         rdfs:subClassOf <https://w3id.org/AIRO#CrimeAnalytics>.
+<https://w3id.org/AIRO#ImmigrationEligibilityAssessment> a <http://www.w3.org/2002/07/owl#Class>;
+                                                         rdfs:comment "Examination of applications for asylum, visa and residence permits and associated complaints"@en;
+                                                         rdfs:label "Immigration Eligibility Assessment"@en;
+                                                         rdfs:subClassOf <https://w3id.org/AIRO#Assessment>.
+<https://w3id.org/AIRO#Impact> a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Represents outcomes of a consequence on persons, groups, facilities, environment, etc."@en;
+                               rdfs:label "Impact"@en;
+                               rdfs:subClassOf <https://w3id.org/AIRO#Consequence>.
+<https://w3id.org/AIRO#ImpactOnFacility> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:comment "Represents impact of AI on facilities and property."@en;
+                                         rdfs:label "Impact On Facility"@en;
+                                         rdfs:subClassOf <https://w3id.org/AIRO#Impact>.
+<https://w3id.org/AIRO#IncompetenceOfHumanOversightActors> a <http://www.w3.org/2002/07/owl#Class>;
+                                                           rdfs:comment "Refers to incompentece of individuals to whom human oversight is assigned."@en;
+                                                           rdfs:label "Incompetence Of Human Oversight Actors"@en;
+                                                           rdfs:subClassOf <https://w3id.org/AIRO#OrganisationalRiskSource>.
+<https://w3id.org/AIRO#IncompletenessOfTestingDataSet> a <http://www.w3.org/2002/07/owl#Class>;
+                                                       rdfs:label "Incompleteness Of Testing Data Set"@en;
+                                                       rdfs:subClassOf <https://w3id.org/AIRO#TestingDataRiskSource>.
+<https://w3id.org/AIRO#IncompletenessOfTrainingDataSet> a <http://www.w3.org/2002/07/owl#Class>;
+                                                        rdfs:label "Incompleteness Of Training Data Set"@en;
+                                                        rdfs:subClassOf <https://w3id.org/AIRO#TrainingDataRiskSource>.
+<https://w3id.org/AIRO#IncompletenessOfValidationDataSet> a <http://www.w3.org/2002/07/owl#Class>;
+                                                          rdfs:label "Incompleteness Of Validation Data Set"@en;
+                                                          rdfs:subClassOf <https://w3id.org/AIRO#ValidationDataRelatedSource>.
+<https://w3id.org/AIRO#Indicator> a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:label "Indicator"@en.
+<https://w3id.org/AIRO#IndividualRiskAssessment> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:comment "Refers to use of AI systems for making individual risk assessments of natural persons in order to assess the risk of a natural person for offending or reoffending or the risk for potential victims of criminal offences."@en;
+                                                 rdfs:label "Individual Risk Assessment"@en;
+                                                 rdfs:subClassOf <https://w3id.org/AIRO#Assessment>.
+<https://w3id.org/AIRO#InductiveProgramming> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:label "Inductive Programming"@en;
+                                             rdfs:subClassOf <https://w3id.org/AIRO#KnowledgeBasedApproach>.
+<https://w3id.org/AIRO#Injury> a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Represents physical injuries caused by AI."@en;
+                               rdfs:label "Physical Injury"@en;
+                               rdfs:subClassOf <https://w3id.org/AIRO#WellbeingImpact>.
+<https://w3id.org/AIRO#InputData> a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "Data for which an AI system calculates a predicted output or inference [Source: ISO/IEC FDIS 22989, 3.2.9]."@en;
+                                  rdfs:label "Input Data"@en;
+                                  rdfs:subClassOf <https://w3id.org/AIRO#Data>.
+<https://w3id.org/AIRO#InputDataRiskSource> a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:label "Input Data Risk Source"@en;
+                                            rdfs:subClassOf <https://w3id.org/AIRO#DataSet-RelatedRiskSource>.
+<https://w3id.org/AIRO#InstallationInstruction> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:label "Installation Instruction"@en;
+                                                rdfs:subClassOf <https://w3id.org/AIRO#Document>.
+<https://w3id.org/AIRO#InstructionOfUse> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:label "Instruction Of Use"@en;
+                                         rdfs:subClassOf <https://w3id.org/AIRO#Document>.
+<https://w3id.org/AIRO#Interruption> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "Represent a contol used to interrupt the system's operation."@en;
+                                     rdfs:label "Interruption"@en;
+                                     rdfs:subClassOf <https://w3id.org/AIRO#OperationalControl>.
+<https://w3id.org/AIRO#Intervention> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "Intervention of  a system's operation"@en;
+                                     rdfs:label "Intervation"@en;
+                                     rdfs:subClassOf <https://w3id.org/AIRO#OperationalControl>.
+<https://w3id.org/AIRO#InterviewEvaluation> a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:label "Interview Evaluation"@en;
+                                            rdfs:subClassOf <https://w3id.org/AIRO#AssessmentForRecuitment>.
+<https://w3id.org/AIRO#IrrelevantTestingData> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:label "Irrelevant Testing Data"@en;
+                                              rdfs:subClassOf <https://w3id.org/AIRO#TestingDataRiskSource>.
+<https://w3id.org/AIRO#IrrelevantTrainingData> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:label "Irrelevant Training Data"@en;
+                                               rdfs:subClassOf <https://w3id.org/AIRO#TrainingDataRiskSource>.
+<https://w3id.org/AIRO#IrrelevantValidationData> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:label "Irrelevant Validation Data"@en;
+                                                 rdfs:subClassOf <https://w3id.org/AIRO#ValidationDataRelatedSource>.
+<https://w3id.org/AIRO#JobApplicant> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:label "A person who has made an application for employment."@en,
+                                                "Job Applicant"@en;
+                                     rdfs:subClassOf <https://w3id.org/AIRO#Applicant>.
+<https://w3id.org/AIRO#JudicialAuthority> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:label "Judicial Authority"@en;
+                                          rdfs:subClassOf <https://w3id.org/AIRO#AIUser>.
+<https://w3id.org/AIRO#KnowledgeBasedApproach> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:comment "Represents  knowledge-based approaches, including knowledge representation, , knowledge bases and expert systems."@en;
+                                               rdfs:label "Knowledge Based Approach"@en;
+                                               rdfs:subClassOf <https://w3id.org/AIRO#AITechnique>.
+<https://w3id.org/AIRO#KnowledgeReasoning> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:comment "Represents purpose of capturing knowledge and acquiring new knowledge."@en;
+                                           rdfs:label "Knowledge Reasoning"@en;
+                                           rdfs:subClassOf <https://w3id.org/AIRO#Purpose>.
+<https://w3id.org/AIRO#KnowledgeRepresentation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:label "Knowledge Representation"@en;
+                                                rdfs:subClassOf <https://w3id.org/AIRO#KnowledgeBasedApproach>.
+<https://w3id.org/AIRO#LackOfAppropriateInstructionForUse> a <http://www.w3.org/2002/07/owl#Class>;
+                                                           rdfs:label "Lack Of Appropriate Instruction For Use"@en;
+                                                           rdfs:subClassOf <https://w3id.org/AIRO#OrganisationalRiskSource>.
+<https://w3id.org/AIRO#LackOfAppropriateSecurity> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:label "Lack Of Appropriate Level Of Security"@en;
+                                                  rdfs:subClassOf <https://w3id.org/AIRO#PerformanceRelatedRiskSource>.
+<https://w3id.org/AIRO#LackOfHumanOversightMeasure> a <http://www.w3.org/2002/07/owl#Class>;
+                                                    rdfs:label "Lack Of Human Oversight Measure"@en;
+                                                    rdfs:subClassOf <https://w3id.org/AIRO#OrganisationalRiskSource>.
+<https://w3id.org/AIRO#LackOfTransparency> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:label "Lack Of Transparency"@en;
+                                           rdfs:subClassOf <https://w3id.org/AIRO#OrganisationalRiskSource>.
+<https://w3id.org/AIRO#LawEnforcementAuthority> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:label "Law Enforcement Authority"@en;
+                                                rdfs:subClassOf <https://w3id.org/AIRO#AIUser>.
+<https://w3id.org/AIRO#LegalInterpretation> a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:comment "Represents purpose of researching and interpreting facts and the law."@en;
+                                            rdfs:label "Legal Interpretation"@en;
+                                            rdfs:subClassOf <https://w3id.org/AIRO#KnowledgeReasoning>.
+<https://w3id.org/AIRO#Likelihood> a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Chance of an event happening. [Source: ISO 31000, 3.7]"@en;
+                                   rdfs:label "Likelihood"@en;
+                                   rdfs:subClassOf <https://w3id.org/AIRO#RiskIndicator>.
+<https://w3id.org/AIRO#LogicBasedApproach> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:comment "Represents Logic-based approaches, including inductive (logic) programming."@en;
+                                           rdfs:label "Logic Based Approach"@en;
+                                           rdfs:subClassOf <https://w3id.org/AIRO#AITechnique>.
+<https://w3id.org/AIRO#LowLevelOfAccuracy> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:comment "Refers to inacurracy of the predictions, recommondations, or decisions produced by the system."@en;
+                                           rdfs:label "Low Level Of Accuracy"@en;
+                                           rdfs:subClassOf <https://w3id.org/AIRO#PerformanceRelatedRiskSource>.
+<https://w3id.org/AIRO#LowLevelOfRobustness> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:label "Low Level Of Robustness"@en;
+                                             rdfs:subClassOf <https://w3id.org/AIRO#PerformanceRelatedRiskSource>.
+<https://w3id.org/AIRO#MachineLearningApproach> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:comment "Represenets machine learning approaches, including supervised, unsupervised and reinforcement learning, using a wide variety of methods including deep learning. [Source: AI Act, Annex I]"@en;
+                                                rdfs:label "Machine Learning Approach"@en;
+                                                rdfs:subClassOf <https://w3id.org/AIRO#AITechnique>.
+<https://w3id.org/AIRO#MakingDecision> a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:comment "Represents purpose of generating decisions."@en;
+                                       rdfs:label "Making Decision"@en;
+                                       rdfs:subClassOf <https://w3id.org/AIRO#Purpose>.
+<https://w3id.org/AIRO#MakingPrediction> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:comment "Represents purpose of predicting something based on the existing information."@en;
+                                         rdfs:label "Making Prediction"@en;
+                                         rdfs:subClassOf <https://w3id.org/AIRO#Purpose>.
+<https://w3id.org/AIRO#MakingPromotionDecision> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:comment "Refers to making decisions on promotion."@en;
+                                                rdfs:label "Making Promotion Decision"@en;
+                                                rdfs:subClassOf <https://w3id.org/AIRO#AssessmentOfEmployee>.
+<https://w3id.org/AIRO#MakingTerminationDecision> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:comment "Refers to termination of work-related contractual relationships."@en;
+                                                  rdfs:label "Making Termination Decision"@en;
+                                                  rdfs:subClassOf <https://w3id.org/AIRO#AssessmentOfEmployee>.
+<https://w3id.org/AIRO#ManualControl> a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "Represents controls performed by humans without any use of technologies."@en;
+                                      rdfs:label "Manual Control"@en;
+                                      rdfs:subClassOf <https://w3id.org/AIRO#Control>;
+                                      <http://www.w3.org/2002/07/owl#disjointWith> <https://w3id.org/AIRO#SemiAutomatedControl>.
+<https://w3id.org/AIRO#MedicalAid> a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "A person who works as a medical aid."@en;
+                                   rdfs:label "Medical Aid"@en;
+                                   rdfs:subClassOf <https://w3id.org/AIRO#AIUser>.
+<https://w3id.org/AIRO#Metric> a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:label "Metric"@en.
+<https://w3id.org/AIRO#MigrationRelatedComplaintsExamination> a <http://www.w3.org/2002/07/owl#Class>;
+                                                              rdfs:label "Migration Related Complaints Examination"@en;
+                                                              rdfs:subClassOf <https://w3id.org/AIRO#ApplicationExamination>.
+<https://w3id.org/AIRO#Misuse> a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "The use of an AI system in a way that is not in accordance with its intended purpose."@en;
+                               rdfs:label "Misuse"@en;
+                               rdfs:subClassOf <https://w3id.org/AIRO#RiskSource>.
+<https://w3id.org/AIRO#Model> a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Physical, mathematical, or otherwise logical representation of a system, entity, phenomenon, process or data [Source: ISO/IEC FDIS 22989, 3.1.23]"@en;
+                              rdfs:label "Model"@en;
+                              rdfs:subClassOf <https://w3id.org/AIRO#AIComponent>.
+<https://w3id.org/AIRO#ModelEvasion> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:label "Model Evasion"@en;
+                                     rdfs:subClassOf <https://w3id.org/AIRO#Attack>.
+<https://w3id.org/AIRO#ModelInversion> a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:label "Model Inversion"@en;
+                                       rdfs:subClassOf <https://w3id.org/AIRO#Attack>.
+<https://w3id.org/AIRO#Monitoring> a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Represents purpose of observing and keeping track of something."@en;
+                                   rdfs:label "Monitoring"@en;
+                                   rdfs:subClassOf <https://w3id.org/AIRO#Purpose>.
+<https://w3id.org/AIRO#OperationMode> a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:label "Operation Mode"@en.
+<https://w3id.org/AIRO#OperationalControl> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:label "Operational Control"@en;
+                                           rdfs:subClassOf <https://w3id.org/AIRO#Control>.
+<https://w3id.org/AIRO#OptimisationMethod> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:label "Optimisation Method"@en;
+                                           rdfs:subClassOf <https://w3id.org/AIRO#StatisticalApproach>.
+<https://w3id.org/AIRO#OrganisationalControl> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:label "Organisational Control"@en;
+                                              rdfs:subClassOf <https://w3id.org/AIRO#Control>.
+<https://w3id.org/AIRO#OrganisationalRiskSource> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:label "Organisational Risk Source"@en;
+                                                 rdfs:subClassOf <https://w3id.org/AIRO#RiskSource>.
+<https://w3id.org/AIRO#Output> a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Indicates output of an AI system."@en;
+                               rdfs:label "Output"@en.
+<https://w3id.org/AIRO#OverReliance> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "Represents tendency of automatically relying or over-relying on the output produced by an AI system"@en;
+                                     rdfs:label "Over Reliance"@en;
+                                     rdfs:subClassOf <https://w3id.org/AIRO#WellbeingImpact>.
+<https://w3id.org/AIRO#OverridingTheOutcome> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "Represents overriding outcome of a system."@en;
+                                             rdfs:label "Overriding The Outcome"@en;
+                                             rdfs:subClassOf <https://w3id.org/AIRO#PreventionControl>.
+<https://w3id.org/AIRO#PartialControl> a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:label "Partial Control"@en;
+                                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> (<https://w3id.org/AIRO#Control>
+                                                                                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/AIRO#Control> ; 
+                                                                                                        <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/AIRO#isPartOfControl> ; 
+                                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                        a <http://www.w3.org/2002/07/owl#Class>].
+<https://w3id.org/AIRO#PatternRecognition> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:comment "Refers to identification of unknown patterns in data."@en;
+                                           rdfs:label "Pattern Recognition"@en;
+                                           rdfs:subClassOf <https://w3id.org/AIRO#Detection>.
+<https://w3id.org/AIRO#Performance> a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "the ability of an AI system to achieve its intended purpose [Source: AI Act, Article 3(18)]"@en;
+                                    rdfs:label "Performance"@en;
+                                    rdfs:subClassOf <https://w3id.org/AIRO#AISystemIndicator>.
+<https://w3id.org/AIRO#PerformanceConsequence> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:comment "Represents consequences related to the performance of the AI System."@en;
+                                               rdfs:label "Performance Consequence"@en;
+                                               rdfs:subClassOf <https://w3id.org/AIRO#Consequence>.
+<https://w3id.org/AIRO#PerformanceRelatedRiskSource> a <http://www.w3.org/2002/07/owl#Class>;
+                                                     rdfs:label "Perfomance Related Risk Source"@en;
+                                                     rdfs:subClassOf <https://w3id.org/AIRO#RiskSource>.
+<https://w3id.org/AIRO#Person> a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "An individual human being."@en;
+                               rdfs:label "Natural Person"@en;
+                               rdfs:subClassOf <https://w3id.org/AIRO#AISubject>.
+<https://w3id.org/AIRO#PersonWhoHasEnteredATerritory> a <http://www.w3.org/2002/07/owl#Class>;
+                                                      rdfs:comment "A person who has entered a territory."@en;
+                                                      rdfs:label "Person Who Has Entered A Territory"@en;
+                                                      rdfs:subClassOf <https://w3id.org/AIRO#Person>.
+<https://w3id.org/AIRO#PersonWhoIntendsToEnterATerritory> a <http://www.w3.org/2002/07/owl#Class>;
+                                                          rdfs:comment "A person who intends to enter a territory."@en;
+                                                          rdfs:label "Person Who Intends To Enter Territory"@en;
+                                                          rdfs:subClassOf <https://w3id.org/AIRO#Person>.
+<https://w3id.org/AIRO#PersonalityTraitsAssessment> a <http://www.w3.org/2002/07/owl#Class>;
+                                                    rdfs:label "Personality Traits Assessment"@en;
+                                                    rdfs:subClassOf <https://w3id.org/AIRO#Assessment>.
+<https://w3id.org/AIRO#PhysicalHealth> a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:comment "Represents physical health."@en;
+                                       rdfs:label "Physical Health"@en;
+                                       rdfs:subClassOf <https://w3id.org/AIRO#Health>.
+<https://w3id.org/AIRO#Planning> a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "Represents use of AI systems for planning and scheduling."@en;
+                                 rdfs:label "Planning"@en;
+                                 rdfs:subClassOf <https://w3id.org/AIRO#MakingDecision>.
+<https://w3id.org/AIRO#Post-marketMonitoringSystem> a <http://www.w3.org/2002/07/owl#Class>;
+                                                    rdfs:label "Post-market Monitoring System"@en;
+                                                    rdfs:subClassOf <https://w3id.org/AIRO#System>.
+<https://w3id.org/AIRO#PostmarketMonitoringPlan> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:label "Post-market monitoring plan"@en;
+                                                 rdfs:subClassOf <https://w3id.org/AIRO#Document>.
+<https://w3id.org/AIRO#PostmarketMonitoringSystemDescription> a <http://www.w3.org/2002/07/owl#Class>;
+                                                              rdfs:label "Post-market Monitoring System Description"@en;
+                                                              rdfs:subClassOf <https://w3id.org/AIRO#Document>.
+<https://w3id.org/AIRO#Pre-trainedModel> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:label "Pre-trianed Model"@en;
+                                         rdfs:subClassOf <https://w3id.org/AIRO#Model>.
+<https://w3id.org/AIRO#PredictingRecidivism> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "Referes to predicting the occurrence or reoccurrence of an actual or potential criminal offence based on profiling of natural persons or assessing personality traits and characteristics or past criminal behaviour of natural persons or groups."@en;
+                                             rdfs:label "Predicting Recidivism"@en;
+                                             rdfs:subClassOf <https://w3id.org/AIRO#MakingPrediction>.
+<https://w3id.org/AIRO#Prediction> a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Primary output of an AI system when provided with input data or information. [Source: ISO/IEC FDIS 22989, 3.1.27]"@en;
+                                   rdfs:label "Prediction"@en;
+                                   rdfs:subClassOf <https://w3id.org/AIRO#Output>.
+<https://w3id.org/AIRO#PreventionControl> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment "Control applied to reduce likelihood or severity of the risk, consequence or impact."@en;
+                                          rdfs:label "Mitigation Control"@en;
+                                          rdfs:subClassOf <https://w3id.org/AIRO#Control>.
+<https://w3id.org/AIRO#PrioritisationOfEmergencyService> a <http://www.w3.org/2002/07/owl#Class>;
+                                                         rdfs:comment "Establishing priority in the dispatching of emergency first response services, including by firefighters and medical aid."@en;
+                                                         rdfs:label "Prioritisation Of Emergency Service"@en;
+                                                         rdfs:subClassOf <https://w3id.org/AIRO#Planning>.
+<https://w3id.org/AIRO#ProducingRecommendation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:comment "Represents purpose of producing meaningful recommendations to users of the system."@en;
+                                                rdfs:label "Producing Recommendation"@en;
+                                                rdfs:subClassOf <https://w3id.org/AIRO#Purpose>.
+<https://w3id.org/AIRO#Profiling> a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "Refers to profiling of natural persons in the course of detection, investigation or prosecution of criminal offences."@en;
+                                  rdfs:label "Profiling"@en;
+                                  rdfs:subClassOf <https://w3id.org/AIRO#MakingDecision>.
+<https://w3id.org/AIRO#PropertyDamage> a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:comment "Represents damage of properties caused by AI."@en;
+                                       rdfs:label "Property Damage"@en;
+                                       rdfs:subClassOf <https://w3id.org/AIRO#ImpactOnFacility>.
+<https://w3id.org/AIRO#ProvidingInstructionOfUse> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:comment "Represents providing information to inform the user of in particular an AI system’s intended purpose and proper use, inclusive of the specific geographical, behavioural or functional setting within which the  AI system is intended to be used."@en;
+                                                  rdfs:label "Providing Instruction Of Use"@en;
+                                                  rdfs:subClassOf <https://w3id.org/AIRO#OrganisationalControl>.
+<https://w3id.org/AIRO#PsychologicalHarm> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment "Represents psychological injuries caused by AI."@en;
+                                          rdfs:label "Psychological Harm"@en;
+                                          rdfs:subClassOf <https://w3id.org/AIRO#WellbeingImpact>.
+<https://w3id.org/AIRO#PsychologicalHealth> a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:comment "Represents psychological health."@en;
+                                            rdfs:label "Psychological Health"@en;
+                                            rdfs:subClassOf <https://w3id.org/AIRO#Health>.
+<https://w3id.org/AIRO#PublicAssistanceEligibilityAssessment> a <http://www.w3.org/2002/07/owl#Class>;
+                                                              rdfs:comment "Evaluation of the eligibility of natural persons for public assistance benefits and services."@en;
+                                                              rdfs:label "Public Assistance Eligibility Assessment"@en;
+                                                              rdfs:subClassOf <https://w3id.org/AIRO#Assessment>.
+<https://w3id.org/AIRO#PublicAuthority> a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:label "Public Authority"@en;
+                                        rdfs:subClassOf <https://w3id.org/AIRO#AIUser>.
+<https://w3id.org/AIRO#Purpose> a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "Refers to the use for which an AI system is intended by the provider, including the specific context and conditions of use, as specified in the information supplied by the provider in the instructions for use, promotional or sales materials and statements, as well as in the technical documentation. [Source: AI Act, Art 3(12)]"@en;
+                                rdfs:label "Purpose"@en.
+<https://w3id.org/AIRO#ReasonablyForseeableMisue> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:comment "Use of an AI system in a way that is not in accordance with its intended purpose, but which may result from reasonably foreseeable human behaviour or interaction with other systems [Source: AI Act, Article 3(13)]"@en;
+                                                  rdfs:label "Reasonably Forseeable Misuse"@en;
+                                                  rdfs:subClassOf <https://w3id.org/AIRO#Misuse>.
+<https://w3id.org/AIRO#ReclaimingPublicAssisstanceServices> a <http://www.w3.org/2002/07/owl#Class>;
+                                                            rdfs:label "Reclaiming Public Assisstance Services"@en;
+                                                            rdfs:subClassOf <https://w3id.org/AIRO#MakingDecision>.
+<https://w3id.org/AIRO#RecuritmentTestEvaluation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:label "Recuritment Test Evaluation"@en;
+                                                  rdfs:subClassOf <https://w3id.org/AIRO#AssessmentForRecuitment>.
+<https://w3id.org/AIRO#ReducingPublicAssisstanceServices> a <http://www.w3.org/2002/07/owl#Class>;
+                                                          rdfs:label "Reducing Public Assisstance Services"@en;
+                                                          rdfs:subClassOf <https://w3id.org/AIRO#MakingDecision>.
+<https://w3id.org/AIRO#ReinforcementLearning> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:label "Reinforcement Learning"@en;
+                                              rdfs:subClassOf <https://w3id.org/AIRO#MachineLearningApproach>.
+<https://w3id.org/AIRO#RemoteBiometricIdentification> a <http://www.w3.org/2002/07/owl#Class>;
+                                                      rdfs:comment "Identifying natural persons at a distance through the comparison of a person’s biometric data with the biometric data contained in a reference database."@en;
+                                                      rdfs:label "Remote Biometric Identification"@en;
+                                                      rdfs:subClassOf <https://w3id.org/AIRO#AIApplication>.
+<https://w3id.org/AIRO#RepresentativeOfPublicAuthority> a <http://www.w3.org/2002/07/owl#Class>;
+                                                        rdfs:comment "An entity who act on behalf of a public authority."@en;
+                                                        rdfs:label "Representative Of Public Authority"@en;
+                                                        rdfs:subClassOf <https://w3id.org/AIRO#AIUser>.
+<https://w3id.org/AIRO#ResidencePermitApplicant> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:comment "A person who has applied for a residence permit."@en;
+                                                 rdfs:label "Residence Permit Applicant"@en;
+                                                 rdfs:subClassOf <https://w3id.org/AIRO#Applicant>.
+<https://w3id.org/AIRO#ResidencePermitsApplicationExamination> a <http://www.w3.org/2002/07/owl#Class>;
+                                                               rdfs:label "Residence Permits Application Examination"@en;
+                                                               rdfs:subClassOf <https://w3id.org/AIRO#ApplicationExamination>.
+<https://w3id.org/AIRO#Reversiblity> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "Specifies the extent to which the outcome produced with an AI system is easily reversible."@en;
+                                     rdfs:label "Reversibility"@en;
+                                     rdfs:subClassOf <https://w3id.org/AIRO#AISystemIndicator>.
+<https://w3id.org/AIRO#ReversingTheOutcome> a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:comment "Represents reversing the outcome of a system."@en;
+                                            rdfs:label "Reversing The Outcome"@en;
+                                            rdfs:subClassOf <https://w3id.org/AIRO#PreventionControl>.
+<https://w3id.org/AIRO#RevokingPublicAssisstanceServices> a <http://www.w3.org/2002/07/owl#Class>;
+                                                          rdfs:label "Revoking Public Assisstance Services"@en;
+                                                          rdfs:subClassOf <https://w3id.org/AIRO#MakingDecision>.
+<https://w3id.org/AIRO#Risk> a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Indicates a risk (of harm) associated with an AI system."@en;
+                             rdfs:label "Risk"@en;
+                             rdfs:subClassOf <https://w3id.org/AIRO#Event>.
+<https://w3id.org/AIRO#RiskIndicator> a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "Represents indicators for expressing risk."@en;
+                                      rdfs:label "Risk Indicator"@en;
+                                      rdfs:subClassOf <https://w3id.org/AIRO#Indicator>.
+<https://w3id.org/AIRO#RiskSource> a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Indicates an element that has the potential give rise to a risk."@en;
+                                   rdfs:label "Risk Source"@en;
+                                   rdfs:subClassOf <https://w3id.org/AIRO#Event>.
+<https://w3id.org/AIRO#Robustness> a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "Ability of a system to maintain its level of performance under any circumstances. [Source: ISO 22989]"@en;
+                                   rdfs:label "Robustness"@en;
+                                   rdfs:subClassOf <https://w3id.org/AIRO#AISystemIndicator>.
+<https://w3id.org/AIRO#Safety> a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Represents the state of being safe."@en;
+                               rdfs:label "Safety"@en;
+                               rdfs:subClassOf <https://w3id.org/AIRO#HealthAndSafety>.
+<https://w3id.org/AIRO#SearchMethod> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:label "Search Method"@en;
+                                     rdfs:subClassOf <https://w3id.org/AIRO#StatisticalApproach>.
+<https://w3id.org/AIRO#Security> a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:label "Security"@en;
+                                 rdfs:subClassOf <https://w3id.org/AIRO#AISystemIndicator>.
+<https://w3id.org/AIRO#SemiAutomatedControl> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "Represnets controls that comprise a combination of automated and manual controls."@en;
+                                             rdfs:label "Semi Automated Control"@en;
+                                             rdfs:subClassOf <https://w3id.org/AIRO#Control>.
+<https://w3id.org/AIRO#SeriousIncident> a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:comment "Any incident that directly or indirectly leads, might have led or might lead to : (a) the death of a person or serious damage to a person’s health, to property or the environment, (b) a serious and irreversible disruption of the management and operation of critical infrastructure [Source: AI Act, Articl3 3(44)]"@en;
+                                        rdfs:label "Serious Incident"@en;
+                                        rdfs:subClassOf <https://w3id.org/AIRO#RiskSource>.
+<https://w3id.org/AIRO#Severity> a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:label "Severity"@en;
+                                 rdfs:subClassOf <https://w3id.org/AIRO#RiskIndicator>.
+<https://w3id.org/AIRO#StaffTraining> a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "Represents training of staff, users, etc."@en;
+                                      rdfs:label "Staff Training"@en;
+                                      rdfs:subClassOf <https://w3id.org/AIRO#OrganisationalControl>.
+<https://w3id.org/AIRO#Stakeholder> a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "Represents any individual, group or organization that can affect, be affected by or perceive itself to be affected by a decision or activity [Source: ISO/IEC TR 24028, 3.37]"@en;
+                                    rdfs:label "Stakeholder"@en.
+<https://w3id.org/AIRO#Standard> a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:label "Standard"@en;
+                                 rdfs:subClassOf <http://www.w3.org/ns/prov#Entity>.
+<https://w3id.org/AIRO#StatisticalApproach> a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:comment "Represenets statistical approaches, Bayesian estimation, search and optimization methods. [Source: AI Act, Annex I]"@en;
+                                            rdfs:label "Statistical Approach"@en;
+                                            rdfs:subClassOf <https://w3id.org/AIRO#AITechnique>.
+<https://w3id.org/AIRO#Student> a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "A person who is studying at a school or a university."@en;
+                                rdfs:label "Student"@en;
+                                rdfs:subClassOf <https://w3id.org/AIRO#Person>.
+<https://w3id.org/AIRO#StudentAssessment> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment "Refers to the purpose of assessing students in educational and vocational training institutions and for assessing participants in tests commonly required for admission to educational institutions."@en;
+                                          rdfs:label "Student Assessment"@en;
+                                          rdfs:subClassOf <https://w3id.org/AIRO#AssessmentForEducation>.
+<https://w3id.org/AIRO#StudentAssessmentInEducationalInstitutions> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                   rdfs:label "Student Assessment In Educational Institutions"@en;
+                                                                   rdfs:subClassOf <https://w3id.org/AIRO#StudentAssessment>.
+<https://w3id.org/AIRO#SubliminalTechnique> a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:comment "use of subliminal techniques beyond a person’s consciousness in order to materially distort a person’s behaviour in a manner that causes or is likely to cause that person or another person physical or psychological harm"@en;
+                                            rdfs:label "Subliminal Technique"@en;
+                                            rdfs:subClassOf <https://w3id.org/AIRO#SystemRelatedSource>.
+<https://w3id.org/AIRO#SupervisedLearning> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:label "Supervised Learning"@en;
+                                           rdfs:subClassOf <https://w3id.org/AIRO#MachineLearningApproach>.
+<https://w3id.org/AIRO#SymbolicReasoning> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:label "Symbolic Reasoning"@en;
+                                          rdfs:subClassOf <https://w3id.org/AIRO#KnowledgeBasedApproach>.
+<https://w3id.org/AIRO#System> a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:label "System"@en;
+                               rdfs:subClassOf <http://www.w3.org/ns/prov#Entity>.
+<https://w3id.org/AIRO#SystemArchitecture> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:label "System Architecture"@en;
+                                           rdfs:subClassOf <https://w3id.org/AIRO#Document>.
+<https://w3id.org/AIRO#SystemRelatedSource> a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:label "System Related Source"@en;
+                                            rdfs:subClassOf <https://w3id.org/AIRO#RiskSource>.
+<https://w3id.org/AIRO#TaskAllocation> a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:comment "Refers to the Assignment of tasks to persons."@en;
+                                       rdfs:label "Task Allocation"@en;
+                                       rdfs:subClassOf <https://w3id.org/AIRO#Planning>.
+<https://w3id.org/AIRO#TechnicalControl> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:comment "Represents controls that are implemented using a technology."@en;
+                                         rdfs:label "Technical Control"@en;
+                                         rdfs:subClassOf <https://w3id.org/AIRO#Control>.
+<https://w3id.org/AIRO#TechnicalSpecification> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:label "Technical Specification"@en;
+                                               rdfs:subClassOf <http://www.w3.org/ns/prov#Entity>.
+<https://w3id.org/AIRO#TestLog> a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "Test log"@en;
+                                rdfs:subClassOf <https://w3id.org/AIRO#Document>.
+<https://w3id.org/AIRO#TestParticipant> a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:comment "A person who is participating in a test."@en;
+                                        rdfs:label "Test Participant"@en;
+                                        rdfs:subClassOf <https://w3id.org/AIRO#Person>.
+<https://w3id.org/AIRO#TestReport> a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:label "Test Report"@en;
+                                   rdfs:subClassOf <https://w3id.org/AIRO#Document>.
+<https://w3id.org/AIRO#TestingData> a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:label "Testing Data"@en;
+                                    rdfs:subClassOf <https://w3id.org/AIRO#Data>.
+<https://w3id.org/AIRO#TestingDataRiskSource> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:label "Testing Data Risk Source"@en;
+                                              rdfs:subClassOf <https://w3id.org/AIRO#DataSet-RelatedRiskSource>.
+<https://w3id.org/AIRO#Tool> a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "A tool that has been used in development of an AI system."@en;
+                             rdfs:label "Tool"@en;
+                             rdfs:subClassOf <https://w3id.org/AIRO#AIComponent>.
+<https://w3id.org/AIRO#TrainingData> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "Data used to train a machine learning model [ISO/IEC FDIS 22989, 3.3.16]"@en;
+                                     rdfs:label "Training Data"@en;
+                                     rdfs:subClassOf <https://w3id.org/AIRO#Data>.
+<https://w3id.org/AIRO#TrainingDataRiskSource> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:label "Training Data Risk Source"@en;
+                                               rdfs:subClassOf <https://w3id.org/AIRO#DataSet-RelatedRiskSource>.
+<https://w3id.org/AIRO#UnavailabilityOfDataSet> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:label "Unavailability Of Data Set"@en;
+                                                rdfs:subClassOf <https://w3id.org/AIRO#DataSet-RelatedRiskSource>.
+<https://w3id.org/AIRO#UnrepresentativeTestingDataSet> a <http://www.w3.org/2002/07/owl#Class>;
+                                                       rdfs:label "Unrepresentative Testing Data Set"@en;
+                                                       rdfs:subClassOf <https://w3id.org/AIRO#TestingDataRiskSource>.
+<https://w3id.org/AIRO#UnrepresentativeTrainingDataSet> a <http://www.w3.org/2002/07/owl#Class>;
+                                                        rdfs:label "Unrepresentative Training Data Set"@en;
+                                                        rdfs:subClassOf <https://w3id.org/AIRO#TrainingDataRiskSource>.
+<https://w3id.org/AIRO#UnrepresentativeValidationDataSet> a <http://www.w3.org/2002/07/owl#Class>;
+                                                          rdfs:label "Unrepresentative Validation Data Set"@en;
+                                                          rdfs:subClassOf <https://w3id.org/AIRO#ValidationDataRelatedSource>.
+<https://w3id.org/AIRO#UnsupervisedLearning> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:label "Unsupevised Learning"@en;
+                                             rdfs:subClassOf <https://w3id.org/AIRO#MachineLearningApproach>.
+<https://w3id.org/AIRO#UserIndicator> a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "Represents indicators for expressing attributes of users of AI systems."@en;
+                                      rdfs:label "User Indicator"@en;
+                                      rdfs:subClassOf <https://w3id.org/AIRO#Indicator>.
+<https://w3id.org/AIRO#ValidationData> a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:comment "Data used to compare the performance of different candidate models [Source: ISO/IEC FDIS 22989, 3.2.5]."@en;
+                                       rdfs:label "Validation Data"@en;
+                                       rdfs:subClassOf <https://w3id.org/AIRO#Data>.
+<https://w3id.org/AIRO#ValidationDataRelatedSource> a <http://www.w3.org/2002/07/owl#Class>;
+                                                    rdfs:label "Validation Data Risk Source"@en;
+                                                    rdfs:subClassOf <https://w3id.org/AIRO#DataSet-RelatedRiskSource>.
+<https://w3id.org/AIRO#VerifyingAuthenticity> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:comment "Refers to the verification of the authenticity of documents."@en;
+                                              rdfs:label "Verifying Authenticity"@en;
+                                              rdfs:subClassOf <https://w3id.org/AIRO#Assessment>.
+<https://w3id.org/AIRO#VerifyingAuthenticityOfSupportingDocument> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                  rdfs:label "Verifying Authenticity Of Supporting Document"@en;
+                                                                  rdfs:subClassOf <https://w3id.org/AIRO#VerifyingAuthenticity>.
+<https://w3id.org/AIRO#VerifyingAuthenticityOfTravelDocument> a <http://www.w3.org/2002/07/owl#Class>;
+                                                              rdfs:comment "Refers to the verification of the authenticity of travel documents and supporting documentation of natural persons and detection of non-authentic documents by checking their security features."@en;
+                                                              rdfs:label "Verifying Authenticity Of Travel Document"@en;
+                                                              rdfs:subClassOf <https://w3id.org/AIRO#VerifyingAuthenticity>.
+<https://w3id.org/AIRO#Version> a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "Version"@en.
+<https://w3id.org/AIRO#VisaApplicant> a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "A person who has applied for a visa."@en;
+                                      rdfs:label "Visa Applicant"@en;
+                                      rdfs:subClassOf <https://w3id.org/AIRO#Applicant>.
+<https://w3id.org/AIRO#VisaApplicationExamination> a <http://www.w3.org/2002/07/owl#Class>;
+                                                   rdfs:label "Visa Application Examination"@en;
+                                                   rdfs:subClassOf <https://w3id.org/AIRO#ApplicationExamination>.
+<https://w3id.org/AIRO#VulnerablePosition> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:comment "Represents whether potentially harmed or adversely impacted persons are in a vulnerable position due to an imbalance of power, knowledge, economic or social circumstances, or age. [Source: AI Act]"@en;
+                                           rdfs:label "Vulnerable Position"@en;
+                                           rdfs:subClassOf <https://w3id.org/AIRO#UserIndicator>.
+<https://w3id.org/AIRO#WellbeingImpact> a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:comment "Represents impact of AI on persons' health and wellbeing."@en;
+                                        rdfs:label "Wellbeing Impact"@en;
+                                        rdfs:subClassOf <https://w3id.org/AIRO#Impact>.
+<https://w3id.org/AIRO#WrongDataSetDesignChoice> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:label "Wrong Data Set Design Choice"@en;
+                                                 rdfs:subClassOf <https://w3id.org/AIRO#DataSet-RelatedRiskSource>.
+<https://w3id.org/AIRO#administration_of_democratic_processes> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                                 <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#administration_of_justice> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                    <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#affects> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                rdfs:label "affects"@en;
+                                rdfs:range <https://w3id.org/AIRO#AISubject>.
+<https://w3id.org/AIRO#asylum> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                 <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#border_control_management> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                    <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#citizenshipApplicant> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "A person who has applied for citizenship."@en;
+                                             rdfs:label "Citizenship Applicant"@en;
+                                             rdfs:subClassOf <https://w3id.org/AIRO#Applicant>.
+<https://w3id.org/AIRO#dectection_of_criminal_offences> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                          <https://w3id.org/AIRO#ExecutionEnvironment>.
+<https://w3id.org/AIRO#detectsEvent> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                     rdfs:domain <https://w3id.org/AIRO#Control>;
+                                     rdfs:label "detects event"@en;
+                                     rdfs:range <https://w3id.org/AIRO#Event>;
+                                     rdfs:subPropertyOf <https://w3id.org/AIRO#modifiesEvent>.
+<https://w3id.org/AIRO#development> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                      <https://w3id.org/AIRO#AILifecyclePhase>.
+<https://w3id.org/AIRO#education> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                    <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#eliminatesEvent> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:domain <https://w3id.org/AIRO#Control>;
+                                        rdfs:label "eliminates event"@en;
+                                        rdfs:range <https://w3id.org/AIRO#Event>;
+                                        rdfs:subPropertyOf <https://w3id.org/AIRO#modifiesEvent>.
+<https://w3id.org/AIRO#employment> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                     <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#essential_private_service> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                    <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#hasAIIndicator> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                       rdfs:label "has AI indicator"@en;
+                                       rdfs:range <https://w3id.org/AIRO#AISystemIndicator>.
+<https://w3id.org/AIRO#hasApplication> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                       rdfs:label "has application";
+                                       rdfs:range <https://w3id.org/AIRO#AIApplication>.
+<https://w3id.org/AIRO#hasComponent> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                     rdfs:comment "Indicates components of an AI system."@en;
+                                     rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                     rdfs:label "has component"@en;
+                                     rdfs:range <https://w3id.org/AIRO#AIComponent>.
+<https://w3id.org/AIRO#hasConsequence> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:domain <https://w3id.org/AIRO#Risk>;
+                                       rdfs:label "has consequence"@en,
+                                                  "has consequence";
+                                       rdfs:range <https://w3id.org/AIRO#Consequence>.
+<https://w3id.org/AIRO#hasDocumentation> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                         rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                         rdfs:label "has documentation"@en;
+                                         rdfs:range <https://w3id.org/AIRO#Document>.
+<https://w3id.org/AIRO#hasExecutionEnvironment> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                                rdfs:label "has execution environment"@en;
+                                                rdfs:range <https://w3id.org/AIRO#ExecutionEnvironment>.
+<https://w3id.org/AIRO#hasExpectedAccuray> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                           rdfs:label "has expected accuracy"@en;
+                                           rdfs:range <https://w3id.org/AIRO#AISystemAccuracy>.
+<https://w3id.org/AIRO#hasImpact> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain <https://w3id.org/AIRO#Consequence>;
+                                  rdfs:label "has impact"@en;
+                                  rdfs:range <https://w3id.org/AIRO#Impact>.
+<https://w3id.org/AIRO#hasImpactOnAISubject> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                             rdfs:domain <https://w3id.org/AIRO#Impact>;
+                                             rdfs:label "has impact on AI subject"@en;
+                                             rdfs:range <https://w3id.org/AIRO#AISubject>.
+<https://w3id.org/AIRO#hasImpactOnArea> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:domain <https://w3id.org/AIRO#Impact>;
+                                        rdfs:label "has impact on area"@en;
+                                        rdfs:range <https://w3id.org/AIRO#AreaOfImpact>.
+<https://w3id.org/AIRO#hasLifecyclePhase> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                          rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                          rdfs:label "has lifecycle phase"@en;
+                                          rdfs:range <https://w3id.org/AIRO#AILifecyclePhase>.
+<https://w3id.org/AIRO#hasLikelihood> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:comment "Indicates the probability of occurrence of an event."@en;
+                                      rdfs:domain <https://w3id.org/AIRO#Event>;
+                                      rdfs:label "has likelihood"@en;
+                                      rdfs:range <https://w3id.org/AIRO#Likelihood>.
+<https://w3id.org/AIRO#hasModeOfOperation> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                           rdfs:label "has mode of operation"@en;
+                                           rdfs:range <https://w3id.org/AIRO#OperationMode>.
+<https://w3id.org/AIRO#hasPostmarketMonitoringSystem> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                      rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                                      rdfs:label "has post-market monitoring system"@en;
+                                                      rdfs:range <https://w3id.org/AIRO#Post-marketMonitoringSystem>.
+<https://w3id.org/AIRO#hasPurpose> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                   rdfs:label "Indicates the intended purpose of an AI system."@en,
+                                              "has purpose"@en;
+                                   rdfs:range <https://w3id.org/AIRO#Purpose>.
+<https://w3id.org/AIRO#hasRisk> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:label "has risk"@en;
+                                rdfs:range <https://w3id.org/AIRO#Risk>.
+<https://w3id.org/AIRO#hasSeverity> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<https://w3id.org/AIRO#Consequence>
+                                                                                          <https://w3id.org/AIRO#Impact>) ; 
+                                                 a <http://www.w3.org/2002/07/owl#Class>];
+                                    rdfs:label "has severity"@en;
+                                    rdfs:range <https://w3id.org/AIRO#Severity>.
+<https://w3id.org/AIRO#hasStakeholder> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:comment "Indicates stakeholders of an AI system"@en;
+                                       rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                       rdfs:label "has stakeholder"@en;
+                                       rdfs:range <https://w3id.org/AIRO#Stakeholder>.
+<https://w3id.org/AIRO#hasVersion> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                   rdfs:label "has version"@en;
+                                   rdfs:range <https://w3id.org/AIRO#Version>.
+<https://w3id.org/AIRO#hasVulnerability> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                         rdfs:comment "Indicates vulnerabilities of an AI system."@en;
+                                         rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                         rdfs:label "has vulnerability"@en;
+                                         rdfs:range <https://w3id.org/AIRO#vulnerability>.
+<https://w3id.org/AIRO#inception> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                    <https://w3id.org/AIRO#AILifecyclePhase>.
+<https://w3id.org/AIRO#investigation_of_criminal_offences> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                             <https://w3id.org/AIRO#ExecutionEnvironment>.
+<https://w3id.org/AIRO#isAppliedWithinDomain> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                              rdfs:comment "Indicates the domain (context) the AI system is intended to be used in."@en;
+                                              rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                              rdfs:label "is applied within domain"@en;
+                                              rdfs:range <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#isDevelopedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                      rdfs:label "is developed by"@en;
+                                      rdfs:range <https://w3id.org/AIRO#AIDeveloper>.
+<https://w3id.org/AIRO#isExpectedAccurayOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:domain <https://w3id.org/AIRO#AISystemAccuracy>;
+                                            rdfs:label "is expected accuracy of"@en;
+                                            rdfs:range <https://w3id.org/AIRO#AISystem>.
+<https://w3id.org/AIRO#isExtentOfUseOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:domain <https://w3id.org/AIRO#ExtentOfUse>;
+                                        rdfs:label "is extent of use of"@en;
+                                        rdfs:range <https://w3id.org/AIRO#AISystem>.
+<https://w3id.org/AIRO#isFollowedByControl> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:domain <https://w3id.org/AIRO#Control>;
+                                            rdfs:label "is followed by control"@en;
+                                            rdfs:range <https://w3id.org/AIRO#Control>.
+<https://w3id.org/AIRO#isInVulnerablePosition> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                               rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<https://w3id.org/AIRO#Group>
+                                                                                                     <https://w3id.org/AIRO#Person>) ; 
+                                                            a <http://www.w3.org/2002/07/owl#Class>];
+                                               rdfs:label "is in vulnerable position"@en;
+                                               rdfs:range <https://w3id.org/AIRO#VulnerablePosition>.
+<https://w3id.org/AIRO#isPartOfControl> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:domain <https://w3id.org/AIRO#PartialControl>;
+                                        rdfs:label "is part of control"@en;
+                                        rdfs:range <https://w3id.org/AIRO#Control>.
+<https://w3id.org/AIRO#isPerformanceOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:domain <https://w3id.org/AIRO#Performance>;
+                                        rdfs:label "is performance of"@en;
+                                        rdfs:range <https://w3id.org/AIRO#AISystem>.
+<https://w3id.org/AIRO#isRiskSourceFor> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:domain <https://w3id.org/AIRO#RiskSource>;
+                                        rdfs:label "is risk source for"@en;
+                                        rdfs:range <https://w3id.org/AIRO#Risk>.
+<https://w3id.org/AIRO#isTechnicalSpecAppliedIn> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                 rdfs:label "is technical spec applied in"@en.
+<https://w3id.org/AIRO#isUsedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                 rdfs:label "is used by"@en;
+                                 rdfs:range <https://w3id.org/AIRO#AIUser>.
+<https://w3id.org/AIRO#isUsedForTesting> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                         rdfs:domain <https://w3id.org/AIRO#TestingData>;
+                                         rdfs:label "is used for testing"@en;
+                                         rdfs:range <https://w3id.org/AIRO#AISystem>.
+<https://w3id.org/AIRO#isUsedForTraining> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                          rdfs:domain <https://w3id.org/AIRO#TrainingData>;
+                                          rdfs:label "is used for training"@en;
+                                          rdfs:range <https://w3id.org/AIRO#AISystem>.
+<https://w3id.org/AIRO#isUsedForValidating> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:domain <https://w3id.org/AIRO#ValidationData>;
+                                            rdfs:label "is used for validating"@en;
+                                            rdfs:range <https://w3id.org/AIRO#AISystem>.
+<https://w3id.org/AIRO#isUsedInEnvironment> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                            rdfs:label "is used in environment"@en;
+                                            rdfs:range <https://w3id.org/AIRO#EnvironmentOfUse>.
+<https://w3id.org/AIRO#isUsedInFormOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                       rdfs:label "is used in form of"@en;
+                                       rdfs:range <https://w3id.org/AIRO#AISystemForm>.
+<https://w3id.org/AIRO#isUsedToMeasure> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:domain <https://w3id.org/AIRO#Metric>;
+                                        rdfs:label "is used to measure"@en;
+                                        rdfs:range <https://w3id.org/AIRO#Indicator>.
+<https://w3id.org/AIRO#law_enforcement> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                          <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#management_of_road_traffic> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                     <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#management_of_supply_of_heating> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                          <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#management_of_the_supply_of_electricity> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                                  <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#management_of_the_supply_of_gas> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                          <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#management_of_the_supply_of_water> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                            <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#migration> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                    <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#mitigatesEvent> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:domain <https://w3id.org/AIRO#Control>;
+                                       rdfs:label "mitigates event"@en;
+                                       rdfs:range <https://w3id.org/AIRO#Event>;
+                                       rdfs:subPropertyOf <https://w3id.org/AIRO#modifiesEvent>.
+<https://w3id.org/AIRO#modifiesEvent> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:domain <https://w3id.org/AIRO#Control>;
+                                      rdfs:label "modifies event"@en;
+                                      rdfs:range <https://w3id.org/AIRO#Event>.
+<https://w3id.org/AIRO#operation_of_road_traffic> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                    <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#operation_of_the_supply_of_electricity> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                                 <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#operation_of_the_supply_of_gas> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                         <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#operation_of_the_supply_of_heating> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                             <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#operation_of_the_supply_of_water> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                           <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#post> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                               <https://w3id.org/AIRO#OperationMode>.
+<https://w3id.org/AIRO#post-market> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                      <https://w3id.org/AIRO#AILifecyclePhase>.
+<https://w3id.org/AIRO#producesOutput> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                       rdfs:label "produces output"@en;
+                                       rdfs:range <https://w3id.org/AIRO#Output>.
+<https://w3id.org/AIRO#product> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                  <https://w3id.org/AIRO#AISystemForm>.
+<https://w3id.org/AIRO#prosecution_of_criminal_offences> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                           <https://w3id.org/AIRO#ExecutionEnvironment>.
+<https://w3id.org/AIRO#public_service> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                         <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#publicly_accessible_space> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                    <https://w3id.org/AIRO#ExecutionEnvironment>.
+<https://w3id.org/AIRO#real-time> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                    <https://w3id.org/AIRO#OperationMode>.
+<https://w3id.org/AIRO#saftey_component> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                           <https://w3id.org/AIRO#AISystemForm>.
+<https://w3id.org/AIRO#self_employment> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                          <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#service> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                  <https://w3id.org/AIRO#AISystemForm>.
+<https://w3id.org/AIRO#software> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                   <https://w3id.org/AIRO#AISystemForm>.
+<https://w3id.org/AIRO#testing> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                  <https://w3id.org/AIRO#AILifecyclePhase>.
+<https://w3id.org/AIRO#training> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                   <https://w3id.org/AIRO#AILifecyclePhase>.
+<https://w3id.org/AIRO#usesStandard> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                     rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                     rdfs:label "uses standard"@en;
+                                     rdfs:range <https://w3id.org/AIRO#Standard>.
+<https://w3id.org/AIRO#usesTechnicalSpecification> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                   rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                                   rdfs:label "uses technical specification"@en;
+                                                   rdfs:range <https://w3id.org/AIRO#TechnicalSpecification>.
+<https://w3id.org/AIRO#usesTechnique> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:comment "Indicates the AI techniques used in an AI system."@en;
+                                      rdfs:domain <https://w3id.org/AIRO#AISystem>;
+                                      rdfs:label "uses technique"@en;
+                                      rdfs:range <https://w3id.org/AIRO#AITechnique>.
+<https://w3id.org/AIRO#validation> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                     <https://w3id.org/AIRO#AILifecyclePhase>.
+<https://w3id.org/AIRO#vocational_training> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                              <https://w3id.org/AIRO#Domain>.
+<https://w3id.org/AIRO#vulnerability> a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:comment "Weakness of a system can be exploited by one or more threats. [Source: ISO/IEC TR 24028, 3.48 with modifications]"@en;
+                                      rdfs:label "Vulnerability"@en;
+                                      rdfs:subClassOf <https://w3id.org/AIRO#SystemRelatedSource>.
+<https://w3id.org/AIRO#workers_management> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                             <https://w3id.org/AIRO#Domain>.

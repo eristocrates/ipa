@@ -1,0 +1,193 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix op: <http://environment.data.gov.au/def/op#>.
+
+<http://environment.data.gov.au/def/_op> <http://purl.org/dc/terms/dateAccepted> "2016-02-15T01:05:23.073Z"^^xsd:dateTime,
+                                                                                 "2016-02-16T04:16:54.215Z"^^xsd:dateTime;
+                                         <http://purl.org/dc/terms/dateSubmitted> "2016-02-15T01:05:11.079Z"^^xsd:dateTime;
+                                         <http://purl.org/dc/terms/description> "A general purpose ontology for observable properties. The ontology supports description of both qualitative and quantitative properties. The allowed scale or units of measure may be specified. A property may be linked to substances-or-taxa and to features or realms, if they play a role in the definition. ";
+                                         <http://purl.org/dc/terms/modified> "2016-02-28T06:26:54.954Z"^^xsd:dateTime;
+                                         <http://purl.org/linked-data/registry#definition> [<http://purl.org/linked-data/registry#sourceGraph> <http://environment.data.gov.au/def/_op:4#graph> ; 
+                                                                                            <http://purl.org/linked-data/registry#entity> <http://environment.data.gov.au/def/op>];
+                                         <http://purl.org/linked-data/registry#itemClass> <http://www.w3.org/2002/07/owl#Ontology>,
+                                                                                          <http://purl.org/vocommons/voaf#Vocabulary>;
+                                         <http://purl.org/linked-data/registry#notation> "op";
+                                         <http://purl.org/linked-data/registry#register> <http://environment.data.gov.au/def>;
+                                         <http://purl.org/linked-data/registry#status> <http://purl.org/linked-data/registry#statusStable>;
+                                         <http://purl.org/linked-data/registry#submitter> [<http://xmlns.com/foaf/0.1/name> "Simon Cox (email)" ; 
+                                                                                           <http://xmlns.com/foaf/0.1/accountName> "simon.cox@csiro.au"];
+                                         a <http://purl.org/linked-data/registry#RegisterItem>;
+                                         rdfs:label "Observable-Properties ontology";
+                                         <http://www.w3.org/2002/07/owl#versionInfo> 4 .
+<http://environment.data.gov.au/def/op> <http://purl.org/dc/terms/created> "2013"^^xsd:gYear;
+                                        <http://purl.org/dc/terms/creator> <http://people.csiro.au/Jonathan-Yu>,
+                                                                           "Simon J D Cox",
+                                                                           "Jonathan Yu",
+                                                                           <http://people.csiro.au/Simon-Cox>,
+                                                                           "Bruce A Simons";
+                                        <http://purl.org/dc/terms/description> "A general purpose ontology for observable properties. The ontology supports description of both qualitative and quantitative properties. The allowed scale or units of measure may be specified. A property may be linked to substances-or-taxa and to features or realms, if they play a role in the definition. ";
+                                        <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/3.0/>;
+                                        <http://purl.org/dc/terms/modified> "2016-02-27"^^xsd:date;
+                                        <http://purl.org/dc/terms/publisher> "CSIRO";
+                                        <http://purl.org/dc/terms/rights> "Copyright © 2013-2016 CSIRO";
+                                        <http://purl.org/dc/terms/title> "Observable properties";
+                                        <http://purl.org/vocab/vann/preferredNamespacePrefix> "op";
+                                        <http://purl.org/vocab/vann/preferredNamespaceUri> "http://registry.it.csiro.au/ont/op#";
+                                        <http://purl.org/vocommons/voaf#extends> <http://qudt.org/schema/qudt>;
+                                        a <http://purl.org/vocommons/voaf#Vocabulary>,
+                                          <http://www.w3.org/2002/07/owl#Ontology>;
+                                        rdfs:comment """This ontology was developed to enable publication of a vocabulary of water quality properties for the Bioregional Assessments and eReefs projects.
+
+This ontology extends the QUDT schema. 
+
+Some key classes and properties are linked to SKOS, so that instances of an observable-property vocabulary are implicitly also SKOS concepts, and may be accessed through general purpose vocabulary APIs based on SKOS. """;
+                                        rdfs:label "Observable-Properties ontology";
+                                        <http://www.w3.org/2002/07/owl#imports> <http://qudt.org/1.1/schema/quantity>,
+                                                                                <http://purl.org/vocab/vann/>,
+                                                                                <http://purl.org/vocommons/voaf>,
+                                                                                <http://purl.org/dc/elements/1.1/>;
+                                        <http://www.w3.org/2004/02/skos/core#editorialNote> "fixed range of op:substance to op:Substance 2016-02-27";
+                                        <http://www.w3.org/2004/02/skos/core#historyNote> "Improved documentation and labels 2016-02-27".
+op:CAS-number a rdfs:Datatype;
+              rdfs:comment "The identifier for a substance provided by the Chemical Abstracts Service";
+              rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+              rdfs:label "CAS Number";
+              <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#withRestrictions> ([xsd:pattern "[0-9]+\\-[0-9]+\\-[0-9]+"]) ; 
+                                                               <http://www.w3.org/2002/07/owl#onDataType> xsd:string ; 
+                                                               a rdfs:Datatype].
+op:PropertyKind a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment """Superclass of qudt:QuantityKind
+This class accommodates all kinds of properties, including those (qualities) that are not described by quantities (numeric values). 
+May carry constraints, such as substance, objectOfInterest, featureOfInterest, matrix, hostOrganism, to refine the definition of a generalization. property is associated
+e.g. tree-height, nitrogen-concentration, concentration-of-zinc-in-the-liver-of-a-specific-fish-taxon-only-males-larger-than-20cm""";
+                rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+                rdfs:label "Property kind"@en;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://qudt.org/schema/qudt#generalization> ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> op:PropertyKind ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                <http://qudt.org/schema/qudt#EnumeratedValue>.
+op:QualityKind a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "non-numeric PropertyKind";
+               rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+               rdfs:label "Quality Kind"@en;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://qudt.org/schema/qudt#generalization> ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> op:QualityKind ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               op:PropertyKind;
+               <http://www.w3.org/2002/07/owl#disjointWith> <http://qudt.org/schema/qudt#QuantityKind>.
+op:ScaledQuantityKind a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment """Scaled quantity kind has one or more unit properties, which indicate valid units of measure for this quantity kind. 
+
+It is likely that this class is equivalent to qudt:QuantityKind, but has been declared independently for governance of the attached qudt:unit property""";
+                      rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+                      rdfs:label "Scaled Quantity Kind"@en;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://qudt.org/schema/qudt#unit> ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> <http://qudt.org/schema/qudt#Unit> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> <http://qudt.org/schema/qudt#unit> ; 
+                                       <http://www.w3.org/2002/07/owl#minCardinality> 1  ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      <http://qudt.org/schema/qudt#QuantityKind>.
+op:Substance a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment """type of material
+
+Typically a chemical substance, with a formal designator from CAS or ChEBI or similar, but may include less formal grouplings or union types when needed""";
+             rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+             rdfs:label "Substance";
+             rdfs:subClassOf op:SubstanceOrTaxon;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Substance"@en.
+op:SubstanceOrTaxon a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Class of stuff and things, individuals of which identify a class of stuff and things that make observed properties concrete.";
+                    rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+                    rdfs:label "Substance or Taxon"@en;
+                    rdfs:subClassOf <http://qudt.org/schema/qudt#EnumeratedValue>;
+                    <http://www.w3.org/2004/02/skos/core#altLabel> "Species"@en;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Substance or Taxon"@en.
+op:Taxon a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment """type of organism, any rank
+
+Preferably with a formally recognised designiation such as a latin binomial, or LSID, but may be a less formal grouping when needed.""";
+         rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+         rdfs:label "taxon";
+         rdfs:subClassOf op:SubstanceOrTaxon;
+         <http://www.w3.org/2004/02/skos/core#prefLabel> "taxon"@en.
+op:applicableVocabulary a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment """In an observable property definition, the applicable vocabulary is the set of terms or concepts from which a nominal value must be drawn. 
+
+Compare with QUDT2 'applicable unit'""";
+                        rdfs:domain op:QualityKind;
+                        rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+                        rdfs:label "applicable vocabulary"@en.
+op:cas-number a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain op:Substance;
+              rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+              rdfs:label "CAS Number";
+              rdfs:range op:CAS-number;
+              rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#notation>.
+op:constraint a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Constraint that refines the definition of an observable property definition. This may include concerns such as realm of application, substance or taxon involved, host organism, matrix, applicable units or vocabulary. ";
+              rdfs:domain op:PropertyKind;
+              rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+              rdfs:label "constraint"@en.
+op:featureOfInterest a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "In an observable property definition, the feature-of-interest constrains the feature realm that the property is associated with.";
+                     rdfs:domain op:PropertyKind;
+                     rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+                     rdfs:label "feature of interest"@en;
+                     rdfs:subPropertyOf op:constraint.
+op:hostOrganism a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "In an observable property definition, the host-organism indicates the host taxon, optionally constrained by sex, age, size etc, for an observable property.";
+                rdfs:domain op:PropertyKind;
+                rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+                rdfs:label "host organism"@en;
+                rdfs:range op:Taxon;
+                rdfs:subPropertyOf op:constraint.
+op:matrix a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:comment "In an observable property definition, the matrix is the material context (container feature or medium) for an observable property.";
+          rdfs:domain op:PropertyKind;
+          rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+          rdfs:label "matrix"@en;
+          rdfs:subPropertyOf op:constraint.
+op:objectOfInterest a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "In an observable property definition, this is the substance or taxon whose count, concentration, presence, or other similar property, is of interest. ";
+                    rdfs:domain op:PropertyKind;
+                    rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+                    rdfs:label "object of interest"@en;
+                    rdfs:range op:SubstanceOrTaxon;
+                    rdfs:subPropertyOf op:constraint;
+                    <http://www.w3.org/2002/07/owl#equivalentProperty> op:substance.
+op:procedure a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "The procedure is a description of the procedure, algorithm, protocol or sensor system used in making observation or estimate of property value";
+             rdfs:domain op:PropertyKind;
+             rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+             rdfs:label "procedure"@en;
+             rdfs:subPropertyOf op:constraint.
+op:propertyKind a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+                rdfs:label "property kind"@en;
+                rdfs:range op:PropertyKind.
+op:qualityKind a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+               rdfs:label "quality kind"@en;
+               rdfs:range op:QualityKind;
+               rdfs:subPropertyOf op:propertyKind;
+               <http://www.w3.org/2002/07/owl#propertyDisjointWith> <http://qudt.org/schema/qudt#quantityKind>.
+op:statisticalMeasure a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+                      rdfs:label "Statistical Measure";
+                      rdfs:subPropertyOf op:constraint.
+op:substance a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "In an observable property definition, this is the substance whose concentration, presence, or similar is of interest. ";
+             rdfs:domain op:PropertyKind;
+             rdfs:isDefinedBy <http://environment.data.gov.au/def/op>;
+             rdfs:label "object of interest"@en;
+             rdfs:range op:Substance;
+             rdfs:subPropertyOf op:constraint;
+             <http://www.w3.org/2002/07/owl#equivalentProperty> op:objectOfInterest.
+<http://qudt.org/schema/qudt#EnumeratedValue> rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+<http://qudt.org/schema/qudt#QuantityKind> rdfs:subClassOf op:PropertyKind.
+<http://qudt.org/schema/qudt#Unit> rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+<http://qudt.org/schema/qudt#generalization> rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#broader>.
+<http://qudt.org/schema/qudt#quantityKind> rdfs:subPropertyOf op:propertyKind.
+<http://qudt.org/schema/qudt#specialization> rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#narrower>.

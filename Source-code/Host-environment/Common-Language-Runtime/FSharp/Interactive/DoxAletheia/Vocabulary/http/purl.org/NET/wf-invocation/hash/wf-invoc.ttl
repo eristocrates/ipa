@@ -1,0 +1,46 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix wf-invoc: <http://purl.org/net/wf-invocation#>.
+
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/net/p-plan#Step> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/net/p-plan#Variable> a <http://www.w3.org/2002/07/owl#Class>.
+<http://purl.org/net/wf-invocation> <http://purl.org/dc/terms/created> "2013-05-17"^^xsd:date;
+                                    <http://purl.org/dc/terms/creator> "http://www.isi.edu/~gil/"^^xsd:anyURI,
+                                                                       "http://www.isi.edu/~varunr/resume.html"^^xsd:anyURI,
+                                                                       "http://delicias.dia.fi.upm.es/members/DGarijo/#me"^^xsd:anyURI;
+                                    <http://purl.org/dc/terms/description> "Wf-invoc is a simple profile of the P-plan ontology to describe how workflow steps are invoked within a workflow execution."@en;
+                                    <http://purl.org/dc/terms/license> "http://creativecommons.org/licenses/by-nc-sa/2.0/";
+                                    <http://purl.org/dc/terms/title> "The Workflow Invocation Ontology"@en;
+                                    <http://purl.org/vocab/vann/preferredNamespacePrefix> "wf-invoc";
+                                    <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/net/wf-invocation#";
+                                    a <http://www.w3.org/2002/07/owl#Ontology>;
+                                    rdfs:comment "Workflow Invocation Ontology, an extension of P-Plan for representing the invocation of the workflow steps when submitting a template to an execution engine."@en;
+                                    rdfs:label "Workflow Invocation Ontology"@en;
+                                    <http://www.w3.org/2002/07/owl#imports> <http://purl.org/net/p-plan#>;
+                                    <http://www.w3.org/2002/07/owl#versionInfo> "1.1"@en.
+wf-invoc:Step a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Specialization of p-plan:Step in order to be able to assert domain specific properties. A wf-invoc:Step refers to those p-plan:Steps related to the scientific workflow invocation."@en;
+              rdfs:label "Step"@en;
+              rdfs:subClassOf <http://purl.org/net/p-plan#Step>.
+wf-invoc:Variable a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Specialization of p-plan:Variable in order to be able to assert specific properties. A wf-invoc:Variable refers to those p-plan:Variables related to the scientific workflow invocation."@en;
+                  rdfs:label "Variable"@en;
+                  rdfs:subClassOf <http://purl.org/net/p-plan#Variable>.
+wf-invoc:hasCodeBinding a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+wf-invoc:hasCustomData a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:comment "Data property used to link a wf-invoc:Step with any particular metadata that will be used in the execution of the Step (e.g., environment requirements, memory, etc.)"@en;
+                       rdfs:domain wf-invoc:Step;
+                       rdfs:label "has Custom Data"@en;
+                       rdfs:range rdfs:Literal.
+wf-invoc:hasDataBinding a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "Data property used to bind a wf-invoc:Variable with the path or URL where the data is available for the execution."@en;
+                        rdfs:domain wf-invoc:Variable;
+                        rdfs:label "has Data Binding"@en;
+                        rdfs:range rdfs:Literal.
+wf-invoc:hasInvocationLine a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:comment "Data property used to link a wf-invoc:Step with the Literal representing the invocation line of the current Step."@en;
+                           rdfs:domain wf-invoc:Step;
+                           rdfs:label "has Invocation Line"@en;
+                           rdfs:range rdfs:Literal.

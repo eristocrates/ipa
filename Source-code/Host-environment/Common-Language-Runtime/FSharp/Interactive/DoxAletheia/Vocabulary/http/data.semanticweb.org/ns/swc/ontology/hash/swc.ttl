@@ -1,0 +1,1362 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix swc: <http://data.semanticweb.org/ns/swc/ontology#>.
+
+<http://data.semanticweb.org/ns/swc/ontology> <http://data.semanticweb.org/ns/misc#licenseDoc> swc:license_doc;
+                                              <http://purl.org/dc/terms/created> "2007/05/31";
+                                              <http://purl.org/dc/terms/creator> <http://data.semanticweb.org/person/sean-bechhofer>,
+                                                                                 <http://kantenwerk.org/metadata/foaf.rdf#me>,
+                                                                                 <http://tomheath.com/id/me>;
+                                              <http://purl.org/dc/terms/hasVersion> <http://data.semanticweb.org/ns/swc/swc_2009-03-02.rdf>,
+                                                                                    <http://data.semanticweb.org/ns/swc/swc_2009-02-27.rdf>;
+                                              <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/3.0/>;
+                                              <http://purl.org/dc/terms/modified> "$Date: 2009-05-11 17:50:14 +0100 (Mon, 11 May 2009) $";
+                                              <http://purl.org/dc/terms/title> "Semantic Web Conference Ontology";
+                                              <http://rdfs.org/sioc/ns#earlier_version> <http://data.semanticweb.org/ns/swc/swc_2009-03-02.rdf>;
+                                              <http://usefulinc.com/ns/doap#revision> """
+			$Revision: 895 $ - <i>Slim Version</i>
+			""";
+                                              <http://www.cs.vu.nl/~mcaklein/onto/swrc_ext/2005/05#authorList> [rdf:_3 <http://tomheath.com/id/me> ; 
+                                                                                                                rdf:_2 <http://data.semanticweb.org/person/sean-bechhofer> ; 
+                                                                                                                rdf:_1 <http://kantenwerk.org/metadata/foaf.rdf#me>];
+                                              a <http://www.w3.org/2002/07/owl#Ontology>;
+                                              rdfs:label "Semantic Web Conference Ontology";
+                                              <http://www.w3.org/2002/07/owl#imports> <http://data.semanticweb.org/ns/swc/swrc-topics>,
+                                                                                      <http://data.semanticweb.org/ns/swc/swrc>;
+                                              <http://www.w3.org/2003/06/sw-vocab-status/ns#userdocs> (swc:01_introduction
+                                                                                                       swc:02_describing_papers
+                                                                                                       swc:03_roles);
+                                              <http://xmlns.com/foaf/0.1/logo> <http://data.semanticweb.org/images/bones_256.png>;
+                                              <http://xmlns.com/foaf/0.1/maker> <http://data.semanticweb.org/person/sean-bechhofer>,
+                                                                                <http://kantenwerk.org/metadata/foaf.rdf#me>,
+                                                                                <http://tomheath.com/id/me>.
+swc:01_introduction rdfs:comment """
+			<p>
+				The Semantic Web Conference ontology (SWC) is an ontology for describing academic conferences. 
+				It was initially designed to support the European Semantic Web Conference,
+				ESWC2007, and later extended for both the following conferences in the ESWC series,
+				as well as in the ISWC series.
+				Historically, the SWC ontology also draws heavily on ontologies developed for
+				ESWC2006 and ISWC2006.
+			</p>
+			<p>
+				SWC is mainly a convention of how to use classes and properties from other ontologies, most prominently 
+				<a href=\"http://xmlns.com/foaf/0.1\">FOAF</a> (for people) and <a href=\"http://ontoware.org/projects/swrc/\">SWRC</a> 
+				(their BibTeX elements, for the papers). We are also throwing in some <a href=\"http://sioc-project.org/\">SIOC</a>, 
+				<a href=\"http://dublincore.org/documents/dc-rdf/index.shtml\">Dublin Core</a> and 
+				<a href=\"http://www.w3.org/TR/rdfcal/\">iCal/RDF Calendar</a>. Our own 
+				<a href=\"http://data.semanticweb.org/ns/swc/ontology\">swc namespace</a> provides the glue for all this, as well as 
+				specialised classes for things that have to do with conferences.
+			</p>
+			<p>
+				This version of SWC has been slimmed down significantly (hence the revision name). A total of 59 classes and 19 properties have been deprecated (deprecated terms can be found at the bottom of this document). This was mostly done with the intention to remove the countless sub-classes of generic classes such as <a href=\"#Chair\">Chair</a> or <a href=\"#SessionEvent\">SessionEvent</a>, which were deemed to be too specific for a general-purpose conference ontology such as SWC. Elsewhere, classes and properties which had never been used and seemed to fall under the heading of \"over-engineering\" were removed. Finally, all CfP related terms were removed. Instead, we suggest to use a dedicated ontology such as the <a href=\"http://sw.deri.org/2005/08/conf/cfp\">CfP ontology</a>.
+			</p>
+			
+		""";
+                    rdfs:label "Introduction".
+swc:02_describing_papers rdfs:comment """
+			<p>For the basic use case of describing papers, the figure below shows how the main kinds of resources are connected: the paper itself, the authors and their affiliations, and the talk where the paper was presented.
+			</p>
+			<div align=\"center\">
+				<a href=\"documentation/20070921-ISWC+ASWC2007PublicationGraph.pdf\"><img src=\"documentation/20070921-ISWC+ASWC2007PublicationGraph.png\" /></a>
+			</div>
+			<p>
+				The next figure shows in more detail the kinds of things that can be said about each of the four main entities surrounding a paper.
+			</p>
+			<div align=\"center\">
+				<a href=\"documentation/20071002-Properties.pdf\"><img src=\"documentation/20071002-Properties.png\" /></a>
+			</div>
+			
+		""";
+                         rdfs:label "Describing Papers".
+swc:03_roles rdfs:comment """
+			<p>
+				One of the basic design choices in SWC is to use role modelling for describing the different functions at a conference, such as chairs, reviewers, etc. For any particular role at a given conference, the <code>swc:Role</code> class or a sub-class will be instantiated. This role instance stands in relation to a person (who plays the role) and an event. The figure below gives an example showing how to model the role of the metadata chair (or \"dog food tsar\") at ISWC+ASWC2007, which was held by Knud Möller (together with Tom Heath, not shown in the figure).
+			</p>
+			<p>
+				Note that the metadata chair role is not modelled with its own dedicated class (although it could have been). Instead, an instance of the generic <a href=\"#Chair\">Chair</a> class is used and labelled accordingly.
+			</p>
+			<div align=\"center\">
+				<a href=\"documentation/20090510-Roles_new.pdf\"><img src=\"documentation/20090510-Roles_new.png\" /></a>
+			</div>
+			
+		""";
+             rdfs:label "Roles".
+swc:AcademicEvent <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment """
+			
+			<p>Academic events are e.g. conferences and conference-like events, and all the sub-events of those which are about the topic or theme of the conference, such as talks or panels.</p>
+			
+		""";
+                  rdfs:label "Academic Event";
+                  rdfs:subClassOf swc:OrganisedEvent;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:AccommodationPlace <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Place>;
+                       a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment """
+			
+			<p>
+				A hotel, hostel, BnB or similar. 
+			</p>
+			
+		""";
+                       rdfs:label "Accommodation Place";
+                       rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:AdditionalReviewer <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Role>;
+                       a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                       rdfs:label "Additional Reviewer";
+                       rdfs:subClassOf swc:Role;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:Administrator <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Role>;
+                  a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                  rdfs:label "Administrator";
+                  rdfs:subClassOf swc:Role;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:ArgumentativeDocument <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Document>;
+                          a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment """
+			<p>An argumentative document is a document which uses analytical reasoning and evidence in order to argue for a point of view. Typical examples are scientific papers or political pamphlets. Negative examples are novels or plays (even though a novel might also try to sway the reader to a certain point of view).</p>
+			<p>According to <a href=\"http://en.wikipedia.org/wiki/Text_types\">Text Types</a>, an argumentative document is based \"on the evaluation and the subsequent subjective judgement in answer to a problem. It refers to the reasons advanced for or against a matter\".</p>
+			
+		""";
+                          rdfs:label "Argumentative Document";
+                          rdfs:seeAlso <http://en.wikipedia.org/wiki/Text_types>;
+                          rdfs:subClassOf <http://xmlns.com/foaf/0.1/Document>;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:Artefact <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Document>;
+             a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment """
+			<p><emph>Artefact</emph> here means a document which can have a physical manifestation, like a paper or the proceedings of a conference.</p>
+			
+		""";
+             rdfs:label "Artefact";
+             rdfs:subClassOf <http://xmlns.com/wordnet/1.6/Document>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:BreakEvent <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Event>;
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment """
+			
+			<p>
+				Any kind of break at the super-event, such as a coffee break.
+			</p>
+			
+		""";
+               rdfs:label "Break Event";
+               rdfs:subClassOf swc:NonAcademicEvent;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:Call <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Call>;
+         a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+         rdfs:comment """
+			<p>The call classes have been deprecated in SWC. Instead, we suggest to use the <a href=\"http://sw.deri.org/2005/08/conf/cfp\">CfP ontology</a>.</p>
+			<p>A <emph>call</emph> is a public announcement, asking for contribution of some kind to events such as conferences or workshops, or to a publication such as a journal or book.</p>
+			
+		""";
+         rdfs:label "Call";
+         rdfs:subClassOf <http://xmlns.com/wordnet/1.6/Announcement>;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:CallForDemos <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Call>;
+                 a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                 rdfs:comment """
+			<p>A call for demonstrations of software at a conference or workshop. Submissions are usually in the form of extended abstracts (~2 page) discussing the research questions addressed by the software and outlining the content of the demonstration.</p>
+			
+		""";
+                 rdfs:label "Call for Demos";
+                 rdfs:subClassOf swc:Call;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:CallForPapers <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Call>;
+                  a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                  rdfs:comment """
+			<p>A <emph>call for papers</emph> or <emph>CfP</emph> encourages authors to submit papers for peer-review for a conference or workshop, or a journal or book.</p>
+			
+		""";
+                  rdfs:label "Call for Papers";
+                  rdfs:subClassOf swc:Call;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:CallForParticipation <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Call>;
+                         a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                         rdfs:comment """
+			<p>This kind of call usually calls for potential delegates to attend an event such as a conference or a workshop.</p>
+			
+		""";
+                         rdfs:label "Call for Participation";
+                         rdfs:subClassOf swc:Call;
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:CallForPosters <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Call>;
+                   a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                   rdfs:comment """
+			<p>A call for scientific posters at a conference or workshop. Submissions are usually in the form of extended abstracts (~2 page) discussing the research presented on the poster.</p>
+			
+		""";
+                   rdfs:label "Call for Posters";
+                   rdfs:subClassOf swc:Call;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:CallForProposals <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Call>;
+                     a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                     rdfs:comment """
+			<p>A call which asks for contributions in the form of e.g. workshop or tutorial proposals.</p>
+			
+		""";
+                     rdfs:label "Call for Proposals";
+                     rdfs:subClassOf swc:Call;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:Chair <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Role>;
+          a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment """
+			<p>
+				A sub-class of Role for various kinds of chair functions. Examples are the main chair of a conference, the tutorials chair, the proceedings chair, etc. Instead of introducing a large amount of sub-classes of Chair, we suggest to model all the different chair functions as instances of Chair with appropriate labels.
+			</p>
+			
+		""";
+          rdfs:label "Chair";
+          rdfs:subClassOf swc:Role;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:CoffeeBreak <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Event>;
+                a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                rdfs:comment """
+			
+			Deprecating this - we can just use <a href=\"#BreakEvent\">BreakEvent</a>.
+			
+		""";
+                rdfs:label "Coffee Break";
+                rdfs:subClassOf swc:BreakEvent;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:CommunalPlace <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Place>;
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment """
+			
+			<p>
+				A location at the <a href=\"#ConferenceVenuePlace\">conference venue</a> (or elsewhere), which is not a meeting room. 
+			</p>
+			
+		""";
+                  rdfs:label "Communal Place";
+                  rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:ConferenceChair <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Chairman>;
+                    a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                    rdfs:label "Conference Chair";
+                    rdfs:subClassOf swc:Role;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:ConferenceClosingEvent <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Event>;
+                           a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                           rdfs:comment """
+			
+			Deprecating this - we can just use <a href=\"#TalkEvent\">TalkEvent</a>.
+			
+		""";
+                           rdfs:label "Closing Event";
+                           rdfs:subClassOf swc:NonAcademicEvent;
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:ConferenceDinner <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Event>;
+                     a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                     rdfs:comment """
+			
+			Deprecating this - we can just use <a href=\"#SocialEvent\">SocialEvent</a>.
+			
+		""";
+                     rdfs:label "Conference Dinner";
+                     rdfs:subClassOf swc:MealEvent,
+                                     swc:SocialEvent;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:ConferenceEvent <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment """
+			
+			<p>
+				A scientific conference.
+			</p>
+			<p>
+				TODO: Maybe this should be opened up - why only scientific conferences?
+			</p>
+			
+		""";
+                    rdfs:label "Conference Event";
+                    rdfs:subClassOf swc:AcademicEvent;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:ConferenceOpeningEvent <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Event>;
+                           a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                           rdfs:comment """
+			
+			Deprecating this - we can just use <a href=\"#TalkEvent\">TalkEvent</a>.
+			
+		""";
+                           rdfs:label "Opening Event";
+                           rdfs:subClassOf swc:NonAcademicEvent;
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:ConferenceVenuePlace <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Place>;
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment """
+			
+			<p>
+				The location of a conference or conference-like event. Ideally, this would be more specific than just the city. Instead it should  be the hotel, convention centre, university or similar place where the event is held.
+			</p>
+			
+		""";
+                         rdfs:label "Conference Venue Place";
+                         rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>;
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:Delegate <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Role>;
+             a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment """
+			<p>
+				A delegate is someone who attends a conference or conference-like event.
+			</p>
+			
+		""";
+             rdfs:label "Delegate";
+             rdfs:subClassOf swc:Role;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:DemoPresentation <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+                     a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                     rdfs:comment """
+			
+			Deprecating this - we can just as well use <a href=\"#TalkEvent\">TalkEvent</a>.
+			
+		""";
+                     rdfs:label "Demo Presentation";
+                     rdfs:subClassOf swc:TalkEvent;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:DemoSession <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+                a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                rdfs:comment """
+			
+			Deprecating this - we can just as well use <a href=\"#SessionEvent\">SessionEvent</a>.
+			
+		""";
+                rdfs:label "Demo Session";
+                rdfs:subClassOf swc:SessionEvent;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:DemosChair <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Chairman>;
+               a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+               rdfs:comment """
+			<p>
+				Deprecating this, just use <a href=\"#TrackChair\">TrackChair</a> instead.
+			</p>
+			
+		""";
+               rdfs:label "Demos Chair";
+               rdfs:subClassOf swc:Role;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:DogfoodTsar <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Chairman>;
+                a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                rdfs:comment """A role that is only relevant in relation to the topic of the conference e.g. Semantic 
+			Web Technologies Coordinator at a Semantic Web Conference.
+		""";
+                rdfs:label "Dogfood Tsar";
+                rdfs:subClassOf swc:Role;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:DrinkingPlace <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Place>;
+                  a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                  rdfs:comment """
+			<p>Deprecated to reduce inflation of terms.</p>
+			
+		""";
+                  rdfs:label "Drinking Place";
+                  rdfs:subClassOf swc:Place;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:EatingPlace <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Place>;
+                a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                rdfs:comment """
+			<p>Deprecated to reduce inflation of terms.</p>
+			
+		""";
+                rdfs:label "Eating Place";
+                rdfs:subClassOf swc:Place;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:Excursion <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Event>;
+              a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+              rdfs:comment """
+			
+			Deprecating this - we can just use <a href=\"#SocialEvent\">SocialEvent</a>.
+			
+		""";
+              rdfs:label "Excursion";
+              rdfs:subClassOf swc:SocialEvent;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:ExhibitionChair <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Chairman>;
+                    a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                    rdfs:comment """
+			<p>
+				Deprecating this, just use <a href=\"#TrackChair\">TrackChair</a> instead.
+			</p>
+			
+		""";
+                    rdfs:label "Exhibition Chair";
+                    rdfs:subClassOf swc:Role;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:FreeTimeBreak <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Event>;
+                  a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                  rdfs:comment """
+			
+			Deprecating this - we can just use <a href=\"#BreakEvent\">BreakEvent</a>.
+			
+		""";
+                  rdfs:label "Free Time Break";
+                  rdfs:subClassOf swc:BreakEvent;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:IndustrialTalk <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+                   a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                   rdfs:comment """
+			
+			Deprecating this - we can just as well use <a href=\"#TalkEvent\">TalkEvent</a>.
+			
+		""";
+                   rdfs:label "Industrial Talk";
+                   rdfs:subClassOf swc:TalkEvent;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:IndustrialTrack <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+                    a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                    rdfs:comment """
+			
+			Deprecating this - we can just as well use <a href=\"#TrackEvent\">TrackEvent</a>.
+			
+		""";
+                    rdfs:label "Industrial Track";
+                    rdfs:subClassOf swc:TrackEvent;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:IndustryChair <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Chairman>;
+                  a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                  rdfs:comment """
+			<p>
+				Deprecating this, just use <a href=\"#TrackChair\">TrackChair</a> instead.
+			</p>
+			
+		""";
+                  rdfs:label "Industry Chair or In-Use Chair";
+                  rdfs:subClassOf swc:Role;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:InvitedPaper <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Document>;
+                 a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                 rdfs:comment """
+			<p>As opposed to a peer-reviewed paper. This class has been deprecated in order to reduce the inflation of classes.</p>
+			
+		""";
+                 rdfs:label "Invited Paper";
+                 rdfs:subClassOf <http://swrc.ontoware.org/ontology#InProceedings>;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:KeynoteTalk <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+                a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                rdfs:comment """
+			
+			Deprecating this - we can just as well use <a href=\"#TalkEvent\">TalkEvent</a>.
+			
+		""";
+                rdfs:label "Keynote Talk";
+                rdfs:subClassOf swc:TalkEvent;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:LocalOrganiser <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Role>;
+                   a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                   rdfs:label "Local Organiser";
+                   rdfs:subClassOf swc:Role;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:MealBreak <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Event>;
+              a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+              rdfs:comment """
+			
+			Deprecating this - we can just use <a href=\"#BreakEvent\">BreakEvent</a>.
+			
+		""";
+              rdfs:label "Meal Break";
+              rdfs:subClassOf swc:BreakEvent;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:MealEvent <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Event>;
+              a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment """
+			
+			<p>
+				A lunch, dinner or similar event at a conference or conference-like event.
+			</p>
+			
+		""";
+              rdfs:label "Meal Event";
+              rdfs:subClassOf swc:NonAcademicEvent;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:MeetingRoomPlace <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Place>;
+                     a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment """
+			
+			<p>
+				A particular room at the <a href=\"#ConferenceVenuePlace\">conference venue</a> (or elsewhere). E.g., the room where a particular <a href=\"#SessionEvent\">SessionEvent</a> takes place. 
+			</p>
+			
+		""";
+                     rdfs:label "Meeting Room Place";
+                     rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:NonAcademicEvent <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Event>;
+                     a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment """
+			
+			<p>
+				In the context of SWC, a non-academic event is any kind or <a href=\"#OrganisedEvent\">organised event</a> which does not concern the topic or theme of the conference as such. Examples are breaks, dinners, parties, etc.
+			</p>
+			
+		""";
+                     rdfs:label "Non-academic Event";
+                     rdfs:subClassOf swc:OrganisedEvent;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:OrganisedEvent <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Event>;
+                   a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment """
+			
+			<p>An event in time and space which is planned and organised, as opposed to something which 'just happens', such as a car accident or sunset.</p>
+			
+		""";
+                   rdfs:label "Organised Event";
+                   rdfs:subClassOf <http://www.w3.org/2002/12/cal/ical#Vevent>,
+                                   <http://xmlns.com/wordnet/1.6/Event-1>;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:OrganisingCommitteeMember <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Role>;
+                              a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                              rdfs:label "Organising Committee Member";
+                              rdfs:subClassOf swc:Role;
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:PanelEvent <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment """
+			
+			<p>A panel discussion at a conference or conference-like event, usually involving several speakers.</p>
+			
+		""";
+               rdfs:label "Panel Event";
+               rdfs:subClassOf swc:AcademicEvent;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:Paper <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Document>;
+          a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment """
+			<p>A scientific/scholarly paper, e.g., an article in a scientific journal, or a paper at a conference or workshop. A paper could also be unpublished formally, as long as it has the form of a scientific paper (introduction, conclusion, related work, etc.).</p>
+			
+		""";
+          rdfs:label "Paper";
+          rdfs:subClassOf swc:Artefact,
+                          swc:ArgumentativeDocument;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:PaperPresentation <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+                      a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                      rdfs:comment """
+			
+			Deprecating this - we can just as well use <a href=\"#TalkEvent\">TalkEvent</a>.
+			
+		""";
+                      rdfs:label "Paper Presentation";
+                      rdfs:subClassOf swc:TalkEvent;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:PaperSession <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+                 a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                 rdfs:comment """
+			
+			Deprecating this - we can just as well use <a href=\"#SessionEvent\">SessionEvent</a>.
+			
+		""";
+                 rdfs:label "Paper Session";
+                 rdfs:subClassOf swc:SessionEvent;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:PhDSymposiumChair <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Chairman>;
+                      a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                      rdfs:comment """
+			<p>
+				Deprecating this, just use <a href=\"#TrackChair\">TrackChair</a> instead.
+			</p>
+			
+		""";
+                      rdfs:label "PhD Symposium or Doctoral Consortium Chair";
+                      rdfs:subClassOf swc:Role;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:Place <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Place>;
+          a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+          rdfs:comment """
+			
+			<p>
+				Deprecated: no real need to have an internal super-class for locations, we can just use the <a href=\"&geo;SpatialThing\">SpatialThing</a>.
+			</p>
+			
+		""";
+          rdfs:label "Place";
+          rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:Poster <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Document>;
+           a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment """
+			<p>A scientific poster at a conference or workshop.</p>
+			
+		""";
+           rdfs:label "Poster";
+           rdfs:subClassOf swc:Artefact,
+                           swc:ArgumentativeDocument;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:PosterPresentation <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+                       a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                       rdfs:comment """
+			
+			Deprecating this - we can just as well use <a href=\"#TalkEvent\">TalkEvent</a>.
+			
+		""";
+                       rdfs:label "Poster Presentation";
+                       rdfs:subClassOf swc:TalkEvent;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:PosterSession <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+                  a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                  rdfs:comment """
+			
+			Deprecating this - we can just as well use <a href=\"#SessionEvent\">SessionEvent</a>.
+			
+		""";
+                  rdfs:label "Poster Session";
+                  rdfs:subClassOf swc:SessionEvent;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:PostersChair <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Chairman>;
+                 a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                 rdfs:comment """
+			<p>
+				Deprecating this, just use <a href=\"#TrackChair\">TrackChair</a> instead.
+			</p>
+			
+		""";
+                 rdfs:label "Posters Chair";
+                 rdfs:subClassOf swc:Role;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:Presenter <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Role>;
+              a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment """
+			<p>
+				A presenter is someone who presents matter in front of an audience. Examples of events to which this role applies are paper presentations, tutorials, or talks. A keynote speaker could also be modelled as an instance of this class.
+			</p>
+			
+		""";
+              rdfs:label "Presenter";
+              rdfs:subClassOf swc:Role;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:PrintedProceedingsChair <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Chairman>;
+                            a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                            rdfs:label "(Printed) Proceedings Chair";
+                            rdfs:subClassOf swc:Role;
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:Proceedings <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Document>;
+                a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment """
+			<p>The proceedings of a conference or workshop, which contain the papers presented there.</p>
+			
+		""";
+                rdfs:label "Proceedings";
+                rdfs:subClassOf swc:Artefact,
+                                <http://xmlns.com/foaf/0.1/Document>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:Programme <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Document>;
+              a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment """
+			<p>A document containing the programme of an event such as a conference or workshop. Typically, the programme would list the times and dates for the individual sub-events, e.g., talks, dinners, panel discussions, etc.</p>
+			
+		""";
+              rdfs:label "Programme";
+              rdfs:subClassOf swc:Artefact,
+                              <http://xmlns.com/foaf/0.1/Document>;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:ProgrammeChair <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Chairman>;
+                   a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                   rdfs:label "Programme Chair";
+                   rdfs:subClassOf swc:Role;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:ProgrammeCommitteeMember <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Role>;
+                             a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment """
+			<p>
+				This role is played by the members of the programme committee of a conference or conference-like event. We found this role to be so significant that it justifies to be represented by its own class.
+			</p>
+			
+		""";
+                             rdfs:label "Programme Committee Member";
+                             rdfs:subClassOf swc:Role;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:PublicityChair <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Chairman>;
+                   a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                   rdfs:label "Publicity Chair";
+                   rdfs:subClassOf swc:Role;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:Reception <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Event>;
+              a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+              rdfs:comment """
+			
+			Deprecating this - we can just use <a href=\"#SocialEvent\">SocialEvent</a>.
+			
+		""";
+              rdfs:label "Reception";
+              rdfs:subClassOf swc:SocialEvent;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:ResearchTrack <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+                  a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                  rdfs:comment """
+			
+			Deprecating this - we can just as well use <a href=\"#TrackEvent\">TrackEvent</a>.
+			
+		""";
+                  rdfs:label "Research Track";
+                  rdfs:subClassOf swc:TrackEvent;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:Reviewer <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Role>;
+             a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+             rdfs:comment """
+			<p>
+				Deprecating this, just use <a href=\"#ProgrammeCommitteeMember\">ProgrammeCommitteeMember</a> instead.
+			</p>
+			
+		""";
+             rdfs:label "Reviewer";
+             rdfs:subClassOf swc:Role;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:Role <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Role>;
+         a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment """
+			<p>
+				Role is the super-class of all the different roles performed at a conference or workshop. Examples are the various conference chairs, the delegates, presenters, PC members, etc. The intended use of this class is that an instance of Role will be related to the event at which it is performed, and to the person which performs it.
+			</p>
+			<p>
+				Since the set of roles is slightly different for each event, and since it would therefore be impossible to provide sub-classes for all needs and circumstances, the SWC ontology only contains a very basic set of Role classes. Rather than diversifying the set of Role classes to cater for all needs, users should instead instantiate the small set of different Role classes and cover the roles at a specific event in this way. E.g., instead of sub-classing the Chair role with MainChair, WorkshopChair, TutorialChair, etc., the different kinds of chairs should simply be instances of the generic Chair class and be labelled appropriately.
+			</p>
+			
+		""";
+         rdfs:label "Role";
+         rdfs:subClassOf <http://xmlns.com/wordnet/1.6/Role-1>;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:SWChallengeChair <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Chairman>;
+                     a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                     rdfs:comment """
+			<p>
+				Deprecating this, just use <a href=\"#TrackChair\">TrackChair</a> instead.
+			</p>
+			
+		""";
+                     rdfs:label "Semantic Web Challenge Chair";
+                     rdfs:subClassOf swc:Role;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:SessionChair <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Chairman>;
+                 a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                 rdfs:label "Session Chair";
+                 rdfs:subClassOf swc:Role;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:SessionEvent <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment """
+			
+			<p>
+				A session dedicated to a specific topic at a conference. This could be a session with talks, or also a poster session, a demo session, or any other kind of session.
+			</p>
+			
+		""";
+                 rdfs:label "Session Event";
+                 rdfs:subClassOf swc:AcademicEvent;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:SlideSet <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Document>;
+             a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment """
+			<p>A set of slides used for a presentation of e.g. a paper at a conference.</p>
+			
+		""";
+             rdfs:label "Slide Set";
+             rdfs:subClassOf swc:Artefact,
+                             swc:ArgumentativeDocument;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:SocialEvent <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Event>;
+                a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment """
+			
+			<p>
+				Examples for social events are parties or excursions.
+			</p>
+			
+		""";
+                rdfs:label "Social Event";
+                rdfs:subClassOf swc:NonAcademicEvent;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:Sponsorship a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                rdfs:comment """
+			<p>Deprecated because it has never been used and in order to reduce the inflation of ontology terms.</p>
+			
+		""";
+                rdfs:label "Sponsorship";
+                rdfs:subClassOf <http://xmlns.com/wordnet/1.6/Sponsorship>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:SponsorshipChair <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Chairman>;
+                     a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                     rdfs:label "Sponsorship Chair";
+                     rdfs:subClassOf swc:Role;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:SubmissionsChair <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Chairman>;
+                     a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                     rdfs:label "Submissions Chair";
+                     rdfs:subClassOf swc:Role;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:SystemDemonstration <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Document>;
+                        a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                        rdfs:comment """
+			<p>A type of paper which accompanies the demonstration of software, also known as an extended abstract or demo description. This class has been deprecated in order to reduce the inflation of classes; it is too specific for CS conferences.</p>
+			
+		""";
+                        rdfs:label "System Demonstration";
+                        rdfs:subClassOf swc:Paper;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:SystemDescription <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Document>;
+                      a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                      rdfs:comment """
+			<p>
+				A type of paper which is mainly describes the properties, implementation or architecture of an system (such as a software system).
+			</p>
+			<p>
+				Deprecating this: it's too specific for, not generic enough to apply for most conferences.
+			
+		""";
+                      rdfs:label "System Description";
+                      rdfs:subClassOf swc:Paper;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:TalkEvent <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+              a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment """
+			
+			<p>
+				A speaker giving a talk. This could be the presentation of a paper, but also keynote speech or any other kind of talk.
+			</p>
+			
+		""";
+              rdfs:label "Talk Event";
+              rdfs:subClassOf swc:AcademicEvent;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:TrackChair <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Chairman>;
+               a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+               rdfs:comment """
+			<p>
+				The chair of a particular track of a conference, responsible for all submissions and actions regarding this track.
+			</p>
+			
+		""";
+               rdfs:label "Track Chair";
+               rdfs:subClassOf swc:Role;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:TrackEvent <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment """
+			
+			<p>
+				A track groups all those sessions or events at a conference or workshop that belong to a common, overall theme. Depending on the conference, tracks can be quite generic, such as \"Research\" or \"Industrial\", but can also be more specific, such as \"Semantic Web\" or \"Numismatics\". SWC does not define any specific tracks, since conferences often differ so much with respect to how they structure their tracks, that it would be pointless to try and find a set of tracks that would suit all conferences.
+			</p>
+			<p>Sub-classes of TrackEvent which were defined in previous versions of the SWC ontology are now deprecated.</p>
+			
+		""";
+               rdfs:label "Track Event";
+               rdfs:subClassOf swc:AcademicEvent;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:Treasurer <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Role>;
+              a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+              rdfs:label "Treasurer";
+              rdfs:subClassOf swc:Role;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:Tutor <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Role>;
+          a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+          rdfs:label "Tutor";
+          rdfs:subClassOf swc:Role;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:TutorialEvent <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment """
+			
+			<p>
+				A tutorial is a special session at a conference or workshop, somewhat like a long lecture on a specific topic.
+			</p>
+			
+		""";
+                  rdfs:label "Tutorial Event";
+                  rdfs:subClassOf swc:AcademicEvent;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:TutorialPresenter <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Role>;
+                      a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                      rdfs:comment """
+			<p>
+				Deprecating this, just use <a href=\"#Presenter\">Presenter</a> instead.
+			</p>
+			
+		""";
+                      rdfs:label "Tutorial Presenter";
+                      rdfs:subClassOf swc:Role;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:TutorialsChair <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Chairman>;
+                   a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                   rdfs:label "Tutorials Chair";
+                   rdfs:subClassOf swc:Role;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:Webmaster <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Role>;
+              a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+              rdfs:label "Webmaster";
+              rdfs:subClassOf swc:Role;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:WelcomeTalk <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+                a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                rdfs:comment """
+			
+			Deprecating this - we can just as well use <a href=\"#TalkEvent\">TalkEvent</a>.
+			
+		""";
+                rdfs:label "Welcome Talk";
+                rdfs:subClassOf swc:TalkEvent;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:WorkshopEvent <http://purl.org/dc/terms/subject> swc:AcademicEvent;
+                  a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment """
+			
+			<p>
+				A scientific workshop. Workshops are often co-located with <a href=\"#ConferenceEvent\">ConferenceEvent</a>s.
+			</p>
+			
+		""";
+                  rdfs:label "Workshop Event";
+                  rdfs:subClassOf swc:AcademicEvent;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:WorkshopOrganiser <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Role>;
+                      a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                      rdfs:label "Workshop Organiser";
+                      rdfs:subClassOf swc:Role;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:WorkshopsChair <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Chairman>;
+                   a <http://www.w3.org/2002/07/owl#DeprecatedClass>;
+                   rdfs:label "Workshops Chair";
+                   rdfs:subClassOf swc:Role;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:affiliation a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+                rdfs:label "affiliation";
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:attendeeAt a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+               rdfs:comment """
+			<p>Instead of this property, use the <a href=\"#Delegate\">Delegate</a> role.</p>
+			
+		""";
+               rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+               rdfs:label "attendee at";
+               rdfs:range swc:OrganisedEvent;
+               <http://www.w3.org/2002/07/owl#inverseOf> swc:hasAttendee;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:biblioReference a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+                    rdfs:comment """
+			<p>Deprecated because it has never been used and in order to reduce the inflation of ontology terms.</p>
+			
+		""";
+                    rdfs:domain swc:Artefact;
+                    rdfs:label "bibliographic reference";
+                    rdfs:range xsd:string;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:forEvent a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+             rdfs:comment """
+			<p>The call classes have been deprecated in SWC. Instead, we suggest to use the <a href=\"http://sw.deri.org/2005/08/conf/cfp\">CfP ontology</a>.</p>
+			
+		""";
+             rdfs:domain swc:Call;
+             rdfs:label "for event";
+             rdfs:range swc:AcademicEvent;
+             <http://www.w3.org/2002/07/owl#inverseOf> swc:hasCall;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:hasAttendee a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+                rdfs:comment """
+			<p>Instead of this property, use the <a href=\"#Delegate\">Delegate</a> role.</p>
+			
+		""";
+                rdfs:domain swc:OrganisedEvent;
+                rdfs:label "has attendee";
+                rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+                <http://www.w3.org/2002/07/owl#inverseOf> swc:attendeeAt;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:hasCall a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+            rdfs:comment """
+			<p>The call classes have been deprecated in SWC. Instead, we suggest to use the <a href=\"http://sw.deri.org/2005/08/conf/cfp\">CfP ontology</a>.</p>
+			
+		""";
+            rdfs:domain swc:AcademicEvent;
+            rdfs:label "has call";
+            rdfs:range swc:Call;
+            <http://www.w3.org/2002/07/owl#inverseOf> swc:forEvent;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:hasCameraReadyDeadline a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+                           rdfs:comment """
+			<p>The call classes have been deprecated in SWC. Instead, we suggest to use the <a href=\"http://sw.deri.org/2005/08/conf/cfp\">CfP ontology</a>.</p>
+			
+		""";
+                           rdfs:domain swc:Call;
+                           rdfs:label "has camera-ready deadline";
+                           rdfs:range xsd:dateTime;
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:hasCostAmount a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+                  rdfs:comment """
+			<p>Deprecated because it has never been used and in order to reduce the inflation of ontology terms.</p>
+			
+		""";
+                  rdfs:domain swc:Sponsorship;
+                  rdfs:label "has cost amount";
+                  rdfs:range xsd:integer;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:hasCostCurrency a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+                    rdfs:comment """
+			<p>Deprecated because it has never been used and in order to reduce the inflation of ontology terms.</p>
+			
+		""";
+                    rdfs:domain swc:Sponsorship;
+                    rdfs:label "has cost currency";
+                    rdfs:range xsd:string;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:hasLocation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment """
+			<p>
+				Relates an event such as a conference or any sub-event thereof to a location where it takes place. 
+			</p>
+			
+		""";
+                rdfs:domain swc:OrganisedEvent;
+                rdfs:label "has location";
+                rdfs:range <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:hasMenu a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+            rdfs:comment """
+			<p>Deprecated because it has never been used and in order to reduce the inflation of ontology terms.</p>
+			
+		""";
+            rdfs:domain swc:MealEvent;
+            rdfs:label "has menu";
+            rdfs:range <http://xmlns.com/wordnet/1.6/Menu>;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:hasNotificationDeadline a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+                            rdfs:comment """
+			<p>The call classes have been deprecated in SWC. Instead, we suggest to use the <a href=\"http://sw.deri.org/2005/08/conf/cfp\">CfP ontology</a>.</p>
+			
+		""";
+                            rdfs:domain swc:Call;
+                            rdfs:label "has notification deadline";
+                            rdfs:range xsd:dateTime;
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:hasPart a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment """
+			<p>
+				A generic property to model part-of relationships. In SWC this property is used to relate a <a href=\"#Proceedings\">proceedings document</a> to the papers and articles contained in it.
+			</p>
+			
+		""";
+            rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+            rdfs:label "has part";
+            rdfs:range <http://www.w3.org/2002/07/owl#Thing>;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:hasProgramme a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment """
+			<p>
+				Relates an event such as a conference to its <a href=\"#Programme\">Programme</a>. 
+			</p>
+			
+		""";
+                 rdfs:domain swc:OrganisedEvent;
+                 rdfs:label "has programme";
+                 rdfs:range swc:Programme;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:hasRelatedArtefact a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment """
+			<p>
+				Relates an <a href=\"#AcademicEvent\">event</a> such as a conference, workshop, etc. to a physical <a href=\"#Artefact\">artefact</a>.
+			</p>
+			
+		""";
+                       rdfs:domain swc:AcademicEvent;
+                       rdfs:label "has related artefact";
+                       rdfs:range swc:Artefact;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:hasRelatedDocument a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment """
+			<p>
+				Relates an <a href=\"#AcademicEvent\">event</a> such as a conference, workshop, etc. to a <a href=\"#ArgumentativeDocument\">document</a>.
+			</p>
+			
+		""";
+                       rdfs:domain swc:AcademicEvent;
+                       rdfs:label "has related document";
+                       rdfs:range swc:ArgumentativeDocument;
+                       <http://www.w3.org/2002/07/owl#inverseOf> swc:relatedToEvent;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:hasRole a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment """
+			<p>
+				Part of the <a href=\"#Role\">role</a> modelling machinery of SWC. This property relates an event (e.g. a conference) to a role at the event (e.g. a conference chair).
+			</p>
+			
+		""";
+            rdfs:domain swc:AcademicEvent;
+            rdfs:label "has role";
+            rdfs:range swc:Role;
+            <http://www.w3.org/2002/07/owl#inverseOf> swc:isRoleAt;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:hasSponsorship a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+                   rdfs:comment """
+			<p>Deprecated because it has never been used and in order to reduce the inflation of ontology terms.</p>
+			
+		""";
+                   rdfs:domain swc:OrganisedEvent;
+                   rdfs:label "has sponsorship";
+                   rdfs:range swc:Sponsorship;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:hasSubmissionDeadline a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+                          rdfs:comment """
+			<p>The call classes have been deprecated in SWC. Instead, we suggest to use the <a href=\"http://sw.deri.org/2005/08/conf/cfp\">CfP ontology</a>.</p>
+			
+		""";
+                          rdfs:domain swc:Call;
+                          rdfs:label "has submission deadline";
+                          rdfs:range xsd:dateTime;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:hasSubmissionInstructions a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+                              rdfs:comment """
+			<p>The call classes have been deprecated in SWC. Instead, we suggest to use the <a href=\"http://sw.deri.org/2005/08/conf/cfp\">CfP ontology</a>.</p>
+			
+		""";
+                              rdfs:domain swc:Call;
+                              rdfs:label "has submission instructions";
+                              rdfs:range xsd:string;
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:hasTopic a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+             rdfs:comment """
+			<p>Instead of this property, use <a href=\"http://xmlns.com/foaf/0.1/topic\">foaf:topic</a>.</p>
+			
+		""";
+             rdfs:label "has topic";
+             rdfs:range <http://swrc.ontoware.org/ontology#ResearchTopic>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:heldBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:comment """
+			<p>
+				Part of the <a href=\"#Role\">role</a> modelling machinery of SWC. This property relates a role at an event (e.g. a conference chair) to the person who actually holds the role.
+			</p>
+			
+		""";
+           rdfs:domain swc:Role;
+           rdfs:label "held by";
+           rdfs:range <http://xmlns.com/foaf/0.1/Person>;
+           <http://www.w3.org/2002/07/owl#inverseOf> swc:holdsRole;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:holdsRole a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment """
+			<p>
+				Part of the <a href=\"#Role\">role</a> modelling machinery of SWC. This property relates a person to the role (e.g. a conference chair) it holds at an event.
+			</p>
+			
+		""";
+              rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+              rdfs:label "holds role";
+              rdfs:range swc:Role;
+              <http://www.w3.org/2002/07/owl#inverseOf> swc:heldBy;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:isLocationFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment """
+			<p>
+				Relates a location to a conference or sub-event thereof which takes place at it.
+			</p>
+			
+		""";
+                  rdfs:domain <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>;
+                  rdfs:label "is location of";
+                  rdfs:range swc:OrganisedEvent;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:isPartOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment """
+			<p>
+				A generic property to model part-of relationships. In SWC this property is used to relate papers or articles to the <a href=\"#Proceedings\">proceedings document</a> in which they are contained.
+			</p>
+			
+		""";
+             rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+             rdfs:label "is part of";
+             rdfs:range <http://www.w3.org/2002/07/owl#Thing>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:isProvidedBy a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+                 rdfs:comment """
+			<p>Deprecated because it has never been used and in order to reduce the inflation of ontology terms.</p>
+			
+		""";
+                 rdfs:domain swc:Sponsorship;
+                 rdfs:label "is provided by";
+                 rdfs:range <http://xmlns.com/foaf/0.1/Organisation>;
+                 <http://www.w3.org/2002/07/owl#inverseOf> swc:isProviderOf;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:isProviderOf a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+                 rdfs:comment """
+			<p>Deprecated because it has never been used and in order to reduce the inflation of ontology terms.</p>
+			
+		""";
+                 rdfs:domain <http://xmlns.com/foaf/0.1/Organisation>;
+                 rdfs:label "is provider of";
+                 rdfs:range swc:Sponsorship;
+                 <http://www.w3.org/2002/07/owl#inverseOf> swc:isProvidedBy;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:isRoleAt a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment """
+			<p>
+				Part of the <a href=\"#Role\">role</a> modelling machinery of SWC. This property relates a role at an event (e.g. a conference chair) to the event (e.g. a conference).
+			</p>
+			
+		""";
+             rdfs:domain swc:Role;
+             rdfs:label "is role at";
+             rdfs:range swc:AcademicEvent;
+             <http://www.w3.org/2002/07/owl#inverseOf> swc:hasRole;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:isSubEventOf a <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+                 rdfs:comment "Events can be sub-events of other events. E.g., a talk can be a sub-event of a session, which in turn can be a sub-event of a conference. The relation is transitive - the talk is also a sub-event of the conference.";
+                 rdfs:domain <http://www.w3.org/2002/12/cal/ical#Vevent>;
+                 rdfs:label "is sub-event of",
+                            "is a sub-event of";
+                 rdfs:range <http://www.w3.org/2002/12/cal/ical#Vevent>;
+                 <http://www.w3.org/2002/07/owl#inverseOf> swc:isSuperEventOf;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:isSuperEventOf a <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+                   rdfs:comment "Events can be super-events of other events. E.g., a conference can be the super-event of a session, which in turn can be the super-event of a talk. The relation is transitive - the conference is also the super-event of the talk.";
+                   rdfs:domain <http://www.w3.org/2002/12/cal/ical#Vevent>;
+                   rdfs:label "is super-event of",
+                              "is the super-event of";
+                   rdfs:range <http://www.w3.org/2002/12/cal/ical#Vevent>;
+                   <http://www.w3.org/2002/07/owl#inverseOf> swc:isSubEventOf;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:isTopicOf a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+              rdfs:comment """
+			<p>Deprecated, instead using terms from FOAF.</p>
+			
+		""";
+              rdfs:domain <http://swrc.ontoware.org/ontology#ResearchTopic>;
+              rdfs:label "is topic of";
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+swc:license_doc rdfs:comment """
+			<!-- Creative Commons License -->
+			<p class=\"copyright\">
+				Copyright &copy; 2007-2009 Knud Möller, Sean Bechhofer and Tom Heath.<br/>
+				<br/>
+				<a href=\"http://creativecommons.org/licenses/by/3.0/\"><img alt=\"Creative Commons License\" style=\"border: 0; float: right; padding: 10px;\" src=\"somerights.gif\" /></a>
+				This work is licensed under a <a href=\"http://creativecommons.org/licenses/by/3.0/\">Creative Commons Attribution License</a>. 
+				This copyright applies to the <em>Semantic Web Conference Ontology (SWC) Specification</em> and accompanying documentation in RDF.
+				Regarding underlying technology, SWC uses W3C's <a href=\"http://www.w3.org/RDF/\">RDF</a> technology, an
+				open Web standard that can be freely used by anyone.
+			</p>
+			
+		""";
+                rdfs:label "License Statement".
+swc:memberOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment """
+			<p>FOAF does not define an inverse of <code>foaf:member</code>, so SWC does it.</p>
+			
+		""";
+             rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+             rdfs:label "member of";
+             rdfs:range <http://xmlns.com/foaf/0.1/Group>;
+             <http://www.w3.org/2002/07/owl#inverseOf> <http://xmlns.com/foaf/0.1/member>;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:plansToAttend a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment """
+			<p>
+				A person might plan to attend a talk or session at a conference or similar event. This property could be used to prepare a delegate's conference experience with respect to who they want to meet, etc.
+			</p>
+			
+		""";
+                  rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                  rdfs:label "plans to attend";
+                  rdfs:range swc:OrganisedEvent;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:relatedToEvent a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment """
+			<p>
+				Relates a <a href=\"#ArgumentativeDocument\">document</a> to an <a href=\"#AcademicEvent\">event</a> such as a conference, workshop, etc.
+			</p>
+			
+		""";
+                   rdfs:domain swc:Artefact,
+                               swc:ArgumentativeDocument;
+                   rdfs:label "related to event",
+                              "related to Event";
+                   rdfs:range swc:AcademicEvent;
+                   <http://www.w3.org/2002/07/owl#inverseOf> swc:hasRelatedDocument;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+swc:uuid a <http://www.w3.org/2002/07/owl#DeprecatedProperty>;
+         rdfs:label "uuid";
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+<http://data.semanticweb.org/ns/swc/swrc> a <http://www.w3.org/2002/07/owl#Ontology>.
+<http://data.semanticweb.org/ns/swc/swrc-topics> a <http://www.w3.org/2002/07/owl#Ontology>.
+<http://data.semanticweb.org/organization/deri-nui-galway> a <http://xmlns.com/foaf/0.1/Organization>;
+                                                           <http://xmlns.com/foaf/0.1/homepage> <http://www.deri.ie/>;
+                                                           <http://xmlns.com/foaf/0.1/member> <http://kantenwerk.org/metadata/foaf.rdf#me>;
+                                                           <http://xmlns.com/foaf/0.1/name> "DERI".
+<http://data.semanticweb.org/organization/talis-information-limited> a <http://xmlns.com/foaf/0.1/Organization>;
+                                                                     <http://xmlns.com/foaf/0.1/homepage> <http://www.talis.com/>;
+                                                                     <http://xmlns.com/foaf/0.1/member> <http://tomheath.com/id/me>;
+                                                                     <http://xmlns.com/foaf/0.1/name> "Talis Information Limited".
+<http://data.semanticweb.org/organization/university-of-manchester-uk> a <http://xmlns.com/foaf/0.1/Organization>;
+                                                                       <http://xmlns.com/foaf/0.1/homepage> <http://www.manchester.ac.uk/>;
+                                                                       <http://xmlns.com/foaf/0.1/member> <http://data.semanticweb.org/person/sean-bechhofer>;
+                                                                       <http://xmlns.com/foaf/0.1/name> "University of Manchester".
+<http://data.semanticweb.org/person/sean-bechhofer> a <http://xmlns.com/foaf/0.1/Person>;
+                                                    <http://xmlns.com/foaf/0.1/homepage> <http://www.cs.man.ac.uk/~seanb/>;
+                                                    <http://xmlns.com/foaf/0.1/name> "Sean Bechhofer";
+                                                    <http://xmlns.com/foaf/0.1/surname> "Bechhofer".
+<http://dbpedia.org/resource/Call> rdfs:label "Call".
+<http://dbpedia.org/resource/Document> rdfs:label "Document".
+<http://dbpedia.org/resource/Event> rdfs:label "Event, other".
+<http://dbpedia.org/resource/Place> rdfs:label "Place".
+<http://dbpedia.org/resource/Role> rdfs:label "Role".
+<http://kantenwerk.org/metadata/foaf.rdf#me> a <http://xmlns.com/foaf/0.1/Person>;
+                                             rdfs:seeAlso <http://kantenwerk.org/metadata/foaf.rdf>;
+                                             <http://xmlns.com/foaf/0.1/homepage> <http://kantenwerk.org/>;
+                                             <http://xmlns.com/foaf/0.1/name> "Knud Möller";
+                                             <http://xmlns.com/foaf/0.1/surname> "Möller".
+<http://purl.org/dc/elements/1.1/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/date> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/isPartOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://swrc.ontoware.org/ontology#InProceedings> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:subClassOf swc:Paper.
+<http://swrc.ontoware.org/ontology#Proceedings> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:subClassOf swc:Proceedings.
+<http://swrc.ontoware.org/ontology#ResearchTopic> a <http://www.w3.org/2002/07/owl#Class>.
+<http://swrc.ontoware.org/ontology#doi> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://swrc.ontoware.org/ontology#url> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://tomheath.com/id/me> a <http://xmlns.com/foaf/0.1/Person>;
+                            rdfs:seeAlso <http://tomheath.com/home/rdf>;
+                            <http://xmlns.com/foaf/0.1/homepage> <http://tomheath.com/home/html>;
+                            <http://xmlns.com/foaf/0.1/name> "Tom Heath";
+                            <http://xmlns.com/foaf/0.1/surname> "Heath".
+<http://www.w3.org/2002/12/cal/ical#Vcalendar> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2002/12/cal/ical#Vevent> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2002/12/cal/ical#calscale> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.w3.org/2002/12/cal/ical#component> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.w3.org/2002/12/cal/ical#date> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.w3.org/2002/12/cal/ical#dateTime> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.w3.org/2002/12/cal/ical#description> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.w3.org/2002/12/cal/ical#dtend> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.w3.org/2002/12/cal/ical#dtstamp> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.w3.org/2002/12/cal/ical#dtstart> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.w3.org/2002/12/cal/ical#duration> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.w3.org/2002/12/cal/ical#location> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.w3.org/2002/12/cal/ical#prodid> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.w3.org/2002/12/cal/ical#sequence> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.w3.org/2002/12/cal/ical#tzid> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.w3.org/2002/12/cal/ical#url> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.w3.org/2002/12/cal/ical#version> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/Document> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/Group> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/Organization> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/Person> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/Project> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/based_near> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://xmlns.com/foaf/0.1/family_name> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://xmlns.com/foaf/0.1/firstName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://xmlns.com/foaf/0.1/homepage> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://xmlns.com/foaf/0.1/maker> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://xmlns.com/foaf/0.1/mbox> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://xmlns.com/foaf/0.1/mbox_sha1sum> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://xmlns.com/foaf/0.1/member> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://xmlns.com/foaf/0.1/surname> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://xmlns.com/foaf/0.1/title> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://xmlns.com/wordnet/1.6/Announcement> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/wordnet/1.6/Document> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/wordnet/1.6/Event-1> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/wordnet/1.6/Menu> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/wordnet/1.6/Role-1> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/wordnet/1.6/Sponsorship> a <http://www.w3.org/2002/07/owl#Class>.

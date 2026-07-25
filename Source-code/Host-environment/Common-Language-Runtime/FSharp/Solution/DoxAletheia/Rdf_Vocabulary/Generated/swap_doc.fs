@@ -16,15 +16,6 @@ module swap_doc =
     /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#creator">http://www.w3.org/2000/10/swap/pim/doc#creator</seealso>
     let creator = Prefixed_Name(swap_doc, "creator") |> PrefixedName
     /// <summary>
-    ///   <para>swap_doc:OpenSourceLicense</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>Class of licenses which can be called Open Soutrce
-    ///                 according to opensource.org</para>
-    /// labels<para>Opem Source licence</para></remarks>
-    /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#OpenSourceLicense">http://www.w3.org/2000/10/swap/pim/doc#OpenSourceLicense</seealso>
-    let OpenSourceLicense = Prefixed_Name(swap_doc, "OpenSourceLicense") |> PrefixedName
-    /// <summary>
     ///   <para>swap_doc:Work</para>
     /// </summary>
     /// <remarks>
@@ -43,33 +34,14 @@ module swap_doc =
     /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#derivedFrom">http://www.w3.org/2000/10/swap/pim/doc#derivedFrom</seealso>
     let derivedFrom = Prefixed_Name(swap_doc, "derivedFrom") |> PrefixedName
     /// <summary>
-    ///   <para>swap_doc:mayRead</para>
+    ///   <para>swap_doc:mayControl</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>This may access that for read -- compare 'r' unix</para>
-    /// labels<para>may read</para></remarks>
-    /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#mayRead">http://www.w3.org/2000/10/swap/pim/doc#mayRead</seealso>
-    let mayRead = Prefixed_Name(swap_doc, "mayRead") |> PrefixedName
-    /// <summary>
-    ///   <para>swap_doc:persistencePolicy</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Publishers policy regarding the peristence of the mapping
-    ///                 between URI and its meaning and/or representation in bits.</para>
-    /// labels<para>persistence policy</para></remarks>
-    /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#persistencePolicy">http://www.w3.org/2000/10/swap/pim/doc#persistencePolicy</seealso>
-    let persistencePolicy = Prefixed_Name(swap_doc, "persistencePolicy") |> PrefixedName
-    /// <summary>
-    ///   <para>swap_doc:dependsOn</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>The meaning or value of this work depends on that of that work.</para>
-    /// labels<para>depends on</para></remarks>
-    /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#dependsOn">http://www.w3.org/2000/10/swap/pim/doc#dependsOn</seealso>
-    let dependsOn = Prefixed_Name(swap_doc, "dependsOn") |> PrefixedName
+    ///   <para>This may change that access control for that</para>
+    /// labels<para>may control</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#mayControl">http://www.w3.org/2000/10/swap/pim/doc#mayControl</seealso>
+    let mayControl = Prefixed_Name(swap_doc, "mayControl") |> PrefixedName
     /// <summary>
     ///   <para>swap_doc:mayWrite</para>
     /// </summary>
@@ -79,6 +51,24 @@ module swap_doc =
     /// labels<para>may write</para></remarks>
     /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#mayWrite">http://www.w3.org/2000/10/swap/pim/doc#mayWrite</seealso>
     let mayWrite = Prefixed_Name(swap_doc, "mayWrite") |> PrefixedName
+    /// <summary>
+    ///   <para>swap_doc:ipr</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Terms and intellectual property rights licensing conditions.</para>
+    /// labels<para>rights</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#ipr">http://www.w3.org/2000/10/swap/pim/doc#ipr</seealso>
+    let ipr = Prefixed_Name(swap_doc, "ipr") |> PrefixedName
+    /// <summary>
+    ///   <para>swap_doc:obsoletes</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>This work is more upto date than that and makes it obsolete.</para>
+    /// labels<para>obsoletes</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#obsoletes">http://www.w3.org/2000/10/swap/pim/doc#obsoletes</seealso>
+    let obsoletes = Prefixed_Name(swap_doc, "obsoletes") |> PrefixedName
     /// <summary>
     ///   <para>swap_doc:rules</para>
     /// </summary>
@@ -93,15 +83,6 @@ module swap_doc =
     /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#rules">http://www.w3.org/2000/10/swap/pim/doc#rules</seealso>
     let rules = Prefixed_Name(swap_doc, "rules") |> PrefixedName
     /// <summary>
-    ///   <para>swap_doc:ipr</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Terms and intellectual property rights licensing conditions.</para>
-    /// labels<para>rights</para></remarks>
-    /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#ipr">http://www.w3.org/2000/10/swap/pim/doc#ipr</seealso>
-    let ipr = Prefixed_Name(swap_doc, "ipr") |> PrefixedName
-    /// <summary>
     ///   <para>swap_doc:version</para>
     /// </summary>
     /// <remarks>
@@ -112,6 +93,15 @@ module swap_doc =
     /// labels<para>version</para></remarks>
     /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#version">http://www.w3.org/2000/10/swap/pim/doc#version</seealso>
     let version = Prefixed_Name(swap_doc, "version") |> PrefixedName
+    /// <summary>
+    ///   <para>swap_doc:dependsOn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The meaning or value of this work depends on that of that work.</para>
+    /// labels<para>depends on</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#dependsOn">http://www.w3.org/2000/10/swap/pim/doc#dependsOn</seealso>
+    let dependsOn = Prefixed_Name(swap_doc, "dependsOn") |> PrefixedName
     /// <summary>
     ///   <para>swap_doc:adminPage</para>
     /// </summary>
@@ -132,29 +122,30 @@ module swap_doc =
     /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#derivativeWork">http://www.w3.org/2000/10/swap/pim/doc#derivativeWork</seealso>
     let derivativeWork = Prefixed_Name(swap_doc, "derivativeWork") |> PrefixedName
     /// <summary>
-    ///   <para>swap_doc:mayControl</para>
+    ///   <para>swap_doc:mayRead</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>This may change that access control for that</para>
-    /// labels<para>may control</para></remarks>
-    /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#mayControl">http://www.w3.org/2000/10/swap/pim/doc#mayControl</seealso>
-    let mayControl = Prefixed_Name(swap_doc, "mayControl") |> PrefixedName
+    ///   <para>This may access that for read -- compare 'r' unix</para>
+    /// labels<para>may read</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#mayRead">http://www.w3.org/2000/10/swap/pim/doc#mayRead</seealso>
+    let mayRead = Prefixed_Name(swap_doc, "mayRead") |> PrefixedName
     /// <summary>
-    ///   <para>swap_doc:obsoletes</para>
+    ///   <para>swap_doc:persistencePolicy</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>This work is more upto date than that and makes it obsolete.</para>
-    /// labels<para>obsoletes</para></remarks>
-    /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#obsoletes">http://www.w3.org/2000/10/swap/pim/doc#obsoletes</seealso>
-    let obsoletes = Prefixed_Name(swap_doc, "obsoletes") |> PrefixedName
+    ///   <para>Publishers policy regarding the peristence of the mapping
+    ///                 between URI and its meaning and/or representation in bits.</para>
+    /// labels<para>persistence policy</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#persistencePolicy">http://www.w3.org/2000/10/swap/pim/doc#persistencePolicy</seealso>
+    let persistencePolicy = Prefixed_Name(swap_doc, "persistencePolicy") |> PrefixedName
     /// <summary>
     ///   <para>swap_doc:subLicense</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:TransitiveProperty</para>
     ///   <para>rdf:Property</para>
+    ///   <para>owl:TransitiveProperty</para>
     ///   <para>For any license, a sublicense is a licensing offering a subset of the rights.
     /// If A doc:sublicense B then anything under license A can be released under
     /// licence B.</para>
@@ -171,3 +162,12 @@ module swap_doc =
     /// </remarks>
     /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#versionOf">http://www.w3.org/2000/10/swap/pim/doc#versionOf</seealso>
     let versionOf = Prefixed_Name(swap_doc, "versionOf") |> PrefixedName
+    /// <summary>
+    ///   <para>swap_doc:OpenSourceLicense</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>Class of licenses which can be called Open Soutrce
+    ///                 according to opensource.org</para>
+    /// labels<para>Opem Source licence</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/pim/doc#OpenSourceLicense">http://www.w3.org/2000/10/swap/pim/doc#OpenSourceLicense</seealso>
+    let OpenSourceLicense = Prefixed_Name(swap_doc, "OpenSourceLicense") |> PrefixedName

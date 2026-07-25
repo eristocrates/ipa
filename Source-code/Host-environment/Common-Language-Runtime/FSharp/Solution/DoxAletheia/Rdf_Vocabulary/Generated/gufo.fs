@@ -37,263 +37,18 @@ module gufo =
     /// <seealso href="http://purl.org/nemo/gufo#Event">http://purl.org/nemo/gufo#Event</seealso>
     let Event = Prefixed_Name(gufo, "Event") |> PrefixedName
     /// <summary>
-    ///   <para>gufo:ExtrinsicAspect</para>
+    ///   <para>gufo:Situation</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>A gufo:Aspect that depends on one or more concrete individuals.
+    ///   <para>A gufo:ConcreteIndividual that is a particular configuration of a part of reality which can be understood as a whole and in which entities stand in relations. A situation may be counterfactual or actual. An actual situation (or in other words, a "fact") "obtains" in a certain time instant or during a time interval.
     ///
-    /// Extrinsic (or "relational") aspects are reified relationships, e.g., John and Mary's marriage, Mary's employment contract at Nasa, or parts of those relationships, e.g., John's obligations towards Mary in the scope of the marriage, Mary's reciprocal claims, Mary's obligations towards John, John's reciprocal claims. Extrinsic aspects can also be reified one-sided relationships, e.g., John's admiration for Obama (which depends on Obama but does not characterize him).
+    /// Note that, in Guizzardi et al. (2013), situations were considered to obtain at a specific point in time. Here, instead, they obtain in a time interval when begin and end points differ.
     ///
-    /// Corresponds to "Extrinsic Moment" in Fonseca et al (2019). Encompasses "Externally Depedent Mode", "Qua Individual" and "Relator" in Guizzardi (2005).</para>
-    /// labels<para>ExtrinsicAspect</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#ExtrinsicAspect">http://purl.org/nemo/gufo#ExtrinsicAspect</seealso>
-    let ExtrinsicAspect = Prefixed_Name(gufo, "ExtrinsicAspect") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:IntrinsicMode</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:IntrinsicAspect that is not measurable.
-    ///
-    /// For example, Bob's belief that the Eiffel Tower is in Paris, his math skills, his headache.
-    ///
-    /// Corresponds to "Mode" in Guizzardi (2005).</para>
-    /// labels<para>IntrinsicMode</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#IntrinsicMode">http://purl.org/nemo/gufo#IntrinsicMode</seealso>
-    let IntrinsicMode = Prefixed_Name(gufo, "IntrinsicMode") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:SubKind</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:EndurantType that is both sortal and rigid. It specializes a gufo:Kind carrying the principle of identity supplied by that kind. Every gufo:SubKind should directly or indirectly specialize a gufo:Kind.
-    ///
-    /// For example, the gufo:Kind "Lion" may be specialized into the "Lionness" and "Male Lion" subkinds, while the gufo:Kind "Computer" may be specialized into the "Laptop" and "Desktop" subkinds.</para>
-    /// labels<para>SubKind</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#SubKind">http://purl.org/nemo/gufo#SubKind</seealso>
-    let SubKind = Prefixed_Name(gufo, "SubKind") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:standsInQualifiedInstantiation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies a gufo:TemporaryInstantiationSituation in which the endurant stands. The identified gufo:TemporaryInstantiationSituation is further related with a gufo:NonRigidType through the gufo:concernsNonRigidType object property. This forms a pattern to represent the contigent instantiation of a non-rigid type by the endurant, in which case instantiation may vary in different situations.</para>
-    /// labels<para>standsInQualifiedInstantiation</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#standsInQualifiedInstantiation">http://purl.org/nemo/gufo#standsInQualifiedInstantiation</seealso>
-    let standsInQualifiedInstantiation =
-        Prefixed_Name(gufo, "standsInQualifiedInstantiation") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:concernsTemporaryWhole</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>owl:FunctionalProperty</para>
-    ///   <para>Identifies the whole (a gufo:Endurant) of which the endurant that stands in the gufo:TemporaryParthoodSituation is part.</para>
-    /// labels<para>concernsTemporaryWhole</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#concernsTemporaryWhole">http://purl.org/nemo/gufo#concernsTemporaryWhole</seealso>
-    let concernsTemporaryWhole =
-        Prefixed_Name(gufo, "concernsTemporaryWhole") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:manifestedIn</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies a gufo:Event in which the gufo:Aspect is manifested.
-    ///
-    /// For example, the passing of an electrical current in a conductor is an event that encompasses the manifestation of an aspect inhering in a copper wire (the wire's  electrical conductivity).</para>
-    /// labels<para>manifestedIn</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#manifestedIn">http://purl.org/nemo/gufo#manifestedIn</seealso>
-    let manifestedIn = Prefixed_Name(gufo, "manifestedIn") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:Type</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>An entity that may be instantiated by (or predicated over) other entities. Types encompass what we often call "sorts", "kinds", "categories", etc.
-    ///
-    /// Examples include the kind "Person", the event type "Earthquake", and the abstract individual type "NaturalNumber". Relations, such as "marriedTo" and "olderThan", are also considered as types.
-    ///
-    /// Instances of gufo:Type are classes, and should specialize the taxonomy of individuals of gUFO. For example, "Person" is a gufo:Type (more specifically a gufo:Kind), specializing gufo:Object. The mechanism that allows for this is called punning in OWL 2.
-    ///
-    /// Encompasses the notion of "Universal" in Guizzardi (2005).</para>
-    /// labels<para>Type</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#Type">http://purl.org/nemo/gufo#Type</seealso>
-    let Type = Prefixed_Name(gufo, "Type") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:RelationshipType</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:Type whose instances are ordered pairs of related entities. Instances of gufo:RelationshipType are object properties in UFO-based ontologies.
-    ///
-    /// The object properties "marriedWith" and "enrolledIn" are examples of material relationship types. The object properties "heavierThan", "olderThan" are examples of comparative relationship types.
-    ///
-    /// The use of gufo:RelationshipType and its subclasses requires OWL 2 punning.
-    ///
-    /// Corresponds to "Relation" in Guizzardi (2005) and Fonseca et al. (2019).</para>
-    /// labels<para>RelationshipType</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#RelationshipType">http://purl.org/nemo/gufo#RelationshipType</seealso>
-    let RelationshipType = Prefixed_Name(gufo, "RelationshipType") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:RigidType</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:EndurantType which applies necessarily to its instances (see Guizzardi, 2005, chapter 4).
-    ///
-    /// Examples include the types "Agent", "Person", "Animal", "PhysicalObject", "Car", and "Tree".</para>
-    /// labels<para>RigidType</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#RigidType">http://purl.org/nemo/gufo#RigidType</seealso>
-    let RigidType = Prefixed_Name(gufo, "RigidType") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:NonSortal</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:EndurantType that applies to individuals of different kinds (see Guizzardi, 2005, chapter 4).
-    ///
-    /// Non-sortals do not provide a uniform principle of identity for their instances; instead, they just classify things that share common properties but which obey different principles of identity.
-    ///
-    /// Also termed "dispersive" types in the philosophical literature.</para>
-    /// labels<para>NonSortal</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#NonSortal">http://purl.org/nemo/gufo#NonSortal</seealso>
-    let NonSortal = Prefixed_Name(gufo, "NonSortal") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:PhaseMixin</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:EndurantType that is both non-sortal and anti-rigid. It is defined by instrinsic but contingent instantiation conditions. Phase mixins are relationally independent types that capture instrinsic properties shared by instances of different kinds.
-    ///
-    /// For example, "LivingAnimal" may be considered a gufo:PhaseMixin as a superclass of the phases "LivingPerson" (specializing the gufo:Kind "Person") and "LivingDog" (specializing the gufo:Kind "Dog").</para>
-    /// labels<para>PhaseMixin</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#PhaseMixin">http://purl.org/nemo/gufo#PhaseMixin</seealso>
-    let PhaseMixin = Prefixed_Name(gufo, "PhaseMixin") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:RoleMixin</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:EndurantType that is both non-sortal and anti-rigid. It is defined by relational instantiation conditions. Role mixins are relationally dependent types, capturing relational properties shared by instances of different kinds.
-    ///
-    /// For example, "Customer" may be considered a gufo:RoleMixin as a superclass of the roles "CorporateCustomer" (specializing the gufo:Kind "BusinessOrganization") and "PersonalCustomer" (specializing the gufo:Kind "Person").</para>
-    /// labels<para>RoleMixin</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#RoleMixin">http://purl.org/nemo/gufo#RoleMixin</seealso>
-    let RoleMixin = Prefixed_Name(gufo, "RoleMixin") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:concernsQualityValue</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Determines a quality value associated with the gufo:ConcreteIndividual that stands in the gufo:QualityValueAttributionSituation.
-    ///
-    /// Use gufo:concernsReifiedQualityValue instead when quality values are refied.
-    ///
-    /// It is recommended that subproperties of gufo:concernsQualityValue are created, possibly identifying the datatype to be used. For example, "concernsTemperatureValue" could be defined as a sub-property of gufo:concernsQualityValue with range xsd:double.</para>
-    /// labels<para>concernsQualityValue</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#concernsQualityValue">http://purl.org/nemo/gufo#concernsQualityValue</seealso>
-    let concernsQualityValue =
-        Prefixed_Name(gufo, "concernsQualityValue") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:concernsReifiedQualityValue</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>owl:FunctionalProperty</para>
-    ///   <para>Identifies the gufo:QualityValue (i.e., the reified quality value) associated with the endurant that stands in the gufo:QualityValueAttributionSituation.</para>
-    /// labels<para>concernsReifiedQualityValue</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#concernsReifiedQualityValue">http://purl.org/nemo/gufo#concernsReifiedQualityValue</seealso>
-    let concernsReifiedQualityValue =
-        Prefixed_Name(gufo, "concernsReifiedQualityValue") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:concernsQualityType</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:FunctionalProperty</para>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies the quality type (a gufo:EndurantType subclassing gufo:Quality) whose value is attributed in the gufo:QualityValueAttributionSituation.</para>
-    /// labels<para>concernsQualityType</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#concernsQualityType">http://purl.org/nemo/gufo#concernsQualityType</seealso>
-    let concernsQualityType = Prefixed_Name(gufo, "concernsQualityType") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:standsInQualifiedAttribution</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies a gufo:QualityValueAttributionSituation in which the endurant stands. The identified gufo:QualityValueAttributionSituation is then used with the gufo:concernsQualityValue data property or the gufo:concernsReifiedQualityValue object property to indicate a quality value attributed to the gufo:Endurant standing in the situation. This forms a pattern to represent that quality values may differ in different situations.</para>
-    /// labels<para>standsInQualifiedAttribution</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#standsInQualifiedAttribution">http://purl.org/nemo/gufo#standsInQualifiedAttribution</seealso>
-    let standsInQualifiedAttribution =
-        Prefixed_Name(gufo, "standsInQualifiedAttribution") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:TemporaryRelationshipSituation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:Situation in which a gufo:Endurant temporarily stands in a relation with another gufo:Endurant (or other endurants in the case of n-ary relationships).
-    ///
-    /// Reification of a gufo:TemporaryRelationshipSituation allows qualification of the relationship with the period in time in which it applies.
-    ///
-    /// Examples include: the situation in which Einstein works at the Swiss Patent Office in Bern; the situation in which Elon Musk studies at the University of Pennsylvania; the situation in which John Lennon is married to Yoko Ono; and the situation in which Facebook has a lower market value than Amazon.
-    ///
-    /// For material relationships, prefer the use of gufo:Relator.
-    ///
-    /// This is a reification of the relationship (in a solution that is similar to the qualified relation pattern  http://patterns.dataincubator.org/book/qualified-relation.html).</para>
-    /// labels<para>TemporaryRelationshipSituation</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#TemporaryRelationshipSituation">http://purl.org/nemo/gufo#TemporaryRelationshipSituation</seealso>
-    let TemporaryRelationshipSituation =
-        Prefixed_Name(gufo, "TemporaryRelationshipSituation") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:TemporaryInstantiationSituation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:Situation in which a gufo:Endurant temporarily instantiates a gufo:NonRigidType.
-    ///
-    /// A gufo:TemporaryInstantiationSituation can account for the time period in which a particular instantiation holds.
-    ///
-    /// Examples include: the situation in which Obama instantiates the role of president, which began in 20/01/2009 and lasted until 20/01/2017; the situation in which Coatria instantiates the role of EU Member, which began in 01/07/2013 (and is still on-going); and the situation in which Steve Jobs instantiates the child phase, which began in 24/02/1955 and lasted until 24/02/1965.
-    ///
-    /// This solution is inspired in the qualified relation pattern (http://patterns.dataincubator.org/book/qualified-relation.html).</para>
-    /// labels<para>TemporaryInstantiationSituation</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#TemporaryInstantiationSituation">http://purl.org/nemo/gufo#TemporaryInstantiationSituation</seealso>
-    let TemporaryInstantiationSituation =
-        Prefixed_Name(gufo, "TemporaryInstantiationSituation") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:mediates</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:IrreflexiveProperty</para>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>owl:AsymmetricProperty</para>
-    ///   <para>Identifies the endurants mediated by a gufo:Relator.
-    ///
-    /// For example, John and Mary's marriage mediates John and Mary.</para>
-    /// labels<para>mediates</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#mediates">http://purl.org/nemo/gufo#mediates</seealso>
-    let mediates = Prefixed_Name(gufo, "mediates") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:hasValueComponent</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>This property is used for quality values that are defined in terms of a multidimensional quality structure (such as color conceived in terms of hue, saturation and brightness). Each value component of a quality value (a particular value for hue, a particular value for saturation, a particular value for brightness) is determined with this property.
-    ///
-    /// It is recommended that subproperties of gufo:hasValueComponent are created to indicate values for particular dimensions, possibly identifying the datatype to be used. For example "hasHueComponent", "hasSaturationComponent" and "hasBrightnessComponent" could be used as data properties specializing gufo:hasValueComponent with the xsd:double datatype.</para>
-    /// labels<para>hasValueComponent</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#hasValueComponent">http://purl.org/nemo/gufo#hasValueComponent</seealso>
-    let hasValueComponent = Prefixed_Name(gufo, "hasValueComponent") |> PrefixedName
+    /// The various subclasses of Situation in this implementation are used to capture "mutable" facts which obtain during some time and fail to obtain at other times. This includes the contingent instantiation of non-rigid types (e.g., as someone is a child at one point in time and a teenager later), the attribution of value to mutable qualities (such as a person's weight) and temporary participation in part-whole relations for replaceable parts (such as a car's tires). Other subclasses may be created to capture domain-specific notions such as "HazardousSituation", "PersonHasFever".</para>
+    /// labels<para>Situation</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#Situation">http://purl.org/nemo/gufo#Situation</seealso>
+    let Situation = Prefixed_Name(gufo, "Situation") |> PrefixedName
     /// <summary>
     ///   <para>gufo:</para>
     /// </summary>
@@ -326,94 +81,142 @@ module gufo =
     /// </remarks>
     /// <seealso href="http://purl.org/nemo/gufo#">http://purl.org/nemo/gufo#</seealso>
     let _prefix_iri = Prefixed_Name(gufo, "") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:AbstractIndividual</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:Individual that does not exist in space-time in the same way as a gufo:ConcreteIndividual does. A gufo:AbstractIndividual has no spatiotemporal qualities in its own right. Hence, it does not make sense to ask how much space it now occupies (Gideon, 2018) and when it was created or destroyed.
-    ///
-    /// Examples include the number ten, the null set, and the proposition that 'Obama was the president of the United States'.
-    ///
-    /// Rosen, Gideon, "Abstract Objects", The Stanford Encyclopedia of Philosophy (Winter 2018 Edition), Edward N. Zalta (ed.), &lt;https://plato.stanford.edu/archives/win2018/entries/abstract-objects/&gt;</para>
-    /// labels<para>AbstractIndividual</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#AbstractIndividual">http://purl.org/nemo/gufo#AbstractIndividual</seealso>
-    let AbstractIndividual = Prefixed_Name(gufo, "AbstractIndividual") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:ConcreteIndividual</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:Individual that exists in space-time.
-    ///
-    /// Concrete individuals comprise not only object-like entities (a car, a mountain, a person, a marriage, a belief), but also events (a business meeting, a soccer match) and situations (the situation in which a person weighs 80 kilograms, the situation in which a bank account is overdrawn).</para>
-    /// labels<para>ConcreteIndividual</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#ConcreteIndividual">http://purl.org/nemo/gufo#ConcreteIndividual</seealso>
-    let ConcreteIndividual = Prefixed_Name(gufo, "ConcreteIndividual") |> PrefixedName
 
     /// <summary>
-    ///   <para>gufo:ConcreteIndividualType</para>
+    ///   <para>gufo:concernsConstitutedEndurant</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:Type whose instances are concrete individuals.
-    ///
-    /// Instances of gufo:ConcreteIndividualType are subclasses of gufo:ConcreteIndividual.
-    ///
-    /// Examples include the gufo:Kind "Person", the gufo:Category "Physical Object", the gufo:EventType "Business Meeting".</para>
-    /// labels<para>ConcreteIndividualType</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#ConcreteIndividualType">http://purl.org/nemo/gufo#ConcreteIndividualType</seealso>
-    let ConcreteIndividualType =
-        Prefixed_Name(gufo, "ConcreteIndividualType") |> PrefixedName
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Identifies the constituted gufo:Endurant in the gufo:TemporaryConstitutionSituation.</para>
+    /// labels<para>concernsConstitutedEndurant</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#concernsConstitutedEndurant">http://purl.org/nemo/gufo#concernsConstitutedEndurant</seealso>
+    let concernsConstitutedEndurant =
+        Prefixed_Name(gufo, "concernsConstitutedEndurant") |> PrefixedName
 
     /// <summary>
-    ///   <para>gufo:SemiRigidType</para>
+    ///   <para>gufo:standsInQualifiedInstantiation</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:NonRigidType that applies necessarily to some of its instances and contingently to some others (see Guizzardi, 2005, chapter 4).</para>
-    /// labels<para>SemiRigidType</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#SemiRigidType">http://purl.org/nemo/gufo#SemiRigidType</seealso>
-    let SemiRigidType = Prefixed_Name(gufo, "SemiRigidType") |> PrefixedName
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Identifies a gufo:TemporaryInstantiationSituation in which the endurant stands. The identified gufo:TemporaryInstantiationSituation is further related with a gufo:NonRigidType through the gufo:concernsNonRigidType object property. This forms a pattern to represent the contigent instantiation of a non-rigid type by the endurant, in which case instantiation may vary in different situations.</para>
+    /// labels<para>standsInQualifiedInstantiation</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#standsInQualifiedInstantiation">http://purl.org/nemo/gufo#standsInQualifiedInstantiation</seealso>
+    let standsInQualifiedInstantiation =
+        Prefixed_Name(gufo, "standsInQualifiedInstantiation") |> PrefixedName
+
     /// <summary>
-    ///   <para>gufo:IntrinsicAspect</para>
+    ///   <para>gufo:Quantity</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>A gufo:Aspect that depends on a single concrete individual in which it inheres.
+    ///   <para>A complex gufo:Object that is a maximally-connected portion of stuff. A gufo:Quantity has a fixed constitution, and thus, removing or adding a sub-quantity would result in a different quantity.
     ///
-    /// Examples include intrinsic physical aspects, such as the Moon's mass, Lassie's fur color; the fragility of John Lennon's glasses; mental dispositions, such as Bob's math skills, his belief that the number one is odd.
+    /// Examples include the portion of wine in a wine tank, a lump of clay, the gold that constitutes a wedding ring.
     ///
-    /// A gufo:IntrinsicAspect is classified as a gufo:Quality (e.g., an apple's weight, the height of the Statue of Liberty) if it is measurable by a certain value space, or as a gufo:IntrinsicMode (e.g. Bob's belief that the Eiffel Tower is in Paris) otherwise.
-    ///
-    /// Corresponds to "Instrinsic Moment" in Guizzardi (2005). Different from Guizzardi (2005), here we consider that aspects can inhere in concrete individuals in general, and not only in endurants.</para>
-    /// labels<para>IntrinsicAspect</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#IntrinsicAspect">http://purl.org/nemo/gufo#IntrinsicAspect</seealso>
-    let IntrinsicAspect = Prefixed_Name(gufo, "IntrinsicAspect") |> PrefixedName
+    /// Also termed "quantity of matter", "objectified portion of matter", "piece" in the philosophical literature.</para>
+    /// labels<para>Quantity</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#Quantity">http://purl.org/nemo/gufo#Quantity</seealso>
+    let Quantity = Prefixed_Name(gufo, "Quantity") |> PrefixedName
     /// <summary>
-    ///   <para>gufo:FixedCollection</para>
+    ///   <para>gufo:participatedIn</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:Collection for which no change in membership is possible.
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Identifies a gufo:Event in which the gufo:Object participated.
     ///
-    /// Such a collection obeys an extensional principle of identity, i.e., two fixed collections are the same if, and only if, they have the same members.
-    ///
-    /// Consider, for example, a group of people understood as a gufo:FixedCollection. In this case, any change in the membership of the group (e.g., the addition of one person) would in fact create a different group of people. In this case, the gufo:FixedCollection may be contrasted with the complexes they constitute. For instance, The Beatles (the band conceived as a gufo:FunctionalComplex) was in a certain circumstance constituted by the collection {John, Paul, George, Pete} and in another one constituted by the collection {John, Paul, George, Ringo}. The replacement of Pete Best by Ringo Star does not alter the identity of the band, but creates a  different group of people.</para>
-    /// labels<para>FixedCollection</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#FixedCollection">http://purl.org/nemo/gufo#FixedCollection</seealso>
-    let FixedCollection = Prefixed_Name(gufo, "FixedCollection") |> PrefixedName
+    /// Examples include the participation of Freddy Mercury in Queen's Live Aid Concert and the participation of an airplane in a flight.</para>
+    /// labels<para>participatedIn</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#participatedIn">http://purl.org/nemo/gufo#participatedIn</seealso>
+    let participatedIn = Prefixed_Name(gufo, "participatedIn") |> PrefixedName
     /// <summary>
-    ///   <para>gufo:Kind</para>
+    ///   <para>gufo:ExtrinsicMode</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>A gufo:EndurantType that is both sortal and rigid. It provides a uniform principle of identity for its instances. Every gufo:Endurant instantiates one and only one gufo:Kind.
+    ///   <para>A gufo:ExtrinsicAspect that inheres in a concrete individual and depends on others for its existence.
     ///
-    /// Examples include kinds of ordinary objects of everyday experience, such as: "Person", "House", "Car"; kinds of relators, such as "Marriage", "RentalContract"; kinds of existentially-dependent aspects of objects, such as "Weight", "Belief", "Vulnerability".</para>
-    /// labels<para>Kind</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#Kind">http://purl.org/nemo/gufo#Kind</seealso>
-    let Kind = Prefixed_Name(gufo, "Kind") |> PrefixedName
+    /// A gufo:ExtrinsicMode can be understood as a reified one-sided relationship, such as John's admiration for Mary.
+    ///
+    /// Corresponds to "Extrinsic Moment" in Fonseca et al (2019). Encompasses what "Externally Dependent Mode", "Qua Individual" and "Relator" in Guizzardi (2005).</para>
+    /// labels<para>ExtrinsicMode</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#ExtrinsicMode">http://purl.org/nemo/gufo#ExtrinsicMode</seealso>
+    let ExtrinsicMode = Prefixed_Name(gufo, "ExtrinsicMode") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:externallyDependsOn</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:IrreflexiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Identifies a gufo:Endurant on which the gufo:ExtrinsicMode depends.
+    ///
+    /// For example, John's duty to return the book he borrowed from Mary (a gufo:ExtrinsicMode) depends externally on Mary.
+    ///
+    /// The identifed gufo:Endurant should  be external to the bearer of the extrinsic mode (see Guizzardi, 2005, p. 239). In other words, the identified endurant should not be a part or an intrisic aspect of the bearer of the extrinsic mode.</para>
+    /// labels<para>externallyDependsOn</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#externallyDependsOn">http://purl.org/nemo/gufo#externallyDependsOn</seealso>
+    let externallyDependsOn = Prefixed_Name(gufo, "externallyDependsOn") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:isSubCollectionOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Identifies a gufo:Collection of which the collection is a sub-collection. All members of the sub-collection are members of the identified super-collection.
+    ///
+    /// gufo:isSubCollectionOf is transitive (Guizzardi, 2005, p. 186).
+    ///
+    /// For parthood involving one or more varied collections, see gufo:standsInQualifiedParthood.</para>
+    /// labels<para>isSubCollectionOf</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#isSubCollectionOf">http://purl.org/nemo/gufo#isSubCollectionOf</seealso>
+    let isSubCollectionOf = Prefixed_Name(gufo, "isSubCollectionOf") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:isCollectionMemberOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Identifies a gufo:Collection of which the object is a member.
+    ///
+    /// This is the relation between John and a group of persons, and between a cow and its herd.
+    ///
+    /// gufo:isCollectionMemberOf is intransitive (Guizzardi, 2005, p. 185).
+    ///
+    /// For membership in a gufo:VariableCollection, see gufo:standsInQualifiedParthood.</para>
+    /// labels<para>isCollectionMemberOf</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#isCollectionMemberOf">http://purl.org/nemo/gufo#isCollectionMemberOf</seealso>
+    let isCollectionMemberOf =
+        Prefixed_Name(gufo, "isCollectionMemberOf") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:TemporaryParthoodSituation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:Situation in which a gufo:Endurant is temporarily a part of another gufo:Endurant.
+    ///
+    /// A gufo:TemporaryParthoodSituation should only be used for mutable parts. It may be qualified by the period in time in which the relation applies.
+    ///
+    /// Examples include: the situation in which the United Kingdom is a member of the European Union; the situation in which Messi is a a member of the Barcelona FC squad; the situation in which an engine is part of a car; and the situation in which a transplanted heart is part of a person.
+    ///
+    /// Note that, since every instance of gufo:Quantity or gufo:FixedCollection only has essential parts, the gufo:TemporaryParthoodSituation should not be used to represent these parthood relations.
+    ///
+    /// This solution is inspired in the qualified relation pattern (http://patterns.dataincubator.org/book/qualified-relation.html).</para>
+    /// labels<para>TemporaryParthoodSituation</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#TemporaryParthoodSituation">http://purl.org/nemo/gufo#TemporaryParthoodSituation</seealso>
+    let TemporaryParthoodSituation =
+        Prefixed_Name(gufo, "TemporaryParthoodSituation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:Quality</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:IntrinsicAspect that is measurable by some value spaces. A quality may be used to compare individuals, on the basis of the value it takes in a certain quality space (for instance, a position within the RGB spectrum).
+    ///
+    /// Examples include the weight of a person, the name of organization, the color of a car, and the duration of a concert.</para>
+    /// labels<para>Quality</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#Quality">http://purl.org/nemo/gufo#Quality</seealso>
+    let Quality = Prefixed_Name(gufo, "Quality") |> PrefixedName
     /// <summary>
     ///   <para>gufo:Participation</para>
     /// </summary>
@@ -448,6 +251,17 @@ module gufo =
     /// <seealso href="http://purl.org/nemo/gufo#Role">http://purl.org/nemo/gufo#Role</seealso>
     let Role = Prefixed_Name(gufo, "Role") |> PrefixedName
     /// <summary>
+    ///   <para>gufo:RoleMixin</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:EndurantType that is both non-sortal and anti-rigid. It is defined by relational instantiation conditions. Role mixins are relationally dependent types, capturing relational properties shared by instances of different kinds.
+    ///
+    /// For example, "Customer" may be considered a gufo:RoleMixin as a superclass of the roles "CorporateCustomer" (specializing the gufo:Kind "BusinessOrganization") and "PersonalCustomer" (specializing the gufo:Kind "Person").</para>
+    /// labels<para>RoleMixin</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#RoleMixin">http://purl.org/nemo/gufo#RoleMixin</seealso>
+    let RoleMixin = Prefixed_Name(gufo, "RoleMixin") |> PrefixedName
+    /// <summary>
     ///   <para>gufo:QualityValue</para>
     /// </summary>
     /// <remarks>
@@ -481,21 +295,44 @@ module gufo =
         Prefixed_Name(gufo, "hasReifiedQualityValue") |> PrefixedName
 
     /// <summary>
-    ///   <para>gufo:QualityValueAttributionSituation</para>
+    ///   <para>gufo:concernsReifiedQualityValue</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>Identifies the gufo:QualityValue (i.e., the reified quality value) associated with the endurant that stands in the gufo:QualityValueAttributionSituation.</para>
+    /// labels<para>concernsReifiedQualityValue</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#concernsReifiedQualityValue">http://purl.org/nemo/gufo#concernsReifiedQualityValue</seealso>
+    let concernsReifiedQualityValue =
+        Prefixed_Name(gufo, "concernsReifiedQualityValue") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:concernsQualityType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>Identifies the quality type (a gufo:EndurantType subclassing gufo:Quality) whose value is attributed in the gufo:QualityValueAttributionSituation.</para>
+    /// labels<para>concernsQualityType</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#concernsQualityType">http://purl.org/nemo/gufo#concernsQualityType</seealso>
+    let concernsQualityType = Prefixed_Name(gufo, "concernsQualityType") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:TemporaryInstantiationSituation</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>A gufo:Situation in which a quality value is temporarily attributed to a gufo:Endurant.
+    ///   <para>A gufo:Situation in which a gufo:Endurant temporarily instantiates a gufo:NonRigidType.
     ///
-    /// A gufo:QualityValueAttributionSituation should be used only for mutable qualities, i.e. those whose value can vary in time.
+    /// A gufo:TemporaryInstantiationSituation can account for the time period in which a particular instantiation holds.
     ///
-    /// Examples include: the situation in which the value of a bitcoin in Euros is 6.526,12, which lasted from 10/12/2019 to 11/12/2019; the situation in which the weight of Mike Tyson was 100 kg; and the situation in which the color of Einstein' hair was grey.
+    /// Examples include: the situation in which Obama instantiates the role of president, which began in 20/01/2009 and lasted until 20/01/2017; the situation in which Coatria instantiates the role of EU Member, which began in 01/07/2013 (and is still on-going); and the situation in which Steve Jobs instantiates the child phase, which began in 24/02/1955 and lasted until 24/02/1965.
     ///
-    /// This is a reification of the quality value attribution (in a solution that is similar to the qualified relation pattern  http://patterns.dataincubator.org/book/qualified-relation.html )</para>
-    /// labels<para>QualityValueAttributionSituation</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#QualityValueAttributionSituation">http://purl.org/nemo/gufo#QualityValueAttributionSituation</seealso>
-    let QualityValueAttributionSituation =
-        Prefixed_Name(gufo, "QualityValueAttributionSituation") |> PrefixedName
+    /// This solution is inspired in the qualified relation pattern (http://patterns.dataincubator.org/book/qualified-relation.html).</para>
+    /// labels<para>TemporaryInstantiationSituation</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#TemporaryInstantiationSituation">http://purl.org/nemo/gufo#TemporaryInstantiationSituation</seealso>
+    let TemporaryInstantiationSituation =
+        Prefixed_Name(gufo, "TemporaryInstantiationSituation") |> PrefixedName
 
     /// <summary>
     ///   <para>gufo:TemporaryConstitutionSituation</para>
@@ -515,11 +352,70 @@ module gufo =
         Prefixed_Name(gufo, "TemporaryConstitutionSituation") |> PrefixedName
 
     /// <summary>
-    ///   <para>gufo:isSubQuantityOf</para>
+    ///   <para>gufo:Endurant</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:ConcreteIndividual that endures in time and may change qualitatively while keeping its identity.
+    ///
+    /// Examples include: ordinary objects of everyday experience, such as a person, a house, and a car; reified relationships, such as a marriage, a rental contract, and a person's love for another; and existentially-dependent aspects of objects, such as a car's weight, a person's language skills, and a house's color.
+    ///
+    /// Also termed "continuant" in the philosophical literature.</para>
+    /// labels<para>Endurant</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#Endurant">http://purl.org/nemo/gufo#Endurant</seealso>
+    let Endurant = Prefixed_Name(gufo, "Endurant") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:concernsQualityValue</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Determines a quality value associated with the gufo:ConcreteIndividual that stands in the gufo:QualityValueAttributionSituation.
+    ///
+    /// Use gufo:concernsReifiedQualityValue instead when quality values are refied.
+    ///
+    /// It is recommended that subproperties of gufo:concernsQualityValue are created, possibly identifying the datatype to be used. For example, "concernsTemperatureValue" could be defined as a sub-property of gufo:concernsQualityValue with range xsd:double.</para>
+    /// labels<para>concernsQualityValue</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#concernsQualityValue">http://purl.org/nemo/gufo#concernsQualityValue</seealso>
+    let concernsQualityValue =
+        Prefixed_Name(gufo, "concernsQualityValue") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:standsInQualifiedAttribution</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
+    ///   <para>Identifies a gufo:QualityValueAttributionSituation in which the endurant stands. The identified gufo:QualityValueAttributionSituation is then used with the gufo:concernsQualityValue data property or the gufo:concernsReifiedQualityValue object property to indicate a quality value attributed to the gufo:Endurant standing in the situation. This forms a pattern to represent that quality values may differ in different situations.</para>
+    /// labels<para>standsInQualifiedAttribution</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#standsInQualifiedAttribution">http://purl.org/nemo/gufo#standsInQualifiedAttribution</seealso>
+    let standsInQualifiedAttribution =
+        Prefixed_Name(gufo, "standsInQualifiedAttribution") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:TemporaryRelationshipSituation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:Situation in which a gufo:Endurant temporarily stands in a relation with another gufo:Endurant (or other endurants in the case of n-ary relationships).
+    ///
+    /// Reification of a gufo:TemporaryRelationshipSituation allows qualification of the relationship with the period in time in which it applies.
+    ///
+    /// Examples include: the situation in which Einstein works at the Swiss Patent Office in Bern; the situation in which Elon Musk studies at the University of Pennsylvania; the situation in which John Lennon is married to Yoko Ono; and the situation in which Facebook has a lower market value than Amazon.
+    ///
+    /// For material relationships, prefer the use of gufo:Relator.
+    ///
+    /// This is a reification of the relationship (in a solution that is similar to the qualified relation pattern  http://patterns.dataincubator.org/book/qualified-relation.html).</para>
+    /// labels<para>TemporaryRelationshipSituation</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#TemporaryRelationshipSituation">http://purl.org/nemo/gufo#TemporaryRelationshipSituation</seealso>
+    let TemporaryRelationshipSituation =
+        Prefixed_Name(gufo, "TemporaryRelationshipSituation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:isSubQuantityOf</para>
+    /// </summary>
+    /// <remarks>
     ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
     ///   <para>Identifies a gufo:Quantity of which the quantity is a part.
     ///
     /// For example, the quantity of water in a wine glass is a sub-quantity of the wine in that glass.
@@ -530,6 +426,19 @@ module gufo =
     /// labels<para>isSubQuantityOf</para></remarks>
     /// <seealso href="http://purl.org/nemo/gufo#isSubQuantityOf">http://purl.org/nemo/gufo#isSubQuantityOf</seealso>
     let isSubQuantityOf = Prefixed_Name(gufo, "isSubQuantityOf") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:mediates</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:AsymmetricProperty</para>
+    ///   <para>owl:IrreflexiveProperty</para>
+    ///   <para>Identifies the endurants mediated by a gufo:Relator.
+    ///
+    /// For example, John and Mary's marriage mediates John and Mary.</para>
+    /// labels<para>mediates</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#mediates">http://purl.org/nemo/gufo#mediates</seealso>
+    let mediates = Prefixed_Name(gufo, "mediates") |> PrefixedName
 
     /// <summary>
     ///   <para>gufo:standsInQualifiedConstitution</para>
@@ -543,17 +452,6 @@ module gufo =
     /// <seealso href="http://purl.org/nemo/gufo#standsInQualifiedConstitution">http://purl.org/nemo/gufo#standsInQualifiedConstitution</seealso>
     let standsInQualifiedConstitution =
         Prefixed_Name(gufo, "standsInQualifiedConstitution") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:concernsConstitutedEndurant</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies the constituted gufo:Endurant in the gufo:TemporaryConstitutionSituation.</para>
-    /// labels<para>concernsConstitutedEndurant</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#concernsConstitutedEndurant">http://purl.org/nemo/gufo#concernsConstitutedEndurant</seealso>
-    let concernsConstitutedEndurant =
-        Prefixed_Name(gufo, "concernsConstitutedEndurant") |> PrefixedName
 
     /// <summary>
     ///   <para>gufo:concernsNonRigidType</para>
@@ -579,6 +477,170 @@ module gufo =
         Prefixed_Name(gufo, "standsInQualifiedParthood") |> PrefixedName
 
     /// <summary>
+    ///   <para>gufo:concernsRelationshipType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>Identifies the gufo:RelationshipType instantiated in the gufo:TemporaryRelationshipSituation.</para>
+    /// labels<para>concernsRelationshipType</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#concernsRelationshipType">http://purl.org/nemo/gufo#concernsRelationshipType</seealso>
+    let concernsRelationshipType =
+        Prefixed_Name(gufo, "concernsRelationshipType") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:constitutes</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Identifies a gufo:ConcreteIndividual that is constituted (partially) by the constituent individual.
+    ///
+    /// For example, the gufo:Collection of persons whose members are John, Paul, George, Ringo constituted the beatles, the gufo:Quantity of marble that constitutes the statue of Venus de Milo, and the gufo:Event of Paul raising his arm in a meeting that constitutes his voting (also a gufo:Event).
+    ///
+    /// In case constitution changes in time, see gufo:standsInQualifiedConstitution.</para>
+    /// labels<para>constitutes</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#constitutes">http://purl.org/nemo/gufo#constitutes</seealso>
+    let constitutes = Prefixed_Name(gufo, "constitutes") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:contributedToTrigger</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Identifies a gufo:Event that the gufo:Situation contributed to trigger.
+    ///
+    /// Guizzardi et al. (2013) defined a notion of "triggers" to relate the situation satisfying all the sufficient and necessary conditions with the triggered  event. This implementation differs from  "triggers" as defined in that work because gufo:contributedToTrigger can be used to relate more than one gufo:Situation to a gufo:Event. Each gufo:Situation identified through gufo:contributedToTrigger should be understood as an (improper) part of the situation that triggered the event.</para>
+    /// labels<para>contributedToTrigger</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#contributedToTrigger">http://purl.org/nemo/gufo#contributedToTrigger</seealso>
+    let contributedToTrigger =
+        Prefixed_Name(gufo, "contributedToTrigger") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:hasAssociatedQualityValueType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Identifies a quality value type to which the quality type is associated.
+    ///
+    /// For example, a "Color" quality type may be associated with a "ColorValueInRGB" quality value type.
+    ///
+    /// It relates a specialization of gufo:Quality (an instance of gufo:EndurantType) to a specialization of gufo:QualityValue  (an instance of gufo:AbstractIndividualType).
+    ///
+    /// To be used only when quality values are reified.</para>
+    /// labels<para>hasAssociatedQualityValueType</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#hasAssociatedQualityValueType">http://purl.org/nemo/gufo#hasAssociatedQualityValueType</seealso>
+    let hasAssociatedQualityValueType =
+        Prefixed_Name(gufo, "hasAssociatedQualityValueType") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:hasBeginPointInXSDDateTimeStamp</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>Determines the begin point for a gufo:ConcreteIndividual, using a xsd:dateTimeStamp literal.
+    ///
+    /// In the case of endurants, gufo:hasBeginPointInXSDDateTimeStamp determines the time point when the endurant comes into existence. In the case of events, this data property determines the time point when the event starts to take place. In the case of situation, it determines the time point when the situation begins to hold.
+    ///
+    /// Use gufo:hasBeginPoint instead when temporal entities are reified.</para>
+    /// labels<para>hasBeginPointInXSDDateTimeStamp</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#hasBeginPointInXSDDateTimeStamp">http://purl.org/nemo/gufo#hasBeginPointInXSDDateTimeStamp</seealso>
+    let hasBeginPointInXSDDateTimeStamp =
+        Prefixed_Name(gufo, "hasBeginPointInXSDDateTimeStamp") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:hasBeginPointInXSDDate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>Determines the begin point for a gufo:ConcreteIndividual, using a xsd:date literal.
+    ///
+    /// In the case of endurants, gufo:asBeginPointInXSDDate determines the time point when the endurant comes into existence. In the case of events, this data property determines the time point when the event starts to take place. In the case of situation, it determines the time point when the situation begins to hold.
+    ///
+    /// Use gufo:hasBeginPoint instead when temporal entities are reified.</para>
+    /// labels<para>hasBeginPointInXSDDate</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#hasBeginPointInXSDDate">http://purl.org/nemo/gufo#hasBeginPointInXSDDate</seealso>
+    let hasBeginPointInXSDDate =
+        Prefixed_Name(gufo, "hasBeginPointInXSDDate") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:hasEndPoint</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Identifies the end point for a gufo:ConcreteIndividual, in the case in which time instants are reified.
+    ///
+    /// In the case of endurants, this identifies the time point when the endurant ceases to exist. In the case of events, this identifies the time point when the event ends. In the case of situation, this identifies the time point when the situation ceases to hold.</para>
+    /// labels<para>hasEndPoint</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#hasEndPoint">http://purl.org/nemo/gufo#hasEndPoint</seealso>
+    let hasEndPoint = Prefixed_Name(gufo, "hasEndPoint") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:hasEndPointInXSDDateTimeStamp</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Determines the end point for a gufo:ConcreteIndividual using a xsd:dateTimeStamp literal.
+    ///
+    /// In the case of endurants, gufo:hasEndPointInXSDDateTimeStamp determines the time point when the endurant ceases to exist. In the case of events, this data property determines the time point when the event ends. In the case of situation, it determines the time point when the situation ceases to hold.
+    ///
+    /// Use gufo:hasEndPoint instead when temporal entities are reified.</para>
+    /// labels<para>hasEndPointInXSDDateTimeStamp</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#hasEndPointInXSDDateTimeStamp">http://purl.org/nemo/gufo#hasEndPointInXSDDateTimeStamp</seealso>
+    let hasEndPointInXSDDateTimeStamp =
+        Prefixed_Name(gufo, "hasEndPointInXSDDateTimeStamp") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:hasEndPointInXSDDate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>Determines the end point for a gufo:ConcreteIndividual using a xsd:date literal.
+    ///
+    /// In the case of endurants, gufo:hasEndPointInXSDDate determines the time point when the endurant ceases to exist. In the case of events, this data property determines the time point when the event ends. In the case of situation, it determines the time point when the situation ceases to hold.
+    ///
+    /// Use gufo:hasEndPoint instead when temporal entities are reified.</para>
+    /// labels<para>hasEndPointInXSDDate</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#hasEndPointInXSDDate">http://purl.org/nemo/gufo#hasEndPointInXSDDate</seealso>
+    let hasEndPointInXSDDate =
+        Prefixed_Name(gufo, "hasEndPointInXSDDate") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:/1.0.0</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#/1.0.0">http://purl.org/nemo/gufo#/1.0.0</seealso>
+    let ``_/1.0.0`` = Prefixed_Name(gufo, "/1.0.0") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:Individual</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An entity that (unlike a gufo:Type) cannot be instantiated.
+    ///
+    /// Individuals may be either concrete (e.g., the Earth, Mick Jagger, Brazil, the 1985 Mexico City Earthquake) or abstract (e.g., the number two, the proposition that 'three is a prime number').
+    ///
+    /// Also known as "particular" in the philosophical literature.</para>
+    /// labels<para>Individual</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#Individual">http://purl.org/nemo/gufo#Individual</seealso>
+    let Individual = Prefixed_Name(gufo, "Individual") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:concernsTemporaryWhole</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>Identifies the whole (a gufo:Endurant) of which the endurant that stands in the gufo:TemporaryParthoodSituation is part.</para>
+    /// labels<para>concernsTemporaryWhole</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#concernsTemporaryWhole">http://purl.org/nemo/gufo#concernsTemporaryWhole</seealso>
+    let concernsTemporaryWhole =
+        Prefixed_Name(gufo, "concernsTemporaryWhole") |> PrefixedName
+
+    /// <summary>
     ///   <para>gufo:standsInQualifiedRelationship</para>
     /// </summary>
     /// <remarks>
@@ -590,18 +652,6 @@ module gufo =
     /// <seealso href="http://purl.org/nemo/gufo#standsInQualifiedRelationship">http://purl.org/nemo/gufo#standsInQualifiedRelationship</seealso>
     let standsInQualifiedRelationship =
         Prefixed_Name(gufo, "standsInQualifiedRelationship") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:concernsRelationshipType</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:FunctionalProperty</para>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies the gufo:RelationshipType instantiated in the gufo:TemporaryRelationshipSituation.</para>
-    /// labels<para>concernsRelationshipType</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#concernsRelationshipType">http://purl.org/nemo/gufo#concernsRelationshipType</seealso>
-    let concernsRelationshipType =
-        Prefixed_Name(gufo, "concernsRelationshipType") |> PrefixedName
 
     /// <summary>
     ///   <para>gufo:concernsRelatedEndurant</para>
@@ -647,124 +697,76 @@ module gufo =
     /// labels<para>categorizes</para></remarks>
     /// <seealso href="http://purl.org/nemo/gufo#categorizes">http://purl.org/nemo/gufo#categorizes</seealso>
     let categorizes = Prefixed_Name(gufo, "categorizes") |> PrefixedName
-
     /// <summary>
-    ///   <para>gufo:contributedToTrigger</para>
+    ///   <para>gufo:AbstractIndividual</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies a gufo:Event that the gufo:Situation contributed to trigger.
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:Individual that does not exist in space-time in the same way as a gufo:ConcreteIndividual does. A gufo:AbstractIndividual has no spatiotemporal qualities in its own right. Hence, it does not make sense to ask how much space it now occupies (Gideon, 2018) and when it was created or destroyed.
     ///
-    /// Guizzardi et al. (2013) defined a notion of "triggers" to relate the situation satisfying all the sufficient and necessary conditions with the triggered  event. This implementation differs from  "triggers" as defined in that work because gufo:contributedToTrigger can be used to relate more than one gufo:Situation to a gufo:Event. Each gufo:Situation identified through gufo:contributedToTrigger should be understood as an (improper) part of the situation that triggered the event.</para>
-    /// labels<para>contributedToTrigger</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#contributedToTrigger">http://purl.org/nemo/gufo#contributedToTrigger</seealso>
-    let contributedToTrigger =
-        Prefixed_Name(gufo, "contributedToTrigger") |> PrefixedName
+    /// Examples include the number ten, the null set, and the proposition that 'Obama was the president of the United States'.
+    ///
+    /// Rosen, Gideon, "Abstract Objects", The Stanford Encyclopedia of Philosophy (Winter 2018 Edition), Edward N. Zalta (ed.), &lt;https://plato.stanford.edu/archives/win2018/entries/abstract-objects/&gt;</para>
+    /// labels<para>AbstractIndividual</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#AbstractIndividual">http://purl.org/nemo/gufo#AbstractIndividual</seealso>
+    let AbstractIndividual = Prefixed_Name(gufo, "AbstractIndividual") |> PrefixedName
 
     /// <summary>
-    ///   <para>gufo:hasAssociatedQualityValueType</para>
+    ///   <para>gufo:AbstractIndividualType</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies a quality value type to which the quality type is associated.
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:Type whose instances are abstract individuals.
     ///
-    /// For example, a "Color" quality type may be associated with a "ColorValueInRGB" quality value type.
+    /// Instances of gufo:AbstractIndividualType are subclasses of gufo:AbstractIndividual.
     ///
-    /// It relates a specialization of gufo:Quality (an instance of gufo:EndurantType) to a specialization of gufo:QualityValue  (an instance of gufo:AbstractIndividualType).
-    ///
-    /// To be used only when quality values are reified.</para>
-    /// labels<para>hasAssociatedQualityValueType</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#hasAssociatedQualityValueType">http://purl.org/nemo/gufo#hasAssociatedQualityValueType</seealso>
-    let hasAssociatedQualityValueType =
-        Prefixed_Name(gufo, "hasAssociatedQualityValueType") |> PrefixedName
+    /// Examples include the types "NaturalNumber", "Set", "Proposition".</para>
+    /// labels<para>AbstractIndividualType</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#AbstractIndividualType">http://purl.org/nemo/gufo#AbstractIndividualType</seealso>
+    let AbstractIndividualType =
+        Prefixed_Name(gufo, "AbstractIndividualType") |> PrefixedName
 
     /// <summary>
-    ///   <para>gufo:hasBeginPoint</para>
+    ///   <para>gufo:RelationshipType</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies the begin point for a gufo:ConcreteIndividual, in the case in which time instants are reified.
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:Type whose instances are ordered pairs of related entities. Instances of gufo:RelationshipType are object properties in UFO-based ontologies.
     ///
-    /// In the case of endurants, this identifies the time point when the endurant comes into existence. In the case of events, this identifies the time point when the event starts to take place. In the case of situation, this identifies the time point when the situation begins to hold.
+    /// The object properties "marriedWith" and "enrolledIn" are examples of material relationship types. The object properties "heavierThan", "olderThan" are examples of comparative relationship types.
     ///
-    /// If time instants are not reified, use gufo:hasBeginPointInXSDDate or gufo:hasBeginPointInXSDDateTimeStamp.</para>
-    /// labels<para>hasBeginPoint</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#hasBeginPoint">http://purl.org/nemo/gufo#hasBeginPoint</seealso>
-    let hasBeginPoint = Prefixed_Name(gufo, "hasBeginPoint") |> PrefixedName
-
+    /// The use of gufo:RelationshipType and its subclasses requires OWL 2 punning.
+    ///
+    /// Corresponds to "Relation" in Guizzardi (2005) and Fonseca et al. (2019).</para>
+    /// labels<para>RelationshipType</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#RelationshipType">http://purl.org/nemo/gufo#RelationshipType</seealso>
+    let RelationshipType = Prefixed_Name(gufo, "RelationshipType") |> PrefixedName
     /// <summary>
-    ///   <para>gufo:hasBeginPointInXSDDateTimeStamp</para>
+    ///   <para>gufo:NonRigidType</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:FunctionalProperty</para>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Determines the begin point for a gufo:ConcreteIndividual, using a xsd:dateTimeStamp literal.
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:EndurantType that does not apply necessarily to at least one of its instances (see Guizzardi, 2005, chapter 4).
     ///
-    /// In the case of endurants, gufo:hasBeginPointInXSDDateTimeStamp determines the time point when the endurant comes into existence. In the case of events, this data property determines the time point when the event starts to take place. In the case of situation, it determines the time point when the situation begins to hold.
-    ///
-    /// Use gufo:hasBeginPoint instead when temporal entities are reified.</para>
-    /// labels<para>hasBeginPointInXSDDateTimeStamp</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#hasBeginPointInXSDDateTimeStamp">http://purl.org/nemo/gufo#hasBeginPointInXSDDateTimeStamp</seealso>
-    let hasBeginPointInXSDDateTimeStamp =
-        Prefixed_Name(gufo, "hasBeginPointInXSDDateTimeStamp") |> PrefixedName
-
+    /// Examples include anti-rigid types, such as the role "Student" and the phase "Child", and semi-rigid types, such as the mixin "MusicalArtist" (which necessarily characterizes bands, but contingently characterizes people) and the mixin "FemaleAnimal" (which is necessarily characterizes female dogs, but contigently characterizes clownfish).</para>
+    /// labels<para>NonRigidType</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#NonRigidType">http://purl.org/nemo/gufo#NonRigidType</seealso>
+    let NonRigidType = Prefixed_Name(gufo, "NonRigidType") |> PrefixedName
     /// <summary>
-    ///   <para>gufo:hasEndPoint</para>
+    ///   <para>gufo:IntrinsicAspect</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies the end point for a gufo:ConcreteIndividual, in the case in which time instants are reified.
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:Aspect that depends on a single concrete individual in which it inheres.
     ///
-    /// In the case of endurants, this identifies the time point when the endurant ceases to exist. In the case of events, this identifies the time point when the event ends. In the case of situation, this identifies the time point when the situation ceases to hold.</para>
-    /// labels<para>hasEndPoint</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#hasEndPoint">http://purl.org/nemo/gufo#hasEndPoint</seealso>
-    let hasEndPoint = Prefixed_Name(gufo, "hasEndPoint") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:hasEndPointInXSDDateTimeStamp</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>owl:FunctionalProperty</para>
-    ///   <para>Determines the end point for a gufo:ConcreteIndividual using a xsd:dateTimeStamp literal.
+    /// Examples include intrinsic physical aspects, such as the Moon's mass, Lassie's fur color; the fragility of John Lennon's glasses; mental dispositions, such as Bob's math skills, his belief that the number one is odd.
     ///
-    /// In the case of endurants, gufo:hasEndPointInXSDDateTimeStamp determines the time point when the endurant ceases to exist. In the case of events, this data property determines the time point when the event ends. In the case of situation, it determines the time point when the situation ceases to hold.
+    /// A gufo:IntrinsicAspect is classified as a gufo:Quality (e.g., an apple's weight, the height of the Statue of Liberty) if it is measurable by a certain value space, or as a gufo:IntrinsicMode (e.g. Bob's belief that the Eiffel Tower is in Paris) otherwise.
     ///
-    /// Use gufo:hasEndPoint instead when temporal entities are reified.</para>
-    /// labels<para>hasEndPointInXSDDateTimeStamp</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#hasEndPointInXSDDateTimeStamp">http://purl.org/nemo/gufo#hasEndPointInXSDDateTimeStamp</seealso>
-    let hasEndPointInXSDDateTimeStamp =
-        Prefixed_Name(gufo, "hasEndPointInXSDDateTimeStamp") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:hasEndPointInXSDDate</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:FunctionalProperty</para>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Determines the end point for a gufo:ConcreteIndividual using a xsd:date literal.
-    ///
-    /// In the case of endurants, gufo:hasEndPointInXSDDate determines the time point when the endurant ceases to exist. In the case of events, this data property determines the time point when the event ends. In the case of situation, it determines the time point when the situation ceases to hold.
-    ///
-    /// Use gufo:hasEndPoint instead when temporal entities are reified.</para>
-    /// labels<para>hasEndPointInXSDDate</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#hasEndPointInXSDDate">http://purl.org/nemo/gufo#hasEndPointInXSDDate</seealso>
-    let hasEndPointInXSDDate =
-        Prefixed_Name(gufo, "hasEndPointInXSDDate") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:hasQualityValue</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Determines a quality value associated with the concrete individual.
-    ///
-    /// Use gufo:hasReifiedQualityValue instead when quality values are reified.
-    ///
-    /// It is recommended that subproperties of gufo:hasQualityValue are created, possibly identifying the datatype to be used. For example, "hasTemperatureValue" could be defined as a sub-property of gufo:hasQualityValue whose domain is "Temperature" (specializing gufo:Quality) and whose range is xsd:double.</para>
-    /// labels<para>hasQualityValue</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#hasQualityValue">http://purl.org/nemo/gufo#hasQualityValue</seealso>
-    let hasQualityValue = Prefixed_Name(gufo, "hasQualityValue") |> PrefixedName
+    /// Corresponds to "Instrinsic Moment" in Guizzardi (2005). Different from Guizzardi (2005), here we consider that aspects can inhere in concrete individuals in general, and not only in endurants.</para>
+    /// labels<para>IntrinsicAspect</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#IntrinsicAspect">http://purl.org/nemo/gufo#IntrinsicAspect</seealso>
+    let IntrinsicAspect = Prefixed_Name(gufo, "IntrinsicAspect") |> PrefixedName
 
     /// <summary>
     ///   <para>gufo:historicallyDependsOn</para>
@@ -808,8 +810,8 @@ module gufo =
     ///   <para>gufo:isProperPartOf</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:TransitiveProperty</para>
     ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
     ///   <para>Identifies a whole of which the entity is a proper part.
     ///
     /// gufo:isProperPartOf is the most generic parthood relation in this implementation. Use the various sub-properties provided in order to represent specific types of parthood.
@@ -839,8 +841,8 @@ module gufo =
     ///   <para>gufo:isEventProperPartOf</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
     ///   <para>owl:TransitiveProperty</para>
+    ///   <para>owl:ObjectProperty</para>
     ///   <para>Identifies a gufo:Event of which the event is part.
     ///
     /// For example, Cristiano Ronaldo's penalty kick is an event proper part of the 2016 FIFA Club World Cup Final, having ocurred in the 60th minute of that match. That match is itself an event proper part of the 2016 FIFA Club World Cup.
@@ -851,20 +853,17 @@ module gufo =
     /// labels<para>isEventProperPartOf</para></remarks>
     /// <seealso href="http://purl.org/nemo/gufo#isEventProperPartOf">http://purl.org/nemo/gufo#isEventProperPartOf</seealso>
     let isEventProperPartOf = Prefixed_Name(gufo, "isEventProperPartOf") |> PrefixedName
-
     /// <summary>
-    ///   <para>gufo:isSituationProperPartOf</para>
+    ///   <para>gufo:manifestedIn</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies a gufo:Situation of which the situation is a part.
+    ///   <para>Identifies a gufo:Event in which the gufo:Aspect is manifested.
     ///
-    /// Examples include: the situation in which John has influenza is part of the situation in which John has influenza and he is tired; the situation in which John is friends with Mary is part of the situation in which he is friends with Mary and Alice; the situation in which John is married to Alice is part of the situation in which John is married to Alice, while she works at the Free University of Bozen-Bolzano.</para>
-    /// labels<para>isSituationProperPartOf</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#isSituationProperPartOf">http://purl.org/nemo/gufo#isSituationProperPartOf</seealso>
-    let isSituationProperPartOf =
-        Prefixed_Name(gufo, "isSituationProperPartOf") |> PrefixedName
-
+    /// For example, the passing of an electrical current in a conductor is an event that encompasses the manifestation of an aspect inhering in a copper wire (the wire's  electrical conductivity).</para>
+    /// labels<para>manifestedIn</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#manifestedIn">http://purl.org/nemo/gufo#manifestedIn</seealso>
+    let manifestedIn = Prefixed_Name(gufo, "manifestedIn") |> PrefixedName
     /// <summary>
     ///   <para>gufo:partitions</para>
     /// </summary>
@@ -885,97 +884,20 @@ module gufo =
     /// <seealso href="http://purl.org/nemo/gufo#partitions">http://purl.org/nemo/gufo#partitions</seealso>
     let partitions = Prefixed_Name(gufo, "partitions") |> PrefixedName
     /// <summary>
-    ///   <para>gufo:standsIn</para>
+    ///   <para>gufo:wasCreatedIn</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies a gufo:Situation in which the entity stands.
+    ///   <para>Identifies the gufo:Event which brought the gufo:Endurant into existence.
     ///
-    /// This implementation includes sub-properties of gufo:standsIn to identify situations concerning the attribution of (mutable) values to qualities, variable relationships, the instantiation of non-contingent types, temporary parthood and temporary constitution.</para>
-    /// labels<para>standsIn</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#standsIn">http://purl.org/nemo/gufo#standsIn</seealso>
-    let standsIn = Prefixed_Name(gufo, "standsIn") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:AbstractIndividualType</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:Type whose instances are abstract individuals.
+    /// For example, a musical piece is created in an act of composition (or in an event that is part of it), a piece of legislation is created in a complex legislative process.
     ///
-    /// Instances of gufo:AbstractIndividualType are subclasses of gufo:AbstractIndividual.
+    /// Benevides et al. (2019) only discussed creation of objects; gufo:wasCreatedIn is extended to endurants in general. Further, in that work "createdBy" required the event to "bring about" a situation in which the created object is present. We relax this requirement here, such that the object may be created and terminated in the scope of the identified gufo:Event.
     ///
-    /// Examples include the types "NaturalNumber", "Set", "Proposition".</para>
-    /// labels<para>AbstractIndividualType</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#AbstractIndividualType">http://purl.org/nemo/gufo#AbstractIndividualType</seealso>
-    let AbstractIndividualType =
-        Prefixed_Name(gufo, "AbstractIndividualType") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:NonRigidType</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:EndurantType that does not apply necessarily to at least one of its instances (see Guizzardi, 2005, chapter 4).
-    ///
-    /// Examples include anti-rigid types, such as the role "Student" and the phase "Child", and semi-rigid types, such as the mixin "MusicalArtist" (which necessarily characterizes bands, but contingently characterizes people) and the mixin "FemaleAnimal" (which is necessarily characterizes female dogs, but contigently characterizes clownfish).</para>
-    /// labels<para>NonRigidType</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#NonRigidType">http://purl.org/nemo/gufo#NonRigidType</seealso>
-    let NonRigidType = Prefixed_Name(gufo, "NonRigidType") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:isSubCollectionOf</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:TransitiveProperty</para>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies a gufo:Collection of which the collection is a sub-collection. All members of the sub-collection are members of the identified super-collection.
-    ///
-    /// gufo:isSubCollectionOf is transitive (Guizzardi, 2005, p. 186).
-    ///
-    /// For parthood involving one or more varied collections, see gufo:standsInQualifiedParthood.</para>
-    /// labels<para>isSubCollectionOf</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#isSubCollectionOf">http://purl.org/nemo/gufo#isSubCollectionOf</seealso>
-    let isSubCollectionOf = Prefixed_Name(gufo, "isSubCollectionOf") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:isCollectionMemberOf</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies a gufo:Collection of which the object is a member.
-    ///
-    /// This is the relation between John and a group of persons, and between a cow and its herd.
-    ///
-    /// gufo:isCollectionMemberOf is intransitive (Guizzardi, 2005, p. 185).
-    ///
-    /// For membership in a gufo:VariableCollection, see gufo:standsInQualifiedParthood.</para>
-    /// labels<para>isCollectionMemberOf</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#isCollectionMemberOf">http://purl.org/nemo/gufo#isCollectionMemberOf</seealso>
-    let isCollectionMemberOf =
-        Prefixed_Name(gufo, "isCollectionMemberOf") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:Quality</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:IntrinsicAspect that is measurable by some value spaces. A quality may be used to compare individuals, on the basis of the value it takes in a certain quality space (for instance, a position within the RGB spectrum).
-    ///
-    /// Examples include the weight of a person, the name of organization, the color of a car, and the duration of a concert.</para>
-    /// labels<para>Quality</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#Quality">http://purl.org/nemo/gufo#Quality</seealso>
-    let Quality = Prefixed_Name(gufo, "Quality") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:Mixin</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:EndurantType that is both non-sortal and semi-rigid. As a semi-rigid type, it applies necessarily to some of its instances and contingently to some others. As a non-sortal, it captures properties shared by instances of different kinds.
-    ///
-    /// For example, the type "FemaleAnimal" may be considered a gufo:Mixin as it applies necessarily to animals of certain species, e.g., lions and sharks, while it applies contingently to animals of other species such as clownfish and mushroom corals (which may change sex given certain conditions).</para>
-    /// labels<para>Mixin</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#Mixin">http://purl.org/nemo/gufo#Mixin</seealso>
-    let Mixin = Prefixed_Name(gufo, "Mixin") |> PrefixedName
+    /// A. B. Benevides, J. R. Bourguet, G. Guizzardi, R. Penãloza, and J. P. A. Almeida, “Representing a reference foundational ontology of events in SROIQ,” Applied ontology, vol. 14, iss. 3, p. 293–334, 2019. &lt;http://dx.doi.org/10.3233/AO-190214&gt;</para>
+    /// labels<para>wasCreatedIn</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#wasCreatedIn">http://purl.org/nemo/gufo#wasCreatedIn</seealso>
+    let wasCreatedIn = Prefixed_Name(gufo, "wasCreatedIn") |> PrefixedName
     /// <summary>
     ///   <para>gufo:wasTerminatedIn</para>
     /// </summary>
@@ -992,16 +914,54 @@ module gufo =
     /// <seealso href="http://purl.org/nemo/gufo#wasTerminatedIn">http://purl.org/nemo/gufo#wasTerminatedIn</seealso>
     let wasTerminatedIn = Prefixed_Name(gufo, "wasTerminatedIn") |> PrefixedName
     /// <summary>
-    ///   <para>gufo:AntiRigidType</para>
+    ///   <para>gufo:ConcreteIndividual</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>A gufo:NonRigidType that applies contingently to all its instances (see Guizzardi, 2005, chapter 4).
+    ///   <para>A gufo:Individual that exists in space-time.
     ///
-    /// Examples include the gufo:Phase "Child", the gufo:PhaseMixin "InfantAnimal", the gufo:Role "Student", and the gufo:RoleMixin "Customer".</para>
-    /// labels<para>AntiRigidType</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#AntiRigidType">http://purl.org/nemo/gufo#AntiRigidType</seealso>
-    let AntiRigidType = Prefixed_Name(gufo, "AntiRigidType") |> PrefixedName
+    /// Concrete individuals comprise not only object-like entities (a car, a mountain, a person, a marriage, a belief), but also events (a business meeting, a soccer match) and situations (the situation in which a person weighs 80 kilograms, the situation in which a bank account is overdrawn).</para>
+    /// labels<para>ConcreteIndividual</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#ConcreteIndividual">http://purl.org/nemo/gufo#ConcreteIndividual</seealso>
+    let ConcreteIndividual = Prefixed_Name(gufo, "ConcreteIndividual") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:ConcreteIndividualType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:Type whose instances are concrete individuals.
+    ///
+    /// Instances of gufo:ConcreteIndividualType are subclasses of gufo:ConcreteIndividual.
+    ///
+    /// Examples include the gufo:Kind "Person", the gufo:Category "Physical Object", the gufo:EventType "Business Meeting".</para>
+    /// labels<para>ConcreteIndividualType</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#ConcreteIndividualType">http://purl.org/nemo/gufo#ConcreteIndividualType</seealso>
+    let ConcreteIndividualType =
+        Prefixed_Name(gufo, "ConcreteIndividualType") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:SemiRigidType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:NonRigidType that applies necessarily to some of its instances and contingently to some others (see Guizzardi, 2005, chapter 4).</para>
+    /// labels<para>SemiRigidType</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#SemiRigidType">http://purl.org/nemo/gufo#SemiRigidType</seealso>
+    let SemiRigidType = Prefixed_Name(gufo, "SemiRigidType") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:ExtrinsicAspect</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:Aspect that depends on one or more concrete individuals.
+    ///
+    /// Extrinsic (or "relational") aspects are reified relationships, e.g., John and Mary's marriage, Mary's employment contract at Nasa, or parts of those relationships, e.g., John's obligations towards Mary in the scope of the marriage, Mary's reciprocal claims, Mary's obligations towards John, John's reciprocal claims. Extrinsic aspects can also be reified one-sided relationships, e.g., John's admiration for Obama (which depends on Obama but does not characterize him).
+    ///
+    /// Corresponds to "Extrinsic Moment" in Fonseca et al (2019). Encompasses "Externally Depedent Mode", "Qua Individual" and "Relator" in Guizzardi (2005).</para>
+    /// labels<para>ExtrinsicAspect</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#ExtrinsicAspect">http://purl.org/nemo/gufo#ExtrinsicAspect</seealso>
+    let ExtrinsicAspect = Prefixed_Name(gufo, "ExtrinsicAspect") |> PrefixedName
     /// <summary>
     ///   <para>gufo:Category</para>
     /// </summary>
@@ -1013,26 +973,153 @@ module gufo =
     /// labels<para>Category</para></remarks>
     /// <seealso href="http://purl.org/nemo/gufo#Category">http://purl.org/nemo/gufo#Category</seealso>
     let Category = Prefixed_Name(gufo, "Category") |> PrefixedName
-
     /// <summary>
-    ///   <para>gufo:ComparativeRelationshipType</para>
+    ///   <para>gufo:RigidType</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>A gufo:RelationshipType derived from intrinsic aspects of the related entities.
+    ///   <para>A gufo:EndurantType which applies necessarily to its instances (see Guizzardi, 2005, chapter 4).
     ///
-    /// For example, "heavierThan", "olderThan".
+    /// Examples include the types "Agent", "Person", "Animal", "PhysicalObject", "Car", and "Tree".</para>
+    /// labels<para>RigidType</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#RigidType">http://purl.org/nemo/gufo#RigidType</seealso>
+    let RigidType = Prefixed_Name(gufo, "RigidType") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:NonSortal</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:EndurantType that applies to individuals of different kinds (see Guizzardi, 2005, chapter 4).
     ///
-    /// For a gufo:ComparativeRelationshipType it is recommended to identify the types of intrinsic aspects from which it is derived (see gufo:isDerivedFrom). For example "heavierThan" is derived from the "Weight" quality type.
+    /// Non-sortals do not provide a uniform principle of identity for their instances; instead, they just classify things that share common properties but which obey different principles of identity.
     ///
-    /// Note that, in the case of relationships that may change in different circumstances or times, the use of a qualified relation pattern enables indicating the period of time in which the relationship holds. See gufo:TemporaryRelationshipSituation.
+    /// Also termed "dispersive" types in the philosophical literature.</para>
+    /// labels<para>NonSortal</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#NonSortal">http://purl.org/nemo/gufo#NonSortal</seealso>
+    let NonSortal = Prefixed_Name(gufo, "NonSortal") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:Type</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An entity that may be instantiated by (or predicated over) other entities. Types encompass what we often call "sorts", "kinds", "categories", etc.
     ///
-    /// Corresponds to "comparative formal relation" in Guizzardi (2005) and "Comparative Relation" in Fonseca et al. (2019).</para>
-    /// labels<para>ComparativeRelationshipType</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#ComparativeRelationshipType">http://purl.org/nemo/gufo#ComparativeRelationshipType</seealso>
-    let ComparativeRelationshipType =
-        Prefixed_Name(gufo, "ComparativeRelationshipType") |> PrefixedName
-
+    /// Examples include the kind "Person", the event type "Earthquake", and the abstract individual type "NaturalNumber". Relations, such as "marriedTo" and "olderThan", are also considered as types.
+    ///
+    /// Instances of gufo:Type are classes, and should specialize the taxonomy of individuals of gUFO. For example, "Person" is a gufo:Type (more specifically a gufo:Kind), specializing gufo:Object. The mechanism that allows for this is called punning in OWL 2.
+    ///
+    /// Encompasses the notion of "Universal" in Guizzardi (2005).</para>
+    /// labels<para>Type</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#Type">http://purl.org/nemo/gufo#Type</seealso>
+    let Type = Prefixed_Name(gufo, "Type") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:hasQualityValue</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Determines a quality value associated with the concrete individual.
+    ///
+    /// Use gufo:hasReifiedQualityValue instead when quality values are reified.
+    ///
+    /// It is recommended that subproperties of gufo:hasQualityValue are created, possibly identifying the datatype to be used. For example, "hasTemperatureValue" could be defined as a sub-property of gufo:hasQualityValue whose domain is "Temperature" (specializing gufo:Quality) and whose range is xsd:double.</para>
+    /// labels<para>hasQualityValue</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#hasQualityValue">http://purl.org/nemo/gufo#hasQualityValue</seealso>
+    let hasQualityValue = Prefixed_Name(gufo, "hasQualityValue") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:hasValueComponent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>This property is used for quality values that are defined in terms of a multidimensional quality structure (such as color conceived in terms of hue, saturation and brightness). Each value component of a quality value (a particular value for hue, a particular value for saturation, a particular value for brightness) is determined with this property.
+    ///
+    /// It is recommended that subproperties of gufo:hasValueComponent are created to indicate values for particular dimensions, possibly identifying the datatype to be used. For example "hasHueComponent", "hasSaturationComponent" and "hasBrightnessComponent" could be used as data properties specializing gufo:hasValueComponent with the xsd:double datatype.</para>
+    /// labels<para>hasValueComponent</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#hasValueComponent">http://purl.org/nemo/gufo#hasValueComponent</seealso>
+    let hasValueComponent = Prefixed_Name(gufo, "hasValueComponent") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:Aspect</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:Endurant that depends on at least one other concrete individual for its existence. A gufo:Aspect is a characteristic or trait of a concrete individual that is itself conceived as an individual.
+    ///
+    /// Examples include: intrinsic physical aspects, such as the Moon's mass, Lassie's fur color; mental dispositions, such as Bob's math skills, his belief that the number one is odd; as well as relational aspects, such as John's love for Mary and the marriage between John and Mary.
+    ///
+    /// The specific sort of existential dependence connecting aspects to their bearers is called inherence.
+    ///
+    /// Corresponds to "Moment" in Guizzardi (2005).
+    ///
+    /// Also termed "property instance", "particularized property", "individual accident", or "(variable) trope" in the philosophical literature.</para>
+    /// labels<para>Aspect</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#Aspect">http://purl.org/nemo/gufo#Aspect</seealso>
+    let Aspect = Prefixed_Name(gufo, "Aspect") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:hasBeginPoint</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Identifies the begin point for a gufo:ConcreteIndividual, in the case in which time instants are reified.
+    ///
+    /// In the case of endurants, this identifies the time point when the endurant comes into existence. In the case of events, this identifies the time point when the event starts to take place. In the case of situation, this identifies the time point when the situation begins to hold.
+    ///
+    /// If time instants are not reified, use gufo:hasBeginPointInXSDDate or gufo:hasBeginPointInXSDDateTimeStamp.</para>
+    /// labels<para>hasBeginPoint</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#hasBeginPoint">http://purl.org/nemo/gufo#hasBeginPoint</seealso>
+    let hasBeginPoint = Prefixed_Name(gufo, "hasBeginPoint") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:Object</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:Endurant that does not depend on another endurant for its existence (excluding its essential parts and aspects).
+    ///
+    /// Examples of objects include ordinary physical entities, such as a dog, a house, a tomato, a car, Alan Turing, but also socially-defined entities such as The Rolling Stones, the European Union, the Brazilian 1988 Constitution.
+    ///
+    /// Guizzardi (2005) also included the more abstract notion of "Substantial", which generalizes both objects and amounts of matter. That notion was left out from this implementation, together with the notion of amount of matter. Support for the representation of maximally-self-connected amounts of matter is given by gufo:Quantity.</para>
+    /// labels<para>Object</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#Object">http://purl.org/nemo/gufo#Object</seealso>
+    let Object = Prefixed_Name(gufo, "Object") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:FixedCollection</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:Collection for which no change in membership is possible.
+    ///
+    /// Such a collection obeys an extensional principle of identity, i.e., two fixed collections are the same if, and only if, they have the same members.
+    ///
+    /// Consider, for example, a group of people understood as a gufo:FixedCollection. In this case, any change in the membership of the group (e.g., the addition of one person) would in fact create a different group of people. In this case, the gufo:FixedCollection may be contrasted with the complexes they constitute. For instance, The Beatles (the band conceived as a gufo:FunctionalComplex) was in a certain circumstance constituted by the collection {John, Paul, George, Pete} and in another one constituted by the collection {John, Paul, George, Ringo}. The replacement of Pete Best by Ringo Star does not alter the identity of the band, but creates a  different group of people.</para>
+    /// labels<para>FixedCollection</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#FixedCollection">http://purl.org/nemo/gufo#FixedCollection</seealso>
+    let FixedCollection = Prefixed_Name(gufo, "FixedCollection") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:VariableCollection</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:Collection for which change in membership is possible.
+    ///
+    /// Such a collection obeys an intensional principle of identity, i.e., change in membership does not necessarily create a different collection.
+    ///
+    /// For example, KLM's fleet of airplanes could be understood as a gufo:VariableCollection. In this case, when the company acquires (or retires) an airplane, the fleet changes. Note that, in this case, the airplanes are conceptualized as playing the role of "member of a fleet". If various roles for the parts of a fleet were envisioned (such as "cargo airplane", "passenger airplane"), then a fleet would be best understood as a gufo:FunctionalComplex.
+    ///
+    /// See gufo:TemporaryParthoodSituation for the pattern to represent the relation of a variable collection to its temporary parts.</para>
+    /// labels<para>VariableCollection</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#VariableCollection">http://purl.org/nemo/gufo#VariableCollection</seealso>
+    let VariableCollection = Prefixed_Name(gufo, "VariableCollection") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:isDerivedFrom</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Identifies a gufo:EndurantType from which the material or comparative relation can be derived. The identified gufo:EndurantType should be a subclass of gufo:Aspect, more specifically a subclass of gufo:ExtrinsicAspect in the case of a gufo:MaterialRelationshipType, and a subclass of gufo:IntrinsicAspect in the case of a gufo:ComparativeRelationshipType.
+    ///
+    /// For example, "marriedWith" can be derived from "Marriage", "heavierThan" can be derived from "Weight".
+    ///
+    /// See Fonseca et al. (2019).</para>
+    /// labels<para>isDerivedFrom</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#isDerivedFrom">http://purl.org/nemo/gufo#isDerivedFrom</seealso>
+    let isDerivedFrom = Prefixed_Name(gufo, "isDerivedFrom") |> PrefixedName
     /// <summary>
     ///   <para>gufo:EndurantType</para>
     /// </summary>
@@ -1084,140 +1171,49 @@ module gufo =
     /// <seealso href="http://purl.org/nemo/gufo#EventType">http://purl.org/nemo/gufo#EventType</seealso>
     let EventType = Prefixed_Name(gufo, "EventType") |> PrefixedName
     /// <summary>
-    ///   <para>gufo:ExtrinsicMode</para>
+    ///   <para>gufo:Relator</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>A gufo:ExtrinsicAspect that inheres in a concrete individual and depends on others for its existence.
+    ///   <para>A gufo:ExtrinsicAspect that connects (involves, mediates) two or more concrete individuals. Relators are reified relationships composed of reciprocal extrinsic modes.
     ///
-    /// A gufo:ExtrinsicMode can be understood as a reified one-sided relationship, such as John's admiration for Mary.
-    ///
-    /// Corresponds to "Extrinsic Moment" in Fonseca et al (2019). Encompasses what "Externally Dependent Mode", "Qua Individual" and "Relator" in Guizzardi (2005).</para>
-    /// labels<para>ExtrinsicMode</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#ExtrinsicMode">http://purl.org/nemo/gufo#ExtrinsicMode</seealso>
-    let ExtrinsicMode = Prefixed_Name(gufo, "ExtrinsicMode") |> PrefixedName
+    /// Examples of relators include John and Mary's marriage (composed of John's obligations towards Mary in the scope of the marriage, Mary's reciprocal claims, Mary's obligations towards John, John's reciprocal claims), Mary's employment contract at Nasa, a covalent bond between two atoms.</para>
+    /// labels<para>Relator</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#Relator">http://purl.org/nemo/gufo#Relator</seealso>
+    let Relator = Prefixed_Name(gufo, "Relator") |> PrefixedName
     /// <summary>
-    ///   <para>gufo:externallyDependsOn</para>
+    ///   <para>gufo:inheresIn</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
     ///   <para>owl:IrreflexiveProperty</para>
-    ///   <para>Identifies a gufo:Endurant on which the gufo:ExtrinsicMode depends.
-    ///
-    /// For example, John's duty to return the book he borrowed from Mary (a gufo:ExtrinsicMode) depends externally on Mary.
-    ///
-    /// The identifed gufo:Endurant should  be external to the bearer of the extrinsic mode (see Guizzardi, 2005, p. 239). In other words, the identified endurant should not be a part or an intrisic aspect of the bearer of the extrinsic mode.</para>
-    /// labels<para>externallyDependsOn</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#externallyDependsOn">http://purl.org/nemo/gufo#externallyDependsOn</seealso>
-    let externallyDependsOn = Prefixed_Name(gufo, "externallyDependsOn") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:isComponentOf</para>
-    /// </summary>
-    /// <remarks>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:AsymmetricProperty</para>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies a gufo:FunctionalComplex of which the object is a component.
+    ///   <para>Identifies the gufo:ConcreteIndividual in which the gufo:Aspect inheres. Inherence is a sort of existential dependence. The identified concrete individual is the "bearer" of the aspect.
     ///
-    /// For example, the habitation module is a component of the International Space Station, and so are each of the solar panels; Obama's brain is a component of his body, and so is his heart; the engine is a component of the HMS Queen Elizabeth (R08).
-    ///
-    /// gufo:isComponentOf is not transitive in the general case. Particular sub-properties may be transitive (Guizzardi, 2005, p. 183).
-    ///
-    /// When a component may change its relation to be whole, see gufo:standsInQualifiedParthood.</para>
-    /// labels<para>isComponentOf</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#isComponentOf">http://purl.org/nemo/gufo#isComponentOf</seealso>
-    let isComponentOf = Prefixed_Name(gufo, "isComponentOf") |> PrefixedName
+    /// For example, the color of an object inheres in the object and the average speed of a flight inheres in the flight.</para>
+    /// labels<para>inheresIn</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#inheresIn">http://purl.org/nemo/gufo#inheresIn</seealso>
+    let inheresIn = Prefixed_Name(gufo, "inheresIn") |> PrefixedName
 
     /// <summary>
-    ///   <para>gufo:TemporaryParthoodSituation</para>
+    ///   <para>gufo:ComparativeRelationshipType</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>A gufo:Situation in which a gufo:Endurant is temporarily a part of another gufo:Endurant.
+    ///   <para>A gufo:RelationshipType derived from intrinsic aspects of the related entities.
     ///
-    /// A gufo:TemporaryParthoodSituation should only be used for mutable parts. It may be qualified by the period in time in which the relation applies.
+    /// For example, "heavierThan", "olderThan".
     ///
-    /// Examples include: the situation in which the United Kingdom is a member of the European Union; the situation in which Messi is a a member of the Barcelona FC squad; the situation in which an engine is part of a car; and the situation in which a transplanted heart is part of a person.
+    /// For a gufo:ComparativeRelationshipType it is recommended to identify the types of intrinsic aspects from which it is derived (see gufo:isDerivedFrom). For example "heavierThan" is derived from the "Weight" quality type.
     ///
-    /// Note that, since every instance of gufo:Quantity or gufo:FixedCollection only has essential parts, the gufo:TemporaryParthoodSituation should not be used to represent these parthood relations.
+    /// Note that, in the case of relationships that may change in different circumstances or times, the use of a qualified relation pattern enables indicating the period of time in which the relationship holds. See gufo:TemporaryRelationshipSituation.
     ///
-    /// This solution is inspired in the qualified relation pattern (http://patterns.dataincubator.org/book/qualified-relation.html).</para>
-    /// labels<para>TemporaryParthoodSituation</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#TemporaryParthoodSituation">http://purl.org/nemo/gufo#TemporaryParthoodSituation</seealso>
-    let TemporaryParthoodSituation =
-        Prefixed_Name(gufo, "TemporaryParthoodSituation") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:Aspect</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:Endurant that depends on at least one other concrete individual for its existence. A gufo:Aspect is a characteristic or trait of a concrete individual that is itself conceived as an individual.
-    ///
-    /// Examples include: intrinsic physical aspects, such as the Moon's mass, Lassie's fur color; mental dispositions, such as Bob's math skills, his belief that the number one is odd; as well as relational aspects, such as John's love for Mary and the marriage between John and Mary.
-    ///
-    /// The specific sort of existential dependence connecting aspects to their bearers is called inherence.
-    ///
-    /// Corresponds to "Moment" in Guizzardi (2005).
-    ///
-    /// Also termed "property instance", "particularized property", "individual accident", or "(variable) trope" in the philosophical literature.</para>
-    /// labels<para>Aspect</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#Aspect">http://purl.org/nemo/gufo#Aspect</seealso>
-    let Aspect = Prefixed_Name(gufo, "Aspect") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:Object</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:Endurant that does not depend on another endurant for its existence (excluding its essential parts and aspects).
-    ///
-    /// Examples of objects include ordinary physical entities, such as a dog, a house, a tomato, a car, Alan Turing, but also socially-defined entities such as The Rolling Stones, the European Union, the Brazilian 1988 Constitution.
-    ///
-    /// Guizzardi (2005) also included the more abstract notion of "Substantial", which generalizes both objects and amounts of matter. That notion was left out from this implementation, together with the notion of amount of matter. Support for the representation of maximally-self-connected amounts of matter is given by gufo:Quantity.</para>
-    /// labels<para>Object</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#Object">http://purl.org/nemo/gufo#Object</seealso>
-    let Object = Prefixed_Name(gufo, "Object") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:VariableCollection</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:Collection for which change in membership is possible.
-    ///
-    /// Such a collection obeys an intensional principle of identity, i.e., change in membership does not necessarily create a different collection.
-    ///
-    /// For example, KLM's fleet of airplanes could be understood as a gufo:VariableCollection. In this case, when the company acquires (or retires) an airplane, the fleet changes. Note that, in this case, the airplanes are conceptualized as playing the role of "member of a fleet". If various roles for the parts of a fleet were envisioned (such as "cargo airplane", "passenger airplane"), then a fleet would be best understood as a gufo:FunctionalComplex.
-    ///
-    /// See gufo:TemporaryParthoodSituation for the pattern to represent the relation of a variable collection to its temporary parts.</para>
-    /// labels<para>VariableCollection</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#VariableCollection">http://purl.org/nemo/gufo#VariableCollection</seealso>
-    let VariableCollection = Prefixed_Name(gufo, "VariableCollection") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:isDerivedFrom</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies a gufo:EndurantType from which the material or comparative relation can be derived. The identified gufo:EndurantType should be a subclass of gufo:Aspect, more specifically a subclass of gufo:ExtrinsicAspect in the case of a gufo:MaterialRelationshipType, and a subclass of gufo:IntrinsicAspect in the case of a gufo:ComparativeRelationshipType.
-    ///
-    /// For example, "marriedWith" can be derived from "Marriage", "heavierThan" can be derived from "Weight".
-    ///
-    /// See Fonseca et al. (2019).</para>
-    /// labels<para>isDerivedFrom</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#isDerivedFrom">http://purl.org/nemo/gufo#isDerivedFrom</seealso>
-    let isDerivedFrom = Prefixed_Name(gufo, "isDerivedFrom") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:wasCreatedIn</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies the gufo:Event which brought the gufo:Endurant into existence.
-    ///
-    /// For example, a musical piece is created in an act of composition (or in an event that is part of it), a piece of legislation is created in a complex legislative process.
-    ///
-    /// Benevides et al. (2019) only discussed creation of objects; gufo:wasCreatedIn is extended to endurants in general. Further, in that work "createdBy" required the event to "bring about" a situation in which the created object is present. We relax this requirement here, such that the object may be created and terminated in the scope of the identified gufo:Event.
-    ///
-    /// A. B. Benevides, J. R. Bourguet, G. Guizzardi, R. Penãloza, and J. P. A. Almeida, “Representing a reference foundational ontology of events in SROIQ,” Applied ontology, vol. 14, iss. 3, p. 293–334, 2019. &lt;http://dx.doi.org/10.3233/AO-190214&gt;</para>
-    /// labels<para>wasCreatedIn</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#wasCreatedIn">http://purl.org/nemo/gufo#wasCreatedIn</seealso>
-    let wasCreatedIn = Prefixed_Name(gufo, "wasCreatedIn") |> PrefixedName
+    /// Corresponds to "comparative formal relation" in Guizzardi (2005) and "Comparative Relation" in Fonseca et al. (2019).</para>
+    /// labels<para>ComparativeRelationshipType</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#ComparativeRelationshipType">http://purl.org/nemo/gufo#ComparativeRelationshipType</seealso>
+    let ComparativeRelationshipType =
+        Prefixed_Name(gufo, "ComparativeRelationshipType") |> PrefixedName
 
     /// <summary>
     ///   <para>gufo:MaterialRelationshipType</para>
@@ -1237,18 +1233,120 @@ module gufo =
         Prefixed_Name(gufo, "MaterialRelationshipType") |> PrefixedName
 
     /// <summary>
-    ///   <para>gufo:constitutes</para>
+    ///   <para>gufo:standsIn</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies a gufo:ConcreteIndividual that is constituted (partially) by the constituent individual.
+    ///   <para>Identifies a gufo:Situation in which the entity stands.
     ///
-    /// For example, the gufo:Collection of persons whose members are John, Paul, George, Ringo constituted the beatles, the gufo:Quantity of marble that constitutes the statue of Venus de Milo, and the gufo:Event of Paul raising his arm in a meeting that constitutes his voting (also a gufo:Event).
+    /// This implementation includes sub-properties of gufo:standsIn to identify situations concerning the attribution of (mutable) values to qualities, variable relationships, the instantiation of non-contingent types, temporary parthood and temporary constitution.</para>
+    /// labels<para>standsIn</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#standsIn">http://purl.org/nemo/gufo#standsIn</seealso>
+    let standsIn = Prefixed_Name(gufo, "standsIn") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:isSituationProperPartOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Identifies a gufo:Situation of which the situation is a part.
     ///
-    /// In case constitution changes in time, see gufo:standsInQualifiedConstitution.</para>
-    /// labels<para>constitutes</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#constitutes">http://purl.org/nemo/gufo#constitutes</seealso>
-    let constitutes = Prefixed_Name(gufo, "constitutes") |> PrefixedName
+    /// Examples include: the situation in which John has influenza is part of the situation in which John has influenza and he is tired; the situation in which John is friends with Mary is part of the situation in which he is friends with Mary and Alice; the situation in which John is married to Alice is part of the situation in which John is married to Alice, while she works at the Free University of Bozen-Bolzano.</para>
+    /// labels<para>isSituationProperPartOf</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#isSituationProperPartOf">http://purl.org/nemo/gufo#isSituationProperPartOf</seealso>
+    let isSituationProperPartOf =
+        Prefixed_Name(gufo, "isSituationProperPartOf") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:isComponentOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Identifies a gufo:FunctionalComplex of which the object is a component.
+    ///
+    /// For example, the habitation module is a component of the International Space Station, and so are each of the solar panels; Obama's brain is a component of his body, and so is his heart; the engine is a component of the HMS Queen Elizabeth (R08).
+    ///
+    /// gufo:isComponentOf is not transitive in the general case. Particular sub-properties may be transitive (Guizzardi, 2005, p. 183).
+    ///
+    /// When a component may change its relation to be whole, see gufo:standsInQualifiedParthood.</para>
+    /// labels<para>isComponentOf</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#isComponentOf">http://purl.org/nemo/gufo#isComponentOf</seealso>
+    let isComponentOf = Prefixed_Name(gufo, "isComponentOf") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:IntrinsicMode</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:IntrinsicAspect that is not measurable.
+    ///
+    /// For example, Bob's belief that the Eiffel Tower is in Paris, his math skills, his headache.
+    ///
+    /// Corresponds to "Mode" in Guizzardi (2005).</para>
+    /// labels<para>IntrinsicMode</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#IntrinsicMode">http://purl.org/nemo/gufo#IntrinsicMode</seealso>
+    let IntrinsicMode = Prefixed_Name(gufo, "IntrinsicMode") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:Kind</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:EndurantType that is both sortal and rigid. It provides a uniform principle of identity for its instances. Every gufo:Endurant instantiates one and only one gufo:Kind.
+    ///
+    /// Examples include kinds of ordinary objects of everyday experience, such as: "Person", "House", "Car"; kinds of relators, such as "Marriage", "RentalContract"; kinds of existentially-dependent aspects of objects, such as "Weight", "Belief", "Vulnerability".</para>
+    /// labels<para>Kind</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#Kind">http://purl.org/nemo/gufo#Kind</seealso>
+    let Kind = Prefixed_Name(gufo, "Kind") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:Mixin</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:EndurantType that is both non-sortal and semi-rigid. As a semi-rigid type, it applies necessarily to some of its instances and contingently to some others. As a non-sortal, it captures properties shared by instances of different kinds.
+    ///
+    /// For example, the type "FemaleAnimal" may be considered a gufo:Mixin as it applies necessarily to animals of certain species, e.g., lions and sharks, while it applies contingently to animals of other species such as clownfish and mushroom corals (which may change sex given certain conditions).</para>
+    /// labels<para>Mixin</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#Mixin">http://purl.org/nemo/gufo#Mixin</seealso>
+    let Mixin = Prefixed_Name(gufo, "Mixin") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:SubKind</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:EndurantType that is both sortal and rigid. It specializes a gufo:Kind carrying the principle of identity supplied by that kind. Every gufo:SubKind should directly or indirectly specialize a gufo:Kind.
+    ///
+    /// For example, the gufo:Kind "Lion" may be specialized into the "Lionness" and "Male Lion" subkinds, while the gufo:Kind "Computer" may be specialized into the "Laptop" and "Desktop" subkinds.</para>
+    /// labels<para>SubKind</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#SubKind">http://purl.org/nemo/gufo#SubKind</seealso>
+    let SubKind = Prefixed_Name(gufo, "SubKind") |> PrefixedName
+    /// <summary>
+    ///   <para>gufo:PhaseMixin</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:EndurantType that is both non-sortal and anti-rigid. It is defined by instrinsic but contingent instantiation conditions. Phase mixins are relationally independent types that capture instrinsic properties shared by instances of different kinds.
+    ///
+    /// For example, "LivingAnimal" may be considered a gufo:PhaseMixin as a superclass of the phases "LivingPerson" (specializing the gufo:Kind "Person") and "LivingDog" (specializing the gufo:Kind "Dog").</para>
+    /// labels<para>PhaseMixin</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#PhaseMixin">http://purl.org/nemo/gufo#PhaseMixin</seealso>
+    let PhaseMixin = Prefixed_Name(gufo, "PhaseMixin") |> PrefixedName
+
+    /// <summary>
+    ///   <para>gufo:QualityValueAttributionSituation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A gufo:Situation in which a quality value is temporarily attributed to a gufo:Endurant.
+    ///
+    /// A gufo:QualityValueAttributionSituation should be used only for mutable qualities, i.e. those whose value can vary in time.
+    ///
+    /// Examples include: the situation in which the value of a bitcoin in Euros is 6.526,12, which lasted from 10/12/2019 to 11/12/2019; the situation in which the weight of Mike Tyson was 100 kg; and the situation in which the color of Einstein' hair was grey.
+    ///
+    /// This is a reification of the quality value attribution (in a solution that is similar to the qualified relation pattern  http://patterns.dataincubator.org/book/qualified-relation.html )</para>
+    /// labels<para>QualityValueAttributionSituation</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#QualityValueAttributionSituation">http://purl.org/nemo/gufo#QualityValueAttributionSituation</seealso>
+    let QualityValueAttributionSituation =
+        Prefixed_Name(gufo, "QualityValueAttributionSituation") |> PrefixedName
+
     /// <summary>
     ///   <para>gufo:FunctionalComplex</para>
     /// </summary>
@@ -1263,112 +1361,13 @@ module gufo =
     /// <seealso href="http://purl.org/nemo/gufo#FunctionalComplex">http://purl.org/nemo/gufo#FunctionalComplex</seealso>
     let FunctionalComplex = Prefixed_Name(gufo, "FunctionalComplex") |> PrefixedName
     /// <summary>
-    ///   <para>gufo:Quantity</para>
+    ///   <para>gufo:AntiRigidType</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>A complex gufo:Object that is a maximally-connected portion of stuff. A gufo:Quantity has a fixed constitution, and thus, removing or adding a sub-quantity would result in a different quantity.
+    ///   <para>A gufo:NonRigidType that applies contingently to all its instances (see Guizzardi, 2005, chapter 4).
     ///
-    /// Examples include the portion of wine in a wine tank, a lump of clay, the gold that constitutes a wedding ring.
-    ///
-    /// Also termed "quantity of matter", "objectified portion of matter", "piece" in the philosophical literature.</para>
-    /// labels<para>Quantity</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#Quantity">http://purl.org/nemo/gufo#Quantity</seealso>
-    let Quantity = Prefixed_Name(gufo, "Quantity") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:Endurant</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:ConcreteIndividual that endures in time and may change qualitatively while keeping its identity.
-    ///
-    /// Examples include: ordinary objects of everyday experience, such as a person, a house, and a car; reified relationships, such as a marriage, a rental contract, and a person's love for another; and existentially-dependent aspects of objects, such as a car's weight, a person's language skills, and a house's color.
-    ///
-    /// Also termed "continuant" in the philosophical literature.</para>
-    /// labels<para>Endurant</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#Endurant">http://purl.org/nemo/gufo#Endurant</seealso>
-    let Endurant = Prefixed_Name(gufo, "Endurant") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:Situation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:ConcreteIndividual that is a particular configuration of a part of reality which can be understood as a whole and in which entities stand in relations. A situation may be counterfactual or actual. An actual situation (or in other words, a "fact") "obtains" in a certain time instant or during a time interval.
-    ///
-    /// Note that, in Guizzardi et al. (2013), situations were considered to obtain at a specific point in time. Here, instead, they obtain in a time interval when begin and end points differ.
-    ///
-    /// The various subclasses of Situation in this implementation are used to capture "mutable" facts which obtain during some time and fail to obtain at other times. This includes the contingent instantiation of non-rigid types (e.g., as someone is a child at one point in time and a teenager later), the attribution of value to mutable qualities (such as a person's weight) and temporary participation in part-whole relations for replaceable parts (such as a car's tires). Other subclasses may be created to capture domain-specific notions such as "HazardousSituation", "PersonHasFever".</para>
-    /// labels<para>Situation</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#Situation">http://purl.org/nemo/gufo#Situation</seealso>
-    let Situation = Prefixed_Name(gufo, "Situation") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:/1.0.0</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#/1.0.0">http://purl.org/nemo/gufo#/1.0.0</seealso>
-    let ``_/1.0.0`` = Prefixed_Name(gufo, "/1.0.0") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:Individual</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>An entity that (unlike a gufo:Type) cannot be instantiated.
-    ///
-    /// Individuals may be either concrete (e.g., the Earth, Mick Jagger, Brazil, the 1985 Mexico City Earthquake) or abstract (e.g., the number two, the proposition that 'three is a prime number').
-    ///
-    /// Also known as "particular" in the philosophical literature.</para>
-    /// labels<para>Individual</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#Individual">http://purl.org/nemo/gufo#Individual</seealso>
-    let Individual = Prefixed_Name(gufo, "Individual") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:participatedIn</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Identifies a gufo:Event in which the gufo:Object participated.
-    ///
-    /// Examples include the participation of Freddy Mercury in Queen's Live Aid Concert and the participation of an airplane in a flight.</para>
-    /// labels<para>participatedIn</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#participatedIn">http://purl.org/nemo/gufo#participatedIn</seealso>
-    let participatedIn = Prefixed_Name(gufo, "participatedIn") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:Relator</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A gufo:ExtrinsicAspect that connects (involves, mediates) two or more concrete individuals. Relators are reified relationships composed of reciprocal extrinsic modes.
-    ///
-    /// Examples of relators include John and Mary's marriage (composed of John's obligations towards Mary in the scope of the marriage, Mary's reciprocal claims, Mary's obligations towards John, John's reciprocal claims), Mary's employment contract at Nasa, a covalent bond between two atoms.</para>
-    /// labels<para>Relator</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#Relator">http://purl.org/nemo/gufo#Relator</seealso>
-    let Relator = Prefixed_Name(gufo, "Relator") |> PrefixedName
-    /// <summary>
-    ///   <para>gufo:inheresIn</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>owl:AsymmetricProperty</para>
-    ///   <para>owl:FunctionalProperty</para>
-    ///   <para>owl:IrreflexiveProperty</para>
-    ///   <para>Identifies the gufo:ConcreteIndividual in which the gufo:Aspect inheres. Inherence is a sort of existential dependence. The identified concrete individual is the "bearer" of the aspect.
-    ///
-    /// For example, the color of an object inheres in the object and the average speed of a flight inheres in the flight.</para>
-    /// labels<para>inheresIn</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#inheresIn">http://purl.org/nemo/gufo#inheresIn</seealso>
-    let inheresIn = Prefixed_Name(gufo, "inheresIn") |> PrefixedName
-
-    /// <summary>
-    ///   <para>gufo:hasBeginPointInXSDDate</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>owl:FunctionalProperty</para>
-    ///   <para>Determines the begin point for a gufo:ConcreteIndividual, using a xsd:date literal.
-    ///
-    /// In the case of endurants, gufo:asBeginPointInXSDDate determines the time point when the endurant comes into existence. In the case of events, this data property determines the time point when the event starts to take place. In the case of situation, it determines the time point when the situation begins to hold.
-    ///
-    /// Use gufo:hasBeginPoint instead when temporal entities are reified.</para>
-    /// labels<para>hasBeginPointInXSDDate</para></remarks>
-    /// <seealso href="http://purl.org/nemo/gufo#hasBeginPointInXSDDate">http://purl.org/nemo/gufo#hasBeginPointInXSDDate</seealso>
-    let hasBeginPointInXSDDate =
-        Prefixed_Name(gufo, "hasBeginPointInXSDDate") |> PrefixedName
+    /// Examples include the gufo:Phase "Child", the gufo:PhaseMixin "InfantAnimal", the gufo:Role "Student", and the gufo:RoleMixin "Customer".</para>
+    /// labels<para>AntiRigidType</para></remarks>
+    /// <seealso href="http://purl.org/nemo/gufo#AntiRigidType">http://purl.org/nemo/gufo#AntiRigidType</seealso>
+    let AntiRigidType = Prefixed_Name(gufo, "AntiRigidType") |> PrefixedName

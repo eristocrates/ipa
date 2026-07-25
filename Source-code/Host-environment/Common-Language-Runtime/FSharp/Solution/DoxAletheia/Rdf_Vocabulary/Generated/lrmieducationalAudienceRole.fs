@@ -18,6 +18,25 @@ module lrmieducationalAudienceRole =
         Prefixed_Name(lrmieducationalAudienceRole, "administrator") |> PrefixedName
 
     /// <summary>
+    ///   <para>lrmieducationalAudienceRole:mentor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>skos:Concept</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/mentor">http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/mentor</seealso>
+    let mentor = Prefixed_Name(lrmieducationalAudienceRole, "mentor") |> PrefixedName
+
+    /// <summary>
+    ///   <para>lrmieducationalAudienceRole:generalPublic</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>skos:Concept</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/generalPublic">http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/generalPublic</seealso>
+    let generalPublic =
+        Prefixed_Name(lrmieducationalAudienceRole, "generalPublic") |> PrefixedName
+
+    /// <summary>
     ///   <para>lrmieducationalAudienceRole:parent</para>
     /// </summary>
     /// <remarks>
@@ -33,6 +52,17 @@ module lrmieducationalAudienceRole =
     /// </remarks>
     /// <seealso href="http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/student">http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/student</seealso>
     let student = Prefixed_Name(lrmieducationalAudienceRole, "student") |> PrefixedName
+
+    /// <summary>
+    ///   <para>lrmieducationalAudienceRole:professional</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>skos:Concept</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/professional">http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/professional</seealso>
+    let professional =
+        Prefixed_Name(lrmieducationalAudienceRole, "professional") |> PrefixedName
+
     /// <summary>
     ///   <para>lrmieducationalAudienceRole:teacher</para>
     /// </summary>
@@ -51,25 +81,6 @@ module lrmieducationalAudienceRole =
     let _prefix_iri = Prefixed_Name(lrmieducationalAudienceRole, "") |> PrefixedName
 
     /// <summary>
-    ///   <para>lrmieducationalAudienceRole:generalPublic</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>skos:Concept</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/generalPublic">http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/generalPublic</seealso>
-    let generalPublic =
-        Prefixed_Name(lrmieducationalAudienceRole, "generalPublic") |> PrefixedName
-
-    /// <summary>
-    ///   <para>lrmieducationalAudienceRole:mentor</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>skos:Concept</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/mentor">http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/mentor</seealso>
-    let mentor = Prefixed_Name(lrmieducationalAudienceRole, "mentor") |> PrefixedName
-
-    /// <summary>
     ///   <para>lrmieducationalAudienceRole:peerTutor</para>
     /// </summary>
     /// <remarks>
@@ -78,13 +89,3 @@ module lrmieducationalAudienceRole =
     /// <seealso href="http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/peerTutor">http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/peerTutor</seealso>
     let peerTutor =
         Prefixed_Name(lrmieducationalAudienceRole, "peerTutor") |> PrefixedName
-
-    /// <summary>
-    ///   <para>lrmieducationalAudienceRole:professional</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>skos:Concept</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/professional">http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/professional</seealso>
-    let professional =
-        Prefixed_Name(lrmieducationalAudienceRole, "professional") |> PrefixedName

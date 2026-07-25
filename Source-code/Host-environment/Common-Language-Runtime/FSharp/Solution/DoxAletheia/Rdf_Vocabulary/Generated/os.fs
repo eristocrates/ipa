@@ -7,40 +7,6 @@ open type Prefix_ID
 module os =
     let _namespace_iri = Namespace_Iri os |> NamespaceIRI
     /// <summary>
-    ///   <para>os:baseAbsolute</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>&lt;http://www.daml.org/2000/10/daml-ont#UniqueProperty&gt;</para>
-    ///   <para>rdf:Property</para>
-    ///   <para>The baseAbsolute property of a URI reference string is a string
-    /// which is an (absolute) URI, generated assuming the
-    /// base of the running process.  This will, for example,
-    /// generate a file: URI from a unix relative file path when running
-    /// in file: space.  (Cwm uses the current working directory as a base
-    /// unless the --base option is given)
-    /// </para>
-    /// labels<para>absolute form assuming current base</para></remarks>
-    /// <seealso href="http://www.w3.org/2000/10/swap/os#baseAbsolute">http://www.w3.org/2000/10/swap/os#baseAbsolute</seealso>
-    let baseAbsolute = Prefixed_Name(os, "baseAbsolute") |> PrefixedName
-    /// <summary>
-    ///   <para>os:baseRelative</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>&lt;http://www.daml.org/2000/10/daml-ont#UniqueProperty&gt;</para>
-    ///   <para>rdf:Property</para>
-    ///   <para>The baseRelative property of a URI string is a string
-    /// which is a valid relative form of the URI, relative to the
-    /// base of the running process.  The base of a running unix
-    /// process is typically a file: URI for the file being processed,
-    /// or just the current working directory followed by a "/".
-    ///
-    /// The relative form is suitable for quotation in a file
-    /// whose URI is the same (except for anything after the last slash).
-    /// </para>
-    /// labels<para>relative to current base</para></remarks>
-    /// <seealso href="http://www.w3.org/2000/10/swap/os#baseRelative">http://www.w3.org/2000/10/swap/os#baseRelative</seealso>
-    let baseRelative = Prefixed_Name(os, "baseRelative") |> PrefixedName
-    /// <summary>
     ///   <para>os:environ</para>
     /// </summary>
     /// <remarks>
@@ -61,11 +27,45 @@ module os =
     /// <seealso href="http://www.w3.org/2000/10/swap/os#environ">http://www.w3.org/2000/10/swap/os#environ</seealso>
     let environ = Prefixed_Name(os, "environ") |> PrefixedName
     /// <summary>
+    ///   <para>os:baseAbsolute</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>&lt;http://www.daml.org/2000/10/daml-ont#UniqueProperty&gt;</para>
+    ///   <para>The baseAbsolute property of a URI reference string is a string
+    /// which is an (absolute) URI, generated assuming the
+    /// base of the running process.  This will, for example,
+    /// generate a file: URI from a unix relative file path when running
+    /// in file: space.  (Cwm uses the current working directory as a base
+    /// unless the --base option is given)
+    /// </para>
+    /// labels<para>absolute form assuming current base</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/os#baseAbsolute">http://www.w3.org/2000/10/swap/os#baseAbsolute</seealso>
+    let baseAbsolute = Prefixed_Name(os, "baseAbsolute") |> PrefixedName
+    /// <summary>
+    ///   <para>os:baseRelative</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>&lt;http://www.daml.org/2000/10/daml-ont#UniqueProperty&gt;</para>
+    ///   <para>The baseRelative property of a URI string is a string
+    /// which is a valid relative form of the URI, relative to the
+    /// base of the running process.  The base of a running unix
+    /// process is typically a file: URI for the file being processed,
+    /// or just the current working directory followed by a "/".
+    ///
+    /// The relative form is suitable for quotation in a file
+    /// whose URI is the same (except for anything after the last slash).
+    /// </para>
+    /// labels<para>relative to current base</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/os#baseRelative">http://www.w3.org/2000/10/swap/os#baseRelative</seealso>
+    let baseRelative = Prefixed_Name(os, "baseRelative") |> PrefixedName
+    /// <summary>
     ///   <para>os:argv</para>
     /// </summary>
     /// <remarks>
-    ///   <para>&lt;http://www.daml.org/2000/10/daml-ont#UniqueProperty&gt;</para>
     ///   <para>rdf:Property</para>
+    ///   <para>&lt;http://www.daml.org/2000/10/daml-ont#UniqueProperty&gt;</para>
     ///   <para>The object is looked up as the literal string which was given
     /// as the nth command line argument.
     ///

@@ -1,0 +1,169 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix nsl: <http://purl.org/ontology/storyline/>.
+
+<http://purl.org/ontology/storyline> <http://purl.org/dc/elements/1.1/contributor> "Sebastien Cevey"@en-gb,
+                                                                                   "Michael Smethurst"@en-gb,
+                                                                                   "Tom Leitch"@en-gb,
+                                                                                   "Dan Brickley"@en-gb,
+                                                                                   "Helen Lippell"@en-gb,
+                                                                                   "Paul Rissen"@en-gb,
+                                                                                   "Matt Chadburn"@en-gb;
+                                     <http://purl.org/dc/elements/1.1/creator> <http://uk.linkedin.com/in/paulwilton>,
+                                                                               <http://www.bbc.co.uk/blogs/internet/authors/Jeremy_Tarling>,
+                                                                               <http://uk.linkedin.com/in/jarredmcginnis>;
+                                     <http://purl.org/dc/elements/1.1/date> "2013-05-01"^^xsd:date;
+                                     <http://purl.org/dc/elements/1.1/description> "An ontology to represent News Storylines."@en-gb;
+                                     <http://purl.org/dc/elements/1.1/rights> "This ontology is distributed under the Creative Commons SA-3.0 license"@en-gb;
+                                     <http://purl.org/dc/elements/1.1/title> "A News Storyline Ontology"@en-gb;
+                                     <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by-sa/3.0/>;
+                                     <http://www.bbc.co.uk/ontologies/provenance/canonicalLocation> "https://repo.dev.bbc.co.uk/services/linked-data/ontologies/domain/news/storyline-0.3.ttl";
+                                     <http://www.bbc.co.uk/ontologies/provenance/changeReason> "added nsl:createdDate, moved domain of nsl:time to nsl:StorylineSLot"@en-gb;
+                                     <http://www.bbc.co.uk/ontologies/provenance/provided> "2014-04-10T09:56:56+00:00"^^xsd:dateTime;
+                                     <http://www.bbc.co.uk/ontologies/provenance/provider> <mailto:sam.starling@bbc.co.uk>;
+                                     <http://www.bbc.co.uk/ontologies/provenance/public> true;
+                                     <http://www.bbc.co.uk/ontologies/provenance/slug> "storyline";
+                                     <http://www.bbc.co.uk/ontologies/provenance/version> "0.3"^^xsd:double;
+                                     a <http://www.w3.org/2002/07/owl#Ontology>,
+                                       <http://www.bbc.co.uk/ontologies/provenance/Ontology>;
+                                     rdfs:comment "An ontology to represent News Storylines."@en-gb;
+                                     rdfs:label "Storyline Ontology"@en-gb;
+                                     <http://www.w3.org/2002/07/owl#priorVersion> nsl:0.2;
+                                     <http://www.w3.org/2002/07/owl#versionIRI> nsl:0.3;
+                                     <http://www.w3.org/2002/07/owl#versionInfo> "0.3".
+nsl:Attribution a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Attribution of a storyline used for attributing the interpretation of the storyline to some agent. An interface class, that doesn't restrict the implementation of an attribution."@en-gb;
+                rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+                rdfs:label "Attribution"@en-gb;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:Event a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "A newsworthy event. An un-disputable real world event."@en-gb;
+          rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+          rdfs:label "Event"@en-gb;
+          rdfs:subClassOf nsl:StorylineComponent;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:Storyline a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A news storyline."@en-gb;
+              rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+              rdfs:label "Storyline"@en-gb;
+              rdfs:subClassOf nsl:StorylineComponent;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:StorylineComponent a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "An abstract parent class of storyline components."@en-gb;
+                       rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+                       rdfs:label "StorylineComponent"@en-gb;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:StorylineSlot a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "A storyline slot, used as a container for storyline components."@en-gb;
+                  rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+                  rdfs:label "StorylineSlot"@en-gb;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:Topic a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "The topic of a storyline. An interface to some concept in a knowledge domain."@en-gb;
+          rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+          rdfs:label "Topic"@en-gb;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:attributedTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Associates a storyline to its attribution. Provides for interpretation provenance through attribution"@en-gb;
+                 rdfs:domain nsl:Storyline;
+                 rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+                 rdfs:label "attributedTo"@en-gb;
+                 rdfs:range nsl:Attribution;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:comment a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+            rdfs:comment "An editorial comment on a storyline"@en-gb;
+            rdfs:domain nsl:Storyline;
+            rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+            rdfs:label "comment"@en-gb;
+            rdfs:range rdfs:Literal;
+            rdfs:subPropertyOf rdfs:comment;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:contains a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "Associates a Slot to a StorylineComponent contained therein. Can be a news event or another storyline"@en-gb;
+             rdfs:domain nsl:StorylineSlot;
+             rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+             rdfs:label "contains"@en-gb;
+             rdfs:range nsl:StorylineComponent;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:dateCreated a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "The date a storyline was created"@en-gb;
+                rdfs:domain nsl:StorylineComponent;
+                rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+                rdfs:label "dateCreated"@en-gb;
+                rdfs:range xsd:dateTime;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:follows a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment "Allows one or more slots to be sequenced. Slot A follows Slot B."@en-gb;
+            rdfs:domain nsl:StorylineSlot;
+            rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+            rdfs:label "follows"@en-gb;
+            rdfs:range nsl:StorylineSlot;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:hasChapter a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "Associates a slot to a storyline as a chapter of an existing storyline."@en-gb;
+               rdfs:domain nsl:Storyline;
+               rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+               rdfs:label "hasChapter"@en-gb;
+               rdfs:range nsl:StorylineSlot;
+               rdfs:subPropertyOf nsl:hasSlot;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:hasDevelopment a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Associates a slot to a storyline as a development of an existing storyline."@en-gb;
+                   rdfs:domain nsl:Storyline;
+                   rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+                   rdfs:label "hasDevelopment"@en-gb;
+                   rdfs:range nsl:StorylineSlot;
+                   rdfs:subPropertyOf nsl:hasSlot;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:hasSlot a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment "Associates a slot to a storyline. A storyline can have many slots"@en-gb;
+            rdfs:domain nsl:Storyline;
+            rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+            rdfs:label "hasSlot"@en-gb;
+            rdfs:range nsl:StorylineSlot;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:hasUpdate a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Associates a slot to a storyline as an update to an existing storyline."@en-gb;
+              rdfs:domain nsl:Storyline;
+              rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+              rdfs:label "hasUpdate"@en-gb;
+              rdfs:range nsl:StorylineSlot;
+              rdfs:subPropertyOf nsl:hasSlot;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:index a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:comment "A slot index. Allows slots to be ordered numerically"@en-gb;
+          rdfs:domain nsl:StorylineSlot;
+          rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+          rdfs:label "index"@en-gb;
+          rdfs:range xsd:integer;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:synopsis a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:comment "The synopsis of a storyline"@en-gb;
+             rdfs:domain nsl:Storyline;
+             rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+             rdfs:label "synopsis"@en-gb;
+             rdfs:range rdfs:Literal;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:time a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+         rdfs:comment "The time of a slot. A Temporal entity, an interval. Allows slots to be ordered temporally."@en-gb;
+         rdfs:domain nsl:StorylineSlot;
+         rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+         rdfs:label "time"@en-gb;
+         rdfs:range <http://www.w3.org/2006/time#TemporalEntity>;
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:title a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+          rdfs:comment "A title of a storyline"@en-gb;
+          rdfs:domain nsl:Storyline;
+          rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+          rdfs:label "title"@en-gb;
+          rdfs:range rdfs:Literal;
+          rdfs:subPropertyOf rdfs:label;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+nsl:topic a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:comment "Associates a slot to a topic"@en-gb;
+          rdfs:domain nsl:Storyline;
+          rdfs:isDefinedBy <http://purl.org/ontology/storyline>;
+          rdfs:label "topic"@en-gb;
+          rdfs:range nsl:Topic;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".

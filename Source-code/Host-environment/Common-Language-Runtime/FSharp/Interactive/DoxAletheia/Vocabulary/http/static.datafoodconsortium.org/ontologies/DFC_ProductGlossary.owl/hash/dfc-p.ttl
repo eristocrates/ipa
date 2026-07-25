@@ -1,0 +1,282 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+_:B5c9b854fa414375d5ff1558c0aa72a0f a <http://www.w3.org/2002/07/owl#Ontology>;
+                                    <http://www.w3.org/2002/07/owl#Annotation> [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                               [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                               [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>];
+                                    <http://www.w3.org/2002/07/owl#AnnotationAssertion> [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#Literal>];
+                                    <http://www.w3.org/2002/07/owl#ClassAssertion> [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                   [a <http://www.w3.org/2002/07/owl#NamedIndividual>],
+                                                                                   [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                   [a <http://www.w3.org/2002/07/owl#NamedIndividual>],
+                                                                                   [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                   [a <http://www.w3.org/2002/07/owl#NamedIndividual>],
+                                                                                   [a <http://www.w3.org/2002/07/owl#NamedIndividual>],
+                                                                                   [a <http://www.w3.org/2002/07/owl#Class>];
+                                    <http://www.w3.org/2002/07/owl#Declaration> [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                [a <http://www.w3.org/2002/07/owl#NamedIndividual>],
+                                                                                [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                [a <http://www.w3.org/2002/07/owl#NamedIndividual>],
+                                                                                [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                                [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                [a <http://www.w3.org/2002/07/owl#Class>];
+                                    <http://www.w3.org/2002/07/owl#Import> "http://static.datafoodconsortium.org/ontologies/DFC_TechnicalOntology.owl";
+                                    <http://www.w3.org/2002/07/owl#InverseObjectProperties> [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                            [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                            [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                            [a <http://www.w3.org/2002/07/owl#ObjectProperty>];
+                                    <http://www.w3.org/2002/07/owl#ObjectPropertyDomain> [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                         [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                         [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                         [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                         [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                         [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                         [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                         [a <http://www.w3.org/2002/07/owl#ObjectProperty>];
+                                    <http://www.w3.org/2002/07/owl#Prefix> "";
+                                    <http://www.w3.org/2002/07/owl#SubClassOf> [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [<http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectExactCardinality>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [<http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectExactCardinality>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectSomeValuesFrom>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [<http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectExactCardinality>],
+                                                                               [<http://www.w3.org/2002/07/owl#Class> "" ; 
+                                                                                <http://www.w3.org/2002/07/owl#ObjectProperty> "" ; 
+                                                                                a <http://www.w3.org/2002/07/owl#ObjectAllValuesFrom>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Class>];
+                                    <http://www.w3.org/2002/07/owl#SubObjectPropertyOf> [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#ObjectProperty>],
+                                                                                        [a <http://www.w3.org/2002/07/owl#ObjectProperty>].

@@ -1,0 +1,657 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix eem: <http://purl.org/eem#>.
+
+([<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2006/vcard/ns#adr> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#adr1> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc2> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B0f7980f08f8036e49176a87972c2344c a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B10f00b9239add3024a0e3407195d86a1 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B14f6bd7f7f1f9f33d1a62757561695e3 a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#classPredicate> eem:EPCISEvent ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+ a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:hasBusinessLocation ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#loc2> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:hasReadPointLocation ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#loc1> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2006/vcard/ns#adr> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#adr1> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc1> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2006/vcard/ns#adr> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#adr2> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc2> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#lat> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc1> ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2003/01/geo/wgs84_pos#long> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#lng> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc1> ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2003/01/geo/wgs84_pos#long> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#lat> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc2> ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2003/01/geo/wgs84_pos#long> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#lng> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc2> ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B1c22f320a970634a76d35e7d9748a75d a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B1c8f1423f24f3c61220f3fcd7f72d90a a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ([<http://www.w3.org/2003/11/swrl#classPredicate> eem:ObjectEvent ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:action ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> eem:ADD ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:associatedWithEPCList ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#set> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:hasBusinessStepType ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> <http://purl.org/cbv#commissioning> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]);
+                                    <http://www.w3.org/2003/11/swrl#head> ([<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:commissioned ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#set> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]).
+_:B1ede17d21aa868ca92c63df4fd07863f a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#classPredicate> eem:EPCISEvent ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e1> ; 
+ a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+ [<http://www.w3.org/2003/11/swrl#classPredicate> eem:EPCISEvent ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e2> ; 
+ a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:associatedWithEPCList ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#list> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e1> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:associatedWithEPCList ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#list> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e2> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:associatedWithItem ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#pdm> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e1> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.loa-cnr.it/ontologies/DUL.owl#directlyPrecedes> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#e2> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e1> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B220af03874439820954cdbaaa4e4541f a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#classPredicate> eem:EPCISEvent ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+ a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:hasBusinessLocation ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#loc2> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:hasReadPointLocation ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#loc1> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2006/vcard/ns#adr> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#adr2> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc2> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#lat> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc1> ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2006/vcard/ns#long> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#lng> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc1> ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2006/vcard/ns#long> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#lat> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc2> ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2006/vcard/ns#long> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#lng> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc2> ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B31ec3f3e34aec8d4a83edc0ff424406b a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B323354bbbccf2f55d0da143c95a33f24 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B39ca88ab5f7995e0a9f2b9dca6e4b753 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B3b6b78674b201901d07fc4c6899baf30 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B48b4d3f487c227c780615169034ddda1 a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#classPredicate> eem:TransactionEvent ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+ a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:action ; 
+ <http://www.w3.org/2003/11/swrl#argument2> eem:ADD ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:associatedWithEPCList ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#list> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:associatedWithTransactionList ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#transaction> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B4a2a84ffdabf3f496ebdf0c906788b97 a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ();
+                                    <http://www.w3.org/2003/11/swrl#head> ([<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:associatedWithItem ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#pdm> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e2> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]).
+_:B4ac75386670776a3df0233ef5de62c6a a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#adr2> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#adr1> ; 
+ a <http://www.w3.org/2003/11/swrl#SameIndividualAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B59b20e95f0247f1f3380ecf6bad55393 a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#classPredicate> eem:EPCISEvent ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+ a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:hasBusinessLocation ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#loc2> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:hasReadPointLocation ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#loc1> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2006/vcard/ns#adr> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#adr1> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc1> ; 
+ a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#lat> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc1> ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2003/01/geo/wgs84_pos#long> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#lng> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc1> ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2003/01/geo/wgs84_pos#long> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#lat> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc2> ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]
+ [<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2003/01/geo/wgs84_pos#long> ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#lng> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc2> ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B641455caaf6322a28a4e2324153f045c a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B66e7aa109889624e98cec17597255f07 a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ();
+                                    <http://www.w3.org/2003/11/swrl#head> ([<http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.w3.org/2006/vcard/ns#adr> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#adr2> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#loc1> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]).
+_:B6703e4e890248ae39ce6420a46fd82c1 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B6fe1c1cc841ec2f5f95f28db138625f0 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B712449ff2a16f729b870cf739b95b1c4 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B72267befe006439d303c8c2b44c65f60 a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:disassociatedWithAggregationID ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#id> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#set> ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B75115d4bc9758fcc92113a4eb500474c a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B7d2abb61977546a254a8985bcf05b3f5 a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ();
+                                    <http://www.w3.org/2003/11/swrl#head> ().
+_:B824d1fd8bf9dfac65d86bfc7137289e3 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B844f0828d4270aef771b67a9080299c4 a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ([<http://www.w3.org/2003/11/swrl#classPredicate> eem:ObjectEvent ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:action ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> eem:DELETE ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:associatedWithEPCList ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#set> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]);
+                                    <http://www.w3.org/2003/11/swrl#head> ([<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:decommissioned ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#set> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]).
+_:B859027ed54b6a054dc153aee2bf4ba86 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B8895d84a0423f84d7983ed76b7fdf811 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B901266ed9641e68ef88d716b7115bffe a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B9096810313bab6e67414607f61df4e10 a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:B95bc690d4958c5be2d672ea430cbb3aa a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ([<http://www.w3.org/2003/11/swrl#classPredicate> eem:AggregationEvent ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:action ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> eem:DELETE ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:associatedWithEPCList ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#set> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:aggregationID ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#id> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]);
+                                    <http://www.w3.org/2003/11/swrl#head> ().
+_:B9fba8c4170081fab482c3661c3d9df0c a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Ba5a10f2aeafa5c545c2bb540139f594a a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Ba659b6f30bd9e0766a484adecab22876 a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Baca2333044c1af5fafd97f2d33776b50 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bacc11f006557ce685100a716a6349200 a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bb6591647295b8c8994d575aab25cfc2f a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bb82c2a9655ac7eaf07485e2381206675 a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ();
+                                    <http://www.w3.org/2003/11/swrl#head> ([<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:associatedEPCAndTransaction ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#transaction> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#list> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]).
+_:Bc2834010cac2b5e7328d470d86f83223 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bc5825ed5e2699964897a4f34bc3b4201 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bc5e16c8bf9c59cde43a04a7fc4b73c5d a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bc74f26113f43d17b038637369b8f59c5 a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ();
+                                    <http://www.w3.org/2003/11/swrl#head> ().
+_:Bcb0b29b77d67e192fa11a574fb61fdf8 a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bd002049438f57929f637c10c7d364e33 a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bd7f0e1742bc68597656501d1dee2b91a a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Be4f1427c7fa50a756fbf40aa7bd27779 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (eem:AggregationEvent
+                                                                             eem:ObjectEvent
+                                                                             eem:QuantityEvent
+                                                                             eem:TransactionEvent).
+_:Be9197181a0d0a7ee2eaf162d377328fd a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Beaceb17a1d45f207ca8413321b2e16a2 a <http://www.w3.org/2003/11/swrl#AtomList>.
+([<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:associatedWithAggregationID ; 
+ <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#id> ; 
+ <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#set> ; 
+ a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]) a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bf62b7bfa0c1f92876a3f4cd85ad44dbe a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bf683d3002893afe3460be0628f1f6ed5 a <http://www.w3.org/2003/11/swrl#Imp>;
+                                    <http://www.w3.org/2003/11/swrl#body> ([<http://www.w3.org/2003/11/swrl#classPredicate> eem:AggregationEvent ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#ClassAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:action ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> eem:ADD ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:associatedWithEPCList ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#set> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom>]
+                                                                           [<http://www.w3.org/2003/11/swrl#propertyPredicate> eem:aggregationID ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#id> ; 
+                                                                           <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#e> ; 
+                                                                           a <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom>]);
+                                    <http://www.w3.org/2003/11/swrl#head> ().
+_:Bf9e18974198a9ba36aea52c9def0b7aa a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+_:Bfaab3f37629d840db8b9cd76a329bf07 a <http://www.w3.org/2003/11/swrl#AtomList>.
+() a <http://www.w3.org/2003/11/swrl#AtomList>.
+<http://purl.org/eem> <http://purl.org/dc/elements/1.1/creator> "Monika Solanki";
+                      <http://purl.org/dc/elements/1.1/title> "The EPCIS Event Model";
+                      <http://purl.org/dc/terms/created> "16/07/2013";
+                      a <http://www.w3.org/2002/07/owl#Ontology>;
+                      rdfs:seeAlso "http://www.gs1.org/gsmp/kc/epcglobal/epcis/epcis_1_0_1-standard-20070921.pdf";
+                      <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/2006/vcard/ns>,
+                                                              <http://purl.oclc.org/NET/ssnx/ssn>,
+                                                              <http://purl.org/cbv#>,
+                                                              <http://purl.org/goodrelations/v1>,
+                                                              <http://purl.org/co>;
+                      <http://www.w3.org/2002/07/owl#versionInfo> "1.1".
+eem:ADD a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+          eem:Action;
+        rdfs:comment "The entity in question has been created or added to".
+eem:Action a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "The Action type says how an event relates to the lifecycle of the entity being described.".
+eem:AggregationEvent a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment """Represents an event that happened to one or more entities denoted by EPCs that are phys
+ically aggregated together (physically constrained to be in the same place at the same time, as when cases are aggregated to a pallet). """;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> eem:Action ; 
+                                                                                      <http://www.w3.org/2002/07/owl#onProperty> eem:action ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> eem:SetofEPCs ; 
+                                                                                      <http://www.w3.org/2002/07/owl#onProperty> eem:associatedWithEPCList ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                      [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                      <http://www.w3.org/2002/07/owl#onProperty> eem:aggregationID ; 
+                                                                                      <http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                      a <http://www.w3.org/2002/07/owl#Class>],
+                                     eem:EPCISEvent.
+eem:AggregationID a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "A concept represent the aggregation identifier of a packagaing unit";
+                  rdfs:subClassOf eem:EPC.
+eem:BusinessLocation a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf <http://purl.org/goodrelations/v1#Location>.
+eem:DELETE a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             eem:Action;
+           rdfs:comment """The entity in question has been removed from or destroyed
+altogether. """.
+eem:DestinationLocation a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Added in version 1.1";
+                        rdfs:subClassOf <http://purl.org/goodrelations/v1#Location>.
+eem:EPC a <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:comment """A class for encapsulating the EPC for a physical thing through the datatype property
+hasEPCValue. """;
+        rdfs:label "Electronic Product Code";
+        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/goodrelations/v1#Individual> ; 
+                                                                         <http://www.w3.org/2002/07/owl#onProperty> eem:associatedWithItem ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                         [<http://www.w3.org/2002/07/owl#onProperty> eem:associatedWithItem ; 
+                                                                         <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>].
+eem:EPCClass a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A class-level identifier for the class to which the specified quantity of objects belongs.";
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.loa-cnr.it/ontologies/DUL.owl#Collection> ; 
+                                                                              <http://www.w3.org/2002/07/owl#onProperty> eem:associatedWithItem ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                              [<http://www.w3.org/2002/07/owl#onProperty> eem:associatedWithItem ; 
+                                                                              <http://www.w3.org/2002/07/owl#allValuesFrom> <http://www.loa-cnr.it/ontologies/DUL.owl#Collection> ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                              a <http://www.w3.org/2002/07/owl#Class>].
+eem:EPCISEvent a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> eem:eventOccurredAt ; 
+                                <http://www.w3.org/2002/07/owl#onDataRange> xsd:dateTime ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> eem:eventTimeZoneOffset ; 
+                                <http://www.w3.org/2002/07/owl#onDataRange> xsd:dateTime ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> eem:eventRecordedAt ; 
+                                <http://www.w3.org/2002/07/owl#onDataRange> xsd:dateTime ; 
+                                <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>].
+eem:EPCReader a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                               <http://www.w3.org/2002/07/owl#onProperty> eem:logicalReaderID ; 
+                                                                               <http://www.w3.org/2002/07/owl#onDataRange> xsd:anyURI ; 
+                                                                               a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                               [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                               <http://www.w3.org/2002/07/owl#onProperty> eem:physicalReaderID ; 
+                                                                               <http://www.w3.org/2002/07/owl#onDataRange> xsd:anyURI ; 
+                                                                               a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>],
+                              <http://purl.oclc.org/NET/ssnx/ssn#SensingDevice>.
+eem:InputQuantityList a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Added in version 1.1";
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> eem:QuantityElement ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/co/element> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      <http://purl.org/co/Bag>.
+eem:OBSERVE a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              eem:Action;
+            rdfs:comment "The entity in question has not been changed: it has neither been created, added to, destroyed, or removed from.".
+eem:ObjectEvent a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment """An ObjectEvent captures information about an event pertaining to one or more
+physical objects identified by EPCs. """;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> eem:Action ; 
+                                                                                 <http://www.w3.org/2002/07/owl#onProperty> eem:action ; 
+                                                                                 a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> eem:SetofEPCs ; 
+                                                                                 <http://www.w3.org/2002/07/owl#onProperty> eem:associatedWithEPCList ; 
+                                                                                 a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>],
+                                eem:EPCISEvent.
+eem:OutputQuantityList a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Added in version 1.1";
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> eem:QuantityElement ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/co/element> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       <http://purl.org/co/Bag>.
+eem:QuantityElement a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Added in version 1.1";
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> eem:hasEPCClass ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onDataRange> xsd:anyURI ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                     [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onProperty> eem:quantity ; 
+                                                                                     <http://www.w3.org/2002/07/owl#onDataRange> xsd:integer ; 
+                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                     a <http://www.w3.org/2002/07/owl#Class>],
+                                    <http://purl.org/co/Item>.
+eem:QuantityEvent a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment """represents an event concerned with a specific
+quantity of entities sharing a common EPC class""";
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                   <http://www.w3.org/2002/07/owl#onProperty> eem:hasEPCClass ; 
+                                                                                   <http://www.w3.org/2002/07/owl#onDataRange> xsd:anyURI ; 
+                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                   [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                   <http://www.w3.org/2002/07/owl#onProperty> eem:quantity ; 
+                                                                                   <http://www.w3.org/2002/07/owl#onDataRange> xsd:integer ; 
+                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>],
+                                  eem:EPCISEvent.
+eem:ReadPointLocation a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf <http://purl.org/goodrelations/v1#Location>.
+eem:SetOfEvents a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/co/element> ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> eem:EPCISEvent ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                <http://purl.org/co/Set>.
+eem:SetOfTransactions a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/co/element> ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> eem:Transaction ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      <http://purl.org/co/Set>.
+eem:SetofEPCs a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/co/element> ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> eem:EPC ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              <http://purl.org/co/Set>.
+eem:SourceLocation a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Added in version 1.1";
+                   rdfs:subClassOf <http://purl.org/goodrelations/v1#Location>.
+eem:Transaction a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onProperty> eem:hasTransactionType ; 
+                                                                                 <http://www.w3.org/2002/07/owl#onClass> <http://purl.org/cbv#TransactionType> ; 
+                                                                                 <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                                                                 a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                 [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                 <http://www.w3.org/2002/07/owl#onProperty> eem:transactionID ; 
+                                                                                 <http://www.w3.org/2002/07/owl#onDataRange> xsd:anyURI ; 
+                                                                                 a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>].
+eem:TransactionEvent a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment """represents an event in which one or more entities 
+denoted by EPCs become associated
+or disassociated with one or more
+identified business transactions. """;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> eem:Action ; 
+                                                                                      <http://www.w3.org/2002/07/owl#onProperty> eem:action ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> eem:SetofEPCs ; 
+                                                                                      <http://www.w3.org/2002/07/owl#onProperty> eem:associatedWithEPCList ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                      [<http://www.w3.org/2002/07/owl#someValuesFrom> eem:SetOfTransactions ; 
+                                                                                      <http://www.w3.org/2002/07/owl#onProperty> eem:associatedWithTransactionList ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                      a <http://www.w3.org/2002/07/owl#Class>],
+                                     eem:EPCISEvent.
+eem:TransformationEvent a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment """Added in version 1.1. Represents an event in which input
+objects are fully or partially consumed and output objects are produced, such that any of the input objects may have contributed to all of the output objects.""";
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#intersectionOf> (eem:EPCISEvent
+                                                                                                                                  [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#onProperty> eem:associatedWithInputEPCList ; 
+                                                                                                                                                                                                                    <http://www.w3.org/2002/07/owl#allValuesFrom> eem:SetofEPCs ; 
+                                                                                                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                                                                                                    [<http://www.w3.org/2002/07/owl#onProperty> eem:hasInputQuantityList ; 
+                                                                                                                                                                                                                    <http://www.w3.org/2002/07/owl#allValuesFrom> eem:InputQuantityList ; 
+                                                                                                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                                                                                                           a <http://www.w3.org/2002/07/owl#Class>]
+                                                                                                                                                                           [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#onProperty> eem:associatedWithOutputEPCList ; 
+                                                                                                                                                                                                                    <http://www.w3.org/2002/07/owl#allValuesFrom> eem:SetofEPCs ; 
+                                                                                                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                                                                                                    [<http://www.w3.org/2002/07/owl#onProperty> eem:hasOutputQuantityList ; 
+                                                                                                                                                                                                                    <http://www.w3.org/2002/07/owl#allValuesFrom> eem:OutputQuantityList ; 
+                                                                                                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                                                                                                           a <http://www.w3.org/2002/07/owl#Class>]) ; 
+                                                                                                                                  a <http://www.w3.org/2002/07/owl#Class>]
+                                                                                                                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> eem:TransformationEvent ; 
+                                                                                                                                  <http://www.w3.org/2002/07/owl#onProperty> eem:associatedWithTransformationEvent ; 
+                                                                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Class>]
+                                                                                  [<http://www.w3.org/2002/07/owl#intersectionOf> (eem:EPCISEvent
+                                                                                                                                  [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> eem:SetofEPCs ; 
+                                                                                                                                                                           <http://www.w3.org/2002/07/owl#onProperty> eem:associatedWithInputEPCList ; 
+                                                                                                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> eem:InputQuantityList ; 
+                                                                                                                                                                           <http://www.w3.org/2002/07/owl#onProperty> eem:hasInputQuantityList ; 
+                                                                                                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                                                                  a <http://www.w3.org/2002/07/owl#Class>]
+                                                                                                                                  [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> eem:SetofEPCs ; 
+                                                                                                                                                                           <http://www.w3.org/2002/07/owl#onProperty> eem:associatedWithOutputEPCList ; 
+                                                                                                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> eem:OutputQuantityList ; 
+                                                                                                                                                                           <http://www.w3.org/2002/07/owl#onProperty> eem:hasOutputQuantityList ; 
+                                                                                                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                                                                  a <http://www.w3.org/2002/07/owl#Class>]) ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Class>]) ; 
+                                         a <http://www.w3.org/2002/07/owl#Class>].
+eem:action a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:range eem:Action.
+eem:aggregationID a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                    <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                  rdfs:range xsd:string.
+eem:associatedEPCAndTransaction a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+eem:associatedWithAggregationID a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                rdfs:domain eem:SetofEPCs;
+                                rdfs:range xsd:anyURI,
+                                           xsd:string.
+eem:associatedWithEPC a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "A product is associated with an EPC";
+                      rdfs:domain <http://schema.org/Product>;
+                      rdfs:range eem:EPC;
+                      rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topObjectProperty>.
+eem:associatedWithEPCList a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                            <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                          rdfs:range eem:SetofEPCs.
+eem:associatedWithInputEPCList a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                 <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                               rdfs:subPropertyOf eem:associatedWithEPCList.
+eem:associatedWithItem a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain eem:EPC;
+                       rdfs:range <http://schema.org/Product>.
+eem:associatedWithOutputEPCList a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                  <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                rdfs:subPropertyOf eem:associatedWithEPCList.
+eem:associatedWithTransactionList a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                    <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                  rdfs:domain eem:TransactionEvent;
+                                  rdfs:range eem:SetOfTransactions.
+eem:associatedWithTransformationEvent a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                        <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                                        <http://www.w3.org/2002/07/owl#TransitiveProperty>.
+eem:commissioned a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+eem:decommissioned a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The EPC(s) named in the event have been decommissioned as part of this event; that is, the EPC(s) do not exist subsequent to the event and should not be observed again".
+eem:directlyFollowsEvent a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                           <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                         rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#directlyFollows>;
+                         <http://www.w3.org/2002/07/owl#inverseOf> eem:directlyPrecedesEvent.
+eem:directlyPrecedesEvent a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                            <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                          rdfs:domain eem:EPCISEvent;
+                          rdfs:range eem:EPCISEvent;
+                          rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#directlyPrecedes>.
+eem:disassociatedWithAggregationID a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                   rdfs:domain eem:SetofEPCs;
+                                   rdfs:range xsd:anyURI,
+                                              xsd:string;
+                                   rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+eem:eventOccurredAt a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                      <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                    rdfs:domain eem:EPCISEvent;
+                    rdfs:range xsd:dateTime.
+eem:eventRecordedAt a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                      <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                    rdfs:domain eem:EPCISEvent;
+                    rdfs:range xsd:dateTime.
+eem:eventTimeZoneOffset a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                          <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                        rdfs:domain eem:EPCISEvent;
+                        rdfs:range xsd:dateTime.
+eem:hasBusinessLocation a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                          <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                        rdfs:range eem:BusinessLocation.
+eem:hasBusinessStepType a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                          <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                        rdfs:domain eem:EPCISEvent;
+                        rdfs:range <http://purl.org/cbv#BusinessStep>.
+eem:hasChildAddress a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:range <http://www.w3.org/2006/vcard/ns#Address>.
+eem:hasClassLevelMasterData a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                            rdfs:domain eem:EPC.
+eem:hasDispositionType a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                         <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                       rdfs:range <http://purl.org/cbv#Disposition>.
+eem:hasEPCClass a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                  <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                rdfs:domain eem:QuantityEvent;
+                rdfs:range xsd:anyURI.
+eem:hasEPCID a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+               <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+             rdfs:domain eem:EPC;
+             rdfs:range xsd:anyURI,
+                        xsd:string.
+eem:hasInputQuantityList a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+eem:hasOutputQuantityList a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+eem:hasReadPointLocation a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                           <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                         rdfs:range eem:ReadPointLocation.
+eem:hasTransactionReference a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+eem:hasTransactionType a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                         <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                       rdfs:domain eem:Transaction;
+                       rdfs:range <http://purl.org/cbv#TransactionType>.
+eem:locationType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain eem:BusinessLocation,
+                             eem:ReadPointLocation.
+eem:logicalReaderID a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:domain eem:EPCReader.
+eem:physicalReaderID a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:domain eem:EPCReader.
+eem:quantity a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+               <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+             rdfs:domain eem:QuantityEvent;
+             rdfs:range xsd:integer.
+eem:recordedByReader a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain eem:EPCISEvent;
+                     rdfs:range eem:EPCReader.
+eem:transactionID a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                    <http://www.w3.org/2002/07/owl#FunctionalProperty>.
+<http://www.w3.org/2003/01/geo/wgs84_pos#lat> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.w3.org/2003/01/geo/wgs84_pos#long> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.w3.org/2006/vcard/ns#long> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<urn:swrl#adr1> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#adr2> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#e> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#e1> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#e2> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#id> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#lat> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#list> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#lng> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#loc1> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#loc2> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#pdm> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#set> a <http://www.w3.org/2003/11/swrl#Variable>.
+<urn:swrl#transaction> a <http://www.w3.org/2003/11/swrl#Variable>.

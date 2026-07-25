@@ -1,0 +1,109 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix msm: <http://iserve.kmi.open.ac.uk/ns/msm#>.
+
+<http://iserve.kmi.open.ac.uk/ns/msm> <http://purl.org/dc/terms/created> "2010-03-10"^^xsd:date;
+                                      <http://purl.org/dc/terms/creator> <http://identifiers.kmi.open.ac.uk/people/carlos-pedrinaci/>,
+                                                                         <http://kmi.open.ac.uk/people/member/luca-panziera>,
+                                                                         <http://kmi.open.ac.uk/>,
+                                                                         <http://jacek.cz/#me>;
+                                      <http://purl.org/dc/terms/description> "This is a simple ontology that provides the core vocabulary for capturing service properties"@en;
+                                      <http://purl.org/dc/terms/issued> "2010-03-10"^^xsd:date;
+                                      <http://purl.org/dc/terms/modified> "2012-03-14"^^xsd:date,
+                                                                          "2011-12-03"^^xsd:date,
+                                                                          "2013-11-21"^^xsd:date,
+                                                                          "2014-09-03"^^xsd:date,
+                                                                          "2013-05-03"^^xsd:date;
+                                      a <http://www.w3.org/2002/07/owl#Ontology>;
+                                      rdfs:label "Minimal Service Model"@en;
+                                      <http://www.w3.org/2002/07/owl#imports> <http://www.wsmo.org/ns/wsmo-lite>,
+                                                                              <http://www.w3.org/ns/sawsdl>;
+                                      <http://www.w3.org/2002/07/owl#versionInfo> "1.3".
+msm:MessageContent a rdfs:Class;
+                   rdfs:isDefinedBy <http://iserve.kmi.open.ac.uk/ns/msm>;
+                   rdfs:label "Message Content"@en;
+                   rdfs:subClassOf msm:MessagePart;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+msm:MessagePart a rdfs:Class;
+                rdfs:isDefinedBy <http://iserve.kmi.open.ac.uk/ns/msm>;
+                rdfs:label "Message Part"@en;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+msm:Operation a rdfs:Class;
+              rdfs:isDefinedBy <http://iserve.kmi.open.ac.uk/ns/msm>;
+              rdfs:label "Operation"@en;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+msm:Service a rdfs:Class;
+            rdfs:isDefinedBy <http://iserve.kmi.open.ac.uk/ns/msm>;
+            rdfs:label "Service"@en;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+msm:hasFault a rdf:Property;
+             rdfs:domain msm:Operation;
+             rdfs:isDefinedBy <http://iserve.kmi.open.ac.uk/ns/msm>;
+             rdfs:label "has Fault"@en;
+             rdfs:range msm:MessageContent;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+msm:hasInput a rdf:Property;
+             rdfs:domain msm:Operation;
+             rdfs:isDefinedBy <http://iserve.kmi.open.ac.uk/ns/msm>;
+             rdfs:label "has Input"@en;
+             rdfs:range msm:MessageContent;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+msm:hasInputFault rdfs:domain msm:Operation;
+                  rdfs:isDefinedBy <http://iserve.kmi.open.ac.uk/ns/msm>;
+                  rdfs:label "has Input Fault"@en;
+                  rdfs:range msm:MessageContent;
+                  rdfs:subPropertyOf msm:hasFault;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "archaic".
+msm:hasMandatoryPart a rdf:Property;
+                     rdfs:isDefinedBy <http://iserve.kmi.open.ac.uk/ns/msm>;
+                     rdfs:label "has Mandatory Part"@en;
+                     rdfs:subPropertyOf msm:hasPart;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+msm:hasName a rdf:Property;
+            rdfs:domain msm:MessagePart;
+            rdfs:isDefinedBy <http://iserve.kmi.open.ac.uk/ns/msm>;
+            rdfs:label "has Name"@en;
+            rdfs:range rdfs:Literal;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+msm:hasOperation a rdf:Property;
+                 rdfs:domain msm:Service;
+                 rdfs:isDefinedBy <http://iserve.kmi.open.ac.uk/ns/msm>;
+                 rdfs:label "has Operation"@en;
+                 rdfs:range msm:Operation;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+msm:hasOptionalPart a rdf:Property;
+                    rdfs:isDefinedBy <http://iserve.kmi.open.ac.uk/ns/msm>;
+                    rdfs:label "has Optional Part"@en;
+                    rdfs:subPropertyOf msm:hasPart;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+msm:hasOutput a rdf:Property;
+              rdfs:domain msm:Operation;
+              rdfs:isDefinedBy <http://iserve.kmi.open.ac.uk/ns/msm>;
+              rdfs:label "has Output"@en;
+              rdfs:range msm:MessageContent;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+msm:hasOutputFault rdfs:domain msm:Operation;
+                   rdfs:isDefinedBy <http://iserve.kmi.open.ac.uk/ns/msm>;
+                   rdfs:label "has Output Fault"@en;
+                   rdfs:range msm:MessageContent;
+                   rdfs:subPropertyOf msm:hasFault;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "archaic".
+msm:hasPart a rdf:Property;
+            rdfs:isDefinedBy <http://iserve.kmi.open.ac.uk/ns/msm>;
+            rdfs:label "has Part"@en;
+            rdfs:subPropertyOf msm:hasPartTransitive;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+msm:hasPartTransitive a <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+                      rdfs:domain msm:MessagePart;
+                      rdfs:isDefinedBy <http://iserve.kmi.open.ac.uk/ns/msm>;
+                      rdfs:label "has Part Transitive"@en;
+                      rdfs:range msm:MessagePart;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+msm:isGroundedIn a rdf:Property;
+                 rdfs:domain msm:Service,
+                             msm:Operation,
+                             msm:MessagePart;
+                 rdfs:isDefinedBy <http://iserve.kmi.open.ac.uk/ns/msm>;
+                 rdfs:label "is grounded in"@en;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".

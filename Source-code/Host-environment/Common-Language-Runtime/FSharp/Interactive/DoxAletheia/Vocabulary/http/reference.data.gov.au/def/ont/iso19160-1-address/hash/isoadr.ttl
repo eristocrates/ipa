@@ -1,0 +1,921 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix isoadr: <http://reference.data.gov.au/def/ont/iso19160-1-address#>.
+
+<http://def.isotc211.org/iso19103/2015/AnyType#Any> a <http://www.w3.org/2002/07/owl#Class>.
+<http://def.isotc211.org/iso19107/2003/GeometryRoot#GM_Object> a <http://www.w3.org/2002/07/owl#Class>.
+<http://def.isotc211.org/iso19115/-1/2014/CitationAndResponsiblePartyInformation#CI_Citation> a <http://www.w3.org/2002/07/owl#Class>.
+<http://def.isotc211.org/iso19115/-1/2014/CitationAndResponsiblePartyInformation#CI_Organisation> a <http://www.w3.org/2002/07/owl#Class>.
+<http://def.isotc211.org/iso19115/-1/2014/LineageInformation#LI_Lineage> a <http://www.w3.org/2002/07/owl#Class>.
+<http://def.isotc211.org/iso19135/-1/2015/ExtendedModel#RE_Locale> a <http://www.w3.org/2002/07/owl#Class>.
+<http://def.isotc211.org/iso19135/2005/ProceduresForItemRegistration#RE_Locale> a <http://www.w3.org/2002/07/owl#Class>.
+<http://def.isotc211.org/iso19150/-2/2012/base#aggregationType> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                                                rdfs:label "aggregation type"@en.
+<http://def.isotc211.org/iso19150/-2/2012/base#associationName> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                                                rdfs:label "assocation name"@en.
+<http://def.isotc211.org/iso19150/-2/2012/base#constraint> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                                           rdfs:label "constraint"@en.
+<http://def.isotc211.org/iso19152/2012/SpecialClasses#Oid> a <http://www.w3.org/2002/07/owl#Class>.
+<http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#BusinessRegister> a <http://www.w3.org/2002/07/owl#Class>.
+<http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#Client> a <http://www.w3.org/2002/07/owl#Class>.
+<http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#Employee> a <http://www.w3.org/2002/07/owl#Class>.
+<http://reference.data.gov.au/def/ont/iso19160-1-address> <http://purl.org/dc/elements/1.1/contributor> "Nicholas Car",
+                                                                                                        "Australian Government Linked Data Working Group";
+                                                          <http://purl.org/dc/elements/1.1/creator> "ISO TC211, Group for Ontology Management";
+                                                          <http://purl.org/dc/elements/1.1/publisher> "Australian Government Linked Data Working Group";
+                                                          <http://purl.org/dc/terms/created> "2017-11-27"^^xsd:date;
+                                                          <http://purl.org/dc/terms/source> "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                                          a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                          rdfs:comment """This ontology is a version of the ISO TC211, Group for Ontology Management (GOM)'s OWL ontology interpretation of the ISO19160-1:2015 \"Addressing -- Part 1: Conceptual model\" standard (see https://www.iso.org/standard/61710.html) taken from that ontology's source code, published at https://github.com/ISO-TC211/GOM/tree/master/isotc211_GOM_harmonizedOntology/19160-1/2015.
+
+This version uses different URIs for the ontology so that they can be made to resolve through the Australian Government Linked Data Working Groups redirect services where the original ontology's URIs do not resolve.
+
+This ontology also has had the code lists removed thus preserving the data model but not the vocabularies. The code lists are published separately at http://reference.data.gov.au/def/ont/iso19160-1-address/codelist.
+
+Additionally, this version adds some metadata, such as this explanation, some further annotation properties to better display elements of the ontology and includes a human-readable (HTML) version of the ontology generated from the RDF version.
+
+As the GOM's version of the ontology evolves, we will keep this version up-to-date as we intend to only publish an easier-to-access version of their ontology here, not to profile it."""@en;
+                                                          rdfs:label "ISO19160-1:2015 Address ontology";
+                                                          <http://www.w3.org/2002/07/owl#imports> <http://def.isotc211.org/iso19160/-1/2015/Profile_Minimal>,
+                                                                                                  <http://def.isotc211.org/iso19160/-1/2015/ExternalClasses>,
+                                                                                                  <http://def.isotc211.org/iso19150/-2/2012/base>;
+                                                          <http://www.w3.org/2002/07/owl#versionIRI> <http://reference.data.gov.au/def/ont/iso19160-1-address/1.1>;
+                                                          <http://www.w3.org/2002/07/owl#versionInfo> "1.1".
+isoadr:Address <http://def.isotc211.org/iso19150/-2/2012/base#constraint> "For Provenance conformance, provenance shall be mandatory"@en;
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+               rdfs:label "Address"@en;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.preferenceLevel ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.position ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressPosition ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.status ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.status ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressStatus ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.lifespan ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.addressComponent ; 
+                                <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.preferenceLevel ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:integer ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.business_branch ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#BusinessRegister> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.lifespan ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:Lifespan ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.employee ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#Employee> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.locale ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19135/-1/2015/ExtendedModel#RE_Locale> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.lifecycleStage ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.specification ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressSpecification ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.theAddressAlias ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressAlias ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.id ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.childAddress ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:Address ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.id ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19152/2012/SpecialClasses#Oid> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.business_headOffice ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#BusinessRegister> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.addressComponent ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressComponent ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.locale ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.theAddressedPeriod ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressedPeriod ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.class ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressClass ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.parentAddress ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:Address ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.provenance ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressProvenance ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.provenance ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.lifecycleStage ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressLifecycleStage ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.parentAddress ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.class ; 
+                                <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Address.client ; 
+                                <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#Client> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>];
+               <http://www.w3.org/2004/02/skos/core#definition> "Structured information that allows the unambiguous determination of an object for purposes of identification and location."@en.
+isoadr:Address.addressComponent <http://def.isotc211.org/iso19150/-2/2012/base#aggregationType> "partOfSharedAggregation";
+                                <http://def.isotc211.org/iso19150/-2/2012/base#associationName> "comprises";
+                                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain isoadr:Address;
+                                rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                rdfs:label "address component"@en;
+                                rdfs:range isoadr:AddressComponent.
+isoadr:Address.business_branch a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:domain isoadr:Address;
+                               rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                               rdfs:label "business"@en;
+                               rdfs:range <http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#BusinessRegister>.
+isoadr:Address.business_headOffice a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:domain isoadr:Address;
+                                   rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                   rdfs:label "business"@en;
+                                   rdfs:range <http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#BusinessRegister>.
+isoadr:Address.childAddress <http://def.isotc211.org/iso19150/-2/2012/base#associationName> "parent";
+                            a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:domain isoadr:Address;
+                            rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                            rdfs:label "child address"@en;
+                            rdfs:range isoadr:Address;
+                            <http://www.w3.org/2002/07/owl#inverseOf> isoadr:Address.parentAddress.
+isoadr:Address.class a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain isoadr:Address;
+                     rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                     rdfs:label "class"@en;
+                     rdfs:range isoadr:AddressClass;
+                     <http://www.w3.org/2004/02/skos/core#definition> "Code that specifies the address class to which the address belongs."@en.
+isoadr:Address.client a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain isoadr:Address;
+                      rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                      rdfs:label "client"@en;
+                      rdfs:range <http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#Client>.
+isoadr:Address.employee a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain isoadr:Address;
+                        rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                        rdfs:label "employee"@en;
+                        rdfs:range <http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#Employee>.
+isoadr:Address.id a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain isoadr:Address;
+                  rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                  rdfs:label "id"@en;
+                  rdfs:range <http://def.isotc211.org/iso19152/2012/SpecialClasses#Oid>;
+                  <http://www.w3.org/2004/02/skos/core#definition> "Unique character string that identifies the address."@en.
+isoadr:Address.lifecycleStage a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:domain isoadr:Address;
+                              rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                              rdfs:label "lifecycle stage"@en;
+                              rdfs:range isoadr:AddressLifecycleStage;
+                              <http://www.w3.org/2004/02/skos/core#definition> "Code that specifies the phase an address has reached in its lifecycle."@en.
+isoadr:Address.lifespan a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain isoadr:Address;
+                        rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                        rdfs:label "lifespan"@en;
+                        rdfs:range isoadr:Lifespan;
+                        <http://www.w3.org/2004/02/skos/core#definition> "Information about the period over which an address exists"@en.
+isoadr:Address.locale a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain isoadr:Address;
+                      rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                      rdfs:label "locale"@en;
+                      rdfs:range <http://def.isotc211.org/iso19135/-1/2015/ExtendedModel#RE_Locale>;
+                      <http://www.w3.org/2004/02/skos/core#definition> "A set or parameters that specify the cultural and linguistic environment."@en.
+isoadr:Address.parentAddress <http://def.isotc211.org/iso19150/-2/2012/base#associationName> "parent";
+                             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain isoadr:Address;
+                             rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                             rdfs:label "parent address"@en;
+                             rdfs:range isoadr:Address.
+isoadr:Address.position a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain isoadr:Address;
+                        rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                        rdfs:label "position"@en;
+                        rdfs:range isoadr:AddressPosition;
+                        <http://www.w3.org/2004/02/skos/core#definition> "Geometry (coordinates) that represents the address location."@en.
+isoadr:Address.preferenceLevel a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                               rdfs:domain isoadr:Address;
+                               rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                               rdfs:label "preference level"@en;
+                               rdfs:range xsd:integer;
+                               <http://www.w3.org/2004/02/skos/core#definition> """Indicates the ranking of the address in a set of address aliases. 1 indicates highest ranking.
+
+EXAMPLE 1 A building on a street corner could be referenced by two addresses. One of them could have its preferenceLevel set to 1.
+
+EXAMPLE 2 In Switzerland, addresses containing German and French names, e.g. Biel (German) and Bienne (French), are different addresses with the same preference level."""@en.
+isoadr:Address.provenance a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain isoadr:Address;
+                          rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                          rdfs:label "provenance"@en;
+                          rdfs:range isoadr:AddressProvenance;
+                          <http://www.w3.org/2004/02/skos/core#definition> "Information about the source or origin of the address, such as the authority who assigned the address, the owner of the address data instance, and lineage of the address."@en.
+isoadr:Address.specification <http://def.isotc211.org/iso19150/-2/2012/base#associationName> "specifies";
+                             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain isoadr:Address;
+                             rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                             rdfs:label "specification"@en;
+                             rdfs:range isoadr:AddressSpecification.
+isoadr:Address.status a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain isoadr:Address;
+                      rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                      rdfs:label "status"@en;
+                      rdfs:range isoadr:AddressStatus;
+                      <http://www.w3.org/2004/02/skos/core#definition> "Code that specifies the nature of the address assignment."@en.
+isoadr:Address.theAddressAlias <http://def.isotc211.org/iso19150/-2/2012/base#associationName> "alias";
+                               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:domain isoadr:Address;
+                               rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                               rdfs:label "the address alias"@en;
+                               rdfs:range isoadr:AddressAlias;
+                               <http://www.w3.org/2002/07/owl#inverseOf> isoadr:AddressAlias.address,
+                                                                         isoadr:AddressAlias.aliasAddress.
+isoadr:Address.theAddressedPeriod <http://def.isotc211.org/iso19150/-2/2012/base#associationName> "allows unambiguous determination";
+                                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain isoadr:Address;
+                                  rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                  rdfs:label "the addressed period"@en;
+                                  rdfs:range isoadr:AddressedPeriod;
+                                  <http://www.w3.org/2002/07/owl#inverseOf> isoadr:AddressedPeriod.address.
+isoadr:AddressAlias a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                    rdfs:label "Address Alias"@en;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressAlias.type ; 
+                                     <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressAliasType ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressAlias.type ; 
+                                     <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressAlias.aliasAddress ; 
+                                     <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:Address ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressAlias.aliasAddress ; 
+                                     <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressAlias.address ; 
+                                     <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:Address ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressAlias.address ; 
+                                     <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>];
+                    <http://www.w3.org/2004/02/skos/core#definition> "Information about an address alias."@en.
+isoadr:AddressAlias.address <http://def.isotc211.org/iso19150/-2/2012/base#associationName> "alias";
+                            a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:domain isoadr:AddressAlias;
+                            rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                            rdfs:label "address"@en;
+                            rdfs:range isoadr:Address.
+isoadr:AddressAlias.aliasAddress <http://def.isotc211.org/iso19150/-2/2012/base#associationName> "alias";
+                                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:domain isoadr:AddressAlias;
+                                 rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                 rdfs:label "alias address"@en;
+                                 rdfs:range isoadr:Address.
+isoadr:AddressAlias.type a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain isoadr:AddressAlias;
+                         rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                         rdfs:label "type"@en;
+                         rdfs:range isoadr:AddressAliasType;
+                         <http://www.w3.org/2004/02/skos/core#definition> "Code that specifies which justification for an alias applies to the address at the destination end of the association. The default value is unspecifiedAlias."@en.
+isoadr:AddressAliasType a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                        rdfs:label "Address Alias Type"@en;
+                        rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+isoadr:AddressClass a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                    rdfs:label "Address Class"@en;
+                    rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+isoadr:AddressClassSpecification a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                 rdfs:label "Address Class Specification"@en;
+                                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressClassSpecification.component ; 
+                                                  <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressClassSpecification.typology ; 
+                                                  <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressTypology ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressClassSpecification.typology ; 
+                                                  <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressClassSpecification.class ; 
+                                                  <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressClassSpecification.component ; 
+                                                  <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressComponentType ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                 [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressClassSpecification.class ; 
+                                                  <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressClass ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>];
+                                 <http://www.w3.org/2004/02/skos/core#definition> "Information about the address class."@en.
+isoadr:AddressClassSpecification.class a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:domain isoadr:AddressClassSpecification;
+                                       rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                       rdfs:label "class"@en;
+                                       rdfs:range isoadr:AddressClass;
+                                       <http://www.w3.org/2004/02/skos/core#definition> "Code that specifies the address class to which the address belongs."@en.
+isoadr:AddressClassSpecification.component a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:domain isoadr:AddressClassSpecification;
+                                           rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                           rdfs:label "component"@en;
+                                           rdfs:range isoadr:AddressComponentType;
+                                           <http://www.w3.org/2004/02/skos/core#definition> "The set of one or more address component types that may be considered together in various combinations to constitute an address of this class."@en.
+isoadr:AddressClassSpecification.typology a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                          rdfs:domain isoadr:AddressClassSpecification;
+                                          rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                          rdfs:label "typology"@en;
+                                          rdfs:range isoadr:AddressTypology;
+                                          <http://www.w3.org/2004/02/skos/core#definition> "Code that specifies the type of address class."@en.
+isoadr:AddressComponent <http://def.isotc211.org/iso19150/-2/2012/base#constraint> "For Provenance conformance, provenance shall be mandatory"@en;
+                        a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                        rdfs:label "Address Component"@en;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.type ; 
+                                         <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.scopeComponent ; 
+                                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.type ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressComponentType ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.provenance ; 
+                                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.lifespan ; 
+                                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.locale ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19135/-1/2015/ExtendedModel#RE_Locale> ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.locale ; 
+                                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.provenance ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressProvenance ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.valueComponent ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressComponent ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.lifespan ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:Lifespan ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.id ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19152/2012/SpecialClasses#Oid> ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.lifecycleStage ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressLifecycleStage ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.valueInformation ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressComponentValue ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.referenceObject ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:ReferenceObject ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.lifecycleStage ; 
+                                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.valueInformation ; 
+                                         <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.id ; 
+                                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponent.scopeComponent ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressComponent ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>];
+                        <http://www.w3.org/2004/02/skos/core#definition> "Constituent part of an address."@en.
+isoadr:AddressComponent.id a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain isoadr:AddressComponent;
+                           rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                           rdfs:label "id"@en;
+                           rdfs:range <http://def.isotc211.org/iso19152/2012/SpecialClasses#Oid>;
+                           <http://www.w3.org/2004/02/skos/core#definition> "Unique character string that identifies the address component."@en.
+isoadr:AddressComponent.lifecycleStage a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:domain isoadr:AddressComponent;
+                                       rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                       rdfs:label "lifecycle stage"@en;
+                                       rdfs:range isoadr:AddressLifecycleStage;
+                                       <http://www.w3.org/2004/02/skos/core#definition> "Code that specifies the phase an address component has reached in its lifecycle."@en.
+isoadr:AddressComponent.lifespan a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:domain isoadr:AddressComponent;
+                                 rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                 rdfs:label "lifespan"@en;
+                                 rdfs:range isoadr:Lifespan;
+                                 <http://www.w3.org/2004/02/skos/core#definition> """Information about the period over which an address component exists.
+
+NOTE See Annex D for lifecycle examples of an address component."""@en.
+isoadr:AddressComponent.locale a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:domain isoadr:AddressComponent;
+                               rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                               rdfs:label "locale"@en;
+                               rdfs:range <http://def.isotc211.org/iso19135/-1/2015/ExtendedModel#RE_Locale>;
+                               <http://www.w3.org/2004/02/skos/core#definition> "A set of parameters that specify the cultural and linguistic environment."@en.
+isoadr:AddressComponent.provenance a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:domain isoadr:AddressComponent;
+                                   rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                   rdfs:label "provenance"@en;
+                                   rdfs:range isoadr:AddressProvenance;
+                                   <http://www.w3.org/2004/02/skos/core#definition> "Information about the source or origin of the address component, such as the authority who assigned the address component value, the owner of the address component data instance, and the lineage of the address component."@en.
+isoadr:AddressComponent.referenceObject <http://def.isotc211.org/iso19150/-2/2012/base#associationName> "references";
+                                        a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:domain isoadr:AddressComponent;
+                                        rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                        rdfs:label "reference object"@en;
+                                        rdfs:range isoadr:ReferenceObject;
+                                        <http://www.w3.org/2002/07/owl#inverseOf> isoadr:ReferenceObject.addressComponent.
+isoadr:AddressComponent.scopeComponent <http://def.isotc211.org/iso19150/-2/2012/base#associationName> "withinScopeOf";
+                                       a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:domain isoadr:AddressComponent;
+                                       rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                       rdfs:label "scope component"@en;
+                                       rdfs:range isoadr:AddressComponent;
+                                       <http://www.w3.org/2002/07/owl#inverseOf> isoadr:AddressComponent.valueComponent.
+isoadr:AddressComponent.type <http://def.isotc211.org/iso19150/-2/2012/base#constraint> "type is mandatory if there are no subclasses of AddressableObject";
+                             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain isoadr:AddressComponent;
+                             rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                             rdfs:label "type"@en;
+                             rdfs:range isoadr:AddressComponentType;
+                             <http://www.w3.org/2004/02/skos/core#definition> "Code that specifies the kind of address component."@en.
+isoadr:AddressComponent.valueComponent <http://def.isotc211.org/iso19150/-2/2012/base#associationName> "withinScopeOf";
+                                       a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:domain isoadr:AddressComponent;
+                                       rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                       rdfs:label "value component"@en;
+                                       rdfs:range isoadr:AddressComponent.
+isoadr:AddressComponent.valueInformation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                         rdfs:domain isoadr:AddressComponent;
+                                         rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                         rdfs:label "value information"@en;
+                                         rdfs:range isoadr:AddressComponentValue;
+                                         <http://www.w3.org/2004/02/skos/core#definition> "Value of and information about one or more address component values."@en.
+isoadr:AddressComponentType a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                            rdfs:label "Address Component Type"@en;
+                            rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+isoadr:AddressComponentValue <http://def.isotc211.org/iso19150/-2/2012/base#constraint> "For Locale conformance, locale shall be mandatory"@en;
+                             a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                             rdfs:label "Address Component Value"@en;
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponentValue.preferenceLevel ; 
+                                              <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:integer ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponentValue.type ; 
+                                              <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressComponentValueType ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponentValue.locale ; 
+                                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponentValue.type ; 
+                                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponentValue.value ; 
+                                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponentValue.locale ; 
+                                              <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19135/2005/ProceduresForItemRegistration#RE_Locale> ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponentValue.value ; 
+                                              <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19103/2015/AnyType#Any> ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressComponentValue.preferenceLevel ; 
+                                              <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>];
+                             <http://www.w3.org/2004/02/skos/core#definition> "Information about the value of an address component."@en.
+isoadr:AddressComponentValue.locale a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                    rdfs:domain isoadr:AddressComponentValue;
+                                    rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                    rdfs:label "locale"@en;
+                                    rdfs:range <http://def.isotc211.org/iso19135/2005/ProceduresForItemRegistration#RE_Locale>;
+                                    <http://www.w3.org/2004/02/skos/core#definition> "A set of parameters that specify the cultural and linguistic environment."@en.
+isoadr:AddressComponentValue.preferenceLevel a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                             rdfs:domain isoadr:AddressComponentValue;
+                                             rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                             rdfs:label "preference level"@en;
+                                             rdfs:range xsd:integer;
+                                             <http://www.w3.org/2004/02/skos/core#definition> """Indicates the ranking of the address component in a set of alternatives. 1 indicates highest ranking.
+
+EXAMPLE 1 A building on a street corner could be referenced by two addresses, each with a different component value for the thoroughfare name address component. For one of them the preferenceLevel could be set to 1.
+
+EXAMPLE 2 In Switzerland, Biel (German) and Bienne (French) are different address components with the same preference level."""@en.
+isoadr:AddressComponentValue.type a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain isoadr:AddressComponentValue;
+                                  rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                  rdfs:label "type"@en;
+                                  rdfs:range isoadr:AddressComponentValueType;
+                                  <http://www.w3.org/2004/02/skos/core#definition> "Code that specifies the kind of value, i.e. whether it is a variation of the default address component value, and if so, what the variation is."@en.
+isoadr:AddressComponentValue.value a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:domain isoadr:AddressComponentValue;
+                                   rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                   rdfs:label "value"@en;
+                                   rdfs:range <http://def.isotc211.org/iso19103/2015/AnyType#Any>;
+                                   <http://www.w3.org/2004/02/skos/core#definition> "One or more instances of the value of the address component."@en.
+isoadr:AddressComponentValueType a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                 rdfs:label "Address Component Value Type"@en;
+                                 rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+isoadr:AddressLifecycleStage a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                             rdfs:label "Address Lifecycle Stage"@en;
+                             rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+isoadr:AddressPosition a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                       rdfs:label "Address Position"@en;
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressPosition.geometry ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19107/2003/GeometryRoot#GM_Object> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressPosition.type ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressPositionType ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressPosition.geometry ; 
+                                        <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressPosition.type ; 
+                                        <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>];
+                       <http://www.w3.org/2004/02/skos/core#definition> "Information about the representative position of an address."@en.
+isoadr:AddressPosition.geometry a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain isoadr:AddressPosition;
+                                rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                rdfs:label "geometry"@en;
+                                rdfs:range <http://def.isotc211.org/iso19107/2003/GeometryRoot#GM_Object>;
+                                <http://www.w3.org/2004/02/skos/core#definition> "Geometry (coordinates) representing the address position."@en.
+isoadr:AddressPosition.type a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:domain isoadr:AddressPosition;
+                            rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                            rdfs:label "type"@en;
+                            rdfs:range isoadr:AddressPositionType;
+                            <http://www.w3.org/2004/02/skos/core#definition> """Code that specifies how the geometry shall be interpreted.
+
+EXAMPLES centroid, streetFront, approximated"""@en.
+isoadr:AddressPositionType a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                           rdfs:label "Address Position Type"@en;
+                           rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+isoadr:AddressProvenance a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                         rdfs:label "Address Provenance"@en;
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressProvenance.authority ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19115/-1/2014/CitationAndResponsiblePartyInformation#CI_Organisation> ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressProvenance.lineage ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19115/-1/2014/LineageInformation#LI_Lineage> ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressProvenance.owner ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19115/-1/2014/CitationAndResponsiblePartyInformation#CI_Organisation> ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressProvenance.authority ; 
+                                          <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressProvenance.owner ; 
+                                          <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>];
+                         <http://www.w3.org/2004/02/skos/core#definition> "Provenance information, e.g. the source or origin of the record, changes to the record, and organisations or individuals that have had custody of the record since its creation."@en.
+isoadr:AddressProvenance.authority a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:domain isoadr:AddressProvenance;
+                                   rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                   rdfs:label "authority"@en;
+                                   rdfs:range <http://def.isotc211.org/iso19115/-1/2014/CitationAndResponsiblePartyInformation#CI_Organisation>;
+                                   <http://www.w3.org/2004/02/skos/core#definition> "The body that assigns the address or address component value."@en.
+isoadr:AddressProvenance.lineage a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:domain isoadr:AddressProvenance;
+                                 rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                 rdfs:label "lineage"@en;
+                                 rdfs:range <http://def.isotc211.org/iso19115/-1/2014/LineageInformation#LI_Lineage>;
+                                 <http://www.w3.org/2004/02/skos/core#definition> "Provenance, source(s) and production process(es) used in producing an address or address component."@en.
+isoadr:AddressProvenance.owner a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:domain isoadr:AddressProvenance;
+                               rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                               rdfs:label "owner"@en;
+                               rdfs:range <http://def.isotc211.org/iso19115/-1/2014/CitationAndResponsiblePartyInformation#CI_Organisation>;
+                               <http://www.w3.org/2004/02/skos/core#definition> "Organization that maintains the data."@en.
+isoadr:AddressSpecification a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                            rdfs:label "Address Specification"@en;
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressSpecification.addressSpecificationCitation ; 
+                                             <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19115/-1/2014/CitationAndResponsiblePartyInformation#CI_Citation> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressSpecification.classSpecification ; 
+                                             <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressClassSpecification ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressSpecification.addressSpecificationCitation ; 
+                                             <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>];
+                            <http://www.w3.org/2004/02/skos/core#definition> "A reference to a specification and description of a set of address class specifications, which  specify the typology and the set of valid component types for the class."@en.
+isoadr:AddressSpecification.addressSpecificationCitation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                         rdfs:domain isoadr:AddressSpecification;
+                                                         rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                                         rdfs:label "address specification citation"@en;
+                                                         rdfs:range <http://def.isotc211.org/iso19115/-1/2014/CitationAndResponsiblePartyInformation#CI_Citation>;
+                                                         <http://www.w3.org/2004/02/skos/core#definition> "Reference to a specification or document that contains a definition of the address classes."@en.
+isoadr:AddressSpecification.classSpecification a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                               rdfs:domain isoadr:AddressSpecification;
+                                               rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                               rdfs:label "class specification"@en;
+                                               rdfs:range isoadr:AddressClassSpecification;
+                                               <http://www.w3.org/2004/02/skos/core#definition> "Information about one or more address classes, such as typology and valid component types.".
+isoadr:AddressStatus a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                     rdfs:label "Address Status"@en;
+                     rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+isoadr:AddressTypology a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                       rdfs:label "Address Typology"@en;
+                       rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+isoadr:AddressableObject <http://def.isotc211.org/iso19150/-2/2012/base#constraint> "If no AddressableObject subclasses, then type is mandatory"@en;
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                         rdfs:label "Addressable Object"@en;
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressableObject.type ; 
+                                          <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressableObject.position ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressPosition ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressableObject.lifespan ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:Lifespan ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressableObject.id ; 
+                                          <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressableObject.lifecycleStage ; 
+                                          <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressableObject.lifecycleStage ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressableObjectLifecycleStage ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressableObject.lifespan ; 
+                                          <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressableObject.id ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19152/2012/SpecialClasses#Oid> ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressableObject.parentAddressableObject ; 
+                                          <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressableObject.type ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressableObjectType ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressableObject.theAddressedPeriod ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressedPeriod ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressableObject.parentAddressableObject ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressableObject ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressableObject.childAddressableObject ; 
+                                          <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressableObject ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressableObject.position ; 
+                                          <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>];
+                         <http://www.w3.org/2004/02/skos/core#definition> "An object that may be assigned an address."@en.
+isoadr:AddressableObject.childAddressableObject <http://def.isotc211.org/iso19150/-2/2012/base#associationName> "parent";
+                                                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                rdfs:domain isoadr:AddressableObject;
+                                                rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                                rdfs:label "child addressable object"@en;
+                                                rdfs:range isoadr:AddressableObject;
+                                                <http://www.w3.org/2002/07/owl#inverseOf> isoadr:AddressableObject.parentAddressableObject.
+isoadr:AddressableObject.id a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:domain isoadr:AddressableObject;
+                            rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                            rdfs:label "id"@en;
+                            rdfs:range <http://def.isotc211.org/iso19152/2012/SpecialClasses#Oid>;
+                            <http://www.w3.org/2004/02/skos/core#definition> "Unique character string that identifies the addressable object."@en.
+isoadr:AddressableObject.lifecycleStage a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:domain isoadr:AddressableObject;
+                                        rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                        rdfs:label "lifecycle stage"@en;
+                                        rdfs:range isoadr:AddressableObjectLifecycleStage;
+                                        <http://www.w3.org/2004/02/skos/core#definition> "Code that specifies the phase an addressable object has reached in its lifecycle."@en.
+isoadr:AddressableObject.lifespan a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain isoadr:AddressableObject;
+                                  rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                  rdfs:label "lifespan"@en;
+                                  rdfs:range isoadr:Lifespan;
+                                  <http://www.w3.org/2004/02/skos/core#definition> "Information about the period over which an addressable object exists."@en.
+isoadr:AddressableObject.parentAddressableObject <http://def.isotc211.org/iso19150/-2/2012/base#associationName> "parent";
+                                                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                 rdfs:domain isoadr:AddressableObject;
+                                                 rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                                 rdfs:label "parent addressable object"@en;
+                                                 rdfs:range isoadr:AddressableObject.
+isoadr:AddressableObject.position a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain isoadr:AddressableObject;
+                                  rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                  rdfs:label "position"@en;
+                                  rdfs:range isoadr:AddressPosition;
+                                  <http://www.w3.org/2004/02/skos/core#definition> "Geometry (coordinates) representing the addressable object."@en.
+isoadr:AddressableObject.theAddressedPeriod <http://def.isotc211.org/iso19150/-2/2012/base#associationName> "allows unambiguous determination";
+                                            a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                            rdfs:domain isoadr:AddressableObject;
+                                            rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                            rdfs:label "the addressed period"@en;
+                                            rdfs:range isoadr:AddressedPeriod;
+                                            <http://www.w3.org/2002/07/owl#inverseOf> isoadr:AddressedPeriod.addressedObject.
+isoadr:AddressableObject.type a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:domain isoadr:AddressableObject;
+                              rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                              rdfs:label "type"@en;
+                              rdfs:range isoadr:AddressableObjectType;
+                              <http://www.w3.org/2004/02/skos/core#definition> "Code that specifies the kind of object to which an address may be assigned."@en.
+isoadr:AddressableObjectLifecycleStage a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                       rdfs:label "Addressable Object Lifecycle Stage"@en;
+                                       rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+isoadr:AddressableObjectType a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                             rdfs:label "Addressable Object Type";
+                             rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+isoadr:AddressedPeriod a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                       rdfs:label "Addressed Period"@en;
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressedPeriod.addressedObject ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressableObject ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressedPeriod.addressedObject ; 
+                                        <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressedPeriod.address ; 
+                                        <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressedPeriod.addressedFrom ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:dateTime ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressedPeriod.addressedTo ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:dateTime ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressedPeriod.addressedTo ; 
+                                        <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressedPeriod.addressedFrom ; 
+                                        <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> isoadr:AddressedPeriod.address ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:Address ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>];
+                       <http://www.w3.org/2004/02/skos/core#definition> "The period during which the address as associated with the addressed object."@en.
+isoadr:AddressedPeriod.address <http://def.isotc211.org/iso19150/-2/2012/base#associationName> "allows unambiguous determination";
+                               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:domain isoadr:AddressedPeriod;
+                               rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                               rdfs:label "address"@en;
+                               rdfs:range isoadr:Address.
+isoadr:AddressedPeriod.addressedFrom a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                     rdfs:domain isoadr:AddressedPeriod;
+                                     rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                     rdfs:label "addressed from"@en;
+                                     rdfs:range xsd:dateTime;
+                                     <http://www.w3.org/2004/02/skos/core#definition> "Date and time from which the addressed object is unambiguously determined by the address."@en.
+isoadr:AddressedPeriod.addressedObject <http://def.isotc211.org/iso19150/-2/2012/base#associationName> "allows unambiguous determination";
+                                       a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:domain isoadr:AddressedPeriod;
+                                       rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                       rdfs:label "addressed object"@en;
+                                       rdfs:range isoadr:AddressableObject.
+isoadr:AddressedPeriod.addressedTo a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                   rdfs:domain isoadr:AddressedPeriod;
+                                   rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                   rdfs:label "addressed to"@en;
+                                   rdfs:range xsd:dateTime;
+                                   <http://www.w3.org/2004/02/skos/core#definition> "Date and time when the addressed object ceased to be unambiguously determined by the address."@en.
+isoadr:Lifespan a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                rdfs:label "Lifespan";
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Lifespan.validFrom ; 
+                                 <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Lifespan.openRecord ; 
+                                 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Lifespan.closeRecord ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:dateTime ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Lifespan.version ; 
+                                 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Lifespan.closeRecord ; 
+                                 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Lifespan.version ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Lifespan.validTo ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:dateTime ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Lifespan.validFrom ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:dateTime ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Lifespan.validTo ; 
+                                 <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> isoadr:Lifespan.openRecord ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:dateTime ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>];
+                <http://www.w3.org/2004/02/skos/core#definition> "Information to describe the lifespan of an address, adress component or addressable object."@en.
+isoadr:Lifespan.closeRecord a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:domain isoadr:Lifespan;
+                            rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                            rdfs:label "close record"@en;
+                            rdfs:range xsd:dateTime;
+                            <http://www.w3.org/2004/02/skos/core#definition> "Specifies the date and time at which this version of the data object was superseded by another version or retired in the dataset."@en.
+isoadr:Lifespan.openRecord a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:domain isoadr:Lifespan;
+                           rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                           rdfs:label "open record"@en;
+                           rdfs:range xsd:dateTime;
+                           <http://www.w3.org/2004/02/skos/core#definition> "Specifies the date and time at which this version of the data object was inserted into the dataset."@en.
+isoadr:Lifespan.validFrom a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:domain isoadr:Lifespan;
+                          rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                          rdfs:label "valid from"@en;
+                          rdfs:range xsd:dateTime;
+                          <http://www.w3.org/2004/02/skos/core#definition> "Date and time from which the object is valid in the physical world."@en.
+isoadr:Lifespan.validTo a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:domain isoadr:Lifespan;
+                        rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                        rdfs:label "valid to"@en;
+                        rdfs:range xsd:dateTime;
+                        <http://www.w3.org/2004/02/skos/core#definition> "Date and time when this object ceased to be valid in the physical world."@en.
+isoadr:Lifespan.version a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:domain isoadr:Lifespan;
+                        rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                        rdfs:label "version"@en;
+                        rdfs:range xsd:string;
+                        <http://www.w3.org/2004/02/skos/core#definition> """Unique identifier of this variant of the address record.
+
+NOTE The version is incremented with any change to the data object."""@en.
+isoadr:ReferenceObject a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                       rdfs:label "Reference Object";
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> isoadr:ReferenceObject.geometry ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19107/2003/GeometryRoot#GM_Object> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> isoadr:ReferenceObject.id ; 
+                                        <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> isoadr:ReferenceObject.addressComponent ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:AddressComponent ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> isoadr:ReferenceObject.type ; 
+                                        <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> isoadr:ReferenceObject.id ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.isotc211.org/iso19152/2012/SpecialClasses#Oid> ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> isoadr:ReferenceObject.geometry ; 
+                                        <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> isoadr:ReferenceObject.addressComponent ; 
+                                        <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#onProperty> isoadr:ReferenceObject.type ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> isoadr:ReferenceObjectType ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>];
+                       <http://www.w3.org/2004/02/skos/core#definition> "The object to which the address component value may refer."@en.
+isoadr:ReferenceObject.addressComponent <http://def.isotc211.org/iso19150/-2/2012/base#associationName> "references";
+                                        a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:domain isoadr:ReferenceObject;
+                                        rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                        rdfs:label "address component"@en;
+                                        rdfs:range isoadr:AddressComponent.
+isoadr:ReferenceObject.geometry a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:domain isoadr:ReferenceObject;
+                                rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                                rdfs:label "geometry"@en;
+                                rdfs:range <http://def.isotc211.org/iso19107/2003/GeometryRoot#GM_Object>;
+                                <http://www.w3.org/2004/02/skos/core#definition> "Geometry (coordinates) representing the reference object."@en.
+isoadr:ReferenceObject.id a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain isoadr:ReferenceObject;
+                          rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                          rdfs:label "id"@en;
+                          rdfs:range <http://def.isotc211.org/iso19152/2012/SpecialClasses#Oid>;
+                          <http://www.w3.org/2004/02/skos/core#definition> "Unique character string that identifies the reference object."@en.
+isoadr:ReferenceObject.type a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:domain isoadr:ReferenceObject;
+                            rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                            rdfs:label "type"@en;
+                            rdfs:range isoadr:ReferenceObjectType;
+                            <http://www.w3.org/2004/02/skos/core#definition> "Code that specifies the kind of reference object."@en.
+isoadr:ReferenceObjectType a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:isDefinedBy "http://standards.iso.org/iso/19160/-1/ed-1/en/";
+                           rdfs:label "Reference Object Type"@en;
+                           rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+<http://www.w3.org/2004/02/skos/core#Concept> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2004/02/skos/core#definition> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.

@@ -1,0 +1,664 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ignf: <http://data.ign.fr/def/ignf#>.
+
+<http://data.ign.fr/def/ignf> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/2.0/>,
+                                                                      <http://www.data.gouv.fr/Licence-Ouverte-Open-Licence>,
+                                                                      <http://opendatacommons.org/licenses/by/>;
+                              <http://purl.org/dc/terms/contributor> <http://www.eurecom.fr/~troncy/>;
+                              <http://purl.org/dc/terms/creator> <http://www.eurecom.fr/~atemezin/>,
+                                                                 <http://recherche.ign.fr/labos/cogit/cv.php?prenom=Nathalie&nom=Abadie>;
+                              <http://purl.org/dc/terms/description> "Codes for describing coordinates reference systems consistently with ISO TC/211. French translations of terms and definitions are mainly taken from the multilingual glossary of ISO/TC 211 available online: http://www.isotc211.org/Terminology.htm"@en,
+                                                                     "Codes pour la description de systèmes de coordonnées de référence conforme ISO TC/211. Les traductions françaises des termes et leurs définitions sont pour la plupart issues du glossaire multilingue ISO/TC 211 disponible ici: http://www.isotc211.org/Terminology.htm"@fr;
+                              <http://purl.org/dc/terms/issued> "2013-06-11"^^xsd:date;
+                              <http://purl.org/dc/terms/modified> "2015-05-05"^^xsd:date,
+                                                                  "2014-04-09"^^xsd:date,
+                                                                  "2016-06-28"^^xsd:date;
+                              <http://purl.org/dc/terms/publisher> <http://fr.dbpedia.org/resource/Institut_national_de_l%27information_géographique_et_forestière>;
+                              <http://purl.org/dc/terms/rights> "Copyright 2014, IGN";
+                              <http://purl.org/dc/terms/title> "Ontologie des systèmes de coordonnées de référence"@fr,
+                                                               "Ontology of coordinates reference systems"@en;
+                              <http://purl.org/vocab/vann/preferredNamespacePrefix> "ignf";
+                              <http://purl.org/vocab/vann/preferredNamespaceUri> ignf:;
+                              a <http://purl.org/vocommons/voaf#Vocabulary>,
+                                <http://www.w3.org/2002/07/owl#Ontology>;
+                              rdfs:seeAlso <http://librairies.ignf.fr/geoportail/resources/IGNF.xml>;
+                              <http://www.w3.org/2002/07/owl#priorVersion> <http://data.ign.fr/def/ignf/20150505.ttl>;
+                              <http://www.w3.org/2002/07/owl#versionInfo> "Version 3.0 - 2016-06-28".
+ignf:AxesList a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Ordered list of coordinates system axes."@en,
+                           "Liste ordonnée d'axes de systèmes de coordonnées."@fr;
+              rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+              rdfs:label "Liste d'axes"@fr,
+                         "List of axes"@en;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> (rdf:List
+                                                                               [<http://www.w3.org/2002/07/owl#onProperty> rdf:first ; 
+                                                                               <http://www.w3.org/2002/07/owl#allValuesFrom> ignf:CoordinateSystemAxis ; 
+                                                                               a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                               [<http://www.w3.org/2002/07/owl#onProperty> rdf:rest ; 
+                                                                               <http://www.w3.org/2002/07/owl#allValuesFrom> ignf:AxesList ; 
+                                                                               a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>].
+ignf:CRS a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "Depending on the spatial dimension of coordinates (1D, 2D, 3D), this piece of metadata is used for specifying the elements of definition associated to a given set of coordinates: its datum, its ellipsoid, its prime meridian, the type of coordinates (geocentric, geographic, projected,...), the coordinates units of measure, when appropriate the cartographic projection used, the vertical coordinate reference system. Definition translated from: http://geodesie.ign.fr/index.php?page=glossaire. Cf. ISO 19111:2007:2007-07, part 8.2, table 4 and annex B.1."@en,
+                      "Métadonnées permettant de préciser, selon la dimension spatiale des coordonnées 1D, 2D ou 3D, les éléments de définition associés au jeu de coordonnées: le système de référence terrestre, l'ellipsoïde géodésique, le méridien origine, le type de coordonnées (cartésiennes géocentriques, planes, géographiques,...), les unités dans lesquelles sont exprimées les coordonnées, la projection cartographique, le référentiel altimétrique(http://geodesie.ign.fr/index.php?page=glossaire). Cf. ISO 19111:2007:2007-07, partie 8.2, tableau 4 et annexe B.1."@fr;
+         rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+         rdfs:label "Système de coordonnées de référence"@fr,
+                    "Coordinate reference system (CRS)"@en;
+         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> ignf:domainOfValidity ; 
+                          <http://www.w3.org/2002/07/owl#someValuesFrom> ignf:Extent ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>];
+         <http://www.w3.org/2002/07/owl#disjointWith> ignf:CoordinateSystem.
+ignf:CartesianCS a rdfs:Class,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Coordinate system which gives the position of points relative to n mutually perpendicular axes. Cf. ISO 19111:2007:2007-07, tables 15 and 18."@en,
+                              "Système de coordonnées donnant la position des points relativement à n axes perpendiculaires deux à deux. Cf. ISO 19111:2007:2007-07, tableaux 15 et 18."@fr;
+                 rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                 rdfs:label "Système cartésien de coordonnées"@fr,
+                            "Cartesian coordinate system"@en;
+                 rdfs:subClassOf ignf:CoordinateSystem;
+                 <http://www.w3.org/2002/07/owl#disjointWith> ignf:GeodeticCRS.
+ignf:CompoundCRS a rdfs:Class,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Système de coordonnées de référence utilisant au moins deux systèmes de coordonnées de référence simples indépendants. Cf. ISO 19111:2007:2007-07, parties 8.2.3.c, 8.2.4, tableau 6 et annexe B.1.2.4."@fr,
+                              "Coordinate reference system using at least two independent single coordinate reference systems. Cf. ISO 19111:2007:2007-07, parts 8.2.3.c, 8.2.4, table 6 and annex B.1.2.4."@en;
+                 rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                 rdfs:label "Système de coordonnées de référence combiné"@fr,
+                            "Compound coordinate reference system"@en;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> ignf:includesSingleCRS ; 
+                                  <http://www.w3.org/2002/07/owl#someValuesFrom> [<http://www.w3.org/2002/07/owl#intersectionOf> (ignf:SingleCRSList
+                                                                                                                                  [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                                  <http://www.w3.org/2002/07/owl#onProperty> rdf:rest ; 
+                                                                                                                                  <http://www.w3.org/2002/07/owl#onClass> ignf:SingleCRSList ; 
+                                                                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 ignf:CRS;
+                 <http://www.w3.org/2002/07/owl#disjointWith> ignf:GeodeticCRS.
+ignf:Conversion a rdfs:Class,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Coordinate operation in which both coordinate reference systems are based on the same datum. Cf. ISO 19111:2007:2007-07, table 45 and annex B.4.2."@en,
+                             "Opération sur les coordonnées dans laquelle les deux systèmes de coordonnées de référence sont basés sur le même référentiel (ex: projection cartographique). Cf. ISO 19111:2007:2007-07, tableau 45 et annexe B.4.2."@fr;
+                rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                rdfs:label "Conversion"@fr,
+                           "Conversion"@en;
+                rdfs:subClassOf ignf:SingleOperation.
+ignf:CoordinateOperation a rdfs:Class,
+                           <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Mathematical operation on coordinates, based on one-to-one relationship, that changes coordinates from one coordinate reference system to another. Cf. ISO 19111:2007:2007-07, part 11.1, table 42 and annex B.4."@en,
+                                      "Opération mathématique sur des coordonnées, basée sur une relation 1:1, qui change ces coordonnées d'une système de coordonnées de référence à un autre. Cf. ISO 19111:2007:2007-07, partie 11.1, tableau 42 et annexe B.4."@fr;
+                         rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                         rdfs:label "Opération sur les coordonnées"@fr,
+                                    "Coordinate operation"@en.
+ignf:CoordinateSystem a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Set of axes that spans a given coordinate space and of mathematical rules for specifying how coordinates are to be assigned to points. Cf. ISO 19111:2007:2007-07, part 9.2, table 17 and annex B.2."@en,
+                                   "Ensemble d'axes couvrant un espace de coordonnées, et de règles mathématiques permettant l'affectation de coordonnées à un point. Cf. ISO 19111:2007:2007-07, partie 9.2, tableau 17 et annexe B.2."@fr;
+                      rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                      rdfs:label "Système de coordonnées"@fr,
+                                 "Coordinate system"@en;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> ignf:axis ; 
+                                       <http://www.w3.org/2002/07/owl#onClass> ignf:AxesList ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>].
+ignf:CoordinateSystemAxis a rdfs:Class,
+                            <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Axis composing a coordinate system and used to specify one given coordinate in a coordinate tuple describing the position of a point. Cf. ISO 19111:2007:2007-07, part 9.3, table 27 and annex B.2.2."@en,
+                                       "Axe par rapport auquel une coordonnée d'un point est spécifiée dans un système de coordonnées. Cf. ISO 19111:2007:2007-07, partie 9.3, tableau 27 et annexe B.2.2."@fr;
+                          rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                          rdfs:label "Axe"@fr,
+                                     "Axis"@en.
+ignf:Datum a rdfs:Class,
+             <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "Parameter or set of parameters that define the position of the origin, the scale and the orientation of a coordinate system. Cf. ISO 19111:2007:2007-07, part 10.1, table 33 and annex B.3."@en,
+                        "Paramètre ou ensemble de paramètres définissant la position de l'origine, l'échelle et l'orientation d'un système de coordonnées. Cf. ISO 19111:2007:2007-07, partie 10.1, tableau 33 et annexe B.3."@fr;
+           rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+           rdfs:label "Référentiel"@fr,
+                      "Datum"@en.
+ignf:Ellipsoid a rdfs:Class,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Surface formed by the rotation of an ellipse about its minor axis, defined by a semi-major axis and a flattening parameter and fairly geocentric. NB : It is a mathematical model of the geoid, i.e. the Earth without its relief. Many geodetic ellipsoids exist. Cf. ISO 19111:2007:2007-07, part 10.2.2, table 36 and annex B.3.2.3."@en,
+                            "Surface de révolution engendrée par une ellipse tournant autour de son petit axe, définie par le rayon équatorial et un paramètre d'aplatissement, et sensiblement géocentrique. Note : Il s'agit d'un modèle mathématique du géoïde, c'est-à-dire de la Terre débarrassée de son relief. Il existe de nombreux ellipsoïdes géodésiques. Cf. ISO 19111:2007:2007-07, partie 10.2.2, tableau 36 et annexe B.3.2.3."@fr;
+               rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+               rdfs:label "Ellipsoïde"@fr,
+                          "Ellipsoid"@en;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                <http://www.w3.org/2002/07/owl#onProperty> ignf:semiMajorAxis ; 
+                                                                                <http://www.w3.org/2002/07/owl#onClass> <http://qudt.org/1.1/schema/qudt#QuantityValue> ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                         <http://www.w3.org/2002/07/owl#onProperty> ignf:semiMinorAxis ; 
+                                                                                                                         <http://www.w3.org/2002/07/owl#onClass> <http://qudt.org/1.1/schema/qudt#QuantityValue> ; 
+                                                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                         [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                         <http://www.w3.org/2002/07/owl#onProperty> ignf:inverseFlattening ; 
+                                                                                                                         <http://www.w3.org/2002/07/owl#onClass> <http://qudt.org/1.1/schema/qudt#QuantityValue> ; 
+                                                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                         [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                                                         <http://www.w3.org/2002/07/owl#onProperty> ignf:isSphere ; 
+                                                                                                                         <http://www.w3.org/2002/07/owl#onDataRange> xsd:boolean ; 
+                                                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Class>]) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>].
+ignf:EllipsoidalCS a rdfs:Class,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Coordinate system which gives the position is specified by geodetic latitude, geodetic longitude and (in the three-dimensional case) ellipsoidal height. Cf. ISO 19111:2007:2007-07, tables 15 and 20."@en,
+                                "Système de coordonnées dans lequel la position est spécifiée par la latitude géodésique, la longitude géodésique et (dans le cas tridimensionnel) la hauteur ellipsoïdale. Cf. ISO 19111:2007:2007-07, tableaux 15 et 20."@fr;
+                   rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                   rdfs:label "Système de coordonnées ellipsoïdal"@fr,
+                              "Ellipsoidal coordinate system"@en;
+                   rdfs:subClassOf ignf:CoordinateSystem;
+                   <http://www.w3.org/2002/07/owl#disjointWith> ignf:GeodeticCRS.
+ignf:Extent a rdfs:Class,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Geographic area or time interval in which the referring object is valid. Cf. ISO 19115-1:2014:2014-04, part 6.6.1 and table B.15 line 335."@en,
+                         "Zone géographique ou intervalle de temps dans lequel la référence est valide. Cf. ISO 19115-1:2014:2014-04, partie 6.6.1 et tableau B.15 ligne 335."@fr;
+            rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+            rdfs:label "Étendue"@fr,
+                       "Extent"@en.
+ignf:GeodeticCRS a rdfs:Class,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Coordinate reference system associated with a geodetic datum. Cf. ISO 19111:2007:2007-07, part 8.2.2.a, table 10 and annex B.1.2.1.a."@en,
+                              "Système de coordonnées de référence associé à un référentiel géodésique. Cf. ISO 19111:2007:2007-07, partie 8.2.2.a, tableau 10 et annexe B.1.2.1.a."@fr;
+                 rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                 rdfs:label "Système de coordonnées de référence geodésique"@fr,
+                            "Geodetic coordinate reference system"@en;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> ignf:datum ; 
+                                  <http://www.w3.org/2002/07/owl#allValuesFrom> ignf:GeodeticDatum ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>],
+                                 ignf:SingleCRS.
+ignf:GeodeticDatum a rdfs:Class,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Datum describing the relation of a two- or three-dimensional coordinate system to the Earth. Cf. ISO 19111:2007:2007-07, part 10.2, table 34 and annex B.3.2."@en,
+                                "Référentiel décrivant la relation entre un système de coordonnées à deux ou trois dimensions et la Terre. Cf. ISO 19111:2007:2007-07, partie 10.2, tableau 34 et annexe B.3.2."@fr;
+                   rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                   rdfs:label "Référentiel géodésique"@fr,
+                              "Geodetic datum"@en;
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                    <http://www.w3.org/2002/07/owl#onProperty> ignf:ellipsoid ; 
+                                                                                    <http://www.w3.org/2002/07/owl#onClass> ignf:Ellipsoid ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                    [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                    <http://www.w3.org/2002/07/owl#onProperty> ignf:primeMeridian ; 
+                                                                                    <http://www.w3.org/2002/07/owl#onClass> ignf:PrimeMeridian ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>],
+                                   ignf:Datum.
+ignf:GeographicBoundingBox a rdfs:Class,
+                             <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Box bounding an area of interest. Cf. ISO 19115-1:2014:2014-04, part 6.6.1 and table B.15.1 line 344."@en,
+                                        "Cadre délimitant une zone d'intérêt. Cf. ISO 19115-1:2014:2014-04, partie 6.6.1 et tableau B.15.1 ligne 344."@fr;
+                           rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                           rdfs:label "Cadre englobant géographique"@fr,
+                                      "Geographic bounding box"@en;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                            <http://www.w3.org/2002/07/owl#onProperty> ignf:westBoundLongitude ; 
+                                                                                            <http://www.w3.org/2002/07/owl#onDataRange> xsd:double ; 
+                                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                            [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                            <http://www.w3.org/2002/07/owl#onProperty> ignf:eastBoundLongitude ; 
+                                                                                            <http://www.w3.org/2002/07/owl#onDataRange> xsd:double ; 
+                                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                            [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                            <http://www.w3.org/2002/07/owl#onProperty> ignf:southBoundLatitude ; 
+                                                                                            <http://www.w3.org/2002/07/owl#onDataRange> xsd:double ; 
+                                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                            [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                            <http://www.w3.org/2002/07/owl#onProperty> ignf:northBoundLatitude ; 
+                                                                                            <http://www.w3.org/2002/07/owl#onDataRange> xsd:double ; 
+                                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                            a <http://www.w3.org/2002/07/owl#Class>].
+ignf:OperationMethod a rdfs:Class,
+                       <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "The method (algorithm or procedure) used to perform the coordinate operation. Cf. ISO 19111:2007:2007-07, table 48 and annex B.4.5."@en,
+                                  "Méthode utilisée pour faire une opération sur des coordonnées. Cf. ISO 19111:2007:2007-07, tableau 48 et annexe B.4.5."@fr;
+                     rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                     rdfs:label "Méthode"@fr,
+                                "Operation method"@en.
+ignf:OperationParameter a rdfs:Class,
+                          <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Parameter used by a method to perform some coordinate operation. Cf. ISO 19111:2007:2007-07, table 52 and annex B.4.5."@en,
+                                     "Paramètre utilisé par une méthode pour faire une opération sur des coordonnées. Cf. ISO 19111:2007:2007-07, tableau 52 et annexe B.4.5."@fr;
+                        rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                        rdfs:label "Paramètre"@fr,
+                                   "Operation parameter"@en.
+ignf:OperationParameterValue a rdfs:Class,
+                               <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Value of a parameter used by a method to perform some coordinate operation. Cf. ISO 19111:2007:2007-07, table 55."@en,
+                                          "Valeur d'un paramètre utilisé par une méthode pour faire une opération sur des coordonnées. Cf. ISO 19111:2007:2007-07, tableau 55."@fr;
+                             rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                             rdfs:label "Valeur de paramètre"@fr,
+                                        "Operation parameter value"@en.
+ignf:PrimeMeridian a rdfs:Class,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Meridian from which the longitudes of other meridians are quantified. Cf. ISO 19111:2007:2007-07, part 10.2.1, table 35 and annex B.3.2.2."@en,
+                                "Méridien à partir duquel les longitudes d'autres méridiens sont mesurées. Cf. ISO 19111:2007:2007-07, partie 10.2.1, tableau 35 et annexe B.3.2.2."@fr;
+                   rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                   rdfs:label "Méridien origine"@fr,
+                              "Prime meridian"@en;
+                   <http://www.w3.org/2002/07/owl#disjointWith> ignf:Ellipsoid.
+ignf:ProjectedCRS a rdfs:Class,
+                    <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Coordinate reference system derived from a two-dimensional geodetic coordinate reference system by applying a map projection. Cf. ISO 19111:2007:2007-07, part 8.2.3.b, table 11 and annex B.1.2.3."@en,
+                               "Système de coordonnées de référence dérivé par projection cartographique d'un système de coordonnées de référence bidimentionnel. Cf. ISO 19111:2007:2007-07, partie 8.2.3.b, tableau 11 et annexe B.1.2.3."@fr;
+                  rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                  rdfs:label "Système de coordonnées de référence projeté"@fr,
+                             "Projected coordinate reference system"@en;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> ignf:baseCRS ; 
+                                   <http://www.w3.org/2002/07/owl#allValuesFrom> ignf:GeodeticCRS ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  ignf:SingleCRS.
+ignf:SingleCRS a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Coordinate reference system consisting of one coordinate system and one datum. Cf. ISO 19111:2007:2007-07, table 5."@en,
+                            "Système de coordonnées de référence composé d'un système de coordonnées et d'un référentiel. Cf. ISO 19111:2007:2007-07 tableau 5."@fr;
+               rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+               rdfs:label "Système de coordonnées de référence simple"@fr,
+                          "Single coordinate reference system"@en;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                <http://www.w3.org/2002/07/owl#onProperty> ignf:datum ; 
+                                                                                <http://www.w3.org/2002/07/owl#onClass> ignf:Datum ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                                <http://www.w3.org/2002/07/owl#onProperty> ignf:coordinateSystem ; 
+                                                                                <http://www.w3.org/2002/07/owl#onClass> ignf:CoordinateSystem ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>],
+                               ignf:CRS.
+ignf:SingleCRSList a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Ordered list of single coordinate reference systems."@en,
+                                "Liste ordonnée de systèmes de coordonnées de référence simples."@fr;
+                   rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                   rdfs:label "Liste de systèmes de coordonnées de référence simples"@fr,
+                              "List of single coordinate reference systems"@en;
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> (rdf:List
+                                                                                    [<http://www.w3.org/2002/07/owl#onProperty> rdf:first ; 
+                                                                                    <http://www.w3.org/2002/07/owl#allValuesFrom> ignf:SingleCRS ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                    [<http://www.w3.org/2002/07/owl#onProperty> rdf:rest ; 
+                                                                                    <http://www.w3.org/2002/07/owl#allValuesFrom> ignf:SingleCRSList ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>].
+ignf:SingleOperation a rdfs:Class,
+                       <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "A non concatenated coordinate operation. Cf. ISO 19111:2007:2007-07, table 43."@en,
+                                  "Opération non concaténée sur des coordonnées. Cf. ISO 19111:2007:2007-07, tableau 43."@fr;
+                     rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                     rdfs:label "Opération simple sur les coordonnées"@fr,
+                                "Single coordinate operation"@en;
+                     rdfs:subClassOf ignf:CoordinateOperation.
+ignf:Transformation a rdfs:Class,
+                      <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Coordinate operation in which the two coordinate reference systems are based on different datums. Cf. ISO 19111:2007:2007-07, table 44."@en,
+                                 "Opération sur les coordonnées dans laquelle les deux systèmes de coordonnées de référence sont basés sur des référentiels distincts. Cf. ISO 19111:2007:2007-07, tableau 44."@fr;
+                    rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                    rdfs:label "Transformation"@fr,
+                               "Transformation"@en;
+                    rdfs:subClassOf ignf:SingleOperation.
+ignf:VerticalCRS a rdfs:Class,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "One-dimensional coordinate reference system associated with a vertical datum and used for recording heights or depths.Ellipsoidal heights are not captured in a vertical coordinate reference system but as part of a 3D coordinates tuple defined in a geodetic 3D coordinate reference system. Cf. ISO 19111:2007:2007-07, parts 8.2.2.b, table 14 and annex B.1.2.1.b."@en,
+                              "Système de coordonnées de référence à une dimension, associé à un référentiel vertical, et utilisé pour enregistrer des hauteurs ou des profondeurs. Les hauteurs ellipsoïdales ne sont pas enregistrées à l'aide d'un système de coordonnées de référence vertical, mais au sein d'un tuple de coordonnées 3D défini dans un système de coordonnées de référence géodésique 3D. Cf. ISO 19111:2007:2007-07, parties 8.2.2.b, tableau 14 et annexe B.1.2.1.b."@fr;
+                 rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                 rdfs:label "Système de coordonnées de référence vertical"@fr,
+                            "Vertical coordinate reference system"@en;
+                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onProperty> ignf:datum ; 
+                                                                                  <http://www.w3.org/2002/07/owl#allValuesFrom> ignf:VerticalDatum ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                  [<http://www.w3.org/2002/07/owl#onProperty> ignf:coordinateSystem ; 
+                                                                                  <http://www.w3.org/2002/07/owl#allValuesFrom> ignf:VerticalCS ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                  a <http://www.w3.org/2002/07/owl#Class>],
+                                 ignf:SingleCRS.
+ignf:VerticalCS a rdfs:Class,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "One-dimensional coordinate system used for gravity related height or depth measurements. Cf. ISO 19111:2007:2007-07, tables 15 and 25."@en,
+                             "Système de coordonnées à une dimension utilisé pour les mesures de hauteur ou de profondeur relatives à la gravité. Cf. ISO 19111:2007:2007-07, tableaux 15 et 25."@fr;
+                rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                rdfs:label "Système de coordonnées vertical"@fr,
+                           "Vertical coordinate system"@en;
+                rdfs:subClassOf ignf:CoordinateSystem;
+                <http://www.w3.org/2002/07/owl#disjointWith> ignf:VerticalCRS.
+ignf:VerticalDatum a rdfs:Class,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Datum describing the relation of gravity-related heights or depths to the Earth. Cf. ISO 19111:2007:2007-07, table 41 and annex B.3.3."@en,
+                                "Référentiel décrivant la relation entre les hauteurs ou les profondeurs relatives à la gravité et la Terre. Cf. ISO 19111:2007:2007-07, tableau 41 et annexe B.3.3."@fr;
+                   rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                   rdfs:label "Référentiel vertical"@fr,
+                              "Vertical datum"@en;
+                   rdfs:subClassOf ignf:Datum.
+ignf:axis a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:comment "An axis used by some ellipsoidal or cartesian coordinate system. Cf. ISO 19111:2007:2007-07, table 17, association role axis."@en,
+                       "Désigne un axe utilisé par un système de coordonnées ellipsoïdal ou cartésien. Cf. ISO 19111:2007:2007-07, tableau 17, rôle d'association axis."@fr;
+          rdfs:domain ignf:CoordinateSystem;
+          rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+          rdfs:label "utilise l'axe"@fr,
+                     "uses axis"@en;
+          rdfs:range ignf:AxesList.
+ignf:axisAbbrev a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "The abbreviation used to identify an axis. Cf. ISO 19111:2007:2007-07, table 27, attribute coordinate system axis abbreviation."@en,
+                             "Désigne l'abréviation utilisée pour désigner l'axe. Cf. ISO 19111:2007:2007-07, tableau 27, attribut abréviation de l'axe du système de coordonnées."@fr;
+                rdfs:domain ignf:CoordinateSystemAxis;
+                rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                rdfs:label "abréviation utilisée pour désigner l'axe"@fr,
+                           "axis abbreviation"@en;
+                rdfs:range xsd:string.
+ignf:axisDirection a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "The direction of an axis. Cf. ISO 19111:2007:2007-07, table 27, attribute coordinate system axis direction."@en,
+                                "Désigne la direction de l'axe. Cf. ISO 19111:2007:2007-07, tableau 27, attribut direction de l'axe du système de coordonnées."@fr;
+                   rdfs:domain ignf:CoordinateSystemAxis;
+                   rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                   rdfs:label "direction de l'axe"@fr,
+                              "axis direction"@en;
+                   rdfs:range xsd:string.
+ignf:baseCRS a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "The geodetic coordinate reference system on which a projected coordinate reference system is based. Cf. ISO 19111:2007:2007-07, table 11, association role baseCRS."@en,
+                          "Désigne le système de coordonnées de référence géodésique sur lequel repose un système de coordonnées de référence projeté. Cf. ISO 19111:2007:2007-07, tableau 11, rôle d'association baseCRS."@fr;
+             rdfs:domain ignf:ProjectedCRS;
+             rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+             rdfs:label "système de coordonnées de référence de base"@fr,
+                        "base coordinate reference system"@en;
+             rdfs:range ignf:GeodeticCRS.
+ignf:cartesianCS a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "The cartesian coordinate system used by some geodetic or projected coordinate reference system. Cf. ISO 19111:2007:2007-07, tables 10 et 11, association roles coordinateSystem."@en,
+                              "Désigne le système de coordonnées cartésien utilisé par un système de coordonnées de référence géodésique ou projeté. Cf. ISO 19111:2007:2007-07, tableaux 10 et 11, association nommée CoordinateSystem."@fr;
+                 rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (ignf:GeodeticCRS
+                                                                       ignf:ProjectedCRS) ; 
+                              a <http://www.w3.org/2002/07/owl#Class>];
+                 rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                 rdfs:label "utilise le système de coordonnées cartesien"@fr,
+                            "uses cartesian coordinate system"@en;
+                 rdfs:range ignf:CartesianCS;
+                 rdfs:subPropertyOf ignf:coordinateSystem.
+ignf:codeSpace a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment "Rule or authority for a code, name, term or category."@en,
+                            "Désigne la règle ou l'autorité dont résulte la valeur de la référence."@fr;
+               rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+               rdfs:label "espace de codage"@fr,
+                          "code space"@en;
+               rdfs:range xsd:string.
+ignf:conversion a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "The conversion used to define a projected coordinate reference system. Cf. ISO 19111:2007:2007-07, table 7, named association Definition."@en,
+                             "Désigne la conversion utilisée pour définir un système de coordonnées de référence projeté. Cf. ISO 19111:2007:2007-07, tableau 7, association nommée Definition."@fr;
+                rdfs:domain ignf:ProjectedCRS;
+                rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                rdfs:label "défini par conversion"@fr,
+                           "defined by conversion"@en;
+                rdfs:range ignf:Conversion.
+ignf:coordinateSystem a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "The coordinate system used by a coordinate reference system. Cf. ISO 19111:2007:2007-07, table 5, named association CoordinateSystem."@en,
+                                   "Désigne le système de coordonnées utilisé par un système de coordonnées de référence. Cf. ISO 19111:2007:2007-07, tableau 5, association nommée CoordinateSystem."@fr;
+                      rdfs:domain ignf:SingleCRS;
+                      rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                      rdfs:label "utilise le système de coordonnées"@fr,
+                                 "uses coordinate system"@en;
+                      rdfs:range ignf:CoordinateSystem.
+ignf:datum a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:comment "The datum used by a single coordinate reference system. Cf. ISO 19111:2007:2007-07, table 5, named association DefiningDatum."@en,
+                        "Désigne le référentiel utilisé par un système de coordonnées de référence simple. Cf. ISO 19111:2007:2007-07, tableau 5, association nommée DefiningDatum."@fr;
+           rdfs:domain ignf:SingleCRS;
+           rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+           rdfs:label "utilise le référentiel"@fr,
+                      "uses datum"@en;
+           rdfs:range ignf:Datum.
+ignf:domainOfValidity a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "Geographic area or time interval in which the referring object is valid. Cf. ISO 19111:2007:2007-07, tables 4, 33 and 42, attribute domainOfValidity."@en,
+                                   "Zone ou intervalle de temps dans lequel l'objet de référence est valide. Cf. ISO 19111:2007:2007-07, tableaux 4, 33 et 42, attribut domainOfValidity."@fr;
+                      rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                      rdfs:label "domaine de validité"@fr,
+                                 "domain of validity"@en;
+                      rdfs:range ignf:Extent.
+ignf:eastBoundLongitude a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "Indicates the east bound longitude of a bounding box. Cf. ISO 19115-1:2014:2014-04, part 6.6.1 and table B.15.1 line 346."@en,
+                                     "Désigne la longitude est maximale du cadre englobant. Cf. ISO 19115-1:2014:2014-04, partie 6.6.1 et tableau B.15.1 ligne 346."@fr;
+                        rdfs:domain ignf:GeographicBoundingBox;
+                        rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                        rdfs:label "longitude est maximale"@fr,
+                                   "east bound longitude"@en;
+                        rdfs:range xsd:double.
+ignf:ellipsoid a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The ellipsoid used by a geodetic datum. Cf. ISO 19111:2007:2007-07, table 34, association role ellipsoid."@en,
+                            "Désigne l'ellipsoïde utilisé par un référentiel géodésique. Cf. ISO 19111:2007:2007-07, tableau 34, rôle d'association ellipsoid."@fr;
+               rdfs:domain ignf:GeodeticDatum;
+               rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+               rdfs:label "utilise l'ellipsoïde"@fr,
+                          "uses ellipsoid"@en;
+               rdfs:range ignf:Ellipsoid.
+ignf:ellipsoidalCS a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The ellipsoidal coordinate system used by a geodetic coordinate reference system. Cf. ISO 19111:2007:2007-07, table 10, named association CoordinateSystem."@en,
+                                "Désigne le système de coordonnées ellipsoïdal utilisé par un système de coordonnées de référence géodésique. Cf. ISO 19111:2007:2007-07, tableau 10, association nommée CoordinateSystem."@fr;
+                   rdfs:domain ignf:GeodeticCRS;
+                   rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                   rdfs:label "utilise le système de coordonnées ellipsoïdal"@fr,
+                              "uses ellipsoidal coordinate system"@en;
+                   rdfs:range ignf:EllipsoidalCS;
+                   rdfs:subPropertyOf ignf:coordinateSystem.
+ignf:epsgID a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+            rdfs:comment "The EPSG identifier of the resource."@en,
+                         "Indique l'identifiant EPSG de la ressource."@fr;
+            rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+            rdfs:label "identifiant epsg"@fr,
+                       "espg identifier"@en;
+            rdfs:range xsd:string.
+ignf:geodeticDatum a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The geodetic datum used by a geodetic coordinate reference system. Cf. ISO 19111:2007:2007-07, table 10, named association DefiningDatum."@en,
+                                "Désigne le référentiel géodésique utilisé par un système de coordonnées de référence géodésique. Cf. ISO 19111:2007:2007-07, tableau 10, association nommée DefiningDatum."@fr;
+                   rdfs:domain ignf:GeodeticCRS;
+                   rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                   rdfs:label "utilise le référentiel géodésique"@fr,
+                              "uses geodetic datum"@en;
+                   rdfs:range ignf:GeodeticDatum;
+                   rdfs:subPropertyOf ignf:datum.
+ignf:geographicElement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "The geographic bounding box used for defining a domain of validity. Cf. ISO 19115-1:2014:2014-04, part 6.6.1 and table B.15 line 337."@en,
+                                    "Désigne le cadre englobant géographique d'une région de validité. Cf. ISO 19115-1:2014:2014-04, partie 6.6.1 et tableau B.15 ligne 337."@fr;
+                       rdfs:domain ignf:Extent;
+                       rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                       rdfs:label "élément géographique"@fr,
+                                  "geographic element"@en;
+                       rdfs:range ignf:GeographicBoundingBox.
+ignf:greenwichLongitude a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "Indicates the longitude from Greenwich meridian. Cf. ISO 19111:2007:2007-07, table 35, attribute prime meridian Greenwich longitude."@en,
+                                     "Désigne la longitude par rapport au méridien de Greenwich. Cf. ISO 19111:2007:2007-07, tableau 35, attribut longitude du méridien d'origine."@fr;
+                        rdfs:domain ignf:PrimeMeridian;
+                        rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                        rdfs:label "longitude par rapport à Greenwich"@fr,
+                                   "greenwich longitude"@en;
+                        rdfs:range [<http://www.w3.org/2002/07/owl#intersectionOf> (<http://qudt.org/1.1/schema/qudt#QuantityValue>
+                                                                                    [<http://www.w3.org/2002/07/owl#onProperty> <http://qudt.org/1.1/schema/qudt#unit> ; 
+                                                                                    <http://www.w3.org/2002/07/owl#allValuesFrom> <http://qudt.org/1.1/schema/qudt#AngleUnit> ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>].
+ignf:includesSingleCRS a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Indicates the single coordinate reference systems used by a compound coordinate reference system. Cf. ISO 19111:2007:2007-07, table 6, association role componentReferenceSystem."@en,
+                                    "Désigne les systèmes de coordonnées de référence simples qui composent un système de coordonnées de référence composé. Cf. ISO 19111:2007:2007-07, tableau 6, rôle d'association componentReferenceSystem."@fr;
+                       rdfs:domain ignf:CompoundCRS;
+                       rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                       rdfs:label "inclut des systèmes de coordonnées de référence simples"@fr,
+                                  "includes some single coordinate reference systems"@en;
+                       rdfs:range ignf:SingleCRSList.
+ignf:inverseFlattening a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Indicates the inverse flattening value of an ellipsoid, expressed as a number or a ratio (percentage rate, parts per million, etc.). Cf. ISO 19111:2007:2007-07, table 37, attribute inverse flattening"@en,
+                                    "Désigne la valeur d'aplatissement inverse d'un ellipsoïde, exprimée sous la forme d'un nombre ou d'un ratio (pourcentage, parties par million, etc.). Cf. ISO 19111:2007:2007-07, tableau 37, attribut aplatissement inverse."@fr;
+                       rdfs:domain ignf:Ellipsoid;
+                       rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                       rdfs:label "aplatissement inverse"@fr,
+                                  "inverse flattening"@en;
+                       rdfs:range [<http://www.w3.org/2002/07/owl#intersectionOf> (<http://qudt.org/1.1/schema/qudt#QuantityValue>
+                                                                                   [<http://www.w3.org/2002/07/owl#onProperty> <http://qudt.org/1.1/schema/qudt#unit> ; 
+                                                                                   <http://www.w3.org/2002/07/owl#allValuesFrom> <http://qudt.org/1.1/schema/qudt#CountingUnit> ; 
+                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>].
+ignf:isSphere a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:comment "Indicates whether the ellipsoid is a sphere. Cf. ISO 19111:2007:2007-07, table 37, attribute ellipsoid=sphere indicator."@en,
+                           "Indique si l'ellipsoïde est une sphère. Cf. ISO 19111:2007:2007-07, tableau 37, attribut indicateur ellipsoïde=sphère."@fr;
+              rdfs:domain ignf:Ellipsoid;
+              rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+              rdfs:label "est une sphère"@fr,
+                         "is sphere"@en;
+              rdfs:range xsd:boolean.
+ignf:methodFormula a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "The formula used by a method to perform an operation on coordinates. Cf. ISO 19111:2007:2007-07, table 48, attribute coordinate operation method formula reference."@en,
+                                "Indique la formule utilisée par une méthode pour faire opération sur des coordonnées. Cf. ISO 19111:2007:2007-07, tableau 48, attribut référence de formule de la méthode d'opération sur les coordonnées."@fr;
+                   rdfs:domain ignf:OperationMethod;
+                   rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                   rdfs:label "formule de la méthode"@fr,
+                              "method formula"@en;
+                   rdfs:range xsd:string.
+ignf:northBoundLatitude a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "Indicates the north bound longitude of a bounding box. Cf. ISO 19115-1:2014:2014-04, part 6.6.1 and table B.15.1 line 348."@en,
+                                     "Désigne la latitude nord maximale du cadre englobant. Cf. ISO 19115-1:2014:2014-04, partie 6.6.1 et tableau B.15.1 ligne 348."@fr;
+                        rdfs:domain ignf:GeographicBoundingBox;
+                        rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                        rdfs:label "latitude nord maximale"@fr,
+                                   "north bound longitude"@en;
+                        rdfs:range xsd:double.
+ignf:operationVersion a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment "The version of an operation performed on coordinates. Cf. ISO 19111:2007:2007-07, table 42, attribute coordinate operation version."@en,
+                                   "Indique la version d'une opération appliquée sur des coordonnées. Cf. ISO 19111:2007:2007-07, tableau 42, attribut version de l'opération sur les coordonnées."@fr;
+                      rdfs:domain ignf:CoordinateOperation;
+                      rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                      rdfs:label "version de l'opération"@fr,
+                                 "operation version"@en;
+                      rdfs:range xsd:string.
+ignf:parameter a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The parameter associated to a given value. Cf. ISO 19111:2007:2007-07, table 55, association role parameter."@en,
+                            "Désigne le paramètre auquel est associée une valeur. Cf. ISO 19111:2007:2007-07, tableau 55, rôle d'association parameter."@fr;
+               rdfs:domain ignf:OperationParameterValue;
+               rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+               rdfs:label "paramètre"@fr,
+                          "parameter"@en;
+               rdfs:range ignf:OperationParameter.
+ignf:primeMeridian a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The prime meridian used by a geodetic datum. Cf. ISO 19111:2007:2007-07, table 34, association role primeMeridian."@en,
+                                "Désigne le méridien origine d'un référentiel géodésique. Cf. ISO 19111:2007:2007-07, tableau 34, rôle d'association primeMeridian."@fr;
+                   rdfs:domain ignf:GeodeticDatum;
+                   rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                   rdfs:label "utilise le méridien origine"@fr,
+                              "uses prime meridian"@en;
+                   rdfs:range ignf:PrimeMeridian.
+ignf:scope a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:comment "The scope of the referring object. Cf. ISO 19111:2007:2007-07, tables 4, 33 et 42, attribute scope."@en,
+                        "Désigne la portée de la référence. Cf. ISO 19111:2007:2007-07, tableaux 4, 33 et 42, attribut scope."@fr;
+           rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+           rdfs:label "portée"@fr,
+                      "scope"@en;
+           rdfs:range xsd:string.
+ignf:semiMajorAxis a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Indicates the length of the semi major axis of an ellipsoid. Cf. ISO 19111:2007:2007-07, table 36, attribute length of semi-major axis."@en,
+                                "Désigne la longueur du demi grand axe d'un ellipsoïde. Cf. ISO 19111:2007:2007-07, tableau 36, attribut longueur du demi-grand axe."@fr;
+                   rdfs:domain ignf:Ellipsoid;
+                   rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                   rdfs:label "demi grand axe"@fr,
+                              "semi major axis"@en;
+                   rdfs:range [<http://www.w3.org/2002/07/owl#intersectionOf> (<http://qudt.org/1.1/schema/qudt#QuantityValue>
+                                                                               [<http://www.w3.org/2002/07/owl#onProperty> <http://qudt.org/1.1/schema/qudt#unit> ; 
+                                                                               <http://www.w3.org/2002/07/owl#allValuesFrom> <http://qudt.org/1.1/schema/qudt#LengthUnit> ; 
+                                                                               a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>].
+ignf:semiMinorAxis a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Indicates the length of the semi minor axis of an ellipsoid. Cf. ISO 19111:2007:2007-07, table 37, attribute length of semi-minor axis."@en,
+                                "Désigne la longueur du demi petit axe d'un ellipsoïde. Cf. ISO 19111:2007:2007-07, tableau 37, attribut longueur du demi-petit axe."@fr;
+                   rdfs:domain ignf:Ellipsoid;
+                   rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                   rdfs:label "demi petit axe"@fr,
+                              "semi minor axis"@en;
+                   rdfs:range [<http://www.w3.org/2002/07/owl#intersectionOf> (<http://qudt.org/1.1/schema/qudt#QuantityValue>
+                                                                               [<http://www.w3.org/2002/07/owl#onProperty> <http://qudt.org/1.1/schema/qudt#unit> ; 
+                                                                               <http://www.w3.org/2002/07/owl#allValuesFrom> <http://qudt.org/1.1/schema/qudt#LengthUnit> ; 
+                                                                               a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>].
+ignf:sourceCRS a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The coordinate reference system associated to the data used as input of a given operation. Cf. ISO 19111:2007:2007-07, table 42, named association Source."@en,
+                            "Désigne le système de coordonnées de référence des données en entrée d'une opération. Cf. ISO 19111:2007:2007-07, tableau 42, association nommée Source."@fr;
+               rdfs:domain ignf:CoordinateOperation;
+               rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+               rdfs:label "système de coordonnées de référence source"@fr,
+                          "source coordinate reference system"@en;
+               rdfs:range ignf:CRS.
+ignf:sourceDimension a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "The dimension of the coordinate reference system associated with the data used as input of an operation. Cf. ISO 19111:2007:2007-07, table 48, attribute dimension of source CRS."@en,
+                                  "Indique la dimension du système de coordonnées de référence des données en entrée d'une opération. Cf. ISO 19111:2007:2007-07, tableau 48, attribut dimension du système de coordonnées de référence source."@fr;
+                     rdfs:domain ignf:OperationMethod;
+                     rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                     rdfs:label "dimension du système de coordonnées de référence source"@fr,
+                                "source coordinate reference system dimension"@en;
+                     rdfs:range xsd:integer.
+ignf:southBoundLatitude a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "Indicates the south bound latitude of a bounding box. Cf. ISO 19115-1:2014:2014-04, part 6.6.1 and table B.15.1 line 347."@en,
+                                     "Désigne la latitude sud minimale du cadre englobant. Cf. ISO 19115-1:2014:2014-04, partie 6.6.1 et tableau B.15.1 ligne 347."@fr;
+                        rdfs:domain ignf:GeographicBoundingBox;
+                        rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                        rdfs:label "latitude sud minimale"@fr,
+                                   "south bound latitude"@en;
+                        rdfs:range xsd:double.
+ignf:targetCRS a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "The coordinate reference system associated to the data obtained as output of a given operation. Cf. ISO 19111:2007:2007-07, table 42, named association Target."@en,
+                            "Désigne le système de coordonnées de référence des données en sortie d'une opération. Cf. ISO 19111:2007:2007-07, tableau 42, association nommée Target."@fr;
+               rdfs:domain ignf:CoordinateOperation;
+               rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+               rdfs:label "système de coordonnées de référence cible"@fr,
+                          "target coordinate reference system"@en;
+               rdfs:range ignf:CRS.
+ignf:targetDimension a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "The dimension of the coordinate reference system associated with the data obtained as output of an operation. Cf. ISO 19111:2007:2007-07, table 48, attribute dimension of target CRS."@en,
+                                  "Indique la dimension du système de coordonnées de référence des données en sortie d'une opération. Cf. ISO 19111:2007:2007-07, tableau 48, attribut dimension du système de coordonnées de référence cible."@fr;
+                     rdfs:domain ignf:OperationMethod;
+                     rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                     rdfs:label "dimension du système de coordonnées de référence cible"@fr,
+                                "target coordinate reference system dimension"@en;
+                     rdfs:range xsd:integer.
+ignf:usesMethod a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "The method used by an operation on coordinates. Cf. ISO 19111:2007:2007-07, table 43, association role method."@en,
+                             "Désigne la méthode utilisée par une opération sur des coordonnées. Cf. ISO 19111:2007:2007-07, tableau 43, rôle d'association method."@fr;
+                rdfs:domain ignf:CoordinateOperation;
+                rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                rdfs:label "utilise la méthode"@fr,
+                           "uses method"@en;
+                rdfs:range ignf:OperationMethod.
+ignf:usesParameter a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "A parameter used by a method to perform an operation on coordinates. Cf. ISO 19111:2007:2007-07, table 48, association role parameter."@en,
+                                "Désigne un paramètre utilisé par une méthode pour faire une opération sur des coordonnées. Cf. ISO 19111:2007:2007-07, tableau 48, rôle d'association parameter."@fr;
+                   rdfs:domain ignf:OperationMethod;
+                   rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                   rdfs:label "utilise le paramètre"@fr,
+                              "uses parameter"@en;
+                   rdfs:range ignf:OperationParameter.
+ignf:usesValue a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "A value used by an operation on coordinates. Cf. ISO 19111:2007:2007-07, table 43, association role parameterValue."@en,
+                            "Désigne une valeur utilisée par une opération sur des coordonnées. Cf. ISO 19111:2007:2007-07, tableau 43, rôle d'association parameterValue."@fr;
+               rdfs:domain ignf:CoordinateOperation;
+               rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+               rdfs:label "utilise la valeur"@fr,
+                          "uses value"@en;
+               rdfs:range ignf:OperationParameterValue.
+ignf:verticalCS a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "The vertical coordinate system used by a vertical coordinate reference system. Cf. ISO 19111:2007:2007-07, table 14, named association CoordinateSystem."@en,
+                             "Désigne le système de coordonnées vertical utilisé par un système de coordonnées de référence vertical. Cf. ISO 19111:2007:2007-07, tableau 14, association nommée CoordinateSystem."@fr;
+                rdfs:domain ignf:VerticalCRS;
+                rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                rdfs:label "utilise le système vertical de coordonnées"@fr,
+                           "uses vertical coordinate system"@en;
+                rdfs:range ignf:VerticalCS;
+                rdfs:subPropertyOf ignf:coordinateSystem.
+ignf:verticalDatum a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "The vertical datum used by a vertical coordinate reference system. Cf. ISO 19111:2007:2007-07, table 14, named association DefiningDatum."@en,
+                                "Désigne le référentiel vertical utilisé par un système de coordonnées de référence vertical. Cf. ISO 19111:2007:2007-07, tableau 14, association nommée DefiningDatum."@fr;
+                   rdfs:domain ignf:VerticalCRS;
+                   rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                   rdfs:label "utilise le référentiel vertical"@fr,
+                              "uses vertical datum"@en;
+                   rdfs:range ignf:VerticalDatum;
+                   rdfs:subPropertyOf ignf:datum.
+ignf:westBoundLongitude a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "Indicates the west bound longitude of a bounding box. Cf. ISO 19115-1:2014:2014-04, part 6.6.1 and table B.15.1 line 345."@en,
+                                     "Désigne la longitude ouest minimale du cadre englobant. Cf. ISO 19115-1:2014:2014-04, partie 6.6.1 et tableau B.15.1 ligne 345."@fr;
+                        rdfs:domain ignf:GeographicBoundingBox;
+                        rdfs:isDefinedBy <http://data.ign.fr/def/ignf>;
+                        rdfs:label "longitude ouest minimale"@fr,
+                                   "west bound longitude"@en;
+                        rdfs:range xsd:double.
+<http://recherche.ign.fr/labos/cogit/cv.php?prenom=Nathalie&nom=Abadie> a <http://xmlns.com/foaf/0.1/Person>.
+<http://www.eurecom.fr/~atemezin/> a <http://xmlns.com/foaf/0.1/Person>.
+<http://www.eurecom.fr/~troncy/> a <http://xmlns.com/foaf/0.1/Person>.
+rdf:first a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+rdf:rest a <http://www.w3.org/2002/07/owl#ObjectProperty>.

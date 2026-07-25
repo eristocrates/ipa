@@ -1,0 +1,113 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix emotion: <http://ns.inria.fr/emoca#>.
+
+<http://ns.inria.fr/emoca> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/3.0/>,
+                                                                   <http://creativecommons.org/publicdomain/zero/1.0/>;
+                           <http://purl.org/dc/terms/contributor> [<http://xmlns.com/foaf/0.1/name> "Peter Sander" ; 
+                                                                   a <http://xmlns.com/foaf/0.1/Person>],
+                                                                  [<http://xmlns.com/foaf/0.1/name> "Fabien Gandon" ; 
+                                                                   a <http://xmlns.com/foaf/0.1/Person>],
+                                                                  [<http://xmlns.com/foaf/0.1/name> "Ghislain Atemezing" ; 
+                                                                   a <http://xmlns.com/foaf/0.1/Person>];
+                           <http://purl.org/dc/terms/created> "2013-08-30";
+                           <http://purl.org/dc/terms/creator> [<http://xmlns.com/foaf/0.1/name> "Franck Berthelon" ; 
+                                                               a <http://xmlns.com/foaf/0.1/Person>];
+                           <http://purl.org/dc/terms/description> "EmOCA is used to describe and contextualize emotions"@en;
+                           <http://purl.org/dc/terms/modified> "2013-11-26";
+                           <http://purl.org/dc/terms/publisher> <http://dbpedia.org/page/National_Institute_for_Research_in_Computer_Science_and_Control>;
+                           <http://purl.org/dc/terms/title> "Emotion ontology for context awareness"@en;
+                           <http://purl.org/vocab/vann/preferredNamespacePrefix> "emotion";
+                           <http://purl.org/vocab/vann/preferredNamespaceUri> emotion:;
+                           <http://purl.org/vocommons/voaf#classNumber> 16 ;
+                           <http://purl.org/vocommons/voaf#propertyNumber> 9 ;
+                           a <http://www.w3.org/2002/07/owl#Ontology>,
+                             <http://purl.org/vocommons/voaf#Vocabulary>;
+                           <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0 - 2013-11-26";
+                           <http://xmlns.com/foaf/0.1/homepage> <http://ns.inria.fr/emoca>.
+emotion:Anger a rdfs:Class;
+              rdfs:label "Anger"@en;
+              rdfs:subClassOf emotion:Emotion.
+emotion:Arousal a rdfs:Class;
+                rdfs:label "Arousal"@en;
+                rdfs:subClassOf emotion:Component.
+emotion:Component a rdfs:Class;
+                  rdfs:label "Component"@en;
+                  rdfs:subClassOf emotion:Coordinate.
+emotion:Coordinate a <http://www.w3.org/2002/07/owl#Class>,
+                     rdfs:Class;
+                   rdfs:label "Coordinate"@en.
+emotion:Disgust a rdfs:Class;
+                rdfs:label "Disgust"@en;
+                rdfs:subClassOf emotion:Emotion.
+emotion:Emotion a <http://www.w3.org/2002/07/owl#Class>,
+                  rdfs:Class;
+                rdfs:label "Emotion"@en.
+emotion:Fear a rdfs:Class;
+             rdfs:label "Fear"@en;
+             rdfs:subClassOf emotion:Emotion.
+emotion:Impact a <http://www.w3.org/2002/07/owl#Class>,
+                 rdfs:Class;
+               rdfs:label "Impact"@en.
+emotion:Joy a rdfs:Class;
+            rdfs:label "Joy"@en;
+            rdfs:subClassOf emotion:Emotion.
+emotion:Person a <http://www.w3.org/2002/07/owl#Class>,
+                 rdfs:Class;
+               rdfs:label "Person"@en;
+               rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person>.
+emotion:Radius a rdfs:Class;
+               rdfs:label "Radius"@en;
+               rdfs:subClassOf emotion:Coordinate.
+emotion:Sadness a rdfs:Class;
+                rdfs:label "Sadness"@en;
+                rdfs:subClassOf emotion:Emotion.
+emotion:Stimulus a <http://www.w3.org/2002/07/owl#Class>,
+                   rdfs:Class;
+                 rdfs:label "Stimulus"@en.
+emotion:Surprise a rdfs:Class;
+                 rdfs:label "Surprise"@en;
+                 rdfs:subClassOf emotion:Emotion.
+emotion:Trait a <http://www.w3.org/2002/07/owl#Class>,
+                rdfs:Class;
+              rdfs:label "Trait"@en.
+emotion:Valence a rdfs:Class;
+                rdfs:label "Valence"@en;
+                rdfs:subClassOf emotion:Component.
+emotion:hasEffect a rdf:Property;
+                  rdfs:domain emotion:Impact;
+                  rdfs:label "has effect"@en;
+                  rdfs:range xsd:double.
+emotion:hasImpact a rdf:Property;
+                  rdfs:domain emotion:Trait;
+                  rdfs:label "has impact"@en;
+                  rdfs:range emotion:Impact.
+emotion:hasMaximum a rdf:Property;
+                   rdfs:domain emotion:Coordinate;
+                   rdfs:label "has maximum"@en;
+                   rdfs:range xsd:double.
+emotion:hasMinimum a rdf:Property;
+                   rdfs:domain emotion:Coordinate;
+                   rdfs:label "has minimum"@en;
+                   rdfs:range xsd:double.
+emotion:hasTrait a rdf:Property;
+                 rdfs:domain emotion:Person;
+                 rdfs:label "has trait"@en;
+                 rdfs:range emotion:Trait.
+emotion:involves a rdf:Property;
+                 rdfs:domain emotion:Stimulus;
+                 rdfs:label "involves"@en.
+emotion:isDefinedBy a rdf:Property;
+                    rdfs:domain emotion:Emotion;
+                    rdfs:label "is defined by"@en;
+                    rdfs:range emotion:Coordinate.
+emotion:pertainsTo a rdf:Property;
+                   rdfs:domain emotion:Impact;
+                   rdfs:label "pertains to"@en;
+                   rdfs:range emotion:Component.
+emotion:relatesTo a rdf:Property;
+                  rdfs:domain emotion:Trait;
+                  rdfs:label "relates to"@en.
+<http://xmlns.com/foaf/0.1/Person> a <http://www.w3.org/2002/07/owl#Class>,
+                                     rdfs:Class.

@@ -32,14 +32,6 @@ module ttracker =
     /// labels<para>Indexed Folder</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/tracker#IndexedFolder">http://tracker.api.gnome.org/ontology/v3/tracker#IndexedFolder</seealso>
     let IndexedFolder = Prefixed_Name(ttracker, "IndexedFolder") |> PrefixedName
-    /// <summary>
-    ///   <para>ttracker:available</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    /// </remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/tracker#available">http://tracker.api.gnome.org/ontology/v3/tracker#available</seealso>
-    let available = Prefixed_Name(ttracker, "available") |> PrefixedName
 
     /// <summary>
     ///   <para>ttracker:extractor-data-source</para>
@@ -52,43 +44,6 @@ module ttracker =
     let extractor_data_source =
         Prefixed_Name(ttracker, "extractor-data-source") |> PrefixedName
 
-    /// <summary>
-    ///   <para>ttracker:extractorHash</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Hash identifying the extractor of the metadata</para>
-    /// labels<para>Extractor hash</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/tracker#extractorHash">http://tracker.api.gnome.org/ontology/v3/tracker#extractorHash</seealso>
-    let extractorHash = Prefixed_Name(ttracker, "extractorHash") |> PrefixedName
-
-    /// <summary>
-    ///   <para>ttracker:hasExternalReference</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Links the information element with the external reference</para>
-    /// labels<para>External reference link</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/tracker#hasExternalReference">http://tracker.api.gnome.org/ontology/v3/tracker#hasExternalReference</seealso>
-    let hasExternalReference =
-        Prefixed_Name(ttracker, "hasExternalReference") |> PrefixedName
-
-    /// <summary>
-    ///   <para>ttracker:isDefaultTag</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    /// </remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/tracker#isDefaultTag">http://tracker.api.gnome.org/ontology/v3/tracker#isDefaultTag</seealso>
-    let isDefaultTag = Prefixed_Name(ttracker, "isDefaultTag") |> PrefixedName
-    /// <summary>
-    ///   <para>ttracker:isOptical</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    /// </remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/tracker#isOptical">http://tracker.api.gnome.org/ontology/v3/tracker#isOptical</seealso>
-    let isOptical = Prefixed_Name(ttracker, "isOptical") |> PrefixedName
     /// <summary>
     ///   <para>ttracker:isRemovable</para>
     /// </summary>
@@ -118,6 +73,34 @@ module ttracker =
     /// labels<para>Source</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/tracker#referenceSource">http://tracker.api.gnome.org/ontology/v3/tracker#referenceSource</seealso>
     let referenceSource = Prefixed_Name(ttracker, "referenceSource") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ttracker:hasExternalReference</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Links the information element with the external reference</para>
+    /// labels<para>External reference link</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/tracker#hasExternalReference">http://tracker.api.gnome.org/ontology/v3/tracker#hasExternalReference</seealso>
+    let hasExternalReference =
+        Prefixed_Name(ttracker, "hasExternalReference") |> PrefixedName
+
+    /// <summary>
+    ///   <para>ttracker:isOptical</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/tracker#isOptical">http://tracker.api.gnome.org/ontology/v3/tracker#isOptical</seealso>
+    let isOptical = Prefixed_Name(ttracker, "isOptical") |> PrefixedName
+    /// <summary>
+    ///   <para>ttracker:isDefaultTag</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/tracker#isDefaultTag">http://tracker.api.gnome.org/ontology/v3/tracker#isDefaultTag</seealso>
+    let isDefaultTag = Prefixed_Name(ttracker, "isDefaultTag") |> PrefixedName
     /// <summary>
     ///   <para>ttracker:tagRelatedTo</para>
     /// </summary>
@@ -134,3 +117,20 @@ module ttracker =
     /// </remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/tracker#unmountDate">http://tracker.api.gnome.org/ontology/v3/tracker#unmountDate</seealso>
     let unmountDate = Prefixed_Name(ttracker, "unmountDate") |> PrefixedName
+    /// <summary>
+    ///   <para>ttracker:available</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/tracker#available">http://tracker.api.gnome.org/ontology/v3/tracker#available</seealso>
+    let available = Prefixed_Name(ttracker, "available") |> PrefixedName
+    /// <summary>
+    ///   <para>ttracker:extractorHash</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Hash identifying the extractor of the metadata</para>
+    /// labels<para>Extractor hash</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/tracker#extractorHash">http://tracker.api.gnome.org/ontology/v3/tracker#extractorHash</seealso>
+    let extractorHash = Prefixed_Name(ttracker, "extractorHash") |> PrefixedName

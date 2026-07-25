@@ -1,0 +1,581 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix bato: <http://w3id.org/emmo-bto/bto#>.
+
+<http://w3id.org/emmo-bto/bto> <http://purl.org/dc/terms/abstract> "The Battery Testing Ontology (BTO) is an application-level ontology belonging to EMMO's ecosystem, meant to model battery testing methodologies and techniques, like the partial discharge test."@en;
+                               <http://purl.org/dc/terms/bibliographicCitation> "Work under review - not available yet";
+                               <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-5174-8508>,
+                                                                      <https://orcid.org/0000-0002-9668-6961>,
+                                                                      <https://orcid.org/0000-0002-4181-2852>;
+                               <http://purl.org/dc/terms/created> "2023-03-09";
+                               <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0002-9668-6961>,
+                                                                  <https://orcid.org/0000-0002-4181-2852>,
+                                                                  <https://orcid.org/0000-0002-5174-8508>;
+                               <http://purl.org/dc/terms/description> "The Battery Testing Ontology (BTO) is an application-level ontology belonging to EMMO's ecosystem, meant to model battery testing methodologies and techniques, like the partial discharge test. BTO is connected and aligned with a number of EMMO-based ontologies, including CHAMEO, Battery Domain Ontology and Electrochemistry."@en;
+                               <http://purl.org/dc/terms/issued> "2024-04-12";
+                               <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by/4.0/legalcode";
+                               <http://purl.org/dc/terms/modified> "2024-04-12";
+                               <http://purl.org/dc/terms/publisher> "EMMC ASBL";
+                               <http://purl.org/dc/terms/source> "";
+                               <http://purl.org/dc/terms/title> "Battery Testing Ontology"@en;
+                               <http://purl.org/ontology/bibo/doi> "";
+                               <http://purl.org/ontology/bibo/status> "";
+                               <http://purl.org/vocab/vann/preferredNamespacePrefix> "bto"@en;
+                               <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/emmo-bto/bto";
+                               a <http://www.w3.org/2002/07/owl#Ontology>;
+                               rdfs:comment """Contacts:
+	Gerhard Goldbeck
+	Goldbeck Consulting Ltd (UK)
+	email: gerhard@goldbeck-consulting.com"""@en;
+                               <http://www.w3.org/2002/07/owl#backwardCompatibleWith> "";
+                               <http://www.w3.org/2002/07/owl#imports> <https://w3id.org/emmo/domain/battery/battery>,
+                                                                       <https://w3id.org/emmo/domain/battery/batteryquantities>,
+                                                                       <https://w3id.org/emmo/domain/electrochemistry/electrochemicalquantities>,
+                                                                       <https://w3id.org/emmo/domain/electrochemistry/electrochemistry>,
+                                                                       <https://w3id.org/emmo/1.0.0-beta5/multiperspective/symbolic>,
+                                                                       <http://w3id.org/emmo-chameo/chameo>;
+                               <http://www.w3.org/2002/07/owl#priorVersion> "";
+                               <http://www.w3.org/2002/07/owl#versionIRI> <http://w3id.org/emmo-bto/1.0.0-beta1/bto>;
+                               <http://www.w3.org/2002/07/owl#versionInfo> "1.0.0";
+                               <http://xmlns.com/foaf/0.1/logo> "".
+bato:Accuracy a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "The level of accuracy of a battery measurement process. It is a property of the process."@en;
+              rdfs:label "Accuracy"@en;
+              rdfs:subClassOf bato:BatteryMeasurementProcessProperty;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "Accuracy"@en.
+bato:AlligatorClamps a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "A specific type of battery connector."@en;
+                     rdfs:label "AlligatorClamps"@en;
+                     rdfs:subClassOf bato:BatteryConnector;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "AlligatorClamps"@en.
+bato:AmbientHumidity a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "A specific property of a battery characterization environment, related to its level of humidity."@en;
+                     rdfs:label "AmbientHumidity"@en;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> bato:AmbientHumidityUnit ; 
+                                      <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasReferenceUnit> ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     bato:BatteryCharacterizationEnvironmentProperty;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "AmbientHumidity"@en.
+bato:AmbientHumidityUnit a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "The measurement unit of the humidity of a battery characterization hardware."@en;
+                         rdfs:label "AmbientHumidityUnit"@en;
+                         rdfs:subClassOf bato:BatteryCharacterizationEnvironmentMeasurementUnit;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "AmbientHumidityUnit"@en.
+bato:AmbientLight a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "A specific property of a battery characterization environment, related to its level of luminosity (amount of light)."@en;
+                  rdfs:label "AmbientLight"@en;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> bato:AmbientLightUnit ; 
+                                   <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasReferenceUnit> ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  bato:BatteryCharacterizationEnvironmentProperty;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "AmbientLight"@en.
+bato:AmbientLightUnit a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "The measurement unit of the light of a battery characterization hardware."@en;
+                      rdfs:label "AmbientLightUnit"@en;
+                      rdfs:subClassOf bato:BatteryCharacterizationEnvironmentMeasurementUnit;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "AmbientLightUnit"@en.
+bato:AmbientPressure a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "A specific property of a battery characterization environment, related to its level of pressure."@en;
+                     rdfs:label "AmbientPressure"@en;
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> bato:AmbientPressureUnit ; 
+                                      <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasReferenceUnit> ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     bato:BatteryCharacterizationEnvironmentProperty;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "AmbientPressure"@en.
+bato:AmbientPressureUnit a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "The measurement unit of the pressure of a battery characterization hardware."@en;
+                         rdfs:label "AmbientPressureUnit"@en;
+                         rdfs:subClassOf bato:BatteryCharacterizationEnvironmentMeasurementUnit;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "AmbientPressureUnit"@en.
+bato:AmbientTemperature a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "A specific property of a battery characterization environment, related to its level of temperature."@en;
+                        rdfs:label "AmbientTemperature"@en;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> bato:AmbientTemperatureUnit ; 
+                                         <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasReferenceUnit> ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        bato:BatteryCharacterizationEnvironmentProperty;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "AmbientTemperature"@en.
+bato:AmbientTemperatureUnit a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "The measurement unit of the temperature of a battery characterization hardware."@en;
+                            rdfs:label "AmbientTemperatureUnit"@en;
+                            rdfs:subClassOf bato:BatteryCharacterizationEnvironmentMeasurementUnit;
+                            <http://www.w3.org/2004/02/skos/core#prefLabel> "AmbientTemperatureUnit"@en.
+bato:BatteryCharacterizationEnvironment a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:comment "The environment in which a battery characterization takes place. It may have a number of properties, or specifications, including pressure, humidity, temperature and light."@en;
+                                        rdfs:label "BatteryCharacterizationEnvironment"@en;
+                                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> bato:AmbientHumidity ; 
+                                                         <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                         <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/emmo-chameo/chameo#hasCharacterisationEnvironmentProperty> ; 
+                                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                        [<http://www.w3.org/2002/07/owl#onClass> bato:AmbientPressure ; 
+                                                         <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                         <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/emmo-chameo/chameo#hasCharacterisationEnvironmentProperty> ; 
+                                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                        bato:BatteryTestingOntology,
+                                                        [<http://www.w3.org/2002/07/owl#onClass> bato:AmbientTemperature ; 
+                                                         <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                         <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/emmo-chameo/chameo#hasCharacterisationEnvironmentProperty> ; 
+                                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                        <http://w3id.org/emmo-chameo/chameo#CharacterisationEnvironment>,
+                                                        [<http://www.w3.org/2002/07/owl#onClass> bato:AmbientLight ; 
+                                                         <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                         <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/emmo-chameo/chameo#hasCharacterisationEnvironmentProperty> ; 
+                                                         a <http://www.w3.org/2002/07/owl#Restriction>];
+                                        <http://www.w3.org/2004/02/skos/core#altLabel> "BatteryCharacterisationEnvironment"@en,
+                                                                                       "Ambient"@en,
+                                                                                       "Environment"@en;
+                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryCharacterizationEnvironment"@en.
+bato:BatteryCharacterizationEnvironmentMeasurementUnit a <http://www.w3.org/2002/07/owl#Class>;
+                                                       rdfs:comment "Measurement unit of a specification of a battery characterization hardware. It is a super-class of more specific classes."@en;
+                                                       rdfs:label "BatteryCharacterizationEnvironmentMeasurementUnit"@en;
+                                                       rdfs:subClassOf <https://w3id.org/emmo#MeasurementUnit>,
+                                                                       bato:BatteryTestingOntology;
+                                                       <http://www.w3.org/2004/02/skos/core#altLabel> "BatteryAmbientMeasurementUnit"@en;
+                                                       <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryCharacterizationEnvironmentMeasurementUnit"@en.
+bato:BatteryCharacterizationEnvironmentProperty a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:comment "A property of a battery characterization environment, e.g. temperature, pressure, humidity, light. It is a super-class of more specific classes."@en;
+                                                rdfs:label "BatteryCharacterizationEnvironmentProperty"@en;
+                                                rdfs:subClassOf <https://w3id.org/emmo#Property>,
+                                                                bato:BatteryTestingOntology;
+                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryCharacterizationEnvironmentProperty"@en.
+bato:BatteryCharacterizationHardware a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "The physical apparatus of the battery testing procedure. It is required in a battery measurement process."@en;
+                                     rdfs:label "BatteryCharacterizationHardware"@en;
+                                     rdfs:subClassOf <http://w3id.org/emmo-chameo/chameo#CharacterisationInstrument>;
+                                     <http://www.w3.org/2004/02/skos/core#altLabel> "Hardware"@en;
+                                     <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryCharacterizationHardware"@en.
+bato:BatteryCharacterizationHardwareSpecification a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:comment "A characteristic or specification of a battery testing hardware"@en;
+                                                  rdfs:label "BatteryCharacterizationHardwareSpecification"@en;
+                                                  rdfs:subClassOf <http://w3id.org/emmo-chameo/chameo#CharacterisationHardwareSpecification>,
+                                                                  bato:BatteryTestingOntology;
+                                                  <http://www.w3.org/2004/02/skos/core#altLabel> "BatteryHardwareSpecification"@en;
+                                                  <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryCharacterizationHardwareSpecification"@en.
+bato:BatteryCharacterizationMethod a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "The description of the overall characterization method for a battery. It is usually made up of different steps, or tasks (e.g. battery measurement process, battery sample preparation)."@en;
+                                   rdfs:label "BatteryCharacterizationMethod"@en;
+                                   rdfs:subClassOf <http://w3id.org/emmo-chameo/chameo#CharacterisationMethod>,
+                                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> bato:BatteryMeasurementProcess ; 
+                                                    <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasTask> ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> bato:CalibrationForBatteryCharacterization ; 
+                                                    <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasTask> ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                   bato:BatteryTestingOntology,
+                                                   [<http://www.w3.org/2002/07/owl#someValuesFrom> bato:BatterySamplePreparation ; 
+                                                    <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasTask> ; 
+                                                    a <http://www.w3.org/2002/07/owl#Restriction>];
+                                   <http://www.w3.org/2004/02/skos/core#altLabel> "BatteryCharacterisationMethod"@en;
+                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryCharacterizationMethod"@en.
+bato:BatteryChemistryType a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "The type of chemistry in a battery sample. It is a property of the sample."@en;
+                          rdfs:label "BatteryChemistryType"@en;
+                          rdfs:subClassOf bato:BatterySampleProperty;
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryChemistryType"@en.
+bato:BatteryComponent a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "A physical part of a battery."@en;
+                      rdfs:label "BatteryComponent"@en;
+                      rdfs:subClassOf <https://w3id.org/emmo#Component>,
+                                      bato:BatteryTestingOntology;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryComponent"@en.
+bato:BatteryConnector a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "A physical connector that connects a battery sample for the testing procedure."@en;
+                      rdfs:label "BatteryConnector"@en;
+                      rdfs:subClassOf bato:BatteryHolderComponent;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryConnector"@en.
+bato:BatteryElectrolyteType a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "The type of electrolyte in a battery sample. It is a property of the sample."@en;
+                            rdfs:label "BatteryElectrolyteType"@en;
+                            rdfs:subClassOf bato:BatterySampleProperty;
+                            <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryElectrolyteType"@en.
+bato:BatteryHolder a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "The device that holds the battery in place for the testing procedure."@en;
+                   rdfs:label "BatteryHolder"@en;
+                   rdfs:subClassOf <http://w3id.org/emmo-chameo/chameo#Holder>,
+                                   bato:BatteryTestingOntology;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryHolder"@en.
+bato:BatteryHolderComponent a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "A physical part of the holding device."@en;
+                            rdfs:label "BatteryHolderComponent"@en;
+                            rdfs:subClassOf <https://w3id.org/emmo#Component>,
+                                            bato:BatteryTestingOntology;
+                            <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryHolderComponent"@en.
+bato:BatteryManufacturerName a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "The name of the manufacturer of a battery sample. It is a property of the sample."@en;
+                             rdfs:label "BatteryManufacturerName"@en;
+                             rdfs:subClassOf bato:BatterySampleProperty;
+                             <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryManufacturerName"@en.
+bato:BatteryMeasurementParameter a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "A configuration parameter of a battery measurement step in the testing procedure."@en;
+                                 rdfs:label "BatteryMeasurementParameter"@en;
+                                 rdfs:subClassOf <http://w3id.org/emmo-chameo/chameo#MeasurementParameter>,
+                                                 bato:BatteryTestingOntology;
+                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryMeasurementParameter"@en.
+bato:BatteryMeasurementProcess a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "The measurement step in a battery characterization method. It involves at least a characterization hardware, a characterization environment, a battery sample to be measured, the configuration parameters, the level of accuracy and the location of the measurement. Its output is the trace data of the measurement."@en;
+                               rdfs:label "BatteryMeasurementProcess"@en;
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> bato:BatterySample ; 
+                                                <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/emmo-chameo/chameo#hasMeasurementSample> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/emmo-chameo/chameo#Accuracy> ; 
+                                                <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/emmo-chameo/chameo#hasAccuracy> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/emmo-chameo/chameo#Lab> ; 
+                                                <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/emmo-chameo/chameo#hasLab> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onClass> bato:BatteryCharacterizationHardware ; 
+                                                <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasTemporaryParticipant> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onClass> bato:MaxVoltage ; 
+                                                <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/emmo-chameo/chameo#hasMeasurementParameter> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#someValuesFrom> bato:CurrentData ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasOutput> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               <https://w3id.org/emmo/domain/battery/battery#BatteryMeasurement>,
+                                               [<http://www.w3.org/2002/07/owl#onClass> bato:EndTime ; 
+                                                <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/emmo-chameo/chameo#hasMeasurementParameter> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               <http://w3id.org/emmo-chameo/chameo#CharacterisationMeasurementProcess>,
+                                               [<http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/emmo-chameo/chameo#Operator> ; 
+                                                <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/emmo-chameo/chameo#hasOperator> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onClass> bato:SamplingTime ; 
+                                                <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/emmo-chameo/chameo#hasMeasurementParameter> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#someValuesFrom> bato:VoltageData ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasOutput> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#someValuesFrom> bato:TimeData ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasOutput> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               [<http://www.w3.org/2002/07/owl#onClass> bato:BatteryCharacterizationEnvironment ; 
+                                                <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/emmo-chameo/chameo#hasCharacterisationEnvironment> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               bato:BatteryTestingOntology;
+                               <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryMeasurementProcess"@en.
+bato:BatteryMeasurementProcessProperty a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:comment "A characteristic of the battery measurement process. It is a super-class of more specific classes."@en;
+                                       rdfs:label "BatteryMeasurementProcessProperty"@en;
+                                       rdfs:subClassOf <https://w3id.org/emmo#Property>,
+                                                       bato:BatteryTestingOntology;
+                                       <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryMeasurementProcessProperty"@en.
+bato:BatteryPartNumber a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "The part number, or code, of a battery sample. It is a property of the sample."@en;
+                       rdfs:label "BatteryPartNumber"@en;
+                       rdfs:subClassOf bato:BatterySampleProperty;
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryPartNumber"@en.
+bato:BatteryProductionDate a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "The date reported as the one in which the battery sample has been produced. It is a property of the sample."@en;
+                           rdfs:label "BatteryProductionDate"@en;
+                           rdfs:subClassOf bato:BatterySampleProperty;
+                           <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryProductionDate"@en.
+bato:BatterySample a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "A battery selected from a larger set to be used in a battery testing procedure."@en;
+                   rdfs:label "BatterySample"@en;
+                   rdfs:subClassOf <https://w3id.org/emmo/domain/battery/battery#Battery>,
+                                   <http://w3id.org/emmo-chameo/chameo#Sample>,
+                                   bato:BatteryTestingOntology;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "BatterySample"@en.
+bato:BatterySamplePreparation a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "A step in the battery characterization method, related to the preparation of the battery sample to be tested. The battery sample, unprepared, is input to this step; the battery sample, prepared, is the output of this step. The holding device is a temporary participant of this step."@en;
+                              rdfs:label "BatterySamplePreparation"@en;
+                              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onClass> bato:BatteryHolder ; 
+                                               <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasTemporaryParticipant> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#onClass> bato:PreparedBatterySample ; 
+                                               <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasOutput> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              [<http://www.w3.org/2002/07/owl#onClass> bato:RawBatterySample ; 
+                                               <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                               <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasInput> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              <http://w3id.org/emmo-chameo/chameo#SamplePreparation>,
+                                              bato:BatteryTestingOntology;
+                              <http://www.w3.org/2004/02/skos/core#prefLabel> "BatterySamplePreparation"@en.
+bato:BatterySampleProperty a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "A characteristic of a battery sample."@en;
+                           rdfs:label "BatterySampleProperty"@en;
+                           rdfs:subClassOf <https://w3id.org/emmo#Property>,
+                                           bato:BatteryTestingOntology;
+                           <http://www.w3.org/2004/02/skos/core#prefLabel> "BatterySampleProperty"@en.
+bato:BatteryTestingOntology a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "This is the root class of the BTO ontology, introduced for grouping all of BTO's classes under a single parent class, each at a different hierarchical position."@en;
+                            rdfs:label "BatteryTestingOntology"@en;
+                            <http://www.w3.org/2004/02/skos/core#prefLabel> "BatteryTestingOntology"@en.
+bato:Cable a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "A physical cable that connects a battery sample for the testing procedure."@en;
+           rdfs:label "Cable"@en;
+           rdfs:subClassOf bato:BatteryHolderComponent;
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "Cable"@en.
+bato:CalibrationForBatteryCharacterization a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:comment "The process of calibration of a battery characterization hardware with reference to a voltage source, which produces as output a reference voltage data."@en;
+                                           rdfs:label "CalibrationForBatteryCharacterization"@en;
+                                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> bato:VoltageData ; 
+                                                            <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasOutput> ; 
+                                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                           [<http://www.w3.org/2002/07/owl#onClass> bato:BatteryCharacterizationHardware ; 
+                                                            <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                            <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasTemporaryParticipant> ; 
+                                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                           bato:BatteryTestingOntology,
+                                                           [<http://www.w3.org/2002/07/owl#onClass> bato:VoltageSource ; 
+                                                            <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                            <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasTemporaryParticipant> ; 
+                                                            a <http://www.w3.org/2002/07/owl#Restriction>];
+                                           <http://www.w3.org/2004/02/skos/core#altLabel> "CalibrationForBatteryCharacterisation"@en,
+                                                                                          "BatteryCharacterizationCalibration"@en,
+                                                                                          "BatteryCharacterisationCalibration"@en;
+                                           <http://www.w3.org/2004/02/skos/core#prefLabel> "CalibrationForBatteryCharacterization"@en.
+bato:CurrentData a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A specific type of trace data output from a battery measurement process, related to the current measured."@en;
+                 rdfs:label "CurrentData"@en;
+                 rdfs:subClassOf bato:TraceData;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "CurrentData"@en.
+bato:CurrentSpecification a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "A specification of the battery characterization hardware, related to the current it can sustain."@en;
+                          rdfs:label "CurrentSpecification"@en;
+                          rdfs:subClassOf bato:BatteryCharacterizationHardwareSpecification;
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "CurrentSpecification"@en.
+bato:EndTime a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A parameter in the battery measurement step. It specifies the end time of the measurement."@en;
+             rdfs:label "EndTime"@en;
+             rdfs:subClassOf bato:BatteryMeasurementParameter;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "EndTime"@en.
+bato:Fixture a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A type of holding device for a battery sample. It may consist of a battery connector and a cable."@en;
+             rdfs:label "Fixture"@en;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> bato:Cable ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasProperPart> ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#someValuesFrom> bato:BatteryConnector ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/emmo#hasProperPart> ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             bato:BatteryHolder;
+             <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/emmo/domain/electrochemistry/electrochemistry#OutputCable>;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Fixture"@en.
+bato:HardwareManufacturerName a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "The name of the manufacturer of the hardware used for the measurement process."@en;
+                              rdfs:label "HardwareManufacturerName"@en;
+                              rdfs:subClassOf bato:BatteryCharacterizationHardwareSpecification;
+                              <http://www.w3.org/2004/02/skos/core#prefLabel> "HardwareManufacturerName"@en.
+bato:HardwareModel a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "The model of the hardware used for the measurement process."@en;
+                   rdfs:label "HardwareModel"@en;
+                   rdfs:subClassOf bato:BatteryCharacterizationHardwareSpecification;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "HardwareModel"@en.
+bato:HardwareType a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "The type of the hardware used for the measurement process."@en;
+                  rdfs:label "HardwareType"@en;
+                  rdfs:subClassOf bato:BatteryCharacterizationHardwareSpecification;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "HardwareType"@en.
+bato:HipotCable a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A specific type of cable."@en;
+                rdfs:label "HipotCable"@en;
+                rdfs:subClassOf bato:Cable;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "HipotCable"@en.
+bato:MaxVoltage a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A parameter in the battery measurement step. It specifies the maximum voltage of the measurement."@en;
+                rdfs:label "MaxVoltage"@en;
+                rdfs:subClassOf bato:BatteryMeasurementParameter;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "MaxVoltage"@en.
+bato:PreparedatterySample a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "A battery sample that has been prepared for testing. It is thus the output of the process of preparing a battery sample."@en;
+                          rdfs:label "PreparedBatterySample"@en;
+                          rdfs:subClassOf bato:BatterySample,
+                                          <http://w3id.org/emmo-chameo/chameo#PreparedSample>;
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "PreparedBatterySample"@en.
+bato:RawBatterySample a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "A battery sample to be prepared for testing. It is thus the input of the process of preparing a battery sample."@en;
+                      rdfs:label "RawBatterySample"@en;
+                      rdfs:subClass <http://w3id.org/emmo-chameo/chameo#RawSample>;
+                      rdfs:subClassOf bato:BatterySample;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "RawBatterySample"@en.
+bato:SamplingTime a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "A parameter in the battery measurement step. It specifies the sampling time of the measurement."@en;
+                  rdfs:label "SamplingTime"@en;
+                  rdfs:subClassOf bato:BatteryMeasurementParameter;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "SamplingTime"@en.
+bato:TimeData a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A specific type of trace data output from a battery measurement process, related to the time intervals of the measurement."@en;
+              rdfs:label "TimeData"@en;
+              rdfs:subClassOf bato:TraceData;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "TimeData"@en.
+bato:TraceData a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "The output of a battery measurement process in terms of raw data resulting from the measurement."@en;
+               rdfs:label "TraceData"@en;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/emmo/domain/battery/battery#BatteryTimeSeriesDataSet> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/emmo-chameo/chameo#hasDataset> ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               <http://w3id.org/emmo-chameo/chameo#RawData>,
+                               bato:BatteryTestingOntology;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "TraceData"@en.
+bato:VoltageData a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A specific type of trace data output from a battery measurement process, related to the voltage measured."@en;
+                 rdfs:label "VoltageData"@en;
+                 rdfs:subClassOf bato:TraceData;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "VoltageData"@en.
+bato:VoltageSource a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "A voltage source used as a reference for the calibration of a battery characterization hardware."@en;
+                   rdfs:label "VoltageSource"@en;
+                   rdfs:subClassOf <http://w3id.org/emmo-chameo/chameo#ReferenceSample>,
+                                   bato:BatteryTestingOntology;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "VoltageSource"@en.
+bato:VoltageSpecification a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "A specification of the battery characterization hardware, related to the voltage it can provide."@en;
+                          rdfs:label "VoltageSpecification"@en;
+                          rdfs:subClassOf bato:BatteryCharacterizationHardwareSpecification;
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "VoltageSpecification"@en.
+bato:btoDatatypeProperty a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:comment "This is the root datatype property of the BTO ontology, introduced for grouping all of BTO's datatype properties under a single parent datatype property."@en;
+                         rdfs:label "btoDatatypeProperty"@en;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "btoDatatypeProperty"@en.
+bato:btoObjectProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "This is the root object property of the BTO ontology, introduced for grouping all of BTO's object properties under a single parent object property."@en;
+                       rdfs:label "btoObjectProperty"@en;
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "btoObjectProperty"@en.
+bato:hasBatteryCharacterizationHardwareSpecification a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                     rdfs:comment "Object property that connects a battery characterization hardware with its specifications. It is a super-property of more specific object properties."@en;
+                                                     rdfs:domain bato:BatteryCharacterizationHardware;
+                                                     rdfs:label "hasBatteryCharacterizationHardwareSpecification"@en;
+                                                     rdfs:range bato:BatteryCharacterizationHardwareSpecification;
+                                                     rdfs:subPropertyOf bato:btoObjectProperty,
+                                                                        <http://w3id.org/emmo-chameo/chameo#hasHardwareSpecification>;
+                                                     <http://www.w3.org/2004/02/skos/core#altLabel> "hasBatteryCharacterisationHardwareProperty"@en,
+                                                                                                    "hasHardwareSpecification"@en,
+                                                                                                    "hasBatteryCharacterisationHardwareSpecification"@en,
+                                                                                                    "hasBatteryCharacterizationHardwareProperty"@en,
+                                                                                                    "hasHardwareProperty"@en;
+                                                     <http://www.w3.org/2004/02/skos/core#prefLabel> "hasBatteryCharacterizationHardwareSpecification"@en.
+bato:hasBatterySampleProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:comment "Object property that connects a battery sample with its characteristics (BatterySampleProperties). It is the super-property of a number of more specific object properties."@en;
+                              rdfs:domain bato:BatterySample;
+                              rdfs:label "hasBatterySampleProperty"@en;
+                              rdfs:range bato:BatterySampleProperty;
+                              rdfs:subPropertyOf bato:btoObjectProperty,
+                                                 <https://w3id.org/emmo#hasProperty>;
+                              <http://www.w3.org/2004/02/skos/core#prefLabel> "hasBatterySampleProperty".
+bato:hasCellForm a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "A specific object property that connects a battery sample with its cell form."@en;
+                 rdfs:label "hasCellForm"@en;
+                 rdfs:range <https://w3id.org/emmo/domain/electrochemistry/electrochemistry#FormFactor>;
+                 rdfs:subPropertyOf bato:hasBatterySampleProperty;
+                 <http://www.w3.org/2004/02/skos/core#preflabel> "hasCellForm"@en.
+bato:hasChemistryType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "A specific object property that connects a battery sample with its chemistry type."@en;
+                      rdfs:label "hasChemistryType"@en;
+                      rdfs:range bato:BatteryChemistryType;
+                      rdfs:subPropertyOf bato:hasBatterySampleProperty;
+                      <http://www.w3.org/2004/02/skos/core#preflabel> "hasChemistryType"@en.
+bato:hasCurrentSpecification a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:comment "A specific object property that connects a battery characterization hardware with its current specification."@en;
+                             rdfs:label "hasCurrentSpecification"@en;
+                             rdfs:range bato:CurrentSpecification;
+                             rdfs:subPropertyOf bato:hasBatteryCharacterizationHardwareSpecification;
+                             <http://www.w3.org/2004/02/skos/core#preflabel> "hasCurrentSpecification"@en.
+bato:hasElectrolyteType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "A specific object property that connects a battery sample with its electrolyte type."@en;
+                        rdfs:label "hasElectrolyteType"@en;
+                        rdfs:range bato:BatteryElectrolyteType;
+                        rdfs:subPropertyOf bato:hasBatterySampleProperty;
+                        <http://www.w3.org/2004/02/skos/core#preflabel> "hasElectrolyteType"@en.
+bato:hasHardwareModel a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "A specific object property that connects a battery characterization hardware with its hardware model."@en;
+                      rdfs:label "hasHardwareModel"@en;
+                      rdfs:range bato:HardwareModel;
+                      rdfs:subPropertyOf bato:hasBatteryCharacterizationHardwareSpecification;
+                      <http://www.w3.org/2004/02/skos/core#preflabel> "hasHardwareModel"@en.
+bato:hasHardwareType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "A specific object property that connects a battery characterization hardware with its hardware type."@en;
+                     rdfs:label "hasHardwareType"@en;
+                     rdfs:range bato:HardwareType;
+                     rdfs:subPropertyOf bato:hasBatteryCharacterizationHardwareSpecification;
+                     <http://www.w3.org/2004/02/skos/core#preflabel> "hasHardwareType"@en.
+bato:hasManufacturer a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "A specific object property that connects either a battery sample or its characterization hardware with its manufacturer."@en;
+                     rdfs:label "hasManufacturer"@en;
+                     rdfs:range <https://w3id.org/emmo#Manufacturer>;
+                     rdfs:subPropertyOf bato:btoObjectProperty;
+                     <http://www.w3.org/2004/02/skos/core#altlabel> "hasManufacturer"@en;
+                     <http://www.w3.org/2004/02/skos/core#preflabel> "hasManufacturer"@en.
+bato:hasPartNumber a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "A specific object property that connects a battery sample with its part number."@en;
+                   rdfs:label "hasPartNumber"@en;
+                   rdfs:range bato:BatteryPartNumber;
+                   rdfs:subPropertyOf bato:hasBatterySampleProperty;
+                   <http://www.w3.org/2004/02/skos/core#preflabel> "hasPartNumber"@en.
+bato:hasProductionDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:comment "A specific datatype property that specifies a production date for a battery sample."@en;
+                       rdfs:label "hasProductionDate"@en;
+                       rdfs:range xsd:string;
+                       rdfs:subPropertyOf bato:btoDatatypeProperty;
+                       <http://www.w3.org/2004/02/skos/core#preflabel> "hasProductionDate".
+bato:hasVoltageSpecification a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:comment "A specific object property that connects a battery characterization hardware with its voltage specification."@en;
+                             rdfs:label "hasVoltageSpecification"@en;
+                             rdfs:range bato:VoltageSpecification;
+                             rdfs:subPropertyOf bato:hasBatteryCharacterizationHardwareSpecification;
+                             <http://www.w3.org/2004/02/skos/core#preflabel> "hasVoltageSpecification"@en.
+<https://orcid.org/0000-0002-4181-2852> a <http://xmlns.com/foaf/0.1/Person>;
+                                        rdfs:comment "";
+                                        rdfs:label "Gerhard Goldbeck";
+                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Gerhard Goldbeck";
+                                        <http://xmlns.com/foaf/0.1/name> "Gerhard Goldbeck".
+<https://orcid.org/0000-0002-5174-8508> a <http://xmlns.com/foaf/0.1/Person>;
+                                        rdfs:comment "";
+                                        rdfs:label "Pierluigi Del Nostro";
+                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Pierluigi Del Nostro";
+                                        <http://xmlns.com/foaf/0.1/name> "Pierluigi Del Nostro".
+<https://orcid.org/0000-0002-9668-6961> a <http://xmlns.com/foaf/0.1/Person>;
+                                        rdfs:comment "";
+                                        rdfs:label "Daniele Toti";
+                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Daniele Toti";
+                                        <http://xmlns.com/foaf/0.1/name> "Daniele Toti".
+<https://w3id.org/emmo#Component> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/emmo#EMMO_f76884f7_964e_488e_9bb7_1b2453e9e817>.
+<https://w3id.org/emmo#Height> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/emmo#EMMO_08bcf1d6_e719_46c8_bb21_24bc9bf34dba>.
+<https://w3id.org/emmo#Length> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/emmo#EMMO_cd2cd0de_e0cc_4ef1_b27e_2e88db027bac>.
+<https://w3id.org/emmo#LengthUnit> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/emmo#EMMO_b3600e73_3e05_479d_9714_c041c3acf5cc>.
+<https://w3id.org/emmo#Manufacturing> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/emmo#EMMO_c0afb341_7d31_4883_a307_ae4606df2a1b>.
+<https://w3id.org/emmo#MeasurementUnit> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/emmo#EMMO_b081b346_7279_46ef_9a3d_2c088fcd79f4>.
+<https://w3id.org/emmo#Property> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/emmo#EMMO_b7bcff25_ffc3_474e_9ab5_01b1664bd4ba>.
+<https://w3id.org/emmo#Width> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/emmo#EMMO_e4de48b1_dabb_4490_ac2b_040f926c64f0>.
+<https://w3id.org/emmo#hasBeginTask> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://w3id.org/emmo#EMMO_4ab7fb52_cec3_4c00_90c0_5648f01e3296>.
+<https://w3id.org/emmo#hasDataValue> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://w3id.org/emmo#EMMO_b6292331_94af_4f00_976b_ea55960c2f1c>.
+<https://w3id.org/emmo#hasEndTask> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://w3id.org/emmo#EMMO_92227f7f_22e9_4b19_a011_920eac3c7b75>.
+<https://w3id.org/emmo#hasInput> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://w3id.org/emmo#EMMO_36e69413_8c59_4799_946c_10b05d266e22>.
+<https://w3id.org/emmo#hasMeasurementUnit> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569>.
+<https://w3id.org/emmo#hasNext> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://w3id.org/emmo#EMMO_499e24a5_5072_4c83_8625_fe3f96ae4a8d>.
+<https://w3id.org/emmo#hasNumericalValue> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://w3id.org/emmo#EMMO_faf79f53_749d_40b2_807c_d34244c192f4>.
+<https://w3id.org/emmo#hasOutput> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://w3id.org/emmo#EMMO_c4bace1d_4db0_4cd3_87e9_18122bae2840>.
+<https://w3id.org/emmo#hasProperPart> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://w3id.org/emmo#EMMO_9380ab64_0363_4804_b13f_3a8a94119a76>.
+<https://w3id.org/emmo#hasProperty> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://w3id.org/emmo#EMMO_e1097637_70d2_4895_973f_2396f04fa204>.
+<https://w3id.org/emmo#hasReferenceUnit> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://w3id.org/emmo#EMMO_67fc0a36_8dcb_4ffa_9a43_31074efa3296>.
+<https://w3id.org/emmo#hasStringValue> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://w3id.org/emmo#EMMO_02face50_43a1_40ce_a909_dfe54d5e186b>.
+<https://w3id.org/emmo#hasTask> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://w3id.org/emmo#EMMO_70da982d_1810_4b01_9630_a28e216ecd9a>.
+<https://w3id.org/emmo#hasTemporaryParticipant> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://w3id.org/emmo#EMMO_35c29eb6_f57e_48d8_85af_854f9e926e77>.
+<https://w3id.org/emmo#hasUriValue> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://w3id.org/emmo#EMMO_b35e92d7_7fa0_4661_aa5a_5cea7c8e6925>.
+<https://w3id.org/emmo/domain/battery/battery#Battery> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/emmo/domain/battery/battery#battery_74ed2670_657d_4f0b_b0a6_3f13bc2e9c17>.
+<https://w3id.org/emmo/domain/battery/battery#BatteryMeasurement> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/emmo/domain/battery/battery#battery_6c481323_498b_42c6_915a_53490f409430>.
+<https://w3id.org/emmo/domain/battery/battery#BatteryTimeSeriesDataSet> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/emmo/domain/battery/battery#battery_d9b99b14_44e8_473b_af8f_2a160429df69>.
+<https://w3id.org/emmo/domain/electrochemistry/electrochemistry#Anode> rdfs:subClassOf bato:BatteryComponent;
+                                                                       <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/emmo/domain/electrochemistry/electrochemistry#electrochemistry_b6319c74_d2ce_48c0_a75a_63156776b302>.
+<https://w3id.org/emmo/domain/electrochemistry/electrochemistry#Cathode> rdfs:subClassOf bato:BatteryComponent;
+                                                                         <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/emmo/domain/electrochemistry/electrochemistry#electrochemistry_35c650ab_3b23_4938_b312_1b0dede2e6d5>.
+<https://w3id.org/emmo/domain/electrochemistry/electrochemistry#FormFactor> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/emmo/domain/electrochemistry/electrochemistry#electrochemistry_1586ef26_6d30_49e3_ae32_b4c9fc181941>.
+<https://w3id.org/emmo/domain/electrochemistry/electrochemistry#OutputCable> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/emmo/domain/electrochemistry/electrochemistry#electrochemistry_76df6e7b_fc3b_4a1f_98b1_0ca9c0539e4c>.

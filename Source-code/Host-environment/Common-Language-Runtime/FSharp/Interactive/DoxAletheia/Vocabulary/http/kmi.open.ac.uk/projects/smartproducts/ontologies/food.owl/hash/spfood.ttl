@@ -1,0 +1,554 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix spfood: <http://kmi.open.ac.uk/projects/smartproducts/ontologies/food.owl#>.
+
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/food.owl> <http://purl.org/dc/terms/description> "Defines concepts and properties specific for the Philips use case (cooking domain)."@en;
+                                                                   <http://purl.org/dc/terms/title> "SmartProducts Food Domain Model"@en;
+                                                                   a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                                   rdfs:comment "Defines concepts and properties specific for the Philips use case (cooking domain).";
+                                                                   <http://www.w3.org/2002/07/owl#imports> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/process.owl>,
+                                                                                                           <http://kmi.open.ac.uk/projects/smartproducts/ontologies/product.owl>.
+spfood:AmericanCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                              <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#USA> ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             spfood:RegionalCuisineRecipe.
+spfood:Appetizer a <http://www.w3.org/2002/07/owl#Thing>,
+                   spfood:MealCourseType,
+                   <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:AtomicFoodOrDrinkItem a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#madeOf> ; 
+                                              <http://www.w3.org/2002/07/owl#onClass> spfood:FoodOrDrinkMatter ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#onProperty> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#madeOf> ; 
+                                              <http://www.w3.org/2002/07/owl#allValuesFrom> spfood:FoodOrDrinkMatter ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             spfood:FoodOrDrinkItem.
+spfood:Baking a <http://www.w3.org/2002/07/owl#Thing>,
+                spfood:CookingTaskType,
+                <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:BakingOven a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf spfood:Oven.
+spfood:Boiling a <http://www.w3.org/2002/07/owl#Thing>,
+                 spfood:CookingTaskType,
+                 <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:BritishCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                             <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#UK> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            spfood:RegionalCuisineRecipe.
+spfood:Carbohydrate a <http://www.w3.org/2002/07/owl#Thing>,
+                      spfood:Nutrient,
+                      <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:CaribbeanCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                               <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Caribbean> ; 
+                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                              spfood:RegionalCuisineRecipe.
+spfood:Cheese a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:ChineseCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                             <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#China> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            spfood:RegionalCuisineRecipe.
+spfood:Cholesterol a <http://www.w3.org/2002/07/owl#Thing>,
+                     spfood:Nutrient,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:CompositeFoodOrDrinkItem a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:subClassOf spfood:FoodOrDrinkItem,
+                                                <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Assembly>.
+spfood:ConcreteDrinkItem a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf spfood:ConcreteFoodOrDrinkItem,
+                                         spfood:DrinkItem.
+spfood:ConcreteFoodItem a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf spfood:ConcreteFoodOrDrinkItem,
+                                        spfood:FoodItem.
+spfood:ConcreteFoodOrDrinkItem a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:subClassOf spfood:FoodOrDrinkItem;
+                               <http://www.w3.org/2002/07/owl#disjointWith> spfood:IngredientPortion,
+                                                                            spfood:VirtualFoodOrDrinkItem.
+spfood:CookingActivity a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf <http://kmi.open.ac.uk/projects/smartproducts/ontologies/process.owl#ActivityDefinition>.
+spfood:CookingDifficultyCategory a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#SocialObjectAttribute>.
+spfood:CookingGuide a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:subClassOf spfood:KitchenTool.
+spfood:CookingTaskType a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#SocialObjectAttribute>.
+spfood:Cutting a <http://www.w3.org/2002/07/owl#Thing>,
+                 spfood:CookingTaskType,
+                 <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:DairyFreeDiet a <http://www.w3.org/2002/07/owl#Thing>,
+                       spfood:DietType,
+                       <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:DairyProduct a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:DefaultIngredientPortion a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:subClassOf spfood:IngredientPortion.
+spfood:Dessert a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 spfood:MealCourseType.
+spfood:DessertCourseRole a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf spfood:MealCourseRole.
+spfood:DiabeticDiet a <http://www.w3.org/2002/07/owl#Thing>,
+                      spfood:DietType,
+                      <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:DietAssessment a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Quality>.
+spfood:DietType a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Concept>.
+spfood:Disease a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf spfood:HealthProfile.
+spfood:DishPreference a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> spfood:FoodOrDrinkMatter ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/user.owl#preferenceValue> ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      spfood:RecipePreference.
+spfood:Drink a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf spfood:FoodOrDrink.
+spfood:DrinkItem a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf spfood:FoodOrDrinkItem.
+spfood:Drinks a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                spfood:MealCourseType.
+spfood:Easy a <http://www.w3.org/2002/07/owl#Thing>,
+              spfood:CookingDifficultyCategory,
+              <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:EggFreeDiet a <http://www.w3.org/2002/07/owl#Thing>,
+                     spfood:DietType,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:EnergyQuantityInCalories a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#hasPhysicalQuantityUnit> ; 
+                                                 <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#calorie> ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#EnergyQuantity>.
+spfood:Expert a <http://www.w3.org/2002/07/owl#Thing>,
+                spfood:CookingDifficultyCategory,
+                <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:Fat a <http://www.w3.org/2002/07/owl#Thing>,
+             spfood:Nutrient,
+             <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:FingerFood rdfs:comment spfood:SideCourse.
+spfood:Fish rdfs:comment spfood:SideCourse.
+spfood:FishProduct a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:Food a <http://www.w3.org/2002/07/owl#Class>,
+              <http://www.w3.org/2002/07/owl#NamedIndividual>;
+            rdfs:subClassOf spfood:FoodOrDrink.
+spfood:FoodItem a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf spfood:FoodOrDrinkItem.
+spfood:FoodMatter a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf spfood:FoodOrDrinkMatter;
+                  <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#onProperty> rdfs:subClassOf ; 
+                                                                   <http://www.w3.org/2002/07/owl#hasValue> spfood:Food ; 
+                                                                   a <http://www.w3.org/2002/07/owl#Restriction>].
+spfood:FoodOrDrink a <http://www.w3.org/2002/07/owl#Class>,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                   rdfs:subClassOf spfood:FoodOrDrinkItem.
+spfood:FoodOrDrinkItem a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#PhysicalEntityInSpace>,
+                                       <http://www.loa-cnr.it/ontologies/DUL.owl#PhysicalBody>.
+spfood:FoodOrDrinkMatter a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Matter>,
+                                         <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#MetaClass>;
+                         <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#onProperty> rdfs:subClassOf ; 
+                                                                          <http://www.w3.org/2002/07/owl#hasValue> spfood:FoodOrDrink ; 
+                                                                          a <http://www.w3.org/2002/07/owl#Restriction>].
+spfood:FoodPreference a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf <http://kmi.open.ac.uk/projects/smartproducts/ontologies/user.owl#Preference>.
+spfood:FoodProduct a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf spfood:FoodItem,
+                                   <http://kmi.open.ac.uk/projects/smartproducts/ontologies/product.owl#Product>.
+spfood:FrenchCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                            <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#France> ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           spfood:RegionalCuisineRecipe.
+spfood:Fridge a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Thermometer> ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#hasSubComponent> ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#contains> ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> spfood:ConcreteFoodOrDrinkItem ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              spfood:KitchenTool.
+spfood:Frying a <http://www.w3.org/2002/07/owl#Thing>,
+                spfood:CookingTaskType,
+                <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:FryingPan a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf spfood:KitchenTool.
+spfood:GermanCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                            <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Germany> ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           spfood:RegionalCuisineRecipe.
+spfood:GlutenFreeDiet a <http://www.w3.org/2002/07/owl#Thing>,
+                        spfood:DietType,
+                        <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:Gorgonzola a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:GreekCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                           <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Greece> ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          spfood:MediterraneanCuisineRecipe.
+spfood:Grill a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf spfood:KitchenTool.
+spfood:HealthProfile a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf <http://kmi.open.ac.uk/projects/smartproducts/ontologies/user.owl#UserProfile>.
+spfood:IndianCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                            <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#India> ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           spfood:RegionalCuisineRecipe.
+spfood:Ingredient a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:IngredientPortion a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf spfood:AtomicFoodOrDrinkItem,
+                                         spfood:VirtualFoodOrDrinkItem,
+                                         <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#AssemblyComponent>,
+                                         <http://www.loa-cnr.it/ontologies/DUL.owl#Substance>.
+spfood:IngredientPreference a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment spfood:SideCourse;
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/user.owl#preferenceValue> ; 
+                                             <http://www.w3.org/2002/07/owl#allValuesFrom> spfood:FoodOrDrinkMatter ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            spfood:RecipePreference.
+spfood:IrishCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                           <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Ireland> ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          spfood:RegionalCuisineRecipe.
+spfood:ItalianCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                             <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Italy> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            spfood:MediterraneanCuisineRecipe.
+spfood:JapaneseCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                              <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Japan> ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             spfood:RegionalCuisineRecipe.
+spfood:KitchenTool a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf <http://kmi.open.ac.uk/projects/smartproducts/ontologies/product.owl#ProductizedDevice>.
+spfood:LowFatDiet a <http://www.w3.org/2002/07/owl#Thing>,
+                    spfood:DietType,
+                    <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:LowInSaltDiet a <http://www.w3.org/2002/07/owl#Thing>,
+                       spfood:DietType,
+                       <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:MainCourse a <http://www.w3.org/2002/07/owl#Thing>,
+                    spfood:MealCourseType,
+                    <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:MainCourseRole a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf spfood:MealCourseRole.
+spfood:MassQuantityInOunces a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#MassQuantity>.
+spfood:MassQuantityInPounds a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#MassQuantity>.
+spfood:MaxCaloriesPreference a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:subClassOf spfood:NutritionPreference.
+spfood:MaxCookingTimePreference a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/user.owl#preferenceValue> ; 
+                                                 <http://www.w3.org/2002/07/owl#allValuesFrom> <http://www.w3.org/2006/time#DurationDescription> ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                spfood:RecipeCookingTimePreference.
+spfood:MealContext a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#SituationalContext>.
+spfood:MealCourseRole a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Role>.
+spfood:MealCourseType a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#RoleType>.
+spfood:MealMaxNutritionEnergyPreference a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:subClassOf spfood:MealNutritionEnergyPreference.
+spfood:MealMinNutritionEnergyPreference a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:subClassOf spfood:MealNutritionEnergyPreference.
+spfood:MealNutritionEnergyPreference a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/user.owl#preferenceValue> ; 
+                                                      <http://www.w3.org/2002/07/owl#allValuesFrom> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#EnergyQuantity> ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     spfood:MealNutritionPreference.
+spfood:MealNutritionPreference a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:subClassOf spfood:MealPreference.
+spfood:MealPlanningTask a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Task>.
+spfood:MealPreference a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf spfood:FoodPreference.
+spfood:MealStructure a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Description>.
+spfood:MealType a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#SocialObjectAttribute>.
+spfood:MeatProduct a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:MediterraneanCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                                   <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#MediterraneanBasin> ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  spfood:RegionalCuisineRecipe.
+spfood:MexicanCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                             <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Mexico> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            spfood:RegionalCuisineRecipe.
+spfood:MiddleEasternCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                                   <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#MiddleEast> ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  spfood:RegionalCuisineRecipe.
+spfood:Moderate a <http://www.w3.org/2002/07/owl#Thing>,
+                  spfood:CookingDifficultyCategory,
+                  <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:MoroccanCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                              <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Morocco> ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             spfood:MediterraneanCuisineRecipe.
+spfood:NutFreeDiet a <http://www.w3.org/2002/07/owl#Thing>,
+                     spfood:DietType,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:Nutrient a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Matter>.
+spfood:NutrientPortion a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#madeOf> ; 
+                                        <http://www.w3.org/2002/07/owl#allValuesFrom> spfood:Nutrient ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       <http://www.loa-cnr.it/ontologies/DUL.owl#Substance>.
+spfood:NutritionPreference a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf spfood:RecipePreference.
+spfood:NutritionalEnergy a <http://www.w3.org/2002/07/owl#Thing>,
+                           spfood:Nutrient,
+                           <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:Oven a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf spfood:KitchenTool.
+spfood:Party a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf spfood:MealContext.
+spfood:PhilipsCookingGuide a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:subClassOf spfood:CookingGuide.
+spfood:PhilipsCookingGuideXYZ a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:subClassOf spfood:PhilipsCookingGuide.
+spfood:Proteins a <http://www.w3.org/2002/07/owl#Thing>,
+                  spfood:Nutrient,
+                  <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:Recipe a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment spfood:SideCourse;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasIngredient ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> spfood:IngredientPortion ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasIngredient ; 
+                               <http://www.w3.org/2002/07/owl#onClass> spfood:IngredientPortion ; 
+                               <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/process.owl#hasStep> ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> spfood:CookingActivity ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              <http://kmi.open.ac.uk/projects/smartproducts/ontologies/process.owl#WorkflowDefinition>.
+spfood:RecipeCookingTimePreference a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:subClassOf spfood:RecipePreference.
+spfood:RecipeDescription rdfs:comment spfood:SideCourse.
+spfood:RecipePreference a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf spfood:FoodPreference.
+spfood:RecipeTypePreference a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf spfood:RecipePreference.
+spfood:RegionalCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:subClassOf spfood:Recipe.
+spfood:Sauce a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:ScottishCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                              <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Scotland> ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             spfood:BritishCuisineRecipe.
+spfood:SideCourse a <http://www.w3.org/2002/07/owl#Thing>,
+                    spfood:MealCourseType,
+                    <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:Sodium a <http://www.w3.org/2002/07/owl#Thing>,
+                spfood:Nutrient,
+                <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:Soup a <http://www.w3.org/2002/07/owl#Thing>,
+              spfood:MealCourseType,
+              <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:SpanishCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                             <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Spain> ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            spfood:MediterraneanCuisineRecipe.
+spfood:Steamer a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:subClassOf spfood:KitchenTool.
+spfood:Stilton a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:Store a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Building>.
+spfood:Supermarket a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:subClassOf spfood:Store.
+spfood:TESCO a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               spfood:Supermarket.
+spfood:ThaiCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                          <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Thailand> ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                         spfood:RegionalCuisineRecipe.
+spfood:TimeOfDayMealType a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:subClassOf spfood:MealType.
+spfood:Turkey a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:VeganDiet a <http://www.w3.org/2002/07/owl#Thing>,
+                   spfood:DietType,
+                   <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:VegetableOil a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:VegetarianDiet a <http://www.w3.org/2002/07/owl#Thing>,
+                        spfood:DietType,
+                        <http://www.w3.org/2002/07/owl#NamedIndividual>.
+spfood:VietnameseCuisineRecipe a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> spfood:hasGeographicalProvenance ; 
+                                                <http://www.w3.org/2002/07/owl#hasValue> <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Vietnam> ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               spfood:RegionalCuisineRecipe.
+spfood:VirtualFoodOrDrinkItem a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:subClassOf spfood:FoodOrDrinkItem.
+spfood:VolumeQuantityInCups a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:subClassOf <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#VolumeQuantity>.
+spfood:VolumeQuantityInTableSpoons a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:subClassOf <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#VolumeQuantity>.
+spfood:canBeReplacedWith a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain spfood:FoodMatter;
+                         rdfs:range spfood:FoodMatter.
+spfood:courseType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain spfood:MealCourseRole;
+                  rdfs:range spfood:MealCourseType.
+spfood:courseValue a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain spfood:MealCourseRole;
+                   rdfs:range spfood:FoodOrDrinkItem.
+spfood:cup a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#VolumeMeasurementUnit>.
+spfood:hasAvailableIngredient a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:range spfood:IngredientPortion.
+spfood:hasCookingTaskType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain spfood:CookingActivity;
+                          rdfs:range spfood:CookingTaskType;
+                          rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#hasRegion>.
+spfood:hasDefaultPortion a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain spfood:FoodOrDrinkMatter;
+                         rdfs:range spfood:DefaultIngredientPortion.
+spfood:hasDietType a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain spfood:DietAssessment;
+                   rdfs:range spfood:DietType;
+                   rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#hasRegion>.
+spfood:hasDifficultyCategory a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain spfood:Recipe;
+                             rdfs:range spfood:CookingDifficultyCategory;
+                             rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#hasRegion>.
+spfood:hasExpiryDate a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain spfood:ConcreteFoodOrDrinkItem.
+spfood:hasGeographicalProvenance a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (spfood:FoodOrDrinkItem
+                                                                                       spfood:Recipe) ; 
+                                              a <http://www.w3.org/2002/07/owl#Class>];
+                                 rdfs:range <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#PhysicalGeographicEntity>.
+spfood:hasGuest a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain spfood:MealContext;
+                rdfs:range <http://www.loa-cnr.it/ontologies/DUL.owl#Person>;
+                rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#includesAgent>.
+spfood:hasHealthProfile a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:subPropertyOf <http://kmi.open.ac.uk/projects/smartproducts/ontologies/user.owl#hasProfile>.
+spfood:hasIngredient a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (spfood:FoodOrDrinkItem
+                                                                           spfood:Recipe) ; 
+                                  a <http://www.w3.org/2002/07/owl#Class>];
+                     rdfs:range spfood:IngredientPortion;
+                     rdfs:subPropertyOf <http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#hasSubComponent>.
+spfood:hasMealCourse a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain spfood:MealStructure;
+                     rdfs:range spfood:MealCourseRole;
+                     rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#definesRole>.
+spfood:hasMealStructure a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain spfood:MealContext;
+                        rdfs:range spfood:MealStructure;
+                        rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#satisfies>.
+spfood:hasNutrient a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain spfood:FoodOrDrinkItem;
+                   rdfs:range spfood:NutrientPortion;
+                   rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#hasPart>.
+spfood:hasScore a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain spfood:DietAssessment;
+                rdfs:range xsd:double.
+spfood:impliesPreference a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain spfood:HealthProfile;
+                         rdfs:range <http://kmi.open.ac.uk/projects/smartproducts/ontologies/user.owl#Preference>.
+spfood:numberOfGuests a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:range xsd:int.
+spfood:producedByRecipe a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain spfood:FoodOrDrinkItem;
+                        rdfs:range spfood:Recipe;
+                        <http://www.w3.org/2002/07/owl#inverseOf> spfood:producesFoodItem.
+spfood:producesFoodItem a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain spfood:Recipe;
+                        rdfs:range spfood:FoodOrDrinkItem.
+spfood:suitableForDiet a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain spfood:FoodOrDrinkItem;
+                       rdfs:range spfood:DietAssessment;
+                       rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#hasQuality>.
+spfood:suitableForMealCourse a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain spfood:FoodOrDrinkItem;
+                             rdfs:range spfood:MealCourseType.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Assembly> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#AssemblyComponent> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Caribbean> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                                  <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#China> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                              <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#EnergyQuantity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#France> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                               <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Germany> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                                <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Greece> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                               <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#India> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                              <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Ireland> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                                <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Italy> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                              <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Japan> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                              <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#MassQuantity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Matter> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#MediterraneanBasin> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                                           <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Mexico> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                               <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#MiddleEast> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                                   <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Morocco> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                                <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#PhysicalEntityInSpace> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#PhysicalGeographicEntity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#PhysicalQuantity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Scotland> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                                 <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Spain> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                              <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Temperature> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Thailand> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                                 <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Thermometer> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#UK> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                           <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#USA> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                            <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#Vietnam> a <http://www.w3.org/2002/07/owl#Thing>,
+                                                                                <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#VolumeMeasurementUnit> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#VolumeQuantity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#calorie> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#contains> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#hasPhysicalQuantityUnit> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#hasSubComponent> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/generic.owl#madeOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/process.owl#ActivityDefinition> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/process.owl#WorkflowDefinition> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/process.owl#hasStep> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/product.owl#Product> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/product.owl#ProductizedDevice> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/user.owl#Preference> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/user.owl#User> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/user.owl#UserProfile> a <http://www.w3.org/2002/07/owl#Class>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/user.owl#hasProfile> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://kmi.open.ac.uk/projects/smartproducts/ontologies/user.owl#preferenceValue> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+rdfs:comment a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:subClassOf a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.w3.org/2002/07/owl#Thing> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2006/time#DayOfWeek> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2006/time#DurationDescription> a <http://www.w3.org/2002/07/owl#Class>.

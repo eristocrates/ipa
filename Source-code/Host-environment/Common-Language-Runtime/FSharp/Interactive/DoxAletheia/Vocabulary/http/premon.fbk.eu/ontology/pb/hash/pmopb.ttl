@@ -1,0 +1,276 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix pmopb: <http://premon.fbk.eu/ontology/pb#>.
+
+<http://premon.fbk.eu/ontology/pb> <http://purl.org/dc/terms/creator> "Francesco Corcoglioniti",
+                                                                      "Marco Rospocher <https://dkm.fbk.eu/rospocher>";
+                                   <http://purl.org/dc/terms/description> <http://premon.fbk.eu/images/pb.svg>,
+                                                                          """We define classes [pmopb:Roleset](http://premon.fbk.eu/ontology/pb#Roleset) and [pmopb:SemanticRole](http://premon.fbk.eu/ontology/pb#SemanticRole) as subclasses of [pmo:SemanticClass](http://premon.fbk.eu/ontology/core#SemanticClass) and [pmo:SemanticRole](http://premon.fbk.eu/ontology/core#SemanticRole), respectively.
+
+Each [pmopb:SemanticRole](http://premon.fbk.eu/ontology/pb#SemanticRole) instance is related (via property [pmopb:argument](http://premon.fbk.eu/ontology/pb#argument)) to exactly one [pmopb:Argument](http://premon.fbk.eu/ontology/pb#Argument), which is defined as the disjoint union of three subclasses: 
+
+* [pmopb:NumberedArgument](http://premon.fbk.eu/ontology/pb#NumberedArgument), containing the individuals corresponding to numbered arguments (e.g., *Arg0*, *Arg1*); 
+* [pmopb:Modifier](http://premon.fbk.eu/ontology/pb#Modifier), containing the
+individuals corresponding to modifiers (e.g., *ArgM-LOC*, *ArgM-TMP*). While PB annotation guidelines define a single modifier (*ArgM*) with multiple function tags (e.g., *LOC*, *TMP*), we opt to specialize the modifier for each function tag, similarly to the way these arguments are actually annotated by state-of-the-art SRL tools; and, 
+* [pmopb:SecondaryAgent](http://premon.fbk.eu/ontology/pb#SecondaryAgent), containing the single individual annotating secondary agents (*ArgA*). 
+
+Property [pmopb:tag](http://premon.fbk.eu/ontology/pb#tag) enables associating possible tags, either a [pmopb:Modifier](http://premon.fbk.eu/ontology/pb#Modifier) or some additional tag defined in class [pmopb:Tag](http://premon.fbk.eu/ontology/pb#Tag), to [pmopb:SemanticRole](http://premon.fbk.eu/ontology/pb#SemanticRole)s, or [nif:Annotation](http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#Annotation)s of semantic roles in examples.
+
+Additional classes (and related properties) are defined to represent inflectional information about examples: [pmopb:Inflection](http://premon.fbk.eu/ontology/pb#Inflection), [pmopb:Person](http://premon.fbk.eu/ontology/pb#Person), [pmopb:Tense](http://premon.fbk.eu/ontology/pb#Tense), [pmopb:Aspect](http://premon.fbk.eu/ontology/pb#Aspect), [pmopb:Voice](http://premon.fbk.eu/ontology/pb#Voice), and [pmopb:Form](http://premon.fbk.eu/ontology/pb#Form)."""@en;
+                                   <http://purl.org/dc/terms/issued> "2015-10-28"^^xsd:date;
+                                   <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by-sa/4.0/>;
+                                   <http://purl.org/dc/terms/modified> "2017-05-01"^^xsd:date;
+                                   <http://purl.org/dc/terms/publisher> "DKM, Fondazione Bruno Kessler <http://dkm.fbk.eu/>";
+                                   <http://purl.org/dc/terms/rights> "This ontology is licensed under CC-BY-SA <http://creativecommons.org/licenses/by-sa/4.0/>"@en;
+                                   <http://purl.org/dc/terms/title> "Predicate Model for Ontologies (PreMOn) - PropBank ontology module"@en;
+                                   <http://purl.org/vocab/vann/preferredNamespacePrefix> "pmopb";
+                                   <http://purl.org/vocab/vann/preferredNamespaceUri> "http://premon.fbk.eu/ontology/pb#";
+                                   a <http://www.w3.org/2002/07/owl#Ontology>;
+                                   rdfs:comment "The PropBank module of the PreMOn ontology extends the core module for representing concepts specific to PropBank. The modelling is based on the [PropBank guidelines] (http://clear.colorado.edu/compsem/documents/propbank_guidelines.pdf)."@en;
+                                   rdfs:isDefinedBy <http://premon.fbk.eu/ontology/pb.ttl>;
+                                   <http://www.w3.org/2002/07/owl#imports> <http://premon.fbk.eu/ontology/core>,
+                                                                           <http://www.w3.org/ns/lemon/ontolex>;
+                                   <http://www.w3.org/2002/07/owl#versionInfo> "2017a".
+pmopb:Argument a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "Argument (PB)"@en;
+               rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>;
+               <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#unionOf> (pmopb:Modifier
+                                                                                                         pmopb:NumberedArgument
+                                                                                                         pmopb:SecondaryAgent) ; 
+                                                                a <http://www.w3.org/2002/07/owl#Class>].
+pmopb:Aspect a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:label "Aspect"@en;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#oneOf> (pmopb:perfect
+                                                                     pmopb:progressive) ; 
+                              a <http://www.w3.org/2002/07/owl#Class>].
+pmopb:Form a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:label "Form"@en;
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#oneOf> (pmopb:gerund
+                                                                   pmopb:full
+                                                                   pmopb:participle
+                                                                   pmopb:infinitive) ; 
+                            a <http://www.w3.org/2002/07/owl#Class>].
+pmopb:Inflection a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "Inflection"@en.
+pmopb:Modifier a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "Modifier (PB)"@en;
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#oneOf> (pmopb:argm-lvb
+                                                                       pmopb:argm-cau
+                                                                       pmopb:argm-tmp
+                                                                       pmopb:argm-rcl
+                                                                       pmopb:argm-loc
+                                                                       pmopb:argm-gol
+                                                                       pmopb:argm-mod
+                                                                       pmopb:argm-prd
+                                                                       pmopb:argm-com
+                                                                       pmopb:argm-dsp
+                                                                       pmopb:argm-ext
+                                                                       pmopb:argm-adj
+                                                                       pmopb:argm-pnc
+                                                                       pmopb:argm-slc
+                                                                       pmopb:argm-neg
+                                                                       pmopb:argm-rec
+                                                                       pmopb:argm-dis
+                                                                       pmopb:argm-prp
+                                                                       pmopb:argm-dir
+                                                                       pmopb:argm-adv
+                                                                       pmopb:argm-mnr
+                                                                       pmopb:argm-prn
+                                                                       pmopb:argm-cxn
+                                                                       pmopb:argm-vsp) ; 
+                                a <http://www.w3.org/2002/07/owl#Class>],
+                               pmopb:Argument;
+               <http://www.w3.org/2002/07/owl#disjointWith> pmopb:NumberedArgument,
+                                                            pmopb:SecondaryAgent.
+pmopb:NumberedArgument a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "Numbered Argument (PB)"@en;
+                       rdfs:subClassOf [<http://www.w3.org/2002/07/owl#oneOf> (pmopb:arg4
+                                                                               pmopb:arg3
+                                                                               pmopb:arg2
+                                                                               pmopb:arg1
+                                                                               pmopb:arg0
+                                                                               pmopb:arg5
+                                                                               pmopb:arg6) ; 
+                                        a <http://www.w3.org/2002/07/owl#Class>],
+                                       pmopb:Argument;
+                       <http://www.w3.org/2002/07/owl#disjointWith> pmopb:SecondaryAgent.
+pmopb:Person a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:label "Person"@en;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#oneOf> (pmopb:other
+                                                                     pmopb:third) ; 
+                              a <http://www.w3.org/2002/07/owl#Class>].
+pmopb:Roleset a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:label "Roleset (PB)"@en;
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> <http://premon.fbk.eu/ontology/core#semRole> ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> pmopb:SemanticRole ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              <http://premon.fbk.eu/ontology/core#SemanticClass>.
+pmopb:SecondaryAgent a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:label "Secondary Agent"@en;
+                     rdfs:subClassOf pmopb:Argument.
+pmopb:SemanticRole a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "Semantic Role (PB)"@en;
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> pmopb:Argument ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> pmopb:argument ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#onProperty> [<http://www.w3.org/2002/07/owl#inverseOf> <http://premon.fbk.eu/ontology/core#semRole>] ; 
+                                    <http://www.w3.org/2002/07/owl#allValuesFrom> pmopb:Roleset ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   <http://premon.fbk.eu/ontology/core#SemanticRole>.
+pmopb:Tag a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:label "Tag"@en.
+pmopb:Tense a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:label "Tense"@en;
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#oneOf> (pmopb:future
+                                                                    pmopb:past
+                                                                    pmopb:present) ; 
+                             a <http://www.w3.org/2002/07/owl#Class>].
+pmopb:Voice a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:label "Voice"@en;
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#oneOf> (pmopb:passive
+                                                                    pmopb:active) ; 
+                             a <http://www.w3.org/2002/07/owl#Class>].
+pmopb:active a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               pmopb:Voice.
+pmopb:arg0 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             pmopb:NumberedArgument.
+pmopb:arg1 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             pmopb:NumberedArgument.
+pmopb:arg2 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             pmopb:NumberedArgument.
+pmopb:arg3 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             pmopb:NumberedArgument.
+pmopb:arg4 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             pmopb:NumberedArgument.
+pmopb:arg5 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             pmopb:NumberedArgument.
+pmopb:arg6 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             pmopb:NumberedArgument.
+pmopb:arga a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             pmopb:SecondaryAgent.
+pmopb:argm-adj a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-adv a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-cau a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-com a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-cxn a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-dir a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-dis a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-dsp a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-ext a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-gol a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-loc a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-lvb a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-mnr a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-mod a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-neg a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-pnc a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-prd a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-prn a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-prp a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-rcl a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-rec a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-slc a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-tmp a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argm-vsp a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 pmopb:Modifier.
+pmopb:argument a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                 <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain pmopb:SemanticRole;
+               rdfs:label "argument"@en;
+               rdfs:range pmopb:Argument.
+pmopb:aspect a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain pmopb:Inflection;
+             rdfs:label "aspect"@en;
+             rdfs:range pmopb:Aspect.
+pmopb:core a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+             <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:comment "Set to true if the semantic role explicitly occurs in a frame file"@en;
+           rdfs:domain <http://premon.fbk.eu/ontology/core#SemanticRole>;
+           rdfs:label "core"@en;
+           rdfs:range xsd:boolean.
+pmopb:form a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+             <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain pmopb:Inflection;
+           rdfs:label "form"@en;
+           rdfs:range pmopb:Form.
+pmopb:full a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             pmopb:Form.
+pmopb:future a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               pmopb:Tense.
+pmopb:gerund a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               pmopb:Form.
+pmopb:infinitive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   pmopb:Form.
+pmopb:inflection a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                   <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain <http://premon.fbk.eu/ontology/core#Example>;
+                 rdfs:label "inflection"@en;
+                 rdfs:range pmopb:Inflection.
+pmopb:other a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              pmopb:Person.
+pmopb:participle a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   pmopb:Form.
+pmopb:passive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                pmopb:Voice.
+pmopb:past a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             pmopb:Tense.
+pmopb:perfect a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                pmopb:Aspect.
+pmopb:person a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+               <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain pmopb:Inflection;
+             rdfs:label "person"@en;
+             rdfs:range pmopb:Person.
+pmopb:present a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                pmopb:Tense.
+pmopb:progressive a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    pmopb:Aspect.
+pmopb:tag a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+            <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:label "tag"@en;
+          rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (pmopb:Modifier
+                                                               pmopb:Tag
+                                                               <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>) ; 
+                      a <http://www.w3.org/2002/07/owl#Class>].
+pmopb:tag-pag a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                pmopb:Tag.
+pmopb:tag-ppt a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                pmopb:Tag.
+pmopb:tag-vsp a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                pmopb:Tag.
+pmopb:tense a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain pmopb:Inflection;
+            rdfs:label "tense"@en;
+            rdfs:range pmopb:Tense.
+pmopb:third a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              pmopb:Person.
+pmopb:voice a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+              <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain pmopb:Inflection;
+            rdfs:label "voice"@en;
+            rdfs:range pmopb:Voice.

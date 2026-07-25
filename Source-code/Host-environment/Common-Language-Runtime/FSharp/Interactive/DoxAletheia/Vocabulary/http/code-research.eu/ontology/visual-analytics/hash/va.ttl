@@ -1,0 +1,217 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix va: <http://code-research.eu/ontology/visual-analytics#>.
+
+<http://code-research.eu/ontology/visual-analytics> <http://purl.org/dc/elements/1.1/contributor> "Michael Granitzer";
+                                                    <http://purl.org/dc/elements/1.1/creator> "Belgin Mutlu, Patrick Hoefler";
+                                                    <http://purl.org/dc/terms/created> "2012-10-31"^^xsd:date;
+                                                    <http://purl.org/dc/terms/modified> "2014-03-24"^^xsd:date;
+                                                    <http://purl.org/vocab/vann/preferredNamespacePrefix> "va";
+                                                    <http://purl.org/vocab/vann/preferredNamespaceUri> "http://code-research.eu/ontology/visual-analytics#";
+                                                    a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                    rdfs:comment "This vocabulary allows the semantic description of visual analytics applications. It is based on the RDF Data Cube Vocabulary and the Semanticscience Integrated Ontology.";
+                                                    rdfs:label "The Visual Analytics Vocabulary";
+                                                    <http://www.w3.org/2002/07/owl#versionInfo> "0.1.20121122".
+va:Axis a <http://www.w3.org/2002/07/owl#Class>,
+          rdfs:Class;
+        rdfs:comment "Is a line segment that is part of a chart in which the position along the line corresponds to a numeric or categorical value. "@en;
+        rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+        rdfs:label "Axis"@en;
+        rdfs:subClassOf va:VisualChannel;
+        <http://www.w3.org/2002/07/owl#equivalentClass> <http://semanticscience.org/ontology/sio.owlSIO_000450>.
+va:Chart va:hasChartName va:ChartName;
+         va:hasVisualChannel va:VisualChannel;
+         va:supportedDimension va:SupportedDimension;
+         a <http://www.w3.org/2002/07/owl#Class>,
+           rdfs:Class;
+         rdfs:comment "Is the graphical representation of numerical or qualitative data."@en;
+         rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+         rdfs:label "Chart"@en;
+         <http://www.w3.org/2002/07/owl#equivalentClass> <http://semanticscience.org/ontology/sio.owlSIO_000904>.
+va:ChartName a <http://www.w3.org/2002/07/owl#Class>,
+               rdfs:Class;
+             rdfs:comment "Represents the name of a chart."@en;
+             rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+             rdfs:label "Chart Name"@en;
+             rdfs:subClassOf va:Chart.
+va:Color a <http://www.w3.org/2002/07/owl#Class>,
+           rdfs:Class;
+         rdfs:comment "Represents a visual dimension of a chart."@en;
+         rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+         rdfs:label "Color"@en;
+         rdfs:subClassOf va:VisualChannel.
+va:ComponentMapping va:hasComponentMapping va:ComponentMapping;
+                    va:representsChart va:MappedChartName;
+                    a <http://www.w3.org/2002/07/owl#Class>,
+                      rdfs:Class;
+                    rdfs:comment "Represents a mapping for a particular chart."@en;
+                    rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+                    rdfs:label "Component mapping"@en.
+va:Dashboard a <http://www.w3.org/2002/07/owl#Class>,
+               rdfs:Class;
+             rdfs:comment "Represents a collection of one or more charts that visualize the same Data Cube."@en;
+             rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+             rdfs:label "Dashboard"@en.
+va:DataType a <http://www.w3.org/2002/07/owl#Class>,
+              rdfs:Class;
+            rdfs:comment "Data type identifies a type of data represented in chart’s visual channel."@en;
+            rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+            rdfs:label "Data type"@en.
+va:Mandatory a <http://www.w3.org/2002/07/owl#Class>,
+               rdfs:Class;
+             rdfs:comment "Denotes that a visual channel must be specified."@en;
+             rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+             rdfs:label "Mandatory Persistence "@en;
+             rdfs:subClassOf va:Persistence.
+va:Mapping va:hasComponentMapping va:ComponentMapping;
+           a <http://www.w3.org/2002/07/owl#Class>,
+             rdfs:Class;
+           rdfs:comment "This class contains all mappings created for an RDF Data Cube."@en;
+           rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+           rdfs:label "Mapping"@en.
+va:Multiplicity a <http://www.w3.org/2002/07/owl#Class>,
+                  rdfs:Class;
+                rdfs:comment "Denotes that a visual channel can set at multiple times."@en;
+                rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+                rdfs:label "Occurence multiplicity"@en;
+                rdfs:subClassOf va:Occurrence.
+va:Occurrence a <http://www.w3.org/2002/07/owl#Class>,
+                rdfs:Class;
+              rdfs:comment "Occurrence denotes whether a visual channel can be set only one times or multiple times."@en;
+              rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+              rdfs:label "Occurrence"@en.
+va:One a <http://www.w3.org/2002/07/owl#Class>,
+         rdfs:Class;
+       rdfs:comment "Denotes that a visual channel can only set at one times."@en;
+       rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+       rdfs:label "Occurence one"@en;
+       rdfs:subClassOf va:Occurrence.
+va:Optional a <http://www.w3.org/2002/07/owl#Class>,
+              rdfs:Class;
+            rdfs:comment "Denotes that a visual channel must be specified."@en;
+            rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+            rdfs:label "Optional Persistence"@en;
+            rdfs:subClassOf va:Persistence.
+va:Persistence a <http://www.w3.org/2002/07/owl#Class>,
+                 rdfs:Class;
+               rdfs:comment "Persistence denotes whether a visual channel is permanently present in the chart and must be specified or it might be defined if needed."@en;
+               rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+               rdfs:label "Persistence"@en.
+va:Size a <http://www.w3.org/2002/07/owl#Class>,
+          rdfs:Class;
+        rdfs:comment "Represents a visual dimension of a chart."@en;
+        rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+        rdfs:label "Size"@en;
+        rdfs:subClassOf va:VisualChannel.
+va:SupportedDimension a <http://www.w3.org/2002/07/owl#Class>,
+                        rdfs:Class;
+                      rdfs:comment "Denotes how many dimensions can be visualize by a chart."@en;
+                      rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+                      rdfs:label "Supported dimension"@en;
+                      rdfs:subClassOf va:Chart.
+va:Symbol a <http://www.w3.org/2002/07/owl#Class>,
+            rdfs:Class;
+          rdfs:comment "Represents a visual dimension of a chart."@en;
+          rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+          rdfs:label "Symbol"@en;
+          rdfs:subClassOf va:VisualChannel.
+va:VisualChannel va:hasDataType va:DataType;
+                 va:hasOccurrence va:Occurence;
+                 va:hasPersistence va:Persistence;
+                 a <http://www.w3.org/2002/07/owl#Class>,
+                   rdfs:Class;
+                 rdfs:comment "Represents a visual dimension of a chart."@en;
+                 rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+                 rdfs:label "Visual channel"@en.
+va:cubeDimensionNominal a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                          rdf:Property,
+                          <http://purl.org/linked-data/cube#DimensionProperty>;
+                        rdfs:comment "This class can be used as a fallback for nominal dimensions. It should be avoided in favor of more specific dimension properties.";
+                        rdfs:domain <http://purl.org/linked-data/cube#Observation>;
+                        rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+                        rdfs:label "Nominal cube dimension".
+va:getMapping a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                rdf:Property;
+              rdfs:comment "Displays the mappings for a RDF Data Cube."@en;
+              rdfs:domain va:RDFDataCube;
+              rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+              rdfs:label "Get Mapping"@en;
+              rdfs:range va:Mappig.
+va:hasChartName a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  rdf:Property;
+                rdfs:comment "Represents which name a chart has."@en;
+                rdfs:domain va:Chart;
+                rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+                rdfs:label "Has chart label"@en;
+                rdfs:range va:ChartName.
+va:hasComponentMapping a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                         rdf:Property;
+                       rdfs:comment "Displays a particular mapping of a RDF Data Cube."@en;
+                       rdfs:domain va:Mapping;
+                       rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+                       rdfs:label "Has components mapping"@en;
+                       rdfs:range va:ComponentMapping.
+va:hasDataType a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                 rdf:Property;
+               rdfs:comment "Defines which data type a visual channel has."@en;
+               rdfs:domain va:VisualChannel;
+               rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+               rdfs:label "Has data type"@en;
+               rdfs:range va:DataType.
+va:hasOccurrence a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                   rdf:Property;
+                 rdfs:comment "Denotes whether a visual channel can be set only at one times or multiple times."@en;
+                 rdfs:domain va:VisualChannel;
+                 rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+                 rdfs:label "Has occurrrence"@en;
+                 rdfs:range va:Occurence.
+va:hasPersistence a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                    rdf:Property;
+                  rdfs:comment "Denotes which visual channel of a chart must be specified or might be defined if needed."@en;
+                  rdfs:domain va:VisualChannel;
+                  rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+                  rdfs:label "Has persistence"@en;
+                  rdfs:range va:Persistence.
+va:hasVisualChannel a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                      rdf:Property;
+                    rdfs:comment "Represents which visual channel a chart has."@en;
+                    rdfs:domain va:Chart;
+                    rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+                    rdfs:label "Has visual channel"@en;
+                    rdfs:range va:VisualChannel.
+va:representsCubeProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                            rdf:Property;
+                          rdfs:comment "Represents the component (dimension,measure) of a RDF Data Cube, which has been mapped."@en;
+                          rdfs:domain va:Mapping;
+                          rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+                          rdfs:label "Represents chart"@en;
+                          rdfs:range <http://purl.org/linked-data/cube#MeasureProperty>,
+                                     <http://purl.org/linked-data/cube#DimensionProperty>.
+va:unit a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+          rdf:Property;
+        rdfs:comment "Defines the unit measure of a visual channel."@en;
+        rdfs:domain va:VisualChannel;
+        rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+        rdfs:label "Unit"@en;
+        rdfs:range rdfs:Resource.
+va:visualizes a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                rdf:Property;
+              rdfs:comment "Links a Visual Analytics Dashboard with a Data Cube or Data Slice"@en;
+              rdfs:domain va:Dashboard;
+              rdfs:isDefinedBy <http://code-research.eu/ontology/visual-analytics>;
+              rdfs:label "visualizes"@en;
+              rdfs:range <http://purl.org/linked-data/cube#Slice>,
+                         <http://purl.org/linked-data/cube#DataSet>.
+<http://www.w3.org/2002/07/owl#Restriction> <http://www.w3.org/2002/07/owl#maxCardinality> 1 ;
+                                            <http://www.w3.org/2002/07/owl#minCardinality> 1 ;
+                                            <http://www.w3.org/2002/07/owl#onProperty> va:hasPersistence,
+                                                                                       va:unit,
+                                                                                       va:representsCubeProperty,
+                                                                                       va:visualizes,
+                                                                                       va:hasVisualChannel,
+                                                                                       va:hasChartName,
+                                                                                       va:hasOccurrence,
+                                                                                       va:getMapping,
+                                                                                       va:hasComponentsMapping,
+                                                                                       va:hasDataType.

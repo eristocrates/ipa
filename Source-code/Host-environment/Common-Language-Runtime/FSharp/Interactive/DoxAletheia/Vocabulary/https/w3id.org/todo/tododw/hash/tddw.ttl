@@ -1,0 +1,35 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://creativecommons.org/ns#license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/bibliographicCitation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/hasPart> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/dc/terms/isPartOf>.
+<http://purl.org/dc/terms/isPartOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2002/07/owl#versionIRI> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#example> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://w3id.org/todo/tododw> <http://creativecommons.org/ns#license> "http://purl.org/NET/rdflicense/cc-by4.0";
+                               <http://purl.org/dc/terms/contributor> "Izaskun Fernández (Tekniker) <mailto:izaskun.fernandez@tekniker.es>";
+                               <http://purl.org/dc/terms/created> "2020-06-20T00:00:00";
+                               <http://purl.org/dc/terms/creator> "Cristina Aceta (Tekniker) <mailto:cristina.aceta@tekniker.es>";
+                               <http://purl.org/dc/terms/description> "Module for scenario modelling (world elements) of domain.";
+                               <http://purl.org/dc/terms/issued> "";
+                               <http://purl.org/dc/terms/modified> "2021-09-23T10:00:00";
+                               <http://purl.org/dc/terms/title> "TODODW: World Module for Task-Oriented Dialogue management Ontology (TODO)";
+                               <http://purl.org/vocab/vann/preferredNamespacePrefix> "tododw";
+                               <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/todo/tododw";
+                               a <http://www.w3.org/2002/07/owl#Ontology>;
+                               <http://www.w3.org/2002/07/owl#priorVersion> "";
+                               <http://www.w3.org/2002/07/owl#versionInfo> 2.1.

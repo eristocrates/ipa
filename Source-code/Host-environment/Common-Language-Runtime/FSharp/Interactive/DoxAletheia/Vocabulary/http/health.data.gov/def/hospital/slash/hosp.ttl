@@ -1,0 +1,74 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix hosp: <http://health.data.gov/def/hospital/>.
+
+hosp:Hospital a <http://www.w3.org/2002/07/owl#Class>,
+                rdfs:Class;
+              rdfs:isDefinedBy <http://vocab.data.gov/hosp>;
+              rdfs:label "Hospital";
+              rdfs:subClassOf rdfs:Resource.
+hosp:HospitalOwnershipType a <http://www.w3.org/2002/07/owl#Class>,
+                             rdfs:Class;
+                           rdfs:isDefinedBy <http://vocab.data.gov/hosp>;
+                           rdfs:label "HospitalOwnershipType".
+hosp:HospitalType a <http://www.w3.org/2002/07/owl#Class>,
+                    rdfs:Class;
+                  rdfs:isDefinedBy <http://vocab.data.gov/hosp>;
+                  rdfs:label "HospitalType".
+hosp:accreditation a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                     rdf:Property;
+                   rdfs:domain hosp:Hospital;
+                   rdfs:isDefinedBy <http://vocab.data.gov/hosp>;
+                   rdfs:label "accreditation";
+                   rdfs:range xsd:boolean.
+hosp:cacProvider a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                   rdf:Property;
+                 rdfs:domain hosp:Hospital;
+                 rdfs:isDefinedBy <http://vocab.data.gov/hosp>;
+                 rdfs:label "cacProvider";
+                 rdfs:range xsd:boolean.
+hosp:emergencyServices a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                         rdf:Property;
+                       rdfs:domain hosp:Hospital;
+                       rdfs:isDefinedBy <http://vocab.data.gov/hosp>;
+                       rdfs:label "emergencyServices";
+                       rdfs:range xsd:boolean.
+hosp:mpvProvider a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                   rdf:Property;
+                 rdfs:domain hosp:Hospital;
+                 rdfs:isDefinedBy <http://vocab.data.gov/hosp>;
+                 rdfs:label "mpvProvider";
+                 rdfs:range xsd:boolean.
+hosp:ownership a rdf:Property;
+               rdfs:domain hosp:Hospital;
+               rdfs:isDefinedBy <http://vocab.data.gov/hosp>;
+               rdfs:label "ownership";
+               rdfs:range hosp:HospitalOwnershipType.
+hosp:site a rdf:Property;
+          rdfs:domain hosp:Hospital;
+          rdfs:isDefinedBy <http://vocab.data.gov/hosp>;
+          rdfs:label "site".
+hosp:treats a rdf:Property;
+            rdfs:isDefinedBy <http://vocab.data.gov/hosp>;
+            rdfs:label "treats".
+hosp:type a rdf:Property;
+          rdfs:domain hosp:Hospital;
+          rdfs:isDefinedBy <http://vocab.data.gov/hosp>;
+          rdfs:label "type";
+          rdfs:range hosp:HospitalType.
+<http://vocab.data.gov/hosp> <http://purl.org/dc/elements/1.1/creator> <http://vocab.data.gov/hosp#www.cms.gov>;
+                             <http://purl.org/dc/elements/1.1/description> "A RDF Schema that defines concepts and relationships used for Hospital data.";
+                             <http://purl.org/dc/elements/1.1/modified> "2015-09-30"^^xsd:date;
+                             <http://purl.org/dc/elements/1.1/title> "Hospital Vocabulary";
+                             <http://purl.org/vocab/vann/preferredNamespacePrefix> "hosp";
+                             <http://purl.org/vocab/vann/preferredNamespaceUri> "http://health.data.gov/def/hospital/";
+                             a <http://www.w3.org/2002/07/owl#Ontology>;
+                             <http://xmlns.com/foaf/0.1/page> <http://vocab.data.gov/hosp.html>.
+<http://vocab.data.gov/hosp#Centers%20for%20Medicare%20and%20Medicaid%20Services> a <http://xmlns.com/foaf/0.1/Organization>;
+                                                                                  <http://xmlns.com/foaf/0.1/homepage> <http://www.cms.gov/>;
+                                                                                  <http://xmlns.com/foaf/0.1/member> <http://vocab.data.gov/hosp#www.cms.gov>;
+                                                                                  <http://xmlns.com/foaf/0.1/name> "Centers for Medicare and Medicaid Services".
+<http://vocab.data.gov/hosp#www.cms.gov> a <http://xmlns.com/foaf/0.1/Person>;
+                                         <http://xmlns.com/foaf/0.1/homepage> <http://www.cms.gov/>;
+                                         <http://xmlns.com/foaf/0.1/nick> "www.cms.gov".

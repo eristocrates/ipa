@@ -1,0 +1,233 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix security: <http://securitytoolbox.appspot.com/securityMain#>.
+
+security: <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/3.0/>;
+          <http://purl.org/dc/elements/1.1/contributor> <mailto:gyrard@eurecom.fr>;
+          <http://purl.org/dc/elements/1.1/creator> <mailto:kim@itd.nrl.navy.mil>,
+                                                    <mailto:luo@itd.nrl.navy.mil>,
+                                                    <mailto:mkang@itd.nrl.navy.mil>;
+          <http://purl.org/dc/elements/1.1/description> "An ontology to describe various cryptographic algorithms"@en;
+          <http://purl.org/dc/elements/1.1/title> "Security Main"@en;
+          <http://purl.org/dc/terms/issued> "2005-08-31"^^xsd:date;
+          <http://purl.org/dc/terms/modified> "2015-03-27"^^xsd:date;
+          <http://purl.org/dc/terms/source> <http://www.dtic.mil/cgi-bin/GetTRDoc?AD=ADA437938>;
+          <http://purl.org/vocab/vann/preferredNamespacePrefix> "algo";
+          <http://purl.org/vocab/vann/preferredNamespaceUri> "http://securitytoolbox.appspot.com/securityMain#";
+          a <http://www.w3.org/2002/07/owl#Ontology>,
+            <http://purl.org/vocommons/voaf#Vocabulary>;
+          rdfs:comment "A security ontology to annotate resources with security-related information";
+          <http://www.w3.org/2002/07/owl#versionInfo> 0.2;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "Finished";
+          <http://www.w3.org/2004/02/skos/core#historyNote> "Ontology extracted from the paper Security Ontology for Annotating Resources. [Kim et al. 2005] (See APPENDIX D. OWL Representations of the NRL Security Ontology) Security ontology to faciliate web service description and discovery."@en.
+security:Anonymity a security:SecurityObjective;
+                   rdfs:comment """
+(Secondary Objective) Provides anonymity
+""".
+security:ApplicationMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:label "Application Mechanism"@en;
+                              rdfs:subClassOf security:SecurityMechanism.
+security:AuthenticationProtocol a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "Authentication Protocol"@en;
+                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> security:UserAuthentication ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> security:supportsSecurityObjectives ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                security:SecurityProtocol.
+security:Authorization a security:SecurityObjective;
+                       rdfs:comment """
+Only authorized entities are allowed to access resources in an authorized
+manner.
+(Aka Access Control). If desired, user may create instance of AccessControl as
+well.
+""".
+security:Availability a security:SecurityObjective;
+                      rdfs:comment """
+Provides guarantee that resource is available to authorized users at any
+authorized time.
+""".
+security:BLP a security:MilitaryPolicy;
+             rdfs:comment """
+Bell La-Padula
+""".
+security:ChineseWall a security:CommercialPolicy.
+security:ClarkWilson a security:CommercialPolicy.
+security:CommercialPolicy a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:label "Commercial Policy"@en;
+                          rdfs:subClassOf security:SecurityPolicy.
+security:Confidentiality a security:SecurityObjective;
+                         rdfs:comment """
+Protects against information being disclosed or revealed to unauthorized
+parties.
+""".
+security:CovertChannelPrevention a security:SecurityObjective;
+                                 rdfs:comment """
+(Secondary Objective) Prevent or limit the existance of covert channels
+""".
+security:EncryptionProtocol a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:label "Encryption Protocol"@en;
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> security:Confidentiality ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> security:supportsSecurityObjectives ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            security:SecurityProtocol.
+security:HostMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "Host Mechanism"@en;
+                       rdfs:subClassOf security:SecurityMechanism.
+security:HostTrust a security:SecurityObjective;
+                   rdfs:comment """
+(Secondary Objective) How to trust host or platform. Is relevant to Common
+criteria, etc.
+""".
+security:IPSec security:supportsSecurityObjectives security:Confidentiality,
+                                                   security:Integrity,
+                                                   security:MessageAuthentication;
+               a security:NetworkSecurityProtocol.
+security:Kerberos a security:AuthenticationProtocol.
+security:KeyManagement a security:SecurityObjective;
+                       rdfs:comment """
+(SecondaryObjective) Securely manages keys for legitimate users.
+""".
+security:KeyManagementProtocol a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:label "Key Management Protocol"@en;
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> security:KeyManagement ; 
+                                                <http://www.w3.org/2002/07/owl#onProperty> security:supportsSecurityObjectives ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                                               security:SecurityProtocol.
+security:LoginProtocol a security:AuthenticationProtocol.
+security:MLSPump security:supportsSecurityObjectives security:CovertChannelPrevention;
+                 a security:NetworkMechanism.
+security:MessageAuthentication a security:SecurityObjective;
+                               rdfs:comment """
+Provides guarantee that message came from whoever claimed to have sent it.
+""".
+security:MessageIntegrity a security:SecurityObjective;
+                          rdfs:comment """
+Data integrity or Message integrity; data cannot be changed, deleted,
+modified, etc by unauthorized parties.
+""".
+security:MilitaryPolicy a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:label "Military Policy"@en;
+                        rdfs:subClassOf security:SecurityPolicy.
+security:NetworkMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:label "Network Mechanism"@en;
+                          rdfs:subClassOf security:SecurityMechanism.
+security:NetworkSecurityProtocol a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:label "Network Security Protocol"@en;
+                                 rdfs:subClassOf security:SecurityProtocol.
+security:OnionRouter security:supportsSecurityObjectives security:Confidentiality,
+                                                         security:Anonymity;
+                     a security:NetworkMechanism.
+security:RBAC a security:SecurityPolicy;
+              rdfs:comment """
+Role-based Access Control
+""".
+security:ReplayPrevention a security:SecurityObjective;
+                          rdfs:comment """
+(Secondary Objective) Protect against replay attacks
+""".
+security:SAML a security:AuthenticationProtocol.
+security:SSH security:supportsSecurityObjectives security:MessageAuthentication,
+                                                 security:UserAuthentication,
+                                                 security:Confidentiality,
+                                                 security:Integrity;
+             a security:NetworkSecurityProtocol.
+security:SSL security:supportsSecurityObjectives security:UserAuthentication,
+                                                 security:Confidentiality;
+             a security:NetworkSecurityProtocol;
+             <http://www.w3.org/2002/07/owl#sameAs> security:TLS.
+security:Safehost security:supportsSecurityObjectives security:HostTrust;
+                  a security:HostMechanism.
+security:SecurityConcept a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:label "Security Concept"@en.
+security:SecurityMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:label "Security Mechanism"@en;
+                           rdfs:subClassOf security:SecurityConcept.
+security:SecurityObjective a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:label "Security Objective"@en.
+security:SecurityPolicy a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:label "Security Policy"@en;
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> <http://securitytoolbox.appspot.com/Authorization> ; 
+                                         <http://www.w3.org/2002/07/owl#onProperty> <http://securitytoolbox.appspot.com/supportsSecurityObjectives> ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        security:SecurityConcept.
+security:SecurityProtocol a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:label "Security Protocol"@en;
+                          rdfs:subClassOf security:SecurityConcept.
+security:Separation a security:SecurityObjective;
+                    rdfs:comment """
+(Secondary Objective)
+""".
+security:ServiceMechanism a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:label "Service Mechanism"@en;
+                          rdfs:subClassOf security:SecurityMechanism.
+security:SignatureProtocol a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:label "Signature Protocol"@en;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#hasValue> security:MessageAuthentication ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> security:supportsSecurityObjectives ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                           security:SecurityProtocol.
+security:SoapFirewall security:supportsSecurityObjectives security:Authorization;
+                      a security:ServiceMechanism.
+security:TLS security:supportsSecurityObjectives security:Confidentiality,
+                                                 security:UserAuthentication;
+             a security:NetworkSecurityProtocol;
+             <http://www.w3.org/2002/07/owl#sameAs> security:SSL.
+security:TrafficHiding a security:SecurityObjective;
+                       rdfs:comment """
+(Secondary Objective) Pad traffic with bogus data to hide traffic patterns
+""".
+security:Trust a security:SecurityObjective;
+               rdfs:comment """
+(Secondary Objective) How to trust entity. Trust not only of identification,
+but statements, claims, etc.
+""".
+security:UserAuthentication a security:SecurityObjective;
+                            rdfs:comment """
+Provides assurance of the identity of a person or entity.
+""".
+security:VMM security:supportsSecurityObjectives security:HostTrust;
+             a security:HostMechanism.
+security:VPN security:supportsSecurityObjectives security:Separation,
+                                                 security:Confidentiality;
+             a security:NetworkMechanism.
+security:XKMS a security:KeyManagementProtocol.
+security:XML-dsig a security:SignatureProtocol.
+security:XML-enc a security:EncryptionProtocol.
+security:hasAlgorithm a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain security:SecurityProtocol;
+                      rdfs:label "hasAlgorithm"@en;
+                      rdfs:range <http://securitytoolbox.appspot.com/securityAlgorithms#Algorithm>.
+security:hasAssurance a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (security:SecurityProtocol
+                                                                            security:SecurityMechanism) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>];
+                      rdfs:label "hasAssurance"@en;
+                      rdfs:range <http://www.kim.com/NRLOntologyFiles/securityAssurance.owl#Assurance>.
+security:hasEncryptionAlgorithm a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:label "hasEncryptionAlgorithm"@en;
+                                rdfs:range <http://securitytoolbox.appspot.com/securityAlgorithms#EncryptionAlgorithm>;
+                                rdfs:subPropertyOf security:hasAlgorithm.
+security:hasSignatureAlgorithm a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:label "hasSignatureAlgorithm"@en;
+                               rdfs:range <http://securitytoolbox.appspot.com/securityAlgorithms#SignatureAlgorithm>;
+                               rdfs:subPropertyOf security:hasAlgorithm.
+security:reqCredential a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain security:SecurityProtocol;
+                       rdfs:label "reqCredential"@en;
+                       rdfs:range <http://www.kim.com/NRLOntologyFiles/credentials.owl#Credential>.
+security:supportsSecurityObjectives a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                    rdfs:comment """
+Any SecurityConcept can support one or more of the Security Objectives defined
+in the SecurityObjective class
+""";
+                                    rdfs:domain security:SecurityConcept;
+                                    rdfs:label "supports Security Objectives"@en;
+                                    rdfs:range security:SecurityObjective.
+<mailto:gyrard@eurecom.fr> a <http://xmlns.com/foaf/0.1/Person>;
+                           <http://xmlns.com/foaf/0.1/name> "Amelie Gyrard".
+<mailto:kim@itd.nrl.navy.mil> a <http://xmlns.com/foaf/0.1/Person>;
+                              <http://xmlns.com/foaf/0.1/name> "Anya Kim".
+<mailto:luo@itd.nrl.navy.mil> a <http://xmlns.com/foaf/0.1/Person>;
+                              <http://xmlns.com/foaf/0.1/name> "Jim Luo".
+<mailto:mkang@itd.nrl.navy.mil> a <http://xmlns.com/foaf/0.1/Person>;
+                                <http://xmlns.com/foaf/0.1/name> "Myong Kang".

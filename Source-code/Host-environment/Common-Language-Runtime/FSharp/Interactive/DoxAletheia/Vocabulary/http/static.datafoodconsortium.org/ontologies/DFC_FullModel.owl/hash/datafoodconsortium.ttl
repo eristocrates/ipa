@@ -1,0 +1,41 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+_:Bcb79bd3d0bfc4e0911f89d27eacc4062 a <http://www.w3.org/2002/07/owl#Ontology>;
+                                    <http://www.w3.org/2002/07/owl#Annotation> [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                               [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                               [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#IRI>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#AnnotationProperty>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Literal>],
+                                                                               [a <http://www.w3.org/2002/07/owl#Literal>];
+                                    <http://www.w3.org/2002/07/owl#ClassAssertion> [a <http://www.w3.org/2002/07/owl#NamedIndividual>],
+                                                                                   [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                   [a <http://www.w3.org/2002/07/owl#NamedIndividual>],
+                                                                                   [a <http://www.w3.org/2002/07/owl#NamedIndividual>],
+                                                                                   [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                   [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                   [a <http://www.w3.org/2002/07/owl#Class>],
+                                                                                   [a <http://www.w3.org/2002/07/owl#NamedIndividual>];
+                                    <http://www.w3.org/2002/07/owl#Import> "http://static.datafoodconsortium.org/ontologies/DFC_TechnicalOntology.owl",
+                                                                           "http://static.datafoodconsortium.org/ontologies/DFC_BusinessOntology.owl",
+                                                                           "http://static.datafoodconsortium.org/ontologies/DFC_ProductGlossary.owl";
+                                    <http://www.w3.org/2002/07/owl#Prefix> "".

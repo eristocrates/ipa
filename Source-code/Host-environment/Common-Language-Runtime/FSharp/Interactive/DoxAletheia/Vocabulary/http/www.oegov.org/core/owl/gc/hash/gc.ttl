@@ -1,0 +1,270 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gc: <http://www.oegov.org/core/owl/gc#>.
+
+<http://creativecommons.org/ns#License> a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:int ; 
+                                                         <http://www.w3.org/2002/07/owl#onProperty> <http://creativecommons.org/ns#image> ; 
+                                                         a <http://www.w3.org/2002/07/owl#Restriction>].
+<http://creativecommons.org/ns#attributionName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://creativecommons.org/ns#attributionURL> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                               rdfs:range xsd:anyURI.
+<http://creativecommons.org/ns#deprecatedOn> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://creativecommons.org/ns#image> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                      rdfs:range xsd:anyURI.
+<http://creativecommons.org/ns#jurisdiction> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://creativecommons.org/ns#legalcode> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://creativecommons.org/ns#license> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://creativecommons.org/ns#morePermissions> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://creativecommons.org/ns#permits> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://creativecommons.org/ns#prohibits> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://creativecommons.org/ns#requires> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.oegov.org/core/owl/gc> <http://creativecommons.org/ns#attributionURL> "http://www.topquadrant.com"^^xsd:anyURI;
+                                   <http://creativecommons.org/ns#license> gc:CreativeCommonsAttributionShareAlike3.0_UnitedStatesLicense;
+                                   <http://purl.org/dc/elements/1.1/creator> "Ralph Hodgson";
+                                   <http://purl.org/dc/elements/1.1/date> "$Date: 2009-08-24 10:59:06 -0700 (Mon, 24 Aug 2009) $";
+                                   <http://purl.org/dc/elements/1.1/description> "Government Core Ontology.";
+                                   <http://purl.org/dc/elements/1.1/rights> "Creative Commons Attribution-Share Alike 3.0 United States License";
+                                   <http://purl.org/dc/elements/1.1/source> "www.oegov.org";
+                                   <http://purl.org/dc/elements/1.1/title> "oeGOV Government Core Ontology";
+                                   gc:attributedSource gc:TopQuadrantAttribution;
+                                   gc:revision "$Revision: 1365 $";
+                                   a <http://www.w3.org/2002/07/owl#Ontology>;
+                                   <http://www.w3.org/2002/07/owl#imports> <http://creativecommons.org/schema.rdf>,
+                                                                           <http://spinrdf.org/spin>,
+                                                                           <http://purl.org/dc/elements/1.1/>,
+                                                                           <http://www.oegov.org/core/owl/cc>;
+                                   <http://www.w3.org/2002/07/owl#versionInfo> "$Id: gc.n3 1365 2009-08-24 17:59:06Z RalphHodgson $".
+gc:Anarcy a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:subClassOf gc:PoliticalSystem.
+gc:AttributedSource a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "The name, url and other details of an attribution.";
+                    rdfs:label "Attributed Source";
+                    rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>,
+                                    [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> gc:pointOfContact ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:int ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> <http://creativecommons.org/ns#attributionURL> ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> <http://creativecommons.org/ns#attributionName> ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>].
+gc:CSV-Format <http://purl.org/dc/elements/1.1/description> "A comma separated values (CSV) file is a computer data file used for implementing the tried and true organizational tool, the Comma Separated List. The CSV file is used for the digital storage of data structured in a table of lists form. Each line in the CSV file corresponds to a row in the table. Within a line, fields are separated by commas, and each field belongs to one table column. CSV files are often used for moving tabular data between two different computer programs (like moving between a database program and a spreadsheet program).";
+              a gc:DataFormat;
+              rdfs:label "CVS Format".
+gc:Category a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:label "Category";
+            rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>,
+                            [<http://www.w3.org/2002/07/owl#allValuesFrom> gc:Category ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> gc:subCategory ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>].
+gc:CommunistState a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf gc:PoliticalSystem.
+gc:CreativeCommonsAttributionShareAlike3.0_UnitedStatesLicense <http://creativecommons.org/ns#image> "http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png"^^xsd:anyURI;
+                                                               <http://creativecommons.org/ns#permits> <http://creativecommons.org/ns#DerivativeWorks>,
+                                                                                                       <http://creativecommons.org/ns#Distribution>;
+                                                               <http://creativecommons.org/ns#requires> <http://creativecommons.org/ns#Attribution>,
+                                                                                                        <http://creativecommons.org/ns#ShareAlike>;
+                                                               a <http://creativecommons.org/ns#License>;
+                                                               rdfs:label "Creative Commons Attribution-Share Alike 3.0 United States License".
+gc:DataFormat a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:label "Data Format";
+              rdfs:subClassOf gc:Category.
+gc:DateUnion a rdfs:Datatype;
+             rdfs:subClassOf rdfs:Resource.
+gc:Democracy a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf gc:PoliticalSystem.
+gc:Dictatorship a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:subClassOf gc:PoliticalSystem.
+gc:Entity a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:label "Entity";
+          rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>,
+                          [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:string ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> gc:hashtag ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#allValuesFrom> xsd:anyURI ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> gc:url ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>].
+gc:HTML-Format a gc:DataFormat;
+               rdfs:label "HTML Format".
+gc:KML-Format <http://purl.org/dc/elements/1.1/description> "Keyhole Markup Language (KML) is an XML-based language schema for expressing geographic annotation and visualization on existing or future Web-based, two-dimensional maps and three-dimensional Earth browsers.";
+              a gc:DataFormat;
+              rdfs:label "KML-Format".
+gc:KMZ-Format <http://purl.org/dc/elements/1.1/description> """KML files are very often distributed in KMZ files, which are zipped files with a \".KMZ\" extension. When a KMZ file is unzipped, a single \"doc.kml\" is found along with any overlay and icon images referenced in the KML as well as any network-linked KML files.""";
+              a gc:DataFormat;
+              rdfs:label "KMZ Format".
+gc:Monarchy a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf gc:PoliticalSystem.
+gc:OWL-Format a gc:DataFormat;
+              rdfs:label "OWL Format".
+gc:Period a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:label "Period";
+          rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+gc:PoliticalSystem a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:label "Political system";
+                   rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+gc:Q1 a gc:Quarter;
+      rdfs:label "Q1".
+gc:Q2 a gc:Quarter;
+      rdfs:label "Q2".
+gc:Q3 a gc:Quarter;
+      rdfs:label "Q3".
+gc:Q4 a gc:Quarter;
+      rdfs:label "Q4".
+gc:Quarter a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:label "Quarter";
+           rdfs:subClassOf gc:Period;
+           <http://www.w3.org/2002/07/owl#oneOf> (gc:Q1
+                                                  gc:Q2
+                                                  gc:Q3
+                                                  gc:Q4).
+gc:RDF-Format a gc:DataFormat;
+              rdfs:label "RDF Fomat".
+gc:RSS-Format a gc:DataFormat;
+              rdfs:label "RSS Format".
+gc:Republic a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:subClassOf gc:PoliticalSystem.
+gc:ShapefileFormat <http://purl.org/dc/elements/1.1/description> """The ESRI Shapefile or simply a shapefile is a popular geospatial vector data format for geographic information systems software. It is developed and regulated by ESRI as a (mostly) open specification for data interoperability among ESRI and other software products.[1] A \"shapefile\" commonly refers to a collection of files with \".shp\", \".shx\", \".dbf\", and other extensions on a common prefix name (e.g., \"lakes.*\"). The actual shapefile relates specifically to files with the \".shp\" extension, however this file alone is incomplete for distribution, as the other supporting files are required. Shapefiles spatially describe geometries: points, polylines, and polygons. These, for example, could represent water wells, rivers, and lakes, respectively. Each item may also have attributes that describe the items, such as the name or temperature [Wikipedia].""";
+                   a gc:DataFormat;
+                   rdfs:label "Shapefile Format".
+gc:SocialistState a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:subClassOf gc:PoliticalSystem.
+gc:TextFormat a gc:DataFormat;
+              rdfs:label "Text Format".
+gc:Theocracy a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:subClassOf gc:PoliticalSystem.
+gc:TopQuadrantAttribution <http://creativecommons.org/ns#attributionName> "TopQuadrant, Inc.";
+                          <http://creativecommons.org/ns#attributionURL> "http://www.topquadrant.com"^^xsd:anyURI;
+                          gc:pointOfContact "Ralph Hodgson";
+                          a gc:AttributedSource;
+                          rdfs:label "TopQuadrant attribution".
+gc:Tribal a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:subClassOf gc:PoliticalSystem.
+gc:UnstructuredDataFormat gc:subCategory gc:HTML-Format;
+                          a gc:DataFormat;
+                          rdfs:label "Unstructured Data Format".
+gc:XML-Format <http://purl.org/dc/elements/1.1/description> "XML (Extensible Markup Language) is a general-purpose specification for creating custom markup languages. It is classified as an extensible language, because it allows the user to define the mark-up elements. XML's purpose is to aid information systems in sharing structured data, especially via the Internet, to encode documents, and to serialize data.";
+              a gc:DataFormat;
+              rdfs:label "XML Format".
+gc:XSL-Format a gc:DataFormat;
+              rdfs:label "XSL Format".
+gc:archiveURL a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:label "archive URL";
+              rdfs:range xsd:anyURI;
+              rdfs:subPropertyOf gc:url.
+gc:attributedSource a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:label "attributed source".
+gc:awardDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:label "award date";
+             rdfs:range gc:DateUnion;
+             rdfs:subPropertyOf gc:date.
+gc:category a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:label "category".
+gc:cause a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+         rdfs:label "cause".
+gc:cessationDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:label "cessation date";
+                 rdfs:range gc:DateUnion;
+                 rdfs:subPropertyOf gc:date.
+gc:clause a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:label "clause".
+gc:creationDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:label "creation date";
+                rdfs:range gc:DateUnion;
+                rdfs:subPropertyOf gc:date.
+gc:currency a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:label "currency".
+gc:date a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+        rdfs:label "date";
+        rdfs:range gc:DateUnion.
+gc:endDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:label "end date";
+           rdfs:range xsd:date;
+           rdfs:subPropertyOf gc:date.
+gc:format a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:label "format".
+gc:foundedOn a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:label "founded on";
+             rdfs:range gc:DateUnion;
+             rdfs:subPropertyOf gc:date.
+gc:hashtag a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:label "hashtag";
+           rdfs:range xsd:string.
+gc:identifier a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:label "identifier";
+              rdfs:range xsd:anySimpleType.
+gc:image a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+         rdfs:range xsd:anyURI.
+gc:licence a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:label "licence";
+           rdfs:range xsd:string.
+gc:member a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:label "member".
+gc:number a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:label "number";
+          rdfs:range xsd:int.
+gc:person a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:label "person".
+gc:pointOfContact a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:label "point of contact";
+                  rdfs:range xsd:string.
+gc:releasedDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:label "released date";
+                rdfs:range gc:DateUnion;
+                rdfs:subPropertyOf gc:date.
+gc:result a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:label "result".
+gc:revision a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+            rdfs:range xsd:string.
+gc:section a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:label "section".
+gc:shortTitle a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:label "short title";
+              rdfs:range xsd:string.
+gc:startDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:label "start date";
+             rdfs:range xsd:date;
+             rdfs:subPropertyOf gc:date.
+gc:status a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:label "status".
+gc:subCategory a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:label "sub category".
+gc:submissionDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:label "submission date";
+                  rdfs:range xsd:date;
+                  rdfs:subPropertyOf gc:date.
+gc:summary a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:label "summary";
+           rdfs:range xsd:string.
+gc:text a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+        rdfs:label "text";
+        rdfs:range xsd:string.
+gc:title a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:label "title";
+         rdfs:range xsd:string.
+gc:updatedDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:label "updated date";
+               rdfs:range xsd:date;
+               rdfs:subPropertyOf gc:date.
+gc:url a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+       rdfs:label "url";
+       rdfs:range xsd:anyURI.
+gc:year a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+        rdfs:label "year";
+        rdfs:range xsd:gYear.
+xsd:date rdfs:subClassOf gc:DateUnion.
+xsd:dateTime rdfs:subClassOf gc:DateUnion.
+xsd:gDay rdfs:subClassOf gc:DateUnion.
+xsd:gYear rdfs:subClassOf gc:DateUnion.
+xsd:gYearMonth rdfs:subClassOf gc:DateUnion.
+<http://www.w3.org/2002/07/owl#Ontology> rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> <http://creativecommons.org/ns#License> ; 
+                                                          <http://www.w3.org/2002/07/owl#onProperty> <http://creativecommons.org/ns#license> ; 
+                                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                         [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:int ; 
+                                                          <http://www.w3.org/2002/07/owl#onProperty> <http://creativecommons.org/ns#license> ; 
+                                                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                         [<http://www.w3.org/2002/07/owl#allValuesFrom> gc:AttributedSource ; 
+                                                          <http://www.w3.org/2002/07/owl#onProperty> gc:attributedSource ; 
+                                                          a <http://www.w3.org/2002/07/owl#Restriction>].

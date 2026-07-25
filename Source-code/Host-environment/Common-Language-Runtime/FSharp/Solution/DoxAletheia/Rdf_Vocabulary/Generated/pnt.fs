@@ -16,6 +16,15 @@ module pnt =
     /// <seealso href="http://data.press.net/ontology/tag/Tag">http://data.press.net/ontology/tag/Tag</seealso>
     let Tag = Prefixed_Name(pnt, "Tag") |> PrefixedName
     /// <summary>
+    ///   <para>pnt:isTaggedWith</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Property that associates Tags with Taggables:  Taggable X isTaggedWith Tag Y</para>
+    /// labels<para>Property that associates Tags with Taggables</para></remarks>
+    /// <seealso href="http://data.press.net/ontology/tag/isTaggedWith">http://data.press.net/ontology/tag/isTaggedWith</seealso>
+    let isTaggedWith = Prefixed_Name(pnt, "isTaggedWith") |> PrefixedName
+    /// <summary>
     ///   <para>pnt:about</para>
     /// </summary>
     /// <remarks>
@@ -51,12 +60,3 @@ module pnt =
     /// </remarks>
     /// <seealso href="http://data.press.net/ontology/tag/">http://data.press.net/ontology/tag/</seealso>
     let _prefix_iri = Prefixed_Name(pnt, "") |> PrefixedName
-    /// <summary>
-    ///   <para>pnt:isTaggedWith</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Property that associates Tags with Taggables:  Taggable X isTaggedWith Tag Y</para>
-    /// labels<para>Property that associates Tags with Taggables</para></remarks>
-    /// <seealso href="http://data.press.net/ontology/tag/isTaggedWith">http://data.press.net/ontology/tag/isTaggedWith</seealso>
-    let isTaggedWith = Prefixed_Name(pnt, "isTaggedWith") |> PrefixedName

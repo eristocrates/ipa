@@ -7,6 +7,15 @@ open type Prefix_ID
 module ssno =
     let _namespace_iri = Namespace_Iri ssno |> NamespaceIRI
     /// <summary>
+    ///   <para>ssno:isProxyFor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>A relation from a Stimulus to the Property that the Stimulus is serving as a proxy for.</para>
+    /// labels<para>is proxy for</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/ssn/isProxyFor">http://www.w3.org/ns/ssn/isProxyFor</seealso>
+    let isProxyFor = Prefixed_Name(ssno, "isProxyFor") |> PrefixedName
+    /// <summary>
     ///   <para>ssno:Property</para>
     /// </summary>
     /// <remarks>
@@ -15,6 +24,24 @@ module ssno =
     /// labels<para>Property</para></remarks>
     /// <seealso href="http://www.w3.org/ns/ssn/Property">http://www.w3.org/ns/ssn/Property</seealso>
     let Property = Prefixed_Name(ssno, "Property") |> PrefixedName
+    /// <summary>
+    ///   <para>ssno:implements</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Relation between an entity that implements a Procedure in some executable way and the Procedure (an algorithm, procedure or method).</para>
+    /// labels<para>implements</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/ssn/implements">http://www.w3.org/ns/ssn/implements</seealso>
+    let implements = Prefixed_Name(ssno, "implements") |> PrefixedName
+    /// <summary>
+    ///   <para>ssno:forProperty</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>A relation between some aspect of an entity and a Property.</para>
+    /// labels<para>for property</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/ssn/forProperty">http://www.w3.org/ns/ssn/forProperty</seealso>
+    let forProperty = Prefixed_Name(ssno, "forProperty") |> PrefixedName
     /// <summary>
     ///   <para>ssno:System</para>
     /// </summary>
@@ -33,15 +60,6 @@ module ssno =
     /// labels<para>has property</para></remarks>
     /// <seealso href="http://www.w3.org/ns/ssn/hasProperty">http://www.w3.org/ns/ssn/hasProperty</seealso>
     let hasProperty = Prefixed_Name(ssno, "hasProperty") |> PrefixedName
-    /// <summary>
-    ///   <para>ssno:isProxyFor</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>A relation from a Stimulus to the Property that the Stimulus is serving as a proxy for.</para>
-    /// labels<para>is proxy for</para></remarks>
-    /// <seealso href="http://www.w3.org/ns/ssn/isProxyFor">http://www.w3.org/ns/ssn/isProxyFor</seealso>
-    let isProxyFor = Prefixed_Name(ssno, "isProxyFor") |> PrefixedName
     /// <summary>
     ///   <para>ssno:Stimulus</para>
     /// </summary>
@@ -125,41 +143,14 @@ module ssno =
     /// <seealso href="http://www.w3.org/ns/ssn/implementedBy">http://www.w3.org/ns/ssn/implementedBy</seealso>
     let implementedBy = Prefixed_Name(ssno, "implementedBy") |> PrefixedName
     /// <summary>
-    ///   <para>ssno:implements</para>
+    ///   <para>ssno:detects</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>Relation between an entity that implements a Procedure in some executable way and the Procedure (an algorithm, procedure or method).</para>
-    /// labels<para>implements</para></remarks>
-    /// <seealso href="http://www.w3.org/ns/ssn/implements">http://www.w3.org/ns/ssn/implements</seealso>
-    let implements = Prefixed_Name(ssno, "implements") |> PrefixedName
-    /// <summary>
-    ///   <para>ssno:forProperty</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>A relation between some aspect of an entity and a Property.</para>
-    /// labels<para>for property</para></remarks>
-    /// <seealso href="http://www.w3.org/ns/ssn/forProperty">http://www.w3.org/ns/ssn/forProperty</seealso>
-    let forProperty = Prefixed_Name(ssno, "forProperty") |> PrefixedName
-    /// <summary>
-    ///   <para>ssno:isPropertyOf</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Relation between a Property and the entity it belongs to.</para>
-    /// labels<para>is property of</para></remarks>
-    /// <seealso href="http://www.w3.org/ns/ssn/isPropertyOf">http://www.w3.org/ns/ssn/isPropertyOf</seealso>
-    let isPropertyOf = Prefixed_Name(ssno, "isPropertyOf") |> PrefixedName
-    /// <summary>
-    ///   <para>ssno:hasSubSystem</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Relation between a System and its component parts.</para>
-    /// labels<para>has subsystem</para></remarks>
-    /// <seealso href="http://www.w3.org/ns/ssn/hasSubSystem">http://www.w3.org/ns/ssn/hasSubSystem</seealso>
-    let hasSubSystem = Prefixed_Name(ssno, "hasSubSystem") |> PrefixedName
+    ///   <para>A relation from a Sensor to the Stimulus that the Sensor can detect. The Stimulus itself will be serving as a proxy for some ObservableProperty.</para>
+    /// labels<para>detects</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/ssn/detects">http://www.w3.org/ns/ssn/detects</seealso>
+    let detects = Prefixed_Name(ssno, "detects") |> PrefixedName
     /// <summary>
     ///   <para>ssno:deployedSystem</para>
     /// </summary>
@@ -169,15 +160,6 @@ module ssno =
     /// labels<para>deployed system</para></remarks>
     /// <seealso href="http://www.w3.org/ns/ssn/deployedSystem">http://www.w3.org/ns/ssn/deployedSystem</seealso>
     let deployedSystem = Prefixed_Name(ssno, "deployedSystem") |> PrefixedName
-    /// <summary>
-    ///   <para>ssno:detects</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>A relation from a Sensor to the Stimulus that the Sensor can detect. The Stimulus itself will be serving as a proxy for some ObservableProperty.</para>
-    /// labels<para>detects</para></remarks>
-    /// <seealso href="http://www.w3.org/ns/ssn/detects">http://www.w3.org/ns/ssn/detects</seealso>
-    let detects = Prefixed_Name(ssno, "detects") |> PrefixedName
     /// <summary>
     ///   <para>ssno:</para>
     /// </summary>
@@ -197,6 +179,24 @@ module ssno =
     /// labels<para>deployed on platform</para></remarks>
     /// <seealso href="http://www.w3.org/ns/ssn/deployedOnPlatform">http://www.w3.org/ns/ssn/deployedOnPlatform</seealso>
     let deployedOnPlatform = Prefixed_Name(ssno, "deployedOnPlatform") |> PrefixedName
+    /// <summary>
+    ///   <para>ssno:isPropertyOf</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Relation between a Property and the entity it belongs to.</para>
+    /// labels<para>is property of</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/ssn/isPropertyOf">http://www.w3.org/ns/ssn/isPropertyOf</seealso>
+    let isPropertyOf = Prefixed_Name(ssno, "isPropertyOf") |> PrefixedName
+    /// <summary>
+    ///   <para>ssno:hasSubSystem</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Relation between a System and its component parts.</para>
+    /// labels<para>has subsystem</para></remarks>
+    /// <seealso href="http://www.w3.org/ns/ssn/hasSubSystem">http://www.w3.org/ns/ssn/hasSubSystem</seealso>
+    let hasSubSystem = Prefixed_Name(ssno, "hasSubSystem") |> PrefixedName
     /// <summary>
     ///   <para>ssno:hasDeployment</para>
     /// </summary>

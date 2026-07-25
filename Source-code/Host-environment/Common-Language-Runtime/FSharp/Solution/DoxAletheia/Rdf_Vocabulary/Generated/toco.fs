@@ -7,270 +7,6 @@ open type Prefix_ID
 module toco =
     let _namespace_iri = Namespace_Iri toco |> NamespaceIRI
     /// <summary>
-    ///   <para>toco:ConceptEntities</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/ConceptEntities">http://purl.org/toco/ConceptEntities</seealso>
-    let ConceptEntities = Prefixed_Name(toco, "ConceptEntities") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:NamedIndividual</para>
-    ///   <para>voaf:Vocabulary</para>
-    ///   <para>owl:Ontology</para>
-    ///   <para>Version 1.1: creation</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/">http://purl.org/toco/</seealso>
-    let _prefix_iri = Prefixed_Name(toco, "") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:AccessPoint</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>a wireless access point, or more generally just access point (AP), is a networking hardware device that allows a Wi-Fi/Li-Fi device to connect to a wired network. The AP usually connects to a router (via a wired network) as a standalone device, but it can also be an integral component of the router itself. An AP is differentiated from a hotspot, which is the physical location where Wi-Fi access to a WLAN is available.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/AccessPoint">http://purl.org/toco/AccessPoint</seealso>
-    let AccessPoint = Prefixed_Name(toco, "AccessPoint") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:SystemDevice</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>All the physical facilities in the telecommunication system that provide the communication service to uses. For example: base station towers, Wi-Fi access points, switches, servers, etc.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/SystemDevice">http://purl.org/toco/SystemDevice</seealso>
-    let SystemDevice = Prefixed_Name(toco, "SystemDevice") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:Action</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>the action of a flow defined in OpenFlow protocol</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/Action">http://purl.org/toco/Action</seealso>
-    let Action = Prefixed_Name(toco, "Action") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:Attached</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/Attached">http://purl.org/toco/Attached</seealso>
-    let Attached = Prefixed_Name(toco, "Attached") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:UserDeviceStatus</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/UserDeviceStatus">http://purl.org/toco/UserDeviceStatus</seealso>
-    let UserDeviceStatus = Prefixed_Name(toco, "UserDeviceStatus") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:AudioService</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/AudioService">http://purl.org/toco/AudioService</seealso>
-    let AudioService = Prefixed_Name(toco, "AudioService") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:Service</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>a communication service, e.g., voice, video, file uploading/downloading, etc.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/Service">http://purl.org/toco/Service</seealso>
-    let Service = Prefixed_Name(toco, "Service") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:AudioSession</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/AudioSession">http://purl.org/toco/AudioSession</seealso>
-    let AudioSession = Prefixed_Name(toco, "AudioSession") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:Session</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/Session">http://purl.org/toco/Session</seealso>
-    let Session = Prefixed_Name(toco, "Session") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:BaseStation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>a "land station in the land mobile service." -- according to the International Telecommunication Union's (ITU) Radio Regulations (RR).
-    ///
-    /// it is a transceiver connecting a number of other devices to one another and/or to a wider area. In LTE, it is also known as eNodeB.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/BaseStation">http://purl.org/toco/BaseStation</seealso>
-    let BaseStation = Prefixed_Name(toco, "BaseStation") |> PrefixedName
-
-    /// <summary>
-    ///   <para>toco:CellularUserEquipment</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>User deivce in a Cellular network.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/CellularUserEquipment">http://purl.org/toco/CellularUserEquipment</seealso>
-    let CellularUserEquipment =
-        Prefixed_Name(toco, "CellularUserEquipment") |> PrefixedName
-
-    /// <summary>
-    ///   <para>toco:UserEquipment</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>any device used directly by an end-user to communicate. It can be a hand-held telephone, a laptop computer equipped with a mobile broadband adapter, or any other device.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/UserEquipment">http://purl.org/toco/UserEquipment</seealso>
-    let UserEquipment = Prefixed_Name(toco, "UserEquipment") |> PrefixedName
-
-    /// <summary>
-    ///   <para>toco:PhysicalInfrastructure</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Describe all the physical resources in a telecommunication network system, which is divided into three main modules, namely, device, interface, link.
-    ///
-    /// Please be reminded the electromagnetic wave (which is the links of all wireless communication netwoks), even if it is invisable, physically exists. Thus, it is also described in the subclass of "net;PhysicalInfrastructure".</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/PhysicalInfrastructure">http://purl.org/toco/PhysicalInfrastructure</seealso>
-    let PhysicalInfrastructure =
-        Prefixed_Name(toco, "PhysicalInfrastructure") |> PrefixedName
-
-    /// <summary>
-    ///   <para>toco:Detached</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/Detached">http://purl.org/toco/Detached</seealso>
-    let Detached = Prefixed_Name(toco, "Detached") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:Device</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>represent all the devices in the physical infrastructure of telecommunciation system.
-    ///
-    /// According to its user, could be divided into UserDevice and SystemDevice.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/Device">http://purl.org/toco/Device</seealso>
-    let Device = Prefixed_Name(toco, "Device") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:Drop</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/Drop">http://purl.org/toco/Drop</seealso>
-    let Drop = Prefixed_Name(toco, "Drop") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:FileTransferService</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/FileTransferService">http://purl.org/toco/FileTransferService</seealso>
-    let FileTransferService = Prefixed_Name(toco, "FileTransferService") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:Flow</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>the flow entry in a flow table inside a switch or route. Defined by OpenFlow protocol.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/Flow">http://purl.org/toco/Flow</seealso>
-    let Flow = Prefixed_Name(toco, "Flow") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:Forward</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/Forward">http://purl.org/toco/Forward</seealso>
-    let Forward = Prefixed_Name(toco, "Forward") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:Host</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A host is a computer or other device connected to a computer network. It is a network node that is assigned a network address.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/Host">http://purl.org/toco/Host</seealso>
-    let Host = Prefixed_Name(toco, "Host") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:UserDevice</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>User Devices, requiring connectivity services, e.g., phones, tablets, laptops, wearable devices, etc.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/UserDevice">http://purl.org/toco/UserDevice</seealso>
-    let UserDevice = Prefixed_Name(toco, "UserDevice") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:Interface</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/Interface">http://purl.org/toco/Interface</seealso>
-    let Interface = Prefixed_Name(toco, "Interface") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:LTEAssociation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>the electromagnetic wave carring modulated signal between LTE base station, or eNodeB, and user equipment</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/LTEAssociation">http://purl.org/toco/LTEAssociation</seealso>
-    let LTEAssociation = Prefixed_Name(toco, "LTEAssociation") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:WirelessAssociation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>the electromeganetic radio transmiting through wireless channels in wireless network, carring communication data. Depend on its frequency, it could be visiable light, micro waves, radio waves.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/WirelessAssociation">http://purl.org/toco/WirelessAssociation</seealso>
-    let WirelessAssociation = Prefixed_Name(toco, "WirelessAssociation") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:LiFiAccessPoint</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The access point in Li-Fi network. Li-Fi is a wireless optical networking technology that uses light-emitting diodes (LEDs) for data transmission.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/LiFiAccessPoint">http://purl.org/toco/LiFiAccessPoint</seealso>
-    let LiFiAccessPoint = Prefixed_Name(toco, "LiFiAccessPoint") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:LiFiAssociation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>the visiable light carring modulated signals in Li-Fi network. Transmited and received by LiFi user equipment and LiFi access point.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/LiFiAssociation">http://purl.org/toco/LiFiAssociation</seealso>
-    let LiFiAssociation = Prefixed_Name(toco, "LiFiAssociation") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:LiFiUserEquipment</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>any device used directly by an end-user to communicate. It can be a hand-held telephone, a laptop computer equipped with a mobile broadband adapter, or any other device.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/LiFiUserEquipment">http://purl.org/toco/LiFiUserEquipment</seealso>
-    let LiFiUserEquipment = Prefixed_Name(toco, "LiFiUserEquipment") |> PrefixedName
-    /// <summary>
     ///   <para>toco:LiFiWLAN</para>
     /// </summary>
     /// <remarks>
@@ -297,14 +33,6 @@ module toco =
     /// <seealso href="http://purl.org/toco/Link">http://purl.org/toco/Link</seealso>
     let Link = Prefixed_Name(toco, "Link") |> PrefixedName
     /// <summary>
-    ///   <para>toco:Output</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/Output">http://purl.org/toco/Output</seealso>
-    let Output = Prefixed_Name(toco, "Output") |> PrefixedName
-    /// <summary>
     ///   <para>toco:PathFlow</para>
     /// </summary>
     /// <remarks>
@@ -312,17 +40,6 @@ module toco =
     /// </remarks>
     /// <seealso href="http://purl.org/toco/PathFlow">http://purl.org/toco/PathFlow</seealso>
     let PathFlow = Prefixed_Name(toco, "PathFlow") |> PrefixedName
-
-    /// <summary>
-    ///   <para>toco:SatelliteAssociation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>the milli-meter electromagnetic wave carring modulated signal between satellite base stations and ground station.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/SatelliteAssociation">http://purl.org/toco/SatelliteAssociation</seealso>
-    let SatelliteAssociation =
-        Prefixed_Name(toco, "SatelliteAssociation") |> PrefixedName
 
     /// <summary>
     ///   <para>toco:SatelliteGroundStation</para>
@@ -334,17 +51,6 @@ module toco =
     /// <seealso href="http://purl.org/toco/SatelliteGroundStation">http://purl.org/toco/SatelliteGroundStation</seealso>
     let SatelliteGroundStation =
         Prefixed_Name(toco, "SatelliteGroundStation") |> PrefixedName
-
-    /// <summary>
-    ///   <para>toco:SatelliteRelayStation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>An artificial satellite, that relays and amplifies radio telecommunications signals via a transponder; it creates a communication channel between a source transmitter and a receiver at different locations on Earth. Communications satellites are used for television, telephone, radio, internet, and military applications.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/SatelliteRelayStation">http://purl.org/toco/SatelliteRelayStation</seealso>
-    let SatelliteRelayStation =
-        Prefixed_Name(toco, "SatelliteRelayStation") |> PrefixedName
 
     /// <summary>
     ///   <para>toco:Switch</para>
@@ -389,15 +95,6 @@ module toco =
     /// <seealso href="http://purl.org/toco/VideoSession">http://purl.org/toco/VideoSession</seealso>
     let VideoSession = Prefixed_Name(toco, "VideoSession") |> PrefixedName
     /// <summary>
-    ///   <para>toco:WiFiAccessPoint</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>An access point in a WiFi network</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/WiFiAccessPoint">http://purl.org/toco/WiFiAccessPoint</seealso>
-    let WiFiAccessPoint = Prefixed_Name(toco, "WiFiAccessPoint") |> PrefixedName
-    /// <summary>
     ///   <para>toco:WiFiAssociation</para>
     /// </summary>
     /// <remarks>
@@ -424,15 +121,6 @@ module toco =
     /// </remarks>
     /// <seealso href="http://purl.org/toco/WiFiWLAN">http://purl.org/toco/WiFiWLAN</seealso>
     let WiFiWLAN = Prefixed_Name(toco, "WiFiWLAN") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:WiredLink</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>wired link through twisted cable, optical fiber, etc.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/WiredLink">http://purl.org/toco/WiredLink</seealso>
-    let WiredLink = Prefixed_Name(toco, "WiredLink") |> PrefixedName
     /// <summary>
     ///   <para>toco:apsInRange</para>
     /// </summary>
@@ -466,14 +154,6 @@ module toco =
     /// </remarks>
     /// <seealso href="http://purl.org/toco/channel">http://purl.org/toco/channel</seealso>
     let channel = Prefixed_Name(toco, "channel") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:contributor</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:AnnotationProperty</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/contributor">http://purl.org/toco/contributor</seealso>
-    let contributor = Prefixed_Name(toco, "contributor") |> PrefixedName
     /// <summary>
     ///   <para>toco:cookie</para>
     /// </summary>
@@ -525,15 +205,6 @@ module toco =
     /// <seealso href="http://purl.org/toco/flags">http://purl.org/toco/flags</seealso>
     let flags = Prefixed_Name(toco, "flags") |> PrefixedName
     /// <summary>
-    ///   <para>toco:frequency</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>the frequency of the radio wave transmitted by a wireless interface (WLAN).</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/frequency">http://purl.org/toco/frequency</seealso>
-    let frequency = Prefixed_Name(toco, "frequency") |> PrefixedName
-    /// <summary>
     ///   <para>toco:from</para>
     /// </summary>
     /// <remarks>
@@ -542,14 +213,6 @@ module toco =
     /// </remarks>
     /// <seealso href="http://purl.org/toco/from">http://purl.org/toco/from</seealso>
     let from = Prefixed_Name(toco, "from") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:hardTimeout</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/hardTimeout">http://purl.org/toco/hardTimeout</seealso>
-    let hardTimeout = Prefixed_Name(toco, "hardTimeout") |> PrefixedName
     /// <summary>
     ///   <para>toco:hasAntennaGain</para>
     /// </summary>
@@ -568,18 +231,6 @@ module toco =
     /// </remarks>
     /// <seealso href="http://purl.org/toco/hasAntennaHeight">http://purl.org/toco/hasAntennaHeight</seealso>
     let hasAntennaHeight = Prefixed_Name(toco, "hasAntennaHeight") |> PrefixedName
-
-    /// <summary>
-    ///   <para>toco:hasAssociatedStations</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>in wireless networks, the user equipments (mobile stations in another term, e.g., phones, laptops, tablets, etc.) that are associated to the access point.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasAssociatedStations">http://purl.org/toco/hasAssociatedStations</seealso>
-    let hasAssociatedStations =
-        Prefixed_Name(toco, "hasAssociatedStations") |> PrefixedName
-
     /// <summary>
     ///   <para>toco:hasBandwidth</para>
     /// </summary>
@@ -593,8 +244,8 @@ module toco =
     ///   <para>toco:hasLinkProperty</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
     ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
     /// </remarks>
     /// <seealso href="http://purl.org/toco/hasLinkProperty">http://purl.org/toco/hasLinkProperty</seealso>
     let hasLinkProperty = Prefixed_Name(toco, "hasLinkProperty") |> PrefixedName
@@ -610,8 +261,8 @@ module toco =
     ///   <para>toco:hasDistance</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
     ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
     ///   <para>the Euclidean distance between the LiFi user equipment and access point.</para>
     /// </remarks>
     /// <seealso href="http://purl.org/toco/hasDistance">http://purl.org/toco/hasDistance</seealso>
@@ -629,15 +280,6 @@ module toco =
     let hasLiFiAssociationProperty =
         Prefixed_Name(toco, "hasLiFiAssociationProperty") |> PrefixedName
 
-    /// <summary>
-    ///   <para>toco:hasErrorCode</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>the error code of a service.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasErrorCode">http://purl.org/toco/hasErrorCode</seealso>
-    let hasErrorCode = Prefixed_Name(toco, "hasErrorCode") |> PrefixedName
     /// <summary>
     ///   <para>toco:hasFieldOfView</para>
     /// </summary>
@@ -690,44 +332,73 @@ module toco =
         Prefixed_Name(toco, "hasGainOfConcentrator") |> PrefixedName
 
     /// <summary>
-    ///   <para>toco:hasGainofOpticalFilter</para>
+    ///   <para>toco:contributor</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Gain of optical filter on LiFi access point.</para>
+    ///   <para>owl:AnnotationProperty</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasGainofOpticalFilter">http://purl.org/toco/hasGainofOpticalFilter</seealso>
-    let hasGainofOpticalFilter =
-        Prefixed_Name(toco, "hasGainofOpticalFilter") |> PrefixedName
-
+    /// <seealso href="http://purl.org/toco/contributor">http://purl.org/toco/contributor</seealso>
+    let contributor = Prefixed_Name(toco, "contributor") |> PrefixedName
     /// <summary>
-    ///   <para>toco:hasLiFiAccessPointProperty</para>
+    ///   <para>toco:license</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>datatype properties dedicated for LiFi access points</para>
+    ///   <para>owl:AnnotationProperty</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasLiFiAccessPointProperty">http://purl.org/toco/hasLiFiAccessPointProperty</seealso>
-    let hasLiFiAccessPointProperty =
-        Prefixed_Name(toco, "hasLiFiAccessPointProperty") |> PrefixedName
-
+    /// <seealso href="http://purl.org/toco/license">http://purl.org/toco/license</seealso>
+    let license = Prefixed_Name(toco, "license") |> PrefixedName
     /// <summary>
-    ///   <para>toco:hasHalfIntensityAngle</para>
+    ///   <para>toco:nwTos</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:DatatypeProperty</para>
-    ///   <para>The angle of half intensity of the LED light transmiting visible light signal in a LiFi access point.
-    ///
-    /// A fixed value. It is the angle where the radiated intensity will be half as intense as it would be at 0 degrees, or pointing straight ahead.
-    ///
-    /// Factors that contribute to the angle of half intensity include the amount of diffusing material in the epoxy, the shape of the reflector cup which surrounds the LED chip, the shape of the LED lens, the distance from the LED to the tip of the lens, and the type of emitter chip.
-    ///
-    /// The most common value is Pi/3.</para>
+    ///   <para>network type of service. the nw_tos property of a flow. It should be a decimal number with the value between 0-255.</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasHalfIntensityAngle">http://purl.org/toco/hasHalfIntensityAngle</seealso>
-    let hasHalfIntensityAngle =
-        Prefixed_Name(toco, "hasHalfIntensityAngle") |> PrefixedName
-
+    /// <seealso href="http://purl.org/toco/nwTos">http://purl.org/toco/nwTos</seealso>
+    let nwTos = Prefixed_Name(toco, "nwTos") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:range</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>the signal range of wireless devices, such as WiFi access point, LiFi access point, WiFi mobile station, and LiFi mobile station.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/range">http://purl.org/toco/range</seealso>
+    let range = Prefixed_Name(toco, "range") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:tableId</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/tableId">http://purl.org/toco/tableId</seealso>
+    let tableId = Prefixed_Name(toco, "tableId") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:to</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>the destination node of the link.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/to">http://purl.org/toco/to</seealso>
+    let to_ = Prefixed_Name(toco, "to") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:toPort</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>the port number of the port forward to defined by the to_port property of the flow action OUTPUT.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/toPort">http://purl.org/toco/toPort</seealso>
+    let toPort = Prefixed_Name(toco, "toPort") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:unReachable</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/unReachable">http://purl.org/toco/unReachable</seealso>
+    let unReachable = Prefixed_Name(toco, "unReachable") |> PrefixedName
     /// <summary>
     ///   <para>toco:hasIP</para>
     /// </summary>
@@ -741,21 +412,12 @@ module toco =
     ///   <para>toco:hasIncidentAngle</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
     ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
     ///   <para>The angle of incidence of the LED receiver on LiFi user equipment, which is the angle between the visiable light ray incident on a surface and the line perpendicular to the surface at the point of incidence, called the normal.</para>
     /// </remarks>
     /// <seealso href="http://purl.org/toco/hasIncidentAngle">http://purl.org/toco/hasIncidentAngle</seealso>
     let hasIncidentAngle = Prefixed_Name(toco, "hasIncidentAngle") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:hasInterface</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>the fact that a device has a interface.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasInterface">http://purl.org/toco/hasInterface</seealso>
-    let hasInterface = Prefixed_Name(toco, "hasInterface") |> PrefixedName
     /// <summary>
     ///   <para>toco:isIn</para>
     /// </summary>
@@ -765,15 +427,6 @@ module toco =
     /// </remarks>
     /// <seealso href="http://purl.org/toco/isIn">http://purl.org/toco/isIn</seealso>
     let isIn = Prefixed_Name(toco, "isIn") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:hasInterfaceName</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>the port number of an interface</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasInterfaceName">http://purl.org/toco/hasInterfaceName</seealso>
-    let hasInterfaceName = Prefixed_Name(toco, "hasInterfaceName") |> PrefixedName
     /// <summary>
     ///   <para>toco:hasJoinDate</para>
     /// </summary>
@@ -793,30 +446,11 @@ module toco =
     let hasLTEAssociation = Prefixed_Name(toco, "hasLTEAssociation") |> PrefixedName
 
     /// <summary>
-    ///   <para>toco:hasWirelessAssociation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasWirelessAssociation">http://purl.org/toco/hasWirelessAssociation</seealso>
-    let hasWirelessAssociation =
-        Prefixed_Name(toco, "hasWirelessAssociation") |> PrefixedName
-
-    /// <summary>
-    ///   <para>toco:hasLiFiAssociation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasLiFiAssociation">http://purl.org/toco/hasLiFiAssociation</seealso>
-    let hasLiFiAssociation = Prefixed_Name(toco, "hasLiFiAssociation") |> PrefixedName
-
-    /// <summary>
     ///   <para>toco:hasWirelessLinkProperty</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
     ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:ObjectProperty</para>
     /// </remarks>
     /// <seealso href="http://purl.org/toco/hasWirelessLinkProperty">http://purl.org/toco/hasWirelessLinkProperty</seealso>
     let hasWirelessLinkProperty =
@@ -877,14 +511,6 @@ module toco =
     /// <seealso href="http://purl.org/toco/hasPacketLoss">http://purl.org/toco/hasPacketLoss</seealso>
     let hasPacketLoss = Prefixed_Name(toco, "hasPacketLoss") |> PrefixedName
     /// <summary>
-    ///   <para>toco:hasPort</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasPort">http://purl.org/toco/hasPort</seealso>
-    let hasPort = Prefixed_Name(toco, "hasPort") |> PrefixedName
-    /// <summary>
     ///   <para>toco:hasRadianceAngle</para>
     /// </summary>
     /// <remarks>
@@ -911,6 +537,377 @@ module toco =
     /// </remarks>
     /// <seealso href="http://purl.org/toco/hasRoundTripTime">http://purl.org/toco/hasRoundTripTime</seealso>
     let hasRoundTripTime = Prefixed_Name(toco, "hasRoundTripTime") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:WiFiAccessPoint</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An access point in a WiFi network</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/WiFiAccessPoint">http://purl.org/toco/WiFiAccessPoint</seealso>
+    let WiFiAccessPoint = Prefixed_Name(toco, "WiFiAccessPoint") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:WiredLink</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>wired link through twisted cable, optical fiber, etc.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/WiredLink">http://purl.org/toco/WiredLink</seealso>
+    let WiredLink = Prefixed_Name(toco, "WiredLink") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:LTEAssociation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>the electromagnetic wave carring modulated signal between LTE base station, or eNodeB, and user equipment</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/LTEAssociation">http://purl.org/toco/LTEAssociation</seealso>
+    let LTEAssociation = Prefixed_Name(toco, "LTEAssociation") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:frequency</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>the frequency of the radio wave transmitted by a wireless interface (WLAN).</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/frequency">http://purl.org/toco/frequency</seealso>
+    let frequency = Prefixed_Name(toco, "frequency") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:hardTimeout</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/hardTimeout">http://purl.org/toco/hardTimeout</seealso>
+    let hardTimeout = Prefixed_Name(toco, "hardTimeout") |> PrefixedName
+
+    /// <summary>
+    ///   <para>toco:hasAssociatedStations</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>in wireless networks, the user equipments (mobile stations in another term, e.g., phones, laptops, tablets, etc.) that are associated to the access point.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/hasAssociatedStations">http://purl.org/toco/hasAssociatedStations</seealso>
+    let hasAssociatedStations =
+        Prefixed_Name(toco, "hasAssociatedStations") |> PrefixedName
+
+    /// <summary>
+    ///   <para>toco:hasStandardDeviation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>After multiple round trip time tested on a link, the deviation of these test results.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/hasStandardDeviation">http://purl.org/toco/hasStandardDeviation</seealso>
+    let hasStandardDeviation =
+        Prefixed_Name(toco, "hasStandardDeviation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>toco:hasTransmitPower</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/hasTransmitPower">http://purl.org/toco/hasTransmitPower</seealso>
+    let hasTransmitPower = Prefixed_Name(toco, "hasTransmitPower") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:hasTxpower</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/hasTxpower">http://purl.org/toco/hasTxpower</seealso>
+    let hasTxpower = Prefixed_Name(toco, "hasTxpower") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:hasUserID</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>the user ID of the user</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/hasUserID">http://purl.org/toco/hasUserID</seealso>
+    let hasUserID = Prefixed_Name(toco, "hasUserID") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:Drop</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/Drop">http://purl.org/toco/Drop</seealso>
+    let Drop = Prefixed_Name(toco, "Drop") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:Flow</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>the flow entry in a flow table inside a switch or route. Defined by OpenFlow protocol.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/Flow">http://purl.org/toco/Flow</seealso>
+    let Flow = Prefixed_Name(toco, "Flow") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:Forward</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/Forward">http://purl.org/toco/Forward</seealso>
+    let Forward = Prefixed_Name(toco, "Forward") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:Host</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A host is a computer or other device connected to a computer network. It is a network node that is assigned a network address.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/Host">http://purl.org/toco/Host</seealso>
+    let Host = Prefixed_Name(toco, "Host") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:UserDevice</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>User Devices, requiring connectivity services, e.g., phones, tablets, laptops, wearable devices, etc.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/UserDevice">http://purl.org/toco/UserDevice</seealso>
+    let UserDevice = Prefixed_Name(toco, "UserDevice") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:Interface</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/Interface">http://purl.org/toco/Interface</seealso>
+    let Interface = Prefixed_Name(toco, "Interface") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:WirelessAssociation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>the electromeganetic radio transmiting through wireless channels in wireless network, carring communication data. Depend on its frequency, it could be visiable light, micro waves, radio waves.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/WirelessAssociation">http://purl.org/toco/WirelessAssociation</seealso>
+    let WirelessAssociation = Prefixed_Name(toco, "WirelessAssociation") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:LiFiAccessPoint</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The access point in Li-Fi network. Li-Fi is a wireless optical networking technology that uses light-emitting diodes (LEDs) for data transmission.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/LiFiAccessPoint">http://purl.org/toco/LiFiAccessPoint</seealso>
+    let LiFiAccessPoint = Prefixed_Name(toco, "LiFiAccessPoint") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:LiFiAssociation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>the visiable light carring modulated signals in Li-Fi network. Transmited and received by LiFi user equipment and LiFi access point.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/LiFiAssociation">http://purl.org/toco/LiFiAssociation</seealso>
+    let LiFiAssociation = Prefixed_Name(toco, "LiFiAssociation") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:UserDeviceStatus</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/UserDeviceStatus">http://purl.org/toco/UserDeviceStatus</seealso>
+    let UserDeviceStatus = Prefixed_Name(toco, "UserDeviceStatus") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:isUP</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>indicate whether a interface is up or not.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/isUP">http://purl.org/toco/isUP</seealso>
+    let isUP = Prefixed_Name(toco, "isUP") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:mode</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/mode">http://purl.org/toco/mode</seealso>
+    let mode = Prefixed_Name(toco, "mode") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:nwProtocol</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>network protocol. The nw_proto property of a flow.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/nwProtocol">http://purl.org/toco/nwProtocol</seealso>
+    let nwProtocol = Prefixed_Name(toco, "nwProtocol") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:priority</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/priority">http://purl.org/toco/priority</seealso>
+    let priority = Prefixed_Name(toco, "priority") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:ssid</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>in wireless networks, the ssid of the network this device belongs to.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/ssid">http://purl.org/toco/ssid</seealso>
+    let ssid = Prefixed_Name(toco, "ssid") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:stationsInRange</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>in wireless networks (WiFi/LiFi), the mobile stations in the range of the access points.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/stationsInRange">http://purl.org/toco/stationsInRange</seealso>
+    let stationsInRange = Prefixed_Name(toco, "stationsInRange") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:LiFiUserEquipment</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>any device used directly by an end-user to communicate. It can be a hand-held telephone, a laptop computer equipped with a mobile broadband adapter, or any other device.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/LiFiUserEquipment">http://purl.org/toco/LiFiUserEquipment</seealso>
+    let LiFiUserEquipment = Prefixed_Name(toco, "LiFiUserEquipment") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:Output</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/Output">http://purl.org/toco/Output</seealso>
+    let Output = Prefixed_Name(toco, "Output") |> PrefixedName
+
+    /// <summary>
+    ///   <para>toco:SatelliteAssociation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>the milli-meter electromagnetic wave carring modulated signal between satellite base stations and ground station.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/SatelliteAssociation">http://purl.org/toco/SatelliteAssociation</seealso>
+    let SatelliteAssociation =
+        Prefixed_Name(toco, "SatelliteAssociation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>toco:SatelliteRelayStation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An artificial satellite, that relays and amplifies radio telecommunications signals via a transponder; it creates a communication channel between a source transmitter and a receiver at different locations on Earth. Communications satellites are used for television, telephone, radio, internet, and military applications.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/SatelliteRelayStation">http://purl.org/toco/SatelliteRelayStation</seealso>
+    let SatelliteRelayStation =
+        Prefixed_Name(toco, "SatelliteRelayStation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>toco:ConceptEntities</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/ConceptEntities">http://purl.org/toco/ConceptEntities</seealso>
+    let ConceptEntities = Prefixed_Name(toco, "ConceptEntities") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:hasInterface</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>the fact that a device has a interface.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/hasInterface">http://purl.org/toco/hasInterface</seealso>
+    let hasInterface = Prefixed_Name(toco, "hasInterface") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:hasInterfaceName</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>the port number of an interface</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/hasInterfaceName">http://purl.org/toco/hasInterfaceName</seealso>
+    let hasInterfaceName = Prefixed_Name(toco, "hasInterfaceName") |> PrefixedName
+
+    /// <summary>
+    ///   <para>toco:hasWirelessAssociation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/hasWirelessAssociation">http://purl.org/toco/hasWirelessAssociation</seealso>
+    let hasWirelessAssociation =
+        Prefixed_Name(toco, "hasWirelessAssociation") |> PrefixedName
+
+    /// <summary>
+    ///   <para>toco:hasGainofOpticalFilter</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Gain of optical filter on LiFi access point.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/hasGainofOpticalFilter">http://purl.org/toco/hasGainofOpticalFilter</seealso>
+    let hasGainofOpticalFilter =
+        Prefixed_Name(toco, "hasGainofOpticalFilter") |> PrefixedName
+
+    /// <summary>
+    ///   <para>toco:hasLiFiAccessPointProperty</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>datatype properties dedicated for LiFi access points</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/hasLiFiAccessPointProperty">http://purl.org/toco/hasLiFiAccessPointProperty</seealso>
+    let hasLiFiAccessPointProperty =
+        Prefixed_Name(toco, "hasLiFiAccessPointProperty") |> PrefixedName
+
+    /// <summary>
+    ///   <para>toco:hasHalfIntensityAngle</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>The angle of half intensity of the LED light transmiting visible light signal in a LiFi access point.
+    ///
+    /// A fixed value. It is the angle where the radiated intensity will be half as intense as it would be at 0 degrees, or pointing straight ahead.
+    ///
+    /// Factors that contribute to the angle of half intensity include the amount of diffusing material in the epoxy, the shape of the reflector cup which surrounds the LED chip, the shape of the LED lens, the distance from the LED to the tip of the lens, and the type of emitter chip.
+    ///
+    /// The most common value is Pi/3.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/hasHalfIntensityAngle">http://purl.org/toco/hasHalfIntensityAngle</seealso>
+    let hasHalfIntensityAngle =
+        Prefixed_Name(toco, "hasHalfIntensityAngle") |> PrefixedName
+
+    /// <summary>
+    ///   <para>toco:hasErrorCode</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>the error code of a service.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/hasErrorCode">http://purl.org/toco/hasErrorCode</seealso>
+    let hasErrorCode = Prefixed_Name(toco, "hasErrorCode") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:hasLiFiAssociation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/hasLiFiAssociation">http://purl.org/toco/hasLiFiAssociation</seealso>
+    let hasLiFiAssociation = Prefixed_Name(toco, "hasLiFiAssociation") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:hasPort</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/hasPort">http://purl.org/toco/hasPort</seealso>
+    let hasPort = Prefixed_Name(toco, "hasPort") |> PrefixedName
 
     /// <summary>
     ///   <para>toco:hasSatelliteAssociation</para>
@@ -931,15 +928,6 @@ module toco =
     /// <seealso href="http://purl.org/toco/hasService">http://purl.org/toco/hasService</seealso>
     let hasService = Prefixed_Name(toco, "hasService") |> PrefixedName
     /// <summary>
-    ///   <para>toco:hasServiceEndTime</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>the time that a service ends.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasServiceEndTime">http://purl.org/toco/hasServiceEndTime</seealso>
-    let hasServiceEndTime = Prefixed_Name(toco, "hasServiceEndTime") |> PrefixedName
-    /// <summary>
     ///   <para>toco:hasServiceStartTime</para>
     /// </summary>
     /// <remarks>
@@ -949,15 +937,6 @@ module toco =
     /// <seealso href="http://purl.org/toco/hasServiceStartTime">http://purl.org/toco/hasServiceStartTime</seealso>
     let hasServiceStartTime = Prefixed_Name(toco, "hasServiceStartTime") |> PrefixedName
     /// <summary>
-    ///   <para>toco:hasServiceStatus</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>the status of the service.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasServiceStatus">http://purl.org/toco/hasServiceStatus</seealso>
-    let hasServiceStatus = Prefixed_Name(toco, "hasServiceStatus") |> PrefixedName
-    /// <summary>
     ///   <para>toco:hasServiceType</para>
     /// </summary>
     /// <remarks>
@@ -966,18 +945,6 @@ module toco =
     /// </remarks>
     /// <seealso href="http://purl.org/toco/hasServiceType">http://purl.org/toco/hasServiceType</seealso>
     let hasServiceType = Prefixed_Name(toco, "hasServiceType") |> PrefixedName
-
-    /// <summary>
-    ///   <para>toco:hasStandardDeviation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>After multiple round trip time tested on a link, the deviation of these test results.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasStandardDeviation">http://purl.org/toco/hasStandardDeviation</seealso>
-    let hasStandardDeviation =
-        Prefixed_Name(toco, "hasStandardDeviation") |> PrefixedName
-
     /// <summary>
     ///   <para>toco:hasThroughPut</para>
     /// </summary>
@@ -987,46 +954,39 @@ module toco =
     /// <seealso href="http://purl.org/toco/hasThroughPut">http://purl.org/toco/hasThroughPut</seealso>
     let hasThroughPut = Prefixed_Name(toco, "hasThroughPut") |> PrefixedName
     /// <summary>
-    ///   <para>toco:hasTransmitPower</para>
+    ///   <para>toco:AccessPoint</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:Class</para>
+    ///   <para>a wireless access point, or more generally just access point (AP), is a networking hardware device that allows a Wi-Fi/Li-Fi device to connect to a wired network. The AP usually connects to a router (via a wired network) as a standalone device, but it can also be an integral component of the router itself. An AP is differentiated from a hotspot, which is the physical location where Wi-Fi access to a WLAN is available.</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasTransmitPower">http://purl.org/toco/hasTransmitPower</seealso>
-    let hasTransmitPower = Prefixed_Name(toco, "hasTransmitPower") |> PrefixedName
+    /// <seealso href="http://purl.org/toco/AccessPoint">http://purl.org/toco/AccessPoint</seealso>
+    let AccessPoint = Prefixed_Name(toco, "AccessPoint") |> PrefixedName
     /// <summary>
-    ///   <para>toco:hasTxpower</para>
+    ///   <para>toco:Attached</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:Class</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasTxpower">http://purl.org/toco/hasTxpower</seealso>
-    let hasTxpower = Prefixed_Name(toco, "hasTxpower") |> PrefixedName
+    /// <seealso href="http://purl.org/toco/Attached">http://purl.org/toco/Attached</seealso>
+    let Attached = Prefixed_Name(toco, "Attached") |> PrefixedName
     /// <summary>
-    ///   <para>toco:hasUserDeviceStatus</para>
+    ///   <para>toco:Service</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:Class</para>
+    ///   <para>a communication service, e.g., voice, video, file uploading/downloading, etc.</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasUserDeviceStatus">http://purl.org/toco/hasUserDeviceStatus</seealso>
-    let hasUserDeviceStatus = Prefixed_Name(toco, "hasUserDeviceStatus") |> PrefixedName
+    /// <seealso href="http://purl.org/toco/Service">http://purl.org/toco/Service</seealso>
+    let Service = Prefixed_Name(toco, "Service") |> PrefixedName
     /// <summary>
-    ///   <para>toco:hasUserID</para>
+    ///   <para>toco:AudioSession</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>the user ID of the user</para>
+    ///   <para>owl:Class</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasUserID">http://purl.org/toco/hasUserID</seealso>
-    let hasUserID = Prefixed_Name(toco, "hasUserID") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:hasWiFiAssociation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/hasWiFiAssociation">http://purl.org/toco/hasWiFiAssociation</seealso>
-    let hasWiFiAssociation = Prefixed_Name(toco, "hasWiFiAssociation") |> PrefixedName
+    /// <seealso href="http://purl.org/toco/AudioSession">http://purl.org/toco/AudioSession</seealso>
+    let AudioSession = Prefixed_Name(toco, "AudioSession") |> PrefixedName
     /// <summary>
     ///   <para>toco:hasWiFiWLAN</para>
     /// </summary>
@@ -1061,114 +1021,154 @@ module toco =
     /// <seealso href="http://purl.org/toco/inPort">http://purl.org/toco/inPort</seealso>
     let inPort = Prefixed_Name(toco, "inPort") |> PrefixedName
     /// <summary>
-    ///   <para>toco:isUP</para>
+    ///   <para>toco:SystemDevice</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>indicate whether a interface is up or not.</para>
+    ///   <para>owl:Class</para>
+    ///   <para>All the physical facilities in the telecommunication system that provide the communication service to uses. For example: base station towers, Wi-Fi access points, switches, servers, etc.</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/toco/isUP">http://purl.org/toco/isUP</seealso>
-    let isUP = Prefixed_Name(toco, "isUP") |> PrefixedName
+    /// <seealso href="http://purl.org/toco/SystemDevice">http://purl.org/toco/SystemDevice</seealso>
+    let SystemDevice = Prefixed_Name(toco, "SystemDevice") |> PrefixedName
     /// <summary>
-    ///   <para>toco:license</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:AnnotationProperty</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/license">http://purl.org/toco/license</seealso>
-    let license = Prefixed_Name(toco, "license") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:mode</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/mode">http://purl.org/toco/mode</seealso>
-    let mode = Prefixed_Name(toco, "mode") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:nwProtocol</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>network protocol. The nw_proto property of a flow.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/nwProtocol">http://purl.org/toco/nwProtocol</seealso>
-    let nwProtocol = Prefixed_Name(toco, "nwProtocol") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:nwTos</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>network type of service. the nw_tos property of a flow. It should be a decimal number with the value between 0-255.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/nwTos">http://purl.org/toco/nwTos</seealso>
-    let nwTos = Prefixed_Name(toco, "nwTos") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:priority</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/priority">http://purl.org/toco/priority</seealso>
-    let priority = Prefixed_Name(toco, "priority") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:range</para>
+    ///   <para>toco:hasUserDeviceStatus</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>the signal range of wireless devices, such as WiFi access point, LiFi access point, WiFi mobile station, and LiFi mobile station.</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/toco/range">http://purl.org/toco/range</seealso>
-    let range = Prefixed_Name(toco, "range") |> PrefixedName
+    /// <seealso href="http://purl.org/toco/hasUserDeviceStatus">http://purl.org/toco/hasUserDeviceStatus</seealso>
+    let hasUserDeviceStatus = Prefixed_Name(toco, "hasUserDeviceStatus") |> PrefixedName
     /// <summary>
-    ///   <para>toco:ssid</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>in wireless networks, the ssid of the network this device belongs to.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/ssid">http://purl.org/toco/ssid</seealso>
-    let ssid = Prefixed_Name(toco, "ssid") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:stationsInRange</para>
+    ///   <para>toco:hasWiFiAssociation</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>in wireless networks (WiFi/LiFi), the mobile stations in the range of the access points.</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/toco/stationsInRange">http://purl.org/toco/stationsInRange</seealso>
-    let stationsInRange = Prefixed_Name(toco, "stationsInRange") |> PrefixedName
+    /// <seealso href="http://purl.org/toco/hasWiFiAssociation">http://purl.org/toco/hasWiFiAssociation</seealso>
+    let hasWiFiAssociation = Prefixed_Name(toco, "hasWiFiAssociation") |> PrefixedName
     /// <summary>
-    ///   <para>toco:tableId</para>
+    ///   <para>toco:Action</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:Class</para>
+    ///   <para>the action of a flow defined in OpenFlow protocol</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/toco/tableId">http://purl.org/toco/tableId</seealso>
-    let tableId = Prefixed_Name(toco, "tableId") |> PrefixedName
+    /// <seealso href="http://purl.org/toco/Action">http://purl.org/toco/Action</seealso>
+    let Action = Prefixed_Name(toco, "Action") |> PrefixedName
     /// <summary>
-    ///   <para>toco:to</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>the destination node of the link.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/to">http://purl.org/toco/to</seealso>
-    let to_ = Prefixed_Name(toco, "to") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:toPort</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>the port number of the port forward to defined by the to_port property of the flow action OUTPUT.</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/toco/toPort">http://purl.org/toco/toPort</seealso>
-    let toPort = Prefixed_Name(toco, "toPort") |> PrefixedName
-    /// <summary>
-    ///   <para>toco:unReachable</para>
+    ///   <para>toco:Session</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/toco/unReachable">http://purl.org/toco/unReachable</seealso>
-    let unReachable = Prefixed_Name(toco, "unReachable") |> PrefixedName
+    /// <seealso href="http://purl.org/toco/Session">http://purl.org/toco/Session</seealso>
+    let Session = Prefixed_Name(toco, "Session") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:AudioService</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/AudioService">http://purl.org/toco/AudioService</seealso>
+    let AudioService = Prefixed_Name(toco, "AudioService") |> PrefixedName
+
+    /// <summary>
+    ///   <para>toco:CellularUserEquipment</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>User deivce in a Cellular network.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/CellularUserEquipment">http://purl.org/toco/CellularUserEquipment</seealso>
+    let CellularUserEquipment =
+        Prefixed_Name(toco, "CellularUserEquipment") |> PrefixedName
+
+    /// <summary>
+    ///   <para>toco:BaseStation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>a "land station in the land mobile service." -- according to the International Telecommunication Union's (ITU) Radio Regulations (RR).
+    ///
+    /// it is a transceiver connecting a number of other devices to one another and/or to a wider area. In LTE, it is also known as eNodeB.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/BaseStation">http://purl.org/toco/BaseStation</seealso>
+    let BaseStation = Prefixed_Name(toco, "BaseStation") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:Detached</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/Detached">http://purl.org/toco/Detached</seealso>
+    let Detached = Prefixed_Name(toco, "Detached") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:FileTransferService</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/FileTransferService">http://purl.org/toco/FileTransferService</seealso>
+    let FileTransferService = Prefixed_Name(toco, "FileTransferService") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:UserEquipment</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>any device used directly by an end-user to communicate. It can be a hand-held telephone, a laptop computer equipped with a mobile broadband adapter, or any other device.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/UserEquipment">http://purl.org/toco/UserEquipment</seealso>
+    let UserEquipment = Prefixed_Name(toco, "UserEquipment") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:Device</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>represent all the devices in the physical infrastructure of telecommunciation system.
+    ///
+    /// According to its user, could be divided into UserDevice and SystemDevice.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/Device">http://purl.org/toco/Device</seealso>
+    let Device = Prefixed_Name(toco, "Device") |> PrefixedName
+
+    /// <summary>
+    ///   <para>toco:PhysicalInfrastructure</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Describe all the physical resources in a telecommunication network system, which is divided into three main modules, namely, device, interface, link.
+    ///
+    /// Please be reminded the electromagnetic wave (which is the links of all wireless communication netwoks), even if it is invisable, physically exists. Thus, it is also described in the subclass of "net;PhysicalInfrastructure".</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/PhysicalInfrastructure">http://purl.org/toco/PhysicalInfrastructure</seealso>
+    let PhysicalInfrastructure =
+        Prefixed_Name(toco, "PhysicalInfrastructure") |> PrefixedName
+
+    /// <summary>
+    ///   <para>toco:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Ontology</para>
+    ///   <para>voaf:Vocabulary</para>
+    ///   <para>owl:NamedIndividual</para>
+    ///   <para>Version 1.1: creation</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/">http://purl.org/toco/</seealso>
+    let _prefix_iri = Prefixed_Name(toco, "") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:hasServiceEndTime</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>the time that a service ends.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/hasServiceEndTime">http://purl.org/toco/hasServiceEndTime</seealso>
+    let hasServiceEndTime = Prefixed_Name(toco, "hasServiceEndTime") |> PrefixedName
+    /// <summary>
+    ///   <para>toco:hasServiceStatus</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>the status of the service.</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/toco/hasServiceStatus">http://purl.org/toco/hasServiceStatus</seealso>
+    let hasServiceStatus = Prefixed_Name(toco, "hasServiceStatus") |> PrefixedName

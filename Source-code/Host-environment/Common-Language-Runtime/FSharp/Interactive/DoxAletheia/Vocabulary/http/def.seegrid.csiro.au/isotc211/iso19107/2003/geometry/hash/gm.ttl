@@ -1,0 +1,191 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gm: <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry#>.
+
+<http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry> <http://purl.org/dc/elements/1.1/creator> """Simon Jonathan David COX
+CSIRO"""^^rdf:PlainLiteral;
+                                                              <http://purl.org/dc/elements/1.1/description> "An OWL representation of part of the model for geometry and space from ISO 19107:2003 Geographic Information - Spatial Schema";
+                                                              <http://purl.org/dc/elements/1.1/rights> "Copyright © 2012-2013 CSIRO";
+                                                              <http://purl.org/dc/elements/1.1/source> "ISO 19107:2003"^^rdf:PlainLiteral;
+                                                              <http://purl.org/dc/elements/1.1/title> "OWL representation of ISO 19107 (Geographic Information - Spatial Schema)";
+                                                              <http://purl.org/dc/terms/created> "2010-10-27";
+                                                              <http://purl.org/dc/terms/hasPart> gm:Curve,
+                                                                                                 gm:Surface,
+                                                                                                 gm:Object,
+                                                                                                 gm:Position,
+                                                                                                 gm:Primitive,
+                                                                                                 gm:boundingBox,
+                                                                                                 gm:Envelope,
+                                                                                                 gm:Complex,
+                                                                                                 gm:position,
+                                                                                                 gm:Aggregate,
+                                                                                                 gm:OrientablePrimitive,
+                                                                                                 gm:upperCorner,
+                                                                                                 gm:srs,
+                                                                                                 gm:coordinates,
+                                                                                                 gm:lowerCorner,
+                                                                                                 gm:OrientableCurve,
+                                                                                                 gm:Solid,
+                                                                                                 gm:Point,
+                                                                                                 gm:OrientableSurface;
+                                                              <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/3.0/>;
+                                                              <http://purl.org/dc/terms/modified> "2013-11-14";
+                                                              <http://purl.org/vocab/vann/preferredNamespacePrefix> "gm";
+                                                              <http://purl.org/vocab/vann/preferredNamespaceUri> gm:;
+                                                              a <http://purl.org/vocommons/voaf#Vocabulary>,
+                                                                <http://www.w3.org/2002/07/owl#Ontology>;
+                                                              rdfs:comment """An OWL representation of part of the model for geometry and space from ISO 19107:2003 Geographic Information - Spatial Schema. 
+
+This vocabulary is provisional, pending finalization of ISO 19150-2.
+
+The URI stem http://def.seegrid.csiro.au/isotc211/ is temporary. The vocabulary is expected to be ultimately published in the domain http://def.isotc211.org/.""";
+                                                              <http://www.w3.org/2002/07/owl#imports> <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic>;
+                                                              <http://www.w3.org/2002/07/owl#priorVersion> <https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201305/ISOTC211/HM/geometry.rdf>;
+                                                              <http://www.w3.org/2002/07/owl#versionIRI> <https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201311/ISOTC211/HM/geometry.rdf>.
+gm:Aggregate <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#isAbstract> true;
+             a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+             rdfs:label "Geometry Aggregate";
+             rdfs:subClassOf gm:Object;
+             <http://www.w3.org/2004/02/skos/core#notation> "GM_Aggregate"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+gm:Complex <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#isAbstract> true;
+           a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment """geometric complex
+set of disjoint geometric primitives such that the boundary of each primitive can be represented as the union of other geometric primitives within the complex
+
+NOTE:  The geometric primitives in the set are mutually exclusive in the sense that no point is interior to more than one primitive.  The set is closed under boundary operations, meaning that for each element in the complex, there is a collection (also a complex) of geometric primitives that represents the boundary of that element.""";
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+           rdfs:label "Geometry Complex";
+           rdfs:subClassOf gm:Object;
+           <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.opengis.net/ont/gml#GeometricComplex>;
+           <http://www.w3.org/2004/02/skos/core#notation> "GM_Complex"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+gm:Curve a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+         rdfs:label "Curve";
+         rdfs:subClassOf gm:OrientableCurve;
+         <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.opengis.net/ont/gml#Curve>;
+         <http://www.w3.org/2004/02/skos/core#notation> "GM_Curve"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+gm:Envelope a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "GM_Envelope is often referred to as a minimum bounding box or rectangle. Regardless of dimension, a GM_Envelope can be represented without ambiguity as two direct positions (coordinate points). To encode a GM_Envelope, it is sufficient to encode these two points. This is consistent with all of the data types in this standard, their state is represented by their publicly accessible attributes.";
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+            rdfs:label "Envelope";
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> gm:lowerCorner ; 
+                             <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onClass> gm:Position ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            <http://www.w3.org/2002/07/owl#Thing>,
+                            [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> gm:srs ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> gm:upperCorner ; 
+                             <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onClass> gm:Position ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>];
+            <http://www.w3.org/2004/02/skos/core#notation> "GM_Envelope"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+gm:Object <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#isAbstract> true;
+          a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment """GM_Object (Figure 6) is the root class of the geometric object taxonomy and supports interfaces common to all geographically referenced geometric objects. GM_Object instances are sets of direct positions in a particular coordinate reference system. A GM_Object can be regarded as an infinite set of points that satisfies the set operation interfaces for a set of direct positions, TransfiniteSet<DirectPosition>. Since an infinite collection class cannot be implemented directly, a Boolean test for inclusion shall be provided by the GM_Object interface. This international standard concentrates on vector geometry classes, but future work may use GM_Object as a root class without modification.
+NOTE As a type, GM_Object does not have a well-defined default state or value representation as a data type. Instantiated subclasses of GM_Object will.""";
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+          rdfs:label "Geometry object";
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> gm:srs ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          <http://www.w3.org/2002/07/owl#Thing>;
+          <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.opengis.net/ont/gml#AbstractGeometry>;
+          <http://www.w3.org/2004/02/skos/core#notation> "GM_Object"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+gm:OrientableCurve a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+                   rdfs:label "Orientable Curve";
+                   rdfs:subClassOf gm:OrientablePrimitive;
+                   <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.opengis.net/ont/gml#OrientableCurve>;
+                   <http://www.w3.org/2004/02/skos/core#notation> "GM_OrientableCurve"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+gm:OrientablePrimitive <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#isAbstract> true;
+                       a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+                       rdfs:label "Orientable primitive";
+                       rdfs:subClassOf gm:Primitive;
+                       <http://www.w3.org/2004/02/skos/core#notation> "GM_OrientablePrimitive"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+gm:OrientableSurface a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+                     rdfs:label "Orientable Surface";
+                     rdfs:subClassOf gm:OrientablePrimitive;
+                     <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.opengis.net/ont/gml#OrientableSurface>;
+                     <http://www.w3.org/2004/02/skos/core#notation> "GM_OrientableSurface"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+gm:Point a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+         rdfs:label "Spatial point";
+         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                          <http://www.w3.org/2002/07/owl#onProperty> gm:position ; 
+                          a <http://www.w3.org/2002/07/owl#Restriction>],
+                         gm:Primitive;
+         <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.opengis.net/ont/gml#Point>;
+         <http://www.w3.org/2004/02/skos/core#notation> "GM_Point"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+gm:Position a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "DirectPosition object data types (Figure 14) hold the coordinates for a position within some coordinate reference system. The coordinate reference system is described in ISO 19111. Since DirectPositions, as data types, will often be included in larger objects (such as GM_Objects) that have references to ISO19111::SC_CRS, the DirectPosition::cordinateReferenceSystem may be left NULL if this particular DirectPosition is included in a larger object with such a reference to a SC_CRS. In this case, the DirectPosition::coordinateReferenceSystem is implicitly assumed to take on the value of the containing object's SC_CRS.";
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+            rdfs:label "Geometry position";
+            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> gm:coordinates ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#onProperty> gm:srs ; 
+                             <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>];
+            <http://www.w3.org/2004/02/skos/core#notation> "DirectPosition"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+gm:Primitive <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#isAbstract> true;
+             a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment """GM_Primitive (Figure 8) is the abstract root class of the geometric primitives. Its main purpose is to define the basic \"boundary\" operation that ties the primitives in each dimension together. A geometric primitive (GM_Primitive) is a geometric object that is not decomposed further into other primitives in the system. This includes curves and surfaces, even though they are composed of curve segments and surface patches, respectively. This composition is a strong aggregation: curve segments and surface patches cannot exist outside the context of a primitive.
+NOTE Most geometric primitives are decomposable infinitely many times. Adding a centre point to a line may split that line into two separate lines. A new curve drawn across a surface may divide that surface into two parts, each of which is a surface. This is the reason that the normal definition of primitive as \"non-decomposable\" is not plausible in a geometry model - the only non-decomposable object in geometry is a point.
+Any geometric object that is used to describe a feature is a collection of geometric primitives. A collection of geometric primitives may or may not be a geometric complex. Geometric complexes have additional properties such as closure by boundary operations and mutually exclusive component parts.
+GM_Primitive and GM_Complex share most semantics, in the meaning of operations, attributes and associations. There is an exception in that a GM_Primitive shall not contain its boundary (except in the trivial case of GM_Point where the boundary is empty), while a GM_Complex shall contain its boundary in all cases. This means that if an instantiated object implements GM_Object operations both as GM_Primitive and as a GM_Complex, the semantics of each set theoretic operation is determined by the its name resolution. Specifically, for a particular object such as GM_CompositeCurve, GM_Primitive::contains (returns FALSE for end points) is different from GM_Complex::contains (returns TRUE for end points). Further, if that object is cast as a GM_Primitive value and as a GM_Complex value, then the two values need not be equal as GM_Objects.""";
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+             rdfs:label "Geometry Primitive";
+             rdfs:subClassOf gm:Object;
+             <http://www.w3.org/2002/07/owl#disjointWith> gm:Aggregate,
+                                                          gm:Complex;
+             <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.opengis.net/ont/gml#AbstractGeometricPrimitive>;
+             <http://www.w3.org/2004/02/skos/core#notation> "GM_Primitive"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+gm:Solid a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+         rdfs:label "Solid";
+         rdfs:subClassOf gm:Primitive;
+         <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.opengis.net/ont/gml#Solid>;
+         <http://www.w3.org/2004/02/skos/core#notation> "GM_Solid"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+gm:Surface a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+           rdfs:label "Surface";
+           rdfs:subClassOf gm:OrientableSurface;
+           <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.opengis.net/ont/gml#Surface>;
+           <http://www.w3.org/2004/02/skos/core#notation> "GM_Surface"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+gm:boundingBox a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+               rdfs:label "bounding box";
+               rdfs:range gm:Envelope.
+gm:coordinates a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:domain gm:Position;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+               rdfs:label "coordinates".
+gm:lowerCorner a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain gm:Envelope;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+               rdfs:label "lower corner";
+               rdfs:range gm:Position.
+gm:position a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+            rdfs:label "geometric position";
+            rdfs:range gm:Position.
+gm:srs a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (gm:Object
+                                                             gm:Envelope
+                                                             gm:Position) ; 
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry> ; 
+                    a <http://www.w3.org/2002/07/owl#Class>];
+       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+       rdfs:label "spatial reference system".
+gm:upperCorner a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain gm:Envelope;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19107/2003/geometry>;
+               rdfs:label "upper corner";
+               rdfs:range gm:Position.

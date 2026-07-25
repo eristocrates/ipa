@@ -1,0 +1,472 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix tm: <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal#>.
+
+<http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal> <http://purl.org/dc/elements/1.1/creator> "Simon J D COX - CSIRO";
+                                                              <http://purl.org/dc/elements/1.1/description> "An OWL representation of part of the model for Temporal objects and reference systems from ISO 19108:2002 Geographic Information - Temporal Schema";
+                                                              <http://purl.org/dc/elements/1.1/source> "ISO 19108:2002";
+                                                              <http://purl.org/dc/elements/1.1/title> "OWL representation of ISO 19108 (Geographic Information - Temporal Schema)";
+                                                              <http://purl.org/dc/terms/created> "2011-01-01T00:00:00"^^xsd:dateTime;
+                                                              <http://purl.org/dc/terms/hasPart> tm:GeometricPrimitive,
+                                                                                                 tm:complex,
+                                                                                                 tm:ClockTime,
+                                                                                                 tm:OrdinalReferenceSystem,
+                                                                                                 tm:frame,
+                                                                                                 tm:end,
+                                                                                                 tm:value,
+                                                                                                 tm:geometry,
+                                                                                                 tm:ordinalValue,
+                                                                                                 tm:DateAndTime,
+                                                                                                 tm:Clock,
+                                                                                                 tm:begunBy,
+                                                                                                 tm:Object,
+                                                                                                 tm:TopologicalPrimitive,
+                                                                                                 tm:topology,
+                                                                                                 tm:OrdinalPosition,
+                                                                                                 tm:Instant,
+                                                                                                 tm:Node,
+                                                                                                 tm:time,
+                                                                                                 tm:temporalPosition,
+                                                                                                 tm:ReferenceSystem,
+                                                                                                 tm:member,
+                                                                                                 tm:primitive,
+                                                                                                 tm:Period,
+                                                                                                 tm:dateTimePosition,
+                                                                                                 tm:endedBy,
+                                                                                                 tm:CalDate,
+                                                                                                 tm:Edge,
+                                                                                                 tm:date,
+                                                                                                 tm:Calendar,
+                                                                                                 tm:name,
+                                                                                                 tm:domainOfValidity,
+                                                                                                 tm:system,
+                                                                                                 tm:previousEdge,
+                                                                                                 tm:nextEdge,
+                                                                                                 tm:group,
+                                                                                                 tm:OrdinalEra,
+                                                                                                 tm:Coordinate,
+                                                                                                 tm:Primitive,
+                                                                                                 tm:begin,
+                                                                                                 tm:CoordinateSystem,
+                                                                                                 tm:Complex,
+                                                                                                 tm:TopologicalComplex,
+                                                                                                 tm:TemporalPosition,
+                                                                                                 tm:component;
+                                                              <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/3.0/>;
+                                                              <http://purl.org/dc/terms/modified> "2013-11-13T00:00:00"^^xsd:dateTime;
+                                                              <http://purl.org/vocab/vann/preferredNamespacePrefix> "tm";
+                                                              <http://purl.org/vocab/vann/preferredNamespaceUri> tm:;
+                                                              a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                              rdfs:comment """An OWL representation of part of the model for Temporal objects and reference systems from ISO 19108:2002 Geographic Information - Temporal Schema
+
+This vocabulary is provisional, pending finalization of ISO 19150-2.
+
+The URI stem http://def.seegrid.csiro.au/isotc211/ is temporary. The vocabulary is expected to be ultimately published in the domain http://def.isotc211.org/""";
+                                                              <http://www.w3.org/2002/07/owl#imports> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic>,
+                                                                                                      <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic>;
+                                                              <http://www.w3.org/2002/07/owl#priorVersion> <https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201305/ISOTC211/HM/temporal.rdf>;
+                                                              <http://www.w3.org/2002/07/owl#versionIRI> <https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201311/ISOTC211/HM/temporal.rdf>;
+                                                              <http://www.w3.org/2004/02/skos/core#historyNote> "2013-02-19 Converted qualified cardinality restrictions to cardinality/only pairs of restrictions".
+tm:CalDate a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+           rdfs:label "Calendar date";
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> tm:value ; 
+                            <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:date ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> tm:frame ; 
+                            <http://www.w3.org/2002/07/owl#allValuesFrom> tm:Calendar ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           tm:TemporalPosition;
+           <http://www.w3.org/2004/02/skos/core#notation> "TM_CalDate"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:Calendar a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+            rdfs:label "Calendar";
+            rdfs:subClassOf tm:ReferenceSystem;
+            <http://www.w3.org/2004/02/skos/core#notation> "TM_Calendar"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:Clock a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+         rdfs:label "Clock";
+         rdfs:subClassOf tm:ReferenceSystem;
+         <http://www.w3.org/2004/02/skos/core#notation> "TM_Clock"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:ClockTime a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+             rdfs:label "Clock time";
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> tm:value ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> xsd:time ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> tm:frame ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> tm:Clock ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             tm:TemporalPosition;
+             <http://www.w3.org/2004/02/skos/core#notation> "TM_ClockTime"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:Complex a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+           rdfs:label "Temporal Complex";
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> tm:primitive ; 
+                            <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           tm:Object;
+           <http://www.w3.org/2004/02/skos/core#notation> "TM_Complex"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:Coordinate a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+              rdfs:label "Temporal Coordinate";
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> tm:frame ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> tm:CoordinateSystem ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> tm:value ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#Number> ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              tm:TemporalPosition;
+              <http://www.w3.org/2004/02/skos/core#notation> "TM_Coordinate"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:CoordinateSystem a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+                    rdfs:label "Temporal Coordinate System";
+                    rdfs:subClassOf tm:ReferenceSystem;
+                    <http://www.w3.org/2004/02/skos/core#notation> "TM_CoordinateSystem"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:DateAndTime a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+               rdfs:label "Date and time";
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> tm:time ; 
+                                <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               [<http://www.w3.org/2002/07/owl#onProperty> tm:date ; 
+                                <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>];
+               <http://www.w3.org/2004/02/skos/core#notation> "TM_DateAndTime"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:Edge a <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+        rdfs:label "Temporal Edge";
+        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> tm:begin ; 
+                         <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        [<http://www.w3.org/2002/07/owl#onProperty> tm:geometry ; 
+                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        [<http://www.w3.org/2002/07/owl#onProperty> tm:end ; 
+                         <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        [<http://www.w3.org/2002/07/owl#onProperty> tm:end ; 
+                         <http://www.w3.org/2002/07/owl#allValuesFrom> tm:Node ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        tm:TopologicalPrimitive,
+                        [<http://www.w3.org/2002/07/owl#onProperty> tm:begin ; 
+                         <http://www.w3.org/2002/07/owl#allValuesFrom> tm:Node ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        [<http://www.w3.org/2002/07/owl#onProperty> tm:geometry ; 
+                         <http://www.w3.org/2002/07/owl#allValuesFrom> tm:Period ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>];
+        <http://www.w3.org/2004/02/skos/core#notation> "TM_Edge"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:GeometricComplex a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+                    rdfs:label "Temporal geometric complex";
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> tm:primitive ; 
+                                     <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#onProperty> tm:primitive ; 
+                                     <http://www.w3.org/2002/07/owl#allValuesFrom> tm:GeometricPrimitive ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    tm:Complex;
+                    <http://www.w3.org/2004/02/skos/core#notation> "TM_GeometricComplex"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:GeometricPrimitive a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+                      rdfs:label "Temporal Geometric Primitive";
+                      rdfs:subClassOf tm:Primitive;
+                      <http://www.w3.org/2004/02/skos/core#notation> "TM_GeometricPrimitive"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:Instant a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+           rdfs:label "Temporal Instant";
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> tm:topology ; 
+                            <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> tm:topology ; 
+                            <http://www.w3.org/2002/07/owl#allValuesFrom> tm:Node ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> tm:endedBy ; 
+                            <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#onProperty> tm:begunBy ; 
+                            <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           tm:GeometricPrimitive,
+                           [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#onProperty> tm:dateTimePosition ; 
+                                                                     <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                     [<http://www.w3.org/2002/07/owl#onProperty> tm:temporalPosition ; 
+                                                                     <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                            a <http://www.w3.org/2002/07/owl#Class>];
+           <http://www.w3.org/2004/02/skos/core#notation> "TM_Instant"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:Node a <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+        rdfs:label "Temporal Node";
+        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> tm:previousEdge ; 
+                         <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        [<http://www.w3.org/2002/07/owl#onProperty> tm:nextEdge ; 
+                         <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        [<http://www.w3.org/2002/07/owl#onProperty> tm:geometry ; 
+                         <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        [<http://www.w3.org/2002/07/owl#onProperty> tm:geometry ; 
+                         <http://www.w3.org/2002/07/owl#allValuesFrom> tm:Instant ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        tm:TopologicalPrimitive;
+        <http://www.w3.org/2004/02/skos/core#notation> "TM_Node"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:Object a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+          rdfs:label "Temporal Object";
+          rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>;
+          <http://www.w3.org/2004/02/skos/core#notation> "TM_Object"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:OrdinalEra a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+              rdfs:label "Temporal ordinal era";
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> tm:group ; 
+                               <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>];
+              <http://www.w3.org/2004/02/skos/core#notation> "TM_OrdinalEra"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:OrdinalPosition a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+                   rdfs:label "Temporal ordinal position";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> tm:frame ; 
+                                    <http://www.w3.org/2002/07/owl#allValuesFrom> tm:OrdinalReferenceSystem ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#onProperty> tm:ordinalValue ; 
+                                    <http://www.w3.org/2002/07/owl#allValuesFrom> tm:OrdinalEra ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   tm:TemporalPosition;
+                   <http://www.w3.org/2004/02/skos/core#notation> "TM_OrdinalPosition"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:OrdinalReferenceSystem a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+                          rdfs:label "Temporal Ordinal Reference System";
+                          rdfs:subClassOf tm:ReferenceSystem;
+                          <http://www.w3.org/2004/02/skos/core#notation> "TM_OrdinalReferenceSystem"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:Period a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+          rdfs:label "Temporal Period";
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> tm:end ; 
+                           <http://www.w3.org/2002/07/owl#allValuesFrom> tm:Instant ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> tm:topology ; 
+                           <http://www.w3.org/2002/07/owl#allValuesFrom> tm:Edge ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> tm:end ; 
+                           <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> tm:begin ; 
+                           <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          tm:GeometricPrimitive,
+                          [<http://www.w3.org/2002/07/owl#onProperty> tm:begin ; 
+                           <http://www.w3.org/2002/07/owl#allValuesFrom> tm:Instant ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#onProperty> tm:topology ; 
+                           <http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>];
+          <http://www.w3.org/2004/02/skos/core#notation> "TM_Period"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:Primitive a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+             rdfs:label "Temporal Primitive";
+             rdfs:subClassOf tm:Object;
+             <http://www.w3.org/2004/02/skos/core#notation> "TM_Primitive"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:ReferenceSystem a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+                   rdfs:label "Temporal Reference System";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> tm:domainOfValidity ; 
+                                    <http://www.w3.org/2002/07/owl#minCardinality> "0"^^xsd:nonNegativeInteger ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#onProperty> tm:name ; 
+                                    <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#onProperty> tm:domainOfValidity ; 
+                                    <http://www.w3.org/2002/07/owl#allValuesFrom> <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#Extent> ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>];
+                   <http://www.w3.org/2004/02/skos/core#notation> "TM_ReferenceSystem"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:TemporalPosition a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+                    rdfs:label "Temporal position";
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> tm:frame ; 
+                                     <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#onProperty> tm:value ; 
+                                                                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                              [<http://www.w3.org/2002/07/owl#onProperty> tm:ordinalValue ; 
+                                                                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                     a <http://www.w3.org/2002/07/owl#Class>];
+                    <http://www.w3.org/2004/02/skos/core#notation> "TM_TemporalPosition"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:TopologicalComplex a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+                      rdfs:label "Temporal topologic complex";
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> tm:primitive ; 
+                                       <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      [<http://www.w3.org/2002/07/owl#onProperty> tm:primitive ; 
+                                       <http://www.w3.org/2002/07/owl#allValuesFrom> tm:TopologicalPrimitive ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      tm:Complex;
+                      <http://www.w3.org/2004/02/skos/core#notation> "TM_TopologicalComplex"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:TopologicalPrimitive a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+                        rdfs:label "Temporal Topological Primitive";
+                        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> tm:complex ; 
+                                         <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        [<http://www.w3.org/2002/07/owl#onProperty> tm:complex ; 
+                                         <http://www.w3.org/2002/07/owl#allValuesFrom> tm:TopologicalComplex ; 
+                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                        tm:Primitive;
+                        <http://www.w3.org/2004/02/skos/core#notation> "TM_TopologicalPrimitive"^^<http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#ISOClassName>.
+tm:begin a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+         rdfs:comment "The value of this property defines the beginning of a time period";
+         rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (tm:Period
+                                                               tm:Edge) ; 
+                      a <http://www.w3.org/2002/07/owl#Class>];
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+         rdfs:label "beginning instant or node";
+         rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (tm:Instant
+                                                              tm:Node) ; 
+                     a <http://www.w3.org/2002/07/owl#Class>];
+         <http://www.w3.org/2002/07/owl#inverseOf> tm:begunBy.
+tm:begunBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (tm:Instant
+                                                                 tm:Node) ; 
+                        a <http://www.w3.org/2002/07/owl#Class>];
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+           rdfs:label "begun by";
+           rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (tm:Period
+                                                                tm:Edge) ; 
+                       a <http://www.w3.org/2002/07/owl#Class>];
+           <http://www.w3.org/2002/07/owl#inverseOf> tm:begin.
+tm:complex a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain tm:Primitive;
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+           rdfs:label "complex";
+           rdfs:range tm:Complex;
+           <http://www.w3.org/2002/07/owl#inverseOf> tm:primitive.
+tm:component a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain tm:OrdinalReferenceSystem;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+             rdfs:label "component era";
+             rdfs:range tm:OrdinalEra;
+             rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#hasTopConcept>;
+             <http://www.w3.org/2002/07/owl#inverseOf> tm:system.
+tm:date a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+        rdfs:domain tm:DateAndTime;
+        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+        rdfs:label "calendar date";
+        rdfs:range tm:CalDate.
+tm:dateTimePosition a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "The value of this property is a time encoded as an xsd:dateTime";
+                    rdfs:domain tm:Instant;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+                    rdfs:label "date or dateTime position";
+                    rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (<http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#Date>
+                                                                         <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#DateTime>) ; 
+                                a rdfs:Datatype].
+tm:domainOfValidity a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain tm:ReferenceSystem;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+                    rdfs:label "domain of validity";
+                    rdfs:range <http://def.seegrid.csiro.au/isotc211/iso19115/2003/extent#Extent>.
+tm:end a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:comment "The value of this property defines the end of a time period";
+       rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (tm:Period
+                                                             tm:Edge) ; 
+                    a <http://www.w3.org/2002/07/owl#Class>];
+       rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+       rdfs:label "ending instant or node";
+       rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (tm:Instant
+                                                            tm:Node) ; 
+                   a <http://www.w3.org/2002/07/owl#Class>];
+       <http://www.w3.org/2002/07/owl#inverseOf> tm:endedBy.
+tm:endedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (tm:Instant
+                                                                 tm:Node) ; 
+                        a <http://www.w3.org/2002/07/owl#Class>];
+           rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+           rdfs:label "ended by";
+           rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (tm:Period
+                                                                tm:Edge) ; 
+                       a <http://www.w3.org/2002/07/owl#Class>];
+           <http://www.w3.org/2002/07/owl#inverseOf> tm:end.
+tm:frame a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+         rdfs:comment "The value of this property indicates the temporal reference system for a time position";
+         rdfs:domain tm:TemporalPosition;
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+         rdfs:label "temporal reference system or frame";
+         rdfs:range tm:ReferenceSystem.
+tm:geometry a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain tm:TopologicalPrimitive;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+            rdfs:label "temporal geometry";
+            rdfs:range tm:GeometricPrimitive;
+            <http://www.w3.org/2002/07/owl#inverseOf> tm:topology.
+tm:group a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+         rdfs:domain tm:OrdinalEra;
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+         rdfs:label "parent era";
+         rdfs:range tm:OrdinalEra;
+         <http://www.w3.org/2002/07/owl#inverseOf> tm:member.
+tm:member a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain tm:OrdinalEra;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+          rdfs:label "member era";
+          rdfs:range tm:OrdinalEra;
+          <http://www.w3.org/2002/07/owl#inverseOf> tm:group.
+tm:name a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+        rdfs:label "name".
+tm:nextEdge a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain tm:Node;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+            rdfs:label "next edge";
+            rdfs:range tm:Edge;
+            rdfs:subPropertyOf tm:begunBy.
+tm:ordinalValue a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain tm:OrdinalPosition;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+                rdfs:label "ordinal time position";
+                rdfs:range tm:OrdinalEra.
+tm:previousEdge a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain tm:Node;
+                rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+                rdfs:label "previous edge";
+                rdfs:range tm:Edge;
+                rdfs:subPropertyOf tm:endedBy.
+tm:primitive a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain tm:Complex;
+             rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+             rdfs:label "primitive member";
+             rdfs:range tm:Primitive;
+             <http://www.w3.org/2002/07/owl#inverseOf> tm:complex.
+tm:system a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+            <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+          rdfs:domain tm:OrdinalEra;
+          rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+          rdfs:label "parent reference system";
+          rdfs:range tm:OrdinalReferenceSystem;
+          <http://www.w3.org/2002/07/owl#inverseOf> tm:component.
+tm:temporalPosition a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+                    rdfs:label "temporal position";
+                    rdfs:range tm:TemporalPosition.
+tm:time a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+        rdfs:domain tm:DateAndTime;
+        rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+        rdfs:label "clock time";
+        rdfs:range tm:ClockTime.
+tm:topology a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain tm:GeometricPrimitive;
+            rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+            rdfs:label "temporal topology";
+            rdfs:range tm:TopologicalPrimitive;
+            <http://www.w3.org/2002/07/owl#inverseOf> tm:geometry.
+tm:value a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:domain tm:TemporalPosition;
+         rdfs:isDefinedBy <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal>;
+         rdfs:label "temporal position value";
+         rdfs:subPropertyOf rdf:value.

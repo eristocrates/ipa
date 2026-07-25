@@ -1,0 +1,276 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ioto: <http://www.irit.fr/recherches/MELODI/ontologies/IoT-O#>.
+
+<http://delicias.dia.fi.upm.es/ontologies/ObjectWithStates.owl#State> <http://www.w3.org/2002/07/owl#equivalentClass> <http://purl.org/vocab/lifecycle/schema#State>.
+<http://elite.polito.it/ontologies/dogont.owl#BuildingEnvironment> rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#PhysicalPlace>.
+<http://elite.polito.it/ontologies/dogont.owl#BuildingThing> rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#PhysicalObject>.
+<http://elite.polito.it/ontologies/dogont.owl#Command> rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#InformationEntity>.
+<http://elite.polito.it/ontologies/dogont.owl#ContinuousValue> rdfs:label "Continuous value".
+<http://elite.polito.it/ontologies/dogont.owl#DiscreteValue> rdfs:label "Discrete value".
+<http://elite.polito.it/ontologies/dogont.owl#Functionality> rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Abstract>.
+<http://elite.polito.it/ontologies/dogont.owl#NetworkSpecificStateValue> rdfs:label "Network specific state value".
+<http://elite.polito.it/ontologies/dogont.owl#Notification> rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#InformationEntity>.
+<http://elite.polito.it/ontologies/dogont.owl#State> rdfs:subClassOf <http://purl.org/vocab/lifecycle/schema#State>.
+<http://elite.polito.it/ontologies/dogont.owl#StateValue> rdfs:label "State value";
+                                                          rdfs:subClassOf <http://purl.org/vocab/lifecycle/schema#State>.
+<http://elite.polito.it/ontologies/dogont.owl#hasState> rdfs:label "has state".
+<http://elite.polito.it/ontologies/dogont.owl#hasStateValue> rdfs:label "has state value".
+<http://elite.polito.it/ontologies/poweront.owl#PowerConsumption> rdfs:label "Power consumption";
+                                                                  rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#PhysicalAttribute>.
+<http://elite.polito.it/ontologies/poweront.owl#PowerConsumptionValue> rdfs:label "Power consumption value".
+<http://elite.polito.it/ontologies/poweront.owl#consumptionOf> rdfs:label "consumption of".
+<http://elite.polito.it/ontologies/poweront.owl#consumptionValue> rdfs:label "Consumption value".
+<http://elite.polito.it/ontologies/poweront.owl#hasConsumption> rdfs:label "has consumption".
+<http://elite.polito.it/ontologies/poweront.owl#whenIn> rdfs:label "when in".
+<http://iserve.kmi.open.ac.uk/ns/msm#MessagePart> rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Object>.
+<http://iserve.kmi.open.ac.uk/ns/msm#Operation> rdfs:comment "An operation is a function provided by a service. It implements a functionnality, and can be accessed by an end user by any mean offered by the service.";
+                                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.wsmo.org/ns/hrests#URITemplate> ; 
+                                                                 <http://www.w3.org/2002/07/owl#onProperty> <http://www.wsmo.org/ns/hrests#hasAddress> ; 
+                                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://iserve.kmi.open.ac.uk/ns/msm#MessageContent> ; 
+                                                                 <http://www.w3.org/2002/07/owl#onProperty> <http://iserve.kmi.open.ac.uk/ns/msm#hasOutput> ; 
+                                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://iserve.kmi.open.ac.uk/ns/msm#MessageContent> ; 
+                                                                 <http://www.w3.org/2002/07/owl#onProperty> <http://iserve.kmi.open.ac.uk/ns/msm#hasInput> ; 
+                                                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                <http://www.wsmo.org/ns/wsmo-lite#Operation>.
+<http://iserve.kmi.open.ac.uk/ns/msm#Service> rdfs:comment "A service is a set of operation, and provides a user a way to issu requests  through an interface. Underlying implementation needn't to be known by the end user.";
+                                              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://iserve.kmi.open.ac.uk/ns/msm#Operation> ; 
+                                                               <http://www.w3.org/2002/07/owl#onProperty> <http://iserve.kmi.open.ac.uk/ns/msm#hasOperation> ; 
+                                                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                              <http://www.wsmo.org/ns/wsmo-lite#Service>.
+<http://purl.oclc.org/NET/muo/muo#PhysicalQuality> rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#PhysicalAttribute>.
+<http://purl.oclc.org/NET/ssnx/ssn#Device> rdfs:subClassOf ioto:IoT_Thing.
+<http://purl.oclc.org/NET/ssnx/ssn#MeasurementCapability> rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://qudt.org/schema/qudt#QuantityKind> ; 
+                                                                           <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#forProperty> ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Restriction>].
+<http://purl.oclc.org/NET/ssnx/ssn#MeasurementProperty> rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.loa-cnr.it/ontologies/DUL.owl#Amount> ; 
+                                                                         <http://www.w3.org/2002/07/owl#onProperty> <http://purl.oclc.org/NET/ssnx/ssn#hasValue> ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://qudt.org/schema/qudt#Unit> ; 
+                                                                         <http://www.w3.org/2002/07/owl#onProperty> <http://www.loa-cnr.it/ontologies/DUL.owl#isParametrizedBy> ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Restriction>].
+<http://purl.oclc.org/NET/ssnx/ssn#ObservationValue> rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:integer ; 
+                                                                      <http://www.w3.org/2002/07/owl#onProperty> <http://www.loa-cnr.it/ontologies/DUL.owl#hasDataValue> ; 
+                                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://qudt.org/schema/qudt#Unit> ; 
+                                                                      <http://www.w3.org/2002/07/owl#onProperty> <http://www.loa-cnr.it/ontologies/DUL.owl#isParametrizedBy> ; 
+                                                                      a <http://www.w3.org/2002/07/owl#Restriction>].
+<http://purl.oclc.org/NET/ssnx/ssn#OperatingProperty> rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> xsd:integer ; 
+                                                                       <http://www.w3.org/2002/07/owl#onProperty> <http://www.loa-cnr.it/ontologies/DUL.owl#hasDataValue> ; 
+                                                                       a <http://www.w3.org/2002/07/owl#Restriction>].
+<http://purl.org/vocab/lifecycle/schema#State> rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://elite.polito.it/ontologies/dogont.owl#StateValue> ; 
+                                                                <http://www.w3.org/2002/07/owl#onProperty> <http://www.loa-cnr.it/ontologies/DUL.owl#hasParticipant> ; 
+                                                                a <http://www.w3.org/2002/07/owl#Restriction>].
+<http://qudt.org/schema/qudt#QuantityKind> a <http://www.w3.org/2002/07/owl#Class>.
+<http://qudt.org/schema/qudt#Unit> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.irit.fr/recherches/MELODI/ontologies/IoT-O> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/4.0/>;
+                                                        <http://purl.org/dc/elements/1.1/creator> "Nicolas Seydoux, Mahdi Ben Alaya, Khalil Drira, Nathalie Hernandez, Thierry Monteil";
+                                                        <http://purl.org/dc/elements/1.1/description> """IoT-O is a core domain Internet of Things ontology. It is intended to model horizontal knowledge about IoT systems and applications, and to be extended with vertical, application specific knowledge.
+It is constituted of different modules : 
+ - A sensing module, based on W3C's SSN (http://purl.oclc.org/NET/ssnx/ssn)
+ - An acting module, based on SAN (http://www.irit.fr/recherches/MELODI/ontologies/SAN)
+ - A service module, based on MSM (http://iserve.kmi.open.ac.uk/ns/msm/msm-2014-09-03.rdf) and hRest (http://www.wsmo.org/ns/hrests)
+ - A lifecycle module, based on a lifecycle vocabulary (http://vocab.org/lifecycle/schema-20080603.rdf) and an iot-specific extension (http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle)
+ - An energy module, based on powerOnt (ttp://elite.polito.it/ontologies/poweront.owl)
+
+IoT-O developping team also contributes to the oneM2M IoT interoperability standard.""";
+                                                        <http://purl.org/dc/elements/1.1/publisher> "LAAS-CNRS (https://www.laas.fr)",
+                                                                                                    "IRIT (https://www.irit.fr/)";
+                                                        <http://purl.org/dc/elements/1.1/title> "IoT-O";
+                                                        <http://purl.org/dc/terms/issued> "2015-02-20";
+                                                        <http://purl.org/dc/terms/modified> "2016-02-26";
+                                                        <http://purl.org/vocab/vann/preferredNamespacePrefix> "iot-o";
+                                                        <http://purl.org/vocab/vann/preferredNamespaceURI> "http://www.irit.fr/recherches/MELODI/ontologies/IoT-O";
+                                                        <http://purl.org/vocommons/voaf#extends> <http://purl.oclc.org/NET/ssnx/ssn>,
+                                                                                                 <http://elite.polito.it/ontologies/poweront.owl>,
+                                                                                                 <http://iserve.kmi.open.ac.uk/ns/msm/msm-2014-09-03.rdf>,
+                                                                                                 <http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle>,
+                                                                                                 <http://www.irit.fr/recherches/MELODI/ontologies/SAN>;
+                                                        a <http://www.w3.org/2002/07/owl#Ontology>,
+                                                          <http://purl.org/vocommons/voaf#Vocabulary>;
+                                                        <http://www.w3.org/2002/07/owl#imports> <http://iserve.kmi.open.ac.uk/ns/msm/msm-2014-09-03.rdf>,
+                                                                                                <http://elite.polito.it/ontologies/poweront.owl>,
+                                                                                                <http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle>,
+                                                                                                <http://www.irit.fr/recherches/MELODI/ontologies/SAN>,
+                                                                                                <http://purl.oclc.org/NET/ssnx/ssn>;
+                                                        <http://www.w3.org/2002/07/owl#versionInfo> "2.0";
+                                                        <http://xmlns.com/foaf/0.1/primaryTopic> "IoT".
+ioto:BusinessOperation a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Service operation that is relevant to the business function of the service (and the object underneath in the case of IoT). This type of functions may be linked to a property the object deals with (monitoring or modification)";
+                       rdfs:label "Business operation";
+                       rdfs:subClassOf <http://iserve.kmi.open.ac.uk/ns/msm#Operation>.
+ioto:BusinessService a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Service intended to be an interface for the functionnalities the object was designed to perform : measure temperature for a temperature sensor, switch on/off for a switch...";
+                     rdfs:label "Business service";
+                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/ssn#Property> ; 
+                                      <http://www.w3.org/2002/07/owl#onProperty> ioto:hasRelationshipWithProperty ; 
+                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                     <http://iserve.kmi.open.ac.uk/ns/msm#Service>.
+ioto:ControlledSystem a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "System implementing a control feedback loop in order to control an actuator thanks to the feedback of some sensors.";
+                      rdfs:label "Controlled system";
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.oclc.org/NET/ssnx/ssn#Sensor> ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> ioto:getsFeedbackFrom ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>],
+                                      <http://purl.oclc.org/NET/ssnx/ssn#System>.
+ioto:DefectuousSystem a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Controlled system that requires an operator attention, because it is not functionnig properly. Detected when the difference between the Observations and the Actuation made on the monitored property is out of its operating range.";
+                      rdfs:label "Defectuous System";
+                      rdfs:subClassOf ioto:ControlledSystem.
+ioto:DeviceManagementOperation a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Service operation that deals with device management";
+                               rdfs:label "Device management operation";
+                               rdfs:subClassOf <http://iserve.kmi.open.ac.uk/ns/msm#Operation>.
+ioto:DeviceManagementService a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "This kind of service offers a set of operations regarding device management. That means it's not related to the functionnality of the object itsefl, but rather to its inner working : battery state, connectivity, firmware update...";
+                             rdfs:label "Device management service";
+                             rdfs:subClassOf <http://iserve.kmi.open.ac.uk/ns/msm#Service>.
+ioto:EmptyMessage a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    <http://www.wsmo.org/ns/wsmo-lite#Message>;
+                  rdfs:comment """Specific message that has no content, its sole transfer achieves its purpose. For example, if an empty message is sent to the \"switch light on\" service of a light bulb, there is no need for an explicit content of the message asking the light to be turned on.""";
+                  rdfs:label "Empty message".
+ioto:ImpactOnProperty a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "This class describes the impact an operation may have on a property. It makes sense in an IoT environement, where things can manage properties of their environment and modify them.";
+                      rdfs:label "Impact on property";
+                      rdfs:subClassOf <http://www.wsmo.org/ns/wsmo-lite#Effect>.
+ioto:IoT_Thing a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Most general thing in an iot ontology, a Thing can either be a physical connected object, an application, an abstracted interface... The class Object of DUL, from whom it inherits, doen't only represent physical objects, and can cover a fonction for instance.";
+               rdfs:label "IoT-Thing",
+                          "Thing";
+               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://iserve.kmi.open.ac.uk/ns/msm#Service> ; 
+                                <http://www.w3.org/2002/07/owl#onProperty> ioto:hasService ; 
+                                a <http://www.w3.org/2002/07/owl#Restriction>],
+                               <http://www.loa-cnr.it/ontologies/DUL.owl#Object>.
+ioto:Manager a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A manager is an application that offers management capabilities as described in the OneM2M norm.";
+             rdfs:label "Manager";
+             rdfs:subClassOf ioto:IoT_Thing.
+ioto:SimpleDataContent a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                         <http://iserve.kmi.open.ac.uk/ns/msm#MessageContent>;
+                       rdfs:comment "This individual represents the body of a request containing simple data, such as a numerical value.";
+                       rdfs:label "Simple data content".
+ioto:getsFeedbackFrom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "Relation between a controlled system and the entities that provide it with a feedback about its action, usually sensors.";
+                      rdfs:domain ioto:ControlledSystem;
+                      rdfs:label "gets feedback from";
+                      rdfs:range <http://purl.oclc.org/NET/ssnx/ssn#System>;
+                      <http://www.w3.org/2002/07/owl#inverseOf> ioto:providesFeedbackTo.
+ioto:hasFeatureOfInterest a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "Relationship between a Thing and a property of the environment. In a cyber-physical system, devices and software agents may have one to many feature of interest from the environment. This feature can be a property, another device, a person...";
+                          rdfs:domain ioto:IoT_Thing;
+                          rdfs:label "has feature of interest";
+                          rdfs:range <http://purl.oclc.org/NET/ssnx/ssn#FeatureOfInterest>.
+ioto:hasId a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:comment "Characterizes a unique identifier for a thing";
+           rdfs:domain ioto:IoT_Thing;
+           rdfs:label "has id";
+           rdfs:range xsd:string.
+ioto:hasImpact a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "Relationship between an operation and its impact on a property";
+               rdfs:domain <http://iserve.kmi.open.ac.uk/ns/msm#Operation>;
+               rdfs:label "has impact";
+               rdfs:range ioto:ImpactOnProperty;
+               <http://www.w3.org/2002/07/owl#inverseOf> ioto:isImpactOf.
+ioto:hasImpactonProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "Relationship between an impact and the impacted property";
+                         rdfs:domain ioto:ImpactOnProperty;
+                         rdfs:label "on property";
+                         rdfs:range <http://purl.oclc.org/NET/ssnx/ssn#Property>;
+                         <http://www.w3.org/2002/07/owl#inverseOf> ioto:propertyIsImpactedBy.
+ioto:hasRelationshipWithProperty a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                 rdfs:comment "Generic property that marks the relationship between some entity and some ssn:Property. Dependant on context, it can be sensing, acting or else. Useful to descrie a generic service offered by a complex system that aggregates both sensors and actuators.";
+                                 rdfs:domain <http://www.loa-cnr.it/ontologies/DUL.owl#Entity>;
+                                 rdfs:label "has relationship with property";
+                                 rdfs:range <http://purl.oclc.org/NET/ssnx/ssn#Property>.
+ioto:hasService a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Relationship between an Entity and a service that is accessible through it.";
+                rdfs:domain <http://www.loa-cnr.it/ontologies/DUL.owl#Entity>;
+                rdfs:label "has service";
+                rdfs:range <http://www.wsmo.org/ns/wsmo-lite#Service>.
+ioto:hasTimeStamp a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "Associates an Instant individual with a timestamp";
+                  rdfs:domain <http://www.w3.org/2006/time#Instant>;
+                  rdfs:range xsd:dateTimeStamp.
+ioto:isFeatureOfInterestOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment "Indicates that the property is the feature of interest of some entity of an IoT system, that can measure it/act upon it.";
+                           rdfs:domain <http://purl.oclc.org/NET/ssnx/ssn#FeatureOfInterest>;
+                           rdfs:label "is feature of interest for";
+                           rdfs:range ioto:IoT_Thing;
+                           <http://www.w3.org/2002/07/owl#inverseOf> ioto:hasFeatureOfInterest.
+ioto:isImpactOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:label "is impact of".
+ioto:isInputMessageOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:label "is input message of".
+ioto:isServiceOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Relationship between a service and an entity that accesses it.";
+                 rdfs:domain <http://www.wsmo.org/ns/wsmo-lite#Service>;
+                 rdfs:label "is service of";
+                 rdfs:range <http://www.loa-cnr.it/ontologies/DUL.owl#Entity>;
+                 <http://www.w3.org/2002/07/owl#inverseOf> ioto:hasService.
+ioto:propertyIsImpactedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:label "property impacted by".
+ioto:providesFeedbackTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "Relationship between an entity that provides informations to a system and this system, that interprets these informations as a feedback of its action.";
+                        rdfs:domain <http://purl.oclc.org/NET/ssnx/ssn#System>;
+                        rdfs:label "provides feedback to";
+                        rdfs:range ioto:ControlledSystem.
+<http://www.irit.fr/recherches/MELODI/ontologies/SAN#ActuationValue> rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/vocab/lifecycle/schema#Transition> ; 
+                                                                                      <http://www.w3.org/2002/07/owl#onProperty> <http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle#triggersTransition> ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>].
+<http://www.irit.fr/recherches/MELODI/ontologies/SAN#impactsState> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                   rdfs:range <http://purl.org/vocab/lifecycle/schema#State>.
+<http://www.linkedmodel.org/schema/vaem#dateUnion> a <http://www.w3.org/2002/07/owl#Class>;
+                                                   rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#TimeInterval>.
+<http://www.loa-cnr.it/ontologies/DUL.owl#hasDataValue> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.loa-cnr.it/ontologies/DUL.owl#isParametrizedBy> a <http://www.w3.org/2002/07/owl#AnnotationProperty>,
+                                                              <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.w3.org/2006/time#Instant> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.wsmo.org/ns/hrests#URITemplate> a rdfs:Datatype,
+                                              <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:comment "Template providing information about the construction of the URI providing access to the service";
+                                            rdfs:label "URI Template";
+                                            rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#InformationEntity>.
+<http://www.wsmo.org/ns/hrests#hasAddress> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                             <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                           rdfs:comment "Associates a ressource to a URI in compliance with REST principles";
+                                           rdfs:domain <http://www.wsmo.org/ns/wsmo-lite#Operation>;
+                                           rdfs:label "has address";
+                                           rdfs:range <http://www.wsmo.org/ns/hrests#URITemplate>.
+<http://www.wsmo.org/ns/hrests#hasMethod> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                                            <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                          rdfs:domain <http://www.wsmo.org/ns/wsmo-lite#Operation>;
+                                          rdfs:label "has method";
+                                          rdfs:range xsd:string.
+<http://www.wsmo.org/ns/wsmo-lite#Condition> rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Event>.
+<http://www.wsmo.org/ns/wsmo-lite#Effect> rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Event>.
+<http://www.wsmo.org/ns/wsmo-lite#Message> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:comment "A Message is a instance of data that is sent by a source and that is received by a target";
+                                           rdfs:label "Message";
+                                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://iserve.kmi.open.ac.uk/ns/msm#MessagePart> ; 
+                                                            <http://www.w3.org/2002/07/owl#onProperty> <http://www.loa-cnr.it/ontologies/DUL.owl#hasPart> ; 
+                                                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                           <http://www.loa-cnr.it/ontologies/DUL.owl#Object>.
+<http://www.wsmo.org/ns/wsmo-lite#Operation> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#FormalEntity>.
+<http://www.wsmo.org/ns/wsmo-lite#Service> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:comment "A Service is the abstract representation of a set of data and requests processing functionnalities, generally linked by common traits (domain, service provider...)";
+                                           rdfs:label "Service";
+                                           rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#FormalEntity>.
+<http://www.wsmo.org/ns/wsmo-lite#hasInputMessage> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                   rdfs:comment "Relationship between an Operation that requires some Message as its input";
+                                                   rdfs:domain <http://www.wsmo.org/ns/wsmo-lite#Operation>;
+                                                   rdfs:label "has input message";
+                                                   rdfs:range <http://www.wsmo.org/ns/wsmo-lite#Message>;
+                                                   <http://www.w3.org/2002/07/owl#inverseOf> ioto:isInputMessageOf.
+<http://www.wsmo.org/ns/wsmo-lite#hasOperation> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                rdfs:domain <http://www.wsmo.org/ns/wsmo-lite#Service>;
+                                                rdfs:label "has operation";
+                                                rdfs:range <http://www.wsmo.org/ns/wsmo-lite#Operation>.
+<http://www.wsmo.org/ns/wsmo-lite#hasOutputMessage> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                    rdfs:comment "Relashionship between an Operation and the Message that it will output as the result of its processing";
+                                                    rdfs:domain <http://www.wsmo.org/ns/wsmo-lite#Operation>;
+                                                    rdfs:label "has output message";
+                                                    rdfs:range <http://www.wsmo.org/ns/wsmo-lite#Message>.

@@ -1,0 +1,182 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix lifecycle: <http://purl.org/vocab/lifecycle/schema#>.
+
+<http://creativecommons.org/licenses/by/2.0/uk/> <http://web.resource.org/cc/permits> <http://web.resource.org/cc/Reproduction>,
+                                                                                      <http://web.resource.org/cc/Distribution>,
+                                                                                      <http://web.resource.org/cc/DerivativeWorks>;
+                                                 <http://web.resource.org/cc/requires> <http://web.resource.org/cc/Notice>,
+                                                                                       <http://web.resource.org/cc/Attribution>;
+                                                 a <http://web.resource.org/cc/License>.
+<http://purl.org/vocab/lifecycle/schema> <http://purl.org/dc/elements/1.1/creator> "Nadeem Shabir",
+                                                                                   "Rob Styles";
+                                         <http://purl.org/dc/elements/1.1/date> "2008-06-03";
+                                         <http://purl.org/dc/elements/1.1/identifier> "http://purl.org/vocab/lifecycle/schema-20080603";
+                                         <http://purl.org/dc/elements/1.1/rights> "Copyright © 2008 Talis Information Ltd";
+                                         <http://purl.org/dc/elements/1.1/title> "Lifecycle Schema"@en;
+                                         <http://purl.org/dc/terms/hasFormat> <http://purl.org/vocab/lifecycle/schema-20080603.rdf>,
+                                                                              <http://purl.org/vocab/lifecycle/schema-20080603.html>;
+                                         <http://purl.org/dc/terms/isVersionOf> lifecycle:;
+                                         <http://purl.org/dc/terms/issued> "2008-06-03";
+                                         <http://purl.org/dc/terms/replaces> <http://purl.org/vocab/lifecycle/schema-20080603>;
+                                         <http://purl.org/vocab/vann/example> <http://purl.org/vocab/lifecycle/schema-diagram.html>,
+                                                                              <http://purl.org/vocab/lifecycle/example-job-application-lifecycle.html>;
+                                         <http://purl.org/vocab/vann/preferredNamespacePrefix> "lifecycle";
+                                         <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/vocab/lifecycle/schema#";
+                                         <http://web.resource.org/cc/license> <http://creativecommons.org/licenses/by/2.0/uk/>;
+                                         a <http://web.resource.org/cc/Work>,
+                                           <http://www.w3.org/2002/07/owl#Ontology>;
+                                         rdfs:comment """
+			The Lifecycle Schema provides classes and properties that allow the specification of a lifecycle that any resource may pass through. It's intention to allow the description of the states and transitions that constitute a given lifecycle without imposing any constraint on the way in which transitions happen or how long it may take to move through a lifecycle.
+    	"""@en;
+                                         <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/date> "2008-06-03" ; 
+                                                                                            <http://purl.org/dc/elements/1.1/creator> "Rob Styles" ; 
+                                                                                            rdf:value "First cut of the ontology published"].
+lifecycle:Action <http://purl.org/dc/terms/issued> "2008-06-03";
+                 a rdfs:Class;
+                 rdfs:comment "Represents an instance of a task taking place against a given resource"@en;
+                 rdfs:isDefinedBy lifecycle:;
+                 rdfs:label "Action"@en.
+lifecycle:Completed a rdfs:Description,
+                      lifecycle:TaskProgress;
+                    rdfs:comment "Represents that an individual task has been completed."@en;
+                    rdfs:isDefinedBy lifecycle:;
+                    rdfs:label "Completed"@en.
+lifecycle:Lifecycle <http://purl.org/dc/terms/issued> "2008-06-03";
+                    a rdfs:Class;
+                    rdfs:comment "A lifecycle is a series of states connected by allowable transitions. It may be used to describe the lifecycle of business objects or equally the lifecycle of a butterfly."@en;
+                    rdfs:isDefinedBy lifecycle:;
+                    rdfs:label "Lifecycle"@en.
+lifecycle:OnHold a rdfs:Description,
+                   lifecycle:TaskProgress;
+                 rdfs:comment "Represents that an individual task has been placed on hold."@en;
+                 rdfs:isDefinedBy lifecycle:;
+                 rdfs:label "On Hold"@en.
+lifecycle:Started a rdfs:Description,
+                    lifecycle:TaskProgress;
+                  rdfs:comment "Represents that an individual task has been started."@en;
+                  rdfs:isDefinedBy lifecycle:;
+                  rdfs:label "Started"@en.
+lifecycle:State <http://purl.org/dc/terms/issued> "2008-06-03";
+                a rdfs:Class;
+                rdfs:comment "A state describes one possible state that a resource can be in at a given time. Resources may be in one state in a given lifecycle at any given time, states are considered mutually exclusive within a lifecycle."@en;
+                rdfs:isDefinedBy lifecycle:;
+                rdfs:label "State"@en.
+lifecycle:Task <http://purl.org/dc/terms/issued> "2008-06-03";
+               a rdfs:Class,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Represents a task in a workflow"@en;
+               rdfs:isDefinedBy lifecycle:;
+               rdfs:label "Task"@en.
+lifecycle:TaskGroup <http://purl.org/dc/terms/issued> "2008-06-03";
+                    a rdfs:Class,
+                      <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Represents a collection of tasks grouped together for convenience"@en;
+                    rdfs:isDefinedBy lifecycle:;
+                    rdfs:label "Task Group"@en.
+lifecycle:Transition <http://purl.org/dc/terms/issued> "2008-06-03";
+                     a rdfs:Class,
+                       <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "A transition describes the way in which a resource moves from one state to another state and may also describe the tasks required to make that transition."@en;
+                     rdfs:isDefinedBy lifecycle:;
+                     rdfs:label "Transition"@en.
+lifecycle:completed <http://purl.org/dc/terms/issued> "2008-06-03";
+                    a rdf:Property;
+                    rdfs:comment "This uses a boolean to represent if an action has been completed. This is a simple alternative to the taskProgress property.";
+                    rdfs:domain lifecycle:Action;
+                    rdfs:isDefinedBy lifecycle:;
+                    rdfs:label "completed"@en;
+                    rdfs:range xsd:boolean.
+lifecycle:mandatory <http://purl.org/dc/terms/issued> "2008-06-03";
+                    a rdf:Property;
+                    rdfs:comment "Sepcifies if a task is mandatory or optional.";
+                    rdfs:domain lifecycle:Task;
+                    rdfs:isDefinedBy lifecycle:;
+                    rdfs:label "mandatory"@en;
+                    rdfs:range xsd:boolean.
+lifecycle:next <http://purl.org/dc/terms/issued> "2008-06-03";
+               a rdf:Property;
+               rdfs:comment "provides a simple ordering relationship to allow tasks to be ordered in user interfaces.";
+               rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (lifecycle:Task
+                                                                     lifecycle:TaskGroup) ; 
+                            a <http://www.w3.org/2002/07/owl#Class>];
+               rdfs:isDefinedBy lifecycle:;
+               rdfs:label "next"@en;
+               rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (lifecycle:Task
+                                                                    lifecycle:TaskGroup) ; 
+                           a <http://www.w3.org/2002/07/owl#Class>].
+lifecycle:possibleState <http://purl.org/dc/terms/issued> "2008-06-03";
+                        a rdf:Property;
+                        rdfs:comment "The possible state property is used to identify the states that occur within a given lifecycle and are thus the possible states of a resource going through that lifecycle.";
+                        rdfs:domain lifecycle:Lifecycle;
+                        rdfs:isDefinedBy lifecycle:;
+                        rdfs:label "possible state"@en;
+                        rdfs:range lifecycle:State.
+lifecycle:possibleTransition <http://purl.org/dc/terms/issued> "2008-06-03";
+                             a rdf:Property;
+                             rdfs:comment "When in a state there may be many possible transitions.";
+                             rdfs:domain lifecycle:State;
+                             rdfs:isDefinedBy lifecycle:;
+                             rdfs:label "possible transition"@en;
+                             rdfs:range lifecycle:Transition.
+lifecycle:resource <http://purl.org/dc/terms/issued> "2008-06-03";
+                   a rdf:Property;
+                   rdfs:comment "The resource on which the action being taken. This is a resource that is being processed through a lifecycle.";
+                   rdfs:domain lifecycle:Action;
+                   rdfs:isDefinedBy lifecycle:;
+                   rdfs:label "resource"@en;
+                   rdfs:range rdf:Resource.
+lifecycle:resultingState <http://purl.org/dc/terms/issued> "2008-06-03";
+                         a rdf:Property;
+                         rdfs:comment "Once a transition is completed the state of the resource should change to the state specified as the resulting state.";
+                         rdfs:domain lifecycle:Transition;
+                         rdfs:isDefinedBy lifecycle:;
+                         rdfs:label "resulting state"@en;
+                         rdfs:range lifecycle:State.
+lifecycle:state <http://purl.org/dc/terms/issued> "2008-06-03";
+                a rdf:Property;
+                rdfs:comment "The state property relates any resource with the state that it is currently in.";
+                rdfs:domain rdf:Resource;
+                rdfs:isDefinedBy lifecycle:;
+                rdfs:label "state"@en;
+                rdfs:range lifecycle:State.
+lifecycle:stateOf <http://purl.org/dc/terms/issued> "2008-06-03";
+                  a rdf:Property;
+                  rdfs:comment "The 'state of' property is the inverse of the state property, relating a state to all of the resources currently in that state.";
+                  rdfs:domain lifecycle:State;
+                  rdfs:isDefinedBy lifecycle:;
+                  rdfs:label "state of"@en;
+                  rdfs:range rdf:Resource;
+                  <http://www.w3.org/2002/07/owl#inverseOf> lifecycle:state.
+lifecycle:task <http://purl.org/dc/terms/issued> "2008-06-03";
+               a rdf:Property;
+               rdfs:comment "A task related to this transition.";
+               rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (lifecycle:TaskGroup
+                                                                     lifecycle:Transition) ; 
+                            a <http://www.w3.org/2002/07/owl#Class>];
+               rdfs:isDefinedBy lifecycle:;
+               rdfs:label "task"@en;
+               rdfs:range lifecycle:Task.
+lifecycle:taskGroup <http://purl.org/dc/terms/issued> "2008-06-03";
+                    a rdf:Property;
+                    rdfs:comment "A task group related to this transition.";
+                    rdfs:domain lifecycle:Transition;
+                    rdfs:isDefinedBy lifecycle:;
+                    rdfs:label "task group"@en;
+                    rdfs:range lifecycle:TaskGroup.
+lifecycle:taskProgress <http://purl.org/dc/terms/issued> "2008-06-03";
+                       a rdf:Property;
+                       rdfs:comment "The current progress on this task. Some resources are defined in this ontology for this, but you are free to define your own.";
+                       rdfs:domain lifecycle:Action;
+                       rdfs:isDefinedBy lifecycle:;
+                       rdfs:label "task progress"@en;
+                       rdfs:range lifecycle:TaskProgress.
+<http://purl.org/vocab/lifecycle/schema-20080603.html> <http://purl.org/dc/elements/1.1/format> [rdfs:label "HTML"@en ; 
+                                                                                                 rdf:value "text/html" ; 
+                                                                                                 a <http://purl.org/dc/terms/IMT>];
+                                                       a <http://purl.org/dc/dcmitype/Text>.
+<http://purl.org/vocab/lifecycle/schema-20080603.rdf> <http://purl.org/dc/elements/1.1/format> [rdfs:label "RDF"@en ; 
+                                                                                                rdf:value "application/rdf+xml" ; 
+                                                                                                a <http://purl.org/dc/terms/IMT>];
+                                                      a <http://purl.org/dc/dcmitype/Text>.

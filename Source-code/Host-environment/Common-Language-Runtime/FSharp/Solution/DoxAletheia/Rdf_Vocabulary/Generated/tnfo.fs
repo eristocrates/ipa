@@ -7,33 +7,6 @@ open type Prefix_ID
 module tnfo =
     let _namespace_iri = Namespace_Iri tnfo |> NamespaceIRI
     /// <summary>
-    ///   <para>tnfo:</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>tnrl:Namespace</para>
-    ///   <para>tnrl:Ontology</para>
-    /// </remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#">http://tracker.api.gnome.org/ontology/v3/nfo#</seealso>
-    let _prefix_iri = Prefixed_Name(tnfo, "") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:Application</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>An application</para>
-    /// labels<para>Application</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Application">http://tracker.api.gnome.org/ontology/v3/nfo#Application</seealso>
-    let Application = Prefixed_Name(tnfo, "Application") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:Software</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A piece of software. Examples may include applications and the operating system. This interpretation most commonly applies to SoftwareItems.</para>
-    /// labels<para>Software</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Software">http://tracker.api.gnome.org/ontology/v3/nfo#Software</seealso>
-    let Software = Prefixed_Name(tnfo, "Software") |> PrefixedName
-    /// <summary>
     ///   <para>tnfo:Archive</para>
     /// </summary>
     /// <remarks>
@@ -42,36 +15,6 @@ module tnfo =
     /// labels<para>Archive</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Archive">http://tracker.api.gnome.org/ontology/v3/nfo#Archive</seealso>
     let Archive = Prefixed_Name(tnfo, "Archive") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:DataContainer</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A superclass for all entities, whose primary purpose is to serve as containers for other data object. They usually don't have any 'meaning' by themselves. Examples include folders, archives and optical disc images.</para>
-    /// labels<para>DataContainer</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#DataContainer">http://tracker.api.gnome.org/ontology/v3/nfo#DataContainer</seealso>
-    let DataContainer = Prefixed_Name(tnfo, "DataContainer") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:ArchiveItem</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A file entity inside an archive.</para>
-    /// labels<para>ArchiveItem</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#ArchiveItem">http://tracker.api.gnome.org/ontology/v3/nfo#ArchiveItem</seealso>
-    let ArchiveItem = Prefixed_Name(tnfo, "ArchiveItem") |> PrefixedName
-
-    /// <summary>
-    ///   <para>tnfo:EmbeddedFileDataObject</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A file embedded in another data object. There are many ways in which a file may be embedded in another one. Use this class directly only in cases if none of the subclasses gives a better description of your case.</para>
-    /// labels<para>EmbeddedFileDataObject</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#EmbeddedFileDataObject">http://tracker.api.gnome.org/ontology/v3/nfo#EmbeddedFileDataObject</seealso>
-    let EmbeddedFileDataObject =
-        Prefixed_Name(tnfo, "EmbeddedFileDataObject") |> PrefixedName
-
     /// <summary>
     ///   <para>tnfo:Attachment</para>
     /// </summary>
@@ -82,6 +25,33 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Attachment">http://tracker.api.gnome.org/ontology/v3/nfo#Attachment</seealso>
     let Attachment = Prefixed_Name(tnfo, "Attachment") |> PrefixedName
     /// <summary>
+    ///   <para>tnfo:TextDocument</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A text document</para>
+    /// labels<para>TextDocument</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#TextDocument">http://tracker.api.gnome.org/ontology/v3/nfo#TextDocument</seealso>
+    let TextDocument = Prefixed_Name(tnfo, "TextDocument") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:Application</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An application</para>
+    /// labels<para>Application</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Application">http://tracker.api.gnome.org/ontology/v3/nfo#Application</seealso>
+    let Application = Prefixed_Name(tnfo, "Application") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:DataContainer</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A superclass for all entities, whose primary purpose is to serve as containers for other data object. They usually don't have any 'meaning' by themselves. Examples include folders, archives and optical disc images.</para>
+    /// labels<para>DataContainer</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#DataContainer">http://tracker.api.gnome.org/ontology/v3/nfo#DataContainer</seealso>
+    let DataContainer = Prefixed_Name(tnfo, "DataContainer") |> PrefixedName
+    /// <summary>
     ///   <para>tnfo:Audio</para>
     /// </summary>
     /// <remarks>
@@ -91,32 +61,32 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Audio">http://tracker.api.gnome.org/ontology/v3/nfo#Audio</seealso>
     let Audio = Prefixed_Name(tnfo, "Audio") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:Media</para>
+    ///   <para>tnfo:Website</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdfs:Class</para>
-    ///   <para>A piece of media content. This class may be used to express complex media containers with many streams of various media content (both aural and visual).</para>
-    /// labels<para>Media</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Media">http://tracker.api.gnome.org/ontology/v3/nfo#Media</seealso>
-    let Media = Prefixed_Name(tnfo, "Media") |> PrefixedName
+    ///   <para>A website, usually a container for remote resources, that may be interpreted as HTMLDocuments, images or other types of content.</para>
+    /// labels<para>Website</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Website">http://tracker.api.gnome.org/ontology/v3/nfo#Website</seealso>
+    let Website = Prefixed_Name(tnfo, "Website") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:Bookmark</para>
+    ///   <para>tnfo:averageAudioBitrate</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A bookmark of a webbrowser. Use nie:title for the name/label, nie:contentCreated to represent the date when the user added the bookmark, and nie:contentLastModified for modifications. nfo:bookmarks to store the link.</para>
-    /// labels<para>Bookmark</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Bookmark">http://tracker.api.gnome.org/ontology/v3/nfo#Bookmark</seealso>
-    let Bookmark = Prefixed_Name(tnfo, "Bookmark") |> PrefixedName
+    ///   <para>rdf:Property</para>
+    ///   <para>The average overall bitrate of a media container. (i.e. the size of the piece of media in bits, divided by it's duration expressed in seconds).</para>
+    /// labels<para>averageBitrate</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#averageAudioBitrate">http://tracker.api.gnome.org/ontology/v3/nfo#averageAudioBitrate</seealso>
+    let averageAudioBitrate = Prefixed_Name(tnfo, "averageAudioBitrate") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:BookmarkFolder</para>
+    ///   <para>tnfo:ArchiveItem</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdfs:Class</para>
-    ///   <para>A folder with bookmarks of a webbrowser. Use nfo:containsBookmark to relate Bookmarks. Folders can contain subfolders, use containsBookmarkFolder to relate them.</para>
-    /// labels<para>Bookmark Folder</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#BookmarkFolder">http://tracker.api.gnome.org/ontology/v3/nfo#BookmarkFolder</seealso>
-    let BookmarkFolder = Prefixed_Name(tnfo, "BookmarkFolder") |> PrefixedName
+    ///   <para>A file entity inside an archive.</para>
+    /// labels<para>ArchiveItem</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#ArchiveItem">http://tracker.api.gnome.org/ontology/v3/nfo#ArchiveItem</seealso>
+    let ArchiveItem = Prefixed_Name(tnfo, "ArchiveItem") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:CompressionType</para>
     /// </summary>
@@ -127,24 +97,6 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#CompressionType">http://tracker.api.gnome.org/ontology/v3/nfo#CompressionType</seealso>
     let CompressionType = Prefixed_Name(tnfo, "CompressionType") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:Cursor</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A Cursor.</para>
-    /// labels<para>Cursor</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Cursor">http://tracker.api.gnome.org/ontology/v3/nfo#Cursor</seealso>
-    let Cursor = Prefixed_Name(tnfo, "Cursor") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:RasterImage</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A raster image.</para>
-    /// labels<para>RasterImage</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#RasterImage">http://tracker.api.gnome.org/ontology/v3/nfo#RasterImage</seealso>
-    let RasterImage = Prefixed_Name(tnfo, "RasterImage") |> PrefixedName
-    /// <summary>
     ///   <para>tnfo:DeletedResource</para>
     /// </summary>
     /// <remarks>
@@ -154,24 +106,6 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#DeletedResource">http://tracker.api.gnome.org/ontology/v3/nfo#DeletedResource</seealso>
     let DeletedResource = Prefixed_Name(tnfo, "DeletedResource") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:FileDataObject</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A resource containing a finite sequence of bytes with arbitrary information, that is available to a computer program and is usually based on some kind of durable storage. A file is durable in the sense that it remains available for programs to use after the current program has finished.</para>
-    /// labels<para>FileDataObject</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#FileDataObject">http://tracker.api.gnome.org/ontology/v3/nfo#FileDataObject</seealso>
-    let FileDataObject = Prefixed_Name(tnfo, "FileDataObject") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:Document</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A generic document. A common superclass for all documents on the desktop.</para>
-    /// labels<para>Document</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Document">http://tracker.api.gnome.org/ontology/v3/nfo#Document</seealso>
-    let Document = Prefixed_Name(tnfo, "Document") |> PrefixedName
-    /// <summary>
     ///   <para>tnfo:EBook</para>
     /// </summary>
     /// <remarks>
@@ -180,6 +114,46 @@ module tnfo =
     /// labels<para>Electronic book</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#EBook">http://tracker.api.gnome.org/ontology/v3/nfo#EBook</seealso>
     let EBook = Prefixed_Name(tnfo, "EBook") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:Equipment</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>The equipment used to create media</para>
+    /// labels<para>Equipment</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Equipment">http://tracker.api.gnome.org/ontology/v3/nfo#Equipment</seealso>
+    let Equipment = Prefixed_Name(tnfo, "Equipment") |> PrefixedName
+
+    /// <summary>
+    ///   <para>tnfo:definesGlobalVariable</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Name of a global variable defined within the source code file.</para>
+    /// labels<para>definesGlobalVariable</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#definesGlobalVariable">http://tracker.api.gnome.org/ontology/v3/nfo#definesGlobalVariable</seealso>
+    let definesGlobalVariable =
+        Prefixed_Name(tnfo, "definesGlobalVariable") |> PrefixedName
+
+    /// <summary>
+    ///   <para>tnfo:depiction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>tnrl:InverseFunctionalProperty</para>
+    ///   <para>Relates an information element to an image which depicts said element.</para>
+    /// labels<para>depiction</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#depiction">http://tracker.api.gnome.org/ontology/v3/nfo#depiction</seealso>
+    let depiction = Prefixed_Name(tnfo, "depiction") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:RasterImage</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A raster image.</para>
+    /// labels<para>RasterImage</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#RasterImage">http://tracker.api.gnome.org/ontology/v3/nfo#RasterImage</seealso>
+    let RasterImage = Prefixed_Name(tnfo, "RasterImage") |> PrefixedName
 
     /// <summary>
     ///   <para>tnfo:PaginatedTextDocument</para>
@@ -193,33 +167,6 @@ module tnfo =
         Prefixed_Name(tnfo, "PaginatedTextDocument") |> PrefixedName
 
     /// <summary>
-    ///   <para>tnfo:Equipment</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>The equipment used to create media</para>
-    /// labels<para>Equipment</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Equipment">http://tracker.api.gnome.org/ontology/v3/nfo#Equipment</seealso>
-    let Equipment = Prefixed_Name(tnfo, "Equipment") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:Executable</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>An executable file.</para>
-    /// labels<para>Executable</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Executable">http://tracker.api.gnome.org/ontology/v3/nfo#Executable</seealso>
-    let Executable = Prefixed_Name(tnfo, "Executable") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:FileHash</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A fingerprint of the file, generated by some hashing function.</para>
-    /// labels<para>FileHash</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#FileHash">http://tracker.api.gnome.org/ontology/v3/nfo#FileHash</seealso>
-    let FileHash = Prefixed_Name(tnfo, "FileHash") |> PrefixedName
-    /// <summary>
     ///   <para>tnfo:Filesystem</para>
     /// </summary>
     /// <remarks>
@@ -228,33 +175,6 @@ module tnfo =
     /// labels<para>Filesystem</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Filesystem">http://tracker.api.gnome.org/ontology/v3/nfo#Filesystem</seealso>
     let Filesystem = Prefixed_Name(tnfo, "Filesystem") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:FilesystemImage</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>An image of a filesystem. Instances of this class may include CD images, DVD images or hard disk partition images created by various pieces of software (e.g. Norton Ghost)</para>
-    /// labels<para>FilesystemImage</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#FilesystemImage">http://tracker.api.gnome.org/ontology/v3/nfo#FilesystemImage</seealso>
-    let FilesystemImage = Prefixed_Name(tnfo, "FilesystemImage") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:Folder</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A folder/directory. Examples of folders include folders on a filesystem and message folders in a mailbox.</para>
-    /// labels<para>Folder</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Folder">http://tracker.api.gnome.org/ontology/v3/nfo#Folder</seealso>
-    let Folder = Prefixed_Name(tnfo, "Folder") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:Font</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A font.</para>
-    /// labels<para>Font</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Font">http://tracker.api.gnome.org/ontology/v3/nfo#Font</seealso>
-    let Font = Prefixed_Name(tnfo, "Font") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:GameImage</para>
     /// </summary>
@@ -265,24 +185,6 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#GameImage">http://tracker.api.gnome.org/ontology/v3/nfo#GameImage</seealso>
     let GameImage = Prefixed_Name(tnfo, "GameImage") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:SoftwareApplication</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>An application</para>
-    /// labels<para>Application</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#SoftwareApplication">http://tracker.api.gnome.org/ontology/v3/nfo#SoftwareApplication</seealso>
-    let SoftwareApplication = Prefixed_Name(tnfo, "SoftwareApplication") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:HardDiskPartition</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A partition on a hard disk</para>
-    /// labels<para>HardDiskPartition</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#HardDiskPartition">http://tracker.api.gnome.org/ontology/v3/nfo#HardDiskPartition</seealso>
-    let HardDiskPartition = Prefixed_Name(tnfo, "HardDiskPartition") |> PrefixedName
-    /// <summary>
     ///   <para>tnfo:HelpDocument</para>
     /// </summary>
     /// <remarks>
@@ -291,24 +193,6 @@ module tnfo =
     /// labels<para>Help document</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#HelpDocument">http://tracker.api.gnome.org/ontology/v3/nfo#HelpDocument</seealso>
     let HelpDocument = Prefixed_Name(tnfo, "HelpDocument") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:HtmlDocument</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A HTML document, may contain links to other files.</para>
-    /// labels<para>HtmlDocument</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#HtmlDocument">http://tracker.api.gnome.org/ontology/v3/nfo#HtmlDocument</seealso>
-    let HtmlDocument = Prefixed_Name(tnfo, "HtmlDocument") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:PlainTextDocument</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A file containing plain text (ASCII, Unicode or other encodings). Examples may include TXT, HTML, XML, program source code etc.</para>
-    /// labels<para>PlainTextDocument</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#PlainTextDocument">http://tracker.api.gnome.org/ontology/v3/nfo#PlainTextDocument</seealso>
-    let PlainTextDocument = Prefixed_Name(tnfo, "PlainTextDocument") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:Icon</para>
     /// </summary>
@@ -319,6 +203,384 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Icon">http://tracker.api.gnome.org/ontology/v3/nfo#Icon</seealso>
     let Icon = Prefixed_Name(tnfo, "Icon") |> PrefixedName
     /// <summary>
+    ///   <para>tnfo:roiRefersTo</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Link to an item that is represented in the region. The 'type' of the region can give a clue of what exact content is linked in this property</para>
+    /// labels<para>Region of interest refers to</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#roiRefersTo">http://tracker.api.gnome.org/ontology/v3/nfo#roiRefersTo</seealso>
+    let roiRefersTo = Prefixed_Name(tnfo, "roiRefersTo") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:sampleCount</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The amount of samples in an audio clip.</para>
+    /// labels<para>sampleCount</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#sampleCount">http://tracker.api.gnome.org/ontology/v3/nfo#sampleCount</seealso>
+    let sampleCount = Prefixed_Name(tnfo, "sampleCount") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:sideChannels</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Number of side channels</para>
+    /// labels<para>sideChannels</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#sideChannels">http://tracker.api.gnome.org/ontology/v3/nfo#sideChannels</seealso>
+    let sideChannels = Prefixed_Name(tnfo, "sideChannels") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:softwareIcon</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Icon of the software</para>
+    /// labels<para>SoftwareIcon</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#softwareIcon">http://tracker.api.gnome.org/ontology/v3/nfo#softwareIcon</seealso>
+    let softwareIcon = Prefixed_Name(tnfo, "softwareIcon") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:streamDuration</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>Stream duration</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#streamDuration">http://tracker.api.gnome.org/ontology/v3/nfo#streamDuration</seealso>
+    let streamDuration = Prefixed_Name(tnfo, "streamDuration") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:supercedes</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>States that a piece of software supercedes another piece of software.</para>
+    /// labels<para>supercedes</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#supercedes">http://tracker.api.gnome.org/ontology/v3/nfo#supercedes</seealso>
+    let supercedes = Prefixed_Name(tnfo, "supercedes") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:tilt</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Vertical inclination of the camera while capturing the image, in angles starting on 0 as horizontal, positive numbers pointing up, negative angles pointing down</para>
+    /// labels<para>Tilt</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#tilt">http://tracker.api.gnome.org/ontology/v3/nfo#tilt</seealso>
+    let tilt = Prefixed_Name(tnfo, "tilt") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:uncompressedSize</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Uncompressed size of the content of a compressed file.</para>
+    /// labels<para>uncompressedSize</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#uncompressedSize">http://tracker.api.gnome.org/ontology/v3/nfo#uncompressedSize</seealso>
+    let uncompressedSize = Prefixed_Name(tnfo, "uncompressedSize") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:wordCount</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The amount of words in a text document.</para>
+    /// labels<para>wordCount</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#wordCount">http://tracker.api.gnome.org/ontology/v3/nfo#wordCount</seealso>
+    let wordCount = Prefixed_Name(tnfo, "wordCount") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:averageVideoBitrate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The average overall bitrate of a media container. (i.e. the size of the piece of media in bits, divided by it's duration expressed in seconds).</para>
+    /// labels<para>averageBitrate</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#averageVideoBitrate">http://tracker.api.gnome.org/ontology/v3/nfo#averageVideoBitrate</seealso>
+    let averageVideoBitrate = Prefixed_Name(tnfo, "averageVideoBitrate") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:bitDepth</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A common superproperty for all properties signifying the amount of bits for an atomic unit of data. Examples of subproperties may include bitsPerSample and bitsPerPixel</para>
+    /// labels<para>bitDepth</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#bitDepth">http://tracker.api.gnome.org/ontology/v3/nfo#bitDepth</seealso>
+    let bitDepth = Prefixed_Name(tnfo, "bitDepth") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:bitsPerSample</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Amount of bits in each audio sample.</para>
+    /// labels<para>bitsPerSample</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#bitsPerSample">http://tracker.api.gnome.org/ontology/v3/nfo#bitsPerSample</seealso>
+    let bitsPerSample = Prefixed_Name(tnfo, "bitsPerSample") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:channels</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Number of channels. This property is to be used directly if no detailed information is necessary. Otherwise use more detailed subproperties.</para>
+    /// labels<para>channels</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#channels">http://tracker.api.gnome.org/ontology/v3/nfo#channels</seealso>
+    let channels = Prefixed_Name(tnfo, "channels") |> PrefixedName
+
+    /// <summary>
+    ///   <para>tnfo:commentCharacterCount</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The amount of character in comments i.e. characters ignored by the compiler/interpreter.</para>
+    /// labels<para>commentCharacterCount</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#commentCharacterCount">http://tracker.api.gnome.org/ontology/v3/nfo#commentCharacterCount</seealso>
+    let commentCharacterCount =
+        Prefixed_Name(tnfo, "commentCharacterCount") |> PrefixedName
+
+    /// <summary>
+    ///   <para>tnfo:frameCount</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The amount of frames in a video sequence.</para>
+    /// labels<para>frameCount</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#frameCount">http://tracker.api.gnome.org/ontology/v3/nfo#frameCount</seealso>
+    let frameCount = Prefixed_Name(tnfo, "frameCount") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:gain</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Gain of media</para>
+    /// labels<para>Gain</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#gain">http://tracker.api.gnome.org/ontology/v3/nfo#gain</seealso>
+    let gain = Prefixed_Name(tnfo, "gain") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:hasHash</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Links the file with it's hash value.</para>
+    /// labels<para>hasHash</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#hasHash">http://tracker.api.gnome.org/ontology/v3/nfo#hasHash</seealso>
+    let hasHash = Prefixed_Name(tnfo, "hasHash") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:hashAlgorithm</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Name of the algorithm used to compute the hash value. Examples might include CRC32, MD5, SHA, TTH etc.</para>
+    /// labels<para>hashAlgorithm</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#hashAlgorithm">http://tracker.api.gnome.org/ontology/v3/nfo#hashAlgorithm</seealso>
+    let hashAlgorithm = Prefixed_Name(tnfo, "hashAlgorithm") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:height</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Visual content height in pixels.</para>
+    /// labels<para>height</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#height">http://tracker.api.gnome.org/ontology/v3/nfo#height</seealso>
+    let height = Prefixed_Name(tnfo, "height") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:isBootable</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>True when the file is bootable, for example like an ISO or other disc images</para>
+    /// labels<para>Is content bootable</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#isBootable">http://tracker.api.gnome.org/ontology/v3/nfo#isBootable</seealso>
+    let isBootable = Prefixed_Name(tnfo, "isBootable") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:isPasswordProtected</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>States if a given resource is password-protected.</para>
+    /// labels<para>isPasswordProtected</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#isPasswordProtected">http://tracker.api.gnome.org/ontology/v3/nfo#isPasswordProtected</seealso>
+    let isPasswordProtected = Prefixed_Name(tnfo, "isPasswordProtected") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:lineCount</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The amount of lines in a text document</para>
+    /// labels<para>lineCount</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#lineCount">http://tracker.api.gnome.org/ontology/v3/nfo#lineCount</seealso>
+    let lineCount = Prefixed_Name(tnfo, "lineCount") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:listPosition</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Position of an entry in a list. Double, to optimize the poor insertions</para>
+    /// labels<para>list position</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#listPosition">http://tracker.api.gnome.org/ontology/v3/nfo#listPosition</seealso>
+    let listPosition = Prefixed_Name(tnfo, "listPosition") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:mediaListEntry</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A certain item belongs to a media list. This can reflect that a song is in a playlist, an image or video in an Album</para>
+    /// labels<para>Media list entry</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#mediaListEntry">http://tracker.api.gnome.org/ontology/v3/nfo#mediaListEntry</seealso>
+    let mediaListEntry = Prefixed_Name(tnfo, "mediaListEntry") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:model</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The model of the equipment</para>
+    /// labels<para>Model</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#model">http://tracker.api.gnome.org/ontology/v3/nfo#model</seealso>
+    let model = Prefixed_Name(tnfo, "model") |> PrefixedName
+
+    /// <summary>
+    ///   <para>tnfo:orientation-right-mirror</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>tnfo:Orientation</para>
+    /// </remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#orientation-right-mirror">http://tracker.api.gnome.org/ontology/v3/nfo#orientation-right-mirror</seealso>
+    let orientation_right_mirror =
+        Prefixed_Name(tnfo, "orientation-right-mirror") |> PrefixedName
+
+    /// <summary>
+    ///   <para>tnfo:orientation-top</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>tnfo:Orientation</para>
+    /// </remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#orientation-top">http://tracker.api.gnome.org/ontology/v3/nfo#orientation-top</seealso>
+    let orientation_top = Prefixed_Name(tnfo, "orientation-top") |> PrefixedName
+
+    /// <summary>
+    ///   <para>tnfo:orientation-top-mirror</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>tnfo:Orientation</para>
+    /// </remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#orientation-top-mirror">http://tracker.api.gnome.org/ontology/v3/nfo#orientation-top-mirror</seealso>
+    let orientation_top_mirror =
+        Prefixed_Name(tnfo, "orientation-top-mirror") |> PrefixedName
+
+    /// <summary>
+    ///   <para>tnfo:originalLocation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The original location of the deleted resource.</para>
+    /// labels<para>originalLocation</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#originalLocation">http://tracker.api.gnome.org/ontology/v3/nfo#originalLocation</seealso>
+    let originalLocation = Prefixed_Name(tnfo, "originalLocation") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:permissions</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A string containing the permissions of a file. A feature common in many UNIX-like operating systems.</para>
+    /// labels<para>permissions</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#permissions">http://tracker.api.gnome.org/ontology/v3/nfo#permissions</seealso>
+    let permissions = Prefixed_Name(tnfo, "permissions") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:rearChannels</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Number of rear channels.</para>
+    /// labels<para>rearChannels</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#rearChannels">http://tracker.api.gnome.org/ontology/v3/nfo#rearChannels</seealso>
+    let rearChannels = Prefixed_Name(tnfo, "rearChannels") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:regionOfInterestX</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Coordinate X where the region starts. It is normalized (values between 0 and 1) to the width of the picture. Starting in the upper left corner.</para>
+    /// labels<para>Region of interest X</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#regionOfInterestX">http://tracker.api.gnome.org/ontology/v3/nfo#regionOfInterestX</seealso>
+    let regionOfInterestX = Prefixed_Name(tnfo, "regionOfInterestX") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:sampleRate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The amount of audio samples per second.</para>
+    /// labels<para>sampleRate</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#sampleRate">http://tracker.api.gnome.org/ontology/v3/nfo#sampleRate</seealso>
+    let sampleRate = Prefixed_Name(tnfo, "sampleRate") |> PrefixedName
+
+    /// <summary>
+    ///   <para>tnfo:softwareCategoryIcon</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Icon of the software</para>
+    /// labels<para>SoftwareIcon</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#softwareCategoryIcon">http://tracker.api.gnome.org/ontology/v3/nfo#softwareCategoryIcon</seealso>
+    let softwareCategoryIcon =
+        Prefixed_Name(tnfo, "softwareCategoryIcon") |> PrefixedName
+
+    /// <summary>
+    ///   <para>tnfo:softwareCmdLine</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Command to launch the software</para>
+    /// labels<para>SoftwareCmdLine</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#softwareCmdLine">http://tracker.api.gnome.org/ontology/v3/nfo#softwareCmdLine</seealso>
+    let softwareCmdLine = Prefixed_Name(tnfo, "softwareCmdLine") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:tableOfContents</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Section titles and figure descriptions of the document.</para>
+    /// labels<para>Table of contents</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#tableOfContents">http://tracker.api.gnome.org/ontology/v3/nfo#tableOfContents</seealso>
+    let tableOfContents = Prefixed_Name(tnfo, "tableOfContents") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:uri</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///
+    /// labels<para>Uri for a web history entry</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#uri">http://tracker.api.gnome.org/ontology/v3/nfo#uri</seealso>
+    let uri = Prefixed_Name(tnfo, "uri") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:verticalResolution</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Vertical resolution of an Image (if printed). Expressed in DPI</para>
+    /// labels<para>verticalResolution</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#verticalResolution">http://tracker.api.gnome.org/ontology/v3/nfo#verticalResolution</seealso>
+    let verticalResolution = Prefixed_Name(tnfo, "verticalResolution") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:width</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>Visual content width in pixels.</para>
+    /// labels<para>width</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#width">http://tracker.api.gnome.org/ontology/v3/nfo#width</seealso>
+    let width = Prefixed_Name(tnfo, "width") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:Font</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A font.</para>
+    /// labels<para>Font</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Font">http://tracker.api.gnome.org/ontology/v3/nfo#Font</seealso>
+    let Font = Prefixed_Name(tnfo, "Font") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:HtmlDocument</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A HTML document, may contain links to other files.</para>
+    /// labels<para>HtmlDocument</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#HtmlDocument">http://tracker.api.gnome.org/ontology/v3/nfo#HtmlDocument</seealso>
+    let HtmlDocument = Prefixed_Name(tnfo, "HtmlDocument") |> PrefixedName
+    /// <summary>
     ///   <para>tnfo:Image</para>
     /// </summary>
     /// <remarks>
@@ -327,24 +589,6 @@ module tnfo =
     /// labels<para>Image</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Image">http://tracker.api.gnome.org/ontology/v3/nfo#Image</seealso>
     let Image = Prefixed_Name(tnfo, "Image") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:Visual</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>File containing visual content.</para>
-    /// labels<para>Visual</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Visual">http://tracker.api.gnome.org/ontology/v3/nfo#Visual</seealso>
-    let Visual = Prefixed_Name(tnfo, "Visual") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:ImageCategory</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A image category</para>
-    /// labels<para>Image category</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#ImageCategory">http://tracker.api.gnome.org/ontology/v3/nfo#ImageCategory</seealso>
-    let ImageCategory = Prefixed_Name(tnfo, "ImageCategory") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:MediaFileListEntry</para>
     /// </summary>
@@ -355,15 +599,6 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#MediaFileListEntry">http://tracker.api.gnome.org/ontology/v3/nfo#MediaFileListEntry</seealso>
     let MediaFileListEntry = Prefixed_Name(tnfo, "MediaFileListEntry") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:MediaList</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A file containing a list of media files.e.g. a playlist</para>
-    /// labels<para>MediaList</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#MediaList">http://tracker.api.gnome.org/ontology/v3/nfo#MediaList</seealso>
-    let MediaList = Prefixed_Name(tnfo, "MediaList") |> PrefixedName
-    /// <summary>
     ///   <para>tnfo:MediaStream</para>
     /// </summary>
     /// <remarks>
@@ -372,15 +607,6 @@ module tnfo =
     /// labels<para>MediaStream</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#MediaStream">http://tracker.api.gnome.org/ontology/v3/nfo#MediaStream</seealso>
     let MediaStream = Prefixed_Name(tnfo, "MediaStream") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:MindMap</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A MindMap, created by a mind-mapping utility. Examples might include FreeMind or mind mapper.</para>
-    /// labels<para>MindMap</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#MindMap">http://tracker.api.gnome.org/ontology/v3/nfo#MindMap</seealso>
-    let MindMap = Prefixed_Name(tnfo, "MindMap") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:Note</para>
     /// </summary>
@@ -391,32 +617,32 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Note">http://tracker.api.gnome.org/ontology/v3/nfo#Note</seealso>
     let Note = Prefixed_Name(tnfo, "Note") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:OperatingSystem</para>
+    ///   <para>tnfo:programmingLanguage</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>An OperatingSystem</para>
-    /// labels<para>OperatingSystem</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#OperatingSystem">http://tracker.api.gnome.org/ontology/v3/nfo#OperatingSystem</seealso>
-    let OperatingSystem = Prefixed_Name(tnfo, "OperatingSystem") |> PrefixedName
+    ///   <para>rdf:Property</para>
+    ///   <para>Indicates the name of the programming language this source code file is written in. Examples might include 'C', 'C++', 'Java' etc</para>
+    /// labels<para>programmingLanguage</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#programmingLanguage">http://tracker.api.gnome.org/ontology/v3/nfo#programmingLanguage</seealso>
+    let programmingLanguage = Prefixed_Name(tnfo, "programmingLanguage") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:Orientation</para>
+    ///   <para>tnfo:PlainTextDocument</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdfs:Class</para>
-    ///   <para>Orientation enum</para>
-    /// labels<para>Orientation enum</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Orientation">http://tracker.api.gnome.org/ontology/v3/nfo#Orientation</seealso>
-    let Orientation = Prefixed_Name(tnfo, "Orientation") |> PrefixedName
+    ///   <para>A file containing plain text (ASCII, Unicode or other encodings). Examples may include TXT, HTML, XML, program source code etc.</para>
+    /// labels<para>PlainTextDocument</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#PlainTextDocument">http://tracker.api.gnome.org/ontology/v3/nfo#PlainTextDocument</seealso>
+    let PlainTextDocument = Prefixed_Name(tnfo, "PlainTextDocument") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:TextDocument</para>
+    ///   <para>tnfo:MediaList</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdfs:Class</para>
-    ///   <para>A text document</para>
-    /// labels<para>TextDocument</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#TextDocument">http://tracker.api.gnome.org/ontology/v3/nfo#TextDocument</seealso>
-    let TextDocument = Prefixed_Name(tnfo, "TextDocument") |> PrefixedName
+    ///   <para>A file containing a list of media files.e.g. a playlist</para>
+    /// labels<para>MediaList</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#MediaList">http://tracker.api.gnome.org/ontology/v3/nfo#MediaList</seealso>
+    let MediaList = Prefixed_Name(tnfo, "MediaList") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:Presentation</para>
     /// </summary>
@@ -427,14 +653,14 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Presentation">http://tracker.api.gnome.org/ontology/v3/nfo#Presentation</seealso>
     let Presentation = Prefixed_Name(tnfo, "Presentation") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:RegionOfInterest</para>
+    ///   <para>tnfo:streamPosition</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>Area on an image with relevant content. Following the spec in http://www.metadataworkinggroup.org</para>
-    /// labels<para>Region of Interest</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#RegionOfInterest">http://tracker.api.gnome.org/ontology/v3/nfo#RegionOfInterest</seealso>
-    let RegionOfInterest = Prefixed_Name(tnfo, "RegionOfInterest") |> PrefixedName
+    ///   <para>rdf:Property</para>
+    ///   <para>Stream position of the bookmark, suitable for e.g. audio books. Expressed in milliseconds</para>
+    /// labels<para>Stream position</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#streamPosition">http://tracker.api.gnome.org/ontology/v3/nfo#streamPosition</seealso>
+    let streamPosition = Prefixed_Name(tnfo, "streamPosition") |> PrefixedName
 
     /// <summary>
     ///   <para>tnfo:RegionOfInterestContent</para>
@@ -448,24 +674,6 @@ module tnfo =
         Prefixed_Name(tnfo, "RegionOfInterestContent") |> PrefixedName
 
     /// <summary>
-    ///   <para>tnfo:RemoteDataObject</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A file data object stored at a remote location. Don't confuse this class with a RemotePortAddress. This one applies to a particular resource, RemotePortAddress applies to an address, that can have various interpretations.</para>
-    /// labels<para>RemoteDataObject</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#RemoteDataObject">http://tracker.api.gnome.org/ontology/v3/nfo#RemoteDataObject</seealso>
-    let RemoteDataObject = Prefixed_Name(tnfo, "RemoteDataObject") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:RemotePortAddress</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>An address specifying a remote host and port. Such an address can be interpreted in many ways (examples of such interpretations include mailboxes, websites, remote calendars or filesystems), depending on an interpretation, various kinds of data may be extracted from such an address.</para>
-    /// labels<para>RemotePortAddress</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#RemotePortAddress">http://tracker.api.gnome.org/ontology/v3/nfo#RemotePortAddress</seealso>
-    let RemotePortAddress = Prefixed_Name(tnfo, "RemotePortAddress") |> PrefixedName
-    /// <summary>
     ///   <para>tnfo:SoftwareCategory</para>
     /// </summary>
     /// <remarks>
@@ -474,33 +682,6 @@ module tnfo =
     /// labels<para>Software</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#SoftwareCategory">http://tracker.api.gnome.org/ontology/v3/nfo#SoftwareCategory</seealso>
     let SoftwareCategory = Prefixed_Name(tnfo, "SoftwareCategory") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:SoftwareItem</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A DataObject representing a piece of software. Examples of interpretations of a SoftwareItem include an Application and an OperatingSystem.</para>
-    /// labels<para>SoftwareItem</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#SoftwareItem">http://tracker.api.gnome.org/ontology/v3/nfo#SoftwareItem</seealso>
-    let SoftwareItem = Prefixed_Name(tnfo, "SoftwareItem") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:SoftwareService</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A service published by a piece of software, either by an operating system or an application. Examples of such services may include calendar, addresbook and mailbox managed by a PIM application. This category is introduced to distinguish between data available directly from the applications (Via some Interprocess Communication Mechanisms) and data available from files on a disk. In either case both DataObjects would receive a similar interpretation (e.g. a Mailbox) and wouldn't differ on the content level.</para>
-    /// labels<para>SoftwareService</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#SoftwareService">http://tracker.api.gnome.org/ontology/v3/nfo#SoftwareService</seealso>
-    let SoftwareService = Prefixed_Name(tnfo, "SoftwareService") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:SourceCode</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>Code in a compilable or interpreted programming language.</para>
-    /// labels<para>SourceCode</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#SourceCode">http://tracker.api.gnome.org/ontology/v3/nfo#SourceCode</seealso>
-    let SourceCode = Prefixed_Name(tnfo, "SourceCode") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:Spreadsheet</para>
     /// </summary>
@@ -511,24 +692,6 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Spreadsheet">http://tracker.api.gnome.org/ontology/v3/nfo#Spreadsheet</seealso>
     let Spreadsheet = Prefixed_Name(tnfo, "Spreadsheet") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:Trash</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>Represents a container for deleted files, a feature common in modern operating systems.</para>
-    /// labels<para>Trash</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Trash">http://tracker.api.gnome.org/ontology/v3/nfo#Trash</seealso>
-    let Trash = Prefixed_Name(tnfo, "Trash") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:VectorImage</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A vector image (e.g. SVG)</para>
-    /// labels<para>VectorImage</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#VectorImage">http://tracker.api.gnome.org/ontology/v3/nfo#VectorImage</seealso>
-    let VectorImage = Prefixed_Name(tnfo, "VectorImage") |> PrefixedName
-    /// <summary>
     ///   <para>tnfo:Video</para>
     /// </summary>
     /// <remarks>
@@ -537,33 +700,6 @@ module tnfo =
     /// labels<para>Video</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Video">http://tracker.api.gnome.org/ontology/v3/nfo#Video</seealso>
     let Video = Prefixed_Name(tnfo, "Video") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:WebHistory</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A web history entry</para>
-    /// labels<para>Web History</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#WebHistory">http://tracker.api.gnome.org/ontology/v3/nfo#WebHistory</seealso>
-    let WebHistory = Prefixed_Name(tnfo, "WebHistory") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:Website</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>A website, usually a container for remote resources, that may be interpreted as HTMLDocuments, images or other types of content.</para>
-    /// labels<para>Website</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Website">http://tracker.api.gnome.org/ontology/v3/nfo#Website</seealso>
-    let Website = Prefixed_Name(tnfo, "Website") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:aspectRatio</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Visual content aspect ratio. (Width divided by Height)</para>
-    /// labels<para>aspectRatio</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#aspectRatio">http://tracker.api.gnome.org/ontology/v3/nfo#aspectRatio</seealso>
-    let aspectRatio = Prefixed_Name(tnfo, "aspectRatio") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:audioOffset</para>
     /// </summary>
@@ -574,15 +710,6 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#audioOffset">http://tracker.api.gnome.org/ontology/v3/nfo#audioOffset</seealso>
     let audioOffset = Prefixed_Name(tnfo, "audioOffset") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:averageAudioBitrate</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>The average overall bitrate of a media container. (i.e. the size of the piece of media in bits, divided by it's duration expressed in seconds).</para>
-    /// labels<para>averageBitrate</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#averageAudioBitrate">http://tracker.api.gnome.org/ontology/v3/nfo#averageAudioBitrate</seealso>
-    let averageAudioBitrate = Prefixed_Name(tnfo, "averageAudioBitrate") |> PrefixedName
-    /// <summary>
     ///   <para>tnfo:averageBitrate</para>
     /// </summary>
     /// <remarks>
@@ -591,15 +718,6 @@ module tnfo =
     /// labels<para>averageBitrate</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#averageBitrate">http://tracker.api.gnome.org/ontology/v3/nfo#averageBitrate</seealso>
     let averageBitrate = Prefixed_Name(tnfo, "averageBitrate") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:averageVideoBitrate</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>The average overall bitrate of a media container. (i.e. the size of the piece of media in bits, divided by it's duration expressed in seconds).</para>
-    /// labels<para>averageBitrate</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#averageVideoBitrate">http://tracker.api.gnome.org/ontology/v3/nfo#averageVideoBitrate</seealso>
-    let averageVideoBitrate = Prefixed_Name(tnfo, "averageVideoBitrate") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:belongsToContainer</para>
     /// </summary>
@@ -610,15 +728,6 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#belongsToContainer">http://tracker.api.gnome.org/ontology/v3/nfo#belongsToContainer</seealso>
     let belongsToContainer = Prefixed_Name(tnfo, "belongsToContainer") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:bitDepth</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>A common superproperty for all properties signifying the amount of bits for an atomic unit of data. Examples of subproperties may include bitsPerSample and bitsPerPixel</para>
-    /// labels<para>bitDepth</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#bitDepth">http://tracker.api.gnome.org/ontology/v3/nfo#bitDepth</seealso>
-    let bitDepth = Prefixed_Name(tnfo, "bitDepth") |> PrefixedName
-    /// <summary>
     ///   <para>tnfo:bitrateType</para>
     /// </summary>
     /// <remarks>
@@ -628,15 +737,6 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#bitrateType">http://tracker.api.gnome.org/ontology/v3/nfo#bitrateType</seealso>
     let bitrateType = Prefixed_Name(tnfo, "bitrateType") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:bitsPerSample</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Amount of bits in each audio sample.</para>
-    /// labels<para>bitsPerSample</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#bitsPerSample">http://tracker.api.gnome.org/ontology/v3/nfo#bitsPerSample</seealso>
-    let bitsPerSample = Prefixed_Name(tnfo, "bitsPerSample") |> PrefixedName
-    /// <summary>
     ///   <para>tnfo:bookmarks</para>
     /// </summary>
     /// <remarks>
@@ -645,15 +745,6 @@ module tnfo =
     /// labels<para>link</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#bookmarks">http://tracker.api.gnome.org/ontology/v3/nfo#bookmarks</seealso>
     let bookmarks = Prefixed_Name(tnfo, "bookmarks") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:channels</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Number of channels. This property is to be used directly if no detailed information is necessary. Otherwise use more detailed subproperties.</para>
-    /// labels<para>channels</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#channels">http://tracker.api.gnome.org/ontology/v3/nfo#channels</seealso>
-    let channels = Prefixed_Name(tnfo, "channels") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:characterCount</para>
     /// </summary>
@@ -682,27 +773,6 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#codec">http://tracker.api.gnome.org/ontology/v3/nfo#codec</seealso>
     let codec = Prefixed_Name(tnfo, "codec") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:colorDepth</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Amount of bits used to express the color of each pixel.</para>
-    /// labels<para>colorDepth</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#colorDepth">http://tracker.api.gnome.org/ontology/v3/nfo#colorDepth</seealso>
-    let colorDepth = Prefixed_Name(tnfo, "colorDepth") |> PrefixedName
-
-    /// <summary>
-    ///   <para>tnfo:commentCharacterCount</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>The amount of character in comments i.e. characters ignored by the compiler/interpreter.</para>
-    /// labels<para>commentCharacterCount</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#commentCharacterCount">http://tracker.api.gnome.org/ontology/v3/nfo#commentCharacterCount</seealso>
-    let commentCharacterCount =
-        Prefixed_Name(tnfo, "commentCharacterCount") |> PrefixedName
-
-    /// <summary>
     ///   <para>tnfo:compressionType</para>
     /// </summary>
     /// <remarks>
@@ -712,14 +782,14 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#compressionType">http://tracker.api.gnome.org/ontology/v3/nfo#compressionType</seealso>
     let compressionType = Prefixed_Name(tnfo, "compressionType") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:conflicts</para>
+    ///   <para>tnfo:colorDepth</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>States that a piece of software is in conflict with another piece of software.</para>
-    /// labels<para>conflicts</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#conflicts">http://tracker.api.gnome.org/ontology/v3/nfo#conflicts</seealso>
-    let conflicts = Prefixed_Name(tnfo, "conflicts") |> PrefixedName
+    ///   <para>Amount of bits used to express the color of each pixel.</para>
+    /// labels<para>colorDepth</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#colorDepth">http://tracker.api.gnome.org/ontology/v3/nfo#colorDepth</seealso>
+    let colorDepth = Prefixed_Name(tnfo, "colorDepth") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:containsBookmark</para>
     /// </summary>
@@ -742,14 +812,14 @@ module tnfo =
         Prefixed_Name(tnfo, "containsBookmarkFolder") |> PrefixedName
 
     /// <summary>
-    ///   <para>tnfo:count</para>
+    ///   <para>tnfo:conflicts</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>A common superproperty for all properties signifying the amount of atomic media data units. Examples of subproperties may include sampleCount and frameCount.</para>
-    /// labels<para>count</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#count">http://tracker.api.gnome.org/ontology/v3/nfo#count</seealso>
-    let count = Prefixed_Name(tnfo, "count") |> PrefixedName
+    ///   <para>States that a piece of software is in conflict with another piece of software.</para>
+    /// labels<para>conflicts</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#conflicts">http://tracker.api.gnome.org/ontology/v3/nfo#conflicts</seealso>
+    let conflicts = Prefixed_Name(tnfo, "conflicts") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:definesClass</para>
     /// </summary>
@@ -760,27 +830,6 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#definesClass">http://tracker.api.gnome.org/ontology/v3/nfo#definesClass</seealso>
     let definesClass = Prefixed_Name(tnfo, "definesClass") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:definesFunction</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>A name of a function/method defined in the given source code file.</para>
-    /// labels<para>definesFunction</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#definesFunction">http://tracker.api.gnome.org/ontology/v3/nfo#definesFunction</seealso>
-    let definesFunction = Prefixed_Name(tnfo, "definesFunction") |> PrefixedName
-
-    /// <summary>
-    ///   <para>tnfo:definesGlobalVariable</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Name of a global variable defined within the source code file.</para>
-    /// labels<para>definesGlobalVariable</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#definesGlobalVariable">http://tracker.api.gnome.org/ontology/v3/nfo#definesGlobalVariable</seealso>
-    let definesGlobalVariable =
-        Prefixed_Name(tnfo, "definesGlobalVariable") |> PrefixedName
-
-    /// <summary>
     ///   <para>tnfo:deletionDate</para>
     /// </summary>
     /// <remarks>
@@ -789,16 +838,6 @@ module tnfo =
     /// labels<para>deletionDate</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#deletionDate">http://tracker.api.gnome.org/ontology/v3/nfo#deletionDate</seealso>
     let deletionDate = Prefixed_Name(tnfo, "deletionDate") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:depiction</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>tnrl:InverseFunctionalProperty</para>
-    ///   <para>rdf:Property</para>
-    ///   <para>Relates an information element to an image which depicts said element.</para>
-    /// labels<para>depiction</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#depiction">http://tracker.api.gnome.org/ontology/v3/nfo#depiction</seealso>
-    let depiction = Prefixed_Name(tnfo, "depiction") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:depicts</para>
     /// </summary>
@@ -810,15 +849,6 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#depicts">http://tracker.api.gnome.org/ontology/v3/nfo#depicts</seealso>
     let depicts = Prefixed_Name(tnfo, "depicts") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:domain</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///
-    /// labels<para>Domain for a web history entry</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#domain">http://tracker.api.gnome.org/ontology/v3/nfo#domain</seealso>
-    let domain = Prefixed_Name(tnfo, "domain") |> PrefixedName
-    /// <summary>
     ///   <para>tnfo:duration</para>
     /// </summary>
     /// <remarks>
@@ -828,32 +858,32 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#duration">http://tracker.api.gnome.org/ontology/v3/nfo#duration</seealso>
     let duration = Prefixed_Name(tnfo, "duration") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:encodedBy</para>
+    ///   <para>tnfo:count</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>The contains the name of the person or organisation that encoded the media</para>
-    /// labels<para>encodedBy</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#encodedBy">http://tracker.api.gnome.org/ontology/v3/nfo#encodedBy</seealso>
-    let encodedBy = Prefixed_Name(tnfo, "encodedBy") |> PrefixedName
+    ///   <para>A common superproperty for all properties signifying the amount of atomic media data units. Examples of subproperties may include sampleCount and frameCount.</para>
+    /// labels<para>count</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#count">http://tracker.api.gnome.org/ontology/v3/nfo#count</seealso>
+    let count = Prefixed_Name(tnfo, "count") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:encoding</para>
+    ///   <para>tnfo:definesFunction</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>The encoding used for the Embedded File. Examples might include BASE64 or UUEncode</para>
-    /// labels<para>encoding</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#encoding">http://tracker.api.gnome.org/ontology/v3/nfo#encoding</seealso>
-    let encoding = Prefixed_Name(tnfo, "encoding") |> PrefixedName
+    ///   <para>A name of a function/method defined in the given source code file.</para>
+    /// labels<para>definesFunction</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#definesFunction">http://tracker.api.gnome.org/ontology/v3/nfo#definesFunction</seealso>
+    let definesFunction = Prefixed_Name(tnfo, "definesFunction") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:entryCounter</para>
+    ///   <para>tnfo:domain</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>Number of entries in the list. Optimize some common queries</para>
-    /// labels<para>entry Counter</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#entryCounter">http://tracker.api.gnome.org/ontology/v3/nfo#entryCounter</seealso>
-    let entryCounter = Prefixed_Name(tnfo, "entryCounter") |> PrefixedName
+    ///
+    /// labels<para>Domain for a web history entry</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#domain">http://tracker.api.gnome.org/ontology/v3/nfo#domain</seealso>
+    let domain = Prefixed_Name(tnfo, "domain") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:entryUrl</para>
     /// </summary>
@@ -864,23 +894,14 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#entryUrl">http://tracker.api.gnome.org/ontology/v3/nfo#entryUrl</seealso>
     let entryUrl = Prefixed_Name(tnfo, "entryUrl") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:equipment</para>
+    ///   <para>tnfo:encodedBy</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>Equipment used to create the media</para>
-    /// labels<para>Device</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#equipment">http://tracker.api.gnome.org/ontology/v3/nfo#equipment</seealso>
-    let equipment = Prefixed_Name(tnfo, "equipment") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:equipmentSoftware</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>The software of the equipment</para>
-    /// labels<para>Equipment software</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#equipmentSoftware">http://tracker.api.gnome.org/ontology/v3/nfo#equipmentSoftware</seealso>
-    let equipmentSoftware = Prefixed_Name(tnfo, "equipmentSoftware") |> PrefixedName
+    ///   <para>The contains the name of the person or organisation that encoded the media</para>
+    /// labels<para>encodedBy</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#encodedBy">http://tracker.api.gnome.org/ontology/v3/nfo#encodedBy</seealso>
+    let encodedBy = Prefixed_Name(tnfo, "encodedBy") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:fileCreated</para>
     /// </summary>
@@ -908,15 +929,6 @@ module tnfo =
     /// labels<para>fileLastModified</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#fileLastModified">http://tracker.api.gnome.org/ontology/v3/nfo#fileLastModified</seealso>
     let fileLastModified = Prefixed_Name(tnfo, "fileLastModified") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:fileName</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Name of the file, together with the extension</para>
-    /// labels<para>fileName</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#fileName">http://tracker.api.gnome.org/ontology/v3/nfo#fileName</seealso>
-    let fileName = Prefixed_Name(tnfo, "fileName") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:fileOwner</para>
     /// </summary>
@@ -954,15 +966,6 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#foundry">http://tracker.api.gnome.org/ontology/v3/nfo#foundry</seealso>
     let foundry = Prefixed_Name(tnfo, "foundry") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:frameCount</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>The amount of frames in a video sequence.</para>
-    /// labels<para>frameCount</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#frameCount">http://tracker.api.gnome.org/ontology/v3/nfo#frameCount</seealso>
-    let frameCount = Prefixed_Name(tnfo, "frameCount") |> PrefixedName
-    /// <summary>
     ///   <para>tnfo:frameRate</para>
     /// </summary>
     /// <remarks>
@@ -971,24 +974,6 @@ module tnfo =
     /// labels<para>frameRate</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#frameRate">http://tracker.api.gnome.org/ontology/v3/nfo#frameRate</seealso>
     let frameRate = Prefixed_Name(tnfo, "frameRate") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:frontChannels</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Number of front channels.</para>
-    /// labels<para>frontChannels</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#frontChannels">http://tracker.api.gnome.org/ontology/v3/nfo#frontChannels</seealso>
-    let frontChannels = Prefixed_Name(tnfo, "frontChannels") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:gain</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Gain of media</para>
-    /// labels<para>Gain</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#gain">http://tracker.api.gnome.org/ontology/v3/nfo#gain</seealso>
-    let gain = Prefixed_Name(tnfo, "gain") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:genre</para>
     /// </summary>
@@ -999,27 +984,6 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#genre">http://tracker.api.gnome.org/ontology/v3/nfo#genre</seealso>
     let genre = Prefixed_Name(tnfo, "genre") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:hasHash</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Links the file with it's hash value.</para>
-    /// labels<para>hasHash</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#hasHash">http://tracker.api.gnome.org/ontology/v3/nfo#hasHash</seealso>
-    let hasHash = Prefixed_Name(tnfo, "hasHash") |> PrefixedName
-
-    /// <summary>
-    ///   <para>tnfo:hasMediaFileListEntry</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>This property is intended to point to an RDF list of MediaFiles.</para>
-    /// labels<para>hasMediaFileListEntry</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#hasMediaFileListEntry">http://tracker.api.gnome.org/ontology/v3/nfo#hasMediaFileListEntry</seealso>
-    let hasMediaFileListEntry =
-        Prefixed_Name(tnfo, "hasMediaFileListEntry") |> PrefixedName
-
-    /// <summary>
     ///   <para>tnfo:hasMediaStream</para>
     /// </summary>
     /// <remarks>
@@ -1029,24 +993,6 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#hasMediaStream">http://tracker.api.gnome.org/ontology/v3/nfo#hasMediaStream</seealso>
     let hasMediaStream = Prefixed_Name(tnfo, "hasMediaStream") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:hasRegionOfInterest</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Link an element with a defined region</para>
-    /// labels<para>Has region or interest</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#hasRegionOfInterest">http://tracker.api.gnome.org/ontology/v3/nfo#hasRegionOfInterest</seealso>
-    let hasRegionOfInterest = Prefixed_Name(tnfo, "hasRegionOfInterest") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:hashAlgorithm</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Name of the algorithm used to compute the hash value. Examples might include CRC32, MD5, SHA, TTH etc.</para>
-    /// labels<para>hashAlgorithm</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#hashAlgorithm">http://tracker.api.gnome.org/ontology/v3/nfo#hashAlgorithm</seealso>
-    let hashAlgorithm = Prefixed_Name(tnfo, "hashAlgorithm") |> PrefixedName
-    /// <summary>
     ///   <para>tnfo:hashValue</para>
     /// </summary>
     /// <remarks>
@@ -1055,24 +1001,6 @@ module tnfo =
     /// labels<para>hashValue</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#hashValue">http://tracker.api.gnome.org/ontology/v3/nfo#hashValue</seealso>
     let hashValue = Prefixed_Name(tnfo, "hashValue") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:heading</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Specifies the direction of travelling while capturing image/video. The range of values from 0.00 to 359.99 (where 0 is due North, 90 is East, 180 South and 270 is West)</para>
-    /// labels<para>Heading</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#heading">http://tracker.api.gnome.org/ontology/v3/nfo#heading</seealso>
-    let heading = Prefixed_Name(tnfo, "heading") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:height</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Visual content height in pixels.</para>
-    /// labels<para>height</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#height">http://tracker.api.gnome.org/ontology/v3/nfo#height</seealso>
-    let height = Prefixed_Name(tnfo, "height") |> PrefixedName
 
     /// <summary>
     ///   <para>tnfo:horizontalResolution</para>
@@ -1086,34 +1014,6 @@ module tnfo =
         Prefixed_Name(tnfo, "horizontalResolution") |> PrefixedName
 
     /// <summary>
-    ///   <para>tnfo:image-category-screenshot</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>tnfo:ImageCategory</para>
-    /// </remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#image-category-screenshot">http://tracker.api.gnome.org/ontology/v3/nfo#image-category-screenshot</seealso>
-    let image_category_screenshot =
-        Prefixed_Name(tnfo, "image-category-screenshot") |> PrefixedName
-
-    /// <summary>
-    ///   <para>tnfo:interlaceMode</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>True if the image is interlaced, false if not.</para>
-    /// labels<para>interlaceMode</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#interlaceMode">http://tracker.api.gnome.org/ontology/v3/nfo#interlaceMode</seealso>
-    let interlaceMode = Prefixed_Name(tnfo, "interlaceMode") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:isBootable</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>True when the file is bootable, for example like an ISO or other disc images</para>
-    /// labels<para>Is content bootable</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#isBootable">http://tracker.api.gnome.org/ontology/v3/nfo#isBootable</seealso>
-    let isBootable = Prefixed_Name(tnfo, "isBootable") |> PrefixedName
-    /// <summary>
     ///   <para>tnfo:isContentEncrypted</para>
     /// </summary>
     /// <remarks>
@@ -1122,24 +1022,6 @@ module tnfo =
     /// labels<para>Is content encrypted</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#isContentEncrypted">http://tracker.api.gnome.org/ontology/v3/nfo#isContentEncrypted</seealso>
     let isContentEncrypted = Prefixed_Name(tnfo, "isContentEncrypted") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:isPasswordProtected</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>States if a given resource is password-protected.</para>
-    /// labels<para>isPasswordProtected</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#isPasswordProtected">http://tracker.api.gnome.org/ontology/v3/nfo#isPasswordProtected</seealso>
-    let isPasswordProtected = Prefixed_Name(tnfo, "isPasswordProtected") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:lastPlayedPosition</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Position in the media (in seconds) where the play was paused. Positive number, being 0 the beginning of the media.</para>
-    /// labels<para>last played position</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#lastPlayedPosition">http://tracker.api.gnome.org/ontology/v3/nfo#lastPlayedPosition</seealso>
-    let lastPlayedPosition = Prefixed_Name(tnfo, "lastPlayedPosition") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:lfeChannels</para>
     /// </summary>
@@ -1150,33 +1032,6 @@ module tnfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#lfeChannels">http://tracker.api.gnome.org/ontology/v3/nfo#lfeChannels</seealso>
     let lfeChannels = Prefixed_Name(tnfo, "lfeChannels") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:lineCount</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>The amount of lines in a text document</para>
-    /// labels<para>lineCount</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#lineCount">http://tracker.api.gnome.org/ontology/v3/nfo#lineCount</seealso>
-    let lineCount = Prefixed_Name(tnfo, "lineCount") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:listDuration</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Sum of the duration of all items in the list. Optimize some common queries. In seconds</para>
-    /// labels<para>List duration</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#listDuration">http://tracker.api.gnome.org/ontology/v3/nfo#listDuration</seealso>
-    let listDuration = Prefixed_Name(tnfo, "listDuration") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:listPosition</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Position of an entry in a list. Double, to optimize the poor insertions</para>
-    /// labels<para>list position</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#listPosition">http://tracker.api.gnome.org/ontology/v3/nfo#listPosition</seealso>
-    let listPosition = Prefixed_Name(tnfo, "listPosition") |> PrefixedName
-    /// <summary>
     ///   <para>tnfo:manufacturer</para>
     /// </summary>
     /// <remarks>
@@ -1185,24 +1040,6 @@ module tnfo =
     /// labels<para>Manufacturer</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#manufacturer">http://tracker.api.gnome.org/ontology/v3/nfo#manufacturer</seealso>
     let manufacturer = Prefixed_Name(tnfo, "manufacturer") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:mediaListEntry</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>A certain item belongs to a media list. This can reflect that a song is in a playlist, an image or video in an Album</para>
-    /// labels<para>Media list entry</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#mediaListEntry">http://tracker.api.gnome.org/ontology/v3/nfo#mediaListEntry</seealso>
-    let mediaListEntry = Prefixed_Name(tnfo, "mediaListEntry") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:model</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>The model of the equipment</para>
-    /// labels<para>Model</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#model">http://tracker.api.gnome.org/ontology/v3/nfo#model</seealso>
-    let model = Prefixed_Name(tnfo, "model") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:orientation</para>
     /// </summary>
@@ -1257,45 +1094,6 @@ module tnfo =
     /// </remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#orientation-right">http://tracker.api.gnome.org/ontology/v3/nfo#orientation-right</seealso>
     let orientation_right = Prefixed_Name(tnfo, "orientation-right") |> PrefixedName
-
-    /// <summary>
-    ///   <para>tnfo:orientation-right-mirror</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>tnfo:Orientation</para>
-    /// </remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#orientation-right-mirror">http://tracker.api.gnome.org/ontology/v3/nfo#orientation-right-mirror</seealso>
-    let orientation_right_mirror =
-        Prefixed_Name(tnfo, "orientation-right-mirror") |> PrefixedName
-
-    /// <summary>
-    ///   <para>tnfo:orientation-top</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>tnfo:Orientation</para>
-    /// </remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#orientation-top">http://tracker.api.gnome.org/ontology/v3/nfo#orientation-top</seealso>
-    let orientation_top = Prefixed_Name(tnfo, "orientation-top") |> PrefixedName
-
-    /// <summary>
-    ///   <para>tnfo:orientation-top-mirror</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>tnfo:Orientation</para>
-    /// </remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#orientation-top-mirror">http://tracker.api.gnome.org/ontology/v3/nfo#orientation-top-mirror</seealso>
-    let orientation_top_mirror =
-        Prefixed_Name(tnfo, "orientation-top-mirror") |> PrefixedName
-
-    /// <summary>
-    ///   <para>tnfo:originalLocation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>The original location of the deleted resource.</para>
-    /// labels<para>originalLocation</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#originalLocation">http://tracker.api.gnome.org/ontology/v3/nfo#originalLocation</seealso>
-    let originalLocation = Prefixed_Name(tnfo, "originalLocation") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:pageCount</para>
     /// </summary>
@@ -1323,33 +1121,6 @@ module tnfo =
     /// labels<para>Peak Gain</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#peakGain">http://tracker.api.gnome.org/ontology/v3/nfo#peakGain</seealso>
     let peakGain = Prefixed_Name(tnfo, "peakGain") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:permissions</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>A string containing the permissions of a file. A feature common in many UNIX-like operating systems.</para>
-    /// labels<para>permissions</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#permissions">http://tracker.api.gnome.org/ontology/v3/nfo#permissions</seealso>
-    let permissions = Prefixed_Name(tnfo, "permissions") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:programmingLanguage</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Indicates the name of the programming language this source code file is written in. Examples might include 'C', 'C++', 'Java' etc</para>
-    /// labels<para>programmingLanguage</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#programmingLanguage">http://tracker.api.gnome.org/ontology/v3/nfo#programmingLanguage</seealso>
-    let programmingLanguage = Prefixed_Name(tnfo, "programmingLanguage") |> PrefixedName
-    /// <summary>
-    ///   <para>tnfo:rearChannels</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Number of rear channels.</para>
-    /// labels<para>rearChannels</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#rearChannels">http://tracker.api.gnome.org/ontology/v3/nfo#rearChannels</seealso>
-    let rearChannels = Prefixed_Name(tnfo, "rearChannels") |> PrefixedName
 
     /// <summary>
     ///   <para>tnfo:regionOfInterestHeight</para>
@@ -1384,15 +1155,6 @@ module tnfo =
     let regionOfInterestWidth =
         Prefixed_Name(tnfo, "regionOfInterestWidth") |> PrefixedName
 
-    /// <summary>
-    ///   <para>tnfo:regionOfInterestX</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Coordinate X where the region starts. It is normalized (values between 0 and 1) to the width of the picture. Starting in the upper left corner.</para>
-    /// labels<para>Region of interest X</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#regionOfInterestX">http://tracker.api.gnome.org/ontology/v3/nfo#regionOfInterestX</seealso>
-    let regionOfInterestX = Prefixed_Name(tnfo, "regionOfInterestX") |> PrefixedName
     /// <summary>
     ///   <para>tnfo:regionOfInterestY</para>
     /// </summary>
@@ -1446,158 +1208,397 @@ module tnfo =
         Prefixed_Name(tnfo, "roi-content-undefined") |> PrefixedName
 
     /// <summary>
-    ///   <para>tnfo:roiRefersTo</para>
+    ///   <para>tnfo:encoding</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>Link to an item that is represented in the region. The 'type' of the region can give a clue of what exact content is linked in this property</para>
-    /// labels<para>Region of interest refers to</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#roiRefersTo">http://tracker.api.gnome.org/ontology/v3/nfo#roiRefersTo</seealso>
-    let roiRefersTo = Prefixed_Name(tnfo, "roiRefersTo") |> PrefixedName
+    ///   <para>The encoding used for the Embedded File. Examples might include BASE64 or UUEncode</para>
+    /// labels<para>encoding</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#encoding">http://tracker.api.gnome.org/ontology/v3/nfo#encoding</seealso>
+    let encoding = Prefixed_Name(tnfo, "encoding") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:sampleCount</para>
+    ///   <para>tnfo:equipmentSoftware</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>The amount of samples in an audio clip.</para>
-    /// labels<para>sampleCount</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#sampleCount">http://tracker.api.gnome.org/ontology/v3/nfo#sampleCount</seealso>
-    let sampleCount = Prefixed_Name(tnfo, "sampleCount") |> PrefixedName
+    ///   <para>The software of the equipment</para>
+    /// labels<para>Equipment software</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#equipmentSoftware">http://tracker.api.gnome.org/ontology/v3/nfo#equipmentSoftware</seealso>
+    let equipmentSoftware = Prefixed_Name(tnfo, "equipmentSoftware") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:sampleRate</para>
+    ///   <para>tnfo:fileName</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>The amount of audio samples per second.</para>
-    /// labels<para>sampleRate</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#sampleRate">http://tracker.api.gnome.org/ontology/v3/nfo#sampleRate</seealso>
-    let sampleRate = Prefixed_Name(tnfo, "sampleRate") |> PrefixedName
+    ///   <para>Name of the file, together with the extension</para>
+    /// labels<para>fileName</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#fileName">http://tracker.api.gnome.org/ontology/v3/nfo#fileName</seealso>
+    let fileName = Prefixed_Name(tnfo, "fileName") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:sideChannels</para>
+    ///   <para>tnfo:frontChannels</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>Number of side channels</para>
-    /// labels<para>sideChannels</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#sideChannels">http://tracker.api.gnome.org/ontology/v3/nfo#sideChannels</seealso>
-    let sideChannels = Prefixed_Name(tnfo, "sideChannels") |> PrefixedName
+    ///   <para>Number of front channels.</para>
+    /// labels<para>frontChannels</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#frontChannels">http://tracker.api.gnome.org/ontology/v3/nfo#frontChannels</seealso>
+    let frontChannels = Prefixed_Name(tnfo, "frontChannels") |> PrefixedName
 
     /// <summary>
-    ///   <para>tnfo:softwareCategoryIcon</para>
+    ///   <para>tnfo:hasMediaFileListEntry</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>Icon of the software</para>
-    /// labels<para>SoftwareIcon</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#softwareCategoryIcon">http://tracker.api.gnome.org/ontology/v3/nfo#softwareCategoryIcon</seealso>
-    let softwareCategoryIcon =
-        Prefixed_Name(tnfo, "softwareCategoryIcon") |> PrefixedName
+    ///   <para>This property is intended to point to an RDF list of MediaFiles.</para>
+    /// labels<para>hasMediaFileListEntry</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#hasMediaFileListEntry">http://tracker.api.gnome.org/ontology/v3/nfo#hasMediaFileListEntry</seealso>
+    let hasMediaFileListEntry =
+        Prefixed_Name(tnfo, "hasMediaFileListEntry") |> PrefixedName
 
     /// <summary>
-    ///   <para>tnfo:softwareCmdLine</para>
+    ///   <para>tnfo:hasRegionOfInterest</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>Command to launch the software</para>
-    /// labels<para>SoftwareCmdLine</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#softwareCmdLine">http://tracker.api.gnome.org/ontology/v3/nfo#softwareCmdLine</seealso>
-    let softwareCmdLine = Prefixed_Name(tnfo, "softwareCmdLine") |> PrefixedName
+    ///   <para>Link an element with a defined region</para>
+    /// labels<para>Has region or interest</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#hasRegionOfInterest">http://tracker.api.gnome.org/ontology/v3/nfo#hasRegionOfInterest</seealso>
+    let hasRegionOfInterest = Prefixed_Name(tnfo, "hasRegionOfInterest") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:softwareIcon</para>
+    ///   <para>tnfo:heading</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>Icon of the software</para>
-    /// labels<para>SoftwareIcon</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#softwareIcon">http://tracker.api.gnome.org/ontology/v3/nfo#softwareIcon</seealso>
-    let softwareIcon = Prefixed_Name(tnfo, "softwareIcon") |> PrefixedName
+    ///   <para>Specifies the direction of travelling while capturing image/video. The range of values from 0.00 to 359.99 (where 0 is due North, 90 is East, 180 South and 270 is West)</para>
+    /// labels<para>Heading</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#heading">http://tracker.api.gnome.org/ontology/v3/nfo#heading</seealso>
+    let heading = Prefixed_Name(tnfo, "heading") |> PrefixedName
+
     /// <summary>
-    ///   <para>tnfo:streamDuration</para>
+    ///   <para>tnfo:image-category-screenshot</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///
-    /// labels<para>Stream duration</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#streamDuration">http://tracker.api.gnome.org/ontology/v3/nfo#streamDuration</seealso>
-    let streamDuration = Prefixed_Name(tnfo, "streamDuration") |> PrefixedName
+    ///   <para>tnfo:ImageCategory</para>
+    /// </remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#image-category-screenshot">http://tracker.api.gnome.org/ontology/v3/nfo#image-category-screenshot</seealso>
+    let image_category_screenshot =
+        Prefixed_Name(tnfo, "image-category-screenshot") |> PrefixedName
+
     /// <summary>
-    ///   <para>tnfo:streamPosition</para>
+    ///   <para>tnfo:interlaceMode</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>Stream position of the bookmark, suitable for e.g. audio books. Expressed in milliseconds</para>
-    /// labels<para>Stream position</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#streamPosition">http://tracker.api.gnome.org/ontology/v3/nfo#streamPosition</seealso>
-    let streamPosition = Prefixed_Name(tnfo, "streamPosition") |> PrefixedName
+    ///   <para>True if the image is interlaced, false if not.</para>
+    /// labels<para>interlaceMode</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#interlaceMode">http://tracker.api.gnome.org/ontology/v3/nfo#interlaceMode</seealso>
+    let interlaceMode = Prefixed_Name(tnfo, "interlaceMode") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:supercedes</para>
+    ///   <para>tnfo:lastPlayedPosition</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>States that a piece of software supercedes another piece of software.</para>
-    /// labels<para>supercedes</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#supercedes">http://tracker.api.gnome.org/ontology/v3/nfo#supercedes</seealso>
-    let supercedes = Prefixed_Name(tnfo, "supercedes") |> PrefixedName
+    ///   <para>Position in the media (in seconds) where the play was paused. Positive number, being 0 the beginning of the media.</para>
+    /// labels<para>last played position</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#lastPlayedPosition">http://tracker.api.gnome.org/ontology/v3/nfo#lastPlayedPosition</seealso>
+    let lastPlayedPosition = Prefixed_Name(tnfo, "lastPlayedPosition") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:tableOfContents</para>
+    ///   <para>tnfo:listDuration</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>Section titles and figure descriptions of the document.</para>
-    /// labels<para>Table of contents</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#tableOfContents">http://tracker.api.gnome.org/ontology/v3/nfo#tableOfContents</seealso>
-    let tableOfContents = Prefixed_Name(tnfo, "tableOfContents") |> PrefixedName
+    ///   <para>Sum of the duration of all items in the list. Optimize some common queries. In seconds</para>
+    /// labels<para>List duration</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#listDuration">http://tracker.api.gnome.org/ontology/v3/nfo#listDuration</seealso>
+    let listDuration = Prefixed_Name(tnfo, "listDuration") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:tilt</para>
+    ///   <para>tnfo:entryCounter</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>Vertical inclination of the camera while capturing the image, in angles starting on 0 as horizontal, positive numbers pointing up, negative angles pointing down</para>
-    /// labels<para>Tilt</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#tilt">http://tracker.api.gnome.org/ontology/v3/nfo#tilt</seealso>
-    let tilt = Prefixed_Name(tnfo, "tilt") |> PrefixedName
+    ///   <para>Number of entries in the list. Optimize some common queries</para>
+    /// labels<para>entry Counter</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#entryCounter">http://tracker.api.gnome.org/ontology/v3/nfo#entryCounter</seealso>
+    let entryCounter = Prefixed_Name(tnfo, "entryCounter") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:uncompressedSize</para>
+    ///   <para>tnfo:equipment</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>Uncompressed size of the content of a compressed file.</para>
-    /// labels<para>uncompressedSize</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#uncompressedSize">http://tracker.api.gnome.org/ontology/v3/nfo#uncompressedSize</seealso>
-    let uncompressedSize = Prefixed_Name(tnfo, "uncompressedSize") |> PrefixedName
+    ///   <para>Equipment used to create the media</para>
+    /// labels<para>Device</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#equipment">http://tracker.api.gnome.org/ontology/v3/nfo#equipment</seealso>
+    let equipment = Prefixed_Name(tnfo, "equipment") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:uri</para>
+    ///   <para>tnfo:</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///
-    /// labels<para>Uri for a web history entry</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#uri">http://tracker.api.gnome.org/ontology/v3/nfo#uri</seealso>
-    let uri = Prefixed_Name(tnfo, "uri") |> PrefixedName
+    ///   <para>tnrl:Namespace</para>
+    ///   <para>tnrl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#">http://tracker.api.gnome.org/ontology/v3/nfo#</seealso>
+    let _prefix_iri = Prefixed_Name(tnfo, "") |> PrefixedName
     /// <summary>
-    ///   <para>tnfo:verticalResolution</para>
+    ///   <para>tnfo:Software</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Vertical resolution of an Image (if printed). Expressed in DPI</para>
-    /// labels<para>verticalResolution</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#verticalResolution">http://tracker.api.gnome.org/ontology/v3/nfo#verticalResolution</seealso>
-    let verticalResolution = Prefixed_Name(tnfo, "verticalResolution") |> PrefixedName
+    ///   <para>rdfs:Class</para>
+    ///   <para>A piece of software. Examples may include applications and the operating system. This interpretation most commonly applies to SoftwareItems.</para>
+    /// labels<para>Software</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Software">http://tracker.api.gnome.org/ontology/v3/nfo#Software</seealso>
+    let Software = Prefixed_Name(tnfo, "Software") |> PrefixedName
+
     /// <summary>
-    ///   <para>tnfo:width</para>
+    ///   <para>tnfo:EmbeddedFileDataObject</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Visual content width in pixels.</para>
-    /// labels<para>width</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#width">http://tracker.api.gnome.org/ontology/v3/nfo#width</seealso>
-    let width = Prefixed_Name(tnfo, "width") |> PrefixedName
+    ///   <para>rdfs:Class</para>
+    ///   <para>A file embedded in another data object. There are many ways in which a file may be embedded in another one. Use this class directly only in cases if none of the subclasses gives a better description of your case.</para>
+    /// labels<para>EmbeddedFileDataObject</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#EmbeddedFileDataObject">http://tracker.api.gnome.org/ontology/v3/nfo#EmbeddedFileDataObject</seealso>
+    let EmbeddedFileDataObject =
+        Prefixed_Name(tnfo, "EmbeddedFileDataObject") |> PrefixedName
+
     /// <summary>
-    ///   <para>tnfo:wordCount</para>
+    ///   <para>tnfo:Media</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A piece of media content. This class may be used to express complex media containers with many streams of various media content (both aural and visual).</para>
+    /// labels<para>Media</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Media">http://tracker.api.gnome.org/ontology/v3/nfo#Media</seealso>
+    let Media = Prefixed_Name(tnfo, "Media") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:Bookmark</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A bookmark of a webbrowser. Use nie:title for the name/label, nie:contentCreated to represent the date when the user added the bookmark, and nie:contentLastModified for modifications. nfo:bookmarks to store the link.</para>
+    /// labels<para>Bookmark</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Bookmark">http://tracker.api.gnome.org/ontology/v3/nfo#Bookmark</seealso>
+    let Bookmark = Prefixed_Name(tnfo, "Bookmark") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:BookmarkFolder</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A folder with bookmarks of a webbrowser. Use nfo:containsBookmark to relate Bookmarks. Folders can contain subfolders, use containsBookmarkFolder to relate them.</para>
+    /// labels<para>Bookmark Folder</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#BookmarkFolder">http://tracker.api.gnome.org/ontology/v3/nfo#BookmarkFolder</seealso>
+    let BookmarkFolder = Prefixed_Name(tnfo, "BookmarkFolder") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:Cursor</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A Cursor.</para>
+    /// labels<para>Cursor</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Cursor">http://tracker.api.gnome.org/ontology/v3/nfo#Cursor</seealso>
+    let Cursor = Prefixed_Name(tnfo, "Cursor") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:FileDataObject</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A resource containing a finite sequence of bytes with arbitrary information, that is available to a computer program and is usually based on some kind of durable storage. A file is durable in the sense that it remains available for programs to use after the current program has finished.</para>
+    /// labels<para>FileDataObject</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#FileDataObject">http://tracker.api.gnome.org/ontology/v3/nfo#FileDataObject</seealso>
+    let FileDataObject = Prefixed_Name(tnfo, "FileDataObject") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:Document</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A generic document. A common superclass for all documents on the desktop.</para>
+    /// labels<para>Document</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Document">http://tracker.api.gnome.org/ontology/v3/nfo#Document</seealso>
+    let Document = Prefixed_Name(tnfo, "Document") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:Executable</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An executable file.</para>
+    /// labels<para>Executable</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Executable">http://tracker.api.gnome.org/ontology/v3/nfo#Executable</seealso>
+    let Executable = Prefixed_Name(tnfo, "Executable") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:FileHash</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A fingerprint of the file, generated by some hashing function.</para>
+    /// labels<para>FileHash</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#FileHash">http://tracker.api.gnome.org/ontology/v3/nfo#FileHash</seealso>
+    let FileHash = Prefixed_Name(tnfo, "FileHash") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:FilesystemImage</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An image of a filesystem. Instances of this class may include CD images, DVD images or hard disk partition images created by various pieces of software (e.g. Norton Ghost)</para>
+    /// labels<para>FilesystemImage</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#FilesystemImage">http://tracker.api.gnome.org/ontology/v3/nfo#FilesystemImage</seealso>
+    let FilesystemImage = Prefixed_Name(tnfo, "FilesystemImage") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:Folder</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A folder/directory. Examples of folders include folders on a filesystem and message folders in a mailbox.</para>
+    /// labels<para>Folder</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Folder">http://tracker.api.gnome.org/ontology/v3/nfo#Folder</seealso>
+    let Folder = Prefixed_Name(tnfo, "Folder") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:SoftwareApplication</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An application</para>
+    /// labels<para>Application</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#SoftwareApplication">http://tracker.api.gnome.org/ontology/v3/nfo#SoftwareApplication</seealso>
+    let SoftwareApplication = Prefixed_Name(tnfo, "SoftwareApplication") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:HardDiskPartition</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A partition on a hard disk</para>
+    /// labels<para>HardDiskPartition</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#HardDiskPartition">http://tracker.api.gnome.org/ontology/v3/nfo#HardDiskPartition</seealso>
+    let HardDiskPartition = Prefixed_Name(tnfo, "HardDiskPartition") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:Visual</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>File containing visual content.</para>
+    /// labels<para>Visual</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Visual">http://tracker.api.gnome.org/ontology/v3/nfo#Visual</seealso>
+    let Visual = Prefixed_Name(tnfo, "Visual") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:ImageCategory</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A image category</para>
+    /// labels<para>Image category</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#ImageCategory">http://tracker.api.gnome.org/ontology/v3/nfo#ImageCategory</seealso>
+    let ImageCategory = Prefixed_Name(tnfo, "ImageCategory") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:MindMap</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A MindMap, created by a mind-mapping utility. Examples might include FreeMind or mind mapper.</para>
+    /// labels<para>MindMap</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#MindMap">http://tracker.api.gnome.org/ontology/v3/nfo#MindMap</seealso>
+    let MindMap = Prefixed_Name(tnfo, "MindMap") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:OperatingSystem</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An OperatingSystem</para>
+    /// labels<para>OperatingSystem</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#OperatingSystem">http://tracker.api.gnome.org/ontology/v3/nfo#OperatingSystem</seealso>
+    let OperatingSystem = Prefixed_Name(tnfo, "OperatingSystem") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:Orientation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Orientation enum</para>
+    /// labels<para>Orientation enum</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Orientation">http://tracker.api.gnome.org/ontology/v3/nfo#Orientation</seealso>
+    let Orientation = Prefixed_Name(tnfo, "Orientation") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:RegionOfInterest</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Area on an image with relevant content. Following the spec in http://www.metadataworkinggroup.org</para>
+    /// labels<para>Region of Interest</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#RegionOfInterest">http://tracker.api.gnome.org/ontology/v3/nfo#RegionOfInterest</seealso>
+    let RegionOfInterest = Prefixed_Name(tnfo, "RegionOfInterest") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:RemoteDataObject</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A file data object stored at a remote location. Don't confuse this class with a RemotePortAddress. This one applies to a particular resource, RemotePortAddress applies to an address, that can have various interpretations.</para>
+    /// labels<para>RemoteDataObject</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#RemoteDataObject">http://tracker.api.gnome.org/ontology/v3/nfo#RemoteDataObject</seealso>
+    let RemoteDataObject = Prefixed_Name(tnfo, "RemoteDataObject") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:RemotePortAddress</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An address specifying a remote host and port. Such an address can be interpreted in many ways (examples of such interpretations include mailboxes, websites, remote calendars or filesystems), depending on an interpretation, various kinds of data may be extracted from such an address.</para>
+    /// labels<para>RemotePortAddress</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#RemotePortAddress">http://tracker.api.gnome.org/ontology/v3/nfo#RemotePortAddress</seealso>
+    let RemotePortAddress = Prefixed_Name(tnfo, "RemotePortAddress") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:SoftwareItem</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A DataObject representing a piece of software. Examples of interpretations of a SoftwareItem include an Application and an OperatingSystem.</para>
+    /// labels<para>SoftwareItem</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#SoftwareItem">http://tracker.api.gnome.org/ontology/v3/nfo#SoftwareItem</seealso>
+    let SoftwareItem = Prefixed_Name(tnfo, "SoftwareItem") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:SoftwareService</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A service published by a piece of software, either by an operating system or an application. Examples of such services may include calendar, addresbook and mailbox managed by a PIM application. This category is introduced to distinguish between data available directly from the applications (Via some Interprocess Communication Mechanisms) and data available from files on a disk. In either case both DataObjects would receive a similar interpretation (e.g. a Mailbox) and wouldn't differ on the content level.</para>
+    /// labels<para>SoftwareService</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#SoftwareService">http://tracker.api.gnome.org/ontology/v3/nfo#SoftwareService</seealso>
+    let SoftwareService = Prefixed_Name(tnfo, "SoftwareService") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:SourceCode</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Code in a compilable or interpreted programming language.</para>
+    /// labels<para>SourceCode</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#SourceCode">http://tracker.api.gnome.org/ontology/v3/nfo#SourceCode</seealso>
+    let SourceCode = Prefixed_Name(tnfo, "SourceCode") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:Trash</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>Represents a container for deleted files, a feature common in modern operating systems.</para>
+    /// labels<para>Trash</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#Trash">http://tracker.api.gnome.org/ontology/v3/nfo#Trash</seealso>
+    let Trash = Prefixed_Name(tnfo, "Trash") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:VectorImage</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A vector image (e.g. SVG)</para>
+    /// labels<para>VectorImage</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#VectorImage">http://tracker.api.gnome.org/ontology/v3/nfo#VectorImage</seealso>
+    let VectorImage = Prefixed_Name(tnfo, "VectorImage") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:WebHistory</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>A web history entry</para>
+    /// labels<para>Web History</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#WebHistory">http://tracker.api.gnome.org/ontology/v3/nfo#WebHistory</seealso>
+    let WebHistory = Prefixed_Name(tnfo, "WebHistory") |> PrefixedName
+    /// <summary>
+    ///   <para>tnfo:aspectRatio</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>The amount of words in a text document.</para>
-    /// labels<para>wordCount</para></remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#wordCount">http://tracker.api.gnome.org/ontology/v3/nfo#wordCount</seealso>
-    let wordCount = Prefixed_Name(tnfo, "wordCount") |> PrefixedName
+    ///   <para>Visual content aspect ratio. (Width divided by Height)</para>
+    /// labels<para>aspectRatio</para></remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/nfo#aspectRatio">http://tracker.api.gnome.org/ontology/v3/nfo#aspectRatio</seealso>
+    let aspectRatio = Prefixed_Name(tnfo, "aspectRatio") |> PrefixedName

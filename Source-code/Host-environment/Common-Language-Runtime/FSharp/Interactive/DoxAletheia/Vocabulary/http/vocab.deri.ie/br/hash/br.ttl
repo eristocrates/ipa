@@ -1,0 +1,125 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix br: <http://vocab.deri.ie/br#>.
+
+<http://vocab.deri.ie/br> <http://purl.org/dc/elements/1.1/creator> br:lorlor;
+                          <http://purl.org/dc/terms/created> "2011-03-25"^^xsd:date;
+                          <http://purl.org/dc/terms/description> "A lightweight ontology to structure e- brainstorming sessions";
+                          <http://purl.org/dc/terms/modified> "2011-07-09"^^xsd:date;
+                          <http://purl.org/dc/terms/partOf> <http://vocab.deri.ie/>;
+                          <http://purl.org/dc/terms/publisher> "http://vocab.deri.ie/br#DERI%2C%20NUI%20Galway";
+                          <http://purl.org/dc/terms/status> <http://purl.org/adms/status/UnderDevelopment>;
+                          <http://purl.org/dc/terms/title> "Brainstorm Ontology";
+                          <http://purl.org/dc/terms/type> <http://purl.org/adms/assettype/Ontology>;
+                          <http://purl.org/vocab/vann/preferredNamespacePrefix> "br";
+                          <http://purl.org/vocab/vann/preferredNamespaceUri> "http://vocab.deri.ie/br#";
+                          a <http://www.w3.org/ns/adms#SemanticAsset>,
+                            <http://www.w3.org/2002/07/owl#Ontology>;
+                          <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/br.html>.
+br:BrTopic a rdfs:Class,
+             <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:label "BrTopic".
+br:Brainstorm a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:label "Brainstorm".
+br:DERI%2C%20NUI%20Galway a <http://purl.org/dc/terms/Agent>;
+                          <http://xmlns.com/foaf/0.1/homepage> <http://www.deri.ie/>;
+                          <http://xmlns.com/foaf/0.1/member> br:lorlor;
+                          <http://xmlns.com/foaf/0.1/name> "DERI, NUI Galway".
+br:Idea a rdfs:Class,
+          <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:label "Idea".
+br:Label a rdfs:Class,
+           <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:label "Label".
+br:ObjDescription a rdfs:Class,
+                    <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "Objective Description".
+br:ObjTitle a rdfs:Class,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:label "Objective Title".
+br:Objective a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:label "Objective".
+br:Participant a rdfs:Class,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "Participant".
+br:Site a rdfs:Class,
+          <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:label "Site".
+br:creator a rdf:Property;
+           rdfs:domain br:Idea;
+           rdfs:label "dc:creator";
+           rdfs:range br:Participant;
+           rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/creator>.
+br:description a rdf:Property;
+               rdfs:domain br:Objective;
+               rdfs:label "dc:description";
+               rdfs:range br:ObjDescription;
+               rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/description>.
+br:hasEvent a rdf:Property;
+            rdfs:domain br:Brainstorm;
+            rdfs:label "br:hasEvent".
+br:hasExpectation a rdf:Property;
+                  rdfs:domain br:Brainstorm;
+                  rdfs:label "br:hasExpectation";
+                  rdfs:range br:Objective.
+br:hasIdea a rdf:Property;
+           rdfs:domain br:Site;
+           rdfs:label "br:hasIdea";
+           rdfs:range br:Idea.
+br:hasParticipant a rdf:Property;
+                  rdfs:domain br:Brainstorm;
+                  rdfs:label "br:hasParticipant";
+                  rdfs:range br:Participant.
+br:hasReview a rdf:Property;
+             rdfs:domain br:Idea;
+             rdfs:label "rev:hasReview".
+br:hasSpace a rdf:Property;
+            rdfs:domain br:Brainstorm;
+            rdfs:label "sioc:has_space".
+br:hasTopic a rdf:Property;
+            rdfs:domain br:Brainstorm;
+            rdfs:label "br:hasTopic";
+            rdfs:range br:BrTopic.
+br:holdsAccount a rdf:Property;
+                rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                rdfs:label "foaf:holdsAccount";
+                rdfs:range br:Participant;
+                rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/holdsAccount>.
+br:lorlor a <http://xmlns.com/foaf/0.1/Person>;
+          <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/br>;
+          <http://xmlns.com/foaf/0.1/mbox> <mailto:lorea.lorenzo@deri.org>;
+          <http://xmlns.com/foaf/0.1/name> "Lorea Lorenzo Uribarren".
+br:member a rdf:Property;
+          rdfs:domain br:Brainstorm;
+          rdfs:label "skos:member";
+          rdfs:range br:Idea.
+br:prefLabel a rdf:Property;
+             rdfs:label "skos:prefLabel";
+             rdfs:range br:Label.
+br:rdf <http://purl.org/dc/terms/FileFormat> <http://vocab.deri.ie/br>;
+       a <http://www.w3.org/ns/adms#SemanticDistribution>;
+       <http://www.w3.org/ns/adms#accessURL> "http://vocab.deri.ie/br.rdf";
+       <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.
+br:semanticRelation a rdf:Property;
+                    rdfs:domain br:Idea;
+                    rdfs:label "skos:semanticRelation";
+                    rdfs:range br:Idea.
+br:taggedBy a rdf:Property;
+            rdfs:label "Tags_taggedBy";
+            rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+br:title a rdf:Property;
+         rdfs:domain br:Objective;
+         rdfs:label "dc:title";
+         rdfs:range br:ObjTitle;
+         rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/title>.
+br:ttl <http://purl.org/dc/terms/FileFormat> <http://vocab.deri.ie/br>;
+       a <http://www.w3.org/ns/adms#SemanticDistribution>;
+       <http://www.w3.org/ns/adms#accessURL> "http://vocab.deri.ie/br.ttl";
+       <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.
+br:type a rdf:Property;
+        rdfs:domain br:Brainstorm;
+        rdfs:label "rdf:type";
+        rdfs:subPropertyOf rdf:type.

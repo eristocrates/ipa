@@ -1,0 +1,331 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix agls: <http://www.agls.gov.au/agls/terms/>.
+
+<http://purl.org/dc/terms/isBasedOn> <http://purl.org/dc/terms/issued> "2002-04-18";
+                                     <http://purl.org/dc/terms/modified> "2009-02-02";
+                                     <http://purl.org/dc/terms/type> rdf:Property;
+                                     a rdf:Property;
+                                     rdfs:comment "A related resource of which the described resource is a performance, production, derivation, translation or interpretation."@en-au;
+                                     rdfs:isDefinedBy agls:;
+                                     rdfs:label "Has Version"@en-au;
+                                     rdfs:subPropertyOf <http://purl.org/dc/terms/relation>,
+                                                        <http://purl.org/dc/elements/1.1/relation>.
+<http://purl.org/dc/terms/isBasisFor> <http://purl.org/dc/terms/issued> "2002-04-18";
+                                      <http://purl.org/dc/terms/modified> "2009-02-02";
+                                      <http://purl.org/dc/terms/type> rdf:Property;
+                                      a rdf:Property;
+                                      rdfs:comment "A related resource that is a performance, production, derivation, translation or interpretation of the described resource."@en-au;
+                                      rdfs:isDefinedBy agls:;
+                                      rdfs:label "Is Version Of"@en-au;
+                                      rdfs:subPropertyOf <http://purl.org/dc/terms/relation>,
+                                                         <http://purl.org/dc/elements/1.1/relation>.
+agls: <http://purl.org/dc/terms/created> "2002-04-18";
+      <http://purl.org/dc/terms/creator> "National Archives of Australia"@en-au;
+      <http://purl.org/dc/terms/description> "The AGLS Metadata Terms Namespace provides URIs for the AGLS Metadata Terms Vocabulary. Vocabulary terms are declared using RDF Schema language to support RDF applications. The AGLS Metadata Terms form a richer vocabulary, which is intended to facilitate discovery of resources. It will be updated according to AGLS Working Group decisions."@en-au;
+      <http://purl.org/dc/terms/language> "English";
+      <http://purl.org/dc/terms/modified> "2010-06-30";
+      <http://purl.org/dc/terms/publisher> "National Archives of Australia"@en-au;
+      <http://purl.org/dc/terms/rights> "Copyright Commonwealth of Australia 2007";
+      <http://purl.org/dc/terms/title> "The AGLS Metadata Terms Namespace providing access to its content by means of an RDF Schema."@en-au.
+agls:AGIFT <http://purl.org/dc/terms/issued> "2002-04-18";
+           <http://purl.org/dc/terms/modified> "2009-02-02";
+           a <http://purl.org/dc/dcam/VocabularyEncodingScheme>,
+             agls:FunctionClass;
+           rdfs:comment "The set of function types specified by the National Archives of Australia."@en-au;
+           rdfs:isDefinedBy agls:;
+           rdfs:label "Australian Governments' Interactive Functions Thesaurus"@en-au;
+           rdfs:seeAlso <http://www.naa.gov.au/agift/>.
+agls:AGLSAgentClass <http://purl.org/dc/terms/issued> "2008-05-27";
+                    <http://purl.org/dc/terms/modified> "2010-04-13";
+                    a rdfs:Class;
+                    rdfs:comment "A set of agent encoding schemes and/or formats"@en-au;
+                    rdfs:isDefinedBy agls:;
+                    rdfs:label "AGLS Agent Class"@en-au.
+agls:ANZSIC <http://purl.org/dc/terms/issued> "2002-04-18";
+            <http://purl.org/dc/terms/modified> "2009-02-02";
+            a <http://purl.org/dc/dcam/VocabularyEncodingScheme>,
+              agls:AudienceClass;
+            rdfs:comment "The set of industries specified by the Australian Bureau of Statistics."@en-au;
+            rdfs:isDefinedBy agls:;
+            rdfs:label "Australian and New Zealand Standard Industrial Classification"@en-au;
+            rdfs:seeAlso <http://www.abs.gov.au/anzsic/>.
+agls:APAIS <http://purl.org/dc/terms/issued> "2002-04-18";
+           <http://purl.org/dc/terms/modified> "2009-02-02";
+           a <http://purl.org/dc/dcam/VocabularyEncodingScheme>,
+             <http://purl.org/dc/terms/SubjectScheme>;
+           rdfs:comment "The set of Australian economic, social, political and cultural affairs subjects specified by the National Library of Australia."@en-au;
+           rdfs:isDefinedBy agls:;
+           rdfs:label "Australian Public Affairs Information Service"@en-au;
+           rdfs:seeAlso <http://www.nla.gov.au/apais/>.
+agls:APT <http://purl.org/dc/terms/issued> "2002-04-18";
+         <http://purl.org/dc/terms/modified> "2009-02-02";
+         a <http://purl.org/dc/dcam/VocabularyEncodingScheme>,
+           <http://purl.org/dc/terms/SubjectScheme>;
+         rdfs:comment "The set of subject terms for indexing Australian images specified by the National Library of Australia"@en-au;
+         rdfs:isDefinedBy agls:;
+         rdfs:label "Australian Picture Thesaurus"@en-au;
+         rdfs:seeAlso <http://www.picturethesaurus.gov.au/>.
+agls:ASGC <http://purl.org/dc/terms/issued> "2002-04-18";
+          <http://purl.org/dc/terms/modified> "2009-02-02";
+          a <http://purl.org/dc/dcam/VocabularyEncodingScheme>,
+            agls:AudienceClass;
+          rdfs:comment "The set of places specified by the Australian Bureau of Statistics"@en-au;
+          rdfs:isDefinedBy agls:;
+          rdfs:label "Australian Standard Geographical Classification"@en-au;
+          rdfs:seeAlso <http://www.abs.gov.au/asgc/>.
+agls:AZNSCO <http://purl.org/dc/terms/issued> "2002-04-18";
+            <http://purl.org/dc/terms/modified> "2009-02-02";
+            a rdfs:Datatype,
+              agls:AudienceClass;
+            rdfs:comment "The set of occupations specified by the Australian Bureau of Statistics."@en-au;
+            rdfs:isDefinedBy agls:;
+            rdfs:label "Australian and New Zealand Standard Classification of Occupations"@en-au;
+            rdfs:seeAlso <http://www.abs.gov.au/anzsco/>.
+agls:AglsAgent <http://purl.org/dc/terms/issued> "2002-04-18";
+               <http://purl.org/dc/terms/modified> "2009-02-02";
+               a rdfs:Datatype,
+                 agls:AgentClass;
+               rdfs:comment "The set of agents defined by contact details according to Dublin Core Structured Values"@en-au;
+               rdfs:isDefinedBy agls:;
+               rdfs:label "AAGLS Agent Scheme"@en-au;
+               rdfs:seeAlso <http://www.agls.gov.au/documents/AglsAgent/>.
+agls:AglsAvail <http://purl.org/dc/terms/issued> "2002-04-18";
+               <http://purl.org/dc/terms/modified> "2009-02-02";
+               a rdfs:Datatype,
+                 agls:AvailClass;
+               rdfs:comment "The set of resource availability or physical access to a resource defined by contact details according to Dublin Core Structured Values"@en-au;
+               rdfs:isDefinedBy agls:;
+               rdfs:label "AGLS Availability Scheme"@en-au;
+               rdfs:seeAlso <http://www.agls.gov.au/documents/AglsAvail/>.
+agls:AglsJuri <http://purl.org/dc/terms/issued> "2002-04-18";
+              <http://purl.org/dc/terms/modified> "2009-02-02";
+              a <http://purl.org/dc/dcam/VocabularyEncodingScheme>,
+                agls:JuriClass;
+              rdfs:comment "The set of Australian jurisdictions specified by the AGLS Jurisdiction Scheme."@en-au;
+              rdfs:isDefinedBy agls:;
+              rdfs:label "AGLS Jurisdiction Vocabulary"@en-au;
+              rdfs:seeAlso <http://www.agls.gov.au/documents/AglsJuri/>.
+agls:AvailClass <http://purl.org/dc/terms/issued> "2007-12-12";
+                <http://purl.org/dc/terms/modified> "2009-02-02";
+                a rdfs:Class;
+                rdfs:comment "A set of availability encoding schemes and/or formats"@en-au;
+                rdfs:isDefinedBy agls:;
+                rdfs:label "Availability Class"@en-au.
+agls:DocumentClass <http://purl.org/dc/terms/issued> "2007-12-12";
+                   <http://purl.org/dc/terms/modified> "2009-02-02";
+                   a rdfs:Class;
+                   rdfs:comment "A set of document encoding schemes and/or formats"@en-au;
+                   rdfs:isDefinedBy agls:;
+                   rdfs:label "Document Class"@en-au.
+agls:FunctionClass <http://purl.org/dc/terms/issued> "2007-12-12";
+                   <http://purl.org/dc/terms/modified> "2010-04-13";
+                   a rdfs:Class;
+                   rdfs:comment "A set of function encoding schemes and/or formats"@en-au;
+                   rdfs:isDefinedBy agls:;
+                   rdfs:label "Function Class"@en-au.
+agls:GOLD <http://purl.org/dc/terms/issued> "2002-04-18";
+          <http://purl.org/dc/terms/modified> "2009-02-02";
+          a rdfs:Datatype,
+            agls:AgentClass;
+          rdfs:comment "The set of agents defined by contact details according to X500 syntax."@en-au;
+          rdfs:isDefinedBy agls:;
+          rdfs:label "Government Online Directory"@en-au;
+          rdfs:seeAlso <http://gold.directory.gov.au/>.
+agls:Geocode <http://purl.org/dc/terms/issued> "2008-10-21";
+             <http://purl.org/dc/terms/modified> "2010-04-13";
+             a rdfs:Datatype,
+               agls:AgentClass;
+             rdfs:comment "Geographic coordinates expressed as latitude and longitude."@en-au;
+             rdfs:isDefinedBy agls:;
+             rdfs:label "Geocode"@en-au.
+agls:JuriClass <http://purl.org/dc/terms/issued> "2007-12-12";
+               <http://purl.org/dc/terms/modified> "2009-02-02";
+               a rdfs:Class;
+               rdfs:comment "A set of jurisdiction encoding schemes and/or formats"@en-au;
+               rdfs:isDefinedBy agls:;
+               rdfs:label "Jurisdiction Class"@en-au.
+agls:Postcode <http://purl.org/dc/terms/issued> "2008-03-05";
+              <http://purl.org/dc/terms/modified> "2009-02-02";
+              a <http://purl.org/dc/dcam/VocabularyEncodingScheme>,
+                agls:AudienceClass;
+              rdfs:comment "The set of postcodes specified by the Australian Postal Corporation."@en-au;
+              rdfs:isDefinedBy agls:;
+              rdfs:label "Australian Postcode"@en-au.
+agls:ServiceClass <http://purl.org/dc/terms/issued> "2007-12-12";
+                  <http://purl.org/dc/terms/modified> "2010-04-13";
+                  a rdfs:Class;
+                  rdfs:comment "A set of service encoding schemes and/or formats"@en-au;
+                  rdfs:isDefinedBy agls:;
+                  rdfs:label "Service Class"@en-au.
+agls:TAGS <http://purl.org/dc/terms/issued> "2002-04-18";
+          <http://purl.org/dc/terms/modified> "2009-02-02";
+          a <http://purl.org/dc/dcam/VocabularyEncodingScheme>,
+            <http://purl.org/dc/terms/SubjectScheme>;
+          rdfs:comment "The set of labelled subject types specified by the Australian Government Information Management Office"@en-au;
+          rdfs:isDefinedBy agls:;
+          rdfs:label "Thesaurus of Australian Governments"@en-au;
+          rdfs:seeAlso <http://www.agimo.gov.au/services/tags/>.
+agls:act <http://purl.org/dc/terms/issued> "2002-04-18";
+         <http://purl.org/dc/terms/modified> "2009-02-02";
+         <http://purl.org/dc/terms/type> rdf:Property;
+         a rdf:Property;
+         rdfs:comment "A specific piece of legislation which requires or drives the creation or provision of the resource."@en-au;
+         rdfs:isDefinedBy agls:;
+         rdfs:label "Act"@en-au;
+         rdfs:subPropertyOf agls:mandate,
+                            <http://www.agls.gov.au/agls/1.2/mandate>.
+agls:aggregationLevel <http://purl.org/dc/terms/description> "There are only two values possible for this refinement, either item or collection."@en-au;
+                      <http://purl.org/dc/terms/issued> "2002-04-18";
+                      <http://purl.org/dc/terms/modified> "2007-12-19";
+                      <http://purl.org/dc/terms/type> rdf:Property;
+                      a rdf:Property;
+                      rdfs:comment "The level of aggregation of the described resource."@en-au;
+                      rdfs:domain <http://purl.org/dc/terms/Collection>;
+                      rdfs:isDefinedBy agls:;
+                      rdfs:label "Aggregation Level"@en-au;
+                      rdfs:subPropertyOf <http://purl.org/dc/terms/type>,
+                                         <http://purl.org/dc/elements/1.1/type>.
+agls:agls-audience <http://purl.org/dc/terms/issued> "2002-04-18";
+                   <http://purl.org/dc/terms/modified> "2009-02-02";
+                   a <http://purl.org/dc/dcam/VocabularyEncodingScheme>,
+                     rdfs:Class,
+                     agls:AgentClass;
+                   rdfs:comment "The set of audience types specified by the AGLS Audience Scheme."@en-au;
+                   rdfs:isDefinedBy agls:;
+                   rdfs:label "AGLS Audience Vocabulary"@en-au;
+                   rdfs:seeAlso <http://www.agls.gov.au/documents/agls-audience/>.
+agls:agls-document <http://purl.org/dc/terms/issued> "2002-04-18";
+                   <http://purl.org/dc/terms/modified> "2009-02-02";
+                   a <http://purl.org/dc/dcam/VocabularyEncodingScheme>,
+                     agls:DocumentClass;
+                   rdfs:comment "The set of document types specified by the AGLS Document Scheme."@en-au;
+                   rdfs:isDefinedBy agls:;
+                   rdfs:label "AGLS Document Vocabulary"@en-au;
+                   rdfs:seeAlso <http://www.agls.gov.au/documents/agls-document/>.
+agls:agls-service <http://purl.org/dc/terms/issued> "2002-04-18";
+                  <http://purl.org/dc/terms/modified> "2010-04-13";
+                  a <http://purl.org/dc/dcam/VocabularyEncodingScheme>,
+                    agls:ServiceClass;
+                  rdfs:comment "The set of service types specified by the AGLS Service Scheme."@en-au;
+                  rdfs:isDefinedBy agls:;
+                  rdfs:label "AGLS Service Vocabulary"@en-au;
+                  rdfs:seeAlso <http://www.agls.gov.au/documents/agls-service/>.
+agls:availability <http://purl.org/dc/terms/issued> "2007-12-19";
+                  <http://purl.org/dc/terms/modified> "2009-02-02";
+                  <http://purl.org/dc/terms/type> rdf:Property;
+                  a rdf:Property;
+                  rdfs:comment "How the resource can be obtained or accessed, or contact information."@en-au;
+                  rdfs:isDefinedBy agls:;
+                  rdfs:label "Availability"@en-au;
+                  rdfs:subPropertyOf <http://www.agls.gov.au/agls/1.2/availability>.
+agls:case <http://purl.org/dc/terms/issued> "2002-04-18";
+          <http://purl.org/dc/terms/modified> "2009-02-02";
+          <http://purl.org/dc/terms/type> rdf:Property;
+          a rdf:Property;
+          rdfs:comment "A specific piece of case law which requires or drives the creation or provision of the resource."@en-au;
+          rdfs:isDefinedBy agls:;
+          rdfs:label "Case"@en-au;
+          rdfs:subPropertyOf agls:mandate,
+                             <http://www.agls.gov.au/agls/1.2/mandate>.
+agls:category <http://purl.org/dc/terms/description> "There are only three valid values for this property, 'service', 'document' or 'agency'."@en-au;
+              <http://purl.org/dc/terms/issued> "2002-04-18";
+              <http://purl.org/dc/terms/modified> "2009-02-02";
+              <http://purl.org/dc/terms/type> rdf:Property;
+              a rdf:Property;
+              rdfs:comment "The generic type of the resource being described."@en-au;
+              rdfs:isDefinedBy agls:;
+              rdfs:label "Category"@en-au;
+              rdfs:subPropertyOf <http://purl.org/dc/terms/type>,
+                                 <http://purl.org/dc/elements/1.1/type>.
+agls:dateLicensed <http://purl.org/dc/terms/issued> "2007-12-12";
+                  <http://purl.org/dc/terms/modified> "2009-02-02";
+                  <http://purl.org/dc/terms/type> rdf:Property;
+                  a rdf:Property;
+                  rdfs:comment "Date a license was applied or became effective."@en-au;
+                  rdfs:isDefinedBy agls:;
+                  rdfs:label "Date Licensed"@en-au;
+                  rdfs:range rdfs:Literal;
+                  rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>,
+                                     <http://purl.org/dc/terms/date>.
+agls:documentType <http://purl.org/dc/terms/description> "Document is used in its widest sense and includes such things as software, sound files and images."@en-au;
+                  <http://purl.org/dc/terms/issued> "2002-04-18";
+                  <http://purl.org/dc/terms/modified> "2007-12-19";
+                  <http://purl.org/dc/terms/type> rdf:Property;
+                  a rdf:Property;
+                  rdfs:comment "The form of the resource where category = 'document'."@en-au;
+                  rdfs:isDefinedBy agls:;
+                  rdfs:label "Document Type"@en-au;
+                  rdfs:subPropertyOf <http://purl.org/dc/terms/type>,
+                                     <http://purl.org/dc/elements/1.1/type>.
+agls:edna-audience <http://purl.org/dc/terms/issued> "2002-04-18";
+                   <http://purl.org/dc/terms/modified> "2009-02-02";
+                   a <http://purl.org/dc/dcam/VocabularyEncodingScheme>,
+                     agls:AudienceClass;
+                   rdfs:comment "The set of audience types specified by Education Network Australia."@en-au;
+                   rdfs:isDefinedBy agls:;
+                   rdfs:label "Education Network Australia Audience Vocabulary"@en-au;
+                   rdfs:seeAlso <http://www.edna.edu.au/edna/go/resources/metadata/>.
+agls:function <http://purl.org/dc/terms/issued> "2007-12-19";
+              <http://purl.org/dc/terms/modified> "2007-12-19";
+              <http://purl.org/dc/terms/type> rdf:Property;
+              a rdf:Property;
+              rdfs:comment "The business function to which the resource relates."@en-au;
+              rdfs:isDefinedBy agls:;
+              rdfs:label "Function"@en-au;
+              rdfs:subPropertyOf <http://www.agls.gov.au/agls/1.2/function>.
+agls:jurisdiction <http://purl.org/dc/terms/description> "Jurisdiction is a description of the territory over which a particular government exercises its authority or a particular business transacts its operations, to which the resource content is applicable."@en-au;
+                  <http://purl.org/dc/terms/issued> "2002-04-18";
+                  <http://purl.org/dc/terms/modified> "2007-12-19";
+                  <http://purl.org/dc/terms/type> rdf:Property;
+                  a rdf:Property;
+                  rdfs:comment "The name of the political/administrative entity covered by the resource."@en-au;
+                  rdfs:domain <http://purl.org/dc/terms/Jurisdiction>;
+                  rdfs:isDefinedBy agls:;
+                  rdfs:label "Jurisdiction"@en-au;
+                  rdfs:subPropertyOf <http://purl.org/dc/terms/coverage>,
+                                     <http://purl.org/dc/elements/1.1/coverage>.
+agls:mandate <http://purl.org/dc/terms/issued> "2007-12-19";
+             <http://purl.org/dc/terms/modified> "2009-02-02";
+             <http://purl.org/dc/terms/type> rdf:Property;
+             a rdf:Property;
+             rdfs:comment "A specific legal instrument which requires a resource to be created or made available."@en-au;
+             rdfs:isDefinedBy agls:;
+             rdfs:label "Mandate"@en-au;
+             rdfs:subPropertyOf <http://www.agls.gov.au/agls/1.2/mandate>,
+                                <http://purl.org/dc/elements/1.1/mandate>.
+agls:protectiveMarking <http://purl.org/dc/terms/issued> "2007-12-12";
+                       <http://purl.org/dc/terms/modified> "2009-02-06";
+                       <http://purl.org/dc/terms/type> rdf:Property;
+                       a rdf:Property;
+                       rdfs:comment "A protective marking applied to the resource."@en-au;
+                       rdfs:isDefinedBy agls:;
+                       rdfs:label "Protective Marking"@en-au;
+                       rdfs:subPropertyOf <http://purl.org/dc/terms/rights>,
+                                          <http://purl.org/dc/elements/1.1/rights>.
+agls:regulation <http://purl.org/dc/terms/issued> "2002-04-18";
+                <http://purl.org/dc/terms/modified> "2009-02-02";
+                <http://purl.org/dc/terms/type> rdf:Property;
+                a rdf:Property;
+                rdfs:comment "A specific regulation which requires or drives the creation or provision of the resource."@en-au;
+                rdfs:isDefinedBy agls:;
+                rdfs:label "Regulation"@en-au;
+                rdfs:subPropertyOf agls:mandate,
+                                   <http://www.agls.gov.au/agls/1.2/mandate>.
+agls:roleCode <http://purl.org/dc/terms/issued> "2008-10-07";
+              <http://purl.org/dc/terms/modified> "2009-02-02";
+              a <http://purl.org/dc/dcam/VocabularyEncodingScheme>,
+                agls:AudienceClass;
+              rdfs:comment "The set of functions codes to describe the function performed by the responsible party."@en-au;
+              rdfs:isDefinedBy agls:;
+              rdfs:label "Role Code"@en-au.
+agls:serviceType <http://purl.org/dc/terms/issued> "2002-04-18";
+                 <http://purl.org/dc/terms/modified> "2007-12-19";
+                 <http://purl.org/dc/terms/type> rdf:Property;
+                 a rdf:Property;
+                 rdfs:comment "The form of the resource where category = 'service'."@en-au;
+                 rdfs:isDefinedBy agls:;
+                 rdfs:label "Service Type"@en-au;
+                 rdfs:subPropertyOf <http://purl.org/dc/terms/type>,
+                                    <http://purl.org/dc/elements/1.1/type>.

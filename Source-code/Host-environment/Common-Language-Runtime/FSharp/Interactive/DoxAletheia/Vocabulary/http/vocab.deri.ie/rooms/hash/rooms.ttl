@@ -1,0 +1,78 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rooms: <http://vocab.deri.ie/rooms#>.
+
+<http://vocab.deri.ie/rooms> <http://purl.org/dc/elements/1.1/creator> rooms:cygri;
+                             <http://purl.org/dc/terms/created> "2010-04-15"^^xsd:date;
+                             <http://purl.org/dc/terms/description> "A simple vocabulary for describing the rooms in a building.";
+                             <http://purl.org/dc/terms/modified> "2012-10-02"^^xsd:date;
+                             <http://purl.org/dc/terms/partOf> <http://vocab.deri.ie/>;
+                             <http://purl.org/dc/terms/publisher> "http://vocab.deri.ie/rooms#Digital%20Enterprise%20Research%20Institute%2C%20NUI%20Galway";
+                             <http://purl.org/dc/terms/status> <http://purl.org/adms/status/UnderDevelopment>;
+                             <http://purl.org/dc/terms/title> "Buildings and Rooms Vocabulary";
+                             <http://purl.org/dc/terms/type> <http://purl.org/adms/assettype/Ontology>;
+                             <http://purl.org/vocab/vann/preferredNamespacePrefix> "rooms";
+                             <http://purl.org/vocab/vann/preferredNamespaceUri> "http://vocab.deri.ie/rooms#";
+                             a <http://www.w3.org/ns/adms#SemanticAsset>,
+                               <http://www.w3.org/2002/07/owl#Ontology>;
+                             <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/rooms.html>.
+rooms:Building a rdfs:Class,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "A human-made structure used for sheltering or continuous occupancy.";
+               rdfs:label "Building";
+               <http://www.w3.org/2002/07/owl#disjointWith> <http://xmlns.com/foaf/0.1/Document>,
+                                                            <http://xmlns.com/foaf/0.1/Agent>.
+rooms:Desk a rdfs:Class,
+             <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "A table used in a work or office setting, typically for reading, writing, or computer use.";
+           rdfs:label "Desk";
+           <http://www.w3.org/2002/07/owl#disjointWith> <http://xmlns.com/foaf/0.1/Document>,
+                                                        <http://xmlns.com/foaf/0.1/Agent>.
+rooms:Digital%20Enterprise%20Research%20Institute%2C%20NUI%20Galway a <http://purl.org/dc/terms/Agent>;
+                                                                    <http://xmlns.com/foaf/0.1/homepage> <http://www.deri.ie/>;
+                                                                    <http://xmlns.com/foaf/0.1/member> rooms:cygri;
+                                                                    <http://xmlns.com/foaf/0.1/name> "Digital Enterprise Research Institute, NUI Galway".
+rooms:Floor a rdfs:Class,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A level part of a building that has a permanent roof. A storey of a building. ";
+            rdfs:label "Floor";
+            <http://www.w3.org/2002/07/owl#disjointWith> <http://xmlns.com/foaf/0.1/Document>,
+                                                         <http://xmlns.com/foaf/0.1/Agent>.
+rooms:FloorSection a rdfs:Class,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "A named part of a floor of a building. Typically used to denote several rooms that are grouped together based on spatial arrangement or use.";
+                   rdfs:label "Floor Section";
+                   <http://www.w3.org/2002/07/owl#disjointWith> <http://xmlns.com/foaf/0.1/Agent>,
+                                                                <http://xmlns.com/foaf/0.1/Document>.
+rooms:Room a rdfs:Class,
+             <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "A space inside a structure, typically separated from the outside by exterior walls and from other rooms in the same structure by internal walls.";
+           rdfs:label "Room";
+           <http://www.w3.org/2002/07/owl#disjointWith> <http://xmlns.com/foaf/0.1/Document>,
+                                                        <http://xmlns.com/foaf/0.1/Agent>.
+rooms:Site a rdfs:Class,
+             <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "An area of land with a designated purpose, such as a university Campus, a housing estate, or a building site.";
+           rdfs:label "Site";
+           <http://www.w3.org/2002/07/owl#disjointWith> <http://xmlns.com/foaf/0.1/Agent>,
+                                                        <http://xmlns.com/foaf/0.1/Document>.
+rooms:contains a rdf:Property;
+               rdfs:comment "The object resource is physically and spatially contained in the subject resource. Being the subject or object of this property implies being a spatial object. Intended for use in the context of buildings, rooms, etc.";
+               rdfs:label "Contains".
+rooms:cygri a <http://xmlns.com/foaf/0.1/Person>;
+            <http://xmlns.com/foaf/0.1/homepage> <http://richard.cyganiak.de/>;
+            <http://xmlns.com/foaf/0.1/mbox> <mailto:richard.cyganiak@deri.org>;
+            <http://xmlns.com/foaf/0.1/name> "Richard Cyganiak".
+rooms:occupant a rdf:Property;
+               rdfs:comment "An agent that generally occupies the physical area of the subject resource. Having this property implies being a spatial object. Being the object of this property implies being an agent. Intended for use with buildings, rooms, desks, etc.";
+               rdfs:label "Occupant";
+               rdfs:range <http://xmlns.com/foaf/0.1/Agent>.
+rooms:rdf <http://purl.org/dc/terms/FileFormat> <http://vocab.deri.ie/rooms>;
+          a <http://www.w3.org/ns/adms#SemanticDistribution>;
+          <http://www.w3.org/ns/adms#accessURL> "http://vocab.deri.ie/rooms.rdf";
+          <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.
+rooms:ttl <http://purl.org/dc/terms/FileFormat> <http://vocab.deri.ie/rooms>;
+          a <http://www.w3.org/ns/adms#SemanticDistribution>;
+          <http://www.w3.org/ns/adms#accessURL> "http://vocab.deri.ie/rooms.ttl";
+          <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.

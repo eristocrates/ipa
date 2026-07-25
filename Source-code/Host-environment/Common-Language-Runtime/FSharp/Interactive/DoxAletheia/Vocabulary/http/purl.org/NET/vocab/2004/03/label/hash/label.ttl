@@ -1,0 +1,71 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix label: <http://purl.org/net/vocab/2004/03/label#>.
+
+<http://purl.org/net/vocab/2004/03/label> <http://purl.org/dc/terms/created> "2004-03-28"@en;
+                                          <http://web.resource.org/cc/license> <http://creativecommons.org/licenses/by/1.0/>;
+                                          a <http://www.w3.org/2002/07/owl#Ontology>,
+                                            <http://web.resource.org/cc/Work>;
+                                          rdfs:comment "Term definitions for singular and plural label properties, and their inverses, for RDF terms"@en,
+                                                       "Definitioner for relationer mellem en term, dens inverse, og dens navn i entals- og flertalsform"@da,
+                                                       "Definiciones de etiquetas plurales y singulares de términos RDF"@es;
+                                          rdfs:label "label"@en;
+                                          <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/2002/07/owl>,
+                                                                                  <http://www.w3.org/2000/01/rdf-schema>;
+                                          <http://xmlns.com/foaf/0.1/maker> [<http://xmlns.com/foaf/0.1/homepage> <http://www.wasab.dk/morten/> ; 
+                                                                             <http://xmlns.com/foaf/0.1/mbox_sha1sum> "65b983bb397fb71849da910996741752ace8369b" ; 
+                                                                             <http://xmlns.com/foaf/0.1/name> "Morten Høybye Frederiksen" ; 
+                                                                             a <http://xmlns.com/foaf/0.1/Person>].
+label:inversePlural label:plural "plural forms of inverses"@en,
+                                 "flertalsformer for inverse"@da;
+                    label:singular "flertalsform for invers"@da,
+                                   "plural form of inverse"@en;
+                    a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                    rdfs:comment "En relation mellem en term og dens inverses navn i flertalsform"@da,
+                                 "A relation between a term and the label of its inverse in literal plural form"@en;
+                    rdfs:isDefinedBy <http://purl.org/net/vocab/2004/03/label>;
+                    rdfs:label "inverse plural"@en,
+                               "inverst flertal"@da;
+                    rdfs:subPropertyOf rdfs:label.
+label:inverseSingular label:plural "singular forms of inverses"@en,
+                                   "entalsformer for inverse"@da;
+                      label:singular "singular form of inverse"@en,
+                                     "entalsform for invers"@da;
+                      a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                      rdfs:comment "En relation mellem en term og dens inverses navn i entalsform"@da,
+                                   "A relation between a term and the label of its inverse in literal singular form"@en;
+                      rdfs:isDefinedBy <http://purl.org/net/vocab/2004/03/label>;
+                      rdfs:label "inverse singular"@en,
+                                 "inverst ental"@da;
+                      rdfs:subPropertyOf rdfs:label.
+label:plural label:plural "plural forms"@en,
+                          "formas plurales"@es,
+                          "flertalsformer"@da;
+             label:singular "flertalsform"@da,
+                            "forma plural"@es,
+                            "plural form"@en;
+             a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+             rdfs:comment "Una relación entre un término y su etiqueta en forma plural"@es,
+                          "A relation between a term and its label in literal plural form"@en,
+                          "En relation mellem en term og dens navn i flertalsform"@da;
+             rdfs:isDefinedBy <http://purl.org/net/vocab/2004/03/label>;
+             rdfs:label "flertal"@da,
+                        "plural"@en,
+                        "plural"@es;
+             rdfs:subPropertyOf rdfs:label.
+label:singular label:plural "singular forms"@en,
+                            "entalsformer"@da,
+                            "formas singulares"@es;
+               label:singular "forma singular"@es,
+                              "singular form"@en,
+                              "entalsform"@da;
+               a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+               rdfs:comment "Una relación entre un término y su etiqueta en forma singular"@es,
+                            "A relation between a term and its label in literal singular form"@en,
+                            "En relation mellem en term og dens navn i entalsform"@da;
+               rdfs:isDefinedBy <http://purl.org/net/vocab/2004/03/label>;
+               rdfs:label "singular"@en,
+                          "singular"@es,
+                          "ental"@da;
+               rdfs:subPropertyOf rdfs:label.

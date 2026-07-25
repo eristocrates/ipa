@@ -1,0 +1,140 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix passim: <http://data.lirmm.fr/ontologies/passim#>.
+
+<http://data.lirmm.fr/ontologies/passim> <http://purl.org/dc/elements/1.1/creator> passim:snake;
+                                         <http://purl.org/dc/terms/created> "2011-06-20"^^xsd:date;
+                                         <http://purl.org/dc/terms/description> "This ontology is the description of the operation of a transport information service.";
+                                         <http://purl.org/dc/terms/modified> "2014-07-22"^^xsd:date;
+                                         <http://purl.org/dc/terms/partOf> <http://data.lirmm.fr/ontologies>;
+                                         <http://purl.org/dc/terms/status> <http://purl.org/adms/status/UnderDevelopment>;
+                                         <http://purl.org/dc/terms/title> "PASSIM ontology";
+                                         <http://purl.org/dc/terms/type> <http://purl.org/adms/assettype/Ontology>;
+                                         <http://purl.org/vocab/vann/preferredNamespacePrefix> "passim";
+                                         <http://purl.org/vocab/vann/preferredNamespaceUri> "http://data.lirmm.fr/ontologies/passim#";
+                                         a <http://www.w3.org/2002/07/owl#Ontology>,
+                                           <http://www.w3.org/ns/adms#SemanticAsset>;
+                                         <http://xmlns.com/foaf/0.1/homepage> <http://data.lirmm.fr/ontologies/passim.html>.
+passim:Coverage a rdfs:Class,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "This class represents the coverage of a service of transport.";
+                rdfs:label "Coverage".
+passim:Mode a rdfs:Class,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "This class represents the differents modes of transport.";
+            rdfs:label "Mode".
+passim:SMSInformation a rdf:Property,
+                        <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:comment """The property \"SMSInformation\" represents the SMS service of the transport.""";
+                      rdfs:domain passim:TransportServiceInformation;
+                      rdfs:label "SMSInformation";
+                      rdfs:range xsd:string.
+passim:Service a rdfs:Class,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "This class represents the services of transport.";
+               rdfs:label "Service".
+passim:TransportServiceInformation a rdfs:Class,
+                                     <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:comment "This class represents an information service of transport.";
+                                   rdfs:label "TransportServiceInformation".
+passim:centerTown a rdf:Property;
+                  rdfs:comment """The property \"centerTown\" represents the main town of the transport.""";
+                  rdfs:domain passim:TransportServiceInformation;
+                  rdfs:label "centerTown".
+passim:cityThrough a rdf:Property;
+                   rdfs:comment """The property \"cityThrough\" represents a city through by the transport. This property will be instanciate as many times as there is city through by the transport.""";
+                   rdfs:domain passim:TransportServiceInformation;
+                   rdfs:label "cityThrough".
+passim:comment a rdf:Property,
+                 <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment """The property \"comment\" represents the comments about the transport.""";
+               rdfs:domain passim:TransportServiceInformation;
+               rdfs:label "comment";
+               rdfs:range xsd:string.
+passim:department a rdf:Property;
+                  rdfs:comment """The property \"department\" represents the department of the transport.""";
+                  rdfs:domain passim:TransportServiceInformation;
+                  rdfs:label "department".
+passim:infoPoint a rdf:Property,
+                   <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:comment """The property \"infoPoint\" represents the point of information.""";
+                 rdfs:domain passim:TransportServiceInformation;
+                 rdfs:label "infoPoint";
+                 rdfs:range xsd:string.
+passim:isAccessibilityForDisabledPerson a rdf:Property,
+                                          <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                        rdfs:comment """The property \"isAccessibilityForDisabledPerson\" represents if the transport is for the disabled person or not.""";
+                                        rdfs:domain passim:TransportServiceInformation;
+                                        rdfs:label "isAccessibilityForDisabledPerson";
+                                        rdfs:range xsd:boolean.
+passim:isWebSiteAccessibilityForDisabledPerson a rdf:Property,
+                                                 <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                               rdfs:comment """The property \"isWebSiteAccessibilityForDisabledPerson\" represents if the website of the transport is for the disabled person or not.""";
+                                               rdfs:domain passim:TransportServiceInformation;
+                                               rdfs:label "isWebSiteAccessibilityForDisabledPerson";
+                                               rdfs:range xsd:boolean.
+passim:landInformation a rdf:Property,
+                         <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:comment """The property \"landInformation\" represents the informations about the land through by the transport.""";
+                       rdfs:domain passim:TransportServiceInformation;
+                       rdfs:label "landInformation";
+                       rdfs:range xsd:string.
+passim:mobileApplication a rdf:Property,
+                           <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:comment """The property \"mobileApplication\" represents the mobile application of the transport.""";
+                         rdfs:domain passim:TransportServiceInformation;
+                         rdfs:label "mobileApplication";
+                         rdfs:range xsd:string.
+passim:modeOfTransport a rdf:Property;
+                       rdfs:comment """The property \"modeOfTransport\" represents a mode of transport. This property will be instanciate as many times as there is mode of transport.""";
+                       rdfs:domain passim:TransportServiceInformation;
+                       rdfs:label "modeOfTransport";
+                       rdfs:range passim:Mode.
+passim:postalCode a rdf:Property;
+                  rdfs:comment """The property \"postalCode\" represents the the postal code of the main town of the transport.""";
+                  rdfs:domain passim:TransportServiceInformation;
+                  rdfs:label "postalCode".
+passim:rdf <http://purl.org/dc/terms/FileFormat> <http://data.lirmm.fr/ontologies/passim>;
+           a <http://www.w3.org/ns/adms#SemanticDistribution>;
+           <http://www.w3.org/ns/adms#accessURL> "http://data.lirmm.fr/ontologies/passim.rdf";
+           <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.
+passim:region a rdf:Property;
+              rdfs:comment """The property \"region\" represents the region of the transport.""";
+              rdfs:domain passim:TransportServiceInformation;
+              rdfs:label "region".
+passim:remark a rdf:Property,
+                <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:comment """The property \"remark\" represents the remarks about the transport.""";
+              rdfs:domain passim:TransportServiceInformation;
+              rdfs:label "remark";
+              rdfs:range xsd:string.
+passim:serviceCoverage a rdf:Property;
+                       rdfs:comment """The property \"serviceCoverage\" represents the coverage of the transport.""";
+                       rdfs:domain passim:TransportServiceInformation;
+                       rdfs:label "serviceCoverage";
+                       rdfs:range passim:Coverage.
+passim:serviceName a rdf:Property,
+                     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment """The property \"serviceName\" represents the name of the service.""";
+                   rdfs:domain passim:TransportServiceInformation;
+                   rdfs:label "serviceName";
+                   rdfs:range xsd:string.
+passim:snake a <http://xmlns.com/foaf/0.1/Person>;
+             <http://xmlns.com/foaf/0.1/homepage> <http://jplu.developpez.com/>;
+             <http://xmlns.com/foaf/0.1/name> "Julien PLU".
+passim:ttl <http://purl.org/dc/terms/FileFormat> <http://data.lirmm.fr/ontologies/passim>;
+           a <http://www.w3.org/ns/adms#SemanticDistribution>;
+           <http://www.w3.org/ns/adms#accessURL> "http://data.lirmm.fr/ontologies/passim.ttl";
+           <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.
+passim:typeOfService a rdf:Property;
+                     rdfs:comment """The property \"typeOfService\" represents a type of service.""";
+                     rdfs:domain passim:TransportServiceInformation;
+                     rdfs:label "typeOfService";
+                     rdfs:range passim:Service.
+passim:webSite a rdf:Property,
+                 <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment """The property \"webSite\" represents the Web site of the transport.""";
+               rdfs:domain passim:TransportServiceInformation;
+               rdfs:label "webSite";
+               rdfs:range xsd:string.

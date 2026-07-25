@@ -6,25 +6,13 @@ open type Prefix_ID
 
 module fnom =
     let _namespace_iri = Namespace_Iri fnom |> NamespaceIRI
-
-    /// <summary>
-    ///   <para>fnom:PositionParameterMapping</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A position parameter mapping uses a position to map a parameter of an fno:Implementation to an fno:Parameter</para>
-    /// labels<para>Position Parameter Mapping</para></remarks>
-    /// <seealso href="https://w3id.org/function/vocabulary/mapping#PositionParameterMapping">https://w3id.org/function/vocabulary/mapping#PositionParameterMapping</seealso>
-    let PositionParameterMapping =
-        Prefixed_Name(fnom, "PositionParameterMapping") |> PrefixedName
-
     /// <summary>
     ///   <para>fnom:</para>
     /// </summary>
     /// <remarks>
     ///   <para>voaf:Vocabulary</para>
-    ///   <para>owl:Ontology</para>
     ///   <para>owl:NamedIndividual</para>
+    ///   <para>owl:Ontology</para>
     ///   <para>- Version 0.2.1: Updated metadata
     /// - Version 0.2.0: ReturnMapping
     /// - Version 0.1.0: creation.</para>
@@ -55,6 +43,17 @@ module fnom =
         Prefixed_Name(fnom, "DefaultReturnMapping") |> PrefixedName
 
     /// <summary>
+    ///   <para>fnom:PositionParameterMapping</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A position parameter mapping uses a position to map a parameter of an fno:Implementation to an fno:Parameter</para>
+    /// labels<para>Position Parameter Mapping</para></remarks>
+    /// <seealso href="https://w3id.org/function/vocabulary/mapping#PositionParameterMapping">https://w3id.org/function/vocabulary/mapping#PositionParameterMapping</seealso>
+    let PositionParameterMapping =
+        Prefixed_Name(fnom, "PositionParameterMapping") |> PrefixedName
+
+    /// <summary>
     ///   <para>fnom:PropertyParameterMapping</para>
     /// </summary>
     /// <remarks>
@@ -64,39 +63,6 @@ module fnom =
     /// <seealso href="https://w3id.org/function/vocabulary/mapping#PropertyParameterMapping">https://w3id.org/function/vocabulary/mapping#PropertyParameterMapping</seealso>
     let PropertyParameterMapping =
         Prefixed_Name(fnom, "PropertyParameterMapping") |> PrefixedName
-
-    /// <summary>
-    ///   <para>fnom:functionOutput</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:AnnotationProperty</para>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Connects a function output to a return mapping.</para>
-    /// labels<para>function output</para></remarks>
-    /// <seealso href="https://w3id.org/function/vocabulary/mapping#functionOutput">https://w3id.org/function/vocabulary/mapping#functionOutput</seealso>
-    let functionOutput = Prefixed_Name(fnom, "functionOutput") |> PrefixedName
-
-    /// <summary>
-    ///   <para>fnom:implementationParameterPosition</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>owl:AnnotationProperty</para>
-    ///   <para>Connects an implementation parameter position to a parameter mapping.</para>
-    /// labels<para>implementation parameter position</para></remarks>
-    /// <seealso href="https://w3id.org/function/vocabulary/mapping#implementationParameterPosition">https://w3id.org/function/vocabulary/mapping#implementationParameterPosition</seealso>
-    let implementationParameterPosition =
-        Prefixed_Name(fnom, "implementationParameterPosition") |> PrefixedName
-
-    /// <summary>
-    ///   <para>fnom:method-name</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Connects a method name to a method mapping.</para>
-    /// labels<para>method name</para></remarks>
-    /// <seealso href="https://w3id.org/function/vocabulary/mapping#method-name">https://w3id.org/function/vocabulary/mapping#method-name</seealso>
-    let method_name = Prefixed_Name(fnom, "method-name") |> PrefixedName
 
     /// <summary>
     ///   <para>fnom:ExceptionReturnMapping</para>
@@ -138,6 +104,44 @@ module fnom =
         Prefixed_Name(fnom, "constantParameterValue") |> PrefixedName
 
     /// <summary>
+    ///   <para>fnom:functionOutput</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:AnnotationProperty</para>
+    ///   <para>Connects a function output to a return mapping.</para>
+    /// labels<para>function output</para></remarks>
+    /// <seealso href="https://w3id.org/function/vocabulary/mapping#functionOutput">https://w3id.org/function/vocabulary/mapping#functionOutput</seealso>
+    let functionOutput = Prefixed_Name(fnom, "functionOutput") |> PrefixedName
+    /// <summary>
+    ///   <para>fnom:ReturnMapping</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="https://w3id.org/function/vocabulary/mapping#ReturnMapping">https://w3id.org/function/vocabulary/mapping#ReturnMapping</seealso>
+    let ReturnMapping = Prefixed_Name(fnom, "ReturnMapping") |> PrefixedName
+
+    /// <summary>
+    ///   <para>fnom:implementationParameterPosition</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:AnnotationProperty</para>
+    ///   <para>Connects an implementation parameter position to a parameter mapping.</para>
+    /// labels<para>implementation parameter position</para></remarks>
+    /// <seealso href="https://w3id.org/function/vocabulary/mapping#implementationParameterPosition">https://w3id.org/function/vocabulary/mapping#implementationParameterPosition</seealso>
+    let implementationParameterPosition =
+        Prefixed_Name(fnom, "implementationParameterPosition") |> PrefixedName
+
+    /// <summary>
+    ///   <para>fnom:method-name</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Connects a method name to a method mapping.</para>
+    /// labels<para>method name</para></remarks>
+    /// <seealso href="https://w3id.org/function/vocabulary/mapping#method-name">https://w3id.org/function/vocabulary/mapping#method-name</seealso>
+    let method_name = Prefixed_Name(fnom, "method-name") |> PrefixedName
+    /// <summary>
     ///   <para>fnom:functionParameter</para>
     /// </summary>
     /// <remarks>
@@ -151,8 +155,8 @@ module fnom =
     ///   <para>fnom:implementationProperty</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
     ///   <para>owl:AnnotationProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
     ///   <para>Connects an implementation parameter label to a parameter mapping.</para>
     /// labels<para>implementation property</para></remarks>
     /// <seealso href="https://w3id.org/function/vocabulary/mapping#implementationProperty">https://w3id.org/function/vocabulary/mapping#implementationProperty</seealso>
@@ -163,15 +167,9 @@ module fnom =
     ///   <para>fnom:repeatableParameter</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
     ///   <para>owl:AnnotationProperty</para>
+    ///   <para>owl:DatatypeProperty</para>
     ///   <para>Flag indicating whether the parameter can be repeated.</para>
     /// labels<para>repeatable parameter value</para></remarks>
     /// <seealso href="https://w3id.org/function/vocabulary/mapping#repeatableParameter">https://w3id.org/function/vocabulary/mapping#repeatableParameter</seealso>
     let repeatableParameter = Prefixed_Name(fnom, "repeatableParameter") |> PrefixedName
-    /// <summary>
-    ///   <para>fnom:ReturnMapping</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="https://w3id.org/function/vocabulary/mapping#ReturnMapping">https://w3id.org/function/vocabulary/mapping#ReturnMapping</seealso>
-    let ReturnMapping = Prefixed_Name(fnom, "ReturnMapping") |> PrefixedName

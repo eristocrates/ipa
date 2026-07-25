@@ -1,0 +1,153 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
+
+<http://moustaki.org/foaf.rdf#moustaki> a <http://xmlns.com/foaf/0.1/Person>.
+<http://purl.org/NET/c4dm/event.owl> <http://purl.org/dc/elements/1.1/date> "$Date: 2007/06/29 15:25:11 $";
+                                     <http://purl.org/dc/elements/1.1/description> """
+		This ontology deals with the notion of reified events---
+		events seen as first-class objects. It only defines one
+		concept: Event, which may have agents (actively
+		participating), factors (passively participating), products,
+		and a location in space and time. 
+
+		Regarding the ontological status of event tokens, they are seen
+		as the way cognitive agents classify space/time regions
+	""";
+                                     <http://purl.org/dc/elements/1.1/title> "The Event ontology";
+                                     a <http://www.w3.org/2002/07/owl#Thing>,
+                                       <http://www.w3.org/2002/07/owl#Ontology>;
+                                     rdfs:label "The Event ontology";
+                                     <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/2006/time>;
+                                     <http://www.w3.org/2002/07/owl#versionInfo> "Revision: 1.01";
+                                     <http://xmlns.com/foaf/0.1/maker> <http://moustaki.org/foaf.rdf#moustaki>.
+event:Event a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment """
+		An arbitrary classification of a space/time region, by a 
+		cognitive agent. An event may have actively participating agents,
+		passive factors, products, and a location in space/time.
+		""";
+            rdfs:label "Event";
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+event:Factor a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment """
+		Everything used as a factor in an event
+		""";
+             rdfs:label "Factor";
+             <http://www.w3.org/2002/07/owl#disjointWith> <http://xmlns.com/foaf/0.1/Agent>;
+             <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#onProperty> event:factor_of ; 
+                                                              <http://www.w3.org/2002/07/owl#someValuesFrom> event:Event ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>];
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+event:Product a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment """
+		Everything produced by an event
+		""";
+              rdfs:label "Product";
+              <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#onProperty> event:produced_in ; 
+                                                               <http://www.w3.org/2002/07/owl#someValuesFrom> event:Event ; 
+                                                               a <http://www.w3.org/2002/07/owl#Restriction>];
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+event:agent a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment """
+		Relates an event to an active agent (a person, a computer, ... :-) )
+		""";
+            rdfs:domain event:Event;
+            rdfs:label "agent";
+            rdfs:range <http://xmlns.com/foaf/0.1/Agent>;
+            <http://www.w3.org/2002/07/owl#equivalentProperty> event:hasAgent;
+            <http://www.w3.org/2002/07/owl#inverseOf> event:agent_in;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+event:agent_in a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+event:factor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment """
+		Relates an event to a passive factor (a tool, an instrument, an abstract cause...)
+		""";
+             rdfs:domain event:Event;
+             rdfs:label "factor";
+             <http://www.w3.org/2002/07/owl#equivalentProperty> event:hasFactor;
+             <http://www.w3.org/2002/07/owl#inverseOf> event:factor_of;
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+event:factor_of a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+event:hasAgent a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+event:hasFactor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+event:hasLiteralFactor a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+event:hasProduct a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+event:hasSubEvent a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+event:isAgentIn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:label "agent in";
+                <http://www.w3.org/2002/07/owl#equivalentProperty> event:agent_in;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+event:isFactorOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:label "factor of";
+                 <http://www.w3.org/2002/07/owl#equivalentProperty> event:factor_of;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+event:literal_factor a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment """
+		Relates an event to a factor which can be described as a literal. This property
+		should not be used as-is, but should be subsumed by other, more specific, properties
+		(like an hypothetic :weatherCelsius, linking an event to a temperature).
+		""";
+                     rdfs:domain event:Event;
+                     rdfs:label "literal factor";
+                     <http://www.w3.org/2002/07/owl#equivalentProperty> event:hasLiteralFactor;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+event:place a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment """
+		Relates an event to a spatial object.
+		""";
+            rdfs:domain event:Event;
+            rdfs:label "place";
+            rdfs:range <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>;
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+event:producedIn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:label "produced in";
+                 <http://www.w3.org/2002/07/owl#equivalentProperty> event:produced_in;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "deprecated".
+event:produced_in a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+event:product a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment """
+		Relates an event to something produced during the event---a sound, a pie, whatever...
+		""";
+              rdfs:domain event:Event;
+              rdfs:label "product";
+              <http://www.w3.org/2002/07/owl#equivalentProperty> event:hasProduct;
+              <http://www.w3.org/2002/07/owl#inverseOf> event:produced_in;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+event:sub_event a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment """
+		This property provides a way to split a complex event (for example, a performance involving several 
+		musicians) into simpler ones (one event per musician).
+		""";
+                rdfs:domain event:Event;
+                rdfs:label "sub-event";
+                rdfs:range event:Event;
+                <http://www.w3.org/2002/07/owl#equivalentProperty> event:hasSubEvent;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+event:time a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:comment """
+		Relates an event to a time object, classifying a time region (either instantaneous or having an extent).
+		By using the Timeline ontology here, you can define event happening on a recorded track or on any 
+		media with a temporal extent.
+		""";
+           rdfs:domain event:Event;
+           rdfs:label "time";
+           rdfs:range <http://www.w3.org/2006/time#TemporalEntity>;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://purl.org/dc/elements/1.1/date> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/Agent> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/Person> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/maker> a <http://www.w3.org/2002/07/owl#ObjectProperty>.

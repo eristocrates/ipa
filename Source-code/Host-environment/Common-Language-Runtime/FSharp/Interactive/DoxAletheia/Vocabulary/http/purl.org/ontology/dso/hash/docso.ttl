@@ -1,0 +1,66 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix docso: <http://purl.org/ontology/dso#>.
+
+<http://purl.org/ontology/dso> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/3.0/>;
+                               <http://purl.org/dc/terms/creator> "Jakob Voß";
+                               <http://purl.org/dc/terms/description> "A micro-ontology that defines a set of typical document-related services such as provided by libraries, museums and archives."@en;
+                               <http://purl.org/dc/terms/modified> "2013-12-05"^^xsd:date;
+                               <http://purl.org/dc/terms/title> "Document Service Ontology";
+                               <http://purl.org/vocab/vann/preferredNamespacePrefix> "dso";
+                               <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/ontology/dso#";
+                               a <http://www.w3.org/2002/07/owl#Ontology>,
+                                 <http://purl.org/vocommons/voaf#Vocabulary>;
+                               rdfs:label "DSO";
+                               <http://www.w3.org/2002/07/owl#versionInfo> "0.6.5rev1".
+docso:DocumentService a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:isDefinedBy <http://purl.org/ontology/dso>;
+                      rdfs:label "DocumentService"@en;
+                      rdfs:seeAlso <http://schema.org/Offer>,
+                                   <http://purl.org/ontology/ssso#ServiceEvent>,
+                                   <http://purl.org/goodrelations/v1#Offering>;
+                      rdfs:subClassOf <http://purl.org/ontology/service#Service>;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+docso:Interloan a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:isDefinedBy <http://purl.org/ontology/dso>;
+                rdfs:label "Interloan"@en;
+                rdfs:subClassOf docso:DocumentService;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+docso:Loan a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:isDefinedBy <http://purl.org/ontology/dso>;
+           rdfs:label "Loan"@en;
+           rdfs:subClassOf docso:DocumentService;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+docso:OpenAccess a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:isDefinedBy <http://purl.org/ontology/dso>;
+                 rdfs:label "OpenAccess"@en,
+                            "Digitization"@en;
+                 rdfs:subClassOf docso:DocumentService;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "unstable",
+                                                                            "testing".
+docso:Presentation a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:isDefinedBy <http://purl.org/ontology/dso>;
+                   rdfs:label "Presentation"@en;
+                   rdfs:subClassOf docso:DocumentService;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+docso:hasDocument a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain docso:DocumentService;
+                  rdfs:isDefinedBy <http://purl.org/ontology/dso>;
+                  rdfs:label "hasDocument"@en;
+                  rdfs:seeAlso <http://purl.org/ontology/daia/availableFor>,
+                               <http://purl.org/ontology/bibo/Document>,
+                               <http://xmlns.com/foaf/0.1/Document>,
+                               <http://purl.org/ontology/daia/unavailableFor>;
+                  <http://www.w3.org/2002/07/owl#inverseOf> docso:hasService;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+docso:hasService a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:isDefinedBy <http://purl.org/ontology/dso>;
+                 rdfs:label "hasService"@en;
+                 rdfs:range docso:DocumentService;
+                 rdfs:seeAlso <http://purl.org/ontology/daia/unavailableFor>,
+                              <http://purl.org/ontology/bibo/Document>,
+                              <http://xmlns.com/foaf/0.1/Document>,
+                              <http://purl.org/ontology/daia/availableFor>;
+                 <http://www.w3.org/2002/07/owl#inverseOf> docso:hasDocument;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".

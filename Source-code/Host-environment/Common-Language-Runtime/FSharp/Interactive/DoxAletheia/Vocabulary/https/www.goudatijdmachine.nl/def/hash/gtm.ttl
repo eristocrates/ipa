@@ -1,0 +1,237 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gtm: <https://www.goudatijdmachine.nl/def#>.
+
+<http://purl.org/dc/terms/abstract> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/bibliographicCitation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/hasVersion> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+xsd:date a rdfs:Datatype.
+<http://www.w3.org/2003/01/geo/wgs84_pos#Feature> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2003/01/geo/wgs84_pos#Geometry> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2003/01/geo/wgs84_pos#asWKT> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                rdfs:domain <http://www.w3.org/2003/01/geo/wgs84_pos#Geometry>;
+                                                rdfs:label "geometrie als well-known text (WKT)"@nl,
+                                                           "geometry as well-known text (WKT)"@en;
+                                                rdfs:range <http://www.w3.org/2003/01/geo/wgs84_pos#wktLiteral>.
+<http://www.w3.org/2003/01/geo/wgs84_pos#hasGeometry> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                      rdfs:domain gtm:GeoTemporeelObject;
+                                                      rdfs:label "has geometry"@en,
+                                                                 "heeft geometrie"@nl;
+                                                      rdfs:range <http://www.w3.org/2003/01/geo/wgs84_pos#Geometry>.
+<http://www.w3.org/2003/01/geo/wgs84_pos#wktLiteral> a rdfs:Datatype.
+<http://www.w3.org/ns/org#memberOf> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/homepage> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/logo> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/name> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://schema.org/creativeWorkStatus> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://schema.org/endDate> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                             rdfs:domain gtm:GeoTemporeelObject;
+                             rdfs:label "einddatum"@nl,
+                                        "end date"@en;
+                             rdfs:range xsd:dateTime.
+<https://schema.org/identifier> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                rdfs:domain gtm:GeoTemporeelObject;
+                                rdfs:label "identificatie"@nl,
+                                           "identifier"@en;
+                                rdfs:range xsd:string.
+<https://schema.org/name> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:domain gtm:GeoTemporeelObject;
+                          rdfs:label "naam"@nl,
+                                     "name"@en;
+                          rdfs:range xsd:string.
+<https://schema.org/startDate> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                               rdfs:domain gtm:GeoTemporeelObject;
+                               rdfs:label "begindatum"@nl,
+                                          "start date"@en;
+                               rdfs:range xsd:dateTime.
+<https://w3id.org/widoco/vocab#introduction> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://www.goudatijdmachine.nl/def> <http://purl.org/dc/terms/abstract> "The Gouda Time Machine describes and links geo-temporal objects related to the city (and people) of Gouda. This ontology specifically describes the generic GeoTemporalObject class, its properties and subclasses. The ontology is set up in Dutch."@en,
+                                                                          "De Gouda Tijdmachine beschrijft en linkt geo-temporele objecten die betrekking hebben op plaats (en personen in) Gouda.<br>Deze ontologie beschrijft met name de generieke klasse GeoTemporeelObject, de properties en subklassen. De ontologie is opgezet in het Nederlands."@nl;
+                                      <http://purl.org/dc/terms/bibliographicCitation> "Gouda Time Machine Ontology, versie 0.9, https://www.goudatijdmachine.nl/def/"@en,
+                                                                                       "Gouda Tijdmachine Ontologie, versie 0.9, https://www.goudatijdmachine.nl/def/"@nl;
+                                      <http://purl.org/dc/terms/created> "2021-11-25"^^xsd:date;
+                                      <http://purl.org/dc/terms/creator> [<http://xmlns.com/foaf/0.1/name> "Bob Coret" ; 
+                                                                          <http://www.w3.org/ns/org#memberOf> [<http://xmlns.com/foaf/0.1/name> "Gouda Tijdmachine"@nl ; 
+                                                                                                               <http://xmlns.com/foaf/0.1/name> "Gouda Time Machine"@en ; 
+                                                                                                               <http://xmlns.com/foaf/0.1/homepage> "https://www.goudatijdmachine.nl"]];
+                                      <http://purl.org/dc/terms/hasVersion> "0.9";
+                                      <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/>;
+                                      <http://purl.org/dc/terms/modified> "2024-06-26"^^xsd:date;
+                                      <http://purl.org/dc/terms/title> "Gouda Tijdmachine Ontologie"@nl,
+                                                                       "Gouda Time Machine Ontology"@en;
+                                      <http://purl.org/vocab/vann/preferredNamespacePrefix> "gtm";
+                                      <http://purl.org/vocab/vann/preferredNamespaceUri> gtm:;
+                                      a <http://www.w3.org/2002/07/owl#Ontology>;
+                                      rdfs:comment """De Gouda Tijdmachine Ontologie beschrijft de geo-temporele klasses en eigenschappen die gebruikt worden binnen de Gouda Tijdmachine.<br>In onderstaand diagram geven de blauwe blokken klasses aan, de pijlen hiertussen subklassen, en de rode blokken zijn aan de klasse verbonden properties.<br><br><img alt=\"https://docs.google.com/presentation/d/1GQCdcWp2ruxdYIbfW5ZzWALfJf09OEmUwcT8ak7I_yc/\" title=\"Diagram van de Gouda Tijdmachine Ontologie\" src=\"diagram-nl.png\">"""@nl,
+                                                   """The Gouda Time Machine Ontology describes the geo-temporal classes and properties used within the Gouda Time Machine.<br>In the diagram below, the blue blocks indicate classes, the arrows between them subclasses, and the red blocks are properties associated with the class.<br><br><img alt=\"https://docs.google.com/presentation/d/1GQCdcWp2ruxdYIbfW5ZzWALfJf09OEmUwcT8ak7I_yc/\" title=\"Diagram of the Gouda Time Machine Ontology\" src=\"diagram-en.png\">"""@en;
+                                      <http://xmlns.com/foaf/0.1/logo> <https://www.goudatijdmachine.nl/wp-content/uploads/sites/7/2021/08/wapen.png#>;
+                                      <https://schema.org/creativeWorkStatus> "Gouda Time Machine Ontology Specification"@en,
+                                                                              "Gouda Tijdmachine Ontologie Specificatie"@nl;
+                                      <https://w3id.org/widoco/vocab#introduction> "De voorkeur prefix voor deze ontologie is <strong>gtm</strong>."@nl.
+gtm:Adressering a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Addressering is de toekenning van een adres aan een locatie, object of entiteit binnen een geografisch gebied, waardoor deze uniek geïdentificeerd kan worden voor post- en identificatiedoeleinden."@nl,
+                             "Addressing is the assignment of an address to a location, object, or entity within a geographic area, enabling it to be uniquely identified for postal and identification purposes."@en;
+                rdfs:label "Addressing"@en,
+                           "Adressering"@nl;
+                rdfs:subClassOf gtm:GeoTemporeelObject.
+gtm:Buurt a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "Onderdeel van een gemeente, dat op basis van historische dan wel stedenbouwkundige kenmerken homogeen is afgebakend. Homogeen wil zeggen dat één functie dominant is, bijvoorbeeld woonfunctie (woongebied), werkfunctie (industriegebied) of recreatieve functie (natuurgebied). Functies kunnen echter ook gemengd voorkomen. De gemeenten in Nederland zijn onderverdeeld in wijken en buurten. Buurten vormen het laagste regionale niveau. Wijken zijn optellingen van één of meer aaneengesloten buurten. De gemeente bepaalt zelf de indeling in wijken en buurten."@nl,
+                       "Part of a municipality that is homogeneously demarcated on the basis of historical or urban development characteristics. Homogeneous means that one function is dominant, for example residential function (residential area), work function (industrial area) or recreational function (nature area). However, functions can also be mixed. The municipalities in the Netherlands are divided into districts and neighborhoods. Neighborhoods are the lowest regional level. Neighborhoods are sums of one or more contiguous neighborhoods. The municipality itself determines the division into districts and neighborhoods."@en;
+          rdfs:label "Buurt"@nl,
+                     "Neighbourhood"@en;
+          rdfs:seeAlso <https://www.cbs.nl/nl-nl/onze-diensten/methoden/begrippen/buurt>;
+          rdfs:subClassOf gtm:Structuur.
+gtm:Constructie a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A construction is a human-made or naturally created object or ensemble, which have a physical form and function within a specific area."@en,
+                             "Een constructie is een door mensen gemaakt of natuurlijk gecreëerd object of geheel, die een fysieke vorm en functie hebben binnen een bepaald gebied."@nl;
+                rdfs:label "Constructie"@nl,
+                           "Construction"@en;
+                rdfs:subClassOf gtm:GeoTemporeelObject.
+gtm:Gebouw a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "A building is the smallest functionally and architecturally-constructively independent unit that is directly and permanently connected to the earth and can be entered and locked."@en,
+                        "Een pand is een kleinste bij de totstandkoming functioneel en bouwkundig-constructief zelfstandige eenheid die direct en duurzaam met de aarde is verbonden en betreedbaar en afsluitbaar is."@nl;
+           rdfs:label "Building"@en,
+                      "Gebouw"@nl;
+           rdfs:seeAlso <http://bag.basisregistraties.overheid.nl/id/begrip/Pand>;
+           rdfs:subClassOf gtm:Constructie;
+           <http://www.w3.org/2002/07/owl#disjointWith> gtm:Kunstwerk,
+                                                        gtm:Natuur.
+gtm:GeoTemporeelObject a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "A geo-temporal object is an entity that has both geographical and temporal characteristics, enabling the specification and analysis of the location and time period of events or objects in space."@en,
+                                    "Een geo-temporeel object is een entiteit die zowel geografische als temporele kenmerken heeft, waardoor het mogelijk is om de locatie en tijdsperiode van gebeurtenissen of objecten in de ruimte te specificeren en te analyseren."@nl;
+                       rdfs:label "Geo temporal object"@en,
+                                  "Geo-temporeel object"@nl;
+                       rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#Feature>.
+gtm:Hofje a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "A partly private community intended for the needy, usually consisting of a number of houses around a small park."@en,
+                       "Een deels besloten leefgemeenschap bedoeld voor behoeftigen, meestal bestaande uit een aantal huisjes rond een parkje."@nl;
+          rdfs:label "Courtyard"@en,
+                     "Hofje"@nl;
+          rdfs:subClassOf gtm:Structuur.
+gtm:Kunstwerk a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A work of art is a civil engineering work for the infrastructure of roads, water, railways, flood defenses and/or pipes and is not intended for permanent human residence."@en,
+                           "Een kunstwerk is een civiel-technisch werk voor de infrastructuur van wegen, water, spoorbanen, waterkeringen en/of leidingen en niet bedoeld voor permanent menselijk verblijf."@nl;
+              rdfs:label "Kunstwerk"@nl,
+                         "Work of art"@en;
+              rdfs:seeAlso <http://bag.basisregistraties.overheid.nl/id/begrip/Kunstwerk>;
+              rdfs:subClassOf gtm:Constructie;
+              <http://www.w3.org/2002/07/owl#disjointWith> gtm:Natuur.
+gtm:Kwartier a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A quarter is a part of a city or town that is often characterized by a specific function or population group, such as a residential, commercial, or entertainment area."@en,
+                          "Een kwartier is een deel van een stad of dorp dat vaak wordt gekenmerkt door een specifieke functie of bevolkingsgroep, zoals een woon-, winkel- of uitgaansgebied."@nl;
+             rdfs:label "Kwartier"@nl,
+                        "Quarter"@en;
+             rdfs:subClassOf gtm:Structuur.
+gtm:Natuur a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "Nature is everything in the physical world that is not made by humans, including plants, trees, landscapes, waterways, and other elements of the Earth."@en,
+                        "Natuur is alles in de fysieke wereld dat niet door mensen is gemaakt, inclusief planten, bomen, landschappen, waterwegen en andere elementen van de aarde."@nl;
+           rdfs:label "Nature"@en,
+                      "Natuur"@nl;
+           rdfs:subClassOf gtm:Constructie.
+gtm:NummerAanduiding a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Een per wijk uitgegeven nummer."@nl,
+                                  "One number issued per district."@en;
+                     rdfs:label "Number designation"@en,
+                                "Nummer aanduiding"@nl;
+                     rdfs:subClassOf gtm:Adressering;
+                     <http://www.w3.org/2002/07/owl#disjointWith> gtm:PlaatselijkeAanduiding,
+                                                                  gtm:StraatNummerAanduiding.
+gtm:Perceel a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "A plot is a limited part of Dutch territory that is cadastrally identified and bounded by cadastral boundaries."@en,
+                         "Een perceel is een begrensd deel van het Nederlands grondgebied dat kadastraal geïdentificeerd is en met kadastrale grenzen begrensd is."@nl;
+            rdfs:label "Perceel"@nl,
+                       "Plot"@en;
+            rdfs:seeAlso <http://brk.basisregistraties.overheid.nl/id/begrip/Perceel>;
+            rdfs:subClassOf gtm:Structuur.
+gtm:PlaatsPlaats a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A place is an inhabited location such as a city, town, or other settlement, where people live and work."@en,
+                              "Een plaats is een bewoonde locatie zoals een stad, dorp of ander nederzetting, waar mensen wonen en werken."@nl;
+                 rdfs:label "Plaats"@nl,
+                            "Place"@en;
+                 rdfs:subClassOf gtm:Structuur.
+gtm:PlaatselijkeAanduiding a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Combinatie van de wijkletter en een per wijk uitgegeven nummer."@nl,
+                                        "Combination of the district letter and a number issued per district."@en;
+                           rdfs:label "Plaatselijke aanduiding"@nl,
+                                      "Place designation"@en;
+                           rdfs:subClassOf gtm:Adressering;
+                           <http://www.w3.org/2002/07/owl#disjointWith> gtm:StraatNummerAanduiding.
+gtm:Sectie a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "De sectie die de sectie binnen de kadastrale gemeente uniek identificeert."@nl,
+                        "The section that uniquely identifies the section within the cadastral municipality."@en;
+           rdfs:label "Sectie"@nl,
+                      "Section"@en;
+           rdfs:seeAlso <http://brk.basisregistraties.overheid.nl/id/begrip/Sectie>;
+           rdfs:subClassOf gtm:Structuur.
+gtm:Straat a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "A street is a public road in a village, town, or other inhabited area. Streets are usually used by vehicles and pedestrians and can have houses, businesses, and other buildings on either side."@en,
+                        "Een straat is een openbare weg in een dorp, stad of ander bewoond gebied. Straten worden meestal gebruikt door voertuigen en voetgangers en kunnen huizen, bedrijven en andere gebouwen aan weerszijden hebben."@nl;
+           rdfs:label "Straat"@nl,
+                      "Street"@en;
+           rdfs:subClassOf gtm:Structuur.
+gtm:StraatNummerAanduiding a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "A number issued per street."@en,
+                                        "Een per straat uitgegeven nummer."@nl;
+                           rdfs:label "Straatnummer aanduiding"@nl,
+                                      "Street number designation"@en;
+                           rdfs:subClassOf gtm:Adressering.
+gtm:Structuur a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A structure is an organized collection of interconnected elements within a geographic area, such as a parcel, district, street, neighborhood, section, or place, that together form the physical and functional composition of a region."@en,
+                           "Een structuur is een georganiseerde verzameling van onderling verbonden elementen binnen een geografisch gebied, zoals een perceel, wijk, straat, buurt, sectie of plaats, die gezamenlijk de fysieke en functionele samenstelling van een regio vormen."@nl;
+              rdfs:label "Structure"@en,
+                         "Structuur"@nl;
+              rdfs:subClassOf gtm:GeoTemporeelObject.
+gtm:Wijk a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "Onderdeel van een gemeente en cluster van één of meerdere buurten, dat op basis van historische dan wel stedenbouwkundige kenmerken homogeen is afgebakend. Een wijk bestaat uit één of meerdere buurten."@nl,
+                      "Part of a municipality and cluster of one or more neighborhoods, which is homogeneously demarcated on the basis of historical or urban development characteristics. A district consists of one or more neighborhoods."@en;
+         rdfs:label "District"@en,
+                    "Wijk"@nl;
+         rdfs:seeAlso <https://www.cbs.nl/nl-nl/onze-diensten/methoden/begrippen/wijk>;
+         rdfs:subClassOf gtm:Structuur.
+gtm:adresseert a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "De eigenschap 'adresseert' geeft aan dat een entiteit is geassocieerd met een specifiek adres, wat een unieke locatie aangeeft binnen een geografisch gebied."@nl,
+                            "The property 'adresseert' (adresses) indicates that an entity is associated with a specific address, which denotes a unique location within a geographic area."@en;
+               rdfs:domain gtm:Adressering;
+               rdfs:label "addresses"@en,
+                          "adresseert"@nl;
+               rdfs:range gtm:Gebouw.
+gtm:heeftAdres a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "De eigenschap 'heeft adres' geeft aan dat een entiteit is geassocieerd met een specifiek adres, wat een unieke locatie aangeeft binnen een geografisch gebied."@nl,
+                            "The property 'heeft adres' (has address) indicates that an entity is associated with a specific address, which denotes a unique location within a geographic area."@en;
+               rdfs:domain gtm:Gebouw;
+               rdfs:label "has address"@en,
+                          "heeft adres"@nl;
+               rdfs:range gtm:Adressering;
+               <http://www.w3.org/2002/07/owl#inverseOf> gtm:adresseert.
+gtm:ligtIn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain gtm:Structuur;
+           rdfs:label "ligt in"@nl,
+                      "located in"@en;
+           rdfs:range gtm:Structuur.
+gtm:ligtInStraat a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain gtm:StraatNummerAanduiding;
+                 rdfs:label "is located in street"@en,
+                            "ligt in straat"@nl;
+                 rdfs:range gtm:Straat.
+gtm:ligtInWijk a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "De eigenschap 'ligt in wijk' geeft aan dat een buurt zich binnen een specifieke wijk bevindt, waarbij een wijk een afgebakend gebied is binnen een stad of dorp."@nl,
+                            "The property 'located in district' indicates that an neighbourhood is situated within a specific district, where a district is a defined area within a city or town."@en;
+               rdfs:domain gtm:Buurt;
+               rdfs:label "is located in district"@en,
+                          "ligt in wijk"@nl;
+               rdfs:range gtm:Wijk.
+gtm:staatOpPerceel a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "De eigenschap 'staat op perceel' geeft aan dat een entiteit zich bevindt op een specifiek perceel grond, waarbij een perceel een stuk land is dat afgebakend is voor een specifieke functie."@nl,
+                                "The property 'is located on parcel' indicates that an entity is situated on a specific parcel of land, where a parcel is a piece of land delineated for a specific purpose."@en;
+                   rdfs:domain gtm:Adressering;
+                   rdfs:label "build on plot"@en,
+                              "staat op perceel"@nl;
+                   rdfs:range gtm:Perceel.

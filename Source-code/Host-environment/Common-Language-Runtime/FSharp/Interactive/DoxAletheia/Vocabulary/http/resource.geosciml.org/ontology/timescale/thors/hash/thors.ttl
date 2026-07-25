@@ -1,0 +1,118 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix thors: <http://resource.geosciml.org/ontology/timescale/thors#>.
+
+_:Bbe0fba0eb68f0c23746b0496a9cb6b7a a <http://www.w3.org/2002/07/owl#Class>;
+                                    <http://www.w3.org/2002/07/owl#unionOf> [].
+<http://resource.geosciml.org/ontology/timescale/thors> <http://purl.org/dc/elements/1.1/creator> "Simon Jonathan David COX, CSIRO Australia";
+                                                        <http://purl.org/dc/elements/1.1/description> "An OWL representation of the model for Temporal Ordinal Reference Systems defined in GeoSciML v3. ";
+                                                        <http://purl.org/dc/elements/1.1/rights> "Copyright © 2012-2017 CSIRO";
+                                                        <http://purl.org/dc/elements/1.1/source> "Simon J.D. Cox and Stephen M. Richard, A formal model for the geologic time scale and global stratotype section and point, compatible with geospatial information transfer standards, Geosphere, 1, 119-137 (2005)";
+                                                        <http://purl.org/dc/elements/1.1/title> "Temporal Hierarchical Ordinal Reference System model";
+                                                        <http://purl.org/dc/terms/created> "2011-01-01"^^xsd:date;
+                                                        <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/>;
+                                                        <http://purl.org/dc/terms/modified> "2017-04-28"^^xsd:date;
+                                                        <http://purl.org/vocab/vann/preferredNamespacePrefix> "thors";
+                                                        <http://purl.org/vocab/vann/preferredNamespaceUri> thors:;
+                                                        a <http://purl.org/vocommons/voaf#Vocabulary>,
+                                                          <http://www.w3.org/2002/07/owl#Ontology>;
+                                                        rdfs:comment "This model is related to the model for TORS in ISO 19108:2002, except that boundaries between eras are first class objects, supporting multiple properties, rather than being just time coordinates. It is also linked to the ISO 19108 Temporal Topology model. ";
+                                                        rdfs:seeAlso <http://www.geosciml.org/>,
+                                                                     <http://dx.doi.org/10.1130/GES00022.1>,
+                                                                     <doi:10.1130/GES00022.1>,
+                                                                     <http://geosphere.gsapubs.org/cgi/doi/10.1130/GES00022.1>;
+                                                        <http://www.w3.org/2002/07/owl#imports> <http://purl.org/dc/elements/1.1/>;
+                                                        <http://www.w3.org/2002/07/owl#priorVersion> <https://www.seegrid.csiro.au/subversion/xmml/ontologies/tags/201402/Geoscience/GeologicTimeScale/thors.rdf>;
+                                                        <http://www.w3.org/2002/07/owl#versionIRI> <https://github.com/GeoscienceAustralia/geosciml.org/commit/24d302bf3f0fa315c1dddc2c734b84f52299cd02#diff-73b17e22072459ab7e06e9ab664a9d48>;
+                                                        <http://www.w3.org/2004/02/skos/core#changeNote> "2017-04-28 - removed imports of ISO ontologies ".
+thors:Era a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/thors>;
+          rdfs:label "Time Ordinal Era or Interval";
+          rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>,
+                          [a <http://www.w3.org/2002/07/owl#Restriction> ; 
+                           <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> thors:begin],
+                          [a <http://www.w3.org/2002/07/owl#Restriction> ; 
+                           <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> thors:end].
+thors:EraBoundary a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/thors>;
+                  rdfs:label "Time Ordinal Era Boundary";
+                  rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>,
+                                  [a <http://www.w3.org/2002/07/owl#Restriction> ; 
+                                   <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> thors:nextEra],
+                                  [a <http://www.w3.org/2002/07/owl#Restriction> ; 
+                                   <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> thors:previousEra].
+thors:ReferenceSystem a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "A temporal ordinal reference system is a constrained temporal topological complex, in which the edges are called 'eras'. Each era may be subdivided into one set of eras of the next finer rank. This constraint is required to establish a mono-hierarchy, so that a set of temporal positions defined relative to the reference system may be uniquely ordered.";
+                      rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/thors>;
+                      rdfs:label "Hierarchical Time Ordinal Reference System";
+                      rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#ConceptScheme>,
+                                      [a <http://www.w3.org/2002/07/owl#Restriction> ; 
+                                       <http://www.w3.org/2002/07/owl#minCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> thors:component],
+                                      [a <http://www.w3.org/2002/07/owl#Restriction> ; 
+                                       <http://www.w3.org/2002/07/owl#minCardinality> "2"^^xsd:nonNegativeInteger ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> thors:referencePoint].
+thors:begin a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment "era or interval beginning or start";
+            rdfs:domain thors:Era;
+            rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/thors>;
+            rdfs:label "era beginning"@en;
+            rdfs:range thors:EraBoundary;
+            rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#semanticRelation>;
+            <http://www.w3.org/2002/07/owl#inverseOf> thors:nextEra.
+thors:component a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain thors:ReferenceSystem;
+                rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/thors>;
+                rdfs:label "temporal reference system component"@en;
+                rdfs:range thors:Era;
+                rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#hasTopConcept>;
+                <http://www.w3.org/2002/07/owl#inverseOf> thors:system.
+thors:end a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain thors:Era;
+          rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/thors>;
+          rdfs:label "era end"@en;
+          rdfs:range thors:EraBoundary;
+          rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#semanticRelation>;
+          <http://www.w3.org/2002/07/owl#inverseOf> thors:previousEra.
+thors:member a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain thors:Era;
+             rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/thors>;
+             rdfs:label "era member / sub-era"@en;
+             rdfs:range thors:Era;
+             rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#narrower>.
+thors:nextEra a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain thors:EraBoundary;
+              rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/thors>;
+              rdfs:label "next era"@en;
+              rdfs:range thors:Era;
+              rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#semanticRelation>;
+              <http://www.w3.org/2002/07/owl#inverseOf> thors:begin.
+thors:positionalUncertainty a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/thors>;
+                            rdfs:label "uncertainty in temporal position"@en.
+thors:previousEra a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain thors:EraBoundary;
+                  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/thors>;
+                  rdfs:label "previous era"@en;
+                  rdfs:range thors:Era;
+                  rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#semanticRelation>;
+                  <http://www.w3.org/2002/07/owl#inverseOf> thors:end.
+thors:referencePoint a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain thors:ReferenceSystem;
+                     rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/thors>;
+                     rdfs:label "reference point in timescale";
+                     rdfs:range thors:EraBoundary;
+                     rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#hasTopConcept>.
+thors:system a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "reference system that this era belongs to";
+             rdfs:domain thors:Era;
+             rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/thors>;
+             rdfs:label "system"@en;
+             rdfs:range thors:ReferenceSystem;
+             rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#topConceptOf>;
+             <http://www.w3.org/2002/07/owl#inverseOf> thors:component.

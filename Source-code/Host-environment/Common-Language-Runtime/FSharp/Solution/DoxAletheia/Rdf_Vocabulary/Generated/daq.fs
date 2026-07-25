@@ -7,16 +7,6 @@ open type Prefix_ID
 module daq =
     let _namespace_iri = Namespace_Iri daq |> NamespaceIRI
     /// <summary>
-    ///   <para>daq:</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>voaf:Vocabulary</para>
-    ///   <para>owl:Ontology</para>
-    ///   <para>The Dataset Quality Vocabulary (daQ) is a lightweight, extensible core vocabulary for attaching the result of quality benchmarking of a linked open dataset (usually an expensive process) to that dataset.  daQ is designed to be extended by custom quality metrics.  Use cases include filtering and ranking datasets by quality.</para>
-    /// labels<para>Dataset Quality Vocabulary (daQ)</para></remarks>
-    /// <seealso href="http://purl.org/eis/vocab/daq#">http://purl.org/eis/vocab/daq#</seealso>
-    let _prefix_iri = Prefixed_Name(daq, "") |> PrefixedName
-    /// <summary>
     ///   <para>daq:Category</para>
     /// </summary>
     /// <remarks>
@@ -27,6 +17,75 @@ module daq =
     /// <seealso href="http://purl.org/eis/vocab/daq#Category">http://purl.org/eis/vocab/daq#Category</seealso>
     let Category = Prefixed_Name(daq, "Category") |> PrefixedName
     /// <summary>
+    ///   <para>daq:dsd</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>qb:DataStructureDefinition</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/eis/vocab/daq#dsd">http://purl.org/eis/vocab/daq#dsd</seealso>
+    let dsd = Prefixed_Name(daq, "dsd") |> PrefixedName
+    /// <summary>
+    ///   <para>daq:computedBy</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>qb:DimensionProperty</para>
+    ///   <para>rdf:Property</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>TODO: Define properly</para>
+    /// labels<para>computed by</para></remarks>
+    /// <seealso href="http://purl.org/eis/vocab/daq#computedBy">http://purl.org/eis/vocab/daq#computedBy</seealso>
+    let computedBy = Prefixed_Name(daq, "computedBy") |> PrefixedName
+    /// <summary>
+    ///   <para>daq:Metric</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>owl:Class</para>
+    ///   <para>The smallest unit of measuring a quality dimension is a metric. A metric belongs to exactly one dimension. Each metric has one or more observations (	exttt{daq:hasObservation}), which records data quality assessment value following a computation. Metrics are provided as subclasses of this abstract class, which is not intended for direct usage.</para>
+    /// labels<para>Metric</para></remarks>
+    /// <seealso href="http://purl.org/eis/vocab/daq#Metric">http://purl.org/eis/vocab/daq#Metric</seealso>
+    let Metric = Prefixed_Name(daq, "Metric") |> PrefixedName
+    /// <summary>
+    ///   <para>daq:hasMetric</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>rdf:Property</para>
+    ///   <para>A dimension is an abstract concept which groups an number of more concrete metrics to measure quality of a dataset. This is an abstract property and should not be used directly. Specific sub-properties should be inherited for different metrics.</para>
+    /// labels<para>hasMetric</para></remarks>
+    /// <seealso href="http://purl.org/eis/vocab/daq#hasMetric">http://purl.org/eis/vocab/daq#hasMetric</seealso>
+    let hasMetric = Prefixed_Name(daq, "hasMetric") |> PrefixedName
+    /// <summary>
+    ///   <para>daq:hasObservation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>rdf:Property</para>
+    ///   <para>Computed metrics can have 1 or more quality observations, where each computed resource has one observation.</para>
+    /// labels<para>has observation</para></remarks>
+    /// <seealso href="http://purl.org/eis/vocab/daq#hasObservation">http://purl.org/eis/vocab/daq#hasObservation</seealso>
+    let hasObservation = Prefixed_Name(daq, "hasObservation") |> PrefixedName
+    /// <summary>
+    ///   <para>daq:isEstimate</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>This property flags true if an assessed observation of a metric gives an estimate result instead of a more accurate one.</para>
+    /// labels<para>is estimate</para></remarks>
+    /// <seealso href="http://purl.org/eis/vocab/daq#isEstimate">http://purl.org/eis/vocab/daq#isEstimate</seealso>
+    let isEstimate = Prefixed_Name(daq, "isEstimate") |> PrefixedName
+    /// <summary>
+    ///   <para>daq:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>voaf:Vocabulary</para>
+    ///   <para>owl:Ontology</para>
+    ///   <para>The Dataset Quality Vocabulary (daQ) is a lightweight, extensible core vocabulary for attaching the result of quality benchmarking of a linked open dataset (usually an expensive process) to that dataset.  daQ is designed to be extended by custom quality metrics.  Use cases include filtering and ranking datasets by quality.</para>
+    /// labels<para>Dataset Quality Vocabulary (daQ)</para></remarks>
+    /// <seealso href="http://purl.org/eis/vocab/daq#">http://purl.org/eis/vocab/daq#</seealso>
+    let _prefix_iri = Prefixed_Name(daq, "") |> PrefixedName
+    /// <summary>
     ///   <para>daq:Dimension</para>
     /// </summary>
     /// <remarks>
@@ -36,16 +95,6 @@ module daq =
     /// labels<para>Dimension</para></remarks>
     /// <seealso href="http://purl.org/eis/vocab/daq#Dimension">http://purl.org/eis/vocab/daq#Dimension</seealso>
     let Dimension = Prefixed_Name(daq, "Dimension") |> PrefixedName
-    /// <summary>
-    ///   <para>daq:Metric</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>rdfs:Class</para>
-    ///   <para>The smallest unit of measuring a quality dimension is a metric. A metric belongs to exactly one dimension. Each metric has one or more observations (	exttt{daq:hasObservation}), which records data quality assessment value following a computation. Metrics are provided as subclasses of this abstract class, which is not intended for direct usage.</para>
-    /// labels<para>Metric</para></remarks>
-    /// <seealso href="http://purl.org/eis/vocab/daq#Metric">http://purl.org/eis/vocab/daq#Metric</seealso>
-    let Metric = Prefixed_Name(daq, "Metric") |> PrefixedName
     /// <summary>
     ///   <para>daq:Observation</para>
     /// </summary>
@@ -60,38 +109,19 @@ module daq =
     ///   <para>daq:QualityGraph</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdfs:Class</para>
     ///   <para>owl:Class</para>
+    ///   <para>rdfs:Class</para>
     ///   <para>Defines a quality graph which will contain all metadata about quality metrics on the dataset.</para>
     /// labels<para>Quality Graph Statistics</para></remarks>
     /// <seealso href="http://purl.org/eis/vocab/daq#QualityGraph">http://purl.org/eis/vocab/daq#QualityGraph</seealso>
     let QualityGraph = Prefixed_Name(daq, "QualityGraph") |> PrefixedName
     /// <summary>
-    ///   <para>daq:dsd</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>qb:DataStructureDefinition</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/eis/vocab/daq#dsd">http://purl.org/eis/vocab/daq#dsd</seealso>
-    let dsd = Prefixed_Name(daq, "dsd") |> PrefixedName
-    /// <summary>
-    ///   <para>daq:computedBy</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>qb:DimensionProperty</para>
-    ///   <para>rdf:Property</para>
-    ///   <para>TODO: Define properly</para>
-    /// labels<para>computed by</para></remarks>
-    /// <seealso href="http://purl.org/eis/vocab/daq#computedBy">http://purl.org/eis/vocab/daq#computedBy</seealso>
-    let computedBy = Prefixed_Name(daq, "computedBy") |> PrefixedName
-    /// <summary>
     ///   <para>daq:computedOn</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
     ///   <para>qb:DimensionProperty</para>
     ///   <para>rdf:Property</para>
+    ///   <para>owl:ObjectProperty</para>
     ///   <para>Quality metrics can be (in principle) calculated on various forms of data (such as datasets, graphs, set of triples etc...). This vocabulary allow the owner/user of such RDF data to calculate metrics on multiple (and different) resources.</para>
     /// labels<para>computed on</para></remarks>
     /// <seealso href="http://purl.org/eis/vocab/daq#computedOn">http://purl.org/eis/vocab/daq#computedOn</seealso>
@@ -100,9 +130,9 @@ module daq =
     ///   <para>daq:value</para>
     /// </summary>
     /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
     ///   <para>rdf:Property</para>
     ///   <para>qb:MeasureProperty</para>
-    ///   <para>owl:DatatypeProperty</para>
     ///   <para>Each metric will have a value computed. In order to deal with the different return type of the metric computation, this property links a metric with a value object (e.g. boolean, double, Literal).</para>
     /// labels<para>value</para></remarks>
     /// <seealso href="http://purl.org/eis/vocab/daq#value">http://purl.org/eis/vocab/daq#value</seealso>
@@ -112,8 +142,8 @@ module daq =
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>qb:DimensionProperty</para>
     ///   <para>owl:DatatypeProperty</para>
+    ///   <para>qb:DimensionProperty</para>
     ///   <para>Represents the metric being observed.</para>
     /// labels<para>metric</para></remarks>
     /// <seealso href="http://purl.org/eis/vocab/daq#metric">http://purl.org/eis/vocab/daq#metric</seealso>
@@ -138,36 +168,6 @@ module daq =
     /// labels<para>hasDimension</para></remarks>
     /// <seealso href="http://purl.org/eis/vocab/daq#hasDimension">http://purl.org/eis/vocab/daq#hasDimension</seealso>
     let hasDimension = Prefixed_Name(daq, "hasDimension") |> PrefixedName
-    /// <summary>
-    ///   <para>daq:hasMetric</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>rdf:Property</para>
-    ///   <para>A dimension is an abstract concept which groups an number of more concrete metrics to measure quality of a dataset. This is an abstract property and should not be used directly. Specific sub-properties should be inherited for different metrics.</para>
-    /// labels<para>hasMetric</para></remarks>
-    /// <seealso href="http://purl.org/eis/vocab/daq#hasMetric">http://purl.org/eis/vocab/daq#hasMetric</seealso>
-    let hasMetric = Prefixed_Name(daq, "hasMetric") |> PrefixedName
-    /// <summary>
-    ///   <para>daq:hasObservation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Computed metrics can have 1 or more quality observations, where each computed resource has one observation.</para>
-    /// labels<para>has observation</para></remarks>
-    /// <seealso href="http://purl.org/eis/vocab/daq#hasObservation">http://purl.org/eis/vocab/daq#hasObservation</seealso>
-    let hasObservation = Prefixed_Name(daq, "hasObservation") |> PrefixedName
-    /// <summary>
-    ///   <para>daq:isEstimate</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>rdf:Property</para>
-    ///   <para>This property flags true if an assessed observation of a metric gives an estimate result instead of a more accurate one.</para>
-    /// labels<para>is estimate</para></remarks>
-    /// <seealso href="http://purl.org/eis/vocab/daq#isEstimate">http://purl.org/eis/vocab/daq#isEstimate</seealso>
-    let isEstimate = Prefixed_Name(daq, "isEstimate") |> PrefixedName
     /// <summary>
     ///   <para>daq:requires</para>
     /// </summary>

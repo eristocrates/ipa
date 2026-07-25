@@ -1,0 +1,132 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix blt: <http://www.bl.uk/schemas/bibliographic/blterms#>.
+
+<http://www.bl.uk/schemas/bibliographic/blterms> <http://creativecommons.org/ns#license> <http://creativecommons.org/publicdomain/mark/1.0/>;
+                                                 <http://purl.org/dc/terms/contributor> [<http://xmlns.com/foaf/0.1/name> "Alan Danskin" ; 
+                                                                                         <http://xmlns.com/foaf/0.1/mbox> "mailto:Alan.Danskin@bl.uk"],
+                                                                                        [<http://xmlns.com/foaf/0.1/name> "Jan Ashton" ; 
+                                                                                         <http://xmlns.com/foaf/0.1/mbox> "mailto:Jan.Ashton@bl.uk"],
+                                                                                        [<http://xmlns.com/foaf/0.1/name> "Tim Hodson" ; 
+                                                                                         <http://xmlns.com/foaf/0.1/mbox> "mailto:Tim.Hodson@talis.com"],
+                                                                                        [<http://xmlns.com/foaf/0.1/name> "Heather Rosie" ; 
+                                                                                         <http://xmlns.com/foaf/0.1/mbox> "mailto:Heather.Rosie@bl.uk"],
+                                                                                        [<http://xmlns.com/foaf/0.1/name> "Corine Deliot" ; 
+                                                                                         <http://xmlns.com/foaf/0.1/mbox> "mailto:Corine.Deliot@bl.uk"];
+                                                 <http://purl.org/dc/terms/created> "2011-06-28"^^xsd:date;
+                                                 <http://purl.org/dc/terms/description> "This schema describes properties and classes defined to facilitate the description of bibliographic resources and their relationships to other entities. The properties and classes defined by this schema supplement properties and classes from other ontologies. A diagram of the full model as used by the British Library is available at: http://www.bl.uk/bibliographic/datafree.html"@en;
+                                                 <http://purl.org/dc/terms/modified> "2013-10-03"^^xsd:date;
+                                                 <http://purl.org/dc/terms/publisher> [<http://xmlns.com/foaf/0.1/name> "British Library, Metadata Services" ; 
+                                                                                       <http://xmlns.com/foaf/0.1/mbox> "mailto:metadata@bl.uk"];
+                                                 <http://purl.org/dc/terms/rights> "public domain";
+                                                 <http://purl.org/dc/terms/title> "British Library Terms RDF schema"@en;
+                                                 <http://purl.org/vocab/vann/preferredNamespacePrefix> "blt";
+                                                 <http://purl.org/vocab/vann/preferredNamespaceUri> "http://www.bl.uk/schemas/bibliographic/blterms#";
+                                                 a <http://purl.org/vocommons/voaf#Vocabulary>,
+                                                   <http://www.w3.org/2002/07/owl#Ontology>;
+                                                 rdfs:comment """Some useful terms for describing bibliographic resources that other models did not include. Version 1.4: brings the description for this schema in line with \"Metadata recommendations for Linked Open Vocabulairies\", version 1.1.; dct:license replaced by cc:license and the value changed from http://www.opendatacommons.org/licenses/pddl/1.0/ to http://creativecommons.org/publicdomain/mark/1.0/; various typos corrected. Version 1.4.1: added links to previous schema versions"""@en;
+                                                 rdfs:label "British Library Terms RDF schema"@en;
+                                                 <http://www.w3.org/2002/07/owl#priorVersion> <http://www.bl.uk/schemas/bibliographic/blterms-v1-2.rdf>,
+                                                                                              <http://www.bl.uk/schemas/bibliographic/blterms-v1-4.rdf>,
+                                                                                              <http://www.bl.uk/schemas/bibliographic/blterms-v1-3.rdf>;
+                                                 <http://www.w3.org/2002/07/owl#versionInfo> 1.41.
+blt:Family a <http://www.w3.org/2002/07/owl#Class>,
+             rdfs:Class;
+           rdfs:comment "A family"@en;
+           rdfs:isDefinedBy blt:;
+           rdfs:label "Family"@en;
+           rdfs:subClassOf <http://xmlns.com/foaf/0.1/Group>.
+blt:FamilyConcept a <http://www.w3.org/2002/07/owl#Class>,
+                    rdfs:Class;
+                  rdfs:comment "A family expressed as a concept."@en;
+                  rdfs:isDefinedBy blt:;
+                  rdfs:label "Family Concept"@en;
+                  rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+blt:OrganizationConcept a <http://www.w3.org/2002/07/owl#Class>,
+                          rdfs:Class;
+                        rdfs:comment "An organization expressed as a concept."@en;
+                        rdfs:isDefinedBy blt:;
+                        rdfs:label "Organization Concept"@en;
+                        rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+blt:PersonConcept a <http://www.w3.org/2002/07/owl#Class>,
+                    rdfs:Class;
+                  rdfs:comment "A person expressed as a concept."@en;
+                  rdfs:isDefinedBy blt:;
+                  rdfs:label "Person Concept"@en;
+                  rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+blt:PlaceConcept a <http://www.w3.org/2002/07/owl#Class>,
+                   rdfs:Class;
+                 rdfs:comment "A place expressed as a concept."@en;
+                 rdfs:isDefinedBy blt:;
+                 rdfs:label "Place Concept"@en;
+                 rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+blt:PublicationEndEvent a <http://www.w3.org/2002/07/owl#Class>,
+                          rdfs:Class;
+                        rdfs:comment "An event which is the end of the publication of a resource."@en;
+                        rdfs:isDefinedBy blt:;
+                        rdfs:label "Publication event end"@en;
+                        rdfs:subClassOf <http://purl.org/NET/c4dm/event.owl#Event>,
+                                        blt:PublicationEvent.
+blt:PublicationEvent a <http://www.w3.org/2002/07/owl#Class>,
+                       rdfs:Class;
+                     rdfs:comment "An event which is the publication of a resource."@en;
+                     rdfs:isDefinedBy blt:;
+                     rdfs:label "Publication event"@en;
+                     rdfs:subClassOf <http://purl.org/NET/c4dm/event.owl#Event>.
+blt:PublicationStartEvent a <http://www.w3.org/2002/07/owl#Class>,
+                            rdfs:Class;
+                          rdfs:comment "An event which is the start of the publication of a resource."@en;
+                          rdfs:isDefinedBy blt:;
+                          rdfs:label "Publication event start"@en;
+                          rdfs:subClassOf <http://purl.org/NET/c4dm/event.owl#Event>,
+                                          blt:PublicationEvent.
+blt:TopicDDC a <http://www.w3.org/2002/07/owl#Class>,
+               rdfs:Class;
+             rdfs:comment "A Dewey Decimal Classification number (as found in British Library cataloguing data)"@en;
+             rdfs:isDefinedBy blt:;
+             rdfs:label "Dewey Decimal Classification (DDC) number"@en;
+             rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+blt:TopicLCSH a <http://www.w3.org/2002/07/owl#Class>,
+                rdfs:Class;
+              rdfs:comment "A Library of Congress Subject Heading (LCSH) (as found in British Library cataloguing data)"@en;
+              rdfs:isDefinedBy blt:;
+              rdfs:label "Library of Congress Subject Heading (LCSH)"@en;
+              rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept>.
+blt:bnb a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+          rdf:Property;
+        rdfs:comment "The BNB number associated with this resource"@en;
+        rdfs:isDefinedBy blt:;
+        rdfs:label "BNB number"@en;
+        rdfs:range rdfs:Literal;
+        rdfs:subPropertyOf <http://purl.org/dc/terms/identifier>.
+blt:hasContributedTo a rdf:Property;
+                     rdfs:comment "the inverse property of dct:contributor"@en;
+                     rdfs:isDefinedBy blt:;
+                     rdfs:label "has contributed to"@en;
+                     <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/dc/terms/contributor>.
+blt:hasCreated a rdf:Property;
+               rdfs:comment "the inverse property of dct:creator"@en;
+               rdfs:isDefinedBy blt:;
+               rdfs:label "has created"@en;
+               <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/dc/terms/creator>.
+blt:publication a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  rdf:Property;
+                rdfs:comment "The publication event of a resource."@en;
+                rdfs:isDefinedBy blt:;
+                rdfs:label "Publication"@en;
+                rdfs:range blt:PublicationEvent.
+blt:publicationEnd a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     rdf:Property;
+                   rdfs:comment "The end of the publication event of a resource."@en;
+                   rdfs:isDefinedBy blt:;
+                   rdfs:label "Publication end"@en;
+                   rdfs:range blt:PublicationEndEvent;
+                   rdfs:subPropertyOf blt:publication.
+blt:publicationStart a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                       rdf:Property;
+                     rdfs:comment "The start of the publication event of a resource."@en;
+                     rdfs:isDefinedBy blt:;
+                     rdfs:label "Publication start"@en;
+                     rdfs:range blt:PublicationStartEvent;
+                     rdfs:subPropertyOf blt:publication.

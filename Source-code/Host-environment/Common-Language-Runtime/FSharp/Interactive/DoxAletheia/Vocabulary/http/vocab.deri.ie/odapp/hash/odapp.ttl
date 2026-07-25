@@ -1,0 +1,79 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix odapp: <http://vocab.deri.ie/odapp#>.
+
+<http://vocab.deri.ie/odapp> <http://purl.org/dc/elements/1.1/creator> odapp:fadmaa,
+                                                                       odapp:niklou,
+                                                                       odapp:gofshu,
+                                                                       odapp:deilee;
+                             <http://purl.org/dc/terms/created> "2012-07-04"^^xsd:date;
+                             <http://purl.org/dc/terms/description> """This is an early version of a vocabulary to describe \"open data applications\" i.e. applications built using open data. Examples of such applications are listed on government open data catalogues and participant on open data competitions.""";
+                             <http://purl.org/dc/terms/modified> "2012-07-17"^^xsd:date;
+                             <http://purl.org/dc/terms/partOf> <http://vocab.deri.ie/>;
+                             <http://purl.org/dc/terms/publisher> "http://vocab.deri.ie/odapp#DERI%2C%20NUI%20Galway";
+                             <http://purl.org/dc/terms/status> <http://purl.org/adms/status/UnderDevelopment>;
+                             <http://purl.org/dc/terms/title> "Open Data Applications Vocabulary";
+                             <http://purl.org/dc/terms/type> <http://purl.org/adms/assettype/Ontology>;
+                             <http://purl.org/vocab/vann/preferredNamespacePrefix> "odapp";
+                             <http://purl.org/vocab/vann/preferredNamespaceUri> "http://vocab.deri.ie/odapp#";
+                             a <http://www.w3.org/2002/07/owl#Ontology>,
+                               <http://www.w3.org/ns/adms#SemanticAsset>;
+                             <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/odapp.html>.
+odapp:AppType a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "describes the type of the application (e.g. mobile app, desktop app, etc...)";
+              rdfs:label "application type".
+odapp:DERI%2C%20NUI%20Galway a <http://purl.org/dc/terms/Agent>;
+                             <http://xmlns.com/foaf/0.1/homepage> <http://deri.ie/>,
+                                                                  <http://www.deri.ie/>;
+                             <http://xmlns.com/foaf/0.1/member> odapp:fadmaa,
+                                                                odapp:gofshu,
+                                                                odapp:niklou;
+                             <http://xmlns.com/foaf/0.1/name> "DERI, NUI Galway".
+odapp:FreeApp a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "a free application";
+              rdfs:label "free application".
+odapp:PaidApp a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "a paid application";
+              rdfs:label "paid application".
+odapp:Price a rdfs:Class,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "An application price";
+            rdfs:label "application price".
+odapp:appType a rdf:Property;
+              rdfs:label "application type";
+              rdfs:range odapp:AppType.
+odapp:deilee a <http://xmlns.com/foaf/0.1/Person>;
+             <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/odapp>;
+             <http://xmlns.com/foaf/0.1/name> "Deirdre Lee".
+odapp:fadmaa a <http://xmlns.com/foaf/0.1/Person>;
+             <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/odapp>;
+             <http://xmlns.com/foaf/0.1/mbox> <mailto:fadi.maali@deri.org>;
+             <http://xmlns.com/foaf/0.1/name> "Fadi Maali".
+odapp:gofshu a <http://xmlns.com/foaf/0.1/Person>;
+             <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/odapp>;
+             <http://xmlns.com/foaf/0.1/mbox> <mailto:gofran.shukair@deri.org>;
+             <http://xmlns.com/foaf/0.1/name> "Gofran Shukair".
+odapp:niklou a <http://xmlns.com/foaf/0.1/Person>;
+             <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/odapp>;
+             <http://xmlns.com/foaf/0.1/name> "Nikos Loutas".
+odapp:price a rdf:Property;
+            rdfs:comment "relationship between the admssw:SoftwareRelease and odap:Price";
+            rdfs:domain odapp:PaidApp;
+            rdfs:label "application price";
+            rdfs:range odapp:Price.
+odapp:rdf <http://purl.org/dc/terms/FileFormat> <http://vocab.deri.ie/odapp>;
+          a <http://www.w3.org/ns/adms#SemanticDistribution>;
+          <http://www.w3.org/ns/adms#accessURL> "http://vocab.deri.ie/odapp.rdf";
+          <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.
+odapp:ttl <http://purl.org/dc/terms/FileFormat> <http://vocab.deri.ie/odapp>;
+          a <http://www.w3.org/ns/adms#SemanticDistribution>;
+          <http://www.w3.org/ns/adms#accessURL> "http://vocab.deri.ie/odapp.ttl";
+          <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.
+odapp:uses a rdf:Property;
+           rdfs:comment "describes a dataset that is used by the application";
+           rdfs:domain rdfs:Resource;
+           rdfs:label "uses dataset".

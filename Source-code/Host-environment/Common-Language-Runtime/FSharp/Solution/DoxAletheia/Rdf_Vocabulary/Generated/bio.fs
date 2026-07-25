@@ -7,22 +7,33 @@ open type Prefix_ID
 module bio =
     let _namespace_iri = Namespace_Iri bio |> NamespaceIRI
     /// <summary>
-    ///   <para>bio:</para>
+    ///   <para>bio:termgroup3</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:Ontology</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/">http://purl.org/vocab/bio/0.1/</seealso>
-    let _prefix_iri = Prefixed_Name(bio, "") |> PrefixedName
+    ///   <para>rdf:Bag</para>
+    ///
+    /// labels<para>Properties of an event</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/termgroup3">http://purl.org/vocab/bio/0.1/termgroup3</seealso>
+    let termgroup3 = Prefixed_Name(bio, "termgroup3") |> PrefixedName
     /// <summary>
-    ///   <para>bio:Interval</para>
+    ///   <para>bio:principal</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>A person that takes the primary and most important role in an event. For example the principal in a Birth event would be the child being born and the principal in a Burial event would be the deceased person.</para>
+    /// labels<para>Principal</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/principal">http://purl.org/vocab/bio/0.1/principal</seealso>
+    let principal = Prefixed_Name(bio, "principal") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:Investiture</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>A extended interval of time related to a particular state of affairs, such as the lifespan of a person or a period of employment.</para>
-    /// labels<para>Interval</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Interval">http://purl.org/vocab/bio/0.1/Interval</seealso>
-    let Interval = Prefixed_Name(bio, "Interval") |> PrefixedName
+    ///   <para>The ceremonial event of a person taking a public office or honour.</para>
+    /// labels<para>Investiture</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Investiture">http://purl.org/vocab/bio/0.1/Investiture</seealso>
+    let Investiture = Prefixed_Name(bio, "Investiture") |> PrefixedName
     /// <summary>
     ///   <para>bio:Marriage</para>
     /// </summary>
@@ -33,51 +44,6 @@ module bio =
     /// <seealso href="http://purl.org/vocab/bio/0.1/Marriage">http://purl.org/vocab/bio/0.1/Marriage</seealso>
     let Marriage = Prefixed_Name(bio, "Marriage") |> PrefixedName
     /// <summary>
-    ///   <para>bio:Adoption</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The event of creating of a legal parent/child relationship that does not exist biologically.</para>
-    /// labels<para>Adoption</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Adoption">http://purl.org/vocab/bio/0.1/Adoption</seealso>
-    let Adoption = Prefixed_Name(bio, "Adoption") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:Assassination</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The event of a person being deliberately targeted and killed.</para>
-    /// labels<para>Assassination</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Assassination">http://purl.org/vocab/bio/0.1/Assassination</seealso>
-    let Assassination = Prefixed_Name(bio, "Assassination") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:BarMitzvah</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The ceremonial event held when a Jewish boy reaches age 13.</para>
-    /// labels<para>BarMitzvah</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/BarMitzvah">http://purl.org/vocab/bio/0.1/BarMitzvah</seealso>
-    let BarMitzvah = Prefixed_Name(bio, "BarMitzvah") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:BasMitzvah</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The ceremonial event held when a Jewish girl reaching age 13, also known as "Bat Mitzvah."</para>
-    /// labels<para>BasMitzvah</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/BasMitzvah">http://purl.org/vocab/bio/0.1/BasMitzvah</seealso>
-    let BasMitzvah = Prefixed_Name(bio, "BasMitzvah") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:Birth</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The event of a person entering into life.</para>
-    /// labels<para>Birth</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Birth">http://purl.org/vocab/bio/0.1/Birth</seealso>
-    let Birth = Prefixed_Name(bio, "Birth") |> PrefixedName
-    /// <summary>
     ///   <para>bio:NameChange</para>
     /// </summary>
     /// <remarks>
@@ -87,52 +53,23 @@ module bio =
     /// <seealso href="http://purl.org/vocab/bio/0.1/NameChange">http://purl.org/vocab/bio/0.1/NameChange</seealso>
     let NameChange = Prefixed_Name(bio, "NameChange") |> PrefixedName
     /// <summary>
-    ///   <para>bio:Naturalization</para>
+    ///   <para>bio:</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The event of a person obtaining citizenship. Note that the place the naturalization event occurs at may be different from the state the person is obtaining citizenship of. </para>
-    /// labels<para>Naturalization</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Naturalization">http://purl.org/vocab/bio/0.1/Naturalization</seealso>
-    let Naturalization = Prefixed_Name(bio, "Naturalization") |> PrefixedName
+    ///   <para>owl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/">http://purl.org/vocab/bio/0.1/</seealso>
+    let _prefix_iri = Prefixed_Name(bio, "") |> PrefixedName
     /// <summary>
-    ///   <para>bio:Ordination</para>
+    ///   <para>bio:event</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The ceremonial event held when a person receives authority to act in religious matters.</para>
-    /// labels<para>Ordination</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Ordination">http://purl.org/vocab/bio/0.1/Ordination</seealso>
-    let Ordination = Prefixed_Name(bio, "Ordination") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:Performance</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The event of an individual or a group of performers performing. Examples include concerts, plays, recitals, recordings, busking etc.</para>
-    /// labels<para>Performance</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Performance">http://purl.org/vocab/bio/0.1/Performance</seealso>
-    let Performance = Prefixed_Name(bio, "Performance") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:precedingEvent</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:TransitiveProperty</para>
-    ///   <para>owl:ObjectProperty</para>
     ///   <para>rdf:Property</para>
-    ///   <para>An event that occurs and concludes at some time before this event.</para>
-    /// labels<para>Preceding Event</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/precedingEvent">http://purl.org/vocab/bio/0.1/precedingEvent</seealso>
-    let precedingEvent = Prefixed_Name(bio, "precedingEvent") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:termgroup2</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Bag</para>
-    ///
-    /// labels<para>Types of event</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/termgroup2">http://purl.org/vocab/bio/0.1/termgroup2</seealso>
-    let termgroup2 = Prefixed_Name(bio, "termgroup2") |> PrefixedName
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>An event associated with a person, group or organization.</para>
+    /// labels<para>Life Event</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/event">http://purl.org/vocab/bio/0.1/event</seealso>
+    let event_ = Prefixed_Name(bio, "event") |> PrefixedName
     /// <summary>
     ///   <para>bio:GroupEvent</para>
     /// </summary>
@@ -142,124 +79,6 @@ module bio =
     /// labels<para>Group Event</para></remarks>
     /// <seealso href="http://purl.org/vocab/bio/0.1/GroupEvent">http://purl.org/vocab/bio/0.1/GroupEvent</seealso>
     let GroupEvent = Prefixed_Name(bio, "GroupEvent") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:Promotion</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The event of a person changing the position they hold with an employer to one with more importance or responsibility.</para>
-    /// labels<para>Promotion</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Promotion">http://purl.org/vocab/bio/0.1/Promotion</seealso>
-    let Promotion = Prefixed_Name(bio, "Promotion") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:Resignation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The event of a person voluntarily giving up or quitting their office or position.</para>
-    /// labels<para>Resignation</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Resignation">http://purl.org/vocab/bio/0.1/Resignation</seealso>
-    let Resignation = Prefixed_Name(bio, "Resignation") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:birth</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>An birth event associated with a person, group or organization.</para>
-    /// labels<para>Birth Event</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/birth">http://purl.org/vocab/bio/0.1/birth</seealso>
-    let birth = Prefixed_Name(bio, "birth") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:Accession</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The event of a person succeeding to the right to hold regal power. This event is often automatic on the death of the previous monarch and is usually followed by a coronation event.</para>
-    /// labels<para>Accession</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Accession">http://purl.org/vocab/bio/0.1/Accession</seealso>
-    let Accession = Prefixed_Name(bio, "Accession") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:IndividualEvent</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A type of event that is principally about a single person, group or organization. Other agents may be involved but the event is most significant for the principal agent.</para>
-    /// labels<para>Individual Event</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/IndividualEvent">http://purl.org/vocab/bio/0.1/IndividualEvent</seealso>
-    let IndividualEvent = Prefixed_Name(bio, "IndividualEvent") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:Annulment</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The event of declaring a marriage void from the beginning as though it never existed.</para>
-    /// labels<para>Annulment</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Annulment">http://purl.org/vocab/bio/0.1/Annulment</seealso>
-    let Annulment = Prefixed_Name(bio, "Annulment") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:Murder</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The event of a person being killed unlawfully with intent by the killer.</para>
-    /// labels<para>Murder</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Murder">http://purl.org/vocab/bio/0.1/Murder</seealso>
-    let Murder = Prefixed_Name(bio, "Murder") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:Baptism</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The ceremonial event held to admit a person to membership of a Christian church.</para>
-    /// labels<para>Baptism</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Baptism">http://purl.org/vocab/bio/0.1/Baptism</seealso>
-    let Baptism = Prefixed_Name(bio, "Baptism") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:Burial</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The event of interring the remains of a person's body into the ground.</para>
-    /// labels<para>Burial</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Burial">http://purl.org/vocab/bio/0.1/Burial</seealso>
-    let Burial = Prefixed_Name(bio, "Burial") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:Coronation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The ceremonial event of a person being invested with regal power to become a monarch.</para>
-    /// labels<para>Coronation</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Coronation">http://purl.org/vocab/bio/0.1/Coronation</seealso>
-    let Coronation = Prefixed_Name(bio, "Coronation") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:Death</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The event of a person's life ending.</para>
-    /// labels<para>Death</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Death">http://purl.org/vocab/bio/0.1/Death</seealso>
-    let Death = Prefixed_Name(bio, "Death") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:PositionChange</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The event of a person changing the position they hold with an employer.</para>
-    /// labels<para>Change of Position</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/PositionChange">http://purl.org/vocab/bio/0.1/PositionChange</seealso>
-    let PositionChange = Prefixed_Name(bio, "PositionChange") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:Disbanding</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The event of a group or organization being disbanded.</para>
-    /// labels<para>Disbanding</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Disbanding">http://purl.org/vocab/bio/0.1/Disbanding</seealso>
-    let Disbanding = Prefixed_Name(bio, "Disbanding") |> PrefixedName
     /// <summary>
     ///   <para>bio:Emigration</para>
     /// </summary>
@@ -279,15 +98,6 @@ module bio =
     /// <seealso href="http://purl.org/vocab/bio/0.1/Employment">http://purl.org/vocab/bio/0.1/Employment</seealso>
     let Employment = Prefixed_Name(bio, "Employment") |> PrefixedName
     /// <summary>
-    ///   <para>bio:Event</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>An event is an occurrence that brings about a change in the state of affairs for one or more people and/or other agents. Events are assumed to occur over a period of time and may not have precise start and end points.</para>
-    /// labels<para>Event</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Event">http://purl.org/vocab/bio/0.1/Event</seealso>
-    let Event = Prefixed_Name(bio, "Event") |> PrefixedName
-    /// <summary>
     ///   <para>bio:Execution</para>
     /// </summary>
     /// <remarks>
@@ -306,15 +116,6 @@ module bio =
     /// <seealso href="http://purl.org/vocab/bio/0.1/Formation">http://purl.org/vocab/bio/0.1/Formation</seealso>
     let Formation = Prefixed_Name(bio, "Formation") |> PrefixedName
     /// <summary>
-    ///   <para>bio:Funeral</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>The event of marking a person's death with a ceremony.</para>
-    /// labels<para>Funeral</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Funeral">http://purl.org/vocab/bio/0.1/Funeral</seealso>
-    let Funeral = Prefixed_Name(bio, "Funeral") |> PrefixedName
-    /// <summary>
     ///   <para>bio:Graduation</para>
     /// </summary>
     /// <remarks>
@@ -327,8 +128,8 @@ module bio =
     ///   <para>bio:partner</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdf:Property</para>
     ///   <para>owl:ObjectProperty</para>
+    ///   <para>rdf:Property</para>
     ///   <para>A person that is involved in a event as a partner in a relationship.</para>
     /// labels<para>Partner</para></remarks>
     /// <seealso href="http://purl.org/vocab/bio/0.1/partner">http://purl.org/vocab/bio/0.1/partner</seealso>
@@ -352,70 +153,209 @@ module bio =
     /// <seealso href="http://purl.org/vocab/bio/0.1/Inauguration">http://purl.org/vocab/bio/0.1/Inauguration</seealso>
     let Inauguration = Prefixed_Name(bio, "Inauguration") |> PrefixedName
     /// <summary>
-    ///   <para>bio:principal</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>A person that takes the primary and most important role in an event. For example the principal in a Birth event would be the child being born and the principal in a Burial event would be the deceased person.</para>
-    /// labels<para>Principal</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/principal">http://purl.org/vocab/bio/0.1/principal</seealso>
-    let principal = Prefixed_Name(bio, "principal") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:Investiture</para>
+    ///   <para>bio:Interval</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>The ceremonial event of a person taking a public office or honour.</para>
-    /// labels<para>Investiture</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Investiture">http://purl.org/vocab/bio/0.1/Investiture</seealso>
-    let Investiture = Prefixed_Name(bio, "Investiture") |> PrefixedName
+    ///   <para>A extended interval of time related to a particular state of affairs, such as the lifespan of a person or a period of employment.</para>
+    /// labels<para>Interval</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Interval">http://purl.org/vocab/bio/0.1/Interval</seealso>
+    let Interval = Prefixed_Name(bio, "Interval") |> PrefixedName
     /// <summary>
-    ///   <para>bio:witness</para>
+    ///   <para>bio:Funeral</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The event of marking a person's death with a ceremony.</para>
+    /// labels<para>Funeral</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Funeral">http://purl.org/vocab/bio/0.1/Funeral</seealso>
+    let Funeral = Prefixed_Name(bio, "Funeral") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:Accession</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The event of a person succeeding to the right to hold regal power. This event is often automatic on the death of the previous monarch and is usually followed by a coronation event.</para>
+    /// labels<para>Accession</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Accession">http://purl.org/vocab/bio/0.1/Accession</seealso>
+    let Accession = Prefixed_Name(bio, "Accession") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:IndividualEvent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A type of event that is principally about a single person, group or organization. Other agents may be involved but the event is most significant for the principal agent.</para>
+    /// labels<para>Individual Event</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/IndividualEvent">http://purl.org/vocab/bio/0.1/IndividualEvent</seealso>
+    let IndividualEvent = Prefixed_Name(bio, "IndividualEvent") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:Adoption</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The event of creating of a legal parent/child relationship that does not exist biologically.</para>
+    /// labels<para>Adoption</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Adoption">http://purl.org/vocab/bio/0.1/Adoption</seealso>
+    let Adoption = Prefixed_Name(bio, "Adoption") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:Annulment</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The event of declaring a marriage void from the beginning as though it never existed.</para>
+    /// labels<para>Annulment</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Annulment">http://purl.org/vocab/bio/0.1/Annulment</seealso>
+    let Annulment = Prefixed_Name(bio, "Annulment") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:Assassination</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The event of a person being deliberately targeted and killed.</para>
+    /// labels<para>Assassination</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Assassination">http://purl.org/vocab/bio/0.1/Assassination</seealso>
+    let Assassination = Prefixed_Name(bio, "Assassination") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:Baptism</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The ceremonial event held to admit a person to membership of a Christian church.</para>
+    /// labels<para>Baptism</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Baptism">http://purl.org/vocab/bio/0.1/Baptism</seealso>
+    let Baptism = Prefixed_Name(bio, "Baptism") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:BasMitzvah</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The ceremonial event held when a Jewish girl reaching age 13, also known as "Bat Mitzvah."</para>
+    /// labels<para>BasMitzvah</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/BasMitzvah">http://purl.org/vocab/bio/0.1/BasMitzvah</seealso>
+    let BasMitzvah = Prefixed_Name(bio, "BasMitzvah") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:Birth</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The event of a person entering into life.</para>
+    /// labels<para>Birth</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Birth">http://purl.org/vocab/bio/0.1/Birth</seealso>
+    let Birth = Prefixed_Name(bio, "Birth") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:Burial</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The event of interring the remains of a person's body into the ground.</para>
+    /// labels<para>Burial</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Burial">http://purl.org/vocab/bio/0.1/Burial</seealso>
+    let Burial = Prefixed_Name(bio, "Burial") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:Naturalization</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The event of a person obtaining citizenship. Note that the place the naturalization event occurs at may be different from the state the person is obtaining citizenship of. </para>
+    /// labels<para>Naturalization</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Naturalization">http://purl.org/vocab/bio/0.1/Naturalization</seealso>
+    let Naturalization = Prefixed_Name(bio, "Naturalization") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:Ordination</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The ceremonial event held when a person receives authority to act in religious matters.</para>
+    /// labels<para>Ordination</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Ordination">http://purl.org/vocab/bio/0.1/Ordination</seealso>
+    let Ordination = Prefixed_Name(bio, "Ordination") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:biography</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>An extended description or account of someone's life.</para>
+    /// labels<para>Biography</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/biography">http://purl.org/vocab/bio/0.1/biography</seealso>
+    let biography = Prefixed_Name(bio, "biography") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:child</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>A person that witnesses and can bear testimony to the occurrence of an event.</para>
-    /// labels<para>Witness</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/witness">http://purl.org/vocab/bio/0.1/witness</seealso>
-    let witness = Prefixed_Name(bio, "witness") |> PrefixedName
+    ///   <para>A biological child of a person. </para>
+    /// labels<para>Child</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/child">http://purl.org/vocab/bio/0.1/child</seealso>
+    let child = Prefixed_Name(bio, "child") |> PrefixedName
     /// <summary>
-    ///   <para>bio:termgroup5</para>
+    ///   <para>bio:concludingEvent</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdf:Bag</para>
-    ///
-    /// labels<para>Properties that relate an event to another event</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/termgroup5">http://purl.org/vocab/bio/0.1/termgroup5</seealso>
-    let termgroup5 = Prefixed_Name(bio, "termgroup5") |> PrefixedName
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>rdf:Property</para>
+    ///   <para>An event that marks the end of an interval and/or relationship. The event changes of the state of affairs that held during the interval. For example a period of study may be concluded by a Graduation event.</para>
+    /// labels<para>Concluding Event</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/concludingEvent">http://purl.org/vocab/bio/0.1/concludingEvent</seealso>
+    let concludingEvent = Prefixed_Name(bio, "concludingEvent") |> PrefixedName
+
     /// <summary>
-    ///   <para>bio:termgroup4</para>
+    ///   <para>bio:immediatelyFollowingEvent</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdf:Bag</para>
-    ///
-    /// labels<para>Properties that relate an event to an agent</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/termgroup4">http://purl.org/vocab/bio/0.1/termgroup4</seealso>
-    let termgroup4 = Prefixed_Name(bio, "termgroup4") |> PrefixedName
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>rdf:Property</para>
+    ///   <para>An event that starts immediately after this event.</para>
+    /// labels<para>Immediately Following Event</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/immediatelyFollowingEvent">http://purl.org/vocab/bio/0.1/immediatelyFollowingEvent</seealso>
+    let immediatelyFollowingEvent =
+        Prefixed_Name(bio, "immediatelyFollowingEvent") |> PrefixedName
+
     /// <summary>
-    ///   <para>bio:termgroup1</para>
+    ///   <para>bio:Murder</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdf:Bag</para>
-    ///
-    /// labels<para>Properties of a person</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/termgroup1">http://purl.org/vocab/bio/0.1/termgroup1</seealso>
-    let termgroup1 = Prefixed_Name(bio, "termgroup1") |> PrefixedName
+    ///   <para>owl:Class</para>
+    ///   <para>The event of a person being killed unlawfully with intent by the killer.</para>
+    /// labels<para>Murder</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Murder">http://purl.org/vocab/bio/0.1/Murder</seealso>
+    let Murder = Prefixed_Name(bio, "Murder") |> PrefixedName
     /// <summary>
-    ///   <para>bio:termgroup3</para>
+    ///   <para>bio:BarMitzvah</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdf:Bag</para>
-    ///
-    /// labels<para>Properties of an event</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/termgroup3">http://purl.org/vocab/bio/0.1/termgroup3</seealso>
-    let termgroup3 = Prefixed_Name(bio, "termgroup3") |> PrefixedName
+    ///   <para>owl:Class</para>
+    ///   <para>The ceremonial event held when a Jewish boy reaches age 13.</para>
+    /// labels<para>BarMitzvah</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/BarMitzvah">http://purl.org/vocab/bio/0.1/BarMitzvah</seealso>
+    let BarMitzvah = Prefixed_Name(bio, "BarMitzvah") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:place</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The place at which an event occurred.</para>
+    /// labels<para>Place</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/place">http://purl.org/vocab/bio/0.1/place</seealso>
+    let place = Prefixed_Name(bio, "place") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:Coronation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The ceremonial event of a person being invested with regal power to become a monarch.</para>
+    /// labels<para>Coronation</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Coronation">http://purl.org/vocab/bio/0.1/Coronation</seealso>
+    let Coronation = Prefixed_Name(bio, "Coronation") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:Death</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The event of a person's life ending.</para>
+    /// labels<para>Death</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Death">http://purl.org/vocab/bio/0.1/Death</seealso>
+    let Death = Prefixed_Name(bio, "Death") |> PrefixedName
     /// <summary>
     ///   <para>bio:Cremation</para>
     /// </summary>
@@ -426,14 +366,14 @@ module bio =
     /// <seealso href="http://purl.org/vocab/bio/0.1/Cremation">http://purl.org/vocab/bio/0.1/Cremation</seealso>
     let Cremation = Prefixed_Name(bio, "Cremation") |> PrefixedName
     /// <summary>
-    ///   <para>bio:Demotion</para>
+    ///   <para>bio:PositionChange</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>The event of a person changing the position they hold with an employer to one with less importance or responsibility.</para>
-    /// labels<para>Demotion</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/Demotion">http://purl.org/vocab/bio/0.1/Demotion</seealso>
-    let Demotion = Prefixed_Name(bio, "Demotion") |> PrefixedName
+    ///   <para>The event of a person changing the position they hold with an employer.</para>
+    /// labels<para>Change of Position</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/PositionChange">http://purl.org/vocab/bio/0.1/PositionChange</seealso>
+    let PositionChange = Prefixed_Name(bio, "PositionChange") |> PrefixedName
     /// <summary>
     ///   <para>bio:Dismissal</para>
     /// </summary>
@@ -462,6 +402,87 @@ module bio =
     /// <seealso href="http://purl.org/vocab/bio/0.1/Enrolment">http://purl.org/vocab/bio/0.1/Enrolment</seealso>
     let Enrolment = Prefixed_Name(bio, "Enrolment") |> PrefixedName
     /// <summary>
+    ///   <para>bio:Event</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>An event is an occurrence that brings about a change in the state of affairs for one or more people and/or other agents. Events are assumed to occur over a period of time and may not have precise start and end points.</para>
+    /// labels<para>Event</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Event">http://purl.org/vocab/bio/0.1/Event</seealso>
+    let Event = Prefixed_Name(bio, "Event") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:Demotion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The event of a person changing the position they hold with an employer to one with less importance or responsibility.</para>
+    /// labels<para>Demotion</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Demotion">http://purl.org/vocab/bio/0.1/Demotion</seealso>
+    let Demotion = Prefixed_Name(bio, "Demotion") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:Disbanding</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The event of a group or organization being disbanded.</para>
+    /// labels<para>Disbanding</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Disbanding">http://purl.org/vocab/bio/0.1/Disbanding</seealso>
+    let Disbanding = Prefixed_Name(bio, "Disbanding") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:termgroup2</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Bag</para>
+    ///
+    /// labels<para>Types of event</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/termgroup2">http://purl.org/vocab/bio/0.1/termgroup2</seealso>
+    let termgroup2 = Prefixed_Name(bio, "termgroup2") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:termgroup5</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Bag</para>
+    ///
+    /// labels<para>Properties that relate an event to another event</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/termgroup5">http://purl.org/vocab/bio/0.1/termgroup5</seealso>
+    let termgroup5 = Prefixed_Name(bio, "termgroup5") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:termgroup4</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Bag</para>
+    ///
+    /// labels<para>Properties that relate an event to an agent</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/termgroup4">http://purl.org/vocab/bio/0.1/termgroup4</seealso>
+    let termgroup4 = Prefixed_Name(bio, "termgroup4") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:termgroup1</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Bag</para>
+    ///
+    /// labels<para>Properties of a person</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/termgroup1">http://purl.org/vocab/bio/0.1/termgroup1</seealso>
+    let termgroup1 = Prefixed_Name(bio, "termgroup1") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:Performance</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The event of an individual or a group of performers performing. Examples include concerts, plays, recitals, recordings, busking etc.</para>
+    /// labels<para>Performance</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Performance">http://purl.org/vocab/bio/0.1/Performance</seealso>
+    let Performance = Prefixed_Name(bio, "Performance") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:Promotion</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The event of a person changing the position they hold with an employer to one with more importance or responsibility.</para>
+    /// labels<para>Promotion</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Promotion">http://purl.org/vocab/bio/0.1/Promotion</seealso>
+    let Promotion = Prefixed_Name(bio, "Promotion") |> PrefixedName
+    /// <summary>
     ///   <para>bio:Redundancy</para>
     /// </summary>
     /// <remarks>
@@ -479,6 +500,15 @@ module bio =
     /// labels<para>Agent Relationship</para></remarks>
     /// <seealso href="http://purl.org/vocab/bio/0.1/Relationship">http://purl.org/vocab/bio/0.1/Relationship</seealso>
     let Relationship = Prefixed_Name(bio, "Relationship") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:Resignation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>The event of a person voluntarily giving up or quitting their office or position.</para>
+    /// labels<para>Resignation</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/Resignation">http://purl.org/vocab/bio/0.1/Resignation</seealso>
+    let Resignation = Prefixed_Name(bio, "Resignation") |> PrefixedName
     /// <summary>
     ///   <para>bio:Retirement</para>
     /// </summary>
@@ -499,51 +529,22 @@ module bio =
     /// <seealso href="http://purl.org/vocab/bio/0.1/agent">http://purl.org/vocab/bio/0.1/agent</seealso>
     let agent = Prefixed_Name(bio, "agent") |> PrefixedName
     /// <summary>
-    ///   <para>bio:event</para>
+    ///   <para>bio:birth</para>
     /// </summary>
     /// <remarks>
+    ///   <para>rdf:Property</para>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>rdf:Property</para>
-    ///   <para>An event associated with a person, group or organization.</para>
-    /// labels<para>Life Event</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/event">http://purl.org/vocab/bio/0.1/event</seealso>
-    let event_ = Prefixed_Name(bio, "event") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:biography</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>An extended description or account of someone's life.</para>
-    /// labels<para>Biography</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/biography">http://purl.org/vocab/bio/0.1/biography</seealso>
-    let biography = Prefixed_Name(bio, "biography") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:child</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>rdf:Property</para>
-    ///   <para>A biological child of a person. </para>
-    /// labels<para>Child</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/child">http://purl.org/vocab/bio/0.1/child</seealso>
-    let child = Prefixed_Name(bio, "child") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:concludingEvent</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>rdf:Property</para>
-    ///   <para>An event that marks the end of an interval and/or relationship. The event changes of the state of affairs that held during the interval. For example a period of study may be concluded by a Graduation event.</para>
-    /// labels<para>Concluding Event</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/concludingEvent">http://purl.org/vocab/bio/0.1/concludingEvent</seealso>
-    let concludingEvent = Prefixed_Name(bio, "concludingEvent") |> PrefixedName
+    ///   <para>An birth event associated with a person, group or organization.</para>
+    /// labels<para>Birth Event</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/birth">http://purl.org/vocab/bio/0.1/birth</seealso>
+    let birth = Prefixed_Name(bio, "birth") |> PrefixedName
     /// <summary>
     ///   <para>bio:concurrentEvent</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>rdf:Property</para>
     ///   <para>owl:SymmetricProperty</para>
+    ///   <para>rdf:Property</para>
+    ///   <para>owl:ObjectProperty</para>
     ///   <para>An event that occurs while this event is occurring. The events need not start or conclude at the same times.</para>
     /// labels<para>Concurrent Event</para></remarks>
     /// <seealso href="http://purl.org/vocab/bio/0.1/concurrentEvent">http://purl.org/vocab/bio/0.1/concurrentEvent</seealso>
@@ -561,8 +562,8 @@ module bio =
     ///   <para>bio:death</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
     ///   <para>rdf:Property</para>
+    ///   <para>owl:ObjectProperty</para>
     ///   <para>An death event associated with a person, group or organization.</para>
     /// labels<para>Death Event</para></remarks>
     /// <seealso href="http://purl.org/vocab/bio/0.1/death">http://purl.org/vocab/bio/0.1/death</seealso>
@@ -591,8 +592,8 @@ module bio =
     ///   <para>bio:father</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdf:Property</para>
     ///   <para>owl:ObjectProperty</para>
+    ///   <para>rdf:Property</para>
     ///   <para>owl:FunctionalProperty</para>
     ///   <para>The biological father of a person, also known as the genitor.</para>
     /// labels<para>Father</para></remarks>
@@ -602,32 +603,20 @@ module bio =
     ///   <para>bio:followingEvent</para>
     /// </summary>
     /// <remarks>
+    ///   <para>owl:TransitiveProperty</para>
     ///   <para>rdf:Property</para>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>owl:TransitiveProperty</para>
     ///   <para>An event that starts at some time after this event.</para>
     /// labels<para>Following Event</para></remarks>
     /// <seealso href="http://purl.org/vocab/bio/0.1/followingEvent">http://purl.org/vocab/bio/0.1/followingEvent</seealso>
     let followingEvent = Prefixed_Name(bio, "followingEvent") |> PrefixedName
 
     /// <summary>
-    ///   <para>bio:immediatelyFollowingEvent</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>An event that starts immediately after this event.</para>
-    /// labels<para>Immediately Following Event</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/immediatelyFollowingEvent">http://purl.org/vocab/bio/0.1/immediatelyFollowingEvent</seealso>
-    let immediatelyFollowingEvent =
-        Prefixed_Name(bio, "immediatelyFollowingEvent") |> PrefixedName
-
-    /// <summary>
     ///   <para>bio:immediatelyPrecedingEvent</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdf:Property</para>
     ///   <para>owl:ObjectProperty</para>
+    ///   <para>rdf:Property</para>
     ///   <para>An event that occurs and concludes immediately before this event.</para>
     /// labels<para>Immediately Preceding Event</para></remarks>
     /// <seealso href="http://purl.org/vocab/bio/0.1/immediatelyPrecedingEvent">http://purl.org/vocab/bio/0.1/immediatelyPrecedingEvent</seealso>
@@ -635,11 +624,22 @@ module bio =
         Prefixed_Name(bio, "immediatelyPrecedingEvent") |> PrefixedName
 
     /// <summary>
+    ///   <para>bio:precedingEvent</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>owl:TransitiveProperty</para>
+    ///   <para>An event that occurs and concludes at some time before this event.</para>
+    /// labels<para>Preceding Event</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/precedingEvent">http://purl.org/vocab/bio/0.1/precedingEvent</seealso>
+    let precedingEvent = Prefixed_Name(bio, "precedingEvent") |> PrefixedName
+    /// <summary>
     ///   <para>bio:initiatingEvent</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
     ///   <para>rdf:Property</para>
+    ///   <para>owl:ObjectProperty</para>
     ///   <para>An event that marks the start of an interval and/or relationship. The event contributes to and/or causes of the state of affairs that hold during the interval. For example a period of study may be initiated by an Enrolment event.</para>
     /// labels<para>Initiating Event</para></remarks>
     /// <seealso href="http://purl.org/vocab/bio/0.1/initiatingEvent">http://purl.org/vocab/bio/0.1/initiatingEvent</seealso>
@@ -648,8 +648,8 @@ module bio =
     ///   <para>bio:interval</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
     ///   <para>rdf:Property</para>
+    ///   <para>owl:ObjectProperty</para>
     ///   <para>The interval during which the relationship persists.</para>
     /// labels<para>Relationship Interval</para></remarks>
     /// <seealso href="http://purl.org/vocab/bio/0.1/interval">http://purl.org/vocab/bio/0.1/interval</seealso>
@@ -668,9 +668,9 @@ module bio =
     ///   <para>bio:mother</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>owl:FunctionalProperty</para>
     ///   <para>rdf:Property</para>
+    ///   <para>owl:FunctionalProperty</para>
+    ///   <para>owl:ObjectProperty</para>
     ///   <para>The biological mother of a person, also known as the genetrix.</para>
     /// labels<para>Mother</para></remarks>
     /// <seealso href="http://purl.org/vocab/bio/0.1/mother">http://purl.org/vocab/bio/0.1/mother</seealso>
@@ -679,8 +679,8 @@ module bio =
     ///   <para>bio:officiator</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdf:Property</para>
     ///   <para>owl:ObjectProperty</para>
+    ///   <para>rdf:Property</para>
     ///   <para>A person that officiates at a ceremonial event.</para>
     /// labels<para>Officiator</para></remarks>
     /// <seealso href="http://purl.org/vocab/bio/0.1/officiator">http://purl.org/vocab/bio/0.1/officiator</seealso>
@@ -689,8 +689,8 @@ module bio =
     ///   <para>bio:olb</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
     ///   <para>rdf:Property</para>
+    ///   <para>owl:DatatypeProperty</para>
     ///   <para>A one-line biography of the person.</para>
     /// labels<para>One-line bio</para></remarks>
     /// <seealso href="http://purl.org/vocab/bio/0.1/olb">http://purl.org/vocab/bio/0.1/olb</seealso>
@@ -719,8 +719,8 @@ module bio =
     ///   <para>bio:participant</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
     ///   <para>rdf:Property</para>
+    ///   <para>owl:ObjectProperty</para>
     ///   <para>A person, group or organization that participates in a relationship for some time.</para>
     /// labels<para>Participant</para></remarks>
     /// <seealso href="http://purl.org/vocab/bio/0.1/participant">http://purl.org/vocab/bio/0.1/participant</seealso>
@@ -729,21 +729,12 @@ module bio =
     ///   <para>bio:relationship</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
     ///   <para>rdf:Property</para>
+    ///   <para>owl:ObjectProperty</para>
     ///   <para>A relationship that a person, group or organization participates in for some time.</para>
     /// labels<para>Relationship</para></remarks>
     /// <seealso href="http://purl.org/vocab/bio/0.1/relationship">http://purl.org/vocab/bio/0.1/relationship</seealso>
     let relationship = Prefixed_Name(bio, "relationship") |> PrefixedName
-    /// <summary>
-    ///   <para>bio:place</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>The place at which an event occurred.</para>
-    /// labels<para>Place</para></remarks>
-    /// <seealso href="http://purl.org/vocab/bio/0.1/place">http://purl.org/vocab/bio/0.1/place</seealso>
-    let place = Prefixed_Name(bio, "place") |> PrefixedName
     /// <summary>
     ///   <para>bio:position</para>
     /// </summary>
@@ -768,9 +759,19 @@ module bio =
     ///   <para>bio:state</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
     ///   <para>rdf:Property</para>
+    ///   <para>owl:ObjectProperty</para>
     ///   <para>A country or independent territory that is involved in an event.</para>
     /// labels<para>State</para></remarks>
     /// <seealso href="http://purl.org/vocab/bio/0.1/state">http://purl.org/vocab/bio/0.1/state</seealso>
     let state = Prefixed_Name(bio, "state") |> PrefixedName
+    /// <summary>
+    ///   <para>bio:witness</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>rdf:Property</para>
+    ///   <para>A person that witnesses and can bear testimony to the occurrence of an event.</para>
+    /// labels<para>Witness</para></remarks>
+    /// <seealso href="http://purl.org/vocab/bio/0.1/witness">http://purl.org/vocab/bio/0.1/witness</seealso>
+    let witness = Prefixed_Name(bio, "witness") |> PrefixedName

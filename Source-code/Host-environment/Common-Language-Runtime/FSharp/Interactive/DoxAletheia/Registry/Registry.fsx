@@ -591,6 +591,7 @@ let namespace_map = resolution.resolved |> Map.ofArray
 
 
 
+(*
 
 let default_graph = new ThreadSafeGraph()
 
@@ -622,6 +623,7 @@ let rdfs_comment =
 
 
 
+*)
 
 
 
@@ -689,6 +691,7 @@ module lov =
 
             let graph = new ThreadSafeGraph()
             FileLoader.Load(graph, file_path)
+(*
 
             let vocabularies =
 
@@ -744,6 +747,7 @@ module lov =
                 )
 
 
+*)
 
         module nq =
 
@@ -873,6 +877,76 @@ module lov =
 
 
 
+
+
+
+
+
+
+
+let rdf_type = Prefixed_Name(rdf,"type") |> PrefixedName
+let voaf_vocabulary = Prefixed_Name(voaf,"Vocabulary") |> PrefixedName
+let vocabulary_variable = !? "vocabulary"
+let vocabulary_pattern = !> vocabulary_variable --- rdf_type --> voaf_vocabulary
+
+let vocabularies = 
+    sparql.select [vocabulary_variable] {
+        where vocabulary_pattern
+        from lov.dump.n3.graph
+    } 
+
+
+let preferredNamespaceUri_variable = !? "preferredNamespaceUri"
+
+let vannpreferredNamespaceUri = Prefixed_Name(vann,"preferredNamespaceUri") |> PrefixedName
+
+let preferredNamespaceUri_pattern = !> vocabulary_variable --- vannpreferredNamespaceUri --> preferredNamespaceUri_variable
+
+let preferredNamespaceUris = 
+
+    sparql.select [vocabulary_variable ; preferredNamespaceUri_variable] 
+            {
+            where preferredNamespaceUri_pattern
+            from lov.dump.n3.graph
+            }
+
+let preferredNamespace_by_vocabulary =  
+    Array.zip  (preferredNamespaceUris.variable_column preferredNamespaceUri_variable) (preferredNamespaceUris.variable_column vocabulary_variable )
+    |> Array.map (fun (LiteralRDFTerm namespace_name, IriRDFTerm vocabulary) -> vocabulary.lexical_form, namespace_name.lexical_form)
+    |> Map.ofArray
+let vocabulary_by_namespace_name =  
+    Array.zip  (preferredNamespaceUris.variable_column preferredNamespaceUri_variable) (preferredNamespaceUris.variable_column vocabulary_variable )
+    |> Array.map (fun (LiteralRDFTerm namespace_name, IriRDFTerm vocabulary) -> namespace_name.lexical_form, vocabulary.lexical_form)
+    |> Map.ofArray
+
+
+let vannpreferredNamespacePrefix = Prefixed_Name(vann,"preferredNamespacePrefix") |> PrefixedName
+
+let preferredNamespacePrefix_variable = !? "preferredNamespacePrefix"
+
+
+let preferredNamespacePrefix_pattern = !> vocabulary_variable --- vannpreferredNamespacePrefix --> preferredNamespacePrefix_variable
+
+let preferredNamespacePrefixes = 
+
+    sparql.select [vocabulary_variable ; preferredNamespacePrefix_variable] 
+            {
+            where preferredNamespacePrefix_pattern
+            from lov.dump.n3.graph
+            }
+
+preferredNamespacePrefixes.Results 
+let preferred_prefix_by_vocabulary =  
+    Array.zip  (preferredNamespacePrefixes.variable_column preferredNamespacePrefix_variable) (preferredNamespacePrefixes.variable_column vocabulary_variable )
+    |> Array.map (fun (LiteralRDFTerm namespace_prefix, IriRDFTerm vocabulary) -> vocabulary.lexical_form, namespace_prefix.lexical_form)
+    |> Map.ofArray
+
+let preferred_prefix_by_namespace_name = 
+    vocabularies.variable_column vocabulary_variable
+    |> Array.map (fun (IriRDFTerm vocabulary) -> preferredNamespace_by_vocabulary[vocabulary.lexical_form],preferred_prefix_by_vocabulary[vocabulary.lexical_form])
+    |> Map.ofArray
+
+
 let is_terminal_delimited (iri_string: string) =
     iri_string.EndsWith('#')
     || iri_string.EndsWith('/')
@@ -888,9 +962,16 @@ let terminated_graph_namespace =
     |> Array.Parallel.filter (fun graph_name -> is_terminal_delimited graph_name)
     |> Array.Parallel.map (fun graph_name -> graph_name, graph_name)
 
-let bare_graph_names =
+let nonterminated_graph_namespace =
     lov.dump.nq.graph_names
     |> Array.Parallel.filter (fun graph_name -> is_not_terminal_delimited graph_name)
+    |> Array.map (fun graph_name -> graph_name, preferredNamespace_by_vocabulary[graph_name])
+
+
+
+
+
+(*
 
 let bare_graph_namespace_names =
     bare_graph_names
@@ -917,7 +998,7 @@ let graph_names_missing_namespace_names =
     bare_graph_namespace_names
     |> Array.filter (fun (graph_name, namespace_names) -> namespace_names.Length < 1)
     |> Array.map (fun (graph_name, namespace_names) -> graph_name, graph_name)
-
+*)
 
 
 let map_prefixes (prefix_label: string) (namespace_name: string) (graph: IGraph) =
@@ -946,19 +1027,17 @@ let map_prefixes (prefix_label: string) (namespace_name: string) (graph: IGraph)
 
 
 
-
 let lov_metadata =
-    Array.concat [| terminated_graph_namespace
-                    bare_graph_namespace
-                    graph_names_missing_namespace_names
+    Array.concat [| 
+                    terminated_graph_namespace
+                    nonterminated_graph_namespace
 
                      |]
     |> Array.Parallel.choose (fun (graph_name, namespace_name) ->
 
         try
             let namespace_directory =
-                Folder.Vocabulary
-                ./ iri_to_relative_path namespace_name
+                Folder.Vocabulary ./ iri_to_relative_path namespace_name
 
 
             let prefix_label = namespace_map[namespace_name]
@@ -1400,12 +1479,7 @@ File.WriteAllText(
 
 
     
-let voafvocabulary = Prefixed_Name(voaf,"Vocabulary") |> PrefixedName
 
-let rdftype = Prefixed_Name(rdf,"type") |> PrefixedName
-let vannpreferredNamespacePrefix = Prefixed_Name(vann,"preferredNamespacePrefix") |> PrefixedName
-
-let vannpreferredNamespaceUri = Prefixed_Name(vann,"preferredNamespaceUri") |> PrefixedName
 
 let dcatdistribution = Prefixed_Name(prefix_map["http://www.w3.org/ns/dcat#"],"distribution") |> PrefixedName
     
@@ -1429,19 +1503,16 @@ let lov_graph = new ThreadSafeGraph()
 FileLoader.Load(lov_graph, Document.lov.n3.path)
 
 
-let vocabulary_variable = !? "vocabulary"
 
 
 let vocabulary_graph = 
     sparql.discover [ vocabulary_variable ] {
-        where (!> vocabulary_variable --- rdftype --> voafvocabulary)
+        where (!> vocabulary_variable --- rdf_type --> voaf_vocabulary)
         from lov_graph
     } |> RDF_Graph.from_vds_graph
-let vocabulary_triples = 
-    vocabulary_graph.triples
-    |> Seq.toArray
 let triples_by_vocabulary = 
-    vocabulary_triples 
+    vocabulary_graph.triples 
+    |> Seq.toArray
     |> Array.groupBy (fun triple -> triple.curSubject)
 let random_vocabulary = triples_by_vocabulary |> Array.randomChoice
 let should_overwrite = true
@@ -1507,7 +1578,7 @@ graph_files
 
     let namespace_name = 
         match graph_file.parent_directory.FullName[Folder.Vocabulary.path.Length+1..] |> relative_path_to_iri with 
-        | namespace_name when namespace_name.StartsWith("http://purl.org/NET") -> namespace_name.ToLowerInvariant()
+        // | namespace_name when namespace_name.StartsWith("http://purl.org/NET") -> namespace_name.ToLowerInvariant()
         | namespace_name -> namespace_name
     printfn "file_path %s has namespace_name %s" file_path namespace_name
     match prefix_map.TryFind namespace_name with 
@@ -1537,7 +1608,7 @@ graph_files
             let subject_variable = !? "subject"
 
             let rdf_class_varible = !? "rdf_class"
-            let rdf_class_pattern =  !> subject_variable --- rdftype --> rdf_class_varible
+            let rdf_class_pattern =  !> subject_variable --- rdf_type --> rdf_class_varible
             let rdf_class_graph =
                 sparql.construct rdf_class_pattern {
                     where rdf_class_pattern

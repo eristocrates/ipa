@@ -1,0 +1,392 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dsgraphql: <http://datashapes.org/graphql#>.
+
+<http://datashapes.org/graphql> a <http://www.w3.org/2002/07/owl#Ontology>;
+                                rdfs:comment "A vocabulary to annotate RDF schemas (in particular SHACL shapes) with metadata to define mappings to GraphQL.";
+                                rdfs:label "GraphQL Vocabulary";
+                                <http://www.w3.org/2002/07/owl#imports> <http://datashapes.org/dash>.
+dsgraphql:ClassShape a <http://www.w3.org/ns/shacl#NodeShape>;
+                     rdfs:label "GraphQL class shape";
+                     <http://www.w3.org/ns/shacl#property> [<http://www.w3.org/ns/shacl#path> [<http://www.w3.org/ns/shacl#inversePath> dsgraphql:protectedClass] ; 
+                                                            <http://www.w3.org/ns/shacl#order> 2.0 ; 
+                                                            <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI> ; 
+                                                            <http://www.w3.org/ns/shacl#name> "protected class of" ; 
+                                                            <http://www.w3.org/ns/shacl#group> dsgraphql:SchemaPropertyGroup ; 
+                                                            <http://www.w3.org/ns/shacl#description> "Protected classes (including subclasses) can only be queried if reached through a field from another shape." ; 
+                                                            <http://www.w3.org/ns/shacl#class> dsgraphql:Schema ; 
+                                                            a <http://www.w3.org/ns/shacl#PropertyShape>],
+                                                           [<http://www.w3.org/ns/shacl#path> [<http://www.w3.org/ns/shacl#inversePath> dsgraphql:publicClass] ; 
+                                                            <http://www.w3.org/ns/shacl#order> 0.0 ; 
+                                                            <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI> ; 
+                                                            <http://www.w3.org/ns/shacl#name> "public class of" ; 
+                                                            <http://www.w3.org/ns/shacl#group> dsgraphql:SchemaPropertyGroup ; 
+                                                            <http://www.w3.org/ns/shacl#description> "Public classes (including subclasses) can be queried without restrictions, unless marked as protected or private. This also includes shapes linked to these classes via sh:targetClass or dash:applicableToClass." ; 
+                                                            <http://www.w3.org/ns/shacl#class> dsgraphql:Schema ; 
+                                                            a <http://www.w3.org/ns/shacl#PropertyShape>];
+                     <http://www.w3.org/ns/shacl#targetClass> rdfs:Class.
+dsgraphql:InputObjectType a rdfs:Class,
+                            <http://www.w3.org/ns/shacl#NodeShape>;
+                          rdfs:comment "Represents an input object type in a GraphQL schema.";
+                          rdfs:label "Input object type";
+                          rdfs:subClassOf rdfs:Resource;
+                          <http://www.w3.org/ns/shacl#property> [<http://www.w3.org/ns/shacl#path> dsgraphql:inputValue ; 
+                                                                 <http://www.w3.org/ns/shacl#name> "input value" ; 
+                                                                 <http://www.w3.org/ns/shacl#description> "The input value(s) of the input object type." ; 
+                                                                 <http://www.w3.org/ns/shacl#class> dsgraphql:InputValue ; 
+                                                                 a <http://www.w3.org/ns/shacl#PropertyShape>].
+dsgraphql:InputType <http://datashapes.org/dash#abstract> true;
+                    a rdfs:Class,
+                      <http://www.w3.org/ns/shacl#NodeShape>;
+                    rdfs:label "Input type";
+                    rdfs:subClassOf rdfs:Resource.
+dsgraphql:InputValue a rdfs:Class,
+                       <http://www.w3.org/ns/shacl#NodeShape>;
+                     rdfs:comment "The definition of an input value, consisting of a name, type and an optional default value.";
+                     rdfs:label "Input value";
+                     rdfs:subClassOf rdfs:Resource;
+                     <http://www.w3.org/ns/shacl#property> [<http://www.w3.org/ns/shacl#path> dsgraphql:defaultValue ; 
+                                                            <http://www.w3.org/ns/shacl#name> "default value" ; 
+                                                            <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                            <http://www.w3.org/ns/shacl#description> "The default value (if any), as an RDF node." ; 
+                                                            a <http://www.w3.org/ns/shacl#PropertyShape>],
+                                                           [<http://www.w3.org/ns/shacl#path> dsgraphql:name ; 
+                                                            <http://www.w3.org/ns/shacl#minCount> 1  ; 
+                                                            <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                            <http://www.w3.org/ns/shacl#description> "The GraphQL name of the input type." ; 
+                                                            <http://www.w3.org/ns/shacl#datatype> xsd:string ; 
+                                                            a <http://www.w3.org/ns/shacl#PropertyShape>],
+                                                           [<http://www.w3.org/ns/shacl#path> dsgraphql:type ; 
+                                                            <http://www.w3.org/ns/shacl#name> "type" ; 
+                                                            <http://www.w3.org/ns/shacl#minCount> 1  ; 
+                                                            <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                            <http://www.w3.org/ns/shacl#description> "The allowed type of the input value." ; 
+                                                            <http://www.w3.org/ns/shacl#class> dsgraphql:InputType ; 
+                                                            a <http://www.w3.org/ns/shacl#PropertyShape>].
+dsgraphql:JSON2RDFTestCase a rdfs:Class,
+                             <http://www.w3.org/ns/shacl#NodeShape>;
+                           rdfs:comment "A test case that can be used to verify that a given JSON object is translated into RDF triples using shape definitions from a given graphql:Service. The service must be in the test case graph.";
+                           rdfs:label "JSON-to-RDF test case";
+                           rdfs:subClassOf <http://datashapes.org/dash#TestCase>;
+                           <http://www.w3.org/ns/shacl#property> [<http://www.w3.org/ns/shacl#path> <http://datashapes.org/dash#expectedResult> ; 
+                                                                  <http://www.w3.org/ns/shacl#minCount> 1  ; 
+                                                                  <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                                  <http://www.w3.org/ns/shacl#description> "The TTL of the resulting RDF." ; 
+                                                                  <http://www.w3.org/ns/shacl#datatype> xsd:string ; 
+                                                                  a <http://www.w3.org/ns/shacl#PropertyShape>],
+                                                                 [<http://www.w3.org/ns/shacl#path> dsgraphql:json ; 
+                                                                  <http://www.w3.org/ns/shacl#name> "json" ; 
+                                                                  <http://www.w3.org/ns/shacl#minCount> 1  ; 
+                                                                  <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                                  <http://www.w3.org/ns/shacl#description> "The JSON text." ; 
+                                                                  <http://www.w3.org/ns/shacl#datatype> xsd:string ; 
+                                                                  a <http://www.w3.org/ns/shacl#PropertyShape>],
+                                                                 [<http://www.w3.org/ns/shacl#path> dsgraphql:schema ; 
+                                                                  <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI> ; 
+                                                                  <http://www.w3.org/ns/shacl#name> "service" ; 
+                                                                  <http://www.w3.org/ns/shacl#minCount> 1  ; 
+                                                                  <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                                  <http://www.w3.org/ns/shacl#description> "The GraphQL service." ; 
+                                                                  <http://www.w3.org/ns/shacl#class> dsgraphql:Schema ; 
+                                                                  a <http://www.w3.org/ns/shacl#PropertyShape>].
+dsgraphql:ListType a rdfs:Class,
+                     <http://www.w3.org/ns/shacl#NodeShape>;
+                   rdfs:label "List type";
+                   rdfs:subClassOf dsgraphql:InputType;
+                   <http://www.w3.org/ns/shacl#property> [<http://www.w3.org/ns/shacl#path> dsgraphql:memberType ; 
+                                                          <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#BlankNode> ; 
+                                                          <http://www.w3.org/ns/shacl#name> "member type" ; 
+                                                          <http://www.w3.org/ns/shacl#minCount> 1  ; 
+                                                          <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                          <http://www.w3.org/ns/shacl#description> "The type of members." ; 
+                                                          <http://www.w3.org/ns/shacl#class> dsgraphql:InputType ; 
+                                                          a <http://www.w3.org/ns/shacl#PropertyShape>].
+dsgraphql:MutationTestCase a rdfs:Class,
+                             <http://www.w3.org/ns/shacl#NodeShape>;
+                           rdfs:comment """A test case that runs a given GraphQL mutation (graphql:query) and compares its output JSON with an expected JSON string. Formatting of the strings is ignored. The mutation is executed over a given \"before\" graph which must be isomorphic to a given \"after\" graph. The TestCase is also a graphql:Schema defining which shapes to publish.""";
+                           rdfs:label "GraphQL mutation test case";
+                           rdfs:subClassOf dsgraphql:Query,
+                                           <http://datashapes.org/dash#TestCase>,
+                                           dsgraphql:Schema;
+                           <http://www.w3.org/ns/shacl#property> [<http://www.w3.org/ns/shacl#path> dsgraphql:dataGraph ; 
+                                                                  <http://www.w3.org/ns/shacl#name> "before graph" ; 
+                                                                  <http://www.w3.org/ns/shacl#minCount> 1  ; 
+                                                                  <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                                  <http://www.w3.org/ns/shacl#description> """The TTL source code of the graph \"before\" the mutation. Uses the same namespace prefixes as the test case.""" ; 
+                                                                  <http://www.w3.org/ns/shacl#datatype> xsd:string ; 
+                                                                  a <http://www.w3.org/ns/shacl#PropertyShape>],
+                                                                 [<http://www.w3.org/ns/shacl#path> <http://datashapes.org/dash#expectedResult> ; 
+                                                                  <http://www.w3.org/ns/shacl#minCount> 1  ; 
+                                                                  <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                                  <http://www.w3.org/ns/shacl#description> "The expected JSON response object as a string." ; 
+                                                                  <http://www.w3.org/ns/shacl#datatype> xsd:string ; 
+                                                                  a <http://www.w3.org/ns/shacl#PropertyShape>],
+                                                                 [<http://www.w3.org/ns/shacl#path> dsgraphql:expectedGraph ; 
+                                                                  <http://www.w3.org/ns/shacl#name> "after graph" ; 
+                                                                  <http://www.w3.org/ns/shacl#minCount> 1  ; 
+                                                                  <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                                  <http://www.w3.org/ns/shacl#description> """The TTL source code of the expected graph \"after\" the mutation. Uses the same namespace prefixes as the test case.""" ; 
+                                                                  <http://www.w3.org/ns/shacl#datatype> xsd:string ; 
+                                                                  a <http://www.w3.org/ns/shacl#PropertyShape>].
+dsgraphql:NameShape a <http://www.w3.org/ns/shacl#NodeShape>;
+                    rdfs:comment "Defines syntax restrictions on the use of the graphql:name property.";
+                    rdfs:label "Name shape";
+                    <http://www.w3.org/2002/07/owl#versionInfo> "TODO: Add checks against duplicate names within the same shape (including superclasses and sh:node references).";
+                    <http://www.w3.org/ns/shacl#property> [<http://www.w3.org/ns/shacl#pattern> "^[_A-Za-z][_0-9A-Za-z]*$" ; 
+                                                           <http://www.w3.org/ns/shacl#path> dsgraphql:name ; 
+                                                           <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                           <http://www.w3.org/ns/shacl#datatype> xsd:string ; 
+                                                           a <http://www.w3.org/ns/shacl#PropertyShape>];
+                    <http://www.w3.org/ns/shacl#targetSubjectsOf> dsgraphql:name.
+dsgraphql:NamedType a rdfs:Class,
+                      <http://www.w3.org/ns/shacl#NodeShape>;
+                    rdfs:label "Named type";
+                    rdfs:subClassOf dsgraphql:InputType;
+                    <http://www.w3.org/ns/shacl#property> [<http://www.w3.org/ns/shacl#path> dsgraphql:name ; 
+                                                           <http://www.w3.org/ns/shacl#minCount> 1  ; 
+                                                           <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                           <http://www.w3.org/ns/shacl#description> "The type name." ; 
+                                                           <http://www.w3.org/ns/shacl#datatype> xsd:string ; 
+                                                           a <http://www.w3.org/ns/shacl#PropertyShape>].
+dsgraphql:NodeShapeShape a <http://www.w3.org/ns/shacl#NodeShape>;
+                         rdfs:label "GraphQL node shape shape";
+                         <http://www.w3.org/ns/shacl#property> [<http://www.w3.org/ns/shacl#path> [<http://www.w3.org/ns/shacl#inversePath> dsgraphql:privateShape] ; 
+                                                                <http://www.w3.org/ns/shacl#order> 4.0 ; 
+                                                                <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI> ; 
+                                                                <http://www.w3.org/ns/shacl#name> "private shape of" ; 
+                                                                <http://www.w3.org/ns/shacl#group> dsgraphql:SchemaPropertyGroup ; 
+                                                                <http://www.w3.org/ns/shacl#description> "Private shapes cannot be queried." ; 
+                                                                <http://www.w3.org/ns/shacl#class> dsgraphql:Schema ; 
+                                                                a <http://www.w3.org/ns/shacl#PropertyShape>],
+                                                               [<http://www.w3.org/ns/shacl#path> [<http://www.w3.org/ns/shacl#inversePath> dsgraphql:protectedShape] ; 
+                                                                <http://www.w3.org/ns/shacl#order> 3.0 ; 
+                                                                <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI> ; 
+                                                                <http://www.w3.org/ns/shacl#name> "protected shape of" ; 
+                                                                <http://www.w3.org/ns/shacl#group> dsgraphql:SchemaPropertyGroup ; 
+                                                                <http://www.w3.org/ns/shacl#description> "Protected shapes can only be queried if reached through a field from another shape." ; 
+                                                                <http://www.w3.org/ns/shacl#class> dsgraphql:Schema ; 
+                                                                a <http://www.w3.org/ns/shacl#PropertyShape>],
+                                                               [<http://www.w3.org/ns/shacl#path> [<http://www.w3.org/ns/shacl#inversePath> dsgraphql:publicShape] ; 
+                                                                <http://www.w3.org/ns/shacl#order> 1.0 ; 
+                                                                <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI> ; 
+                                                                <http://www.w3.org/ns/shacl#name> "public shape of" ; 
+                                                                <http://www.w3.org/ns/shacl#group> dsgraphql:SchemaPropertyGroup ; 
+                                                                <http://www.w3.org/ns/shacl#description> "Public shapes can be queried without restrictions." ; 
+                                                                <http://www.w3.org/ns/shacl#class> dsgraphql:Schema ; 
+                                                                a <http://www.w3.org/ns/shacl#PropertyShape>];
+                         <http://www.w3.org/ns/shacl#targetClass> <http://www.w3.org/ns/shacl#NodeShape>.
+dsgraphql:NonNullType a rdfs:Class,
+                        <http://www.w3.org/ns/shacl#NodeShape>;
+                      rdfs:label "Non null type";
+                      rdfs:subClassOf dsgraphql:InputType;
+                      <http://www.w3.org/ns/shacl#property> [<http://www.w3.org/ns/shacl#path> dsgraphql:type ; 
+                                                             <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#BlankNode> ; 
+                                                             <http://www.w3.org/ns/shacl#name> "type" ; 
+                                                             <http://www.w3.org/ns/shacl#minCount> 1  ; 
+                                                             <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                             <http://www.w3.org/ns/shacl#description> "The type that is not-nulled." ; 
+                                                             <http://www.w3.org/ns/shacl#class> dsgraphql:InputType ; 
+                                                             a <http://www.w3.org/ns/shacl#PropertyShape>].
+dsgraphql:Query a rdfs:Class,
+                  <http://www.w3.org/ns/shacl#NodeShape>;
+                rdfs:comment "Represents specific GraphQL queries, stored by their query string and possibly other properties with metadata.";
+                rdfs:label "GraphQL query";
+                rdfs:subClassOf rdfs:Resource;
+                <http://www.w3.org/ns/shacl#property> [<http://www.w3.org/ns/shacl#path> dsgraphql:queryString ; 
+                                                       <http://www.w3.org/ns/shacl#minCount> 1  ; 
+                                                       <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                       <http://www.w3.org/ns/shacl#datatype> xsd:string ; 
+                                                       a <http://www.w3.org/ns/shacl#PropertyShape>],
+                                                      [<http://www.w3.org/ns/shacl#path> dsgraphql:variables ; 
+                                                       <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                       <http://www.w3.org/ns/shacl#datatype> xsd:string ; 
+                                                       a <http://www.w3.org/ns/shacl#PropertyShape>].
+dsgraphql:QueryTestCase a rdfs:Class,
+                          <http://www.w3.org/ns/shacl#NodeShape>;
+                        rdfs:comment "A test case that runs a given GraphQL query (graphql:query) and compares its output JSON with an expected JSON string. Formatting of the strings is ignored. The TestCase is also a graphql:Schema defining which shapes to publish.";
+                        rdfs:label "GraphQL query test case";
+                        rdfs:subClassOf <http://datashapes.org/dash#TestCase>,
+                                        dsgraphql:Query,
+                                        dsgraphql:Schema;
+                        <http://www.w3.org/ns/shacl#property> [<http://www.w3.org/ns/shacl#path> <http://datashapes.org/dash#expectedResult> ; 
+                                                               <http://www.w3.org/ns/shacl#minCount> 1  ; 
+                                                               <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                               <http://www.w3.org/ns/shacl#description> "The expected JSON response object as a string." ; 
+                                                               <http://www.w3.org/ns/shacl#datatype> xsd:string ; 
+                                                               a <http://www.w3.org/ns/shacl#PropertyShape>].
+dsgraphql:ScalarType a rdfs:Class,
+                       <http://www.w3.org/ns/shacl#NodeShape>;
+                     rdfs:comment """Represents a scalar type as defined by a GraphQL schema. The primary purpose of these types is for round-tripping, otherwise they are basically the same as node shapes. The instances must be URIs, and the GraphQL name is derived from them.
+
+This is currently not marked as a subClassOf sh:NodeShape, although this may happen in the future. The idea is that we don't want all constraint parameters to apply here, only selected ones such as sh:datatype. In the SHACL spec, anything that has constraints counts as a node shape, even if it doesn't have a matching rdf:type triple.""";
+                     rdfs:label "Scalar type";
+                     rdfs:subClassOf rdfs:Resource;
+                     <http://www.w3.org/ns/shacl#property> [<http://www.w3.org/ns/shacl#path> <http://www.w3.org/ns/shacl#datatype> ; 
+                                                            <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI> ; 
+                                                            <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                            <http://www.w3.org/ns/shacl#description> "The (RDF/XSD) datatype that this scalar type refers to." ; 
+                                                            a <http://www.w3.org/ns/shacl#PropertyShape>].
+dsgraphql:Schema a rdfs:Class,
+                   <http://www.w3.org/ns/shacl#NodeShape>;
+                 rdfs:comment """A collection of shapes that are part of a GraphQL schema. Includes declarations about which shapes shall be exposed/published by a GraphQL service. The set of public node shapes consists of all values of graphql:publicShape, all values of graphql:publicClass and their subclasses, all node shapes from any namespace graphql:publicNamespace, minus any explicitly excluded shapes via graphql:privateShape.
+
+An RDF graph may contain multiple GraphQL schemas, each providing a different API or view on the underlying data. GraphQL services can include each other using owl:imports. To simplify common usage patterns, owl:Ontology has been marked as a subclass, so that all Ontologies are also graphql:Schemas once this graphql namespace is imported.""";
+                 rdfs:label "GraphQL Schema";
+                 rdfs:subClassOf rdfs:Resource;
+                 <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI>;
+                 <http://www.w3.org/ns/shacl#property> dsgraphql:Schema-protectedShape,
+                                                       [<http://www.w3.org/ns/shacl#path> dsgraphql:name ; 
+                                                        <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                        <http://www.w3.org/ns/shacl#description> "A system name that can be used in URLs to identify this schema." ; 
+                                                        <http://www.w3.org/ns/shacl#datatype> xsd:string ; 
+                                                        a <http://www.w3.org/ns/shacl#PropertyShape>],
+                                                       dsgraphql:Schema-privateShape,
+                                                       [<http://www.w3.org/ns/shacl#path> dsgraphql:queryShape ; 
+                                                        <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI> ; 
+                                                        <http://www.w3.org/ns/shacl#name> "query shape" ; 
+                                                        <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                        <http://www.w3.org/ns/shacl#description> "The declared root shape of a GraphQL schema, specified using schema { query: ... } in GraphQL schema syntax. Can be used to round-trip GraphQL files." ; 
+                                                        <http://www.w3.org/ns/shacl#class> <http://www.w3.org/ns/shacl#NodeShape> ; 
+                                                        a <http://www.w3.org/ns/shacl#PropertyShape>],
+                                                       dsgraphql:Schema-protectedClass,
+                                                       dsgraphql:Schema-publicShape,
+                                                       dsgraphql:Schema-publicNamespace,
+                                                       [<http://www.w3.org/ns/shacl#path> dsgraphql:defaultPrefix ; 
+                                                        <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                        <http://www.w3.org/ns/shacl#class> <http://www.w3.org/ns/shacl#PrefixDeclaration> ; 
+                                                        a <http://www.w3.org/ns/shacl#PropertyShape>],
+                                                       dsgraphql:Schema-publicClass.
+dsgraphql:Schema-privateShape a <http://www.w3.org/ns/shacl#PropertyShape>;
+                              <http://www.w3.org/ns/shacl#class> <http://www.w3.org/ns/shacl#NodeShape>;
+                              <http://www.w3.org/ns/shacl#description> "Defines the shapes that shall not be published, overriding what has been specified to be public (e.g. via graphql:publicShape).";
+                              <http://www.w3.org/ns/shacl#group> dsgraphql:ShapesPropertyGroup;
+                              <http://www.w3.org/ns/shacl#name> "private shape";
+                              <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI>;
+                              <http://www.w3.org/ns/shacl#order> 20 ;
+                              <http://www.w3.org/ns/shacl#path> dsgraphql:privateShape.
+dsgraphql:Schema-protectedClass a <http://www.w3.org/ns/shacl#PropertyShape>;
+                                <http://www.w3.org/ns/shacl#class> rdfs:Class;
+                                <http://www.w3.org/ns/shacl#description> "Links to classes so that the class and all its subclasses are published, assuming they are also node shapes. Protected classes can however not be queried from the generated root query object.";
+                                <http://www.w3.org/ns/shacl#group> dsgraphql:ShapesPropertyGroup;
+                                <http://www.w3.org/ns/shacl#name> "protected class";
+                                <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI>;
+                                <http://www.w3.org/ns/shacl#order> 11 ;
+                                <http://www.w3.org/ns/shacl#path> dsgraphql:protectedClass.
+dsgraphql:Schema-protectedShape a <http://www.w3.org/ns/shacl#PropertyShape>;
+                                <http://www.w3.org/ns/shacl#class> <http://www.w3.org/ns/shacl#NodeShape>;
+                                <http://www.w3.org/ns/shacl#description> "Specifies the shape(s) that the GraphQL schema is publishing but not accessible from the generated root query object.";
+                                <http://www.w3.org/ns/shacl#group> dsgraphql:ShapesPropertyGroup;
+                                <http://www.w3.org/ns/shacl#name> "protected shape";
+                                <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI>;
+                                <http://www.w3.org/ns/shacl#order> 10 ;
+                                <http://www.w3.org/ns/shacl#path> dsgraphql:protectedShape.
+dsgraphql:Schema-publicClass a <http://www.w3.org/ns/shacl#PropertyShape>;
+                             <http://www.w3.org/ns/shacl#class> rdfs:Class;
+                             <http://www.w3.org/ns/shacl#description> "Links to classes so that the class and all its subclasses are published, assuming they are also node shapes. Also publishes any shapes linked to the class and its subclasses via sh:targetClass or dash:applicableToClass.";
+                             <http://www.w3.org/ns/shacl#group> dsgraphql:ShapesPropertyGroup;
+                             <http://www.w3.org/ns/shacl#name> "public class";
+                             <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI>;
+                             <http://www.w3.org/ns/shacl#order> 2 ;
+                             <http://www.w3.org/ns/shacl#path> dsgraphql:publicClass.
+dsgraphql:Schema-publicNamespace a <http://www.w3.org/ns/shacl#PropertyShape>;
+                                 <http://www.w3.org/ns/shacl#class> <http://www.w3.org/ns/shacl#PrefixDeclaration>;
+                                 <http://www.w3.org/ns/shacl#description> "The namespace(s) of node shapes that shall be published by the GraphQL schema. Will use the values of sh:namespace of the linked prefix declarations.";
+                                 <http://www.w3.org/ns/shacl#group> dsgraphql:ShapesPropertyGroup;
+                                 <http://www.w3.org/ns/shacl#name> "public namespace";
+                                 <http://www.w3.org/ns/shacl#order> 0 ;
+                                 <http://www.w3.org/ns/shacl#path> dsgraphql:publicNamespace.
+dsgraphql:Schema-publicShape a <http://www.w3.org/ns/shacl#PropertyShape>;
+                             <http://www.w3.org/ns/shacl#class> <http://www.w3.org/ns/shacl#NodeShape>;
+                             <http://www.w3.org/ns/shacl#description> "Specifies the shape(s) that the GraphQL schema is publishing.";
+                             <http://www.w3.org/ns/shacl#group> dsgraphql:ShapesPropertyGroup;
+                             <http://www.w3.org/ns/shacl#name> "public shape";
+                             <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI>;
+                             <http://www.w3.org/ns/shacl#order> 1 ;
+                             <http://www.w3.org/ns/shacl#path> dsgraphql:publicShape.
+dsgraphql:SchemaPropertyGroup <http://topbraid.org/tosh#editGroupDescription> "The properties in this group define how the current shape/class is made available to GraphQL services.";
+                              <http://topbraid.org/tosh#openable> true;
+                              a <http://www.w3.org/ns/shacl#PropertyGroup>;
+                              rdfs:label "GraphQL Schema";
+                              <http://www.w3.org/ns/shacl#order> 1.5.
+dsgraphql:ShapesPropertyGroup a <http://www.w3.org/ns/shacl#PropertyGroup>;
+                              rdfs:label "Shapes";
+                              <http://www.w3.org/ns/shacl#order> 5 .
+dsgraphql:WriterTestCase a rdfs:Class,
+                           <http://www.w3.org/ns/shacl#NodeShape>;
+                         rdfs:comment "A test case that can be used to verify that a RDF/SHACL to GraphQL writer works correctly. The expected result must be the complete GraphQL schema string.";
+                         rdfs:label "Writer test case";
+                         rdfs:subClassOf <http://datashapes.org/dash#TestCase>;
+                         <http://www.w3.org/ns/shacl#property> [<http://www.w3.org/ns/shacl#path> dsgraphql:canRoundTrip ; 
+                                                                <http://www.w3.org/ns/shacl#name> "can round trip" ; 
+                                                                <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                                <http://www.w3.org/ns/shacl#description> "True to include a test comparing that reloading the generated string yields the same graph." ; 
+                                                                <http://www.w3.org/ns/shacl#datatype> xsd:boolean ; 
+                                                                a <http://www.w3.org/ns/shacl#PropertyShape>],
+                                                               [<http://www.w3.org/ns/shacl#path> dsgraphql:rdfGraph ; 
+                                                                <http://www.w3.org/ns/shacl#name> "RDF graph" ; 
+                                                                <http://www.w3.org/ns/shacl#minCount> 1  ; 
+                                                                <http://www.w3.org/ns/shacl#maxCount> 1  ; 
+                                                                <http://www.w3.org/ns/shacl#description> "The URI of the RDF graph to load." ; 
+                                                                <http://www.w3.org/ns/shacl#datatype> xsd:anyURI ; 
+                                                                a <http://www.w3.org/ns/shacl#PropertyShape>].
+dsgraphql:defaultPrefix a rdf:Property;
+                        rdfs:comment "Points at a prefix declaration of the default namespace for the shapes derived by GraphQL types. This property can be used to round-trip .graphql files.";
+                        rdfs:label "default prefix".
+dsgraphql:fieldName a <http://www.w3.org/ns/shacl#Function>;
+                    rdfs:comment "Gets the GraphQL field name for a property path at a given node shape.";
+                    rdfs:label "field name";
+                    <http://www.w3.org/ns/shacl#parameter> [<http://www.w3.org/ns/shacl#path> dsgraphql:nodeShape ; 
+                                                            <http://www.w3.org/ns/shacl#order> 0  ; 
+                                                            <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#IRI> ; 
+                                                            <http://www.w3.org/ns/shacl#name> "node shape" ; 
+                                                            <http://www.w3.org/ns/shacl#class> <http://www.w3.org/ns/shacl#NodeShape> ; 
+                                                            a <http://www.w3.org/ns/shacl#Parameter>],
+                                                           [<http://www.w3.org/ns/shacl#path> dsgraphql:path ; 
+                                                            <http://www.w3.org/ns/shacl#order> 1  ; 
+                                                            <http://www.w3.org/ns/shacl#nodeKind> <http://www.w3.org/ns/shacl#BlankNodeOrIRI> ; 
+                                                            <http://www.w3.org/ns/shacl#name> "path" ; 
+                                                            <http://www.w3.org/ns/shacl#description> "The property path expression (value of sh:path)." ; 
+                                                            a <http://www.w3.org/ns/shacl#Parameter>];
+                    <http://www.w3.org/ns/shacl#returnType> xsd:string.
+dsgraphql:isIDField a rdf:Property;
+                    rdfs:comment "Can be attached to property shapes to indicate they should be round-tripped as GraphQL type ID.";
+                    rdfs:label "is ID field";
+                    rdfs:range xsd:boolean.
+dsgraphql:isInterface a rdf:Property;
+                      rdfs:comment "If set to true for a node shape, then it should become a GraphQL interface.";
+                      rdfs:label "is GraphQL interface";
+                      rdfs:range xsd:boolean.
+dsgraphql:name a rdf:Property;
+               rdfs:comment "Defines a GraphQL name for a given subject. The values need to match the regular expression specified in http://facebook.github.io/graphql/October2016/#Name.";
+               rdfs:label "name";
+               rdfs:range xsd:string.
+dsgraphql:query a rdf:Property;
+                rdfs:comment "The GraphQL query string.";
+                rdfs:label "query".
+dsgraphql:queryShape a rdf:Property;
+                     rdfs:label "query shape";
+                     rdfs:range <http://www.w3.org/ns/shacl#NodeShape>.
+dsgraphql:queryString a rdf:Property;
+                      rdfs:comment "The text of the actual query in GraphQL syntax.";
+                      rdfs:label "query string".
+dsgraphql:schema a rdf:Property.
+dsgraphql:uriTemplate a rdf:Property;
+                      rdfs:comment """Can be used to attach a URI template to node shapes, meaning that JSON objects that are processed with the given node shape will become URI resources with a URI derived from the given template. Example: \"ex:Person-{$id}\".
+
+URI templates can include {...} blocks that contain a variable reference such as $id if the corresponding GraphQL type has a field named \"id\". Fields are mandatory by default, meaning that if a JSON converter attempts to produce a URI that lacks a mandatory field then the conversion fails with an exception.""";
+                      rdfs:domain <http://www.w3.org/ns/shacl#NodeShape>;
+                      rdfs:label "GraphQL URI template";
+                      rdfs:range xsd:string.
+dsgraphql:variables a rdf:Property;
+                    rdfs:comment "An optional JSON object with variables that shall be passed into the query for execution.";
+                    rdfs:label "variables".
+<http://topbraid.org/tosh#PropertyShapeShape> <http://www.w3.org/ns/shacl#property> <http://topbraid.org/tosh#PropertyShapeShape-name>.
+<http://topbraid.org/tosh#PropertyShapeShape-name> <http://topbraid.org/tosh#editWidget> <http://topbraid.org/swa#PlainTextFieldEditor>;
+                                                   a <http://www.w3.org/ns/shacl#PropertyShape>;
+                                                   <http://www.w3.org/ns/shacl#description> "The name of the associated GraphQL field, must follow GraphQL naming syntax.";
+                                                   <http://www.w3.org/ns/shacl#group> <http://topbraid.org/tosh#AboutPropertyGroup>;
+                                                   <http://www.w3.org/ns/shacl#name> "GraphQL field name";
+                                                   <http://www.w3.org/ns/shacl#order> 0.5;
+                                                   <http://www.w3.org/ns/shacl#path> dsgraphql:name.
+<http://www.w3.org/2002/07/owl#Ontology> rdfs:subClassOf dsgraphql:Schema.

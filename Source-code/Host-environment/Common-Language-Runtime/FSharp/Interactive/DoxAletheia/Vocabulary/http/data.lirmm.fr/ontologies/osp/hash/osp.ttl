@@ -1,0 +1,254 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix osp: <http://data.lirmm.fr/ontologies/osp#>.
+
+<http://data.lirmm.fr/ontologies/osp> <http://purl.org/dc/elements/1.1/creator> osp:felix,
+                                                                                osp:fran%C3%A7ois;
+                                      <http://purl.org/dc/terms/created> "2011-09-18"^^xsd:date;
+                                      <http://purl.org/dc/terms/description> "Ontologie d&#39;une organisation publique, plus particulièrement du tribunal, d&#39;une organisation internationale et d&#39;un pays.";
+                                      <http://purl.org/dc/terms/modified> "2013-03-07"^^xsd:date;
+                                      <http://purl.org/dc/terms/partOf> <http://data.lirmm.fr/ontologies>;
+                                      <http://purl.org/dc/terms/publisher> "http://data.lirmm.fr/ontologies/osp#LIRMM";
+                                      <http://purl.org/dc/terms/status> <http://purl.org/adms/status/UnderDevelopment>;
+                                      <http://purl.org/dc/terms/title> "Ontologie du Service Public";
+                                      <http://purl.org/dc/terms/type> <http://purl.org/adms/assettype/Ontology>;
+                                      <http://purl.org/vocab/vann/preferredNamespacePrefix> "osp";
+                                      <http://purl.org/vocab/vann/preferredNamespaceUri> "http://data.lirmm.fr/ontologies/osp#";
+                                      a <http://www.w3.org/ns/adms#SemanticAsset>,
+                                        <http://www.w3.org/2002/07/owl#Ontology>;
+                                      <http://xmlns.com/foaf/0.1/homepage> <http://data.lirmm.fr/ontologies/osp.html>.
+osp:Administration a rdfs:Class,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "L'administration est dans le prolongement de l'administration. Elle est chargée de régler les affaires courantes";
+                   rdfs:label "Administration";
+                   rdfs:subClassOf osp:PouvoirExecutif;
+                   <http://www.w3.org/2002/07/owl#disjointWith> osp:Gouvernement.
+osp:Adresse a rdfs:Class,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:label "Classe décrivant une adresse postale";
+            rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>.
+osp:Ambassade a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:label "Ambassade";
+              <http://www.w3.org/2002/07/owl#disjointWith> osp:Mairie,
+                                                           osp:Tribunal.
+osp:ChefDEtat a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Classe décrivant le chef d'Etat. La réalité de son pouvoir n'est pas le critère retenu mais ce qui apparait dans les textes. Ex : La reine d'Angleterre.";
+              rdfs:label "chef d'Etat";
+              rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person>.
+osp:ChefDuGouvernement a rdfs:Class,
+                         <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Classe décrivant un chef de gouvernement";
+                       rdfs:label "Chef du gouvernement";
+                       rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person>.
+osp:Gouvernement a rdfs:Class,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Le gouvernement est un des organes issus de la séparation des pouvoirs";
+                 rdfs:label "Gouvernment";
+                 rdfs:subClassOf osp:PouvoirExecutif;
+                 <http://www.w3.org/2002/07/owl#disjointWith> osp:Administration.
+osp:Juge a rdfs:Class,
+           <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "La classe Juge représente la fonction de juge au sein d'un tribunal";
+         rdfs:label "Juge";
+         rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person>.
+osp:LIRMM a <http://purl.org/dc/terms/Agent>;
+          <http://xmlns.com/foaf/0.1/homepage> <http://www.lirmm.fr/>;
+          <http://xmlns.com/foaf/0.1/member> osp:fran%C3%A7ois;
+          <http://xmlns.com/foaf/0.1/name> "LIRMM".
+osp:Mairie a rdfs:Class,
+             <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "Bâtiment officiel de l'Etat français où réside le maire et le conseil municipal. Il fait partit de l'administration décentralisée.";
+           rdfs:label "Mairie";
+           <http://www.w3.org/2002/07/owl#disjointWith> osp:Tribunal,
+                                                        osp:Ambassade.
+osp:Ministre a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Classe décrivant une personne ayant un rôle de ministre dans un gouvernement.";
+             rdfs:label "Ministre";
+             rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person>.
+osp:OrganisationEtatique a rdfs:Class,
+                           <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "La classe stateservice a pour but de différencier un Etat ou une organisation d'Etat d'une entreprise privée.";
+                         rdfs:label "Organisation Etatique".
+osp:OrganisationPublique a rdfs:Class,
+                           <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Regroupe les structure qui ne correspondent pas à un niveau étatique mais inter étatique ou extra étatique (ex : les ONG)";
+                         rdfs:label "Organisation publique".
+osp:PouvoirExecutif a rdfs:Class,
+                      <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Le pouvoir exécutif a pour charge d'exécuter les décisions de justice issues du pouvoir judiciaire et d'appliquer les lois votées par le pouvoir législatif.";
+                    rdfs:label "pouvoir exécutif";
+                    rdfs:subClassOf osp:OrganisationEtatique;
+                    <http://www.w3.org/2002/07/owl#disjointWith> osp:PouvoirJudiciaire,
+                                                                 osp:PouvoirLegislatif.
+osp:PouvoirJudiciaire a rdfs:Class,
+                        <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Branche judiciaire d'une organisation étatique";
+                      rdfs:label "Pouvoir judiciaire";
+                      rdfs:subClassOf osp:OrganisationEtatique;
+                      <http://www.w3.org/2002/07/owl#disjointWith> osp:PouvoirExecutif.
+osp:PouvoirLegislatif a rdfs:Class,
+                        <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Définie la fonction législative d'un pays";
+                      rdfs:label "Pouvoir législatif";
+                      rdfs:subClassOf osp:OrganisationEtatique;
+                      <http://www.w3.org/2002/07/owl#disjointWith> osp:PouvoirExecutif.
+osp:SecretairedEtat a rdfs:Class,
+                      <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Il existe bien un secretary of state dans les autres pays mais n'a rien à voir avec la qualification de secretaire d'Etat en France";
+                    rdfs:label "Secretaire d'Etat";
+                    rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person>.
+osp:Tribunal a rdfs:Class,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Le tribunal est un bâtiment public où la justice y est rendu par des juges.";
+             rdfs:label "tribunal";
+             <http://www.w3.org/2002/07/owl#disjointWith> osp:Ambassade,
+                                                          osp:Mairie.
+osp:aArrondissement a rdf:Property;
+                    rdfs:comment "Propriété liant quelque chose à un département. Inverse de arrondissementDe.";
+                    rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+                    rdfs:label "aArrondissement".
+osp:aAutoriteSur a rdf:Property;
+                 rdfs:comment """Propriété définissant une autorité hiérarchique d'une organization sur une autre. Cette autorité est de préférence issue de textes légaux.
+
+Ne pas confondre autorité et sous organisme. Ex :
+Un ministère a un cabinet (on utilisera suborganization de @org)
+Le ministère de l'éducation exerce une autorité sur les écoles.""";
+                 rdfs:label "a autorité sur".
+osp:aChambre a rdf:Property;
+             rdfs:comment "Les chambres divisent un tribunal, souvent de façon thématique (droit de la construction, droit de la co-propriété)";
+             rdfs:domain osp:Tribunal;
+             rdfs:label "a chambre".
+osp:aCommune a rdf:Property;
+             rdfs:comment "Propriété établissant un lien entre quelque chose et une commune";
+             rdfs:domain osp:OrganisationEtatique,
+                         osp:OrganisationPublique,
+                         osp:Adresse;
+             rdfs:label "a commune".
+osp:aCompetenceTerritoriale a rdf:Property;
+                            rdfs:comment "Propriété permettant la hiérarchisation du terrain couvert par un organisme. Généralement : régional, national, international.";
+                            rdfs:domain <http://xmlns.com/foaf/0.1/Organization>;
+                            rdfs:label "A Competence Territoriale".
+osp:aDegre a rdf:Property;
+           rdfs:comment "Le système juridictionnel français est composé de 2 degrés et d'une haute juridiction. La haute juridiction n'est pas un degre. Nous l'a comptons néanmoins ainsi pour simplifier l'utilisation pour d'autres systèmes. 1er degré, 2nd degré ou haute juridiction";
+           rdfs:domain osp:Tribunal;
+           rdfs:label "a degre".
+osp:aEvenement a rdf:Property;
+               rdfs:comment "Propriété permettant de lier quelque chose à un évènement tel qu'il est définie dans l'ontologie ical.";
+               rdfs:label "A evenement".
+osp:aInitiales a rdf:Property;
+               rdfs:comment """propriété décrivant les initials d'une entreprise, d'un pays ... ex : RU, SNCF ...
+sameAs hashtag oegov""";
+               rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+               rdfs:label "a initiales".
+osp:aOrdreDeJuridiction a rdf:Property;
+                        rdfs:comment "Propriété apportant la distinction entre ordre administratif ou judiciaire pour un tribunal";
+                        rdfs:domain osp:Tribunal;
+                        rdfs:label "A ordre de juridiction".
+osp:aRegion a rdf:Property;
+            rdfs:comment "Propriété liant quelque chose à une région";
+            rdfs:label "aRegion".
+osp:aSection a rdf:Property;
+             rdfs:comment "Les chambres d'un tribunal sont décomposées en section";
+             rdfs:domain osp:Tribunal;
+             rdfs:label "a section";
+             rdfs:subPropertyOf osp:aChambre.
+osp:adresse a rdf:Property;
+            rdfs:domain <http://xmlns.com/foaf/0.1/Agent>;
+            rdfs:label "Adresse d'un établissement de service public";
+            rdfs:range osp:Adresse.
+osp:arrondissementDe a rdf:Property;
+                     rdfs:comment "Propriété liant un arrondissement à quelque chose";
+                     rdfs:label "arrondissementDe".
+osp:chefDEtat a rdf:Property;
+              rdfs:comment "Propriété liant une personne au rôle de chef de l'Etat.";
+              rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+              rdfs:label "est Chef d'Etat".
+osp:chefDuGouvernement a rdf:Property;
+                       rdfs:comment "Une personne à la tête du gouvernement";
+                       rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                       rdfs:label "chef du gouvernement".
+osp:communeDe a rdf:Property;
+              rdfs:comment "Propriété établissant un lien entre une commune et quelque chose.";
+              rdfs:label "Commune de".
+osp:competenceJuge a rdf:Property;
+                   rdfs:comment "Propriété liant un juge à sa fonction au sein du tribunal.";
+                   rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                   rdfs:label "compétence d'un juge".
+osp:departementDe a rdf:Property;
+                  rdfs:comment "Propriété liant un département à quelque chose";
+                  rdfs:label "departementDe".
+osp:fax a rdf:Property,
+          <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+        rdfs:comment "fax number";
+        rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+        rdfs:label "fax";
+        rdfs:range xsd:integer.
+osp:felix a <http://xmlns.com/foaf/0.1/Person>;
+          <http://xmlns.com/foaf/0.1/homepage> <http://data.lirmm.fr/ontologies/osp>;
+          <http://xmlns.com/foaf/0.1/name> "Felix Averlant".
+osp:fran%C3%A7ois a <http://xmlns.com/foaf/0.1/Person>;
+                  <http://xmlns.com/foaf/0.1/homepage> <http://www.scharffe.fr/>;
+                  <http://xmlns.com/foaf/0.1/name> "François Scharffe".
+osp:hasCompetence a rdf:Property;
+                  rdfs:comment """Compétence d'un juge dans un domaine.
+Ex : propriété intellectuelle, mer ...""";
+                  rdfs:domain osp:Juge;
+                  rdfs:label "has competence".
+osp:hasHeadOfGov a rdf:Property;
+                 rdfs:comment "Un service ou un pays à, dans un gouvernement démocratique, un chef de gouvernement";
+                 rdfs:label "has head of gov";
+                 rdfs:range osp:ChefDuGouvernement.
+osp:hasHeadOfState a rdf:Property;
+                   rdfs:comment "Propriété définissant le chef d'Etat d'un pays";
+                   rdfs:label "has head of state";
+                   rdfs:range osp:ChefDEtat.
+osp:hasMatter a rdf:Property;
+              rdfs:comment "Propriété désignant la matière civile ou pénale que le tribunal revêt.";
+              rdfs:domain osp:Tribunal;
+              rdfs:label "has matter".
+osp:hasPresident a rdf:Property;
+                 rdfs:comment "Propriété définissant qu'un tribunal a un président";
+                 rdfs:domain osp:Tribunal;
+                 rdfs:label "has president of tribunal";
+                 rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+osp:hyperlienEvenement a rdf:Property;
+                       rdfs:comment "Correspond au lien vers un évènement particulier";
+                       rdfs:label "hyperlien Evenement".
+osp:initialesDe a rdf:Property;
+                rdfs:comment "Propriété liant quelque chose à ses initiales.";
+                rdfs:label "Initiales de";
+                rdfs:range osp:OrganisationEtatique.
+osp:initials a rdf:Property;
+             rdfs:label "initials".
+osp:ligneAdresse a rdf:Property,
+                   <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain osp:Adresse;
+                 rdfs:label "Ligne pour une adresse (ex: rue, numéro)";
+                 rdfs:range rdfs:Literal.
+osp:numeroFax a rdf:Property;
+              rdfs:label "Numéro de fax".
+osp:ordreDeJuridiction a rdf:Property;
+                       rdfs:domain osp:Tribunal;
+                       rdfs:label "ordre de juridiction".
+osp:rdf <http://purl.org/dc/terms/FileFormat> <http://data.lirmm.fr/ontologies/osp>;
+        a <http://www.w3.org/ns/adms#SemanticDistribution>;
+        <http://www.w3.org/ns/adms#accessURL> "http://data.lirmm.fr/ontologies/osp.rdf";
+        <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.
+osp:regionDe a rdf:Property;
+             rdfs:comment "Propriété liant une région à quelque chose";
+             rdfs:label "regionDe".
+osp:sousLAutoriteDe a rdf:Property;
+                    rdfs:comment "propriété instaurant la hiérarchie entre un organisme et un service. Ne pas confondre avec des sous ensemble d'un même service";
+                    rdfs:label "Sous l'autorite de".
+osp:ttl <http://purl.org/dc/terms/FileFormat> <http://data.lirmm.fr/ontologies/osp>;
+        a <http://www.w3.org/ns/adms#SemanticDistribution>;
+        <http://www.w3.org/ns/adms#accessURL> "http://data.lirmm.fr/ontologies/osp.ttl";
+        <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.
+osp:typeTribunal a rdf:Property;
+                 rdfs:comment "Propriété définissant quel type de tribunal il s'agit. Ex : tribunal d'instance, TGI ...";
+                 rdfs:domain osp:Tribunal;
+                 rdfs:label "type du tribunal".

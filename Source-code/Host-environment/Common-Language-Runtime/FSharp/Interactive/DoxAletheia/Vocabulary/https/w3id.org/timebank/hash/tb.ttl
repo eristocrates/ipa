@@ -1,0 +1,1970 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix tb: <https://w3id.org/timebank#>.
+
+_:B00a42660e781eff2d08225259d627a5d a rdf:List.
+_:B010fcebf64bb4b623648e35e563b61b0 a rdf:List.
+_:B04588d9a3a7da4ca616bdbf9455dcc0a a rdf:List.
+_:B09c53c46cd7cfe538cadf94a2bb5b1a5 a rdf:List.
+_:B0aad78a2f34451a044654251962b6cc2 a rdf:List.
+_:B0d679e916a3d5b98f6bda035ecb6ca3b a rdf:List.
+_:B0e2565d8e358ccbdd465f633b2c705f9 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (tb:FearOfAnimals
+                                                                             tb:FearOfDark
+                                                                             tb:FearOfHeights).
+_:B111b88a5dbfb77de4fd383bd13e062b6 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (tb:Diabetes
+                                                                             tb:HeartDisease
+                                                                             tb:Hypertension
+                                                                             tb:Hypotension
+                                                                             tb:Rheumatism
+                                                                             tb:StrokeHistory).
+_:B1558a3af250e8894855a0195bb11b579 a rdf:List.
+_:B159ce1eecb3dbffffba5c407e1cd2262 a rdf:List.
+_:B1757fbc3cc67fca33f9a45cb73d77176 a rdf:List.
+_:B19896f498db863b3b4c01eab2e2ef0db a rdf:List.
+_:B1aee87de7898c32a40e6218f1047a0c5 a rdf:List.
+_:B1d38cef66f22d145b1ec0cb486bc2112 a rdf:List.
+_:B1eda5295f11591bc2167619419ca87b9 a rdf:List.
+_:B20f6ae584dc0cdd0be7d8f8c881b06aa a rdf:List.
+_:B21da8bd9ec39766615aac38bc288bc83 a rdf:List.
+_:B22c05d33cc51bcdf1c656bd71bd7609e a rdf:List.
+_:B244d1b9201db1f963994239e4b00252c a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (tb:Advice
+                                                                             tb:Crafting
+                                                                             tb:FoodService
+                                                                             tb:Maintenance
+                                                                             tb:OfficeWork
+                                                                             tb:PeopleCare
+                                                                             tb:PersonalService
+                                                                             tb:Recreation
+                                                                             tb:Repair
+                                                                             tb:SalesService
+                                                                             tb:Transportation).
+_:B267dd64b199804f1c1115c8b44527bdc a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (tb:DressingAssistance
+                                                                             tb:HairCutting
+                                                                             tb:HygieneAssitance).
+(tb:Allergy
+ tb:CommonDisease
+ tb:MentalDisorder
+ tb:PhysicalInconvenience) a rdf:List.
+_:B29d172e9fdff925ae9c365f2631f28eb a rdf:List.
+_:B2b5ca11fe07bc2b0f30be51ad237b0d6 a rdf:List.
+_:B2c295e80b82672d15bcb2d88bbd37ff9 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (tb:DrivingTractors
+                                                                             tb:DrivingTrucks
+                                                                             tb:DrivingWithTrailers).
+(tb:CognitiveImpairment
+ tb:Depression
+ tb:PsychoticEpisode
+ tb:SpecificPhobia) a rdf:List.
+_:B3170afd7d5831d5a9669e8adbbe61f20 a rdf:List.
+_:B337566cb0a009ba19ac7429200b089c4 a rdf:List.
+_:B350b489fda02d25f349e61bae12c83db a rdf:List.
+_:B365664a7fab02b1cd1c74b49165feeec a rdf:List.
+_:B399c8b90f1533c3dcf2753d36ac988a0 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (tb:ClimbingStairsDifficulty
+                                                                             tb:DressingProblem
+                                                                             tb:ToiletUsingProblem
+                                                                             tb:WalkingProblem).
+(tb:DrugAllergy
+ tb:EnvironmentalAllergy
+ tb:FoodAllergy) a rdf:List.
+_:B4e1e6ab3c3b2d1d7e8ff66fe5b3df422 a rdf:List.
+_:B5839c80ca75f0a45fe86b3d2051b0eca a rdf:List.
+_:B59c2e73d039e6062a09b188824064f18 a rdf:List.
+_:B5caf9ea2e7ccf81245f4fc314d7904e9 a rdf:List.
+_:B5ef1c0e2f5f13b7666fd533172973734 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (tb:DancingCompanion
+                                                                             tb:EventPlanning
+                                                                             tb:Games
+                                                                             tb:PerformingMusic
+                                                                             tb:Sports
+                                                                             tb:TravelCompanion).
+() a rdf:List.
+_:B60b77b2063ae1e9e0587f3092381f0b9 a rdf:List.
+(tb:Assembling
+ tb:CraftingClothes
+ tb:WoodCrafting) a rdf:List.
+_:B6615a0c205d95b11a72566fcdd21246d a rdf:List.
+_:B66f212c2eec67ded8d96ccd28001753a a rdf:List.
+(tb:AccessibleByPublicTransport
+ tb:Lift
+ tb:SlipperyFloor
+ tb:Stairs
+ tb:TransportationAvailable
+ tb:UnevenTerrain
+ tb:WeatherConstraint) a rdf:List.
+_:B69d28396f5702151af548de2199844f9 a rdf:List.
+_:B6b32c8bfbb99e73f1d4e67731e2ab7d5 a rdf:List.
+(tb:Counseling
+ tb:FinancialAdvice
+ tb:LegalAdvice) a rdf:List.
+_:B744df0eecc9566fa94ba439733af1ded a rdf:List.
+(tb:AutomobileRepair
+ tb:ComputerRepair
+ tb:ElectronicRepair
+ tb:HouseholdEquipmentRepair
+ tb:Plumbing) a rdf:List.
+_:B7c16251bd17f9cf79f0331e50a605571 a rdf:List.
+_:B7c6f99bb8661a5ab64b584a2978b4ee0 a rdf:List.
+_:B7e3d47ebaf911f92b2ca1e52e1c5ac33 a rdf:List.
+_:B7f4e318fdfa5597978dc7c64c5e42902 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> ().
+_:B84979d3157b265323de91b1646bee641 a rdf:List.
+_:B8b51f941e5d8d4e4c8a8a02105377532 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (tb:Baking
+                                                                             tb:Catering
+                                                                             tb:Cooking
+                                                                             tb:Dishwashing
+                                                                             tb:FoodPreparation).
+_:B8c0ce2836a0c694e091a322acf60097a a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (tb:Cleaning
+                                                                             tb:Mowing
+                                                                             tb:Pruning).
+_:B8da3a91ea8f5f28e3aebc8ffbfcb8673 a rdf:List.
+_:B955d5d5010d0ba672e7919ad03ba38b7 a rdf:List.
+_:B9661903031eecd19f23e810a15b65058 a rdf:List.
+_:B97accca2b5d66152b335adef9616839a a rdf:List.
+(tb:MobilityProblem
+ tb:PoorEyesight
+ tb:PoorHearing
+ tb:SensitiveSkin
+ tb:SpeakingProblem) a rdf:List.
+_:B9b8051c85934b39f11f752f41544993b a rdf:List.
+_:B9f256a13c444a236aadf8e5caa7bb1b0 a rdf:List.
+_:B9fd07f1415b9879ed78290c983c4a546 a rdf:List.
+_:Ba014d92de1cf4a7b70aa0f40bde43b96 a rdf:List.
+_:Ba33a6ef2061e5c3dc702c0cb773ac0fc a rdf:List.
+_:Ba5eb91cfc401806e9bd566b1a4b59ef5 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> ().
+() a rdf:List.
+_:Ba95bf588dc6dcb4681c71f7b90cf8722 a rdf:List.
+_:Ba9b6dffb6af36f761af1f7e840cdf5c8 a rdf:List.
+() a rdf:List.
+() a rdf:List.
+_:Bae97b30ec9b34def7da03d9197ba6f21 a rdf:List.
+_:Bb0c0e0a0f91073117ee7d13a960ad2ca a rdf:List.
+_:Bb11260383620c73d851ad8a59786da35 a rdf:List.
+_:Bb335cd250861d639f7774902e7eab7cf a rdf:List.
+_:Bbebf8f69151f1448134fda011992ab69 a rdf:List.
+_:Bbefc9a10838f0373d450ceb3ac995d06 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (tb:ComputerProcessing
+                                                                             tb:InventoryManagement
+                                                                             tb:PhoneCalls
+                                                                             tb:RecordingNotes
+                                                                             tb:Writing).
+_:Bc182ad681f2b88c00a90771be28589c1 a rdf:List.
+() a rdf:List.
+_:Bc38625437a647af98020aba355276b60 a rdf:List.
+_:Bc3df8354310388e154091bb298b06ffa a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (tb:ChildCare
+                                                                             tb:ElderlyCare
+                                                                             tb:MentallyIllCare
+                                                                             tb:PhysicallyDisabledCare
+                                                                             tb:SickCare).
+_:Bc4c6959109d7b2b672f5355228a6bbca a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> ().
+_:Bc58b75a32bcca7dd79827a5e45d4c6e7 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (tb:Knitting
+                                                                             tb:Sewing
+                                                                             tb:Tailoring).
+_:Bc6be1168974e280f788a57afcfe5335d a rdf:List.
+_:Bc7f3d78a6aa40dd8859171715cbf9846 a rdf:List.
+_:Bc86ca34cf7a40ec24aca7f746224ede7 a rdf:List.
+_:Bc8bab7abe4f76bb9d293e6c619b5240c a rdf:List.
+_:Bc925a4c987810397be400a8de7ed3c91 a rdf:List.
+_:Bc92a08c6e35ef6a58a36341b4b6c9ed5 a rdf:List.
+_:Bc982710272eaf12c3e9dfb3d1dcf36f4 a rdf:List.
+_:Bc9e2243fb40bb20fb01491d7a7c9a373 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (tb:EggAllergy
+                                                                             tb:GlutenAllergy
+                                                                             tb:MilkAllergy
+                                                                             tb:NutsAllergy
+                                                                             tb:SeafoodAllergy).
+() a rdf:List.
+_:Bcd54e5bdaa7b03d4d28d14b02f2c6311 a rdf:List.
+_:Bcf462b04ec2c1cb27e2abc30821f2310 a rdf:List.
+_:Bd6b3264e24c9a496a34f08ad23bb2496 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> ().
+_:Bd8963bb546e8717a0442b444c6e8ef81 a rdf:List.
+_:Bd9c25e5891fd08084f8efab6b241328a a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> ().
+_:Bda6d98de8759104b66479f05c484f5b2 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> ().
+() a rdf:List.
+_:Bddc1cf001bce57473216a667c6d19345 a rdf:List.
+_:Be0186b7fa50989cbb37c45bf2b852e2d a rdf:List.
+_:Be0420d56644944a04499ec2ed10c126b a rdf:List.
+(tb:isSubPartOf
+ tb:hasAddressPart) a rdf:List.
+_:Be3570545783c4c83f0a58444519483a2 a rdf:List.
+_:Be4cd16e0591616bea45f8c20a4970f90 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> ().
+_:Be537e06eb2037f60227dde30a8ad4f5e a rdf:List.
+_:Be6e98d1c8e0fb92cad8bab013a4f21db a rdf:List.
+() a rdf:List.
+_:Be8b2a6452f27015bd2884b7c346a9b80 a rdf:List.
+_:Be8d222f8a5dc749f9d85e0416eba3405 a rdf:List.
+_:Be993db8ae1f9000ff8d14edda40dd0b8 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> ().
+() a rdf:List.
+_:Bed38a19e36a6530e0332ba4b0a788943 a rdf:List.
+_:Bee308acfca33e7e986c4f2d13e8345b3 a rdf:List.
+() a rdf:List.
+_:Bef501175cb4a278cc4bbbcf6677d83df a rdf:List.
+() a rdf:List.
+() a rdf:List.
+_:Bf9b456aa07da117a58dffb30dbc49503 a rdf:List.
+() a rdf:List.
+<dbt:Game> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/:Carpentry> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Accessibility> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Acrophobia> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Ailurophobia> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Allergy> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Auto_mechanic> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Automobile> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Baking> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Blindness> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Caring_for_people_with_dementia> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Cat> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Category:Caregiving> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Category:Cleaning> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Category:Consulting> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Category:Counseling> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Category:Food_and_drink_preparation> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Category:Lawn_care> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Category:Maintenance> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Category:Office_work> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Category:Skills> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Category:Woodcarving> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Category:Writing> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Catering> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Child_care> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Cognitive_deficit> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Computer_repair_technician> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Computer_skills> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Cooking> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Craft> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Cynophobia> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Dance> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Deafness> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Depression_(mood)> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Diabetes_mellitus> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Dishwashing> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Dog> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Drug_allergy> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Egg_allergy> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Elderly_care> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Electricity> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Elevator> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Event_planning> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Fear_of_the_dark> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Financial_adviser> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Food_allergy> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Grocery_store> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Hairdresser> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Heart_disease> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Hypertension> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Hypotension> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Internet> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Inventory> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Knitting> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Lawyer> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Maintenance,_repair,_and_operations> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Mental_disorder> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Meteorology> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Milk_allergy> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Musical_performance> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Nursing> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Online_shopping> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Personal_Care_Assistant> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Pet> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Plumbing> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Precipitation_(meteorology)> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Pruning> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Psychotic_episode> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Public_transport> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Rheumatism> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Sales> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Seafood_allergy> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Sensitive_skin_type> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Sewing> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Specific_phobia> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Sport> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Stairway> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Stroke> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Tailor> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Telephone_call> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Tool> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Tractor> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Trailer_(vehicle)> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Transport> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Travel> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Tree_nut_allergy> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Truck> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Washing> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Water_supply> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Wheat_allergy> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Woodworking> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://dbpedia.org/resource/Zoophobia> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://linkedgeodata.org/ontology/addr%3Acity> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                rdfs:comment """May not be required if boundary=administrative is used correctly. May or may not be a clone of is_in:city=* (in some places the city in the address corresponds to the post office that serves the area rather than the actual city, if any, in which the building is located)! The name of the city as given in postal addresses of the building/area.
+(Source: https://wiki.openstreetmap.org/wiki/Map_Features, accessed on March 9, 2020)""";
+                                                rdfs:domain tb:AddressPart;
+                                                rdfs:isDefinedBy <http://linkedgeodata.org/>;
+                                                rdfs:label "addr:city";
+                                                rdfs:range xsd:string;
+                                                rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://linkedgeodata.org/ontology/addr%3Aconscriptionnumber> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                              rdfs:comment """This special kind of housenumber relates to a settlement instead of a street. Conscription numbers were introduced in the Austrio-Hungarian Empire and are still in use in some parts of Europe, sometimes together with street-related housenumbers which are also called orientation numbers.
+(Source: https://wiki.openstreetmap.org/wiki/Map_Features, accessed on March 9, 2020)""";
+                                                              rdfs:domain tb:AddressPart;
+                                                              rdfs:isDefinedBy <http://linkedgeodata.org/>;
+                                                              rdfs:label "addr:conscriptionnumber";
+                                                              rdfs:range xsd:string;
+                                                              rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://linkedgeodata.org/ontology/addr%3Acountry> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                   rdfs:comment """May not be required if boundary=administrative is used correctly. The ISO 3166-1 alpha-2 two letter country code in upper case.
+Example: \"DE\" for Germany, \"CH\" for Switzerland, \"AT\" for Austria, \"FR\" for France, \"IT\" for Italy.
+Caveat: The ISO 3166-1 code for Great Britain is \"GB\" and not \"UK\". See also: is_in:country=*
+(Source: https://wiki.openstreetmap.org/wiki/Map_Features, accessed on March 9, 2020)""";
+                                                   rdfs:domain tb:AddressPart;
+                                                   rdfs:isDefinedBy <http://linkedgeodata.org/>;
+                                                   rdfs:label "addr:country";
+                                                   rdfs:range xsd:string;
+                                                   rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://linkedgeodata.org/ontology/addr%3Adistrict> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                    rdfs:comment """The district of the object.
+(Source: https://wiki.openstreetmap.org/wiki/Map_Features, accessed on March 9, 2020)""";
+                                                    rdfs:domain tb:AddressPart;
+                                                    rdfs:isDefinedBy <http://linkedgeodata.org/>;
+                                                    rdfs:label "addr:district";
+                                                    rdfs:range xsd:string;
+                                                    rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://linkedgeodata.org/ontology/addr%3Aflats> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                 rdfs:comment """The house numbers (range or list) of flats behind a door.
+(Source: https://wiki.openstreetmap.org/wiki/Map_Features, accessed on March 9, 2020)""";
+                                                 rdfs:domain tb:AddressPart;
+                                                 rdfs:isDefinedBy <http://linkedgeodata.org/>;
+                                                 rdfs:label "addr:flats";
+                                                 rdfs:range xsd:string;
+                                                 rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://linkedgeodata.org/ontology/addr%3Afull> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                rdfs:comment """Use this for a full-text, often multi-line, address if you find the structured address fields unsuitable for denoting the address of this particular location. Examples: \"Fifth house on the left after the village oak, Smalltown, Smallcountry\", or addresses using special delivery names or codes (possibly via an unrelated city name and post code), or PO Boxes.
+Beware that these strings can hardly be parsed by software: \"1200 West Sunset Boulevard Suite 110A\" is still better represented as addr:housenumber=1200 + addr:street=West Sunset Boulevard + addr:flats=Suite 110A.
+(Source: https://wiki.openstreetmap.org/wiki/Map_Features, accessed on March 9, 2020)""";
+                                                rdfs:domain tb:AddressPart;
+                                                rdfs:isDefinedBy <http://linkedgeodata.org/>;
+                                                rdfs:label "addr:full";
+                                                rdfs:range xsd:string;
+                                                rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://linkedgeodata.org/ontology/addr%3Ahamlet> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                  rdfs:comment """The hamlet of the object.
+(Source: https://wiki.openstreetmap.org/wiki/Map_Features, accessed on March 9, 2020)""";
+                                                  rdfs:domain tb:AddressPart;
+                                                  rdfs:isDefinedBy <http://linkedgeodata.org/>;
+                                                  rdfs:label "addr:hamlet";
+                                                  rdfs:range xsd:string;
+                                                  rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://linkedgeodata.org/ontology/addr%3Ahousename> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                     rdfs:comment """The name of a house.
+This is sometimes used in some countries like England instead of (or in addition to) a house number.
+(Source: https://wiki.openstreetmap.org/wiki/Map_Features, accessed on March 9, 2020)""";
+                                                     rdfs:domain tb:AddressPart;
+                                                     rdfs:isDefinedBy <http://linkedgeodata.org/>;
+                                                     rdfs:label "addr:housename";
+                                                     rdfs:range xsd:string;
+                                                     rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://linkedgeodata.org/ontology/addr%3Ahousenumber> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                       rdfs:comment """The house number (may contain letters, dashes or other characters).
+Addresses describes ways to tag a single building with multiple addresses.
+Please do not only tag addr:housenumber=*, but also add at least addr:street=* or addr:place=* for places without streets (or map the belonging to a street with a relation using associatedStreet relation or street relation.)
+(Source: https://wiki.openstreetmap.org/wiki/Map_Features, accessed on March 9, 2020)""";
+                                                       rdfs:domain tb:AddressPart;
+                                                       rdfs:isDefinedBy <http://linkedgeodata.org/>;
+                                                       rdfs:label "addr:housenumber";
+                                                       rdfs:range xsd:string;
+                                                       rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://linkedgeodata.org/ontology/addr%3Aplace> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                 rdfs:comment """This is part of an address which refers to the name of some territorial zone (usually a place=* like island, square or very small village) instead of a street (highway=*). Should not be used together with addr:street=*.
+(Source: https://wiki.openstreetmap.org/wiki/Map_Features, accessed on March 9, 2020)""";
+                                                 rdfs:domain tb:AddressPart;
+                                                 rdfs:isDefinedBy <http://linkedgeodata.org/>;
+                                                 rdfs:label "addr:place";
+                                                 rdfs:range xsd:string;
+                                                 rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://linkedgeodata.org/ontology/addr%3Apostcode> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                    rdfs:comment """The postal code of the building/area. Some mappers prefer to use boundary=postal_code
+(Source: https://wiki.openstreetmap.org/wiki/Map_Features, accessed on March 9, 2020)""";
+                                                    rdfs:domain tb:AddressPart;
+                                                    rdfs:isDefinedBy <http://linkedgeodata.org/>;
+                                                    rdfs:label "addr:postcode";
+                                                    rdfs:range xsd:string;
+                                                    rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://linkedgeodata.org/ontology/addr%3Aprovince> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                    rdfs:comment """The province of the object. For Canada, uppercase two-letter postal abbreviations (BC, AB, ON, QC, etc.) are used. In Russia a synonym addr:region is widely used
+(Source: https://wiki.openstreetmap.org/wiki/Map_Features, accessed on March 9, 2020)""";
+                                                    rdfs:domain tb:AddressPart;
+                                                    rdfs:isDefinedBy <http://linkedgeodata.org/>;
+                                                    rdfs:label "addr:province";
+                                                    rdfs:range xsd:string;
+                                                    rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://linkedgeodata.org/ontology/addr%3Astate> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                 rdfs:comment """The state of the object. For the US, uppercase two-letter postal abbreviations (AK, CA, HI, NY, TX, WY, etc.) are used.
+(Source: https://wiki.openstreetmap.org/wiki/Map_Features, accessed on March 9, 2020)""";
+                                                 rdfs:domain tb:AddressPart;
+                                                 rdfs:isDefinedBy <http://linkedgeodata.org/>;
+                                                 rdfs:label "addr:state";
+                                                 rdfs:range xsd:string;
+                                                 rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://linkedgeodata.org/ontology/addr%3Astreet> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                  rdfs:comment """The name of the respective street.
+A way with highway=* or a square with place=square and the corresponding name should be found nearby. The belonging to a street can alternatively be represented by a associatedStreet relation or street relation. The keys addr:housenumber=* and addr:street=* in principle are the only necessary ones if there are valid border polygons. If you are not sure if it is so, just add addr:city=*, addr:postcode=* and addr:country=*.
+(Source: https://wiki.openstreetmap.org/wiki/Map_Features, accessed on March 9, 2020)""";
+                                                  rdfs:domain tb:AddressPart;
+                                                  rdfs:isDefinedBy <http://linkedgeodata.org/>;
+                                                  rdfs:label "addr:street";
+                                                  rdfs:range xsd:string;
+                                                  rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://linkedgeodata.org/ontology/addr%3Asubdistrict> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                       rdfs:comment """The subdistrict of the object.
+(Source: https://wiki.openstreetmap.org/wiki/Map_Features, accessed on March 9, 2020)""";
+                                                       rdfs:domain tb:AddressPart;
+                                                       rdfs:isDefinedBy <http://linkedgeodata.org/>;
+                                                       rdfs:label "addr:subdistrict";
+                                                       rdfs:range xsd:string;
+                                                       rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://linkedgeodata.org/ontology/addr%3Asuburb> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                  rdfs:comment """If an address exists several times in a city. You have to add the name of the settlement. See Australian definition of suburb.
+(Source: https://wiki.openstreetmap.org/wiki/Map_Features, accessed on March 9, 2020)""";
+                                                  rdfs:domain tb:AddressPart;
+                                                  rdfs:isDefinedBy <http://linkedgeodata.org/>;
+                                                  rdfs:label "addr:suburb";
+                                                  rdfs:range xsd:string;
+                                                  rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#topDataProperty>.
+<http://purl.bioontology.org/ontology/ICD10/E10-E14.9> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.bioontology.org/ontology/ICD10/F00-F99.9> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.bioontology.org/ontology/ICD10/F06.7> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.bioontology.org/ontology/ICD10/F20-F29.9> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.bioontology.org/ontology/ICD10/F32> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.bioontology.org/ontology/ICD10/F40.2> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.bioontology.org/ontology/ICD10/H54> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.bioontology.org/ontology/ICD10/I10-I15.9> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.bioontology.org/ontology/ICD10/I51.9> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.bioontology.org/ontology/ICD10/I60-I69.9> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.bioontology.org/ontology/ICD10/I95> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.bioontology.org/ontology/ICD10/M79.0> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.bioontology.org/ontology/ICD10/R26.2> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.bioontology.org/ontology/ICD10/T78.4> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.bioontology.org/ontology/ICD10/Z74.0> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.bioontology.org/ontology/ICD10/Z88> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/rights> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://snomed.info/id/102490005> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/105597003> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/110352000> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/129016000> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/129039006> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/129045003> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/138049005> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/138050005> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/138787005> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/141258002> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/141259005> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/141260000> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/154965008> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/154966009> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/154967000> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/156615004> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/157801005> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/157802003> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/191044006> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/197021003> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/231436002> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/286372005> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/29913006> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/386808001> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/426232007> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/441831003> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/54307006> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/56265001> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/58963008> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/74732009> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/91934008> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/91937001> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://snomed.info/id/93431001> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://who.int/icf#b1> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://who.int/icf#b164> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://who.int/icf#b2102> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://who.int/icf#b230> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://who.int/icf#b410> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://who.int/icf#b840> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://who.int/icf#d330> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://who.int/icf#d4> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://who.int/icf#d450-d469> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://who.int/icf#d530> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://who.int/icf#d5400> a <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<http://www.w3.org/2006/time#DayOfWeek> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2006/time#DurationDescription> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2006/time#Instant> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2006/time#ProperInterval> a <http://www.w3.org/2002/07/owl#Class>.
+<https://creativecommons.org/ns#license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://w3id.org/timebank> <http://purl.org/dc/elements/1.1/title> "Timebank Ontology";
+                            <http://purl.org/dc/terms/created> "2020-04-01";
+                            <http://purl.org/dc/terms/creator> "Xueer Li",
+                                                               "Subhayan Roy",
+                                                               "Tobias Grubenmann",
+                                                               "Ankit Tibrewal";
+                            <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/>;
+                            <http://purl.org/dc/terms/rights> "Copyright © 2020 The University of Hong Kong";
+                            <http://purl.org/vocab/vann/preferredNamespacePrefix> "tb";
+                            <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/timebank";
+                            a <http://www.w3.org/2002/07/owl#Ontology>;
+                            rdfs:comment "An ontology to describe poeple and requests for timebanks. This includes the poeple's skills, limitations, and environment.";
+                            <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/2006/time#>,
+                                                                    <http://www.w3.org/2004/02/skos/core#>,
+                                                                    <http://xmlns.com/foaf/0.1/>;
+                            <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/timebank/0.2>;
+                            <http://www.w3.org/2002/07/owl#versionInfo> 0.2;
+                            <https://creativecommons.org/ns#license> <https://creativecommons.org/licenses/by/4.0/>.
+tb:Accessibility a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Describes any revelant information regarding the accessibility of a location of a request.";
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "Accessibility";
+                 rdfs:subClassOf tb:Environment;
+                 <http://www.w3.org/2002/07/owl#disjointWith> tb:Supplies;
+                 <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Environment;
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Accessibility>.
+tb:AccessibleByPublicTransport a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                 <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "The location is accessible by public transport.";
+                               rdfs:isDefinedBy <https://w3id.org/timebank>;
+                               rdfs:label "Accessible by Public Transport";
+                               rdfs:subClassOf tb:Accessibility;
+                               <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Accessibility;
+                               <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Public_transport>.
+tb:AddressPart a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "An address part indicates part of an address like region, city, etc. If two places share the same address part, they also share the same environmental factors.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Address Part";
+               <http://www.w3.org/2002/07/owl#disjointWith> tb:Level,
+                                                            tb:Request,
+                                                            tb:Limitation,
+                                                            tb:Environment,
+                                                            tb:Status,
+                                                            tb:Skill.
+tb:Advice a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+            <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "Skills to provide particular services which requires some sort of education or training.";
+          rdfs:isDefinedBy <https://w3id.org/timebank>;
+          rdfs:label "Advice";
+          rdfs:subClassOf tb:Skill;
+          <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Skill;
+          <http://www.w3.org/2004/02/skos/core#closeMatch> <http://dbpedia.org/resource/Category:Consulting>.
+tb:Allergy a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "A collection of allergies, which is caused by hypersensitivity of the immune system.";
+           rdfs:isDefinedBy <https://w3id.org/timebank>;
+           rdfs:label "Allergy";
+           rdfs:subClassOf tb:Limitation;
+           <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Limitation;
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Allergy>;
+           <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://purl.bioontology.org/ontology/ICD10/T78.4>.
+tb:Assembling a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "The skill to assemble items like furniture and other things.";
+              rdfs:isDefinedBy <https://w3id.org/timebank>;
+              rdfs:label "Assembling";
+              rdfs:subClassOf tb:Crafting;
+              <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Crafting.
+tb:AutomobileRepair a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "The skill to repair automobiles.";
+                    rdfs:isDefinedBy <https://w3id.org/timebank>;
+                    rdfs:label "Automobile Repair";
+                    rdfs:subClassOf tb:Repair;
+                    <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Repair;
+                    <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Auto_mechanic>.
+tb:Baking a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+            <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "The skill to assist with baking.";
+          rdfs:isDefinedBy <https://w3id.org/timebank>;
+          rdfs:label "Baking";
+          rdfs:subClassOf tb:FoodService;
+          <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:FoodService;
+          <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Baking>.
+tb:Carpeting a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "The skill to do carpenting.";
+             rdfs:isDefinedBy <https://w3id.org/timebank>;
+             rdfs:label "Carpenting";
+             rdfs:subClassOf tb:WoodCrafting;
+             <http://www.w3.org/2002/07/owl#disjointWith> tb:WoodCarving;
+             <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:WoodCrafting;
+             <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/:Carpentry>.
+tb:Catering a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "The skill to assist with catering requirements.";
+            rdfs:isDefinedBy <https://w3id.org/timebank>;
+            rdfs:label "Catering";
+            rdfs:subClassOf tb:FoodService;
+            <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:FoodService;
+            <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Catering>.
+tb:Cats a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+          <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:comment "Indicates that cats might be present.";
+        rdfs:isDefinedBy <https://w3id.org/timebank>;
+        rdfs:label "Cats";
+        rdfs:subClassOf tb:Pets;
+        <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Pets;
+        <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Cat>.
+tb:ChildCare a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "The skill to provide care for children.";
+             rdfs:isDefinedBy <https://w3id.org/timebank>;
+             rdfs:label "Child Care";
+             rdfs:subClassOf tb:PeopleCare;
+             <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:PeopleCare;
+             <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Child_care>.
+tb:Cleaning a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "The skill to assist with general cleaning tasks.";
+            rdfs:isDefinedBy <https://w3id.org/timebank>;
+            rdfs:label "Cleaning";
+            rdfs:subClassOf tb:Maintenance;
+            <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Maintenance;
+            <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Category:Cleaning>.
+tb:ClimbingStairsDifficulty a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                              <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "The person has difficulty in climbing up stairs.";
+                            rdfs:isDefinedBy <https://w3id.org/timebank>;
+                            rdfs:label "Difficulty in Climbing Stairs";
+                            rdfs:subClassOf tb:MobilityProblem;
+                            <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:MobilityProblem;
+                            <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://who.int/icf#d450-d469>,
+                                                                               <http://snomed.info/id/129016000>.
+tb:ClothesWashing a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "The skill to assist with washing clothes.";
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "Clothes Washing";
+                  rdfs:subClassOf tb:Cleaning;
+                  <http://www.w3.org/2002/07/owl#disjointWith> tb:Mopping;
+                  <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Cleaning;
+                  <http://www.w3.org/2004/02/skos/core#closeMatch> <http://dbpedia.org/resource/Washing>.
+tb:CognitiveImpairment a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                         <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "A person with cognitive impairment can't think and remember things clearly.";
+                       rdfs:isDefinedBy <https://w3id.org/timebank>;
+                       rdfs:label "Cognitive Impairment";
+                       rdfs:subClassOf tb:MentalDisorder;
+                       <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:MentalDisorder;
+                       <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Cognitive_deficit>;
+                       <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://who.int/icf#b164>,
+                                                                          <http://purl.bioontology.org/ontology/ICD10/F06.7>,
+                                                                          <http://snomed.info/id/110352000>.
+tb:CommonDisease a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A collection of diseases that are common, especially for elderly people";
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "Common Disease";
+                 rdfs:subClassOf tb:Limitation;
+                 <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Limitation.
+tb:ComputerProcessing a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "The skill to assist with processing data computers.";
+                      rdfs:isDefinedBy <https://w3id.org/timebank>;
+                      rdfs:label "Computer Processing";
+                      rdfs:subClassOf tb:OfficeWork;
+                      <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:OfficeWork;
+                      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Computer_skills>.
+tb:ComputerRepair a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "The skill to fix problems with computers.";
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "Computer Repair";
+                  rdfs:subClassOf tb:Repair;
+                  <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Repair;
+                  <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Computer_repair_technician>.
+tb:Cooking a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "The skill to assist with cooking in general.";
+           rdfs:isDefinedBy <https://w3id.org/timebank>;
+           rdfs:label "Cooking";
+           rdfs:subClassOf tb:FoodService;
+           <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:FoodService;
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Cooking>.
+tb:Counseling a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "The skill to advice people on psychological matters.";
+              rdfs:isDefinedBy <https://w3id.org/timebank>;
+              rdfs:label "Counseling";
+              rdfs:subClassOf tb:Advice;
+              <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Advice;
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Category:Counseling>.
+tb:Crafting a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Crafting skills.";
+            rdfs:isDefinedBy <https://w3id.org/timebank>;
+            rdfs:label "Crafting";
+            rdfs:subClassOf tb:Skill;
+            <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Skill;
+            <http://www.w3.org/2004/02/skos/core#closeMatch> <http://dbpedia.org/resource/Craft>.
+tb:CraftingClothes a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "The ability to craft any kind of clothes.";
+                   rdfs:isDefinedBy <https://w3id.org/timebank>;
+                   rdfs:label "Crafting Clothes";
+                   rdfs:subClassOf tb:Crafting;
+                   <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Crafting.
+tb:DancingCompanion a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "The ability to act as a dancing companion.";
+                    rdfs:isDefinedBy <https://w3id.org/timebank>;
+                    rdfs:label "Dancing Companion";
+                    rdfs:subClassOf tb:Recreation;
+                    <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Recreation;
+                    <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Dance>.
+tb:Depression a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A person with depression has a depressed mood over a long period and may even have thoughts of suicide.";
+              rdfs:isDefinedBy <https://w3id.org/timebank>;
+              rdfs:label "Depression";
+              rdfs:subClassOf tb:MentalDisorder;
+              <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:MentalDisorder;
+              <http://www.w3.org/2004/02/skos/core#closeMatch> <http://purl.bioontology.org/ontology/ICD10/F32>;
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Depression_(mood)>;
+              <http://www.w3.org/2004/02/skos/core#narrowMatch> <http://snomed.info/id/154966009>,
+                                                                <http://snomed.info/id/154965008>,
+                                                                <http://snomed.info/id/154967000>.
+tb:Diabetes a <http://www.w3.org/2002/07/owl#Class>,
+              <http://www.w3.org/2002/07/owl#NamedIndividual>;
+            rdfs:comment "A disorder characterized by high blood sugar levels during a long period.";
+            rdfs:isDefinedBy <https://w3id.org/timebank>;
+            rdfs:label "Diabetes Mellitus";
+            rdfs:subClassOf tb:CommonDisease;
+            <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:CommonDisease;
+            <http://www.w3.org/2004/02/skos/core#exactMatch> <http://purl.bioontology.org/ontology/ICD10/E10-E14.9>,
+                                                             <http://snomed.info/id/191044006>,
+                                                             <http://dbpedia.org/resource/Diabetes_mellitus>.
+tb:Dishwashing a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "The skill to assist with washing dishes.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Dishwashing";
+               rdfs:subClassOf tb:FoodService;
+               <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:FoodService;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Dishwashing>.
+tb:Dogs a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+          <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:comment "Indicates that dogs might be present.";
+        rdfs:isDefinedBy <https://w3id.org/timebank>;
+        rdfs:label "Dogs";
+        rdfs:subClassOf tb:Pets;
+        <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Dogs;
+        <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Dog>.
+tb:DressingAssistance a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "The skill to assist someone with dressing.";
+                      rdfs:isDefinedBy <https://w3id.org/timebank>;
+                      rdfs:label "Dressing Assistance";
+                      rdfs:subClassOf tb:PersonalService;
+                      <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:PersonalService.
+tb:DressingProblem a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "The person has difficulties dressing himself.";
+                   rdfs:isDefinedBy <https://w3id.org/timebank>;
+                   rdfs:label "Dressing Problem";
+                   rdfs:subClassOf tb:MobilityProblem;
+                   <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:MobilityProblem;
+                   <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://who.int/icf#d5400>,
+                                                                      <http://snomed.info/id/129039006>.
+tb:DrivingCars a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Experience in driving cars.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Driving Cars";
+               rdfs:subClassOf tb:DrivingLightVehicles;
+               <http://www.w3.org/2002/07/owl#disjointWith> tb:DrivingVans;
+               <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:DrivingLightVehicles;
+               <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Automobile>.
+tb:DrivingHeavyVehicles a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Experience in driving heavy vehicles.";
+                        rdfs:isDefinedBy <https://w3id.org/timebank>;
+                        rdfs:label "Driving Heavy Vehicles";
+                        rdfs:subClassOf tb:Transportation;
+                        <http://www.w3.org/2002/07/owl#disjointWith> tb:DrivingLightVehicles;
+                        <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Transportation.
+tb:DrivingLightVehicles a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Experience in driving light vehicles.";
+                        rdfs:isDefinedBy <https://w3id.org/timebank>;
+                        rdfs:label "Driving Light Vehicles";
+                        rdfs:subClassOf tb:Transportation;
+                        <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Transportation.
+tb:DrivingTractors a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Experience in driving tractors.";
+                   rdfs:isDefinedBy <https://w3id.org/timebank>;
+                   rdfs:label "Driving Tractors";
+                   rdfs:subClassOf tb:DrivingHeavyVehicles;
+                   <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:DrivingHeavyVehicles;
+                   <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Tractor>.
+tb:DrivingTrucks a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Experience in driving with trucks.";
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "Driving Trucks";
+                 rdfs:subClassOf tb:DrivingHeavyVehicles;
+                 <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:DrivingHeavyVehicles;
+                 <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Truck>.
+tb:DrivingVans a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Experience in driving vans.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Driving Vans";
+               rdfs:subClassOf tb:DrivingLightVehicles;
+               <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:DrivingLightVehicles;
+               <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Automobile>.
+tb:DrivingWithTrailers a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                         <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Experience in driving with trailers.";
+                       rdfs:isDefinedBy <https://w3id.org/timebank>;
+                       rdfs:label "Driving with Trailers";
+                       rdfs:subClassOf tb:DrivingHeavyVehicles;
+                       <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:DrivingHeavyVehicles;
+                       <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Trailer_(vehicle)>.
+tb:DrugAllergy a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "An allergy to drugs.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Drug Allergy";
+               rdfs:subClassOf tb:Allergy;
+               <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Allergy;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <http://snomed.info/id/93431001>,
+                                                                <http://dbpedia.org/resource/Drug_allergy>;
+               <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://purl.bioontology.org/ontology/ICD10/Z88>.
+tb:EggAllergy a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Allergy to eggs.";
+              rdfs:isDefinedBy <https://w3id.org/timebank>;
+              rdfs:label "Egg Allergy";
+              rdfs:subClassOf tb:FoodAllergy;
+              <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:FoodAllergy;
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Egg_allergy>,
+                                                               <http://snomed.info/id/157802003>;
+              <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://snomed.info/id/138050005>.
+tb:ElderlyCare a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "The skill to provide care and support for the elderly.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Care for Elderly";
+               rdfs:subClassOf tb:PeopleCare;
+               <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:PeopleCare;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Elderly_care>.
+tb:Electricity a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Electric outlet available.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Electricity";
+               rdfs:subClassOf tb:Supplies;
+               <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Supplies;
+               <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Electricity>.
+tb:ElectronicRepair a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "The skill to repair electronic devices.";
+                    rdfs:isDefinedBy <https://w3id.org/timebank>;
+                    rdfs:label "Electronic Repair";
+                    rdfs:subClassOf tb:Repair;
+                    <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Repair.
+tb:Environment a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "The environment describes relevant environmental factors of a request.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Environment";
+               <http://www.w3.org/2002/07/owl#disjointWith> tb:Request,
+                                                            tb:Limitation,
+                                                            tb:Status,
+                                                            tb:Skill,
+                                                            tb:User,
+                                                            tb:Level.
+tb:EnvironmentalAllergy a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "An allergy to something in the environment such as dust mites, pollen, pet hair and cigarette smoke.";
+                        rdfs:isDefinedBy <https://w3id.org/timebank>;
+                        rdfs:label "Environmental Allergy";
+                        rdfs:subClassOf tb:Allergy;
+                        <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Allergy;
+                        <http://www.w3.org/2004/02/skos/core#exactMatch> <http://snomed.info/id/426232007>.
+tb:EventPlanning a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "The skill to assist in planning and hosting events.";
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "Event Planning";
+                 rdfs:subClassOf tb:Recreation;
+                 <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Recreation;
+                 <http://www.w3.org/2004/02/skos/core#closeMatch> <http://dbpedia.org/resource/Event_planning>.
+tb:FearOfAnimals a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Fear of animals. This can include dogs, cats, snakes, insects, etc.";
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "Fear of Animals";
+                 rdfs:subClassOf tb:SpecificPhobia;
+                 <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:SpecificPhobia;
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <http://snomed.info/id/54307006>,
+                                                                  <http://dbpedia.org/resource/Zoophobia>.
+tb:FearOfCats a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Fear of cats.";
+              rdfs:isDefinedBy <https://w3id.org/timebank>;
+              rdfs:label "Fear of Cats";
+              rdfs:subClassOf tb:FearOfAnimals;
+              <http://www.w3.org/2002/07/owl#disjointWith> tb:FearOfDogs;
+              <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:FearOfAnimals;
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Ailurophobia>.
+tb:FearOfDark a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Fear of dark places.";
+              rdfs:isDefinedBy <https://w3id.org/timebank>;
+              rdfs:label "Fear of Dark";
+              rdfs:subClassOf tb:SpecificPhobia;
+              <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:SpecificPhobia;
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Fear_of_the_dark>.
+tb:FearOfDogs a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Fear of dogs.";
+              rdfs:isDefinedBy <https://w3id.org/timebank>;
+              rdfs:label "Fear of Dogs";
+              rdfs:subClassOf tb:FearOfAnimals;
+              <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:FearOfAnimals;
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Cynophobia>.
+tb:FearOfHeights a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Fear or phobia of heights.";
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "Fear of Heights";
+                 rdfs:subClassOf tb:SpecificPhobia;
+                 <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:SpecificPhobia;
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <http://snomed.info/id/58963008>,
+                                                                  <http://dbpedia.org/resource/Acrophobia>.
+tb:FinancialAdvice a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Specialized in providing assistance with financial services. This can include helping with taxes and book keeping.";
+                   rdfs:isDefinedBy <https://w3id.org/timebank>;
+                   rdfs:label "Financial Advice";
+                   rdfs:subClassOf tb:Advice;
+                   <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Advice;
+                   <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Financial_adviser>.
+tb:FoodAllergy a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "An allergy to food such as milk, peanuts, eggs, fish, tree nuts, and fruit.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Food Allergy";
+               rdfs:subClassOf tb:Allergy;
+               <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Allergy;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <http://snomed.info/id/157801005>,
+                                                                <http://dbpedia.org/resource/Food_allergy>.
+tb:FoodPreparation a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "The skill to assist with food preparation like meat cutting, washing of food, etc.";
+                   rdfs:isDefinedBy <https://w3id.org/timebank>;
+                   rdfs:label "Food Preparation";
+                   rdfs:subClassOf tb:FoodService;
+                   <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:FoodService.
+tb:FoodService a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "The skill to provide services related to food products.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Food Service";
+               rdfs:subClassOf tb:Skill;
+               <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Skill;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Category:Food_and_drink_preparation>.
+tb:Games a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+           <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "The skill to participate in board games, card games, etc.";
+         rdfs:isDefinedBy <https://w3id.org/timebank>;
+         rdfs:label "Games";
+         rdfs:subClassOf tb:Recreation;
+         <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Recreation.
+tb:GlutenAllergy a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Allergies to grains with gluten such as wheat, barley, rye, and oats.";
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "Gluten Allergy";
+                 rdfs:subClassOf tb:FoodAllergy;
+                 <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:FoodAllergy;
+                 <http://www.w3.org/2004/02/skos/core#closeMatch> <http://dbpedia.org/resource/Wheat_allergy>;
+                 <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://snomed.info/id/441831003>.
+tb:Groceries a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "The skill to help buying groceries.";
+             rdfs:isDefinedBy <https://w3id.org/timebank>;
+             rdfs:label "Groceries";
+             rdfs:subClassOf tb:SalesService;
+             <http://www.w3.org/2002/07/owl#disjointWith> tb:OnlineShopping;
+             <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:SalesService;
+             <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Grocery_store>.
+tb:HairCutting a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Ability to cut someone else's hair.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Hair Cutting";
+               rdfs:subClassOf tb:PersonalService;
+               <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:PersonalService;
+               <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Hairdresser>.
+tb:HeartDisease a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A condition of diseases that negatively affect one's heart such as blood vessel diseases and heart rhythm problems.";
+                rdfs:isDefinedBy <https://w3id.org/timebank>;
+                rdfs:label "Heart Diseases";
+                rdfs:subClassOf tb:CommonDisease;
+                <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:CommonDisease;
+                <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Heart_disease>,
+                                                                 <http://snomed.info/id/56265001>;
+                <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://who.int/icf#b410>,
+                                                                   <http://purl.bioontology.org/ontology/ICD10/I51.9>.
+tb:HouseholdEquipmentRepair a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                              <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "The skill to repair household equipment.";
+                            rdfs:isDefinedBy <https://w3id.org/timebank>;
+                            rdfs:label "Houseshold Equipment Repair";
+                            rdfs:subClassOf tb:Repair;
+                            <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Repair.
+tb:HygieneAssitance a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "The skill to assist someone on hygienical matters.";
+                    rdfs:isDefinedBy <https://w3id.org/timebank>;
+                    rdfs:label "Hygiene Assitance";
+                    rdfs:subClassOf tb:PersonalService;
+                    <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:PersonalService.
+tb:Hypertension a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "The blood pressure is high in a long period.";
+                rdfs:isDefinedBy <https://w3id.org/timebank>;
+                rdfs:label "Hypertension";
+                rdfs:subClassOf tb:CommonDisease;
+                <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:CommonDisease;
+                <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Hypertension>;
+                <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://purl.bioontology.org/ontology/ICD10/I10-I15.9>.
+tb:Hypotension a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "The blood pressure is low in a long period.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Hypotension";
+               rdfs:subClassOf tb:CommonDisease;
+               <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:CommonDisease;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <http://purl.bioontology.org/ontology/ICD10/I95>,
+                                                                <http://dbpedia.org/resource/Hypotension>.
+tb:Internet a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Internet is available.";
+            rdfs:isDefinedBy <https://w3id.org/timebank>;
+            rdfs:label "Internet";
+            rdfs:subClassOf tb:Supplies;
+            <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Supplies;
+            <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Internet>.
+tb:InventoryManagement a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                         <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "The skill to assist with inventory management.";
+                       rdfs:isDefinedBy <https://w3id.org/timebank>;
+                       rdfs:label "Inventory Management";
+                       rdfs:subClassOf tb:OfficeWork;
+                       <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:OfficeWork;
+                       <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Inventory>.
+tb:Knitting a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Specialized in knitting clothes.";
+            rdfs:isDefinedBy <https://w3id.org/timebank>;
+            rdfs:label "Knitting";
+            rdfs:subClassOf tb:CraftingClothes;
+            <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:CraftingClothes;
+            <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Knitting>.
+tb:LegalAdvice a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Specialized in providing legal assistance.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Legal Advice";
+               rdfs:subClassOf tb:Advice;
+               <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Advice;
+               <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Lawyer>.
+tb:Level a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "The level can be low, medium, or high.";
+         rdfs:isDefinedBy <https://w3id.org/timebank>;
+         rdfs:label "Level";
+         <http://www.w3.org/2002/07/owl#disjointWith> tb:User,
+                                                      tb:Status,
+                                                      tb:Skill,
+                                                      tb:Request,
+                                                      tb:Limitation.
+tb:LevelHigh a tb:Level,
+               <http://www.w3.org/2002/07/owl#NamedIndividual>;
+             rdfs:comment "Used if a Limitation has a high severity or a Skill is on a high level.";
+             rdfs:isDefinedBy <https://w3id.org/timebank>;
+             rdfs:label "Level: High".
+tb:LevelLow a tb:Level,
+              <http://www.w3.org/2002/07/owl#NamedIndividual>;
+            rdfs:comment "Used if a Limitation only has a low severity or a Skill is on a low level.";
+            rdfs:isDefinedBy <https://w3id.org/timebank>;
+            rdfs:label "Level: Low".
+tb:LevelMedium a tb:Level,
+                 <http://www.w3.org/2002/07/owl#NamedIndividual>;
+               rdfs:comment "Used if a Limitation has a medium severity or a Skill is on a medium level";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Level: Medium".
+tb:Lift a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+          <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:comment "A lift/elevator is available.";
+        rdfs:isDefinedBy <https://w3id.org/timebank>;
+        rdfs:label <https://w3id.org/Lift>;
+        rdfs:subClassOf tb:Accessibility;
+        <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Accessibility;
+        <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Elevator>.
+tb:Limitation a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Limitations can be anything which prevents or limits the extent to which a user can help somebody else.";
+              rdfs:isDefinedBy <https://w3id.org/timebank>;
+              rdfs:label "Limitation";
+              <http://www.w3.org/2002/07/owl#disjointWith> tb:User,
+                                                           tb:Status,
+                                                           tb:Skill,
+                                                           tb:Request.
+tb:LimitedAccessibilityRain a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                              <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "The place is difficult to access during rainfall.";
+                            rdfs:isDefinedBy <https://w3id.org/timebank>;
+                            rdfs:label "Limited Accessibility: Rain";
+                            rdfs:subClassOf tb:WeatherConstraint;
+                            <http://www.w3.org/2002/07/owl#disjointWith> tb:LimitedAccessibilitySnow;
+                            <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:WeatherConstraint;
+                            <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Precipitation_(meteorology)>.
+tb:LimitedAccessibilitySnow a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                              <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "The place is difficult to access during snowfall.";
+                            rdfs:isDefinedBy <https://w3id.org/timebank>;
+                            rdfs:label "Limited Accessibility: Snow";
+                            rdfs:subClassOf tb:WeatherConstraint;
+                            <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:WeatherConstraint;
+                            <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Precipitation_(meteorology)>.
+tb:Maintenance a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "The skill to help with maintenance of equipment.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Maintenance";
+               rdfs:subClassOf tb:Skill;
+               <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Skill;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Category:Maintenance>.
+tb:MentalDisorder a <http://www.w3.org/2002/07/owl#Class>,
+                    <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                  rdfs:comment "Disorders that affect the mental states of a person.";
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "Mental Disorder";
+                  rdfs:subClassOf tb:Limitation;
+                  <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Limitation;
+                  <http://www.w3.org/2004/02/skos/core#closeMatch> <http://purl.bioontology.org/ontology/ICD10/F00-F99.9>;
+                  <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Mental_disorder>,
+                                                                   <http://snomed.info/id/74732009>;
+                  <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://who.int/icf#b1>.
+tb:MentallyIllCare a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "The skill to provide care for the mentally ill.";
+                   rdfs:isDefinedBy <https://w3id.org/timebank>;
+                   rdfs:label "Care Mentally Ill People";
+                   rdfs:subClassOf tb:PeopleCare;
+                   <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:PeopleCare;
+                   <http://www.w3.org/2004/02/skos/core#narrowMatch> <http://dbpedia.org/resource/Caring_for_people_with_dementia>.
+tb:MilkAllergy a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Allergy to milk.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Milk Allergy";
+               rdfs:subClassOf tb:FoodAllergy;
+               <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:FoodAllergy;
+               <http://www.w3.org/2004/02/skos/core#closeMatch> <http://snomed.info/id/197021003>;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Milk_allergy>;
+               <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://snomed.info/id/138049005>.
+tb:MobilityProblem a <http://www.w3.org/2002/07/owl#Class>,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                   rdfs:comment "Difficulties with moving around physically such as having difficulties using toliet, dressing, walking and so on.";
+                   rdfs:isDefinedBy <https://w3id.org/timebank>;
+                   rdfs:label "Mobility Problem";
+                   rdfs:subClassOf tb:PhysicalInconvenience;
+                   <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:PhysicalInconvenience;
+                   <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://who.int/icf#d4>,
+                                                                      <http://snomed.info/id/102490005>,
+                                                                      <http://purl.bioontology.org/ontology/ICD10/Z74.0>.
+tb:Mopping a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "The skill to assist with mopping floors, etc.";
+           rdfs:isDefinedBy <https://w3id.org/timebank>;
+           rdfs:label "Mopping";
+           rdfs:subClassOf tb:Cleaning;
+           <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Cleaning.
+tb:Mowing a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+            <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "The skill to assist with mowing the grass.";
+          rdfs:isDefinedBy <https://w3id.org/timebank>;
+          rdfs:label "Mowing";
+          rdfs:subClassOf tb:Maintenance;
+          <http://www.w3.org/2004/02/skos/core#broadMatch> <http://dbpedia.org/resource/Category:Lawn_care>;
+          <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Maintenance.
+tb:NutsAllergy a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Allergy to nuts such as almonds, walnuts, pecans, and peanuts.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Nuts Allergy";
+               rdfs:subClassOf tb:FoodAllergy;
+               <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:FoodAllergy;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <http://snomed.info/id/91934008>;
+               <http://www.w3.org/2004/02/skos/core#narrowMatch> <http://dbpedia.org/resource/Tree_nut_allergy>.
+tb:OfficeWork a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "The skill to provide help with office related work.";
+              rdfs:isDefinedBy <https://w3id.org/timebank>;
+              rdfs:label "Office Work";
+              rdfs:subClassOf tb:Skill;
+              <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Skill;
+              <http://www.w3.org/2004/02/skos/core#closeMatch> <http://dbpedia.org/resource/Category:Office_work>.
+tb:OnlineShopping a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "The skill to assist in buying things online.";
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "Online Shopping";
+                  rdfs:subClassOf tb:SalesService;
+                  <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:SalesService;
+                  <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Online_shopping>.
+tb:PeopleCare a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "The skill to provide care for people.";
+              rdfs:isDefinedBy <https://w3id.org/timebank>;
+              rdfs:label "Care for People";
+              rdfs:subClassOf tb:Skill;
+              <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Skill;
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Category:Caregiving>.
+tb:PerformingMusic a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "The skill to entertain others by performing music.";
+                   rdfs:isDefinedBy <https://w3id.org/timebank>;
+                   rdfs:label "Performing Music";
+                   rdfs:subClassOf tb:Recreation;
+                   <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Recreation;
+                   <http://www.w3.org/2004/02/skos/core#closeMatch> <http://dbpedia.org/resource/Musical_performance>.
+tb:PersonalService a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Personal services which include hygiene and daily care.";
+                   rdfs:isDefinedBy <https://w3id.org/timebank>;
+                   rdfs:label "Personal Service";
+                   rdfs:subClassOf tb:Skill;
+                   <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Skill;
+                   <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Personal_Care_Assistant>.
+tb:Pets a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+          <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:comment "Indicates that pets might be present.";
+        rdfs:isDefinedBy <https://w3id.org/timebank>;
+        rdfs:label "Pets";
+        rdfs:subClassOf tb:Environment;
+        <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Environment;
+        <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Pet>.
+tb:PhoneCalls a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "The skill to perform phone calls.";
+              rdfs:isDefinedBy <https://w3id.org/timebank>;
+              rdfs:label "Phone Calls";
+              rdfs:subClassOf tb:OfficeWork;
+              <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:OfficeWork;
+              <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Telephone_call>.
+tb:PhysicalInconvenience a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                           <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "This is a collection of physical disorders that negatively affect a person's daily life.";
+                         rdfs:isDefinedBy <https://w3id.org/timebank>;
+                         rdfs:label "Physical Inconvenience";
+                         rdfs:subClassOf tb:Limitation;
+                         <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Limitation.
+tb:PhysicallyDisabledCare a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                            <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "The skill to provide care for the physically disabled.";
+                          rdfs:isDefinedBy <https://w3id.org/timebank>;
+                          rdfs:label "Care for Physically Disabled";
+                          rdfs:subClassOf tb:PeopleCare;
+                          <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:PeopleCare;
+                          <http://www.w3.org/2004/02/skos/core#closeMatch> <http://dbpedia.org/resource/Nursing>.
+tb:Plumbing a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Skill to perform plumbing and repairs on pipe installation.";
+            rdfs:isDefinedBy <https://w3id.org/timebank>;
+            rdfs:label "Plumbing";
+            rdfs:subClassOf tb:Repair;
+            <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Repair;
+            <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Plumbing>.
+tb:PoorEyesight a <http://www.w3.org/2002/07/owl#Class>,
+                  <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                rdfs:comment "Having difficulties seeing objects clearly.";
+                rdfs:isDefinedBy <https://w3id.org/timebank>;
+                rdfs:label "Poor Eyesight";
+                rdfs:subClassOf tb:PhysicalInconvenience;
+                <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:PhysicalInconvenience;
+                <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://snomed.info/id/105597003>,
+                                                                   <http://dbpedia.org/resource/Blindness>,
+                                                                   <http://purl.bioontology.org/ontology/ICD10/H54>,
+                                                                   <http://who.int/icf#b2102>.
+tb:PoorHearing a <http://www.w3.org/2002/07/owl#Class>,
+                 <http://www.w3.org/2002/07/owl#NamedIndividual>;
+               rdfs:comment "Having difficulties hearing voices clearly.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Poor Hearing";
+               rdfs:subClassOf tb:PhysicalInconvenience;
+               <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:PhysicalInconvenience;
+               <http://www.w3.org/2004/02/skos/core#narrowMatch> <http://snomed.info/id/141259005>,
+                                                                 <http://snomed.info/id/141260000>,
+                                                                 <http://snomed.info/id/141258002>;
+               <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://who.int/icf#b230>,
+                                                                  <http://dbpedia.org/resource/Deafness>.
+tb:Pruning a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "The skill to assist with pruning shrubs and twigs.";
+           rdfs:isDefinedBy <https://w3id.org/timebank>;
+           rdfs:label "Pruning";
+           rdfs:subClassOf tb:Maintenance;
+           <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Maintenance;
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Pruning>.
+tb:PsychoticEpisode a <http://www.w3.org/2002/07/owl#Class>,
+                      <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                    rdfs:comment "A person with psychotic episode can not tell the difference between the reality and unreality and may have difficulty with social activities in daily life.";
+                    rdfs:isDefinedBy <https://w3id.org/timebank>;
+                    rdfs:label "Psychotic Episode";
+                    rdfs:subClassOf tb:MentalDisorder;
+                    <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:MentalDisorder;
+                    <http://www.w3.org/2004/02/skos/core#closeMatch> <http://snomed.info/id/231436002>;
+                    <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Psychotic_episode>;
+                    <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://purl.bioontology.org/ontology/ICD10/F20-F29.9>.
+tb:RecordingNotes a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "The skill to assist with recording notes and entries.";
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "Recording Notes";
+                  rdfs:subClassOf tb:OfficeWork;
+                  <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:OfficeWork.
+tb:Recreation a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "The skill to provide services related to recreation.";
+              rdfs:isDefinedBy <https://w3id.org/timebank>;
+              rdfs:label "Recreation";
+              rdfs:subClassOf tb:Skill;
+              <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Skill.
+tb:Repair a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+            <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "The Skill to repair equipment and facilities.";
+          rdfs:isDefinedBy <https://w3id.org/timebank>;
+          rdfs:label "Repair";
+          rdfs:subClassOf tb:Skill;
+          <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Skill;
+          <http://www.w3.org/2004/02/skos/core#closeMatch> <http://dbpedia.org/resource/Maintenance,_repair,_and_operations>.
+tb:Request a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "A request for help from a Timebank user.";
+           rdfs:isDefinedBy <https://w3id.org/timebank>;
+           rdfs:label "Request";
+           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> tb:hasAccreditedDuration ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> tb:hasStatus ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> tb:hasOriginator ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>],
+                           [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                            <http://www.w3.org/2002/07/owl#onProperty> tb:rating ; 
+                            a <http://www.w3.org/2002/07/owl#Restriction>];
+           <http://www.w3.org/2002/07/owl#disjointWith> tb:User,
+                                                        tb:Status,
+                                                        tb:Skill.
+tb:Rheumatism a <http://www.w3.org/2002/07/owl#Class>,
+                <http://www.w3.org/2002/07/owl#NamedIndividual>;
+              rdfs:comment "Diseases that causes chronic pain in joints and muscles such as back, shoulder and neck.";
+              rdfs:isDefinedBy <https://w3id.org/timebank>;
+              rdfs:label "Rheumatism";
+              rdfs:subClassOf tb:CommonDisease;
+              <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:CommonDisease;
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Rheumatism>,
+                                                               <http://snomed.info/id/29913006>;
+              <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://purl.bioontology.org/ontology/ICD10/M79.0>.
+tb:SalesService a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "The skill to help with selling and buying products.";
+                rdfs:isDefinedBy <https://w3id.org/timebank>;
+                rdfs:label "Sales Service";
+                rdfs:subClassOf tb:Skill;
+                <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Skill;
+                <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Sales>.
+tb:SeafoodAllergy a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Allergy to any kind of seafood.";
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "Seafood Allergy";
+                  rdfs:subClassOf tb:FoodAllergy;
+                  <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:FoodAllergy;
+                  <http://www.w3.org/2004/02/skos/core#exactMatch> <http://snomed.info/id/91937001>,
+                                                                   <http://dbpedia.org/resource/Seafood_allergy>.
+tb:SensitiveSkin a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Skins are too sensitive to a wide variety of factors such as weather, pets, stress and dust.";
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "Sensitive Skin";
+                 rdfs:subClassOf tb:PhysicalInconvenience;
+                 <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:PhysicalInconvenience;
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Sensitive_skin_type>;
+                 <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://who.int/icf#b840>.
+tb:Sewing a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+            <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "Specialized in sewing clothes.";
+          rdfs:isDefinedBy <https://w3id.org/timebank>;
+          rdfs:label "Sewing";
+          rdfs:subClassOf tb:CraftingClothes;
+          <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:CraftingClothes;
+          <http://www.w3.org/2004/02/skos/core#closeMatch> <http://dbpedia.org/resource/Sewing>.
+tb:SickCare a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "The skill to provide care for sick people.";
+            rdfs:isDefinedBy <https://w3id.org/timebank>;
+            rdfs:label "Care for Sick People";
+            rdfs:subClassOf tb:PeopleCare;
+            <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:PeopleCare;
+            <http://www.w3.org/2004/02/skos/core#closeMatch> <http://dbpedia.org/resource/Nursing>.
+tb:Skill a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+           <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "Skills define the capabilities of a user. Users and Timebank requests can be associated to a certain skill (or multiple skills) to facilitate the matching of helper and requester.";
+         rdfs:isDefinedBy <https://w3id.org/timebank>;
+         rdfs:label "Skill";
+         <http://www.w3.org/2002/07/owl#disjointWith> tb:User,
+                                                      tb:Status;
+         <http://www.w3.org/2004/02/skos/core#closeMatch> <http://dbpedia.org/resource/Category:Skills>.
+tb:SlipperyFloor a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "The person needs to be aware of slippery floor.";
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "Splippery Floor";
+                 rdfs:subClassOf tb:Accessibility;
+                 <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Accessibility.
+tb:SpeakingProblem a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "The person has difficulties speaking clearly due to body function problems such as injuries to the brain, mouth or throat.";
+                   rdfs:isDefinedBy <https://w3id.org/timebank>;
+                   rdfs:label "Speaking Problem";
+                   rdfs:subClassOf tb:PhysicalInconvenience;
+                   <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:PhysicalInconvenience;
+                   <http://www.w3.org/2004/02/skos/core#exactMatch> <http://snomed.info/id/286372005>;
+                   <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://who.int/icf#d330>.
+tb:SpecificPhobia a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "Fear of specific objects such as dogs, cats, heights, dark places, and so on.";
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "Specific Phobia";
+                  rdfs:subClassOf tb:MentalDisorder;
+                  <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:MentalDisorder;
+                  <http://www.w3.org/2004/02/skos/core#exactMatch> <http://purl.bioontology.org/ontology/ICD10/F40.2>,
+                                                                   <http://dbpedia.org/resource/Specific_phobia>;
+                  <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://snomed.info/id/386808001>.
+tb:Sports a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+            <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "The skill to participate in sport activities.";
+          rdfs:isDefinedBy <https://w3id.org/timebank>;
+          rdfs:label "Sports";
+          rdfs:subClassOf tb:Recreation;
+          <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Recreation;
+          <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Sport>,
+                                                             <dbt:Game>.
+tb:Stairs a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+            <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "The person might have to climb stairs to complete the task.";
+          rdfs:isDefinedBy <https://w3id.org/timebank>;
+          rdfs:label "Stairs";
+          rdfs:subClassOf tb:Accessibility;
+          <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Accessibility;
+          <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Stairway>.
+tb:Status a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "The status of a request.";
+          rdfs:isDefinedBy <https://w3id.org/timebank>;
+          rdfs:label "Status";
+          <http://www.w3.org/2002/07/owl#disjointWith> tb:User.
+tb:StatusAssigned a tb:Status,
+                    <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                  rdfs:comment "Indicates that a request is assigned to a helper but not yet completed.";
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "Status: Assigned".
+tb:StatusCancelled a tb:Status,
+                     <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                   rdfs:comment "Indicates that a request is cancelled and no helper is needed anymore.";
+                   rdfs:isDefinedBy <https://w3id.org/timebank>;
+                   rdfs:label "Status: Cancelled".
+tb:StatusClosed a tb:Status,
+                  <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                rdfs:comment "Indicates that a request is closed and that no helper is needed anymore.";
+                rdfs:isDefinedBy <https://w3id.org/timebank>;
+                rdfs:label "Status: Closed".
+tb:StatusOpen a tb:Status,
+                <http://www.w3.org/2002/07/owl#NamedIndividual>;
+              rdfs:comment "Indicates that a request is open and no helper is assigned to it.";
+              rdfs:isDefinedBy <https://w3id.org/timebank>;
+              rdfs:label "Status: Open".
+tb:StrokeHistory a <http://www.w3.org/2002/07/owl#Class>,
+                   <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                 rdfs:comment "It indicates a person once had a storke. A stroke happens when blood flow to the brain is blocked and oxygen for the brain cells is insufficient, which could leads to cell death.";
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "History of Strokes";
+                 rdfs:subClassOf tb:CommonDisease;
+                 <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:CommonDisease;
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <http://snomed.info/id/138787005>;
+                 <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://purl.bioontology.org/ontology/ICD10/I60-I69.9>,
+                                                                    <http://dbpedia.org/resource/Stroke>.
+tb:Supplies a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+              <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Availability of specific supplies to complete a task.";
+            rdfs:isDefinedBy <https://w3id.org/timebank>;
+            rdfs:label "Supplies";
+            rdfs:subClassOf tb:Environment;
+            <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Environment.
+tb:Tailoring a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Specialized in providing tailoring services.";
+             rdfs:isDefinedBy <https://w3id.org/timebank>;
+             rdfs:label "Tailoring";
+             rdfs:subClassOf tb:CraftingClothes;
+             <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:CraftingClothes;
+             <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Tailor>.
+tb:ToiletUsingProblem a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "The person has difficulties using toilet.";
+                      rdfs:isDefinedBy <https://w3id.org/timebank>;
+                      rdfs:label "Toilet Using Problem";
+                      rdfs:subClassOf tb:MobilityProblem;
+                      <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:MobilityProblem;
+                      <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://who.int/icf#d530>,
+                                                                         <http://snomed.info/id/129045003>.
+tb:Tools a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+           <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "Tools can be provided.";
+         rdfs:isDefinedBy <https://w3id.org/timebank>;
+         rdfs:label "Tools";
+         rdfs:subClassOf tb:Supplies;
+         <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Supplies;
+         <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Tool>.
+tb:Transportation a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "The skill to provide services related to transportation.";
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "TransportationServices";
+                  rdfs:subClassOf tb:Skill;
+                  <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Skill;
+                  <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Transport>.
+tb:TransportationAvailable a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                             <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Transportation necessary to complete the task can be provided.";
+                           rdfs:isDefinedBy <https://w3id.org/timebank>;
+                           rdfs:label "Transportation Available";
+                           rdfs:subClassOf tb:Accessibility;
+                           <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Accessibility;
+                           <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Transport>.
+tb:TravelCompanion a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "The ability to act as a travel companion.";
+                   rdfs:isDefinedBy <https://w3id.org/timebank>;
+                   rdfs:label "Travel Companion";
+                   rdfs:subClassOf tb:Recreation;
+                   <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Recreation;
+                   <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Travel>.
+tb:UnevenTerrain a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "The person needs equipment (e.g. shoes) suitable for uneven terrain.";
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "Uneven Terrain";
+                 rdfs:subClassOf tb:Accessibility;
+                 <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Accessibility.
+tb:User a <http://www.w3.org/2002/07/owl#Class>;
+        rdfs:comment "A user of the Timebank.";
+        rdfs:isDefinedBy <https://w3id.org/timebank>;
+        rdfs:label "User";
+        rdfs:subClassOf [<http://www.w3.org/2002/07/owl#maxCardinality> "1"^^xsd:nonNegativeInteger ; 
+                         <http://www.w3.org/2002/07/owl#onProperty> tb:hasTimeBalance ; 
+                         a <http://www.w3.org/2002/07/owl#Restriction>],
+                        <http://xmlns.com/foaf/0.1/Person>.
+tb:WalkingProblem a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "The person has difficulties walking.";
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "Walking Problem";
+                  rdfs:subClassOf tb:MobilityProblem;
+                  <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:MobilityProblem;
+                  <http://www.w3.org/2004/02/skos/core#exactMatch> <http://snomed.info/id/156615004>;
+                  <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://purl.bioontology.org/ontology/ICD10/R26.2>,
+                                                                     <http://who.int/icf#d450-d469>.
+tb:Water a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+           <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "Water outlet is available.";
+         rdfs:isDefinedBy <https://w3id.org/timebank>;
+         rdfs:label "Water";
+         rdfs:subClassOf tb:Supplies;
+         <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Supplies;
+         <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Water_supply>.
+tb:WeatherConstraint a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                       <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "The place is difficult to access during bad weather (e.g. snow).";
+                     rdfs:isDefinedBy <https://w3id.org/timebank>;
+                     rdfs:label "Weather Constraint";
+                     rdfs:subClassOf tb:Accessibility;
+                     <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Accessibility;
+                     <http://www.w3.org/2004/02/skos/core#relatedMatch> <http://dbpedia.org/resource/Meteorology>.
+tb:WoodCarving a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "The skill to Carve items out of wood.";
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "Wood Carving";
+               rdfs:subClassOf tb:WoodCrafting;
+               <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:WoodCrafting;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Category:Woodcarving>.
+tb:WoodCrafting a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Crafting skill with wood as base material.";
+                rdfs:isDefinedBy <https://w3id.org/timebank>;
+                rdfs:label "Wood Crafting";
+                rdfs:subClassOf tb:Crafting;
+                <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:Crafting;
+                <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Woodworking>.
+tb:Writing a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "The skill to assist with written work, like writing or reading a letter.";
+           rdfs:isDefinedBy <https://w3id.org/timebank>;
+           rdfs:label "Writing";
+           rdfs:subClassOf tb:OfficeWork;
+           <http://www.w3.org/2004/02/skos/core#broaderTransitive> tb:OfficeWork;
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <http://dbpedia.org/resource/Category:Writing>.
+tb:accepts a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:comment "Indicates that a user who is willing to help accepted the request.";
+           rdfs:domain tb:User;
+           rdfs:isDefinedBy <https://w3id.org/timebank>;
+           rdfs:label "accepts";
+           rdfs:range tb:Request;
+           <http://www.w3.org/2002/07/owl#inverseOf> tb:isAcceptedBy.
+tb:endsRepeatingOn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Indicates that a time-interval is repeating until this time and date.";
+                   rdfs:domain <http://www.w3.org/2006/time#ProperInterval>;
+                   rdfs:isDefinedBy <https://w3id.org/timebank>;
+                   rdfs:label "ends repeating on";
+                   rdfs:range <http://www.w3.org/2006/time#Instant>;
+                   <http://www.w3.org/2002/07/owl#inverseOf> tb:isRepeatingEndpointOf.
+tb:excludesUserByLimitation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:comment "This property is used to describe that a request exludes helpers having a certain limitation.";
+                            rdfs:domain tb:Request;
+                            rdfs:isDefinedBy <https://w3id.org/timebank>;
+                            rdfs:label "excludes user by limitation";
+                            rdfs:range tb:Limitation;
+                            <http://www.w3.org/2002/07/owl#inverseOf> tb:excludesUserFrom.
+tb:excludesUserFrom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "This property is used to describe that a certain limitation excludes certain helpers from the request.";
+                    rdfs:domain tb:Limitation;
+                    rdfs:isDefinedBy <https://w3id.org/timebank>;
+                    rdfs:label "excludes user from";
+                    rdfs:range tb:Request.
+tb:hasAccreditedDuration a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "The accredited duration of the request. This is the amount of time which will be transferred from the originator the the assigned helper of the request. Do not use this property to indicate the estimated duration of the task. Use hasExpectedDuration instead.";
+                         rdfs:domain tb:Request;
+                         rdfs:isDefinedBy <https://w3id.org/timebank>;
+                         rdfs:label "has accredited duration";
+                         rdfs:range <http://www.w3.org/2006/time#DurationDescription>;
+                         <http://www.w3.org/2002/07/owl#inverseOf> tb:isAccreditedTo.
+tb:hasAddressPart a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "An address part that describes the location of a specific request.";
+                  rdfs:domain tb:Request;
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "has address part";
+                  rdfs:range tb:AddressPart;
+                  <http://www.w3.org/2002/07/owl#inverseOf> tb:isAdressPartOf;
+                  <http://www.w3.org/2002/07/owl#propertyChainAxiom> ().
+tb:hasEnvironment a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "Indicates that a certain Location Specifier has a specific environmental factor.";
+                  rdfs:domain tb:AddressPart;
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "has environment";
+                  rdfs:range tb:Environment;
+                  <http://www.w3.org/2002/07/owl#inverseOf> tb:isEnvironmentOf.
+tb:hasExpectedDuration a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "The expected duration indicates the duraction of the request estimated by the originator of the request. Do not use this property to assert the actual time credits associated to this request. Use hasAccreditedDuration instead.";
+                       rdfs:domain tb:Request;
+                       rdfs:isDefinedBy <https://w3id.org/timebank>;
+                       rdfs:label "has expected duration";
+                       rdfs:range <http://www.w3.org/2006/time#DurationDescription>;
+                       <http://www.w3.org/2002/07/owl#inverseOf> tb:isExpectedDurationOf.
+tb:hasLimitation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Indicates that a Timebank user suffers from a certain limitation.";
+                 rdfs:domain tb:User;
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "has limitation";
+                 rdfs:range tb:Limitation;
+                 <http://www.w3.org/2002/07/owl#inverseOf> tb:isLimitationOf.
+tb:hasNotEnvironment a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Indicates that a certain Location Specifier has a specific environmental factor.";
+                     rdfs:domain tb:AddressPart;
+                     rdfs:isDefinedBy <https://w3id.org/timebank>;
+                     rdfs:label "has not environment";
+                     rdfs:range tb:Environment;
+                     <http://www.w3.org/2002/07/owl#inverseOf> tb:isNotEnvironmentOf.
+tb:hasOriginator a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Indicates that the request has the specific originator.";
+                 rdfs:domain tb:Request;
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "has originator";
+                 rdfs:range tb:User;
+                 <http://www.w3.org/2002/07/owl#inverseOf> tb:isOriginatorOf.
+tb:hasSeverity a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "Indicates the severity of a limitation.";
+               rdfs:domain tb:Limitation;
+               rdfs:isDefinedBy <https://w3id.org/timebank>;
+               rdfs:label "has severity";
+               rdfs:range tb:Level;
+               <http://www.w3.org/2002/07/owl#inverseOf> tb:isSeverityOf.
+tb:hasSkill a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment "Describes the Skill of a certain Timebank user.";
+            rdfs:domain tb:User;
+            rdfs:isDefinedBy <https://w3id.org/timebank>;
+            rdfs:label "has skill";
+            rdfs:range tb:Skill;
+            <http://www.w3.org/2002/07/owl#inverseOf> tb:isSkillOf.
+tb:hasSkillLevel a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Describes the proficiency level of a skill.";
+                 rdfs:domain tb:Skill;
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "has skill level";
+                 rdfs:range tb:Level;
+                 <http://www.w3.org/2002/07/owl#inverseOf> tb:isSkillLevelOf.
+tb:hasStatus a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "Every request can have at most one status assigned to it.";
+             rdfs:domain tb:Request;
+             rdfs:isDefinedBy <https://w3id.org/timebank>;
+             rdfs:label "has status";
+             rdfs:range tb:Status;
+             <http://www.w3.org/2002/07/owl#inverseOf> tb:isStatusOf.
+tb:hasSubPart a <http://www.w3.org/2002/07/owl#TransitiveProperty>,
+                <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Indicates that the address part is a sub-part of another. A sub-part defines a place more precisely. A sub-part is always in the context of its super-part. For example, a streetnumber is a sub- part of the street.",
+                           <https://w3id.org/timebank>;
+              rdfs:domain tb:AddressPart;
+              rdfs:label "has sub-part";
+              rdfs:range tb:AddressPart;
+              <http://www.w3.org/2002/07/owl#inverseOf> tb:isSubPartOf.
+tb:hasTimeBalance a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "Indicates the current time-balance of a Timebank user.";
+                  rdfs:domain tb:User;
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "has time-balance";
+                  rdfs:range <http://www.w3.org/2006/time#DurationDescription>;
+                  <http://www.w3.org/2002/07/owl#inverseOf> tb:isTimeBalanceOf.
+tb:hasTimeWindow a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Indicates the time window in which the request can/should be completed.";
+                 rdfs:domain tb:Request;
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "has time window";
+                 rdfs:range <http://www.w3.org/2006/time#ProperInterval>;
+                 <http://www.w3.org/2002/07/owl#inverseOf> tb:isTimeWindowOf.
+tb:isAcceptanceDateOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "Indicates the time and date when the Timebank request was accepted by the assigned helper.";
+                      rdfs:domain <http://www.w3.org/2006/time#Instant>;
+                      rdfs:isDefinedBy <https://w3id.org/timebank>;
+                      rdfs:label "is acceptance date of";
+                      rdfs:range tb:Request;
+                      <http://www.w3.org/2002/07/owl#inverseOf> tb:isAcceptedOn.
+tb:isAcceptedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Indicates that a request is accepted by a user who is willing to help completing the request.";
+                rdfs:domain tb:Request;
+                rdfs:isDefinedBy <https://w3id.org/timebank>;
+                rdfs:label "is accepted by";
+                rdfs:range tb:User.
+tb:isAcceptedOn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Indicates the time and date when the Timebank request was accepted by the assigned helper.";
+                rdfs:domain tb:Request;
+                rdfs:isDefinedBy <https://w3id.org/timebank>;
+                rdfs:label "is accepted on";
+                rdfs:range <http://www.w3.org/2006/time#Instant>.
+tb:isAccreditedTo a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "The accredited duration of the request. This is the amount of time which will be transferred from the originator the the assigned helper of the request. Do not use this property to indicate the estimated duration of the task. Use hasExpectedDuration instead.";
+                  rdfs:domain <http://www.w3.org/2006/time#DurationDescription>;
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "is accredited to";
+                  rdfs:range tb:Request.
+tb:isAdressPartOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "An address part that describes the location of a specific request.";
+                  rdfs:domain tb:AddressPart;
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "is adress part of";
+                  rdfs:range tb:Request.
+tb:isAvailabilityOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Indicates the availability of a Timebank user to act as a helper for a Timebank request.";
+                    rdfs:domain <http://www.w3.org/2006/time#ProperInterval>;
+                    rdfs:isDefinedBy <https://w3id.org/timebank>;
+                    rdfs:label "is availability of";
+                    rdfs:range tb:User;
+                    <http://www.w3.org/2002/07/owl#inverseOf> tb:isAvailableOn.
+tb:isAvailableOn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Indicates the availability of a Timebank user to act as a helper for a Timebank request.";
+                 rdfs:domain tb:User;
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "is available on";
+                 rdfs:range <http://www.w3.org/2006/time#ProperInterval>.
+tb:isCancellationDateOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "Indicates the time and date when the Timebank request was cancelled.";
+                        rdfs:domain <http://www.w3.org/2006/time#Instant>;
+                        rdfs:isDefinedBy <https://w3id.org/timebank>;
+                        rdfs:label "is cancellation date of";
+                        rdfs:range tb:Request;
+                        <http://www.w3.org/2002/07/owl#inverseOf> tb:isCancelledOn.
+tb:isCancelledOn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Indicates the time and date when the Timebank request was cancelled.";
+                 rdfs:domain tb:Request;
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "is cancelled on";
+                 rdfs:range <http://www.w3.org/2006/time#Instant>.
+tb:isCompletedOn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Indicates the time and date of the completion of a Timebank request.";
+                 rdfs:domain tb:Request;
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "is completed on";
+                 rdfs:range <http://www.w3.org/2006/time#Instant>;
+                 <http://www.w3.org/2002/07/owl#inverseOf> tb:isCompletionDateOf.
+tb:isCompletionDateOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "Indicates the time and date of the completion of a Timebank request.";
+                      rdfs:domain <http://www.w3.org/2006/time#Instant>;
+                      rdfs:isDefinedBy <https://w3id.org/timebank>;
+                      rdfs:label "is completion date of";
+                      rdfs:range tb:Request.
+tb:isEnvironmentOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Indicates that a certain Location Specifier has a specific environmental factor.";
+                   rdfs:domain tb:Environment;
+                   rdfs:isDefinedBy <https://w3id.org/timebank>;
+                   rdfs:label "is environment of";
+                   rdfs:range tb:AddressPart.
+tb:isExpectedDurationOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "The expected duration indicates the duraction of the request estimated by the originator of the request. Do not use this property to assert the actual time credits associated to this request. Use hasAccreditedDuration instead.";
+                        rdfs:domain <http://www.w3.org/2006/time#DurationDescription>;
+                        rdfs:isDefinedBy <https://w3id.org/timebank>;
+                        rdfs:label "is expected duration of";
+                        rdfs:range tb:Request.
+tb:isLimitationOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "Indicates that a certain limitation applies to the Timebank user.";
+                  rdfs:domain tb:Limitation;
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "is limitation of";
+                  rdfs:range tb:User.
+tb:isNotEnvironmentOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "Indicates that a certain Location Specifier has a specific environmental factor.";
+                      rdfs:domain tb:Environment;
+                      rdfs:isDefinedBy <https://w3id.org/timebank>;
+                      rdfs:label "is not environment of";
+                      rdfs:range tb:AddressPart.
+tb:isOriginatorOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "Indicates that the user is the originator of the request.";
+                  rdfs:domain tb:User;
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "is originator of";
+                  rdfs:range tb:Request.
+tb:isPublicationDateOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Indicates the time and date of the publication of a Timebank request.";
+                       rdfs:domain <http://www.w3.org/2006/time#Instant>;
+                       rdfs:isDefinedBy <https://w3id.org/timebank>;
+                       rdfs:label "is publication date of";
+                       rdfs:range tb:Request;
+                       <http://www.w3.org/2002/07/owl#inverseOf> tb:isPublishedOn.
+tb:isPublishedOn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Indicates the time and date of the publication of a Timebank request.";
+                 rdfs:domain tb:Request;
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "is published on";
+                 rdfs:range <http://www.w3.org/2006/time#Instant>.
+tb:isRepeatingEndpointOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "Indicates that a specific time and date marks the end of a repetition of a time-interval.";
+                         rdfs:domain <http://www.w3.org/2006/time#Instant>;
+                         rdfs:isDefinedBy <https://w3id.org/timebank>;
+                         rdfs:label "is repeating endpoint of";
+                         rdfs:range <http://www.w3.org/2006/time#ProperInterval>.
+tb:isRepetitionDayOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Indicates that a time interval repeats on the specified weekdays.";
+                     rdfs:domain <http://www.w3.org/2006/time#DayOfWeek>;
+                     rdfs:isDefinedBy <https://w3id.org/timebank>;
+                     rdfs:label "is repetition date of";
+                     rdfs:range <http://www.w3.org/2006/time#ProperInterval>;
+                     <http://www.w3.org/2002/07/owl#inverseOf> tb:repeatsOn.
+tb:isRequiredBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "The skill associated with a Timebank request.";
+                rdfs:domain tb:Skill;
+                rdfs:isDefinedBy <https://w3id.org/timebank>;
+                rdfs:label "is required by";
+                rdfs:range tb:Request;
+                <http://www.w3.org/2002/07/owl#inverseOf> tb:requiresSkill.
+tb:isSeverityOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Indicates the severity of a limitation.";
+                rdfs:domain tb:Level;
+                rdfs:isDefinedBy <https://w3id.org/timebank>;
+                rdfs:label "is severity of";
+                rdfs:range tb:Limitation.
+tb:isSkillLevelOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "Describes the proficiency level of a skill.";
+                  rdfs:domain tb:Level;
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "is skill level of";
+                  rdfs:range tb:Skill.
+tb:isSkillOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "Describes the Skill of a certain Timebank user.";
+             rdfs:domain tb:Skill;
+             rdfs:isDefinedBy <https://w3id.org/timebank>;
+             rdfs:label "is skill of";
+             rdfs:range tb:User.
+tb:isStatusOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Every request can have at most one status assigned to it.";
+              rdfs:domain tb:Status;
+              rdfs:isDefinedBy <https://w3id.org/timebank>;
+              rdfs:label "is status of";
+              rdfs:range tb:Request.
+tb:isSubPartOf a <http://www.w3.org/2002/07/owl#TransitiveProperty>,
+                 <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "Indicates that the address part is a sub-part of another. A sub-part defines a place more precisely. A sub-part is always in the context of its super-part. For example, a streetnumber is a sub- part of the street.",
+                            <https://w3id.org/timebank>;
+               rdfs:domain tb:AddressPart;
+               rdfs:label "is sub-part of";
+               rdfs:range tb:AddressPart.
+tb:isTimeBalanceOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Indicates the current time-balance of a Timebank user.";
+                   rdfs:domain <http://www.w3.org/2006/time#DurationDescription>;
+                   rdfs:isDefinedBy <https://w3id.org/timebank>;
+                   rdfs:label "is time-balance of";
+                   rdfs:range tb:User.
+tb:isTimeWindowOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "Indicates the time window in which the request can/should be completed.";
+                  rdfs:domain <http://www.w3.org/2006/time#ProperInterval>;
+                  rdfs:isDefinedBy <https://w3id.org/timebank>;
+                  rdfs:label "is time window of";
+                  rdfs:range tb:Request.
+tb:rating a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:comment "The rating given by the originator of a request to the assigned helper for completing the specific request.";
+          rdfs:domain tb:Request;
+          rdfs:isDefinedBy <https://w3id.org/timebank>;
+          rdfs:label "rating";
+          rdfs:range xsd:decimal.
+tb:repeatsOn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "Indicates that a time interval repeats on the specified weekdays.";
+             rdfs:domain <http://www.w3.org/2006/time#ProperInterval>;
+             rdfs:isDefinedBy <https://w3id.org/timebank>;
+             rdfs:label "repeats on";
+             rdfs:range <http://www.w3.org/2006/time#DayOfWeek>.
+tb:requiresSkill a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "The skill associated with a Timebank request.";
+                 rdfs:domain tb:Request;
+                 rdfs:isDefinedBy <https://w3id.org/timebank>;
+                 rdfs:label "requires skill";
+                 rdfs:range tb:Skill.

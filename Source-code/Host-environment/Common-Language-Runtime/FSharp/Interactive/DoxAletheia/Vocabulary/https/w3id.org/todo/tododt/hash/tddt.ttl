@@ -1,0 +1,285 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix tddt: <https://w3id.org/todo/tododt#>.
+
+_:Ba9b145ea93ec0de56f86ad049a4e75bb a rdf:List.
+_:Bb1204e1d36f7abaebba4040b018671a4 a rdf:List.
+("close"
+ "open") a rdf:List.
+("closed"
+ "open") a rdf:List.
+<http://creativecommons.org/ns#license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/bibliographicCitation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+xsd:time a rdfs:Datatype.
+<http://www.w3.org/2002/07/owl#versionIRI> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#example> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://w3id.org/todo/tododt> <http://creativecommons.org/ns#license> "http://purl.org/NET/rdflicense/cc-by4.0";
+                               <http://purl.org/dc/terms/contributor> "Izaskun Fernández (Tekniker) <mailto:izaskun.fernandez@tekniker.es>";
+                               <http://purl.org/dc/terms/created> "2020-04-21T00:00:00";
+                               <http://purl.org/dc/terms/creator> "Cristina Aceta (Tekniker) <mailto:cristina.aceta@tekniker.es>";
+                               <http://purl.org/dc/terms/description> "Module for dialogue tracing.";
+                               <http://purl.org/dc/terms/issued> "";
+                               <http://purl.org/dc/terms/modified> "2021-09-23T10:00:00";
+                               <http://purl.org/dc/terms/title> "TODODT: Dialogue Tracing Module for Task-Oriented Dialogue management Ontology (TODO)";
+                               <http://purl.org/vocab/vann/preferredNamespacePrefix> "tododt";
+                               <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/todo/tododt";
+                               a <http://www.w3.org/2002/07/owl#Ontology>;
+                               <http://www.w3.org/2002/07/owl#priorVersion> "";
+                               <http://www.w3.org/2002/07/owl#versionInfo> 2.1.
+tddt:ContentUserResponseTrace a <http://www.w3.org/2002/07/owl#Class>;
+                              rdfs:comment "Element that leaves a record of the User Responses performed throughout the dialogue process. These responses provide specific information, as a response for a ContentRequest."@en;
+                              rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                              rdfs:label "ContentUserResponseTrace";
+                              rdfs:subClassOf tddt:UserResponseTrace;
+                              <http://www.w3.org/2002/07/owl#disjointWith> tddt:YesNoUserResponseTrace;
+                              <http://www.w3.org/2002/07/owl#hasKey> (tddt:IDval);
+                              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                              <http://www.w3.org/2004/02/skos/core#example> "Content User Response: The error code is 412."@en.
+tddt:DialogueProcessTrace a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Element that leaves a record of the dialogues performed throughout the dialogue process.";
+                          rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                          rdfs:label "DialogueProcessTrace";
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> tddt:finishDateTime ; 
+                                           <http://www.w3.org/2002/07/owl#onDataRange> xsd:dateTime ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> tddt:initDateTime ; 
+                                           <http://www.w3.org/2002/07/owl#onDataRange> xsd:dateTime ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> tddt:dialStatus ; 
+                                           <http://www.w3.org/2002/07/owl#onDataRange> [<http://www.w3.org/2002/07/owl#oneOf> () ; 
+                                                                                        a rdfs:Datatype] ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> tddt:SecondaryDialogueTrace ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> tddt:hasSecondaryDialogue ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>];
+                          <http://www.w3.org/2002/07/owl#hasKey> (tddt:IDval);
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:DialogueTrace a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Element that leaves a record of the dialogues performed.";
+                   rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                   rdfs:label "DialogueTrace";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> tddt:UserRequestTrace ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> tddt:hasUserRequest ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> tddt:dialogueStep ; 
+                                    <http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   tddt:DialogueProcessTrace;
+                   <http://www.w3.org/2002/07/owl#hasKey> (tddt:IDval);
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:IDval a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+           rdfs:comment "Unique identification value for individuals.";
+           rdfs:isDefinedBy "https://w3id.org/todo/tododom#";
+           rdfs:label "IDval";
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:NoUserResponse a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "Element that leaves a record of the User Responses performed throughout the dialogue process. These responses correspond to a negative polarity."@en;
+                    rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                    rdfs:label "NoUserResponse";
+                    rdfs:subClassOf tddt:YesNoUserResponseTrace;
+                    <http://www.w3.org/2002/07/owl#hasKey> (tddt:IDval);
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                    <http://www.w3.org/2004/02/skos/core#example> "No User Responses: No, Never, Not at all"@en.
+tddt:NullUserResponseTrace a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Response that does not represent a value that can be classified as ContentResponse or YesNoResponse."@en;
+                           rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                           rdfs:label "NullUserResponseTrace";
+                           rdfs:subClassOf tddt:UserResponseTrace;
+                           <http://www.w3.org/2002/07/owl#hasKey> (tddt:IDval);
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                           <http://www.w3.org/2004/02/skos/core#example> "Null User Response: I don't know."@en.
+tddt:SecondaryDialogueTrace a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Element that leaves a record of the secondary dialogues performed.";
+                            rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                            rdfs:label "SecondaryDialogueTrace";
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> tddt:UserResponseTrace ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> tddt:hasUserResponse ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> tddt:SystemResponseTrace ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> tddt:hasSystemResponse ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> tddt:text ; 
+                                             <http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> tddt:SystemRequestTrace ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> tddt:hasSystemRequest ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            tddt:DialogueProcessTrace;
+                            <http://www.w3.org/2002/07/owl#hasKey> (tddt:IDval);
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:SystemRequestTrace a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Element that leaves a record of the SystemRequests performed throughout the dialogue process.";
+                        rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                        rdfs:label "SystemRequestTrace";
+                        rdfs:subClassOf tddt:SystemStepTrace;
+                        <http://www.w3.org/2002/07/owl#hasKey> (tddt:IDval);
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:SystemResponseTrace a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Element that leaves a record of the SystemResponses performed throughout the dialogue process.";
+                         rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                         rdfs:label "SystemResponseTrace";
+                         rdfs:subClassOf tddt:SystemStepTrace;
+                         <http://www.w3.org/2002/07/owl#hasKey> (tddt:IDval);
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:SystemStepTrace a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Element that leaves a record of the SystemSteps performed throughout the dialogue process.";
+                     rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                     rdfs:label "SystemStepTrace";
+                     <http://www.w3.org/2002/07/owl#hasKey> (tddt:IDval);
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:UserRequestTrace a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Element that leaves a record of the User Requests performed throughout the dialogue process."@en;
+                      rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                      rdfs:label "UserRequestTrace";
+                      rdfs:subClassOf tddt:UserStepTrace;
+                      <http://www.w3.org/2002/07/owl#disjointWith> tddt:UserResponseTrace;
+                      <http://www.w3.org/2002/07/owl#hasKey> (tddt:IDval);
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:UserResponseTrace a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Element that leaves a record of the User Responses performed throughout the dialogue process."@en;
+                       rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                       rdfs:label "UserResponseTrace";
+                       rdfs:subClassOf tddt:UserStepTrace;
+                       <http://www.w3.org/2002/07/owl#hasKey> (tddt:IDval);
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:UserStepTrace a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Element that leaves a record of the user steps (requests and responses) performed throughout the dialogue process.";
+                   rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                   rdfs:label "UserStepTrace";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^xsd:nonNegativeInteger ; 
+                                    <http://www.w3.org/2002/07/owl#onProperty> tddt:text ; 
+                                    <http://www.w3.org/2002/07/owl#onDataRange> xsd:string ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>];
+                   <http://www.w3.org/2002/07/owl#hasKey> (tddt:IDval);
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:YesNoUserResponseTrace a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Element that leaves a record of the User Responses performed throughout the dialogue process. These responses correspond to a positive or negative polarity."@en;
+                            rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                            rdfs:label "YesNoUserResponseTrace";
+                            rdfs:subClassOf tddt:UserResponseTrace;
+                            <http://www.w3.org/2002/07/owl#hasKey> (tddt:IDval);
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                            <http://www.w3.org/2004/02/skos/core#example> """YesNo User Responses:
+
+- Yes, OK
+
+- No, Not at all"""@en.
+tddt:YesUserResponse a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Element that leaves a record of the User Responses performed throughout the dialogue process. These responses correspond to a positive polarity."@en;
+                     rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                     rdfs:label "YesUserResponse";
+                     rdfs:subClassOf tddt:YesNoUserResponseTrace;
+                     <http://www.w3.org/2002/07/owl#hasKey> (tddt:IDval);
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                     <http://www.w3.org/2004/02/skos/core#example> "Yes User Responses: Yes, OK"@en.
+tddt:currentValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "When asking the user for a specific information, the information currently asked to the user.";
+                  rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                  rdfs:label "currentValue";
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                  <http://www.w3.org/2004/02/skos/core#example> """UserReq: \"I want to go to the room\"
+
+possibleValue \"room1\"
+possibleValue \"room2\"
+
+SystemReq: \"Do you want to go to {room1}?\" (currentValue: room1); \"Do you want to go to {room2}? (currentValue: room2)\""""@en,
+                                                                """UserReq: \"Quiero ir a la sala\"
+
+possibleValue \"sala1\"
+possibleValue \"sala2\"
+
+System Req: \"¿Quieres ir a la {sala1}?\" (currentValue: sala1); \"¿Quieres ir a la {sala2}? (currentValue: sala2)\""""@en.
+tddt:dateTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:comment "Sets a timestamp to a DialogueTrace.";
+              rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+              rdfs:label "dateTime";
+              rdfs:range xsd:dateTime;
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:dialStatus a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "Sets whether a Dialogue/SecondaryDialogue has finished (closed) or not (open).";
+                rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                rdfs:label "dialStatus";
+                rdfs:range [<http://www.w3.org/2002/07/owl#oneOf> () ; 
+                            a rdfs:Datatype];
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:dialogueStep a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "Used to control which step is performing the current Dialogue.";
+                  rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                  rdfs:label "dialogueStep";
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:finishDateTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "Sets a finish timestamp to a DialogueTrace.";
+                    rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                    rdfs:label "finishDateTime";
+                    rdfs:subPropertyOf tddt:dateTime;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:hasSecondaryDialogue a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                            <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+                          rdfs:comment "Establishes the SecondaryDialogue corresponding to a DialogueTrace.";
+                          rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                          rdfs:label "hasSecondaryDialogue";
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:hasSystemRequest a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:comment "Establishes the SystemRequest corresponding to a SecondaryDialogueTrace.";
+                      rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                      rdfs:label "hasSystemRequest";
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:hasSystemResponse a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Establishes the SystemResponse corresponding to a SecondaryDialogueTrace.";
+                       rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                       rdfs:label "hasSystemResponse";
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:hasUserRequest a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "Establishes the UserRequest corresponding to a DialogueTrace.";
+                    rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                    rdfs:label "hasUserRequest";
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:hasUserResponse a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Establishes the UserResponse corresponding to a SecondaryDialogueTrace.";
+                     rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                     rdfs:label "hasUserResponse";
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:initDateTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "Sets a start timestamp to a DialogueTrace.";
+                  rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                  rdfs:label "initDateTime";
+                  rdfs:subPropertyOf tddt:dateTime;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+tddt:possibleValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "When asking the user for a specific information, the possible values of that information to be asked to the user.";
+                   rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+                   rdfs:label "possibleValue";
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable";
+                   <http://www.w3.org/2004/02/skos/core#example> """UserReq: \"I want to go to the room\"
+
+possibleValue \"room1\"
+possibleValue \"room2\"
+
+SystemReq: \"Do you want to go to {room1}?\"; \"Do you want to go to {room2}?\""""@en,
+                                                                 """UserReq: \"Quiero ir a la sala\"
+
+possibleValue \"sala1\"
+possibleValue \"sala2\"
+
+System Req: \"¿Quieres ir a la {sala1}?\"; \"¿Quieres ir a la {sala2}?\""""@es.
+tddt:text a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+          rdfs:comment "String that corresponds to a transcribed command by an user or the fully constructed outputSentence directed to the user.";
+          rdfs:isDefinedBy "https://w3id.org/todo/tododt#";
+          rdfs:label "text";
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".

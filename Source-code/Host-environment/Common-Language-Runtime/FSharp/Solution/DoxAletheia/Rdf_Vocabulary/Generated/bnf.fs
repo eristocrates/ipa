@@ -22,37 +22,22 @@ module bnf =
     /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#String">http://www.w3.org/2000/10/swap/grammar/bnf#String</seealso>
     let String = Prefixed_Name(bnf, "String") |> PrefixedName
     /// <summary>
-    ///   <para>bnf:RegularExpression</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#RegularExpression">http://www.w3.org/2000/10/swap/grammar/bnf#RegularExpression</seealso>
-    let RegularExpression = Prefixed_Name(bnf, "RegularExpression") |> PrefixedName
-    /// <summary>
-    ///   <para>bnf:mustBe</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#mustBe">http://www.w3.org/2000/10/swap/grammar/bnf#mustBe</seealso>
-    let mustBe = Prefixed_Name(bnf, "mustBe") |> PrefixedName
-    /// <summary>
-    ///   <para>bnf:zeroOrMore</para>
-    /// </summary>
-    /// <remarks>
-    ///
-    /// labels<para>zero or more</para></remarks>
-    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#zeroOrMore">http://www.w3.org/2000/10/swap/grammar/bnf#zeroOrMore</seealso>
-    let zeroOrMore = Prefixed_Name(bnf, "zeroOrMore") |> PrefixedName
-    /// <summary>
-    ///   <para>bnf:Term</para>
-    /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#Term">http://www.w3.org/2000/10/swap/grammar/bnf#Term</seealso>
-    let Term = Prefixed_Name(bnf, "Term") |> PrefixedName
-    /// <summary>
     ///   <para>bnf:Production</para>
     /// </summary>
     /// <remarks></remarks>
     /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#Production">http://www.w3.org/2000/10/swap/grammar/bnf#Production</seealso>
     let Production = Prefixed_Name(bnf, "Production") |> PrefixedName
+
+    /// <summary>
+    ///   <para>bnf:commaSeparatedPeriodTerminatedListOf</para>
+    /// </summary>
+    /// <remarks>
+    ///
+    /// labels<para>comma-separated period-terminated list of</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#commaSeparatedPeriodTerminatedListOf">http://www.w3.org/2000/10/swap/grammar/bnf#commaSeparatedPeriodTerminatedListOf</seealso>
+    let commaSeparatedPeriodTerminatedListOf =
+        Prefixed_Name(bnf, "commaSeparatedPeriodTerminatedListOf") |> PrefixedName
+
     /// <summary>
     ///   <para>bnf:matches</para>
     /// </summary>
@@ -63,6 +48,29 @@ module bnf =
     /// labels<para>matches</para></remarks>
     /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#matches">http://www.w3.org/2000/10/swap/grammar/bnf#matches</seealso>
     let matches = Prefixed_Name(bnf, "matches") |> PrefixedName
+    /// <summary>
+    ///   <para>bnf:RegularExpression</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#RegularExpression">http://www.w3.org/2000/10/swap/grammar/bnf#RegularExpression</seealso>
+    let RegularExpression = Prefixed_Name(bnf, "RegularExpression") |> PrefixedName
+
+    /// <summary>
+    ///   <para>bnf:ListOfSequencesOfProductions</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#ListOfSequencesOfProductions">http://www.w3.org/2000/10/swap/grammar/bnf#ListOfSequencesOfProductions</seealso>
+    let ListOfSequencesOfProductions =
+        Prefixed_Name(bnf, "ListOfSequencesOfProductions") |> PrefixedName
+
+    /// <summary>
+    ///   <para>bnf:zeroOrMore</para>
+    /// </summary>
+    /// <remarks>
+    ///
+    /// labels<para>zero or more</para></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#zeroOrMore">http://www.w3.org/2000/10/swap/grammar/bnf#zeroOrMore</seealso>
+    let zeroOrMore = Prefixed_Name(bnf, "zeroOrMore") |> PrefixedName
     /// <summary>
     ///   <para>bnf:canStartWith</para>
     /// </summary>
@@ -78,17 +86,6 @@ module bnf =
     /// labels<para>can start with</para></remarks>
     /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#canStartWith">http://www.w3.org/2000/10/swap/grammar/bnf#canStartWith</seealso>
     let canStartWith = Prefixed_Name(bnf, "canStartWith") |> PrefixedName
-
-    /// <summary>
-    ///   <para>bnf:commaSeparatedPeriodTerminatedListOf</para>
-    /// </summary>
-    /// <remarks>
-    ///
-    /// labels<para>comma-separated period-terminated list of</para></remarks>
-    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#commaSeparatedPeriodTerminatedListOf">http://www.w3.org/2000/10/swap/grammar/bnf#commaSeparatedPeriodTerminatedListOf</seealso>
-    let commaSeparatedPeriodTerminatedListOf =
-        Prefixed_Name(bnf, "commaSeparatedPeriodTerminatedListOf") |> PrefixedName
-
     /// <summary>
     ///   <para>bnf:mustBeOneSequence</para>
     /// </summary>
@@ -101,11 +98,15 @@ module bnf =
     /// labels<para>productions</para></remarks>
     /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#mustBeOneSequence">http://www.w3.org/2000/10/swap/grammar/bnf#mustBeOneSequence</seealso>
     let mustBeOneSequence = Prefixed_Name(bnf, "mustBeOneSequence") |> PrefixedName
-
     /// <summary>
-    ///   <para>bnf:ListOfSequencesOfProductions</para>
+    ///   <para>bnf:Term</para>
     /// </summary>
     /// <remarks></remarks>
-    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#ListOfSequencesOfProductions">http://www.w3.org/2000/10/swap/grammar/bnf#ListOfSequencesOfProductions</seealso>
-    let ListOfSequencesOfProductions =
-        Prefixed_Name(bnf, "ListOfSequencesOfProductions") |> PrefixedName
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#Term">http://www.w3.org/2000/10/swap/grammar/bnf#Term</seealso>
+    let Term = Prefixed_Name(bnf, "Term") |> PrefixedName
+    /// <summary>
+    ///   <para>bnf:mustBe</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://www.w3.org/2000/10/swap/grammar/bnf#mustBe">http://www.w3.org/2000/10/swap/grammar/bnf#mustBe</seealso>
+    let mustBe = Prefixed_Name(bnf, "mustBe") |> PrefixedName

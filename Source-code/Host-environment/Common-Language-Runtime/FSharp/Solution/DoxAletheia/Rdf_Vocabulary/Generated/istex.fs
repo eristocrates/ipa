@@ -7,6 +7,15 @@ open type Prefix_ID
 module istex =
     let _namespace_iri = Namespace_Iri istex |> NamespaceIRI
     /// <summary>
+    ///   <para>istex:InistConcept</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Décrit la structure conceptuelle des codes de classement Inist (Pascal et Francis)</para>
+    /// labels<para>istex:InistConcept</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#InistConcept">https://data.istex.fr/ontology/istex#InistConcept</seealso>
+    let InistConcept = Prefixed_Name(istex, "InistConcept") |> PrefixedName
+    /// <summary>
     ///   <para>istex:ContentTypeConcept</para>
     /// </summary>
     /// <remarks>
@@ -15,6 +24,63 @@ module istex =
     /// labels<para>istex:ContentTypeConcept</para></remarks>
     /// <seealso href="https://data.istex.fr/ontology/istex#ContentTypeConcept">https://data.istex.fr/ontology/istex#ContentTypeConcept</seealso>
     let ContentTypeConcept = Prefixed_Name(istex, "ContentTypeConcept") |> PrefixedName
+
+    /// <summary>
+    ///   <para>istex:EnrichmentProcessConcept</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Décrit la structure conceptuelle des processus d'enrichissements des documents ISTEX</para>
+    /// labels<para>istex:EnrichmentProcessConcept</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#EnrichmentProcessConcept">https://data.istex.fr/ontology/istex#EnrichmentProcessConcept</seealso>
+    let EnrichmentProcessConcept =
+        Prefixed_Name(istex, "EnrichmentProcessConcept") |> PrefixedName
+
+    /// <summary>
+    ///   <para>istex:PlaceConcept</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Décrit la structure conceptuelle des entités nommées de type lieux référencées dans les documents ISTEX</para>
+    /// labels<para>istex:PlaceConcept</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#PlaceConcept">https://data.istex.fr/ontology/istex#PlaceConcept</seealso>
+    let PlaceConcept = Prefixed_Name(istex, "PlaceConcept") |> PrefixedName
+    /// <summary>
+    ///   <para>istex:PublisherConcept</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Décrit la structure conceptuelle des éditeurs (publishers) en lien avec les documents ISTEX</para>
+    /// labels<para>istex:PublisherConcept</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#PublisherConcept">https://data.istex.fr/ontology/istex#PublisherConcept</seealso>
+    let PublisherConcept = Prefixed_Name(istex, "PublisherConcept") |> PrefixedName
+    /// <summary>
+    ///   <para>istex:ScopusConcept</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Décrit la structure conceptuelle des catégories Scopus</para>
+    /// labels<para>istex:ScopusConcept</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#ScopusConcept">https://data.istex.fr/ontology/istex#ScopusConcept</seealso>
+    let ScopusConcept = Prefixed_Name(istex, "ScopusConcept") |> PrefixedName
+    /// <summary>
+    ///   <para>istex:affiliation</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Décrit une affiliation d'un ou de plusieurs auteurs (physique ou moral) du document.</para>
+    /// labels<para>istex:affiliation</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#affiliation">https://data.istex.fr/ontology/istex#affiliation</seealso>
+    let affiliation = Prefixed_Name(istex, "affiliation") |> PrefixedName
+    /// <summary>
+    ///   <para>istex:constraint</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Les contraintes d'utilisation du processus d'enrichissement</para>
+    /// labels<para>istex:constraint</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#constraint">https://data.istex.fr/ontology/istex#constraint</seealso>
+    let constraint_ = Prefixed_Name(istex, "constraint") |> PrefixedName
     /// <summary>
     ///   <para>istex:</para>
     /// </summary>
@@ -71,110 +137,14 @@ module istex =
     /// <seealso href="https://data.istex.fr/ontology/istex#">https://data.istex.fr/ontology/istex#</seealso>
     let _prefix_iri = Prefixed_Name(istex, "") |> PrefixedName
     /// <summary>
-    ///   <para>istex:NamedEntityConcept</para>
+    ///   <para>istex:GeographicConcept</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>Décrit la structure conceptuelle des entités nommées en général répertoriées dans les documents ISTEX</para>
-    /// labels<para>istex:NamedEntityConcept</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#NamedEntityConcept">https://data.istex.fr/ontology/istex#NamedEntityConcept</seealso>
-    let NamedEntityConcept = Prefixed_Name(istex, "NamedEntityConcept") |> PrefixedName
-    /// <summary>
-    ///   <para>istex:PlaceConcept</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Décrit la structure conceptuelle des entités nommées de type lieux référencées dans les documents ISTEX</para>
-    /// labels<para>istex:PlaceConcept</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#PlaceConcept">https://data.istex.fr/ontology/istex#PlaceConcept</seealso>
-    let PlaceConcept = Prefixed_Name(istex, "PlaceConcept") |> PrefixedName
-    /// <summary>
-    ///   <para>istex:PublisherConcept</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Décrit la structure conceptuelle des éditeurs (publishers) en lien avec les documents ISTEX</para>
-    /// labels<para>istex:PublisherConcept</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#PublisherConcept">https://data.istex.fr/ontology/istex#PublisherConcept</seealso>
-    let PublisherConcept = Prefixed_Name(istex, "PublisherConcept") |> PrefixedName
-
-    /// <summary>
-    ///   <para>istex:ScienceMetrixConcept</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Décrit la structure conceptuelle des catégories Science Metrix</para>
-    /// labels<para>istex:ScienceMetrixConcept</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#ScienceMetrixConcept">https://data.istex.fr/ontology/istex#ScienceMetrixConcept</seealso>
-    let ScienceMetrixConcept =
-        Prefixed_Name(istex, "ScienceMetrixConcept") |> PrefixedName
-
-    /// <summary>
-    ///   <para>istex:accessURL</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Lien direct vers le document en format PDF</para>
-    ///   <para>Organisme pour lequel est constitué le corpus</para>
-    /// labels<para>istex:addresseeWork</para><para>istex:accessURL</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#accessURL">https://data.istex.fr/ontology/istex#accessURL</seealso>
-    let accessURL = Prefixed_Name(istex, "accessURL") |> PrefixedName
-    /// <summary>
-    ///   <para>istex:affiliation</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Décrit une affiliation d'un ou de plusieurs auteurs (physique ou moral) du document.</para>
-    /// labels<para>istex:affiliation</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#affiliation">https://data.istex.fr/ontology/istex#affiliation</seealso>
-    let affiliation = Prefixed_Name(istex, "affiliation") |> PrefixedName
-    /// <summary>
-    ///   <para>istex:constraint</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Les contraintes d'utilisation du processus d'enrichissement</para>
-    /// labels<para>istex:constraint</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#constraint">https://data.istex.fr/ontology/istex#constraint</seealso>
-    let constraint_ = Prefixed_Name(istex, "constraint") |> PrefixedName
-    /// <summary>
-    ///   <para>istex:contentType</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Type de contenus répertoriés dans les documents ISTEX</para>
-    /// labels<para>istex:contentType</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#contentType">https://data.istex.fr/ontology/istex#contentType</seealso>
-    let contentType = Prefixed_Name(istex, "contentType") |> PrefixedName
-    /// <summary>
-    ///   <para>istex:idIstex</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Identifiant Istex de l'objet documentaire.</para>
-    /// labels<para>istex:idIstex</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#idIstex">https://data.istex.fr/ontology/istex#idIstex</seealso>
-    let idIstex = Prefixed_Name(istex, "idIstex") |> PrefixedName
-    /// <summary>
-    ///   <para>istex:subjectWos</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Indique la ou les catégorie(s) Web of Science du document</para>
-    /// labels<para>istex:subjectWos</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#subjectWos">https://data.istex.fr/ontology/istex#subjectWos</seealso>
-    let subjectWos = Prefixed_Name(istex, "subjectWos") |> PrefixedName
-
-    /// <summary>
-    ///   <para>istex:EnrichmentProcessConcept</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Décrit la structure conceptuelle des processus d'enrichissements des documents ISTEX</para>
-    /// labels<para>istex:EnrichmentProcessConcept</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#EnrichmentProcessConcept">https://data.istex.fr/ontology/istex#EnrichmentProcessConcept</seealso>
-    let EnrichmentProcessConcept =
-        Prefixed_Name(istex, "EnrichmentProcessConcept") |> PrefixedName
+    ///   <para>Décrit la structure conceptuelle des entités nommées de nature géographique référencées dans les documents ISTEX</para>
+    /// labels<para>istex:GeographicConcept</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#GeographicConcept">https://data.istex.fr/ontology/istex#GeographicConcept</seealso>
+    let GeographicConcept = Prefixed_Name(istex, "GeographicConcept") |> PrefixedName
 
     /// <summary>
     ///   <para>istex:OrganizationConcept</para>
@@ -186,6 +156,16 @@ module istex =
     /// <seealso href="https://data.istex.fr/ontology/istex#OrganizationConcept">https://data.istex.fr/ontology/istex#OrganizationConcept</seealso>
     let OrganizationConcept =
         Prefixed_Name(istex, "OrganizationConcept") |> PrefixedName
+
+    /// <summary>
+    ///   <para>istex:NamedEntityConcept</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Décrit la structure conceptuelle des entités nommées en général répertoriées dans les documents ISTEX</para>
+    /// labels<para>istex:NamedEntityConcept</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#NamedEntityConcept">https://data.istex.fr/ontology/istex#NamedEntityConcept</seealso>
+    let NamedEntityConcept = Prefixed_Name(istex, "NamedEntityConcept") |> PrefixedName
 
     /// <summary>
     ///   <para>istex:PublicationTypeConcept</para>
@@ -208,6 +188,28 @@ module istex =
     /// <seealso href="https://data.istex.fr/ontology/istex#ScientificDomain">https://data.istex.fr/ontology/istex#ScientificDomain</seealso>
     let ScientificDomain = Prefixed_Name(istex, "ScientificDomain") |> PrefixedName
     /// <summary>
+    ///   <para>istex:accessURL</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Lien direct vers le document en format PDF</para>
+    ///   <para>Organisme pour lequel est constitué le corpus</para>
+    /// labels<para>istex:addresseeWork</para><para>istex:accessURL</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#accessURL">https://data.istex.fr/ontology/istex#accessURL</seealso>
+    let accessURL = Prefixed_Name(istex, "accessURL") |> PrefixedName
+
+    /// <summary>
+    ///   <para>istex:ScienceMetrixConcept</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>Décrit la structure conceptuelle des catégories Science Metrix</para>
+    /// labels<para>istex:ScienceMetrixConcept</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#ScienceMetrixConcept">https://data.istex.fr/ontology/istex#ScienceMetrixConcept</seealso>
+    let ScienceMetrixConcept =
+        Prefixed_Name(istex, "ScienceMetrixConcept") |> PrefixedName
+
+    /// <summary>
     ///   <para>istex:WosConcept</para>
     /// </summary>
     /// <remarks>
@@ -216,60 +218,6 @@ module istex =
     /// labels<para>istex:WosConcept</para></remarks>
     /// <seealso href="https://data.istex.fr/ontology/istex#WosConcept">https://data.istex.fr/ontology/istex#WosConcept</seealso>
     let WosConcept = Prefixed_Name(istex, "WosConcept") |> PrefixedName
-    /// <summary>
-    ///   <para>istex:publicationType</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Type de publication catégorisé dans les documents ISTEX</para>
-    /// labels<para>istex:publicationType</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#publicationType">https://data.istex.fr/ontology/istex#publicationType</seealso>
-    let publicationType = Prefixed_Name(istex, "publicationType") |> PrefixedName
-    /// <summary>
-    ///   <para>istex:subjectInist</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Indique la ou les catégorie(s) Inist du document</para>
-    /// labels<para>istex:subjectInist</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#subjectInist">https://data.istex.fr/ontology/istex#subjectInist</seealso>
-    let subjectInist = Prefixed_Name(istex, "subjectInist") |> PrefixedName
-    /// <summary>
-    ///   <para>istex:tool</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Indique le nom de l'outil utilisé dans les processus d'enrichissement d'ISTEX</para>
-    /// labels<para>istex:tool</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#tool">https://data.istex.fr/ontology/istex#tool</seealso>
-    let tool = Prefixed_Name(istex, "tool") |> PrefixedName
-    /// <summary>
-    ///   <para>istex:GeographicConcept</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Décrit la structure conceptuelle des entités nommées de nature géographique référencées dans les documents ISTEX</para>
-    /// labels<para>istex:GeographicConcept</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#GeographicConcept">https://data.istex.fr/ontology/istex#GeographicConcept</seealso>
-    let GeographicConcept = Prefixed_Name(istex, "GeographicConcept") |> PrefixedName
-    /// <summary>
-    ///   <para>istex:InistConcept</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Décrit la structure conceptuelle des codes de classement Inist (Pascal et Francis)</para>
-    /// labels<para>istex:InistConcept</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#InistConcept">https://data.istex.fr/ontology/istex#InistConcept</seealso>
-    let InistConcept = Prefixed_Name(istex, "InistConcept") |> PrefixedName
-    /// <summary>
-    ///   <para>istex:ScopusConcept</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>Décrit la structure conceptuelle des catégories Scopus</para>
-    /// labels<para>istex:ScopusConcept</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#ScopusConcept">https://data.istex.fr/ontology/istex#ScopusConcept</seealso>
-    let ScopusConcept = Prefixed_Name(istex, "ScopusConcept") |> PrefixedName
     /// <summary>
     ///   <para>istex:analysisType</para>
     /// </summary>
@@ -280,14 +228,14 @@ module istex =
     /// <seealso href="https://data.istex.fr/ontology/istex#analysisType">https://data.istex.fr/ontology/istex#analysisType</seealso>
     let analysisType = Prefixed_Name(istex, "analysisType") |> PrefixedName
     /// <summary>
-    ///   <para>istex:eISBN</para>
+    ///   <para>istex:contentType</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Identifiant eISBN de l'objet documentaire.</para>
-    /// labels<para>istex:eISBN</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#eISBN">https://data.istex.fr/ontology/istex#eISBN</seealso>
-    let eISBN = Prefixed_Name(istex, "eISBN") |> PrefixedName
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Type de contenus répertoriés dans les documents ISTEX</para>
+    /// labels<para>istex:contentType</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#contentType">https://data.istex.fr/ontology/istex#contentType</seealso>
+    let contentType = Prefixed_Name(istex, "contentType") |> PrefixedName
     /// <summary>
     ///   <para>istex:enrichmentProcess</para>
     /// </summary>
@@ -298,14 +246,14 @@ module istex =
     /// <seealso href="https://data.istex.fr/ontology/istex#enrichmentProcess">https://data.istex.fr/ontology/istex#enrichmentProcess</seealso>
     let enrichmentProcess = Prefixed_Name(istex, "enrichmentProcess") |> PrefixedName
     /// <summary>
-    ///   <para>istex:enrichmentType</para>
+    ///   <para>istex:eISBN</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Indique le type d'enrichissement créé.</para>
-    /// labels<para>istex:enrichmentType</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#enrichmentType">https://data.istex.fr/ontology/istex#enrichmentType</seealso>
-    let enrichmentType = Prefixed_Name(istex, "enrichmentType") |> PrefixedName
+    ///   <para>Identifiant eISBN de l'objet documentaire.</para>
+    /// labels<para>istex:eISBN</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#eISBN">https://data.istex.fr/ontology/istex#eISBN</seealso>
+    let eISBN = Prefixed_Name(istex, "eISBN") |> PrefixedName
     /// <summary>
     ///   <para>istex:extractedEntity</para>
     /// </summary>
@@ -315,15 +263,6 @@ module istex =
     /// labels<para>istex:extractedEntity</para></remarks>
     /// <seealso href="https://data.istex.fr/ontology/istex#extractedEntity">https://data.istex.fr/ontology/istex#extractedEntity</seealso>
     let extractedEntity = Prefixed_Name(istex, "extractedEntity") |> PrefixedName
-    /// <summary>
-    ///   <para>istex:extractedGeog</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    ///   <para>Entité géographique physique extraite du plein texte des documents ISTEX</para>
-    /// labels<para>istex:extractedGeog</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#extractedGeog">https://data.istex.fr/ontology/istex#extractedGeog</seealso>
-    let extractedGeog = Prefixed_Name(istex, "extractedGeog") |> PrefixedName
 
     /// <summary>
     ///   <para>istex:extractedOrganization</para>
@@ -336,6 +275,24 @@ module istex =
     let extractedOrganization =
         Prefixed_Name(istex, "extractedOrganization") |> PrefixedName
 
+    /// <summary>
+    ///   <para>istex:enrichmentType</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Indique le type d'enrichissement créé.</para>
+    /// labels<para>istex:enrichmentType</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#enrichmentType">https://data.istex.fr/ontology/istex#enrichmentType</seealso>
+    let enrichmentType = Prefixed_Name(istex, "enrichmentType") |> PrefixedName
+    /// <summary>
+    ///   <para>istex:extractedGeog</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Entité géographique physique extraite du plein texte des documents ISTEX</para>
+    /// labels<para>istex:extractedGeog</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#extractedGeog">https://data.istex.fr/ontology/istex#extractedGeog</seealso>
+    let extractedGeog = Prefixed_Name(istex, "extractedGeog") |> PrefixedName
     /// <summary>
     ///   <para>istex:extractedPlace</para>
     /// </summary>
@@ -355,14 +312,14 @@ module istex =
     /// <seealso href="https://data.istex.fr/ontology/istex#identityProvider">https://data.istex.fr/ontology/istex#identityProvider</seealso>
     let identityProvider = Prefixed_Name(istex, "identityProvider") |> PrefixedName
     /// <summary>
-    ///   <para>istex:publicationTitle</para>
+    ///   <para>istex:publicationType</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Indique le titre du périodique hébergeant le document</para>
-    /// labels<para>istex:publicationTitle</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#publicationTitle">https://data.istex.fr/ontology/istex#publicationTitle</seealso>
-    let publicationTitle = Prefixed_Name(istex, "publicationTitle") |> PrefixedName
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Type de publication catégorisé dans les documents ISTEX</para>
+    /// labels<para>istex:publicationType</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#publicationType">https://data.istex.fr/ontology/istex#publicationType</seealso>
+    let publicationType = Prefixed_Name(istex, "publicationType") |> PrefixedName
     /// <summary>
     ///   <para>istex:quantityOfItems</para>
     /// </summary>
@@ -373,14 +330,50 @@ module istex =
     /// <seealso href="https://data.istex.fr/ontology/istex#quantityOfItems">https://data.istex.fr/ontology/istex#quantityOfItems</seealso>
     let quantityOfItems = Prefixed_Name(istex, "quantityOfItems") |> PrefixedName
     /// <summary>
-    ///   <para>istex:query</para>
+    ///   <para>istex:subjectScopus</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Indique la ou les catégorie(s) Scopus du document</para>
+    /// labels<para>istex:subjectScopus</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#subjectScopus">https://data.istex.fr/ontology/istex#subjectScopus</seealso>
+    let subjectScopus = Prefixed_Name(istex, "subjectScopus") |> PrefixedName
+    /// <summary>
+    ///   <para>istex:tool</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:DatatypeProperty</para>
-    ///   <para>Indique la requête (API) à réaliser pour accéder aux documents indexés par le concept décrit. Cette API permet de récupérer les documents et le nombre de documents. Préfixer la requête avec "https://api.istex.fr/document/?q=" pour activer l'API.</para>
-    /// labels<para>istex:query</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#query">https://data.istex.fr/ontology/istex#query</seealso>
-    let query = Prefixed_Name(istex, "query") |> PrefixedName
+    ///   <para>Indique le nom de l'outil utilisé dans les processus d'enrichissement d'ISTEX</para>
+    /// labels<para>istex:tool</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#tool">https://data.istex.fr/ontology/istex#tool</seealso>
+    let tool = Prefixed_Name(istex, "tool") |> PrefixedName
+    /// <summary>
+    ///   <para>istex:idIstex</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Identifiant Istex de l'objet documentaire.</para>
+    /// labels<para>istex:idIstex</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#idIstex">https://data.istex.fr/ontology/istex#idIstex</seealso>
+    let idIstex = Prefixed_Name(istex, "idIstex") |> PrefixedName
+    /// <summary>
+    ///   <para>istex:publicationTitle</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Indique le titre du périodique hébergeant le document</para>
+    /// labels<para>istex:publicationTitle</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#publicationTitle">https://data.istex.fr/ontology/istex#publicationTitle</seealso>
+    let publicationTitle = Prefixed_Name(istex, "publicationTitle") |> PrefixedName
+    /// <summary>
+    ///   <para>istex:subjectInist</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    ///   <para>Indique la ou les catégorie(s) Inist du document</para>
+    /// labels<para>istex:subjectInist</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#subjectInist">https://data.istex.fr/ontology/istex#subjectInist</seealso>
+    let subjectInist = Prefixed_Name(istex, "subjectInist") |> PrefixedName
 
     /// <summary>
     ///   <para>istex:subjectScienceMetrix</para>
@@ -394,11 +387,20 @@ module istex =
         Prefixed_Name(istex, "subjectScienceMetrix") |> PrefixedName
 
     /// <summary>
-    ///   <para>istex:subjectScopus</para>
+    ///   <para>istex:query</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>Indique la requête (API) à réaliser pour accéder aux documents indexés par le concept décrit. Cette API permet de récupérer les documents et le nombre de documents. Préfixer la requête avec "https://api.istex.fr/document/?q=" pour activer l'API.</para>
+    /// labels<para>istex:query</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#query">https://data.istex.fr/ontology/istex#query</seealso>
+    let query = Prefixed_Name(istex, "query") |> PrefixedName
+    /// <summary>
+    ///   <para>istex:subjectWos</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
-    ///   <para>Indique la ou les catégorie(s) Scopus du document</para>
-    /// labels<para>istex:subjectScopus</para></remarks>
-    /// <seealso href="https://data.istex.fr/ontology/istex#subjectScopus">https://data.istex.fr/ontology/istex#subjectScopus</seealso>
-    let subjectScopus = Prefixed_Name(istex, "subjectScopus") |> PrefixedName
+    ///   <para>Indique la ou les catégorie(s) Web of Science du document</para>
+    /// labels<para>istex:subjectWos</para></remarks>
+    /// <seealso href="https://data.istex.fr/ontology/istex#subjectWos">https://data.istex.fr/ontology/istex#subjectWos</seealso>
+    let subjectWos = Prefixed_Name(istex, "subjectWos") |> PrefixedName

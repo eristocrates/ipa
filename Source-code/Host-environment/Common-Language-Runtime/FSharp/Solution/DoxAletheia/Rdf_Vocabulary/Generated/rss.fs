@@ -7,11 +7,41 @@ open type Prefix_ID
 module rss =
     let _namespace_iri = Namespace_Iri rss |> NamespaceIRI
     /// <summary>
-    ///   <para>rss:</para>
+    ///   <para>rss:image</para>
     /// </summary>
-    /// <remarks></remarks>
-    /// <seealso href="http://purl.org/rss/1.0/">http://purl.org/rss/1.0/</seealso>
-    let _prefix_iri = Prefixed_Name(rss, "") |> PrefixedName
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An RSS image.</para>
+    /// labels<para>Image</para></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/image">http://purl.org/rss/1.0/image</seealso>
+    let image = Prefixed_Name(rss, "image") |> PrefixedName
+    /// <summary>
+    ///   <para>rss:textinput</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///   <para>An RSS text input.</para>
+    /// labels<para>Text Input</para></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/textinput">http://purl.org/rss/1.0/textinput</seealso>
+    let textinput = Prefixed_Name(rss, "textinput") |> PrefixedName
+    /// <summary>
+    ///   <para>rss:title</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>A descriptive title for the channel.</para>
+    /// labels<para>Title</para></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/title">http://purl.org/rss/1.0/title</seealso>
+    let title = Prefixed_Name(rss, "title") |> PrefixedName
+    /// <summary>
+    ///   <para>rss:url</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    ///   <para>The URL of the image to used in the 'src' attribute of the channel's image tag when rendered as HTML.</para>
+    /// labels<para>URL</para></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/url">http://purl.org/rss/1.0/url</seealso>
+    let url = Prefixed_Name(rss, "url") |> PrefixedName
     /// <summary>
     ///   <para>rss:description</para>
     /// </summary>
@@ -31,23 +61,14 @@ module rss =
     /// <seealso href="http://purl.org/rss/1.0/item">http://purl.org/rss/1.0/item</seealso>
     let item = Prefixed_Name(rss, "item") |> PrefixedName
     /// <summary>
-    ///   <para>rss:textinput</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>An RSS text input.</para>
-    /// labels<para>Text Input</para></remarks>
-    /// <seealso href="http://purl.org/rss/1.0/textinput">http://purl.org/rss/1.0/textinput</seealso>
-    let textinput = Prefixed_Name(rss, "textinput") |> PrefixedName
-    /// <summary>
-    ///   <para>rss:url</para>
+    ///   <para>rss:items</para>
     /// </summary>
     /// <remarks>
     ///   <para>rdf:Property</para>
-    ///   <para>The URL of the image to used in the 'src' attribute of the channel's image tag when rendered as HTML.</para>
-    /// labels<para>URL</para></remarks>
-    /// <seealso href="http://purl.org/rss/1.0/url">http://purl.org/rss/1.0/url</seealso>
-    let url = Prefixed_Name(rss, "url") |> PrefixedName
+    ///   <para>Points to a list of rss:item elements that are members of the subject channel.</para>
+    /// labels<para>Items</para></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/items">http://purl.org/rss/1.0/items</seealso>
+    let items = Prefixed_Name(rss, "items") |> PrefixedName
     /// <summary>
     ///   <para>rss:link</para>
     /// </summary>
@@ -58,33 +79,6 @@ module rss =
     /// <seealso href="http://purl.org/rss/1.0/link">http://purl.org/rss/1.0/link</seealso>
     let link = Prefixed_Name(rss, "link") |> PrefixedName
     /// <summary>
-    ///   <para>rss:channel</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>An RSS information channel.</para>
-    /// labels<para>Channel</para></remarks>
-    /// <seealso href="http://purl.org/rss/1.0/channel">http://purl.org/rss/1.0/channel</seealso>
-    let channel = Prefixed_Name(rss, "channel") |> PrefixedName
-    /// <summary>
-    ///   <para>rss:image</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///   <para>An RSS image.</para>
-    /// labels<para>Image</para></remarks>
-    /// <seealso href="http://purl.org/rss/1.0/image">http://purl.org/rss/1.0/image</seealso>
-    let image = Prefixed_Name(rss, "image") |> PrefixedName
-    /// <summary>
-    ///   <para>rss:items</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>Points to a list of rss:item elements that are members of the subject channel.</para>
-    /// labels<para>Items</para></remarks>
-    /// <seealso href="http://purl.org/rss/1.0/items">http://purl.org/rss/1.0/items</seealso>
-    let items = Prefixed_Name(rss, "items") |> PrefixedName
-    /// <summary>
     ///   <para>rss:name</para>
     /// </summary>
     /// <remarks>
@@ -94,11 +88,17 @@ module rss =
     /// <seealso href="http://purl.org/rss/1.0/name">http://purl.org/rss/1.0/name</seealso>
     let name = Prefixed_Name(rss, "name") |> PrefixedName
     /// <summary>
-    ///   <para>rss:title</para>
+    ///   <para>rss:channel</para>
     /// </summary>
     /// <remarks>
-    ///   <para>rdf:Property</para>
-    ///   <para>A descriptive title for the channel.</para>
-    /// labels<para>Title</para></remarks>
-    /// <seealso href="http://purl.org/rss/1.0/title">http://purl.org/rss/1.0/title</seealso>
-    let title = Prefixed_Name(rss, "title") |> PrefixedName
+    ///   <para>rdfs:Class</para>
+    ///   <para>An RSS information channel.</para>
+    /// labels<para>Channel</para></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/channel">http://purl.org/rss/1.0/channel</seealso>
+    let channel = Prefixed_Name(rss, "channel") |> PrefixedName
+    /// <summary>
+    ///   <para>rss:</para>
+    /// </summary>
+    /// <remarks></remarks>
+    /// <seealso href="http://purl.org/rss/1.0/">http://purl.org/rss/1.0/</seealso>
+    let _prefix_iri = Prefixed_Name(rss, "") |> PrefixedName

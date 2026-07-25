@@ -1,0 +1,647 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix mvco: <http://purl.oclc.org/NET/mvco.owl#>.
+
+<http://purl.oclc.org/NET/mvco.owl> a <http://www.w3.org/2002/07/owl#Ontology>;
+                                    rdfs:comment "ISO/IEC 21000-19 Media Value Chain Ontology (MVCO)"@en;
+                                    <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Action a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "The exercise of a Right."@en;
+            rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>,
+                            [<http://www.w3.org/2002/07/owl#onProperty> mvco:actedBy ; 
+                             <http://www.w3.org/2002/07/owl#allValuesFrom> mvco:User ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                            [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                             <http://www.w3.org/2002/07/owl#onProperty> mvco:actedBy ; 
+                             a <http://www.w3.org/2002/07/owl#Restriction>];
+            <http://www.w3.org/2002/07/owl#disjointWith> mvco:IPEntity,
+                                                         mvco:Permission,
+                                                         mvco:User;
+            <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Adaptation a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "A Work that is derived from another Work"@en;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> mvco:resultedFrom ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (mvco:MakeAdaptation
+                                                                                                                         mvco:Synchronise) ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                mvco:IPEntity;
+                <http://www.w3.org/2002/07/owl#disjointWith> mvco:Work,
+                                                             mvco:Manifestation,
+                                                             mvco:Instance,
+                                                             mvco:Copy,
+                                                             mvco:Product;
+                <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:AdaptationInstance a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "An object or event which is an example of an Identified Adaptation Manifestation (e.g. a File)"@en;
+                        <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mvco:Instance
+                                                                                                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:MakeAdaptationInstance ; 
+                                                                                                                         <http://www.w3.org/2002/07/owl#onProperty> mvco:resultedFrom ; 
+                                                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                         a <http://www.w3.org/2002/07/owl#Class>];
+                        <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:AdaptationInstanceCopy a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "A copy of an AdaptationInstance"@en;
+                            <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mvco:Copy
+                                                                                                                             [<http://www.w3.org/2002/07/owl#onProperty> mvco:resultedFrom ; 
+                                                                                                                             <http://www.w3.org/2002/07/owl#someValuesFrom> mvco:MakeAdaptationInstanceCopy ; 
+                                                                                                                             a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>];
+                            <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:AdaptationManifestation a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "An object or event which is an expression of an Adaptation"@en;
+                             <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mvco:Manifestation
+                                                                                                                              [<http://www.w3.org/2002/07/owl#onProperty> mvco:resultedFrom ; 
+                                                                                                                              <http://www.w3.org/2002/07/owl#someValuesFrom> mvco:MakeAdaptationManifestation ; 
+                                                                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Class>];
+                             <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:AdaptationManifestationCopy a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "A copy of an AdaptationManifestation"@en;
+                                 <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mvco:Copy
+                                                                                                                                  [<http://www.w3.org/2002/07/owl#onProperty> mvco:resultedFrom ; 
+                                                                                                                                  <http://www.w3.org/2002/07/owl#someValuesFrom> mvco:MakeAdaptationManifestationCopy ; 
+                                                                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Class>];
+                                 <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Adaptor a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A User who produces an Adaptation"@en;
+             rdfs:subClassOf mvco:User;
+             <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#onProperty> mvco:acts ; 
+                                                              <http://www.w3.org/2002/07/owl#someValuesFrom> mvco:MakeAdaptation ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>];
+             <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Anonymous a mvco:User.
+mvco:Broadcast a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "The Function that Delivers Content to a Device in a point-to-multipoint modality"@en;
+               rdfs:subClassOf mvco:PublicCommunication;
+               <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Collective a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Set of two or more Users."@en;
+                rdfs:subClassOf mvco:User;
+                <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:ContentHandler a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "User who is appointed to act on Content on behalf and within the scope and responsability of another User´s rights."@en;
+                    rdfs:subClassOf mvco:User;
+                    <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#onProperty> mvco:actOnBehalfOf ; 
+                                                                     <http://www.w3.org/2002/07/owl#someValuesFrom> mvco:User ; 
+                                                                     a <http://www.w3.org/2002/07/owl#Restriction>];
+                    <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Copy a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "A mechanical reproduction of analogue or digital representations of a given IP Entity. In the case of digital Copies the result is virtually identical  while in the case of analogue Copies the results can vary considerably in quality."@en;
+          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:MakeCopy ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> mvco:resultedFrom ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          mvco:IPEntity;
+          <http://www.w3.org/2002/07/owl#disjointWith> mvco:Instance,
+                                                       mvco:Manifestation,
+                                                       mvco:Product,
+                                                       mvco:Work;
+          <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:CopyrightExceptionFact a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Fact related to the invokation of a CopyrightException";
+                            rdfs:subClassOf mvco:Fact;
+                            <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:CopyrightExceptionPermission a <http://www.w3.org/2002/07/owl#Class>;
+                                  rdfs:comment "Permission to invoke one right exceptionally.";
+                                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:CopyrightExceptionFact ; 
+                                                   <http://www.w3.org/2002/07/owl#onProperty> mvco:hasRequired ; 
+                                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                  mvco:Permission;
+                                  <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:CreateWork a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "The action of creating a Work."@en;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#complementOf> [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:IPEntity ; 
+                                                                               <http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                                                                               a <http://www.w3.org/2002/07/owl#Restriction>] ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>],
+                                [<http://www.w3.org/2002/07/owl#allValuesFrom> mvco:Work ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> mvco:resultsIn ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                mvco:Action;
+                <http://www.w3.org/2002/07/owl#disjointWith> mvco:EndUserAction,
+                                                             mvco:MakeAdaptation,
+                                                             mvco:Produce,
+                                                             mvco:PublicCommunication,
+                                                             mvco:MakeManifestation,
+                                                             mvco:MakeCopy,
+                                                             mvco:Synchronise,
+                                                             mvco:Distribute,
+                                                             mvco:MakeInstance;
+                <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Creator a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A User who generates a Work and makes its first Manifestation, also referred to as author"@en;
+             rdfs:subClassOf mvco:User;
+             <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:CreateWork ; 
+                                                              <http://www.w3.org/2002/07/owl#onProperty> mvco:acts ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>];
+             <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Distribute mvco:rightGivenBy "http://purl.oclc.org/NET/mvco.owl#Producer"^^xsd:anyURI,
+                                  "http://purl.oclc.org/NET/mvco.owl#Creator"^^xsd:anyURI;
+                a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "The Function of selling, renting and lending"@en;
+                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "0"^^xsd:nonNegativeInteger ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> mvco:resultsIn ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> mvco:Product ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                mvco:Action;
+                <http://www.w3.org/2002/07/owl#disjointWith> mvco:PublicCommunication,
+                                                             mvco:MakeAdaptation,
+                                                             mvco:MakeCopy,
+                                                             mvco:Produce,
+                                                             mvco:Synchronise,
+                                                             mvco:EndUserAction,
+                                                             mvco:MakeInstance,
+                                                             mvco:MakeManifestation;
+                <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Distributor a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "A User who distributes a Product"@en;
+                 rdfs:subClassOf mvco:User;
+                 <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:Distribute ; 
+                                                                  <http://www.w3.org/2002/07/owl#onProperty> mvco:acts ; 
+                                                                  a <http://www.w3.org/2002/07/owl#Restriction>];
+                 <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Download a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "The Action of transferring a file or program from a central computer to a smaller computer or to a computer at a remote location"@en;
+              rdfs:subClassOf mvco:PublicCommunication;
+              <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:EndUser a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A User in a Value-Chain who ultimately consumes Content."@en;
+             rdfs:subClassOf mvco:User;
+             <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:EndUserAction ; 
+                                                              <http://www.w3.org/2002/07/owl#onProperty> mvco:acts ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>];
+             <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:EndUserAction mvco:rightGivenBy "http://purl.oclc.org/NET/mvco.owl#Distributor"^^xsd:anyURI;
+                   a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Action performed by an EndUser";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                                    <http://www.w3.org/2002/07/owl#allValuesFrom> mvco:Product ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   mvco:Action;
+                   <http://www.w3.org/2002/07/owl#disjointWith> mvco:PublicCommunication,
+                                                                mvco:Produce,
+                                                                mvco:MakeInstance,
+                                                                mvco:MakeAdaptation,
+                                                                mvco:Synchronise,
+                                                                mvco:MakeManifestation,
+                                                                mvco:MakeCopy;
+                   <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Fact a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "Positive proposition.";
+          <http://www.w3.org/2002/07/owl#disjointWith> mvco:User;
+          <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#onProperty> mvco:isTrue ; 
+                                                           <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                                           a <http://www.w3.org/2002/07/owl#Restriction>];
+          <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:IPEntity a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Types of IP Represented as Content: Work, Adaptation, Manifestation, Instance..."@en;
+              rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>,
+                              [<http://www.w3.org/2002/07/owl#onProperty> mvco:resultedFrom ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> mvco:Action ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> mvco:hasRightsOwner ; 
+                               <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#allValuesFrom> mvco:User ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> mvco:hasRightsOwner ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#allValuesFrom> mvco:IPEntity ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> mvco:isMadeUpOf ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>];
+              <http://www.w3.org/2002/07/owl#disjointWith> mvco:User,
+                                                           mvco:Permission;
+              <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Instance a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "An object or event which is an example of an Identified Manifestation (e.g. a File)"@en;
+              rdfs:subClassOf mvco:IPEntity,
+                              [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:MakeInstance ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> mvco:resultedFrom ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>];
+              <http://www.w3.org/2002/07/owl#disjointWith> mvco:Manifestation,
+                                                           mvco:Product,
+                                                           mvco:Work;
+              <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Instantiator a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "A User who interprets a Manifestation of a Work making an Instance"@en;
+                  rdfs:subClassOf mvco:User;
+                  <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:MakeInstance ; 
+                                                                   <http://www.w3.org/2002/07/owl#onProperty> mvco:acts ; 
+                                                                   a <http://www.w3.org/2002/07/owl#Restriction>];
+                  <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:MakeAdaptation mvco:rightGivenBy "http://purl.oclc.org/NET/mvco.owl#Adaptor"^^xsd:anyURI,
+                                      "http://purl.oclc.org/NET/mvco.owl#Creator"^^xsd:anyURI;
+                    a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "The Action of making an Adaptation"@en;
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                                     <http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (mvco:Adaptation
+                                                                                                                             mvco:Work) ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    [<http://www.w3.org/2002/07/owl#allValuesFrom> mvco:Adaptation ; 
+                                     <http://www.w3.org/2002/07/owl#onProperty> mvco:resultsIn ; 
+                                     a <http://www.w3.org/2002/07/owl#Restriction>],
+                                    mvco:Action;
+                    <http://www.w3.org/2002/07/owl#disjointWith> mvco:MakeCopy,
+                                                                 mvco:Synchronise,
+                                                                 mvco:MakeInstance,
+                                                                 mvco:MakeManifestation,
+                                                                 mvco:Produce,
+                                                                 mvco:PublicCommunication;
+                    <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:MakeAdaptationInstance a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "The Action of making an Instance from an AdaptationManifestation"@en;
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> mvco:resultsIn ; 
+                                             <http://www.w3.org/2002/07/owl#allValuesFrom> mvco:AdaptationInstance ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>];
+                            <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mvco:MakeInstance
+                                                                                                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:AdaptationManifestation ; 
+                                                                                                                             <http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                                                                                                                             a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>];
+                            <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:MakeAdaptationInstanceCopy a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "The Action of making an AdaptationInstanceCopy"@en;
+                                rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> mvco:resultsIn ; 
+                                                 <http://www.w3.org/2002/07/owl#allValuesFrom> mvco:AdaptationInstanceCopy ; 
+                                                 a <http://www.w3.org/2002/07/owl#Restriction>];
+                                <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mvco:MakeCopy
+                                                                                                                                 [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:AdaptationInstance ; 
+                                                                                                                                 <http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                                                                                                                                 a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                 a <http://www.w3.org/2002/07/owl#Class>];
+                                <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:MakeAdaptationManifestation a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "The action of making an AdaptationManifestation from an Adaptation."@en;
+                                 rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> mvco:resultsIn ; 
+                                                  <http://www.w3.org/2002/07/owl#allValuesFrom> mvco:AdaptationManifestation ; 
+                                                  a <http://www.w3.org/2002/07/owl#Restriction>];
+                                 <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mvco:MakeManifestation
+                                                                                                                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:Adaptation ; 
+                                                                                                                                  <http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                                                                                                                                  a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                  a <http://www.w3.org/2002/07/owl#Class>];
+                                 <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:MakeAdaptationManifestationCopy a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "The Action of making an AdaptationManifestationCopy";
+                                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> mvco:resultsIn ; 
+                                                      <http://www.w3.org/2002/07/owl#allValuesFrom> mvco:AdaptationManifestationCopy ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>];
+                                     <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mvco:MakeCopy
+                                                                                                                                      [<http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                                                                                                                                      <http://www.w3.org/2002/07/owl#someValuesFrom> mvco:AdaptationManifestation ; 
+                                                                                                                                      a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                      a <http://www.w3.org/2002/07/owl#Class>];
+                                     <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:MakeCopy mvco:rightGivenBy "http://purl.oclc.org/NET/mvco.owl#Creator"^^xsd:anyURI,
+                                "http://purl.oclc.org/NET/mvco.owl#Instantiator"^^xsd:anyURI;
+              a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "The Action of making a Copy"@en;
+              rdfs:subClassOf mvco:Action,
+                              [<http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (mvco:Instance
+                                                                                                                       mvco:Manifestation) ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Class>] ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#onProperty> mvco:resultsIn ; 
+                               <http://www.w3.org/2002/07/owl#allValuesFrom> mvco:Copy ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>];
+              <http://www.w3.org/2002/07/owl#disjointWith> mvco:MakeInstance,
+                                                           mvco:Synchronise,
+                                                           mvco:Produce,
+                                                           mvco:PublicCommunication,
+                                                           mvco:MakeManifestation;
+              <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:MakeInstance a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "The Action of making an Instance from a Manifestation."@en;
+                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:Manifestation ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>],
+                                  mvco:Action,
+                                  [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:Instance ; 
+                                   <http://www.w3.org/2002/07/owl#onProperty> mvco:resultsIn ; 
+                                   a <http://www.w3.org/2002/07/owl#Restriction>];
+                  <http://www.w3.org/2002/07/owl#disjointWith> mvco:Produce,
+                                                               mvco:PublicCommunication,
+                                                               mvco:Synchronise,
+                                                               mvco:MakeManifestation;
+                  <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:MakeManifestation a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "The action of making a Manifestation."@en;
+                       rdfs:subClassOf mvco:Action,
+                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (mvco:Adaptation
+                                                                                                                                 mvco:Work) ; 
+                                                                                        a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>],
+                                       [<http://www.w3.org/2002/07/owl#allValuesFrom> mvco:Manifestation ; 
+                                        <http://www.w3.org/2002/07/owl#onProperty> mvco:resultsIn ; 
+                                        a <http://www.w3.org/2002/07/owl#Restriction>];
+                       <http://www.w3.org/2002/07/owl#disjointWith> mvco:Produce,
+                                                                    mvco:PublicCommunication,
+                                                                    mvco:Synchronise;
+                       <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:MakeWorkInstance a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "The Action of making an Instance from a Work Manifestation."@en;
+                      rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> mvco:WorkInstance ; 
+                                       <http://www.w3.org/2002/07/owl#onProperty> mvco:resultsIn ; 
+                                       a <http://www.w3.org/2002/07/owl#Restriction>];
+                      <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mvco:MakeInstance
+                                                                                                                       [<http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                                                                                                                       <http://www.w3.org/2002/07/owl#someValuesFrom> mvco:WorkManifestation ; 
+                                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                       a <http://www.w3.org/2002/07/owl#Class>];
+                      <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:MakeWorkInstanceCopy a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "The Action of making a WorkInstanceCopy"@en;
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> mvco:WorkInstanceCopy ; 
+                                           <http://www.w3.org/2002/07/owl#onProperty> mvco:resultsIn ; 
+                                           a <http://www.w3.org/2002/07/owl#Restriction>];
+                          <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mvco:MakeCopy
+                                                                                                                           [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:WorkInstance ; 
+                                                                                                                           <http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                                                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Class>];
+                          <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:MakeWorkManifestation a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "The action of making a Manifestation from Work."@en;
+                           rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> mvco:WorkManifestation ; 
+                                            <http://www.w3.org/2002/07/owl#onProperty> mvco:resultsIn ; 
+                                            a <http://www.w3.org/2002/07/owl#Restriction>];
+                           <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mvco:MakeManifestation
+                                                                                                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:Work ; 
+                                                                                                                            <http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                                                                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                            a <http://www.w3.org/2002/07/owl#Class>];
+                           <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:MakeWorkManifestationCopy a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "The Action of making a WorkManifestationCopy"@en;
+                               rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> mvco:resultsIn ; 
+                                                <http://www.w3.org/2002/07/owl#allValuesFrom> mvco:WorkManifestationCopy ; 
+                                                a <http://www.w3.org/2002/07/owl#Restriction>];
+                               <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mvco:MakeCopy
+                                                                                                                                [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:WorkManifestation ; 
+                                                                                                                                <http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                                                                                                                                a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                a <http://www.w3.org/2002/07/owl#Class>];
+                               <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Manifestation a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "An object or event which is an expression of a Work."@en;
+                   rdfs:subClassOf mvco:IPEntity,
+                                   [<http://www.w3.org/2002/07/owl#onProperty> mvco:resultedFrom ; 
+                                    <http://www.w3.org/2002/07/owl#someValuesFrom> mvco:MakeManifestation ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>];
+                   <http://www.w3.org/2002/07/owl#disjointWith> mvco:Product,
+                                                                mvco:Work;
+                   <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:ModifyCopy a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Action of modifying a copy."@en;
+                rdfs:subClassOf mvco:EndUserAction;
+                <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:MoveContent a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "The action of moving the location of a content"@en;
+                 rdfs:subClassOf mvco:EndUserAction;
+                 <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Permission a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Authorisation from one RightsOwner to one or more Users to perform one or more Actions on a given IPEntity."@en;
+                rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>,
+                                [<http://www.w3.org/2002/07/owl#allValuesFrom> mvco:User ; 
+                                 <http://www.w3.org/2002/07/owl#onProperty> mvco:issuedBy ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> mvco:permitsAction ; 
+                                 <http://www.w3.org/2002/07/owl#someValuesFrom> mvco:Action ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> mvco:hasRequired ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> mvco:Fact ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> mvco:issuedBy ; 
+                                 <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:nonNegativeInteger ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>],
+                                [<http://www.w3.org/2002/07/owl#onProperty> mvco:permitsAction ; 
+                                 <http://www.w3.org/2002/07/owl#allValuesFrom> mvco:Action ; 
+                                 a <http://www.w3.org/2002/07/owl#Restriction>];
+                <http://www.w3.org/2002/07/owl#disjointWith> mvco:User;
+                <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Produce mvco:rightGivenBy "http://purl.oclc.org/NET/mvco.owl#Instantiator"^^xsd:anyURI,
+                               "http://purl.oclc.org/NET/mvco.owl#Creator"^^xsd:anyURI;
+             a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "The Function of making Products"@en;
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (mvco:Copy
+                                                                                                                      mvco:Instance
+                                                                                                                      mvco:Manifestation) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>] ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             [<http://www.w3.org/2002/07/owl#onProperty> mvco:resultsIn ; 
+                              <http://www.w3.org/2002/07/owl#allValuesFrom> mvco:Product ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             mvco:Action;
+             <http://www.w3.org/2002/07/owl#disjointWith> mvco:PublicCommunication,
+                                                          mvco:Synchronise;
+             <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Producer a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "A User who produces a Product from an Instance."@en;
+              rdfs:subClassOf mvco:User;
+              <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#onProperty> mvco:acts ; 
+                                                               <http://www.w3.org/2002/07/owl#someValuesFrom> mvco:Produce ; 
+                                                               a <http://www.w3.org/2002/07/owl#Restriction>];
+              <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Product a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "A Content Item that adds value to IP Entities by including them with an appropriate Licence for the purpose of Publishing"@en;
+             rdfs:subClassOf mvco:IPEntity,
+                             [<http://www.w3.org/2002/07/owl#onProperty> mvco:resultedFrom ; 
+                              <http://www.w3.org/2002/07/owl#someValuesFrom> mvco:Produce ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>];
+             <http://www.w3.org/2002/07/owl#disjointWith> mvco:Work;
+             <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:PublicCommunication mvco:impliesAlso "http://purl.oclc.org/NET/mvco.owl#Render"^^xsd:anyURI;
+                         mvco:rightGivenBy "http://purl.oclc.org/NET/mvco.owl#Creator"^^xsd:anyURI,
+                                           "http://purl.oclc.org/NET/mvco.owl#Producer"^^xsd:anyURI;
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "The Function of publicly displaying/performing, e.g. live performance, radio, television, internet streaming, multicast of Instances and Manifestations, and download"@en;
+                         rdfs:subClassOf mvco:Action,
+                                         [<http://www.w3.org/2002/07/owl#allValuesFrom> [<http://www.w3.org/2002/07/owl#unionOf> (mvco:Copy
+                                                                                                                                  mvco:Instance
+                                                                                                                                  mvco:Product) ; 
+                                                                                         a <http://www.w3.org/2002/07/owl#Class>] ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>];
+                         <http://www.w3.org/2002/07/owl#disjointWith> mvco:Synchronise;
+                         <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Render a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "The Action of generating a human-perceivable signal"@en;
+            rdfs:subClassOf mvco:EndUserAction;
+            <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Stream a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "The Function of Delivering Content to a Device where the transferred Content is Processed for Rendering only and not Stored"@en;
+            rdfs:subClassOf mvco:PublicCommunication;
+            <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Synchronise mvco:impliesAlso "http://purl.oclc.org/NET/mvco.owl#ModifyCopy"^^xsd:anyURI,
+                                  "http://purl.oclc.org/NET/mvco.owl#Render"^^xsd:anyURI;
+                 mvco:rightGivenBy "http://purl.oclc.org/NET/mvco.owl#Creator"^^xsd:anyURI;
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "The Action of concurrently performing/displaying two distinct IP Entities each for a different human sense e.g. text and audio or video and song"@en;
+                 rdfs:subClassOf mvco:Action,
+                                 [<http://www.w3.org/2002/07/owl#allValuesFrom> mvco:Work ; 
+                                  <http://www.w3.org/2002/07/owl#onProperty> mvco:actedOver ; 
+                                  a <http://www.w3.org/2002/07/owl#Restriction>];
+                 <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:UseData a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Data documenting the functions Actions performed by a Device User on a content item and the associated context";
+             <http://www.w3.org/2002/07/owl#disjointWith> mvco:User;
+             <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:User a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "Any person or legal entity in a Value-Chain connecting (and including) Creator and End-User."@en;
+          rdfs:subClassOf <http://www.w3.org/2002/07/owl#Thing>,
+                          [<http://www.w3.org/2002/07/owl#onProperty> mvco:acts ; 
+                           <http://www.w3.org/2002/07/owl#allValuesFrom> mvco:Action ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>],
+                          [<http://www.w3.org/2002/07/owl#allValuesFrom> mvco:Collective ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> mvco:belongsTo ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>];
+          <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:Work a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "A creation that retains intellectual or artistic attributes independently of its Manifestations"@en;
+          rdfs:subClassOf mvco:IPEntity,
+                          [<http://www.w3.org/2002/07/owl#allValuesFrom> mvco:CreateWork ; 
+                           <http://www.w3.org/2002/07/owl#onProperty> mvco:resultedFrom ; 
+                           a <http://www.w3.org/2002/07/owl#Restriction>];
+          <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:WorkInstance a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "An object or event which is an example of an Identified Manifestation of a Work (e.g. a File)"@en;
+                  <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mvco:Instance
+                                                                                                                   [<http://www.w3.org/2002/07/owl#onProperty> mvco:resultedFrom ; 
+                                                                                                                   <http://www.w3.org/2002/07/owl#someValuesFrom> mvco:MakeWorkInstance ; 
+                                                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                   a <http://www.w3.org/2002/07/owl#Class>];
+                  <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:WorkInstanceCopy a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "A copy of a WorkInstance"@en;
+                      <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mvco:Copy
+                                                                                                                       [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:MakeWorkInstanceCopy ; 
+                                                                                                                       <http://www.w3.org/2002/07/owl#onProperty> mvco:resultedFrom ; 
+                                                                                                                       a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                       a <http://www.w3.org/2002/07/owl#Class>];
+                      <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:WorkManifestation a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "An object or event which is an expression of a Manifestation of a Work"@en;
+                       <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mvco:Manifestation
+                                                                                                                        [<http://www.w3.org/2002/07/owl#someValuesFrom> mvco:MakeWorkManifestation ; 
+                                                                                                                        <http://www.w3.org/2002/07/owl#onProperty> mvco:resultedFrom ; 
+                                                                                                                        a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                        a <http://www.w3.org/2002/07/owl#Class>];
+                       <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:WorkManifestationCopy a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "A copy of a WorkManifestation."@en;
+                           <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (mvco:Copy
+                                                                                                                            [<http://www.w3.org/2002/07/owl#onProperty> mvco:resultedFrom ; 
+                                                                                                                            <http://www.w3.org/2002/07/owl#someValuesFrom> mvco:MakeWorkManifestationCopy ; 
+                                                                                                                            a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                            a <http://www.w3.org/2002/07/owl#Class>];
+                           <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:actOnBehalfOf a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+                   rdfs:comment "Relates a ContentHandler with the User under the auspices of which the ContentHandler operates."@en;
+                   rdfs:domain mvco:ContentHandler;
+                   rdfs:range mvco:User;
+                   <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:actedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment "Role who has executed the Action";
+             rdfs:domain mvco:Action;
+             rdfs:range mvco:User;
+             <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:actedOver a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:comment "Specifies which IPEntity is the object the Action";
+               rdfs:domain mvco:Action;
+               rdfs:range mvco:IPEntity;
+               <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:acts a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:comment "Performance of an Action by a User";
+          rdfs:domain mvco:User;
+          rdfs:range mvco:Action;
+          <http://www.w3.org/2002/07/owl#inverseOf> mvco:actedBy;
+          <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:belongsTo a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                 <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+               rdfs:comment "Relates a User with a Collective"@en;
+               rdfs:domain mvco:User;
+               rdfs:range mvco:Collective;
+               <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:hasRequired a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "For a Permission to be valid, the Fact has to hold";
+                 rdfs:domain mvco:Permission;
+                 rdfs:range mvco:Fact;
+                 <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:hasRightsOwner a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                      <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                    rdfs:comment "Defines the owner of the Rights over an IP Entity."@en;
+                    rdfs:domain mvco:IPEntity;
+                    rdfs:range mvco:User;
+                    <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:hasSocialTag a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "Attributes a social tag: text, commentary, critique, synopsis (e.g. FOAF)...";
+                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (mvco:IPEntity
+                                                                        mvco:User) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>];
+                  rdfs:range xsd:string;
+                  <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:impliesAlso a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+mvco:isDigital a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                 <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+               rdfs:comment "distinguishes between digital management of both digital and non digital IP Entities";
+               rdfs:domain mvco:IPEntity;
+               rdfs:range xsd:boolean;
+               <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:isMadeUpOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Relates a composite IPEntity with its constituent IPEntities"@en;
+                rdfs:domain mvco:IPEntity;
+                rdfs:range mvco:IPEntity;
+                <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:isRightsOwnerOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment "Declares who is the rights owner of this IP Entity";
+                     rdfs:domain mvco:User;
+                     rdfs:range mvco:IPEntity;
+                     <http://www.w3.org/2002/07/owl#inverseOf> mvco:hasRightsOwner;
+                     <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:isTrue a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+            rdfs:comment "Truth of a proposition";
+            rdfs:domain mvco:Fact;
+            rdfs:range xsd:boolean;
+            <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:issuedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:comment "Declares who has issued a permission";
+              rdfs:domain mvco:Permission;
+              rdfs:range mvco:User;
+              <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:permitsAction a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Relation used to express the Actions that are allowed to be performed."@en;
+                   rdfs:domain mvco:Permission;
+                   rdfs:range mvco:Action;
+                   <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:resultedFrom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:comment "The dependance of one IP Entity on another."@en;
+                  rdfs:domain mvco:IPEntity;
+                  rdfs:range mvco:Action;
+                  <http://www.w3.org/2002/07/owl#inverseOf> mvco:resultsIn;
+                  <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:resultsIn a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                 <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+               rdfs:comment "Declares which IPentity arises as a result of the execution of an Action. It is a functional relation."@en;
+               rdfs:domain mvco:Action;
+               rdfs:range mvco:IPEntity;
+               <http://www.w3.org/2002/07/owl#versionInfo> "1.0".
+mvco:rightGivenBy a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                          <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                        rdfs:comment "Title of the ontology";
+                                        rdfs:range xsd:string.
+<http://www.w3.org/2002/07/owl#Thing> a <http://www.w3.org/2002/07/owl#Class>.
+<urn:mpeg:mpeg21:2002:01-DII-NS#RelatedIdentifier> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                                                     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                                                   rdfs:comment "It allows the identification information that is related to a Digital Item (or parts thereof).";
+                                                   rdfs:domain mvco:IPEntity;
+                                                   rdfs:range xsd:string.

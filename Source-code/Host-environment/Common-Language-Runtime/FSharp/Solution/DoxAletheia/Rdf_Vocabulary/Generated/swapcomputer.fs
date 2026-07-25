@@ -7,6 +7,15 @@ open type Prefix_ID
 module swapcomputer =
     let _namespace_iri = Namespace_Iri swapcomputer |> NamespaceIRI
     /// <summary>
+    ///   <para>swapcomputer:Hardware</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>digital computer hardware</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/computer#Hardware">http://eulersharp.sourceforge.net/2003/03swap/computer#Hardware</seealso>
+    let Hardware = Prefixed_Name(swapcomputer, "Hardware") |> PrefixedName
+    /// <summary>
     ///   <para>swapcomputer:</para>
     /// </summary>
     /// <remarks></remarks>
@@ -22,24 +31,6 @@ module swapcomputer =
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/computer#Software">http://eulersharp.sourceforge.net/2003/03swap/computer#Software</seealso>
     let Software = Prefixed_Name(swapcomputer, "Software") |> PrefixedName
     /// <summary>
-    ///   <para>swapcomputer:Data</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>digital computer data</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/computer#Data">http://eulersharp.sourceforge.net/2003/03swap/computer#Data</seealso>
-    let Data = Prefixed_Name(swapcomputer, "Data") |> PrefixedName
-    /// <summary>
-    ///   <para>swapcomputer:Hardware</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdfs:Class</para>
-    ///
-    /// labels<para>digital computer hardware</para></remarks>
-    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/computer#Hardware">http://eulersharp.sourceforge.net/2003/03swap/computer#Hardware</seealso>
-    let Hardware = Prefixed_Name(swapcomputer, "Hardware") |> PrefixedName
-    /// <summary>
     ///   <para>swapcomputer:Computer</para>
     /// </summary>
     /// <remarks>
@@ -48,6 +39,15 @@ module swapcomputer =
     /// labels<para>digital computer</para></remarks>
     /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/computer#Computer">http://eulersharp.sourceforge.net/2003/03swap/computer#Computer</seealso>
     let Computer = Prefixed_Name(swapcomputer, "Computer") |> PrefixedName
+    /// <summary>
+    ///   <para>swapcomputer:Data</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdfs:Class</para>
+    ///
+    /// labels<para>digital computer data</para></remarks>
+    /// <seealso href="http://eulersharp.sourceforge.net/2003/03swap/computer#Data">http://eulersharp.sourceforge.net/2003/03swap/computer#Data</seealso>
+    let Data = Prefixed_Name(swapcomputer, "Data") |> PrefixedName
     /// <summary>
     ///   <para>swapcomputer:SearchEngine</para>
     /// </summary>

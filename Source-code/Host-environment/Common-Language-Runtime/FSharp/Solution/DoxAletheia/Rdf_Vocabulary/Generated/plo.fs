@@ -7,15 +7,6 @@ open type Prefix_ID
 module plo =
     let _namespace_iri = Namespace_Iri plo |> NamespaceIRI
     /// <summary>
-    ///   <para>plo:Playlist</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A class for representing a playlist. One Playlist instance is connected to one or more PlaylistEntry instances. It contains the name of the playlist and the name of the radio station.</para>
-    /// labels<para>Playlist</para></remarks>
-    /// <seealso href="http://purl.org/net/po#Playlist">http://purl.org/net/po#Playlist</seealso>
-    let Playlist = Prefixed_Name(plo, "Playlist") |> PrefixedName
-    /// <summary>
     ///   <para>plo:Song</para>
     /// </summary>
     /// <remarks>
@@ -25,14 +16,22 @@ module plo =
     /// <seealso href="http://purl.org/net/po#Song">http://purl.org/net/po#Song</seealso>
     let Song = Prefixed_Name(plo, "Song") |> PrefixedName
     /// <summary>
-    ///   <para>plo:</para>
+    ///   <para>plo:Playlist</para>
     /// </summary>
     /// <remarks>
-    ///   <para>voaf:Vocabulary</para>
-    ///   <para>owl:Ontology</para>
+    ///   <para>owl:Class</para>
+    ///   <para>A class for representing a playlist. One Playlist instance is connected to one or more PlaylistEntry instances. It contains the name of the playlist and the name of the radio station.</para>
+    /// labels<para>Playlist</para></remarks>
+    /// <seealso href="http://purl.org/net/po#Playlist">http://purl.org/net/po#Playlist</seealso>
+    let Playlist = Prefixed_Name(plo, "Playlist") |> PrefixedName
+    /// <summary>
+    ///   <para>plo:year</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/net/po#">http://purl.org/net/po#</seealso>
-    let _prefix_iri = Prefixed_Name(plo, "") |> PrefixedName
+    /// <seealso href="http://purl.org/net/po#year">http://purl.org/net/po#year</seealso>
+    let year = Prefixed_Name(plo, "year") |> PrefixedName
     /// <summary>
     ///   <para>plo:artistInfo</para>
     /// </summary>
@@ -42,13 +41,53 @@ module plo =
     /// <seealso href="http://purl.org/net/po#artistInfo">http://purl.org/net/po#artistInfo</seealso>
     let artistInfo = Prefixed_Name(plo, "artistInfo") |> PrefixedName
     /// <summary>
-    ///   <para>plo:playlistEntrySong</para>
+    ///   <para>plo:hasPlaylistEntry</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:ObjectProperty</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/net/po#playlistEntrySong">http://purl.org/net/po#playlistEntrySong</seealso>
-    let playlistEntrySong = Prefixed_Name(plo, "playlistEntrySong") |> PrefixedName
+    /// <seealso href="http://purl.org/net/po#hasPlaylistEntry">http://purl.org/net/po#hasPlaylistEntry</seealso>
+    let hasPlaylistEntry = Prefixed_Name(plo, "hasPlaylistEntry") |> PrefixedName
+    /// <summary>
+    ///   <para>plo:photoURL</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/po#photoURL">http://purl.org/net/po#photoURL</seealso>
+    let photoURL = Prefixed_Name(plo, "photoURL") |> PrefixedName
+    /// <summary>
+    ///   <para>plo:position</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/po#position">http://purl.org/net/po#position</seealso>
+    let position = Prefixed_Name(plo, "position") |> PrefixedName
+    /// <summary>
+    ///   <para>plo:stationName</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/po#stationName">http://purl.org/net/po#stationName</seealso>
+    let stationName = Prefixed_Name(plo, "stationName") |> PrefixedName
+    /// <summary>
+    ///   <para>plo:week</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:DatatypeProperty</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/po#week">http://purl.org/net/po#week</seealso>
+    let week = Prefixed_Name(plo, "week") |> PrefixedName
+    /// <summary>
+    ///   <para>plo:partOfPlaylist</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/po#partOfPlaylist">http://purl.org/net/po#partOfPlaylist</seealso>
+    let partOfPlaylist = Prefixed_Name(plo, "partOfPlaylist") |> PrefixedName
 
     /// <summary>
     ///   <para>plo:featuredInPlaylistEntry</para>
@@ -69,46 +108,6 @@ module plo =
     /// <seealso href="http://purl.org/net/po#playlistName">http://purl.org/net/po#playlistName</seealso>
     let playlistName = Prefixed_Name(plo, "playlistName") |> PrefixedName
     /// <summary>
-    ///   <para>plo:position</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/net/po#position">http://purl.org/net/po#position</seealso>
-    let position = Prefixed_Name(plo, "position") |> PrefixedName
-    /// <summary>
-    ///   <para>plo:year</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/net/po#year">http://purl.org/net/po#year</seealso>
-    let year = Prefixed_Name(plo, "year") |> PrefixedName
-    /// <summary>
-    ///   <para>plo:partOfPlaylist</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/net/po#partOfPlaylist">http://purl.org/net/po#partOfPlaylist</seealso>
-    let partOfPlaylist = Prefixed_Name(plo, "partOfPlaylist") |> PrefixedName
-    /// <summary>
-    ///   <para>plo:hasPlaylistEntry</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:ObjectProperty</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/net/po#hasPlaylistEntry">http://purl.org/net/po#hasPlaylistEntry</seealso>
-    let hasPlaylistEntry = Prefixed_Name(plo, "hasPlaylistEntry") |> PrefixedName
-    /// <summary>
-    ///   <para>plo:photoURL</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/net/po#photoURL">http://purl.org/net/po#photoURL</seealso>
-    let photoURL = Prefixed_Name(plo, "photoURL") |> PrefixedName
-    /// <summary>
     ///   <para>plo:songInfo</para>
     /// </summary>
     /// <remarks>
@@ -116,14 +115,6 @@ module plo =
     /// </remarks>
     /// <seealso href="http://purl.org/net/po#songInfo">http://purl.org/net/po#songInfo</seealso>
     let songInfo = Prefixed_Name(plo, "songInfo") |> PrefixedName
-    /// <summary>
-    ///   <para>plo:week</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
-    /// </remarks>
-    /// <seealso href="http://purl.org/net/po#week">http://purl.org/net/po#week</seealso>
-    let week = Prefixed_Name(plo, "week") |> PrefixedName
     /// <summary>
     ///   <para>plo:PlaylistEntry</para>
     /// </summary>
@@ -134,10 +125,19 @@ module plo =
     /// <seealso href="http://purl.org/net/po#PlaylistEntry">http://purl.org/net/po#PlaylistEntry</seealso>
     let PlaylistEntry = Prefixed_Name(plo, "PlaylistEntry") |> PrefixedName
     /// <summary>
-    ///   <para>plo:stationName</para>
+    ///   <para>plo:</para>
     /// </summary>
     /// <remarks>
-    ///   <para>owl:DatatypeProperty</para>
+    ///   <para>owl:Ontology</para>
+    ///   <para>voaf:Vocabulary</para>
     /// </remarks>
-    /// <seealso href="http://purl.org/net/po#stationName">http://purl.org/net/po#stationName</seealso>
-    let stationName = Prefixed_Name(plo, "stationName") |> PrefixedName
+    /// <seealso href="http://purl.org/net/po#">http://purl.org/net/po#</seealso>
+    let _prefix_iri = Prefixed_Name(plo, "") |> PrefixedName
+    /// <summary>
+    ///   <para>plo:playlistEntrySong</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:ObjectProperty</para>
+    /// </remarks>
+    /// <seealso href="http://purl.org/net/po#playlistEntrySong">http://purl.org/net/po#playlistEntrySong</seealso>
+    let playlistEntrySong = Prefixed_Name(plo, "playlistEntrySong") |> PrefixedName

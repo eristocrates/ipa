@@ -1,0 +1,179 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://www.loted.eu/ontology> a <http://www.w3.org/2002/07/owl#Ontology>.
+<http://www.loted.eu/ontology#1-MinistryOrAnyOtherNationalOrFederalAuthority> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                              rdfs:subClassOf <http://www.loted.eu/ontology#Authority>.
+<http://www.loted.eu/ontology#2-ArmedForces> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:subClassOf <http://www.loted.eu/ontology#Authority>.
+<http://www.loted.eu/ontology#3-RegionalOrLocalAuthority> a <http://www.w3.org/2002/07/owl#Class>;
+                                                          rdfs:subClassOf <http://www.loted.eu/ontology#Authority>.
+<http://www.loted.eu/ontology#4-Utilities> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:subClassOf <http://www.loted.eu/ontology#Authority>.
+<http://www.loted.eu/ontology#5-EuropeanInstitution/AgencyOrInternationalOrganization> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                                       rdfs:subClassOf <http://www.loted.eu/ontology#Authority>.
+<http://www.loted.eu/ontology#6-BodyGovernedByPublicLaw> a <http://www.w3.org/2002/07/owl#Class>;
+                                                         rdfs:subClassOf <http://www.loted.eu/ontology#Authority>.
+<http://www.loted.eu/ontology#7-NotApplicable> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:subClassOf <http://www.loted.eu/ontology#Authority>.
+<http://www.loted.eu/ontology#8-Other> a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:subClassOf <http://www.loted.eu/ontology#Authority>.
+<http://www.loted.eu/ontology#AC> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Critères d'attribution"@fr,
+                                             "Award criteria"@en,
+                                             "Vergabekriterien"@de;
+                                  rdfs:range <http://www.loted.eu/ontology#AwardCriteria>.
+<http://www.loted.eu/ontology#AU> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Nom pourvoir adjudicateur"@fr,
+                                             "Authority name"@en,
+                                             "Name des Auftraggebers."@de;
+                                  rdfs:range <http://www.loted.eu/ontology#Authority>.
+<http://www.loted.eu/ontology#Authority> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.loted.eu/ontology#AwardCriteria> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.loted.eu/ontology#CY> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://www.loted.eu/ontology#Authority>
+                                                                                        <http://www.loted.eu/ontology#Place>) ; 
+                                               a <http://www.w3.org/2002/07/owl#Class>];
+                                  rdfs:label "Pays"@fr,
+                                             "Country"@en,
+                                             "Land"@de;
+                                  rdfs:range <http://www.loted.eu/ontology#Country>.
+<http://www.loted.eu/ontology#Contract> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.loted.eu/ontology#Country> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.loted.eu/ontology#DR> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Document reçu"@fr,
+                                             "Document received"@en,
+                                             "Dokument empfangen"@de;
+                                  rdfs:range xsd:string.
+<http://www.loted.eu/ontology#DS> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Document envoyé"@fr,
+                                             "Document sent"@en,
+                                             "Dokument abgeschickt"@de;
+                                  rdfs:range xsd:string.
+<http://www.loted.eu/ontology#DT> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Date limite"@fr,
+                                             "Deadline"@en,
+                                             "Termin"@de;
+                                  rdfs:range xsd:string.
+<http://www.loted.eu/ontology#Document> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.loted.eu/ontology#HD> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Heading"@fr,
+                                             "Heading"@en,
+                                             "Rubrik"@de;
+                                  rdfs:range xsd:string.
+<http://www.loted.eu/ontology#IA> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Authority>;
+                                  rdfs:label "Adresse Internet (URL)"@fr,
+                                             "Internet address (URL)"@en,
+                                             "Internetadresse (URL)"@de;
+                                  rdfs:range xsd:string.
+<http://www.loted.eu/ontology#Language> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.loted.eu/ontology#MA> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Authority>;
+                                  rdfs:label "Activité principale"@fr,
+                                             "Main activity"@en,
+                                             "Haupttätigkeit"@de;
+                                  rdfs:range <http://www.loted.eu/ontology#MainActivity>.
+<http://www.loted.eu/ontology#MainActivity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.loted.eu/ontology#N-NationalOrFederalAgency/Office> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                rdfs:subClassOf <http://www.loted.eu/ontology#Authority>.
+<http://www.loted.eu/ontology#NC> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Marché"@fr,
+                                             "Contract"@en,
+                                             "Auftrag"@de;
+                                  rdfs:range <http://www.loted.eu/ontology#Contract>.
+<http://www.loted.eu/ontology#ND> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Numéro de document"@fr,
+                                             "Document Number"@en,
+                                             "Dok. Nummer"@de;
+                                  rdfs:range xsd:string.
+<http://www.loted.eu/ontology#Num> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                   rdfs:domain <http://www.loted.eu/ontology#OfficialJournal>;
+                                   rdfs:label "JO S"@fr,
+                                              "OJ S"@en,
+                                              "ABl. S"@de;
+                                   rdfs:range xsd:integer.
+<http://www.loted.eu/ontology#OC> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Ancien code CPV"@fr,
+                                             "Original CPV code"@en,
+                                             "Ursprünglicher CPV-Code"@de;
+                                  rdfs:range xsd:string.
+<http://www.loted.eu/ontology#OJ> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "JO S"@fr,
+                                             "OJ S"@en,
+                                             "ABl. S"@de;
+                                  rdfs:range <http://www.loted.eu/ontology#OfficialJournal>.
+<http://www.loted.eu/ontology#OL> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Langue originale"@fr,
+                                             "Original language"@en,
+                                             "Originalsprache"@de;
+                                  rdfs:range <http://www.loted.eu/ontology#Language>.
+<http://www.loted.eu/ontology#OfficialJournal> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.loted.eu/ontology#PC> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Code CPV"@fr,
+                                             "CPV code"@en,
+                                             "CPV-Code"@de;
+                                  rdfs:range xsd:string.
+<http://www.loted.eu/ontology#PD> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Date de publication"@fr,
+                                             "Pubblication date"@en,
+                                             "Datum der Veröffentlichung"@de;
+                                  rdfs:range xsd:string.
+<http://www.loted.eu/ontology#PR> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Procédure"@fr,
+                                             "Procedure"@en,
+                                             "Verfahren"@de;
+                                  rdfs:range <http://www.loted.eu/ontology#Procedure>.
+<http://www.loted.eu/ontology#Place> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.loted.eu/ontology#Procedure> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.loted.eu/ontology#R-RegionalOrLocalAgency/Office> a <http://www.w3.org/2002/07/owl#Class>;
+                                                              rdfs:subClassOf <http://www.loted.eu/ontology#Authority>.
+<http://www.loted.eu/ontology#RP> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Organisation"@fr,
+                                             "Regulation"@en,
+                                             "Verordnung"@de;
+                                  rdfs:range <http://www.loted.eu/ontology#Regulation>.
+<http://www.loted.eu/ontology#Regulation> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.loted.eu/ontology#TD> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Document"@fr,
+                                             "Document"@en,
+                                             "Dokument"@de;
+                                  rdfs:range <http://www.loted.eu/ontology#Document>.
+<http://www.loted.eu/ontology#TI> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Titre"@fr,
+                                             "Title"@en,
+                                             "Titel"@de;
+                                  rdfs:range xsd:string.
+<http://www.loted.eu/ontology#TW> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Localité"@fr,
+                                             "Place"@en,
+                                             "Ort"@de;
+                                  rdfs:range <http://www.loted.eu/ontology#Place>.
+<http://www.loted.eu/ontology#TY> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain <http://www.loted.eu/ontology#Tender>;
+                                  rdfs:label "Type de procédure"@fr,
+                                             "Type of bid"@en,
+                                             "Art des Angebots"@de;
+                                  rdfs:range <http://www.loted.eu/ontology#TypeOfBid>.
+<http://www.loted.eu/ontology#Tender> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.loted.eu/ontology#TypeOfBid> a <http://www.w3.org/2002/07/owl#Class>.
+rdfs:label a <http://www.w3.org/2002/07/owl#AnnotationProperty>.

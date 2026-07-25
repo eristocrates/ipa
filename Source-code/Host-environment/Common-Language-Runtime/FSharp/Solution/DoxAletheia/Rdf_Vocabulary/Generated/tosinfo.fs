@@ -16,6 +16,23 @@ module tosinfo =
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/osinfo#Installer">http://tracker.api.gnome.org/ontology/v3/osinfo#Installer</seealso>
     let Installer = Prefixed_Name(tosinfo, "Installer") |> PrefixedName
     /// <summary>
+    ///   <para>tosinfo:mediaId</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>rdf:Property</para>
+    /// </remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/osinfo#mediaId">http://tracker.api.gnome.org/ontology/v3/osinfo#mediaId</seealso>
+    let mediaId = Prefixed_Name(tosinfo, "mediaId") |> PrefixedName
+    /// <summary>
+    ///   <para>tosinfo:</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>tnrl:Namespace</para>
+    ///   <para>tnrl:Ontology</para>
+    /// </remarks>
+    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/osinfo#">http://tracker.api.gnome.org/ontology/v3/osinfo#</seealso>
+    let _prefix_iri = Prefixed_Name(tosinfo, "") |> PrefixedName
+    /// <summary>
     ///   <para>tosinfo:id</para>
     /// </summary>
     /// <remarks>
@@ -32,20 +49,3 @@ module tosinfo =
     /// labels<para>Language</para></remarks>
     /// <seealso href="http://tracker.api.gnome.org/ontology/v3/osinfo#language">http://tracker.api.gnome.org/ontology/v3/osinfo#language</seealso>
     let language = Prefixed_Name(tosinfo, "language") |> PrefixedName
-    /// <summary>
-    ///   <para>tosinfo:mediaId</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>rdf:Property</para>
-    /// </remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/osinfo#mediaId">http://tracker.api.gnome.org/ontology/v3/osinfo#mediaId</seealso>
-    let mediaId = Prefixed_Name(tosinfo, "mediaId") |> PrefixedName
-    /// <summary>
-    ///   <para>tosinfo:</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>tnrl:Ontology</para>
-    ///   <para>tnrl:Namespace</para>
-    /// </remarks>
-    /// <seealso href="http://tracker.api.gnome.org/ontology/v3/osinfo#">http://tracker.api.gnome.org/ontology/v3/osinfo#</seealso>
-    let _prefix_iri = Prefixed_Name(tosinfo, "") |> PrefixedName

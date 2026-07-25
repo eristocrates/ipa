@@ -1,0 +1,72 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix omnfed: <http://open-multinet.info/ontology/omn-federation#>.
+
+<http://alex.willner.ws/about#me> a <http://xmlns.com/foaf/0.1/Person>.
+<http://open-multinet.info/ontology/omn#Group> a <http://www.w3.org/2002/07/owl#Class>.
+<http://open-multinet.info/ontology/omn-federation> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/4.0/>;
+                                                    <http://purl.org/dc/elements/1.1/contributor> <mailto:jorge.lopez_vergara@uam.es>,
+                                                                                                  <http://www.commit-nl.nl/people/morsey>,
+                                                                                                  <mailto:chrisap@noc.ntua.gr>,
+                                                                                                  <mailto:yahya.al-hazmi@tu-berlin.de>,
+                                                                                                  <mailto:yxin@renci.org>,
+                                                                                                  <mailto:loughnane@campus.tu-berlin.de>,
+                                                                                                  <mailto:brecht.vermeulen@iminds.be>,
+                                                                                                  <https://staff.fnwi.uva.nl/p.grosso>,
+                                                                                                  <mailto:ibaldin@renci.org>,
+                                                                                                  <mailto:thijs.walcarius@intec.ugent.be>;
+                                                    <http://purl.org/dc/elements/1.1/creator> <http://alex.willner.ws/about#me>;
+                                                    <http://purl.org/dc/elements/1.1/description> <http://raw.githubusercontent.com/open-multinet/playground-rspecs-ontology/master/ontologies/pics/omn-federation.png>,
+                                                                                                  "This ontology defines concepts related to federation of internet infrastructures."@en;
+                                                    <http://purl.org/dc/elements/1.1/publisher> <http://open-multinet.org/>;
+                                                    <http://purl.org/dc/elements/1.1/rights> <http://creativecommons.org/licenses/by/4.0/>;
+                                                    <http://purl.org/dc/elements/1.1/title> "Open-Multinet Upper Federation Ontology"@en;
+                                                    <http://purl.org/dc/terms/created> "2014-11-11"^^xsd:date;
+                                                    <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/4.0/>;
+                                                    <http://purl.org/dc/terms/modified> "2015-04-04"^^xsd:date;
+                                                    <http://purl.org/vocab/vann/preferredNamespacePrefix> "omn-federation";
+                                                    <http://purl.org/vocab/vann/preferredNamespaceUri> omnfed:;
+                                                    a <http://www.w3.org/2002/07/owl#Ontology>,
+                                                      <http://purl.org/vocommons/voaf#Vocabulary>;
+                                                    rdfs:label "omn-federation"@en;
+                                                    <http://www.w3.org/2002/07/owl#imports> <http://open-multinet.info/ontology/omn#>;
+                                                    <http://www.w3.org/2002/07/owl#versionInfo> "2015-04-04".
+omnfed:Federation a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:label "Federation"@en;
+                  rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization>.
+omnfed:FederationMember a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:label "member of a federation"@en;
+                        rdfs:subClassOf <http://xmlns.com/foaf/0.1/Organization>.
+omnfed:Infrastructure a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "an infrastructure such as a testbed or cloud facility"@en,
+                                   "Example: FUESCO Playground"@en;
+                      rdfs:label "Infrastructure"@en;
+                      rdfs:seeAlso <http://fp7-novi.eu/im.owl#Platform>;
+                      rdfs:subClassOf <http://open-multinet.info/ontology/omn#Group>.
+omnfed:administers a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "an organization (e.g. a federation member) administers its own infrastructure"@en;
+                   rdfs:domain <http://xmlns.com/foaf/0.1/Organization>;
+                   rdfs:label "administers"@en;
+                   rdfs:range omnfed:Infrastructure;
+                   <http://www.w3.org/2002/07/owl#inverseOf> omnfed:isAdministeredBy.
+omnfed:hasFederationMember a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment "a federation can have an organization as a member"@en;
+                           rdfs:domain omnfed:Federation;
+                           rdfs:label "has federation member"@en;
+                           rdfs:range omnfed:FederationMember.
+omnfed:isAdministeredBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "an infrastructure can be administered by an organization (e.g. a federation member)"@en;
+                        rdfs:domain omnfed:Infrastructure;
+                        rdfs:label "is administered by"@en;
+                        rdfs:range <http://xmlns.com/foaf/0.1/Organization>.
+omnfed:partOfFederation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "an organization can be part of a federation"@en;
+                        rdfs:domain omnfed:FederationMember;
+                        rdfs:label "is part of federation"@en;
+                        rdfs:range omnfed:Federation;
+                        <http://www.w3.org/2002/07/owl#inverseOf> omnfed:hasFederationMember.
+<http://www.w3.org/2002/07/owl#AllDisjointClasses> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2002/07/owl#IrreflexiveProperty> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2002/07/owl#NamedIndividual> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/Organization> a <http://www.w3.org/2002/07/owl#Class>.

@@ -1,0 +1,144 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ctic: <http://purl.org/ctic/infraestructuras/localizacion#>.
+
+<http://data.fundacionctic.org/vocab/infraestructuras/localizacion_20111105.html> <http://purl.org/dc/elements/1.1/format> [rdfs:label "HTML" ; 
+                                                                                                                            rdf:value "text/html" ; 
+                                                                                                                            a <http://purl.org/dc/terms/IMT>];
+                                                                                  a <http://purl.org/dc/dcmitype/Text>.
+<http://data.fundacionctic.org/vocab/infraestructuras/localizacion_20111105.rdf> <http://purl.org/dc/elements/1.1/format> [rdfs:label "RDF" ; 
+                                                                                                                           rdf:value "application/rdf+xml" ; 
+                                                                                                                           a <http://purl.org/dc/terms/IMT>];
+                                                                                 a <http://purl.org/dc/dcmitype/Text>.
+<http://purl.org/ctic/infraestructuras/localizacion> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by-nc-sa/3.0>;
+                                                     <http://purl.org/dc/elements/1.1/creator> "CTIC CT";
+                                                     <http://purl.org/dc/elements/1.1/date> "2011-11-05";
+                                                     <http://purl.org/dc/elements/1.1/identifier> "http://data.fundacionctic.org/vocab/infraestructuras/localizacion_20111105";
+                                                     <http://purl.org/dc/elements/1.1/rights> "CTIC CT - Creative Commons 3.0 (BY-NC-SA)"@es,
+                                                                                              "CTIC CT - Creative Commons 3.0 (BY-NC-SA)"@en;
+                                                     <http://purl.org/dc/elements/1.1/title> "Vocabulario de Localizaciones"@es;
+                                                     <http://purl.org/dc/terms/hasFormat> <http://data.fundacionctic.org/vocab/infraestructuras/localizacion_20111105.rdf>,
+                                                                                          <http://data.fundacionctic.org/vocab/infraestructuras/localizacion_20111105.html>;
+                                                     <http://purl.org/dc/terms/isVersionOf> <http://purl.org/ctic/infraestructuras/localizacion>;
+                                                     <http://purl.org/dc/terms/issued> "2010-10-01";
+                                                     <http://purl.org/dc/terms/replaces> <http://data.fundacionctic.org/vocab/infraestructuras/localizacion_20101001>;
+                                                     <http://purl.org/vocab/vann/preferredNamespacePrefix> "loc";
+                                                     <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/ctic/infraestructuras/localizacion#";
+                                                     a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                     rdfs:comment """Este vocabulario se utiliza para modelar las localizaciones físicas de lugares públicos. 
+			Utiliza elementos de Geonames para identificar las distintas características geográficas."""@es;
+                                                     <http://www.w3.org/2004/02/skos/core#historyNote> [<http://purl.org/dc/elements/1.1/creator> "CTIC-CT" ; 
+                                                                                                        <http://purl.org/dc/elements/1.1/date> "2011-10-05" ; 
+                                                                                                        rdf:value "Añadidas las clases: País, Autonomía, Provincia y Municipio"@es].
+ctic:Autonomia <http://purl.org/dc/terms/issued> "2011-11-05";
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Comunidad Autónoma o Ciudad Autónoma, que disponen de mediante normas y órganos de gobierno propios"@es;
+               rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/localizacion>;
+               rdfs:label "Autonomía"@es;
+               rdfs:subClassOf <http://www.geonames.org/ontology#Feature>.
+ctic:Barrio <http://purl.org/dc/terms/issued> "2010-10-01";
+            a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment "Cada una de las partes en que se dividen los distritos de los municipios"@es;
+            rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/localizacion>;
+            rdfs:label "Barrio"@es;
+            rdfs:subClassOf <http://www.geonames.org/ontology#Feature>.
+ctic:Calle <http://purl.org/dc/terms/issued> "2010-10-01";
+           a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "Vía urbana"@es;
+           rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/localizacion>;
+           rdfs:label "Calle"@es;
+           rdfs:subClassOf <http://www.geonames.org/ontology#Feature>.
+ctic:Direccion <http://purl.org/dc/terms/issued> "2010-10-01";
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Dirección postal"@es;
+               rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/localizacion>;
+               rdfs:label "Dirección"@es;
+               rdfs:subClassOf <http://www.w3.org/2006/vcard/ns#Address>,
+                               <http://www.geonames.org/ontology#Feature>.
+ctic:Distrito <http://purl.org/dc/terms/issued> "2010-10-01";
+              a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Cada una de las demarcaciones en que se subdivide un territorio o una población para distribuir y ordenar el ejercicio de los derechos civiles y políticos, o de las funciones públicas, o de los servicios administrativos"@es;
+              rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/localizacion>;
+              rdfs:label "Distrito"@es;
+              rdfs:subClassOf <http://www.geonames.org/ontology#Feature>.
+ctic:JuntaAdministrativa <http://purl.org/dc/terms/issued> "2010-10-01";
+                         a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Junta administrativa que rige los intereses de un pueblo que, en unión con otros, forma un municipio"@es;
+                         rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/localizacion>;
+                         rdfs:label "Junta administrativa"@es;
+                         rdfs:subClassOf <http://www.geonames.org/ontology#Feature>.
+ctic:Municipio <http://purl.org/dc/terms/issued> "2011-11-05";
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Término jurisdiccional, regido por un ayuntamiento"@es;
+               rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/localizacion>;
+               rdfs:label "Municipio"@es;
+               rdfs:subClassOf <http://www.geonames.org/ontology#Feature>.
+ctic:Pais <http://purl.org/dc/terms/issued> "2011-11-05";
+          a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:comment "País o nación"@es;
+          rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/localizacion>;
+          rdfs:label "País"@es;
+          rdfs:subClassOf <http://www.geonames.org/ontology#Feature>.
+ctic:Provincia <http://purl.org/dc/terms/issued> "2011-11-05";
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Cada una de las grandes divisiones de una Autonomía"@es;
+               rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/localizacion>;
+               rdfs:label "Provincia"@es;
+               rdfs:subClassOf <http://www.geonames.org/ontology#Feature>.
+ctic:TramoCalle <http://purl.org/dc/terms/issued> "2010-10-01";
+                a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Tramo parcial o total de una vía pública"@es;
+                rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/localizacion>;
+                rdfs:label "Tramo de calle"@es;
+                rdfs:subClassOf <http://www.geonames.org/ontology#Feature>.
+ctic:barrio <http://purl.org/dc/terms/issued> "2010-10-01";
+            a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:comment "Barrio al que pertenece una dirección de un edificio"@es;
+            rdfs:domain ctic:Direccion;
+            rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/localizacion>;
+            rdfs:label "Barrio"@es;
+            rdfs:range ctic:Barrio;
+            rdfs:subPropertyOf <http://www.geonames.org/ontology#locatedIn>.
+ctic:calle <http://purl.org/dc/terms/issued> "2010-10-01";
+           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:comment "Calle a la que pertenece una dirección de un edificio"@es;
+           rdfs:domain ctic:Direccion;
+           rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/localizacion>;
+           rdfs:label "Calle"@es;
+           rdfs:range ctic:Calle;
+           rdfs:subPropertyOf <http://www.geonames.org/ontology#locatedIn>.
+ctic:iae <http://purl.org/dc/terms/issued> "2010-10-01";
+         a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+         rdfs:comment "Valor del Impuesto sobre Actividades Económicas relativo al tramo de calle"@es;
+         rdfs:domain ctic:TramoCalle;
+         rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/localizacion>;
+         rdfs:label "IAE"@es.
+ctic:juntaAdministrativa <http://purl.org/dc/terms/issued> "2010-10-01";
+                         a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:comment "Junta Administrativa a la que pertenece una dirección de un edificio"@es;
+                         rdfs:domain ctic:Direccion;
+                         rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/localizacion>;
+                         rdfs:label "Junta administrativa"@es;
+                         rdfs:range ctic:JuntaAdministrativa;
+                         rdfs:subPropertyOf <http://www.geonames.org/ontology#locatedIn>.
+ctic:numeroFinTramo <http://purl.org/dc/terms/issued> "2010-10-01";
+                    a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "Número de la calle donde finaliza el tramo"@es;
+                    rdfs:domain ctic:TramoCalle;
+                    rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/localizacion>;
+                    rdfs:label "Número final de la calle (par o impar)"@es;
+                    rdfs:range rdfs:Literal.
+ctic:numeroInicioTramo <http://purl.org/dc/terms/issued> "2010-10-01";
+                       a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:comment "Número de la calle donde comienza el tramo"@es;
+                       rdfs:domain ctic:TramoCalle;
+                       rdfs:isDefinedBy <http://purl.org/ctic/infraestructuras/localizacion>;
+                       rdfs:label "Número inicial de la calle (par o impar)"@es;
+                       rdfs:range rdfs:Literal.
+<http://www.geonames.org/ontology#Feature> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.geonames.org/ontology#locatedIn> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+rdfs:comment a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:isDefinedBy a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:label a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2006/vcard/ns#Address> a <http://www.w3.org/2002/07/owl#Class>.

@@ -1,0 +1,91 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix scovo: <http://purl.org/NET/scovo#>.
+
+scovo:Dataset a rdfs:Class,
+                <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "a statistical dataset";
+              rdfs:label "Dataset".
+scovo:Dimension a rdfs:Class,
+                  <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "a dimension of a statistical data item";
+                rdfs:label "Dimension".
+scovo:Item a rdfs:Class,
+             <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "a statistical data item";
+           rdfs:label "Item".
+scovo:dataset a rdf:Property;
+              rdfs:domain scovo:Item;
+              rdfs:label "belongs to dataset";
+              rdfs:range scovo:Dataset.
+scovo:datasetOf a rdf:Property;
+                rdfs:domain scovo:Dataset;
+                rdfs:label "is the dataset of";
+                rdfs:range scovo:Item.
+scovo:dimension a rdf:Property;
+                rdfs:domain scovo:Item;
+                rdfs:label "has a dimension";
+                rdfs:range scovo:Dimension.
+scovo:max a rdf:Property;
+          rdfs:domain scovo:Dimension;
+          rdfs:label "has a maximum range value".
+scovo:min a rdf:Property;
+          rdfs:domain scovo:Dimension;
+          rdfs:label "has a minimum range value".
+<http://vocab.deri.ie/scovo> <http://purl.org/dc/elements/1.1/creator> <http://vocab.deri.ie/scovo#yraimond>,
+                                                                       <http://vocab.deri.ie/scovo#theath>,
+                                                                       <http://vocab.deri.ie/scovo#Michael%20Hausenblas>,
+                                                                       <http://vocab.deri.ie/scovo#lfeigenbaum>,
+                                                                       <http://vocab.deri.ie/scovo#whalb>,
+                                                                       <http://vocab.deri.ie/scovo#dayers>;
+                             <http://purl.org/dc/terms/created> "2010-01-26"^^xsd:date;
+                             <http://purl.org/dc/terms/description> """A vocabulary for representing statistical data on the Web.
+
+<div style=\"border: 2px solid red; padding: 0.4em 0.7em; background: #fcc\">Note: The SCOVO vocabulary is deprecated. We strongly advise to use the <a href=\"http://www.w3.org/TR/vocab-data-cube/\">Data Cube Vocabulary</a> instead.</div>""";
+                             <http://purl.org/dc/terms/modified> "2012-08-09"^^xsd:date;
+                             <http://purl.org/dc/terms/partOf> <http://vocab.deri.ie/>;
+                             <http://purl.org/dc/terms/publisher> "http://vocab.deri.ie/scovo#LiDRC";
+                             <http://purl.org/dc/terms/status> <http://purl.org/adms/status/UnderDevelopment>;
+                             <http://purl.org/dc/terms/title> "The Statistical Core Vocabulary (SCOVO)";
+                             <http://purl.org/dc/terms/type> <http://purl.org/adms/assettype/Ontology>;
+                             <http://purl.org/vocab/vann/preferredNamespacePrefix> "scovo";
+                             <http://purl.org/vocab/vann/preferredNamespaceUri> "http://purl.org/NET/scovo#";
+                             a <http://www.w3.org/2002/07/owl#Ontology>,
+                               <http://www.w3.org/ns/adms#SemanticAsset>;
+                             <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/scovo.html>.
+<http://vocab.deri.ie/scovo#JOANNEUM%20RESEARCH> a <http://purl.org/dc/terms/Agent>;
+                                                 <http://xmlns.com/foaf/0.1/homepage> <http://www.joanneum.at/en/digital/iis.html>;
+                                                 <http://xmlns.com/foaf/0.1/member> <http://vocab.deri.ie/scovo#whalb>;
+                                                 <http://xmlns.com/foaf/0.1/name> "JOANNEUM RESEARCH".
+<http://vocab.deri.ie/scovo#LiDRC> a <http://purl.org/dc/terms/Agent>;
+                                   <http://xmlns.com/foaf/0.1/homepage> <http://linkeddata.deri.ie/>;
+                                   <http://xmlns.com/foaf/0.1/member> <http://vocab.deri.ie/scovo#Michael%20Hausenblas>;
+                                   <http://xmlns.com/foaf/0.1/name> "LiDRC".
+<http://vocab.deri.ie/scovo#Michael%20Hausenblas> a <http://xmlns.com/foaf/0.1/Person>;
+                                                  <http://xmlns.com/foaf/0.1/homepage> <http://sw-app.org/about.html>;
+                                                  <http://xmlns.com/foaf/0.1/mbox> <mailto:michael.hausenblas@deri.org>;
+                                                  <http://xmlns.com/foaf/0.1/name> "Michael Hausenblas".
+<http://vocab.deri.ie/scovo#dayers> a <http://xmlns.com/foaf/0.1/Person>;
+                                    <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/scovo>;
+                                    <http://xmlns.com/foaf/0.1/name> "Danny Ayers".
+<http://vocab.deri.ie/scovo#lfeigenbaum> a <http://xmlns.com/foaf/0.1/Person>;
+                                         <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/scovo>;
+                                         <http://xmlns.com/foaf/0.1/name> "Lee Feigenbaum".
+<http://vocab.deri.ie/scovo#rdf> <http://purl.org/dc/terms/FileFormat> <http://vocab.deri.ie/scovo>;
+                                 a <http://www.w3.org/ns/adms#SemanticDistribution>;
+                                 <http://www.w3.org/ns/adms#accessURL> "http://vocab.deri.ie/scovo.rdf";
+                                 <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.
+<http://vocab.deri.ie/scovo#theath> a <http://xmlns.com/foaf/0.1/Person>;
+                                    <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/scovo>;
+                                    <http://xmlns.com/foaf/0.1/name> "Tom Heath".
+<http://vocab.deri.ie/scovo#ttl> <http://purl.org/dc/terms/FileFormat> <http://vocab.deri.ie/scovo>;
+                                 a <http://www.w3.org/ns/adms#SemanticDistribution>;
+                                 <http://www.w3.org/ns/adms#accessURL> "http://vocab.deri.ie/scovo.ttl";
+                                 <http://www.w3.org/ns/adms#status> <http://purl.org/adms/status/Completed>.
+<http://vocab.deri.ie/scovo#whalb> a <http://xmlns.com/foaf/0.1/Person>;
+                                   <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/scovo>;
+                                   <http://xmlns.com/foaf/0.1/name> "Wolfgang Halb".
+<http://vocab.deri.ie/scovo#yraimond> a <http://xmlns.com/foaf/0.1/Person>;
+                                      <http://xmlns.com/foaf/0.1/homepage> <http://vocab.deri.ie/scovo>;
+                                      <http://xmlns.com/foaf/0.1/name> "Yves Raimond".

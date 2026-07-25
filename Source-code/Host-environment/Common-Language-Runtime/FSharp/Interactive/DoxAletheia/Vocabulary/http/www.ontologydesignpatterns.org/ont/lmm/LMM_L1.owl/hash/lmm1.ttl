@@ -1,0 +1,337 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix lmm1: <http://www.ontologydesignpatterns.org/ont/lmm/LMM_L1.owl#>.
+
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Community> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                  rdfs:subClassOf [<http://www.w3.org/2002/07/owl#minCardinality> "3"^^xsd:nonNegativeInteger ; 
+                                                                                   <http://www.w3.org/2002/07/owl#onProperty> <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#actsThrough> ; 
+                                                                                   a <http://www.w3.org/2002/07/owl#Restriction>].
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                    rdfs:subClassOf lmm1:Context.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationObject> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationRealization> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Place> a <http://www.w3.org/2002/07/owl#Class>;
+                                                              rdfs:subClassOf lmm1:Context.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                  rdfs:subClassOf lmm1:Reference,
+                                                                                  lmm1:Context.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialObject> a <http://www.w3.org/2002/07/owl#Class>;
+                                                                     <http://www.w3.org/2002/07/owl#equivalentClass> lmm1:Meaning.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#actsFor> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                rdfs:subPropertyOf lmm1:hasContext.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#actsThrough> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                    rdfs:subPropertyOf lmm1:isContextOf.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#characterizes> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                      rdfs:subPropertyOf lmm1:relatedMeaning.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#classifies> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                   rdfs:subPropertyOf lmm1:isInterpretationOf.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#concretelyExpresses> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                            rdfs:subPropertyOf lmm1:hasInterpretant.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#covers> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                               rdfs:subPropertyOf lmm1:relatedMeaning,
+                                                                                  lmm1:isInterpretationOf.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#describes> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                  rdfs:subPropertyOf lmm1:isInterpretationOf.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#expresses> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                  rdfs:subPropertyOf lmm1:hasInterpretant.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasComponent> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasLocation> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                    rdfs:subPropertyOf lmm1:hasContext.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasMember> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                  rdfs:subPropertyOf lmm1:isInterpretationOf,
+                                                                                     lmm1:isContextOf.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPart> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                rdfs:subPropertyOf lmm1:isContextOf.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                       rdfs:subPropertyOf lmm1:isContextOf.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasSetting> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                   rdfs:subPropertyOf lmm1:hasContext.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#introduces> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                   rdfs:subPropertyOf lmm1:isContextOf.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isAbout> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isCharacterizedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                          rdfs:subPropertyOf lmm1:relatedMeaning.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isClassifiedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                       rdfs:subPropertyOf lmm1:hasInterpretation.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isConceptUsedIn> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                        rdfs:subPropertyOf lmm1:relatedMeaning,
+                                                                                           lmm1:hasContext.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isConcretelyExpressedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                                rdfs:subPropertyOf lmm1:isInterpretantFor.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isCoveredBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                    rdfs:subPropertyOf lmm1:relatedMeaning,
+                                                                                       lmm1:hasInterpretation.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isDescribedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                      rdfs:subPropertyOf lmm1:hasInterpretation.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isExpressedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                      rdfs:subPropertyOf lmm1:isInterpretantFor.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isIntroducedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                       rdfs:subPropertyOf lmm1:hasContext.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isLocationOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                     rdfs:subPropertyOf lmm1:isContextOf.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isMemberOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                   rdfs:subPropertyOf lmm1:hasInterpretation,
+                                                                                      lmm1:hasContext.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isPartOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                 rdfs:subPropertyOf lmm1:hasContext.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isParticipantIn> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                        rdfs:subPropertyOf lmm1:hasContext.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isReferenceOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isRelatedToConcept> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                           rdfs:subPropertyOf lmm1:relatedMeaning.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isRelatedToDescription> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                               rdfs:subPropertyOf lmm1:relatedMeaning.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isSatisfiedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                      rdfs:subPropertyOf lmm1:isInterpretationOf.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isSettingFor> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                     rdfs:subPropertyOf lmm1:isContextOf.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isSpecializedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                        rdfs:subPropertyOf lmm1:relatedMeaning.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isUnifiedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                    rdfs:subPropertyOf lmm1:relatedMeaning,
+                                                                                       lmm1:hasInterpretation.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#satisfies> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                  rdfs:subPropertyOf lmm1:hasInterpretation.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#specializes> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                    rdfs:subPropertyOf lmm1:relatedMeaning.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#unifies> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                rdfs:subPropertyOf lmm1:relatedMeaning,
+                                                                                   lmm1:isInterpretationOf.
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#usesConcept> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                    rdfs:subPropertyOf lmm1:relatedMeaning,
+                                                                                       lmm1:isContextOf.
+<http://www.ontologydesignpatterns.org/ont/dul/IOLite.owl#LinguisticObject> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.ontologydesignpatterns.org/ont/dul/IOLite.owl#hasCulturalGrounding> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                                rdfs:subPropertyOf lmm1:relatedMeaning.
+<http://www.ontologydesignpatterns.org/ont/dul/IOLite.owl#hasCulturalMixingWith> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                                 rdfs:subPropertyOf lmm1:relatedMeaning.
+<http://www.ontologydesignpatterns.org/ont/dul/IOLite.owl#hasGrounding> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                        rdfs:comment "A relation between a dul:Entity and a dul:FormalEntity, which can be used to give a semiotic ('natural') counterpart to a formal entity, such as a Class, a Relation, a SetBuilder, etc. See also the ontology: FormalSemantics.owl".
+<http://www.ontologydesignpatterns.org/ont/dul/IOLite.owl#isCulturalGroundingFor> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                                  rdfs:subPropertyOf lmm1:relatedMeaning.
+<http://www.ontologydesignpatterns.org/ont/dul/IOLite.owl#isGroundingFor> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                          rdfs:comment "A relation between a dul:Entity and a dul:FormalEntity, which can be used to give a semiotic ('natural') counterpart to a formal entity, such as a Class, a Relation, a SetBuilder, etc. See also the ontology: FormalSemantics.owl".
+<http://www.ontologydesignpatterns.org/ont/dul/IOLite.owl#metaphoricallyBlendsWith> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                                    rdfs:subPropertyOf lmm1:relatedMeaning.
+<http://www.ontologydesignpatterns.org/ont/lmm/LMM_L1.owl> a <http://www.w3.org/2002/07/owl#Ontology>;
+                                                           rdfs:comment """This ontology is a composition of some content design patterns for the semiotic triangle.
+Its structure is extracted from DOLCE-Ultralite (DOLCE+c.DnS), but it uses a different terminology, and explicitly defines the semiotic function: Expression is the semiotic term for dul:InformationObject, when they actually express or denote something; Meaning is the semiotic term for dul:SocialObject, when they are actually expressed by something, or are interpretation of something; Reference is the semiotic term for dul:Entity, when they are interpreted or denoted by something.
+The denotes relation is equivalent to dul:isAbout, the expresses relation is imported from DOLCE Ultralite, and the hasInterpretation relation generalizes over: dul:isClassifiedBy, dul:isCoveredBy, dul:isDescribedBy, dul:isUnifiedBy, and dul:satisfies
+
+Extensions to the triangle:
+A typical extension of the semiotic triangle concerns the participation of agents: this is introduced by using the dul:conceptualizes relation, holding between a dul:Agent and a dul:SocialObject (the Meaning). 
+An additional extension concerns semiotic context: this is provided by including four notions of 'Context': 'Paradigm' (the context of the conceptualized meaning), 'KnowledgeCollective' (the context of agents that conceptualize the paradigm), 'Cotext' (the context of expressions), and dul:Situation (the context of denoted entities).
+A final extension links semiotics to formal semantics: this is provided by reusing dul:FormalEntity, iol:isGroundingFor, iol:FormalExpression, iol:isAssignedTo, iol:FormalLanguage, etc.
+
+The complete pattern allows to declare relations between Expression(s) and their Reference(s) (denotes), between Expression(s) and their Meaning (dul:expresses), between Meaning(s) and Reference(s) (isInterpretationOf), between Reference(s) and dul:FormalEntity(ies) (iol:isGroundingFor), between dul:FormalEntity(ies) and iol:FormalExpression(s) (iol:isAssignedTo).
+
+This 'formalization pathway' moves from Expression(s) to iol:FormalExpression(s) by taking into account both Meaning(s) and Referent(s). The informal denotation of Expression(s) is moved to a formal denotation (iol:isAssignedTo) of iol:FormalExpression(s).
+For example: the Expression 'Mariachi' dul:expresses the dul:Concept (Meaning) 'MexicanStreetSinger' that isInterpretationOf the dul:Collection (Reference) 'TheStreetSingersFromMexico'. 'TheStreetSingersFromMexico' then iol:isGroundingFor e.g. the dul:Set (dul:FormalEntity) that includes all Mexican street singers, which iol:isAssignedTo e.g. the iol:FormalExpression 'owl:Class#Mariachi'.
+
+The formalization pathway enables a technique to move from/to socio-cognitive and formal semantics through denotation, in the Tarskian sense. As a matter of fact, translating directly a Meaning into a FormalEntity (or viceversa) is not always clearly implementable, while passing through an extensional grounding is easier and more accessible to intuition.
+
+Among possible uses, information extraction, ontology learning, KOS reengineering, lexical semantics, etc. For example, statistical learning of instances for a dul:Concept would be modelled as the building of a dul:Collection that isInterpretationOf the dul:Concept, but also dul:isGroundingFor a dul:Set that iol:isAssignedTo e.g. an owl:Class.
+
+An additional semiotic pattern is based on the hasInterpretant relation, which allows to link two Expression(s) (or dul:InformationRealization(s)), when the second one counts as a Meaning (or a relatedMeaning) of the first. 
+In practice, this is implemented by allowing a relation between an Expression (or its realization), and whatever Meaning (or another dul:InformationRealization). Technically speaking, the correct path would be passing through another Expression used to express a Meaning for the first one:
+
+(Exp1 hasInterpretant some (Exp2 and expresses some (Meaning and isExpressedBy some Exp1)))
+
+or even:
+
+(Exp1 hasInterpretant some (Exp2 and expresses some (Meaning and relatedMeaning some (Meaning and isExpressedBy some Exp1))))
+
+but given the expressive power of OWL, which lacks co-reference, this is the best sub-optimal solution."""@en;
+                                                           rdfs:label "Lexical MetaModel Level 1";
+                                                           <http://www.w3.org/2002/07/owl#imports> <http://www.ontologydesignpatterns.org/ont/dul/IOLite.owl>;
+                                                           <http://www.w3.org/2002/07/owl#versionInfo> """1.8
+1.2 
+- contains fine-tuning of cross-context relations. Now, the formalization pathway goes from expression to meaning to reference to formal entity to formal expression.
+1.3 
+- has all elements with English labels. Moreover, I added the relatedMeaning property, which allows to query across all object properties that have a Meaning in both domain and range.
+1.4 
+- has a new relation: hasInterpretant, based on Peirce's semiotics, which is applied between any two Expression(s), where the second provides an interpretive context for the first.
+1.5 
+- fixes a bug in the domain and range of isContextOf, now both generalized to dul:Entity, and consequently, Context is equivalently defined as anything that isContextOf some dul:Entity; some comments have also been edited.
+1.6 
+- added equivalentClass axiom between lmm:Meaning and dul:SocialObject (simplifies applications).
+1.7 
+- aligned all locally defined object properties to dul:associatedWith.
+1.8
+- simplified several restrictions in the semiotic pattern core, for improving reasoning performance.""".
+lmm1:CoText a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:comment """The context of an Expression .
+A CoText is a neighborhood of a certain chunk of text, which can be built based on a syntactic rule (all words from the sentence
+where the chunk occurs), an associative rule (all terms that are related to the chunk across the texts of a corpus, 
+given a certain statistical threshold), etc.""";
+            rdfs:label "Co-text"@en,
+                       "Cotesto {it}";
+            rdfs:subClassOf lmm1:Context,
+                            <http://www.ontologydesignpatterns.org/ont/dul/IOLite.owl#LinguisticObject>,
+                            <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection>;
+            <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> (lmm1:Context
+                                                                                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> lmm1:Expression ; 
+                                                                                                             <http://www.w3.org/2002/07/owl#onProperty> <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasMember> ; 
+                                                                                                             a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> lmm1:ConstructionRule ; 
+                                                                                                             <http://www.w3.org/2002/07/owl#onProperty> <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isUnifiedBy> ; 
+                                                                                                             a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                             a <http://www.w3.org/2002/07/owl#Class>].
+lmm1:ConstructionRule a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "A description of how to build an entity. For example, a logical rule, a productive rule, a statistical algorithm, etc.";
+                      rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description>.
+lmm1:Context a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment """Any context, such as:
+
+- dul:Situation (the circumstantial context of denoted Entity(ies))
+- Paradigm (the cultural context of expressed Meaning(s))
+- CoText (the informational context of Expression(s))
+- dul:Description (the relational context of Concept(s))
+- KnowledgeCommunity (the social context of conceptualizing Agent(s))
+- dul:Place (the spatial context of Entity(ies))
+
+but also a dul:PhysicalPlace, a dul:Event, etc. In practice, everything that is said to be a context for something else.
+
+Notice that certain contexts can be given independently from the entities that are contextualized (e.g. the ones listed above), others need a core entity and a rule to build its neighborhood, and still others can be classified as such when a certain relation is applied to them.
+For example, a scientific theory is a dul:Description that works as a context for its dul:Concept(s), and can be given independently from the concepts, which can remain implicit to a certain extent. On the contrary, a CoText is actually a neighborhood of a certain chunk of text, which can be built based on a syntagmatic rule (all words from the sentence where the chunk occurs), an associative rule (all terms that are related to the chunk across the texts of a corpus, given a certain statistical threshold), etc.
+Contexts can also emerge based on what relations are considered \"context triggers\". For example, in this ontology very different relations: part, participation, setting, membership, acting for, localization, etc. are considered context triggers by adding owl:subPropertyOf axioms to the property: isContextOf. Since the class Context has an equivalent axiom to isContextOf someValuesFrom dul:Entity, everything has a property that is declared subPropertyOf isContextOf, will be inferred to be a Context as well.""";
+             rdfs:label "Contesto"@it,
+                        "Context"@en,
+                        "Contesto {it}";
+             rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity>;
+             <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity> ; 
+                                                              <http://www.w3.org/2002/07/owl#onProperty> lmm1:isContextOf ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>].
+lmm1:Expression a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:comment "Any information that either dul:expresses a Meaning or denotes a Reference";
+                rdfs:label "Expression"@en,
+                           "Expression";
+                rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationObject>;
+                <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> lmm1:Meaning ; 
+                                                                                                          <http://www.w3.org/2002/07/owl#onProperty> <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#expresses> ; 
+                                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                          [<http://www.w3.org/2002/07/owl#someValuesFrom> lmm1:Reference ; 
+                                                                                                          <http://www.w3.org/2002/07/owl#onProperty> lmm1:denotes ; 
+                                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                 a <http://www.w3.org/2002/07/owl#Class>].
+lmm1:KnowledgeCommunity a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "The context of agents that conceptualize a same Paradigm. This restriction cannot be represented in OWL in general, but should be encoded for specific knowledge communities by stating the specific paradigm that agents acting for it must conceptualize.";
+                        rdfs:label "Knowledge community"@en,
+                                   "Comunità di conoscenza {it}";
+                        rdfs:subClassOf lmm1:Context,
+                                        <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Community>.
+lmm1:Meaning a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Any conceptualization that dul:isExpressedBy an Expression, or isInterpretationOf a Reference";
+             rdfs:label "Meaning"@en,
+                        "Meaning";
+             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> lmm1:Expression ; 
+                              <http://www.w3.org/2002/07/owl#onProperty> <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isExpressedBy> ; 
+                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                             <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#SocialObject>;
+             <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#someValuesFrom> lmm1:Expression ; 
+                                                              <http://www.w3.org/2002/07/owl#onProperty> <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isExpressedBy> ; 
+                                                              a <http://www.w3.org/2002/07/owl#Restriction>].
+lmm1:Paradigm a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "The context of an expressed Meaning";
+              rdfs:label "Paradigm"@en,
+                         "Paradigma {it}";
+              rdfs:subClassOf [<http://www.w3.org/2002/07/owl#someValuesFrom> lmm1:Meaning ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasComponent> ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              [<http://www.w3.org/2002/07/owl#minCardinality> "2"^^xsd:nonNegativeInteger ; 
+                               <http://www.w3.org/2002/07/owl#onProperty> <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasComponent> ; 
+                               a <http://www.w3.org/2002/07/owl#Restriction>],
+                              lmm1:Context,
+                              <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description>.
+lmm1:Reference a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Any Entity that isDenotedBy an Expression, or that hasInterpretation some Meaning";
+               rdfs:label "Reference"@en,
+                          "Reference";
+               rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity>;
+               <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> lmm1:Meaning ; 
+                                                                                                         <http://www.w3.org/2002/07/owl#onProperty> lmm1:hasInterpretation ; 
+                                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                         [<http://www.w3.org/2002/07/owl#someValuesFrom> lmm1:Expression ; 
+                                                                                                         <http://www.w3.org/2002/07/owl#onProperty> lmm1:isDenotedBy ; 
+                                                                                                         a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                a <http://www.w3.org/2002/07/owl#Class>].
+lmm1:denotes a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:comment """A relation between expressions and any Entity (including expressions). 
+It can be used to talk about e.g. entities denoted by proper nouns: the proper noun 'Leonardo da Vinci' denotes the Person Leonardo da Vinci; as well as to talk about sets of entities that can be described by a common noun: the common noun 'person' denotes the collection of all persons in a domain of discourse.""";
+             rdfs:domain lmm1:Expression;
+             rdfs:label "denotes"@en;
+             rdfs:range lmm1:Reference;
+             rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isAbout>.
+lmm1:hasContext a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "A catch-all property for all notions of Context considered in LMM.";
+                rdfs:domain <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity>;
+                rdfs:range <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity>;
+                rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith>.
+lmm1:hasInterpretant a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:comment """The Peircean interpretant relation, widely adopted in semiotics: a dul:InformationObject isInterpretantFor another, e.g. fourLeggedFriendOfHumans isInterpretantFor dog. 
+Synonymy, associativity, and even topical proximity are all sources for interpretants, e.g.: domestic dog isInterpretantFor dog (synonymy); bark isInterpretantFor dog (associativity); veterinary isInterpretantFor dog (topical proximity).
+Semantic mechanisms such as metonymy depend on the interpretant relation.
+The interpretant relation is here taken as very broad, also accepting InformationRealization(s) as interpretants.""";
+                     rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationRealization>
+                                                                           lmm1:Expression) ; 
+                                  a <http://www.w3.org/2002/07/owl#Class>];
+                     rdfs:label "has interpretant"@en;
+                     rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationRealization>
+                                                                          lmm1:Meaning) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>];
+                     rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith>;
+                     <http://www.w3.org/2002/07/owl#inverseOf> lmm1:isInterpretantFor.
+lmm1:hasInterpretation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment """The relation between a Meaning and a Reference : a Meaning gives unity to a Collection of entities.
+A same Reference can be given different interpretations, for example, an old cradle can be given a unifying Meaning based on the original aesthetic design, the functionality it was built for, or a new aesthetic functionality in which it can be used as a flower pot.
+This relation allows to generalize over the following DOLCE-Ultralite relations: dul:isClassifedBy, dul:isCoveredBy, dul:isDescribedBy, dul:isUnifiedBy, and dul:satisfies""";
+                       rdfs:domain lmm1:Reference;
+                       rdfs:label "has interpretation"@en;
+                       rdfs:range lmm1:Meaning;
+                       rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith>;
+                       <http://www.w3.org/2002/07/owl#inverseOf> lmm1:isInterpretationOf.
+lmm1:isContextOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity>;
+                 rdfs:range <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity>;
+                 rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith>;
+                 <http://www.w3.org/2002/07/owl#inverseOf> lmm1:hasContext.
+lmm1:isDenotedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain lmm1:Reference;
+                 rdfs:label "is denoted by"@en;
+                 rdfs:range lmm1:Expression;
+                 rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isReferenceOf>;
+                 <http://www.w3.org/2002/07/owl#inverseOf> lmm1:denotes.
+lmm1:isInterpretantFor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment """The Peircean interpretant relation, widely adopted in semiotics: a dul:InformationObject isInterpretantFor another, e.g. fourLeggedFriendOfHumans isInterpretantFor dog. 
+Synonymy, associativity, and even topical proximity are all sources for interpretants, e.g.: domestic dog isInterpretantFor dog (synonymy); bark isInterpretantFor dog (associativity); veterinary isInterpretantFor dog (topical proximity).
+Semantic mechanisms such as metonymy depend on the interpretant relation.
+The interpretant relation is here taken as very broad, also accepting realization of information as interpretants.""";
+                       rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationRealization>
+                                                                             lmm1:Meaning) ; 
+                                    a <http://www.w3.org/2002/07/owl#Class>];
+                       rdfs:label "is interpretant for"@en;
+                       rdfs:range [<http://www.w3.org/2002/07/owl#unionOf> (<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationRealization>
+                                                                            lmm1:Expression) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>];
+                       rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith>.
+lmm1:isInterpretationOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment """The relation between a Meaning and a Reference : a Meaning gives unity to an Entity or to a Collection of entities.
+A same Reference can be given different interpretations, for example, an old cradle can be given a unifying Meaning based on the original aesthetic design, the functionality it was built for, or a new aesthetic functionality in which it can be used as a flower pot.
+This relation allows to generalize over the following DOLCE-Ultralite relations: dul:classifies, dul:covers, dul:describes, dul:unifies, and dul:isSatisfiedBy""";
+                        rdfs:domain lmm1:Meaning;
+                        rdfs:label "is interpretation of"@en;
+                        rdfs:range lmm1:Reference;
+                        rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith>.
+lmm1:relatedMeaning a <http://www.w3.org/2002/07/owl#SymmetricProperty>,
+                      <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:comment "A relation between any two meanings.";
+                    rdfs:domain lmm1:Meaning;
+                    rdfs:label "related meaning"@en;
+                    rdfs:range lmm1:Meaning;
+                    rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith>;
+                    <http://www.w3.org/2002/07/owl#inverseOf> lmm1:relatedMeaning.
+<http://www.w3.org/2002/07/owl#Thing> a <http://www.w3.org/2002/07/owl#Class>.

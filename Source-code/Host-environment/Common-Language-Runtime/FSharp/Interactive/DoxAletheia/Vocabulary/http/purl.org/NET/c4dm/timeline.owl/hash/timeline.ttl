@@ -1,0 +1,528 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix timeline: <http://purl.org/NET/c4dm/timeline.owl#>.
+
+<http://moustaki.org/foaf.rdf#moustaki> a <http://xmlns.com/foaf/0.1/Person>.
+<http://purl.org/NET/c4dm/timeline.owl> a <http://www.w3.org/2002/07/owl#Thing>,
+                                          <http://www.w3.org/2002/07/owl#Ontology>;
+                                        rdfs:comment """
+    	Extends owl-time ontology (http://www.w3.org/2006/time) with  
+	support for several timelines, acting as a backbone to adress 
+	time interval/instants. 
+
+	Mainly designed with a multimedia use-case in mind.
+
+	Copyright (c) Yves Raimond, Samer Abdallah, Centre for Digital Music, Queen Mary, University of London
+	""";
+                                        rdfs:label "The Timeline ontology";
+                                        <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/2006/time>,
+                                                                                <http://www.w3.org/2006/time-entry>;
+                                        <http://xmlns.com/foaf/0.1/maker> <http://moustaki.org/foaf.rdf#moustaki>.
+timeline:AbstractInstant a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "An instant defined on an abstract timeline";
+                         rdfs:label "abstract instant";
+                         rdfs:subClassOf timeline:Instant;
+                         <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#onProperty> timeline:timeline ; 
+                                                                          <http://www.w3.org/2002/07/owl#someValuesFrom> timeline:AbstractTimeLine ; 
+                                                                          a <http://www.w3.org/2002/07/owl#Restriction>];
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:AbstractInterval a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment """
+	An interval defined on an abstract time-line.
+    """;
+                          rdfs:label "abstract interval";
+                          rdfs:subClassOf timeline:Interval;
+                          <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#onProperty> timeline:timeline ; 
+                                                                           <http://www.w3.org/2002/07/owl#someValuesFrom> timeline:AbstractTimeLine ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Restriction>];
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:AbstractTimeLine a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment """
+    	Abstract time lines may be used as a backbone for Score, Works, ... 
+	This allows for TimeLine maps to relate works to a given 
+	performance (this part was played at this time).""";
+                          rdfs:label "abstract timeline";
+                          rdfs:subClassOf timeline:TimeLine;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:ContinuousTimeLine a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "A continuous timeline, like the universal one, or the one backing an analog signal";
+                            rdfs:label "continuous timeline";
+                            rdfs:subClassOf timeline:TimeLine;
+                            <http://www.w3.org/2002/07/owl#disjointWith> timeline:DiscreteTimeLine;
+                            <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#unionOf> (timeline:PhysicalTimeLine
+                                                                                                                      timeline:RelativeTimeLine) ; 
+                                                                             a <http://www.w3.org/2002/07/owl#Class>];
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:DiscreteInstant a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "An instant defined on a discrete timeline";
+                         rdfs:label "discrete instant";
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                          <http://www.w3.org/2002/07/owl#onProperty> timeline:atInt ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>];
+                         <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#someValuesFrom> timeline:DiscreteTimeLine ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#onProperty> timeline:timeline ; 
+                                                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                          timeline:Instant) ; 
+                                                                          a <http://www.w3.org/2002/07/owl#Class>];
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:DiscreteInterval a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "An interval defined on a discrete timeline, like the one backing a digital signal";
+                          rdfs:label "discrete interval";
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                                    <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#hasBeginning> ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                    [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                                    <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#hasEnd> ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Class>]
+                                                                                    [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onProperty> timeline:beginsAtInt ; 
+                                                                                                                                    <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                    [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                                    <http://www.w3.org/2002/07/owl#onProperty> timeline:endsAtInt ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Class>]
+                                                                                    [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onProperty> timeline:beginsAtInt ; 
+                                                                                                                                    <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                    [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                                    <http://www.w3.org/2002/07/owl#onProperty> timeline:durationInt ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Class>]) ; 
+                                           a <http://www.w3.org/2002/07/owl#Class>];
+                          <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onProperty> timeline:timeline ; 
+                                                                                                                           <http://www.w3.org/2002/07/owl#someValuesFrom> timeline:DiscreteTimeLine ; 
+                                                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                           timeline:Interval) ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Class>];
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:DiscreteTimeLine a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "A discrete time line (like the time line backing a digital signal";
+                          rdfs:label "discrete time line";
+                          rdfs:subClassOf timeline:TimeLine;
+                          <http://www.w3.org/2002/07/owl#disjointWith> timeline:ContinuousTimeLine;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:Instant a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "An instant (same as in OWL-Time)";
+                 rdfs:label "instant";
+                 <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.w3.org/2006/time#Instant>;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:Interval a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "An interval (same as in OWL-Time). Allen's relationships are defined in OWL-Time.";
+                  rdfs:label "interval";
+                  <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.w3.org/2006/time#ProperInterval>;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:OriginMap a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "A timeline map linking a physical timeline to a relative one (originating at some point on the physical timeline)";
+                   rdfs:label "origin map";
+                   rdfs:subClassOf timeline:TimeLineMap,
+                                   [<http://www.w3.org/2002/07/owl#onProperty> timeline:domainTimeLine ; 
+                                    <http://www.w3.org/2002/07/owl#someValuesFrom> timeline:PhysicalTimeLine ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>],
+                                   [<http://www.w3.org/2002/07/owl#onProperty> timeline:rangeTimeLine ; 
+                                    <http://www.w3.org/2002/07/owl#someValuesFrom> timeline:RelativeTimeLine ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>];
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:PhysicalTimeLine a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment """A \"physical\" time-line (the universal time line (UTC)) is an instance of this class. Other time zones consists in instances of this class as well, with a \"shifting\" time line map relating them to the universal time line map.""";
+                          rdfs:label "physical timeline";
+                          rdfs:subClassOf timeline:ContinuousTimeLine;
+                          <http://www.w3.org/2002/07/owl#disjointWith> timeline:RelativeTimeLine;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:RelativeInstant a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "An instant defined on a relative timeline";
+                         rdfs:label "relative instant";
+                         rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> timeline:atDuration ; 
+                                          <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                          a <http://www.w3.org/2002/07/owl#Restriction>];
+                         <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onProperty> timeline:timeline ; 
+                                                                                                                          <http://www.w3.org/2002/07/owl#someValuesFrom> timeline:RelativeTimeLine ; 
+                                                                                                                          a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                          timeline:Instant) ; 
+                                                                          a <http://www.w3.org/2002/07/owl#Class>];
+                         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:RelativeInterval a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "an interval defined on a relative timeline";
+                          rdfs:label "relative interval";
+                          rdfs:subClassOf [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#hasBeginning> ; 
+                                                                                                                                    <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                    [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#hasEnd> ; 
+                                                                                                                                    <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Class>]
+                                                                                    [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                                    <http://www.w3.org/2002/07/owl#onProperty> timeline:beginsAtDuration ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                    [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                                    <http://www.w3.org/2002/07/owl#onProperty> timeline:durationXSD ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Class>]
+                                                                                    [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onProperty> timeline:beginsAtDuration ; 
+                                                                                                                                    <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                                    [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                                    <http://www.w3.org/2002/07/owl#onProperty> timeline:endsAtDuration ; 
+                                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                                    a <http://www.w3.org/2002/07/owl#Class>]) ; 
+                                           a <http://www.w3.org/2002/07/owl#Class>];
+                          <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onProperty> timeline:timeline ; 
+                                                                                                                           <http://www.w3.org/2002/07/owl#someValuesFrom> timeline:RelativeTimeLine ; 
+                                                                                                                           a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                           timeline:Interval) ; 
+                                                                           a <http://www.w3.org/2002/07/owl#Class>];
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:RelativeTimeLine a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Semi infinite time line...canonical coordinate system --> adressed through xsd:duration since the instant 0.";
+                          rdfs:label "relative timeline";
+                          rdfs:subClassOf timeline:ContinuousTimeLine;
+                          <http://www.w3.org/2002/07/owl#disjointWith> timeline:PhysicalTimeLine;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:ShiftMap a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment "a map just shifting one timeline to another";
+                  rdfs:label "shift map";
+                  rdfs:subClassOf timeline:TimeLineMap;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:TimeLine a <http://www.w3.org/2002/07/owl#Class>;
+                  rdfs:comment """Represents a linear and coherent piece of time -- can be either abstract (such as the one behind a score) or concrete (such as the universal time line).
+Two timelines can be mapped using timeline maps.""";
+                  rdfs:label "timeline";
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:TimeLineMap a <http://www.w3.org/2002/07/owl#Class>;
+                     rdfs:comment "Allows to map two time lines together";
+                     rdfs:label "timeline map";
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:UTInstant a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "This concept expresses that an instant defined on the universal timeline must be associated to a dateTime value";
+                   rdfs:label "instant on the universal timeline";
+                   rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> timeline:atDateTime ; 
+                                    <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                    a <http://www.w3.org/2002/07/owl#Restriction>];
+                   <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onProperty> timeline:timeline ; 
+                                                                                                                    <http://www.w3.org/2002/07/owl#hasValue> timeline:universaltimeline ; 
+                                                                                                                    a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                    timeline:Instant) ; 
+                                                                    a <http://www.w3.org/2002/07/owl#Class>];
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:UTInterval a <http://www.w3.org/2002/07/owl#Class>;
+                    rdfs:comment "an interval defined on the universal time line";
+                    rdfs:label "universal timeline interval";
+                    rdfs:subClassOf [<http://www.w3.org/2002/07/owl#unionOf> ([<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                              <http://www.w3.org/2002/07/owl#onProperty> timeline:atYear ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                              [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                              <http://www.w3.org/2002/07/owl#onProperty> timeline:atYearMonth ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                              [<http://www.w3.org/2002/07/owl#onProperty> timeline:atDate ; 
+                                                                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                              [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                              <http://www.w3.org/2002/07/owl#onProperty> timeline:beginsAtDateTime ; 
+                                                                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                              [<http://www.w3.org/2002/07/owl#onProperty> timeline:durationXSD ; 
+                                                                                                                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Class>]
+                                                                              [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#hasBeginning> ; 
+                                                                                                                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                              [<http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#hasEnd> ; 
+                                                                                                                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Class>]
+                                                                              [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                              <http://www.w3.org/2002/07/owl#onProperty> timeline:beginsAtDateTime ; 
+                                                                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                              [<http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                                                                                              <http://www.w3.org/2002/07/owl#onProperty> timeline:endsAtDateTime ; 
+                                                                                                                              a <http://www.w3.org/2002/07/owl#Restriction>]) ; 
+                                                                              a <http://www.w3.org/2002/07/owl#Class>]) ; 
+                                     a <http://www.w3.org/2002/07/owl#Class>];
+                    <http://www.w3.org/2002/07/owl#equivalentClass> [<http://www.w3.org/2002/07/owl#intersectionOf> ([<http://www.w3.org/2002/07/owl#hasValue> timeline:universaltimeline ; 
+                                                                                                                     <http://www.w3.org/2002/07/owl#onProperty> timeline:timeline ; 
+                                                                                                                     a <http://www.w3.org/2002/07/owl#Restriction>]
+                                                                                                                     timeline:Interval) ; 
+                                                                     a <http://www.w3.org/2002/07/owl#Class>];
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:UniformSamplingMap a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "Describe the relation between a continuous time-line and its sampled equivalent";
+                            rdfs:label "uniform sampling map";
+                            rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> timeline:sampleRate ; 
+                                             <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> timeline:DiscreteTimeLine ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> timeline:rangeTimeLine ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            [<http://www.w3.org/2002/07/owl#someValuesFrom> timeline:RelativeTimeLine ; 
+                                             <http://www.w3.org/2002/07/owl#onProperty> timeline:domainTimeLine ; 
+                                             a <http://www.w3.org/2002/07/owl#Restriction>],
+                                            timeline:TimeLineMap;
+                            <http://www.w3.org/2002/07/owl#disjointWith> timeline:UniformWindowingMap,
+                                                                         timeline:UniformSamplingWindowingMap;
+                            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:UniformSamplingWindowingMap a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "Describes the relation between a continuous time-line, and a time-line that corresponds to its sampled and windowed equivalent";
+                                     rdfs:label "Uniform sampling and windowing map";
+                                     rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> timeline:windowLength ; 
+                                                      <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     [<http://www.w3.org/2002/07/owl#onProperty> timeline:sampleRate ; 
+                                                      <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     [<http://www.w3.org/2002/07/owl#onProperty> timeline:rangeTimeLine ; 
+                                                      <http://www.w3.org/2002/07/owl#someValuesFrom> timeline:DiscreteTimeLine ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     [<http://www.w3.org/2002/07/owl#onProperty> timeline:hopSize ; 
+                                                      <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>],
+                                                     timeline:TimeLineMap,
+                                                     [<http://www.w3.org/2002/07/owl#someValuesFrom> timeline:ContinuousTimeLine ; 
+                                                      <http://www.w3.org/2002/07/owl#onProperty> timeline:domainTimeLine ; 
+                                                      a <http://www.w3.org/2002/07/owl#Restriction>];
+                                     <http://www.w3.org/2002/07/owl#disjointWith> timeline:UniformSamplingMap,
+                                                                                  timeline:UniformWindowingMap;
+                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:UniformWindowingMap a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Describes the relation between a discrete time line and its windowed equivalent";
+                             rdfs:label "uniform windowing map";
+                             rdfs:subClassOf [<http://www.w3.org/2002/07/owl#onProperty> timeline:windowLength ; 
+                                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#onProperty> timeline:rangeTimeLine ; 
+                                              <http://www.w3.org/2002/07/owl#someValuesFrom> timeline:DiscreteTimeLine ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             [<http://www.w3.org/2002/07/owl#someValuesFrom> timeline:DiscreteTimeLine ; 
+                                              <http://www.w3.org/2002/07/owl#onProperty> timeline:domainTimeLine ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>],
+                                             timeline:TimeLineMap,
+                                             [<http://www.w3.org/2002/07/owl#onProperty> timeline:hopSize ; 
+                                              <http://www.w3.org/2002/07/owl#cardinality> "1"^^xsd:int ; 
+                                              a <http://www.w3.org/2002/07/owl#Restriction>];
+                             <http://www.w3.org/2002/07/owl#disjointWith> timeline:UniformSamplingWindowingMap,
+                                                                          timeline:UniformSamplingMap;
+                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:after a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.w3.org/2006/time#intervalAfter>.
+timeline:at a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+            rdfs:comment "refers to a point or an interval on the time line, through an explicit datatype";
+            rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (timeline:Interval
+                                                                  timeline:Instant) ; 
+                         a <http://www.w3.org/2002/07/owl#Class>];
+            rdfs:label "at";
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:atDate a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "A subproperty of :at, allowing to address a date (beginning of it for an instant, all of it for an interval)";
+                rdfs:label "at (date)";
+                rdfs:range xsd:date;
+                rdfs:subPropertyOf timeline:at;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:atDateTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "This property links an instant defined on the universal time line to an XSD date/time value";
+                    rdfs:label "at date/time";
+                    rdfs:range xsd:dateTime;
+                    rdfs:subPropertyOf timeline:at;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:atDuration a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "A property enabling to adress a time point P through the duration of the interval [0,P] on a continuous timeline";
+                    rdfs:label "at (duration)";
+                    rdfs:range xsd:duration;
+                    rdfs:subPropertyOf timeline:at;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:atInt a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment "A subproperty of :at, having as a specific range xsd:int";
+               rdfs:label "at (integer)";
+               rdfs:range xsd:int;
+               rdfs:subPropertyOf timeline:at;
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:atReal a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "subproperty of :at, having xsd:float as a range";
+                rdfs:label "at (real)";
+                rdfs:range xsd:float;
+                rdfs:subPropertyOf timeline:at;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:atYear a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:comment "A subproperty of :at, allowing to address a year (beginning of it for an instant, all of it for an interval)";
+                rdfs:label "at (year)";
+                rdfs:range xsd:gYear;
+                rdfs:subPropertyOf timeline:at;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:atYearMonth a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "A subproperty of :at, allowing to address a year/month (beginning of it for an instant, all of it for an interval)";
+                     rdfs:label "at (year/month)";
+                     rdfs:range xsd:gYearMonth;
+                     rdfs:subPropertyOf timeline:at;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:before a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.w3.org/2006/time#intervalBefore>.
+timeline:beginsAt a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  <http://www.w3.org/2002/07/owl#equivalentProperty> timeline:start.
+timeline:beginsAtDateTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:comment "A subproperty of :beginsAt, allowing to address the beginning of an interval as a date/time";
+                          rdfs:label "begins at (date/time)";
+                          rdfs:range xsd:dateTime;
+                          rdfs:subPropertyOf timeline:start;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:beginsAtDuration a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:comment "A property enabling to adress a start time point P of an interval [P,E] through the duration of the interval [0,P] on a continuous timeline";
+                          rdfs:label "begins at (xsd:duration)";
+                          rdfs:range xsd:duration;
+                          rdfs:subPropertyOf timeline:start;
+                          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:beginsAtInt a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "A subproperty of :beginsAt, having xsd:int as a range";
+                     rdfs:label "begins at (integer)";
+                     rdfs:range xsd:int;
+                     rdfs:subPropertyOf timeline:start;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:contains a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.w3.org/2006/time#intervalContains>.
+timeline:delay a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                 <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+               rdfs:comment "associate a shift map to a particular delay";
+               rdfs:domain timeline:ShiftMap;
+               rdfs:label "delay";
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:domainTimeLine a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                          <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                        rdfs:comment "associates a timeline map to its domain timeline";
+                        rdfs:domain timeline:TimeLineMap;
+                        rdfs:label "domain timeline";
+                        rdfs:range timeline:TimeLine;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:duration a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "the duration of a time interval";
+                  rdfs:domain timeline:Interval;
+                  rdfs:label "duration";
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:durationInt a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "A subproperty of :duration, having xsd:int as a range";
+                     rdfs:label "duration (integer)";
+                     rdfs:range xsd:int;
+                     rdfs:subPropertyOf timeline:duration;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:durationXSD a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:comment "A subproperty of :duration, having xsd:duration as a range";
+                     rdfs:label "duration (xsd:duration)";
+                     rdfs:range xsd:duration;
+                     rdfs:subPropertyOf timeline:duration;
+                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:during a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.w3.org/2006/time#intervalDuring>.
+timeline:end a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+             rdfs:comment "refers to the end of a time interval, through an explicit datatype. time:hasEnd can be used as well, if you want to associate the end of the interval to an explicit time point resource";
+             rdfs:domain timeline:Interval;
+             rdfs:label "ends at";
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:endsAt a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                <http://www.w3.org/2002/07/owl#equivalentProperty> timeline:end.
+timeline:endsAtDateTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "A subproperty of :endsAt, allowing to address the end of an interval as a date/time";
+                        rdfs:label "ends at (date/time)";
+                        rdfs:range xsd:dateTime;
+                        rdfs:subPropertyOf timeline:end;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:endsAtDuration a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "A property enabling to adress an end time point P of an interval [S,P] through the duration of the interval [0,P] on a continuous timeline";
+                        rdfs:label "ends at (xsd:duration)";
+                        rdfs:range xsd:duration;
+                        rdfs:subPropertyOf timeline:end;
+                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:endsAtInt a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                   rdfs:comment "A subproperty of :endsAt, having xsd:int as a range";
+                   rdfs:label "ends at (integer)";
+                   rdfs:range xsd:int;
+                   rdfs:subPropertyOf timeline:end;
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:equals a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.w3.org/2006/time#intervalEquals>.
+timeline:finishedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.w3.org/2006/time#intervalFinishedBy>.
+timeline:finishes a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.w3.org/2006/time#intervalFinishes>.
+timeline:hopSize a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                   <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                 rdfs:comment "hop size, associated to a uniform windowing map";
+                 rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (timeline:UniformWindowingMap
+                                                                       timeline:UniformSamplingWindowingMap) ; 
+                              a <http://www.w3.org/2002/07/owl#Class>];
+                 rdfs:label "hop size";
+                 rdfs:range xsd:int;
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:meets a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.w3.org/2006/time#intervalMeets>.
+timeline:metBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.w3.org/2006/time#intervalMetBy>.
+timeline:onTimeLine a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    <http://www.w3.org/2002/07/owl#equivalentProperty> timeline:timeline.
+timeline:origin a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                  <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                rdfs:comment "associate an origin map to its origin on the domain physical timeline";
+                rdfs:domain timeline:OriginMap;
+                rdfs:label "origin";
+                rdfs:range xsd:dateTime;
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:overlappedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.w3.org/2006/time#intervalOverlappedBy>.
+timeline:overlaps a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.w3.org/2006/time#intervalOverlaps>.
+timeline:rangeTimeLine a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                         <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                       rdfs:comment "associates a timeline map to its range timeline";
+                       rdfs:domain timeline:TimeLineMap;
+                       rdfs:label "range timeline";
+                       rdfs:range timeline:TimeLine;
+                       <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:sampleRate a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                      <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                    rdfs:comment "associates a sample rate value to a uniform sampling map";
+                    rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (timeline:UniformSamplingMap
+                                                                          timeline:UniformSamplingWindowingMap) ; 
+                                 a <http://www.w3.org/2002/07/owl#Class>];
+                    rdfs:label "sample rate";
+                    rdfs:range xsd:int;
+                    <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:start a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:comment "refers to the beginning of a time interval, through an explicit datatype. time:hasBeginning can be used as well, if you want to associate the beginning of the interval to an explicit time point resource";
+               rdfs:domain timeline:Interval;
+               rdfs:label "begins at";
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:startedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.w3.org/2006/time#intervalStartedBy>.
+timeline:starts a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                <http://www.w3.org/2002/07/owl#equivalentProperty> <http://www.w3.org/2006/time#intervalStarts>.
+timeline:timeline a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                    <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                  rdfs:comment """
+	Relates an interval or an instant to the timeline on which it is defined.
+
+	The 29th of August, 2007 would be linked through this property to the universal timeline, whereas
+	\"from 2s to 5s on this particular signal\" would be defined on the signal' timeline.
+
+    """;
+                  rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (timeline:Instant
+                                                                        timeline:Interval) ; 
+                               a <http://www.w3.org/2002/07/owl#Class>];
+                  rdfs:label "on timeline";
+                  rdfs:range timeline:TimeLine;
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:universaltimeline <http://purl.org/dc/elements/1.1/description> """The timeline one can addresss \"the 1st of July, 2007\"""";
+                           <http://purl.org/dc/elements/1.1/title> "the universal time line";
+                           a timeline:PhysicalTimeLine;
+                           rdfs:comment "this is the `universal' time line -- can adress time intervals on it using date/dateTime -- UTC";
+                           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+timeline:windowLength a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                        <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                      rdfs:comment "window length, associated to a uniform windowing map";
+                      rdfs:domain [<http://www.w3.org/2002/07/owl#unionOf> (timeline:UniformWindowingMap
+                                                                            timeline:UniformSamplingWindowingMap) ; 
+                                   a <http://www.w3.org/2002/07/owl#Class>];
+                      rdfs:label "window length";
+                      rdfs:range xsd:int;
+                      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable".
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/Person> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/maker> a <http://www.w3.org/2002/07/owl#ObjectProperty>.

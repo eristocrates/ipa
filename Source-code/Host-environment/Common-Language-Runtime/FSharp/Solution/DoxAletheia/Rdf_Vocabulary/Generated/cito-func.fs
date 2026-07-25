@@ -8,15 +8,37 @@ module cito_func =
     let _namespace_iri = Namespace_Iri cito_func |> NamespaceIRI
 
     /// <summary>
-    ///   <para>cito-func:NeutralRhetoricalFunction</para>
+    ///   <para>cito-func:NegativeRhetoricalFunction</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>A class defining the set of citation types having a neutral rhetorical function.</para>
-    /// labels<para>neutral rhetorical function</para></remarks>
-    /// <seealso href="http://www.essepuntato.it/2013/03/cito-functions/NeutralRhetoricalFunction">http://www.essepuntato.it/2013/03/cito-functions/NeutralRhetoricalFunction</seealso>
-    let NeutralRhetoricalFunction =
-        Prefixed_Name(cito_func, "NeutralRhetoricalFunction") |> PrefixedName
+    ///   <para>A class defining the set of citation types having a negative rhetorical function.</para>
+    /// labels<para>negative rhetorical function</para></remarks>
+    /// <seealso href="http://www.essepuntato.it/2013/03/cito-functions/NegativeRhetoricalFunction">http://www.essepuntato.it/2013/03/cito-functions/NegativeRhetoricalFunction</seealso>
+    let NegativeRhetoricalFunction =
+        Prefixed_Name(cito_func, "NegativeRhetoricalFunction") |> PrefixedName
+
+    /// <summary>
+    ///   <para>cito-func:RhetoricalFunction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A class defining the set of citation types having a particular rhetorical function.</para>
+    /// labels<para>rhetorical function</para></remarks>
+    /// <seealso href="http://www.essepuntato.it/2013/03/cito-functions/RhetoricalFunction">http://www.essepuntato.it/2013/03/cito-functions/RhetoricalFunction</seealso>
+    let RhetoricalFunction =
+        Prefixed_Name(cito_func, "RhetoricalFunction") |> PrefixedName
+
+    /// <summary>
+    ///   <para>cito-func:PositiveRhetoricalFunction</para>
+    /// </summary>
+    /// <remarks>
+    ///   <para>owl:Class</para>
+    ///   <para>A class defining the set of citation types having a positive rhetorical function.</para>
+    /// labels<para>positive rhetorical function</para></remarks>
+    /// <seealso href="http://www.essepuntato.it/2013/03/cito-functions/PositiveRhetoricalFunction">http://www.essepuntato.it/2013/03/cito-functions/PositiveRhetoricalFunction</seealso>
+    let PositiveRhetoricalFunction =
+        Prefixed_Name(cito_func, "PositiveRhetoricalFunction") |> PrefixedName
 
     /// <summary>
     ///   <para>cito-func:FactualFunction</para>
@@ -38,34 +60,12 @@ module cito_func =
     let CitationFunction = Prefixed_Name(cito_func, "CitationFunction") |> PrefixedName
 
     /// <summary>
-    ///   <para>cito-func:PositiveRhetoricalFunction</para>
+    ///   <para>cito-func:NeutralRhetoricalFunction</para>
     /// </summary>
     /// <remarks>
     ///   <para>owl:Class</para>
-    ///   <para>A class defining the set of citation types having a positive rhetorical function.</para>
-    /// labels<para>positive rhetorical function</para></remarks>
-    /// <seealso href="http://www.essepuntato.it/2013/03/cito-functions/PositiveRhetoricalFunction">http://www.essepuntato.it/2013/03/cito-functions/PositiveRhetoricalFunction</seealso>
-    let PositiveRhetoricalFunction =
-        Prefixed_Name(cito_func, "PositiveRhetoricalFunction") |> PrefixedName
-
-    /// <summary>
-    ///   <para>cito-func:RhetoricalFunction</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A class defining the set of citation types having a particular rhetorical function.</para>
-    /// labels<para>rhetorical function</para></remarks>
-    /// <seealso href="http://www.essepuntato.it/2013/03/cito-functions/RhetoricalFunction">http://www.essepuntato.it/2013/03/cito-functions/RhetoricalFunction</seealso>
-    let RhetoricalFunction =
-        Prefixed_Name(cito_func, "RhetoricalFunction") |> PrefixedName
-
-    /// <summary>
-    ///   <para>cito-func:NegativeRhetoricalFunction</para>
-    /// </summary>
-    /// <remarks>
-    ///   <para>owl:Class</para>
-    ///   <para>A class defining the set of citation types having a negative rhetorical function.</para>
-    /// labels<para>negative rhetorical function</para></remarks>
-    /// <seealso href="http://www.essepuntato.it/2013/03/cito-functions/NegativeRhetoricalFunction">http://www.essepuntato.it/2013/03/cito-functions/NegativeRhetoricalFunction</seealso>
-    let NegativeRhetoricalFunction =
-        Prefixed_Name(cito_func, "NegativeRhetoricalFunction") |> PrefixedName
+    ///   <para>A class defining the set of citation types having a neutral rhetorical function.</para>
+    /// labels<para>neutral rhetorical function</para></remarks>
+    /// <seealso href="http://www.essepuntato.it/2013/03/cito-functions/NeutralRhetoricalFunction">http://www.essepuntato.it/2013/03/cito-functions/NeutralRhetoricalFunction</seealso>
+    let NeutralRhetoricalFunction =
+        Prefixed_Name(cito_func, "NeutralRhetoricalFunction") |> PrefixedName

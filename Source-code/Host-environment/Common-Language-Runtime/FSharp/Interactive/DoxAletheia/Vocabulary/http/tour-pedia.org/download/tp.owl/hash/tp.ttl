@@ -1,0 +1,65 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix tp: <http://tour-pedia.org/download/tp.owl#>.
+
+[] <http://www.w3.org/2006/vcard/ns#fn> "".
+<http://dbpedia.org/ontology/address> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                      rdfs:domain tp:Place.
+<http://dbpedia.org/ontology/location> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:domain tp:Place.
+<http://dbpedia.org/ontology/wikiPageExternalLink> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                   rdfs:domain tp:Place.
+<http://purl.org/acco/ns#Accommodation> <http://www.w3.org/2002/07/owl#equivalentClass> tp:Accommodation.
+<http://purl.org/marl/0.2/ns#hasPolarity> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                          rdfs:domain <http://www.w3.org/ns/prov#Entity>.
+<http://schema.org/CivicStructure> <http://www.w3.org/2002/07/owl#equivalentClass> tp:POI.
+<http://schema.org/LodgingBusiness> <http://www.w3.org/2002/07/owl#equivalentClass> tp:Accommodation.
+<http://schema.org/Restaurant> <http://www.w3.org/2002/07/owl#equivalentClass> tp:Restaurant.
+<http://schema.org/TouristAttraction> a <http://www.w3.org/2002/07/owl#Class>;
+                                      <http://www.w3.org/2002/07/owl#equivalentClass> tp:Attraction.
+<http://schema.org/sameAs> rdfs:domain tp:Place.
+<http://tour-pedia.org/download/tp.owl> <http://purl.org/dc/elements/1.1/creator> "Angelica Lo Duca";
+                                        <http://purl.org/dc/elements/1.1/title> "Tourpedia Ontology";
+                                        <http://purl.org/dc/terms/description> "A vocabulary to describe touristic places: accommodations, points of interest, restaurants and attractions.";
+                                        <http://purl.org/dc/terms/issued> "2014-06-08";
+                                        <http://purl.org/dc/terms/license> "http://creativecommons.org/licenses/by/1.0/";
+                                        <http://purl.org/dc/terms/modified> "2015-06-08";
+                                        <http://purl.org/dc/terms/rights> "Copyright Â© 2015 Tourpedia";
+                                        <http://purl.org/vocab/vann/preferredNamespacePrefix> "tp";
+                                        a <http://www.w3.org/2002/07/owl#Ontology>;
+                                        rdfs:comment "A vocabulary to describe touristic places: accommodations, points of interest, restaurants and attractions.";
+                                        rdfs:isDefinedBy "http://tour-pedia.org/download/tp.owl";
+                                        rdfs:label "Tourpedia Ontology";
+                                        <http://www.w3.org/2002/07/owl#imports> <http://purl.org/acco/ns#>,
+                                                                                <http://purl.org/vocommons/voaf>,
+                                                                                <http://www.semanticweb.org/ontologies/2012/4/accommodation-17042012.owl>,
+                                                                                <http://www.w3.org/ns/prov#>,
+                                                                                <http://schema.rdfs.org/all>;
+                                        <http://www.w3.org/2002/07/owl#versionInfo> "1.0";
+                                        <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "testing".
+tp:Accommodation a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:subClassOf tp:Place;
+                 <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.semanticweb.org/ontologies/2010/3/hotel-15072010.owl#Accommodation>.
+tp:Attraction a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf tp:Place.
+tp:POI a <http://www.w3.org/2002/07/owl#Class>;
+       rdfs:subClassOf tp:Place.
+tp:Place a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:comment "The generic class for a touristic place.";
+         rdfs:label "Place";
+         <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.w3.org/ns/prov#Entity>.
+tp:Restaurant a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:subClassOf tp:Place.
+<http://www.w3.org/2003/01/geo/wgs84_pos#lat> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                              rdfs:domain tp:Place.
+<http://www.w3.org/2003/01/geo/wgs84_pos#long> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                               rdfs:domain tp:Place.
+<http://www.w3.org/2004/02/skos/core#related> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                              rdfs:domain tp:Accommodation.
+<http://www.w3.org/2006/vcard/ns#fn> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                     rdfs:domain tp:Place.
+<http://www.w3.org/2006/vcard/ns#hasPhoto> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                           rdfs:domain tp:Place.
+<http://www.w3.org/2006/vcard/ns#hasTelephone> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                               rdfs:domain tp:Place.

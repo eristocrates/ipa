@@ -1,0 +1,666 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix aml: <https://w3id.org/i40/aml#>.
+
+<http://eis.iai.uni-bonn.de/Irlan> <http://schema.org/affiliation> <http://dbpedia.org/resource/University_of_Bonn>;
+                                   a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                     <http://schema.org/Person>;
+                                   rdfs:label "Irlan Grangel-Gonzalez".
+<http://purl.org/dc/elements/1.1/identifier> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://rdfs.org/ns/void#vocabulary> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://schema.org/Person> a <http://www.w3.org/2002/07/owl#Class>.
+<http://schema.org/affiliation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://schema.org/name> a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                           <http://www.w3.org/2002/07/owl#FunctionalProperty>.
+<http://usefulinc.com/ns/doap#repository> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.ontologydesignpatterns.org/cp/owl/partof.owl#isPartOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                   rdfs:isDefinedBy "http://www.ontologydesignpatterns.org/cp/owl/partof.owl".
+rdf:PlainLiteral a rdfs:Datatype.
+rdfs:comment a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:isDefinedBy a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+rdfs:label a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+xsd:anyURI a rdfs:Datatype.
+xsd:dateTime a rdfs:Datatype.
+xsd:decimal a rdfs:Datatype.
+xsd:integer a rdfs:Datatype.
+xsd:string a rdfs:Datatype.
+<http://www.w3.org/2002/07/owl#Thing> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.w3.org/2002/07/owl#versionInfo> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#altLabel> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#definition> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#prefLabel> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/ns/prov#Activity> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:isDefinedBy "https://www.w3.org/TR/prov-o/#Activity".
+<http://www.w3.org/ns/prov#wasGeneratedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:domain aml:CAEXFile;
+                                           rdfs:isDefinedBy "http://www.w3.org/ns/prov#wasGeneratedBy";
+                                           rdfs:range <http://www.w3.org/ns/prov#Activity>.
+<http://www.wurvoc.org/vocabularies/om-1.8/Measure> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.wurvoc.org/vocabularies/om-1.8/Speed> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.wurvoc.org/vocabularies/om-1.8/Unit_of_measure> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.wurvoc.org/vocabularies/om-1.8/metre_per_second-time> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                                    <http://www.wurvoc.org/vocabularies/om-1.8/Unit_of_measure>.
+<http://www.wurvoc.org/vocabularies/om-1.8/numerical_value> a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+<http://www.wurvoc.org/vocabularies/om-1.8/phenomenon> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<http://www.wurvoc.org/vocabularies/om-1.8/unit_of_measure> a <http://www.w3.org/2002/07/owl#ObjectProperty>.
+<https://at.linkedin.com/in/olga-kovalenko-979552108/> a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                                         <http://schema.org/Person>;
+                                                       rdfs:label "Olga Kovalenko".
+aml: <http://purl.org/dc/terms/created> "2016-03-23"^^xsd:date;
+     <http://purl.org/dc/terms/creator> <https://at.linkedin.com/in/olga-kovalenko-979552108/>,
+                                        <http://eis.iai.uni-bonn.de/Irlan>;
+     <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by-nc-sa/2.0/>;
+     <http://purl.org/vocab/vann/preferredNamespacePrefix> "aml";
+     <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/i40/aml/";
+     <http://rdfs.org/ns/void#vocabulary> <http://www.w3.org/2004/02/skos/core#>,
+                                          <http://purl.org/dc/elements/1.1/>,
+                                          <http://www.w3.org/XML/1998/namespace>,
+                                          aml:,
+                                          <http://purl.org/dc/terms/>,
+                                          rdf:,
+                                          rdfs:,
+                                          xsd:,
+                                          <http://xmlns.com/foaf/spec/>;
+     <http://usefulinc.com/ns/doap#repository> <https://github.com/i40-Tools/vocabularies/>;
+     a <http://www.w3.org/2002/07/owl#Ontology>;
+     rdfs:comment "A vocabulary to represents the AutomationML Standard - IEC 62714"@en;
+     rdfs:isDefinedBy aml:;
+     <http://www.w3.org/2002/07/owl#versionInfo> "0.1";
+     <http://www.w3.org/2004/02/skos/core#altLabel> "Alternative label for an AML object"@en;
+     <http://www.w3.org/2004/02/skos/core#definition> "A vocabulary to represents the AutomationML Standard - IEC 62714"@en;
+     <http://www.w3.org/2004/02/skos/core#prefLabel> "aml"@en.
+aml:AILevelSW a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                aml:ExternalInterface;
+              aml:hasICID "91a89c81-b794-421c-8f24-458f51307f72";
+              aml:hasNameIC "AI Level SW"@en;
+              aml:hasRefBaseClassPathIC "NE150InterfaceLibrary/SWSignal".
+aml:AdditionalInformation a <http://www.w3.org/2002/07/owl#Class>;
+                          <http://www.w3.org/2004/02/skos/core#definition> "Additional Information for CAEX File"@en;
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "AdditionalInformation"@en.
+aml:AdditionalInformation1 a aml:AdditionalInformation,
+                             <http://www.w3.org/2002/07/owl#NamedIndividual>;
+                           aml:hasAMLVersion 2.0;
+                           aml:hasWriterId "916578CA-FE0D-474E-A4FC-9E1719892369";
+                           aml:hasWriterName "AutomationML Editor"@en;
+                           aml:hasWriterRelease "4.1.5.0";
+                           aml:hasWriterVendor "AutomationML e.V."@en;
+                           aml:hasWriterVendorURL "www.AutomationML.org"^^xsd:anyURI;
+                           aml:hasWriterVersion "4.1.5";
+                           aml:lastWritingDateTime "2001-10-26T21:32:52"^^xsd:dateTime.
+aml:AttValue1 a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+              aml:numerical_value 0 .
+aml:Attribute a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:isDefinedBy "1417686950-AutomationML Whitepaper Part 1 - AutomationML Architecture v2_Oct2014, page 11";
+              <http://www.w3.org/2004/02/skos/core#definition> "Property which belongs to an AML object"@en;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "Attribute"@en.
+aml:CAEXFile a <http://www.w3.org/2002/07/owl#Class>;
+             <http://www.w3.org/2004/02/skos/core#definition> "Root-element of the CAEX schema"@en;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "CAEXFile"@en.
+aml:DemoArea a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               aml:InternalElement;
+             aml:hasIDIE "33a47300-eb7e-4831-9448-b358d4246dcd";
+             aml:hasNameIE "DemoArea"@en;
+             aml:isPartOfIE aml:DemoSite.
+aml:DemoEnterprise a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     aml:InternalElement;
+                   aml:hasIDIE "d812ea1e-eaa2-45f4-8c82-72ecc50236c5";
+                   aml:hasNameIE "DemoEnterprise"@en.
+aml:DemoSite a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               aml:InternalElement;
+             aml:hasIDIE "38d6171f-0cb1-48e0-925f-f03902af8ee2";
+             aml:hasNameIE "DemoSite"@en;
+             aml:isPartOfIE aml:DemoEnterprise.
+aml:ExampleInstanceHierarchy a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                               aml:CAEXFile.
+aml:ExternalInterface a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:subClassOf aml:InterfaceClass;
+                      <http://www.w3.org/2004/02/skos/core#altLabel> "EI"@en;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "ExternalInterface"@en.
+aml:ExternalReference a <http://www.w3.org/2002/07/owl#Class>;
+                      <http://www.w3.org/2004/02/skos/core#definition> "External Reference for a CAEX File"@en;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "ExternalReference"@en.
+aml:ExternalStandard a <http://www.w3.org/2002/07/owl#Class>;
+                     <http://www.w3.org/2004/02/skos/core#definition> "Represents an External Standard which is used to provide unique Semantic reference for AML elements, e.g., eClass"@en;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "ExternalStandard"@en.
+aml:FlowchartNumber a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      aml:Attribute;
+                    aml:hasAttributeDataType "xs:string";
+                    aml:hasAttributeDescription "Drawing number of P&amp;I flowchart (pipework and instrumentation flowchart)"@en;
+                    aml:hasAttributeValue "1000_4";
+                    aml:hasNameAttribute "FlowchartNumber"@en;
+                    aml:refSemanticAttribute "NE 150 v1.0 Annex 1.1.5".
+aml:GMA6.16BeispielPIDVersion2.97 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                    aml:CAEXFile;
+                                  aml:hasAdditionalInformation aml:AdditionalInformation1;
+                                  aml:hasNameFile "GMA 6.16Beispiel PID Version 2.97 - AutomationML Datei.aml"@de;
+                                  aml:hasSchemaVersion 2.15.
+aml:InstanceHierarchy a <http://www.w3.org/2002/07/owl#Class>;
+                      <http://www.w3.org/2004/02/skos/core#altLabel> "IH"@en;
+                      <http://www.w3.org/2004/02/skos/core#definition> "Describes the are to model the data to be exchanged. CAEX InstanceHierarchies serve for the storage of individual and project related engineering information. They form the centre of the AML top-level format and contain all individual data objects including properties, interfaces, relations and references."@en;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "InstanceHierarchy"@en.
+aml:InterfaceClass a <http://www.w3.org/2002/07/owl#Class>;
+                   <http://www.w3.org/2004/02/skos/core#altLabel> "IC"@en;
+                   <http://www.w3.org/2004/02/skos/core#definition> "Defines the relations between AML Objects. Should be identified with its tag name"@en;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "InterfaceClass"@en.
+aml:InterfaceClassLib a <http://www.w3.org/2002/07/owl#Class>;
+                      <http://www.w3.org/2004/02/skos/core#altLabel> "IC Lib"@en;
+                      <http://www.w3.org/2004/02/skos/core#definition> "Library containing AML Interface Classes"@en;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "InterfaceClassLib"@en.
+aml:InternalElement a <http://www.w3.org/2002/07/owl#Class>;
+                    <http://www.w3.org/2004/02/skos/core#altLabel> "IE"@en;
+                    <http://www.w3.org/2004/02/skos/core#definition> "Shall be used in order to define nested objects inside of a SystemUnitClass or another InternalElement. Allows description of the internal structure of an CAEX object"@en;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "InternalElement"@en.
+aml:InternalLink a <http://www.w3.org/2002/07/owl#Class>;
+                 <http://www.w3.org/2004/02/skos/core#altLabel> "IL"@en;
+                 <http://www.w3.org/2004/02/skos/core#definition> "Connects two CAEX elements like InternalElements"@en;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "InternalLink"@en.
+aml:L1001 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+            aml:InternalElement;
+          aml:hasAttribute aml:PCEDescription;
+          aml:hasIDIE "044a8a9d-458e-4632-a19d-f240a0e64e95";
+          aml:hasNameIE "L 1001"@en;
+          aml:isPartOfIE aml:DemoArea;
+          aml:refBaseSystemUnitPath "NE150SUCLibrary/PCELoop".
+aml:LIRCS1 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             aml:InternalElement;
+           aml:hasAttribute aml:PCEDescription;
+           aml:hasAttributeIE aml:PCEInitial,
+                              aml:PCEFunction,
+                              aml:FlowchartNumber;
+           aml:hasExternalInterface aml:AILevelSW;
+           aml:hasIDIE "adb2ebf7-dc6f-479b-abfe-64a4fd69c209";
+           aml:hasNameIE "LIRCS+-A+-"@en;
+           aml:isPartOfIE aml:L1001;
+           aml:refBaseSystemUnitPath "NE150SUCLibrary/PCERequest".
+aml:MaxConveyingSpeed a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        aml:Attribute;
+                      aml:hasNameAttribute "maxConveyingSpeed"@en;
+                      aml:hasUnitAttribute aml:speedMeasurement.
+aml:MeasurementRangeEnd a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          aml:Attribute;
+                        aml:hasAttributeDataType "xs:double";
+                        aml:hasAttributeDescription "Actual measurement range end of sensor in field"@en;
+                        aml:refSemanticAttribute "NE 150 v1.0 Annex 3.3.5".
+aml:MeasurementRangeStart a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                            aml:Attribute;
+                          aml:hasAttributeDataType "xs:double";
+                          aml:hasAttributeDescription "Actual measurement range start of sensor in field"@en;
+                          aml:hasNameAttribute "MeasurementRangeStart"@en.
+aml:NE150DemoProject a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                       aml:InstanceHierarchy;
+                     aml:hasInternalElement aml:DemoEnterprise;
+                     aml:hasNameIH "NE150DemoProject"@en.
+aml:OldPCE a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+             aml:Attribute;
+           aml:hasAttributeDataType "xs:string";
+           aml:hasAttributeDescription "Old PCE designation for migration or renaming"@en;
+           aml:hasAttributeValue "L 1101";
+           aml:hasNameAttribute "OldPCE";
+           aml:refSemanticAttribute "NE 150 v1.0 Annex 2.1.4".
+aml:PCEDescription a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     aml:Attribute;
+                   aml:hasAttributeDataType "xs:string";
+                   aml:hasAttributeDescription "Complete PCE description"@en;
+                   aml:hasAttributeValue "Level Control B1000";
+                   aml:hasNameAttribute "PCEDescription"@en;
+                   aml:refSemanticAttribute "NE 150 v1.0 Annex 2.1.3".
+aml:PCEFunction a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  aml:Attribute;
+                aml:hasAttributeDataType "xs:string";
+                aml:hasAttributeDescription "The PCE function describes the device-independent PCE task solution"@en;
+                aml:hasAttributeValue "LIRCS+-A+-";
+                aml:hasNameAttribute "PCEFunction"@en;
+                aml:refSemanticAttribute "NE 150 v1.0 Annex 2.1.1".
+aml:PCEInitial a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 aml:Attribute;
+               aml:hasAttributeDataType "xs:string";
+               aml:hasAttributeDescription "PCE category, e.g.: L"@en;
+               aml:hasAttributeValue "L";
+               aml:hasNameAttribute "PCEInitial"@en;
+               aml:refSemanticAttribute "NE 150 v1.0 Annex 2.1.2".
+aml:Project a <http://www.w3.org/2002/07/owl#Class>;
+            <http://www.w3.org/2004/02/skos/core#definition> "A Project related to the header information with the CAEX File"@en;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "Project"@en.
+aml:RoleClass a <http://www.w3.org/2002/07/owl#Class>;
+              <http://www.w3.org/2004/02/skos/core#altLabel> "RC"@en;
+              <http://www.w3.org/2004/02/skos/core#definition> "RoleClasses are vendor independent and generic entities. They are used to assign a generic semantics to an object instance and to describe requirements of this object instance. Also, they can help in mapping data models of different engineering tools."@en;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "RoleClass"@en.
+aml:RoleClassLib a <http://www.w3.org/2002/07/owl#Class>;
+                 <http://www.w3.org/2004/02/skos/core#altLabel> "RCL"@en;
+                 <http://www.w3.org/2004/02/skos/core#definition> "Provides definitions of abstract characteristics of CAEX objects and thus serve the automatic semantic interpretation of user-defined AML objects"@en;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "RoleClassLib"@en.
+aml:SoftwareSignalName a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                         aml:Attribute;
+                       aml:hasAttributeDataType "xs:string";
+                       aml:hasAttributeDescription "Unequivocal PCS input or output name"@en;
+                       aml:hasAttributeIC aml:SoftwareSignalName;
+                       aml:hasAttributeValue "L1001_PV";
+                       aml:hasNameAttribute "SoftwareSignalName"@en;
+                       aml:refSemanticAttribute "NE 150 v1.0 Annex".
+aml:SystemUnitClass a <http://www.w3.org/2002/07/owl#Class>;
+                    <http://www.w3.org/2004/02/skos/core#altLabel> "SUC"@en;
+                    <http://www.w3.org/2004/02/skos/core#definition> "Describe concrete types of objects reused within engineering. Allows for different user-defined classes. Inheritance between a SystemUnitClass and an object instance is not allowed."@en;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "SystemUnitClass"@en.
+aml:SystemUnitClassLib a <http://www.w3.org/2002/07/owl#Class>;
+                       <http://www.w3.org/2004/02/skos/core#altLabel> "SUC Lib"@en;
+                       <http://www.w3.org/2004/02/skos/core#definition> "Store vendor specific AML classes"@en;
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "SystemUnitClassLib"@en.
+aml:contains a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain aml:CAEXFile;
+             <http://www.w3.org/2004/02/skos/core#definition> "Superproperty to describe the connection of the CAEX file with the main CAEX library elements, e.g., InterfaceClassLib, RoleClassLib, and SystemUnitClassLib"@en;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "contains"@en.
+aml:eClassSpecification a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:subClassOf aml:ExternalStandard;
+                        <http://www.w3.org/2004/02/skos/core#definition> "Describe the necessary links to eCl@ass Standard(e.g., version, classification and IRDI)"@en;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "eClassSpecification"@en.
+aml:hasAMLVersion a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain aml:AdditionalInformation;
+                  rdfs:range xsd:decimal;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "hasAMLVersion"@en.
+aml:hasAdditionalInformation a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain aml:CAEXFile;
+                             rdfs:range aml:AdditionalInformation;
+                             <http://www.w3.org/2004/02/skos/core#prefLabel> "hasAdditionalInformation"@en.
+aml:hasAttribute a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain <http://www.w3.org/2002/07/owl#Thing>;
+                 rdfs:range aml:Attribute;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "hasAttribute"@en.
+aml:hasAttributeDataType a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                         rdfs:domain aml:Attribute;
+                         rdfs:range xsd:string;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "hasDataType"@en.
+aml:hasAttributeDescription a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:domain aml:Attribute;
+                            rdfs:range rdf:PlainLiteral;
+                            <http://www.w3.org/2004/02/skos/core#definition> "Points to an optional description of the Attribute"@en;
+                            <http://www.w3.org/2004/02/skos/core#prefLabel> "hasDescription"@en.
+aml:hasAttributeIC a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain aml:InterfaceClass;
+                   rdfs:range aml:Attribute;
+                   rdfs:subPropertyOf aml:hasAttribute.
+aml:hasAttributeIE a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain aml:InternalElement;
+                   rdfs:range aml:Attribute;
+                   rdfs:subPropertyOf aml:hasAttribute.
+aml:hasAttributeName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:domain aml:Attribute;
+                     rdfs:range xsd:string;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "hasAttributeName"@en.
+aml:hasAttributeRC a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain aml:RoleClass;
+                   rdfs:range aml:Attribute;
+                   rdfs:subPropertyOf aml:hasAttribute.
+aml:hasAttributeSUC a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain aml:SystemUnitClass;
+                    rdfs:range aml:Attribute;
+                    rdfs:subPropertyOf aml:hasAttribute.
+aml:hasAttributeValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                      rdfs:domain aml:Attribute;
+                      rdfs:range xsd:string.
+aml:hasBaseSystemUnitClass a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:domain aml:InternalElement;
+                           rdfs:range aml:SystemUnitClass.
+aml:hasClassificationClass a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:domain aml:eClassSpecification;
+                           rdfs:range xsd:string;
+                           <http://www.w3.org/2004/02/skos/core#definition> "Points to the eClass classification Class a given Element"@en;
+                           <http://www.w3.org/2004/02/skos/core#prefLabel> "eClassClassificationClass"@en.
+aml:hasExternalInterface a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain aml:InternalElement;
+                         rdfs:range aml:ExternalInterface;
+                         <http://www.w3.org/2004/02/skos/core#definition> "Connects the Internal Element with an External Interface"@en;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "hasExternalInterface"@en.
+aml:hasExternalReference a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain aml:CAEXFile;
+                         rdfs:range aml:ExternalReference;
+                         <http://www.w3.org/2004/02/skos/core#definition> "A CAEX File contains external references";
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "hasExternalReference"@en.
+aml:hasExternalReferenceAlias a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                              rdfs:domain aml:ExternalReference;
+                              rdfs:range xsd:string;
+                              <http://www.w3.org/2004/02/skos/core#definition> "A external Reference of a CAEX File has Alias";
+                              <http://www.w3.org/2004/02/skos/core#prefLabel> "externalReferenceAlias"@en.
+aml:hasExternalReferencePath a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                             rdfs:domain aml:ExternalReference;
+                             rdfs:range xsd:string;
+                             <http://www.w3.org/2004/02/skos/core#definition> "A external Reference of a CAEX File contains path to the file";
+                             <http://www.w3.org/2004/02/skos/core#prefLabel> "externalReferencePath"@en.
+aml:hasICID a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+            rdfs:comment "Unique ID for the Interface Class"@en;
+            rdfs:domain aml:InterfaceClass;
+            rdfs:range xsd:string;
+            rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/identifier>.
+aml:hasIDIE a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+              <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+            rdfs:domain aml:InternalElement;
+            rdfs:range xsd:string;
+            rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/identifier>;
+            <http://www.w3.org/2004/02/skos/core#definition> "Unique Id of an Internal Element"@en;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "internalElementId"@en.
+aml:hasIRDIeClass a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                    <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                  rdfs:domain aml:eClassSpecification;
+                  rdfs:range xsd:string;
+                  <http://www.w3.org/2004/02/skos/core#definition> "Points to the eClass unique identification(IRDI) a given Element"@en;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "eClassIRDI"@en.
+aml:hasInstanceHierarchy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain aml:CAEXFile;
+                         rdfs:range aml:InstanceHierarchy;
+                         rdfs:subPropertyOf aml:contains;
+                         <http://www.w3.org/2004/02/skos/core#definition> "Points the CAEX file to the Instance Hierarchy"@en;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "hasInstanceHierarchy"@en.
+aml:hasInterface a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:range aml:InterfaceClass.
+aml:hasInterfaceClass a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:domain aml:InterfaceClassLib;
+                      rdfs:range aml:InterfaceClass;
+                      <http://www.w3.org/2004/02/skos/core#definition> "Model the relation between Interface Class Lib and Interface Class"@en;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "hasInterfaceClass"@en.
+aml:hasInterfaceClassLib a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain aml:CAEXFile;
+                         rdfs:range aml:InterfaceClassLib;
+                         rdfs:subPropertyOf aml:contains;
+                         <http://www.w3.org/2004/02/skos/core#definition> "Points the CAEX file to the InterfaceClassLib"@en;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "hasInterfaceClassLib"@en.
+aml:hasInterfaceIE a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain aml:InternalElement;
+                   rdfs:range aml:InterfaceClass;
+                   rdfs:subPropertyOf aml:hasInterface.
+aml:hasInterfaceRC a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain aml:RoleClass;
+                   rdfs:range aml:InterfaceClass;
+                   rdfs:subPropertyOf aml:hasInterface.
+aml:hasInterfaceSUC a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain aml:SystemUnitClass;
+                    rdfs:range aml:InterfaceClass;
+                    rdfs:subPropertyOf aml:hasInterface.
+aml:hasInternalElement a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain aml:InstanceHierarchy;
+                       rdfs:range aml:InternalElement;
+                       <http://www.w3.org/2004/02/skos/core#definition> "Hierarchy has many internal elements"@en;
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "hasInternalElement"@en.
+aml:hasInternalLink a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain aml:InternalElement;
+                    rdfs:range aml:InternalLink.
+aml:hasName a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+aml:hasNameAttribute a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:domain aml:Attribute;
+                     rdfs:range rdf:PlainLiteral;
+                     rdfs:subPropertyOf aml:hasName.
+aml:hasNameFile a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                rdfs:domain aml:CAEXFile;
+                rdfs:range rdf:PlainLiteral;
+                rdfs:subPropertyOf aml:hasName;
+                <http://www.w3.org/2004/02/skos/core#definition> "The name of the main AutomationML File"@en;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "hasNameFile".
+aml:hasNameIC a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain aml:InterfaceClass;
+              rdfs:range rdf:PlainLiteral;
+              rdfs:subPropertyOf aml:hasName;
+              <http://www.w3.org/2004/02/skos/core#altLabel> "hasInterfaceClassName"@en;
+              <http://www.w3.org/2004/02/skos/core#definition> "Name of the Interface Class"@en;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "hasNameIC"@en.
+aml:hasNameIE a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+              rdfs:domain aml:InternalElement;
+              rdfs:range rdf:PlainLiteral;
+              rdfs:subPropertyOf aml:hasName;
+              <http://www.w3.org/2004/02/skos/core#altLabel> "hasInternalElementName"@en;
+              <http://www.w3.org/2004/02/skos/core#definition> "Name of an Internal Element"@en;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "hasNameIE"@en.
+aml:hasNameIH a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+              rdfs:domain aml:InstanceHierarchy;
+              rdfs:range rdf:PlainLiteral;
+              rdfs:subPropertyOf aml:hasName;
+              <http://www.w3.org/2004/02/skos/core#altLabel> "hasInstanceHierarchyName"@en;
+              <http://www.w3.org/2004/02/skos/core#definition> "Given Name of the Instance Hierarchy"@en;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "hasNameIH"@en.
+aml:hasNameRC a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+              rdfs:domain aml:RoleClass;
+              rdfs:range rdf:PlainLiteral;
+              rdfs:subPropertyOf aml:hasName;
+              <http://www.w3.org/2004/02/skos/core#altLabel> "hasRoleClassName"@en;
+              <http://www.w3.org/2004/02/skos/core#definition> "Name for a RoleClass"@en;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "hasNameRC"@en.
+aml:hasNameSUC a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                 <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+               rdfs:domain aml:SystemUnitClass;
+               rdfs:range rdf:PlainLiteral;
+               rdfs:subPropertyOf aml:hasName;
+               <http://www.w3.org/2004/02/skos/core#altLabel> "hasSystemUnitClassName"@en;
+               <http://www.w3.org/2004/02/skos/core#definition> "Given Name of the System Unit Class"@en;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "hasNameSUC"@en.
+aml:hasProject a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain aml:AdditionalInformation;
+               rdfs:range aml:Project;
+               <http://www.w3.org/2004/02/skos/core#definition> "Related Project for the CAEX File"@en;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "hasProject"@en.
+aml:hasProjectId a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                 rdfs:domain aml:Project;
+                 rdfs:range xsd:string;
+                 rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/identifier>,
+                                    <http://purl.org/dc/elements/1.1/title>;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "hasProjectId"@en.
+aml:hasProjectTitle a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:domain aml:Project;
+                    rdfs:range xsd:string;
+                    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/title>;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "has Project Release",
+                                                                    "hasProjectTitle"@en.
+aml:hasRefBaseClassPath a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:domain aml:ExternalInterface,
+                                    aml:InterfaceClass,
+                                    aml:RoleClassLib;
+                        rdfs:range xsd:string;
+                        <http://www.w3.org/2004/02/skos/core#definition> "Stores the name of the parent class"@en;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "refBaseClassPath"@en.
+aml:hasRefBaseClassPathIC a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:domain aml:InterfaceClass;
+                          rdfs:range rdf:PlainLiteral;
+                          rdfs:subPropertyOf aml:hasRefBaseClassPath.
+aml:hasRefBaseClassPathRC a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:domain aml:RoleClass;
+                          rdfs:range rdf:PlainLiteral;
+                          rdfs:subPropertyOf aml:hasRefBaseClassPath.
+aml:hasRefBaseClassPathSUC a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                           rdfs:domain aml:SystemUnitClass;
+                           rdfs:range rdf:PlainLiteral;
+                           rdfs:subPropertyOf aml:hasRefBaseClassPath.
+aml:hasRefBaseRoleClassPath a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                            rdfs:range xsd:string.
+aml:hasRefBaseSystemUnitPath a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                             rdfs:domain aml:InternalElement;
+                             rdfs:range xsd:string;
+                             <http://www.w3.org/2004/02/skos/core#altLabel> "Ref Base System Unit Path"@en;
+                             <http://www.w3.org/2004/02/skos/core#prefLabel> "refBaseSUPath"@en.
+aml:hasRefPartnerSideA a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain aml:InternalLink;
+                       <http://www.w3.org/2004/02/skos/core#definition> "Reference an Internal Link with an element A"@en;
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "hasRefPartnerSideA"@en.
+aml:hasRefPartnerSideB a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain aml:InternalLink;
+                       <http://www.w3.org/2004/02/skos/core#definition> "Reference an Internal Link with an element B"@en;
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "hasRefPartnerSideB"@en.
+aml:hasRefRoleClassPath a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:range xsd:string;
+                        <http://www.w3.org/2004/02/skos/core#altLabel> "refRoleClassPath"@en;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "refRCPath"@en.
+aml:hasRefSemAttribute a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain aml:Attribute;
+                       rdfs:range aml:eClassSpecification;
+                       rdfs:subPropertyOf aml:hasSemanticRef.
+aml:hasRefSemRC a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain aml:RoleClass;
+                rdfs:range aml:eClassSpecification;
+                rdfs:subPropertyOf aml:hasSemanticRef;
+                <http://www.w3.org/2004/02/skos/core#altLabel> "RoleClasseClassReference"@en;
+                <http://www.w3.org/2004/02/skos/core#definition> "A Role Class points to its ID according to eClass"@en;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "eClassRCReference".
+aml:hasRoleClass a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain aml:RoleClassLib;
+                 rdfs:range aml:RoleClass;
+                 <http://www.w3.org/2004/02/skos/core#definition> "A Role Class lib contains a Role Class"@en;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "hasRoleClass"@en.
+aml:hasRoleClassLib a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain aml:CAEXFile;
+                    rdfs:range aml:RoleClassLib;
+                    rdfs:subPropertyOf aml:contains;
+                    <http://www.w3.org/2004/02/skos/core#definition> "Points the CAEX file to the RoleClassLib"@en;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "hasRoleClassLib"@en.
+aml:hasRoleRequeriment a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:range aml:RoleClass;
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "hasRoleRequeriment"@en.
+aml:hasRoleRequirementIE a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain aml:InternalElement;
+                         rdfs:range aml:RoleClass;
+                         rdfs:subPropertyOf aml:hasRoleRequeriment.
+aml:hasRoleRequirementSUC a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain aml:SystemUnitClass;
+                          rdfs:range aml:RoleClass;
+                          rdfs:subPropertyOf aml:hasRoleRequeriment.
+aml:hasSchemaVersion a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:domain aml:CAEXFile;
+                     rdfs:range xsd:decimal;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "hasSchemaVersion".
+aml:hasSemanticRef a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:range aml:ExternalStandard;
+                   <http://www.w3.org/2004/02/skos/core#definition> "General property which points to an external standard to provide semantic identification for a given element"@en;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "hasSemanticRef"@en.
+aml:hasSupportedRoleClass a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:range aml:RoleClass;
+                          <http://www.w3.org/2004/02/skos/core#definition> "Internal elements has Supported Role Class"@en;
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "supportedRoleClass"@en.
+aml:hasSupportedRoleClassIE a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:domain aml:InternalElement;
+                            rdfs:range aml:RoleClass;
+                            rdfs:subPropertyOf aml:hasSupportedRoleClass.
+aml:hasSupportedRoleClassSUC a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:domain aml:SystemUnitClass;
+                             rdfs:range aml:RoleClass;
+                             rdfs:subPropertyOf aml:hasSupportedRoleClass.
+aml:hasSystemUnitClass a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain aml:SystemUnitClassLib;
+                       rdfs:range aml:SystemUnitClass;
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "hasSystemUnitClass".
+aml:hasSystemUnitClassLib a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain aml:CAEXFile;
+                          rdfs:range aml:SystemUnitClassLib;
+                          rdfs:subPropertyOf aml:contains;
+                          <http://www.w3.org/2004/02/skos/core#definition> "Points the CAEX file to the SystemUnitClassLib"@en;
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "hasInterfaceClassLib"@en.
+aml:hasUnit a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain aml:Attribute;
+            rdfs:range <http://www.wurvoc.org/vocabularies/om-1.8/Unit_of_measure>.
+aml:hasUnitAttribute a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain aml:Attribute.
+aml:hasUnitValue a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain aml:Attribute;
+                 rdfs:range <http://www.wurvoc.org/vocabularies/om-1.8/Measure>;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "hasAttributeValue"@en.
+aml:hasVersion a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+               rdfs:range xsd:decimal;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "hasVersion"@en.
+aml:hasVersionEClass a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:domain aml:eClassSpecification;
+                     rdfs:range xsd:string;
+                     <http://www.w3.org/2004/02/skos/core#definition> "Points to the eClass version for a given Element"@en;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "eClassVersion"@en.
+aml:hasVersionICL a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain aml:InterfaceClassLib;
+                  rdfs:range xsd:string;
+                  <http://www.w3.org/2004/02/skos/core#definition> "Points to the version for a Interface Class Lib"@en;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "hasVersionICL"@en.
+aml:hasVersionRCL a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain aml:RoleClassLib;
+                  rdfs:range xsd:string;
+                  <http://www.w3.org/2004/02/skos/core#definition> "Points to the version for a Role Class Lib"@en;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "hasVersionRCL"@en.
+aml:hasVersionSUC a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain aml:SystemUnitClass;
+                  rdfs:range xsd:decimal;
+                  <http://www.w3.org/2004/02/skos/core#definition> "Points to the version for a System Unit Class"@en;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "hasVersionSUC"@en.
+aml:hasWriterId a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                  <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                rdfs:domain aml:AdditionalInformation;
+                rdfs:range xsd:string;
+                rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/identifier>;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "hasWriterId".
+aml:hasWriterName a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:domain aml:AdditionalInformation;
+                  rdfs:range rdf:PlainLiteral;
+                  rdfs:subPropertyOf aml:hasName;
+                  <http://www.w3.org/2004/02/skos/core#definition> "The name of the Writer, i.e., the tool that produced the file"@en;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "hasWriterName".
+aml:hasWriterRelease a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:domain aml:AdditionalInformation;
+                     rdfs:range xsd:string;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "hasWriterRelease"@en.
+aml:hasWriterVendor a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:domain aml:AdditionalInformation;
+                    rdfs:range rdf:PlainLiteral;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "hasWriterVendor"@en.
+aml:hasWriterVendorURL a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                       rdfs:domain aml:AdditionalInformation;
+                       rdfs:range xsd:anyURI;
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "hasWriterVendorURL"@en.
+aml:hasWriterVersion a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                     rdfs:domain aml:AdditionalInformation;
+                     rdfs:range xsd:string;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "hasWriterVersion"@en.
+aml:isConnectedToEClass a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        <http://www.w3.org/2004/02/skos/core#definition> "Points to the eCl@ass connection for a given element"@en;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "eClassIsConnectedTo"@en.
+aml:isPartOfIC a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                 <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+               rdfs:domain aml:InterfaceClass;
+               rdfs:range aml:InterfaceClass;
+               rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#isPartOf>;
+               <http://www.w3.org/2004/02/skos/core#altLabel> "isPartOfInterfaceClass"@en;
+               <http://www.w3.org/2004/02/skos/core#definition> "Connects the InterfaceClasses with other InterfaceClasses that are part of the given Interface Class"@en;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "isPartOfIC"@en.
+aml:isPartOfIE a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                 <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+               rdfs:domain aml:InternalElement;
+               rdfs:range aml:InternalElement;
+               rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#isPartOf>;
+               <http://www.w3.org/2004/02/skos/core#altLabel> "InternalElementPartOf"@en;
+               <http://www.w3.org/2004/02/skos/core#definition> "Connects the Internal Element with other Internal Elements that are part of the given Internal Element"@en;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "isPartOfIE"@en.
+aml:isPartOfSUC a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                  <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+                rdfs:domain aml:SystemUnitClass;
+                rdfs:range aml:SystemUnitClass;
+                rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#isPartOf>;
+                <http://www.w3.org/2004/02/skos/core#altLabel> "SystemUnitClassPartOf"@en;
+                <http://www.w3.org/2004/02/skos/core#definition> "Connects the System Unit Class with another System Unit Class Elements"@en;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "isPartOfSUC"@en.
+aml:lastWritingDateTime a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:domain aml:AdditionalInformation;
+                        rdfs:range xsd:dateTime.
+aml:milliampere a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  <http://www.wurvoc.org/vocabularies/om-1.8/Unit_of_measure>.
+aml:numerical_value a <http://www.w3.org/2002/07/owl#DatatypeProperty>.
+aml:refBaseSystemUnitPath a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                          rdfs:domain aml:InternalElement;
+                          rdfs:range xsd:string.
+aml:refSemanticAttribute a <http://www.w3.org/2002/07/owl#DatatypeProperty>,
+                           <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+                         rdfs:domain aml:Attribute;
+                         rdfs:range xsd:string;
+                         <http://www.w3.org/2004/02/skos/core#definition> "Reference to the eClass IRDI identification"@en;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "refSemanticAttribute"@en.
+aml:speedMeasurement a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                       <http://www.wurvoc.org/vocabularies/om-1.8/Measure>;
+                     aml:numerical_value 1.5;
+                     aml:unit_of_measure <http://www.wurvoc.org/vocabularies/om-1.8/metre_per_second-time>.
+aml:unit_of_measure a <http://www.w3.org/2002/07/owl#ObjectProperty>.

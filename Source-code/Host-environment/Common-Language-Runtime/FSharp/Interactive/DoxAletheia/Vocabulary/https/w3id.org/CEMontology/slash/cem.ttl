@@ -1,0 +1,599 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix cem: <https://w3id.org/CEMontology/>.
+
+(<http://schema.org/Place>) a rdf:List.
+_:B037b4435b1bf99a7bac6f17f3b571575 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<http://schema.org/Date>
+                                                                             <http://schema.org/DateTime>
+                                                                             <http://schema.org/Text>).
+(<http://schema.org/Text>
+ <http://schema.org/URL>) a rdf:List.
+_:B05f1136e32298585dfc814a05f310ef0 a rdf:List.
+_:B139176efbbf9b66aebcbea4c8734664c a rdf:List.
+(<http://schema.org/Place>
+ <http://schema.org/Text>
+ <http://schema.org/URL>) a rdf:List.
+_:B1959c8fdb3d7d55776c8cce47bee3a69 a rdf:List.
+(<http://schema.org/Place>
+ <http://schema.org/Text>
+ <http://schema.org/URL>) a rdf:List.
+_:B1de2385493a3b1acba73d8c5ce1e618f a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<http://semanticweb.cs.vu.nl/2009/11/sem/Actor>
+                                                                             <http://semanticweb.cs.vu.nl/2009/11/sem/Event>
+                                                                             <http://semanticweb.cs.vu.nl/2009/11/sem/Place>
+                                                                             <http://semanticweb.cs.vu.nl/2009/11/sem/Time>).
+_:B23d4c081c2161497e999ab4b4cfadc1c a rdf:List.
+(<http://schema.org/Date>
+ <http://schema.org/DateTime>) a rdf:List.
+_:B2a129eea154a1bb4bc3ccd8057e8a6af a rdf:List.
+(<http://schema.org/Article>) a rdf:List.
+(<http://schema.org/CreativeWork>) a rdf:List.
+_:B36d62c77934430616c1b6b5e9cfbf4e7 a rdf:List.
+_:B37adc78ddbf30911ae4836f2381f8e94 a rdf:List.
+_:B3a10bcb5c576fad428585eb8402e21f1 a rdf:List.
+(<http://schema.org/CreativeWork>
+ <http://schema.org/Language>
+ <http://schema.org/Organization>
+ <http://schema.org/Person>
+ <http://semanticweb.cs.vu.nl/2009/11/sem/Place>) a rdf:List.
+_:B41fa4d5254e8beb90503e756582ec0ba a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> (<http://schema.org/CreativeWork>
+                                                                             <http://schema.org/Language>
+                                                                             <http://semanticweb.cs.vu.nl/2009/11/sem/Core>).
+_:B43eff32f95d189ff753f99682e21775d a rdf:List.
+_:B48f2c53a9c5f5586e5e03540bdc92516 a rdf:List.
+_:B5cd3cab8b986b5f6985259d2ac2192a2 a rdf:List.
+() a rdf:List.
+(<http://schema.org/Text>
+ <http://schema.org/Thing>
+ <http://schema.org/URL>
+ <http://www.w3.org/2002/07/owl#Thing>) a rdf:List.
+(<http://schema.org/CreativeWork>) a rdf:List.
+(<http://crimeanalytics.it/cem/how>
+ <http://crimeanalytics.it/cem/success>
+ <http://crimeanalytics.it/cem/why>
+ <http://semanticweb.cs.vu.nl/2009/11/sem/hasTimeStamp>) a rdf:List.
+_:B6e5fda81c8cbd8b8bb0108150629754f a rdf:List.
+() a rdf:List.
+_:B70a2317134509b4d22bddf4d7e0e112a a rdf:List.
+_:B70cde7d8583f1792a37ca5cfe4c861ff a rdf:List.
+_:B71b4f297f0ca1da32fd9ef5e7765d59d a rdf:List.
+_:B71f06b68d70288acc20841b59d6ec193 a rdf:List.
+_:B7b1953b18f35dd231e990bc230efe61e a rdf:List.
+() a rdf:List.
+_:B7e7ea16b4f086514959c091b84b609db a rdf:List.
+_:B8191fb5c64b72dde9060f4e741f59a64 a rdf:List.
+(<http://semanticweb.cs.vu.nl/2009/11/sem/hasActor>
+ <http://semanticweb.cs.vu.nl/2009/11/sem/hasPlace>
+ <http://semanticweb.cs.vu.nl/2009/11/sem/hasSubEvent>
+ <http://semanticweb.cs.vu.nl/2009/11/sem/hasTime>) a rdf:List.
+_:B877e3912a64cc56d4479b7a558e8a394 a <http://www.w3.org/2002/07/owl#AllDisjointProperties>;
+                                    <http://www.w3.org/2002/07/owl#members> ().
+_:B8b810d9e9e3eb6c03eb219c37d8aaf7d a <http://www.w3.org/2002/07/owl#AllDisjointProperties>;
+                                    <http://www.w3.org/2002/07/owl#members> (<http://schema.org/articleBody>
+                                                                             <http://schema.org/containedInPlace>
+                                                                             <http://schema.org/containsPlace>
+                                                                             <http://schema.org/datePublished>
+                                                                             <http://schema.org/headline>
+                                                                             <http://semanticweb.cs.vu.nl/2009/11/sem/eventProperty>
+                                                                             <http://semanticweb.cs.vu.nl/2009/11/sem/subEventOf>).
+(<http://schema.org/Text>
+ <http://schema.org/URL>) a rdf:List.
+_:B938088c2060664233f4f826e52eac3d5 a rdf:List.
+_:B9406ba226f2275f86b737735ae2a5ac0 a <http://www.w3.org/2002/07/owl#AllDisjointProperties>;
+                                    <http://www.w3.org/2002/07/owl#members> ().
+(<http://schema.org/Place>) a rdf:List.
+_:B9f4691926ad64aa97eab6a95fa16a42a a rdf:List.
+(<http://schema.org/Language>
+ <http://schema.org/Text>
+ <http://schema.org/URL>) a rdf:List.
+_:Ba70a438eba24fc156607349de6967770 a rdf:List.
+(<http://schema.org/Text>
+ <http://schema.org/URL>) a rdf:List.
+_:Bafb3c6d131f6c105fc77b06cc5a32228 a rdf:List.
+(<http://schema.org/CreativeWork>) a rdf:List.
+_:Bbd44ab324d9ffd62cbbc9b09cee517a8 a rdf:List.
+_:Bc3600c0264ff586aa0dba57453603cce a rdf:List.
+_:Bc47723b1db24cf1ec4eedaa8241dc877 a rdf:List.
+_:Bc5318d48944f7781e26ccea52c6004a7 a rdf:List.
+_:Bc704a9ccfe006cd3295ac36bc8be4aa6 a rdf:List.
+_:Bc769ab463638207ca0ed46ee4b38cd2e a rdf:List.
+_:Bc8a654b8e6ffcbd21ebd543352f365f8 a rdf:List.
+_:Bcade33498102b3ab4d251d00edc92f44 a rdf:List.
+_:Bd1d5b190709163fe3500a20a4d53c678 a rdf:List.
+_:Bd94b8ea5e6c6cda37fbc5019637630e1 a rdf:List.
+(<http://schema.org/Organization>
+ <http://schema.org/Person>
+ <http://schema.org/Text>
+ <http://schema.org/URL>) a rdf:List.
+_:Be7e4bec906372221300aca625ccd5e26 a rdf:List.
+_:Beffc0de4dd73a67e8b0ce752ef53d669 a rdf:List.
+_:Bf07b20795de475063c35a960585f2966 a rdf:List.
+_:Bf3f0fb7f5707df3b2f1ac503140644da a rdf:List.
+(<http://schema.org/CreativeWork>) a rdf:List.
+() a rdf:List.
+(<http://schema.org/Thing>) a rdf:List.
+_:Bfbb9ddabb2f688af9845932fc20b58b2 a <http://www.w3.org/2002/07/owl#AllDisjointClasses>;
+                                    <http://www.w3.org/2002/07/owl#members> ().
+_:Bfc485242282f0fe56a521d8a5a06ec5b a rdf:List.
+_:Bfffd36f59536aef4453c2b1016b25cca a rdf:List.
+<http://crimeanalytics.it/cem/Assault> a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:comment "Assaults and threats"@en;
+                                       rdfs:label "Assault"@en;
+                                       rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeAgainstPerson>.
+<http://crimeanalytics.it/cem/Burglary> a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:comment "Burglary"@en;
+                                        rdfs:label "Burglary"@en;
+                                        rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeAgainstProperty>.
+<http://crimeanalytics.it/cem/Corruption> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment "Corruption"@en;
+                                          rdfs:label "Corruption"@en;
+                                          rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeWithDeception>.
+<http://crimeanalytics.it/cem/CrimeAgainstNaturalEnvironment> a <http://www.w3.org/2002/07/owl#Class>;
+                                                              rdfs:comment "Acts against the natural environment "@en;
+                                                              rdfs:label "CrimeAgainstNaturalEnvironment"@en;
+                                                              rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeEvent>.
+<http://crimeanalytics.it/cem/CrimeAgainstPerson> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:comment "Acts causing harm or intending to cause harm to the person"@en;
+                                                  rdfs:label "CrimeAgainstPerson"@en;
+                                                  rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeEvent>.
+<http://crimeanalytics.it/cem/CrimeAgainstProperty> a <http://www.w3.org/2002/07/owl#Class>;
+                                                    rdfs:comment "Acts against property only"@en;
+                                                    rdfs:label "CrimeAgainstProperty"@en;
+                                                    rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeEvent>.
+<http://crimeanalytics.it/cem/CrimeAgainstPropertyAndPerson> a <http://www.w3.org/2002/07/owl#Class>;
+                                                             rdfs:comment "Acts against property involving violence or threat against a person"@en;
+                                                             rdfs:label "CrimeAgainstPropertyAndPerson"@en;
+                                                             rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeEvent>.
+<http://crimeanalytics.it/cem/CrimeAgainstPublicOrder> a <http://www.w3.org/2002/07/owl#Class>;
+                                                       rdfs:comment "Acts against public order, authority, and provisions of the State"@en;
+                                                       rdfs:label "CrimeAgainstPublicOrder"@en;
+                                                       rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeEvent>.
+<http://crimeanalytics.it/cem/CrimeAgainstPublicSafety> a <http://www.w3.org/2002/07/owl#Class>;
+                                                        rdfs:comment "Acts against public safety and state security"@en;
+                                                        rdfs:label "CrimeAgainstPublicSafety"@en;
+                                                        rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeEvent>.
+<http://crimeanalytics.it/cem/CrimeEvent> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment "Event subclass to express the crime event."@en;
+                                          rdfs:label "CrimeEvent"@en;
+                                          rdfs:subClassOf [a <http://www.w3.org/2002/07/owl#Restriction> ; 
+                                                           <http://www.w3.org/2002/07/owl#onProperty> <http://crimeanalytics.it/cem/why> ; 
+                                                           <http://www.w3.org/2002/07/owl#someValuesFrom> xsd:string],
+                                                          [a <http://www.w3.org/2002/07/owl#Restriction> ; 
+                                                           <http://www.w3.org/2002/07/owl#onProperty> <http://crimeanalytics.it/cem/how> ; 
+                                                           <http://www.w3.org/2002/07/owl#someValuesFrom> xsd:string],
+                                                          [a <http://www.w3.org/2002/07/owl#Restriction> ; 
+                                                           <http://www.w3.org/2002/07/owl#onProperty> <http://crimeanalytics.it/cem/hasVictim> ; 
+                                                           <http://www.w3.org/2002/07/owl#someValuesFrom> <http://semanticweb.cs.vu.nl/2009/11/sem/Actor>],
+                                                          [a <http://www.w3.org/2002/07/owl#Restriction> ; 
+                                                           <http://www.w3.org/2002/07/owl#onProperty> <http://crimeanalytics.it/cem/hasOtherSubject> ; 
+                                                           <http://www.w3.org/2002/07/owl#someValuesFrom> <http://semanticweb.cs.vu.nl/2009/11/sem/Actor>],
+                                                          [a <http://www.w3.org/2002/07/owl#Restriction> ; 
+                                                           <http://www.w3.org/2002/07/owl#onProperty> <http://crimeanalytics.it/cem/hasAuthor> ; 
+                                                           <http://www.w3.org/2002/07/owl#someValuesFrom> <http://semanticweb.cs.vu.nl/2009/11/sem/Actor>],
+                                                          <http://semanticweb.cs.vu.nl/2009/11/sem/Event>.
+<http://crimeanalytics.it/cem/CrimeProceeds> a <http://www.w3.org/2002/07/owl#Class>;
+                                             rdfs:comment "Acts involving proceeds of crime"@en;
+                                             rdfs:label "CrimeProceeds"@en;
+                                             rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeWithDeception>.
+<http://crimeanalytics.it/cem/CrimeWithDeception> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:comment "Acts involving fraud, deception or corruption"@en;
+                                                  rdfs:label "CrimeWithDeception"@en;
+                                                  rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeEvent>.
+<http://crimeanalytics.it/cem/Defamation> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment "Defamation or insult"@en;
+                                          rdfs:label "Defamation"@en;
+                                          rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeAgainstPerson>.
+<http://crimeanalytics.it/cem/Discrimination> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:comment "Discrimination"@en;
+                                              rdfs:label "Discrimination"@en;
+                                              rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeAgainstPerson>.
+<http://crimeanalytics.it/cem/Drug> a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:comment "Acts involving controlled drugs or other psychoactive substances"@en;
+                                    rdfs:label "Drug"@en;
+                                    rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeEvent>.
+<http://crimeanalytics.it/cem/Forgery> a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:comment "Forgery/counterfeiting"@en;
+                                       rdfs:label "Forgery"@en;
+                                       rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeWithDeception>.
+<http://crimeanalytics.it/cem/Fraud> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "Fraud"@en;
+                                     rdfs:label "Fraud"@en;
+                                     rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeWithDeception>.
+<http://crimeanalytics.it/cem/Homicide> a <http://www.w3.org/2002/07/owl#Class>;
+                                        rdfs:comment "Acts leading to death or intending to cause death"@en;
+                                        rdfs:label "Homicide"@en;
+                                        rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeEvent>.
+<http://crimeanalytics.it/cem/Intimidation> a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:comment "Acts intended to induce fear or emotional distress"@en;
+                                            rdfs:label "Intimidation"@en;
+                                            rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeAgainstPerson>.
+<http://crimeanalytics.it/cem/MoneyLaundering> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:comment "Money laundering"@en;
+                                               rdfs:label "MoneyLaundering"@en;
+                                               rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeProceeds>.
+<http://crimeanalytics.it/cem/OtherCrime> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment "Other criminal acts not elsewhere classified"@en;
+                                          rdfs:label "OtherCrime"@en;
+                                          rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeEvent>.
+<http://crimeanalytics.it/cem/PropertyDamage> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:comment "Property damage"@en;
+                                              rdfs:label "PropertyDamage"@en;
+                                              rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeAgainstProperty>.
+<http://crimeanalytics.it/cem/Robbery> a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:comment "Robbery"@en;
+                                       rdfs:label "Robbery"@en;
+                                       rdfs:subClassOf [a <http://www.w3.org/2002/07/owl#Restriction> ; 
+                                                        <http://www.w3.org/2002/07/owl#onProperty> <http://crimeanalytics.it/cem/hasWeapon> ; 
+                                                        <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing>],
+                                                       <http://crimeanalytics.it/cem/CrimeAgainstPropertyAndPerson>.
+<http://crimeanalytics.it/cem/SexualCrime> a <http://www.w3.org/2002/07/owl#Class>;
+                                           rdfs:comment "Injurious acts of a sexual nature"@en;
+                                           rdfs:label "SexualCrime"@en;
+                                           rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeEvent>.
+<http://crimeanalytics.it/cem/SexualExploitation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:comment "Sexual exploitation"@en;
+                                                  rdfs:label "SexualExploitation"@en;
+                                                  rdfs:subClassOf <http://crimeanalytics.it/cem/SexualCrime>.
+<http://crimeanalytics.it/cem/SexualViolence> a <http://www.w3.org/2002/07/owl#Class>;
+                                              rdfs:comment "Sexual violence"@en;
+                                              rdfs:label "SexualViolence"@en;
+                                              rdfs:subClassOf <http://crimeanalytics.it/cem/SexualCrime>.
+<http://crimeanalytics.it/cem/Slavery> a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:comment "Slavery and exploitation"@en;
+                                       rdfs:label "Slavery"@en;
+                                       rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeAgainstPerson>.
+<http://crimeanalytics.it/cem/TaxEvasion> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:comment "Acts contrary to public revenue or regulatory provisions"@en;
+                                          rdfs:label "TaxEvasion"@en;
+                                          rdfs:subClassOf <http://crimeanalytics.it/cem/CrimeAgainstPublicOrder>.
+<http://crimeanalytics.it/cem/Theft> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:comment "Theft"@en;
+                                     rdfs:label "Theft"@en;
+                                     rdfs:subClassOf [a <http://www.w3.org/2002/07/owl#Restriction> ; 
+                                                      <http://www.w3.org/2002/07/owl#onProperty> <http://crimeanalytics.it/cem/hasStolenObject> ; 
+                                                      <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/2002/07/owl#Thing>],
+                                                     <http://crimeanalytics.it/cem/CrimeAgainstProperty>.
+<http://crimeanalytics.it/cem/hasAuthor> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                         rdfs:comment "Used to state the author(s) of the crime event."@en;
+                                         rdfs:domain <http://crimeanalytics.it/cem/CrimeEvent>;
+                                         rdfs:label "hasAuthor"@en;
+                                         rdfs:range <http://semanticweb.cs.vu.nl/2009/11/sem/Actor>;
+                                         rdfs:subPropertyOf <http://semanticweb.cs.vu.nl/2009/11/sem/hasActor>.
+<http://crimeanalytics.it/cem/hasOtherSubject> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                               rdfs:comment "Used to state other subject(s) involved in the crime event (e.g., law enforcement agencies)."@en;
+                                               rdfs:domain <http://crimeanalytics.it/cem/CrimeEvent>;
+                                               rdfs:label "hasOtherSubject"@en;
+                                               rdfs:range <http://semanticweb.cs.vu.nl/2009/11/sem/Actor>;
+                                               rdfs:subPropertyOf <http://semanticweb.cs.vu.nl/2009/11/sem/hasActor>.
+<http://crimeanalytics.it/cem/hasStolenObject> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                               rdfs:comment "Property to express the stolen object(s) in a theft."@en;
+                                               rdfs:domain <http://crimeanalytics.it/cem/Theft>;
+                                               rdfs:label "has stolen object(s)"@en;
+                                               rdfs:range <http://www.w3.org/2002/07/owl#Thing>.
+<http://crimeanalytics.it/cem/hasVictim> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                         rdfs:comment "Used to state the victim(s) of the crime event."@en;
+                                         rdfs:domain <http://crimeanalytics.it/cem/CrimeEvent>;
+                                         rdfs:label "hasVictim"@en;
+                                         rdfs:range <http://semanticweb.cs.vu.nl/2009/11/sem/Actor>;
+                                         rdfs:subPropertyOf <http://semanticweb.cs.vu.nl/2009/11/sem/hasActor>.
+<http://crimeanalytics.it/cem/hasWeapon> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                         rdfs:comment "Property to express the weapon(s) used in a robbery."@en;
+                                         rdfs:domain <http://crimeanalytics.it/cem/Robbery>;
+                                         rdfs:label "hasWeapon"@en;
+                                         rdfs:range <http://www.w3.org/2002/07/owl#Thing>.
+<http://crimeanalytics.it/cem/how> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                   rdfs:comment "Property to express how the crime event has been accomplished."@en;
+                                   rdfs:domain <http://crimeanalytics.it/cem/CrimeEvent>;
+                                   rdfs:label "how"@en;
+                                   rdfs:range xsd:string.
+<http://crimeanalytics.it/cem/success> a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+                                         <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                       rdfs:comment "Property to manifest if the crime event has been successful."@en;
+                                       rdfs:domain <http://crimeanalytics.it/cem/CrimeEvent>;
+                                       rdfs:label "success"@en;
+                                       rdfs:range xsd:boolean.
+<http://crimeanalytics.it/cem/why> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                   rdfs:comment "Property to express the crime event motive."@en;
+                                   rdfs:domain <http://crimeanalytics.it/cem/CrimeEvent>;
+                                   rdfs:label "why"@en;
+                                   rdfs:range xsd:string.
+<http://purl.org/dc/terms/bibliographicCitation> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/contributor> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/identifier> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/provenance> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/publisher> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocommons/voaf#Vocabulary> a <http://www.w3.org/2002/07/owl#Class>.
+<http://schema.org/Article> a <http://www.w3.org/2002/07/owl#Class>;
+                            rdfs:comment "An article, such as a news article or piece of investigative report. Newspapers and magazines have articles of many different types and this is intended to cover them all."@en;
+                            rdfs:label "Article"@en;
+                            rdfs:subClassOf <http://schema.org/CreativeWork>.
+<http://schema.org/CreativeWork> a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "The most generic kind of creative work, including books, movies, photographs, software programs, etc."@en;
+                                 rdfs:label "CreativeWork"@en;
+                                 rdfs:subClassOf <http://schema.org/Thing>.
+<http://schema.org/DataType> a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "The basic data types such as Integers, Strings, etc."@en;
+                             rdfs:label "DataType"@en;
+                             <http://www.w3.org/2002/07/owl#disjointWith> <http://semanticweb.cs.vu.nl/2009/11/sem/Core>.
+<http://schema.org/Date> a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment """A date value in <a href=\"http://en.wikipedia.org/wiki/ISO_8601\">ISO 8601 date format</a>."""@en;
+                         rdfs:isDefinedBy <https://schema.org/Date>;
+                         rdfs:label "Date"@en;
+                         rdfs:subClassOf <http://schema.org/DataType>.
+<http://schema.org/DateTime> a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm] (see Chapter 5.4 of ISO 8601)."@en;
+                             rdfs:isDefinedBy <https://schema.org/DateTime>;
+                             rdfs:label "DateTime"@en;
+                             rdfs:subClassOf <http://schema.org/DataType>.
+<http://schema.org/Language> a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "Natural languages such as Spanish, Tamil, Hindi, English, etc. Formal language code tags expressed in BCP 47 can be used via the alternateName property. The Language type previously also covered programming languages such as Scheme and Lisp, which are now best represented using ComputerLanguage."@en;
+                             rdfs:label "Language"@en;
+                             rdfs:subClassOf <http://schema.org/Thing>.
+<http://schema.org/NewsArticle> a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment """A NewsArticle is an article whose content reports news, or provides background context and supporting materials for understanding the news.<br/><br/>
+
+A more detailed overview of <a href=\"/docs/news.html\">schema.org News markup</a> is also available."""@en;
+                                rdfs:isDefinedBy <https://schema.org/NewsArticle>;
+                                rdfs:label "NewsArticle"@en;
+                                rdfs:subClassOf [a <http://www.w3.org/2002/07/owl#Restriction> ; 
+                                                 <http://www.w3.org/2002/07/owl#onProperty> <http://schema.org/mentions> ; 
+                                                 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://crimeanalytics.it/cem/CrimeEvent>],
+                                                <http://schema.org/Article>.
+<http://schema.org/Organization> a <http://www.w3.org/2002/07/owl#Class>;
+                                 rdfs:comment "An organization such as a school, NGO, corporation, club, etc."@en;
+                                 rdfs:label "Organization"@en;
+                                 rdfs:subClassOf <http://schema.org/Thing>.
+<http://schema.org/Person> a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "A person (alive, dead, undead, or fictional)."@en;
+                           rdfs:label "Person"@en;
+                           rdfs:subClassOf <http://schema.org/Thing>.
+<http://schema.org/Place> a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "Entities that have a somewhat fixed, physical extension."@en;
+                          rdfs:label "Place"@en;
+                          rdfs:subClassOf <http://schema.org/Thing>;
+                          <http://www.w3.org/2002/07/owl#equivalentClass> <http://semanticweb.cs.vu.nl/2009/11/sem/Place>.
+<http://schema.org/Text> a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Data type: Text."@en;
+                         rdfs:isDefinedBy <https://schema.org/Text>;
+                         rdfs:label "Text"@en;
+                         rdfs:subClassOf <http://schema.org/DataType>.
+<http://schema.org/Thing> a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:comment "The most generic type of item."@en;
+                          rdfs:label "Thing"@en;
+                          <http://www.w3.org/2002/07/owl#equivalentClass> <http://www.w3.org/2002/07/owl#Thing>.
+<http://schema.org/URL> a <http://www.w3.org/2002/07/owl#Class>;
+                        rdfs:comment "Data type: URL."@en;
+                        rdfs:label "URL"@en;
+                        rdfs:subClassOf <http://schema.org/Text>.
+<http://schema.org/articleBody> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:comment "The actual body of the article."@en;
+                                rdfs:domain [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                             <http://www.w3.org/2002/07/owl#unionOf> ()];
+                                rdfs:isDefinedBy <https://schema.org/articleBody>;
+                                rdfs:label "articleBody"@en;
+                                rdfs:range [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                            <http://www.w3.org/2002/07/owl#unionOf> ()].
+<http://schema.org/containedInPlace> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                     rdfs:comment "The basic containment relation between a place and one that contains it."@en;
+                                     rdfs:domain [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                                  <http://www.w3.org/2002/07/owl#unionOf> ()];
+                                     rdfs:isDefinedBy <https://schema.org/containedInPlace>;
+                                     rdfs:label "containedInPlace"@en;
+                                     rdfs:range [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                                 <http://www.w3.org/2002/07/owl#unionOf> ()];
+                                     <http://www.w3.org/2002/07/owl#inverseOf> <http://schema.org/containsPlace>.
+<http://schema.org/containsPlace> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:comment "Inverse property of containedInPlace."@en;
+                                  rdfs:domain [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                               <http://www.w3.org/2002/07/owl#unionOf> ()];
+                                  rdfs:label "containsPlace"@en;
+                                  rdfs:range [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                              <http://www.w3.org/2002/07/owl#unionOf> ()].
+<http://schema.org/datePublished> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:comment "Date of first broadcast/publication."@en;
+                                  rdfs:domain [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                               <http://www.w3.org/2002/07/owl#unionOf> ()];
+                                  rdfs:isDefinedBy <https://schema.org/datePublished>;
+                                  rdfs:label "datePublished"@en;
+                                  rdfs:range [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                              <http://www.w3.org/2002/07/owl#unionOf> ()].
+<http://schema.org/hasurl> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:comment "URL of the item."@en;
+                           rdfs:domain [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                        <http://www.w3.org/2002/07/owl#unionOf> ()];
+                           rdfs:isDefinedBy <https://schema.org/url>;
+                           rdfs:label "url"@en;
+                           rdfs:range [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                       <http://www.w3.org/2002/07/owl#unionOf> ()].
+<http://schema.org/headline> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:comment "Headline of the article."@en;
+                             rdfs:domain [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                          <http://www.w3.org/2002/07/owl#unionOf> ()];
+                             rdfs:isDefinedBy <https://schema.org/headline>;
+                             rdfs:label "headline"@en;
+                             rdfs:range [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                         <http://www.w3.org/2002/07/owl#unionOf> ()].
+<http://schema.org/inLanguage> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                               rdfs:comment """The language of the content or performance or used in an action. Please use one of the language codes from the <a href=\"http://tools.ietf.org/html/bcp47\">IETF BCP 47 standard</a>. See also <a class=\"localLink\" href=\"http://schema.org/availableLanguage\">availableLanguage</a>."""@en;
+                               rdfs:domain <http://schema.org/CreativeWork>;
+                               rdfs:isDefinedBy <https://schema.org/inLanguage>;
+                               rdfs:label "inLanguage"@en;
+                               rdfs:range [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                           <http://www.w3.org/2002/07/owl#unionOf> ()].
+<http://schema.org/mentions> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                             rdfs:comment "Indicates that the CreativeWork contains a reference to, but is not necessarily about a concept."@en;
+                             rdfs:domain [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                          <http://www.w3.org/2002/07/owl#unionOf> ()];
+                             rdfs:isDefinedBy <https://schema.org/mentions>;
+                             rdfs:label "mentions"@en;
+                             rdfs:range [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                         <http://www.w3.org/2002/07/owl#unionOf> ()].
+<http://schema.org/publisher> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:comment "The publisher of the creative work."@en;
+                              rdfs:domain [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                           <http://www.w3.org/2002/07/owl#unionOf> ()];
+                              rdfs:isDefinedBy <https://schema.org/publisher>;
+                              rdfs:label "publisher"@en;
+                              rdfs:range [a <http://www.w3.org/2002/07/owl#Class> ; 
+                                          <http://www.w3.org/2002/07/owl#unionOf> ()].
+<http://semanticweb.cs.vu.nl/2009/11/sem/Actor> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:comment "Actors are entities that take part in an Event, either actively or passively. Actors do not necessarily have to be sentient. They can also be objects. Actors are a thing, animate or inanimate, physical or non-physical.";
+                                                rdfs:label "Actor";
+                                                rdfs:subClassOf <http://semanticweb.cs.vu.nl/2009/11/sem/Core>;
+                                                <http://www.w3.org/2004/02/skos/core#broadMatch> <http://sw.opencyc.org/2009/04/07/concept/en/SomethingExisting>,
+                                                                                                 <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#endurant>;
+                                                <http://www.w3.org/2004/02/skos/core#closeMatch> <http://xmlns.com/foaf/0.1/Agent>,
+                                                                                                 <http://purl.org/dc/terms/AgentClass>,
+                                                                                                 <http://sw.opencyc.org/2009/04/07/concept/en/Agent-Generic>,
+                                                                                                 <http://purl.org/dc/terms/Agent>,
+                                                                                                 <http://www.ontologyportal.org/translations/SUMO.owl.txt#Agent>,
+                                                                                                 <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#E39.Actor>.
+<http://semanticweb.cs.vu.nl/2009/11/sem/Core> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:comment "The SEM Core class contains all entities that make up the context of an event: Events, Actors, Places, Times. This class is meant to be extended for each application domain.";
+                                               rdfs:label "Core".
+<http://semanticweb.cs.vu.nl/2009/11/sem/Event> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:comment "Events are things that happen. This comprises everything from historical events to web site sessions and mythical journeys. Event is the central class of SEM.";
+                                                rdfs:label "Event";
+                                                rdfs:subClassOf <http://semanticweb.cs.vu.nl/2009/11/sem/Core>;
+                                                <http://www.w3.org/2004/02/skos/core#broadMatch> <http://purl.org/NET/c4dm/event.owl#Event>,
+                                                                                                 <http://linkedevents.org/ontology/Event>;
+                                                <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#E5.Event>,
+                                                                                                 <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant>,
+                                                                                                 <http://sw.opencyc.org/2009/04/07/concept/en/Situation>,
+                                                                                                 <http://purl.org/dc/dcmitype/Event>,
+                                                                                                 <http://www.ontologyportal.org/translations/SUMO.owl.txt#Process>.
+<http://semanticweb.cs.vu.nl/2009/11/sem/Place> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:comment "Places are locations where an Event happens. They do not need to be physical places and hence do not necessarily need coordinates. Neither do they need to have any significance apart from them being the location of an Event.";
+                                                rdfs:label "Place";
+                                                rdfs:subClassOf <http://semanticweb.cs.vu.nl/2009/11/sem/Core>;
+                                                <http://www.w3.org/2004/02/skos/core#closeMatch> <http://purl.org/dc/terms/Location>,
+                                                                                                 <http://www.ontologyportal.org/translations/SUMO.owl.txt#GeographicArea>,
+                                                                                                 <http://www8.informatik.uni-erlangen.de/IMMD8/Services/cidoc-crm/erlangen-crm_090330_5_0_1.owl#E53.Place>,
+                                                                                                 <http://sw.opencyc.org/2009/04/07/concept/en/EnduringThing-Localized>;
+                                                <http://www.w3.org/2004/02/skos/core#narrowMatch> <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#PhysicalRegion>,
+                                                                                                  <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>.
+<http://semanticweb.cs.vu.nl/2009/11/sem/Time> a <http://www.w3.org/2002/07/owl#Class>;
+                                               rdfs:comment "Time contains symbolic representations of when an Event took place. Time instances do not necessarily need to have a timestamp associated with them. The Time class exists to represent semantics of time, e.g. that one thing happens before another, even though the exact timestamps are unknown.";
+                                               rdfs:label "Time";
+                                               rdfs:subClassOf <http://semanticweb.cs.vu.nl/2009/11/sem/Core>;
+                                               <http://www.w3.org/2004/02/skos/core#broadMatch> <http://www.w3.org/2006/timeTemporalEntity>.
+<http://semanticweb.cs.vu.nl/2009/11/sem/eventProperty> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                        rdfs:comment "Event properties connect Events to other SEM Core entities."@en;
+                                                        rdfs:domain <http://semanticweb.cs.vu.nl/2009/11/sem/Event>;
+                                                        rdfs:label "eventProperty";
+                                                        rdfs:range rdfs:Class.
+<http://semanticweb.cs.vu.nl/2009/11/sem/hasActor> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                   rdfs:comment "Has actor is used to state which Actors or Objects participate in an Event."@en;
+                                                   rdfs:domain <http://semanticweb.cs.vu.nl/2009/11/sem/Event>;
+                                                   rdfs:label "hasActor";
+                                                   rdfs:range <http://semanticweb.cs.vu.nl/2009/11/sem/Actor>;
+                                                   rdfs:subPropertyOf <http://semanticweb.cs.vu.nl/2009/11/sem/eventProperty>;
+                                                   <http://www.w3.org/2004/02/skos/core#exactMatch> <http://linkedevents.org/ontology/involved>;
+                                                   <http://www.w3.org/2004/02/skos/core#narrowMatch> <http://www.kulttuurisampo.fi/ebkr/agent>.
+<http://semanticweb.cs.vu.nl/2009/11/sem/hasBeginTimeStamp> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                            rdfs:comment "Has begin timestamp is used to indicate the beginning of a time interval. Omitting the hasBeginTimeStamp while stating a hasEndTimeStamp is interpreted as an open ended interval."@en;
+                                                            rdfs:domain <http://semanticweb.cs.vu.nl/2009/11/sem/Event>;
+                                                            rdfs:label "hasBeginTimestamp";
+                                                            rdfs:range xsd:dateTimeStamp;
+                                                            rdfs:subPropertyOf <http://semanticweb.cs.vu.nl/2009/11/sem/hasTimeStamp>.
+<http://semanticweb.cs.vu.nl/2009/11/sem/hasEndTimeStamp> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                          rdfs:comment "Has end timestamp is used to indicate the end of a time interval. Omitting the hasEndTimeStamp while stating a hasBeginTimeStamp is interpreted as an open ended interval."@en;
+                                                          rdfs:domain <http://semanticweb.cs.vu.nl/2009/11/sem/Event>;
+                                                          rdfs:label "hasEndTimestamp";
+                                                          rdfs:range xsd:dateTimeStamp;
+                                                          rdfs:subPropertyOf <http://semanticweb.cs.vu.nl/2009/11/sem/hasTimeStamp>.
+<http://semanticweb.cs.vu.nl/2009/11/sem/hasPlace> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                   rdfs:comment "Has place is used to state in which Place(s) an Event happened. Coordinates can be attached to the Place with the W3C Geospatial Vocabulary (http://www.w3.org/2005/Incubator/geo/XGR-geo-20071023/).";
+                                                   rdfs:domain <http://semanticweb.cs.vu.nl/2009/11/sem/Event>;
+                                                   rdfs:label "hasPlace";
+                                                   rdfs:range <http://semanticweb.cs.vu.nl/2009/11/sem/Place>;
+                                                   rdfs:subPropertyOf <http://semanticweb.cs.vu.nl/2009/11/sem/eventProperty>;
+                                                   <http://www.w3.org/2004/02/skos/core#exactMatch> <http://www.kulttuurisampo.fi/ebkr/place>;
+                                                   <http://www.w3.org/2004/02/skos/core#narrowMatch> <http://linkedevents.org/ontology/inSpace>.
+<http://semanticweb.cs.vu.nl/2009/11/sem/hasSubEvent> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                      rdfs:comment "Has subevent connects an Event to other Events that belong to it. This is a very generic property that does not mean the subevents fully define the superconcept or that there is any causal relationship.";
+                                                      rdfs:domain <http://semanticweb.cs.vu.nl/2009/11/sem/Event>;
+                                                      rdfs:label "has subevent";
+                                                      rdfs:range <http://semanticweb.cs.vu.nl/2009/11/sem/Event>;
+                                                      rdfs:subPropertyOf <http://semanticweb.cs.vu.nl/2009/11/sem/eventProperty>;
+                                                      <http://www.w3.org/2002/07/owl#inverseOf> <http://semanticweb.cs.vu.nl/2009/11/sem/subEventOf>;
+                                                      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://purl.org/NET/c4dm/event.owl#sub_event>.
+<http://semanticweb.cs.vu.nl/2009/11/sem/hasTime> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                  rdfs:comment "Has time is used to indicate at which time an Event took place or when a property under the Temporary Constraint is valid. Has time points to a symbolic representation of time, which allows semantic relations between time resources. (see http://www.w3.org/TR/owl-time/)";
+                                                  rdfs:domain <http://semanticweb.cs.vu.nl/2009/11/sem/Event>;
+                                                  rdfs:label "has Time";
+                                                  rdfs:range <http://semanticweb.cs.vu.nl/2009/11/sem/Time>;
+                                                  rdfs:subPropertyOf <http://semanticweb.cs.vu.nl/2009/11/sem/eventProperty>;
+                                                  <http://www.w3.org/2004/02/skos/core#broadMatch> <http://linkedevents.org/ontology/atTime>.
+<http://semanticweb.cs.vu.nl/2009/11/sem/hasTimeStamp> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                                       rdfs:comment "Has timestamp is used to put time indicators on any individual. It is the most common way to state when an Event took place. There are subproperties of hasTimeStamp to represent time intervals and uncertain time intervals. If the exact moment is not known, but it is necessary to specify a certain time, use hasTime instead. All of these properties are also used to indicate the time at which a property under the Temporary Constraint is valid."@en;
+                                                       rdfs:domain <http://semanticweb.cs.vu.nl/2009/11/sem/Event>;
+                                                       rdfs:label "hasTimestamp";
+                                                       rdfs:range xsd:dateTimeStamp;
+                                                       <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.kulttuurisampo.fi/ebkr/time>.
+<http://semanticweb.cs.vu.nl/2009/11/sem/subEventOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                     rdfs:comment "Inverse property of hasSubEvent";
+                                                     rdfs:domain <http://semanticweb.cs.vu.nl/2009/11/sem/Event>;
+                                                     rdfs:label "subevent of";
+                                                     rdfs:range <http://semanticweb.cs.vu.nl/2009/11/sem/Event>.
+<http://semanticweb.cs.vu.nl/2009/11/sem/subTypeOf> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                    rdfs:comment "The inverse property of hasSubType."@en;
+                                                    rdfs:domain rdfs:Class;
+                                                    rdfs:label "subtype of";
+                                                    rdfs:range rdfs:Class;
+                                                    rdfs:subPropertyOf rdfs:subClassOf.
+rdfs:Class a <http://www.w3.org/2002/07/owl#Class>.
+rdfs:subClassOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "The subject is a subclass of a class."@en;
+                rdfs:domain rdfs:Class;
+                rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema>;
+                rdfs:label "subClassOf";
+                rdfs:range rdfs:Class.
+xsd:date a rdfs:Datatype.
+<http://www.w3.org/2004/02/skos/core#broadMatch> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#closeMatch> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#exactMatch> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#narrowMatch> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/Organization> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/Person> a <http://www.w3.org/2002/07/owl#Class>.
+<http://xmlns.com/foaf/0.1/name> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://w3id.org/BLIND> a <http://xmlns.com/foaf/0.1/Organization>,
+                           <http://www.w3.org/2002/07/owl#NamedIndividual>.
+<https://w3id.org/CEMontology> <http://purl.org/dc/terms/bibliographicCitation> "BLIND";
+                               <http://purl.org/dc/terms/contributor> [a <http://xmlns.com/foaf/0.1/Person> ; 
+                                                                       <http://xmlns.com/foaf/0.1/name> "BLIND"],
+                                                                      [a <http://xmlns.com/foaf/0.1/Person> ; 
+                                                                       <http://xmlns.com/foaf/0.1/name> "BLIND"];
+                               <http://purl.org/dc/terms/created> "2022-06-14"^^xsd:date;
+                               <http://purl.org/dc/terms/creator> "BLIND";
+                               <http://purl.org/dc/terms/description> "A lightweight ontology to describe crime events"@en;
+                               <http://purl.org/dc/terms/identifier> cem:,
+                                                                     "info:doi:10.13140/RG.2.2.18252.90243";
+                               <http://purl.org/dc/terms/issued> "2022-06-14"^^xsd:date;
+                               <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/3.0/>;
+                               <http://purl.org/dc/terms/modified> "2022-10-26"^^xsd:date;
+                               <http://purl.org/dc/terms/provenance> <https://w3id.org/CEMontology>;
+                               <http://purl.org/dc/terms/publisher> <https://w3id.org/BLIND>;
+                               <http://purl.org/dc/terms/title> "Crime Event Model (CEM)"@en;
+                               <http://purl.org/vocab/vann/preferredNamespacePrefix> "cem";
+                               <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/CEMontology/";
+                               a <http://purl.org/vocommons/voaf#Vocabulary>,
+                                 <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                                 <http://www.w3.org/2002/07/owl#Ontology>;
+                               rdfs:comment "The Crime Event Model is an ontology for the representation of crime events extracted from local newspapers. It could be employed for Crime Analysis purposes: extracting crime information from newspapers and enriching them with proper machine-readable semantics is a critical task to help law enforcement agencies at preventing crime, supporting criminal investigations and evaluating the action of law enforcement agencies themselves. The model is based on the fundamental 5W1H journalistic questions, that are Who?, What?, When?, Where?, Why? and How?. Another important requirement was the attempt to exploit existing knowledge graphs and ontologies such as the Simple Event Model (SEM) Ontology and the Schema.org data model for interoperability and interconnection."@en,
+                                            "-Version 1.1: Insertion of ontology descriptors to be inserted in Linked Open Vocabulary-Version 1: creation"@en;
+                               rdfs:label "Crime Event Model (CEM)"@en;
+                               <http://www.w3.org/2002/07/owl#versionIRI> <http://crimeanalytics.it/cem-reference/cem.owl>;
+                               <http://www.w3.org/2002/07/owl#versionInfo> 1.1.

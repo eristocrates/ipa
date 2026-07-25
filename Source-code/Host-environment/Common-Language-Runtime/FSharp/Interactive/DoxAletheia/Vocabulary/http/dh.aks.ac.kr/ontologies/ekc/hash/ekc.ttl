@@ -1,0 +1,1733 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ekc: <http://dh.aks.ac.kr/ontologies/ekc#>.
+
+<http://dh.aks.ac.kr/ontologies/ekc> <http://purl.org/dc/elements/1.1/creator> "The Center for Digital Humanities at the Academy of Korean Studies"@en,
+                                                                               "한국학중앙연구원 디지털인문학연구소"@ko;
+                                     <http://purl.org/dc/elements/1.1/description> "EKC(Encyves of Korean Culture) 데이터 모델은 한국의 전통문화 속의 역사적 사실 관계 및 그 사실의 문헌적 근거에 관한 지식을 데이터화 하기 위해 개발한 온톨로지 스키마이다.(Encyves ≒ Encyclopedic Archives) 한국학중앙연구원 디지털인문학연구소에서 2016년에 처음 제정하였고(EKC 1.0/2016, EKC 1.1/2017), 매년 유관 분야 연구를 통해 확장해 가고 있다."@ko;
+                                     <http://purl.org/dc/elements/1.1/title> "EKC (Encyclopedic Archives of Korean Culture) Data Model vocabulary"@en;
+                                     <http://purl.org/dc/terms/issued> "2017-03-29T18:44:00+09:00"^^xsd:dateTime;
+                                     <http://purl.org/dc/terms/modified> "2025-07-27T06:50:09+09:00"^^xsd:dateTime;
+                                     a <http://www.w3.org/2002/07/owl#Ontology>;
+                                     rdfs:comment """The present specification is based on the document \\\"Ontology:EKC 2022\\\", originally led by Hyeon Kim in the Center for Digital Humanities at the Academy of Korean Studies.""";
+                                     rdfs:seeAlso "https://github.com/dongshins/EKC_ontology_advanced",
+                                                  "https://github.com/dongshins/EKC_ontology",
+                                                  "https://dh.aks.ac.kr/~hanyang2/wiki/index.php/Ontology:EKC_2022".
+ekc: a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+       <http://purl.org/vocommons/voaf#Vocabulary>.
+ekc:%EA%B0%9C%EB%85%90%EC%9A%A9%EC%96%B4 a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:label "개념용어"@ko;
+                                         rdfs:subClassOf ekc:Concept.
+ekc:%EA%B1%B4%EC%B6%95 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "건축"@ko;
+                       rdfs:subClassOf ekc:Architecture.
+ekc:%EA%B1%B4%EC%B6%95%EB%B6%80%ED%92%88 a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:label "건축부품"@ko;
+                                         rdfs:subClassOf ekc:Architecture.
+ekc:%EA%B3%A0%EB%AC%B8%ED%97%8C a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "고문헌"@ko;
+                                rdfs:subClassOf ekc:Bibliography.
+ekc:%EA%B3%A0%EC%A7%80%EB%AA%85 a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "고지명"@ko;
+                                rdfs:subClassOf ekc:Place.
+ekc:%EA%B4%80%EC%84%9C a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "관서"@ko;
+                       rdfs:subClassOf ekc:Actor.
+ekc:%EA%B4%80%EC%A7%81 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "관직"@ko;
+                       rdfs:subClassOf ekc:Concept.
+ekc:%EA%B5%AD%EA%B0%80 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "국가"@ko;
+                       rdfs:subClassOf ekc:Actor.
+ekc:%EA%B5%AD%EB%B3%B4 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "국보"@ko;
+                       rdfs:subClassOf ekc:Heritage.
+ekc:%EA%B7%B8%EB%A6%BC a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "그림"@ko;
+                       rdfs:subClassOf ekc:Object,
+                                       ekc:WebResource.
+ekc:%EA%B7%BC%EB%8C%80%EB%AC%B8%ED%97%8C a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:label "근대문헌"@ko;
+                                         rdfs:subClassOf ekc:Record.
+ekc:%EA%B7%BC%EB%8C%80%EC%9C%A0%EC%A0%81%EC%A7%80 a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:label "근대유적지"@ko;
+                                                  rdfs:subClassOf ekc:Place.
+ekc:%EA%B8%88%EC%84%9D%EB%AC%B8 a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "금석문"@ko;
+                                rdfs:subClassOf ekc:Record.
+ekc:%EA%B8%B0%EA%B4%80 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "기관"@ko;
+                       rdfs:subClassOf ekc:Actor.
+ekc:%EA%B8%B0%EB%85%90%EB%AC%BC a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "기념물"@ko;
+                                rdfs:subClassOf ekc:Object.
+ekc:%EA%B8%B0%EC%82%AC a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "기사"@ko;
+                       rdfs:subClassOf ekc:Record.
+ekc:%EA%B8%B0%EC%9E%A5 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "기장"@ko;
+                       rdfs:subClassOf ekc:Object.
+ekc:%EB%85%BC%EB%AC%B8 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "논문"@ko;
+                       rdfs:subClassOf ekc:Bibliography.
+ekc:%EB%8B%A8%EC%B2%B4 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "단체"@ko;
+                       rdfs:subClassOf ekc:Actor.
+ekc:%EB%8B%A8%ED%96%89%EB%B3%B8 a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "단행본"@ko;
+                                rdfs:subClassOf ekc:Bibliography.
+ekc:%EB%8F%84%EB%A9%B4 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "도면"@ko;
+                       rdfs:subClassOf ekc:WebResource.
+ekc:%EB%8F%99%EC%98%81%EC%83%81 a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "동영상"@ko;
+                                rdfs:subClassOf ekc:WebResource.
+ekc:%EB%93%B1%EB%A1%9D%EB%AC%B8%ED%99%94%EC%9E%AC a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:label "등록문화유산"@ko;
+                                                  rdfs:subClassOf ekc:Heritage.
+ekc:%EB%AA%85%EB%AC%B8%E9%8A%98%E6%96%87 a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:label "명문(銘文)";
+                                         rdfs:subClassOf ekc:Text.
+ekc:%EB%AC%B4%EC%9A%A9 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "무용"@ko;
+                       rdfs:subClassOf ekc:Work.
+ekc:%EB%AC%B4%ED%98%95 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "무형"@ko;
+                       rdfs:subClassOf ekc:Heritage.
+ekc:%EB%AC%B8%ED%95%99 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "문학"@ko;
+                       rdfs:subClassOf ekc:Work.
+ekc:%EB%AC%B8%ED%97%8C a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "문헌"@ko;
+                       rdfs:subClassOf ekc:Record.
+ekc:%EB%AC%BC%ED%92%88 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "물품"@ko;
+                       rdfs:subClassOf ekc:Object.
+ekc:%EB%AE%A4%EC%A7%80%EC%BB%AC a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "뮤지컬"@ko;
+                                rdfs:subClassOf ekc:Work.
+ekc:%EB%AF%B8%EC%88%A0 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "미술"@ko;
+                       rdfs:subClassOf ekc:Work.
+ekc:%EB%B2%88%EC%97%AD%EB%AC%B8 a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "번역문"@ko;
+                                rdfs:subClassOf ekc:Text.
+ekc:%EB%B3%B4%EB%AC%BC a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "보물"@ko;
+                       rdfs:subClassOf ekc:Heritage.
+ekc:%EB%B3%B5%EC%8B%9D a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "복식"@ko;
+                       rdfs:subClassOf ekc:Clothing.
+ekc:%EB%B3%B5%EC%9E%A5 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "복장"@ko;
+                       rdfs:subClassOf ekc:Clothing.
+ekc:%EB%B6%84%EB%A5%98%EC%A3%BC%EC%A0%9C a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:label "분류주제"@ko;
+                                         rdfs:subClassOf ekc:Concept.
+ekc:%EC%82%AC%EA%B1%B4 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "사건"@ko;
+                       rdfs:subClassOf ekc:Event.
+ekc:%EC%82%AC%EC%A0%81 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "사적"@ko;
+                       rdfs:subClassOf ekc:Heritage.
+ekc:%EC%82%AC%EC%A7%84 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "사진"@ko;
+                       rdfs:subClassOf ekc:WebResource.
+ekc:%EC%83%81%EC%B0%A8%EB%A6%BC a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "상차림"@ko;
+                                rdfs:subClassOf ekc:Food.
+ekc:%EC%86%8C%EC%9E%A5%EC%B2%98 a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "소장처"@ko;
+                                rdfs:subClassOf ekc:Place.
+ekc:%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%9D%BC%EC%9D%B8 a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:label "스토리라인"@ko;
+                                                  rdfs:subClassOf ekc:Story;
+                                                  <http://www.w3.org/2002/07/owl#disjointWith> ekc:%EC%97%90%ED%94%BC%EC%86%8C%EB%93%9C.
+ekc:%EC%8B%9C%EA%B0%81%EC%9E%90%EB%A3%8C a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:label "시각자료"@ko;
+                                         rdfs:subClassOf ekc:Record.
+ekc:%EC%8B%9C%EB%8F%84%EB%AC%B8%ED%99%94%EC%9E%AC a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:label "시도문화유산"@ko;
+                                                  rdfs:subClassOf ekc:Heritage.
+ekc:%EC%8B%9D%EC%9E%AC%EB%A3%8C a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "식재료"@ko;
+                                rdfs:subClassOf ekc:Food.
+ekc:%EC%97%90%ED%94%BC%EC%86%8C%EB%93%9C a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:label "에피소드"@ko;
+                                         rdfs:subClassOf ekc:Story.
+ekc:%EC%97%B0%EA%B7%B9 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "연극"@ko;
+                       rdfs:subClassOf ekc:Work.
+ekc:%EC%98%81%ED%99%94 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "영화"@ko;
+                       rdfs:subClassOf ekc:Work.
+ekc:%EC%9B%90%EB%AC%B8 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "원문"@ko;
+                       rdfs:subClassOf ekc:Text,
+                                       ekc:WebResource.
+ekc:%EC%9B%B9%EC%9E%90%EC%9B%90%EC%83%89%EC%9D%B8 a <http://www.w3.org/2002/07/owl#Class>;
+                                                  rdfs:label "웹자원색인"@ko;
+                                                  rdfs:subClassOf ekc:Index.
+ekc:%EC%9C%A0%EC%A0%81%EC%A7%80 a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "유적지"@ko;
+                                rdfs:subClassOf ekc:Place.
+ekc:%EC%9D%8C%EC%8B%9D a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "음식"@ko;
+                       rdfs:subClassOf ekc:Food.
+ekc:%EC%9D%8C%EC%95%85 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "음악"@ko;
+                       rdfs:subClassOf ekc:Work.
+ekc:%EC%9D%98%EB%A1%80 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "의례"@ko;
+                       rdfs:subClassOf ekc:Concept.
+ekc:%EC%9D%B8%EB%AC%BC a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "인물"@ko;
+                       rdfs:subClassOf ekc:Actor.
+ekc:%EC%9D%B8%EB%AC%BC%EA%B5%B0 a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:label "인물군"@ko;
+                                rdfs:subClassOf ekc:Actor.
+ekc:%EC%9E%90%EC%97%B0%EC%A7%80%EB%AA%85 a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:label "자연지명"@ko;
+                                         rdfs:subClassOf ekc:Place.
+ekc:%EC%9E%A5%EC%86%8C a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "장소"@ko;
+                       rdfs:subClassOf ekc:Place.
+ekc:%EC%A0%84%EC%8B%9C a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "전시"@ko;
+                       rdfs:subClassOf ekc:Event.
+ekc:%EC%A0%9C%EB%8F%84 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "제도"@ko;
+                       rdfs:subClassOf ekc:Concept.
+ekc:%EC%A0%9C%EC%88%98 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "제수"@ko;
+                       rdfs:subClassOf ekc:Food.
+ekc:%EC%A1%B0%ED%98%95 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "조형"@ko;
+                       rdfs:subClassOf ekc:Architecture.
+ekc:%EC%A7%80%EB%8F%84 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "지도"@ko;
+                       rdfs:subClassOf ekc:WebResource.
+ekc:%EC%A7%81%EC%97%AD a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "직역"@ko;
+                       rdfs:subClassOf ekc:Concept.
+ekc:%EC%B0%B8%EA%B3%A0 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "참고"@ko;
+                       rdfs:subClassOf ekc:WebResource.
+ekc:%EC%B0%B8%EA%B3%A0%EB%AC%B8%ED%97%8C%EC%83%89%EC%9D%B8 a <http://www.w3.org/2002/07/owl#Class>;
+                                                           rdfs:label "참고문헌색인"@ko;
+                                                           rdfs:subClassOf ekc:Index.
+ekc:%ED%83%91%EB%B3%B8 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "탑본"@ko;
+                       rdfs:subClassOf ekc:Object.
+ekc:%ED%95%B4%EC%84%A4 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "해설"@ko;
+                       rdfs:subClassOf ekc:WebResource.
+ekc:%ED%96%89%EC%82%AC a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "행사"@ko;
+                       rdfs:subClassOf ekc:Event.
+ekc:%ED%96%89%EC%A0%95%EC%A7%80%EB%AA%85 a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:label "행정지명"@ko;
+                                         rdfs:subClassOf ekc:Place.
+ekc:%ED%98%84%EB%8C%80%EB%AC%B8%ED%97%8C a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:label "현대문헌"@ko;
+                                         rdfs:subClassOf ekc:Record.
+ekc:%ED%98%84%ED%8C%90 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "현판"@ko;
+                       rdfs:subClassOf ekc:Object.
+ekc:%ED%98%B8%EC%B9%AD a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "호칭"@ko;
+                       rdfs:subClassOf ekc:Concept.
+ekc:%ED%99%94%ED%8F%90 a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:label "화폐"@ko;
+                       rdfs:subClassOf ekc:Object.
+ekc:3D_%EB%AA%A8%EB%8D%B8 a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:label "3D_모델";
+                          rdfs:subClassOf ekc:Multimedia.
+ekc:3D_%EC%A7%80%EB%8F%84 a <http://www.w3.org/2002/07/owl#Class>;
+                          rdfs:label "3D_지도";
+                          rdfs:subClassOf ekc:Multimedia.
+ekc:A1 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "A1"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "인적 관계"@ko.
+ekc:A2 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "A2"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "문헌/작품/사건의 역할자"@ko.
+ekc:A3 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "A3"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "인물과 기관/단체의 관계"@ko.
+ekc:A4 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "A4"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "관직 관련 관계"@ko.
+ekc:AR a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "AR"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "건조물 관련 관계"@ko.
+ekc:Actor <http://purl.org/dc/elements/1.1/description> "Historical figures; Organizations as collective actors and institutions as operating entities"@en,
+                                                        "역사적인 인물. 집단적 행위 주체로서의 단체, 운영주체로서의 기관"@ko;
+          a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:label "Actor"@en.
+ekc:Architecture <http://purl.org/dc/elements/1.1/description> "Historic Buildings in a certain area and historically related structures"@en,
+                                                               "특정 권역의 역사적인 건조물 및 주변의 유관한 건축/조형물"@ko;
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "Architecture"@en.
+ekc:Bibliography <http://purl.org/dc/elements/1.1/description> "List of academic research materials"@en,
+                                                               "학술적 연구 자료의 목록"@ko;
+                 a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:label "Bibliography"@en.
+ekc:CL a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "CL"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "복식 관련 관계"@ko.
+ekc:CO a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "CO"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "개념적/포괄적 관계"@ko.
+ekc:Clothing <http://purl.org/dc/elements/1.1/description> "Costumes, components of costumes, or traditional ornaments"@en,
+                                                           "역사적·문화적 복장과 복식 요소들"@ko;
+             a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:label "Clothing"@en.
+ekc:Concept <http://purl.org/dc/elements/1.1/description> "Terms and concepts necessary to explain institutions, rituals, customs, etc."@en,
+                                                          "제도, 의례, 풍속 등을 설명하는 데 필요한 용어와 개념"@ko;
+            a <http://www.w3.org/2002/07/owl#Class>;
+            rdfs:label "Concept"@en.
+ekc:E1 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "E1"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "이벤트 관련 관계: 사건"@ko.
+ekc:E2 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "E2"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "이벤트 관련 관계: 행사"@ko.
+ekc:E3 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "E3"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "이벤트 관련 관계: 공연"@ko.
+ekc:E4 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "E4"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "이벤트 관련 관계: 전시"@ko.
+ekc:Event <http://purl.org/dc/elements/1.1/description> "Events held in a certain area, ceremonies and events that reproduce them today"@en,
+                                                        "특정 권역에서 일어난 사건, 의례 및 이를 재현하는 행사"@ko;
+          a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:label "Event"@en.
+ekc:FO a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "FO"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "음식 관련 관계"@ko.
+ekc:Food <http://purl.org/dc/elements/1.1/description> "Food, ingredients and table setting"@en,
+                                                       "음식, 식재료와 상차림"@ko;
+         a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:label "Food"@en.
+ekc:HR a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "HR"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "문화재 관련 관계"@ko.
+ekc:Heritage <http://purl.org/dc/elements/1.1/description> "Registration information of designated and registered cultural properties"@en,
+                                                           "지정문화유산 및 등록문화유산 등록 정보"@ko;
+             a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:label "Heritage"@en.
+ekc:Index <http://purl.org/dc/elements/1.1/description> "A list of nodes of similar character. Timeline, collection list, reference list, web resource list, etc."@en,
+                                                        "유사한 성격의 노드들을 모아서 묶은 목록. 연표, 소장도서목록, 참고문헌목록, 웹자원목록 등"@ko;
+          a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:label "Index"@en.
+ekc:Multimedia <http://purl.org/dc/elements/1.1/description> "3D model of a building; 3D map indicating the location of a specific place; visual materials"@en,
+                                                             "3D 모델, 특정 공간의 위치를 알리는 3차원 지도, 시각자료"@ko;
+               a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:label "Multimedia"@en.
+ekc:NM a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "NM"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "이름 사이의 관계"@ko.
+ekc:OB a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "OB"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "물품 관련 관계"@ko.
+ekc:Object <http://purl.org/dc/elements/1.1/description> "Items used in various ceremonies or events; Items or tools that show the culture of the time"@en,
+                                                         "각종 의례/행사의 도구, 그 시대의 문화를 보이는 물품들"@ko;
+           a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:label "Object"@en.
+ekc:P1 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "P1"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "장소를 설명하는 관계"@ko.
+ekc:P2 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "P2"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "장소가 목적어인 관계"@ko.
+ekc:Place <http://purl.org/dc/elements/1.1/description> "Places related to historical events or characters; Places where historical relics or artifacts are located"@en,
+                                                        "역사적 배경(사건, 인물)과 관련이 있는 장소. 유물의 소장처"@ko;
+          a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:label "Place"@en.
+ekc:RE a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "RE"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "기록물/유물 관련 관계"@ko.
+ekc:Record <http://purl.org/dc/elements/1.1/description> "Records that serve as the source of knowledge such as books, photographs, drawings, and inscriptions"@en,
+                                                         "문헌, 사진, 도면, 금석문 등 지식 데이터의 원천 자료가 되는 기록물"@ko;
+           a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:label "Record"@en.
+ekc:ST a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "ST"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "스토리텔링 구성을 지시하는 관계"@ko.
+ekc:Story <http://purl.org/dc/elements/1.1/description> "Description of historical knowledge that explains the background of discovering data nodes"@en,
+                                                        "데이터 노드 발굴의 배경이 된 역사적 지식에 대한 서술"@ko;
+          a <http://www.w3.org/2002/07/owl#Class>;
+          rdfs:label "Story"@en.
+ekc:TM a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "TM"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "연표의 구성을 지시하는 관계"@ko.
+ekc:Text <http://purl.org/dc/elements/1.1/description> "Text in the literature that functions as evidence of explanation"@en,
+                                                       "설명의 증거 기능을 하는 문헌상의 텍스트"@ko;
+         a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:label "Text"@en.
+ekc:WebResource <http://purl.org/dc/elements/1.1/description> "Reference materials that can be accessed on the World Wide Web"@en,
+                                                              "월드 와이드 웹에서 접근할 수 있는 참고 자료"@ko;
+                a <http://www.w3.org/2002/07/owl#Class>;
+                rdfs:label "WebResource"@en.
+ekc:Work <http://purl.org/dc/elements/1.1/description> "Works of art such as literature, fine arts, music, dance, performance, etc."@en,
+                                                       "문학, 미술, 음악, 연희, 무용 등의 문예 작품"@ko;
+         a <http://www.w3.org/2002/07/owl#Class>;
+         rdfs:label "Work"@en.
+ekc:XR a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+       rdfs:label "XR"@en;
+       <http://www.w3.org/2004/02/skos/core#definition> "참고자료를 지시하는 관계"@ko.
+ekc:administrates <http://purl.org/dc/elements/1.1/description> "~를 주관하다"@ko;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain ekc:Actor;
+                  rdfs:label "administrates"@en;
+                  rdfs:range ekc:Event;
+                  rdfs:subPropertyOf ekc:E2;
+                  <http://www.w3.org/2002/07/owl#inverseOf> ekc:isAdministratedBy;
+                  <http://www.w3.org/2004/02/skos/core#example> "가례도감 - 가례"@ko;
+                  <http://www.w3.org/2004/02/skos/core#note> "의례·제도에서의 주관행위"@ko.
+ekc:annotator <http://purl.org/dc/elements/1.1/description> "주석가는 ~이다"@ko;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain ekc:Record;
+              rdfs:label "annotator"@en;
+              rdfs:range ekc:Actor;
+              rdfs:subPropertyOf ekc:A2;
+              <http://www.w3.org/2002/07/owl#inverseOf> ekc:isAnnotatorOf;
+              <http://www.w3.org/2004/02/skos/core#example> "용비어천가 - 성삼문"@ko;
+              <http://www.w3.org/2004/02/skos/core#note> "주석자"@ko.
+ekc:appearsIn <http://purl.org/dc/elements/1.1/description> "(작품, 공연) ~에 출연하다"@ko;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain ekc:Actor;
+              rdfs:label "appearsIn"@en;
+              rdfs:range ekc:Concept;
+              rdfs:subPropertyOf ekc:E3.
+ekc:archiveHolding <http://purl.org/dc/elements/1.1/description> "아카이브 소장 목록(자료)는 ~이다 ※ 목적어는 아카이브의 소장품(소장도서) 카타로그"@ko;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:label "archiveHolding"@en;
+                   rdfs:subPropertyOf ekc:XR;
+                   <http://www.w3.org/2004/02/skos/core#scopeNote> "Range : Index/WebResource".
+ekc:bibliography <http://purl.org/dc/elements/1.1/description> "참고문헌 목록은 ~이다 ※ 목적어는 참고문헌 색인(bib-XXXX) 노드";
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:label "bibliography"@en;
+                 rdfs:subPropertyOf ekc:XR;
+                 <http://www.w3.org/2004/02/skos/core#scopeNote> "Range : Index/Bibliography".
+ekc:calligrapher <http://purl.org/dc/elements/1.1/description> "(금석문의) 글씨 쓴 이는 ~이다"@ko;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain ekc:Record;
+                 rdfs:range ekc:Actor;
+                 rdfs:subPropertyOf ekc:A2;
+                 <http://www.w3.org/2002/07/owl#inverseOf> ekc:isCalligrapherOf;
+                 <http://www.w3.org/2004/02/skos/core#example> "김원(신라) - 장흥 보림사 보조선사탑비"@ko;
+                 <http://www.w3.org/2004/02/skos/core#note> "글씨 쓴 사람. 비문/편액/제액 글씨 쓴 사람."@ko.
+ekc:commemorates <http://purl.org/dc/elements/1.1/description> "~를 기념하다"@ko;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:label "commemorates"@en;
+                 rdfs:range ekc:Event;
+                 rdfs:subPropertyOf ekc:OB;
+                 <http://www.w3.org/2004/02/skos/core#note> "A는 B를 기념하여 만들어졌다";
+                 <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Object/Event/Record".
+ekc:constructor <http://purl.org/dc/elements/1.1/description> "건축가는 ~이다"@ko;
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain ekc:Architecture;
+                rdfs:label "constructor"@en;
+                rdfs:range ekc:Actor;
+                rdfs:subPropertyOf ekc:AR;
+                <http://www.w3.org/2002/07/owl#inverseOf> ekc:isConstructorOf;
+                <http://www.w3.org/2004/02/skos/core#example> "소양강댐 - 현대건설"@ko;
+                <http://www.w3.org/2004/02/skos/core#note> "건축을 지휘"@ko.
+ekc:cooks <http://purl.org/dc/elements/1.1/description> "음식 ~을 조리한다"@ko;
+          a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain ekc:Actor;
+          rdfs:label "cooks"@en;
+          rdfs:range ekc:Food;
+          rdfs:subPropertyOf ekc:FO;
+          <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Agent(Actor의 subclasses 중 기관, 단체 등)".
+ekc:creatorPresumed <http://purl.org/dc/elements/1.1/description> "(문헌/작품의) 작가는 ~라고 알려져 있다"@ko;
+                    a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:label "creatorPresumed"@en;
+                    rdfs:range ekc:Actor;
+                    rdfs:subPropertyOf ekc:A2;
+                    <http://www.w3.org/2004/02/skos/core#note> "A의 작가는 B라고 알려져 있다";
+                    <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Record/Object".
+ekc:curates <http://purl.org/dc/elements/1.1/description> "~를 전시(큐레이션)하다"@ko;
+            a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain ekc:Event;
+            rdfs:label "curates"@en;
+            rdfs:subPropertyOf ekc:E4;
+            <http://www.w3.org/2004/02/skos/core#scopeNote> "Range : Object/Record/Event".
+ekc:depicts <http://purl.org/dc/elements/1.1/description> "~를 묘사하다"@ko;
+            a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:label "depicts"@en;
+            rdfs:subPropertyOf ekc:RE;
+            <http://www.w3.org/2002/07/owl#inverseOf> ekc:isDepictedIn;
+            <http://www.w3.org/2004/02/skos/core#example> "고산구곡도설 - 고산구곡도"@ko;
+            <http://www.w3.org/2004/02/skos/core#note> "A가 묘사하는 주된 대상이 B이다";
+            <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Object/Record".
+ekc:documents <http://purl.org/dc/elements/1.1/description> "~를 문서화하다"@ko;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain ekc:Record;
+              rdfs:label "documents"@en;
+              rdfs:range ekc:Event;
+              rdfs:subPropertyOf ekc:RE;
+              <http://www.w3.org/2002/07/owl#inverseOf> ekc:isDocumentedIn;
+              <http://www.w3.org/2004/02/skos/core#example> "영조정순왕후가례도감의궤 - 영조-정순왕후_가례"@ko;
+              <http://www.w3.org/2004/02/skos/core#note> "A:기록물(예:의궤), B: 기록되는 대상(예:의례)".
+ekc:doner <http://purl.org/dc/elements/1.1/description> "(유물의) 기증자는 ~이다"@ko;
+          a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:label "doner"@en;
+          rdfs:range ekc:Actor;
+          rdfs:subPropertyOf ekc:A2;
+          <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Record/Object".
+ekc:editor <http://purl.org/dc/elements/1.1/description> "편집자는 ~이다"@ko;
+           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain ekc:Record;
+           rdfs:label "editor"@en;
+           rdfs:range ekc:Actor;
+           rdfs:subPropertyOf ekc:A2.
+ekc:enshrines <http://purl.org/dc/elements/1.1/description> "~를 제향하다"@ko;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:label "enshrines"@en;
+              rdfs:subPropertyOf ekc:P1;
+              <http://www.w3.org/2002/07/owl#inverseOf> ekc:isEnshrinedIn.
+ekc:founder <http://purl.org/dc/elements/1.1/description> "설립자는 ~이다"@ko;
+            a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:label "founder"@en;
+            rdfs:range ekc:Actor;
+            rdfs:subPropertyOf ekc:AR;
+            <http://www.w3.org/2002/07/owl#inverseOf> ekc:isFounderOf;
+            <http://www.w3.org/2004/02/skos/core#example> "현대미술가협회 - 하인두"@ko;
+            <http://www.w3.org/2004/02/skos/core#note> "기관/단체/장소 설립자. 권위로써 무엇을 만들도록 함."@ko;
+            <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Architecture/Agent(Actor의 subclasses 중 기관, 단체 등)".
+ekc:goesWith <http://purl.org/dc/elements/1.1/description> "~를 수반하다"@ko;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain ekc:Object;
+             rdfs:label "goesWith"@en;
+             rdfs:range ekc:Object;
+             rdfs:subPropertyOf ekc:OB;
+             <http://www.w3.org/2004/02/skos/core#example> "외궤 - 내함"@ko;
+             <http://www.w3.org/2004/02/skos/core#note> """의식에서 물품 간의 수반 관계
+A는 B와 함께 착용하였다/사용되었다
+A는 B에 올려졌다
+A는 B를 담는다/감싼다
+A는 B로 운반되었다""".
+ekc:hasAdoptedHeir <http://purl.org/dc/elements/1.1/description> "양자 ~를 두었다"@ko;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain ekc:Actor;
+                   rdfs:label "hasAdoptedHeir"@en;
+                   rdfs:range ekc:Actor;
+                   rdfs:subPropertyOf ekc:A1;
+                   <http://www.w3.org/2002/07/owl#inverseOf> ekc:isAdoptedHeirOf;
+                   <http://www.w3.org/2004/02/skos/core#example> "윤이석 - 윤두서"@ko;
+                   <http://www.w3.org/2004/02/skos/core#note> "양자(가계상속 목적)"@ko.
+ekc:hasAffiliation <http://purl.org/dc/elements/1.1/description> "~에 소속하다"@ko;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain ekc:Actor;
+                   rdfs:label "hasAffiliation"@en;
+                   rdfs:range ekc:Actor;
+                   rdfs:subPropertyOf ekc:A3;
+                   <http://www.w3.org/2004/02/skos/core#note> "A는 B 소속이다";
+                   <http://www.w3.org/2004/02/skos/core#scopeNote> "Range : Agent(Actor의 subclasses 중 기관, 단체 등)".
+ekc:hasAppointee <http://purl.org/dc/elements/1.1/description> "(임명장에 기록된) 피임자는 ~이다"@ko;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain ekc:Record;
+                 rdfs:label "hasAppointee"@en;
+                 rdfs:range ekc:Actor;
+                 rdfs:subPropertyOf ekc:A4;
+                 <http://www.w3.org/2004/02/skos/core#note> "A(관직, 타이틀)의 피임자는 B이다".
+ekc:hasAsset <http://purl.org/dc/elements/1.1/description> "(상위 문화재가) 개별 문화재 ~을 가지고 있다"@ko;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain ekc:Place;
+             rdfs:label "hasAsset"@en;
+             rdfs:subPropertyOf ekc:HR;
+             <http://www.w3.org/2004/02/skos/core#note> "A(문화유산 도메인)는 B(개별 문화유산)를 가지고 있다";
+             <http://www.w3.org/2004/02/skos/core#scopeNote> "Range : Architecture/Object/Record".
+ekc:hasBranchTemple <http://purl.org/dc/elements/1.1/description> "(사찰 본사에) 말사 ~가 있다"@ko;
+                    a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain ekc:Place;
+                    rdfs:label "hasBranchTemple"@en;
+                    rdfs:range ekc:Place;
+                    rdfs:subPropertyOf ekc:HR;
+                    <http://www.w3.org/2004/02/skos/core#note> "A(사찰 본사)에는 말사 B(사찰 말사)가 있다".
+ekc:hasBrother <http://purl.org/dc/elements/1.1/description> "형제 ~가 있다"@ko;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain ekc:Actor;
+               rdfs:label "hasBrother"@en;
+               rdfs:subPropertyOf ekc:A1;
+               <http://www.w3.org/2002/07/owl#inverseOf> ekc:isBrotherOf;
+               <http://www.w3.org/2004/02/skos/core#example> "조선 세종 - 효령대군"@ko;
+               <http://www.w3.org/2004/02/skos/core#note> "형제"@ko;
+               <http://www.w3.org/2004/02/skos/core#scopeNote> "형 / 남동생 / 오빠 / 미상未詳".
+ekc:hasBrotherInLaw <http://purl.org/dc/elements/1.1/description> "매부·동서·처남·시형제 ~가 있다"@ko;
+                    a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain ekc:Actor;
+                    rdfs:label "hasBrotherInLaw"@en;
+                    rdfs:range ekc:Actor;
+                    rdfs:subPropertyOf ekc:A1;
+                    <http://www.w3.org/2004/02/skos/core#scopeNote> "매부 / 동서 / 처남 / 시형제 / 미상未詳".
+ekc:hasChineseExplanation <http://purl.org/dc/elements/1.1/description> "중국어 해설문 ~이 있다"@ko;
+                          a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain ekc:Story;
+                          rdfs:label "hasChineseExplanation"@en;
+                          rdfs:range ekc:Story;
+                          rdfs:subPropertyOf ekc:ST.
+ekc:hasConcubine <http://purl.org/dc/elements/1.1/description> "첩 ~를 두었다"@ko;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain ekc:Actor;
+                 rdfs:label "hasConcubine"@en;
+                 rdfs:range ekc:Actor;
+                 rdfs:subPropertyOf ekc:A1,
+                                    ekc:isHusbandOf;
+                 <http://www.w3.org/2002/07/owl#inverseOf> ekc:isConcubineOf;
+                 <http://www.w3.org/2004/02/skos/core#note> "첩"@ko.
+ekc:hasContextualElement <http://purl.org/dc/elements/1.1/description> "스토리라인을 구성하는 세부 에피소드 ~이 있다"@ko;
+                         a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain ekc:Story;
+                         rdfs:label "hasContextualElement"@en;
+                         rdfs:range ekc:Story;
+                         rdfs:subPropertyOf ekc:ST.
+ekc:hasCousin <http://purl.org/dc/elements/1.1/description> "~가 사촌이다"@ko;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                <http://www.w3.org/2002/07/owl#SymmetricProperty>;
+              rdfs:domain ekc:Actor;
+              rdfs:label "hasCousin"@en;
+              rdfs:subPropertyOf ekc:A1.
+ekc:hasDaughter <http://purl.org/dc/elements/1.1/description> "딸 ~가 있다"@ko;
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain ekc:Actor;
+                rdfs:label "hasDaughter"@en;
+                rdfs:range ekc:Actor;
+                rdfs:subPropertyOf ekc:A1;
+                <http://www.w3.org/2002/07/owl#inverseOf> ekc:isDaughterOf;
+                <http://www.w3.org/2004/02/skos/core#example> "장흥효 - 장계향"@ko;
+                <http://www.w3.org/2004/02/skos/core#note> "부녀관계 / 모녀관계"@ko;
+                <http://www.w3.org/2004/02/skos/core#scopeNote> "부녀관계(=isFatherOf) / 모녀관계(=isMotherOf) / 미상未詳".
+ekc:hasDaughterInLaw <http://purl.org/dc/elements/1.1/description> "며느리 ~가 있다"@ko;
+                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain ekc:Actor;
+                     rdfs:label "hasDaughterInLaw"@en;
+                     rdfs:range ekc:Actor;
+                     rdfs:subPropertyOf ekc:A1;
+                     <http://www.w3.org/2002/07/owl#inverseOf> ekc:isDaughterInLawOf;
+                     <http://www.w3.org/2004/02/skos/core#note> "시부-며느리 / 시모-며느리"@ko;
+                     <http://www.w3.org/2004/02/skos/core#scopeNote> "시부입장(=isFatherInLawOf) / 시모입장(=isMotherInLawOf) / 미상未詳".
+ekc:hasDescendant <http://purl.org/dc/elements/1.1/description> "후손 ~가 있다"@ko;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                    <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+                  rdfs:domain ekc:Actor;
+                  rdfs:label "hasDescendant"@en;
+                  rdfs:range ekc:Actor;
+                  rdfs:subPropertyOf ekc:A1;
+                  <http://www.w3.org/2002/07/owl#inverseOf> ekc:isDescendantOf;
+                  <http://www.w3.org/2004/02/skos/core#example> "김성일 - 김주국"@ko;
+                  <http://www.w3.org/2004/02/skos/core#note> "세대 불특정 선조-후손 관계"@ko.
+ekc:hasDisciple <http://purl.org/dc/elements/1.1/description> "제자 ~가 있다"@ko;
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:label "hasDisciple"@en;
+                rdfs:subPropertyOf ekc:A1;
+                <http://www.w3.org/2002/07/owl#equivalentProperty> ekc:isMasterOf;
+                <http://www.w3.org/2002/07/owl#inverseOf> ekc:isDiscipleOf;
+                <http://www.w3.org/2004/02/skos/core#example> "이황 - 김성일"@ko;
+                <http://www.w3.org/2004/02/skos/core#note> "스승-제자 관계"@ko.
+ekc:hasDrawing <http://purl.org/dc/elements/1.1/description> "도면 ~이 있다"@ko;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain ekc:Architecture;
+               rdfs:label "hasDrawing"@en;
+               rdfs:range ekc:Record;
+               rdfs:subPropertyOf ekc:AR.
+ekc:hasEnglishExplanation <http://purl.org/dc/elements/1.1/description> "영어 해설문 ~이 있다"@ko;
+                          a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:domain ekc:Story;
+                          rdfs:label "hasEnglishExplanation"@en;
+                          rdfs:range ekc:Story;
+                          rdfs:subPropertyOf ekc:ST.
+ekc:hasEpitaph <http://purl.org/dc/elements/1.1/description> "(비석에) 비문 ~가 새겨져 있다"@ko;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain ekc:Record;
+               rdfs:label "hasEpitaph"@en;
+               rdfs:range ekc:Text;
+               rdfs:subPropertyOf ekc:RE;
+               <http://www.w3.org/2004/02/skos/core#note> "A(비석)에는 비문 B(비문)가 새겨져 있다".
+ekc:hasExhibition <http://purl.org/dc/elements/1.1/description> "전시회 ~에서 전시되다"@ko;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:label "hasExhibition"@en;
+                  rdfs:range ekc:Event;
+                  rdfs:subPropertyOf ekc:E4;
+                  <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Object/Record".
+ekc:hasExhibitionAt <http://purl.org/dc/elements/1.1/description> "~에서 전시하다 ※ 소장처 외의 장소. 대여 전시 등."@ko;
+                    a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:label "hasExhibitionAt"@en;
+                    rdfs:subPropertyOf ekc:E4;
+                    <http://www.w3.org/2004/02/skos/core#note> "대여 전시, 소장처 외의 전시 포함."@ko;
+                    <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Object/Record",
+                                                                    "Range : Place/Agent(Actor의 subclasses 중 기관, 단체 등)".
+ekc:hasFather <http://purl.org/dc/elements/1.1/description> "~가 아버지이다"@ko;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain ekc:Actor;
+              rdfs:label "hasFather"@en;
+              rdfs:range ekc:Actor;
+              rdfs:subPropertyOf ekc:A1;
+              <http://www.w3.org/2002/07/owl#inverseOf> ekc:isFatherOf;
+              <http://www.w3.org/2004/02/skos/core#note> "A의 아버지는 B이다";
+              <http://www.w3.org/2004/02/skos/core#scopeNote> "부녀관계(=isDaughterOf) / 부자관계(=isSonOf) / 미상未詳".
+ekc:hasFatherInLaw <http://purl.org/dc/elements/1.1/description> "~가 장인이다 / ~가 시아버지이다"@ko;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain ekc:Actor;
+                   rdfs:label "hasFatherInLaw"@en;
+                   rdfs:range ekc:Actor;
+                   rdfs:subPropertyOf ekc:A1;
+                   <http://www.w3.org/2002/07/owl#inverseOf> ekc:isFatherInLawOf;
+                   <http://www.w3.org/2004/02/skos/core#note> "시부-며느리 / 장인-사위"@ko;
+                   <http://www.w3.org/2004/02/skos/core#scopeNote> "며느리입장(=isDaughterInLawOf) / 사위입장(=isSonInLawOf) / 미상未詳".
+ekc:hasGrandDaughter <http://purl.org/dc/elements/1.1/description> "손녀 ~가 있다"@ko;
+                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain ekc:Actor;
+                     rdfs:label "hasGrandDaughter"@en;
+                     rdfs:range ekc:Actor;
+                     rdfs:subPropertyOf ekc:A1;
+                     <http://www.w3.org/2002/07/owl#inverseOf> ekc:isGrandDaughterOf.
+ekc:hasGrandson <http://purl.org/dc/elements/1.1/description> "손자 ~가 있다"@ko;
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain ekc:Actor;
+                rdfs:label "hasGrandson"@en;
+                rdfs:range ekc:Actor;
+                rdfs:subPropertyOf ekc:A1;
+                <http://www.w3.org/2002/07/owl#inverseOf> ekc:isGrandsonOf.
+ekc:hasHermitage <http://purl.org/dc/elements/1.1/description> "(사찰에) 암자 ~가 있다"@ko;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain ekc:Place;
+                 rdfs:label "hasHermitage"@en;
+                 rdfs:range ekc:Place;
+                 rdfs:subPropertyOf ekc:HR;
+                 <http://www.w3.org/2004/02/skos/core#note> "A(사찰)에는 암자 B(사찰 암자)가 있다".
+ekc:hasHistoricalSetting <http://purl.org/dc/elements/1.1/description> "(작품의) 역사적 배경은 ~이다"@ko;
+                         a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                         rdfs:domain ekc:Record;
+                         rdfs:label "hasHistoricalSetting"@en;
+                         rdfs:range ekc:Event;
+                         rdfs:subPropertyOf ekc:RE.
+ekc:hasHusband <http://purl.org/dc/elements/1.1/description> "~가 남편이다"@ko;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain ekc:Actor;
+               rdfs:label "hasHusband"@en;
+               rdfs:range ekc:Actor;
+               rdfs:subPropertyOf ekc:A1;
+               <http://www.w3.org/2002/07/owl#inverseOf> ekc:isHusbandOf.
+ekc:hasIngredient <http://purl.org/dc/elements/1.1/description> "식재료 ~를 쓴다"@ko;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain ekc:Food;
+                  rdfs:label "hasIngredient"@en;
+                  rdfs:range ekc:Food;
+                  rdfs:subPropertyOf ekc:FO.
+ekc:hasInscription <http://purl.org/dc/elements/1.1/description> "(물품에) 명문 ~가 새겨져 있다"@ko;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain ekc:Object;
+                   rdfs:label "hasInscription"@en;
+                   rdfs:range ekc:Text;
+                   rdfs:subPropertyOf ekc:OB;
+                   <http://www.w3.org/2004/02/skos/core#note> "A(물품)에는 명문 B(명문)가 새겨져 있다".
+ekc:hasMaster <http://purl.org/dc/elements/1.1/description> "~가 스승이다"@ko;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain ekc:Actor;
+              rdfs:label "hasMaster"@en;
+              rdfs:range ekc:Actor;
+              rdfs:subPropertyOf ekc:A1;
+              <http://www.w3.org/2002/07/owl#equivalentProperty> ekc:isDiscipleOf;
+              <http://www.w3.org/2004/02/skos/core#note> "A의 스승은 B이다".
+ekc:hasMother <http://purl.org/dc/elements/1.1/description> "~가 어머니이다"@ko;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain ekc:Actor;
+              rdfs:label "hasMother"@en;
+              rdfs:range ekc:Actor;
+              rdfs:subPropertyOf ekc:A1;
+              <http://www.w3.org/2002/07/owl#inverseOf> ekc:isMotherOf;
+              <http://www.w3.org/2004/02/skos/core#note> "A의 어머니는 B이다";
+              <http://www.w3.org/2004/02/skos/core#scopeNote> "모녀관계(=isDaughterOf) / 모자관계(=isSonOf) / 미상未詳".
+ekc:hasMotherInLaw a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:label "hasMotherInLaw"@en;
+                   rdfs:subPropertyOf ekc:A1;
+                   <http://www.w3.org/2002/07/owl#inverseOf> ekc:isMotherInLawOf;
+                   <http://www.w3.org/2004/02/skos/core#note> "시모-며느리 / 장모-사위"@ko;
+                   <http://www.w3.org/2004/02/skos/core#scopeNote> "며느리입장(=isDaughterInLawOf) / 사위입장(=isSonInLawOf) / 미상未詳".
+ekc:hasNewName <http://purl.org/dc/elements/1.1/description> "새 이름은 ~이다 ※ 새 명칭; 후신(後身)";
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:label "hasNewName"@en;
+               rdfs:subPropertyOf ekc:NM;
+               <http://www.w3.org/2002/07/owl#inverseOf> ekc:hasOldName,
+                                                         ekc:isNewNameOf;
+               <http://www.w3.org/2004/02/skos/core#note> "A의 새 이름은 B이다";
+               <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Place/Architecture/Agent(Actor의 subclasses 중 기관, 단체 등)",
+                                                               "Range : Place/Architecture/Agent(Actor의 subclasses 중 기관, 단체 등)".
+ekc:hasOldName <http://purl.org/dc/elements/1.1/description> "옛 이름은 ~이다 ※ 구 명칭; 전신(前身)";
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:label "hasOldName"@en;
+               rdfs:subPropertyOf ekc:NM;
+               <http://www.w3.org/2002/07/owl#inverseOf> ekc:isOldNameOf;
+               <http://www.w3.org/2004/02/skos/core#example> "대우중공업 - 한국기계공업"@ko;
+               <http://www.w3.org/2004/02/skos/core#note> "구 명칭; 전신(前身)";
+               <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Place/Architecture/Agent(Actor의 subclasses 중 기관, 단체 등)",
+                                                               "Range : Place/Architecture/Agent(Actor의 subclasses 중 기관, 단체 등)".
+ekc:hasOwner <http://purl.org/dc/elements/1.1/description> "주인은 ~이다"@ko;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain ekc:Actor;
+             rdfs:label "hasOwner"@en;
+             rdfs:range ekc:Actor;
+             rdfs:subPropertyOf ekc:A1;
+             <http://www.w3.org/2002/07/owl#inverseOf> ekc:isOwnerOf;
+             <http://www.w3.org/2004/02/skos/core#example> "일복 - 윤두서"@ko;
+             <http://www.w3.org/2004/02/skos/core#note> "노비-주인 관계"@ko.
+ekc:hasParticipant <http://purl.org/dc/elements/1.1/description> "참석자 ~가 있다"@ko;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain ekc:Event;
+                   rdfs:label "hasParticipant"@en;
+                   rdfs:range ekc:Actor;
+                   rdfs:subPropertyOf ekc:E2;
+                   <http://www.w3.org/2002/07/owl#inverseOf> ekc:participatesIn.
+ekc:hasPerformance <http://purl.org/dc/elements/1.1/description> "(이벤트에) 공연 ~이 있다"@ko;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain ekc:Event;
+                   rdfs:label "hasPerformance"@en;
+                   rdfs:range ekc:Concept;
+                   rdfs:subPropertyOf ekc:E3;
+                   <http://www.w3.org/2002/07/owl#inverseOf> ekc:isPerformedIn.
+ekc:hasPhoto <http://purl.org/dc/elements/1.1/description> "사진 ~을 포함한다 ※ 주어는 사진첩"@ko;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain ekc:Multimedia;
+             rdfs:label "hasPhoto"@en;
+             rdfs:range ekc:WebResource;
+             rdfs:subPropertyOf ekc:XR.
+ekc:hasReferenceNote <http://purl.org/dc/elements/1.1/description> "고증기록 ~이 있다 ※ 목적어는 3D 재현물에 관한 고증 사실을 기록한 온라인 기사"@ko;
+                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain ekc:Multimedia;
+                     rdfs:label "hasReferenceNote"@en;
+                     rdfs:subPropertyOf ekc:XR.
+ekc:hasSister <http://purl.org/dc/elements/1.1/description> "여자형제 ~가 있다"@ko;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain ekc:Actor;
+              rdfs:label "hasSister"@en;
+              rdfs:range ekc:Actor;
+              rdfs:subPropertyOf ekc:A1;
+              <http://www.w3.org/2002/07/owl#inverseOf> ekc:isSisterOf;
+              <http://www.w3.org/2004/02/skos/core#note> "자매"@ko;
+              <http://www.w3.org/2004/02/skos/core#scopeNote> "누나 / 언니 / 여동생 / 미상未詳".
+ekc:hasSisterInLaw <http://purl.org/dc/elements/1.1/description> "시누이·형수·제수·올케·처형제·동서 ~가 있다"@ko;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain ekc:Actor;
+                   rdfs:label "hasSisterInLaw"@en;
+                   rdfs:range ekc:Actor;
+                   rdfs:subPropertyOf ekc:A1;
+                   <http://www.w3.org/2004/02/skos/core#scopeNote> "시누이 / 형수 / 제수 / 올케 / 처형제 / 동서 / 미상未詳".
+ekc:hasSon <http://purl.org/dc/elements/1.1/description> "아들 ~이 있다"@ko;
+           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain ekc:Actor;
+           rdfs:label "hasSon"@en;
+           rdfs:range ekc:Actor;
+           rdfs:subPropertyOf ekc:A1;
+           <http://www.w3.org/2002/07/owl#inverseOf> ekc:isSonOf;
+           <http://www.w3.org/2004/02/skos/core#example> "부자관계: 김주국 - 김광찬"@ko,
+                                                         "모자관계: 혜경궁 홍씨 - 조선 정조"@ko;
+           <http://www.w3.org/2004/02/skos/core#note> "부자관계 / 모자관계"@ko;
+           <http://www.w3.org/2004/02/skos/core#scopeNote> "부자관계(=isFatherOf) / 모자관계(=isMotherOf) / 미상未詳".
+ekc:hasSonInLaw <http://purl.org/dc/elements/1.1/description> "사위 ~이 있다"@ko;
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain ekc:Actor;
+                rdfs:label "hasSonInLaw"@en;
+                rdfs:range ekc:Actor;
+                rdfs:subPropertyOf ekc:A1;
+                <http://www.w3.org/2002/07/owl#inverseOf> ekc:isSonInLawOf;
+                <http://www.w3.org/2004/02/skos/core#note> "장인-사위 / 장모-사위"@ko;
+                <http://www.w3.org/2004/02/skos/core#scopeNote> "장인입장(=isFatherInLawOf) / 장모입장(=isMotherInLawOf) / 미상未詳".
+ekc:hasStele a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:label "hasStele"@en;
+             rdfs:subPropertyOf ekc:HR;
+             <http://www.w3.org/2002/07/owl#inverseOf> ekc:isSteleOf.
+ekc:hasStupa a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:label "hasStupa"@en;
+             rdfs:subPropertyOf ekc:HR;
+             <http://www.w3.org/2002/07/owl#inverseOf> ekc:isStupaOf.
+ekc:hasSubject <http://purl.org/dc/elements/1.1/description> "신하 ~이 있다"@ko;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain ekc:Actor;
+               rdfs:label "hasSubject"@en;
+               rdfs:range ekc:Actor;
+               rdfs:subPropertyOf ekc:A1;
+               <http://www.w3.org/2002/07/owl#inverseOf> ekc:isSubjectOf;
+               <http://www.w3.org/2004/02/skos/core#example> "고려 우왕 - 최영"@ko;
+               <http://www.w3.org/2004/02/skos/core#note> "임금-신하 관계"@ko.
+ekc:hasTemporalElement <http://purl.org/dc/elements/1.1/description> "(이 역사연표는) 역사적 사실 ~을 포함한다."@ko;
+                       a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:domain ekc:Index;
+                       rdfs:label "hasTemporalElement"@en;
+                       rdfs:range ekc:Event;
+                       rdfs:subPropertyOf ekc:TM.
+ekc:hasText <http://purl.org/dc/elements/1.1/description> "문장 ~이 있다"@ko;
+            a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain ekc:Record;
+            rdfs:label "hasText"@en;
+            rdfs:range ekc:Text;
+            rdfs:subPropertyOf ekc:RE.
+ekc:hasVersion <http://purl.org/dc/elements/1.1/description> "판본 ~이 있다"@ko;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain ekc:Record;
+               rdfs:label "hasVersion"@en;
+               rdfs:range ekc:Record;
+               rdfs:subPropertyOf ekc:RE.
+ekc:hasVirtualParticipant a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:label "hasVirtualParticipant"@en;
+                          rdfs:subPropertyOf ekc:E2;
+                          <http://www.w3.org/2002/07/owl#inverseOf> ekc:virtuallyParticipatesIn.
+ekc:hasWife <http://purl.org/dc/elements/1.1/description> "부인 ~이 있다"@ko;
+            a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:label "hasWife"@en;
+            rdfs:subPropertyOf ekc:A1,
+                               ekc:isHusbandOf;
+            <http://www.w3.org/2002/07/owl#inverseOf> ekc:isWifeOf;
+            <http://www.w3.org/2004/02/skos/core#example> "사도세자 - 혜경궁 홍씨"@ko;
+            <http://www.w3.org/2004/02/skos/core#note> "처"@ko;
+            <http://www.w3.org/2004/02/skos/core#scopeNote> "차서"@ko.
+ekc:includes <http://purl.org/dc/elements/1.1/description> "~를 포함하다"@ko;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain ekc:Concept;
+             rdfs:label "includes"@en;
+             rdfs:subPropertyOf ekc:CO.
+ekc:inscriber <http://purl.org/dc/elements/1.1/description> "(금석문의) 글씨를 새긴 이는 ~이다"@ko;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain ekc:Record;
+              rdfs:label "inscriber"@en;
+              rdfs:range ekc:Actor;
+              rdfs:subPropertyOf ekc:A2;
+              <http://www.w3.org/2002/07/owl#inverseOf> ekc:isInscriberOf;
+              <http://www.w3.org/2004/02/skos/core#note> "비문 새긴 이"@ko.
+ekc:isAdministratedBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:label "isAdministratedBy"@en;
+                      rdfs:subPropertyOf ekc:E2.
+ekc:isAdoptedHeirOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:label "isAdoptedHeirOf"@en;
+                    rdfs:subPropertyOf ekc:A1.
+ekc:isAffinalKinOf <http://purl.org/dc/elements/1.1/description> "~의 인척이다"@ko;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain ekc:Actor;
+                   rdfs:label "isAffinalKinOf"@en;
+                   rdfs:range ekc:Actor;
+                   rdfs:subPropertyOf ekc:A1;
+                   <http://www.w3.org/2004/02/skos/core#note> "인척(혼인으로 맺어진 친척)"@ko.
+ekc:isAnnotatorOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:label "isAnnotatorOf"@en;
+                  rdfs:subPropertyOf ekc:A2.
+ekc:isAvailableAt <http://purl.org/dc/elements/1.1/description> "~에서 입수할 수 있다 ※ 목적어는 3D 재현물을 다운로드받을 수 있는 온라인 사이트"@ko;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain ekc:Multimedia;
+                  rdfs:label "isAvailableAt"@en;
+                  rdfs:subPropertyOf ekc:XR.
+ekc:isAwarded <http://purl.org/dc/elements/1.1/description> "~을 상으로 받다"@ko;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain ekc:Actor;
+              rdfs:label "isAwarded"@en;
+              rdfs:subPropertyOf ekc:E3;
+              <http://www.w3.org/2004/02/skos/core#scopeNote> "relation attribute : 수량(quantity. 예: 1필)".
+ekc:isBirthPlaceOf <http://purl.org/dc/elements/1.1/description> "~의 생가/출생지이다"@ko;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain ekc:Place;
+                   rdfs:label "isBirthPlaceOf"@en;
+                   rdfs:range ekc:Actor;
+                   rdfs:subPropertyOf ekc:P1;
+                   <http://www.w3.org/2004/02/skos/core#note> "A(장소)는 B(인물)의 생가/출생지이다".
+ekc:isBrotherOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:label "isBrotherOf"@en;
+                rdfs:subPropertyOf ekc:A1.
+ekc:isCalligrapherOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:label "isCalligrapherOf"@en;
+                     rdfs:subPropertyOf ekc:A2.
+ekc:isCausedBy <http://purl.org/dc/elements/1.1/description> "(사건이) 사건 ~로 인해 발생했다"@ko;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain ekc:Event;
+               rdfs:label "isCausedBy"@en;
+               rdfs:range ekc:Event;
+               rdfs:subPropertyOf ekc:E1;
+               <http://www.w3.org/2004/02/skos/core#note> "A(사건)는 B로 인해 발생했다".
+ekc:isConceptionPlaceOf <http://purl.org/dc/elements/1.1/description> "~의 수태지이다"@ko;
+                        a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain ekc:Place;
+                        rdfs:label "isConceptionPlaceOf"@en;
+                        rdfs:range ekc:Actor;
+                        rdfs:subPropertyOf ekc:P1.
+ekc:isConcubineOf <http://purl.org/dc/elements/1.1/description> "~의 첩이다"@ko;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:label "isConcubineOf"@en;
+                  rdfs:subPropertyOf ekc:A1,
+                                     ekc:hasHusband.
+ekc:isConstructorOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:label "isConstructorOf"@en;
+                    rdfs:subPropertyOf ekc:AR.
+ekc:isContributorOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:label "isContributorOf"@en;
+                    rdfs:subPropertyOf ekc:A2;
+                    <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/dc/terms/contributor>.
+ekc:isCreatorOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:label "isCreatorOf"@en;
+                rdfs:subPropertyOf ekc:A2;
+                <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/dc/terms/creator>.
+ekc:isCurrentLocationOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:label "isCurrentLocationOf"@en;
+                        rdfs:subPropertyOf ekc:P2;
+                        <http://www.w3.org/2002/07/owl#inverseOf> <http://www.europeana.eu/schemas/edm/currentLocation>.
+ekc:isCurrentlySituatedOn <http://purl.org/dc/elements/1.1/description> "(현존건물이) 유적지 ~에 있다"@ko;
+                          a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:label "isCurrentlySituatedOn"@en;
+                          rdfs:range ekc:Place;
+                          rdfs:subPropertyOf ekc:P2;
+                          <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Place/Architecture/Agent(Actor의 subclasses 중 기관, 단체 등)".
+ekc:isDaughterInLawOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:label "isDaughterInLawOf"@en;
+                      rdfs:subPropertyOf ekc:A1;
+                      <http://www.w3.org/2004/02/skos/core#scopeNote> "시부대상(=hasFatherInLaw) / 시모대상(=hasMotherInLaw) / 미상未詳".
+ekc:isDaughterOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:label "isDaughterOf"@en;
+                 rdfs:subPropertyOf ekc:A1;
+                 <http://www.w3.org/2004/02/skos/core#scopeNote> "부녀관계(=hasFather) / 모녀관계(=hasMother) / 미상未詳".
+ekc:isDeathPlaceOf <http://purl.org/dc/elements/1.1/description> "~의 사망지이다"@ko;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain ekc:Place;
+                   rdfs:label "isDeathPlaceOf"@en;
+                   rdfs:range ekc:Actor;
+                   rdfs:subPropertyOf ekc:P1.
+ekc:isDepictedIn <http://purl.org/dc/elements/1.1/description> "~에 묘사되어 있다"@ko;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:label "isDepictedIn"@en;
+                 rdfs:subPropertyOf ekc:RE;
+                 <http://www.w3.org/2004/02/skos/core#example> "고산구곡 - 고산구곡도"@ko;
+                 <http://www.w3.org/2004/02/skos/core#note> "A는 B 속에서 묘사되다";
+                 <http://www.w3.org/2004/02/skos/core#scopeNote> "Range : Object/Record".
+ekc:isDescendantOf a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+                     <http://www.w3.org/2002/07/owl#TransitiveProperty>;
+                   rdfs:label "isDescendantOf"@en;
+                   rdfs:subPropertyOf ekc:A1.
+ekc:isDesignatedAs <http://purl.org/dc/elements/1.1/description> "(문화재) ~로 지정되다"@ko;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain ekc:Place;
+                   rdfs:label "isDesignatedAs"@en;
+                   rdfs:range ekc:Heritage;
+                   rdfs:subPropertyOf ekc:HR;
+                   <http://www.w3.org/2004/02/skos/core#note> "A(문화유산)는 문화유산 B(지정번호)로 지정되었다".
+ekc:isDiscipleOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:label "isDiscipleOf"@en;
+                 rdfs:subPropertyOf ekc:A1.
+ekc:isDocumentedIn a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:label "isDocumentedIn"@en;
+                   rdfs:subPropertyOf ekc:RE.
+ekc:isEnshrinedIn <http://purl.org/dc/elements/1.1/description> "~에 제향되다"@ko;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain ekc:Actor;
+                  rdfs:label "isEnshrinedIn"@en;
+                  rdfs:range ekc:Place;
+                  rdfs:subPropertyOf ekc:P2;
+                  <http://www.w3.org/2004/02/skos/core#example> "이순신 - 현충사"@ko;
+                  <http://www.w3.org/2004/02/skos/core#note> "제향"@ko.
+ekc:isFatherInLawOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:label "isFatherInLawOf"@en;
+                    rdfs:subPropertyOf ekc:A1;
+                    <http://www.w3.org/2004/02/skos/core#note> "시부-며느리 / 장인-사위"@ko;
+                    <http://www.w3.org/2004/02/skos/core#scopeNote> "장인입장(=hasSonInLaw) / 시부입장(=hasDaughterInLaw) / 미상未詳".
+ekc:isFatherOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:label "isFatherOf"@en;
+               rdfs:subPropertyOf ekc:A1;
+               <http://www.w3.org/2004/02/skos/core#scopeNote> "부녀관계(=hasDaughter) / 부자관계(=hasSon) / 미상未詳".
+ekc:isFellowOf <http://purl.org/dc/elements/1.1/description> "~의 친구이다"@ko;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain ekc:Actor;
+               rdfs:label "isFellowOf"@en;
+               rdfs:range ekc:Actor;
+               rdfs:subPropertyOf ekc:A1;
+               <http://www.w3.org/2004/02/skos/core#note> "동문수학/동류"@ko.
+ekc:isFormerlocationOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:label "isFormerlocationOf"@en;
+                       rdfs:subPropertyOf ekc:P2;
+                       <http://www.w3.org/2002/07/owl#inverseOf> <http://www.europeana.eu/schemas/edm/formerLocation>.
+ekc:isFounderOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:label "isFounderOf"@en;
+                rdfs:subPropertyOf ekc:AR.
+ekc:isGarnishedWith <http://purl.org/dc/elements/1.1/description> "상화 ~로 장식하다"@ko;
+                    a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain ekc:Food;
+                    rdfs:label "isGarnishedWith"@en;
+                    rdfs:range ekc:Object;
+                    rdfs:subPropertyOf ekc:FO.
+ekc:isGrandDaughterOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:label "isGrandDaughterOf"@en;
+                      rdfs:subPropertyOf ekc:A1.
+ekc:isGrandsonOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:label "isGrandsonOf"@en;
+                 rdfs:subPropertyOf ekc:A1.
+ekc:isHeldAt <http://purl.org/dc/elements/1.1/description> "~에서 개최되었다"@ko;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain ekc:Event;
+             rdfs:label "isHeldAt"@en;
+             rdfs:range ekc:Place;
+             rdfs:subPropertyOf ekc:E2.
+ekc:isHeldBy <http://purl.org/dc/elements/1.1/description> "아카이브 소장 자료의 소장처는 ~이다 ※ 목적어는 아카이브"@ko;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain ekc:WebResource;
+             rdfs:label "isHeldBy"@en;
+             rdfs:range ekc:Place;
+             rdfs:subPropertyOf ekc:XR.
+ekc:isHeldFor <http://purl.org/dc/elements/1.1/description> "~를 위해 개최되었다"@ko;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain ekc:Event;
+              rdfs:label "isHeldFor"@en;
+              rdfs:range ekc:Actor;
+              rdfs:subPropertyOf ekc:E2.
+ekc:isHusbandOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:label "isHusbandOf"@en;
+                rdfs:subPropertyOf ekc:A1.
+ekc:isInfluencedBy <http://purl.org/dc/elements/1.1/description> "~에 의해 영향받다"@ko;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:label "isInfluencedBy"@en;
+                   rdfs:subPropertyOf ekc:CO.
+ekc:isInscriberOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:label "isInscriberOf"@en;
+                  rdfs:subPropertyOf ekc:A2.
+ekc:isKindOf <http://purl.org/dc/elements/1.1/description> "~의 한 종류이다 ※ 분류 체계상의 분류인 경우에는 type";
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:label "isKindOf"@en;
+             rdfs:subPropertyOf ekc:CO.
+ekc:isLineageKinOf <http://purl.org/dc/elements/1.1/description> "~의 친척이다"@ko;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:domain ekc:Actor;
+                   rdfs:label "isLineageKinOf"@en;
+                   rdfs:range ekc:Actor;
+                   rdfs:subPropertyOf ekc:A1;
+                   <http://www.w3.org/2004/02/skos/core#note> "직계친족"@ko.
+ekc:isLocatedIn <http://purl.org/dc/elements/1.1/description> "~에 위치하다"@ko;
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:label "isLocatedIn"@en;
+                rdfs:range ekc:Place;
+                rdfs:subPropertyOf ekc:P2;
+                <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Place/Architecture/Agent(Actor의 subclasses 중 기관, 단체 등)/Object".
+ekc:isMadeOf <http://purl.org/dc/elements/1.1/description> "~로 만들었다"@ko;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain ekc:Object;
+             rdfs:label "isMadeOf"@en;
+             rdfs:range ekc:Object;
+             rdfs:subPropertyOf ekc:OB.
+ekc:isMasterOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:label "isMasterOf"@en;
+               rdfs:subPropertyOf ekc:A1.
+ekc:isMemberOf <http://purl.org/dc/elements/1.1/description> "~의 일원이다"@ko;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain ekc:Actor;
+               rdfs:label "isMemberOf"@en;
+               rdfs:range ekc:Actor;
+               rdfs:subPropertyOf ekc:A3;
+               <http://www.w3.org/2002/07/owl#inverseOf> <http://xmlns.com/foaf/0.1/member>;
+               <http://www.w3.org/2004/02/skos/core#scopeNote> "Range : Agent(Actor의 subclasses 중 기관, 단체 등)".
+ekc:isMentionedBy <http://purl.org/dc/elements/1.1/description> "~에 의해 언급되었다"@ko;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain ekc:Actor;
+                  rdfs:label "isMentionedBy"@en;
+                  rdfs:range ekc:Actor;
+                  rdfs:subPropertyOf ekc:A1.
+ekc:isMentionedIn <http://purl.org/dc/elements/1.1/description> "~에 언급되다"@ko;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:label "isMentionedIn"@en;
+                  rdfs:range ekc:Record;
+                  rdfs:subPropertyOf ekc:RE;
+                  <http://www.w3.org/2002/07/owl#inverseOf> ekc:mentions;
+                  <http://www.w3.org/2004/02/skos/core#example> "청심원 - 언해납약증치방"@ko;
+                  <http://www.w3.org/2004/02/skos/core#note> "A가 문헌 B 내용에서 명확히 언급됨".
+ekc:isMotherInLawOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:domain ekc:Actor;
+                    rdfs:label "isMotherInLawOf"@en;
+                    rdfs:range ekc:Actor;
+                    rdfs:subPropertyOf ekc:A1;
+                    <http://www.w3.org/2004/02/skos/core#note> "시모-며느리 / 장모-사위"@ko;
+                    <http://www.w3.org/2004/02/skos/core#scopeNote> "시모입장(=hasDaughterInLaw) / 장모입장(=hasSonInLaw) / 미상未詳".
+ekc:isMotherOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:label "isMotherOf"@en;
+               rdfs:subPropertyOf ekc:A1;
+               <http://www.w3.org/2004/02/skos/core#scopeNote> "모녀관계(=hasDaughter) / 모자관계(=hasSon) / 미상未詳".
+ekc:isNamedAfter <http://purl.org/dc/elements/1.1/description> "~를 따라 이름지었다"@ko;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:label "isNamedAfter"@en;
+                 rdfs:subPropertyOf ekc:NM;
+                 <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Place/Architecture/Agent(Actor의 subclasses 중 기관, 단체 등)",
+                                                                 "Range : Place/Architecture/Agent(Actor의 subclasses 중 기관, 단체 등)".
+ekc:isNamedBy <http://purl.org/dc/elements/1.1/description> "~가 명명했다"@ko;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain ekc:Architecture;
+              rdfs:label "isNamedBy"@en;
+              rdfs:range ekc:Actor;
+              rdfs:subPropertyOf ekc:AR.
+ekc:isNamesakeOf <http://purl.org/dc/elements/1.1/description> "~와 같은 이름이다 ※ 실체는 다른데 이름이 같은 경우"@ko;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:label "isNamesakeOf"@en;
+                 rdfs:subPropertyOf ekc:NM;
+                 <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Place/Architecture/Agent(Actor의 subclasses 중 기관, 단체 등)",
+                                                                 "Range : Place/Architecture/Agent(Actor의 subclasses 중 기관, 단체 등)".
+ekc:isNear <http://purl.org/dc/elements/1.1/description> "~에 가까이 있다"@ko;
+           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain ekc:Place;
+           rdfs:label "isNear"@en;
+           rdfs:range ekc:Place;
+           rdfs:subPropertyOf ekc:P1;
+           <http://www.w3.org/2004/02/skos/core#example> "금산 칠백의총 - 금산 칠백의총 기념관"@ko;
+           <http://www.w3.org/2004/02/skos/core#note> "물리적 인접"@ko.
+ekc:isNewNameOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:label "isNewNameOf"@en;
+                rdfs:subPropertyOf ekc:NM.
+ekc:isOfficialPostOf <http://purl.org/dc/elements/1.1/description> "관청 ~의 관직이다"@ko;
+                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain ekc:Concept;
+                     rdfs:label "isOfficialPostOf"@en;
+                     rdfs:range ekc:Actor;
+                     rdfs:subPropertyOf ekc:A4;
+                     <http://www.w3.org/2004/02/skos/core#scopeNote> "Range : Agent(Actor의 subclasses 중 기관, 단체 등)".
+ekc:isOldNameOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:label "isOldNameOf"@en;
+                rdfs:subPropertyOf ekc:NM.
+ekc:isOperatedIn <http://purl.org/dc/elements/1.1/description> "(시설이) 이벤트 ~에서 운영되었다"@ko;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain ekc:Actor;
+                 rdfs:label "isOperatedIn"@en;
+                 rdfs:range ekc:Event;
+                 rdfs:subPropertyOf ekc:E2;
+                 <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Agent(Actor의 subclasses 중 기관, 단체 등)".
+ekc:isOwnerOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:label "isOwnerOf"@en;
+              rdfs:subPropertyOf ekc:A1.
+ekc:isPasserOf <http://purl.org/dc/elements/1.1/description> "(과거시험) ~의 합격자이다"@ko;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain ekc:Actor;
+               rdfs:label "isPasserOf"@en;
+               rdfs:range ekc:Event;
+               rdfs:subPropertyOf ekc:A4.
+ekc:isPerformedAt <http://purl.org/dc/elements/1.1/description> "(공연/의식이) ~에서 열렸다"@ko;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:label "isPerformedAt"@en;
+                  rdfs:range ekc:Place;
+                  rdfs:subPropertyOf ekc:E3;
+                  <http://www.w3.org/2004/02/skos/core#example> "독립선언식 - 태화관"@ko;
+                  <http://www.w3.org/2004/02/skos/core#note> "의식 실행 장소"@ko;
+                  <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Event/Concept".
+ekc:isPerformedBy <http://purl.org/dc/elements/1.1/description> "~가 공연했다"@ko;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain ekc:Concept;
+                  rdfs:label "isPerformedBy"@en;
+                  rdfs:range ekc:Actor;
+                  rdfs:subPropertyOf ekc:E3.
+ekc:isPerformedIn <http://purl.org/dc/elements/1.1/description> "(공연이) 이벤트 ~에서 공연되었다"@ko;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:label "isPerformedIn"@en;
+                  rdfs:subPropertyOf ekc:E3.
+ekc:isPlacentaChamberOf <http://purl.org/dc/elements/1.1/description> "~의 태실이다"@ko;
+                        a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain ekc:Place;
+                        rdfs:label "isPlacentaChamberOf"@en;
+                        rdfs:range ekc:Actor;
+                        rdfs:subPropertyOf ekc:P1.
+ekc:isPostedIn <http://purl.org/dc/elements/1.1/description> "사진이 문헌(신문, 잡지) ~에 실렸다"@ko;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain ekc:Record;
+               rdfs:label "isPostedIn"@en;
+               rdfs:range ekc:Record;
+               rdfs:subPropertyOf ekc:RE.
+ekc:isPreviousInSequenceTo <http://purl.org/dc/elements/1.1/description> "(순서상) ~ 앞이다. ※ 사건, 항목 간의 인접연속 관계. A 다음이 B인 순서.";
+                           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:label "isPreviousInSequenceTo"@en;
+                           rdfs:subPropertyOf ekc:CO;
+                           <http://www.w3.org/2002/07/owl#inverseOf> <http://www.europeana.eu/schemas/edm/isNextInSequenceTo>;
+                           <http://www.w3.org/2004/02/skos/core#example> "1번 - 2번";
+                           <http://www.w3.org/2004/02/skos/core#note> "사건, 항목 간의 인접연속 관계. A 다음이 B인 순서.";
+                           <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Event/Concept",
+                                                                           "Range : Event/Concept".
+ekc:isPreviouslySituatedOn <http://purl.org/dc/elements/1.1/description> "(부존건물이) 유적지 ~에 있었다"@ko;
+                           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                           rdfs:label "isPreviouslySituatedOn"@en;
+                           rdfs:range ekc:Place;
+                           rdfs:subPropertyOf ekc:P2;
+                           <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Place/Architecture/Agent(Actor의 subclasses 중 기관, 단체 등)".
+ekc:isProducedBy <http://purl.org/dc/elements/1.1/description> "~에서 만든다"@ko;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain ekc:Object;
+                 rdfs:label "isProducedBy"@en;
+                 rdfs:subPropertyOf ekc:P2;
+                 <http://www.w3.org/2004/02/skos/core#scopeNote> "Range : Actor/Place".
+ekc:isProducedIn <http://purl.org/dc/elements/1.1/description> "~ 지역에서 생산된다"@ko;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain ekc:Object;
+                 rdfs:label "isProducedIn"@en;
+                 rdfs:range ekc:Place;
+                 rdfs:subPropertyOf ekc:P2.
+ekc:isProvenanceOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:label "isProvenanceOf"@en;
+                   rdfs:subPropertyOf ekc:RE;
+                   <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/dc/terms/provenance>.
+ekc:isProvidedIn <http://purl.org/dc/elements/1.1/description> "(상차림이) 이벤트 ~에서 제공되다"@ko;
+                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:domain ekc:Food;
+                 rdfs:label "isProvidedIn"@en;
+                 rdfs:range ekc:Event;
+                 rdfs:subPropertyOf ekc:FO.
+ekc:isPublisherOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:label "isPublisherOf"@en;
+                  rdfs:subPropertyOf ekc:A2;
+                  <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/dc/terms/publisher>.
+ekc:isReconstructorOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                      rdfs:label "isReconstructorOf"@en;
+                      rdfs:subPropertyOf ekc:AR;
+                      <http://www.w3.org/2002/07/owl#inverseOf> ekc:reconstructor.
+ekc:isReferencedFrom <http://purl.org/dc/elements/1.1/description> "문헌자료 ~를 참고하다"@ko;
+                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:domain ekc:Index;
+                     rdfs:label "isReferencedFrom"@en;
+                     rdfs:range ekc:Bibliography;
+                     rdfs:subPropertyOf ekc:XR.
+ekc:isRenovatorOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:label "isRenovatorOf"@en;
+                  rdfs:subPropertyOf ekc:AR;
+                  <http://www.w3.org/2002/07/owl#inverseOf> ekc:renovator.
+ekc:isRightsHolderOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:label "isRightsHolderOf"@en;
+                     rdfs:subPropertyOf ekc:A2;
+                     <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/dc/terms/rightsHolder>.
+ekc:isServedIn <http://purl.org/dc/elements/1.1/description> "(음식이) 그릇 ~에 담아 제공되다"@ko;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain ekc:Food;
+               rdfs:label "isServedIn"@en;
+               rdfs:range ekc:Object;
+               rdfs:subPropertyOf ekc:FO.
+ekc:isServedOn <http://purl.org/dc/elements/1.1/description> "(음식이) 음식상 ~에 차려지다"@ko;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain ekc:Food;
+               rdfs:label "isServedOn"@en;
+               rdfs:range ekc:Object;
+               rdfs:subPropertyOf ekc:FO.
+ekc:isServedTo <http://purl.org/dc/elements/1.1/description> "인물 ~에게 제공되다"@ko;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain ekc:Food;
+               rdfs:label "isServedTo"@en;
+               rdfs:range ekc:Actor;
+               rdfs:subPropertyOf ekc:FO.
+ekc:isSisterOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:label "isSisterOf"@en;
+               rdfs:subPropertyOf ekc:A1.
+ekc:isSiteOf <http://purl.org/dc/elements/1.1/description> "~의 유적지이다"@ko;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain ekc:Place;
+             rdfs:label "isSiteOf"@en;
+             rdfs:subPropertyOf ekc:P1;
+             <http://www.w3.org/2004/02/skos/core#scopeNote> "Range : Place/Architecture/Agent".
+ekc:isSonInLawOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:label "isSonInLawOf"@en;
+                 rdfs:subPropertyOf ekc:A1;
+                 <http://www.w3.org/2004/02/skos/core#scopeNote> "장인대상(=hasFatherInLaw) / 장모대상(=hasMotherInLaw) / 미상未詳".
+ekc:isSonOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:label "isSonOf"@en;
+            rdfs:subPropertyOf ekc:A1;
+            <http://www.w3.org/2004/02/skos/core#scopeNote> "부자관계(=hasFather) / 모자관계(=hasMother) / 미상未詳".
+ekc:isSteleOf <http://purl.org/dc/elements/1.1/description> "~의 신도비(탑비)이다"@ko;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain ekc:Object;
+              rdfs:label "isSteleOf"@en;
+              rdfs:range ekc:Actor;
+              rdfs:subPropertyOf ekc:HR;
+              <http://www.w3.org/2004/02/skos/core#example> "장흥 보림사 보조선사탑비 - 체징"@ko;
+              <http://www.w3.org/2004/02/skos/core#note> "인물·사건의 기념비"@ko.
+ekc:isStoredIn <http://purl.org/dc/elements/1.1/description> "~에 보관하다"@ko;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain ekc:Object;
+               rdfs:label "isStoredIn"@en;
+               rdfs:subPropertyOf ekc:OB;
+               <http://www.w3.org/2004/02/skos/core#scopeNote> "Range : Place/Architecture".
+ekc:isStupaOf <http://purl.org/dc/elements/1.1/description> "~의 승탑이다"@ko;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain ekc:Object;
+              rdfs:label "isStupaOf"@en;
+              rdfs:range ekc:Actor;
+              rdfs:subPropertyOf ekc:HR;
+              <http://www.w3.org/2004/02/skos/core#example> "장흥 보림사 보조선사탑- 체징"@ko;
+              <http://www.w3.org/2004/02/skos/core#note> "승탑"@ko.
+ekc:isSubjectOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:label "isSubjectOf"@en;
+                rdfs:subPropertyOf ekc:A1.
+ekc:isTombOf <http://purl.org/dc/elements/1.1/description> "~의 무덤이다"@ko;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain ekc:Place;
+             rdfs:label "isTombOf"@en;
+             rdfs:range ekc:Actor;
+             rdfs:subPropertyOf ekc:HR;
+             <http://www.w3.org/2004/02/skos/core#note> "A는 B의 무덤(인물)이다".
+ekc:isTombstoneOf <http://purl.org/dc/elements/1.1/description> "~의 비석이다"@ko;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain ekc:Object;
+                  rdfs:label "isTombstoneOf"@en;
+                  rdfs:range ekc:Actor;
+                  rdfs:subPropertyOf ekc:HR.
+ekc:isTranslatorOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:label "isTranslatorOf"@en;
+                   rdfs:subPropertyOf ekc:A2;
+                   <http://www.w3.org/2002/07/owl#inverseOf> ekc:translator.
+ekc:isUsedIn <http://purl.org/dc/elements/1.1/description> "~에 쓰인다"@ko;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain ekc:Object;
+             rdfs:label "isUsedIn"@en;
+             rdfs:range ekc:Event;
+             rdfs:subPropertyOf ekc:OB;
+             <http://www.w3.org/2004/02/skos/core#example> "근배 - 동뢰"@ko;
+             <http://www.w3.org/2004/02/skos/core#note> "의례·사건에서의 사용"@ko.
+ekc:isVictimOf <http://purl.org/dc/elements/1.1/description> "(인물이) 사건 ~의 희생자이다"@ko;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain ekc:Actor;
+               rdfs:label "isVictimOf"@en;
+               rdfs:range ekc:Event;
+               rdfs:subPropertyOf ekc:E1.
+ekc:isWifeOf <http://purl.org/dc/elements/1.1/description> "~의 부인이다"@ko;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:label "isWifeOf"@en;
+             rdfs:subPropertyOf ekc:A1,
+                                ekc:hasHusband.
+ekc:isWornBy a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:label "isWornBy"@en;
+             rdfs:subPropertyOf ekc:CL;
+             <http://www.w3.org/2002/07/owl#inverseOf> ekc:wears.
+ekc:isWornIn <http://purl.org/dc/elements/1.1/description> "(복장을) 행사 ~에서 입다"@ko;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain ekc:Clothing;
+             rdfs:label "isWornIn"@en;
+             rdfs:subPropertyOf ekc:CL;
+             <http://www.w3.org/2004/02/skos/core#scopeNote> "Range : Event/Concept".
+ekc:isWriterOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:label "isWriterOf"@en;
+               rdfs:subPropertyOf ekc:A2;
+               <http://www.w3.org/2002/07/owl#inverseOf> ekc:writer.
+ekc:leads <http://purl.org/dc/elements/1.1/description> "(인물이) 사건 ~을 주도하다"@ko;
+          a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain ekc:Actor;
+          rdfs:label "leads"@en;
+          rdfs:range ekc:Event;
+          rdfs:subPropertyOf ekc:E1.
+ekc:livesIn <http://purl.org/dc/elements/1.1/description> "~에 살다"@ko;
+            a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+            rdfs:domain ekc:Actor;
+            rdfs:label "livesIn"@en;
+            rdfs:range ekc:Place;
+            rdfs:subPropertyOf ekc:P2.
+ekc:mentions <http://purl.org/dc/elements/1.1/description> "~를 언급하다"@ko;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:label "mentions"@en;
+             rdfs:subPropertyOf ekc:RE;
+             <http://www.w3.org/2004/02/skos/core#example> "언해납약증치방 - 청심원"@ko;
+             <http://www.w3.org/2004/02/skos/core#note> "문헌 A의 내용 중 B를 명확히 언급".
+ekc:mightBeRelatedTo <http://purl.org/dc/elements/1.1/description> "~과 관계가 있을지도 모른다"@ko;
+                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                     rdfs:label "mightBeRelatedTo"@en;
+                     rdfs:subPropertyOf ekc:CO.
+ekc:onlineReference <http://purl.org/dc/elements/1.1/description> "웹자원 목록은 ~이다 ※ 목적어는 웹자원 색인(ref-XXXX) 노드";
+                    a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                    rdfs:label "onlineReference"@en;
+                    rdfs:subPropertyOf ekc:XR;
+                    <http://www.w3.org/2004/02/skos/core#scopeNote> "Range : Index/WebResource".
+ekc:owner <http://purl.org/dc/elements/1.1/description> "(유물의) 소유주는 ~이다"@ko;
+          a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:label "owner"@en;
+          rdfs:range ekc:Actor;
+          rdfs:subPropertyOf ekc:A2;
+          <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Record/Object".
+ekc:participatesIn <http://purl.org/dc/elements/1.1/description> "~에 참여하다"@ko;
+                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:label "participatesIn"@en;
+                   rdfs:subPropertyOf ekc:E2.
+ekc:plays <http://purl.org/dc/elements/1.1/description> "악기 ~를 연주하다"@ko;
+          a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain ekc:Actor;
+          rdfs:label "plays"@en;
+          rdfs:range ekc:Object;
+          rdfs:subPropertyOf ekc:E3.
+ekc:prepares <http://purl.org/dc/elements/1.1/description> "음식, 식재료 ~을 준비한다"@ko;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain ekc:Actor;
+             rdfs:label "prepares"@en;
+             rdfs:range ekc:Food;
+             rdfs:subPropertyOf ekc:FO;
+             <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Agent(Actor의 subclasses 중 기관, 단체 등)".
+ekc:reconstructor <http://purl.org/dc/elements/1.1/description> "재건자는 ~이다 ※ 수축(修築)을 지휘";
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain ekc:Architecture;
+                  rdfs:label "reconstructor"@en;
+                  rdfs:range ekc:Actor;
+                  rdfs:subPropertyOf ekc:AR;
+                  <http://www.w3.org/2004/02/skos/core#example> "백마산성 - 강감찬"@ko;
+                  <http://www.w3.org/2004/02/skos/core#note> "수축(修築)을 지휘".
+ekc:renovator <http://purl.org/dc/elements/1.1/description> "중건자는 ~이다 ※ 중창·중건 추진"@ko;
+              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+              rdfs:domain ekc:Architecture;
+              rdfs:label "renovator"@en;
+              rdfs:range ekc:Actor;
+              rdfs:subPropertyOf ekc:AR;
+              <http://www.w3.org/2004/02/skos/core#example> "고성 유점사 - 유정"@ko;
+              <http://www.w3.org/2004/02/skos/core#note> "중창·중건 추진"@ko.
+ekc:serves <http://purl.org/dc/elements/1.1/description> "음식 ~을 차린다"@ko;
+           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain ekc:Actor;
+           rdfs:label "serves"@en;
+           rdfs:range ekc:Food;
+           rdfs:subPropertyOf ekc:FO.
+ekc:servesAs <http://purl.org/dc/elements/1.1/description> "관직 ~를 역임했다"@ko;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:domain ekc:Actor;
+             rdfs:label "servesAs"@en;
+             rdfs:range ekc:Concept;
+             rdfs:subPropertyOf ekc:A4;
+             <http://www.w3.org/2004/02/skos/core#example> "서유문 - 서장관"@ko;
+             <http://www.w3.org/2004/02/skos/core#note> """(관직/직무/역할)을 수행
+[HistoryNote] servedAs 에서 변경"""@ko.
+ekc:servesTemporarilyAs <http://purl.org/dc/elements/1.1/description> "임시로 ~의 직책을 수행하다"@ko;
+                        a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:domain ekc:Actor;
+                        rdfs:label "servesTemporarilyAs"@en;
+                        rdfs:range ekc:Concept;
+                        rdfs:subPropertyOf ekc:A4.
+ekc:textReference <http://purl.org/dc/elements/1.1/description> "문헌상의 근거 텍스트는 ~이다 ※ 목적어는 온라인 텍스트 원문"@ko;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:label "textReference"@en;
+                  rdfs:range ekc:Text;
+                  rdfs:subPropertyOf ekc:XR.
+ekc:timeline <http://purl.org/dc/elements/1.1/description> "연표 ~이 있다 ※ 목적어는 주어와 관련이 있는 역사연표"@ko;
+             a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+             rdfs:label "timeline"@en;
+             rdfs:range ekc:Index;
+             rdfs:subPropertyOf ekc:TM.
+ekc:translator <http://purl.org/dc/elements/1.1/description> "번역자는 ~이다"@ko;
+               a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+               rdfs:domain ekc:Record;
+               rdfs:label "translator"@en;
+               rdfs:range ekc:Actor;
+               rdfs:subPropertyOf ekc:A2;
+               <http://www.w3.org/2004/02/skos/core#example> "태교신기언해 - 유희"@ko;
+               <http://www.w3.org/2004/02/skos/core#note> "번역자; 언해자."@ko.
+ekc:virtuallyParticipatesIn <http://purl.org/dc/elements/1.1/description> "~에 가상으로 참여하다. ~에 참여한 것으로 간주하다 ※ 기록물에 참여한 듯이 기록"@ko;
+                            a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                            rdfs:domain ekc:Actor;
+                            rdfs:label "virtuallyParticipatesIn"@en;
+                            rdfs:range ekc:Event;
+                            rdfs:subPropertyOf ekc:E2.
+ekc:wasBuriedIn <http://purl.org/dc/elements/1.1/description> "~에 묻혔다"@ko;
+                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:domain ekc:Actor;
+                rdfs:label "wasBuriedIn"@en;
+                rdfs:range ekc:Place;
+                rdfs:subPropertyOf ekc:P2.
+ekc:wasExecutedAt <http://purl.org/dc/elements/1.1/description> "~에서 처형되었다"@ko;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain ekc:Actor;
+                  rdfs:label "wasExecutedAt"@en;
+                  rdfs:range ekc:Place;
+                  rdfs:subPropertyOf ekc:P2.
+ekc:wasOrdainedBy <http://purl.org/dc/elements/1.1/description> "~로부터 계를 받았다"@ko;
+                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                  rdfs:domain ekc:Actor;
+                  rdfs:label "wasOrdainedBy"@en;
+                  rdfs:range ekc:Actor;
+                  rdfs:subPropertyOf ekc:A1;
+                  <http://www.w3.org/2002/07/owl#inverseOf> ekc:wasPreceptorOf;
+                  <http://www.w3.org/2004/02/skos/core#example> "수철 - 윤법"@ko;
+                  <http://www.w3.org/2004/02/skos/core#note> "계를 받았다(승려 간)"@ko.
+ekc:wasPosthumouslyPromotedTo <http://purl.org/dc/elements/1.1/description> "증직 ~를 받다"@ko;
+                              a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                              rdfs:domain ekc:Actor;
+                              rdfs:label "wasPosthumouslyPromotedTo"@en;
+                              rdfs:range ekc:Concept;
+                              rdfs:subPropertyOf ekc:A4.
+ekc:wasPreceptorOf a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:label "wasPreceptorOf"@en;
+                   rdfs:subPropertyOf ekc:A1.
+ekc:wears <http://purl.org/dc/elements/1.1/description> "복장 ~를 입다"@ko;
+          a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+          rdfs:domain ekc:Actor;
+          rdfs:label "wears"@en;
+          rdfs:range ekc:Clothing;
+          rdfs:subPropertyOf ekc:CL;
+          <http://www.w3.org/2004/02/skos/core#example> "궁녀 - 당의"@ko;
+          <http://www.w3.org/2004/02/skos/core#note> "궁중복식에서 입는 대상"@ko.
+ekc:writer <http://purl.org/dc/elements/1.1/description> "(금석문의) 글 쓴 이는 ~이다"@ko;
+           a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+           rdfs:domain ekc:Record;
+           rdfs:label "writer"@en;
+           rdfs:range ekc:Actor;
+           rdfs:subPropertyOf ekc:A2;
+           <http://www.w3.org/2004/02/skos/core#example> "김언경 - 장흥 보림사 보조선사탑비"@ko;
+           <http://www.w3.org/2004/02/skos/core#note> "글 쓴 사람. 비문 지은이."@ko.
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/elements/1.1/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/contributor> <http://purl.org/dc/elements/1.1/description> "기여자는 ~이다"@ko;
+                                       a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:label "contributor"@en;
+                                       rdfs:range ekc:Actor;
+                                       rdfs:subPropertyOf ekc:A2;
+                                       <http://www.w3.org/2004/02/skos/core#example> "장흥 보림사 - 신라 헌강왕"@ko;
+                                       <http://www.w3.org/2004/02/skos/core#note> "기여자"@ko;
+                                       <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Record/Object/Event".
+<http://purl.org/dc/terms/creator> <http://purl.org/dc/elements/1.1/description> "(문헌/작품의) 창작자는 ~이다"@ko;
+                                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:label "creator"@en;
+                                   rdfs:range ekc:Actor;
+                                   rdfs:subPropertyOf ekc:A2;
+                                   <http://www.w3.org/2004/02/skos/core#example> "도산십이곡 - 이황"@ko;
+                                   <http://www.w3.org/2004/02/skos/core#note> "창작자(저자)로 인정받는 제작자"@ko;
+                                   <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Record/Object".
+<http://purl.org/dc/terms/hasPart> <http://purl.org/dc/elements/1.1/description> "부분 ~이 있다"@ko;
+                                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:label "hasPart"@en;
+                                   rdfs:subPropertyOf ekc:CO;
+                                   <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/dc/terms/isPartOf>;
+                                   <http://www.w3.org/2004/02/skos/core#example> "도산십이곡 - 도산십이곡 발문"@ko;
+                                   <http://www.w3.org/2004/02/skos/core#note> "전체-부분 관계"@ko;
+                                   <http://www.w3.org/2004/02/skos/core#scopeNote> "relation attribute : 수량(quantity. 예: 5개)".
+<http://purl.org/dc/terms/isPartOf> <http://purl.org/dc/elements/1.1/description> "~의 부분이다"@ko;
+                                    a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                    rdfs:label "isPartOf"@en;
+                                    rdfs:subPropertyOf ekc:CO;
+                                    <http://www.w3.org/2004/02/skos/core#example> "도산십이곡 발문 - 도산십이곡"@ko;
+                                    <http://www.w3.org/2004/02/skos/core#note> "부분-전체 관계"@ko.
+<http://purl.org/dc/terms/isReferencedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                          rdfs:label "isReferencedBy"@en;
+                                          rdfs:subPropertyOf ekc:RE;
+                                          <http://www.w3.org/2002/07/owl#inverseOf> <http://purl.org/dc/terms/references>.
+<http://purl.org/dc/terms/issued> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                  rdfs:range xsd:dateTime.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                    rdfs:range xsd:dateTime.
+<http://purl.org/dc/terms/provenance> <http://purl.org/dc/elements/1.1/description> "(소장품의) 기원/유래/출처는 ~이다 ※ 출처: 원 소유자, 원 소장처, 발견·발굴 장소, 기증자 등"@ko;
+                                      a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:label "provenance"@en;
+                                      rdfs:subPropertyOf ekc:RE;
+                                      <http://www.w3.org/2004/02/skos/core#example> "왕오천축국전 - 돈황석굴"@ko;
+                                      <http://www.w3.org/2004/02/skos/core#note> "출처; 원 소장처; 발견·발굴 장소"@ko;
+                                      <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Record/Object",
+                                                                                      "Range : Actor/Place".
+<http://purl.org/dc/terms/publisher> <http://purl.org/dc/elements/1.1/description> "출판자는 ~이다"@ko;
+                                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                     rdfs:domain ekc:Record;
+                                     rdfs:label "publisher"@en;
+                                     rdfs:range ekc:Actor;
+                                     rdfs:subPropertyOf ekc:A2;
+                                     <http://www.w3.org/2004/02/skos/core#example> "어제계주윤음 - 교서관"@ko;
+                                     <http://www.w3.org/2004/02/skos/core#note> "필사/간행/중간/영인"@ko.
+<http://purl.org/dc/terms/references> <http://purl.org/dc/elements/1.1/description> "~를 참고하다"@ko;
+                                      a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                      rdfs:label "references"@en;
+                                      rdfs:range ekc:Record;
+                                      rdfs:subPropertyOf ekc:RE;
+                                      <http://www.w3.org/2004/02/skos/core#example> "고산구곡도 - 고산구곡가"@ko;
+                                      <http://www.w3.org/2004/02/skos/core#note> "실제 내용의 참조"@ko;
+                                      <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Record/Concept".
+<http://purl.org/dc/terms/rightsHolder> <http://purl.org/dc/elements/1.1/description> "저작권자는 ~이다 ※ 저작권 보유자"@ko;
+                                        a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:label "rightsHolder"@en;
+                                        rdfs:range ekc:Actor;
+                                        rdfs:subPropertyOf ekc:A2;
+                                        <http://www.w3.org/2004/02/skos/core#example> "세종대왕 표준영정 - 운보문화재단"@ko;
+                                        <http://www.w3.org/2004/02/skos/core#note> "저작권 보유자"@ko;
+                                        <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Record/Object".
+<http://purl.org/dc/terms/type> <http://purl.org/dc/elements/1.1/description> "유형은 ~이다"@ko;
+                                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:label "type"@en;
+                                rdfs:subPropertyOf ekc:CO;
+                                <http://www.w3.org/2004/02/skos/core#example> "세종대왕 표준영정 - 표준영정"@ko;
+                                <http://www.w3.org/2004/02/skos/core#note> "특정 분류체계에 배속 시. 그 외의 성격/유형은 edm:isRelatedTo.".
+<http://purl.org/vocommons/voaf#Vocabulary> a <http://www.w3.org/2002/07/owl#Class>.
+<http://www.europeana.eu/schemas/edm/currentLocation> <http://purl.org/dc/elements/1.1/description> "소재지(소장처)는 ~이다"@ko;
+                                                      a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                      rdfs:domain ekc:Object;
+                                                      rdfs:label "currentLocation"@en;
+                                                      rdfs:subPropertyOf ekc:P2;
+                                                      <http://www.w3.org/2004/02/skos/core#example> "고성 유점사 종 - 고성 보현사"@ko;
+                                                      <http://www.w3.org/2004/02/skos/core#note> "현재 소장처"@ko;
+                                                      <http://www.w3.org/2004/02/skos/core#scopeNote> "Range : Place/Agent".
+<http://www.europeana.eu/schemas/edm/formerLocation> <http://purl.org/dc/elements/1.1/description> "옛 소재지(소장처)는 ~이다"@ko;
+                                                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                     rdfs:domain ekc:Object;
+                                                     rdfs:label "formerLocation"@en;
+                                                     rdfs:subPropertyOf ekc:P2;
+                                                     <http://www.w3.org/2004/02/skos/core#example> "고성 유점사 종 - 고성 유점사"@ko;
+                                                     <http://www.w3.org/2004/02/skos/core#note> "과거 소장처"@ko;
+                                                     <http://www.w3.org/2004/02/skos/core#scopeNote> "Range : Place/Agent".
+<http://www.europeana.eu/schemas/edm/happenedAt> <http://purl.org/dc/elements/1.1/description> "(사건이) 장소 ~에서 일어나다"@ko;
+                                                 a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                 rdfs:domain ekc:Event;
+                                                 rdfs:label "happenedAt"@en;
+                                                 rdfs:range ekc:Place;
+                                                 rdfs:subPropertyOf ekc:E1;
+                                                 <http://www.w3.org/2004/02/skos/core#example> "명량대첩 - 명량해협"@ko;
+                                                 <http://www.w3.org/2004/02/skos/core#note> "사건이 발생한 장소"@ko.
+<http://www.europeana.eu/schemas/edm/isDerivativeOf> <http://purl.org/dc/elements/1.1/description> "~의 파생물이다"@ko;
+                                                     a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                     rdfs:label "isDerivativeOf"@en;
+                                                     rdfs:subPropertyOf ekc:RE;
+                                                     <http://www.w3.org/2004/02/skos/core#example> "삼강행실도 언해 - 삼강행실도"@ko;
+                                                     <http://www.w3.org/2004/02/skos/core#note> "파생작; 번역물"@ko;
+                                                     <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Record/Object",
+                                                                                                     "Range : Record/Object".
+<http://www.europeana.eu/schemas/edm/isNextInSequenceTo> <http://purl.org/dc/elements/1.1/description> "(순서상) ~ 다음이다 ※ 사건, 항목 간의 인접연속 관계. B 다음이 A인 순서.";
+                                                         a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                         rdfs:label "isNextInSequenceTo"@en;
+                                                         rdfs:subPropertyOf ekc:CO;
+                                                         <http://www.w3.org/2004/02/skos/core#example> "2번 - 1번";
+                                                         <http://www.w3.org/2004/02/skos/core#note> "사건, 항목 간의 인접연속 관계. A가 B 다음인 순서.";
+                                                         <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Event/Concept",
+                                                                                                         "Range : Event/Concept".
+<http://www.europeana.eu/schemas/edm/isRelatedTo> <http://purl.org/dc/elements/1.1/description> "~와 관계가 있다"@ko;
+                                                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                  rdfs:label "isRelatedTo"@en;
+                                                  rdfs:subPropertyOf ekc:CO;
+                                                  <http://www.w3.org/2004/02/skos/core#note> "기타 포괄적 연관 관계"@ko.
+<http://www.europeana.eu/schemas/edm/isShownAt> <http://purl.org/dc/elements/1.1/description> "(웹 자원) ~에 보인다"@ko;
+                                                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                rdfs:label "isShownAt"@en;
+                                                rdfs:range ekc:WebResource;
+                                                rdfs:subPropertyOf ekc:XR;
+                                                <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Any/Index",
+                                                                                                "relation attribute : 해설, 참고, 원문 ※ subclass 명칭".
+<http://www.europeana.eu/schemas/edm/isShownBy> <http://purl.org/dc/elements/1.1/description> "(웹 자원) ~에 보인다"@ko;
+                                                a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                rdfs:label "isShownBy"@en;
+                                                rdfs:subPropertyOf ekc:XR;
+                                                <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Any/Index",
+                                                                                                "Range : WebResource/Multimedia",
+                                                                                                "relation attribute : 3D_지도, 3D_모델, 지도, 그림, 도면, 동영상, 사진 ※ subclass 명칭".
+<http://www.europeana.eu/schemas/edm/isSuccessorOf> <http://purl.org/dc/elements/1.1/description> "~의 후속이다 ※ 속편 작품"@ko;
+                                                    a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                    rdfs:label "isSuccessorOf"@en;
+                                                    rdfs:subPropertyOf ekc:RE;
+                                                    <http://www.w3.org/2004/02/skos/core#example> "속장경 - 초조대장경"@ko;
+                                                    <http://www.w3.org/2004/02/skos/core#note> "속편 작품"@ko;
+                                                    <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Record/Object",
+                                                                                                    "Range : Record/Object".
+<http://www.w3.org/2002/07/owl#sameAs> <http://purl.org/dc/elements/1.1/description> "~와 같다"@ko;
+                                       a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:label "sameAs"@en;
+                                       rdfs:subPropertyOf ekc:CO;
+                                       <http://www.w3.org/2004/02/skos/core#example> "훈민정음 - 한글"@ko;
+                                       <http://www.w3.org/2004/02/skos/core#note> "동일 또는 유사 관계"@ko.
+<http://www.w3.org/2004/02/skos/core#definition> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                                 rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#note>.
+<http://www.w3.org/2004/02/skos/core#example> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                              rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#note>.
+<http://www.w3.org/2004/02/skos/core#note> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://www.w3.org/2004/02/skos/core#scopeNote> a <http://www.w3.org/2002/07/owl#AnnotationProperty>;
+                                                rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#note>.
+<http://xmlns.com/foaf/0.1/knows> <http://purl.org/dc/elements/1.1/description> "~의 지인이다"@ko;
+                                  a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                  rdfs:domain ekc:Actor;
+                                  rdfs:label "knows"@en;
+                                  rdfs:range ekc:Actor;
+                                  rdfs:subPropertyOf ekc:A1;
+                                  <http://www.w3.org/2004/02/skos/core#example> "신숙주 - 성삼문"@ko;
+                                  <http://www.w3.org/2004/02/skos/core#note> "일반적인 교유관계"@ko.
+<http://xmlns.com/foaf/0.1/member> <http://purl.org/dc/elements/1.1/description> "구성원 ~이 있다"@ko;
+                                   a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                   rdfs:label "member"@en;
+                                   rdfs:subPropertyOf ekc:A3;
+                                   <http://www.w3.org/2004/02/skos/core#example> "집현전 - 정인지"@ko;
+                                   <http://www.w3.org/2004/02/skos/core#note> "조직-구성원 관계"@ko;
+                                   <http://www.w3.org/2004/02/skos/core#scopeNote> "Domain : Agent(Actor의 subclasses 중 기관, 단체 등)".

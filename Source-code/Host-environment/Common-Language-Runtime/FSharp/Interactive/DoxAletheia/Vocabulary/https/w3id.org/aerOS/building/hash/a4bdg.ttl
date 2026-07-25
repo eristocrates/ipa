@@ -1,0 +1,423 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix a4bdg: <https://w3id.org/aerOS/building#>.
+
+<http://purl.org/dc/terms/created> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/description> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/identifier> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                      rdfs:comment "An unambiguous reference to the resource within a given context.";
+                                      rdfs:isDefinedBy <http://purl.org/dc/terms/>;
+                                      rdfs:label "identifier";
+                                      rdfs:range xsd:string.
+<http://purl.org/dc/terms/license> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/source> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/dc/terms/title> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/ontology/olo/core#OrderedList> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:comment "An ordered list with a given length an indexed items.";
+                                                rdfs:isDefinedBy <http://purl.org/ontology/olo/core#>;
+                                                rdfs:label "Ordered List".
+<http://purl.org/ontology/olo/core#Slot> a <http://www.w3.org/2002/07/owl#Class>;
+                                         rdfs:comment "A slot in an ordered list with a fixed index.";
+                                         rdfs:isDefinedBy <http://purl.org/ontology/olo/core#>;
+                                         rdfs:label "Slot".
+<http://purl.org/ontology/olo/core#index> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                                          rdfs:comment "An index of a slot in an ordered list.";
+                                          rdfs:domain <http://purl.org/ontology/olo/core#Slot>;
+                                          rdfs:isDefinedBy <http://purl.org/ontology/olo/core#>;
+                                          rdfs:label "index".
+<http://purl.org/ontology/olo/core#item> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                         rdfs:comment "An item of a slot in an ordered list.";
+                                         rdfs:domain <http://purl.org/ontology/olo/core#Slot>;
+                                         rdfs:isDefinedBy <http://purl.org/ontology/olo/core#>;
+                                         rdfs:label "item";
+                                         rdfs:range a4bdg:Desk.
+<http://purl.org/ontology/olo/core#slot> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                         rdfs:comment "A slot in an ordered list.";
+                                         rdfs:domain <http://purl.org/ontology/olo/core#OrderedList>;
+                                         rdfs:isDefinedBy <http://purl.org/ontology/olo/core#>;
+                                         rdfs:label "slot";
+                                         rdfs:range <http://purl.org/ontology/olo/core#Slot>.
+<http://purl.org/ontology/rec/core#RankedRecommendation> a <http://www.w3.org/2002/07/owl#Class>;
+                                                         rdfs:comment "A ranked recommendation that includes an ordered list of recommendations.";
+                                                         rdfs:isDefinedBy <http://purl.org/ontology/rec/core#>;
+                                                         rdfs:label "Ranked Recommendation".
+<http://purl.org/ontology/rec/core#ranked_recommendation_object> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                                 rdfs:comment "A ranked recommendation object in a ranked recommendation.";
+                                                                 rdfs:domain <http://purl.org/ontology/rec/core#RankedRecommendation>;
+                                                                 rdfs:isDefinedBy <http://purl.org/ontology/rec/core#>;
+                                                                 rdfs:label "ranked recommendation object";
+                                                                 rdfs:range <http://purl.org/ontology/olo/core#Slot>.
+<http://purl.org/ontology/rec/core#recommendation> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                   rdfs:comment "Relates a recommendation to someone or something.";
+                                                   rdfs:isDefinedBy <http://purl.org/ontology/rec/core#>;
+                                                   rdfs:label "recommendation";
+                                                   rdfs:range <http://purl.org/ontology/rec/core#RankedRecommendation>.
+<http://purl.org/ontology/rec/core#recommender> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                                rdfs:comment "An agent, which provided/calculated this recommendation.";
+                                                rdfs:domain <http://purl.org/ontology/rec/core#RankedRecommendation>;
+                                                rdfs:isDefinedBy <http://purl.org/ontology/rec/core#>;
+                                                rdfs:label "recommender";
+                                                rdfs:range a4bdg:RecommendationSystem.
+<http://purl.org/vocab/vann/example> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespacePrefix> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://purl.org/vocab/vann/preferredNamespaceUri> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+xsd:date a rdfs:Datatype.
+<http://www.w3.org/2002/07/owl#versionInfo> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<http://xmlns.com/foaf/0.1/Person> a <http://www.w3.org/2002/07/owl#Class>;
+                                   rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>;
+                                   rdfs:label "Person".
+<https://saref.etsi.org/core/Device> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:isDefinedBy <https://saref.etsi.org/core/>;
+                                     rdfs:label "Device";
+                                     rdfs:subClassOf <https://saref.etsi.org/core/FeatureOfInterest>.
+<https://saref.etsi.org/core/FeatureOfInterest> a <http://www.w3.org/2002/07/owl#Class>;
+                                                rdfs:isDefinedBy <https://saref.etsi.org/core/>;
+                                                rdfs:label "Feature of interest".
+<https://saref.etsi.org/core/Observation> a <http://www.w3.org/2002/07/owl#Class>;
+                                          rdfs:isDefinedBy <https://saref.etsi.org/core/>;
+                                          rdfs:label "Observation";
+                                          rdfs:subClassOf <https://saref.etsi.org/core/ProcedureExecution>.
+<https://saref.etsi.org/core/ProcedureExecution> a <http://www.w3.org/2002/07/owl#Class>;
+                                                 rdfs:isDefinedBy <https://saref.etsi.org/core/>;
+                                                 rdfs:label "Procedure Execution".
+<https://saref.etsi.org/core/Property> a <http://www.w3.org/2002/07/owl#Class>;
+                                       rdfs:isDefinedBy <https://saref.etsi.org/core/>;
+                                       rdfs:label "Property".
+<https://saref.etsi.org/core/PropertyValue> a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:isDefinedBy <https://saref.etsi.org/core/>;
+                                            rdfs:label "Property Value".
+<https://saref.etsi.org/core/Sensor> a <http://www.w3.org/2002/07/owl#Class>;
+                                     rdfs:isDefinedBy <https://saref.etsi.org/core/>;
+                                     rdfs:label "Sensor";
+                                     rdfs:subClassOf <https://saref.etsi.org/core/Device>.
+<https://saref.etsi.org/core/State> a <http://www.w3.org/2002/07/owl#Class>;
+                                    rdfs:isDefinedBy <https://saref.etsi.org/core/>;
+                                    rdfs:label "State".
+<https://saref.etsi.org/core/UnitOfMeasure> a <http://www.w3.org/2002/07/owl#Class>;
+                                            rdfs:isDefinedBy <https://saref.etsi.org/core/>;
+                                            rdfs:label "Unit Of Measure".
+<https://saref.etsi.org/core/hasResult> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                        rdfs:domain <https://saref.etsi.org/core/Observation>;
+                                        rdfs:isDefinedBy <https://saref.etsi.org/core/>;
+                                        rdfs:label "has result";
+                                        rdfs:range <https://saref.etsi.org/core/PropertyValue>.
+<https://saref.etsi.org/core/hasState> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:domain <https://saref.etsi.org/core/FeatureOfInterest>;
+                                       rdfs:isDefinedBy <https://saref.etsi.org/core/>;
+                                       rdfs:label "has state";
+                                       rdfs:range <https://saref.etsi.org/core/State>.
+<https://saref.etsi.org/core/isMeasuredIn> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                           rdfs:domain <https://saref.etsi.org/core/PropertyValue>;
+                                           rdfs:isDefinedBy <https://saref.etsi.org/core/>;
+                                           rdfs:label "is measured in";
+                                           rdfs:range <https://saref.etsi.org/core/UnitOfMeasure>.
+<https://saref.etsi.org/core/madeBy> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                     rdfs:domain <https://saref.etsi.org/core/Observation>;
+                                     rdfs:isDefinedBy <https://saref.etsi.org/core/>;
+                                     rdfs:label "made by";
+                                     rdfs:range <https://saref.etsi.org/core/FeatureOfInterest>.
+<https://saref.etsi.org/core/observes> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:domain <https://saref.etsi.org/core/Observation>;
+                                       rdfs:isDefinedBy <https://saref.etsi.org/core/>;
+                                       rdfs:label "observes";
+                                       rdfs:range <https://saref.etsi.org/core/Property>.
+<https://w3id.org/aerOS/building> <http://purl.org/dc/terms/created> "2025-05-13"^^xsd:date;
+                                  <http://purl.org/dc/terms/creator> "Ignacio Domínguez Martinez-Casanueva",
+                                                                     "Lucía Cabanillas Rodríguez";
+                                  <http://purl.org/dc/terms/description> """
+                                    Ontology that defines the conceptual model for the Pilot 5 - Smart Building use case
+                                    """@en;
+                                  <http://purl.org/dc/terms/license> <http://purl.org/NET/rdflicense/APACHE2.0>;
+                                  <http://purl.org/dc/terms/modified> "2025-05-13"^^xsd:date;
+                                  <http://purl.org/dc/terms/source> <https://gitlab.aeros-project.eu/wp4/t4.1/pilot-5-building-ontology>;
+                                  <http://purl.org/dc/terms/title> "aerOS Building ontology";
+                                  <http://purl.org/vocab/vann/preferredNamespacePrefix> "a4bdg";
+                                  <http://purl.org/vocab/vann/preferredNamespaceUri> a4bdg:;
+                                  a <http://www.w3.org/2002/07/owl#Ontology>;
+                                  <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/aerOS/building>;
+                                  <http://www.w3.org/2002/07/owl#versionInfo> "v1.4.0";
+                                  <https://w3id.org/mod#createdWith> <https://chowlk.linkeddata.es/>.
+a4bdg:Desk a <http://www.w3.org/2002/07/owl#Class>;
+           rdfs:comment "Working place composed of table, chair, and display.";
+           rdfs:isDefinedBy a4bdg:;
+           rdfs:label "Desk";
+           rdfs:subClassOf <https://w3id.org/bot#Element>.
+a4bdg:Forecast a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Represents a prediction for a property.";
+               rdfs:isDefinedBy a4bdg:;
+               rdfs:label "Forecast";
+               rdfs:subClassOf <https://saref.etsi.org/core/ProcedureExecution>.
+a4bdg:OnOffState a <http://www.w3.org/2002/07/owl#Class>;
+                 rdfs:comment "Denotes a device whose state can be on or off, such as a smart switch.";
+                 rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                 rdfs:label "On Off State";
+                 rdfs:subClassOf <https://saref.etsi.org/core/State>.
+a4bdg:OpenClosedState a <http://www.w3.org/2002/07/owl#Class>;
+                      rdfs:comment "Denotes a device whose state can be open or closed, such as a window or a door.";
+                      rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                      rdfs:label "Open Closed State";
+                      rdfs:subClassOf <https://saref.etsi.org/core/State>.
+a4bdg:OptimalCalculation a <http://www.w3.org/2002/07/owl#Class>;
+                         rdfs:comment "Represents the optimal calculation for a given property.";
+                         rdfs:isDefinedBy a4bdg:;
+                         rdfs:label "OptimalCalculation";
+                         rdfs:subClassOf <https://saref.etsi.org/core/ProcedureExecution>.
+a4bdg:RankedPreference a <http://www.w3.org/2002/07/owl#Class>;
+                       rdfs:comment "Describes an ordered list of preferences.";
+                       rdfs:label "Ranked Preference";
+                       rdfs:subClassOf <http://purl.org/ontology/olo/core#OrderedList>.
+a4bdg:Rating a <http://www.w3.org/2002/07/owl#Class>;
+             rdfs:comment "Represents the action of someone that rates a thing.";
+             rdfs:label "Rating".
+a4bdg:RecommendationSystem a <http://www.w3.org/2002/07/owl#Class>;
+                           rdfs:comment "Service responsible for providing recommendations to employees.";
+                           rdfs:label "Recommendation System".
+a4bdg:RoomAcetone a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    a4bdg:RoomGas;
+                  rdfs:comment "Property that represents the amount of acetone present in the air a given room.";
+                  rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                  rdfs:label "Room Acetone".
+a4bdg:RoomAirQuality a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                       a4bdg:RoomProperty;
+                     rdfs:comment "Property that represents the air quality index (AQI) of a given room.";
+                     rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                     rdfs:label "Room AirQuality".
+a4bdg:RoomAlcohol a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    a4bdg:RoomGas;
+                  rdfs:comment "Property that represents the amount of alcohol present in the air a given room.";
+                  rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                  rdfs:label "Room Alcohol".
+a4bdg:RoomCO a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+               a4bdg:RoomGas;
+             rdfs:comment "Property that represents the amount of carbon monoxide (CO) present in the air a given room.";
+             rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+             rdfs:label "Room CO".
+a4bdg:RoomCO2 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                a4bdg:RoomGas;
+              rdfs:comment "Property that represents the amount of carbon dioxide (CO2) present in the air a given room.";
+              rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+              rdfs:label "Room CO2".
+a4bdg:RoomDust a <http://www.w3.org/2002/07/owl#Class>;
+               rdfs:comment "Groups properties related to the presence of dust in the air of a given room.";
+               rdfs:isDefinedBy a4bdg:;
+               rdfs:label "Room Dust";
+               rdfs:subClassOf a4bdg:RoomProperty.
+a4bdg:RoomEnergy a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   a4bdg:RoomProperty;
+                 rdfs:comment "Property that represents the energy consumed by a given room.";
+                 rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                 rdfs:label "Room Energy".
+a4bdg:RoomGas a <http://www.w3.org/2002/07/owl#Class>;
+              rdfs:comment "Groups properties related to the presence of gas in the air of a given room.";
+              rdfs:isDefinedBy a4bdg:;
+              rdfs:label "Room Gas";
+              rdfs:subClassOf a4bdg:RoomProperty.
+a4bdg:RoomHealth a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                   a4bdg:RoomProperty;
+                 rdfs:comment "Property that represents the health of a given room.";
+                 rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                 rdfs:label "Room Health".
+a4bdg:RoomHumidity a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     a4bdg:RoomProperty;
+                   rdfs:comment "Property that represents the humidity of a given room.";
+                   rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                   rdfs:label "Room Humidity".
+a4bdg:RoomNH4 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                a4bdg:RoomGas;
+              rdfs:comment "Property that represents the amount of ammonium (NH4) present in the air a given room.";
+              rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+              rdfs:label "Room NH4".
+a4bdg:RoomPM1 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                a4bdg:RoomDust;
+              rdfs:comment "Property that represents the air quality index (AQI) of a given room.";
+              rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+              rdfs:label "Room PM1".
+a4bdg:RoomPM10 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 a4bdg:RoomDust;
+               rdfs:comment "Property that represents the air quality index (AQI) of a given room.";
+               rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+               rdfs:label "Room PM10".
+a4bdg:RoomPM2.5 a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  a4bdg:RoomDust;
+                rdfs:comment "Property that represents the air quality index (AQI) of a given room.";
+                rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                rdfs:label "Room PM2.5".
+a4bdg:RoomPower a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  a4bdg:RoomProperty;
+                rdfs:comment "Property that represents the power consumed by a given room.";
+                rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                rdfs:label "Room Power".
+a4bdg:RoomPressure a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     a4bdg:RoomProperty;
+                   rdfs:comment "Property that represents the pressure of a given room.";
+                   rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                   rdfs:label "Room Pressure".
+a4bdg:RoomProperty a <http://www.w3.org/2002/07/owl#Class>;
+                   rdfs:comment "Represents an observable property of a given room.";
+                   rdfs:isDefinedBy a4bdg:;
+                   rdfs:label "Room Property";
+                   rdfs:subClassOf <https://saref.etsi.org/core/Property>.
+a4bdg:RoomTemperature a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                        a4bdg:RoomProperty;
+                      rdfs:comment "Property that represents the temperature of a given room.";
+                      rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                      rdfs:label "Room Temperature".
+a4bdg:RoomToluene a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    a4bdg:RoomGas;
+                  rdfs:comment "Property that represents the amount of toluene present in the air a given room.";
+                  rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                  rdfs:label "Room Toluene".
+a4bdg:air_quality a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    <https://saref.etsi.org/core/Sensor>;
+                  rdfs:comment "Type of sensor that measures air quality index (AQI) property of a room.";
+                  rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                  rdfs:label "Air Quality Sensor".
+a4bdg:calculates a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                 rdfs:comment "Relates an optimal calculation of property.";
+                 rdfs:domain a4bdg:OptimalCalculation;
+                 rdfs:label "calculates";
+                 rdfs:range <https://saref.etsi.org/core/Property>.
+a4bdg:closedState a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    a4bdg:OpenClosedState;
+                  rdfs:comment "Denotes a device whose state is closed.";
+                  rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                  rdfs:label "Closed State".
+a4bdg:environmental a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                      <https://saref.etsi.org/core/Sensor>;
+                    rdfs:comment "Type of sensor that measures temperature, humidity, and pressure properties of a room.";
+                    rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                    rdfs:label "THP Sensor".
+a4bdg:environmental_dust a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                           <https://saref.etsi.org/core/Sensor>;
+                         rdfs:comment "Type of sensor that measures dust properties of a room.";
+                         rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                         rdfs:label "Dust Sensor".
+a4bdg:environmental_gasses a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                             <https://saref.etsi.org/core/Sensor>;
+                           rdfs:comment "Type of sensor that measures gas properties of a room.";
+                           rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                           rdfs:label "Gas Sensor".
+a4bdg:environmental_nop a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                          <https://saref.etsi.org/core/Sensor>;
+                        rdfs:comment "Type of sensor that measures temperature and humidity properties of a room.";
+                        rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                        rdfs:label "TH Sensor".
+a4bdg:forecasts a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                rdfs:comment "Relates a forecast with the predicted property.";
+                rdfs:domain a4bdg:Forecast;
+                rdfs:label "forecasts";
+                rdfs:range <https://saref.etsi.org/core/Property>.
+a4bdg:hasRankedPreference a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                          rdfs:comment "Relates a person with a ranked preference.";
+                          rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                          rdfs:label "has ranked preference";
+                          rdfs:range a4bdg:RankedPreference.
+a4bdg:isAvailable a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "Denotes whether a desk is available or not.";
+                  rdfs:domain a4bdg:Desk;
+                  rdfs:label "is available";
+                  rdfs:range xsd:boolean.
+a4bdg:isContainedInRoom a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "Refers to a thing that is contained within a room.";
+                        rdfs:label "is contained in room";
+                        rdfs:range <https://w3id.org/seas/Room>.
+a4bdg:isContainedInZone a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "Refers to a thing that is contained within a zone.";
+                        rdfs:label "is contained in zone";
+                        rdfs:range <https://w3id.org/bot#Zone>.
+a4bdg:isLocatedInStorey a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                        rdfs:comment "Refers to a thing that is located in a storey.";
+                        rdfs:label "is located in storey";
+                        rdfs:range <https://w3id.org/bot#Storey>.
+a4bdg:offState a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                 a4bdg:OnOffState;
+               rdfs:comment "Denotes a device whose state is off.";
+               rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+               rdfs:label "Off State".
+a4bdg:onState a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                a4bdg:OnOffState;
+              rdfs:comment "Denotes a device whose state is on.";
+              rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+              rdfs:label "On State".
+a4bdg:openState a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                  a4bdg:OpenClosedState;
+                rdfs:comment "Denotes a device whose state is open.";
+                rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                rdfs:label "Open State".
+a4bdg:power_meter a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                    <https://saref.etsi.org/core/Sensor>;
+                  rdfs:comment "Type of sensor that measures the energy and power consumption of a room.";
+                  rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                  rdfs:label "Power Meter".
+a4bdg:preferenceObject a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                       rdfs:comment "Relates a ranked preference with the preferred thing.";
+                       rdfs:domain a4bdg:RankedPreference;
+                       rdfs:label "preference object";
+                       rdfs:range <http://purl.org/ontology/olo/core#Slot>;
+                       rdfs:subPropertyOf <http://purl.org/ontology/olo/core#slot>.
+a4bdg:presentInBuilding a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                        rdfs:comment "Denotes the presence of a person inside a building.";
+                        rdfs:domain <http://xmlns.com/foaf/0.1/Person>;
+                        rdfs:label "present in building";
+                        rdfs:range xsd:boolean.
+a4bdg:ratingAuthor a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Relates a person with a rating.";
+                   rdfs:domain a4bdg:Rating;
+                   rdfs:label "rating author";
+                   rdfs:range <http://xmlns.com/foaf/0.1/Person>.
+a4bdg:ratingTarget a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                   rdfs:comment "Relates a rating with the rated thing.";
+                   rdfs:domain a4bdg:Rating;
+                   rdfs:label "rating target".
+a4bdg:ratingValue a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                  rdfs:comment "Represents the value of the rating.";
+                  rdfs:domain a4bdg:Rating;
+                  rdfs:label "rating value".
+a4bdg:roomPlacement a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+                    rdfs:comment "Represents the location where the sensor is placed, i.e., indoors or outdoors.";
+                    rdfs:domain <https://saref.etsi.org/core/Sensor>;
+                    rdfs:label "room placement".
+a4bdg:smart_switch a <http://www.w3.org/2002/07/owl#NamedIndividual>,
+                     <https://saref.etsi.org/core/Sensor>;
+                   rdfs:comment "Type of switch that measures the energy and power consumption of a room.";
+                   rdfs:isDefinedBy <https://w3id.org/aerOS/building>;
+                   rdfs:label "Smart Switch".
+<https://w3id.org/bot#Building> a <http://www.w3.org/2002/07/owl#Class>;
+                                rdfs:comment "An independent unit of the built environment with a characteristic spatial structure, intended to serve at least one function or user activity [ISO-12006]. A bot:Building is a part of the physical world or a virtual world that is inherently both located in this world and having a 3D spatial extent, is contained in a building site, and can contain one or more storeys that are vertically connected.";
+                                rdfs:isDefinedBy <https://w3id.org/bot#>;
+                                rdfs:label "Building".
+<https://w3id.org/bot#Element> a <http://www.w3.org/2002/07/owl#Class>;
+                               rdfs:comment "Constituent of a construction entity with a characteristic technical function, form or position [[ISO-12006], 3.4.7].";
+                               rdfs:isDefinedBy <https://w3id.org/bot#>;
+                               rdfs:label "Element".
+<https://w3id.org/bot#Space> a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:comment "A part of the physical world or a virtual world whose 3D spatial extent is bounded actually or theoretically, and provides for certain functions within the zone it is contained in.";
+                             rdfs:isDefinedBy <https://w3id.org/bot#>;
+                             rdfs:label "Space".
+<https://w3id.org/bot#Storey> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/bot#Zone> a <http://www.w3.org/2002/07/owl#Class>.
+<https://w3id.org/bot#containsElement> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                       rdfs:comment "Relation to a building element contained in a zone.";
+                                       rdfs:domain <https://w3id.org/bot#Space>;
+                                       rdfs:isDefinedBy <https://w3id.org/bot#>;
+                                       rdfs:label "contains element";
+                                       rdfs:range <https://w3id.org/bot#Element>.
+<https://w3id.org/bot#hasSpace> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+                                rdfs:comment "Relation to spaces contained in a zone. The typical domains of bot:hasSpace are instances of bot:Storey or bot:Building.";
+                                rdfs:domain <https://w3id.org/bot#Building>;
+                                rdfs:isDefinedBy <https://w3id.org/bot#>;
+                                rdfs:label "has space";
+                                rdfs:range <https://w3id.org/bot#Space>.
+<https://w3id.org/mod#createdWith> a <http://www.w3.org/2002/07/owl#AnnotationProperty>.
+<https://w3id.org/seas/BuildingSpace> a <http://www.w3.org/2002/07/owl#Class>;
+                                      rdfs:isDefinedBy <https://w3id.org/seas/>;
+                                      rdfs:label "Building Space";
+                                      rdfs:subClassOf <https://w3id.org/bot#Space>.
+<https://w3id.org/seas/Room> a <http://www.w3.org/2002/07/owl#Class>;
+                             rdfs:isDefinedBy <https://w3id.org/seas/>;
+                             rdfs:label "Room";
+                             rdfs:subClassOf <https://saref.etsi.org/core/FeatureOfInterest>,
+                                             <https://w3id.org/seas/BuildingSpace>.
